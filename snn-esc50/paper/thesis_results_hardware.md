@@ -251,13 +251,13 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 
 **On GPU/CPU (software simulation):** The SNN is **2.1× more expensive** than the ANN (968 ± 37 nJ vs 454 ± 11 nJ, 5-fold validated). This is expected: the SNN runs for T=25 timesteps while the ANN runs once, and the SNN's large number of binary ACs (1.08M) outnumbers the ANN's MACs (101K) despite the higher per-operation cost of MACs.
 
-**On neuromorphic hardware (SpiNNaker/Loihi):** The cost relationship inverts. Each SNN AC (binary × weight) costs ~0.9 pJ on neuromorphic hardware vs ~4.6 pJ for ANN MACs. If the SpiNNaker hardware achieves AC-only compute for the classification layer:
-$$\text{SNN hardware energy} = 1,084,732 \times 0.9 \text{ pJ} = 976 \text{ nJ}$$
-$$\text{ANN hardware energy} = 100,561 \times 4.6 \text{ pJ} = 463 \text{ nJ}$$
+**On neuromorphic hardware (SpiNNaker/Loihi):** The cost relationship inverts. Each SNN AC (binary × weight) costs ~0.9 pJ on neuromorphic hardware vs ~4.6 pJ for ANN MACs. If the SpiNNaker hardware achieves AC-only compute for the classification layer (fold 4 example calculation; 5-fold means: SNN 968 ± 37 nJ, ANN 454 ± 11 nJ):
+$$\text{SNN hardware energy} = 1,084,732 \times 0.9 \text{ pJ} = 976 \text{ nJ (fold 4)}$$
+$$\text{ANN hardware energy} = 100,561 \times 4.6 \text{ pJ} = 463 \text{ nJ (fold 4)}$$
 
 On neuromorphic hardware, the SNN still has more total operations (1.08M vs 101K). The question is whether the neuromorphic AC is cheap enough to compensate:
 $$\text{Break-even requires: SNN ACs} \times 0.9 < \text{ANN MACs} \times 4.6$$
-$$1,084,732 \times 0.9 = 976,259 \text{ pJ vs } 100,561 \times 4.6 = 462,581 \text{ pJ}$$
+$$1,084,732 \times 0.9 = 976,259 \text{ pJ vs } 100,561 \times 4.6 = 462,581 \text{ pJ (fold 4)}$$
 
 The SNN remains more expensive even on neuromorphic hardware in this analysis. This follows from Dampfhoffer et al. (2023): SNNs need a spike rate below 6.4% to beat quantized ANNs on CPU. Our 74.16% sparsity (25.84% spike rate) is well above this threshold.
 

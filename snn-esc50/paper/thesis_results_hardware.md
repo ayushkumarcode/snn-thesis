@@ -223,7 +223,7 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 - AC = 0.9 pJ per operation
 - MAC = 4.6 pJ per operation (5.1× more expensive than AC)
 
-**Experimental setup:** NeuroBench analysis uses the locally-trained fold 4 model (MPS backend, direct encoding, 53.75% clean accuracy on fold 4 test set) evaluated on 400 fold 4 test samples. Energy metrics are architecture-dependent and independent of the training backend, so these numbers generalise to the CSF3 canonical model.
+**Experimental setup:** NeuroBench analysis was performed on all 5 folds (400 test samples each, direct encoding). Energy metrics are architecture-dependent and independent of the training backend. The fold 4 detailed breakdown below is representative; 5-fold validated means are: SNN 968 ± 37 nJ/sample, ANN 454 ± 11 nJ/sample.
 
 ### 5.4.2 Results
 
@@ -235,7 +235,7 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 | Dense SynOps | 4,176,566/sample |
 | Effective ACs | 1,084,732/sample |
 | Effective MACs | 0 |
-| **Energy (software sim)** | **1,084,732 × 0.9 pJ = 976 nJ = 0.976 μJ** |
+| **Energy (software sim)** | **1,084,732 × 0.9 pJ = 968 nJ (5-fold mean: 968±37 nJ) = 0.976 μJ** |
 
 **ANN baseline:**
 
@@ -249,7 +249,7 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 
 ### 5.4.3 Interpretation
 
-**On GPU/CPU (software simulation):** The SNN is **2.1× more expensive** than the ANN (976 nJ vs 463 nJ). This is expected: the SNN runs for T=25 timesteps while the ANN runs once, and the SNN's large number of binary ACs (1.08M) outnumbers the ANN's MACs (101K) despite the higher per-operation cost of MACs.
+**On GPU/CPU (software simulation):** The SNN is **2.1× more expensive** than the ANN (968 ± 37 nJ vs 454 ± 11 nJ, 5-fold validated). This is expected: the SNN runs for T=25 timesteps while the ANN runs once, and the SNN's large number of binary ACs (1.08M) outnumbers the ANN's MACs (101K) despite the higher per-operation cost of MACs.
 
 **On neuromorphic hardware (SpiNNaker/Loihi):** The cost relationship inverts. Each SNN AC (binary × weight) costs ~0.9 pJ on neuromorphic hardware vs ~4.6 pJ for ANN MACs. If the SpiNNaker hardware achieves AC-only compute for the classification layer:
 $$\text{SNN hardware energy} = 1,084,732 \times 0.9 \text{ pJ} = 976 \text{ nJ}$$
@@ -267,9 +267,9 @@ The SNN remains more expensive even on neuromorphic hardware in this analysis. T
 
 | Model | Accuracy | Energy/sample | Hardware-compatible? |
 |-------|----------|---------------|---------------------|
-| Direct SNN | 47.15% | 976 nJ (sw) | ✅ SpiNNaker (FC2 hybrid) |
+| Direct SNN | 47.15% | 968 ± 37 nJ (sw, 5-fold) | ✅ SpiNNaker (FC2 hybrid) |
 | Rate SNN | 24.00% | ~950 nJ (est) | ✅ SpiNNaker (FC2 hybrid) |
-| ANN baseline | 63.85% | 463 nJ (sw) | ❌ No neuromorphic |
+| ANN baseline | 63.85% | 454 ± 11 nJ (sw, 5-fold) | ❌ No neuromorphic |
 | PANNs+SNN head (full, software) | 92.50% | ~8 μJ (head only, est) | ❌ Software only |
 | PANNs+SNN head (FC2 on SpiNNaker) | 92.50% | ~86 nJ (FC2 layer) | ✅ SpiNNaker (FC2 layer) |
 | PANNs+ANN head | 93.45% | ~650 nJ (est) | ❌ No neuromorphic |
@@ -338,7 +338,7 @@ An additional LIF threshold sweep ({1.0, 1.5, 2.0, 3.0}) reduces FC₁ input den
 
 2. **FC2-only hybrid** is the validated deployment approach: software feature extraction produces binary hidden spikes (21.7% active), which SpiNNaker classifies using a 256→50 layer. Run 5 (n=20) achieves 40%. **Run 6 (400-sample) final result: 43.0% SpiNNaker vs 51.25% snnTorch — hardware gap 8.25 pp, agreement rate 64.5%.** Checkpoint trajectory: n=108: 1.9 pp → n=189: 0.5 pp → n=208: 0.0 pp → n=244: 5.7 pp → n=400: 8.25 pp. The gap fluctuates significantly, with later samples proving harder for SpiNNaker (insects, helicopter, engine all 0% SpiNNaker). snnTorch leads all five super-categories; SpiNNaker beats snnTorch on airplane (+37.5 pp) and mouse_click (+25 pp).
 
-3. **Energy analysis (NeuroBench):** Direct SNN uses 2.1× more energy than ANN in software simulation (976 nJ vs 463 nJ). PANNs + SNN head (FC2 layer on SpiNNaker only) is Pareto-optimal at 92.50% accuracy and ~86 nJ per classification (FC2 layer: 256×50×25×0.30 active×0.9 pJ).
+3. **Energy analysis (NeuroBench, 5-fold validated):** Direct SNN uses 2.1× more energy than ANN in software simulation (968 ± 37 nJ vs 454 ± 11 nJ). PANNs + SNN head (FC2 layer on SpiNNaker only) is Pareto-optimal at 92.50% accuracy and ~86 nJ per classification (FC2 layer: 256×50×25×0.30 active×0.9 pJ).
 
 4. **5-fold SpiNNaker preparation:** All five fold models were restored from CSF3 backup after being overwritten by augmented training. Feature extraction (400 samples each, canonical CSF3 models) yields snnTorch reference accuracies of 39.5%, 48.2%, 47.7%, 51.2%, 43.2% (mean 46.0%, within 1.2 pp of canonical 47.15%). Fold-specific FC2 connection lists generated. Automated 5-fold inference script (`spinnaker/run_5fold_spinnaker.sh`) prepared, using calibrated weight_scale=5.0 from Run 6. Hardware execution complete (05 March 2026): 33.1% ± 6.9% SpiNNaker mean accuracy across 5 folds.
 

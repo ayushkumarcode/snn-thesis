@@ -4,6 +4,10 @@
 \settopmatter{printacmref=false}
 \renewcommand\footnotetextcopyrightpermission[1]{}
 
+% Set correct conference info
+\acmConference[ICONS '26]{International Conference on Neuromorphic Systems}{July 29--August 1, 2026}{Washington, DC, USA}
+\acmYear{2026}
+
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{graphicx}
@@ -302,6 +306,14 @@ ANN & 99K$\pm$2K MACs & 454$\pm$11 & MAC $\times$ 4.6\,pJ \\
 
 In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref{tab:energy}) because the SNN's $T$=25 timesteps generate 10.9$\times$ more operations despite each being cheaper. On neuromorphic hardware, each AC costs 5.1$\times$ less than each MAC~\cite{horowitz2014}; however, the SNN's 26.4\% spike rate exceeds the $<$6.4\% threshold identified by Dampfhoffer et al.~\cite{dampfhoffer2023} for energy parity with quantised ANNs. Reducing $T$ and increasing sparsity are necessary for the SNN to achieve energy advantage---this is an important direction for future work.
 
+\subsection{Temporal Efficiency}
+
+We evaluate the SNN at reduced timestep budgets $T \in \{1, 3, 5, 7, 10, 15, 20, 25\}$ using direct encoding. Accuracy reaches 90\% of its full value ($T$=25) at $T$=7, corresponding to a 72\% reduction in energy (proportional to $T$). Performance plateaus around $T$=15--20, with $T$=20 and $T$=25 statistically indistinguishable ($p$=0.45). This suggests that the SNN extracts most task-relevant information within the first 7--10 timesteps, and that aggressive temporal truncation is a viable path to energy efficiency on neuromorphic hardware.
+
+\subsection{SpiNNaker Per-Category Analysis}
+
+Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals systematic variation. Natural sounds (61.3\%) and Animals (45.0\%) outperform Domestic (31.2\%) and Urban (31.2\%). SpiNNaker achieves perfect agreement with snnTorch on some classes (e.g., airplane: SpiNNaker 50.0\% vs snnTorch 12.5\%, a +37.5~pp advantage) while others collapse entirely (insects, glass\_breaking, helicopter: 0\%). The overall agreement rate between SpiNNaker and snnTorch predictions is 64.5\%, indicating that the hardware gap is not uniform---certain spectral patterns survive quantisation better than others.
+
 %% ============================================================
 \section{Discussion}
 \label{sec:discussion}
@@ -316,6 +328,8 @@ In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref
 \textbf{SpiNNaker: proof of concept with honest limitations.} Our FC2-only hybrid demonstrates feasibility but is not full neuromorphic inference, following the hybrid paradigm explored by Seekings et al.~\cite{seekings2024}. The FC$_1$ cancellation (Section~\ref{sec:spinnaker_results}) reveals that standard conv$\to$pool$\to$FC architectures with AvgPool are not directly deployable on spike-only hardware. Replacing AvgPool with MaxPool (which preserves binary outputs) could enable full deployment on SpiNNaker~2~\cite{hoppner2024}, as demonstrated by Arfa et al.~\cite{arfa2025} for gesture recognition.
 
 \textbf{Adversarial robustness.} Binary thresholding provides natural gradient masking, consistent with Sharmin et al.~\cite{sharmin2020} on images. We acknowledge that standard PGD may not be optimal for evaluating SNN robustness~\cite{wang2025}; SA-PGD evaluation is left for future work. Our FGSM results (single-step, no SNN-specific adaptation) provide a reliable lower bound.
+
+\textbf{Temporal truncation as energy strategy.} Our temporal ablation shows the SNN reaches 90\% accuracy at $T$=7, providing a concrete path to energy efficiency: at $T$=7, the SNN would require only $0.28 \times 1.08$M~$= 302$K effective ACs (272~nJ), making it 1.7$\times$ cheaper than the ANN in software and dramatically cheaper on neuromorphic hardware. This approaches the $<$6.4\% spike rate threshold identified by Dampfhoffer et al.~\cite{dampfhoffer2023}.
 
 \textbf{Threats to validity.} (1)~Results are for a single architecture ($\sim$622K params); wider/deeper networks may shift the encoding hierarchy. (2)~ESC-50 is small (2{,}000 clips); generalisation to UrbanSound8K or FSD50K is untested. (3)~NeuroBench energy is computed in software simulation; actual SpiNNaker power consumption was not measured. (4)~The surrogate gradient (fast sigmoid) may not be optimal; preliminary single-fold ablation suggests spike-rate-escape achieves +1.25~pp.
 

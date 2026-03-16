@@ -106,14 +106,16 @@ Both SNN and ANN suffer severe catastrophic forgetting — significantly worse t
 
 | Metric | SNN | ANN |
 |--------|-----|-----|
-| Mean forgetting (↓ better) | **74.4%** | 81.3% |
-| Mean BWT (↑ less negative is better) | **−0.744** | −0.813 |
+| Mean forgetting (↓ better) | **69.9% ± 4.3%** | 74.7% ± 2.4% |
+| Mean BWT (↑ less negative is better) | **−0.699** | −0.747 |
 | Final avg accuracy (↑ better) | 18.3% | 18.8% |
 | Final acc on Task 4 (Urban) only | 78.75% | 88.75% |
 
+*Note: Summary statistics are 5-fold validated means ± std. The accuracy matrices above show fold 4 as a representative example; all 5 folds were evaluated.*
+
 ### 6.2.3 Analysis
 
-**FINDING: SNN forgets less than ANN (74.4% vs 81.3% forgetting, −6.9 pp advantage for SNN).** Both suffer catastrophic forgetting far worse than the "±50% BWT" commonly cited for regularisation-free continual learning. This severity is expected given the extreme scenario: training on 10/50-class subsets with gradients that point entirely away from the remaining 40 classes.
+**FINDING (5-fold validated): SNN forgets less than ANN (69.9% ± 4.3% vs 74.7% ± 2.4% forgetting, −4.7 pp advantage for SNN).** Both suffer catastrophic forgetting far worse than the "±50% BWT" commonly cited for regularisation-free continual learning. This severity is expected given the extreme scenario: training on 10/50-class subsets with gradients that point entirely away from the remaining 40 classes.
 
 **Why the ANN forgets more:** The ANN's continuous activations produce larger gradient magnitudes when fine-tuned on new tasks, overwriting weights more completely. The SNN's binary spike outputs produce sparser gradient flow — only neurons that actually fired during the new task's forward pass receive gradient updates. This sparsity means fewer weights are modified per new task, leaving more of the original representation intact. This is mechanistically consistent with the adversarial robustness finding (§6.1): the spike threshold acts as a computational gate that limits information flow, both resisting perturbation (robustness) and limiting gradient propagation (continual learning).
 
@@ -121,9 +123,9 @@ Both SNN and ANN suffer severe catastrophic forgetting — significantly worse t
 
 **Both converge to the most recently seen task:** After all 5 tasks, both models classify primarily Urban sounds. Animals, Nature, and Human tasks collapse to 0% for both. This "last task dominance" is the hallmark of catastrophic forgetting without replay.
 
-**Comparison to literature:** Golden et al. (2022, PLoS Computational Biology) demonstrated sleep-based consolidation reducing SNN forgetting by >50% in simplified spike-rate networks. Our result confirms the baseline (no consolidation) forgetting is severe, and provides a quantitative reference: 74.4% mean forgetting for this architecture. Future work with EWC (Kirkpatrick et al. 2017) or replay buffers could substantially reduce this.
+**Comparison to literature:** Golden et al. (2022, PLoS Computational Biology) demonstrated sleep-based consolidation reducing SNN forgetting by >50% in simplified spike-rate networks. Our result confirms the baseline (no consolidation) forgetting is severe, and provides a quantitative reference: 69.9% ± 4.3% mean forgetting for this architecture (5-fold validated). Future work with EWC (Kirkpatrick et al. 2017) or replay buffers could substantially reduce this.
 
-**Result file:** `results/continual_learning/forgetting_fold4_pretrained_20ep.json`
+**Result files:** `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json` (5-fold validated)
 
 ---
 
@@ -294,7 +296,7 @@ Human ESC-50 accuracy is 81.3% (Piczak 2015). Classes where humans struggle (< 7
 
 1. **Adversarial robustness (§6.1, C4):** SNN retains 26% accuracy at ε=0.1 FGSM vs ANN's 1.75%. The spike threshold provides natural adversarial filtering, making SNNs substantially more robust to gradient-based attacks on audio spectrograms. This is the first such analysis for SNN on environmental sound data.
 
-2. **Continual learning (§6.2):** Both SNN and ANN suffer severe catastrophic forgetting without replay or regularisation. **SNN mean forgetting: 74.4%; ANN mean forgetting: 81.3% — SNN forgets 6.9 pp less.** The spike threshold's sparsity limits gradient interference between tasks. Both converge to classifying only the most recently seen task (Urban) after all 5 sequential tasks.
+2. **Continual learning (§6.2):** Both SNN and ANN suffer severe catastrophic forgetting without replay or regularisation. **SNN mean forgetting: 69.9% ± 4.3%; ANN mean forgetting: 74.7% ± 2.4% — SNN forgets 4.7 pp less (5-fold validated).** The spike threshold's sparsity limits gradient interference between tasks. Both converge to classifying only the most recently seen task (Urban) after all 5 sequential tasks.
 
 3. **Temporal analysis (§6.3):** Rate readout (51.50%) dramatically outperforms first-spike readout (25.75%) on the same model, confirming that this SNN is a rate-coded classifier. Temporal spike structure is not exploited by the training objective.
 

@@ -236,7 +236,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Spike efficiency Pareto")
     parser.add_argument("--fold", type=int, default=1)
     parser.add_argument("--encoding", default="direct")
+    parser.add_argument("--device", default="cpu",
+                        help="Device to use, e.g. cpu, cuda, mps (default: cpu)")
     args = parser.parse_args()
 
     download_esc50()
-    run_pareto(fold=args.fold, encoding=args.encoding)
+    run_pareto(fold=args.fold, encoding=args.encoding,
+               device=torch.device(args.device))

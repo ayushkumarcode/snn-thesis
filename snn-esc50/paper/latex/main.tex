@@ -27,13 +27,6 @@
 }
 \email{ayush.kumar@student.manchester.ac.uk}
 
-% Add supervisor as co-author (update name before submission)
-%\author{Supervisor Name}
-%\affiliation{
-%  \institution{University of Manchester}
-%}
-%\email{supervisor@manchester.ac.uk}
-
 %%% --- ABSTRACT (~130 words) ---
 \begin{abstract}
 We present the first convolutional spiking neural network (SNN) evaluation on ESC-50, comparing seven spike encodings and deploying on SpiNNaker neuromorphic hardware.
@@ -316,7 +309,7 @@ $\varepsilon$ & FGSM SNN & FGSM ANN & PGD SNN & PGD ANN \\
 
 Under FGSM at $\varepsilon$=0.1, the SNN retains 16.55\% $\pm$ 5.49\% accuracy versus 2.75\% $\pm$ 0.61\% for the ANN (\textbf{6.0$\times$ more robust}, $p$=0.007, 5-fold validated; Table~\ref{tab:adversarial}). Under PGD at $\varepsilon$=0.05, the SNN retains 9.75\% while the ANN drops to 0.05\%. Binary spike thresholding provides natural gradient masking: small perturbations that shift continuous activations have no effect until crossing the LIF threshold.
 
-\textbf{Clean accuracy note.} The $\varepsilon$=0.00 values (SNN=54.25\%, ANN=61.85\%) differ from Table~\ref{tab:encoding_results} due to BatchNorm running statistics on different evaluation hardware; robustness \emph{ratios} are unaffected as both numerator and denominator use the same pipeline.
+\textbf{Clean accuracy note.} The $\varepsilon$=0.00 values (SNN=54.25\%, ANN=61.85\%) differ from Table~\ref{tab:encoding_results} (47.15\%, 63.85\%) because Table~\ref{tab:encoding_results} reports training-time best-epoch accuracy while Table~\ref{tab:adversarial} re-evaluates the same saved checkpoints in a unified GPU pipeline. The difference arises from BatchNorm running statistics accumulated during training versus re-evaluation. Robustness \emph{ratios} are unaffected as both numerator and denominator use the same evaluation pipeline. The relative retained accuracy (accuracy under attack / clean accuracy) at $\varepsilon$=0.1 FGSM is: SNN retains 30.5\% vs ANN retains 4.4\%, confirming the robustness advantage is not an artifact of the clean accuracy difference.
 
 \subsection{Energy Analysis}
 
@@ -346,7 +339,7 @@ We evaluate catastrophic forgetting by sequentially training SNN and ANN on five
 
 \subsection{SpiNNaker Per-Category Analysis}
 
-Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals systematic variation. Natural sounds (61.3\%) and Animals (45.0\%) outperform Domestic (31.2\%) and Urban (31.2\%). SpiNNaker achieves near-perfect agreement with snnTorch on some classes (e.g., airplane: SpiNNaker 50.0\% vs snnTorch 12.5\%, a +37.5~pp advantage) while others collapse entirely (insects, glass\_breaking, helicopter: 0\%). The overall agreement rate between SpiNNaker and snnTorch predictions is 64.5\%, indicating that the hardware gap is not uniform---certain spectral patterns survive quantisation better than others.
+Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals systematic variation. Natural sounds (61.3\%) and Animals (45.0\%) outperform Domestic (31.2\%) and Urban (31.2\%). SpiNNaker outperforms snnTorch on individual classes (e.g., airplane: SpiNNaker 50.0\% vs snnTorch 12.5\%, though per-class sample sizes of 8 limit reliability) while others collapse entirely (insects, glass\_breaking, helicopter: 0\%). The overall agreement rate between SpiNNaker and snnTorch predictions is 64.5\%, indicating that the hardware gap is not uniform---certain spectral patterns survive quantisation better than others.
 
 \subsection{Surrogate Gradient Sensitivity}
 

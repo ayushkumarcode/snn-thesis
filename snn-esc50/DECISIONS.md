@@ -1136,3 +1136,17 @@ Uses calibrated weight_scale=5.0 from Run 6, skips scale sweep, ~100min runtime.
 **Root Cause:** SpiNNaker's UDP-based data specification loading can't reliably handle >200K connections in a single setup. The 2304→256→50 network spreads across 47 chips.
 **Impact:** FC1+FC2 deployment is possible but unreliable. 4 samples completed successfully (results pending stdout flush). Each sample takes ~5 minutes including retries.
 **Next Steps:** (1) Try --prune-threshold 0.05 to reduce connections to ~100K. (2) Try loading FC1 and FC2 connections in separate phases. (3) Accept FC2-only as the primary result and document FC1+FC2 as "proof of concept with limitations."
+
+## Decision #59: SpiNNaker FC1+FC2 Full Deploy — Engineering Summary (16 March 2026)
+
+**Attempts made (all on MaxPool model, fold 4, 20 samples):**
+1. Exc-only, scale=1.0: 5.0% — hidden layer SATURATED (229/256 fired)
+2. Top-k=100, scale=1.0: 0.0% — hidden layer too SPARSE (0-11/256)
+3. Top-k=500, scale=5.0: FAILED — sPyNNaker NotImplementedError: times differ
+4. Top-k=200, scale=1.0: 0.0% — hidden still sparse (0-18/256), cancellation persists
+
+**Root Cause (confirmed):** FC1 weights have near-zero mean (μ=-0.0034). With balanced exc+inh connections, the net current per hidden neuron ≈ 0 regardless of k or scale. Exc-only removes the cancellation but saturates.
+
+**Conclusion:** The FC1 excitatory-inhibitory cancellation is a fundamental architectural issue, not a configuration problem. The FC2-only hybrid (33.1%±6.9%) remains the best validated SpiNNaker result. Full FC1+FC2 deployment requires architectural redesign (e.g., training with positive-only FC1 weights, or using conductance-based neurons with different E/I balance).
+
+**Paper impact:** The paper already correctly documents this as a co-design constraint. No paper changes needed — the FC2-only hybrid is honestly presented as a proof of concept.

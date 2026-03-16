@@ -1,0 +1,45 @@
+{
+  "fold": 3,
+  "num_samples": 400,
+  "device": "cpu",
+  "num_steps": 25,
+  "energy_constants": {
+    "energy_per_mac_pj": 4.6,
+    "energy_per_ac_pj": 0.9
+  },
+  "snn": {
+    "Footprint": 2488616,
+    "ParameterCount": 621938,
+    "ConnectionSparsity": 0.0,
+    "ClassificationAccuracy": 0.47750000000000004,
+    "ActivationSparsity": 0.7314209044851198,
+    "SynapticOperations": {
+      "Effective_MACs": 90575582.46,
+      "Effective_ACs": 450780928.785,
+      "Dense": 1662979200.0
+    }
+  },
+  "ann": {
+    "Footprint": 2488536,
+    "ParameterCount": 621938,
+    "ConnectionSparsity": 0.0,
+    "ClassificationAccuracy": 0.625,
+    "ActivationSparsity": 0.5819045077793578,
+    "SynapticOperations": {
+      "Effective_MACs": 38156282.94,
+      "Effective_ACs": 0.0,
+      "Dense": 66519168.0
+    }
+  },
+  "energy": {
+    "n_test_samples": 400,
+    "snn_eff_acs_per_sample": 1126952.3219625,
+    "ann_eff_macs_per_sample": 95390.70735,
+    "snn_dense_per_sample": 4157448.0,
+    "ann_dense_per_sample": 166297.92,
+    "snn_energy_pj_per_sample": 1014257.08976625,
+    "ann_energy_pj_per_sample": 438797.25380999997,
+    "ann_snn_energy_ratio": 0.4326292201823574,
+    "note": "SNN ACs are accum-only on neuromorphic hardware (0.9 pJ each). ANN MACs require multiply+add (4.6 pJ each). On SpiNNaker: SNN is cheaper because ACs replace MACs. In software simulation: SNN is more expensive due to T=25 timesteps."
+  }
+}

@@ -287,20 +287,20 @@ Under FGSM at $\varepsilon$=0.1, the SNN retains 16.55\% $\pm$ 5.49\% accuracy v
 \subsection{Energy Analysis}
 
 \begin{table}[t]
-\caption{NeuroBench energy comparison (single fold). SNN activation sparsity = 74.2\% (spike rate = 25.8\%).}
+\caption{NeuroBench energy comparison (5-fold mean $\pm$ std). SNN activation sparsity = 73.6\%$\pm$0.7\% (spike rate = 26.4\%).}
 \label{tab:energy}
 \small
 \begin{tabular}{@{}lrrr@{}}
 \toprule
 Model & Eff.\ Ops & Energy (nJ) & Op Type \\
 \midrule
-SNN & 1.08M ACs & 976 & AC $\times$ 0.9\,pJ \\
-ANN & 101K MACs & 463 & MAC $\times$ 4.6\,pJ \\
+SNN & 1.08M$\pm$41K ACs & 968$\pm$37 & AC $\times$ 0.9\,pJ \\
+ANN & 99K$\pm$2K MACs & 454$\pm$11 & MAC $\times$ 4.6\,pJ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref{tab:energy}) because the SNN's $T$=25 timesteps generate 10.7$\times$ more operations despite each being cheaper. On neuromorphic hardware, each AC costs 5.1$\times$ less than each MAC~\cite{horowitz2014}; however, the SNN's 25.8\% spike rate exceeds the $<$6.4\% threshold identified by Dampfhoffer et al.~\cite{dampfhoffer2023} for energy parity with quantised ANNs. Reducing $T$ and increasing sparsity are necessary for the SNN to achieve energy advantage---this is an important direction for future work.
+In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref{tab:energy}) because the SNN's $T$=25 timesteps generate 10.9$\times$ more operations despite each being cheaper. On neuromorphic hardware, each AC costs 5.1$\times$ less than each MAC~\cite{horowitz2014}; however, the SNN's 26.4\% spike rate exceeds the $<$6.4\% threshold identified by Dampfhoffer et al.~\cite{dampfhoffer2023} for energy parity with quantised ANNs. Reducing $T$ and increasing sparsity are necessary for the SNN to achieve energy advantage---this is an important direction for future work.
 
 %% ============================================================
 \section{Discussion}
@@ -317,7 +317,7 @@ In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref
 
 \textbf{Adversarial robustness.} Binary thresholding provides natural gradient masking, consistent with Sharmin et al.~\cite{sharmin2020} on images. We acknowledge that standard PGD may not be optimal for evaluating SNN robustness~\cite{wang2025}; SA-PGD evaluation is left for future work. Our FGSM results (single-step, no SNN-specific adaptation) provide a reliable lower bound.
 
-\textbf{Threats to validity.} (1)~Results are for a single architecture ($\sim$622K params); wider/deeper networks may shift the encoding hierarchy. (2)~ESC-50 is small (2{,}000 clips); generalisation to UrbanSound8K or FSD50K is untested. (3)~NeuroBench energy is computed for one fold; actual SpiNNaker power consumption was not measured. (4)~The surrogate gradient (fast sigmoid) may not be optimal; preliminary single-fold ablation suggests spike-rate-escape achieves +1.25~pp.
+\textbf{Threats to validity.} (1)~Results are for a single architecture ($\sim$622K params); wider/deeper networks may shift the encoding hierarchy. (2)~ESC-50 is small (2{,}000 clips); generalisation to UrbanSound8K or FSD50K is untested. (3)~NeuroBench energy is computed in software simulation; actual SpiNNaker power consumption was not measured. (4)~The surrogate gradient (fast sigmoid) may not be optimal; preliminary single-fold ablation suggests spike-rate-escape achieves +1.25~pp.
 
 %% ============================================================
 \section{Conclusion}

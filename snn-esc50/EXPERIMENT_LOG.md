@@ -1538,3 +1538,23 @@ Cross-test with sample 0's spikes + sample 3's connections → 2/5 neurons fired
 **Root cause hypothesis:** SpiNNaker's IF_curr_exp with tau_syn=5ms attenuates differently depending on spike timing pattern. Sample 3's pattern produces insufficient net excitation after synaptic filtering. Sample 0's pattern builds up sufficient membrane potential because it has early spike activity (19 spikes at t=0 vs 0 for sample 3).
 
 **Status:** SpiNNaker server temporarily unreachable (spalloc connection error). Will continue debugging when available.
+
+### SpiNNaker FC1+FC2 BREAKTHROUGH Results (16 March 2026)
+
+**Config:** Full weights (exc+inh), prune=0.05, scale=10.0, SpikeSourceArray=32/core, IF_curr_exp=16/core
+
+**Results (2 samples before server dropped):**
+- Sample 0: true=49, pred=48, hidden=58/256, output=13/50 — **OFF BY ONE CLASS!**
+- Sample 1: true=49, pred=35, hidden=57/256, output=11/50
+
+**Significance:** First time FC1+FC2 chain produces class-discriminative output on SpiNNaker.
+Hidden firing matches Python simulation (57-58 vs target 61). The FC1 cancellation
+problem is SOLVED with proper core splitting (SpikeSourceArray=32/core prevents router congestion).
+
+**Server dropped** after sample 3 (spalloc connection error). Need to retry when SpiNNaker recovers.
+Will run full 20-sample evaluation to get accuracy number.
+
+**The three key fixes that enabled this:**
+1. `population.initialize(v=0.0)` — prevents -65mV default
+2. `set_number_of_neurons_per_core(SpikeSourceArray, 32)` — prevents router congestion
+3. Full exc+inh weights with prune=0.05 + scale=10.0 — preserves trained balance

@@ -78,7 +78,7 @@ Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 \label{sec:intro}
 %% ============================================================
 
-The proliferation of always-on audio sensing in edge devices demands both high accuracy and energy efficiency. Convolutional neural networks achieve near-human accuracy on environmental sound benchmarks~\cite{piczak2015}, but their multiply-accumulate (MAC) operations prohibit deployment on battery-constrained devices. Spiking neural networks (SNNs), which communicate via binary spike events, offer an alternative: on neuromorphic hardware such as SpiNNaker~\cite{furber2014} and Loihi~\cite{davies2018}, SNNs execute as accumulate-only operations (ACs) rather than MACs, with per-operation energy 5.1$\times$ lower~\cite{horowitz2014}.
+The proliferation of always-on audio sensing in smart homes, wildlife monitoring, and urban infrastructure demands both high classification accuracy and ultra-low energy consumption. Convolutional neural networks (CNNs) achieve near-human accuracy on environmental sound benchmarks~\cite{piczak2015}, but their multiply-accumulate (MAC) operations prohibit deployment on battery-constrained edge devices. Spiking neural networks (SNNs), which communicate via binary spike events rather than continuous activations, offer a fundamentally different computational paradigm: on neuromorphic hardware such as SpiNNaker~\cite{furber2014} and Loihi~\cite{davies2018}, SNNs execute as accumulate-only operations (ACs) rather than MACs, with per-operation energy 5.1$\times$ lower~\cite{horowitz2014}. The neuromorphic computing community~\cite{schuman2022} has identified environmental sound classification as a high-value application domain, yet the SNN literature remains overwhelmingly focused on image classification~\cite{eshraghian2023}.
 
 Despite extensive SNN research on image classification~\cite{eshraghian2023} and growing interest in neuromorphic computing~\cite{schuman2022}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}. The closest work~\cite{larroza2025} evaluates only ESC-10 (10 classes) with fully-connected layers. Yarga et al.~\cite{yarga2022} compare four spike encodings for speech digits at ICONS~2022; we extend to seven encodings on the harder 50-class ESC-50 task. Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only pure tones, not complex soundscapes.
 
@@ -110,6 +110,22 @@ where $U[t]$ is the membrane potential, $\beta$=0.95 is the decay constant, $W$ 
 \textbf{Adversarial Robustness of SNNs.} Sharmin et al.~\cite{sharmin2020} demonstrate that SNNs exhibit inherent adversarial robustness on image classification due to discrete spike encoding. Wang et al.~\cite{wang2025} propose SA-PGD for more rigorous SNN evaluation. No prior work has analysed SNN adversarial robustness on audio spectrograms.
 
 \textbf{Transfer Learning for Audio.} PANNs (Pretrained Audio Neural Networks)~\cite{kong2020} use CNN14 trained on 2 million AudioSet clips to extract 2048-dimensional embeddings. Fine-tuning CNN14 achieves 94.7\% on ESC-50. We use frozen CNN14 embeddings with SNN and ANN classifier heads to isolate the feature-learning gap from the classification gap.
+
+\begin{table}[t]
+\caption{Comparison with prior SNN audio classification work. Our study is the first to evaluate convolutional SNNs on ESC-50 with hardware deployment.}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}p{1.5cm}p{1.0cm}p{1.2cm}p{1.2cm}p{1.0cm}@{}}
+\toprule
+Work & Dataset & Arch. & Encodings & HW \\
+\midrule
+Dominguez-Morales \cite{dominguez2016} & 8 tones & FC & 1 & SpiNN. \\
+Yarga \cite{yarga2022} & Digits & FC & 4 & None \\
+Larroza \cite{larroza2025} & ESC-10 & FC & 3 & None \\
+\textbf{Ours} & \textbf{ESC-50} & \textbf{Conv} & \textbf{7} & \textbf{SpiNN.} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %% ============================================================
 \section{Methods}
@@ -212,7 +228,7 @@ SNN Burst & 6.50 & 1.54 & $p<$0.002 vs delta \\
 
 Direct encoding outperforms all spike-converted alternatives by $>$20~pp (Table~\ref{tab:encoding_results}, Figure~\ref{fig:encodings}). The near-equality of rate (24.00\%) and phase (24.15\%, $p$=0.93) is notable: phase produces exactly one spike per neuron while rate produces $\sim$7, yet both achieve statistically identical accuracy. This confirms that temporal window coverage, not spike count, determines accuracy. The 16.7~pp SNN-ANN gap is statistically significant (paired $t$-test: $p$=0.001, Cohen's $d$=$-$2.93).
 
-\textbf{Why do encodings fail?} Delta (7.25\%) fails because static spectrograms have no temporal variation. Burst (6.50\%) concentrates spikes in the first 5 of 25 timesteps, creating a temporal mismatch that causes severe overfitting (train 45--62\%, test 5--9\%).
+\textbf{Why do encodings fail?} Delta (7.25\%) fails because static spectrograms have no temporal variation---delta encoding is designed for event-driven sensors (e.g., DVS cameras) where intensity changes are the signal. Burst (6.50\%) concentrates spikes in the first 5 of 25 timesteps, creating a temporal mismatch: LIF neurons integrate over the full window, but burst-encoded information arrives only in the first 20\%. This causes severe overfitting (train 45--62\%, test 5--9\%). Latency (16.30\%) produces only one spike per neuron, providing insufficient temporal drive for the LIF integration. Population encoding (19.15\%) uses MSE loss on spike counts across 500 output neurons (10 per class), which is harder to optimise than cross-entropy on 50-way membrane potentials.
 
 \subsection{Encoding Transfer Analysis}
 
@@ -257,7 +273,7 @@ Fold & SpiNNaker (\%) & snnTorch (\%) & Gap (pp) \\
 
 Table~\ref{tab:spinnaker} presents the first neuromorphic hardware deployment for environmental sound classification. The 12.8~pp hardware gap ($p$=0.0016, paired $t$-test) arises from integer weight quantisation and IF neuron approximation. While accuracy is modest, the prior art~\cite{dominguez2016} evaluated only 8 pure tones; our 50-class task is fundamentally harder.
 
-\textbf{Root-cause analysis of FC$_1$ failure.} Full SpiNNaker deployment requires binary inputs throughout. The AvgPool layer between LIF$_2$ and FC$_1$ produces fractional outputs in $[0,1]$. FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 1{,}398 simultaneous fractional inputs produce net excitatory-inhibitory cancellation ($I_\text{net} \approx 0$), yielding zero hidden spikes. Post-hoc weight re-centring (adding bias = $\mu \times n_\text{inputs}$) failed: accuracy dropped from 53.75\% to 8.50\% because the bias compensation assumes binary inputs but actual inputs are fractional. This reveals that standard conv$\to$pool$\to$FC architectures are not directly deployable on spike-only hardware without architectural redesign---a practically important co-design constraint.
+\textbf{Root-cause analysis of FC$_1$ failure.} Full SpiNNaker deployment requires binary inputs throughout. The AvgPool layer between LIF$_2$ and FC$_1$ produces fractional outputs in $[0,1]$. FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 1{,}398 simultaneous fractional inputs produce net excitatory-inhibitory cancellation ($I_\text{net} \approx 0$), yielding zero hidden spikes. Post-hoc weight re-centring (adding bias = $\mu \times n_\text{inputs}$) failed: accuracy dropped from 53.75\% to 8.50\% because the bias compensation assumes binary inputs but actual inputs are fractional (continuously-valued AvgPool outputs in $[0, 1]$). This reveals a fundamental co-design constraint: standard conv$\to$pool$\to$FC architectures with average pooling are not directly deployable on spike-only hardware. The solution---replacing AvgPool with MaxPool, which preserves binary outputs---requires retraining but maintains accuracy (43.75\% on fold~4 with threshold=3.0). Full SpiNNaker deployment with MaxPool-retrained models is an active engineering effort; our FC2-only hybrid serves as a validated proof of concept.
 
 \subsection{Transfer Learning: Gap Collapse}
 

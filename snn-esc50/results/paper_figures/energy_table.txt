@@ -1,0 +1,10 @@
+NeuroBench Energy Analysis (fold 4)
+===================================================================
+Metric                                          SNN             ANN
+-------------------------------------------------------------------
+  Classification Accuracy                     51.5%           68.8%
+  Activation Sparsity                         74.2%           59.0%
+  Eff. ACs / sample                           1.08M               0
+  Eff. MACs / sample                              0          100.6K
+  Energy / sample (nJ)                      976.259         462.579
+  Parameters                                   622K            622K

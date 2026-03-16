@@ -1,0 +1,14 @@
+{
+  "model": "ann",
+  "encoding": "none_aug",
+  "fold_accuracies": [
+    0.6325,
+    0.5975,
+    0.625,
+    0.685,
+    0.545
+  ],
+  "mean_accuracy": 0.617,
+  "std_accuracy": 0.04580938768418543,
+  "note": "SpecAugment + TimeShift, 100 epochs, early stopping patience=10. Augmentation slightly HURTS ANN: 63.85%->61.70% (-2.15pp), within noise."
+}

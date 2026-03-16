@@ -1,0 +1,14 @@
+{
+  "model": "snn",
+  "encoding": "direct_aug",
+  "fold_accuracies": [
+    0.46,
+    0.4875,
+    0.245,
+    0.6375,
+    0.2075
+  ],
+  "mean_accuracy": 0.4075,
+  "std_accuracy": 0.16028880185465233,
+  "note": "SpecAugment + TimeShift, 100 epochs, early stopping patience=10. Folds 3 and 5 stopped early (ep39, ep33) before convergence. Augmentation HURTS: mean dropped 47.15%->40.75%, std increased 4.50%->16.03%."
+}

@@ -1,0 +1,13 @@
+{
+  "model": "snn",
+  "encoding": "delta",
+  "fold_accuracies": [
+    0.0825,
+    0.0775,
+    0.0725,
+    0.075,
+    0.055
+  ],
+  "mean_accuracy": 0.0725,
+  "std_accuracy": 0.009354143466934854
+}

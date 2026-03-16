@@ -1,0 +1,30 @@
+{
+  "snn": {
+    "synops_per_sample": 1508474842.0,
+    "spikes_per_sample": 3014873.0,
+    "energy_pJ": 1357627357.8,
+    "spike_counts": {
+      "lif1": 2303140.0,
+      "lif2": 710103.0,
+      "lif3": 1596.0,
+      "lif4": 34.0
+    }
+  },
+  "ann": {
+    "macs_per_sample": 68284928,
+    "energy_pJ": 314110668.79999995,
+    "macs_per_layer": {
+      "features.0": 3981312,
+      "features.4": 63700992,
+      "classifier.0": 589824,
+      "classifier.3": 12800
+    }
+  },
+  "energy_ratio": 4.322130677657518,
+  "snn_savings_pct": 0,
+  "assumptions": {
+    "synop_energy_pj": 0.9,
+    "mac_energy_pj": 4.6,
+    "note": "SynOp energy based on Loihi (Intel), MAC energy based on 45nm CMOS (Horowitz 2014)"
+  }
+}

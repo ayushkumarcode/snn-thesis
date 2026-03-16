@@ -1,0 +1,13 @@
+{
+  "model": "snn",
+  "encoding": "rate",
+  "fold_accuracies": [
+    0.245,
+    0.2725,
+    0.23,
+    0.215,
+    0.2375
+  ],
+  "mean_accuracy": 0.24,
+  "std_accuracy": 0.01903943276465978
+}

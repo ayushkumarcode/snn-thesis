@@ -1,0 +1,74 @@
+{
+  "embed_dim": 2048,
+  "num_steps": 25,
+  "epochs": 50,
+  "lr": 0.001,
+  "device": "mps",
+  "folds_run": [
+    4
+  ],
+  "results": {
+    "snn": {
+      "fold_results": [
+        {
+          "fold": 4,
+          "model_type": "snn",
+          "best_acc": 0.935,
+          "best_epoch": 8,
+          "final_epochs": 18
+        }
+      ],
+      "fold_accuracies": [
+        0.935
+      ],
+      "mean_accuracy": 0.935,
+      "std_accuracy": 0.0
+    },
+    "ann": {
+      "fold_results": [
+        {
+          "fold": 4,
+          "model_type": "ann",
+          "best_acc": 0.9425,
+          "best_epoch": 2,
+          "final_epochs": 12
+        }
+      ],
+      "fold_accuracies": [
+        0.9425
+      ],
+      "mean_accuracy": 0.9425,
+      "std_accuracy": 0.0
+    },
+    "linear": {
+      "fold_results": [
+        {
+          "fold": 4,
+          "model_type": "linear",
+          "best_acc": 0.945,
+          "best_epoch": 13,
+          "final_epochs": 23
+        }
+      ],
+      "fold_accuracies": [
+        0.945
+      ],
+      "mean_accuracy": 0.945,
+      "std_accuracy": 0.0
+    }
+  },
+  "comparison": {
+    "snn": {
+      "mean": 0.935,
+      "std": 0.0
+    },
+    "ann": {
+      "mean": 0.9425,
+      "std": 0.0
+    },
+    "linear": {
+      "mean": 0.945,
+      "std": 0.0
+    }
+  }
+}

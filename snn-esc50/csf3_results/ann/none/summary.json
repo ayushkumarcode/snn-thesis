@@ -1,0 +1,13 @@
+{
+  "model": "ann",
+  "encoding": "none",
+  "fold_accuracies": [
+    0.6325,
+    0.595,
+    0.6525,
+    0.6875,
+    0.625
+  ],
+  "mean_accuracy": 0.6385,
+  "std_accuracy": 0.03068387198513252
+}

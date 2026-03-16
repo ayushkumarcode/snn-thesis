@@ -1,0 +1,80 @@
+{
+  "fold": 1,
+  "encoding": "direct",
+  "num_samples": 10,
+  "mean_iou": 0.07506419204997834,
+  "snn_correct": 10,
+  "ann_correct": 10,
+  "samples": [
+    {
+      "sample": 0,
+      "true_class": "dog",
+      "snn_pred": "dog",
+      "ann_pred": "dog",
+      "iou": 0.0
+    },
+    {
+      "sample": 1,
+      "true_class": "chirping_birds",
+      "snn_pred": "chirping_birds",
+      "ann_pred": "chirping_birds",
+      "iou": 0.004846526655896607
+    },
+    {
+      "sample": 2,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.4110807113543092
+    },
+    {
+      "sample": 3,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.24042427813789038
+    },
+    {
+      "sample": 4,
+      "true_class": "thunderstorm",
+      "snn_pred": "thunderstorm",
+      "ann_pred": "thunderstorm",
+      "iou": 0.0
+    },
+    {
+      "sample": 5,
+      "true_class": "thunderstorm",
+      "snn_pred": "thunderstorm",
+      "ann_pred": "thunderstorm",
+      "iou": 0.0
+    },
+    {
+      "sample": 6,
+      "true_class": "door_wood_knock",
+      "snn_pred": "door_wood_knock",
+      "ann_pred": "door_wood_knock",
+      "iou": 0.021046950890447922
+    },
+    {
+      "sample": 7,
+      "true_class": "can_opening",
+      "snn_pred": "can_opening",
+      "ann_pred": "can_opening",
+      "iou": 0.07142857142857142
+    },
+    {
+      "sample": 8,
+      "true_class": "crow",
+      "snn_pred": "crow",
+      "ann_pred": "crow",
+      "iou": 0.0
+    },
+    {
+      "sample": 9,
+      "true_class": "door_wood_knock",
+      "snn_pred": "door_wood_knock",
+      "ann_pred": "door_wood_knock",
+      "iou": 0.0018148820326678765
+    }
+  ]
+}

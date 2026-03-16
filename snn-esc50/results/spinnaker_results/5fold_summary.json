@@ -1,0 +1,20 @@
+{
+  "fold_accuracies_spinnaker": [
+    0.29,
+    0.32,
+    0.365,
+    0.43,
+    0.2525
+  ],
+  "fold_accuracies_snnTorch": [
+    0.395,
+    0.4825,
+    0.4775,
+    0.5125,
+    0.4325
+  ],
+  "mean_spinnaker": 0.3315,
+  "std_spinnaker": 0.0687749954561976,
+  "mean_snnTorch": 0.45999999999999996,
+  "hardware_gap_pp": 12.849999999999994
+}

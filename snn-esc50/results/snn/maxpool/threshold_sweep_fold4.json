@@ -1,0 +1,46 @@
+[
+  {
+    "threshold": 1.0,
+    "best_acc": 0.0925,
+    "best_epoch": 27,
+    "total_epochs": 37,
+    "fc1_stats": {
+      "fc1_sparsity": 0.27848801016807556,
+      "fc1_binary_fraction": 1.0,
+      "fc1_mean_active_per_step": 1662.3636474609375
+    }
+  },
+  {
+    "threshold": 1.5,
+    "best_acc": 0.27,
+    "best_epoch": 48,
+    "total_epochs": 50,
+    "fc1_stats": {
+      "fc1_sparsity": 0.38815373182296753,
+      "fc1_binary_fraction": 1.0,
+      "fc1_mean_active_per_step": 1409.69384765625
+    }
+  },
+  {
+    "threshold": 2.0,
+    "best_acc": 0.3425,
+    "best_epoch": 42,
+    "total_epochs": 50,
+    "fc1_stats": {
+      "fc1_sparsity": 0.45612403750419617,
+      "fc1_binary_fraction": 1.0,
+      "fc1_mean_active_per_step": 1253.0902099609375
+    }
+  },
+  {
+    "threshold": 3.0,
+    "best_acc": 0.4375,
+    "best_epoch": 47,
+    "total_epochs": 50,
+    "fc1_stats": {
+      "fc1_sparsity": 0.5850148797035217,
+      "fc1_binary_fraction": 1.0,
+      "fc1_mean_active_per_step": 956.1256713867188
+    }
+  }
+]

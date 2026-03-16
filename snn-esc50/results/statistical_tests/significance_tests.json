@@ -1,0 +1,13 @@
+{
+  "panns_snn_vs_ann": {
+    "t_stat": -3.1666666666666665,
+    "p_value": 0.03396614445768253,
+    "wilcoxon_p": 0.0625,
+    "significant": true
+  },
+  "spinnaker_vs_snntorch": {
+    "t_stat": -7.648817686455975,
+    "p_value": 0.0015697763246624152,
+    "significant": true
+  }
+}

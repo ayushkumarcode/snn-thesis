@@ -1,0 +1,139 @@
+# Chapter 2: Background and Related Work
+## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+
+---
+
+## 2.1 Environmental Sound Classification
+
+Environmental sound classification (ESC) is a core task in computational auditory scene analysis, with applications in smart cities (noise monitoring), wildlife conservation, assistive technology, and robotics (situational awareness). Unlike speech recognition, ESC must classify the full diversity of real-world acoustic events without the structured phonological patterns of speech.
+
+**ESC-50** (Piczak, 2015) is the de facto standard benchmark: 2,000 recordings, 50 classes, 5-fold predefined cross-validation, and established human performance (81.3%). ANN state-of-the-art is 98.25%, primarily through CNN architectures trained on AudioSet-pretrained features (Gong et al. 2021, AST; Kong et al. 2020, PANNs).
+
+The standard input representation is the **log-mel spectrogram**: audio waveforms are converted to time-frequency matrices via the Short-Time Fourier Transform, frequency bins are grouped into mel-scale filterbanks (mimicking human cochlear filter spacing), and amplitudes are converted to decibels. This representation has proven highly effective across CNN, Transformer, and recurrent architectures for audio classification.
+
+---
+
+## 2.2 Spiking Neural Networks
+
+### 2.2.1 Leaky Integrate-and-Fire Neurons
+
+The Leaky Integrate-and-Fire (LIF) neuron is the standard computational unit in modern SNNs:
+$$\tau_m \frac{dU(t)}{dt} = -U(t) + RI(t)$$
+
+where $U(t)$ is membrane potential, $\tau_m$ is the membrane time constant, and $I(t)$ is the input current. When $U(t)$ reaches the spike threshold $\vartheta$, the neuron emits a spike and resets. In the discrete-time formulation used in snnTorch:
+$$U[t] = \beta U[t-1] + I[t] - S[t-1]\vartheta$$
+$$S[t] = \mathbf{1}[U[t] \geq \vartheta]$$
+
+where $\beta = e^{-\Delta t/\tau_m}$ is the membrane decay rate (set to 0.95 throughout this work).
+
+### 2.2.2 Surrogate Gradient Training
+
+The spike function $S[t] = \mathbf{1}[U[t] \geq \vartheta]$ is discontinuous, making standard backpropagation impossible ($\partial S/\partial U = 0$ almost everywhere). Surrogate gradient descent (Neftci et al. 2019; Zenke & Vogels 2021) substitutes a smooth function in the backward pass:
+
+$$\frac{\partial \mathcal{L}}{\partial U} \approx \frac{\partial \mathcal{L}}{\partial S} \cdot \sigma'(U - \vartheta)$$
+
+Common surrogates include fast sigmoid ($\sigma'(x) = \frac{1}{(1+|x|)^2}$, slope=25), ATan, triangular, and the straight-through estimator (STE). Surrogate choice affects training stability and activation sparsity; this work ablates all 8 surrogates provided by snnTorch 0.9.4.
+
+**snnTorch** (Eshraghian et al. 2023) is the primary framework, providing PyTorch-compatible LIF, Leaky, Recurrent, and Synaptic neuron types, spike generation functions, and functional utilities for population coding and loss computation.
+
+---
+
+## 2.3 Spike Encoding Methods
+
+Spike encoding converts static inputs (images, spectrograms) into temporal spike patterns. The encoding method is a critical design choice that determines information density, energy cost, and task suitability.
+
+**Rate coding** (de Ruyter van Steveninck et al. 1997): spike probability ∝ intensity. Maximises information per spike but is stochastic and requires many timesteps. Biologically plausible.
+
+**Latency/Time-to-first-spike** (Thorpe et al. 1996): higher intensity → earlier spike. Efficient (1 spike per neuron) but sensitive to noise.
+
+**Delta/Temporal contrast** (Lichtsteiner et al. 2008): events (spikes) generated on positive intensity changes. Directly implements the output of a Dynamic Vision Sensor (DVS). Poor for static inputs.
+
+**Direct/Continuous** (Rathi et al. 2020; Yin et al. 2021): continuous values fed directly to LIF neurons, which perform their own implicit coding. Best accuracy in practice; not truly sparse input but network activation is sparse.
+
+**Burst coding** (Izhikevich 2004): neurons fire N spikes in rapid succession, where N encodes intensity. Biologically observed in auditory and visual cortex.
+
+**Phase coding** (O'Keefe & Recce 1993; Montemurro et al. 2008): spike timing relative to a global oscillation cycle encodes intensity. Theta-phase precession in hippocampus is the canonical biological example.
+
+**Population coding** (Georgopoulos et al. 1986): each concept (class) is represented by a population of neurons rather than a single neuron. Output-side population codes allow multiple neurons to vote on each class, potentially reducing sensitivity to single-neuron noise. Implemented in snnTorch via `SF.mse_count_loss(population_code=True)`.
+
+No prior work has systematically compared these seven encodings on ESC-50 or other standard audio benchmarks. The closest comparison (Larroza et al. 2025) evaluates 3 methods (rate, latency, direct) on ESC-10 only.
+
+---
+
+## 2.4 SNNs for Audio Classification
+
+### 2.4.1 Prior Work Summary
+
+| Paper | Benchmark | Model | Encoding | Accuracy | Hardware |
+|-------|-----------|-------|----------|----------|----------|
+| Larroza et al. 2025 (arXiv:2503.11206) | ESC-10 | FC only | Rate, direct, latency | ~60% | None |
+| Dominguez-Morales et al. 2016 (ICANN) | Pure tones | FC | Rate | ~90% | SpiNNaker |
+| Dong et al. 2018 | TIMIT (speech) | CSNN | Rate | 66% | Simulation |
+
+**Key gap:** No prior work has evaluated convolutional SNNs on the full ESC-50 benchmark (50 classes, 5-fold CV), and no prior work has deployed SNNs for environmental sound classification on SpiNNaker hardware.
+
+### 2.4.2 Closest Prior Work
+
+**Larroza et al. (2025)** is the most directly relevant paper. They evaluate SNN with fully-connected layers on ESC-10 (10 of 50 classes), reporting ~60% accuracy with direct encoding. Limitations: (1) ESC-10 is much easier than ESC-50 (10 vs 50 classes), (2) fully-connected only (no convolutional feature extraction), (3) no hardware deployment. This work extends their evaluation to the full ESC-50 benchmark with a convolutional architecture.
+
+**Dominguez-Morales et al. (2016)** deployed SNNs on SpiNNaker for audio, but used pure synthetic tones (not complex environmental sounds) and an address-event representation from a silicon cochlea. Their task difficulty is incomparable to ESC-50.
+
+---
+
+## 2.5 SpiNNaker Neuromorphic Platform
+
+**SpiNNaker** (Furber et al. 2014) is a massively parallel neuromorphic platform developed at the University of Manchester. Each chip contains 18 ARM968 processors connected by a custom packet-switched network. Communication is entirely spike-driven: each event is a 4-byte packet containing a neuron address, propagated asynchronously across the network. This AC-only communication (no multiply operations) is the source of SpiNNaker's energy efficiency.
+
+**sPyNNaker** provides a PyNN-compatible Python interface for specifying neural networks, which are compiled to SpiNNaker machine code. Supported neuron models include IF_curr_exp, IF_cond_exp, Izhikevich, and HH. Each neuron's membrane dynamics are simulated in fixed-point arithmetic on an ARM core.
+
+**Deployment challenges:**
+1. All weights and membrane potentials must be representable in fixed-point arithmetic
+2. Input must be binary spikes (SpikeSourceArray or SpikeSourcePoisson)
+3. Maximum network size is limited by available ARM cores (~1,000 neurons per chip)
+4. Timing is synchronous at 1ms resolution (timestep)
+
+For this work, the FC2-only hybrid approach (FC2: 256→50) fits comfortably on SpiNNaker with 256 input neurons and 50 output neurons.
+
+---
+
+## 2.6 Energy Efficiency: SNNs vs ANNs
+
+The energy argument for SNNs is nuanced and depends critically on the execution platform.
+
+**On neuromorphic hardware** (Loihi, SpiNNaker, TrueNorth): communication is AC-only. Mahowald & Douglas (1991) estimated the energy cost of a single spike as ~20 fJ in biological neurons; CMOS estimates are ~0.9 pJ/AC (Yik et al. 2025, NeuroBench, 45nm CMOS). MACs cost ~4.6 pJ at 45nm. The 5.1× AC/MAC ratio means SNNs are cheaper **if** their spike rate is reasonably low.
+
+**In software simulation** (GPU/CPU): SNNs run for T timesteps per inference, while ANNs run once. Each timestep requires the same matrix multiply operations, but the SNN may benefit from spike sparsity (many zeroes in the weight matrices are skipped). However, the T× overhead typically dominates; software SNNs are generally less efficient than ANNs (Dampfhoffer et al. 2023 show SNNs need <6.4% spike rate to beat quantized ANNs on CPU).
+
+**NeuroBench** (Yik et al. 2025, Nature Communications 16:1589) provides a standardised framework for measuring SNN energy via SynapticOperations metrics: Effective_ACs (non-zero binary activations), Effective_MACs (non-zero continuous activations), and Dense (total ignoring sparsity). This work uses NeuroBench v2.2.0 for all energy comparisons.
+
+---
+
+## 2.7 Adversarial Robustness in SNNs
+
+Adversarial examples (Goodfellow et al. 2015) are inputs crafted to maximise model loss: $x' = x + \epsilon \cdot \text{sign}(\nabla_x \mathcal{L})$ (FGSM). For SNNs, adversarial robustness is complex:
+
+**Sharmin et al. (ECCV 2020, arXiv:2003.10399)** showed that SNNs with Poisson encoding exhibit higher adversarial accuracy in black-box scenarios, attributing this to the stochasticity of rate coding.
+
+**Gradient masking in SNNs**: The spike threshold creates a hard non-linearity. Small perturbations to the input may not cross the threshold, leaving the spike pattern unchanged. This creates gradient masking — the gradient ∂S/∂x through the spike function is zero almost everywhere, making gradient-based attacks weaker.
+
+**Important caveat (Wang et al. 2025, arXiv:2512.22522)**: Standard PGD (Projected Gradient Descent) underestimates SNN robustness because vanishing surrogate gradients make the attack weaker than it should be. Stable Adaptive PGD (SA-PGD) should be used for reliable evaluation. This work uses standard PGD (40 steps) with the caveat that SNN robustness numbers may be slightly inflated.
+
+---
+
+## 2.8 Transfer Learning for Audio (PANNs)
+
+**PANNs** (Pretrained Audio Neural Networks, Kong et al. 2020, IEEE TASLP) are large CNN models pretrained on AudioSet (Google, 1.8M 10s clips, 527 class tags). CNN14 achieves 43.1% mAP on AudioSet and provides 2048-dimensional embeddings that transfer extremely well to downstream tasks: ESC-50 accuracy of 94.7% with CNN14 fine-tuning.
+
+This work uses CNN14 embeddings as fixed features and trains only a lightweight SNN classification head, demonstrating that the SNN-ANN accuracy gap closes from 16.7 pp to <1 pp when rich pretrained features are available. This is the first combination of PANNs with an SNN classifier.
+
+---
+
+## 2.9 Continual Learning in SNNs
+
+Catastrophic forgetting (McCloskey & Cohen 1989) — the tendency of neural networks to forget previously learned tasks when trained on new ones — is a major challenge for lifelong learning systems. SNNs have been proposed as more biologically plausible candidates for continual learning due to their sparse, local activation patterns.
+
+**Golden et al. (2022, PLoS Computational Biology)** showed that offline consolidation (analogous to sleep) prevents catastrophic forgetting in SNNs by replaying patterns during quiescent periods.
+
+**Zhang et al. (2023, Science Advances)** introduced NACA (Neuron Activation Consolidation Algorithm) for online continual learning in SNNs.
+
+This work evaluates catastrophic forgetting in the simplest setting: sequential fine-tuning on 5 ESC-50 super-categories without any replay or regularisation mechanism. The SNN is compared directly to an identical ANN under the same sequential training protocol.

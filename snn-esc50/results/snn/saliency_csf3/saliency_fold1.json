@@ -1,0 +1,710 @@
+{
+  "fold": 1,
+  "encoding": "direct",
+  "num_samples": 100,
+  "mean_iou": 0.08280620367529953,
+  "snn_correct": 100,
+  "ann_correct": 100,
+  "samples": [
+    {
+      "sample": 0,
+      "true_class": "dog",
+      "snn_pred": "dog",
+      "ann_pred": "dog",
+      "iou": 0.0
+    },
+    {
+      "sample": 1,
+      "true_class": "chirping_birds",
+      "snn_pred": "chirping_birds",
+      "ann_pred": "chirping_birds",
+      "iou": 0.0
+    },
+    {
+      "sample": 2,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.02198852772466539
+    },
+    {
+      "sample": 3,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.40713224368499257
+    },
+    {
+      "sample": 4,
+      "true_class": "thunderstorm",
+      "snn_pred": "thunderstorm",
+      "ann_pred": "thunderstorm",
+      "iou": 0.008928571428571428
+    },
+    {
+      "sample": 5,
+      "true_class": "thunderstorm",
+      "snn_pred": "thunderstorm",
+      "ann_pred": "thunderstorm",
+      "iou": 0.0
+    },
+    {
+      "sample": 6,
+      "true_class": "door_wood_knock",
+      "snn_pred": "door_wood_knock",
+      "ann_pred": "door_wood_knock",
+      "iou": 0.11067193675889328
+    },
+    {
+      "sample": 7,
+      "true_class": "can_opening",
+      "snn_pred": "can_opening",
+      "ann_pred": "can_opening",
+      "iou": 0.057430007178750894
+    },
+    {
+      "sample": 8,
+      "true_class": "crow",
+      "snn_pred": "crow",
+      "ann_pred": "crow",
+      "iou": 0.0
+    },
+    {
+      "sample": 9,
+      "true_class": "door_wood_knock",
+      "snn_pred": "door_wood_knock",
+      "ann_pred": "door_wood_knock",
+      "iou": 0.006688963210702341
+    },
+    {
+      "sample": 10,
+      "true_class": "door_wood_knock",
+      "snn_pred": "door_wood_knock",
+      "ann_pred": "door_wood_knock",
+      "iou": 0.021052631578947368
+    },
+    {
+      "sample": 11,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.008865248226950355
+    },
+    {
+      "sample": 12,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.13539651837524178
+    },
+    {
+      "sample": 13,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.5621699471915507
+    },
+    {
+      "sample": 14,
+      "true_class": "dog",
+      "snn_pred": "dog",
+      "ann_pred": "dog",
+      "iou": 0.0
+    },
+    {
+      "sample": 15,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.09620721554116558
+    },
+    {
+      "sample": 16,
+      "true_class": "thunderstorm",
+      "snn_pred": "thunderstorm",
+      "ann_pred": "thunderstorm",
+      "iou": 0.0
+    },
+    {
+      "sample": 17,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.0106951871657754
+    },
+    {
+      "sample": 18,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.002207505518763797
+    },
+    {
+      "sample": 19,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.0
+    },
+    {
+      "sample": 20,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.0636042402826855
+    },
+    {
+      "sample": 21,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.4817987152034261
+    },
+    {
+      "sample": 22,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.22956645344705046
+    },
+    {
+      "sample": 23,
+      "true_class": "clapping",
+      "snn_pred": "clapping",
+      "ann_pred": "clapping",
+      "iou": 0.300648882480173
+    },
+    {
+      "sample": 24,
+      "true_class": "chainsaw",
+      "snn_pred": "chainsaw",
+      "ann_pred": "chainsaw",
+      "iou": 0.0963855421686747
+    },
+    {
+      "sample": 25,
+      "true_class": "airplane",
+      "snn_pred": "airplane",
+      "ann_pred": "airplane",
+      "iou": 0.36885245901639346
+    },
+    {
+      "sample": 26,
+      "true_class": "mouse_click",
+      "snn_pred": "mouse_click",
+      "ann_pred": "mouse_click",
+      "iou": 0.0
+    },
+    {
+      "sample": 27,
+      "true_class": "pouring_water",
+      "snn_pred": "pouring_water",
+      "ann_pred": "pouring_water",
+      "iou": 0.15289256198347106
+    },
+    {
+      "sample": 28,
+      "true_class": "train",
+      "snn_pred": "train",
+      "ann_pred": "train",
+      "iou": 0.2541436464088398
+    },
+    {
+      "sample": 29,
+      "true_class": "sheep",
+      "snn_pred": "sheep",
+      "ann_pred": "sheep",
+      "iou": 0.09668508287292818
+    },
+    {
+      "sample": 30,
+      "true_class": "water_drops",
+      "snn_pred": "water_drops",
+      "ann_pred": "water_drops",
+      "iou": 0.0
+    },
+    {
+      "sample": 31,
+      "true_class": "water_drops",
+      "snn_pred": "water_drops",
+      "ann_pred": "water_drops",
+      "iou": 0.0
+    },
+    {
+      "sample": 32,
+      "true_class": "water_drops",
+      "snn_pred": "water_drops",
+      "ann_pred": "water_drops",
+      "iou": 0.0
+    },
+    {
+      "sample": 33,
+      "true_class": "church_bells",
+      "snn_pred": "church_bells",
+      "ann_pred": "church_bells",
+      "iou": 0.02020785219399538
+    },
+    {
+      "sample": 34,
+      "true_class": "church_bells",
+      "snn_pred": "church_bells",
+      "ann_pred": "church_bells",
+      "iou": 0.1619047619047619
+    },
+    {
+      "sample": 35,
+      "true_class": "clock_alarm",
+      "snn_pred": "clock_alarm",
+      "ann_pred": "clock_alarm",
+      "iou": 0.04923599320882852
+    },
+    {
+      "sample": 36,
+      "true_class": "keyboard_typing",
+      "snn_pred": "keyboard_typing",
+      "ann_pred": "keyboard_typing",
+      "iou": 0.03259452411994785
+    },
+    {
+      "sample": 37,
+      "true_class": "wind",
+      "snn_pred": "wind",
+      "ann_pred": "wind",
+      "iou": 0.0
+    },
+    {
+      "sample": 38,
+      "true_class": "clock_alarm",
+      "snn_pred": "clock_alarm",
+      "ann_pred": "clock_alarm",
+      "iou": 0.010714285714285714
+    },
+    {
+      "sample": 39,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.01834862385321101
+    },
+    {
+      "sample": 40,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.14173228346456693
+    },
+    {
+      "sample": 41,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.04285714285714286
+    },
+    {
+      "sample": 42,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.003616636528028933
+    },
+    {
+      "sample": 43,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.0
+    },
+    {
+      "sample": 44,
+      "true_class": "footsteps",
+      "snn_pred": "footsteps",
+      "ann_pred": "footsteps",
+      "iou": 0.00546448087431694
+    },
+    {
+      "sample": 45,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.0136986301369863
+    },
+    {
+      "sample": 46,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.11627906976744186
+    },
+    {
+      "sample": 47,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.10843373493975904
+    },
+    {
+      "sample": 48,
+      "true_class": "fireworks",
+      "snn_pred": "fireworks",
+      "ann_pred": "fireworks",
+      "iou": 0.05652173913043478
+    },
+    {
+      "sample": 49,
+      "true_class": "cow",
+      "snn_pred": "cow",
+      "ann_pred": "cow",
+      "iou": 0.04242424242424243
+    },
+    {
+      "sample": 50,
+      "true_class": "water_drops",
+      "snn_pred": "water_drops",
+      "ann_pred": "water_drops",
+      "iou": 0.0
+    },
+    {
+      "sample": 51,
+      "true_class": "brushing_teeth",
+      "snn_pred": "brushing_teeth",
+      "ann_pred": "brushing_teeth",
+      "iou": 0.0
+    },
+    {
+      "sample": 52,
+      "true_class": "brushing_teeth",
+      "snn_pred": "brushing_teeth",
+      "ann_pred": "brushing_teeth",
+      "iou": 0.08379888268156424
+    },
+    {
+      "sample": 53,
+      "true_class": "car_horn",
+      "snn_pred": "car_horn",
+      "ann_pred": "car_horn",
+      "iou": 0.3626373626373626
+    },
+    {
+      "sample": 54,
+      "true_class": "crackling_fire",
+      "snn_pred": "crackling_fire",
+      "ann_pred": "crackling_fire",
+      "iou": 0.09941520467836257
+    },
+    {
+      "sample": 55,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.0
+    },
+    {
+      "sample": 56,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.146875
+    },
+    {
+      "sample": 57,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.0841300191204589
+    },
+    {
+      "sample": 58,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.0
+    },
+    {
+      "sample": 59,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.005025125628140704
+    },
+    {
+      "sample": 60,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.2932396839332748
+    },
+    {
+      "sample": 61,
+      "true_class": "drinking_sipping",
+      "snn_pred": "drinking_sipping",
+      "ann_pred": "drinking_sipping",
+      "iou": 0.0
+    },
+    {
+      "sample": 62,
+      "true_class": "rain",
+      "snn_pred": "rain",
+      "ann_pred": "rain",
+      "iou": 0.38886126305320734
+    },
+    {
+      "sample": 63,
+      "true_class": "crackling_fire",
+      "snn_pred": "crackling_fire",
+      "ann_pred": "crackling_fire",
+      "iou": 0.034526854219948847
+    },
+    {
+      "sample": 64,
+      "true_class": "insects",
+      "snn_pred": "insects",
+      "ann_pred": "insects",
+      "iou": 0.0
+    },
+    {
+      "sample": 65,
+      "true_class": "crackling_fire",
+      "snn_pred": "crackling_fire",
+      "ann_pred": "crackling_fire",
+      "iou": 0.2109704641350211
+    },
+    {
+      "sample": 66,
+      "true_class": "crackling_fire",
+      "snn_pred": "crackling_fire",
+      "ann_pred": "crackling_fire",
+      "iou": 0.01901743264659271
+    },
+    {
+      "sample": 67,
+      "true_class": "crackling_fire",
+      "snn_pred": "crackling_fire",
+      "ann_pred": "crackling_fire",
+      "iou": 0.10852713178294573
+    },
+    {
+      "sample": 68,
+      "true_class": "laughing",
+      "snn_pred": "laughing",
+      "ann_pred": "laughing",
+      "iou": 0.047619047619047616
+    },
+    {
+      "sample": 69,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.03557312252964427
+    },
+    {
+      "sample": 70,
+      "true_class": "hen",
+      "snn_pred": "hen",
+      "ann_pred": "hen",
+      "iou": 0.145
+    },
+    {
+      "sample": 71,
+      "true_class": "hen",
+      "snn_pred": "hen",
+      "ann_pred": "hen",
+      "iou": 0.16831683168316833
+    },
+    {
+      "sample": 72,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.0
+    },
+    {
+      "sample": 73,
+      "true_class": "helicopter",
+      "snn_pred": "helicopter",
+      "ann_pred": "helicopter",
+      "iou": 0.025
+    },
+    {
+      "sample": 74,
+      "true_class": "engine",
+      "snn_pred": "engine",
+      "ann_pred": "engine",
+      "iou": 0.08388157894736842
+    },
+    {
+      "sample": 75,
+      "true_class": "engine",
+      "snn_pred": "engine",
+      "ann_pred": "engine",
+      "iou": 0.15695067264573992
+    },
+    {
+      "sample": 76,
+      "true_class": "breathing",
+      "snn_pred": "breathing",
+      "ann_pred": "breathing",
+      "iou": 0.0
+    },
+    {
+      "sample": 77,
+      "true_class": "mouse_click",
+      "snn_pred": "mouse_click",
+      "ann_pred": "mouse_click",
+      "iou": 0.016574585635359115
+    },
+    {
+      "sample": 78,
+      "true_class": "crying_baby",
+      "snn_pred": "crying_baby",
+      "ann_pred": "crying_baby",
+      "iou": 0.15714285714285714
+    },
+    {
+      "sample": 79,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.0
+    },
+    {
+      "sample": 80,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.0
+    },
+    {
+      "sample": 81,
+      "true_class": "frog",
+      "snn_pred": "frog",
+      "ann_pred": "frog",
+      "iou": 0.046511627906976744
+    },
+    {
+      "sample": 82,
+      "true_class": "hand_saw",
+      "snn_pred": "hand_saw",
+      "ann_pred": "hand_saw",
+      "iou": 0.0
+    },
+    {
+      "sample": 83,
+      "true_class": "car_horn",
+      "snn_pred": "car_horn",
+      "ann_pred": "car_horn",
+      "iou": 0.17277486910994763
+    },
+    {
+      "sample": 84,
+      "true_class": "coughing",
+      "snn_pred": "coughing",
+      "ann_pred": "coughing",
+      "iou": 0.0
+    },
+    {
+      "sample": 85,
+      "true_class": "coughing",
+      "snn_pred": "coughing",
+      "ann_pred": "coughing",
+      "iou": 0.0
+    },
+    {
+      "sample": 86,
+      "true_class": "insects",
+      "snn_pred": "insects",
+      "ann_pred": "insects",
+      "iou": 0.20253164556962025
+    },
+    {
+      "sample": 87,
+      "true_class": "sheep",
+      "snn_pred": "sheep",
+      "ann_pred": "sheep",
+      "iou": 0.08839779005524862
+    },
+    {
+      "sample": 88,
+      "true_class": "sheep",
+      "snn_pred": "sheep",
+      "ann_pred": "sheep",
+      "iou": 0.015988372093023256
+    },
+    {
+      "sample": 89,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.14684466019417475
+    },
+    {
+      "sample": 90,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.17410714285714285
+    },
+    {
+      "sample": 91,
+      "true_class": "vacuum_cleaner",
+      "snn_pred": "vacuum_cleaner",
+      "ann_pred": "vacuum_cleaner",
+      "iou": 0.2946828955797566
+    },
+    {
+      "sample": 92,
+      "true_class": "chainsaw",
+      "snn_pred": "chainsaw",
+      "ann_pred": "chainsaw",
+      "iou": 0.03333333333333333
+    },
+    {
+      "sample": 93,
+      "true_class": "chainsaw",
+      "snn_pred": "chainsaw",
+      "ann_pred": "chainsaw",
+      "iou": 0.10059171597633136
+    },
+    {
+      "sample": 94,
+      "true_class": "chainsaw",
+      "snn_pred": "chainsaw",
+      "ann_pred": "chainsaw",
+      "iou": 0.007352941176470588
+    },
+    {
+      "sample": 95,
+      "true_class": "glass_breaking",
+      "snn_pred": "glass_breaking",
+      "ann_pred": "glass_breaking",
+      "iou": 0.0
+    },
+    {
+      "sample": 96,
+      "true_class": "cow",
+      "snn_pred": "cow",
+      "ann_pred": "cow",
+      "iou": 0.0
+    },
+    {
+      "sample": 97,
+      "true_class": "snoring",
+      "snn_pred": "snoring",
+      "ann_pred": "snoring",
+      "iou": 0.004048582995951417
+    },
+    {
+      "sample": 98,
+      "true_class": "toilet_flush",
+      "snn_pred": "toilet_flush",
+      "ann_pred": "toilet_flush",
+      "iou": 0.0
+    },
+    {
+      "sample": 99,
+      "true_class": "pig",
+      "snn_pred": "pig",
+      "ann_pred": "pig",
+      "iou": 0.002325581395348837
+    }
+  ]
+}

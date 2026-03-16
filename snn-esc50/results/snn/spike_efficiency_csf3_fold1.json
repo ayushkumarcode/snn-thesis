@@ -1,0 +1,64 @@
+{
+  "fold": 1,
+  "encoding": "direct",
+  "lambda_values": [
+    0.0,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.05,
+    0.1
+  ],
+  "pareto_points": [
+    {
+      "lambda": 0.0,
+      "accuracy": 0.4225,
+      "spikes_per_sample": 18.63,
+      "spike_rate": 0.014904,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 1e-05,
+      "accuracy": 0.46,
+      "spikes_per_sample": 26.885,
+      "spike_rate": 0.021508,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 0.0001,
+      "accuracy": 0.385,
+      "spikes_per_sample": 6.815,
+      "spike_rate": 0.005452,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 0.001,
+      "accuracy": 0.4525,
+      "spikes_per_sample": 7.8025,
+      "spike_rate": 0.006242,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 0.01,
+      "accuracy": 0.385,
+      "spikes_per_sample": 0.18,
+      "spike_rate": 0.000144,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 0.05,
+      "accuracy": 0.3925,
+      "spikes_per_sample": 0.075,
+      "spike_rate": 6e-05,
+      "stopped_epoch": 50
+    },
+    {
+      "lambda": 0.1,
+      "accuracy": 0.3725,
+      "spikes_per_sample": 0.0,
+      "spike_rate": 0.0,
+      "stopped_epoch": 50
+    }
+  ]
+}

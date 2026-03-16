@@ -1,0 +1,20 @@
+{
+  "model": "snn",
+  "encoding": "population",
+  "folds_run": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "fold_accuracies": [
+    0.2275,
+    0.185,
+    0.1575,
+    0.22,
+    0.1675
+  ],
+  "mean_accuracy": 0.19149999999999998,
+  "std_accuracy": 0.027865749586185547
+}

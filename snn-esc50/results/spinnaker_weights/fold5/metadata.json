@@ -1,0 +1,97 @@
+{
+  "model_path": "results/snn/direct/best_fold5.pt",
+  "architecture": {
+    "input_shape": [
+      1,
+      64,
+      216
+    ],
+    "conv1": {
+      "in_c": 1,
+      "out_c": 32,
+      "kernel": 3,
+      "pad": 1,
+      "stride": 1
+    },
+    "pool1": {
+      "type": "MaxPool2d",
+      "size": 2
+    },
+    "shape_after_conv1_pool1": [
+      32,
+      32,
+      108
+    ],
+    "conv2": {
+      "in_c": 32,
+      "out_c": 64,
+      "kernel": 3,
+      "pad": 1,
+      "stride": 1
+    },
+    "pool2": {
+      "type": "MaxPool2d",
+      "size": 2
+    },
+    "shape_after_conv2_pool2": [
+      64,
+      16,
+      54
+    ],
+    "avg_pool": {
+      "type": "AvgPool2d",
+      "kernel": [
+        4,
+        6
+      ]
+    },
+    "shape_after_avgpool": [
+      64,
+      4,
+      9
+    ],
+    "flatten_size": 2304,
+    "fc1": {
+      "in": 2304,
+      "out": 256
+    },
+    "fc2": {
+      "in": 256,
+      "out": 50
+    }
+  },
+  "snn_params": {
+    "beta": 0.95,
+    "threshold": 1.0,
+    "num_steps": 25
+  },
+  "spinnaker_lif_params": {
+    "cm": 1.0,
+    "tau_m": 20.0,
+    "tau_refrac": 2.0,
+    "v_reset": 0.0,
+    "v_rest": 0.0,
+    "v_thresh": 1.0,
+    "note": "tau_m=20ms approximates beta=0.95 with dt=1ms: beta=exp(-dt/tau_m)=exp(-1/20)=0.951"
+  },
+  "files": {
+    "fc1_weight": "fc1_weight.npy",
+    "fc1_bias": "fc1_bias.npy",
+    "fc2_weight": "fc2_weight.npy",
+    "fc2_bias": "fc2_bias.npy",
+    "fc1_connections": "fc1_connections.npy (pre, post, weight, delay)",
+    "fc2_connections": "fc2_connections.npy (pre, post, weight, delay)",
+    "conv1_fused_weight": "conv1_fused_weight.npy (BN folded in)",
+    "conv1_fused_bias": "conv1_fused_bias.npy",
+    "conv2_fused_weight": "conv2_fused_weight.npy (BN folded in)",
+    "conv2_fused_bias": "conv2_fused_bias.npy"
+  },
+  "deployment_notes": [
+    "FC-only mode: Use fc1_connections.npy and fc2_connections.npy",
+    "FC-only requires pre-computing conv features on CPU before SpiNNaker",
+    "Full unrolled mode: conv layers must be unrolled to dense matrices",
+    "Full unrolled is very large and may exceed SpiNNaker1 capacity",
+    "SpiNNaker handles excitatory/inhibitory weights separately",
+    "Negative weights need separate inhibitory projections"
+  ]
+}

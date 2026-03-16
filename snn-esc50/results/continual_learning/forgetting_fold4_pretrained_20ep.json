@@ -1,0 +1,266 @@
+{
+  "fold": 4,
+  "epochs_per_task": 20,
+  "lr": 0.0005,
+  "pretrained": true,
+  "device": "mps",
+  "tasks": [
+    {
+      "name": "Animals",
+      "class_range": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "Nature",
+      "class_range": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "name": "Human",
+      "class_range": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "name": "Domestic",
+      "class_range": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "name": "Urban",
+      "class_range": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    }
+  ],
+  "snn": {
+    "model_type": "snn",
+    "accuracy_matrix": [
+      [
+        0.7875,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        0.0875,
+        0.875,
+        null,
+        null,
+        null
+      ],
+      [
+        0.025,
+        0.2,
+        0.75,
+        null,
+        null
+      ],
+      [
+        0.1125,
+        0.0875,
+        0.0,
+        0.6875,
+        null
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.125,
+        0.7875
+      ]
+    ],
+    "backward_transfer": [
+      -0.7875,
+      -0.875,
+      -0.75,
+      -0.5625
+    ],
+    "mean_bwt": -0.74375,
+    "forgetting": [
+      0.7875,
+      0.875,
+      0.75,
+      0.5625
+    ],
+    "mean_forgetting": 0.74375,
+    "final_accuracies": [
+      0.0,
+      0.0,
+      0.0,
+      0.125,
+      0.7875
+    ],
+    "mean_final_accuracy": 0.1825,
+    "task_names": [
+      "Animals",
+      "Nature",
+      "Human",
+      "Domestic",
+      "Urban"
+    ],
+    "task_class_ranges": [
+      [
+        0,
+        9
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        20,
+        29
+      ],
+      [
+        30,
+        39
+      ],
+      [
+        40,
+        49
+      ]
+    ]
+  },
+  "ann": {
+    "model_type": "ann",
+    "accuracy_matrix": [
+      [
+        0.8125,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        0.45,
+        0.9375,
+        null,
+        null,
+        null
+      ],
+      [
+        0.175,
+        0.4625,
+        0.8125,
+        null,
+        null
+      ],
+      [
+        0.0625,
+        0.15,
+        0.075,
+        0.7375,
+        null
+      ],
+      [
+        0.0125,
+        0.0,
+        0.0,
+        0.0375,
+        0.8875
+      ]
+    ],
+    "backward_transfer": [
+      -0.8,
+      -0.9375,
+      -0.8125,
+      -0.7000000000000001
+    ],
+    "mean_bwt": -0.8125,
+    "forgetting": [
+      0.8,
+      0.9375,
+      0.8125,
+      0.7000000000000001
+    ],
+    "mean_forgetting": 0.8125,
+    "final_accuracies": [
+      0.0125,
+      0.0,
+      0.0,
+      0.0375,
+      0.8875
+    ],
+    "mean_final_accuracy": 0.1875,
+    "task_names": [
+      "Animals",
+      "Nature",
+      "Human",
+      "Domestic",
+      "Urban"
+    ],
+    "task_class_ranges": [
+      [
+        0,
+        9
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        20,
+        29
+      ],
+      [
+        30,
+        39
+      ],
+      [
+        40,
+        49
+      ]
+    ]
+  }
+}

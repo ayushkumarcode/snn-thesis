@@ -1,0 +1,391 @@
+{
+  "n_samples": 400,
+  "spinnaker_accuracy": 0.43,
+  "snn_accuracy": 0.5125,
+  "agreement_rate": 0.645,
+  "error_analysis": {
+    "both_correct": 145,
+    "spinnaker_only": 27,
+    "snn_only": 60,
+    "both_wrong": 168
+  },
+  "per_class": [
+    {
+      "class_idx": 0,
+      "class_name": "dog",
+      "spinnaker_acc": 0.75,
+      "snn_acc": 1.0,
+      "n": 8
+    },
+    {
+      "class_idx": 1,
+      "class_name": "rooster",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 2,
+      "class_name": "pig",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 3,
+      "class_name": "cow",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.875,
+      "n": 8
+    },
+    {
+      "class_idx": 4,
+      "class_name": "frog",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 5,
+      "class_name": "cat",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 6,
+      "class_name": "hen",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 7,
+      "class_name": "insects",
+      "spinnaker_acc": 0.0,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 8,
+      "class_name": "sheep",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.25,
+      "n": 8
+    },
+    {
+      "class_idx": 9,
+      "class_name": "crow",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 10,
+      "class_name": "rain",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 11,
+      "class_name": "sea_waves",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 12,
+      "class_name": "crackling_fire",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 13,
+      "class_name": "crickets",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 14,
+      "class_name": "chirping_birds",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 15,
+      "class_name": "water_drops",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 16,
+      "class_name": "wind",
+      "spinnaker_acc": 0.875,
+      "snn_acc": 0.875,
+      "n": 8
+    },
+    {
+      "class_idx": 17,
+      "class_name": "pouring_water",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 18,
+      "class_name": "toilet_flush",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 19,
+      "class_name": "thunderstorm",
+      "spinnaker_acc": 1.0,
+      "snn_acc": 1.0,
+      "n": 8
+    },
+    {
+      "class_idx": 20,
+      "class_name": "crying_baby",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 21,
+      "class_name": "sneezing",
+      "spinnaker_acc": 0.75,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 22,
+      "class_name": "clapping",
+      "spinnaker_acc": 1.0,
+      "snn_acc": 1.0,
+      "n": 8
+    },
+    {
+      "class_idx": 23,
+      "class_name": "breathing",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 24,
+      "class_name": "coughing",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 25,
+      "class_name": "footsteps",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 26,
+      "class_name": "laughing",
+      "spinnaker_acc": 0.125,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 27,
+      "class_name": "brushing_teeth",
+      "spinnaker_acc": 0.125,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 28,
+      "class_name": "snoring",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 29,
+      "class_name": "drinking_sipping",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 30,
+      "class_name": "door_knock",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 31,
+      "class_name": "mouse_click",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 32,
+      "class_name": "keyboard_typing",
+      "spinnaker_acc": 0.5,
+      "snn_acc": 0.75,
+      "n": 8
+    },
+    {
+      "class_idx": 33,
+      "class_name": "door_wood_creaks",
+      "spinnaker_acc": 0.0,
+      "snn_acc": 0.0,
+      "n": 8
+    },
+    {
+      "class_idx": 34,
+      "class_name": "can_opening",
+      "spinnaker_acc": 0.625,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 35,
+      "class_name": "washing_machine",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.25,
+      "n": 8
+    },
+    {
+      "class_idx": 36,
+      "class_name": "vacuum_cleaner",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 37,
+      "class_name": "clock_alarm",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.625,
+      "n": 8
+    },
+    {
+      "class_idx": 38,
+      "class_name": "clock_tick",
+      "spinnaker_acc": 0.125,
+      "snn_acc": 0.0,
+      "n": 8
+    },
+    {
+      "class_idx": 39,
+      "class_name": "glass_breaking",
+      "spinnaker_acc": 0.0,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 40,
+      "class_name": "helicopter",
+      "spinnaker_acc": 0.0,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 41,
+      "class_name": "chainsaw",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 42,
+      "class_name": "siren",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.875,
+      "n": 8
+    },
+    {
+      "class_idx": 43,
+      "class_name": "car_horn",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 44,
+      "class_name": "engine",
+      "spinnaker_acc": 0.0,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 45,
+      "class_name": "train",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 46,
+      "class_name": "church_bells",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.125,
+      "n": 8
+    },
+    {
+      "class_idx": 47,
+      "class_name": "airplane",
+      "spinnaker_acc": 0.875,
+      "snn_acc": 0.5,
+      "n": 8
+    },
+    {
+      "class_idx": 48,
+      "class_name": "fireworks",
+      "spinnaker_acc": 0.25,
+      "snn_acc": 0.375,
+      "n": 8
+    },
+    {
+      "class_idx": 49,
+      "class_name": "hand_saw",
+      "spinnaker_acc": 0.375,
+      "snn_acc": 0.875,
+      "n": 8
+    }
+  ],
+  "per_category": [
+    {
+      "category": "Animals (0-9)",
+      "spinnaker_acc": 0.45,
+      "snn_acc": 0.575
+    },
+    {
+      "category": "Nature (10-19)",
+      "spinnaker_acc": 0.6125,
+      "snn_acc": 0.6875
+    },
+    {
+      "category": "Human (20-29)",
+      "spinnaker_acc": 0.4625,
+      "snn_acc": 0.5625
+    },
+    {
+      "category": "Domestic (30-39)",
+      "spinnaker_acc": 0.3125,
+      "snn_acc": 0.375
+    },
+    {
+      "category": "Urban (40-49)",
+      "spinnaker_acc": 0.3125,
+      "snn_acc": 0.3625
+    }
+  ]
+}

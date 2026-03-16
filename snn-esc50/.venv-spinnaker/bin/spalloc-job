@@ -1,0 +1,6 @@
+#!/Users/kumar/Documents/University/Year3/thesisproject/snn-esc50/.venv-spinnaker/bin/python3.11
+import sys
+from spalloc_client.scripts.job import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())

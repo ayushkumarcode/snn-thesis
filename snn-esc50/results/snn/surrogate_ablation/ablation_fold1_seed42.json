@@ -1,0 +1,63 @@
+{
+  "fast_sigmoid": {
+    "best_accuracy": 0.4475,
+    "best_epoch": 50,
+    "total_epochs": 50,
+    "fold": 1,
+    "seed": 42
+  },
+  "atan": {
+    "best_accuracy": 0.3575,
+    "best_epoch": 49,
+    "total_epochs": 50,
+    "fold": 1,
+    "seed": 42
+  },
+  "sigmoid": {
+    "best_accuracy": 0.02,
+    "best_epoch": 1,
+    "total_epochs": 11,
+    "fold": 1,
+    "seed": 42,
+    "note": "Early stop at epoch 11 (patience=10). Model never learned."
+  },
+  "ste": {
+    "best_accuracy": 0.1025,
+    "best_epoch": 1,
+    "total_epochs": 11,
+    "fold": 1,
+    "seed": 42,
+    "note": "Early stop at epoch 11 (patience=10). Converged to near-chance."
+  },
+  "triangular": {
+    "best_accuracy": 0.0275,
+    "best_epoch": 13,
+    "total_epochs": 23,
+    "fold": 1,
+    "seed": 42,
+    "note": "Early stop at epoch 23 (patience=10). Near-chance performance."
+  },
+  "spike_rate_escape": {
+    "best_accuracy": 0.46,
+    "best_epoch": 50,
+    "total_epochs": 50,
+    "fold": 1,
+    "seed": 42
+  },
+  "lso": {
+    "best_accuracy": null,
+    "best_epoch": null,
+    "total_epochs": 0,
+    "fold": 1,
+    "seed": 42,
+    "note": "CRASHED: TypeError: StochasticSpikeOperator.forward() missing 1 required positional argument: 'variance'. snnTorch 0.9.4 + Python 3.14 incompatibility. LSO uses StochasticSpikeOperator internally, which expects a 'variance' argument that the surrogate.LSO(slope=0.1) call does not supply."
+  },
+  "sfs": {
+    "best_accuracy": 0.02,
+    "best_epoch": 1,
+    "total_epochs": 10,
+    "fold": 1,
+    "seed": 42,
+    "note": "Run separately (script had crashed at LSO). Early stop at epoch 10. Stochastic surrogate fails same as sigmoid. Best at epoch 1, never improved."
+  }
+}

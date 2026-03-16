@@ -1,0 +1,198 @@
+{
+  "platform": "SpiNNaker",
+  "spalloc_server": "spinnaker.cs.man.ac.uk",
+  "timestamp": "2026-03-03 13:33:17",
+  "model": "ESC-50 Convolutional SNN (best_fold4.pt)",
+  "deployment": "FC-only hybrid (conv on CPU, FC on SpiNNaker)",
+  "num_samples": 5,
+  "correct": 0,
+  "accuracy": 0.0,
+  "avg_wall_clock_ms": 73675.23040771484,
+  "sim_time_ms": 25,
+  "total_wall_clock_s": 368.3761520385742,
+  "weight_prune_threshold": 0.05,
+  "network": {
+    "input_neurons": 2304,
+    "hidden_neurons": 256,
+    "output_neurons": 50,
+    "total_neurons": 2610,
+    "total_connections": 60758
+  },
+  "lif_params": {
+    "cm": 1.0,
+    "tau_m": 20.0,
+    "tau_syn_E": 1.0,
+    "tau_syn_I": 1.0,
+    "tau_refrac": 0.1,
+    "v_reset": 0.0,
+    "v_rest": 0.0,
+    "v_thresh": 1.0
+  },
+  "per_sample": [
+    {
+      "sample": 0,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34389,
+      "active_inputs": 1454,
+      "inference_ms": 98425.25911331177,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 1,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34877,
+      "active_inputs": 1509,
+      "inference_ms": 78328.89199256897,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 2,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34901,
+      "active_inputs": 1515,
+      "inference_ms": 64488.72184753418,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 3,
+      "true_label": 42,
+      "predicted": 0,
+      "correct": false,
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 29261,
+      "active_inputs": 1238,
+      "inference_ms": 80746.19388580322,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 4,
+      "true_label": 33,
+      "predicted": 0,
+      "correct": false,
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 33093,
+      "active_inputs": 1398,
+      "inference_ms": 46387.08519935608,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    }
+  ]
+}

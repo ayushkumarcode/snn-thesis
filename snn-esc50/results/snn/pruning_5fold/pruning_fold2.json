@@ -1,0 +1,66 @@
+{
+  "fold": 2,
+  "encoding": "direct",
+  "sparsity_levels": [
+    0.0,
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+  ],
+  "snn_results": {
+    "0.0": {
+      "accuracy": 0.5175,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.1": {
+      "accuracy": 0.515,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.3": {
+      "accuracy": 0.5125,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.5": {
+      "accuracy": 0.54,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.7": {
+      "accuracy": 0.5,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.9": {
+      "accuracy": 0.28,
+      "actual_weight_sparsity": 0.0
+    }
+  },
+  "ann_results": {
+    "0.0": {
+      "accuracy": 0.6575,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.1": {
+      "accuracy": 0.6575,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.3": {
+      "accuracy": 0.6575,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.5": {
+      "accuracy": 0.6525,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.7": {
+      "accuracy": 0.6525,
+      "actual_weight_sparsity": 0.0
+    },
+    "0.9": {
+      "accuracy": 0.2525,
+      "actual_weight_sparsity": 0.0
+    }
+  },
+  "snn_baseline": 0.5175,
+  "ann_baseline": 0.6575
+}

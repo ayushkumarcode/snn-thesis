@@ -1,0 +1,83 @@
+{
+  "label": "step1_tiny",
+  "n_input": 10,
+  "n_layers": 2,
+  "run_time": 25,
+  "error": null,
+  "input_spikes_delivered": 39,
+  "input_spikes_expected": 39,
+  "layers": [
+    {
+      "name": "layer_0",
+      "n": 5,
+      "total_spikes": 21,
+      "neurons_fired": 3,
+      "neurons_fired_ids": [
+        0,
+        1,
+        2
+      ],
+      "spike_counts": [
+        7,
+        7,
+        7,
+        0,
+        0
+      ],
+      "v_max": 0.0,
+      "v_mean_final": -7.831640625,
+      "v_final_top5": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          -19.5791015625
+        ],
+        [
+          4,
+          -19.5791015625
+        ]
+      ],
+      "predicted": 0,
+      "classification_basis": "spike_count"
+    },
+    {
+      "name": "layer_1",
+      "n": 2,
+      "total_spikes": 4,
+      "neurons_fired": 1,
+      "neurons_fired_ids": [
+        0
+      ],
+      "spike_counts": [
+        4,
+        0
+      ],
+      "v_max": 0.0,
+      "v_mean_final": -9.78955078125,
+      "v_final_top5": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          -19.5791015625
+        ]
+      ],
+      "predicted": 0,
+      "classification_basis": "spike_count"
+    }
+  ],
+  "wall_clock_ms": 31246.927738189697
+}

@@ -1,0 +1,216 @@
+{
+  "platform": "SpiNNaker",
+  "spalloc_server": "spinnaker.cs.man.ac.uk",
+  "timestamp": "2026-03-03 16:35:04",
+  "script": "auto_calibrate.py",
+  "calibrated_config": {
+    "neuron_model": "IF_curr_exp",
+    "tau_syn": 5.0,
+    "weight_scale": 50.0,
+    "prune_threshold": 0.05,
+    "max_hidden": 128,
+    "total_connections": 26088
+  },
+  "lif_params": {
+    "cm": 1.0,
+    "tau_m": 20.0,
+    "tau_refrac": 0.1,
+    "v_reset": 0.0,
+    "v_rest": 0.0,
+    "v_thresh": 1.0,
+    "tau_syn_E": 5.0,
+    "tau_syn_I": 5.0
+  },
+  "num_samples": 5,
+  "correct": 0,
+  "accuracy": 0.0,
+  "avg_wall_clock_ms": 39707.3860168457,
+  "total_wall_clock_s": 198.53693008422852,
+  "per_sample": [
+    {
+      "sample": 0,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "classification_basis": "final membrane voltage (no output spikes)",
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34389,
+      "input_spikes_actual": 34389,
+      "active_inputs": 1454,
+      "hidden_neurons_fired": 0,
+      "max_hidden_v": 0.0,
+      "inference_ms": 43793.45202445984,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 1,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "classification_basis": "final membrane voltage (no output spikes)",
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34877,
+      "input_spikes_actual": 34877,
+      "active_inputs": 1509,
+      "hidden_neurons_fired": 0,
+      "max_hidden_v": 0.0,
+      "inference_ms": 37927.93917655945,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 2,
+      "true_label": 49,
+      "predicted": 0,
+      "correct": false,
+      "classification_basis": "final membrane voltage (no output spikes)",
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 34901,
+      "input_spikes_actual": 34901,
+      "active_inputs": 1515,
+      "hidden_neurons_fired": 0,
+      "max_hidden_v": 0.0,
+      "inference_ms": 37581.97021484375,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 3,
+      "true_label": 42,
+      "predicted": 0,
+      "correct": false,
+      "classification_basis": "final membrane voltage (no output spikes)",
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 29261,
+      "input_spikes_actual": 29261,
+      "active_inputs": 1238,
+      "hidden_neurons_fired": 0,
+      "max_hidden_v": 0.0,
+      "inference_ms": 36627.23183631897,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    },
+    {
+      "sample": 4,
+      "true_label": 33,
+      "predicted": 0,
+      "correct": false,
+      "classification_basis": "final membrane voltage (no output spikes)",
+      "output_spikes": 0,
+      "hidden_spikes": 0,
+      "input_spikes": 33093,
+      "input_spikes_actual": 33093,
+      "active_inputs": 1398,
+      "hidden_neurons_fired": 0,
+      "max_hidden_v": 0.0,
+      "inference_ms": 42606.33683204651,
+      "top5_output_v": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ],
+        [
+          2,
+          0.0
+        ],
+        [
+          3,
+          0.0
+        ],
+        [
+          4,
+          0.0
+        ]
+      ]
+    }
+  ]
+}

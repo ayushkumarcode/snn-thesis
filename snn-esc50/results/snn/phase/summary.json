@@ -1,0 +1,13 @@
+{
+  "model": "snn",
+  "encoding": "phase",
+  "fold_accuracies": [
+    0.225,
+    0.2225,
+    0.25,
+    0.2425,
+    0.2675
+  ],
+  "mean_accuracy": 0.2415,
+  "std_accuracy": 0.016628289148315895
+}

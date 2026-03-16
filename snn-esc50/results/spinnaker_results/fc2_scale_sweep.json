@@ -1,0 +1,110 @@
+{
+  "timestamp": "2026-03-03 19:47:28",
+  "sample_idx": 0,
+  "true_label": 42,
+  "snn_predicted": 42,
+  "scales_tried": [
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0,
+    20.0,
+    50.0,
+    100.0,
+    200.0
+  ],
+  "results": [
+    {
+      "scale": 0.5,
+      "n_output_spikes": 6,
+      "neurons_that_fired": 1,
+      "predicted": 42,
+      "true_label": 42,
+      "correct": true,
+      "max_output_v": 0.0,
+      "error": null
+    },
+    {
+      "scale": 1.0,
+      "n_output_spikes": 19,
+      "neurons_that_fired": 4,
+      "predicted": 42,
+      "true_label": 42,
+      "correct": true,
+      "max_output_v": 0.861663818359375,
+      "error": null
+    },
+    {
+      "scale": 2.0,
+      "n_output_spikes": 29,
+      "neurons_that_fired": 4,
+      "predicted": 42,
+      "true_label": 42,
+      "correct": true,
+      "max_output_v": 0.8397216796875,
+      "error": null
+    },
+    {
+      "scale": 5.0,
+      "n_output_spikes": 43,
+      "neurons_that_fired": 6,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.0,
+      "error": null
+    },
+    {
+      "scale": 10.0,
+      "n_output_spikes": 53,
+      "neurons_that_fired": 7,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.759033203125,
+      "error": null
+    },
+    {
+      "scale": 20.0,
+      "n_output_spikes": 60,
+      "neurons_that_fired": 7,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.63934326171875,
+      "error": null
+    },
+    {
+      "scale": 50.0,
+      "n_output_spikes": 64,
+      "neurons_that_fired": 7,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.0,
+      "error": null
+    },
+    {
+      "scale": 100.0,
+      "n_output_spikes": 67,
+      "neurons_that_fired": 9,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.892852783203125,
+      "error": null
+    },
+    {
+      "scale": 200.0,
+      "n_output_spikes": 72,
+      "neurons_that_fired": 11,
+      "predicted": 5,
+      "true_label": 42,
+      "correct": false,
+      "max_output_v": 0.0,
+      "error": null
+    }
+  ],
+  "chosen_scale": 1.0
+}

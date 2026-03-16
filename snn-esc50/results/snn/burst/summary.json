@@ -1,0 +1,13 @@
+{
+  "model": "snn",
+  "encoding": "burst",
+  "fold_accuracies": [
+    0.05,
+    0.0525,
+    0.0925,
+    0.06,
+    0.07
+  ],
+  "mean_accuracy": 0.065,
+  "std_accuracy": 0.015411035007422441
+}

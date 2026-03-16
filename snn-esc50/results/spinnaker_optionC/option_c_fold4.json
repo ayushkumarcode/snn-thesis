@@ -1,0 +1,40 @@
+{
+  "fold": 4,
+  "device": "mps",
+  "recentre_info": {
+    "n_inputs": 2304,
+    "n_outputs": 256,
+    "mean_row_mean": -0.0032148240134119987,
+    "mean_abs_row_mean": 0.008685044944286346,
+    "max_residual": 3.635883331298828e-06,
+    "method": "W[i] -= mean(W[i]); b[i] += mean(W[i]) * n_inputs"
+  },
+  "before": {
+    "accuracy": 0.5375,
+    "fc1_stats": {
+      "n_fc1_neurons": 256,
+      "mean_fc1_spikes_per_step": 55.71175,
+      "std_fc1_spikes_per_step": 4.743486264078352,
+      "max_fc1_spikes_per_step": 65.0,
+      "fc1_firing_rate": 0.2176240234375,
+      "feasible_for_spinnaker": true
+    }
+  },
+  "after": {
+    "accuracy": 0.085,
+    "accuracy_drop": 0.45249999999999996,
+    "fc1_stats": {
+      "n_fc1_neurons": 256,
+      "mean_fc1_spikes_per_step": 61.151,
+      "std_fc1_spikes_per_step": 1.8528893652887106,
+      "max_fc1_spikes_per_step": 66.0,
+      "fc1_firing_rate": 0.23887109375,
+      "feasible_for_spinnaker": true
+    }
+  },
+  "feasibility": {
+    "accuracy_ok": false,
+    "sparsity_ok": true,
+    "full_deployment_ok": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "fold": 1,
+  "encodings": [
+    "direct",
+    "rate",
+    "phase",
+    "latency",
+    "delta",
+    "burst"
+  ],
+  "matrix": [
+    [
+      0.58,
+      0.0275,
+      0.045,
+      0.045,
+      0.0275,
+      0.18
+    ],
+    [
+      0.07,
+      0.24,
+      0.02,
+      0.02,
+      0.05,
+      0.055
+    ],
+    [
+      0.0375,
+      0.0375,
+      0.2175,
+      0.18,
+      0.0475,
+      0.055
+    ],
+    [
+      0.04,
+      0.035,
+      0.1625,
+      0.14,
+      0.0425,
+      0.0775
+    ],
+    [
+      0.04,
+      0.0275,
+      0.02,
+      0.02,
+      0.08,
+      0.045
+    ],
+    [
+      0.0575,
+      0.05,
+      0.0575,
+      0.0525,
+      0.0625,
+      0.0725
+    ]
+  ],
+  "diagonal_accuracies": {
+    "direct": 0.58,
+    "rate": 0.24,
+    "phase": 0.2175,
+    "latency": 0.14,
+    "delta": 0.08,
+    "burst": 0.0725
+  },
+  "diagonal_mean": 0.22166666666666665,
+  "off_diagonal_mean": 0.05625000000000001,
+  "transfer_ratio": 0.2537593984962407,
+  "detailed": {
+    "direct_to_direct": 0.58,
+    "direct_to_rate": 0.0275,
+    "direct_to_phase": 0.045,
+    "direct_to_latency": 0.045,
+    "direct_to_delta": 0.0275,
+    "direct_to_burst": 0.18,
+    "rate_to_direct": 0.07,
+    "rate_to_rate": 0.24,
+    "rate_to_phase": 0.02,
+    "rate_to_latency": 0.02,
+    "rate_to_delta": 0.05,
+    "rate_to_burst": 0.055,
+    "phase_to_direct": 0.0375,
+    "phase_to_rate": 0.0375,
+    "phase_to_phase": 0.2175,
+    "phase_to_latency": 0.18,
+    "phase_to_delta": 0.0475,
+    "phase_to_burst": 0.055,
+    "latency_to_direct": 0.04,
+    "latency_to_rate": 0.035,
+    "latency_to_phase": 0.1625,
+    "latency_to_latency": 0.14,
+    "latency_to_delta": 0.0425,
+    "latency_to_burst": 0.0775,
+    "delta_to_direct": 0.04,
+    "delta_to_rate": 0.0275,
+    "delta_to_phase": 0.02,
+    "delta_to_latency": 0.02,
+    "delta_to_delta": 0.08,
+    "delta_to_burst": 0.045,
+    "burst_to_direct": 0.0575,
+    "burst_to_rate": 0.05,
+    "burst_to_phase": 0.0575,
+    "burst_to_latency": 0.0525,
+    "burst_to_delta": 0.0625,
+    "burst_to_burst": 0.0725
+  }
+}

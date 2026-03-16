@@ -1,0 +1,273 @@
+{
+  "phase1_passed": true,
+  "min_working_weight": 0.5,
+  "phase1_voltage_traces": {
+    "0.5": [
+      0.0,
+      0.0,
+      0.308258056640625,
+      0.714874267578125,
+      0.0,
+      0.0,
+      0.484344482421875,
+      0.947174072265625,
+      0.0,
+      0.0,
+      0.487579345703125,
+      0.951385498046875,
+      0.0,
+      0.0,
+      0.487640380859375,
+      0.95147705078125,
+      0.0,
+      0.0,
+      0.487640380859375,
+      0.95147705078125,
+      0.0,
+      0.0,
+      0.487640380859375,
+      0.95147705078125,
+      0.0
+    ],
+    "1.0": [
+      0.0,
+      0.0,
+      0.616546630859375,
+      0.0,
+      0.0,
+      0.957427978515625,
+      0.0,
+      0.0,
+      0.97442626953125,
+      0.0,
+      0.0,
+      0.97528076171875,
+      0.0,
+      0.0,
+      0.975311279296875,
+      0.0,
+      0.0,
+      0.975311279296875,
+      0.0,
+      0.0,
+      0.975311279296875,
+      0.0,
+      0.0,
+      0.975311279296875,
+      0.0
+    ],
+    "2.0": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "5.0": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "10.0": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "phase1_weight_results": [
+    {
+      "weight": 0.5,
+      "fired": true,
+      "n_spikes": 6,
+      "max_v": 0.95147705078125
+    },
+    {
+      "weight": 1.0,
+      "fired": true,
+      "n_spikes": 8,
+      "max_v": 0.975311279296875
+    },
+    {
+      "weight": 2.0,
+      "fired": true,
+      "n_spikes": 12,
+      "max_v": 0.0
+    },
+    {
+      "weight": 5.0,
+      "fired": true,
+      "n_spikes": 12,
+      "max_v": 0.0
+    },
+    {
+      "weight": 10.0,
+      "fired": true,
+      "n_spikes": 12,
+      "max_v": 0.0
+    }
+  ],
+  "phase2_passed": true,
+  "optimal_tau_syn": 5.0,
+  "tau_syn_results": [
+    {
+      "tau_syn": 5.0,
+      "fired": true,
+      "n_spikes": 12,
+      "max_v": 0.0,
+      "theoretical_frac": 0.18126924692201818
+    }
+  ],
+  "use_if_curr_delta": false,
+  "phase3_passed": false,
+  "optimal_weight_scale": 50.0,
+  "scale_results": [
+    {
+      "scale_factor": 1.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 2.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 5.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 10.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 20.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 50.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    },
+    {
+      "scale_factor": 100.0,
+      "hidden_spikes": 0,
+      "neurons_that_fired": [],
+      "max_hidden_v": 0.0
+    }
+  ],
+  "hidden_neurons_that_fired": [],
+  "phase4_passed": false,
+  "max_working_hidden_size": 128,
+  "phase4_results": [
+    {
+      "hidden_size": 20,
+      "hidden_spikes": 0,
+      "output_spikes": 0,
+      "max_hidden_v": 0.0,
+      "max_output_v": 0.0,
+      "success": true
+    },
+    {
+      "hidden_size": 64,
+      "hidden_spikes": 0,
+      "output_spikes": 0,
+      "max_hidden_v": 0.0,
+      "max_output_v": 0.0,
+      "success": true
+    },
+    {
+      "hidden_size": 128,
+      "hidden_spikes": 0,
+      "output_spikes": 0,
+      "max_hidden_v": 0.0,
+      "max_output_v": 0.0,
+      "success": true
+    },
+    {
+      "hidden_size": 256,
+      "hidden_spikes": -1,
+      "output_spikes": -1,
+      "max_hidden_v": NaN,
+      "max_output_v": NaN,
+      "success": false,
+      "error": "zero-size array to reduction operation maximum which has no identity"
+    }
+  ],
+  "phase5_passed": true,
+  "phase5_accuracy": 0.0,
+  "phase5_correct": 0,
+  "phase5_num_samples": 5
+}

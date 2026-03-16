@@ -1487,3 +1487,22 @@ Step 4 (FC1+FC2 end-to-end) running — first results pending.
 ### Few-Shot and Spike Pareto Scripts Fixed
 Both `few_shot_learning_curves.py` and `spike_efficiency_pareto.py` lacked
 `--device` argparse argument, causing CSF3 failures. Fixed and ready for resubmission.
+
+### SpiNNaker Step 4: FC1+FC2 End-to-End (16 March 2026)
+
+**Excitatory-only (weight_scale=1.0, 20 samples):**
+- SpiNNaker accuracy: 1/20 = 5.0%
+- snnTorch accuracy: 4/20 = 20.0%
+- Hidden neurons fired: 161-229/256 per sample (TOO MANY — expected ~55/256)
+- Output neurons fired: 1-2 per sample (always neurons 33 or 10)
+- 3/20 samples failed with SpinnmanIOException
+- ROOT CAUSE: Excitatory-only FC1 removes inhibition, causing hidden layer saturation.
+  229/256 neurons firing = 89.5% active, vs expected 21.7%. FC2 can't classify saturated input.
+- Results: `results/spinnaker_results/incremental/step_4_20260316_033858.json`
+
+**Key insight:** The `initialize(v=0.0)` fix successfully enables hidden neuron firing (231/256 in step 3a).
+But excitatory-only weight strategy produces wrong hidden spike patterns. Need balanced exc+inh or top-k approach.
+
+**Next attempt:** Step 4 with top-k=100 (keep only 100 strongest connections per hidden neuron).
+This limits total connections to 256×100=25,600 — well within SpiNNaker limits and should prevent
+hidden saturation while preserving class-discriminative information.

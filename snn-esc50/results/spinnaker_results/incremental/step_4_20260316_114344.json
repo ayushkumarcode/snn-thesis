@@ -1,0 +1,88 @@
+{
+  "step": 4,
+  "strategy": "bias_0.0",
+  "weight_scale": 1.0,
+  "lif_params": {
+    "cm": 1.0,
+    "tau_m": 20.0,
+    "tau_refrac": 0.1,
+    "v_reset": 0.0,
+    "v_rest": 0.0,
+    "v_thresh": 1.0,
+    "tau_syn_E": 5.0,
+    "tau_syn_I": 5.0
+  },
+  "num_samples": 5,
+  "spinnaker_correct": 0,
+  "spinnaker_accuracy": 0.0,
+  "snntorch_correct": 1,
+  "snntorch_accuracy": 0.2,
+  "per_sample": [
+    {
+      "sample": 0,
+      "true_label": 49,
+      "snntorch_pred": 18,
+      "snntorch_correct": false,
+      "spinnaker_pred": 31,
+      "spinnaker_correct": false,
+      "hidden_neurons_fired": 4,
+      "hidden_total_spikes": 4,
+      "output_neurons_fired": 1,
+      "output_total_spikes": 1,
+      "classification_basis": "spike_count"
+    },
+    {
+      "sample": 1,
+      "true_label": 49,
+      "snntorch_pred": 18,
+      "snntorch_correct": false,
+      "spinnaker_pred": 31,
+      "spinnaker_correct": false,
+      "hidden_neurons_fired": 4,
+      "hidden_total_spikes": 4,
+      "output_neurons_fired": 1,
+      "output_total_spikes": 1,
+      "classification_basis": "spike_count"
+    },
+    {
+      "sample": 2,
+      "true_label": 49,
+      "snntorch_pred": 49,
+      "snntorch_correct": true,
+      "spinnaker_pred": 31,
+      "spinnaker_correct": false,
+      "hidden_neurons_fired": 4,
+      "hidden_total_spikes": 4,
+      "output_neurons_fired": 1,
+      "output_total_spikes": 1,
+      "classification_basis": "spike_count"
+    },
+    {
+      "sample": 3,
+      "true_label": 42,
+      "snntorch_pred": 8,
+      "snntorch_correct": false,
+      "spinnaker_pred": 0,
+      "spinnaker_correct": false,
+      "hidden_neurons_fired": 0,
+      "hidden_total_spikes": 0,
+      "output_neurons_fired": 0,
+      "output_total_spikes": 0,
+      "classification_basis": "final_voltage"
+    },
+    {
+      "sample": 4,
+      "true_label": 33,
+      "snntorch_pred": 36,
+      "snntorch_correct": false,
+      "spinnaker_pred": 0,
+      "spinnaker_correct": false,
+      "hidden_neurons_fired": 0,
+      "hidden_total_spikes": 0,
+      "output_neurons_fired": 0,
+      "output_total_spikes": 0,
+      "classification_basis": "final_voltage"
+    }
+  ],
+  "bias_current": 0.0
+}

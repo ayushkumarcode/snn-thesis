@@ -1441,3 +1441,49 @@ Results: `results/statistical_tests/significance_tests.json`
 - Few-shot learning curves (fold 1)
 - Temporal ablation (5-fold)
 - Spike efficiency Pareto (fold 1)
+
+---
+
+## 16 March 2026 — Major Progress Session
+
+### NeuroBench 5-Fold Complete
+All 5 folds complete (previously only folds 1, 2, 4):
+- SNN energy: 968 ± 37 nJ/sample (1.08M ± 41K ACs)
+- ANN energy: 454 ± 11 nJ/sample (99K ± 2K MACs)
+- ANN/SNN ratio: 0.47 (ANN 2.1× cheaper in software simulation)
+- SNN activation sparsity: 73.6% ± 0.7% (spike rate 26.4%)
+- Results: `results/neurobench/summary_5fold.json`
+
+### Continual Learning 5-Fold Complete (CSF3 job 12174555)
+All 5 folds complete (previously only fold 4):
+- SNN forgetting: 69.9% ± 4.3%
+- ANN forgetting: 74.7% ± 2.4%
+- SNN forgets 4.7 pp less than ANN (consistent in 4/5 folds)
+- Results: `results/continual_learning/summary_5fold.json`
+
+### SpiNNaker Full Deploy: ROOT CAUSE FOUND
+The `full_spinnaker_deploy_cond.py` and `spinnaker_incremental.py` scripts had
+a critical bug: **missing `population.initialize(v=0.0)`**. Without this,
+sPyNNaker defaults neurons to v=-65mV even when v_rest=0.0, making the 1mV
+threshold unreachable (would need 66mV of current). Also added
+`set_number_of_neurons_per_core` for core splitting.
+
+**Fix verified:** Step 3a (FC1 exc-only) now produces 231/256 hidden neurons
+firing with 874 total spikes. Previously 0/256 fired.
+
+Step 4 (FC1+FC2 end-to-end) running — first results pending.
+
+### ICONS 2026 Paper Progress
+- Added 4 ICONS-specific references (Schuman, Yarga, Seekings, Arfa)
+- Fixed header from "Conference '17" to "ICONS '26"
+- Updated NeuroBench table to 5-fold
+- Added LIF equation, expanded Background, prior work comparison table
+- Added surrogate gradient ablation table (Table 8)
+- Added noise robustness table (Table 9)
+- Added continual learning subsection (5-fold validated)
+- Added temporal efficiency and SpiNNaker per-category subsections
+- Paper compiles to 6 pages (ICONS limit: up to 8)
+
+### Few-Shot and Spike Pareto Scripts Fixed
+Both `few_shot_learning_curves.py` and `spike_efficiency_pareto.py` lacked
+`--device` argparse argument, causing CSF3 failures. Fixed and ready for resubmission.

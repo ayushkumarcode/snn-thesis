@@ -1106,3 +1106,26 @@ Uses calibrated weight_scale=5.0 from Run 6, skips scale sweep, ~100min runtime.
 ## Decision #53: Fix Adversarial from Single-Fold to 5-Fold (15 March 2026)
 
 **Decision:** The adversarial robustness claim was the #1 weakness (single fold). Running all 5 folds on CSF3 A100 (23 min). Result: SNN=16.55%±5.49% vs ANN=2.75%±0.61% at eps=0.1 FGSM (6.0x, down from the single-fold 14.9x). Still dramatically more robust but honestly reported with variance.
+
+## Decision #54: SpiNNaker initialize(v=0.0) Fix (16 March 2026)
+
+**Decision:** Added `population.initialize(v=0.0)` and `set_number_of_neurons_per_core` to all SpiNNaker deployment scripts.
+**Rationale:** sPyNNaker defaults neuron membrane potential to -65mV regardless of v_rest parameter. With v_thresh=1.0, neurons needed 66mV to fire — impossible. This was the ROOT CAUSE of zero hidden spikes in all previous FC1 deployment attempts. After fix: 231/256 neurons fired in step 3a.
+**Impact:** Unblocks FC1+FC2 full SpiNNaker deployment.
+
+## Decision #55: NeuroBench 5-Fold (16 March 2026)
+
+**Decision:** Extended NeuroBench analysis from fold 4 only to all 5 folds.
+**Result:** SNN 968±37 nJ, ANN 454±11 nJ — consistent with single-fold. Sparsity 73.6%±0.7%.
+**Rationale:** Paper claimed single-fold; now properly validated. Updated Table 7 in ICONS paper.
+
+## Decision #56: Continual Learning 5-Fold (16 March 2026)
+
+**Decision:** Extended continual learning from fold 4 only to all 5 folds on CSF3.
+**Result:** SNN forgetting 69.9%±4.3% vs ANN 74.7%±2.4%. SNN forgets 4.7pp less. Consistent 4/5 folds.
+**Rationale:** Thesis contribution C6 required 5-fold validation to be defensible. Now properly validated.
+
+## Decision #57: ICONS Paper — 6 Pages Acceptable (16 March 2026)
+
+**Decision:** Submit at 6 pages rather than forcing 8.
+**Rationale:** ICONS allows "up to 8 pages". Paper has 9 tables, 3 figures, 23 references, equation. Very dense. Adding padding reduces quality. Prior ICONS papers range 4-8 pages. Content density is more important than page count.

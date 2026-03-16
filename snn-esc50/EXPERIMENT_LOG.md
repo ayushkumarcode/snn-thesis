@@ -1520,3 +1520,21 @@ hidden saturation while preserving class-discriminative information.
 - Top-k=100 (100 strongest per neuron): 0-11/256 fired → SPARSE
 - Need: ~55/256 (21.7%) firing to match snnTorch pattern
 - Solution path: top-k=300-500 or full weights with proper balance
+
+### SpiNNaker Full Deploy Debugging: Scale Sweep (16 March 2026)
+
+**Setup:** Full FC1 weights (exc+inh), prune_threshold=0.05 (66K connections), MaxPool model fold 4.
+
+| Scale | Sample 0 hidden | Sample 3 hidden | Sample 0 output |
+|-------|----------------|----------------|-----------------|
+| 1.0   | 4/256          | 0/256          | 1/50            |
+| 5.0   | 35/256         | 0/256          | 11/50 (pred=12) |
+| 10.0  | 41/256         | 0/256          | 7/50 (pred=12)  |
+| 20.0  | 39/256         | 0/256          | 8/50 (pred=12)  |
+
+**Key finding:** Sample 0 fires 35-41 hidden neurons across scales, but sample 3 gets 0 regardless of scale.
+Cross-test with sample 0's spikes + sample 3's connections → 2/5 neurons fired, confirming connections work.
+
+**Root cause hypothesis:** SpiNNaker's IF_curr_exp with tau_syn=5ms attenuates differently depending on spike timing pattern. Sample 3's pattern produces insufficient net excitation after synaptic filtering. Sample 0's pattern builds up sufficient membrane potential because it has early spike activity (19 spikes at t=0 vs 0 for sample 3).
+
+**Status:** SpiNNaker server temporarily unreachable (spalloc connection error). Will continue debugging when available.

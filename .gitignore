@@ -1,4 +1,42 @@
+# OS
 .DS_Store
 ~$*
 *.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+.venv-spinnaker/
+snn-esc50/.venv/
+snn-esc50/.venv-spinnaker/
+
+# Data (too large for git)
+snn-esc50/data/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# LaTeX auxiliary
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Misc
 Sample Papers/

@@ -71,19 +71,19 @@ SNN: direct encoding, fold 4 local model (53.75% clean). ANN: fold 4 local model
 *Source: `results/adversarial/robustness_fold4.json`.*
 *Note: PGD results may overestimate SNN robustness due to vanishing surrogate gradients (Wang et al. 2025). FGSM results are more reliable.*
 
-### A.5 NeuroBench Energy Analysis (Fold 4)
+### A.5 NeuroBench Energy Analysis (5-Fold Validated)
 
 | Metric | SNN (direct) | ANN |
 |--------|-------------|-----|
 | Effective ACs/sample | 1,080,000 | 0 |
 | Effective MACs/sample | 0 | 101,000 |
 | Dense SynOps/sample | 50,688,000 | 101,000 |
-| Energy/sample (sim.) | **976 nJ** (AC × 0.9 pJ) | **463 nJ** (MAC × 4.6 pJ) |
+| Energy/sample (sim.) | **968 ± 37 nJ** (AC × 0.9 pJ) | **454 ± 11 nJ** (MAC × 4.6 pJ) |
 | ActivationSparsity | 74.16% | 59% |
 | Model footprint | 2.49 MB | 2.49 MB |
 | ConnectionSparsity | 0.00% | 0.00% |
 
-*Source: `results/neurobench/analysis_fold4.json`.*
+*Source: `results/neurobench/analysis_fold{1-5}.json` (5-fold validated).*
 *Energy per AC = 0.9 pJ (8-bit ADD at 45nm CMOS), Energy per MAC = 4.6 pJ (8-bit MAC at 45nm CMOS), per Yik et al. 2025 NeuroBench defaults.*
 
 ### A.6 SpiNNaker Run 6 — 400-Sample Validation Detail
@@ -115,7 +115,7 @@ Agreement rate: 64.5% (258/400 same prediction). Both correct: 36.2% (145/400). 
 
 *Source: `results/spinnaker_results/fc2_results_fold{1,2,3,4,5}.json` and `results/spinnaker_results/5fold_summary.json`. 400 samples per fold (2,000 total inferences). weight_scale=5.0, IF\_curr\_exp, tau\_m=20ms, v\_thresh=1.0, tau\_syn=5.0ms.*
 
-### A.7 Continual Learning — Full Accuracy Matrices (Fold 4, Pretrained, 20ep/task)
+### A.7 Continual Learning — Full Accuracy Matrices (5-Fold Validated, Pretrained, 20ep/task; Fold 4 Shown)
 
 **SNN (direct encoding):**
 
@@ -127,7 +127,7 @@ Agreement rate: 64.5% (258/400 same prediction). Both correct: 36.2% (145/400). 
 | Task 3 (Domestic) | — | — | — | 68.75% | 12.50% |
 | Task 4 (Urban) | — | — | — | — | 78.75% |
 
-Mean forgetting = 74.4%. Mean BWT = −0.744.
+Mean forgetting (fold 4) = 74.4%. Mean BWT = −0.744. 5-fold validated mean: **69.9% ± 4.3%**.
 
 **ANN:**
 
@@ -139,9 +139,9 @@ Mean forgetting = 74.4%. Mean BWT = −0.744.
 | Task 3 (Domestic) | — | — | — | 73.75% | 3.75% |
 | Task 4 (Urban) | — | — | — | — | 88.75% |
 
-Mean forgetting = 81.3%. Mean BWT = −0.813.
+Mean forgetting (fold 4) = 81.3%. Mean BWT = −0.813. 5-fold validated mean: **74.7% ± 2.4%**.
 
-*Source: `results/continual_learning/forgetting_fold4_pretrained_20ep.json`.*
+*Source: `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json` (5-fold validated). Accuracy matrices above show fold 4 as representative example.*
 
 ---
 

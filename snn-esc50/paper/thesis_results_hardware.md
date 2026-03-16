@@ -227,7 +227,7 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 
 ### 5.4.2 Results
 
-**Direct encoding SNN (fold 4, 400 samples):**
+**Direct encoding SNN (fold 4 representative; 5-fold means in parentheses):**
 
 | Metric | Value |
 |--------|-------|
@@ -245,7 +245,7 @@ Energy conversion at 45nm CMOS (Yik et al. 2025):
 | Dense SynOps | 166,298/sample |
 | Effective ACs | 0 |
 | Effective MACs | 100,561/sample |
-| **Energy (software sim)** | **100,561 × 4.6 pJ = 463 nJ = 0.463 μJ** |
+| **Energy (software sim)** | **100,561 × 4.6 pJ = 454 nJ (5-fold mean: 454±11 nJ) = 0.454 μJ** |
 
 ### 5.4.3 Interpretation
 

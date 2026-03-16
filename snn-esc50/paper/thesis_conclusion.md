@@ -23,7 +23,7 @@ FGSM and PGD attacks are applied across 7 perturbation magnitudes (ε ∈ {0, 0.
 A 3-layer SNN head trained on frozen CNN14 (AudioSet-pretrained) embeddings achieves 92.50% ± 1.30% on ESC-50 — surpassing human performance (81.3%) and reducing the SNN-ANN gap from 16.70 pp to 0.95 pp. This is the first published combination of PANNs with an SNN classifier, and establishes that the SNN-ANN accuracy gap is a feature-learning problem, not a spiking computation problem.
 
 **C6: NeuroBench-compliant energy analysis.**
-Using NeuroBench v2.2.0 (Yik et al. 2025), SynapticOperations metrics are reported for all SNN configurations and the ANN baseline: direct SNN uses 976 nJ/sample (1.08M ACs), ANN uses 463 nJ/sample (101K MACs). On neuromorphic hardware (AC-only), SNNs reduce per-operation cost by 5.1× (AC vs MAC). In software simulation, the SNN is 2.1× more expensive due to the T=25 timestep overhead. PANNs + SpiNNaker FC₂ is the Pareto-optimal deployment: 92.50% accuracy with ~86 nJ for the SpiNNaker classification step (FC₂ 256→50 layer only).
+Using NeuroBench v2.2.0 (Yik et al. 2025), SynapticOperations metrics are reported for all SNN configurations and the ANN baseline (5-fold validated): direct SNN uses 968 ± 37 nJ/sample (1.08M ACs), ANN uses 454 ± 11 nJ/sample (101K MACs). On neuromorphic hardware (AC-only), SNNs reduce per-operation cost by 5.1× (AC vs MAC). In software simulation, the SNN is 2.1× more expensive due to the T=25 timestep overhead. PANNs + SpiNNaker FC₂ is the Pareto-optimal deployment: 92.50% accuracy with ~86 nJ for the SpiNNaker classification step (FC₂ 256→50 layer only).
 
 ---
 

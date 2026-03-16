@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Environmental sound classification (ESC) is a challenging audio understanding task with applications in smart environments, surveillance, and robotics. Spiking neural networks (SNNs) offer a biologically-plausible, energy-efficient alternative to conventional deep learning, but their effectiveness on complex audio benchmarks remains unexplored. We present the first systematic evaluation of convolutional SNNs on the ESC-50 benchmark (50 classes, 5-fold cross-validation), comparing seven spike encoding methods, and deploying the trained network on SpiNNaker neuromorphic hardware. Our scratch-trained convolutional SNN achieves 47.15% ± 4.50% accuracy with direct encoding — a 16.7 percentage point gap versus the matched-architecture ANN baseline (63.85% ± 3.07%). This gap collapses to under 1 percentage point (92.50% ± 1.30% SNN vs 93.45% ± 1.54% ANN) when frozen AudioSet-pretrained features (PANNs) replace raw spectrograms, demonstrating that the bottleneck is feature learning, not spiking computation. Despite lower absolute accuracy, SNNs exhibit dramatically superior adversarial robustness: under FGSM attack at ε=0.1, SNN retains 26.00% accuracy versus 1.75% for ANN. NeuroBench energy analysis shows the SNN performs 1.08M accumulate-only operations per sample (976 nJ in simulation), versus 101K multiply-accumulate operations for ANN (463 nJ); the SNN overhead comes from T=25 timesteps. On dedicated neuromorphic hardware, ACs cost 5.1× less than MACs, making the SNN hardware-compatible for AC-only execution — though total energy remains higher due to T=25× more operations. We deploy the SNN on SpiNNaker using a validated hybrid approach; a 20-sample pilot achieves 40% (Run 5), and 400-sample validation (Run 6, complete) achieves **43.0% SpiNNaker accuracy vs snnTorch reference 51.25% — 8.25 pp hardware gap, agreement rate 64.5%**. These results constitute the first SNN evaluation on ESC-50, the first SNN-hardware deployment for environmental sound classification, and the first adversarial robustness analysis of SNNs on audio spectrograms.
+Environmental sound classification (ESC) is a challenging audio understanding task with applications in smart environments, surveillance, and robotics. Spiking neural networks (SNNs) offer a biologically-plausible, energy-efficient alternative to conventional deep learning, but their effectiveness on complex audio benchmarks remains unexplored. We present the first systematic evaluation of convolutional SNNs on the ESC-50 benchmark (50 classes, 5-fold cross-validation), comparing seven spike encoding methods, and deploying the trained network on SpiNNaker neuromorphic hardware. Our scratch-trained convolutional SNN achieves 47.15% ± 4.50% accuracy with direct encoding — a 16.7 percentage point gap versus the matched-architecture ANN baseline (63.85% ± 3.07%). This gap collapses to under 1 percentage point (92.50% ± 1.30% SNN vs 93.45% ± 1.54% ANN) when frozen AudioSet-pretrained features (PANNs) replace raw spectrograms, demonstrating that the bottleneck is feature learning, not spiking computation. Despite lower absolute accuracy, SNNs exhibit dramatically superior adversarial robustness: under FGSM attack at ε=0.1, SNN retains 26.00% accuracy versus 1.75% for ANN. NeuroBench energy analysis (5-fold validated) shows the SNN performs 1.08M accumulate-only operations per sample (968 ± 37 nJ in simulation), versus 101K multiply-accumulate operations for ANN (454 ± 11 nJ); the SNN overhead comes from T=25 timesteps. On dedicated neuromorphic hardware, ACs cost 5.1× less than MACs, making the SNN hardware-compatible for AC-only execution — though total energy remains higher due to T=25× more operations. We deploy the SNN on SpiNNaker using a validated hybrid approach; a 20-sample pilot achieves 40% (Run 5), and 400-sample validation (Run 6, complete) achieves **43.0% SpiNNaker accuracy vs snnTorch reference 51.25% — 8.25 pp hardware gap, agreement rate 64.5%**. These results constitute the first SNN evaluation on ESC-50, the first SNN-hardware deployment for environmental sound classification, and the first adversarial robustness analysis of SNNs on audio spectrograms.
 
 ---
 
@@ -172,10 +172,10 @@ We adopt a validated hybrid approach: conv layers + FC₁ + LIF₃ run in softwa
 
 | Model | Eff. Ops/sample | Energy/sample | Type |
 |-------|----------------|---------------|------|
-| SNN | 1.08M ACs | **976 nJ** (0.976 μJ) | Accum-only (AC×0.9 pJ) |
-| ANN | 101K MACs | **463 nJ** (0.463 μJ) | Multiply-accum (MAC×4.6 pJ) |
+| SNN | 1.08M ACs | **968 ± 37 nJ** (5-fold) | Accum-only (AC×0.9 pJ) |
+| ANN | 101K MACs | **454 ± 11 nJ** (5-fold) | Multiply-accum (MAC×4.6 pJ) |
 
-**Software simulation (GPU/CPU):** ANN is 2.1× cheaper — SNN = 1.08M × 0.9 pJ = 976 nJ; ANN = 101K × 4.6 pJ = 463 nJ. The T=25 timestep overhead dominates.
+**Software simulation (GPU/CPU):** ANN is 2.1× cheaper — SNN = 968 ± 37 nJ; ANN = 454 ± 11 nJ (5-fold validated). The T=25 timestep overhead dominates.
 
 **Neuromorphic hardware (AC-only):** Each SNN AC costs 0.9 pJ vs 4.6 pJ for ANN MAC — 5.1× per-operation advantage. The SNN's 1.08M ACs vs ANN's 101K MACs means the SNN still uses 2.1× more energy (same calculation), but the SNN is hardware-compatible (binary spikes) while the ANN is not. The SNN energy footprint is bounded by its AC count regardless of deployment platform.
 
@@ -197,7 +197,7 @@ SNN ActivationSparsity = 74.2% (NeuroBench). Dampfhoffer et al. [8] show SNNs be
 
 ## 8. Conclusions
 
-We present the first convolutional SNN evaluation on ESC-50, revealing a 16.7 pp accuracy gap versus matched ANNs (47.15% vs 63.85%) in scratch training, which collapses to <1 pp with AudioSet pre-training (92.50% vs 93.45%). SNNs demonstrate 14.9× greater adversarial robustness under FGSM attacks. We deploy the SNN on SpiNNaker using a validated FC2-only hybrid approach; 400-sample validation (Run 6) achieves **43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap, 64.5% agreement)** — the first neuromorphic deployment for environmental sound classification. NeuroBench analysis quantifies energy: 976 nJ/sample (SNN, 1.08M ACs) vs 463 nJ/sample (ANN, 101K MACs) in simulation; on dedicated AC-only hardware, ACs cost 5.1× less per operation than MACs. Our systematic encoding comparison across 7 methods establishes direct encoding as the clear winner for audio spectrograms. Future work: SpiNNaker2 for full-network deployment, STDP pre-training, FSD50K/UrbanSound8K generalisation.
+We present the first convolutional SNN evaluation on ESC-50, revealing a 16.7 pp accuracy gap versus matched ANNs (47.15% vs 63.85%) in scratch training, which collapses to <1 pp with AudioSet pre-training (92.50% vs 93.45%). SNNs demonstrate 14.9× greater adversarial robustness under FGSM attacks. We deploy the SNN on SpiNNaker using a validated FC2-only hybrid approach; 400-sample validation (Run 6) achieves **43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap, 64.5% agreement)** — the first neuromorphic deployment for environmental sound classification. NeuroBench analysis (5-fold validated) quantifies energy: 968 ± 37 nJ/sample (SNN, 1.08M ACs) vs 454 ± 11 nJ/sample (ANN, 101K MACs) in simulation; on dedicated AC-only hardware, ACs cost 5.1× less per operation than MACs. Our systematic encoding comparison across 7 methods establishes direct encoding as the clear winner for audio spectrograms. Future work: SpiNNaker2 for full-network deployment, STDP pre-training, FSD50K/UrbanSound8K generalisation.
 
 ---
 
@@ -219,8 +219,8 @@ We present the first convolutional SNN evaluation on ESC-50, revealing a 16.7 pp
 | FGSM ε=0.1: ANN | 1.75% | same |
 | PGD ε=0.05: SNN | 19.25% | same |
 | PGD ε=0.05: ANN | 0.00% | same |
-| SNN NeuroBench energy | 976 nJ/sample (0.976 μJ) | results/neurobench/analysis_fold4.json |
-| ANN NeuroBench energy | 463 nJ/sample (0.463 μJ) | same |
+| SNN NeuroBench energy | 968 ± 37 nJ/sample (5-fold) | results/neurobench/analysis_fold{1-5}.json |
+| ANN NeuroBench energy | 454 ± 11 nJ/sample (5-fold) | same |
 | SNN ActivationSparsity | 74.2% | same |
 | SpiNNaker pilot (Run 5) | 40% (8/20) | spinnaker_results/run5/ |
 | SpiNNaker Run 6 (n=400, **complete**) | **43.0% SpiNN**, 51.25% snnTorch, **8.25 pp gap**, agree 64.5% | spinnaker_results/fc2_all_iterations.jsonl |

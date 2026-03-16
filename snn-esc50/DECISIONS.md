@@ -1129,3 +1129,10 @@ Uses calibrated weight_scale=5.0 from Run 6, skips scale sweep, ~100min runtime.
 
 **Decision:** Submit at 6 pages rather than forcing 8.
 **Rationale:** ICONS allows "up to 8 pages". Paper has 9 tables, 3 figures, 23 references, equation. Very dense. Adding padding reduces quality. Prior ICONS papers range 4-8 pages. Content density is more important than page count.
+
+## Decision #58: SpiNNaker FC1+FC2 Connection Limit (16 March 2026)
+
+**Observation:** FC1+FC2 with excitatory-only weights (~280K connections) causes intermittent SpinnmanIOException during data loading. 4/8 attempts succeeded, 3 failed with UDP buffer overflow.
+**Root Cause:** SpiNNaker's UDP-based data specification loading can't reliably handle >200K connections in a single setup. The 2304→256→50 network spreads across 47 chips.
+**Impact:** FC1+FC2 deployment is possible but unreliable. 4 samples completed successfully (results pending stdout flush). Each sample takes ~5 minutes including retries.
+**Next Steps:** (1) Try --prune-threshold 0.05 to reduce connections to ~100K. (2) Try loading FC1 and FC2 connections in separate phases. (3) Accept FC2-only as the primary result and document FC1+FC2 as "proof of concept with limitations."

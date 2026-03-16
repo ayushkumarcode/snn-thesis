@@ -1506,3 +1506,17 @@ But excitatory-only weight strategy produces wrong hidden spike patterns. Need b
 **Next attempt:** Step 4 with top-k=100 (keep only 100 strongest connections per hidden neuron).
 This limits total connections to 256×100=25,600 — well within SpiNNaker limits and should prevent
 hidden saturation while preserving class-discriminative information.
+
+**Top-k=100 (weight_scale=1.0, 20 samples):**
+- SpiNNaker accuracy: 0/20 = 0.0%
+- Hidden neurons fired: 0-11/256 per sample (TOO FEW — expected ~55/256)
+- ROOT CAUSE: top-k=100 keeps only 100 of 2304 connections per hidden neuron.
+  Each neuron receives input from only 4.3% of its original connections.
+  Most neurons get insufficient excitation to reach threshold (v_thresh=1.0).
+- Next: try top-k=500 with weight_scale=5.0
+
+**Key insight from exc-only vs top-k sweep:**
+- Exc-only (all ~145K exc weights): 229/256 fired → SATURATED
+- Top-k=100 (100 strongest per neuron): 0-11/256 fired → SPARSE
+- Need: ~55/256 (21.7%) firing to match snnTorch pattern
+- Solution path: top-k=300-500 or full weights with proper balance

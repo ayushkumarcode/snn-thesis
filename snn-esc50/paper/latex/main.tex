@@ -76,7 +76,7 @@ Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 
 The proliferation of always-on audio sensing in edge devices demands both high accuracy and energy efficiency. Convolutional neural networks achieve near-human accuracy on environmental sound benchmarks~\cite{piczak2015}, but their multiply-accumulate (MAC) operations prohibit deployment on battery-constrained devices. Spiking neural networks (SNNs), which communicate via binary spike events, offer an alternative: on neuromorphic hardware such as SpiNNaker~\cite{furber2014} and Loihi~\cite{davies2018}, SNNs execute as accumulate-only operations (ACs) rather than MACs, with per-operation energy 5.1$\times$ lower~\cite{horowitz2014}.
 
-Despite extensive SNN research on image classification~\cite{eshraghian2023}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}. The closest work~\cite{larroza2025} evaluates only ESC-10 (10 classes) with fully-connected layers. Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only pure tones, not complex soundscapes.
+Despite extensive SNN research on image classification~\cite{eshraghian2023} and growing interest in neuromorphic computing~\cite{schuman2022}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}. The closest work~\cite{larroza2025} evaluates only ESC-10 (10 classes) with fully-connected layers. Yarga et al.~\cite{yarga2022} compare four spike encodings for speech digits at ICONS~2022; we extend to seven encodings on the harder 50-class ESC-50 task. Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only pure tones, not complex soundscapes.
 
 This paper makes the following contributions:
 \begin{enumerate}
@@ -313,7 +313,7 @@ In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref
 
 \textbf{Encoding specificity as a design constraint.} The transfer ratio of 0.255 means SNNs retain only 25.5\% accuracy with mismatched encodings. This high specificity---the SNN learns encoding-dependent representations---has practical implications for neuromorphic systems where the sensor encoding may be fixed by hardware.
 
-\textbf{SpiNNaker: proof of concept with honest limitations.} Our FC2-only hybrid demonstrates feasibility but is not full neuromorphic inference. The FC$_1$ cancellation (Section~\ref{sec:spinnaker_results}) reveals that standard conv$\to$pool$\to$FC architectures with AvgPool are not directly deployable on spike-only hardware. Replacing AvgPool with MaxPool (which preserves binary outputs) could enable full deployment on SpiNNaker~2~\cite{hoppner2024}.
+\textbf{SpiNNaker: proof of concept with honest limitations.} Our FC2-only hybrid demonstrates feasibility but is not full neuromorphic inference, following the hybrid paradigm explored by Seekings et al.~\cite{seekings2024}. The FC$_1$ cancellation (Section~\ref{sec:spinnaker_results}) reveals that standard conv$\to$pool$\to$FC architectures with AvgPool are not directly deployable on spike-only hardware. Replacing AvgPool with MaxPool (which preserves binary outputs) could enable full deployment on SpiNNaker~2~\cite{hoppner2024}, as demonstrated by Arfa et al.~\cite{arfa2025} for gesture recognition.
 
 \textbf{Adversarial robustness.} Binary thresholding provides natural gradient masking, consistent with Sharmin et al.~\cite{sharmin2020} on images. We acknowledge that standard PGD may not be optimal for evaluating SNN robustness~\cite{wang2025}; SA-PGD evaluation is left for future work. Our FGSM results (single-step, no SNN-specific adaptation) provide a reliable lower bound.
 
@@ -333,7 +333,7 @@ This work was conducted as part of an undergraduate thesis at the University of 
 
 %% ============================================================
 \bibliographystyle{ACM-Reference-Format}
-\begin{thebibliography}{19}
+\begin{thebibliography}{24}
 
 \bibitem{piczak2015}
 K.~J. Piczak.
@@ -429,6 +429,26 @@ S.~H\"{o}ppner, Y.~Yan, C.~Garbers, et~al.
 M.~Davies, N.~Srinivasa, T.-H. Lin, et~al.
 \newblock Loihi: A Neuromorphic Manycore Processor with On-Chip Learning.
 \newblock \textit{IEEE Micro}, 38(1):82--99, 2018.
+
+\bibitem{schuman2022}
+C.~D. Schuman, S.~R. Kulkarni, M.~Parsa, J.~P. Mitchell, and B.~Kay.
+\newblock Opportunities for Neuromorphic Computing Algorithms and Applications.
+\newblock \textit{Nature Computational Science}, 2:10--19, 2022.
+
+\bibitem{yarga2022}
+S.~Y.~A. Yarga, J.~Rouat, and S.~Wood.
+\newblock Efficient Spike Encoding Algorithms for Neuromorphic Speech Recognition.
+\newblock In \textit{Proc.\ Int.\ Conf.\ Neuromorphic Systems (ICONS'22)}, pp.~1--8. ACM, 2022.
+
+\bibitem{seekings2024}
+A.~Seekings, J.~Parham, Y.~Sun, and G.~Sheridan.
+\newblock Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware.
+\newblock In \textit{Proc.\ Int.\ Conf.\ Neuromorphic Systems (ICONS'24)}. IEEE, 2024.
+
+\bibitem{arfa2025}
+S.~Arfa, G.~Hempel, A.~Dixith, L.~Leal, and C.~Mayr.
+\newblock Efficient Deployment of Spiking Neural Networks on SpiNNaker2 for DVS Gesture Recognition Using NIR.
+\newblock \textit{arXiv:2504.06748}, 2025.
 
 \end{thebibliography}
 

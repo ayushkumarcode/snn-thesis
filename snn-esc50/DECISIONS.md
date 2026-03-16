@@ -1150,3 +1150,13 @@ Uses calibrated weight_scale=5.0 from Run 6, skips scale sweep, ~100min runtime.
 **Conclusion:** The FC1 excitatory-inhibitory cancellation is a fundamental architectural issue, not a configuration problem. The FC2-only hybrid (33.1%±6.9%) remains the best validated SpiNNaker result. Full FC1+FC2 deployment requires architectural redesign (e.g., training with positive-only FC1 weights, or using conductance-based neurons with different E/I balance).
 
 **Paper impact:** The paper already correctly documents this as a co-design constraint. No paper changes needed — the FC2-only hybrid is honestly presented as a proof of concept.
+
+## Decision #60: SpiNNaker FC1+FC2 BREAKTHROUGH — Router Congestion Fix (16 March 2026)
+
+**Root cause CONFIRMED:** SpiNNaker router drops packets when too many SpikeSourceArray neurons on the same core fire simultaneously (~1500 spikes/timestep from 128 neurons/core). This caused sample-dependent failures: samples with more early spikes (sample 0) partially worked, samples with different timing (sample 3) got zero hidden activity.
+
+**Fix:** `set_number_of_neurons_per_core(SpikeSourceArray, 32)` — spread 2304 inputs across 72 cores (was 18 cores with 128/core). Also `set_number_of_neurons_per_core(IF_curr_exp, 16)`.
+
+**Result:** Sample 3 went from 0/256 → **61/256 hidden neurons fired** (matching Python simulation exactly). Sample 0: 61/256 (previously 41/256 — also improved!). Both samples now have highly active output layers (13-19/50 neurons).
+
+**Configuration:** Full FC1 weights (exc+inh), prune_threshold=0.05, scale=10.0, SpikeSourceArray 32/core, IF_curr_exp 16/core.

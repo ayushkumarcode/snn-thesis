@@ -1,0 +1,137 @@
+{
+  "accuracy": 0.0,
+  "snntorch_accuracy": 0.2,
+  "scale": 10.0,
+  "prune_threshold": 0.05,
+  "neurons_per_core_ssa": 32,
+  "neurons_per_core_if": 16,
+  "results": [
+    {
+      "sample": 0,
+      "true": 49,
+      "pred": 48,
+      "snn_pred": 18,
+      "hidden_fired": 58,
+      "output_fired": 13,
+      "correct": false
+    },
+    {
+      "sample": 1,
+      "true": 49,
+      "pred": 35,
+      "snn_pred": 18,
+      "hidden_fired": 57,
+      "output_fired": 11,
+      "correct": false
+    },
+    {
+      "sample": 2,
+      "true": 49,
+      "pred": -1,
+      "error": "IO Error: Error sending: [Errno 49] Can't assign requested address"
+    },
+    {
+      "sample": 3,
+      "true": 42,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 4,
+      "true": 33,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 5,
+      "true": 33,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 6,
+      "true": 33,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 7,
+      "true": 33,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 8,
+      "true": 42,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 9,
+      "true": 42,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 10,
+      "true": 25,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 11,
+      "true": 25,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 12,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 13,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 14,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 15,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 16,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 17,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 18,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    },
+    {
+      "sample": 19,
+      "true": 48,
+      "pred": -1,
+      "error": "[Errno 8] nodename nor servname provided, or not known"
+    }
+  ],
+  "timestamp": "2026-03-16 13:56:15"
+}

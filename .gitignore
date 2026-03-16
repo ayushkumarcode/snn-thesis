@@ -38,5 +38,8 @@ snn-esc50/data/
 *.fdb_latexmk
 *.fls
 
+# SpiNNaker auto-generated reports
+snn-esc50/reports/
+
 # Misc
 Sample Papers/

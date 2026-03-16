@@ -210,6 +210,15 @@ def run_network(
     try:
         sim.setup(timestep=DT)
         sim_started = True
+
+        # Core splitting to prevent DMA overload on large networks
+        if n_input > 256:
+            sim.set_number_of_neurons_per_core(sim.SpikeSourceArray, 128)
+        for cfg in layer_configs:
+            if cfg["n"] > 50:
+                sim.set_number_of_neurons_per_core(sim.IF_curr_exp, 32)
+                break
+
         try:
             # Input population
             input_pop = sim.Population(
@@ -234,6 +243,9 @@ def run_network(
                     sim.IF_curr_exp(**params),
                     label=f"layer_{i}"
                 )
+                # CRITICAL: sPyNNaker defaults to v=-65.0 even when v_rest=0.0
+                # Without this, neurons need 66mV to reach threshold of 1.0
+                pop.initialize(v=params.get("v_rest", LIF_PARAMS["v_rest"]))
                 pop.record(["spikes", "v"])
                 populations.append(pop)
 

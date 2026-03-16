@@ -454,6 +454,11 @@ def run_spinnaker_full(features, labels, weights, weight_scale=0.005,
         try:
             sim.setup(timestep=1.0)
 
+            # CRITICAL: Core splitting to prevent DMA overload
+            # 2304 SpikeSourceArray neurons on 1 core overwhelms the system
+            sim.set_number_of_neurons_per_core(sim.SpikeSourceArray, 128)
+            sim.set_number_of_neurons_per_core(sim.IF_cond_exp, 32)
+
             try:
                 # Input population (2304 neurons = flattened MaxPool features)
                 input_pop = sim.Population(

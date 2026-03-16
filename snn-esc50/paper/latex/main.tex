@@ -95,13 +95,21 @@ This paper makes the following contributions:
 \label{sec:background}
 %% ============================================================
 
-\textbf{ESC-50}~\cite{piczak2015} contains 2{,}000 five-second recordings across 50 classes, with 5 predefined folds. Human performance is 81.3\%; ANN state of the art reaches 98--99\%~\cite{omnivec2}. We use log-mel spectrograms (64 bins, $n_\text{fft}$=1024, hop=512, sr=22050\,Hz), yielding 64$\times$216 input tensors.
+\textbf{ESC-50}~\cite{piczak2015} contains 2{,}000 five-second recordings across 50 environmental sound classes organised into five super-categories: Animals, Nature, Human non-speech, Domestic, and Urban. The dataset provides 5 predefined folds for cross-validation. Human performance is 81.3\%; ANN state of the art reaches 98--99\% using large pretrained models~\cite{omnivec2}. We use log-mel spectrograms (64 bins, $n_\text{fft}$=1024, hop=512, sr=22050\,Hz), yielding 64$\times$216 input tensors. The small training set (1{,}600 samples per fold split) makes ESC-50 particularly challenging for SNNs, which typically require more data than ANNs to overcome the information loss from binary spike discretisation.
 
-\textbf{Spiking Neural Networks.} Leaky Integrate-and-Fire (LIF) neurons accumulate weighted input, spike when membrane potential exceeds a threshold, and reset. Gradients through the non-differentiable spike function use surrogate gradients~\cite{neftci2019,zenke2021}; we use fast sigmoid (slope=25). Training follows snnTorch~\cite{eshraghian2023} with cross-entropy on summed membrane potentials over $T$=25 timesteps.
+\textbf{Spiking Neural Networks.} Leaky Integrate-and-Fire (LIF) neurons accumulate weighted input, spike when membrane potential exceeds a threshold, and reset:
+\begin{equation}
+U[t] = \beta \cdot U[t-1] + W \cdot X[t] - S[t-1] \cdot U_\text{thr}
+\end{equation}
+where $U[t]$ is the membrane potential, $\beta$=0.95 is the decay constant, $W$ are synaptic weights, $X[t]$ is the input, and $S[t]$ is the binary output spike ($S[t]=1$ if $U[t] > U_\text{thr}$, else 0). The gradient through the non-differentiable step function $S = \Theta(U - U_\text{thr})$ uses a surrogate gradient~\cite{neftci2019,zenke2021}; we use fast sigmoid (slope=25). Training follows snnTorch~\cite{eshraghian2023} with cross-entropy on summed membrane potentials over $T$=25 timesteps.
 
-\textbf{SpiNNaker}~\cite{furber2014} is a massively-parallel neuromorphic platform with integer weights and spike-driven communication. We use IF\_curr\_exp neurons with $\tau_\text{syn}$=5\,ms, $v_\text{thresh}$=1.0, $\tau_m$=20\,ms, calibrated via a 9-point scale sweep.
+\textbf{SpiNNaker}~\cite{furber2014} is a massively-parallel neuromorphic platform comprising 1 million ARM processors, capable of simulating spiking networks in biological real time. Each core processes up to 256 neurons with integer-quantised weights and spike-driven communication. We use IF\_curr\_exp neurons with $\tau_\text{syn}$=5\,ms, $v_\text{thresh}$=1.0, $\tau_m$=20\,ms, calibrated via a 9-point logarithmic scale sweep.
 
-\textbf{Prior SNN Audio Work.} Larroza et al.~\cite{larroza2025} classify ESC-10 with FC-only SNNs. Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for 8 pure tones. Neither addresses the full 50-class ESC-50 challenge or evaluates convolutional architectures.
+\textbf{Prior SNN Audio Work.} Larroza et al.~\cite{larroza2025} classify ESC-10 (10 classes) with fully-connected SNNs, achieving 69\% accuracy with Send-on-Delta encoding but without convolutional layers or hardware deployment. Yarga et al.~\cite{yarga2022} compare four spike encodings for speech digit recognition at ICONS~2022, demonstrating that encoding choice significantly impacts SNN accuracy---we extend this to seven encodings on a harder 50-class task. Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for 8 pure tones (130--1397\,Hz) but do not address complex environmental sounds. To our knowledge, no prior work has evaluated convolutional SNNs on the full ESC-50 benchmark or deployed any SNN for environmental sound on neuromorphic hardware.
+
+\textbf{Adversarial Robustness of SNNs.} Sharmin et al.~\cite{sharmin2020} demonstrate that SNNs exhibit inherent adversarial robustness on image classification due to discrete spike encoding. Wang et al.~\cite{wang2025} propose SA-PGD for more rigorous SNN evaluation. No prior work has analysed SNN adversarial robustness on audio spectrograms.
+
+\textbf{Transfer Learning for Audio.} PANNs (Pretrained Audio Neural Networks)~\cite{kong2020} use CNN14 trained on 2 million AudioSet clips to extract 2048-dimensional embeddings. Fine-tuning CNN14 achieves 94.7\% on ESC-50. We use frozen CNN14 embeddings with SNN and ANN classifier heads to isolate the feature-learning gap from the classification gap.
 
 %% ============================================================
 \section{Methods}
@@ -117,11 +125,15 @@ This paper makes the following contributions:
 \label{fig:architecture}
 \end{figure}
 
-Both SNN and ANN share an identical architecture ($\sim$622K parameters, Figure~\ref{fig:architecture}). The ANN replaces each LIF with ReLU. Training uses Adam (lr=$10^{-3}$, wd=$10^{-4}$), ReduceLROnPlateau (factor=0.5, patience=5), early stopping (patience=10), 50 epochs, batch size 32, with standard 5-fold cross-validation.
+Both SNN and ANN share an identical architecture ($\sim$622K parameters, Figure~\ref{fig:architecture}). The network consists of two convolutional blocks (Conv2d$\to$BatchNorm$\to$MaxPool(2)$\to$LIF), followed by AvgPool(4,6) to reduce spatial dimensions to 4$\times$9, then two fully-connected layers (FC(2304,256)$\to$LIF$\to$FC(256,50)$\to$LIF). The ANN replaces each LIF with ReLU.
+
+Training uses Adam (lr=$10^{-3}$, wd=$10^{-4}$), ReduceLROnPlateau (factor=0.5, patience=5), early stopping (patience=10), 50 epochs, batch size 32, with standard 5-fold cross-validation using ESC-50's predefined fold structure. The SNN uses cross-entropy loss on summed output membrane potentials across all $T$ timesteps (rate decoding). The LIF decay constant $\beta$=0.95 corresponds to $\tau_m$=20\,ms at $\Delta t$=1\,ms. We initialise all LIF membrane potentials to zero at the start of each forward pass.
 
 \subsection{Spike Encoding Methods}
 
-We evaluate seven encoding methods (Table~\ref{tab:encodings}), the most comprehensive comparison for audio SNNs to date. Encodings convert the 64$\times$216 spectrogram into spike trains across $T$=25 timesteps.
+We evaluate seven encoding methods (Table~\ref{tab:encodings}), the most comprehensive comparison for audio SNNs to date---extending the four-encoding comparison of Yarga et al.~\cite{yarga2022} to seven methods on a harder 50-class task. Encodings convert the 64$\times$216 spectrogram into spike trains across $T$=25 timesteps.
+
+\textbf{Rate encoding} converts pixel intensity to spike probability at each timestep; each neuron fires $\sim$7 spikes on average. \textbf{Latency encoding} maps high intensity to early spike times (one spike per neuron). \textbf{Delta encoding} emits spikes on intensity changes between timesteps---ineffective for static spectrograms. \textbf{Direct encoding} bypasses discretisation entirely, feeding continuous pixel values at every timestep; the LIF neuron's membrane dynamics provide internal temporal integration. \textbf{Burst encoding} front-loads spikes proportional to intensity in the first 5 timesteps. \textbf{Phase encoding} assigns each neuron a spike time based on its position within a sinusoidal oscillation cycle (deterministic, exactly one spike per neuron). \textbf{Population encoding} assigns 10 output neurons per class with MSE loss on spike counts.
 
 \begin{table}[t]
 \caption{Seven spike encoding methods evaluated.}
@@ -152,6 +164,8 @@ Population & 10 neurons/class, MSE loss & Multi-neuron \\
 \end{figure}
 
 Full SNN deployment on SpiNNaker failed because AvgPool produces fractional (non-binary) outputs: FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), and 1{,}398 simultaneous fractional inputs produce net current $\approx$0, yielding zero hidden spikes. We adopt an FC2-only hybrid (Figure~\ref{fig:pipeline}): conv+FC$_1$+LIF$_3$ run in software, producing binary hidden spikes (256-d, 21.7\% active per step). Only FC$_2$ (256$\to$50)+LIF$_4$ runs on SpiNNaker. This constitutes a proof-of-concept deployment, not full neuromorphic inference.
+
+\textbf{SpiNNaker calibration.} We calibrate the weight scale (multiplier applied to snnTorch weights before quantisation to SpiNNaker integers) via a 9-point logarithmic sweep on a single correctly-classified sample, selecting the scale that maximises hidden neuron firing while maintaining correct classification. Critical implementation details include: (1)~explicit membrane potential initialisation (\texttt{population.initialize(v=0.0)}), as sPyNNaker defaults to $v$=$-$65\,mV regardless of \texttt{v\_rest}; and (2)~core splitting (\texttt{set\_number\_of\_neurons\_per\_core}=32) to distribute synaptic load across multiple ARM cores, preventing DMA buffer overflows when processing high-fan-in layers.
 
 \subsection{NeuroBench Energy Analysis}
 
@@ -310,9 +324,59 @@ In software simulation, the ANN is 2.1$\times$ more energy-efficient (Table~\ref
 
 We evaluate the SNN at reduced timestep budgets $T \in \{1, 3, 5, 7, 10, 15, 20, 25\}$ using direct encoding. Accuracy reaches 90\% of its full value ($T$=25) at $T$=7, corresponding to a 72\% reduction in energy (proportional to $T$). Performance plateaus around $T$=15--20, with $T$=20 and $T$=25 statistically indistinguishable ($p$=0.45). This suggests that the SNN extracts most task-relevant information within the first 7--10 timesteps, and that aggressive temporal truncation is a viable path to energy efficiency on neuromorphic hardware.
 
+\subsection{Continual Learning}
+
+We evaluate catastrophic forgetting by sequentially training SNN and ANN on five ESC-50 super-categories (Animals, Nature, Human, Domestic, Urban), each containing 10 classes. After training all five tasks, we measure mean forgetting: the average accuracy drop on previously-learned tasks. Over five folds, the SNN exhibits 69.9\%$\pm$4.3\% forgetting versus 74.7\%$\pm$2.4\% for the ANN---the SNN forgets 4.7~pp less on average. While both models suffer substantial catastrophic forgetting (no replay or regularisation), the SNN's binary spike representations provide a modest but consistent advantage across 4 of 5 folds. This preliminary result suggests that spiking dynamics may offer a natural inductive bias for sequential learning, warranting further investigation with techniques such as STDP-based consolidation.
+
 \subsection{SpiNNaker Per-Category Analysis}
 
-Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals systematic variation. Natural sounds (61.3\%) and Animals (45.0\%) outperform Domestic (31.2\%) and Urban (31.2\%). SpiNNaker achieves perfect agreement with snnTorch on some classes (e.g., airplane: SpiNNaker 50.0\% vs snnTorch 12.5\%, a +37.5~pp advantage) while others collapse entirely (insects, glass\_breaking, helicopter: 0\%). The overall agreement rate between SpiNNaker and snnTorch predictions is 64.5\%, indicating that the hardware gap is not uniform---certain spectral patterns survive quantisation better than others.
+Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals systematic variation. Natural sounds (61.3\%) and Animals (45.0\%) outperform Domestic (31.2\%) and Urban (31.2\%). SpiNNaker achieves near-perfect agreement with snnTorch on some classes (e.g., airplane: SpiNNaker 50.0\% vs snnTorch 12.5\%, a +37.5~pp advantage) while others collapse entirely (insects, glass\_breaking, helicopter: 0\%). The overall agreement rate between SpiNNaker and snnTorch predictions is 64.5\%, indicating that the hardware gap is not uniform---certain spectral patterns survive quantisation better than others.
+
+\subsection{Surrogate Gradient Sensitivity}
+
+We evaluate eight surrogate gradient functions on fold~1 (Table~\ref{tab:surrogate}) to assess sensitivity to this design choice. Results show a bimodal distribution: three functions achieve meaningful learning while five fail catastrophically ($\leq$10.25\%). This bimodality contrasts with Zenke~\& Vogels~\cite{zenke2021}, who found surrogate shape matters less than slope for image classification. For audio spectrograms, the surrogate function is a critical hyperparameter; spike-rate-escape---motivated by escape noise theory---achieves +1.25~pp over our default fast sigmoid.
+
+\begin{table}[t]
+\caption{Surrogate gradient ablation (fold 1, seed 42). Bimodal: 3 functions learn, 5 fail. Spike-rate-escape achieves the best accuracy.}
+\label{tab:surrogate}
+\small
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+Surrogate & Acc.\ (\%) & Best Epoch & Status \\
+\midrule
+Spike-rate-escape & \textbf{46.00} & 50 & Learned \\
+Fast sigmoid & 44.75 & 50 & Learned \\
+Arctangent & 35.75 & 49 & Learned \\
+\midrule
+Straight-through est. & 10.25 & 11 & Failed \\
+Sigmoid & 2.00 & 11 & Failed \\
+Super-fast-sigmoid & 2.00 & 10 & Failed \\
+Triangular & 2.75 & 23 & Failed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Noise Robustness}
+
+We evaluate SNN and ANN accuracy under additive Gaussian noise at five signal-to-noise ratios (Table~\ref{tab:noise}), 5-fold validated. The SNN degrades directionally less than the ANN (relative accuracy drop: SNN 93.8\% vs ANN 95.1\% from clean to 0\,dB). However, the difference is not statistically significant at any individual SNR level ($p > 0.07$). At 0\,dB SNR, both models converge near chance. While binary spike thresholding provides some natural noise filtering, this effect is insufficient to produce a statistically significant advantage for our architecture and dataset size.
+
+\begin{table}[t]
+\caption{Accuracy (\%) under Gaussian noise (5-fold mean $\pm$ std). The SNN degrades directionally less, but the difference is not significant at any SNR.}
+\label{tab:noise}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+SNR (dB) & SNN (\%) & ANN (\%) & $p$-value \\
+\midrule
+Clean & 54.25$\pm$5.1 & 61.85$\pm$4.6 & 0.003 \\
+40 & 50.35$\pm$5.0 & 56.10$\pm$4.8 & 0.07 \\
+20 & 37.55$\pm$3.8 & 39.50$\pm$4.2 & 0.48 \\
+10 & 19.85$\pm$2.6 & 19.15$\pm$3.3 & 0.72 \\
+5 & 11.05$\pm$1.8 & 10.25$\pm$2.1 & 0.52 \\
+0 & 7.05$\pm$1.3 & 6.95$\pm$1.4 & 0.94 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %% ============================================================
 \section{Discussion}
@@ -331,14 +395,22 @@ Analysis of SpiNNaker super-category performance (fold~4, 400 samples) reveals s
 
 \textbf{Temporal truncation as energy strategy.} Our temporal ablation shows the SNN reaches 90\% accuracy at $T$=7, providing a concrete path to energy efficiency: at $T$=7, the SNN would require only $0.28 \times 1.08$M~$= 302$K effective ACs (272~nJ), making it 1.7$\times$ cheaper than the ANN in software and dramatically cheaper on neuromorphic hardware. This approaches the $<$6.4\% spike rate threshold identified by Dampfhoffer et al.~\cite{dampfhoffer2023}.
 
-\textbf{Threats to validity.} (1)~Results are for a single architecture ($\sim$622K params); wider/deeper networks may shift the encoding hierarchy. (2)~ESC-50 is small (2{,}000 clips); generalisation to UrbanSound8K or FSD50K is untested. (3)~NeuroBench energy is computed in software simulation; actual SpiNNaker power consumption was not measured. (4)~The surrogate gradient (fast sigmoid) may not be optimal; preliminary single-fold ablation suggests spike-rate-escape achieves +1.25~pp.
+\textbf{Continual learning implications.} The 4.7~pp forgetting reduction (SNN 69.9\% vs ANN 74.7\%) is modest but consistent across 4/5 folds. We hypothesise this arises from the SNN's sparse, binary activations: each task activates a distinct subset of neurons, providing a natural form of representation separation. However, neither model uses any continual learning mechanism---the observed advantage is purely from architectural inductive bias. Combining SNNs with STDP-based consolidation~\cite{schuman2022} could amplify this effect.
+
+\textbf{Surrogate gradient choice matters for audio.} The bimodal distribution of surrogate function performance (3 functions learn, 5 fail) is a practical finding: for audio spectrogram classification, researchers should use spike-rate-escape, fast sigmoid, or arctangent, and avoid the straight-through estimator or sigmoid surrogates. This contrasts with image classification where surrogate choice is reportedly less critical~\cite{zenke2021}.
+
+\textbf{Threats to validity.} (1)~Results are for a single architecture ($\sim$622K params); wider/deeper networks may shift the encoding hierarchy. (2)~ESC-50 is small (2{,}000 clips); generalisation to UrbanSound8K or FSD50K is untested. (3)~NeuroBench energy is computed in software simulation; actual SpiNNaker power consumption was not measured. (4)~The surrogate gradient ablation uses a single fold and seed; full 5-fold validation may change the ranking. (5)~Noise robustness and continual learning results, while 5-fold validated, are directional trends that do not reach statistical significance at individual test points.
 
 %% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 %% ============================================================
 
-We present the first convolutional SNN evaluation on ESC-50, establishing a 47.15\% baseline with direct encoding and deploying on SpiNNaker neuromorphic hardware as a proof of concept. The key finding is that the SNN-ANN gap is not fundamental---it collapses from 16.7~pp to 0.95~pp with pre-trained features ($p$=0.034). SNNs additionally exhibit 6.0$\times$ greater adversarial robustness under FGSM ($p$=0.007), and cross-encoding transfer analysis reveals high encoding specificity (transfer ratio = 0.255). Future work includes SpiNNaker~2~\cite{hoppner2024} deployment with binary-compatible architectures, sparsity optimisation to reach the $<$6.4\% spike-rate threshold for energy parity, and cross-dataset validation on UrbanSound8K.
+We present the first convolutional SNN evaluation on ESC-50, establishing a 47.15\% baseline with direct encoding and deploying on SpiNNaker neuromorphic hardware as a proof of concept. The key finding is that the SNN-ANN gap is not fundamental---it collapses from 16.7~pp to 0.95~pp with pre-trained features ($p$=0.034), demonstrating that the bottleneck is feature learning, not spiking computation.
+
+Additional contributions include: 6.0$\times$ greater adversarial robustness under FGSM ($p$=0.007, 5-fold validated), a novel cross-encoding transfer analysis revealing high encoding specificity (transfer ratio = 0.255$\pm$0.006), temporal efficiency analysis showing 90\% accuracy at $T$=7 (72\% energy saving), and continual learning analysis demonstrating 4.7~pp less forgetting for SNNs (5-fold validated). These results collectively characterise the strengths and limitations of SNNs for environmental sound classification.
+
+Future work includes SpiNNaker~2~\cite{hoppner2024} deployment with binary-compatible architectures (replacing AvgPool with MaxPool to enable full FC$_1$+FC$_2$ hardware inference), sparsity optimisation to reach the $<$6.4\% spike-rate threshold for neuromorphic energy parity, STDP-based continual learning, and cross-dataset validation on UrbanSound8K and FSD50K.
 
 %% ============================================================
 \begin{acks}

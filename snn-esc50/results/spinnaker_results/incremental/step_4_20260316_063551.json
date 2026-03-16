@@ -1,0 +1,103 @@
+{
+  "step": 4,
+  "strategy": "top_k_500",
+  "weight_scale": 5.0,
+  "lif_params": {
+    "cm": 1.0,
+    "tau_m": 20.0,
+    "tau_refrac": 0.1,
+    "v_reset": 0.0,
+    "v_rest": 0.0,
+    "v_thresh": 1.0,
+    "tau_syn_E": 5.0,
+    "tau_syn_I": 5.0
+  },
+  "num_samples": 20,
+  "spinnaker_correct": 0,
+  "spinnaker_accuracy": 0.0,
+  "snntorch_correct": 0,
+  "snntorch_accuracy": 0.0,
+  "per_sample": [
+    {
+      "sample": 0,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 1,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 2,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 3,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 4,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 5,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 6,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 7,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 8,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 9,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 10,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 11,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 12,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 13,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 14,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 15,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 16,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 17,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 18,
+      "error": "NotImplementedError: times differ"
+    },
+    {
+      "sample": 19,
+      "error": "NotImplementedError: times differ"
+    }
+  ],
+  "top_k": 500
+}

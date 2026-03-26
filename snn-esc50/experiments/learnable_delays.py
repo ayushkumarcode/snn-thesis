@@ -306,3 +306,31 @@ class DelayedSpikingCNN(nn.Module):
             spk_out_rec.append(spk4)
             mem_out_rec.append(mem4)
 
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Training and Evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device, num_steps):
+    """Train for one epoch using per-timestep CE on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        spike_inputs = encode_direct(inputs, num_steps=num_steps)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spike_inputs)
+
+        # Per-timestep CE loss on membrane potentials
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], labels)

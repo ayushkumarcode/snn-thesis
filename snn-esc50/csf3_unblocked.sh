@@ -54,3 +54,15 @@ run_combo "rhythm_kd_T10" --rhythm --kd --temperature 10.0 --learn-beta --dropou
 run_combo "rhythm_kd_a03" --rhythm --kd --alpha 0.3 --learn-beta --dropout --sre
 run_combo "rhythm_kd_a07" --rhythm --kd --alpha 0.7 --learn-beta --dropout --sre
 run_combo "cochleagram_rhythm_kd" --cochleagram --rhythm --kd --learn-beta --dropout --sre
+run_combo "cochleagram_hybrid" --cochleagram --hybrid-init --learn-beta --learn-threshold --dropout --sre --epochs 30
+
+echo ""
+echo "============================================"
+echo "  UNBLOCKED BATCH COMPLETE: $(date)"
+echo "============================================"
+
+echo "=== RESULTS ==="
+for dir in results/experiments/combo_*/; do
+    s="$dir/summary.json"
+    [ -f "$s" ] && python -c "import json; d=json.load(open('$s')); print(f'  {d[\"experiment\"]:<45} {d[\"mean_accuracy\"]*100:.2f}% ± {d[\"std_accuracy\"]*100:.2f}%')"
+done | sort -t'±' -k1 -rn

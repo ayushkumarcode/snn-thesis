@@ -54,3 +54,31 @@ class SRLIF(nn.Module):
         v[t] = beta * v[t-1] * (1 - spk[t-1]) + I[t] + sigma * N(0,1)
 
     sigma is an nn.Parameter per neuron (per channel for conv, per unit for FC).
+    Initialized at init_sigma (default 0.02, our proven SR sweet spot).
+
+    During training: noise is sampled fresh each forward pass.
+    During eval: sigma is set to 0 (noise acts as regularizer during training).
+
+    Args:
+        neuron_shape: Shape of the neuron population.
+            For conv layers: (channels,) -- broadcasts spatially.
+            For FC layers: (hidden_size,).
+        beta: Initial membrane decay rate (learnable if learn_beta=True).
+        threshold: Spike threshold.
+        init_sigma: Initial noise amplitude per neuron.
+        spike_grad: Surrogate gradient function.
+        learn_beta: Whether beta is learnable.
+    """
+
+    def __init__(
+        self,
+        neuron_shape: tuple,
+        beta: float = BETA,
+        threshold: float = 1.0,
+        init_sigma: float = 0.02,
+        spike_grad=None,
+        learn_beta: bool = True,
+    ):
+        super().__init__()
+        self.threshold = threshold
+

@@ -558,3 +558,27 @@ Implement the full BAE pipeline from Pan et al. (2020):
 - Chang et al. "Spectrotemporal Modulation: Efficient Feature for Audio Classification" arXiv:2505.23509 (2025)
 - Auge et al. "Resonate-and-Fire Neurons as Frequency Selective Input Encoders" (2021)
 
+### SNN Robustness
+- Nature Communications (2025): "Neuromorphic computing paradigms enhance robustness through SNNs" -- SNN 2x robustness of ANN
+
+### Tools and Libraries
+- CARFAC: `github.com/google/carfac` (Python/NumPy, JAX, C++, Matlab)
+- cochlea: `github.com/mrkrd/cochlea3` (sound in, spikes out, Python 3)
+- Spikify: `github.com/neuromorphic-polito/spikify` (signal to spike conversion)
+- nnAudio2: `github.com/WangHelin1997/nnAudio2` (GPU gammatonegram, CQT)
+- Kymatio: `github.com/kymatio/kymatio` (wavelet scattering, PyTorch)
+- Speech2Spikes: `pip install speech2spikes` (audio to spike pipeline)
+- Brian Hears: auditory processing in Python (gammatone filterbanks + LIF)
+
+---
+
+## 14. Bottom Line
+
+**The mel spectrogram is holding the SNN back.** Multiple independent lines of evidence show that bio-inspired cochlear representations improve spike encoding quality, classification accuracy, and noise robustness for SNNs. The most promising experiment -- CARFAC cochleagram as a drop-in replacement for mel spectrogram -- requires minimal code changes and has strong theoretical and empirical support.
+
+Even if the accuracy improvement is modest (e.g., 47% -> 52%), the finding would be **scientifically significant** because:
+1. It would be the **first SNN classification result on full ESC-50 with bio-inspired audio frontend**
+2. It would demonstrate that **input representation is a key bottleneck** for SNN audio classification
+3. It would open a new research direction: **co-optimizing audio representation and SNN architecture**
+
+And if we get lucky? The cochleagram + temporal encoding might push the SNN closer to ANN accuracy, or even surpass it under noisy conditions -- which would be a blockbuster result for the neuromorphic computing community.

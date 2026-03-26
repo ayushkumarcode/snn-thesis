@@ -362,3 +362,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Key idea:** Learnable Gabor filter bank + PCEN + IHC-LIF two-compartment neuron model. Bio-inspired cochlear processing. Captures multi-scale temporal dynamics.
 - **Accuracy:** Outperforms SOTA auditory front-ends on keyword spotting and speaker ID in accuracy, noise robustness, and encoding efficiency.
 - **Applicability:** MEDIUM-HIGH. Could replace our mel-spectrogram front-end with a learned spiking front-end. More biologically plausible. May improve encoding quality.
+- **Implementation complexity:** HIGH. Complete front-end redesign. No public code found.
+
+---
+
+## 15. Neuromorphic Data Augmentation
+
+### 15a. EventMix
+
+- **Paper:** "EventMix: An Efficient Augmentation Strategy for Event-Based Data" (Information Sciences, 2023)
+- **Key idea:** CutMix extended to 3D (spatiotemporal) for event/spike data. Gaussian Mixture Model generates random 3D masks for arbitrary-shape mixing.
+- **Accuracy:** Improved classification on neuromorphic datasets for both ANNs and SNNs.
+- **Applicability:** MEDIUM. Could adapt for spike train augmentation.
+- **Implementation complexity:** MEDIUM.
+
+### 15b. NDA: Neuromorphic Data Augmentation
+
+- **Paper:** "Neuromorphic Data Augmentation for Training Spiking Neural Networks" (ECCV 2022, arXiv:2203.06145)
+- **Key idea:** Geometric augmentations designed for event-based data. Stabilizes SNN training, reduces generalization gap.
+- **Applicability:** LOW-MEDIUM. Our input is mel-spectrograms, not raw events.
+- **Implementation complexity:** MEDIUM.
+
+**NOTE:** Our standard SpecAugment augmentation FAILED (Decision #43: accuracy dropped from 47.15% to 40.75%). SNN-specific augmentation in spike domain might work better since it preserves temporal spike structure.
+
+---
+
+## 16. Regularization and Sparsity
+
+### 16a. Spike Budgeting / L1 Regularization

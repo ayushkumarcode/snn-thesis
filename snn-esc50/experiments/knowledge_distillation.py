@@ -306,3 +306,31 @@ def train_fold(fold: int, device, epochs: int, patience: int,
     # Data
     train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
 
+    # Evaluate teacher accuracy for reference
+    _, teacher_acc = eval_teacher(teacher, test_loader, device)
+    print(f"  Teacher test accuracy: {teacher_acc:.4f}")
+
+    # Optimizer
+    optimizer = torch.optim.Adam(
+        student.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {
+        "train_loss": [], "train_acc": [],
+        "test_loss": [], "test_acc": [],
+    }
+
+    out_dir = RESULTS_DIR / "experiments" / "knowledge_distillation"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    start_time = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr_loss, tr_acc = train_epoch(
+            student, teacher, train_loader, optimizer, device,

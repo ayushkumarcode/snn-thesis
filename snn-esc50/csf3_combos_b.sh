@@ -54,3 +54,6 @@ run_combo "cochleagram_hybrid" --cochleagram --hybrid-init --learn-beta --learn-
 echo ""; echo "BATCH B COMPLETE: $(date)"
 echo "=== RESULTS ==="
 for dir in results/experiments/combo_*/; do
+    s="$dir/summary.json"
+    [ -f "$s" ] && python -c "import json; d=json.load(open('$s')); print(f'  {d[\"experiment\"]: <45} {d[\"mean_accuracy\"]*100:.2f}% ± {d[\"std_accuracy\"]*100:.2f}%')"
+done | sort -t'±' -k1 -rn

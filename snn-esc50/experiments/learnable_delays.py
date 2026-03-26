@@ -586,3 +586,22 @@ def main():
     print(f"  Mean:  {mean_acc*100:>9.2f}% +/- {std_acc*100:.2f}%")
     print(f"  Baseline SNN (LIF): 47.15% +/- 4.50%")
     diff = mean_acc * 100 - 47.15
+    print(f"  Difference: {diff:+.2f} pp")
+
+    # Print learned delay distributions
+    print(f"\n--- Learned Delay Distributions (last fold) ---")
+    last_fold = folds[-1]
+    for layer_name, stats in all_results[f"fold_{last_fold}"]["delay_stats"].items():
+        print(f"  {layer_name}:")
+        print(f"    Mean={stats['delays_mean']:.2f}, Std={stats['delays_std']:.2f}, "
+              f"Min={stats['delays_min']:.2f}, Max={stats['delays_max']:.2f}")
+        print(f"    Histogram: {stats['delays_histogram']}")
+
+    # Print learned LIF parameters
+    print(f"\n--- Learned LIF Parameters (last fold) ---")
+    for name, stats in all_results[f"fold_{last_fold}"]["lif_stats"].items():
+        print(f"  {name}: beta={stats['beta']:.4f}, threshold={stats['threshold']:.4f}")
+
+
+if __name__ == "__main__":
+    main()

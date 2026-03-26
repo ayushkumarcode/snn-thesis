@@ -418,3 +418,31 @@ def train_fold(fold, args, device):
     torch.manual_seed(42 + fold)
 
     train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    model = DelayedSpikingCNN(
+        num_classes=NUM_CLASSES,
+        num_steps=NUM_STEPS,
+        max_delay=args.max_delay,
+    ).to(device)
+
+    # Count parameters
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    delay_params = sum(
+        m.delay_raw.numel() for m in model.modules() if isinstance(m, DelayedLinear)
+    )
+    print(f"Parameters: {total_params:,} total, {trainable_params:,} trainable")
+    print(f"Delay parameters: {delay_params:,} (FC1: 256 + FC2: 50 = 306)")
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, patience=3, factor=0.5
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    epoch_log = []
+

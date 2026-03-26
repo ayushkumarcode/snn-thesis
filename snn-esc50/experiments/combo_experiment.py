@@ -530,3 +530,31 @@ def eval_model(model, loader, device, encoder_fn):
 
     return total_loss / len(loader), correct / total
 
+
+# ============================================================
+# Main
+# ============================================================
+
+def get_experiment_name(args):
+    """Generate a descriptive name from active flags."""
+    parts = []
+    if args.rhythm: parts.append("rhythm")
+    if args.dendritic: parts.append("dendritic")
+    if args.delays: parts.append("delays")
+    if args.kd: parts.append("kd")
+    if args.hybrid_init: parts.append("hybrid")
+    if args.tet: parts.append("tet")
+    if args.cochleagram: parts.append("cochleagram")
+    if args.learn_beta: parts.append("lbeta")
+    if args.learn_threshold: parts.append("lthresh")
+    if args.dropout: parts.append("drop")
+    if args.sre: parts.append("sre")
+    if args.l1_reg > 0: parts.append(f"l1_{args.l1_reg}")
+    return "combo_" + "_".join(parts) if parts else "combo_baseline"
+
+
+def run_fold(fold, args, device):
+    exp_name = get_experiment_name(args)
+    print(f"\n{'='*60}")
+    print(f"  {exp_name} | Fold {fold}/5 | Device: {device}")
+    print(f"  Techniques: {[p for p in exp_name.split('_')[1:]]}")

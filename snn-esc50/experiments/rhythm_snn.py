@@ -54,3 +54,31 @@ class RhythmLIF(nn.Module):
     When v[t] >= threshold, a spike is emitted and v is reset (soft reset via
     multiplication by (1 - spk), same as snnTorch Leaky default).
 
+    Parameters:
+        neuron_shape: Shape of the neuron population (e.g., (32,) for conv channels,
+                      (256,) for FC hidden layer). Oscillation params have this shape.
+        beta: Initial membrane decay rate (learnable).
+        threshold: Spike threshold (fixed at 1.0).
+        num_steps: Total simulation timesteps T (for oscillation period).
+        spike_grad: Surrogate gradient function for backward pass.
+    """
+
+    def __init__(
+        self,
+        neuron_shape: tuple,
+        beta: float = BETA,
+        threshold: float = 1.0,
+        num_steps: int = NUM_STEPS,
+        spike_grad=None,
+    ):
+        super().__init__()
+        self.threshold = threshold
+        self.num_steps = num_steps
+
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+        self.spike_grad = spike_grad
+
+        # Learnable membrane decay
+        # Store as raw parameter, sigmoid it in forward for (0, 1) constraint
+        self.beta_raw = nn.Parameter(torch.full(neuron_shape, math.log(beta / (1 - beta))))

@@ -530,3 +530,31 @@ def main():
 
     all_results["summary"] = {
         "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "fold_accuracies": [round(a * 100, 2) for a in fold_accs],
+        "num_branches": args.branches,
+        "encoding": "direct",
+        "num_steps": NUM_STEPS,
+        "max_epochs": args.epochs,
+        "patience": PATIENCE,
+        "baseline_snn_accuracy": 0.4715,  # from memory for comparison
+    }
+
+    # Save
+    out_dir = RESULTS_DIR / "experiments" / "dendritic_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.fold:
+        out_file = out_dir / f"dendritic_fold{args.fold}_K{args.branches}.json"
+    else:
+        out_file = out_dir / f"dendritic_5fold_K{args.branches}.json"
+
+    with open(out_file, "w") as f:
+        json.dump(all_results, f, indent=2)
+    print(f"\nResults saved to {out_file}")
+
+    # Print summary table
+    print(f"\n{'='*60}")
+    print(f"DENDRITIC SNN RESULTS (K={args.branches} branches)")
+    print(f"{'='*60}")
+    print(f"{'Fold':<8} {'Accuracy':>10} {'Best Epoch':>12}")

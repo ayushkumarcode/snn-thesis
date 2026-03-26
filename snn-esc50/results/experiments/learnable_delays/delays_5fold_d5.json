@@ -362,3 +362,31 @@
         "beta": 0.8559070825576782,
         "threshold": 1.007347583770752
       },
+      "lif4": {
+        "beta": 1.0032116174697876,
+        "threshold": -0.050636012107133865
+      }
+    },
+    "epoch_log": [
+      {
+        "epoch": 1,
+        "train_loss": 105.5495,
+        "train_acc": 0.0406,
+        "test_loss": 95.018,
+        "test_acc": 0.07
+      },
+      {
+        "epoch": 2,
+        "train_loss": 92.8168,
+        "train_acc": 0.0625,
+        "test_loss": 89.9568,
+        "test_acc": 0.0675
+      },
+      {
+        "epoch": 3,
+        "train_loss": 87.75,
+        "train_acc": 0.0938,
+        "test_loss": 85.4297,
+        "test_acc": 0.14
+      },
+      {

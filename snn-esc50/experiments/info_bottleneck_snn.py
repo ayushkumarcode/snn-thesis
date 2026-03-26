@@ -306,3 +306,31 @@ def train_fold(fold, device, epochs, patience, beta_ib):
     model = InfoBottleneckSNN().to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
                                  weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": [],
+               "train_ce": [], "train_kl": [], "test_ce": [], "test_kl": [],
+               "train_mu_norm": [], "train_logvar": [],
+               "test_mu_norm": [], "test_logvar": []}
+
+    best_model_state = None
+    t0 = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr = train_epoch(model, train_loader, optimizer, device, beta_ib)
+        te = eval_model(model, test_loader, device, beta_ib)
+        scheduler.step(te["loss"])
+
+        history["train_loss"].append(tr["loss"])
+        history["train_acc"].append(tr["accuracy"])
+        history["train_ce"].append(tr["ce_loss"])
+        history["train_kl"].append(tr["kl_loss"])
+        history["train_mu_norm"].append(tr["avg_mu_norm"])
+        history["train_logvar"].append(tr["avg_logvar_mean"])
+        history["test_loss"].append(te["loss"])
+        history["test_acc"].append(te["accuracy"])

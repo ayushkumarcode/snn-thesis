@@ -474,3 +474,31 @@ def train_fold(fold, device, epochs, patience):
         "history": history,
     }
 
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Astrocyte-Augmented SNN -- homeostatic threshold modulation")
+    parser.add_argument("--fold", type=int, default=None,
+                        help="Fold (1-5). If omitted, runs all 5.")
+    parser.add_argument("--device", type=str, default=None,
+                        help="Device (cuda/mps/cpu). Auto-detect if omitted.")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS,
+                        help=f"Max epochs (default: {NUM_EPOCHS})")
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    out_dir = RESULTS_DIR / "experiments" / "astrocyte_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+
+    print(f"\n{'='*70}")

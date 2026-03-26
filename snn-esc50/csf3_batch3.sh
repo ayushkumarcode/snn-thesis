@@ -54,3 +54,16 @@ echo ">>>>>>>>>> astrocyte_snn DONE ($(date)) <<<<<<<<<<"
 echo ""
 echo "============================================"
 echo "  BATCH 3a COMPLETE: $(date)"
+echo "============================================"
+
+echo ""
+echo "=== RESULTS ==="
+for dir in results/experiments/ann_to_snn_conversion results/experiments/stochastic_resonance_training results/experiments/sr_rhythm results/experiments/predictive_coding_snn results/experiments/astrocyte_snn; do
+    s="$dir/summary.json"
+    if [ -f "$s" ]; then
+        python -c "import json; d=json.load(open('$s')); print(f'  {d.get(\"experiment\",\"?\"):<40} {d[\"mean_accuracy\"]*100:.2f}% ± {d[\"std_accuracy\"]*100:.2f}%')"
+    else
+        name=$(basename $dir)
+        echo "  $name: check individual fold results"
+    fi
+done

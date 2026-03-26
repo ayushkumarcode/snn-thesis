@@ -166,3 +166,31 @@ class EnhancedSpikingCNN(nn.Module):
 
 # ============================================================
 # Weight transfer: ANN -> SNN
+# ============================================================
+
+def transfer_ann_weights(ann_model: ConvANN, snn_model: EnhancedSpikingCNN) -> None:
+    """Transfer trained ANN weights to the enhanced SNN model (in-place).
+
+    Mapping:
+      ConvANN.features.0  (Conv2d)     -> EnhancedSpikingCNN.conv1
+      ConvANN.features.1  (BatchNorm)  -> EnhancedSpikingCNN.bn1
+      ConvANN.features.4  (Conv2d)     -> EnhancedSpikingCNN.conv2
+      ConvANN.features.5  (BatchNorm)  -> EnhancedSpikingCNN.bn2
+      ConvANN.classifier.0 (Linear)    -> EnhancedSpikingCNN.fc1
+      ConvANN.classifier.3 (Linear)    -> EnhancedSpikingCNN.fc2
+    """
+    mapping = {
+        "features.0": "conv1",
+        "features.1": "bn1",
+        "features.4": "conv2",
+        "features.5": "bn2",
+        "classifier.0": "fc1",
+        "classifier.3": "fc2",
+    }
+
+    ann_sd = ann_model.state_dict()
+    snn_sd = snn_model.state_dict()
+
+    transferred = 0
+    for ann_prefix, snn_prefix in mapping.items():
+        for ann_key, ann_val in ann_sd.items():

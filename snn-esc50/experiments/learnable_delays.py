@@ -194,3 +194,31 @@ class DelayedSpikingCNN(nn.Module):
 
     LIF neurons use learnable beta and threshold for maximum flexibility.
 
+    Args:
+        num_classes: Number of output classes.
+        num_steps: Number of simulation timesteps.
+        max_delay: Maximum synaptic delay in timesteps.
+        spike_grad: Surrogate gradient function.
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        num_steps: int = NUM_STEPS,
+        max_delay: int = 5,
+        spike_grad=None,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+        self.max_delay = max_delay
+
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # Conv block 1 (no delays — spatial, not temporal)
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(
+            beta=BETA, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,

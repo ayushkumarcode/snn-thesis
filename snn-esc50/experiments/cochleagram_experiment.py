@@ -222,3 +222,31 @@ class CochleagramDataset(Dataset):
 
         meta = pd.read_csv(ESC50_META_PATH)
         self.meta = meta[meta["fold"].isin(folds)].reset_index(drop=True)
+
+        self.data = []
+        self.labels = []
+
+        if precompute:
+            print(f"Computing cochleagrams for {len(self.meta)} clips from folds {folds}...")
+            for _, row in self.meta.iterrows():
+                filepath = ESC50_AUDIO_DIR / row["filename"]
+                coch = wav_to_cochleagram(str(filepath))
+                coch = normalise_spectrogram(coch)
+                self.data.append(coch)
+                self.labels.append(row["target"])
+
+            self.data = np.array(self.data, dtype=np.float32)
+            self.labels = np.array(self.labels, dtype=np.int64)
+
+    def __len__(self):
+        return len(self.meta)
+
+    def __getitem__(self, idx):
+        if self.precompute:
+            coch = self.data[idx]
+            label = self.labels[idx]
+        else:
+            row = self.meta.iloc[idx]
+            filepath = ESC50_AUDIO_DIR / row["filename"]
+            coch = wav_to_cochleagram(str(filepath))
+            coch = normalise_spectrogram(coch)

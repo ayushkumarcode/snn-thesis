@@ -1,0 +1,28 @@
+{
+  "fold": 5,
+  "seed": 42,
+  "best_accuracy": 0.5775,
+  "best_epoch": 31,
+  "total_epochs": 41,
+  "time_seconds": 250.5,
+  "total_params": 623546,
+  "oscillation_params": 1608,
+  "oscillation_summary": {
+    "lif1": {
+      "beta_mean": 0.9363479614257812,
+      "beta_std": 0.012103002518415451,
+      "amplitude_mean": -0.00817439891397953,
+      "amplitude_std": 0.1488969773054123,
+      "amplitude_abs_mean": 0.1093297004699707,
+      "frequency_mean": 2.18862247467041,
+      "frequency_std": 1.293898105621338,
+      "phase_mean": -0.04503180459141731,
+      "phase_std": 0.21495765447616577
+    },
+    "lif2": {
+      "beta_mean": 0.9405285120010376,
+      "beta_std": 0.006774059031158686,
+      "amplitude_mean": -0.037176553159952164,
+      "amplitude_std": 0.07011084258556366,
+      "amplitude_abs_mean": 0.06119019165635109,
+      "frequency_mean": 2.9054207801818848,

@@ -418,3 +418,31 @@ class CochleagramANN(nn.Module):
         )
 
     def forward(self, x):
+        features = self.features(x)
+        flat = features.view(features.size(0), -1)
+        return self.classifier(flat)
+
+
+# ============================================================
+# Training / Evaluation
+# ============================================================
+
+def train_snn_epoch(model, loader, optimizer, device):
+    """Train SNN for one epoch using CE on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+
+        # Direct encoding: repeat input across timesteps
+        spk_input = encode_direct(data).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spk_input)
+
+        # Sum CE loss across timesteps (same as enhanced_snn.py)
+        loss = torch.zeros(1, device=device)

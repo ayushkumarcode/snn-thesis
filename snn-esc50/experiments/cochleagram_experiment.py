@@ -558,3 +558,31 @@ def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE)
 
     # Load cochleagram data
     train_loader, test_loader = get_cochleagram_dataloaders(fold, BATCH_SIZE)
+
+    # Verify shapes
+    sample_data, sample_label = next(iter(train_loader))
+    print(f"  Input shape: {sample_data.shape}")
+    assert sample_data.shape[1:] == (1, 64, 216), (
+        f"Expected (1, 64, 216) but got {sample_data.shape[1:]}. "
+        f"Cochleagram time frames mismatch -- check n_fft and hop_length."
+    )
+
+    if model_type == "snn":
+        model = CochleagramSNN().to(device)
+        train_fn = train_snn_epoch
+        eval_fn = eval_snn
+    else:
+        model = CochleagramANN().to(device)
+        train_fn = train_ann_epoch
+        eval_fn = eval_ann
+
+    n_params = sum(p.numel() for p in model.parameters())
+    print(f"  Model parameters: {n_params:,}")
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5
+    )
+

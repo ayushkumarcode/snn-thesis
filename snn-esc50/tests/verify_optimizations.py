@@ -390,3 +390,31 @@ def test_set_to_none():
         opt1.step()
 
         opt2.zero_grad(set_to_none=True)
+        loss2 = F.cross_entropy(model2(data), target)
+        loss2.backward()
+        opt2.step()
+
+    # Compare final weights
+    w1 = model1.weight.data
+    w2 = model2.weight.data
+    max_diff = (w1 - w2).abs().max().item()
+    report("set_to_none=True produces identical weights (Adam, 10 steps)",
+           max_diff < 1e-6,
+           f"max weight diff={max_diff:.2e}")
+
+
+# ============================================================
+# TEST 6: BF16 autocast analysis (informational)
+# ============================================================
+def test_bf16_analysis():
+    """
+    BF16 has 8 exponent bits (same as FP32) but only 7 mantissa bits (vs 23).
+    This means ~3 decimal digits of precision vs ~7 for FP32.
+
+    Risks:
+    - LIF membrane potentials: typically O(1), safe
+    - Spike thresholds: typically 1.0, safe
+    - Cross-entropy loss: gradient magnitudes can vary, but autocast handles this
+    - BN running stats: accumulated in FP32 by default even under autocast
+
+    Key safety: autocast only applies to matmuls and convolutions in BF16.

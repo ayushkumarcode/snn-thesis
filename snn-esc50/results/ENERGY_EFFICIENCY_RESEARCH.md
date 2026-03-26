@@ -390,3 +390,31 @@ Not directly applicable to your CNN architecture, but worth noting for future wo
 
 | Technique | Energy Multiplier | Accuracy Impact | Implementation |
 |-----------|------------------|-----------------|----------------|
+| Reduce T from 25 to 7 | 3.6x | -10% relative | Trivial (retrain at T=7) |
+| L1 spike reg lambda=1e-3 | 3-4x | -2% relative | One line of code |
+| **Combined** | **~12x** | **~12%** | **Low effort** |
+
+Result: SNN at ~80 nJ/sample vs ANN at 454 nJ = **5.7x advantage**
+
+### Strategy B: Moderate (30x energy reduction)
+
+| Technique | Energy Multiplier | Accuracy Impact | Implementation |
+|-----------|------------------|-----------------|----------------|
+| Train at T=5 | 5x | -5% (trained) | Retrain |
+| L1 spike reg lambda=1e-3 | 3-4x | -2% | One line |
+| 90% weight pruning | 3-5x | -3% | IMP (moderate effort) |
+| **Combined** | **~40-50x** | **~10%** | **Moderate effort** |
+
+Result: SNN at ~20-30 nJ/sample vs ANN at 454 nJ = **15-23x advantage**
+
+### Strategy C: Aggressive (100x energy reduction)
+
+| Technique | Energy Multiplier | Accuracy Impact | Implementation |
+|-----------|------------------|-----------------|----------------|
+| Train at T=3 | 8.3x | -15% (trained) | Retrain |
+| L1 spike reg lambda=1e-2 | 10x | -10% | One line |
+| 97% weight pruning (LTH) | 10x | -5% | Extensive retraining |
+| Early exit (avg T=2) | 1.5x | 0% | STR training |
+| **Combined** | **~100-200x** | **~25-30%** | **High effort** |
+
+Result: SNN at ~5-10 nJ/sample vs ANN at 454 nJ = **45-90x advantage**

@@ -558,3 +558,28 @@ Better framing: "With spike regularization and temporal optimization, SNN energy
 | "QP-SNN" | ICLR 2025 | Quantization + structured pruning | Combined efficiency |
 | "SpikeFit" | EurIPS 2025 Workshop | Hardware-aware deployment | Neuromorphic optimization |
 | "On Reducing Activity with KD" | arXiv 2024 | Logits reg, 87% spike reduction | Activity reduction |
+| "Sigma-Delta NN on Loihi 2" | arXiv 2025 | 17x sparsity, event-driven | Delta encoding approach |
+| Benchmarking Neuromorphic Hardware | Frontiers 2022 | SpiNNaker 38.2 mJ/inference | Hardware energy numbers |
+
+---
+
+## 15. Confidence Assessment
+
+| Finding | Confidence | Basis |
+|---------|------------|-------|
+| L1 regularization reduces spike rate to <1% | Very High | Your own 5-fold Pareto data |
+| T=7 achieves 90% of accuracy | Very High | Your own temporal ablation data |
+| Combined T+lambda gives ~10x energy reduction | High | Math + literature support |
+| 90% weight pruning maintains ~95% accuracy | High | Your own pruning resilience experiment |
+| 30-50x reduction achievable | Medium-High | Literature supports, not validated on your model |
+| 100x reduction while keeping 40%+ accuracy | Medium | Requires multiple aggressive techniques |
+| SpiNNaker actual energy beats GPU for this model | Low | Static power dominates; likely NOT true for SpiNNaker 1 |
+| Theoretical energy (AC counting) shows 10x+ SNN advantage with optimization | High | Well-supported by math |
+
+---
+
+## Summary: The Path Forward
+
+**Bottom line:** Your SNN's energy disadvantage is NOT fundamental -- it's a training configuration issue. Your model was optimized for accuracy, not efficiency. By adding spike rate regularization (one line of code), reducing timesteps (one config change), and pruning weights (established technique), you can cross the energy break-even point and achieve 5-50x theoretical energy advantage over your ANN baseline.
+
+The most impactful single change: **Add `loss += 1e-3 * spk_out.sum()` to your training loop and retrain at T=7.** This alone should bring you from 968 nJ to ~80-150 nJ, crossing the ANN's 454 nJ threshold.

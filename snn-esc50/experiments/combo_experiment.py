@@ -558,3 +558,31 @@ def run_fold(fold, args, device):
     print(f"\n{'='*60}")
     print(f"  {exp_name} | Fold {fold}/5 | Device: {device}")
     print(f"  Techniques: {[p for p in exp_name.split('_')[1:]]}")
+    print(f"{'='*60}")
+
+    # Data loading
+    if args.cochleagram:
+        # Use cochleagram dataset
+        from src.dataset import ESC50_AUDIO_DIR, ESC50_META_PATH
+        import pandas as pd
+        fb = gammatone_filterbank(SAMPLE_RATE, N_FFT, 64)
+
+        train_folds = [f for f in range(1, 6) if f != fold]
+        meta = pd.read_csv(ESC50_META_PATH)
+
+        print(f"  Loading cochleagram data...")
+        train_data, train_labels = [], []
+        for _, row in meta[meta["fold"].isin(train_folds)].iterrows():
+            cg = wav_to_cochleagram(str(ESC50_AUDIO_DIR / row["filename"]), fb)
+            train_data.append(cg)
+            train_labels.append(row["target"])
+
+        test_data, test_labels = [], []
+        for _, row in meta[meta["fold"] == fold].iterrows():
+            cg = wav_to_cochleagram(str(ESC50_AUDIO_DIR / row["filename"]), fb)
+            test_data.append(cg)
+            test_labels.append(row["target"])
+
+        train_data = torch.tensor(np.array(train_data)).unsqueeze(1)
+        test_data = torch.tensor(np.array(test_data)).unsqueeze(1)
+        train_labels = torch.tensor(train_labels, dtype=torch.long)

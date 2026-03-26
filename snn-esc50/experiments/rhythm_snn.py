@@ -418,3 +418,31 @@ def train_fold(fold, device, epochs, patience, seed):
         if isinstance(module, RhythmLIF):
             osc_summary[name] = {
                 "beta_mean": float(module.beta.mean().item()),
+                "beta_std": float(module.beta.std().item()),
+                "amplitude_mean": float(module.amplitude.mean().item()),
+                "amplitude_std": float(module.amplitude.std().item()),
+                "amplitude_abs_mean": float(module.amplitude.abs().mean().item()),
+                "frequency_mean": float(module.frequency.mean().item()),
+                "frequency_std": float(module.frequency.std().item()),
+                "phase_mean": float(module.phase.mean().item()),
+                "phase_std": float(module.phase.std().item()),
+            }
+
+    result = {
+        "fold": fold,
+        "seed": seed,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "total_params": total_params,
+        "oscillation_params": osc_params,
+        "oscillation_summary": osc_summary,
+        "history": history,
+    }
+
+    with open(out_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
+

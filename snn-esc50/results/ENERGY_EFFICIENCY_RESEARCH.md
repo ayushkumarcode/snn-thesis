@@ -446,3 +446,31 @@ Target: 40%+ accuracy, ~100 nJ/sample (9.7x reduction)
    - Further 3-5x reduction on remaining operations
    - Energy: ~30-50 nJ
 
+**Estimated final: ~30-100 nJ at ~38-42% accuracy. The 40% threshold is achievable.**
+
+### Why This Works Mathematically
+
+Your 1.08M ACs break down roughly as:
+- Conv layers: ~600K ACs (dominated by dense input at first layer)
+- FC layers: ~480K ACs (highly compressible via sparsity + pruning)
+
+At T=7 with lambda=1e-3 and 80% weight pruning:
+- Conv layers: 600K * 7/25 * 0.7 (input sparsity) * 0.2 (weight pruning) = ~23.5K ACs
+- FC layers: 480K * 7/25 * 0.05 (spike reg) * 0.2 (weight pruning) = ~1.3K ACs
+- Total: ~25K ACs * 0.9 pJ = ~22.5 nJ
+
+This is optimistic (ignores neuron update costs, memory access), but the order of magnitude is right.
+
+---
+
+## 10. Technique-by-Technique Implementation Priority
+
+### TIER 1: Implement Immediately (Days)
+
+| # | Technique | Expected Gain | Effort |
+|---|-----------|--------------|--------|
+| 1 | L1 spike regularization (lambda=1e-3) in training | 3-4x energy | 1 line of code |
+| 2 | Retrain at T=7 (change NUM_STEPS) | 3.6x energy | Config change + retrain |
+| 3 | Combine #1 and #2 | ~12x energy | Minimal |
+
+### TIER 2: Implement This Week (Days to Week)

@@ -3330,3 +3330,31 @@
         "test_acc": 0.4925
       },
       {
+        "epoch": 27,
+        "train_loss": 18.6811,
+        "train_acc": 0.9006,
+        "test_loss": 59.2438,
+        "test_acc": 0.5325
+      },
+      {
+        "epoch": 28,
+        "train_loss": 18.0585,
+        "train_acc": 0.9038,
+        "test_loss": 60.5981,
+        "test_acc": 0.5225
+      },
+      {
+        "epoch": 29,
+        "train_loss": 17.7338,
+        "train_acc": 0.9175,
+        "test_loss": 60.6853,
+        "test_acc": 0.525
+      },
+      {
+        "epoch": 30,
+        "train_loss": 17.1214,
+        "train_acc": 0.9275,
+        "test_loss": 64.6773,
+        "test_acc": 0.5275
+      },
+      {

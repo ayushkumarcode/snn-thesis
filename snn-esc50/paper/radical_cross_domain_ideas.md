@@ -250,3 +250,31 @@ Our SNN uses beta=0.95 for ALL neurons. In the brain, every neuron has different
 - Fast neurons (beta=0.7): detect transient events (clicks, snaps)
 - Slow neurons (beta=0.99): integrate over long durations (rain, wind)
 - Medium neurons (beta=0.90): standard temporal integration
+
+**How It Applies to ESC-50:**
+The 50 ESC-50 classes span wildly different temporal scales:
+- Instantaneous: mouse_click, glass_breaking, clapping
+- Short: dog bark, car_horn, sneezing
+- Sustained: rain, wind, engine, vacuum_cleaner
+- Periodic: clock_tick, footsteps, helicopter
+
+A homogeneous beta=0.95 is a compromise for all. Heterogeneous betas let neurons specialize.
+
+Implementation: Change `self.lif1 = snn.Leaky(beta=0.95)` to use learnable beta initialized at 0.95 but trainable per neuron.
+
+**Expected Impact:**
+- Consistent improvements demonstrated across temporal benchmarks
+- SHD (speech): significant accuracy boost with heterogeneous neurons
+- Also improves adversarial robustness (relevant to our existing experiments)
+- For ESC-50: estimated 2-4 pp improvement
+
+**Implementation Feasibility:** VERY HIGH (easiest idea on this list)
+- snnTorch already supports `learn_beta=True` parameter
+- One-line change: `snn.Leaky(beta=0.95, learn_beta=True)`
+- Compatible with all existing training infrastructure
+- Zero additional computational cost
+
+**Novelty Assessment:** MEDIUM-HIGH
+- Heterogeneous neurons are studied but rarely for audio
+- Never applied to ESC-50 or environmental sound
+- Combined with our encoding comparison and SpiNNaker deployment = novel

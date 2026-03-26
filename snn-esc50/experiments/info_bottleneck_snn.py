@@ -194,3 +194,31 @@ class InfoBottleneckSNN(nn.Module):
 # ============================================================
 # Training / Evaluation
 # ============================================================
+
+def train_epoch(model, loader, optimizer, device, beta_ib):
+    """Train for one epoch with information bottleneck loss."""
+    model.train()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_kl = 0.0
+    correct = 0
+    total = 0
+    total_mu_norm = 0.0
+    total_logvar_mean = 0.0
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out, kl_loss, bn_stats = model(spike_input, sample=True)
+
+        # Per-timestep CE loss
+        ce_loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            ce_loss = ce_loss + ce_criterion(mem_out[step], targets)
+
+        # Combined loss: CE + beta_ib * KL
+        loss = ce_loss + beta_ib * kl_loss

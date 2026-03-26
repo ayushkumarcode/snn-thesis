@@ -530,3 +530,31 @@ The most effective approach combines multiple complementary techniques:
 - Expected: ~58-63%
 
 **Phase 4: Knowledge distillation (1 day)**
+- SAKD with ANN teacher
+- Expected: potentially match or exceed ANN (63-65%)
+
+---
+
+## Research Gaps and Uncertainties
+
+1. **No SNN benchmarks on full ESC-50** -- we are literally the first (confirmed by Larroza et al. 2025 which only did ESC-10)
+2. **Audio-specific SNN augmentation** is underexplored -- EventMix/NDA are for vision
+3. **Small dataset regime** (2000 samples) is particularly challenging for SNNs -- most SNN papers benchmark on CIFAR/ImageNet with 50K+ samples
+4. **Membrane potential vs spike count readout** -- our current approach (sum of membrane potentials) is already the recommended approach; spike count readout would likely be worse
+5. **Interaction effects** between techniques are unknown -- combining learnable params + TET + KD might have diminishing returns or synergies
+
+---
+
+## Key References
+
+1. Gygax & Zenke (2025). Neural Computation 37(5):886-925. Surrogate gradient theory.
+2. Deng et al. (2022). ICLR 2022. TET loss.
+3. Fang et al. (2021). ICCV 2021. PLIF learnable time constant.
+4. Fang et al. (2021). NeurIPS 2021. SEW ResNet.
+5. Yao et al. (2022). NeurIPS 2022. GLIF gated neuron.
+6. Xu et al. (2024). Neural Networks 178. SAKD knowledge distillation.
+7. Xu et al. (2023). CVPR 2023. ANN-SNN KD construction.
+8. Rathi et al. (2020). ICLR 2020. Hybrid SNN conversion.
+9. Bojkovic et al. (2024). AISTATS 2024. Data-driven threshold init.
+10. PASCAL (2025). arXiv:2505.01730. Near-lossless conversion.
+11. Guo et al. (2024). AAAI 2024. Ternary spikes.

@@ -2770,3 +2770,31 @@
         "test_acc": 0.57
       },
       {
+        "epoch": 45,
+        "train_loss": 13.9654,
+        "train_acc": 0.9587,
+        "test_loss": 53.0998,
+        "test_acc": 0.5675
+      }
+    ]
+  },
+  "fold_5": {
+    "fold": 5,
+    "best_accuracy": 0.5475,
+    "best_epoch": 24,
+    "total_epochs": 34,
+    "total_params": 622252,
+    "delay_params": 306,
+    "max_delay": 5,
+    "delay_stats": {
+      "fc1": {
+        "delays_mean": 0.41547054052352905,
+        "delays_std": 0.2551426887512207,
+        "delays_min": 0.0,
+        "delays_max": 0.9808982610702515,
+        "delays_median": 0.40954211354255676,
+        "delays_histogram": {
+          "d=0": 156,
+          "d=1": 100,
+          "d=2": 0,
+          "d=3": 0,

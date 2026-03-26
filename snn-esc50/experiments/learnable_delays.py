@@ -502,3 +502,31 @@ def train_fold(fold, args, device):
         "delay_params": delay_params,
         "max_delay": args.max_delay,
         "delay_stats": delay_stats,
+        "lif_stats": lif_stats,
+        "epoch_log": epoch_log,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Learnable Synaptic Delays experiment for SNN temporal pattern matching"
+    )
+    parser.add_argument("--fold", type=int, default=None,
+                        help="Specific fold to run (1-5). Default: all 5.")
+    parser.add_argument("--device", type=str, default=None,
+                        help="Device (cpu/cuda/mps). Default: auto-detect.")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS,
+                        help=f"Max training epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--max-delay", type=int, default=5,
+                        help="Maximum synaptic delay in timesteps (default: 5)")
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+    print(f"Max synaptic delay: {args.max_delay} timesteps")
+
+    download_esc50()
+

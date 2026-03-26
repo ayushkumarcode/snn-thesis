@@ -82,3 +82,31 @@ run_combo "dendritic_cochleagram" --dendritic --cochleagram --dropout --sre
 # ============================================
 # TIER 3: Other promising combos
 # ============================================
+
+echo ""
+echo "===== TIER 3: OTHER COMBOS ====="
+
+# 12. Hybrid init + KD (no rhythm, baseline neurons)
+run_combo "hybrid_kd" --hybrid-init --kd --learn-beta --learn-threshold --dropout --sre --epochs 30
+
+# 13. Hybrid init + TET + KD
+run_combo "hybrid_tet_kd" --hybrid-init --tet --kd --learn-beta --learn-threshold --dropout --sre --epochs 30
+
+# 14. Cochleagram + KD (bio-inspired input + distillation)
+run_combo "cochleagram_kd" --cochleagram --kd --learn-beta --learn-threshold --dropout --sre
+
+# 15. Delays + KD
+run_combo "delays_kd" --delays --kd --learn-beta --learn-threshold --dropout --sre
+
+# ============================================
+# TIER 4: Kitchen sink combos
+# ============================================
+
+echo ""
+echo "===== TIER 4: KITCHEN SINK ====="
+
+# 16. Rhythm + dendritic + KD
+run_combo "rhythm_dendritic_kd" --rhythm --kd --dropout --sre
+
+# 17. All techniques (rhythm + delays + KD + TET)
+run_combo "all_rhythm" --rhythm --delays --kd --tet --learn-beta --dropout --sre

@@ -26,3 +26,31 @@ Your SNN currently consumes 968 nJ/sample (1.08M ACs at 0.9 pJ) while the ANN us
 | Component | SNN Operations | ANN Operations | Notes |
 |-----------|---------------|---------------|-------|
 | Conv1 (1->32, 3x3) | ~36K ACs/step * T | ~36K MACs | 9 * 32 * 32 * 108 = ~1M per step; sparsity helps |
+| Conv2 (32->64, 3x3) | ~580K ACs/step * T | ~580K MACs | Dominates computation |
+| FC1 (2304->256) | ~590K ACs/step * T | ~590K MACs | Large but sparse input |
+| FC2 (256->50) | ~12.8K ACs/step * T | ~12.8K MACs | Small |
+| **Total per sample** | **~1.08M ACs** | **~99K MACs** | SNN has 25x timestep multiplier |
+| **Energy** | **968 nJ** | **454 nJ** | ANN wins by 2.1x |
+
+### Key Insight: The Timestep Multiplier
+Your ANN does ~99K MACs once. Your SNN does ~43K ACs per timestep * 25 timesteps = ~1.08M ACs total. The 73.6% sparsity helps (reduces per-step operations), but 25 timesteps overwhelms the AC-vs-MAC cost advantage (0.9 pJ vs 4.6 pJ = 5.1x).
+
+**Break-even calculation:**
+- ANN energy: 99K * 4.6 pJ = 455 nJ
+- For SNN to match: 455 nJ / 0.9 pJ = 505K ACs allowed
+- At T=25 with 99K dense ops per layer: need sparsity > 1 - (505K / (99K * 25)) = 79.6%
+- Your current sparsity: 73.6% -- just below break-even
+- At T=7: need sparsity > 1 - (505K / (99K * 7)) = 27.1% -- easily met
+
+---
+
+## 2. Spike Rate Reduction / Activity Regularization
+
+### 2.1 L1 Spike Rate Regularization (YOUR DATA ALREADY SHOWS THIS WORKS)
+
+**Your Pareto Results (5 folds):**
+
+| Lambda | Avg Accuracy | Spike Rate | % of Baseline Acc | SpiNNaker Compatible |
+|--------|-------------|------------|-------------------|---------------------|
+| 0.0    | ~45%        | 2-5%       | 100%              | Yes |
+| 1e-5   | ~46%        | 1.7-4.3%   | ~100%             | Yes |

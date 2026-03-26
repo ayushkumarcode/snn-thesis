@@ -726,3 +726,31 @@ def main():
             print(f"\n{'='*60}")
             print(f"  Cochleagram {model_type.upper()} {len(folds)}-Fold Summary")
             print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+            print(f"  Per-fold: {[f'{a*100:.2f}%' for a in accs]}")
+            print(f"{'='*60}")
+
+            all_results[model_type] = {
+                "fold_accuracies": accs,
+                "mean_accuracy": float(mean_acc),
+                "std_accuracy": float(std_acc),
+                "per_fold": {f"fold{r['fold']}": r["best_acc"] for r in fold_results},
+            }
+        elif len(fold_results) == 1:
+            all_results[model_type] = {
+                "fold_accuracies": [fold_results[0]["best_acc"]],
+                "mean_accuracy": fold_results[0]["best_acc"],
+                "std_accuracy": 0.0,
+                "per_fold": {f"fold{fold_results[0]['fold']}": fold_results[0]["best_acc"]},
+            }
+
+    # Save overall summary
+    save_dir = RESULTS_DIR / "experiments" / "cochleagram"
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    # Comparison with mel baselines
+    mel_baselines = {
+        "snn_mel_direct": {"mean": 0.4715, "std": 0.0450},
+        "ann_mel": {"mean": 0.6385, "std": 0.0307},
+    }
+
+    summary = {

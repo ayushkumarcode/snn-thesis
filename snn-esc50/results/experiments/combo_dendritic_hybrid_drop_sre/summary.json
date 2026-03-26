@@ -1,0 +1,11 @@
+{
+  "experiment": "combo_dendritic_hybrid_drop_sre",
+  "fold_accuracies": [
+    0.575,
+    0.59,
+    0.5775,
+    0.6075,
+    0.5825
+  ],
+  "mean_accuracy": 0.5865,
+  "std_accuracy": 0.01168332144554794

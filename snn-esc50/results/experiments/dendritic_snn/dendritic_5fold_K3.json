@@ -586,3 +586,31 @@
     "num_branches": 3,
     "branch_stats": {
       "dlif1": {
+        "betas_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "betas_std": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_std": [
+          NaN,
+          NaN,
+          NaN
+        ]
+      },
+      "dlif2": {
+        "betas_mean": [
+          0.6998083591461182,
+          0.8998835682868958,
+          0.9899848103523254
+        ],
+        "betas_std": [

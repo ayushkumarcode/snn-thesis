@@ -418,3 +418,31 @@ Result: SNN at ~20-30 nJ/sample vs ANN at 454 nJ = **15-23x advantage**
 | **Combined** | **~100-200x** | **~25-30%** | **High effort** |
 
 Result: SNN at ~5-10 nJ/sample vs ANN at 454 nJ = **45-90x advantage**
+Accuracy: ~33-35% (still well above 20% random for 50 classes)
+
+---
+
+## 9. The Key Question: 10x to 100 nJ While Maintaining 40%+ Accuracy?
+
+### Analysis
+
+Your baseline: 47.15% accuracy, 968 nJ/sample
+
+Target: 40%+ accuracy, ~100 nJ/sample (9.7x reduction)
+
+**Most promising path:**
+
+1. **Retrain at T=7** (keeps 90% accuracy = ~42.4% from 47.15%)
+   - Energy: 968 * 7/25 = 271 nJ
+
+2. **Add L1 regularization at lambda=1e-3** (keeps ~95% of accuracy)
+   - Your Pareto data shows spike rate drops from 26% to ~0.5%
+   - Energy scales roughly proportionally in spike-dominated layers
+   - Estimated energy: 271 * (0.5/26.4) = ~5.1 nJ for spike-driven layers
+   - BUT: Conv layers with direct encoding still have dense input (sparsity is in hidden/output layers)
+   - Realistic estimate: ~100-150 nJ (conv layers remain, FC layers become very sparse)
+
+3. **Add 80% weight pruning** (keeps ~95% of accuracy based on your pruning resilience data)
+   - Further 3-5x reduction on remaining operations
+   - Energy: ~30-50 nJ
+

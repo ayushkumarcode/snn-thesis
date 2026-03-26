@@ -278,3 +278,31 @@ def train_fold(fold, device, epochs, patience, lambda_tet, seed):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)
+
+    print(f"\n{'='*60}")
+    print(f"  TET Training | Fold {fold}/5 | lambda={lambda_tet} | seed={seed}")
+    print(f"  Device: {device} | Epochs: {epochs} | Patience: {patience}")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+    model = TETSpikingCNN().to(device)
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+    tet_loss_fn = TETLoss(lambda_tet=lambda_tet)
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {
+        "train_loss": [], "train_ce": [], "train_var": [], "train_acc": [],
+        "test_loss": [], "test_ce": [], "test_var": [], "test_acc": [],
+    }
+
+    # Results directory
+    out_dir = RESULTS_DIR / "experiments" / "tet_training"
+    out_dir.mkdir(parents=True, exist_ok=True)
+

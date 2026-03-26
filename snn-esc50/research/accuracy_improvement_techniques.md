@@ -306,3 +306,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 
 - **Paper:** snnTorch built-in (Synaptic neuron model)
 - **Key idea:** 2nd-order LIF with separate synaptic current and membrane potential decay rates (alpha and beta). More biologically realistic. snnTorch supports `learn_alpha=True`.
+- **Accuracy:** May not consistently outperform Leaky on simple tasks; alpha tends toward 0 on simple datasets but may help with complex temporal patterns in audio.
+- **Applicability:** HIGH for audio. Audio spectrograms have temporal structure that could benefit from synaptic dynamics.
+- **Implementation complexity:** LOW. Replace `snn.Leaky` with `snn.Synaptic`.
+  ```python
+  self.lif1 = snn.Synaptic(alpha=0.9, beta=0.95, spike_grad=spike_grad,
+                            learn_alpha=True, learn_beta=True)
+  ```
+- **Expected result:** +0-2pp (uncertain, worth testing)
+
+---
+
+## 12. Spiking Transformers / Attention Architectures
+
+### 12a. Spikformer V2
+
+- **Paper:** "Spikformer V2: Join the High Accuracy Club on ImageNet with an SNN Ticket" (2024, arXiv:2401.02020)
+- **Key idea:** Spiking Self-Attention (SSA) with sparse spike-form Q, K, V. No softmax. Self-supervised pretraining.
+- **Accuracy:** ImageNet: 81.10% (1 timestep after SSL). CIFAR-100: ~80%.
+- **Applicability:** LOW for our case. These are vision transformers requiring ViT architecture. Our 622K param CNN is too small for transformer overhead.
+- **Implementation complexity:** HIGH. Complete architecture redesign.
+
+### 12b. QKFormer
+
+- **Paper:** "QKFormer: Hierarchical Spiking Transformer using Q-K Attention" (2024, arXiv:2403.16552)
+- **Key idea:** Linear complexity Q-K attention with binary values. 85.65% ImageNet.
+- **Applicability:** LOW. Same as Spikformer -- requires transformer architecture.
+- **Implementation complexity:** HIGH.
+

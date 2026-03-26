@@ -446,3 +446,31 @@ def train_fold(fold, device, epochs, patience, seed):
 
     print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
 
+    # Print oscillation analysis
+    print(f"\n  Learned oscillation parameters:")
+    for name, vals in osc_summary.items():
+        print(
+            f"    {name}: beta={vals['beta_mean']:.3f}+-{vals['beta_std']:.3f}, "
+            f"A={vals['amplitude_abs_mean']:.4f}, "
+            f"f={vals['frequency_mean']:.2f}+-{vals['frequency_std']:.2f}, "
+            f"phi={vals['phase_mean']:.3f}"
+        )
+
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Rhythm-SNN: Oscillatory modulation for SNN on ESC-50"
+    )
+    parser.add_argument(
+        "--fold", type=int, default=None,
+        help="Specific fold (1-5). If omitted, runs all 5 folds.",
+    )
+    parser.add_argument("--device", type=str, default=None, help="Device (cuda/mps/cpu)")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS, help=f"Max epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--patience", type=int, default=PATIENCE, help=f"Early stop patience (default: {PATIENCE})")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    args = parser.parse_args()
+
+    if args.device:

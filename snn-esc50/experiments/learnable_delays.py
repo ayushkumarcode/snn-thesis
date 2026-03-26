@@ -474,3 +474,31 @@ def train_fold(fold, args, device):
         elapsed = time.time() - t0
         if epoch % 5 == 0 or epoch == 1 or no_improve == 0:
             # Show current delay stats inline
+            fc1_delays = model.fc1.delays.detach()
+            fc2_delays = model.fc2.delays.detach()
+            print(f"  Ep {epoch:3d}/{args.epochs} | "
+                  f"tr={tr_acc:.3f} te={te_acc:.3f} best={best_acc:.3f}@{best_epoch} | "
+                  f"fc1_d={fc1_delays.mean():.1f}+/-{fc1_delays.std():.1f} "
+                  f"fc2_d={fc2_delays.mean():.1f}+/-{fc2_delays.std():.1f} "
+                  f"({elapsed:.0f}s)")
+
+        if no_improve >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}@{best_epoch}")
+            break
+
+    # Load best model for analysis
+    model.load_state_dict(
+        torch.load(out_dir / f"best_fold{fold}.pt", map_location=device, weights_only=True)
+    )
+    delay_stats = get_delay_stats(model)
+    lif_stats = get_lif_stats(model)
+
+    return {
+        "fold": fold,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "total_params": total_params,
+        "delay_params": delay_params,
+        "max_delay": args.max_delay,
+        "delay_stats": delay_stats,

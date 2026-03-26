@@ -446,3 +446,31 @@ Add "astrocyte" modules that:
 **Source:** "Liquid State Machine on SpiNNaker for Spatio-Temporal Classification Tasks" (Frontiers 2022)
 **Domain:** Physics (Reservoir Computing) + Hardware Co-Design
 
+**Core Idea:**
+Instead of training the full SNN, use a random UNTRAINED reservoir of recurrent spiking neurons (the "liquid") on SpiNNaker, and only train a readout layer. The reservoir's rich dynamics naturally separate temporal patterns. LSMs have been demonstrated on SpiNNaker achieving 94.43% on N-MNIST.
+
+**How It Applies to ESC-50:**
+- Create a reservoir of ~1000 LIF neurons with random recurrent connections on SpiNNaker
+- Feed audio spike trains into reservoir
+- Train only the readout (256->50 linear layer) offline
+- The reservoir's dynamics naturally separate environmental sounds
+
+**Implementation Feasibility:** HIGH -- LSMs already run on SpiNNaker
+**Novelty:** MEDIUM -- LSMs on SpiNNaker exist, but not for audio/environmental sound
+
+---
+
+### IDEA 12: Information Bottleneck Training
+
+**Source:** "Learning to Time-Decode in SNNs Through the Information Bottleneck" (NeurIPS 2024)
+**Domain:** Information Theory
+
+**Core Idea:**
+SNIB framework compresses spiking representations using an information bottleneck, improving robustness and generalization. Higher-order variants (SOIB, TOIB) achieve even better results.
+
+**Implementation Feasibility:** MEDIUM -- requires modifying loss function
+**Novelty for ESC-50:** HIGH -- never applied to environmental sound SNNs
+
+---
+
+### IDEA 13: Cochleagram (Gammatone Filterbank) Front-End

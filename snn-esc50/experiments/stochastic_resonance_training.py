@@ -278,3 +278,31 @@ class SRSNN(nn.Module):
         self.pool1 = nn.MaxPool2d(2)
         self.lif1 = SRLIF(neuron_shape=(32,), beta=beta, init_sigma=init_sigma)
 
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = SRLIF(neuron_shape=(64,), beta=beta, init_sigma=init_sigma)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = SRLIF(neuron_shape=(256,), beta=beta, init_sigma=init_sigma)
+        self.dropout = nn.Dropout(0.3)
+
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = SRLIF(neuron_shape=(num_classes,), beta=beta, init_sigma=init_sigma)
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        batch_size = x.shape[1]
+        device = x.device
+
+        mem1 = self.lif1.init_sr(batch_size, device)
+        mem2 = self.lif2.init_sr(batch_size, device)
+        mem3 = self.lif3.init_sr(batch_size, device)
+        mem4 = self.lif4.init_sr(batch_size, device)
+
+        mem1_init = False
+        mem2_init = False
+
+        spk_out_rec = []
+        mem_out_rec = []

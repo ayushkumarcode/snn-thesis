@@ -82,3 +82,31 @@ class InfoBottleneckSNN(nn.Module):
         self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
 
         self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        # Information bottleneck: project hidden spikes to mu and logvar
+        self.ib_mu = nn.Linear(256, 256)
+        self.ib_logvar = nn.Linear(256, 256)
+
+        # Dropout on bottleneck output
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2 (output) -- receives bottleneck z
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+    def reparameterise(self, mu, logvar):
+        """Reparameterisation trick: z = mu + sigma * epsilon."""
+        std = torch.exp(0.5 * logvar)
+        eps = torch.randn_like(std)
+        return mu + std * eps
+
+    def forward(self, x, sample=True):
+        """Forward pass with information bottleneck.
+
+        Args:
+            x: Spike input (num_steps, batch, 1, n_mels, time).
+            sample: If True, use reparameterisation (training).

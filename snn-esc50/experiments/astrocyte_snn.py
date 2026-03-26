@@ -26,3 +26,31 @@ Usage:
     cd snn-esc50
     source .venv/bin/activate
     python experiments/astrocyte_snn.py --fold 1
+    python experiments/astrocyte_snn.py              # all 5 folds
+"""
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+import torch
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from src.config import (
+    NUM_CLASSES, NUM_STEPS, BETA,
+    NUM_EPOCHS, LEARNING_RATE, WEIGHT_DECAY, PATIENCE, BATCH_SIZE,
+    RESULTS_DIR, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+
+
+# ============================================================
+# Astrocyte LIF Module
+# ============================================================

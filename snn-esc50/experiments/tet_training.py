@@ -418,3 +418,31 @@ def main():
     print(f"\n{'='*60}")
     print(f"  TET Training Summary | lambda={args.lambda_tet}")
     print(f"{'='*60}")
+    for r in all_results:
+        print(f"  Fold {r['fold']}: {r['best_accuracy']*100:.2f}% (epoch {r['best_epoch']})")
+    print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline (direct, standard loss): 47.15% +/- 4.50%")
+    diff = mean_acc * 100 - 47.15
+    print(f"  Delta vs baseline: {diff:+.2f} pp")
+
+    # Compare TET loss components at convergence
+    if len(all_results) > 1:
+        final_vars = [r["history"]["test_var"][-1] for r in all_results]
+        print(f"  Final test variance: {np.mean(final_vars):.6f} +/- {np.std(final_vars):.6f}")
+
+    summary = {
+        "experiment": "tet_training",
+        "lambda_tet": args.lambda_tet,
+        "seed": args.seed,
+        "epochs": args.epochs,
+        "patience": args.patience,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "baseline_mean": 0.4715,
+        "baseline_std": 0.0450,
+        "delta_vs_baseline_pp": round(diff, 2),
+        "per_fold": [
+            {
+                "fold": r["fold"],
+                "accuracy": r["best_accuracy"],

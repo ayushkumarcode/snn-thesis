@@ -334,3 +334,31 @@ def train_fold(fold: int, device, epochs: int, patience: int,
     for epoch in range(1, epochs + 1):
         tr_loss, tr_acc = train_epoch(
             student, teacher, train_loader, optimizer, device,
+            temperature=temperature, alpha=alpha,
+        )
+        te_loss, te_acc = eval_model(student, test_loader, device)
+        scheduler.step(te_loss)
+
+        history["train_loss"].append(tr_loss)
+        history["train_acc"].append(tr_acc)
+        history["test_loss"].append(te_loss)
+        history["test_acc"].append(te_acc)
+
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            patience_counter = 0
+            torch.save(student.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            print(
+                f"  Epoch {epoch:3d}/{epochs} | "
+                f"Train: {tr_acc:.4f} | Test: {te_acc:.4f} | "
+                f"Best: {best_acc:.4f} (ep {best_epoch}) | {elapsed:.0f}s"
+            )
+
+        if patience_counter >= patience:
+            print(f"  Early stopping at epoch {epoch}")

@@ -222,3 +222,31 @@ class ConvertedSNN(nn.Module):
 
             # FC block 1
             cur3 = self.fc1(flat)
+            spk3, mem3 = self.if3(cur3, mem3)
+
+            # FC block 2 (accumulate, no spike)
+            cur4 = self.fc2(spk3)
+            mem_out_acc = mem_out_acc + cur4
+
+            spk_rec.append(spk3)
+            mem_rec.append(mem_out_acc.clone())
+
+        return torch.stack(spk_rec), torch.stack(mem_rec)
+
+
+def transfer_weights(ann_model: ConvANN, snn_model: ConvertedSNN):
+    """Transfer weights from trained ANN to converted SNN.
+
+    The ConvANN and ConvertedSNN have identical weight structures
+    for conv1, bn1, conv2, bn2, fc1, fc2.
+    """
+    # Conv block 1
+    snn_model.conv1.load_state_dict(ann_model.features[0].state_dict())
+    snn_model.bn1.load_state_dict(ann_model.features[1].state_dict())
+
+    # Conv block 2
+    snn_model.conv2.load_state_dict(ann_model.features[4].state_dict())
+    snn_model.bn2.load_state_dict(ann_model.features[5].state_dict())
+
+    # FC layers
+    snn_model.fc1.load_state_dict(ann_model.classifier[0].state_dict())

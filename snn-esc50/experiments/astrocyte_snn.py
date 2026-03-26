@@ -278,3 +278,31 @@ class AstrocyteSNN(nn.Module):
             spike_rates["lif1"].append(spk1.mean().item())
             spike_rates["lif2"].append(spk2.mean().item())
             spike_rates["lif3"].append(spk3.mean().item())
+            spike_rates["lif4"].append(spk4.mean().item())
+            thresholds["lif1"].append(thresh1)
+            thresholds["lif2"].append(thresh2)
+            thresholds["lif3"].append(thresh3)
+            thresholds["lif4"].append(thresh4)
+
+        layer_stats = {
+            "spike_rates": spike_rates,
+            "thresholds": thresholds,
+        }
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec), layer_stats
+
+
+# ============================================================
+# Training / Evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    all_spike_rates = {"lif1": 0.0, "lif2": 0.0, "lif3": 0.0, "lif4": 0.0}
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:

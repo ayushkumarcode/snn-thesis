@@ -306,3 +306,31 @@ Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerate
 **Key paper**: Auge et al. (2021) "Resonate-and-Fire Neurons as Frequency Selective Input Encoders for SNN"
 - RF neurons perform spectral transform directly on raw analog audio
 - Results comparable to FFT + conventional processing
+- Neuromorphic implementation consumes significantly less energy
+- NeurIPS 2024: RF neurons with phase-locking coding achieve SOTA sound source localization with exceptional noise robustness
+
+**Recent**: Balanced RF neurons (BRF, 2024) show superior training convergence, gradient stability, and spike efficiency vs. adaptive LIF.
+
+**For ESC-50**: Replace our entire mel spectrogram + encoding pipeline with a layer of RF neurons tuned to different frequencies. Each RF neuron resonates at a different frequency, fires when it detects that frequency in the input.
+
+**NOVELTY**: EXTREMELY HIGH. RF neurons for ESC-50 classification = completely unexplored.
+
+**Implementation complexity**: HIGH. Would need to:
+1. Create an RF neuron layer in snnTorch (or custom implementation)
+2. Tune resonant frequencies to cover audio spectrum
+3. Feed raw audio waveform as input current
+4. Train the SNN backend on RF output spikes
+
+**Expected accuracy impact**: UNKNOWN but theoretically sound. RF neurons are biologically grounded and have been shown to work for audio tasks.
+
+### 6.2 Raw Waveform to SNN
+
+**What it is**: Skip the spectrogram entirely. Feed raw audio waveform into the SNN.
+
+**Recent work**:
+- Three-stage hybrid SNN (Frontiers, 2025): operates on raw waveform speech for speech enhancement
+- Neuromorphic audio processing: small SNN receives raw, unprocessed audio from microphone
+
+**For ESC-50**: Would require different architecture (1D convolutions instead of 2D). Our current architecture assumes 2D spectrogram input.
+
+**Implementation complexity**: HIGH. Architecture redesign needed.

@@ -334,3 +334,31 @@ def train_epoch(model, loader, optimizer, device):
     stats = {
         "loss": total_loss / n,
         "accuracy": correct / total,
+        "spike_rates": {k: v / n for k, v in all_spike_rates.items()},
+    }
+    return stats
+
+
+@torch.no_grad()
+def eval_model(model, loader, device):
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    all_spike_rates = {"lif1": 0.0, "lif2": 0.0, "lif3": 0.0, "lif4": 0.0}
+    all_thresholds = {"lif1": 0.0, "lif2": 0.0, "lif3": 0.0, "lif4": 0.0}
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        spk_out, mem_out, layer_stats = model(spike_input)
+
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss = loss + ce_criterion(mem_out[step], targets)
+
+        total_loss += loss.item()
+

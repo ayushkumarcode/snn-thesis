@@ -334,3 +334,31 @@ def train_epoch(model, loader, optimizer, device, num_steps):
 
         # Direct encoding: repeat input across timesteps
         spike_inputs = encode_direct(inputs, num_steps=num_steps)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spike_inputs)
+
+        # Per-timestep CE loss on membrane potentials
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], labels)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        # Predict using summed membrane potentials
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device, num_steps):
+    """Evaluate model on test set."""
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0

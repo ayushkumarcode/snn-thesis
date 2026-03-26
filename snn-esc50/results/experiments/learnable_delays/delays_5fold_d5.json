@@ -1,0 +1,28 @@
+{
+  "fold_1": {
+    "fold": 1,
+    "best_accuracy": 0.51,
+    "best_epoch": 35,
+    "total_epochs": 45,
+    "total_params": 622252,
+    "delay_params": 306,
+    "max_delay": 5,
+    "delay_stats": {
+      "fc1": {
+        "delays_mean": 0.43340975046157837,
+        "delays_std": 0.27832362055778503,
+        "delays_min": 0.0,
+        "delays_max": 1.024161696434021,
+        "delays_median": 0.44891491532325745,
+        "delays_histogram": {
+          "d=0": 138,
+          "d=1": 118,
+          "d=2": 0,
+          "d=3": 0,
+          "d=4": 0,
+          "d=5": 0
+        },
+        "delays_all": [
+          0.37308239936828613,
+          0.357224702835083,
+          0.19357459247112274,

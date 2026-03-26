@@ -250,3 +250,31 @@ Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerate
 - Code: https://doi.org/10.5281/zenodo.15521995
 
 **Has it been tried with SNNs?** NO.
+
+**Spike compatibility**: MODERATE. Fixed-dimension feature vector could be spike-encoded.
+
+**NOVELTY**: VERY HIGH. STM + SNN is completely novel. But STM is designed for cortical-level processing -- may not align well with SNN temporal dynamics.
+
+---
+
+## 5. Spike-Native Audio Representations
+
+### 5.1 Send-on-Delta (SOD) / Threshold Crossing
+
+**What it is**: Emit a spike whenever the signal changes by more than a threshold delta. Naturally event-driven. ON-spike for increases, OFF-spike for decreases.
+
+**Critical result**: Wall et al. (ICONS 2022) showed SOD on cochleagram achieves classification accuracy matching the unencoded baseline (97% on TIDIGITS) with < 7% spike density.
+
+**For ESC-50**: Apply SOD to each frequency channel of a cochleagram. Produces sparse, event-driven representation. Compatible with our existing SNN architecture.
+
+### 5.2 Threshold Adaptive Encoding (TAE)
+
+**What it is**: Like SOD but with adaptive threshold that adjusts to signal characteristics. Larroza et al. (2025, arXiv:2503.11206) showed it is the best encoding for environmental sounds.
+
+**Results**: ESC-10 69%, UrbanSound8K 53.5%, TAU-3Class 69%. But with simple 4-layer FC SNN (128 neurons per hidden layer). Our convolutional SNN should do much better.
+
+**Spike rate**: Lowest of all tested encodings (38-50%), indicating superior efficiency.
+
+### 5.3 Level-Crossing / Zero-Crossing Encoding
+
+**What it is**: Emit spikes at zero crossings or level crossings. Related to sigma-delta modulation.

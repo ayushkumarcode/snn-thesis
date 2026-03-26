@@ -138,3 +138,31 @@ def eval_model(model, loader, device):
         loss = torch.zeros(1, device=device)
         for step in range(mem_out.shape[0]):
             loss += criterion(mem_out[step], targets)
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+def run_fold(fold, device, num_epochs=NUM_EPOCHS):
+    print(f"\n{'='*60}")
+    print(f"  Learnable Beta Ablation | Fold {fold}/5 | Device: {device}")
+    print(f"  ONLY change: learn_beta=True (all else = baseline)")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+    model = LearnableBetaCNN().to(device)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                  weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5)
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
+

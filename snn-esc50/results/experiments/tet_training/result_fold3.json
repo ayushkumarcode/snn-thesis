@@ -1,0 +1,28 @@
+{
+  "fold": 3,
+  "seed": 42,
+  "lambda_tet": 1.0,
+  "best_accuracy": 0.5675,
+  "best_epoch": 45,
+  "total_epochs": 50,
+  "time_seconds": 348.3,
+  "learned_params": {
+    "lif1": {
+      "beta": 0.8242713212966919,
+      "threshold": 1.1777424812316895
+    },
+    "lif2": {
+      "beta": 0.6893444657325745,
+      "threshold": 1.2312482595443726
+    },
+    "lif3": {
+      "beta": 0.8710734844207764,
+      "threshold": 0.8621595501899719
+    },
+    "lif4": {
+      "beta": 1.000651478767395,
+      "threshold": -0.025419054552912712
+    }
+  },
+  "history": {
+    "train_loss": [

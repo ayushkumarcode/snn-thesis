@@ -306,3 +306,31 @@ Converts weights to 1.58-bit ternary {+1, 0, -1}. Achieves 2.64% higher accuracy
 
 ### 5.4 The Critical Question: Quantized ANNs vs SNNs
 
+**Paper:** Shen et al., "Are Conventional SNNs Really Efficient? A Perspective from Network Quantization," CVPR 2024.
+
+**Key finding:** When ANNs are quantized to 4-8 bits, they match or exceed SNN efficiency. SNNs only win consistently at ultra-low precision (1-2 bits) or on actual neuromorphic hardware.
+
+**Implication for your work:** The 0.9 pJ/AC vs 4.6 pJ/MAC comparison assumes 32-bit. A 4-bit quantized ANN does 4-bit MACs at ~0.2 pJ each, making the comparison much harder for SNNs. Your argument must emphasize neuromorphic hardware deployment (SpiNNaker), not theoretical operation counts.
+
+---
+
+## 6. Event-Driven / Asynchronous Processing
+
+### 6.1 Sigma-Delta Neural Networks (SDNNs)
+
+**Paper:** "Sigma-Delta Neural Network Conversion on Loihi 2," arXiv:2505.06417
+
+SDNNs transmit only changes in activation between timesteps. For static/slow-changing audio, most activations don't change frame-to-frame.
+
+**Results on Loihi 2:**
+- 17x improvement in sparsity vs dense ANN
+- 0.056 of synaptic operations compared to ANN
+- Maintained accuracy (0.62 mAP on object detection)
+
+**For your audio task:** Audio spectrograms have significant temporal redundancy. Adjacent timesteps of a 5-second clip share much content. SDNN could exploit this.
+
+**Expected energy reduction:** 10-17x in synaptic operations
+**Accuracy trade-off:** Near zero when properly converted
+**Implementation complexity:** High -- requires SDNN conversion framework
+**SpiNNaker compatibility:** Limited -- SpiNNaker processes spikes natively but SDNN requires delta encoding at each layer
+

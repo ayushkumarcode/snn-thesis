@@ -82,3 +82,31 @@ class LearnableBetaCNN(nn.Module):
             flat = pooled.view(pooled.size(0), -1)
 
             cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+def train_epoch(model, loader, optimizer, device):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spk_input)
+
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], targets)

@@ -474,3 +474,6 @@ def main():
     print(f"  Saved to: {summary_file}")
     print(f"{'='*70}")
 
+
+if __name__ == "__main__":
+    main()

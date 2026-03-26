@@ -502,3 +502,31 @@ def extract_sr_params(model) -> dict:
                 "sigma_mean": float(module.sigma.mean().item()),
                 "sigma_std": float(module.sigma.std().item()),
                 "sigma_min": float(module.sigma.min().item()),
+                "sigma_max": float(module.sigma.max().item()),
+            }
+            if isinstance(module, SRRhythmLIF):
+                info["amplitude_abs_mean"] = float(module.amplitude.abs().mean().item())
+                info["frequency_mean"] = float(module.frequency.mean().item())
+                info["phase_mean"] = float(module.phase.mean().item())
+            summary[name] = info
+    return summary
+
+
+def train_fold(fold, with_rhythm, device, epochs, patience, seed, init_sigma):
+    """Train a single fold."""
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+
+    variant = "SR+Rhythm" if with_rhythm else "SR"
+
+    print(f"\n{'='*60}")
+    print(f"  Trainable {variant} SNN | Fold {fold}/5 | seed={seed}")
+    print(f"  init_sigma={init_sigma} | Device: {device}")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    if with_rhythm:
+        model = SRRhythmSNN(init_sigma=init_sigma).to(device)
+    else:

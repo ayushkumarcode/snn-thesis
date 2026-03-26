@@ -334,3 +334,31 @@ def convert_and_evaluate_fold(
     print(f"  Loaded ANN: {ann_path}")
 
     # Step 2: Record activations over training set
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    recorder = ActivationRecorder()
+    recorder.register_hooks(ann_model)
+
+    print(f"  Recording activations over {len(train_loader.dataset)} training samples...")
+    t0 = time.time()
+    with torch.no_grad():
+        for data, _ in train_loader:
+            data = data.to(device)
+            _ = ann_model(data)
+    recorder.remove_hooks()
+    print(f"  Activation recording done ({time.time()-t0:.1f}s)")
+
+    # Step 3: Compute per-layer thresholds
+    thresholds = recorder.compute_thresholds(percentile=percentile)
+    print(f"  Calibrated thresholds (percentile={percentile}):")
+    for name, thresh in thresholds.items():
+        print(f"    {name}: {thresh:.4f}")
+
+    # Step 4: Create converted SNN and transfer weights
+    snn_model = ConvertedSNN(thresholds=thresholds).to(device)
+    transfer_weights(ann_model, snn_model)
+    snn_model.eval()
+    print(f"  Created converted SNN with calibrated thresholds")
+
+    # Step 5: Evaluate ANN baseline
+    ann_acc = evaluate_ann(ann_model, test_loader, device)

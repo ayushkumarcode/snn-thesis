@@ -558,3 +558,18 @@ def main():
         json.dump(summary, f, indent=2)
 
     print(f"\n{'='*70}")
+    print(f"  ASTROCYTE SNN -- RESULTS")
+    print(f"{'='*70}")
+    print(f"  Per-fold accuracy: {[f'{a*100:.2f}%' for a in accs]}")
+    print(f"  Mean accuracy:     {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline (direct): 47.15% +/- 4.50%")
+    print(f"\n  Learned astrocyte parameters (averaged across folds):")
+    for layer, p in agg_params.items():
+        print(f"    {layer}: tau={p['mean_tau']:.4f} gain={p['mean_gain']:.4f} "
+              f"target={p['mean_target']:.4f}")
+    print(f"\n  Saved to: {summary_file}")
+    print(f"{'='*70}")
+
+
+if __name__ == "__main__":
+    main()

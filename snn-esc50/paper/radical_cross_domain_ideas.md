@@ -418,3 +418,31 @@ Add "astrocyte" modules that:
 **How It Applies to ESC-50:**
 - Astrocytes operating on slow timescales (5-second sound clips!) could capture clip-level statistics
 - Gate synaptic plasticity based on sound category difficulty
+- Optimal astrocyte-to-neuron ratio of ~2:1 mirrors biological ratios
+- Could address catastrophic forgetting in continual learning (relevant to our CL experiments)
+
+**Expected Impact:**
+- Better accuracy on temporal tasks
+- Improved continual learning (relevant to our existing experiments)
+- More biologically plausible system
+
+**Implementation Feasibility:** MEDIUM
+- Add astrocyte module: slow exponential moving average of spike rates
+- Multiply neuron thresholds by astrocyte output
+- ~30 lines of code for basic implementation
+
+**Novelty Assessment:** VERY HIGH
+- Astrocyte-augmented SNNs for audio is completely unprecedented
+- PNAS 2025 paper makes this cutting-edge
+
+---
+
+## TIER 3: Strong Ideas, Good Novelty
+
+---
+
+### IDEA 11: Liquid State Machine with Trained Readout on SpiNNaker
+
+**Source:** "Liquid State Machine on SpiNNaker for Spatio-Temporal Classification Tasks" (Frontiers 2022)
+**Domain:** Physics (Reservoir Computing) + Hardware Co-Design
+

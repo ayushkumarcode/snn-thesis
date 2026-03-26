@@ -558,3 +558,25 @@ def main():
     print(f"DENDRITIC SNN RESULTS (K={args.branches} branches)")
     print(f"{'='*60}")
     print(f"{'Fold':<8} {'Accuracy':>10} {'Best Epoch':>12}")
+    print(f"{'-'*35}")
+    for fold in folds:
+        r = all_results[f"fold_{fold}"]
+        print(f"  {fold:<6} {r['best_accuracy']*100:>9.2f}% {r['best_epoch']:>12d}")
+    print(f"{'-'*35}")
+    print(f"  Mean:  {mean_acc*100:>9.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline SNN (LIF): 47.15% +/- 4.50%")
+    diff = mean_acc * 100 - 47.15
+    print(f"  Difference: {diff:+.2f} pp")
+
+    # Print learned branch dynamics
+    print(f"\n--- Learned Branch Dynamics (last fold) ---")
+    last_fold = folds[-1]
+    for layer_name, stats in all_results[f"fold_{last_fold}"]["branch_stats"].items():
+        print(f"  {layer_name}:")
+        for k in range(args.branches):
+            print(f"    Branch {k}: beta={stats['betas_mean'][k]:.3f}+/-{stats['betas_std'][k]:.3f}, "
+                  f"gate={stats['gates_mean'][k]:.3f}+/-{stats['gates_std'][k]:.3f}")
+
+
+if __name__ == "__main__":
+    main()

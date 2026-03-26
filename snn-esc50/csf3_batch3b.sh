@@ -54,3 +54,9 @@ echo "============================================"
 
 echo ""
 echo "=== RESULTS ==="
+for dir in results/experiments/spiking_leaf results/experiments/info_bottleneck_*; do
+    s="$dir/summary.json"
+    if [ -f "$s" ]; then
+        python -c "import json; d=json.load(open('$s')); print(f'  {d.get(\"experiment\",\"?\"):<40} {d[\"mean_accuracy\"]*100:.2f}% ± {d[\"std_accuracy\"]*100:.2f}%')"
+    fi
+done

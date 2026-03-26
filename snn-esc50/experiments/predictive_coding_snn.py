@@ -418,3 +418,31 @@ def main():
     print(f"{'='*70}")
 
     all_results = []
+
+    for fold in folds:
+        print(f"\n--- Fold {fold}/5 ---")
+        result = train_fold(fold, device, args.epochs, PATIENCE, args.lambda_pred)
+        all_results.append(result)
+
+        # Save per-fold result
+        fold_file = out_dir / f"fold{fold}_lambda{args.lambda_pred}.json"
+        with open(fold_file, "w") as f:
+            json.dump(result, f, indent=2)
+        print(f"  Fold {fold}: {result['best_accuracy']*100:.2f}% "
+              f"(spike reduction: {result['spike_reduction_pct']:.1f}%)")
+
+    # Summary
+    accs = [r["best_accuracy"] for r in all_results]
+    spike_reds = [r["spike_reduction_pct"] for r in all_results]
+    mean_acc = sum(accs) / len(accs)
+    std_acc = (sum((a - mean_acc) ** 2 for a in accs) / len(accs)) ** 0.5
+    mean_red = sum(spike_reds) / len(spike_reds)
+
+    summary = {
+        "experiment": "predictive_coding_snn",
+        "lambda_pred": args.lambda_pred,
+        "folds": folds,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "fold_spike_reductions_pct": spike_reds,

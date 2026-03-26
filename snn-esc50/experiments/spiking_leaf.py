@@ -54,3 +54,31 @@ from src.dataset import download_esc50
 # Raw Waveform Dataset
 # ============================================================
 
+WAVEFORM_LENGTH = SAMPLE_RATE * DURATION  # 110250 samples
+
+
+class ESC50WaveformDataset(Dataset):
+    """ESC-50 dataset that returns raw audio waveforms instead of spectrograms.
+
+    Each sample is a raw waveform of shape (1, 110250), normalized to [-1, 1].
+    """
+
+    def __init__(self, folds: list[int], precompute: bool = True):
+        self.precompute = precompute
+        meta = pd.read_csv(ESC50_META_PATH)
+        self.meta = meta[meta["fold"].isin(folds)].reset_index(drop=True)
+
+        self.data = []
+        self.labels = []
+
+        if precompute:
+            print(f"Loading {len(self.meta)} raw waveforms from folds {folds}...")
+            for _, row in self.meta.iterrows():
+                filepath = ESC50_AUDIO_DIR / row["filename"]
+                waveform = self._load_waveform(str(filepath))
+                self.data.append(waveform)
+                self.labels.append(row["target"])
+            self.data = np.array(self.data, dtype=np.float32)
+            self.labels = np.array(self.labels, dtype=np.int64)
+
+    @staticmethod

@@ -334,3 +334,31 @@ def train_fold(fold, device, epochs, patience, lambda_pred):
         history["train_pred"].append(tr["pred_loss"])
         history["train_orig_spikes"].append(tr["avg_original_spikes"])
         history["train_err_spikes"].append(tr["avg_error_spikes"])
+        history["test_loss"].append(te["loss"])
+        history["test_acc"].append(te["accuracy"])
+        history["test_ce"].append(te["ce_loss"])
+        history["test_pred"].append(te["pred_loss"])
+        history["test_orig_spikes"].append(te["avg_original_spikes"])
+        history["test_err_spikes"].append(te["avg_error_spikes"])
+
+        if te["accuracy"] > best_acc:
+            best_acc = te["accuracy"]
+            best_epoch = epoch
+            no_improve = 0
+            best_model_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+        else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - t0
+            spike_reduction = (1 - te["avg_error_spikes"] / max(te["avg_original_spikes"], 1)) * 100
+            print(f"  Ep {epoch:3d}/{epochs} | "
+                  f"tr={tr['accuracy']:.3f} te={te['accuracy']:.3f} "
+                  f"best={best_acc:.3f} | "
+                  f"CE={te['ce_loss']:.2f} pred={te['pred_loss']:.4f} | "
+                  f"spike_red={spike_reduction:.1f}% | "
+                  f"{elapsed:.0f}s")
+
+        if no_improve >= patience:
+            print(f"  Early stop at epoch {epoch}, best={best_acc:.4f}")
+            break

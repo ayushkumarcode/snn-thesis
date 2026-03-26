@@ -530,3 +530,31 @@ def eval_ann(model, loader, device):
 
         predicted = logits.argmax(dim=1)
         correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+# ============================================================
+# Run fold
+# ============================================================
+
+def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE):
+    """Train and evaluate one fold for a given model type.
+
+    Args:
+        fold: Test fold (1-5).
+        model_type: "snn" or "ann".
+        device: Torch device.
+        num_epochs: Maximum training epochs.
+        patience: Early stopping patience.
+
+    Returns:
+        dict with results.
+    """
+    print(f"\n{'='*60}")
+    print(f"  Cochleagram {model_type.upper()} | Fold {fold}/5 | Device: {device}")
+    print(f"{'='*60}")
+
+    # Load cochleagram data
+    train_loader, test_loader = get_cochleagram_dataloaders(fold, BATCH_SIZE)

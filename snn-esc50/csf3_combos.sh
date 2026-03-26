@@ -54,3 +54,31 @@ run_combo "rhythm_tet" --rhythm --tet --learn-beta --dropout --sre
 # 5. Rhythm + TET + KD
 run_combo "rhythm_tet_kd" --rhythm --tet --kd --learn-beta --dropout --sre
 
+# 6. Rhythm + cochleagram
+run_combo "rhythm_cochleagram" --rhythm --cochleagram --learn-beta --dropout --sre
+
+# 7. Rhythm + delays
+run_combo "rhythm_delays" --rhythm --delays --learn-beta --dropout --sre
+
+# ============================================
+# TIER 2: Dendritic combos
+# ============================================
+
+echo ""
+echo "===== TIER 2: DENDRITIC COMBOS ====="
+
+# 8. Dendritic + KD
+run_combo "dendritic_kd" --dendritic --kd --dropout --sre
+
+# 9. Dendritic + hybrid init
+run_combo "dendritic_hybrid" --dendritic --hybrid-init --dropout --sre --epochs 30
+
+# 10. Dendritic + delays
+run_combo "dendritic_delays" --dendritic --delays --dropout --sre
+
+# 11. Dendritic + cochleagram
+run_combo "dendritic_cochleagram" --dendritic --cochleagram --dropout --sre
+
+# ============================================
+# TIER 3: Other promising combos
+# ============================================

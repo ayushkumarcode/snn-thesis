@@ -250,3 +250,31 @@ class PCEN(nn.Module):
     ):
         super().__init__()
         self.eps = eps
+
+        # Learnable per-channel parameters (stored in log/logit space for constraints)
+        self.log_s = nn.Parameter(torch.full((n_channels,), math.log(init_s / (1 - init_s))))
+        self.log_alpha = nn.Parameter(torch.full((n_channels,), math.log(init_alpha)))
+        self.log_delta = nn.Parameter(torch.full((n_channels,), math.log(init_delta)))
+        self.log_r = nn.Parameter(torch.full((n_channels,), math.log(init_r)))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply PCEN normalization.
+
+        Args:
+            x: Input of shape (batch, n_channels, time_frames).
+
+        Returns:
+            Normalized output, same shape as input.
+        """
+        # Constrain parameters
+        s = torch.sigmoid(self.log_s).unsqueeze(0).unsqueeze(-1)  # (1, C, 1)
+        alpha = torch.exp(self.log_alpha).unsqueeze(0).unsqueeze(-1)
+        delta = torch.exp(self.log_delta).unsqueeze(0).unsqueeze(-1)
+        r = torch.exp(self.log_r).unsqueeze(0).unsqueeze(-1)
+
+        # IIR smoothing: M[t] = (1-s) * M[t-1] + s * x[t]
+        batch, channels, time_frames = x.shape
+        M = torch.zeros(batch, channels, 1, device=x.device, dtype=x.dtype)
+        M_list = []
+        for t in range(time_frames):
+            M = (1.0 - s) * M + s * x[:, :, t:t+1]

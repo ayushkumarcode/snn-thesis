@@ -26,3 +26,31 @@ Techniques available:
     --hybrid-init      Initialize SNN weights from trained ANN
     --tet              Temporal Efficient Training loss
     --cochleagram      Gammatone filterbank instead of mel spectrogram
+    --l1-reg LAMBDA    L1 spike rate regularization
+
+All techniques are composable. Results saved to results/experiments/combo_<hash>/
+"""
+
+import argparse
+import hashlib
+import json
+import math
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import snntorch as snn
+from snntorch import surrogate
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from src.config import (
+    NUM_CLASSES, NUM_STEPS, BETA, N_MELS,
+    NUM_EPOCHS, LEARNING_RATE, WEIGHT_DECAY, PATIENCE, BATCH_SIZE,
+    RESULTS_DIR, get_device, SAMPLE_RATE, DURATION, N_FFT, HOP_LENGTH,
+)
+from src.dataset import download_esc50, get_fold_dataloaders, ESC50Dataset
+from src.encoding import encode_direct

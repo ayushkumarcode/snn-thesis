@@ -138,3 +138,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 ### 3.1 cochlea Python Package (Zilany-Bruce-Carney Model)
 
 **What it is**: Full biophysical inner ear models. Sound in, spike trains out. Implements the Zilany, Bruce, & Carney (2014) auditory periphery model.
+
+**Key details**:
+- `pip install cochlea` or `github.com/mrkrd/cochlea3` (Python 3 version)
+- Models: cochlear filtering, inner hair cell transduction, synaptic vesicle release, auditory nerve fiber spike generation
+- Can generate responses for the ENTIRE human auditory nerve (~30,000 ANFs)
+- Output: spike times per fiber, fiber characteristic frequency, fiber type (high/medium/low spontaneous rate)
+- Fast enough for thousands of fibers
+- Interoperable with NEURON and Brian simulators
+
+**Has it been tried with SNNs?**
+- Used in auditory neuroscience research
+- Not directly combined with SNN classification on ESC-50
+
+**Spike compatibility**: PERFECT. Output IS spike trains. No encoding needed.
+
+**Implementation complexity**: MODERATE. Need to:
+1. Process each ESC-50 audio through the model
+2. Choose number of fibers and frequency range
+3. Convert spike train format to SNN input tensor
+4. May need to subsample (30K fibers is too many for our 2304-input SNN)
+
+**Expected accuracy impact**: UNKNOWN for classification. These models are designed for biological accuracy, not classification performance. Could be very good (captures biologically relevant features) or poor (too much detail, insufficient abstraction).
+
+**NOVELTY**: VERY HIGH. No one has used a full auditory periphery model for ESC-50 SNN classification.
+
+### 3.2 BAE (Biologically plausible Auditory Encoding) -- Pan et al. 2020
+
+**What it is**: A complete bio-inspired encoding pipeline that emulates the human auditory system: cochlear filter bank -> inner hair cells -> auditory masking -> spike encoding.

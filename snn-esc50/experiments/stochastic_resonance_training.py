@@ -614,3 +614,31 @@ def train_fold(fold, with_rhythm, device, epochs, patience, seed, init_sigma):
         "total_params": total_params,
         "sr_params": sr_params,
         "learned_sr_params": sr_summary,
+        "history": history,
+    }
+
+    suffix = "rhythm" if with_rhythm else "sr"
+    with open(out_dir / f"result_{suffix}_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
+    print(f"  Learned SR parameters:")
+    for layer_name, info in sr_summary.items():
+        line = f"    {layer_name}: beta={info['beta_mean']:.3f}, sigma={info['sigma_mean']:.5f}"
+        if "amplitude_abs_mean" in info:
+            line += f", A={info['amplitude_abs_mean']:.4f}, f={info['frequency_mean']:.2f}"
+        print(line)
+
+    return result
+
+
+# ============================================================
+# Main
+# ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Trainable Stochastic Resonance SNN for ESC-50"
+    )
+    parser.add_argument(
+        "--fold", type=int, default=None,

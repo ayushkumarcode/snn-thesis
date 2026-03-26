@@ -362,3 +362,31 @@ Environmental sounds have LOTS of redundancy:
 ---
 
 ### IDEA 9: Dopamine-Modulated Three-Factor Learning
+
+**Source:**
+- "Three-factor learning in SNNs: An overview" (Patterns / Cell Press, 2025)
+- "Synchrony-Gated Plasticity with Dopamine Modulation" (TMLR, Dec 2025)
+- "DA-SSDP: Dopamine-Modulated Spike-Synchrony-Dependent Plasticity"
+
+**Domain:** Neuroscience (Neuromodulation) + Reinforcement Learning
+
+**Core Idea:**
+Standard SNN training uses surrogate gradients (2-factor: pre + post synaptic activity). Three-factor learning adds a THIRD signal: a neuromodulator (like dopamine) that represents global reward/error. This modulates plasticity based on task performance.
+
+DA-SSDP: keep surrogate gradient forward pass but ADD dopamine-modulated plasticity as a regularizer or fine-tuning step. The dopamine signal is derived from the loss function.
+
+**How It Applies to ESC-50:**
+- Could address the overfitting problem (1600 training samples, our SNN overfits heavily)
+- Dopamine modulation acts as a biologically-inspired regularizer
+- Three-factor learning is more robust with small datasets
+- Could improve training stability (our burst encoding failed partly due to training instability)
+
+**Expected Impact:**
+- Improved generalization on small datasets
+- More biologically plausible training
+- For ESC-50: potentially 1-3 pp improvement via better regularization
+
+**Implementation Feasibility:** MEDIUM
+- DA-SSDP code is available (GitHub: NeuroSyd/DA-SSDP)
+- Can be added as auxiliary loss term alongside standard training
+- Compatible with existing architecture

@@ -502,3 +502,31 @@ This is optimistic (ignores neuron update costs, memory access), but the order o
 
 ### What Does NOT Work on SpiNNaker
 - Adaptive timestep/early exit: sPyNNaker runs fixed-duration simulations
+- SDNN delta encoding: would need custom neuron model in C
+- Ternary spikes: sPyNNaker's IF_curr_exp is binary-spike only
+- Per-neuron adaptive thresholds: fixed threshold per population (could approximate with weight scaling)
+
+### SpiNNaker Energy Reality Check
+SpiNNaker 1 energy is dominated by:
+1. Static chip power (~1W per chip regardless of activity)
+2. SDRAM access for synaptic weights (~10 nJ per access)
+3. Router energy for spike packets (~1-2 nJ per hop)
+4. Neuron computation (~negligible vs above)
+
+**Reducing spike rate helps (3) significantly but not (1) or (2).** Weight pruning helps (2) by reducing SDRAM reads. Reducing T helps everything proportionally.
+
+---
+
+## 12. Literature Gap and Novelty for Your Thesis/Paper
+
+### What No One Has Done
+1. **Combined spike regularization + temporal reduction + pruning on audio SNNs** -- no prior work
+2. **ESC-50 energy optimization for neuromorphic hardware** -- you're the only one doing ESC-50 on SpiNNaker
+3. **Empirical Pareto frontier with real SpiNNaker deployment** -- most papers use theoretical energy counts
+
+### How to Frame This in Your ICONS Paper
+Current framing: "SNN uses 968 nJ vs ANN 454 nJ"
+Better framing: "With spike regularization and temporal optimization, SNN energy drops to ~80 nJ, achieving 5.7x advantage over ANN -- crossing the break-even threshold identified by Dampfhoffer et al."
+
+---
+

@@ -614,3 +614,31 @@ def test_edge_cases():
     )
     report("Large logits (100x)",
            abs(loss_old.item() - loss_new.item()) < 1e-4,
+           f"diff={abs(loss_old.item() - loss_new.item()):.2e}")
+
+    # Very small values
+    mem = torch.randn(T, B, C) * 0.001
+    loss_old = torch.zeros(1)
+    for s in range(T):
+        loss_old += criterion(mem[s], tgt)
+    loss_old /= T
+
+    loss_new = F.cross_entropy(
+        mem.reshape(T * B, C),
+        tgt.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    report("Tiny logits (0.001x)",
+           abs(loss_old.item() - loss_new.item()) < 1e-6,
+           f"diff={abs(loss_old.item() - loss_new.item()):.2e}")
+
+
+# ============================================================
+# TEST 9: Verify target expansion is correct
+# ============================================================
+def test_target_expansion():
+    """
+    The new code does:
+        targets.unsqueeze(0).expand(T, -1).reshape(-1)
+
+    This should produce: [t0, t1, ..., tB-1, t0, t1, ..., tB-1, ...] repeated T times
+

@@ -166,3 +166,31 @@ class DendriticLIF(nn.Module):
                 if branch_mems[k].dim() < input_current.dim():
                     branch_mems[k] = torch.zeros_like(input_current)
             else:
+                # FC: (1, size) for broadcasting over batch
+                beta_k = beta_k.unsqueeze(0)
+                gate_k = gate_k.unsqueeze(0)
+
+                if branch_mems[k].dim() < input_current.dim():
+                    branch_mems[k] = torch.zeros_like(input_current)
+
+            # Branch membrane dynamics: leak + input
+            mem_k = beta_k * branch_mems[k] + gate_k * input_current
+            new_branch_mems.append(mem_k)
+
+            # Weighted contribution to soma
+            soma = soma + gate_k * mem_k
+
+        # Spike generation with surrogate gradient
+        spk = self.spike_grad(soma - self.threshold)
+
+        # Reset: on spike, reset all branch membranes
+        # spk is binary (0 or 1), so (1 - spk) zeroes out where spike occurred
+        reset_branch_mems = []
+        for k in range(self.num_branches):
+            if is_spatial:
+                reset = new_branch_mems[k] * (1.0 - spk)
+            else:
+                reset = new_branch_mems[k] * (1.0 - spk)
+            reset_branch_mems.append(reset)
+
+        return spk, reset_branch_mems

@@ -446,3 +446,19 @@ def main():
             {
                 "fold": r["fold"],
                 "accuracy": r["best_accuracy"],
+                "best_epoch": r["best_epoch"],
+                "total_epochs": r["total_epochs"],
+                "time_seconds": r["time_seconds"],
+                "learned_params": r.get("learned_params", {}),
+            }
+            for r in all_results
+        ],
+    }
+
+    with open(out_dir / "summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSaved summary to {out_dir / 'summary.json'}")
+
+
+if __name__ == "__main__":
+    main()

@@ -222,3 +222,31 @@ def run_fold(fold, device, num_epochs=NUM_EPOCHS):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    results = []
+
+    for fold in folds:
+        result = run_fold(fold, device, args.epochs)
+        results.append(result)
+
+    if len(results) == 5:
+        accs = [r["best_acc"] for r in results]
+        mean_acc = sum(accs) / len(accs)
+        std_acc = (sum((a - mean_acc)**2 for a in accs) / len(accs))**0.5
+        print(f"\n{'='*60}")
+        print(f"  Learnable Beta 5-Fold: {mean_acc:.4f} +/- {std_acc:.4f}")
+        print(f"  Per-fold: {[f'{a:.4f}' for a in accs]}")
+        print(f"  Baseline (direct): 47.15% +/- 4.50%")
+        print(f"{'='*60}")
+
+        summary = {
+            "experiment": "learnable_beta",

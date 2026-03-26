@@ -390,3 +390,31 @@ def main():
     parser.add_argument("--patience", type=int, default=PATIENCE, help=f"Early stop patience (default: {PATIENCE})")
     parser.add_argument("--lambda-tet", type=float, default=1.0, help="TET variance penalty weight (default: 1.0)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))
+
+    all_results = []
+    for fold in folds:
+        result = train_fold(fold, device, args.epochs, args.patience, args.lambda_tet, args.seed)
+        all_results.append(result)
+
+    # Summary
+    out_dir = RESULTS_DIR / "experiments" / "tet_training"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    accs = [r["best_accuracy"] for r in all_results]
+    mean_acc = float(np.mean(accs))
+    std_acc = float(np.std(accs))
+
+    print(f"\n{'='*60}")
+    print(f"  TET Training Summary | lambda={args.lambda_tet}")
+    print(f"{'='*60}")

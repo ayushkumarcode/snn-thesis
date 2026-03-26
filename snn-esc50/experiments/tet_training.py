@@ -166,3 +166,31 @@ class TETLoss(nn.Module):
         super().__init__()
         self.lambda_tet = lambda_tet
         self.ce = nn.CrossEntropyLoss(reduction="none")
+
+    def forward(
+        self, mem_out: torch.Tensor, targets: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """Compute TET loss.
+
+        Args:
+            mem_out: Membrane potentials, shape (T, batch, num_classes).
+            targets: Class labels, shape (batch,).
+
+        Returns:
+            total_loss: L_CE + lambda * L_var (scalar).
+            l_ce: Mean per-timestep CE loss (scalar).
+            l_var: Temporal variance penalty (scalar).
+        """
+        T = mem_out.shape[0]
+
+        # Per-timestep CE losses: shape (T, batch)
+        per_step_losses = torch.stack([
+            self.ce(mem_out[t], targets) for t in range(T)
+        ])  # (T, batch)
+
+        # Mean across timesteps for each sample, then mean across batch
+        l_ce = per_step_losses.mean()  # scalar
+
+        # Per-timestep mean loss across batch: shape (T,)
+        per_step_mean = per_step_losses.mean(dim=1)  # (T,)
+

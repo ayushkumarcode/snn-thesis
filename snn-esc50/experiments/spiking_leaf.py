@@ -698,3 +698,31 @@ def train_fold(fold, model_type, device, epochs, patience, seed):
         "sigma_min": min(sigmas),
         "sigma_max": max(sigmas),
         "sigma_mean": float(np.mean(sigmas)),
+    }
+    pcen = model.frontend.pcen
+    frontend_summary["pcen"] = {
+        "s_mean": float(torch.sigmoid(pcen.log_s).mean().item()),
+        "alpha_mean": float(torch.exp(pcen.log_alpha).mean().item()),
+        "delta_mean": float(torch.exp(pcen.log_delta).mean().item()),
+        "r_mean": float(torch.exp(pcen.log_r).mean().item()),
+    }
+
+    result = {
+        "model_type": model_type,
+        "fold": fold,
+        "seed": seed,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "total_params": total_params,
+        "frontend_params": frontend_params,
+        "frontend_summary": frontend_summary,
+        "history": history,
+    }
+
+    with open(out_dir / f"result_{model_type}_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
+    print(f"  Frontend: {frontend_summary}")

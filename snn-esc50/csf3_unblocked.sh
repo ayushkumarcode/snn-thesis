@@ -26,3 +26,31 @@ run_combo() {
     local name="$1"; shift
     # Skip if already has 5-fold summary
     for d in results/experiments/combo_*; do
+        if echo "$d" | grep -q "$name" && [ -f "$d/summary.json" ]; then
+            echo ">>>>>>>>>> $name ALREADY DONE, skipping <<<<<<<<<<"
+            return
+        fi
+    done
+    echo ""; echo ">>>>>>>>>> $name ($(date)) <<<<<<<<<<"
+    python -m experiments.combo_experiment "$@" --device cuda 2>&1
+    echo ">>>>>>>>>> $name DONE ($(date)) <<<<<<<<<<"
+}
+
+# From combo_a that were blocked behind rhythm_delays
+run_combo "all_rhythm" --rhythm --delays --kd --tet --learn-beta --dropout --sre
+run_combo "all_dendritic" --dendritic --delays --kd --tet --dropout --sre
+run_combo "rhythm_kd_T1" --rhythm --kd --temperature 1.0 --learn-beta --dropout --sre
+run_combo "rhythm_kd_T5" --rhythm --kd --temperature 5.0 --learn-beta --dropout --sre
+
+# From combo_b that were blocked behind dendritic_delays
+run_combo "dendritic_cochleagram" --dendritic --cochleagram --dropout --sre
+run_combo "rhythm_l1_1e5" --rhythm --learn-beta --dropout --sre --l1-reg 0.00001
+run_combo "rhythm_l1_1e4" --rhythm --learn-beta --dropout --sre --l1-reg 0.0001
+run_combo "rhythm_l1_1e3" --rhythm --learn-beta --dropout --sre --l1-reg 0.001
+run_combo "rhythm_l1_1e2" --rhythm --learn-beta --dropout --sre --l1-reg 0.01
+run_combo "rhythm_kd_l1_1e4" --rhythm --kd --learn-beta --dropout --sre --l1-reg 0.0001
+run_combo "rhythm_kd_l1_1e3" --rhythm --kd --learn-beta --dropout --sre --l1-reg 0.001
+run_combo "rhythm_kd_T10" --rhythm --kd --temperature 10.0 --learn-beta --dropout --sre
+run_combo "rhythm_kd_a03" --rhythm --kd --alpha 0.3 --learn-beta --dropout --sre
+run_combo "rhythm_kd_a07" --rhythm --kd --alpha 0.7 --learn-beta --dropout --sre
+run_combo "cochleagram_rhythm_kd" --cochleagram --rhythm --kd --learn-beta --dropout --sre

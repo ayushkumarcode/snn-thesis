@@ -306,3 +306,31 @@ class ComboSpikingCNN(nn.Module):
         elif args.rhythm:
             self.n1 = RhythmLIF(32, BETA, sg, args.learn_beta)
             self.n2 = RhythmLIF(64, BETA, sg, args.learn_beta)
+            self.n3 = RhythmLIF(256, BETA, sg, args.learn_beta)
+            self.n4 = RhythmLIF(NUM_CLASSES, BETA, sg, args.learn_beta)
+        else:
+            self.n1 = snn.Leaky(beta=BETA, spike_grad=sg,
+                                 learn_beta=args.learn_beta, learn_threshold=args.learn_threshold)
+            self.n2 = snn.Leaky(beta=BETA, spike_grad=sg,
+                                 learn_beta=args.learn_beta, learn_threshold=args.learn_threshold)
+            self.n3 = snn.Leaky(beta=BETA, spike_grad=sg,
+                                 learn_beta=args.learn_beta, learn_threshold=args.learn_threshold)
+            self.n4 = snn.Leaky(beta=BETA, spike_grad=sg,
+                                 learn_beta=args.learn_beta, learn_threshold=args.learn_threshold)
+
+    def _init_states(self, device):
+        if self.use_dendritic:
+            return [n.init_mem(device) for n in [self.n1, self.n2, self.n3, self.n4]]
+        elif self.use_rhythm:
+            return [n.init_mem(device) for n in [self.n1, self.n2, self.n3, self.n4]]
+        else:
+            return [n.init_leaky() for n in [self.n1, self.n2, self.n3, self.n4]]
+
+    def forward(self, x):
+        device = x.device
+        states = self._init_states(device)
+        m1, m2, m3, m4 = states
+
+        if self.use_delays:
+            self.fc1.reset()
+            self.fc2.reset()

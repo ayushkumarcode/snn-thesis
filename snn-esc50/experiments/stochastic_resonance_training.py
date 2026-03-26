@@ -586,3 +586,31 @@ def train_fold(fold, with_rhythm, device, epochs, patience, seed, init_sigma):
             for m in model.modules():
                 if isinstance(m, (SRLIF, SRRhythmLIF)):
                     sigmas.append(float(m.sigma.mean().item()))
+            mean_sigma = np.mean(sigmas)
+            print(
+                f"  Ep {epoch:3d}/{epochs} | "
+                f"tr={tr_acc:.4f} te={te_acc:.4f} best={best_acc:.4f} | "
+                f"sigma={mean_sigma:.5f} | {elapsed:.0f}s"
+            )
+
+        if no_improve >= patience:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - start_time
+
+    # Extract learned SR parameters
+    sr_summary = extract_sr_params(model)
+
+    result = {
+        "variant": variant,
+        "fold": fold,
+        "seed": seed,
+        "init_sigma": init_sigma,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "total_params": total_params,
+        "sr_params": sr_params,
+        "learned_sr_params": sr_summary,

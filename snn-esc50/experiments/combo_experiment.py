@@ -250,3 +250,31 @@ def wav_to_cochleagram(filepath, fb_matrix):
 
     # Normalize to [0, 1]
     mn, mx = cochleagram.min(), cochleagram.max()
+    if mx - mn > 0:
+        cochleagram = (cochleagram - mn) / (mx - mn)
+    else:
+        cochleagram = np.zeros_like(cochleagram)
+
+    return cochleagram.astype(np.float32)
+
+
+# ============================================================
+# Combo model builder
+# ============================================================
+
+class ComboSpikingCNN(nn.Module):
+    """Configurable SNN that can combine any techniques."""
+
+    def __init__(self, args):
+        super().__init__()
+        self.num_steps = NUM_STEPS
+        self.args = args
+        self.use_delays = args.delays
+        self.use_dendritic = args.dendritic
+        self.use_rhythm = args.rhythm
+
+        sg = surrogate.spike_rate_escape(beta=1, slope=25) if args.sre else surrogate.fast_sigmoid(slope=25)
+
+        # Conv layers (shared across all configs)
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)

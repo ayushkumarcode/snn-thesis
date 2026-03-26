@@ -390,3 +390,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 - [ICONS 2023 ACM Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3589737)
 - [ICONS 2022 ACM Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3546790)
 
+### Key SNN Papers
+- [Eshraghian et al. 2023 - Training SNNs Using Lessons from Deep Learning (Proc. IEEE Best Paper)](https://arxiv.org/abs/2109.12894)
+- [QKFormer - NeurIPS 2024 Spotlight](https://arxiv.org/abs/2403.16552)
+- [SpikeLLM - ICLR 2025](https://arxiv.org/abs/2407.04752)
+- [NeuroBench Framework - Nature Communications 2025](https://www.nature.com/articles/s41467-025-56739-4)
+- [Neuromorphic Robustness - Nature Communications 2025](https://www.nature.com/articles/s41467-025-65197-x)
+- [Sharmin et al. 2020 - Inherent Adversarial Robustness of SNNs (ECCV)](https://arxiv.org/abs/2003.10399)
+
+### SNN + Audio
+- [Larroza et al. 2025 - Spike Encoding for Environmental Sound (arXiv)](https://arxiv.org/abs/2503.11206)
+- [SNN and Sound Comprehensive Review (PMC 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
+- [SATRN: Spiking Audio Tagging Robust Network (MDPI 2025)](https://www.mdpi.com/2079-9292/14/4/761)
+- [Speech2Spikes - ACM NICE 2023](https://dl.acm.org/doi/10.1145/3584954.3584995)
+- [Spike-based Sound Source Localization - NeurIPS 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/ce953d71deeb33d9ffa2c879b518d273-Paper-Conference.pdf)
+- [Dominguez-Morales et al. 2016 - SpiNNaker Audio (Springer)](https://link.springer.com/chapter/10.1007/978-3-319-44778-0_6)
+
+### Encoding Comparisons
+- [Neural Coding Comparative Study (Frontiers 2021)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full)
+- [Spike Encoding for IoT Signals (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.999029/full)
+- [Survey of Encoding Techniques (Neural Processing Letters 2021)](https://link.springer.com/article/10.1007/s11063-021-10562-2)
+
+### Neuromorphic Hardware
+- [SpiNNaker2 System (arXiv 2024)](https://arxiv.org/abs/2401.04491)
+- [Neuromorphic Computing 2025 Landscape](https://humanunsupervised.com/papers/neuromorphic_landscape.html)
+- [Neuromorphic LLM on Loihi 2 (arXiv 2025)](https://arxiv.org/html/2503.18002v2)
+
+### Robustness and Energy
+- [SNN Adversarial Robustness with Local Learning (2025)](https://arxiv.org/html/2504.08897v2)

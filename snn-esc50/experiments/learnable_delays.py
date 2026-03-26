@@ -82,3 +82,31 @@ class DelayedLinear(nn.Module):
         self.delay_raw = nn.Parameter(
             torch.empty(out_features).uniform_(0.1, 0.9)
         )
+
+        # Buffer for past inputs — not a persistent buffer, managed manually
+        # Shape will be (max_delay + 1, batch, in_features) during forward
+        self._buffer = None
+        self._buffer_idx = 0  # circular index
+
+    def init_buffer(self, batch_size: int, device: torch.device):
+        """Reset the input history buffer for a new sequence."""
+        self._buffer = torch.zeros(
+            self.max_delay + 1, batch_size, self.in_features, device=device
+        )
+        self._buffer_idx = 0
+
+    @property
+    def delays(self):
+        """Get clamped delays in [0, max_delay]."""
+        return self.delay_raw.clamp(0.0, float(self.max_delay))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Forward pass for a single timestep.
+
+        Args:
+            x: Input tensor of shape (batch, in_features).
+
+        Returns:
+            Output tensor of shape (batch, out_features).
+        """
+        batch_size = x.shape[0]

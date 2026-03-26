@@ -446,3 +446,31 @@ def train_fold(fold, device, epochs, patience):
                   f"best={best_acc:.3f} | "
                   f"SR=[{sr['lif1']:.3f},{sr['lif2']:.3f},{sr['lif3']:.3f},{sr['lif4']:.3f}] | "
                   f"TH=[{th['lif1']:.3f},{th['lif2']:.3f},{th['lif3']:.3f},{th['lif4']:.3f}] | "
+                  f"{elapsed:.0f}s")
+
+        if no_improve >= patience:
+            print(f"  Early stop at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - t0
+
+    # Get learned astrocyte params from best model
+    if best_model_state is not None:
+        model.load_state_dict({k: v.to(device) for k, v in best_model_state.items()})
+    astro_params = get_learned_astrocyte_params(model)
+
+    # Final eval
+    final_te = eval_model(model, test_loader, device)
+
+    result = {
+        "fold": fold,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": elapsed,
+        "learned_astrocyte_params": astro_params,
+        "final_spike_rates": final_te["spike_rates"],
+        "final_thresholds": final_te["thresholds"],
+        "history": history,
+    }
+

@@ -334,3 +334,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 5. **Reduce emphasis on noise robustness and continual learning** -- these are weak results (not statistically significant for noise, preliminary for CL) that dilute the paper's strength. Keep them as one-paragraph mentions or move to supplementary.
 
 ### What NOT To Do
+
+1. **Do NOT add more experiments.** You have enough. The risk is breadth without depth, not insufficient data.
+2. **Do NOT chase SOTA accuracy.** 47.15% on ESC-50 is scientifically valid and interesting precisely BECAUSE it reveals the gap.
+3. **Do NOT apologize for the gap.** The gap IS the finding. Frame it as "we identified the bottleneck" not "our SNN is worse."
+4. **Do NOT hide the SpiNNaker failure.** The FC1 cancellation root-cause analysis is genuinely valuable to the community. Papers that document what went wrong are cited more than papers that only report successes.
+
+---
+
+## 8. CONFIDENCE ASSESSMENT
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| No prior SNN work on full ESC-50 | **Very High** | Confirmed by Larroza et al. 2025 arXiv paper, comprehensive literature search, SNN+sound review (PMC 2024) |
+| 7-encoding comparison is most comprehensive for audio | **Very High** | Yarga et al. (4 encodings, digits), Larroza et al. (3 encodings, ESC-10) are the closest; no one has done 7 |
+| Gap-collapse finding is novel for audio | **High** | ANN-to-SNN gap closure via pretrained features is known conceptually for images, but never quantified for audio with PANNs |
+| ICONS 2026 acceptance likelihood | **Medium-High** | 59% acceptance rate, paper fits 5+ explicit topics, has hardware deployment + novel domain |
+| Cross-encoding transfer analysis is first of its kind | **High** | Exhaustive search found no prior quantification of encoding specificity via transfer matrix |
+| 6x adversarial robustness is first for audio | **High** | Sharmin et al. 2020 (images), Wang et al. 2025 (images) -- no audio adversarial SNN work found |
+
+---
+
+## 9. RESEARCH GAPS (What I Could Not Find)
+
+1. **ICONS 2024 complete paper list:** The proceedings are behind IEEE paywall. I could see the schedule (80+ presentations) but not every paper title.
+2. **ICONS acceptance rate since 2018:** Only 2018 data (59%) is publicly available. May have changed.
+3. **Direct comparison of SNN vs ANN on ESC-50 in any prior work:** None exists. You are creating the baseline.
+4. **SNN + PANNs in any prior work:** Found no paper combining pretrained audio neural networks with SNN classifier heads. Your PANNs+SNN experiment appears to be genuinely novel.
+5. **Detailed reviewer criteria for ICONS:** No public rubric exists. Inference based on accepted papers and call for papers.

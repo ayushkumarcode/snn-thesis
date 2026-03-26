@@ -1,0 +1,22 @@
+{
+  "method": "hybrid_ann_snn",
+  "fold_accuracies": [
+    0.5275,
+    0.575,
+    0.5425,
+    0.6025,
+    0.5175
+  ],
+  "mean_accuracy": 0.553,
+  "std_accuracy": 0.031480152477394406,
+  "transfer_only_accuracies": [
+    0.1175,
+    0.1,
+    0.085,
+    0.1625,
+    0.15
+  ],
+  "transfer_only_mean": 0.123,
+  "transfer_only_std": 0.029300170647967222,
+  "baseline_snn_mean": 0.4715,
+  "baseline_ann_mean": 0.6385

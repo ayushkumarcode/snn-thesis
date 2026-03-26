@@ -166,3 +166,31 @@ class RhythmSpikingCNN(nn.Module):
         Conv2d(32,64) -> BN -> MaxPool(2) -> RhythmLIF
         AvgPool(4,6) -> Flatten
         FC(2304,256) -> RhythmLIF -> Dropout(0.3)
+        FC(256,50) -> RhythmLIF
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # Conv block 1: output is (batch, 32, 32, 108) after MaxPool
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = RhythmLIF(
+            neuron_shape=(32,), beta=beta, num_steps=num_steps, spike_grad=spike_grad,
+        )
+
+        # Conv block 2: output is (batch, 64, 16, 54) after MaxPool
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = RhythmLIF(
+            neuron_shape=(64,), beta=beta, num_steps=num_steps, spike_grad=spike_grad,

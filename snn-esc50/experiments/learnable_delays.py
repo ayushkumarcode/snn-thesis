@@ -54,3 +54,31 @@ class DelayedLinear(nn.Module):
     from buffer[delay_j] rather than the current input, allowing the network
     to learn temporal offsets for pattern matching.
 
+    During training, delays are continuous and soft interpolation is used
+    between adjacent integer timesteps for gradient flow. During eval,
+    delays are rounded to the nearest integer.
+
+    Args:
+        in_features: Input dimension.
+        out_features: Output dimension.
+        max_delay: Maximum allowed delay in timesteps.
+        bias: Whether to include bias.
+    """
+
+    def __init__(self, in_features: int, out_features: int,
+                 max_delay: int = 5, bias: bool = True):
+        super().__init__()
+        self.in_features = in_features
+        self.out_features = out_features
+        self.max_delay = max_delay
+
+        # Standard linear weights
+        self.linear = nn.Linear(in_features, out_features, bias=bias)
+
+        # Learnable delay per output neuron
+        # Initialize to small random values near 0.5 so frac is nonzero from
+        # the start, ensuring gradient flow through the interpolation weights.
+        # Stored as raw parameter, clamped to [0, max_delay] during forward.
+        self.delay_raw = nn.Parameter(
+            torch.empty(out_features).uniform_(0.1, 0.9)
+        )

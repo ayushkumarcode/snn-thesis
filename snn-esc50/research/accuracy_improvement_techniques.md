@@ -250,3 +250,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Accuracy:** DVS Gesture: 97.92% (vs 90.97% for standard spiking ResNet, +6.95pp).
 - **Applicability:** MEDIUM. Our current architecture has NO skip connections. Adding them would increase model complexity slightly but could significantly help gradient flow through 4 LIF layers.
 - **Implementation complexity:** MEDIUM. Add skip connections between conv blocks.
+- **Expected result:** +2-4pp
+
+---
+
+## 9. Attention Mechanisms
+
+### 9a. TCJA-SNN: Temporal-Channel Joint Attention
+
+- **Paper:** "TCJA-SNN: Temporal-Channel Joint Attention for Spiking Neural Networks" (IEEE TNNLS, 2024)
+- **Key idea:** Squeeze-and-excitation adapted for SNNs. Compress spike stream, apply 1D convolution attention independently on temporal and channel dimensions.
+- **Accuracy:** Up to +15.7% on neuromorphic datasets. Consistent improvements across benchmarks.
+- **Applicability:** MEDIUM-HIGH. Add temporal-channel attention after conv layers. Small parameter overhead.
+- **Implementation complexity:** MEDIUM.
+- **Expected result:** +1-3pp
+
+### 9b. SECA: Spiking Efficient Channel Attention
+
+- **Paper:** "Sa-SNN: Spiking Attention Neural Network for Image Classification" (PeerJ, 2024)
+- **Key idea:** Local cross-channel interaction via 1D convolution without dimensionality reduction.
+- **Applicability:** MEDIUM. Lightweight addition to our conv layers.
+- **Implementation complexity:** LOW-MEDIUM.
+
+---
+
+## 10. Advanced Surrogate Gradients
+
+### 10a. Gygax & Zenke: Theoretical Underpinnings
+

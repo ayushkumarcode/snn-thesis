@@ -194,3 +194,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 
 ---
 
+## 4. Time-Frequency Representations Beyond Mel
+
+### 4.1 Constant-Q Transform (CQT)
+
+**What it is**: A time-frequency representation where frequency bins are logarithmically spaced (constant ratio between consecutive bins). Higher frequency resolution at low frequencies, higher time resolution at high frequencies -- exactly matching the cochlea.
+
+**Key details**:
+- Available in librosa: `librosa.cqt()`
+- PyTorch GPU: `nnAudio` provides GPU-accelerated CQT
+- Upcoming in torchaudio (PR #3804)
+- Used in the BAE pipeline as the cochlear filterbank
+
+**Has it been tried with SNNs?** Indirectly via BAE (Pan et al. 2020).
+
+**Expected accuracy impact**: Small to moderate improvement over mel spectrogram. CQT provides better frequency resolution at low frequencies, which matters for environmental sounds with strong low-frequency content.
+
+**Implementation complexity**: LOW. Drop-in replacement for mel spectrogram.
+
+### 4.2 Wavelet Scattering Transform (Anden & Mallat)
+
+**What it is**: A mathematical framework that cascades wavelet convolutions and modulus operators to produce a locally translation-invariant, time-warping-stable representation. Extends MFCCs by computing modulation spectrum coefficients of multiple orders.
+
+**Key details**:
+- `pip install kymatio` (Python, PyTorch/TensorFlow compatible, GPU)
+- 1D scattering for audio
+- Provably stable to time-warping deformations
+- Translation invariant
+- No learned parameters (fixed wavelet filters)

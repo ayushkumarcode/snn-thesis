@@ -1398,3 +1398,31 @@
         "train_loss": 87.3478,
         "train_acc": 0.1613,
         "test_loss": 88.454,
+        "test_acc": 0.1325
+      },
+      {
+        "epoch": 35,
+        "train_loss": 86.8032,
+        "train_acc": 0.1631,
+        "test_loss": 88.2019,
+        "test_acc": 0.155
+      },
+      {
+        "epoch": 36,
+        "train_loss": 86.6901,
+        "train_acc": 0.1556,
+        "test_loss": 87.9841,
+        "test_acc": 0.145
+      }
+    ]
+  },
+  "summary": {
+    "mean_accuracy": 0.10200000000000001,
+    "std_accuracy": 0.06533375850201793,
+    "fold_accuracies": [
+      2.5,
+      14.25,
+      16.5,
+      2.0,
+      15.75
+    ],

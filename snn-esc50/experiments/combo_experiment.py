@@ -418,3 +418,31 @@ def compute_loss(mem_out, targets, args, spk_total=0, teacher_logits=None):
     # Knowledge distillation
     if args.kd and teacher_logits is not None:
         student_logits = mem_out.sum(dim=0)
+        T = args.temperature
+        student_soft = F.log_softmax(student_logits / T, dim=1)
+        teacher_soft = F.softmax(teacher_logits / T, dim=1)
+        kd_loss = F.kl_div(student_soft, teacher_soft, reduction='batchmean') * (T * T)
+        loss = args.alpha * loss + (1 - args.alpha) * kd_loss
+
+    # L1 spike rate regularization
+    if args.l1_reg > 0 and spk_total > 0:
+        loss = loss + args.l1_reg * spk_total
+
+    return loss
+
+
+def load_teacher(fold, device):
+    """Load trained ANN teacher."""
+    weight_path = RESULTS_DIR / "ann" / "none" / f"best_fold{fold}.pt"
+    teacher = ConvANN().to(device)
+    teacher.load_state_dict(torch.load(weight_path, map_location=device, weights_only=True))
+    teacher.eval()
+    return teacher
+
+
+def load_ann_weights_into_snn(model, fold, device):
+    """Map ANN weights to SNN for hybrid init."""
+    ann_path = RESULTS_DIR / "ann" / "none" / f"best_fold{fold}.pt"
+    ann_state = torch.load(ann_path, map_location=device, weights_only=True)
+
+    mapping = {

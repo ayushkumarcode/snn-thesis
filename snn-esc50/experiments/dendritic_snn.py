@@ -390,3 +390,31 @@ def get_branch_stats(model):
         if isinstance(module, DendriticLIF):
             betas = module.betas.detach().cpu()  # (K, size)
             gates = module.gates.detach().cpu()  # (K, size)
+            stats[name] = {
+                "betas_mean": [float(betas[k].mean()) for k in range(module.num_branches)],
+                "betas_std": [float(betas[k].std()) for k in range(module.num_branches)],
+                "gates_mean": [float(gates[k].mean()) for k in range(module.num_branches)],
+                "gates_std": [float(gates[k].std()) for k in range(module.num_branches)],
+            }
+    return stats
+
+
+def train_fold(fold, args, device):
+    """Train and evaluate a single fold."""
+    print(f"\n{'='*60}")
+    print(f"Fold {fold} | Branches={args.branches} | Device={device}")
+    print(f"{'='*60}")
+
+    torch.manual_seed(42 + fold)
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    model = DendriticSpikingCNN(
+        num_classes=NUM_CLASSES,
+        num_steps=NUM_STEPS,
+        num_branches=args.branches,
+    ).to(device)
+
+    # Count parameters
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)

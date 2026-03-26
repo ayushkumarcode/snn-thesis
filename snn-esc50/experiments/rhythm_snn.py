@@ -222,3 +222,31 @@ class RhythmSpikingCNN(nn.Module):
             spk_out: Output spikes, shape (num_steps, batch, num_classes).
             mem_out: Output membrane potentials, shape (num_steps, batch, num_classes).
         """
+        batch_size = x.shape[1]
+        device = x.device
+
+        # Initialize membrane potentials
+        mem1 = self.lif1.init_rhythm(batch_size, device)
+        mem2 = self.lif2.init_rhythm(batch_size, device)
+        mem3 = self.lif3.init_rhythm(batch_size, device)
+        mem4 = self.lif4.init_rhythm(batch_size, device)
+
+        # Expand mem for conv layers: (batch, C) -> (batch, C, H, W)
+        # Will be set correctly on first iteration
+        mem1_initialized = False
+        mem2_initialized = False
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]  # (batch, 1, n_mels, time)
+
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))  # (batch, 32, 32, 108)
+            if not mem1_initialized:
+                mem1 = torch.zeros_like(cur1)
+                mem1_initialized = True
+            spk1, mem1 = self.lif1(cur1, mem1, step)
+
+            # Conv block 2

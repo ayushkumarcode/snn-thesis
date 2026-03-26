@@ -194,3 +194,31 @@ class ConvertedSNN(nn.Module):
             mem_out: Accumulated membrane potential at output layer,
                      shape (num_steps, batch, num_classes).
         """
+        # Initialize membrane potentials
+        mem1 = self.if1.init_leaky()
+        mem2 = self.if2.init_leaky()
+        mem3 = self.if3.init_leaky()
+
+        # Output accumulator (no spiking at output layer)
+        batch_size = x.shape[0]
+        device = x.device
+        mem_out_acc = torch.zeros(batch_size, self.fc2.out_features, device=device)
+
+        spk_rec = []
+        mem_rec = []
+
+        for step in range(num_steps):
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x)))
+            spk1, mem1 = self.if1(cur1, mem1)
+
+            # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.if2(cur2, mem2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1
+            cur3 = self.fc1(flat)

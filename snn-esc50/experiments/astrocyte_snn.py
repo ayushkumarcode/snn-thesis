@@ -390,3 +390,31 @@ def get_learned_astrocyte_params(model):
         params[name] = {
             "tau_astro": module.tau_astro.item(),
             "gain": module.gain.item(),
+            "target_rate": module.target_rate.item(),
+            "beta": module.lif.beta.item() if hasattr(module.lif.beta, 'item') else module.lif.beta,
+        }
+    return params
+
+
+def train_fold(fold, device, epochs, patience):
+    """Train astrocyte SNN on one fold."""
+    torch.manual_seed(42 + fold)
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+    model = AstrocyteSNN().to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                 weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": [],
+               "spike_rates_per_epoch": [], "thresholds_per_epoch": []}
+
+    best_model_state = None
+    t0 = time.time()
+
+    for epoch in range(1, epochs + 1):

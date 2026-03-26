@@ -334,3 +334,31 @@ class SRSNN(nn.Module):
 
             spk_out_rec.append(spk4)
             mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# SR+Rhythm SNN Model (noise + oscillation)
+# ============================================================
+
+class SRRhythmSNN(nn.Module):
+    """SpikingCNN with both trainable SR noise and oscillatory modulation."""
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+        init_sigma: float = 0.02,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = SRRhythmLIF(
+            neuron_shape=(32,), beta=beta, init_sigma=init_sigma, num_steps=num_steps,
+        )
+

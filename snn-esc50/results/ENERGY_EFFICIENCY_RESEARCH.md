@@ -138,3 +138,31 @@ Your temporal ablation (fold 1):
 | 7  | 36.50%   | 90.1%     | 28%            |
 | 10 | 38.25%   | 94.4%     | 40%            |
 | 15 | 40.25%   | 99.4%     | 60%            |
+| 20 | 41.00%   | 101.2%    | 80%            |
+| 25 | 40.50%   | 100%      | 100%           |
+
+**T=7 is the sweet spot: 90% accuracy, 72% energy saving.**
+
+But this is POST-TRAINING truncation. Training specifically for T=7 would likely maintain full accuracy.
+
+**Expected energy reduction:** 3.6x (25/7) at T=7
+**Accuracy trade-off:** ~10% relative at T=7 with post-hoc truncation; likely <5% if trained at T=7
+**Implementation complexity:** Trivial -- change NUM_STEPS to 7
+**SpiNNaker compatibility:** Full -- 7 timesteps of 1ms each = 7ms sim time
+
+---
+
+### 3.2 Anytime Optimal Inference (AOI-SNN) with Early Exit
+
+**Paper:** "Direct Training Needs Regularisation: Anytime Optimal Inference SNN," arXiv:2405.00699
+
+Uses Spatial-Temporal Regulariser (STR) during training + softmax confidence cutoff at inference. Different samples exit at different timesteps.
+
+**Results:**
+- CIFAR-10: 95.42% at T=4, exits 2.14-2.89x faster
+- Event-based: 1.64-1.95x fewer timesteps with <0.64% accuracy drop
+
+**Applied to your setup:** Easy samples (clear sounds) might exit at T=3-5, hard samples at T=15-25. Average savings of 2-3x.
+
+**Expected energy reduction:** 2-3x on top of base timestep reduction
+**Implementation complexity:** Moderate (requires STR regularizer in training + confidence monitoring at inference)

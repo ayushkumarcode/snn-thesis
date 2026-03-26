@@ -390,3 +390,31 @@ class SRRhythmSNN(nn.Module):
         mem2 = self.lif2.init_srrhythm(batch_size, device)
         mem3 = self.lif3.init_srrhythm(batch_size, device)
         mem4 = self.lif4.init_srrhythm(batch_size, device)
+
+        mem1_init = False
+        mem2_init = False
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            if not mem1_init:
+                mem1 = torch.zeros_like(cur1)
+                mem1_init = True
+            spk1, mem1 = self.lif1(cur1, mem1, step)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            if not mem2_init:
+                mem2 = torch.zeros_like(cur2)
+                mem2_init = True
+            spk2, mem2 = self.lif2(cur2, mem2, step)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3, step)
+            spk3 = self.dropout(spk3)

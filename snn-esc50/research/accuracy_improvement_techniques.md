@@ -82,3 +82,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Implementation complexity:** MEDIUM. Need to: (1) load ANN teacher weights, (2) modify training loop to compute feature-level + logit-level KD loss, (3) balance KD loss with task loss.
 - **Expected result:** 50-58% (could potentially match or exceed ANN with perfect distillation)
 
+### 2b. Constructing Deep SNNs from ANNs with KD (CVPR 2023)
+
+- **Paper:** Xu, Li et al., "Constructing Deep Spiking Neural Networks from Artificial Neural Networks with Knowledge Distillation" (CVPR 2023, pp. 7886-7895)
+- **Key idea:** ANN-SNN joint training with KD. SNN student learns rich features from ANN teacher through the KD method, avoiding training from scratch with non-differentiable spikes. Strong noise immunity.
+- **Accuracy:** Improved noise robustness (relevant for ESC-50 audio).
+- **Applicability:** HIGH. Same architecture teacher-student is ideal.
+- **Implementation complexity:** MEDIUM.
+
+### 2c. MD-SNN: Membrane Potential-Aware Distillation
+
+- **Paper:** "MD-SNN: Membrane Potential-aware Distillation on Quantized Spiking Neural Network" (2024, arXiv:2512.04443)
+- **Key idea:** Distills using MEMBRANE POTENTIALS (not just spikes/logits) between teacher and student. Single T=4 teacher guides multiple students via temporal membrane alignment.
+- **Accuracy:** +0.48-1.06% over quantized baselines. 30% training FLOPs reduction.
+- **Applicability:** MEDIUM-HIGH. Primarily for quantized SNNs but membrane distillation idea is broadly useful.
+- **Implementation complexity:** MEDIUM.
+
+### 2d. Enhanced Self-Distillation for SNNs
+
+- **Paper:** "Enhanced Self-Distillation Framework for Efficient Spiking Neural Network Training" (2024, arXiv:2510.06254)
+- **Key idea:** SNN distills knowledge from its own later timesteps to earlier timesteps.
+- **Applicability:** MEDIUM. No external teacher needed.
+- **Implementation complexity:** LOW-MEDIUM.
+
+---
+
+## 3. Hybrid Training (ANN Init + SNN Fine-tune)
+
+### 3a. Rathi et al. Hybrid Conversion + STDB

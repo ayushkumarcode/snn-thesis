@@ -334,3 +334,31 @@ class ComboSpikingCNN(nn.Module):
         if self.use_delays:
             self.fc1.reset()
             self.fc2.reset()
+
+        spk_rec, mem_rec = [], []
+        total_spikes = 0
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            if self.use_dendritic:
+                spk1, m1 = self.n1(cur1, m1, step)
+            elif self.use_rhythm:
+                spk1, m1 = self.n1(cur1, m1, step)
+            else:
+                spk1, m1 = self.n1(cur1, m1)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            if self.use_dendritic:
+                spk2, m2 = self.n2(cur2, m2, step)
+            elif self.use_rhythm:
+                spk2, m2 = self.n2(cur2, m2, step)
+            else:
+                spk2, m2 = self.n2(cur2, m2)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            if self.use_dendritic:

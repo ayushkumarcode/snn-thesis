@@ -2462,3 +2462,31 @@
     },
     "epoch_log": [
       {
+        "epoch": 1,
+        "train_loss": 102.2142,
+        "train_acc": 0.0319,
+        "test_loss": 92.9998,
+        "test_acc": 0.06
+      },
+      {
+        "epoch": 2,
+        "train_loss": 91.6774,
+        "train_acc": 0.0644,
+        "test_loss": 89.2788,
+        "test_acc": 0.105
+      },
+      {
+        "epoch": 3,
+        "train_loss": 88.3332,
+        "train_acc": 0.0944,
+        "test_loss": 86.64,
+        "test_acc": 0.1525
+      },
+      {
+        "epoch": 4,
+        "train_loss": 85.276,
+        "train_acc": 0.1294,
+        "test_loss": 83.5756,
+        "test_acc": 0.15
+      },
+      {

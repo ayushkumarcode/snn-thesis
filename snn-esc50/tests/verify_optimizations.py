@@ -698,3 +698,31 @@ def test_dataloader_analysis():
     print("    persistent_workers=True: No numerical impact (lifecycle only).")
     print("    VERDICT: Speed-only changes. No effect on final accuracy distribution.")
     report("DataLoader changes are speed-only (by analysis)", True)
+
+
+# ============================================================
+# MAIN
+# ============================================================
+if __name__ == "__main__":
+    print("=" * 70)
+    print("  OPTIMIZATION VERIFICATION SUITE")
+    print("  Verifying that performance optimizations produce identical results")
+    print("=" * 70)
+
+    test_non_tet_loss()
+    test_tet_loss()
+    test_eval_loss()
+    test_item_deferral()
+    test_set_to_none()
+    test_bf16_analysis()
+    test_gradient_equivalence()
+    test_edge_cases()
+    test_target_expansion()
+    test_dataloader_analysis()
+
+    print("\n" + "=" * 70)
+    print(f"  RESULTS: {PASS} passed, {FAIL} failed")
+    if FAIL == 0:
+        print("  ALL OPTIMIZATIONS VERIFIED SAFE")
+    else:
+        print("  WARNING: SOME TESTS FAILED -- REVIEW BEFORE USING")

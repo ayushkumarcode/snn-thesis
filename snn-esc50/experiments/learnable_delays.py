@@ -138,3 +138,31 @@ class DelayedLinear(nn.Module):
 
             # Gather delayed inputs: (out_features, batch, in_features)
             floor_inputs = self._buffer[floor_read]
+            ceil_inputs = self._buffer[ceil_read]
+
+            # Substitute the live (gradient-attached) current input x wherever
+            # a read index points to the current write position. This allows
+            # gradient flow through x for neurons whose delay reads "now",
+            # enabling the linear weights to learn even at delay=0.
+            x_expanded = x.unsqueeze(0).expand(self.out_features, -1, -1)
+            floor_is_current = (floor_read == write_idx).view(-1, 1, 1)
+            ceil_is_current = (ceil_read == write_idx).view(-1, 1, 1)
+            floor_inputs = torch.where(floor_is_current, x_expanded, floor_inputs)
+            ceil_inputs = torch.where(ceil_is_current, x_expanded, ceil_inputs)
+
+            # Interpolate
+            frac_expanded = frac.view(-1, 1, 1)  # (out_features, 1, 1)
+            delayed_inputs = (1.0 - frac_expanded) * floor_inputs + frac_expanded * ceil_inputs
+
+            # Apply linear transform: W[j,i] * delayed_inputs[j, b, i], sum over i
+            W = self.linear.weight  # (out_features, in_features)
+            output = (W.unsqueeze(1) * delayed_inputs).sum(dim=2)  # (out_features, batch)
+            output = output.t()  # (batch, out_features)
+
+            if self.linear.bias is not None:
+                output = output + self.linear.bias.unsqueeze(0)
+
+        else:
+            # Inference: round delays to integers
+            d_int = delays.round().long()
+            buf_size = self.max_delay + 1

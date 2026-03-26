@@ -390,3 +390,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 ## 16. Regularization and Sparsity
 
 ### 16a. Spike Budgeting / L1 Regularization
+
+- **Paper:** "High-performance deep spiking neural networks with 0.3 spikes per neuron" (Nature Communications, 2024)
+- **Key idea:** L1 regularization on spike rates pushes sparsity below 0.3 spikes/neuron while maintaining accuracy. Our SNN has 25.8% spike rate (73.6% sparsity).
+- **Accuracy:** CIFAR-10 maintained with <0.3 spikes/neuron.
+- **Applicability:** MEDIUM. May improve generalization via regularization effect.
+- **Implementation complexity:** LOW. Add L1 penalty on spike outputs.
+
+### 16b. Dropout for SNNs
+
+- **Paper:** Various
+- **Key idea:** Standard dropout (0.2-0.5) after spiking layers. Our ANN uses Dropout(0.3) but our SNN does NOT use any dropout.
+- **Applicability:** VERY HIGH. Our SNN has NO dropout -- adding it could help with overfitting on small ESC-50 dataset.
+- **Implementation complexity:** TRIVIALLY LOW. Add `nn.Dropout(0.3)` before fc2.
+- **Expected result:** +1-3pp (addressing overfitting on 1600 training samples)
+
+---
+
+## 17. Multiscale Temporal Dynamics
+
+### 17a. TS-LIF: Temporal Segment LIF
+
+- **Paper:** "TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting" (2025, arXiv:2503.05108)
+- **Key idea:** Dual-compartment neuron where dendritic and somatic compartments capture different frequency components. Provides functional heterogeneity for multi-scale temporal processing.
+- **Applicability:** MEDIUM. Audio has multi-scale temporal structure that could benefit.
+- **Implementation complexity:** HIGH. Custom neuron model.
+
+### 17b. Temporal Dendritic Heterogeneity
+

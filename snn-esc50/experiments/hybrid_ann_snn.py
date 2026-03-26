@@ -334,3 +334,31 @@ def train_fold(fold: int, device, epochs: int, patience: int):
 
         history["train_loss"].append(tr_loss)
         history["train_acc"].append(tr_acc)
+        history["test_loss"].append(te_loss)
+        history["test_acc"].append(te_acc)
+
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            patience_counter = 0
+            torch.save(snn_model.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            print(
+                f"  Epoch {epoch:3d}/{epochs} | "
+                f"Train: {tr_acc:.4f} | Test: {te_acc:.4f} | "
+                f"Best: {best_acc:.4f} (ep {best_epoch}) | {elapsed:.0f}s"
+            )
+
+        if patience_counter >= patience:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start_time
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f}")
+
+    result = {
+        "fold": fold,

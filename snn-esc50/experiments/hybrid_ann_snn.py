@@ -306,3 +306,31 @@ def train_fold(fold: int, device, epochs: int, patience: int):
     optimizer = torch.optim.Adam(
         snn_model.parameters(), lr=1e-4, weight_decay=WEIGHT_DECAY,
     )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    # Evaluate before fine-tuning (transfer-only accuracy)
+    _, transfer_acc = eval_model(snn_model, test_loader, device)
+    print(f"  Transfer-only accuracy (before fine-tuning): {transfer_acc:.4f}")
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {
+        "train_loss": [], "train_acc": [],
+        "test_loss": [], "test_acc": [],
+    }
+
+    out_dir = RESULTS_DIR / "experiments" / "hybrid_ann_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    start_time = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr_loss, tr_acc = train_epoch(snn_model, train_loader, optimizer, device)
+        te_loss, te_acc = eval_model(snn_model, test_loader, device)
+        scheduler.step(te_loss)
+
+        history["train_loss"].append(tr_loss)
+        history["train_acc"].append(tr_acc)

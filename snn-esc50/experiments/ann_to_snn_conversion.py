@@ -474,3 +474,31 @@ def main():
         T for r in all_results for T in r["timestep_values"]
     ))
 
+    ann_accs = [r["ann_accuracy"] for r in all_results]
+    print(f"\n  ANN reference: {np.mean(ann_accs)*100:.2f}% +/- {np.std(ann_accs)*100:.2f}%")
+
+    print(f"\n  {'T':>6}  {'SNN mean':>10}  {'SNN std':>9}  {'% of ANN':>10}  {'Gap':>8}")
+    print(f"  {'-'*50}")
+
+    aggregate = {}
+    for T in all_Ts:
+        accs = []
+        for r in all_results:
+            key = str(T)
+            if key in r["snn_results"]:
+                accs.append(r["snn_results"][key]["accuracy"])
+        if accs:
+            mean_acc = float(np.mean(accs))
+            std_acc = float(np.std(accs))
+            mean_ann = float(np.mean(ann_accs))
+            pct = (mean_acc / mean_ann * 100) if mean_ann > 0 else 0
+            gap = mean_ann - mean_acc
+            aggregate[T] = {
+                "mean_accuracy": mean_acc,
+                "std_accuracy": std_acc,
+                "pct_of_ann": pct,
+                "gap_pp": gap * 100,
+            }
+            print(f"  {T:>6}  {mean_acc*100:>9.2f}%  {std_acc*100:>8.2f}%  "
+                  f"{pct:>9.1f}%  {gap*100:>+7.2f}pp")
+

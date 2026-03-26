@@ -502,3 +502,31 @@ Implement the full BAE pipeline from Pan et al. (2020):
 
 5. **The dream scenario -- SNN > ANN on cochleagram features.** This is theoretically possible if the temporal structure of cochleagram output aligns better with SNN dynamics, but no one has demonstrated it.
 
+### Risks
+
+1. CARFAC output dimensions may not map cleanly to our (64, 216) input shape
+2. CARFAC processing may be slow (processes sample-by-sample, not batched)
+3. Cochleagram may not improve enough to justify the added complexity for a thesis deadline
+4. The architecture may need modification (e.g., different pooling for cochlear frequency spacing)
+
+---
+
+## 12. Confidence Assessment
+
+| Finding | Confidence |
+|---------|-----------|
+| Cochleagram outperforms mel for spike encoding | HIGH (multiple independent sources) |
+| CARFAC is the best available cochlear model | HIGH (Google-maintained, v2 published 2024) |
+| No prior SNN work on full ESC-50 with bio-inspired frontend | HIGH (confirmed by 2025 survey + our own search) |
+| Drop-in replacement is feasible | MODERATE (depends on output format matching) |
+| Accuracy improvement of 5-15% | MODERATE (extrapolating from speech to env. sounds) |
+| SNN can beat ANN with right representation | LOW-MODERATE (no direct evidence yet, but theoretical basis exists) |
+
+---
+
+## 13. Complete Reference List
+
+### Cochlear Models
+- Lyon et al. "The CARFAC v2 Cochlear Model in Matlab, NumPy, and JAX" arXiv:2404.17490 (2024)
+- Xu et al. "A FPGA Implementation of the CAR-FAC Cochlear Model" Front. Neurosci. 12:198 (2018)
+- Xu et al. "Event-driven spectrotemporal feature extraction using a silicon cochlea model" Front. Neurosci. 17:1125210 (2023)

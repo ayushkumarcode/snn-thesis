@@ -82,3 +82,31 @@ class PredictiveSNN(nn.Module):
         self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
 
         self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        # Predictive coding: predict next hidden spike from current
+        self.predict_fc = nn.Linear(256, 256)
+
+        # Dropout on hidden spikes / errors
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2 (output) -- receives prediction errors
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+    def forward(self, x):
+        """Forward pass returning outputs + prediction errors for loss.
+
+        Returns:
+            spk_out: (num_steps, batch, num_classes)
+            mem_out: (num_steps, batch, num_classes)
+            pred_errors_mse: scalar -- mean squared prediction error (for loss)
+            spike_stats: dict with spike counts for analysis
+        """
+        device = x.device
+
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()

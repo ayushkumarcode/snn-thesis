@@ -362,3 +362,31 @@ def train_fold(fold: int, device, epochs: int, patience: int):
 
     result = {
         "fold": fold,
+        "method": "hybrid_ann_snn",
+        "transfer_only_acc": transfer_acc,
+        "best_acc": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "lr": 1e-4,
+        "epochs_max": epochs,
+        "patience": patience,
+        "features": ["learn_beta", "learn_threshold", "dropout_0.3", "spike_rate_escape"],
+        "history": history,
+    }
+
+    with open(out_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+
+# ============================================================
+# Main
+# ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Hybrid ANN->SNN weight transfer + fine-tuning"
+    )
+    parser.add_argument("--fold", type=int, default=0,

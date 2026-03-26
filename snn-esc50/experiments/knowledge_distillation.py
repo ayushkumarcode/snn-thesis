@@ -362,3 +362,31 @@ def train_fold(fold: int, device, epochs: int, patience: int,
 
         if patience_counter >= patience:
             print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start_time
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f}")
+
+    result = {
+        "fold": fold,
+        "method": "knowledge_distillation",
+        "teacher_acc": teacher_acc,
+        "best_acc": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "temperature": temperature,
+        "alpha": alpha,
+        "lr": LEARNING_RATE,
+        "epochs_max": epochs,
+        "patience": patience,
+        "student_features": ["learn_beta", "learn_threshold", "dropout_0.3", "spike_rate_escape"],
+        "history": history,
+    }
+
+    with open(out_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+

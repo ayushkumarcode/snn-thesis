@@ -362,3 +362,31 @@ def convert_and_evaluate_fold(
 
     # Step 5: Evaluate ANN baseline
     ann_acc = evaluate_ann(ann_model, test_loader, device)
+    print(f"  ANN accuracy (reference): {ann_acc*100:.2f}%")
+
+    # Step 6: Evaluate converted SNN at multiple timestep budgets
+    timestep_values = sorted(set([1, 4, 8, 16, 25, 50, 100, max_timesteps]))
+    timestep_values = [t for t in timestep_values if t <= max_timesteps]
+
+    snn_results = {}
+    print(f"\n  {'T':>6}  {'SNN Acc':>10}  {'% of ANN':>10}  {'Gap':>8}")
+    print(f"  {'-'*40}")
+
+    for T in timestep_values:
+        t0 = time.time()
+        snn_acc = evaluate_converted_snn(snn_model, test_loader, device, T)
+        elapsed = time.time() - t0
+        pct_of_ann = (snn_acc / ann_acc * 100) if ann_acc > 0 else 0
+        gap = ann_acc - snn_acc
+
+        snn_results[T] = {
+            "accuracy": snn_acc,
+            "pct_of_ann": pct_of_ann,
+            "gap_pp": gap * 100,
+            "eval_time_s": round(elapsed, 2),
+        }
+        print(f"  {T:>6}  {snn_acc*100:>9.2f}%  {pct_of_ann:>9.1f}%  {gap*100:>+7.2f}pp")
+
+    # Find convergence point (first T where SNN >= 95% of ANN)
+    convergence_T = None
+    for T in timestep_values:

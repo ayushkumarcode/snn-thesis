@@ -502,3 +502,31 @@ def train_epoch(model, loader, optimizer, device, args, teacher=None, encoder_fn
         predicted = mem_out.sum(dim=0).argmax(dim=1)
         correct += (predicted == targets).sum().item()
         total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device, encoder_fn):
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encoder_fn(data).to(device)
+        spk_out, mem_out, _ = model(spk_input)
+
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], targets)
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+

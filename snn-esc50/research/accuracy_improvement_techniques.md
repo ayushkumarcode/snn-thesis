@@ -334,3 +334,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Applicability:** LOW. Same as Spikformer -- requires transformer architecture.
 - **Implementation complexity:** HIGH.
 
+---
+
+## 13. Self-Supervised / Contrastive Pre-training for SNNs
+
+### 13a. SpikeCLR
+
+- **Paper:** "SpikeCLR: Contrastive Self-Supervised Learning for Few-Shot Event-Based Vision" (2026, arXiv:2603.16338)
+- **Key idea:** Contrastive self-supervised framework for SNNs. Learn visual representations from unlabeled event data. Outperforms supervised in low-data regimes.
+- **Applicability:** MEDIUM. ESC-50 has only 2000 samples -- could benefit from self-supervised pre-training on AudioSet or other large audio corpora.
+- **Implementation complexity:** HIGH. Need to adapt from vision to audio, implement contrastive pipeline.
+
+### 13b. NeuroMoCo
+
+- **Paper:** "Self-Supervised Contrastive Learning In Spiking Neural Networks" (MVIP 2024)
+- **Key idea:** Momentum contrastive learning for SNNs with MixInfoNCE loss tailored to temporal characteristics.
+- **Applicability:** MEDIUM. Same potential benefit for small-data regime.
+- **Implementation complexity:** HIGH.
+
+---
+
+## 14. Spiking Audio Front-End
+
+### 14a. Spiking-LEAF
+
+- **Paper:** "Spiking-LEAF: A Learnable Auditory front-end for Spiking Neural Networks" (2024, arXiv:2309.09469)
+- **Key idea:** Learnable Gabor filter bank + PCEN + IHC-LIF two-compartment neuron model. Bio-inspired cochlear processing. Captures multi-scale temporal dynamics.
+- **Accuracy:** Outperforms SOTA auditory front-ends on keyword spotting and speaker ID in accuracy, noise robustness, and encoding efficiency.
+- **Applicability:** MEDIUM-HIGH. Could replace our mel-spectrogram front-end with a learned spiking front-end. More biologically plausible. May improve encoding quality.

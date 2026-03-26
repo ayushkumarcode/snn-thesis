@@ -418,3 +418,31 @@ def train_fold(fold, device, epochs, patience):
     t0 = time.time()
 
     for epoch in range(1, epochs + 1):
+        tr = train_epoch(model, train_loader, optimizer, device)
+        te = eval_model(model, test_loader, device)
+        scheduler.step(te["loss"])
+
+        history["train_loss"].append(tr["loss"])
+        history["train_acc"].append(tr["accuracy"])
+        history["test_loss"].append(te["loss"])
+        history["test_acc"].append(te["accuracy"])
+        history["spike_rates_per_epoch"].append(te["spike_rates"])
+        history["thresholds_per_epoch"].append(te["thresholds"])
+
+        if te["accuracy"] > best_acc:
+            best_acc = te["accuracy"]
+            best_epoch = epoch
+            no_improve = 0
+            best_model_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+        else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - t0
+            sr = te["spike_rates"]
+            th = te["thresholds"]
+            print(f"  Ep {epoch:3d}/{epochs} | "
+                  f"tr={tr['accuracy']:.3f} te={te['accuracy']:.3f} "
+                  f"best={best_acc:.3f} | "
+                  f"SR=[{sr['lif1']:.3f},{sr['lif2']:.3f},{sr['lif3']:.3f},{sr['lif4']:.3f}] | "
+                  f"TH=[{th['lif1']:.3f},{th['lif2']:.3f},{th['lif3']:.3f},{th['lif4']:.3f}] | "

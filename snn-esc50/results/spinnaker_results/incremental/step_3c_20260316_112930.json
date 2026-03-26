@@ -306,3 +306,23 @@
         [
           2,
           0.097564697265625
+        ],
+        [
+          3,
+          0.097564697265625
+        ],
+        [
+          4,
+          0.097564697265625
+        ]
+      ],
+      "predicted": 10,
+      "classification_basis": "spike_count"
+    }
+  ],
+  "wall_clock_ms": 224706.68196678162,
+  "true_label": 49,
+  "snntorch_pred": 18,
+  "strategy": "bias_injection_0.1",
+  "weight_scale": 5.0,
+  "bias_current": 0.1

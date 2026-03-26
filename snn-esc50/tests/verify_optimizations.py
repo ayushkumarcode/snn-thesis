@@ -446,3 +446,31 @@ def test_bf16_analysis():
 
     report("BF16 disabled on CPU (use_amp=False)",
            loss_fp32.item() == loss_no_amp.item(),
+           f"fp32={loss_fp32.item()}, no_amp={loss_no_amp.item()}")
+
+    # Test BF16 precision for typical membrane potential values
+    mem_typical = torch.tensor([0.0, 0.5, 1.0, -0.5, 1.5, 0.001])
+    mem_bf16 = mem_typical.to(torch.bfloat16).to(torch.float32)
+    max_err = (mem_typical - mem_bf16).abs().max().item()
+    report(f"BF16 rounding error on typical membrane values",
+           max_err < 0.01,
+           f"max_err={max_err:.6f}")
+    print(f"    FP32:  {mem_typical.tolist()}")
+    print(f"    BF16:  {mem_bf16.tolist()}")
+    print(f"    NOTE: BF16 is standard for A100 training.")
+    print(f"    NOTE: use_amp=False on CPU/MPS, so local runs are FP32 (bit-identical).")
+
+
+# ============================================================
+# TEST 7: Gradient equivalence through vectorized loss
+# ============================================================
+def test_gradient_equivalence():
+    """
+    The most critical test: do the OLD and NEW loss computations produce
+    identical gradients through the model? Even if loss values match,
+    gradient computation could differ due to different computational graphs.
+    """
+    print("\n=== TEST 7: Gradient equivalence ===")
+
+    torch.manual_seed(42)
+    T, B, C = 25, 32, 50

@@ -390,3 +390,31 @@ def train_fold(fold, device, epochs, patience, seed):
         history["test_loss"].append(te_loss)
         history["test_acc"].append(te_acc)
 
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            no_improve = 0
+            torch.save(model.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            print(
+                f"  Ep {epoch:3d}/{epochs} | "
+                f"tr_acc={tr_acc:.4f} te_acc={te_acc:.4f} best={best_acc:.4f} | "
+                f"loss={te_loss:.2f} | {elapsed:.0f}s"
+            )
+
+        if no_improve >= patience:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - start_time
+
+    # Extract learned oscillation parameters
+    osc_summary = {}
+    for name, module in model.named_modules():
+        if isinstance(module, RhythmLIF):
+            osc_summary[name] = {
+                "beta_mean": float(module.beta.mean().item()),

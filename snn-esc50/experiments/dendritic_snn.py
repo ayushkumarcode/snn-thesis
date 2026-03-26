@@ -418,3 +418,31 @@ def train_fold(fold, args, device):
     # Count parameters
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"Parameters: {total_params:,} total, {trainable_params:,} trainable")
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, patience=3, factor=0.5
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    epoch_log = []
+
+    t0 = time.time()
+    for epoch in range(1, args.epochs + 1):
+        tr_loss, tr_acc = train_epoch(model, train_loader, optimizer, device, NUM_STEPS)
+        te_loss, te_acc = eval_model(model, test_loader, device, NUM_STEPS)
+        scheduler.step(te_loss)
+
+        epoch_log.append({
+            "epoch": epoch,
+            "train_loss": round(tr_loss, 4),
+            "train_acc": round(tr_acc, 4),
+            "test_loss": round(te_loss, 4),
+            "test_acc": round(te_acc, 4),
+        })
+

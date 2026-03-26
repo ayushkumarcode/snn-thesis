@@ -250,3 +250,31 @@ def eval_model(model, loader, device):
     criterion = nn.CrossEntropyLoss()
 
     for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=model.num_steps)
+
+        spk_out, mem_out = model(spk_input)
+
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], targets)
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+# ============================================================
+# Single fold training
+# ============================================================
+
+def train_fold(fold: int, device, epochs: int, patience: int):
+    """Train hybrid ANN->SNN on a single fold.
+
+    Returns:
+        Dict with fold results.
+    """
+    print(f"\n{'='*60}")

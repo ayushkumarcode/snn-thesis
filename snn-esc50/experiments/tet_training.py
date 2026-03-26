@@ -222,3 +222,31 @@ def train_epoch(model, loader, optimizer, device, tet_loss_fn):
         inputs = inputs.to(device)
         labels = labels.to(device)
         spike_inputs = encode_direct(inputs).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spike_inputs)
+
+        loss, l_ce, l_var = tet_loss_fn(mem_out, labels)
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        total_ce += l_ce.item()
+        total_var += l_var.item()
+
+        # Predict using summed membrane potentials (same as baseline)
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    n = len(loader)
+    return total_loss / n, total_ce / n, total_var / n, correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device, tet_loss_fn):
+    """Evaluate model with TET loss."""
+    model.eval()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_var = 0.0

@@ -418,3 +418,31 @@ def convert_and_evaluate_fold(
     return result
 
 
+def main():
+    parser = argparse.ArgumentParser(
+        description="ANN-to-SNN conversion with threshold calibration"
+    )
+    parser.add_argument(
+        "--fold", type=int, default=None,
+        help="Specific fold (1-5). If omitted, runs all 5 folds.",
+    )
+    parser.add_argument("--device", type=str, default=None, help="Device (cuda/mps/cpu)")
+    parser.add_argument(
+        "--percentile", type=float, default=99.9,
+        help="Activation percentile for threshold calibration (default: 99.9)",
+    )
+    parser.add_argument(
+        "--max-timesteps", type=int, default=100,
+        help="Maximum number of timesteps to evaluate (default: 100)",
+    )
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))

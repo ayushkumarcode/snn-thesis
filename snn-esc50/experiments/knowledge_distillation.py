@@ -166,3 +166,31 @@ class EnhancedSpikingCNN(nn.Module):
 def distillation_loss(
     student_logits: torch.Tensor,
     teacher_logits: torch.Tensor,
+    labels: torch.Tensor,
+    temperature: float,
+    alpha: float,
+) -> torch.Tensor:
+    """Combined knowledge distillation loss.
+
+    Loss = alpha * CE(student_logits, labels)
+         + (1 - alpha) * T^2 * KL(student_soft || teacher_soft)
+
+    The T^2 factor compensates for the 1/T^2 scaling in gradients from
+    softened probabilities (Hinton et al. 2015).
+
+    Args:
+        student_logits: Raw logits from SNN student, shape (batch, num_classes).
+        teacher_logits: Raw logits from ANN teacher, shape (batch, num_classes).
+        labels: Ground truth class indices, shape (batch,).
+        temperature: Softmax temperature for soft labels.
+        alpha: Weight for hard label CE loss (1-alpha for KD loss).
+
+    Returns:
+        Combined scalar loss.
+    """
+    # Hard label loss
+    ce_loss = F.cross_entropy(student_logits, labels)
+
+    # Soft label loss
+    student_soft = F.log_softmax(student_logits / temperature, dim=1)
+    teacher_soft = F.softmax(teacher_logits / temperature, dim=1)

@@ -362,3 +362,31 @@ def test_item_deferral():
 # ============================================================
 # TEST 5: set_to_none=True safety
 # ============================================================
+def test_set_to_none():
+    """
+    optimizer.zero_grad(set_to_none=True) sets .grad to None instead of zero tensor.
+    This is safe for Adam and standard training (no gradient accumulation).
+    PyTorch treats None grad as zero during optimizer.step().
+    """
+    print("\n=== TEST 5: set_to_none=True ===")
+
+    torch.manual_seed(42)
+    # Create a simple model and compare training with both approaches
+    model1 = nn.Linear(10, 5)
+    model2 = nn.Linear(10, 5)
+    model2.load_state_dict(model1.state_dict())
+
+    opt1 = torch.optim.Adam(model1.parameters(), lr=1e-3, weight_decay=1e-4)
+    opt2 = torch.optim.Adam(model2.parameters(), lr=1e-3, weight_decay=1e-4)
+
+    data = torch.randn(8, 10)
+    target = torch.randint(0, 5, (8,))
+
+    # Train 10 steps with zero_grad() vs zero_grad(set_to_none=True)
+    for _ in range(10):
+        opt1.zero_grad()
+        loss1 = F.cross_entropy(model1(data), target)
+        loss1.backward()
+        opt1.step()
+
+        opt2.zero_grad(set_to_none=True)

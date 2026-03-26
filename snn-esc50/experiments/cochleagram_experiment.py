@@ -166,3 +166,31 @@ def wav_to_cochleagram(filepath, sr=SAMPLE_RATE, duration=DURATION,
     y, _ = librosa.load(filepath, sr=sr, duration=duration)
 
     # Pad to exactly duration seconds if shorter
+    expected_len = sr * duration
+    if len(y) < expected_len:
+        y = np.pad(y, (0, expected_len - len(y)))
+
+    # STFT magnitude (same windowing as mel spectrogram)
+    S = np.abs(librosa.stft(y, n_fft=n_fft, hop_length=hop_length))
+    # S shape: (1 + n_fft//2, time_frames) = (513, 216)
+
+    # Build gammatone filterbank
+    fb, center_freqs = gammatone_filterbank(
+        sr=sr, n_fft=n_fft, n_filters=n_filters,
+        f_min=f_min, f_max=f_max,
+    )
+    # fb shape: (n_filters, 513)
+
+    # Apply filterbank: cochleagram = fb @ S
+    # Result shape: (n_filters, time_frames) = (64, 216)
+    cochleagram = fb @ S
+
+    # Convert to log scale (power to dB, same as mel pipeline)
+    cochleagram_db = librosa.power_to_db(cochleagram ** 2, ref=np.max)
+
+    return cochleagram_db
+
+
+def normalise_spectrogram(spec):
+    """Min-max normalise to [0, 1]."""
+    min_val = spec.min()

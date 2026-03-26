@@ -362,3 +362,31 @@ def train_fold(fold, device, epochs, patience, lambda_tet, seed):
         "seed": seed,
         "lambda_tet": lambda_tet,
         "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "learned_params": learned_params,
+        "history": history,
+    }
+
+    # Save per-fold result
+    with open(out_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Temporal Efficient Training (TET) loss for SNN on ESC-50"
+    )
+    parser.add_argument(
+        "--fold", type=int, default=None,
+        help="Specific fold (1-5). If omitted, runs all 5 folds.",
+    )
+    parser.add_argument("--device", type=str, default=None, help="Device (cuda/mps/cpu)")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS, help=f"Max epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--patience", type=int, default=PATIENCE, help=f"Early stop patience (default: {PATIENCE})")
+    parser.add_argument("--lambda-tet", type=float, default=1.0, help="TET variance penalty weight (default: 1.0)")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")

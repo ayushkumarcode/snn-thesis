@@ -642,3 +642,31 @@ def main():
     )
     parser.add_argument(
         "--fold", type=int, default=None,
+        help="Specific fold (1-5). If omitted, runs all 5 folds.",
+    )
+    parser.add_argument("--device", type=str, default=None, help="Device (cuda/mps/cpu)")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS, help=f"Max epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--patience", type=int, default=PATIENCE, help=f"Early stop patience (default: {PATIENCE})")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    parser.add_argument(
+        "--init-sigma", type=float, default=0.02,
+        help="Initial noise sigma per neuron (default: 0.02, our SR sweet spot)",
+    )
+    parser.add_argument(
+        "--with-rhythm", action="store_true",
+        help="Add oscillatory modulation (SR + Rhythm combined)",
+    )
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))
+    variant = "SR+Rhythm" if args.with_rhythm else "SR"
+
+    out_dir = RESULTS_DIR / "experiments" / "stochastic_resonance_training"

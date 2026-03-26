@@ -726,3 +726,20 @@ def main():
             {
                 "fold": r["fold"],
                 "accuracy": r["best_accuracy"],
+                "best_epoch": r["best_epoch"],
+                "total_epochs": r["total_epochs"],
+                "time_seconds": r["time_seconds"],
+                "learned_sr_params": r["learned_sr_params"],
+            }
+            for r in all_results
+        ],
+    }
+
+    suffix = "rhythm" if args.with_rhythm else "sr"
+    with open(out_dir / f"summary_{suffix}.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSaved summary to {out_dir / f'summary_{suffix}.json'}")
+
+
+if __name__ == "__main__":
+    main()

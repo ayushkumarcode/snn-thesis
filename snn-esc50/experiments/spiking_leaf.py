@@ -390,3 +390,31 @@ class SpikingLEAF_SNN(nn.Module):
         if T_actual > T_expected:
             features = features[:, :, :, :T_expected]
         elif T_actual < T_expected:
+            pad_size = T_expected - T_actual
+            features = F.pad(features, (0, pad_size))
+
+        # Direct encoding: repeat across timesteps
+        # (num_steps, batch, 1, 64, 216)
+        spike_input = features.unsqueeze(0).repeat(self.num_steps, *([1] * features.dim()))
+
+        # Initialize membrane potentials
+        device = features.device
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = spike_input[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)

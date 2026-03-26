@@ -306,3 +306,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 > **Title:** "The SNN-ANN Gap is a Feature-Learning Problem: Evidence from Environmental Sound Classification with Seven Encodings and SpiNNaker Deployment"
 >
 > **One-sentence thesis:** When given equal-quality features, SNNs match ANNs within 0.95pp on 50-class audio -- the 16.7pp scratch-training gap reflects a feature-learning bottleneck, not a spiking computation limitation.
+>
+> **Why this works:** This positions all other results as SUPPORTING EVIDENCE for a single scientific claim:
+> - 7-encoding comparison: shows encoding matters enormously (direct = continuous features win)
+> - PANNs gap-collapse: the central proof of the thesis
+> - Adversarial robustness: shows SNNs have unique ADVANTAGES despite the accuracy gap
+> - SpiNNaker deployment: demonstrates practical viability of the hybrid approach implied by the thesis
+> - Encoding transfer analysis: shows WHY encoding matters (encoding-specific representations)
+> - Temporal truncation: shows path to energy efficiency once feature-learning is solved
+
+**Recommended reframe -- Option B (Hardware Co-Design as Central Thesis):**
+
+> **Title:** "From Software to SpiNNaker: A Complete Pipeline for Neuromorphic Audio Classification on ESC-50"
+>
+> **One-sentence thesis:** We present the first end-to-end pipeline for deploying SNNs for environmental sound classification on neuromorphic hardware, documenting the design space (7 encodings), software-hardware gap (12.8pp), and co-design constraints (AvgPool incompatibility).
+>
+> **Why this works for ICONS:** ICONS is a systems conference. Hardware deployment stories resonate. The honest root-cause analysis of failure modes is valuable to the community.
+
+**RECOMMENDATION: Use Option A.** The gap-collapse finding is more scientifically significant and applies beyond ICONS. Option B is fine but limits the paper to a systems audience.
+
+### Specific Structural Suggestions for the Paper
+
+1. **Lead with the gap-collapse in the abstract** (you already do this -- good)
+2. **Make Section 4.4 (Transfer Learning: Gap Collapse) the FIRST result, not fourth.** Reorder to: Gap-Collapse -> Encoding Comparison -> Encoding Transfer -> SpiNNaker -> Adversarial -> Energy. This puts the thesis front and center.
+3. **Frame encoding comparison as "why the gap exists"** rather than just reporting numbers. The encoding hierarchy (direct >> rate = phase > latency > delta > burst) is evidence that preserving continuous information is what matters -- which supports the gap-collapse thesis.
+4. **Frame SpiNNaker deployment as "implications of the gap-collapse"** -- the hybrid CNN14 (features) + SNN (classification on SpiNNaker) is exactly the architecture implied by the thesis.
+5. **Reduce emphasis on noise robustness and continual learning** -- these are weak results (not statistically significant for noise, preliminary for CL) that dilute the paper's strength. Keep them as one-paragraph mentions or move to supplementary.
+
+### What NOT To Do

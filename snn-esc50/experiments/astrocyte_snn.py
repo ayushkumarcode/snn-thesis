@@ -222,3 +222,31 @@ class AstrocyteSNN(nn.Module):
         Returns:
             spk_out: (num_steps, batch, num_classes)
             mem_out: (num_steps, batch, num_classes)
+            layer_stats: dict with per-layer spike rates and thresholds
+        """
+        device = x.device
+
+        # Init LIF states
+        mem1 = self.astro_lif1.lif.init_leaky()
+        mem2 = self.astro_lif2.lif.init_leaky()
+        mem3 = self.astro_lif3.lif.init_leaky()
+        mem4 = self.astro_lif4.lif.init_leaky()
+
+        # Init astrocyte states
+        astro1 = self.astro_lif1.init_astrocyte(device)
+        astro2 = self.astro_lif2.init_astrocyte(device)
+        astro3 = self.astro_lif3.init_astrocyte(device)
+        astro4 = self.astro_lif4.init_astrocyte(device)
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        # Tracking stats per layer per timestep
+        spike_rates = {"lif1": [], "lif2": [], "lif3": [], "lif4": []}
+        thresholds = {"lif1": [], "lif2": [], "lif3": [], "lif4": []}
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))

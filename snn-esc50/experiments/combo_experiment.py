@@ -82,3 +82,31 @@ class RhythmLIF(nn.Module):
 
         self.threshold = nn.Parameter(torch.ones(size)) if learn_beta else None
         self._threshold_val = 1.0
+
+    def init_mem(self, device=None):
+        if device is None:
+            device = self.beta_raw.device
+        return torch.zeros(1, device=device)
+
+    def forward(self, x, mem, step):
+        if mem.device != x.device:
+            mem = mem.to(x.device)
+        beta = torch.sigmoid(self.beta_raw)
+        thresh = self.threshold if self.threshold is not None else self._threshold_val
+
+        # Reshape for broadcasting
+        shape = [1] * (x.dim() - 1) + [-1]
+        if x.dim() == 4:  # conv: (batch, channels, h, w)
+            shape = [1, -1, 1, 1]
+        elif x.dim() == 2:  # fc: (batch, features)
+            shape = [1, -1]
+
+        b = beta.view(shape)
+        t = thresh.view(shape) if isinstance(thresh, nn.Parameter) else thresh
+        osc = (self.amplitude * torch.sin(
+            2 * math.pi * self.frequency * step / NUM_STEPS + self.phase
+        )).view(shape)
+
+        mem = b * mem + x + osc
+        spk = self.spike_grad((mem - t) / t)
+        mem = mem * (1 - spk.detach())

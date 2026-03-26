@@ -82,3 +82,31 @@ class EnhancedSpikingCNN(nn.Module):
 
         spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
 
+        # -- Convolutional feature extraction --
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        # After two MaxPool2d(2) on input (64, 216): (16, 54)
+        # AvgPool2d(4,6) on (16,54) -> (4, 9)
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # -- Fully connected classifier with dropout --
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.dropout = nn.Dropout(0.3)
+        self.lif3 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )

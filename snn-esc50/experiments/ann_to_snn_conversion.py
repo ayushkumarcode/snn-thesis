@@ -530,3 +530,31 @@ def main():
             {
                 "fold": r["fold"],
                 "ann_accuracy": r["ann_accuracy"],
+                "thresholds": r["thresholds"],
+                "convergence_T_95pct": r["convergence_T_95pct"],
+                "snn_results": r["snn_results"],
+            }
+            for r in all_results
+        ],
+    }
+
+    with open(out_dir / "summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSaved summary to {out_dir / 'summary.json'}")
+
+    # Plot accuracy vs timesteps curve
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+
+        # Per-fold curves
+        for r in all_results:
+            Ts = r["timestep_values"]
+            accs = [r["snn_results"][str(T)]["accuracy"] * 100 for T in Ts]
+            ax.plot(Ts, accs, "o--", alpha=0.3, markersize=4, color="tab:blue")
+
+        # Mean curve
+        mean_Ts = sorted(aggregate.keys())

@@ -194,3 +194,31 @@ def run_fold(fold, device, num_epochs=NUM_EPOCHS):
             print(f"  Early stopping at epoch {epoch}")
             break
 
+    elapsed = time.time() - start
+
+    # Log learned betas
+    print(f"\n  Learned betas:")
+    for name, param in model.named_parameters():
+        if 'beta' in name:
+            print(f"    {name}: {param.data.item():.4f} (init: 0.95)")
+
+    print(f"  Fold {fold}: {best_acc:.4f} (ep{best_epoch}) in {elapsed:.1f}s")
+
+    result = {
+        "fold": fold, "experiment": "learnable_beta",
+        "changes": ["learn_beta_only"],
+        "best_acc": best_acc, "best_epoch": best_epoch,
+        "total_epochs": epoch, "time_seconds": elapsed,
+        "learned_betas": {name: param.data.item() for name, param in model.named_parameters() if 'beta' in name},
+        "history": history,
+    }
+
+    save_dir = RESULTS_DIR / "experiments" / "learnable_beta"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+
+def main():

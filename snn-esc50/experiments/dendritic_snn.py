@@ -474,3 +474,31 @@ def train_fold(fold, args, device):
             RESULTS_DIR / "experiments" / "dendritic_snn" / f"best_fold{fold}.pt",
             map_location=device, weights_only=True,
         )
+    )
+    branch_stats = get_branch_stats(model)
+
+    return {
+        "fold": fold,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "total_params": total_params,
+        "num_branches": args.branches,
+        "branch_stats": branch_stats,
+        "epoch_log": epoch_log,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Dendritic SNN experiment — multi-compartment LIF neurons"
+    )
+    parser.add_argument("--fold", type=int, default=None,
+                        help="Specific fold to run (1-5). Default: all 5.")
+    parser.add_argument("--device", type=str, default=None,
+                        help="Device (cpu/cuda/mps). Default: auto-detect.")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS,
+                        help=f"Max training epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--branches", type=int, default=3,
+                        help="Number of dendritic branches K (default: 3)")
+    args = parser.parse_args()

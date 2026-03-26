@@ -250,3 +250,31 @@ def train_epoch(model, loader, optimizer, device, beta_ib):
 
 
 @torch.no_grad()
+def eval_model(model, loader, device, beta_ib):
+    """Evaluate with deterministic bottleneck (mu only, no sampling)."""
+    model.eval()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_kl = 0.0
+    correct = 0
+    total = 0
+    total_mu_norm = 0.0
+    total_logvar_mean = 0.0
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        spk_out, mem_out, kl_loss, bn_stats = model(spike_input, sample=False)
+
+        ce_loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            ce_loss = ce_loss + ce_criterion(mem_out[step], targets)
+
+        loss = ce_loss + beta_ib * kl_loss
+
+        total_loss += loss.item()
+        total_ce += ce_loss.item()
+        total_kl += kl_loss.item()

@@ -110,3 +110,31 @@ class RhythmLIF(nn.Module):
         """
         return torch.zeros(batch_size, *self.amplitude.shape, device=device)
 
+    def forward(
+        self, input_current: torch.Tensor, mem: torch.Tensor, t: int,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Single timestep forward.
+
+        Args:
+            input_current: Synaptic input, shape (batch, *neuron_shape, ...).
+            mem: Previous membrane potential, same shape as input_current.
+            t: Current timestep index (0-indexed).
+
+        Returns:
+            spk: Output spikes (binary), same shape as mem.
+            mem: Updated membrane potential.
+        """
+        beta = self.beta  # (neuron_shape)
+        osc = self._oscillation(t)  # (neuron_shape)
+
+        # Broadcast beta and osc to match input_current dimensions
+        # For conv layers: input_current is (batch, channels, H, W), neuron_shape is (channels,)
+        # For FC layers: input_current is (batch, hidden), neuron_shape is (hidden,)
+        ndim_extra = input_current.dim() - 1 - len(self.amplitude.shape)
+        beta_bc = beta
+        osc_bc = osc
+        for _ in range(ndim_extra):
+            beta_bc = beta_bc.unsqueeze(-1)
+            osc_bc = osc_bc.unsqueeze(-1)
+
+        # Leaky integration with oscillatory modulation

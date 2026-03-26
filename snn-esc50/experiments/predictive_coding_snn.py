@@ -110,3 +110,31 @@ class PredictiveSNN(nn.Module):
 
         mem1 = self.lif1.init_leaky()
         mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        # Track spike counts for energy comparison
+        total_original_spikes = 0.0
+        total_error_spikes = 0.0
+        pred_error_sum = torch.zeros(1, device=device)
+        pred_count = 0
+
+        spk3_prev = None  # previous timestep hidden spikes
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)

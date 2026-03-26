@@ -586,3 +586,31 @@ def test_edge_cases():
     tgt = torch.randint(0, C, (B,))
 
     loss_old = torch.zeros(1)
+    for s in range(T):
+        loss_old += criterion(mem[s], tgt)
+    loss_old /= T
+
+    loss_new = F.cross_entropy(
+        mem.reshape(T * B, C),
+        tgt.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    report("C=2 binary classification",
+           abs(loss_old.item() - loss_new.item()) < 1e-6,
+           f"diff={abs(loss_old.item() - loss_new.item()):.2e}")
+
+    # Very large values (potential overflow in BF16 but not FP32)
+    T, B, C = 25, 32, 50
+    mem = torch.randn(T, B, C) * 100  # Large logits
+    tgt = torch.randint(0, C, (B,))
+
+    loss_old = torch.zeros(1)
+    for s in range(T):
+        loss_old += criterion(mem[s], tgt)
+    loss_old /= T
+
+    loss_new = F.cross_entropy(
+        mem.reshape(T * B, C),
+        tgt.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    report("Large logits (100x)",
+           abs(loss_old.item() - loss_new.item()) < 1e-4,

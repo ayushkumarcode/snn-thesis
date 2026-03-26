@@ -306,3 +306,31 @@ def convert_and_evaluate_fold(
     """Full ANN-to-SNN conversion pipeline for one fold.
 
     Steps:
+      1. Load trained ANN
+      2. Record activations over training set
+      3. Compute per-layer thresholds
+      4. Create converted SNN with calibrated thresholds
+      5. Evaluate at multiple timestep budgets
+
+    Returns:
+        dict with fold results.
+    """
+    print(f"\n{'='*60}")
+    print(f"  ANN-to-SNN Conversion | Fold {fold}/5")
+    print(f"  Percentile: {percentile} | Max timesteps: {max_timesteps}")
+    print(f"{'='*60}")
+
+    ann_path = RESULTS_DIR / "ann" / "none" / f"best_fold{fold}.pt"
+    if not ann_path.exists():
+        print(f"  ERROR: ANN model not found at {ann_path}")
+        return None
+
+    # Step 1: Load trained ANN
+    ann_model = ConvANN().to(device)
+    ann_model.load_state_dict(
+        torch.load(ann_path, map_location=device, weights_only=True)
+    )
+    ann_model.eval()
+    print(f"  Loaded ANN: {ann_path}")
+
+    # Step 2: Record activations over training set

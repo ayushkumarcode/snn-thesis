@@ -250,3 +250,31 @@ class DendriticSpikingCNN(nn.Module):
 
         self.fc2 = nn.Linear(256, num_classes)
         self.dlif4 = DendriticLIF(num_classes, num_branches=num_branches, spike_grad=spike_grad)
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass over all timesteps.
+
+        Args:
+            x: Input of shape (num_steps, batch, 1, n_mels, time_frames).
+
+        Returns:
+            spk_out: Output spikes, shape (num_steps, batch, num_classes).
+            mem_out: Output membrane (soma) potentials, shape (num_steps, batch, num_classes).
+        """
+        # Initialize branch membranes for each dendritic layer
+        bmem1 = self.dlif1.init_dendritic()
+        bmem2 = self.dlif2.init_dendritic()
+        bmem3 = self.dlif3.init_dendritic()
+        bmem4 = self.dlif4.init_dendritic()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]  # (batch, 1, n_mels, time)
+
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, bmem1 = self.dlif1(cur1, bmem1)
+
+            # Conv block 2

@@ -698,3 +698,31 @@ def main():
     sample_file = list(ESC50_AUDIO_DIR.glob("*.wav"))[0]
     coch = wav_to_cochleagram(str(sample_file))
     coch_norm = normalise_spectrogram(coch)
+    print(f"  Raw cochleagram shape: {coch.shape}")
+    print(f"  Range after normalisation: [{coch_norm.min():.4f}, {coch_norm.max():.4f}]")
+    print(f"  Expected: (64, 216)")
+    assert coch.shape == (64, 216), (
+        f"Cochleagram shape mismatch: got {coch.shape}, expected (64, 216). "
+        f"Check N_FFT={N_FFT} and HOP_LENGTH={HOP_LENGTH}."
+    )
+    print("  Cochleagram pipeline verified.\n")
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    model_types = ["snn", "ann"] if args.model == "both" else [args.model]
+
+    all_results = {}
+
+    for model_type in model_types:
+        fold_results = []
+        for fold in folds:
+            result = run_fold(fold, model_type, device, args.epochs, args.patience)
+            fold_results.append(result)
+
+        # Summary for this model type
+        if len(fold_results) >= 2:
+            accs = [r["best_acc"] for r in fold_results]
+            mean_acc = np.mean(accs)
+            std_acc = np.std(accs)
+            print(f"\n{'='*60}")
+            print(f"  Cochleagram {model_type.upper()} {len(folds)}-Fold Summary")
+            print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")

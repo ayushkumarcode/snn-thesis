@@ -54,3 +54,10 @@ echo "============================================"
 echo "  Job: $SLURM_ARRAY_TASK_ID"
 echo "  Experiment: $EXP_NAME | Fold: $FOLD"
 echo "  Device: cuda | Start: $(date)"
+echo "============================================"
+
+python -m experiments.$EXP_NAME --fold $FOLD --device cuda
+
+echo "============================================"
+echo "  Done: $(date)"
+echo "============================================"

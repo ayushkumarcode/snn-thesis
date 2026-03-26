@@ -110,3 +110,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 ## 3. Hybrid Training (ANN Init + SNN Fine-tune)
 
 ### 3a. Rathi et al. Hybrid Conversion + STDB
+
+- **Paper:** Rathi et al., "Enabling Deep Spiking Neural Networks with Hybrid Conversion and Spike Timing Dependent Backpropagation" (ICLR 2020)
+- **Key idea:** Fast ANN-to-SNN conversion for weight initialization, then fine-tune with spike-timing dependent backpropagation (STDB). Achieves similar accuracy to full conversion with MUCH fewer timesteps, and faster convergence than training from scratch.
+- **Accuracy:** Conversion loss 2-3% after fine-tuning, with far fewer timesteps.
+- **Applicability:** VERY HIGH. This is the simplest high-impact change: (1) convert our 63.85% ANN, (2) fine-tune as SNN for a few epochs. Code: https://github.com/nitin-rathi/hybrid-snn-conversion
+- **Implementation complexity:** MEDIUM. Need to map ReLU->LIF, set thresholds, then fine-tune.
+- **Expected result:** 55-62% accuracy
+
+### 3b. Three-Stage Hybrid Fine-Tuning for Audio
+
+- **Paper:** "Three-stage hybrid spiking neural networks fine-tuning for speech enhancement" (Frontiers in Neuroscience, April 2025)
+- **Key idea:** (1) Train ANN, (2) convert to SNN, (3) hybrid fine-tune where forward pass uses spikes but backward pass uses ANN signals. Applied to Wave-U-Net and ConvTasNet for AUDIO processing.
+- **Accuracy:** Significant improvement over unconverted SNNs on noisy VCTK and TIMIT.
+- **Applicability:** VERY HIGH. This is specifically for audio SNNs. Same three-stage approach directly applicable to our pipeline.
+- **Implementation complexity:** MEDIUM.
+- **Expected result:** Best of both worlds -- should preserve most of ANN's 63.85%
+
+---
+
+## 4. Loss Function Improvements
+
+### 4a. TET: Temporal Efficient Training
+
+- **Paper:** Deng et al., "Temporal Efficient Training of Spiking Neural Network via Gradient Re-weighting" (ICLR 2022)
+- **Key idea:** Instead of accumulating spikes then applying loss once, optimize every timestep's pre-synaptic inputs independently. Compensates for momentum loss in surrogate gradient descent, converges to flatter minima with better generalizability. Also improves temporal scalability.
+- **Accuracy:** +10pp on DVS-CIFAR10 (83% vs 73% prior SOTA). Consistent improvements on CIFAR-10/100/ImageNet.
+- **Applicability:** VERY HIGH. We already use per-timestep CE loss (standard snnTorch approach) -- but TET adds gradient re-weighting and momentum compensation. Trivial to implement. Code: https://github.com/Gus-Lab/temporal_efficient_training
+- **Implementation complexity:** LOW. Modify loss function only. ~20 lines of code change.

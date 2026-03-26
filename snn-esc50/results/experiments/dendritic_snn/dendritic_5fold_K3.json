@@ -1286,3 +1286,31 @@
         "train_loss": 91.1965,
         "train_acc": 0.1237,
         "test_loss": 91.8038,
+        "test_acc": 0.1175
+      },
+      {
+        "epoch": 19,
+        "train_loss": 90.8298,
+        "train_acc": 0.1281,
+        "test_loss": 91.6099,
+        "test_acc": 0.12
+      },
+      {
+        "epoch": 20,
+        "train_loss": 90.9087,
+        "train_acc": 0.1388,
+        "test_loss": 91.5708,
+        "test_acc": 0.11
+      },
+      {
+        "epoch": 21,
+        "train_loss": 91.023,
+        "train_acc": 0.125,
+        "test_loss": 92.4424,
+        "test_acc": 0.075
+      },
+      {
+        "epoch": 22,
+        "train_loss": 91.384,
+        "train_acc": 0.1075,
+        "test_loss": 91.7995,

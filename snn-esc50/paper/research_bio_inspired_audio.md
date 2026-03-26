@@ -334,3 +334,31 @@ Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerate
 **For ESC-50**: Would require different architecture (1D convolutions instead of 2D). Our current architecture assumes 2D spectrogram input.
 
 **Implementation complexity**: HIGH. Architecture redesign needed.
+
+### 6.3 Spiking-LEAF (Learnable Auditory Front-end)
+
+**What it is**: Song et al. (ICASSP 2024). A learnable filterbank + IHC-LIF neuron model designed specifically for SNNs.
+
+**Key details**:
+- 1D Gabor filterbank (40 filters, learnable center frequency and bandwidth)
+- IHC-LIF: two-compartment neuron (dendritic + somatic) inspired by inner hair cells
+- Lateral feedback + spike regularization
+- PCEN dynamic range compression
+
+**Results**:
+- KWS (keyword spotting): 92.24% (vs 83.03% for fixed filterbank) -- **9.2% improvement**
+- KWS with recurrent SNN: 93.95%
+
+**For ESC-50**: Replace mel spectrogram with Spiking-LEAF front-end. The 9.2% improvement on KWS is very encouraging.
+
+**NOVELTY**: HIGH for ESC-50 application. Spiking-LEAF was designed for speech, not environmental sounds.
+
+**Implementation complexity**: MODERATE-HIGH. Need to implement IHC-LIF neurons and learnable filterbank.
+
+### 6.4 Spectrotemporal Receptive Field (STRF) / Modulation Features
+
+**What it is**: Model of auditory cortex processing. Decomposes sounds into temporal and spectral modulation rates.
+
+**For ESC-50**: Environmental sounds have distinct modulation patterns (e.g., helicopter = low temporal modulation, dog bark = impulsive). STM features capture this naturally.
+
+**NOVELTY**: VERY HIGH for SNN application.

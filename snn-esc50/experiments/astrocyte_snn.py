@@ -54,3 +54,31 @@ from src.encoding import encode_direct
 # ============================================================
 # Astrocyte LIF Module
 # ============================================================
+
+class AstrocyteLIF(nn.Module):
+    """LIF neuron with astrocyte-mediated threshold modulation.
+
+    The astrocyte maintains a slow exponential moving average of the
+    population spike rate and modulates the firing threshold to maintain
+    homeostasis. When neurons fire too much, the threshold increases
+    (suppression). When too few fire, the threshold decreases (excitation).
+
+    Args:
+        size: Number of features (channels for conv, neurons for FC).
+        beta: Membrane decay rate for the underlying LIF neuron.
+        spike_grad: Surrogate gradient function.
+        learn_beta: Whether beta is learnable.
+        tau_astro_init: Initial astrocyte time constant (0.99 = very slow).
+        gain_init: Initial modulation gain (0.1 = gentle modulation).
+        target_rate_init: Desired average firing rate (0.1 = 10%).
+    """
+
+    def __init__(self, size, beta=BETA, spike_grad=None, learn_beta=True,
+                 tau_astro_init=0.99, gain_init=0.1, target_rate_init=0.1):
+        super().__init__()
+        self.size = size
+
+        # Underlying LIF neuron
+        self.lif = snn.Leaky(beta=beta, spike_grad=spike_grad,
+                             learn_beta=learn_beta, threshold=1.0)
+

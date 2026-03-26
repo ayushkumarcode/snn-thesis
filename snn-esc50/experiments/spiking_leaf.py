@@ -558,3 +558,31 @@ def train_ann_epoch(model, loader, optimizer, device):
     """Train one ANN epoch."""
     model.train()
     total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        optimizer.zero_grad()
+        logits = model(inputs)
+        loss = criterion(logits, labels)
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_ann(model, loader, device):
+    """Evaluate ANN model."""
+    model.eval()
+    total_loss = 0.0
+    correct = 0

@@ -194,3 +194,31 @@ def transfer_ann_weights(ann_model: ConvANN, snn_model: EnhancedSpikingCNN) -> N
     transferred = 0
     for ann_prefix, snn_prefix in mapping.items():
         for ann_key, ann_val in ann_sd.items():
+            if ann_key.startswith(ann_prefix + "."):
+                suffix = ann_key[len(ann_prefix):]
+                snn_key = snn_prefix + suffix
+                if snn_key in snn_sd:
+                    snn_sd[snn_key] = ann_val.clone()
+                    transferred += 1
+
+    snn_model.load_state_dict(snn_sd)
+    print(f"  Transferred {transferred} parameter tensors from ANN to SNN")
+
+
+# ============================================================
+# Training / evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device):
+    """Train SNN for one epoch with per-timestep CE loss (standard snnTorch)."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=model.num_steps)
+
+        optimizer.zero_grad()

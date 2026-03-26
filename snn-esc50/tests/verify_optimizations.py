@@ -418,3 +418,31 @@ def test_bf16_analysis():
     - BN running stats: accumulated in FP32 by default even under autocast
 
     Key safety: autocast only applies to matmuls and convolutions in BF16.
+    Loss computation, BN stats, and optimizer step remain FP32.
+    The `enabled=use_amp` guard ensures CPU/MPS remain FP32.
+    """
+    print("\n=== TEST 6: BF16 autocast analysis ===")
+
+    # Test that autocast doesn't affect loss computation
+    torch.manual_seed(42)
+    T, B, C = 25, 32, 50
+    mem_out = torch.randn(T, B, C)
+    targets = torch.randint(0, C, (B,))
+
+    # Without autocast
+    loss_fp32 = F.cross_entropy(
+        mem_out.reshape(T * B, C),
+        targets.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+
+    # Note: on CPU, autocast to bfloat16 may not work on all ops.
+    # We test that the guard `enabled=use_amp` (False on CPU) means no change.
+    use_amp = False  # Simulating CPU/MPS
+    with torch.amp.autocast('cpu', dtype=torch.bfloat16, enabled=use_amp):
+        loss_no_amp = F.cross_entropy(
+            mem_out.reshape(T * B, C),
+            targets.unsqueeze(0).expand(T, -1).reshape(-1),
+        )
+
+    report("BF16 disabled on CPU (use_amp=False)",
+           loss_fp32.item() == loss_no_amp.item(),

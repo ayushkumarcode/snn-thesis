@@ -54,3 +54,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Expected result:** Additional +1-3pp on top of any conversion baseline
 
 ### 1c. One-Timestep Conversion via Scale-and-Fire Neurons
+
+- **Paper:** "One-Timestep is Enough: Achieving High-Performance ANN-to-SNN Conversion via Scale-and-Fire Neurons" (2025, arXiv:2510.23383)
+- **Key idea:** Scale-and-Fire Neuron (SFN) enables single-timestep inference by adopting parameters estimated from ANN activation distribution, refined via Bayesian optimization. Eliminates temporal integration errors.
+- **Accuracy:** Best accuracy among binary/ternary/multi-level SNNs with 1 timestep.
+- **Applicability:** MEDIUM. Ultra-low latency scenario. May not preserve full accuracy on complex tasks.
+- **Implementation complexity:** MEDIUM.
+
+### 1d. Negative Spikes for Conversion
+
+- **Paper:** "A Fast and Accurate ANN-SNN Conversion Algorithm with Negative Spikes" (IJCAI 2025)
+- **Key idea:** Allow negative spikes during conversion to better approximate ReLU/LeakyReLU outputs. Outperforms two-stage methods by 1.29% at T=4.
+- **Accuracy:** Better than two-stage at T=4 than two-stage at T=8.
+- **Applicability:** HIGH. Compatible with our architecture.
+- **Implementation complexity:** MEDIUM.
+
+---
+
+## 2. Knowledge Distillation (ANN Teacher -> SNN Student)
+
+### 2a. SAKD: Self-Architectural Knowledge Distillation
+
+- **Paper:** Xu et al., "Self-architectural knowledge distillation for spiking neural networks" (Neural Networks 178, 2024; originally OpenReview 2022)
+- **Key idea:** Use same-architecture ANN as teacher. Directly transfer pre-trained ANN weights to SNN, then distill both intermediate features and logits. Bilevel teacher-student training.
+- **Accuracy:** ResNet-18 on CIFAR-100: 80.48% with 4 timesteps, SURPASSING the ANN (79.90%). +3.49% over non-distilled SNN. On ImageNet: SEW-ResNet152 achieves 77.30% (SNN SOTA).
+- **Applicability:** VERY HIGH. Our ANN and SNN share identical architecture (Conv+BN+MaxPool+FC). SAKD is designed exactly for this case. The ANN teacher is already trained at 63.85%.
+- **Implementation complexity:** MEDIUM. Need to: (1) load ANN teacher weights, (2) modify training loop to compute feature-level + logit-level KD loss, (3) balance KD loss with task loss.
+- **Expected result:** 50-58% (could potentially match or exceed ANN with perfect distillation)
+

@@ -54,3 +54,31 @@ from src.config import (
 )
 from src.dataset import download_esc50, get_fold_dataloaders, ESC50Dataset
 from src.encoding import encode_direct
+from src.models.ann_model import ConvANN
+
+
+# ============================================================
+# Custom neuron modules
+# ============================================================
+
+class RhythmLIF(nn.Module):
+    """LIF neuron with learnable oscillatory modulation."""
+
+    def __init__(self, size, beta=BETA, spike_grad=None, learn_beta=True):
+        super().__init__()
+        if spike_grad is None:
+            spike_grad = surrogate.fast_sigmoid(slope=25)
+        self.spike_grad = spike_grad
+        self.size = size
+
+        # Learnable beta via sigmoid
+        beta_init = math.log(beta / (1 - beta))
+        self.beta_raw = nn.Parameter(torch.full((size,), beta_init))
+
+        # Oscillation parameters
+        self.amplitude = nn.Parameter(torch.full((size,), 0.1))
+        self.frequency = nn.Parameter(torch.empty(size).uniform_(0.5, 5.0))
+        self.phase = nn.Parameter(torch.zeros(size))
+
+        self.threshold = nn.Parameter(torch.ones(size)) if learn_beta else None
+        self._threshold_val = 1.0

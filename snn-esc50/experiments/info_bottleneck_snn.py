@@ -222,3 +222,31 @@ def train_epoch(model, loader, optimizer, device, beta_ib):
 
         # Combined loss: CE + beta_ib * KL
         loss = ce_loss + beta_ib * kl_loss
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        total_ce += ce_loss.item()
+        total_kl += kl_loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        total_mu_norm += bn_stats["avg_mu_norm"]
+        total_logvar_mean += bn_stats["avg_logvar_mean"]
+
+    n = len(loader)
+    stats = {
+        "loss": total_loss / n,
+        "ce_loss": total_ce / n,
+        "kl_loss": total_kl / n,
+        "accuracy": correct / total,
+        "avg_mu_norm": total_mu_norm / n,
+        "avg_logvar_mean": total_logvar_mean / n,
+    }
+    return stats
+
+
+@torch.no_grad()

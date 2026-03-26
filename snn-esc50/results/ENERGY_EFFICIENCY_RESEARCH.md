@@ -82,3 +82,31 @@ reg_fn = SF.l1_rate_sparsity(Lambda=1e-3)
 **Paper:** Bu et al., "Activity Pruning for Efficient Spiking Neural Networks," NeurIPS 2025.
 
 Replaces standard LIF with Adaptive Threshold LIF (AT-LIF) that dynamically raises thresholds for overactive neurons. Achieves firing rate of 0.020 on CIFAR-10 with comparable accuracy.
+
+**Expected energy reduction:** 3-5x from activity reduction alone
+**Accuracy trade-off:** Comparable to baseline
+**Implementation complexity:** Moderate -- requires custom neuron model
+**SpiNNaker compatibility:** Partial -- IF_curr_exp threshold is fixed per population, but you could implement per-neuron threshold offline by adjusting weights
+
+---
+
+### 2.3 Logits Regularization (Novel, 2024)
+
+**Paper:** "On Reducing Activity with Distillation and Regularization for Energy Efficient SNNs," arXiv:2406.18350
+
+Applies L2 regularization to logit values (pre-softmax outputs) rather than spikes. Achieves:
+- MNIST: 87.8% spike rate reduction, accuracy maintained
+- CIFAR-10: 14.3% spike rate reduction, accuracy maintained (86.5% vs 86.6% baseline)
+- GSC (audio!): 26.7% spike rate reduction, accuracy maintained (92.6% vs 91.2%)
+
+The GSC result is particularly relevant -- this is an audio task similar to yours.
+
+**Expected energy reduction:** 1.3-2x from logits regularization alone
+**Accuracy trade-off:** Near zero (<0.5%)
+**Implementation complexity:** Trivial
+**SpiNNaker compatibility:** Full
+
+---
+
+### 2.4 Backpropagation with Sparsity Regularization (BPSR)
+

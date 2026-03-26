@@ -502,3 +502,31 @@ def test_gradient_equivalence():
            f"max_abs_diff={grad_diff:.2e}")
     report("Gradient max relative difference",
            grad_rel < 1e-5,
+           f"max_rel_diff={grad_rel:.2e}")
+
+    # TET gradient test
+    torch.manual_seed(42)
+    mem_tet1 = torch.randn(T, B, C, requires_grad=True)
+    mem_tet2 = mem_tet1.clone().detach().requires_grad_(True)
+
+    # OLD TET gradient
+    per_step_old = []
+    for step in range(T):
+        per_step_old.append(criterion(mem_tet1[step], targets))
+    ps_old = torch.stack(per_step_old)
+    ml_old = ps_old.mean()
+    vl_old = ((ps_old - ml_old) ** 2).mean()
+    (ml_old + 1.0 * vl_old).backward()
+
+    # NEW TET gradient
+    ps_new = F.cross_entropy(
+        mem_tet2.reshape(T * B, C),
+        targets.unsqueeze(0).expand(T, -1).reshape(-1),
+        reduction='none'
+    ).reshape(T, B)
+    ps_new_step = ps_new.mean(dim=1)
+    ml_new = ps_new_step.mean()
+    vl_new = ((ps_new_step - ml_new) ** 2).mean()
+    (ml_new + 1.0 * vl_new).backward()
+
+    tet_grad_diff = (mem_tet1.grad - mem_tet2.grad).abs().max().item()

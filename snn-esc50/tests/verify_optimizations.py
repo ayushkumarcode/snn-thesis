@@ -194,3 +194,31 @@ def test_eval_loss():
     """
     OLD eval code:
         loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], targets)
+        total_loss += loss.item()
+        ...
+        return total_loss / len(loader), ...
+
+    This means: per-batch loss = sum_t[ CE(mem_out[t], targets) ]
+                                = sum_t[ (1/B) * sum_b(loss_tb) ]
+                                = (T/1) * (1/(T*B)) * sum_all
+                                = (1/B) * sum_all
+
+    NEW eval code:
+        T, B, C = mem_out.shape
+        loss = F.cross_entropy(
+            mem_out.reshape(T * B, C),
+            targets.unsqueeze(0).expand(T, -1).reshape(-1),
+        )
+        total_loss += loss.item()
+
+    This means: per-batch loss = (1/(T*B)) * sum_all
+
+    DIFFERENCE: Old = T * New
+
+    The old code does NOT divide by T in eval (but the old training code DOES).
+    The new code divides by T*B in both train and eval.
+
+    IMPACT: The eval loss is used for:
+    1. ReduceLROnPlateau scheduler.step(test_loss)

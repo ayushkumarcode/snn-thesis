@@ -474,3 +474,31 @@ def main():
     args = parser.parse_args()
 
     if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))
+
+    all_results = []
+    for fold in folds:
+        result = train_fold(fold, device, args.epochs, args.patience, args.seed)
+        all_results.append(result)
+
+    # Summary
+    out_dir = RESULTS_DIR / "experiments" / "rhythm_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    accs = [r["best_accuracy"] for r in all_results]
+    mean_acc = float(np.mean(accs))
+    std_acc = float(np.std(accs))
+
+    print(f"\n{'='*60}")
+    print(f"  Rhythm-SNN Summary")
+    print(f"{'='*60}")
+    for r in all_results:
+        print(f"  Fold {r['fold']}: {r['best_accuracy']*100:.2f}% (epoch {r['best_epoch']})")
+    print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")

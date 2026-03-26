@@ -222,3 +222,31 @@ class SRRhythmLIF(nn.Module):
         return torch.zeros(batch_size, *self.neuron_shape, device=device)
 
     def forward(
+        self, input_current: torch.Tensor, mem: torch.Tensor, t: int,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        beta = self.beta
+        sigma = self.sigma
+        osc = self._oscillation(t)
+
+        ndim_extra = input_current.dim() - 1 - len(self.neuron_shape)
+        beta_bc = beta
+        sigma_bc = sigma
+        osc_bc = osc
+        for _ in range(ndim_extra):
+            beta_bc = beta_bc.unsqueeze(-1)
+            sigma_bc = sigma_bc.unsqueeze(-1)
+            osc_bc = osc_bc.unsqueeze(-1)
+
+        # Leaky integration + oscillation
+        mem = beta_bc * mem + input_current + osc_bc
+
+        # Add noise (training only)
+        if self.training:
+            noise = torch.randn_like(mem) * sigma_bc
+            mem = mem + noise
+
+        # Spike
+        spk = self.spike_grad(mem - self.threshold)
+        mem = mem * (1.0 - spk.detach())
+
+        return spk, mem

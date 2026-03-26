@@ -82,3 +82,31 @@ def test_non_tet_loss():
     report("Non-TET loss: old loop vs vectorized",
            diff < 1e-6,
            f"old={loss_old.item():.10f}, new={loss_new.item():.10f}, diff={diff:.2e}")
+
+    # Also test with different T and B to be thorough
+    for T2, B2 in [(1, 1), (5, 8), (25, 64), (100, 16)]:
+        torch.manual_seed(123)
+        m = torch.randn(T2, B2, C)
+        t = torch.randint(0, C, (B2,))
+
+        old = torch.zeros(1)
+        for s in range(T2):
+            old += criterion(m[s], t)
+        old = old / T2
+
+        new = F.cross_entropy(
+            m.reshape(T2 * B2, C),
+            t.unsqueeze(0).expand(T2, -1).reshape(-1),
+        )
+
+        diff = abs(old.item() - new.item())
+        report(f"  Non-TET T={T2}, B={B2}",
+               diff < 1e-5,
+               f"diff={diff:.2e}")
+
+
+# ============================================================
+# TEST 2: TET loss equivalence
+# ============================================================
+def test_tet_loss():
+    """

@@ -250,3 +250,16 @@ def main():
 
         summary = {
             "experiment": "learnable_beta",
+            "fold_accuracies": accs,
+            "mean_accuracy": mean_acc,
+            "std_accuracy": std_acc,
+            "baseline_mean": 0.4715,
+            "baseline_std": 0.0450,
+        }
+        save_dir = RESULTS_DIR / "experiments" / "learnable_beta"
+        with open(save_dir / "summary.json", "w") as f:
+            json.dump(summary, f, indent=2)
+
+
+if __name__ == "__main__":
+    main()

@@ -474,3 +474,31 @@ def load_ann_weights_into_snn(model, fold, device):
     print(f"  Transferred {transferred} weight tensors from ANN")
     return model
 
+
+def train_epoch(model, loader, optimizer, device, args, teacher=None, encoder_fn=None):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encoder_fn(data).to(device)
+
+        optimizer.zero_grad()
+
+        teacher_logits = None
+        if args.kd and teacher is not None:
+            with torch.no_grad():
+                teacher_logits = teacher(data)
+
+        spk_out, mem_out, spk_total = model(spk_input)
+        loss = compute_loss(mem_out, targets, args, spk_total, teacher_logits)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)

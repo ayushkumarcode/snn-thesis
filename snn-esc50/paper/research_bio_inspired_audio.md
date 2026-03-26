@@ -222,3 +222,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 - Provably stable to time-warping deformations
 - Translation invariant
 - No learned parameters (fixed wavelet filters)
+
+**Has it been tried with SNNs?** NO evidence found. This is a gap.
+
+**For ESC-50 with ANN**: Scattering transforms achieve competitive results on audio classification. Not ESC-50 SOTA, but strong.
+
+**Spike compatibility**: MODERATE. Output is continuous-valued features. Would still need spike encoding. But the multi-scale, stable representation might survive spike encoding better than mel features.
+
+**NOVELTY**: HIGH. Scattering transform + SNN is unexplored territory.
+
+**Implementation**: `kymatio` library, PyTorch compatible.
+
+### 4.3 Gammatonegrams / Cochleagrams
+
+Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerated `Gammatonegram` class.
+
+### 4.4 Spectrotemporal Modulation (STM) Features
+
+**What it is**: A signal processing method that mimics the neurophysiological representation in the human auditory cortex. Decomposes spectrograms into temporal modulation (amplitude changes) and spectral modulation (frequency changes).
+
+**Key details (May 2025, Chang et al., arXiv:2505.23509)**:
+- Input: 128 cochlear-modeled frequency bands (170-7000 Hz)
+- 2D FFT of spectrogram -> modulation domain
+- 2,420 features (temporal: +/-15 Hz; spectral: 0-7.09 cycles/octave)
+- Achieves ROC-AUC 0.988 vs mel spectrogram 0.944
+- MLP with 1.1M params comparable to pretrained models (VGGish 72.1M params)
+- Code: https://doi.org/10.5281/zenodo.15521995
+
+**Has it been tried with SNNs?** NO.

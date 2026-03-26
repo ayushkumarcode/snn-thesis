@@ -670,3 +670,31 @@ def main():
     # Fold/device
     parser.add_argument("--fold", type=int, default=None)
     parser.add_argument("--device", default=None)
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS)
+
+    # Techniques
+    parser.add_argument("--learn-beta", action="store_true")
+    parser.add_argument("--learn-threshold", action="store_true")
+    parser.add_argument("--dropout", action="store_true")
+    parser.add_argument("--sre", action="store_true")
+    parser.add_argument("--rhythm", action="store_true")
+    parser.add_argument("--dendritic", action="store_true")
+    parser.add_argument("--branches", type=int, default=3)
+    parser.add_argument("--delays", action="store_true")
+    parser.add_argument("--max-delay", type=int, default=5)
+    parser.add_argument("--kd", action="store_true")
+    parser.add_argument("--temperature", type=float, default=3.0)
+    parser.add_argument("--alpha", type=float, default=0.5)
+    parser.add_argument("--hybrid-init", action="store_true")
+    parser.add_argument("--tet", action="store_true")
+    parser.add_argument("--lambda-tet", type=float, default=1.0)
+    parser.add_argument("--cochleagram", action="store_true")
+    parser.add_argument("--l1-reg", type=float, default=0.0)
+
+    args = parser.parse_args()
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    exp_name = get_experiment_name(args)
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    results = []

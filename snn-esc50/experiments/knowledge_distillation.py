@@ -194,3 +194,31 @@ def distillation_loss(
     # Soft label loss
     student_soft = F.log_softmax(student_logits / temperature, dim=1)
     teacher_soft = F.softmax(teacher_logits / temperature, dim=1)
+    kd_loss = F.kl_div(student_soft, teacher_soft, reduction="batchmean")
+
+    # Combined loss with T^2 scaling
+    return alpha * ce_loss + (1 - alpha) * (temperature ** 2) * kd_loss
+
+
+# ============================================================
+# Training / evaluation
+# ============================================================
+
+def train_epoch(student, teacher, loader, optimizer, device, temperature, alpha):
+    """Train SNN student with KD loss for one epoch."""
+    student.train()
+    teacher.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=student.num_steps)
+
+        optimizer.zero_grad()
+
+        # Student forward: SNN with temporal dynamics
+        spk_out, mem_out = student(spk_input)
+        student_logits = mem_out.sum(dim=0)  # (batch, num_classes)
+

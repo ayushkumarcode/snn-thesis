@@ -1,0 +1,28 @@
+{
+  "fold": 2,
+  "method": "hybrid_ann_snn",
+  "transfer_only_acc": 0.1,
+  "best_acc": 0.575,
+  "best_epoch": 14,
+  "total_epochs": 20,
+  "time_seconds": 140.1,
+  "lr": 0.0001,
+  "epochs_max": 20,
+  "patience": 10,
+  "features": [
+    "learn_beta",
+    "learn_threshold",
+    "dropout_0.3",
+    "spike_rate_escape"
+  ],
+  "history": {
+    "train_loss": [
+      68.4675659942627,
+      49.758013229370114,
+      46.18708198547363,
+      45.28661994934082,
+      42.66910194396973,
+      41.25640892028809,
+      40.68661087036133,
+      39.59640724182129,
+      37.87024528503418,

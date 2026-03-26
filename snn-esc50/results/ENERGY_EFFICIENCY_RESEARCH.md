@@ -334,3 +334,31 @@ SDNNs transmit only changes in activation between timesteps. For static/slow-cha
 **Implementation complexity:** High -- requires SDNN conversion framework
 **SpiNNaker compatibility:** Limited -- SpiNNaker processes spikes natively but SDNN requires delta encoding at each layer
 
+---
+
+### 6.2 Spike-Driven Transformers
+
+**Paper:** "SpikedAttention," NeurIPS 2024. Self-attention with only mask + addition operations, 87.2x lower computation energy vs vanilla attention.
+
+Not directly applicable to your CNN architecture, but worth noting for future work.
+
+---
+
+## 7. Real Hardware Energy Measurements
+
+### 7.1 Published SpiNNaker Energy Numbers
+
+| Metric | SpiNNaker 1 | SpiNNaker 2 | Source |
+|--------|-------------|-------------|--------|
+| Energy per synaptic event | 8-20 nJ (varies by study) | ~1 nJ | Multiple |
+| Per-chip power | ~1W (fully loaded) | 0.1W (near-threshold) | Furber et al. |
+| MNIST inference | 38.2 mJ | ~3.8 mJ (est.) | Benchmarking paper |
+| TTFS MNIST inference | 3.8 mJ | ~0.38 mJ (est.) | Same paper |
+| Board overhead | ~12W for 48-chip board | Lower | Wikipedia/papers |
+
+### 7.2 Comparison Across Platforms
+
+| Platform | Energy/Inference (MNIST-class) | Notes |
+|----------|-------------------------------|-------|
+| SpiNNaker 1 | 38.2 mJ | Full rate coding |
+| SpiNNaker 1 (TTFS) | 3.8 mJ | Time-to-first-spike |

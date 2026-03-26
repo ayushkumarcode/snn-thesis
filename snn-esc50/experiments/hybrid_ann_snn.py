@@ -446,3 +446,17 @@ def main():
             "fold_accuracies": accs,
             "mean_accuracy": float(mean_acc),
             "std_accuracy": float(std_acc),
+            "transfer_only_accuracies": transfer_accs,
+            "transfer_only_mean": float(mean_transfer),
+            "transfer_only_std": float(std_transfer),
+            "baseline_snn_mean": 0.4715,
+            "baseline_ann_mean": 0.6385,
+        }
+
+        with open(out_dir / "summary_5fold.json", "w") as f:
+            json.dump(summary, f, indent=2)
+        print(f"\nSummary saved: {out_dir / 'summary_5fold.json'}")
+
+
+if __name__ == "__main__":
+    main()

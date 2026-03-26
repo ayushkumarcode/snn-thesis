@@ -110,3 +110,31 @@ def gammatone_filterbank(sr, n_fft, n_filters=64, f_min=50.0, f_max=None):
     center_freqs = (10.0 ** (erb_points / 21.4) - 1.0) * 1000.0 / 4.37
 
     # STFT frequency bins
+    n_freqs = 1 + n_fft // 2
+    freqs = np.linspace(0, sr / 2.0, n_freqs)
+
+    filterbank = np.zeros((n_filters, n_freqs), dtype=np.float32)
+
+    for i, fc in enumerate(center_freqs):
+        # Bandwidth parameter: 1.019 * ERB(fc) -- standard gammatone
+        b = 1.019 * erb(fc)
+
+        # 4th-order gammatone magnitude response
+        # |H(f)|^2 = 1 / (1 + ((f - fc) / b)^2)^4
+        # We use the amplitude (not power) so take sqrt:
+        # |H(f)| = 1 / (1 + ((f - fc) / b)^2)^2
+        filterbank[i] = 1.0 / (1.0 + ((freqs - fc) / b) ** 2) ** 2
+
+    # Normalise each filter to have unit peak (preserves relative energy)
+    for i in range(n_filters):
+        peak = filterbank[i].max()
+        if peak > 0:
+            filterbank[i] /= peak
+
+    return filterbank, center_freqs
+
+
+def wav_to_cochleagram(filepath, sr=SAMPLE_RATE, duration=DURATION,
+                       n_fft=N_FFT, hop_length=HOP_LENGTH,
+                       n_filters=64, f_min=50.0, f_max=None):
+    """Load audio and compute gammatone cochleagram.

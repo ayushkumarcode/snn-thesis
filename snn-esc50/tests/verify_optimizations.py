@@ -334,3 +334,31 @@ def test_item_deferral():
     for t in tensors:
         total_new = total_new + t.sum()
 
+    # Convert at end
+    total_new_val = total_new.item() if isinstance(total_new, torch.Tensor) else total_new
+
+    diff = abs(total_old - total_new_val)
+    report("Spike count: deferred .item()",
+           diff < 1e-3,  # Allow small floating point difference from accumulation order
+           f"old={total_old:.6f}, new={total_new_val:.6f}, diff={diff:.2e}")
+
+    # Edge case: what if all spikes are zero?
+    total_zero = 0
+    for _ in range(25):
+        total_zero = total_zero + torch.zeros(32, 50).sum()
+    val = total_zero.item() if isinstance(total_zero, torch.Tensor) else total_zero
+    report("Spike count: all zeros edge case",
+           val == 0.0,
+           f"val={val}")
+
+    # Edge case: int 0 + tensor
+    x = 0
+    x = x + torch.tensor(5.0)
+    report("int 0 + tensor = tensor",
+           isinstance(x, torch.Tensor) and x.item() == 5.0,
+           f"type={type(x)}, val={x}")
+
+
+# ============================================================
+# TEST 5: set_to_none=True safety
+# ============================================================

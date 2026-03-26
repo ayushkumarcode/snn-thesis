@@ -446,3 +446,31 @@ def train_snn_epoch(model, loader, optimizer, device):
 
         # Sum CE loss across timesteps (same as enhanced_snn.py)
         loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], targets)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_snn(model, loader, device):
+    """Evaluate SNN on a dataset."""
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+
+        spk_out, mem_out = model(spk_input)

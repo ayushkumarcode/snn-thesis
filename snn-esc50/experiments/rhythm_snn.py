@@ -138,3 +138,31 @@ class RhythmLIF(nn.Module):
             osc_bc = osc_bc.unsqueeze(-1)
 
         # Leaky integration with oscillatory modulation
+        mem = beta_bc * mem + input_current + osc_bc
+
+        # Spike generation with surrogate gradient
+        spk = self.spike_grad(mem - self.threshold)
+
+        # Soft reset: mem *= (1 - spk)
+        mem = mem * (1.0 - spk.detach())
+
+        return spk, mem
+
+
+# ============================================================
+# Rhythm-SNN Model
+# ============================================================
+
+class RhythmSpikingCNN(nn.Module):
+    """Convolutional SNN with RhythmLIF neurons for ESC-50.
+
+    Same architecture as baseline SpikingCNN but all 4 LIF neurons
+    are replaced with RhythmLIF neurons that add learnable oscillatory
+    modulation to membrane dynamics. Includes Dropout(0.3) for
+    regularisation.
+
+    Architecture:
+        Conv2d(1,32) -> BN -> MaxPool(2) -> RhythmLIF
+        Conv2d(32,64) -> BN -> MaxPool(2) -> RhythmLIF
+        AvgPool(4,6) -> Flatten
+        FC(2304,256) -> RhythmLIF -> Dropout(0.3)

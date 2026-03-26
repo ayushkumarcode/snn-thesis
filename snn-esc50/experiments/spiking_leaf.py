@@ -614,3 +614,31 @@ def train_fold(fold, model_type, device, epochs, patience, seed):
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)
 
+    print(f"\n{'='*60}")
+    print(f"  Spiking-LEAF {model_type.upper()} | Fold {fold}/5 | seed={seed}")
+    print(f"  Device: {device}")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_waveform_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    if model_type == "snn":
+        model = SpikingLEAF_SNN().to(device)
+        train_fn = train_snn_epoch
+        eval_fn = eval_snn
+    else:
+        model = SpikingLEAF_ANN().to(device)
+        train_fn = train_ann_epoch
+        eval_fn = eval_ann
+
+    total_params = sum(p.numel() for p in model.parameters())
+    frontend_params = sum(p.numel() for p in model.frontend.parameters())
+    print(f"  Total params: {total_params:,} (frontend: {frontend_params:,})")
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    out_dir = RESULTS_DIR / "experiments" / "spiking_leaf"

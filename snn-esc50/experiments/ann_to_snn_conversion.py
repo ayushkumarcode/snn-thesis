@@ -82,3 +82,31 @@ class ActivationRecorder:
         features = model.features
         classifier = model.classifier
 
+        # Hook after BN1 (index 1) -- pre-ReLU for conv block 1
+        h1 = features[1].register_forward_hook(self._make_hook("conv1_bn"))
+        # Hook after BN2 (index 5) -- pre-ReLU for conv block 2
+        h2 = features[5].register_forward_hook(self._make_hook("conv2_bn"))
+        # Hook after FC1 (index 0) -- pre-ReLU for FC block 1
+        h3 = classifier[0].register_forward_hook(self._make_hook("fc1"))
+        # Hook after FC2 (index 3) -- output logits
+        h4 = classifier[3].register_forward_hook(self._make_hook("fc2"))
+
+        self.hooks = [h1, h2, h3, h4]
+
+    def remove_hooks(self):
+        for h in self.hooks:
+            h.remove()
+        self.hooks = []
+
+    def compute_thresholds(self, percentile: float = 99.9) -> dict[str, float]:
+        """Compute per-layer thresholds from recorded activations.
+
+        For each layer, compute the given percentile of the maximum activation
+        values across the entire dataset. This determines the SNN threshold:
+        any ANN activation at the percentile maps to a spike rate of 1.0.
+
+        Args:
+            percentile: Percentile of activations to use as threshold (0-100).
+
+        Returns:
+            Dict mapping layer name to threshold value.

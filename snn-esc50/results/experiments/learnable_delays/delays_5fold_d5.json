@@ -2546,3 +2546,31 @@
         "test_acc": 0.3725
       },
       {
+        "epoch": 13,
+        "train_loss": 52.5691,
+        "train_acc": 0.4919,
+        "test_loss": 57.7095,
+        "test_acc": 0.4475
+      },
+      {
+        "epoch": 14,
+        "train_loss": 48.6284,
+        "train_acc": 0.5281,
+        "test_loss": 55.6717,
+        "test_acc": 0.4075
+      },
+      {
+        "epoch": 15,
+        "train_loss": 44.9172,
+        "train_acc": 0.5613,
+        "test_loss": 56.3892,
+        "test_acc": 0.4275
+      },
+      {
+        "epoch": 16,
+        "train_loss": 42.4207,
+        "train_acc": 0.5975,
+        "test_loss": 55.4938,
+        "test_acc": 0.4575
+      },
+      {

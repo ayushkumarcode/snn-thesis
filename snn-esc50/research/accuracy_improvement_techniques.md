@@ -502,3 +502,31 @@ Based on impact vs effort, here is the recommended implementation order:
 The implementation would be:
 1. Load trained ANN weights into SNN (Conv, BN, FC weights are identical)
 2. Initialize LIF membrane potentials to 0
+3. Set thresholds based on ANN activation statistics (data-driven initialization)
+4. Fine-tune with spike_rate_escape surrogate gradient for 10-20 epochs
+5. Use TET loss for optimal convergence
+
+This combination of ANN initialization + data-driven thresholds + TET loss + learnable neuron parameters could potentially reach 58-63% accuracy, nearly closing the gap entirely.
+
+---
+
+## COMBINATION STRATEGY
+
+The most effective approach combines multiple complementary techniques:
+
+**Phase 1: Quick wins on current architecture (30 minutes)**
+- Add `learn_beta=True`, `learn_threshold=True` to all LIF neurons
+- Add `nn.Dropout(0.3)` before fc2 in SNN
+- Expected: 47.15% -> ~50-52%
+
+**Phase 2: TET loss (2 hours)**
+- Implement TET gradient re-weighting
+- Expected: 50-52% -> ~53-55%
+
+**Phase 3: ANN-to-SNN hybrid (1 day)**
+- Load ANN weights into SNN
+- Data-driven threshold initialization
+- Fine-tune with all Phase 1+2 improvements
+- Expected: ~58-63%
+
+**Phase 4: Knowledge distillation (1 day)**

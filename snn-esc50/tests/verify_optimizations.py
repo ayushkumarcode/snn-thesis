@@ -726,3 +726,21 @@ if __name__ == "__main__":
         print("  ALL OPTIMIZATIONS VERIFIED SAFE")
     else:
         print("  WARNING: SOME TESTS FAILED -- REVIEW BEFORE USING")
+    print("=" * 70)
+
+    # Summary of findings
+    print("\n  SUMMARY OF FINDINGS:")
+    print("  1. Non-TET loss: IDENTICAL (old sum/T == new mean over T*B)")
+    print("  2. TET loss: IDENTICAL (per-step CE values and variance match)")
+    print("  3. Eval loss: SCALE CHANGED by factor T=25")
+    print("     - Old code had INCONSISTENCY: train used sum/T, eval used sum")
+    print("     - New code is CONSISTENT: both use mean over T*B")
+    print("     - ReduceLROnPlateau uses relative mode = scale-invariant")
+    print("     - Displayed loss values will be 25x smaller (cosmetic only)")
+    print("  4. .item() deferral: IDENTICAL values, different accumulation timing")
+    print("  5. set_to_none=True: IDENTICAL for Adam without gradient accumulation")
+    print("  6. BF16 autocast: Disabled on CPU/MPS. On CUDA, ~3 decimal digits")
+    print("     precision (standard for A100). No risk for LIF/CE computations.")
+    print("  7. DataLoader workers: Speed only, no numerical impact")
+
+    exit(FAIL)

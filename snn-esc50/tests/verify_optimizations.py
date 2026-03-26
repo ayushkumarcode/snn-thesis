@@ -278,3 +278,31 @@ def test_eval_loss():
     opt2 = torch.optim.SGD([torch.zeros(1, requires_grad=True)], lr=0.1)
     sched2 = torch.optim.lr_scheduler.ReduceLROnPlateau(opt2, mode="min", factor=0.5, patience=5)
     lrs2 = []
+    for l in losses_raw:
+        sched2.step(l)
+        lrs2.append(opt2.param_groups[0]['lr'])
+
+    lrs_match = all(abs(a - b) < 1e-10 for a, b in zip(lrs1, lrs2))
+    report("ReduceLROnPlateau identical with scaled loss",
+           lrs_match,
+           f"lrs1={lrs1}, lrs2={lrs2}")
+
+    # ALSO check: does the old TRAINING code match the new TRAINING code?
+    # Old training: sum / T, New training: mean over T*B
+    # Already tested in TEST 1. But let's confirm they're the same.
+    train_old = loss_old_val / T
+    train_new = loss_new_val
+    train_diff = abs(train_old - train_new)
+    report("Training loss consistent (old sum/T == new mean)",
+           train_diff < 1e-5,
+           f"old_train={train_old:.10f}, new_train={train_new:.10f}, diff={train_diff:.2e}")
+
+    # Flag: old code was INCONSISTENT between train and eval!
+    print(f"\n    NOTE: Old code had train loss = sum/T = {train_old:.6f}")
+    print(f"          Old code had eval loss  = sum   = {loss_old_val:.6f}")
+    print(f"          Old eval was {T}x larger than old train for same data!")
+    print(f"          New code is CONSISTENT: train and eval both use mean = {loss_new_val:.6f}")
+    print(f"          >>> The old code had a TRAIN/EVAL INCONSISTENCY that the new code FIXES <<<")
+
+
+# ============================================================

@@ -26,3 +26,31 @@ Each of these represents a genuine gap in the literature where our work would be
 
 ### IDEA 1: Cochlear-Inspired Learnable Frontend (Spiking-LEAF / IHC-LIF Neurons)
 
+**Source:** Song et al., "Spiking-LEAF: A Learnable Auditory front-end for Spiking Neural Networks," ICASSP 2024
+**Domain:** Neuroscience + Signal Processing
+
+**Core Idea:**
+Replace our fixed mel spectrogram preprocessing with a learnable auditory front-end inspired by the biological cochlea. Spiking-LEAF uses:
+- 40 learnable Gabor 1D-convolution filters (replacing fixed mel filterbank)
+- Per-Channel Energy Normalization (PCEN) with learnable per-channel parameters
+- IHC-LIF neurons: a TWO-COMPARTMENT spiking neuron (dendritic + somatic) inspired by inner hair cells, capturing multi-scale temporal dynamics
+
+**How It Applies to ESC-50:**
+Currently we compute mel spectrograms offline (fixed 64 mel bins, n_fft=1024, hop=512) and feed them to the SNN. Instead:
+1. Feed RAW WAVEFORMS (22050 Hz, 5 seconds = 110,250 samples) directly to learnable Gabor filters
+2. IHC-LIF neurons convert filtered signals to spike trains with biologically-plausible dynamics
+3. The entire front-end is jointly trained with the SNN classifier end-to-end
+4. The cochlear front-end LEARNS the optimal frequency decomposition for environmental sounds
+
+**Expected Impact:**
+- Spiking-LEAF improved keyword spotting accuracy by +9.21 percentage points over mel spectrograms (83.03% -> 92.24%)
+- Cochleagram representations consistently outperform mel spectrograms by ~5% on sound event datasets
+- For ESC-50: estimated 3-8 pp improvement (47.15% -> 50-55%) based on task difficulty
+- The end-to-end learnable pipeline is more biologically plausible AND SpiNNaker-compatible
+
+**Implementation Feasibility:** MEDIUM
+- Spiking-LEAF code exists (ICASSP 2024 paper)
+- Requires adapting from 16kHz speech to 22kHz environmental audio
+- Gabor filters and PCEN are standard operations
+- IHC-LIF neuron needs custom implementation but is essentially two coupled LIF equations
+- Training is end-to-end with surrogate gradients (we already do this)

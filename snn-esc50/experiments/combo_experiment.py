@@ -138,3 +138,31 @@ class DendriticLIF(nn.Module):
             device = self.branch_beta_raw[0].device
         return [torch.zeros(1, device=device) for _ in range(self.K)]
 
+    def forward(self, x, branch_mems, step=None):
+        branch_mems = [m.to(x.device) if m.device != x.device else m for m in branch_mems]
+        shape = [1] * (x.dim() - 1) + [-1]
+        if x.dim() == 4:
+            shape = [1, -1, 1, 1]
+        elif x.dim() == 2:
+            shape = [1, -1]
+
+        gates = F.softmax(self.gate_logits, dim=0)  # (K, size)
+        soma = torch.zeros_like(x)
+        new_mems = []
+
+        for k in range(self.K):
+            beta_k = torch.sigmoid(self.branch_beta_raw[k]).view(shape)
+            gate_k = gates[k].view(shape)
+            mem_k = beta_k * branch_mems[k] + gate_k * x
+            new_mems.append(mem_k)
+            soma = soma + mem_k
+
+        thresh = self.threshold.view(shape)
+        spk = self.spike_grad((soma - thresh) / thresh)
+
+        # Reset all branches on spike
+        reset = spk.detach()
+        new_mems = [m * (1 - reset) for m in new_mems]
+
+        return spk, new_mems
+

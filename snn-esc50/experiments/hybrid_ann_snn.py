@@ -418,3 +418,31 @@ def main():
         results = []
         for fold in range(1, NUM_FOLDS + 1):
             result = train_fold(fold, device, args.epochs, args.patience)
+            results.append(result)
+
+        # Summary
+        accs = [r["best_acc"] for r in results]
+        transfer_accs = [r["transfer_only_acc"] for r in results]
+        mean_acc = np.mean(accs)
+        std_acc = np.std(accs)
+        mean_transfer = np.mean(transfer_accs)
+        std_transfer = np.std(transfer_accs)
+
+        print(f"\n{'='*60}")
+        print(f"  HYBRID ANN->SNN 5-FOLD SUMMARY")
+        print(f"{'='*60}")
+        print(f"  Transfer-only (no fine-tune): {mean_transfer:.4f} +/- {std_transfer:.4f}")
+        print(f"    Per-fold: {[f'{a:.4f}' for a in transfer_accs]}")
+        print(f"  After fine-tuning:            {mean_acc:.4f} +/- {std_acc:.4f}")
+        print(f"    Per-fold: {[f'{a:.4f}' for a in accs]}")
+        print(f"  Baseline SNN (direct):        0.4715 +/- 0.0450")
+        print(f"  Baseline ANN:                 0.6385 +/- 0.0307")
+        improvement = mean_acc - 0.4715
+        print(f"  Improvement over baseline SNN: {improvement:+.4f}")
+        print(f"{'='*60}")
+
+        summary = {
+            "method": "hybrid_ann_snn",
+            "fold_accuracies": accs,
+            "mean_accuracy": float(mean_acc),
+            "std_accuracy": float(std_acc),

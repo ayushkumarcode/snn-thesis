@@ -418,3 +418,31 @@ class SRRhythmSNN(nn.Module):
             cur3 = self.fc1(flat)
             spk3, mem3 = self.lif3(cur3, mem3, step)
             spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4, step)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Training and Evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device):
+    """Train one epoch with per-timestep CE on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+        spike_inputs = encode_direct(inputs).to(device)
+
+        optimizer.zero_grad()

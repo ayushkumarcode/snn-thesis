@@ -82,3 +82,31 @@ Replace our LIF neurons with DendSN (Dendritic Spiking Neurons):
 - Each neuron has K dendritic branches (K=2-5 typically)
 - Each branch has its own membrane dynamics (different time constants)
 - Branches perform nonlinear gating on their inputs
+- Soma integrates branch outputs
+- Different branches can attend to different temporal scales
+
+**How It Applies to ESC-50:**
+Environmental sounds have MULTI-SCALE temporal structure:
+- Fine-grained: pitch, harmonics (milliseconds)
+- Medium: syllable-like events, repetitions (100ms-1s)
+- Coarse: overall texture, onset/offset (seconds)
+
+Current LIF neurons process all timescales with a single beta=0.95. Dendritic neurons with heterogeneous time constants (e.g., branch 1: beta=0.99 for slow, branch 2: beta=0.80 for fast) can simultaneously capture multiple temporal scales. This is exactly what environmental sound needs.
+
+Implementation: Replace `snn.Leaky(beta=0.95)` with `DendriticLeaky(branches=3, betas=[0.99, 0.95, 0.80])`.
+
+**Expected Impact:**
+- DendSNNs consistently outperform point SNNs on FashionMNIST, CIFAR-10, SHD
+- Multi-compartment neurons in PNAS 2025 surpass other SNN architectures on speech datasets
+- Improved robustness to noise and adversarial attacks
+- Better few-shot learning (relevant for ESC-50's small training set of 1600 samples)
+- Estimated 3-6 pp improvement for ESC-50
+
+**Implementation Feasibility:** HIGH
+- Only requires modifying the neuron model, not the training pipeline
+- DendSN code is available (arXiv Dec 2024) with Triton GPU kernels
+- Computational overhead is negligible (paper demonstrates this)
+- 2-5 branches per neuron, learnable time constants and gating parameters
+- Compatible with surrogate gradient training
+
+**Novelty Assessment:** VERY HIGH

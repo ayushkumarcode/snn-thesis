@@ -446,3 +446,31 @@ class SpikingLEAF_ANN(nn.Module):
         super().__init__()
 
         # Same learnable frontend
+        self.frontend = SpikingLEAF()
+
+        # ANN backbone (same as ConvANN)
+        self.features = nn.Sequential(
+            nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(32),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.AvgPool2d(kernel_size=(4, 6)),
+        )
+        self.classifier = nn.Sequential(
+            nn.Linear(64 * 4 * 9, 256),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(256, num_classes),
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Forward pass.
+
+        Args:
+            x: Raw waveform, shape (batch, 1, waveform_length).
+
+        Returns:

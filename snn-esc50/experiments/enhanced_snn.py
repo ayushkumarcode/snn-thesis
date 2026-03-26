@@ -222,3 +222,31 @@ def run_fold(fold, device, num_epochs=NUM_EPOCHS):
     for name, param in model.named_parameters():
         if 'beta' in name or 'threshold' in name:
             print(f"    {name}: {param.data.item():.4f}")
+
+    print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} (ep{best_epoch})")
+
+    result = {
+        "fold": fold, "experiment": "enhanced_snn",
+        "changes": ["dropout_0.3", "learn_beta", "learn_threshold", "spike_rate_escape"],
+        "best_acc": best_acc, "best_epoch": best_epoch,
+        "total_epochs": epoch, "time_seconds": elapsed,
+        "history": history,
+    }
+
+    save_dir = RESULTS_DIR / "experiments" / "enhanced_snn"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()

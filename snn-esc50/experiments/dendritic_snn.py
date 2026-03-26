@@ -82,3 +82,31 @@ class DendriticLIF(nn.Module):
 
         # Default branch timescales: fast, medium, slow
         if beta_inits is None:
+            if num_branches == 1:
+                beta_inits = [0.9]
+            elif num_branches == 2:
+                beta_inits = [0.7, 0.99]
+            elif num_branches == 3:
+                beta_inits = [0.7, 0.9, 0.99]
+            else:
+                # Linearly space from 0.7 to 0.99
+                beta_inits = [0.7 + (0.99 - 0.7) * i / (num_branches - 1)
+                              for i in range(num_branches)]
+
+        # Learnable branch decay rates (stored as logits for sigmoid → (0,1))
+        # inverse sigmoid: logit = log(beta / (1 - beta))
+        beta_logits = []
+        for b in beta_inits:
+            b_clamped = max(min(b, 0.999), 0.001)
+            beta_logits.append(torch.log(torch.tensor(b_clamped / (1.0 - b_clamped))))
+        # Shape: (K, size) — each neuron in each branch has its own beta
+        self.beta_logits = nn.Parameter(
+            torch.stack(beta_logits).unsqueeze(1).expand(-1, size).clone()
+        )  # (K, size)
+
+        # Learnable gating weights per branch, initialized to 1/K
+        self.gate_logits = nn.Parameter(
+            torch.zeros(num_branches, size)
+        )  # softmax → uniform init
+
+    @property

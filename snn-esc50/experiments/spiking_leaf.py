@@ -138,3 +138,31 @@ class GaborFilterbank(nn.Module):
         n_filters: Number of filters (default: 64 to match N_MELS).
         kernel_size: Filter length in samples (401 ~ 18ms at 22050 Hz).
         stride: Stride for convolution (HOP_LENGTH=512 to get ~216 frames).
+        sample_rate: Audio sample rate.
+        f_min: Minimum center frequency (Hz).
+        f_max: Maximum center frequency (Hz).
+    """
+
+    def __init__(
+        self,
+        n_filters: int = 64,
+        kernel_size: int = 401,
+        stride: int = HOP_LENGTH,
+        sample_rate: int = SAMPLE_RATE,
+        f_min: float = 50.0,
+        f_max: float = 11025.0,
+    ):
+        super().__init__()
+        self.n_filters = n_filters
+        self.kernel_size = kernel_size
+        self.stride = stride
+        self.sample_rate = sample_rate
+
+        # Learnable center frequencies (in Hz, log-spaced initialization)
+        center_freqs = torch.logspace(
+            math.log10(f_min), math.log10(f_max), n_filters
+        )
+        # Store as normalized angular frequency: omega = 2*pi*f / sr
+        self.center_freq = nn.Parameter(
+            2.0 * math.pi * center_freqs / sample_rate
+        )

@@ -222,3 +222,31 @@ def gammatone_filterbank(sr, n_fft, n_filters=64, fmin=50):
     min_bw = 24.7
     cf_low = -(ear_q * min_bw) + np.exp(np.log(fmin + ear_q * min_bw) +
               np.arange(0, n_filters) * (-np.log(fmax + ear_q * min_bw) +
+              np.log(fmin + ear_q * min_bw)) / (n_filters - 1)) * 0
+    cfs = np.exp(np.linspace(np.log(fmin + ear_q * min_bw),
+                              np.log(fmax + ear_q * min_bw), n_filters)) - ear_q * min_bw
+
+    fb = np.zeros((n_filters, len(freqs)))
+    for i, cf in enumerate(cfs):
+        erb = 24.7 * (4.37 * cf / 1000 + 1)
+        b = 1.019 * 2 * np.pi * erb
+        resp = ((2 * np.pi * np.abs(freqs - cf)) ** 2 + b ** 2) ** (-2)
+        fb[i] = resp / (resp.max() + 1e-10)
+
+    return fb.astype(np.float32)
+
+
+def wav_to_cochleagram(filepath, fb_matrix):
+    """Convert audio to gammatone cochleagram."""
+    import librosa
+    y, sr = librosa.load(filepath, sr=SAMPLE_RATE, duration=DURATION)
+    expected_len = SAMPLE_RATE * DURATION
+    if len(y) < expected_len:
+        y = np.pad(y, (0, expected_len - len(y)))
+
+    S = np.abs(librosa.stft(y, n_fft=N_FFT, hop_length=HOP_LENGTH))
+    cochleagram = fb_matrix @ S
+    cochleagram = librosa.power_to_db(cochleagram + 1e-10, ref=np.max)
+
+    # Normalize to [0, 1]
+    mn, mx = cochleagram.min(), cochleagram.max()

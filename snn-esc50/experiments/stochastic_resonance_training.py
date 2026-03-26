@@ -110,3 +110,31 @@ class SRLIF(nn.Module):
         return torch.sigmoid(self.beta_raw)
 
     @property
+    def sigma(self):
+        return torch.exp(self.log_sigma)
+
+    def init_sr(self, batch_size: int, device: torch.device) -> torch.Tensor:
+        """Initialize membrane potential to zeros."""
+        return torch.zeros(batch_size, *self.neuron_shape, device=device)
+
+    def forward(
+        self, input_current: torch.Tensor, mem: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Single timestep forward.
+
+        Args:
+            input_current: (batch, *neuron_shape, ...) synaptic input.
+            mem: Previous membrane potential, same shape as input_current.
+
+        Returns:
+            spk: Output spikes (binary).
+            mem: Updated membrane potential.
+        """
+        beta = self.beta
+        sigma = self.sigma
+
+        # Broadcast beta and sigma to match input_current dimensions
+        ndim_extra = input_current.dim() - 1 - len(self.neuron_shape)
+        beta_bc = beta
+        sigma_bc = sigma
+        for _ in range(ndim_extra):

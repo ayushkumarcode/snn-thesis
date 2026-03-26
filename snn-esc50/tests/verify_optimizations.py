@@ -222,3 +222,31 @@ def test_eval_loss():
 
     IMPACT: The eval loss is used for:
     1. ReduceLROnPlateau scheduler.step(test_loss)
+    2. Display only
+
+    The SCALE of the loss changes by factor T=25.
+    ReduceLROnPlateau uses a relative threshold (default factor=0.5, threshold=1e-4 in 'rel' mode).
+    Since it compares (best - current) / best, a uniform scale factor cancels out.
+    So the scheduler behavior is IDENTICAL (relative mode is scale-invariant).
+    """
+    print("\n=== TEST 3: Eval loss (CRITICAL difference check) ===")
+
+    torch.manual_seed(42)
+    T, B, C = 25, 32, 50
+    mem_out = torch.randn(T, B, C)
+    targets = torch.randint(0, C, (B,))
+    criterion = nn.CrossEntropyLoss()
+
+    # OLD eval: sum without dividing by T
+    loss_old = torch.zeros(1)
+    for step in range(T):
+        loss_old += criterion(mem_out[step], targets)
+    loss_old_val = loss_old.item()
+
+    # NEW eval: F.cross_entropy with reduction='mean' over T*B
+    loss_new = F.cross_entropy(
+        mem_out.reshape(T * B, C),
+        targets.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    loss_new_val = loss_new.item()
+

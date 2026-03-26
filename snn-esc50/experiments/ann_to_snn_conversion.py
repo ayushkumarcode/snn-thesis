@@ -54,3 +54,31 @@ class ActivationRecorder:
       - After conv1+bn1 (before ReLU)
       - After conv2+bn2 (before ReLU)
       - After fc1 (before ReLU)
+      - After fc2 (output, before softmax)
+    """
+
+    def __init__(self):
+        self.max_activations = {}
+        self.all_activations = {}
+        self.hooks = []
+
+    def _make_hook(self, name):
+        def hook_fn(module, input, output):
+            with torch.no_grad():
+                vals = output.detach().cpu()
+                if name not in self.all_activations:
+                    self.all_activations[name] = []
+                self.all_activations[name].append(vals)
+        return hook_fn
+
+    def register_hooks(self, model: ConvANN):
+        """Register forward hooks on the 4 key layers of ConvANN.
+
+        ConvANN.features: [Conv2d, BN, ReLU, MaxPool, Conv2d, BN, ReLU, MaxPool, AvgPool]
+                           0       1    2     3        4       5    6     7        8
+        ConvANN.classifier: [Linear, ReLU, Dropout, Linear]
+                             0       1      2        3
+        """
+        features = model.features
+        classifier = model.classifier
+

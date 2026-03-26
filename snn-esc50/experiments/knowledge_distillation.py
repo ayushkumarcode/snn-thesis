@@ -390,3 +390,31 @@ def train_fold(fold: int, device, epochs: int, patience: int,
     return result
 
 
+@torch.no_grad()
+def eval_teacher(teacher, loader, device):
+    """Evaluate ANN teacher accuracy."""
+    teacher.eval()
+    correct = 0
+    total = 0
+    total_loss = 0.0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        logits = teacher(data)
+        loss = criterion(logits, targets)
+        total_loss += loss.item()
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+# ============================================================
+# Main
+# ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Knowledge distillation: ANN teacher -> SNN student"

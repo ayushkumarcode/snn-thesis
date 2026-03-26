@@ -1,0 +1,11 @@
+{
+  "experiment": "combo_kd_hybrid_lbeta_lthresh_drop_sre",
+  "fold_accuracies": [
+    0.3175,
+    0.3275,
+    0.335,
+    0.325,
+    0.33
+  ],
+  "mean_accuracy": 0.327,
+  "std_accuracy": 0.005787918451395118

@@ -1,0 +1,28 @@
+{
+  "experiment": "rhythm_snn",
+  "seed": 42,
+  "epochs": 50,
+  "patience": 10,
+  "fold_accuracies": [
+    0.6025,
+    0.635,
+    0.615,
+    0.625,
+    0.5775
+  ],
+  "mean_accuracy": 0.611,
+  "std_accuracy": 0.019912307751739872,
+  "baseline_mean": 0.4715,
+  "baseline_std": 0.045,
+  "delta_vs_baseline_pp": 13.95,
+  "total_params": 623546,
+  "oscillation_params": 1608,
+  "per_fold": [
+    {
+      "fold": 1,
+      "accuracy": 0.6025,
+      "best_epoch": 32,
+      "total_epochs": 42,
+      "time_seconds": 257.4,
+      "oscillation_summary": {
+        "lif1": {

@@ -502,3 +502,31 @@ def main():
             print(f"  {T:>6}  {mean_acc*100:>9.2f}%  {std_acc*100:>8.2f}%  "
                   f"{pct:>9.1f}%  {gap*100:>+7.2f}pp")
 
+    # Convergence analysis
+    conv_Ts = [r["convergence_T_95pct"] for r in all_results if r["convergence_T_95pct"] is not None]
+    if conv_Ts:
+        print(f"\n  Convergence to 95% of ANN: T={np.mean(conv_Ts):.1f} (mean), "
+              f"T={max(conv_Ts)} (worst-case)")
+    else:
+        print(f"\n  No fold reached 95% of ANN within the timestep budget.")
+
+    # Threshold analysis
+    print(f"\n  Threshold statistics across folds (percentile={args.percentile}):")
+    for layer_name in ["conv1_bn", "conv2_bn", "fc1", "fc2"]:
+        threshs = [r["thresholds"].get(layer_name, 0) for r in all_results]
+        print(f"    {layer_name}: {np.mean(threshs):.4f} +/- {np.std(threshs):.4f}")
+
+    # Save summary
+    summary = {
+        "experiment": "ann_to_snn_conversion",
+        "percentile": args.percentile,
+        "max_timesteps": args.max_timesteps,
+        "ann_mean_accuracy": float(np.mean(ann_accs)),
+        "ann_std_accuracy": float(np.std(ann_accs)),
+        "timestep_values": all_Ts,
+        "aggregate": {str(k): v for k, v in aggregate.items()},
+        "convergence_Ts": conv_Ts,
+        "per_fold": [
+            {
+                "fold": r["fold"],
+                "ann_accuracy": r["ann_accuracy"],

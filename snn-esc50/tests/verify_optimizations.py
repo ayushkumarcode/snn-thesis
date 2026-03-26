@@ -558,3 +558,31 @@ def test_edge_cases():
         mem.reshape(T * B, C),
         tgt.unsqueeze(0).expand(T, -1).reshape(-1),
     )
+    report("T=1 single timestep",
+           abs(old.item() - new.item()) < 1e-6,
+           f"diff={abs(old.item() - new.item()):.2e}")
+
+    # B=1: single sample
+    T, B, C = 25, 1, 50
+    mem = torch.randn(T, B, C)
+    tgt = torch.randint(0, C, (B,))
+
+    loss_old = torch.zeros(1)
+    for s in range(T):
+        loss_old += criterion(mem[s], tgt)
+    loss_old /= T
+
+    loss_new = F.cross_entropy(
+        mem.reshape(T * B, C),
+        tgt.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    report("B=1 single sample",
+           abs(loss_old.item() - loss_new.item()) < 1e-6,
+           f"diff={abs(loss_old.item() - loss_new.item()):.2e}")
+
+    # C=2: binary classification
+    T, B, C = 25, 32, 2
+    mem = torch.randn(T, B, C)
+    tgt = torch.randint(0, C, (B,))
+
+    loss_old = torch.zeros(1)

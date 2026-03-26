@@ -1,0 +1,28 @@
+{
+  "fold": 3,
+  "method": "knowledge_distillation",
+  "teacher_acc": 0.5625,
+  "best_acc": 0.495,
+  "best_epoch": 50,
+  "total_epochs": 50,
+  "time_seconds": 341.4,
+  "temperature": 3.0,
+  "alpha": 0.5,
+  "lr": 0.001,
+  "epochs_max": 50,
+  "patience": 10,
+  "student_features": [
+    "learn_beta",
+    "learn_threshold",
+    "dropout_0.3",
+    "spike_rate_escape"
+  ],
+  "history": {
+    "train_loss": [
+      27.574127140045167,
+      11.899712810516357,
+      9.287390060424805,
+      7.753933353424072,
+      7.270144672393799,
+      6.428406982421875,
+      6.260570545196533,

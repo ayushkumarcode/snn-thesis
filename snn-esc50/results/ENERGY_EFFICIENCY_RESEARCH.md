@@ -530,3 +530,31 @@ Better framing: "With spike regularization and temporal optimization, SNN energy
 
 ---
 
+## 13. Recommended Follow-Up Experiments
+
+1. **Retrain at T=7 with lambda=1e-3 L1 spike reg** -- quick experiment, high impact
+2. **Run NeuroBench on the retrained model** -- quantify the actual AC reduction
+3. **Apply IMP to the T=7 regularized model** -- compound the gains
+4. **Deploy optimized model on SpiNNaker** -- validate that fewer spikes = less router congestion
+5. **Measure wall-clock time on SpiNNaker** -- T=7 should be 3.6x faster
+6. **Compare energy at different (T, lambda, pruning%) operating points** -- build 3D Pareto surface
+
+---
+
+## 14. Key Papers Reference List
+
+| Paper | Venue | Key Contribution | Relevance |
+|-------|-------|-----------------|-----------|
+| Yan et al. "Reconsidering Energy Efficiency of SNNs" | arXiv 2024 | 93% sparsity threshold, T<4 + <7% spike rate | Defines your energy target |
+| Dampfhoffer thesis 2023 | IEEE TECI | <6.4% spike rate threshold | Your cited threshold |
+| Shen et al. "Are SNNs Really Efficient?" | CVPR 2024 | Quantized ANNs match SNNs at 4-8 bit | Counter-argument to address |
+| Shi et al. "Towards Energy Efficient SNNs" | ICLR 2024 | 91x efficiency via pruning, 0.63% connections | Pruning benchmark |
+| Bu et al. "Activity Pruning" | NeurIPS 2025 | AT-LIF for firing rate control | Activity suppression |
+| Kundu et al. "Spike-Thrift" | WACV 2021 | 33.4x compression | Attention-guided compression |
+| Li et al. "Direct Training Needs Regularisation" | arXiv 2024 | AOI-SNN, 2-3x speedup | Early exit framework |
+| Guo et al. "Ternary Spike" | AAAI 2024 | {-1,0,1} spikes | Better info capacity |
+| Castagnetti et al. "All in One Timestep" | arXiv 2025 | T=1 multi-level, 66% energy reduction | Single timestep SNN |
+| Chen et al. "0.3 Spikes Per Neuron" | Nature Comms 2024 | TTFS + fine-tuning, exact ANN accuracy match | Ultra-sparse approach |
+| "QP-SNN" | ICLR 2025 | Quantization + structured pruning | Combined efficiency |
+| "SpikeFit" | EurIPS 2025 Workshop | Hardware-aware deployment | Neuromorphic optimization |
+| "On Reducing Activity with KD" | arXiv 2024 | Logits reg, 87% spike reduction | Activity reduction |

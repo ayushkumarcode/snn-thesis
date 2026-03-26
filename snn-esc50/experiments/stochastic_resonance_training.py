@@ -250,3 +250,31 @@ class SRRhythmLIF(nn.Module):
         mem = mem * (1.0 - spk.detach())
 
         return spk, mem
+
+
+# ============================================================
+# SR-SNN Model (noise only)
+# ============================================================
+
+class SRSNN(nn.Module):
+    """SpikingCNN with trainable stochastic resonance per neuron.
+
+    Same architecture as baseline SpikingCNN but with SRLIF neurons.
+    Uses learn_beta=True, spike_rate_escape, Dropout(0.3).
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+        init_sigma: float = 0.02,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = SRLIF(neuron_shape=(32,), beta=beta, init_sigma=init_sigma)
+

@@ -194,3 +194,31 @@ class GaborFilterbank(nn.Module):
         # Gabor wavelet = Gaussian * cosine
         kernels = gaussian * carrier
 
+        # Normalize each filter to unit energy
+        norm = kernels.norm(dim=1, keepdim=True).clamp(min=1e-8)
+        kernels = kernels / norm
+
+        return kernels.unsqueeze(1)  # (n_filters, 1, kernel_size)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Apply Gabor filterbank to raw waveform.
+
+        Args:
+            x: Raw waveform, shape (batch, 1, waveform_length).
+
+        Returns:
+            Filtered output, shape (batch, n_filters, time_frames).
+        """
+        kernels = self._build_kernels()
+        # Pad input for 'same'-like convolution at the given stride
+        pad = self.kernel_size // 2
+        out = F.conv1d(x, kernels, stride=self.stride, padding=pad)
+        # Take absolute value (energy envelope)
+        out = torch.abs(out)
+        return out
+
+
+# ============================================================
+# PCEN (Per-Channel Energy Normalization)
+# ============================================================
+

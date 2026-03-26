@@ -110,3 +110,31 @@ class DendriticLIF(nn.Module):
         )  # softmax → uniform init
 
     @property
+    def betas(self):
+        """Get branch decay rates in (0, 1) via sigmoid."""
+        return torch.sigmoid(self.beta_logits)  # (K, size)
+
+    @property
+    def gates(self):
+        """Get branch gating weights via softmax over branches."""
+        return torch.softmax(self.gate_logits, dim=0)  # (K, size)
+
+    def init_dendritic(self, batch_size=None, device=None):
+        """Initialize branch membrane states to zero.
+
+        Returns a list of K zero tensors, one per branch.
+        If batch_size is None, returns a list of scalar zeros (will broadcast).
+        """
+        if batch_size is not None and device is not None:
+            return [torch.zeros(batch_size, self.size, device=device)
+                    for _ in range(self.num_branches)]
+        else:
+            return [torch.zeros(1, device=self.beta_logits.device)
+                    for _ in range(self.num_branches)]
+
+    def forward(self, input_current, branch_mems):
+        """Single timestep forward pass.
+
+        Args:
+            input_current: Current input to the neuron. Shape depends on usage:
+                - FC layers: (batch, size)

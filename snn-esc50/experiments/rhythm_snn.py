@@ -82,3 +82,31 @@ class RhythmLIF(nn.Module):
         # Learnable membrane decay
         # Store as raw parameter, sigmoid it in forward for (0, 1) constraint
         self.beta_raw = nn.Parameter(torch.full(neuron_shape, math.log(beta / (1 - beta))))
+
+        # Learnable oscillation parameters (per-neuron)
+        self.amplitude = nn.Parameter(torch.full(neuron_shape, 0.1))
+        self.frequency = nn.Parameter(torch.empty(neuron_shape).uniform_(0.5, 5.0))
+        self.phase = nn.Parameter(torch.zeros(neuron_shape))
+
+    @property
+    def beta(self):
+        """Membrane decay constrained to (0, 1) via sigmoid."""
+        return torch.sigmoid(self.beta_raw)
+
+    def _oscillation(self, t: int) -> torch.Tensor:
+        """Compute oscillatory modulation at timestep t.
+
+        Returns tensor with shape matching neuron_shape, broadcastable
+        to the membrane potential tensor.
+        """
+        angle = 2.0 * math.pi * self.frequency * t / self.num_steps + self.phase
+        return self.amplitude * torch.sin(angle)
+
+    def init_rhythm(self, batch_size: int, device: torch.device) -> torch.Tensor:
+        """Initialize membrane potential to zeros.
+
+        Returns:
+            mem: Zeros with shape (batch_size, *neuron_shape).
+        """
+        return torch.zeros(batch_size, *self.amplitude.shape, device=device)
+

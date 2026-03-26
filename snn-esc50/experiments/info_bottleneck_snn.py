@@ -110,3 +110,31 @@ class InfoBottleneckSNN(nn.Module):
         Args:
             x: Spike input (num_steps, batch, 1, n_mels, time).
             sample: If True, use reparameterisation (training).
+                    If False, use mu only (evaluation).
+
+        Returns:
+            spk_out: (num_steps, batch, num_classes)
+            mem_out: (num_steps, batch, num_classes)
+            kl_loss: Scalar KL divergence (averaged over timesteps)
+            bottleneck_stats: dict with mu/logvar norms for monitoring
+        """
+        device = x.device
+
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        total_kl = torch.zeros(1, device=device)
+        total_mu_norm = 0.0
+        total_logvar_mean = 0.0
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)

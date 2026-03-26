@@ -782,3 +782,31 @@ def main():
     summary = {
         "experiment": "spiking_leaf",
         "seed": args.seed,
+        "epochs": args.epochs,
+        "patience": args.patience,
+    }
+
+    for model_type in model_types:
+        results = all_results[model_type]
+        accs = [r["best_accuracy"] for r in results]
+        mean_acc = float(np.mean(accs))
+        std_acc = float(np.std(accs))
+
+        print(f"\n  {model_type.upper()} ({len(results)} folds):")
+        for r in results:
+            print(f"    Fold {r['fold']}: {r['best_accuracy']*100:.2f}% (epoch {r['best_epoch']})")
+        print(f"    Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+
+        baseline = 47.15 if model_type == "snn" else 63.85
+        diff = mean_acc * 100 - baseline
+        print(f"    Baseline ({model_type.upper()} mel-spec): {baseline}%")
+        print(f"    Delta vs baseline: {diff:+.2f} pp")
+
+        summary[model_type] = {
+            "fold_accuracies": accs,
+            "mean_accuracy": mean_acc,
+            "std_accuracy": std_acc,
+            "baseline_mean": baseline / 100.0,
+            "delta_vs_baseline_pp": round(diff, 2),
+            "total_params": results[0]["total_params"],
+            "frontend_params": results[0]["frontend_params"],

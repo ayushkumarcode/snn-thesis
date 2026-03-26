@@ -82,3 +82,31 @@ class ESC50WaveformDataset(Dataset):
             self.labels = np.array(self.labels, dtype=np.int64)
 
     @staticmethod
+    def _load_waveform(filepath: str) -> np.ndarray:
+        """Load raw audio, pad to WAVEFORM_LENGTH, normalize to [-1, 1]."""
+        y, _ = librosa.load(filepath, sr=SAMPLE_RATE, duration=DURATION)
+        if len(y) < WAVEFORM_LENGTH:
+            y = np.pad(y, (0, WAVEFORM_LENGTH - len(y)))
+        elif len(y) > WAVEFORM_LENGTH:
+            y = y[:WAVEFORM_LENGTH]
+        # Normalize to [-1, 1]
+        max_val = np.abs(y).max()
+        if max_val > 0:
+            y = y / max_val
+        return y[np.newaxis, :]  # (1, 110250)
+
+    def __len__(self):
+        return len(self.meta)
+
+    def __getitem__(self, idx):
+        if self.precompute:
+            waveform = self.data[idx]
+            label = self.labels[idx]
+        else:
+            row = self.meta.iloc[idx]
+            filepath = ESC50_AUDIO_DIR / row["filename"]
+            waveform = self._load_waveform(str(filepath))
+            label = row["target"]
+        return (
+            torch.tensor(waveform, dtype=torch.float32),
+            torch.tensor(label, dtype=torch.long),

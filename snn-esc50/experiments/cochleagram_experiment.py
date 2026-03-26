@@ -278,3 +278,31 @@ def get_cochleagram_dataloaders(test_fold, batch_size=BATCH_SIZE):
 
     train_loader = DataLoader(
         train_dataset, batch_size=batch_size, shuffle=True, num_workers=0,
+    )
+    test_loader = DataLoader(
+        test_dataset, batch_size=batch_size, shuffle=False, num_workers=0,
+    )
+
+    return train_loader, test_loader
+
+
+# ============================================================
+# SNN Model (Enhanced: learn_beta, learn_threshold, SRE, dropout)
+# ============================================================
+
+class CochleagramSNN(nn.Module):
+    """SpikingCNN for cochleagram input.
+
+    Same architecture as EnhancedSpikingCNN:
+      Conv(1,32) -> BN -> MaxPool(2) -> LIF ->
+      Conv(32,64) -> BN -> MaxPool(2) -> LIF ->
+      AvgPool(4,6) -> FC(2304,256) -> LIF -> Dropout(0.3) -> FC(256,50) -> LIF
+
+    Uses spike_rate_escape surrogate, learnable beta and threshold.
+    Input shape: (num_steps, batch, 1, 64, 216) -- identical to mel.
+    """
+
+    def __init__(self, num_classes=NUM_CLASSES, beta=BETA, num_steps=NUM_STEPS):
+        super().__init__()
+        self.num_steps = num_steps
+

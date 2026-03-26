@@ -222,3 +222,31 @@ Your closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-
 **Assessment:** The honesty about failure modes actually strengthens the paper. Reviewers value reproducibility and honest reporting over inflated claims.
 
 ### Formula 5: "Comprehensive benchmark/comparison"
+**Examples:**
+- NeuroBench: Standardized framework for all neuromorphic computing
+- Yarga et al. ICONS 2022: 4-encoding comparison for speech digits
+- Neural Coding comparison (Frontiers 2021): 4 coding schemes on MNIST
+
+**YOUR VERSION:** "Most comprehensive SNN encoding comparison for audio: 7 methods, 50 classes, 5-fold validated, with statistical tests and cross-encoding transfer analysis"
+
+**Assessment:** No prior audio SNN paper compares more than 4 encodings. Your 7-encoding comparison with statistical rigor is genuinely the most comprehensive. This alone could be a short paper at ICONS.
+
+---
+
+## 6. HOT TOPICS IN NEUROMORPHIC COMPUTING (2025-2026)
+
+Ranked by reviewer excitement (based on publication trends, conference emphasis, and community direction):
+
+### 1. Neuromorphic + LLMs (HOTTEST)
+- SpikeLLM at ICLR 2025 was a landmark
+- MatMul-free LLM on Loihi 2 (3x less energy than edge GPU)
+- ICONS 2024 had language model talks
+- **Relevance to you:** Low. Not your domain.
+
+### 2. Event-Driven Sensing + Edge AI
+- Innatera T1 SNN processor at CES 2024
+- Event cameras + SNN processing
+- Always-on sensing with ultra-low power
+- **Relevance to you:** HIGH. Your "always-on audio sensing" framing in the introduction directly targets this.
+
+### 3. Spiking Transformers

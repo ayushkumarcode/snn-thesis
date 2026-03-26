@@ -54,3 +54,31 @@ from src.encoding import encode_direct
 # ============================================================
 
 class InfoBottleneckSNN(nn.Module):
+    """SpikingCNN with variational information bottleneck on hidden layer.
+
+    After lif3 produces 256-dim hidden spikes, a VIB layer compresses
+    the representation into a stochastic latent z. The KL divergence
+    regulariser encourages z to be as close to N(0,1) as possible
+    while still allowing accurate classification -- this forces the
+    network to learn maximally compressed features.
+    """
+
+    def __init__(self, num_classes=NUM_CLASSES, beta=BETA, num_steps=NUM_STEPS):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1, slope=25)
+
+        # Conv block 1
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        # Conv block 2
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))

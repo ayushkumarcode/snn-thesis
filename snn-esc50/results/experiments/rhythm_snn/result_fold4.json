@@ -26,3 +26,31 @@
       "amplitude_std": 0.07463718205690384,
       "amplitude_abs_mean": 0.07839496433734894,
       "frequency_mean": 2.8805975914001465,
+      "frequency_std": 1.304308295249939,
+      "phase_mean": 0.010577129200100899,
+      "phase_std": 0.13099360466003418
+    },
+    "lif3": {
+      "beta_mean": 0.9464386701583862,
+      "beta_std": 0.008910254575312138,
+      "amplitude_mean": 0.1321830153465271,
+      "amplitude_std": 0.0628509372472763,
+      "amplitude_abs_mean": 0.1321830153465271,
+      "frequency_mean": 2.5219826698303223,
+      "frequency_std": 1.2828760147094727,
+      "phase_mean": 0.11390365660190582,
+      "phase_std": 0.12816932797431946
+    },
+    "lif4": {
+      "beta_mean": 0.9534016251564026,
+      "beta_std": 0.00334532861597836,
+      "amplitude_mean": -0.0027083365712314844,
+      "amplitude_std": 0.03696103394031525,
+      "amplitude_abs_mean": 0.02996383048593998,
+      "frequency_mean": 2.3177647590637207,
+      "frequency_std": 1.3231420516967773,
+      "phase_mean": 0.01258575264364481,
+      "phase_std": 0.07042346894741058
+    }
+  },
+  "history": {

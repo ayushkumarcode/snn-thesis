@@ -558,3 +558,31 @@ def main():
         "learn_beta": True,
         "learn_threshold": True,
         "baseline_snn_accuracy": 0.4715,  # for comparison
+    }
+
+    # Save
+    out_dir = RESULTS_DIR / "experiments" / "learnable_delays"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.fold:
+        out_file = out_dir / f"delays_fold{args.fold}_d{args.max_delay}.json"
+    else:
+        out_file = out_dir / f"delays_5fold_d{args.max_delay}.json"
+
+    with open(out_file, "w") as f:
+        json.dump(all_results, f, indent=2)
+    print(f"\nResults saved to {out_file}")
+
+    # Print summary table
+    print(f"\n{'='*60}")
+    print(f"LEARNABLE DELAYS RESULTS (max_delay={args.max_delay})")
+    print(f"{'='*60}")
+    print(f"{'Fold':<8} {'Accuracy':>10} {'Best Epoch':>12}")
+    print(f"{'-'*35}")
+    for fold in folds:
+        r = all_results[f"fold_{fold}"]
+        print(f"  {fold:<6} {r['best_accuracy']*100:>9.2f}% {r['best_epoch']:>12d}")
+    print(f"{'-'*35}")
+    print(f"  Mean:  {mean_acc*100:>9.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline SNN (LIF): 47.15% +/- 4.50%")
+    diff = mean_acc * 100 - 47.15

@@ -866,3 +866,31 @@
       },
       {
         "epoch": 28,
+        "train_loss": 92.1786,
+        "train_acc": 0.1037,
+        "test_loss": 91.8514,
+        "test_acc": 0.08
+      },
+      {
+        "epoch": 29,
+        "train_loss": 92.2905,
+        "train_acc": 0.105,
+        "test_loss": 92.9322,
+        "test_acc": 0.1
+      },
+      {
+        "epoch": 30,
+        "train_loss": 92.0658,
+        "train_acc": 0.1106,
+        "test_loss": 92.7081,
+        "test_acc": 0.095
+      }
+    ]
+  },
+  "fold_4": {
+    "fold": 4,
+    "best_accuracy": 0.02,
+    "best_epoch": 1,
+    "total_epochs": 11,
+    "total_params": 624350,
+    "num_branches": 3,

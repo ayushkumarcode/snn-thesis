@@ -166,3 +166,31 @@ Our spectrograms are 216 time frames long, and we simulate 25 timesteps. Environ
 
 ### IDEA 4: Oscillatory Modulation of Spiking Neurons (Rhythm-SNN)
 
+**Source:** "Efficient and robust temporal processing with neural oscillations modulated SNNs" (Nature Communications 2025)
+**Domain:** Neuroscience (Neural Oscillations)
+
+**Core Idea:**
+Brain neurons don't just fire randomly -- they are modulated by rhythmic oscillations (theta, gamma, beta waves). Rhythm-SNN adds heterogeneous oscillatory signals that modulate each spiking neuron at different frequencies. Neurons activate periodically at distinct frequencies, creating temporal structure.
+
+**How It Applies to ESC-50:**
+Environmental sounds are inherently rhythmic (clock_tick, helicopter rotor, footsteps, rain drops). Oscillatory modulation could help the SNN "resonate" with periodic sound patterns. Different neurons tuned to different oscillation frequencies could specialize in different sound categories.
+
+**Expected Impact:**
+- Rhythm-SNN achieves SOTA on temporal processing tasks
+- Reduces energy cost by two orders of magnitude vs deep learning
+- Reduces neuronal firing rates while IMPROVING accuracy
+- For ESC-50: estimated 2-5 pp improvement, especially for periodic sounds
+
+**Implementation Feasibility:** HIGH
+- Add oscillatory modulation term to membrane potential: v[t] = beta*v[t-1] + I[t] + A*sin(2*pi*f*t/T)
+- Different neurons get different frequencies f (learnable parameter)
+- Minimal code change, compatible with surrogate gradient training
+- ~10 lines of code to modify neuron model
+
+**Novelty Assessment:** HIGH
+- Rhythm-SNN is Nature Communications 2025 -- very recent
+- Never applied to audio/environmental sound
+- Natural fit: oscillatory sounds + oscillatory neurons
+
+**SpiNNaker Angle:** Oscillatory signals can be generated on SpiNNaker using periodic spike sources. Natural fit for the hardware.
+

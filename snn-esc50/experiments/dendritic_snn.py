@@ -222,3 +222,31 @@ class DendriticSpikingCNN(nn.Module):
         num_branches: int = 3,
         spike_grad=None,
     ):
+        super().__init__()
+        self.num_steps = num_steps
+        self.num_branches = num_branches
+
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # Conv block 1
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.dlif1 = DendriticLIF(32, num_branches=num_branches, spike_grad=spike_grad)
+
+        # Conv block 2
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.dlif2 = DendriticLIF(64, num_branches=num_branches, spike_grad=spike_grad)
+
+        # Pooling + FC
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.dlif3 = DendriticLIF(256, num_branches=num_branches, spike_grad=spike_grad)
+
+        self.dropout = nn.Dropout(0.3)
+
+        self.fc2 = nn.Linear(256, num_classes)
+        self.dlif4 = DendriticLIF(num_classes, num_branches=num_branches, spike_grad=spike_grad)

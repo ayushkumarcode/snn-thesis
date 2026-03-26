@@ -54,3 +54,31 @@ class EnhancedSpikingCNN(nn.Module):
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
         self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad,
+                               learn_beta=True, learn_threshold=True)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad,
+                               learn_beta=True, learn_threshold=True)
+
+        # Dropout (missing from baseline SNN but present in ANN)
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad,
+                               learn_beta=True, learn_threshold=True)
+
+    def forward(self, x):
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):

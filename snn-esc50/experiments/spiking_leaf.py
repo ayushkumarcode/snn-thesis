@@ -110,3 +110,31 @@ class ESC50WaveformDataset(Dataset):
         return (
             torch.tensor(waveform, dtype=torch.float32),
             torch.tensor(label, dtype=torch.long),
+        )
+
+
+def get_waveform_dataloaders(test_fold: int, batch_size: int = BATCH_SIZE):
+    """Create train/test DataLoaders for raw waveform data."""
+    train_folds = [f for f in range(1, NUM_FOLDS + 1) if f != test_fold]
+    train_dataset = ESC50WaveformDataset(folds=train_folds)
+    test_dataset = ESC50WaveformDataset(folds=[test_fold])
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0)
+    return train_loader, test_loader
+
+
+# ============================================================
+# Gabor Filterbank
+# ============================================================
+
+class GaborFilterbank(nn.Module):
+    """Learnable 1D Gabor filterbank for audio processing.
+
+    Initializes 64 1D convolution filters as Gabor wavelets with
+    log-spaced center frequencies from 50 Hz to 11025 Hz.
+    Center frequencies and bandwidths are learnable parameters.
+
+    Args:
+        n_filters: Number of filters (default: 64 to match N_MELS).
+        kernel_size: Filter length in samples (401 ~ 18ms at 22050 Hz).
+        stride: Stride for convolution (HOP_LENGTH=512 to get ~216 frames).

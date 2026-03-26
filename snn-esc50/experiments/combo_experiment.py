@@ -362,3 +362,31 @@ class ComboSpikingCNN(nn.Module):
 
             cur3 = self.fc1(flat)
             if self.use_dendritic:
+                spk3, m3 = self.n3(cur3, m3, step)
+            elif self.use_rhythm:
+                spk3, m3 = self.n3(cur3, m3, step)
+            else:
+                spk3, m3 = self.n3(cur3, m3)
+
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            if self.use_dendritic:
+                spk4, m4 = self.n4(cur4, m4, step)
+                # For dendritic, mem = soma potential (sum of branches)
+                mem4_scalar = sum(m4)
+            elif self.use_rhythm:
+                spk4, m4 = self.n4(cur4, m4, step)
+                mem4_scalar = m4
+            else:
+                spk4, m4 = self.n4(cur4, m4)
+                mem4_scalar = m4
+
+            spk_rec.append(spk4)
+            mem_rec.append(mem4_scalar)
+            total_spikes += spk4.sum().item()
+
+        return torch.stack(spk_rec), torch.stack(mem_rec), total_spikes
+
+
+# ============================================================

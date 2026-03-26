@@ -166,3 +166,31 @@ class DelayedLinear(nn.Module):
             # Inference: round delays to integers
             d_int = delays.round().long()
             buf_size = self.max_delay + 1
+            read_idx = (write_idx - d_int) % buf_size
+
+            delayed_inputs = self._buffer[read_idx]
+
+            W = self.linear.weight
+            output = (W.unsqueeze(1) * delayed_inputs).sum(dim=2).t()
+
+            if self.linear.bias is not None:
+                output = output + self.linear.bias.unsqueeze(0)
+
+        self._buffer_idx += 1
+        return output
+
+
+# ============================================================
+# SNN Model with Learnable Delays
+# ============================================================
+
+class DelayedSpikingCNN(nn.Module):
+    """Convolutional SNN with learnable synaptic delays on FC layers.
+
+    Architecture mirrors SpikingCNN:
+    Conv2d(1,32) -> BN -> MaxPool(2) -> LIF
+    Conv2d(32,64) -> BN -> MaxPool(2) -> LIF
+    AvgPool(4,6) -> DelayedFC(2304,256) -> LIF -> Dropout -> DelayedFC(256,50) -> LIF
+
+    LIF neurons use learnable beta and threshold for maximum flexibility.
+

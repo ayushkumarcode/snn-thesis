@@ -362,3 +362,31 @@ class SpikingLEAF_SNN(nn.Module):
         self.pool2 = nn.MaxPool2d(2)
         self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
 
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+        self.dropout = nn.Dropout(0.3)
+
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass.
+
+        Args:
+            x: Raw waveform, shape (batch, 1, waveform_length).
+
+        Returns:
+            spk_out: (num_steps, batch, num_classes)
+            mem_out: (num_steps, batch, num_classes)
+        """
+        # Frontend: raw waveform -> pseudo-spectrogram (batch, 1, 64, T)
+        features = self.frontend(x)
+
+        # Truncate or pad time dimension to match expected 216 frames
+        T_expected = 216
+        T_actual = features.shape[3]
+        if T_actual > T_expected:
+            features = features[:, :, :, :T_expected]
+        elif T_actual < T_expected:

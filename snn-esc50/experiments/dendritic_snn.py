@@ -446,3 +446,31 @@ def train_fold(fold, args, device):
             "test_acc": round(te_acc, 4),
         })
 
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            no_improve = 0
+            # Save best model
+            out_dir = RESULTS_DIR / "experiments" / "dendritic_snn"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            torch.save(model.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            no_improve += 1
+
+        elapsed = time.time() - t0
+        if epoch % 5 == 0 or epoch == 1 or no_improve == 0:
+            print(f"  Ep {epoch:3d}/{args.epochs} | "
+                  f"tr_loss={tr_loss:.3f} tr_acc={tr_acc:.3f} | "
+                  f"te_loss={te_loss:.3f} te_acc={te_acc:.3f} | "
+                  f"best={best_acc:.3f}@{best_epoch} ({elapsed:.0f}s)")
+
+        if no_improve >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}@{best_epoch}")
+            break
+
+    # Get branch stats from best model
+    model.load_state_dict(
+        torch.load(
+            RESULTS_DIR / "experiments" / "dendritic_snn" / f"best_fold{fold}.pt",
+            map_location=device, weights_only=True,
+        )

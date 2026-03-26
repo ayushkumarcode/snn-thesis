@@ -418,3 +418,31 @@ def eval_teacher(teacher, loader, device):
 def main():
     parser = argparse.ArgumentParser(
         description="Knowledge distillation: ANN teacher -> SNN student"
+    )
+    parser.add_argument("--fold", type=int, default=0,
+                        help="Fold to train (1-5). 0 = all folds (default: 0)")
+    parser.add_argument("--device", default=None, help="Device (default: auto)")
+    parser.add_argument("--epochs", type=int, default=50,
+                        help="Max training epochs (default: 50)")
+    parser.add_argument("--patience", type=int, default=PATIENCE,
+                        help=f"Early stopping patience (default: {PATIENCE})")
+    parser.add_argument("--temperature", type=float, default=3.0,
+                        help="Distillation temperature (default: 3.0)")
+    parser.add_argument("--alpha", type=float, default=0.5,
+                        help="CE loss weight (1-alpha = KD weight). Default: 0.5")
+    args = parser.parse_args()
+
+    # Device
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    out_dir = RESULTS_DIR / "experiments" / "knowledge_distillation"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.fold >= 1:
+        # Single fold

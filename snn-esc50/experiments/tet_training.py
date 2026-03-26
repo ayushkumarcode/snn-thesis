@@ -194,3 +194,31 @@ class TETLoss(nn.Module):
         # Per-timestep mean loss across batch: shape (T,)
         per_step_mean = per_step_losses.mean(dim=1)  # (T,)
 
+        # L_mean = (1/T) * sum_t mean_batch_CE_t
+        l_mean = per_step_mean.mean()  # scalar
+
+        # Variance term: (1/T) * sum_t (mean_batch_CE_t - L_mean)^2
+        l_var = ((per_step_mean - l_mean) ** 2).mean()  # scalar
+
+        total_loss = l_ce + self.lambda_tet * l_var
+
+        return total_loss, l_ce, l_var
+
+
+# ============================================================
+# Training and evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device, tet_loss_fn):
+    """Train one epoch with TET loss."""
+    model.train()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_var = 0.0
+    correct = 0
+    total = 0
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+        spike_inputs = encode_direct(inputs).to(device)

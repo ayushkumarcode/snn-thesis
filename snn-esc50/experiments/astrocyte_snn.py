@@ -194,3 +194,31 @@ class AstrocyteSNN(nn.Module):
         # Conv block 1
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
         self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.astro_lif1 = AstrocyteLIF(32, beta=beta, spike_grad=spike_grad)
+
+        # Conv block 2
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.astro_lif2 = AstrocyteLIF(64, beta=beta, spike_grad=spike_grad)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.astro_lif3 = AstrocyteLIF(256, beta=beta, spike_grad=spike_grad)
+
+        # Dropout
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2 (output)
+        self.fc2 = nn.Linear(256, num_classes)
+        self.astro_lif4 = AstrocyteLIF(num_classes, beta=beta, spike_grad=spike_grad)
+
+    def forward(self, x):
+        """Forward pass.
+
+        Returns:
+            spk_out: (num_steps, batch, num_classes)
+            mem_out: (num_steps, batch, num_classes)

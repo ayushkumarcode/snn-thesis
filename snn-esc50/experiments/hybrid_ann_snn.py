@@ -54,3 +54,31 @@ from src.encoding import encode_direct
 from src.models.ann_model import ConvANN
 
 
+# ============================================================
+# Enhanced SNN with learnable beta, threshold, and dropout
+# ============================================================
+
+class EnhancedSpikingCNN(nn.Module):
+    """SpikingCNN with learnable membrane decay (beta), learnable threshold,
+    dropout regularization, and spike_rate_escape surrogate gradient.
+
+    Designed for ANN->SNN weight transfer: same conv/bn/fc dimensions as
+    ConvANN, but with LIF neurons and temporal dynamics.
+
+    Args:
+        num_classes: Number of output classes.
+        beta: Initial membrane potential decay rate.
+        num_steps: Number of simulation timesteps.
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+

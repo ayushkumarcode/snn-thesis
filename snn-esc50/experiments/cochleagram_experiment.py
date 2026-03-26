@@ -670,3 +670,31 @@ def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE)
 # ============================================================
 # Main
 # ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Cochleagram experiment: gammatone filterbank vs mel spectrogram"
+    )
+    parser.add_argument("--fold", type=int, default=None,
+                        help="Run a single fold (1-5). Default: all 5 folds.")
+    parser.add_argument("--model", type=str, default="both",
+                        choices=["snn", "ann", "both"],
+                        help="Which model(s) to train. Default: both.")
+    parser.add_argument("--device", type=str, default=None,
+                        help="Device (cuda, mps, cpu). Default: auto-detect.")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS,
+                        help=f"Max epochs. Default: {NUM_EPOCHS}.")
+    parser.add_argument("--patience", type=int, default=PATIENCE,
+                        help=f"Early stopping patience. Default: {PATIENCE}.")
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    # Verify cochleagram shape on a single file before training
+    print("\nVerifying cochleagram pipeline...")
+    sample_file = list(ESC50_AUDIO_DIR.glob("*.wav"))[0]
+    coch = wav_to_cochleagram(str(sample_file))
+    coch_norm = normalise_spectrogram(coch)

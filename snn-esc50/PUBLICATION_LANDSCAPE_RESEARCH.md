@@ -250,3 +250,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 - **Relevance to you:** HIGH. Your "always-on audio sensing" framing in the introduction directly targets this.
 
 ### 3. Spiking Transformers
+- QKFormer, Spikformer v2, SpikingResformer all at top venues
+- Race to close the SNN-ANN gap on ImageNet
+- **Relevance to you:** Medium. Your gap-collapse finding relates to this narrative.
+
+### 4. Neuromorphic Robustness
+- Nature Communications 2025 paper on SNN robustness via temporal processing
+- Growing interest in adversarial + noise robustness of SNNs
+- **Relevance to you:** HIGH. Your 6x adversarial robustness finding is directly relevant.
+
+### 5. Hardware-Software Co-Design
+- SpiNNaker2 deployment at Sandia National Labs (June 2025)
+- SpikeFit (EurIPS 2025) on optimal SNN deployment
+- Software-to-hardware gap quantification
+- **Relevance to you:** HIGH. Your SpiNNaker deployment with documented failure modes is a case study in co-design challenges.
+
+### 6. Standardized Benchmarking (NeuroBench)
+- NeuroBench in Nature Communications 2025
+- Community push for reproducible, comparable results
+- **Relevance to you:** HIGH. You use NeuroBench metrics. You provide 5-fold validated results with p-values.
+
+### 7. Continual/Online Learning on Neuromorphic Hardware
+- Survey in IEEE Access 2025
+- ICONS has "continual learning systems" as explicit topic
+- **Relevance to you:** Medium. Your continual learning result is preliminary but present.
+
+### 8. New Application Domains
+- SNNs being applied to speech enhancement, EEG, medical imaging, structural mechanics
+- "First SNN on [domain]" papers are consistently publishable

@@ -26,3 +26,31 @@ Usage:
   source .venv/bin/activate
   python experiments/hybrid_ann_snn.py
   python experiments/hybrid_ann_snn.py --fold 1 --epochs 20
+  python experiments/hybrid_ann_snn.py --fold 0  # run all 5 folds
+"""
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+_REPO_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(_REPO_ROOT))
+
+import numpy as np
+import torch
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+
+from src.config import (
+    NUM_CLASSES, BETA, NUM_STEPS, N_MELS,
+    BATCH_SIZE, WEIGHT_DECAY, PATIENCE, NUM_FOLDS,
+    RESULTS_DIR, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+from src.models.ann_model import ConvANN
+
+

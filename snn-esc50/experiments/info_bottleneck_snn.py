@@ -138,3 +138,31 @@ class InfoBottleneckSNN(nn.Module):
             # Conv block 1
             cur1 = self.pool1(self.bn1(self.conv1(x_t)))
             spk1, mem1 = self.lif1(cur1, mem1)
+
+            # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1 -- produce hidden spikes
+            cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            # Information bottleneck
+            mu = self.ib_mu(spk3)
+            logvar = self.ib_logvar(spk3)
+
+            if sample:
+                z = self.reparameterise(mu, logvar)
+            else:
+                z = mu  # deterministic at eval time
+
+            # KL divergence: KL(q(z|x) || N(0,1))
+            # = -0.5 * sum(1 + logvar - mu^2 - exp(logvar))
+            kl = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp(), dim=1)
+            total_kl = total_kl + kl.mean()
+
+            # Track stats

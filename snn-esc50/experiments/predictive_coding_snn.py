@@ -222,3 +222,31 @@ def train_epoch(model, loader, optimizer, device, lambda_pred):
         # Combined loss
         pred_loss = lambda_pred * pred_mse
         loss = ce_loss + pred_loss
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        total_ce += ce_loss.item()
+        total_pred += pred_loss.item()
+
+        # Predict using summed membrane potentials
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        total_orig_spikes += spike_stats["original_spikes"]
+        total_err_spikes += spike_stats["error_spikes"]
+
+    n = len(loader)
+    stats = {
+        "loss": total_loss / n,
+        "ce_loss": total_ce / n,
+        "pred_loss": total_pred / n,
+        "accuracy": correct / total,
+        "avg_original_spikes": total_orig_spikes / total,
+        "avg_error_spikes": total_err_spikes / total,
+    }
+    return stats
+
+

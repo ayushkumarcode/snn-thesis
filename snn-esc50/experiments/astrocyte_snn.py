@@ -502,3 +502,31 @@ def main():
     folds = [args.fold] if args.fold else list(range(1, 6))
 
     print(f"\n{'='*70}")
+    print(f"  ASTROCYTE-AUGMENTED SNN EXPERIMENT")
+    print(f"  Folds: {folds} | epochs: {args.epochs}")
+    print(f"{'='*70}")
+
+    all_results = []
+
+    for fold in folds:
+        print(f"\n--- Fold {fold}/5 ---")
+        result = train_fold(fold, device, args.epochs, PATIENCE)
+        all_results.append(result)
+
+        # Save per-fold result
+        fold_file = out_dir / f"fold{fold}.json"
+        with open(fold_file, "w") as f:
+            json.dump(result, f, indent=2)
+        print(f"  Fold {fold}: {result['best_accuracy']*100:.2f}%")
+        ap = result["learned_astrocyte_params"]
+        for layer, p in ap.items():
+            print(f"    {layer}: tau={p['tau_astro']:.4f} gain={p['gain']:.4f} "
+                  f"target={p['target_rate']:.4f} beta={p['beta']:.4f}")
+
+    # Summary
+    accs = [r["best_accuracy"] for r in all_results]
+    mean_acc = sum(accs) / len(accs)
+    std_acc = (sum((a - mean_acc) ** 2 for a in accs) / len(accs)) ** 0.5
+
+    # Aggregate learned params
+    agg_params = {}

@@ -278,3 +278,31 @@ def train_fold(fold: int, device, epochs: int, patience: int):
         Dict with fold results.
     """
     print(f"\n{'='*60}")
+    print(f"  Hybrid ANN->SNN | Fold {fold}/5")
+    print(f"  Device: {device} | Epochs: {epochs} | Patience: {patience}")
+    print(f"{'='*60}")
+
+    # Check ANN weights exist
+    ann_path = RESULTS_DIR / "ann" / "none" / f"best_fold{fold}.pt"
+    if not ann_path.exists():
+        print(f"FATAL: ANN weights not found: {ann_path}")
+        sys.exit(1)
+
+    # Load ANN and transfer weights
+    ann_model = ConvANN()
+    ann_model.load_state_dict(
+        torch.load(ann_path, map_location="cpu", weights_only=True)
+    )
+    print(f"  Loaded ANN: {ann_path}")
+
+    snn_model = EnhancedSpikingCNN().to(device)
+    transfer_ann_weights(ann_model, snn_model)
+    snn_model = snn_model.to(device)
+
+    # Data
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+
+    # Optimizer with lower learning rate for fine-tuning
+    optimizer = torch.optim.Adam(
+        snn_model.parameters(), lr=1e-4, weight_decay=WEIGHT_DECAY,
+    )

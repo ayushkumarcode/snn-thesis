@@ -110,3 +110,31 @@ run_combo "rhythm_dendritic_kd" --rhythm --kd --dropout --sre
 
 # 17. All techniques (rhythm + delays + KD + TET)
 run_combo "all_rhythm" --rhythm --delays --kd --tet --learn-beta --dropout --sre
+
+# 18. All techniques (dendritic + delays + KD + TET)
+run_combo "all_dendritic" --dendritic --delays --kd --tet --dropout --sre
+
+# ============================================
+# TIER 5: Energy optimization (on best accuracy models)
+# ============================================
+
+echo ""
+echo "===== TIER 5: ENERGY OPTIMIZATION ====="
+
+# 19-22. Rhythm + L1 regularization sweep
+run_combo "rhythm_l1_1e5" --rhythm --learn-beta --dropout --sre --l1-reg 0.00001
+run_combo "rhythm_l1_1e4" --rhythm --learn-beta --dropout --sre --l1-reg 0.0001
+run_combo "rhythm_l1_1e3" --rhythm --learn-beta --dropout --sre --l1-reg 0.001
+run_combo "rhythm_l1_1e2" --rhythm --learn-beta --dropout --sre --l1-reg 0.01
+
+# 23-24. Rhythm + KD + L1 (accuracy + energy)
+run_combo "rhythm_kd_l1_1e4" --rhythm --kd --learn-beta --dropout --sre --l1-reg 0.0001
+run_combo "rhythm_kd_l1_1e3" --rhythm --kd --learn-beta --dropout --sre --l1-reg 0.001
+
+# ============================================
+# TIER 6: KD temperature/alpha sweeps
+# ============================================
+
+echo ""
+echo "===== TIER 6: KD HYPERPARAMETER SWEEPS ====="
+

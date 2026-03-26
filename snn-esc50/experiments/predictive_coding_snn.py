@@ -390,3 +390,31 @@ def main():
     parser = argparse.ArgumentParser(
         description="Predictive Coding SNN -- transmit only prediction errors")
     parser.add_argument("--fold", type=int, default=None,
+                        help="Fold (1-5). If omitted, runs all 5.")
+    parser.add_argument("--device", type=str, default=None,
+                        help="Device (cuda/mps/cpu). Auto-detect if omitted.")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS,
+                        help=f"Max epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--lambda-pred", type=float, default=0.1,
+                        help="Weight for prediction MSE loss (default: 0.1)")
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    out_dir = RESULTS_DIR / "experiments" / "predictive_coding_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+
+    print(f"\n{'='*70}")
+    print(f"  PREDICTIVE CODING SNN EXPERIMENT")
+    print(f"  Folds: {folds} | lambda_pred: {args.lambda_pred} | epochs: {args.epochs}")
+    print(f"{'='*70}")
+
+    all_results = []

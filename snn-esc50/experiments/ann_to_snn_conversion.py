@@ -558,3 +558,31 @@ def main():
 
         # Mean curve
         mean_Ts = sorted(aggregate.keys())
+        mean_accs_plot = [aggregate[T]["mean_accuracy"] * 100 for T in mean_Ts]
+        mean_stds_plot = [aggregate[T]["std_accuracy"] * 100 for T in mean_Ts]
+        ax.errorbar(
+            mean_Ts, mean_accs_plot, yerr=mean_stds_plot,
+            marker="o", capsize=4, linewidth=2.5, color="tab:blue",
+            label="Converted SNN (mean)", zorder=5,
+        )
+
+        # ANN reference line
+        ann_mean = float(np.mean(ann_accs)) * 100
+        ann_std = float(np.std(ann_accs)) * 100
+        ax.axhline(y=ann_mean, color="tab:red", linestyle="--", linewidth=2,
+                    label=f"ANN reference ({ann_mean:.1f}%)")
+        ax.fill_between(
+            [min(mean_Ts), max(mean_Ts)],
+            ann_mean - ann_std, ann_mean + ann_std,
+            alpha=0.1, color="tab:red",
+        )
+
+        # 95% threshold
+        ax.axhline(y=ann_mean * 0.95, color="tab:green", linestyle=":",
+                    linewidth=1.5, alpha=0.7,
+                    label=f"95% of ANN ({ann_mean * 0.95:.1f}%)")
+
+        ax.set_xlabel("Number of Timesteps (T)", fontsize=12)
+        ax.set_ylabel("Accuracy (%)", fontsize=12)
+        ax.set_title("ANN-to-SNN Conversion: Accuracy vs Timesteps", fontsize=13)
+        ax.legend(fontsize=10, loc="lower right")

@@ -194,3 +194,31 @@ class SRRhythmLIF(nn.Module):
             torch.full(neuron_shape, math.log(beta / (1.0 - beta)))
         )
 
+        # SR: learnable noise amplitude
+        self.log_sigma = nn.Parameter(
+            torch.full(neuron_shape, math.log(max(init_sigma, 1e-8)))
+        )
+
+        # Rhythm: learnable oscillation parameters
+        self.amplitude = nn.Parameter(torch.full(neuron_shape, 0.1))
+        self.frequency = nn.Parameter(torch.empty(neuron_shape).uniform_(0.5, 5.0))
+        self.phase = nn.Parameter(torch.zeros(neuron_shape))
+
+        self.neuron_shape = neuron_shape
+
+    @property
+    def beta(self):
+        return torch.sigmoid(self.beta_raw)
+
+    @property
+    def sigma(self):
+        return torch.exp(self.log_sigma)
+
+    def _oscillation(self, t: int) -> torch.Tensor:
+        angle = 2.0 * math.pi * self.frequency * t / self.num_steps + self.phase
+        return self.amplitude * torch.sin(angle)
+
+    def init_srrhythm(self, batch_size: int, device: torch.device) -> torch.Tensor:
+        return torch.zeros(batch_size, *self.neuron_shape, device=device)
+
+    def forward(

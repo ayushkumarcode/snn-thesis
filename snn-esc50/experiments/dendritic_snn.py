@@ -138,3 +138,31 @@ class DendriticLIF(nn.Module):
         Args:
             input_current: Current input to the neuron. Shape depends on usage:
                 - FC layers: (batch, size)
+                - Conv layers: (batch, channels, H, W) — size=channels
+            branch_mems: List of K branch membrane tensors, same shape as input_current.
+
+        Returns:
+            spk: Output spikes (same shape as input_current).
+            new_branch_mems: Updated list of K branch membrane tensors.
+        """
+        betas = self.betas  # (K, size)
+        gates = self.gates  # (K, size)
+
+        is_spatial = input_current.dim() > 2  # conv layer input: (B, C, H, W)
+
+        new_branch_mems = []
+        soma = torch.zeros_like(input_current)
+
+        for k in range(self.num_branches):
+            beta_k = betas[k]  # (size,)
+            gate_k = gates[k]  # (size,)
+
+            if is_spatial:
+                # Reshape for broadcasting: (1, C, 1, 1)
+                beta_k = beta_k.view(1, -1, 1, 1)
+                gate_k = gate_k.view(1, -1, 1, 1)
+
+                # Expand branch_mems if they were initialized as scalar
+                if branch_mems[k].dim() < input_current.dim():
+                    branch_mems[k] = torch.zeros_like(input_current)
+            else:

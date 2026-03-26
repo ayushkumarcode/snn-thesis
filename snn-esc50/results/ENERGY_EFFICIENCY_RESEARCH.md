@@ -222,3 +222,31 @@ For your Conv2 (32->64, 3x3): 32*64*9 = 18,432 params -> (32*9 + 32*64) = 2,336 
 ---
 
 ### 4.2 Weight Pruning (ICLR 2024 -- 91x Efficiency!)
+
+**Paper:** Shi et al., "Towards Energy Efficient SNNs: An Unstructured Pruning Framework," ICLR 2024.
+
+Combines unstructured weight pruning + unstructured neuron pruning. First application of neuron pruning to deep SNNs.
+
+**Key result:** 0.63% remaining connections achieves 91x energy efficiency increase with only 2.19% accuracy loss on CIFAR-10. Only 8.5M SOPs (synaptic operations) for inference.
+
+Applied to your network:
+- Current: ~622K parameters, ~1.08M ACs per sample
+- At 10% connectivity: ~62K params, ~108K ACs = ~97 nJ = **4.7x cheaper than ANN**
+- At 1% connectivity: ~6.2K params, ~10.8K ACs = ~9.7 nJ = **47x cheaper than ANN**
+
+**Expected energy reduction:** 10-91x depending on sparsity level
+**Accuracy trade-off:** 2-5% at 90% pruning, 5-10% at 99% pruning
+**Implementation complexity:** Moderate (iterative magnitude pruning, well-established)
+**SpiNNaker compatibility:** Excellent -- SpiNNaker naturally handles sparse connectivity
+
+---
+
+### 4.3 Lottery Ticket Hypothesis in SNNs
+
+**Paper:** Kim et al., "Exploring Lottery Ticket Hypothesis in SNNs," ECCV 2022; Chen et al., 2024.
+
+Winning tickets found at up to 97% sparsity without significant performance degradation. Spiking Lottery Tickets outperform standard lottery tickets by up to 4.58%.
+
+**Expected energy reduction:** 10-30x
+**Accuracy trade-off:** <3% at 95% sparsity, <5% at 97%
+**Implementation complexity:** Moderate (IMP: train, prune 20%, retrain, repeat)

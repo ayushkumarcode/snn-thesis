@@ -418,3 +418,31 @@ Recent ANN work (2024) shows that Multi-Frequency Resolution (MFR) features comb
 
 ---
 
+## 9. The Recommended Experiment
+
+### Phase 1: Quick Win (1-2 hours)
+
+**CARFAC cochleagram as drop-in replacement for mel spectrogram**:
+
+```
+Current:  audio -> mel spectrogram (64, 216) -> direct encoding -> SNN -> 47.15%
+Proposed: audio -> CARFAC cochleagram (64, ~216) -> direct encoding -> SNN -> ???
+```
+
+Steps:
+1. `pip install carfac` (or use google/carfac NumPy implementation)
+2. Process each ESC-50 audio through CARFAC with 64 channels
+3. Subsample/reshape output to match current input dimensions (64, 216)
+4. Train existing SNN architecture on CARFAC output
+5. Compare accuracy
+
+**Why this first**: Minimal code change, directly tests the hypothesis that representation matters. If CARFAC beats mel, it validates the entire research direction.
+
+### Phase 2: Gammatonegram Alternative (1-2 hours)
+
+```
+audio -> gammatonegram (64, 216) -> direct encoding -> SNN -> ???
+```
+
+Using scipy.signal.gammatone or nnAudio2.Gammatonegram. Same approach as Phase 1.
+

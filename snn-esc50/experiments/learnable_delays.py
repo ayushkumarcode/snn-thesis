@@ -446,3 +446,31 @@ def train_fold(fold, args, device):
     no_improve = 0
     epoch_log = []
 
+    out_dir = RESULTS_DIR / "experiments" / "learnable_delays"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    t0 = time.time()
+    for epoch in range(1, args.epochs + 1):
+        tr_loss, tr_acc = train_epoch(model, train_loader, optimizer, device, NUM_STEPS)
+        te_loss, te_acc = eval_model(model, test_loader, device, NUM_STEPS)
+        scheduler.step(te_loss)
+
+        epoch_log.append({
+            "epoch": epoch,
+            "train_loss": round(tr_loss, 4),
+            "train_acc": round(tr_acc, 4),
+            "test_loss": round(te_loss, 4),
+            "test_acc": round(te_acc, 4),
+        })
+
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            no_improve = 0
+            torch.save(model.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            no_improve += 1
+
+        elapsed = time.time() - t0
+        if epoch % 5 == 0 or epoch == 1 or no_improve == 0:
+            # Show current delay stats inline

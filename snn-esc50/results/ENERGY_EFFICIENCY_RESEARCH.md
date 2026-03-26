@@ -54,3 +54,31 @@ Your ANN does ~99K MACs once. Your SNN does ~43K ACs per timestep * 25 timesteps
 |--------|-------------|------------|-------------------|---------------------|
 | 0.0    | ~45%        | 2-5%       | 100%              | Yes |
 | 1e-5   | ~46%        | 1.7-4.3%   | ~100%             | Yes |
+| 1e-4   | ~46%        | 0.5-1.9%   | ~100%             | Yes |
+| 1e-3   | ~46%        | 0.4-0.8%   | ~98%              | Yes |
+| 0.01   | ~41%        | 0.01-0.06% | ~90%              | Yes |
+| 0.05   | ~37%        | ~0%        | ~80%              | Yes |
+
+**Critical finding:** Lambda=1e-4 to 1e-3 drops spike rate from ~26% to <1% with MINIMAL accuracy loss. This is your lowest-hanging fruit.
+
+**Implementation in snnTorch:**
+```python
+import snntorch.functional as SF
+reg_fn = SF.l1_rate_sparsity(Lambda=1e-3)
+# In training loop: loss = ce_loss + reg_fn(spk_out)
+```
+
+**Paper:** Kundu et al., "Spike-Thrift: Towards Energy-Efficient Deep SNNs by Limiting Spiking Activity via Attention-Guided Compression," WACV 2021. Up to 33.4x compression with no significant accuracy drop.
+
+**Expected energy reduction:** 4-10x (bringing spike rate from 26% to <5% crosses the Dampfhoffer threshold)
+**Accuracy trade-off:** <2% at lambda=1e-3, <5% at lambda=1e-2
+**Implementation complexity:** Trivial -- one line added to loss function
+**SpiNNaker compatibility:** Full -- fewer spikes = fewer packets = less router congestion
+
+---
+
+### 2.2 Activity Pruning with AT-LIF Neurons
+
+**Paper:** Bu et al., "Activity Pruning for Efficient Spiking Neural Networks," NeurIPS 2025.
+
+Replaces standard LIF with Adaptive Threshold LIF (AT-LIF) that dynamically raises thresholds for overactive neurons. Achieves firing rate of 0.020 on CIFAR-10 with comparable accuracy.

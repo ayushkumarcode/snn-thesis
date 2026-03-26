@@ -110,3 +110,31 @@ def test_non_tet_loss():
 # ============================================================
 def test_tet_loss():
     """
+    Old code:
+        per_step_losses = []
+        for step in range(T_steps):
+            per_step_losses.append(criterion(mem_out[step], targets))
+        per_step = torch.stack(per_step_losses)
+        mean_loss = per_step.mean()
+        var_loss = ((per_step - mean_loss) ** 2).mean()
+        loss = mean_loss + lambda_tet * var_loss
+
+    New code:
+        per_sample = F.cross_entropy(
+            mem_out.reshape(T * B, C),
+            targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            reduction='none'
+        ).reshape(T, B)
+        per_step = per_sample.mean(dim=1)  # (T,)
+        mean_loss = per_step.mean()
+        var_loss = ((per_step - mean_loss) ** 2).mean()
+        loss = mean_loss + lambda_tet * var_loss
+
+    Math check:
+    - Old per_step[t] = CE(mem_out[t], targets) with reduction='mean'
+                       = (1/B) * sum_b( -log(softmax(mem_out[t,b]))[targets[b]] )
+    - New per_step[t] = per_sample[t].mean(dim=1)
+                       = (1/B) * sum_b( CE_individual(mem_out[t,b], targets[b]) )
+    - These are IDENTICAL.
+    """
+    print("\n=== TEST 2: TET loss ===")

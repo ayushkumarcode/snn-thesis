@@ -502,3 +502,31 @@ def main():
     parser.add_argument("--branches", type=int, default=3,
                         help="Number of dendritic branches K (default: 3)")
     args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+    print(f"Dendritic branches: {args.branches}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    all_results = {}
+    fold_accs = []
+
+    for fold in folds:
+        result = train_fold(fold, args, device)
+        all_results[f"fold_{fold}"] = result
+        fold_accs.append(result["best_accuracy"])
+        print(f"\nFold {fold} result: {result['best_accuracy']*100:.2f}% "
+              f"at epoch {result['best_epoch']}")
+
+    # Summary
+    import numpy as np
+    mean_acc = float(np.mean(fold_accs))
+    std_acc = float(np.std(fold_accs))
+
+    all_results["summary"] = {
+        "mean_accuracy": mean_acc,

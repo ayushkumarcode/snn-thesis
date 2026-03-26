@@ -250,3 +250,31 @@ def eval_model(model, loader, device, tet_loss_fn):
     total_loss = 0.0
     total_ce = 0.0
     total_var = 0.0
+    correct = 0
+    total = 0
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+        spike_inputs = encode_direct(inputs).to(device)
+
+        spk_out, mem_out = model(spike_inputs)
+        loss, l_ce, l_var = tet_loss_fn(mem_out, labels)
+
+        total_loss += loss.item()
+        total_ce += l_ce.item()
+        total_var += l_var.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    n = len(loader)
+    return total_loss / n, total_ce / n, total_var / n, correct / total
+
+
+def train_fold(fold, device, epochs, patience, lambda_tet, seed):
+    """Train a single fold with TET loss and return results."""
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)

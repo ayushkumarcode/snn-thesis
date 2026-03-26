@@ -670,3 +670,31 @@ Every single idea above would be the FIRST application to environmental sound cl
 ### Reservoir Computing / LSM
 - [Liquid State Machine on SpiNNaker (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.819063/full)
 - [Optimizing Reservoir Separability in LSMs (2025)](https://www.mdpi.com/2079-9268/15/1/4)
+
+### Information Bottleneck
+- [Learning to Time-Decode via Information Bottleneck (NeurIPS 2024)](https://openreview.net/forum?id=Fw0IQgaGlhh)
+
+### Spiking Transformers
+- [Spiking Transformer with Spatial-Temporal Attention (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Spiking_Transformer_with_Spatial-Temporal_Attention_CVPR_2025_paper.pdf)
+- [Accurate Addition-Only Spiking Self-Attention (arXiv 2025)](https://arxiv.org/abs/2503.00226)
+
+### Hardware Co-Design
+- [E-prop on SpiNNaker 2 (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.1018006/full)
+- [Event-based backpropagation on SpiNNaker2 (Dec 2024)](https://arxiv.org/abs/2412.15021)
+- [SpiNNaker2: Large-Scale Neuromorphic System (2024)](https://arxiv.org/html/2401.04491v1)
+
+### Topological Data Analysis
+- [Persistent Homology Pipeline for Neural Spike Trains (Dec 2025)](https://arxiv.org/abs/2512.08637)
+
+### Hyperdimensional Computing
+- [HyperEncoding: SNNs with Hyperdimensional Encoding (GLSVLSI 2025)](https://dl.acm.org/doi/10.1145/3716368.3735233)
+
+### Environmental Sound with SNNs
+- [Spike Encoding for Environmental Sound: Comparative Benchmark (Mar 2025)](https://arxiv.org/html/2503.11206v1)
+- [PDM Microphones for Neuromorphic Keyword Spotting (Interspeech 2024)](https://arxiv.org/html/2408.05156v1)
+
+### Knowledge Distillation
+- [A Closer Look at KD in SNN Training (Nov 2025)](https://arxiv.org/abs/2511.06902)
+- [LaSNN: Layer-wise ANN-to-SNN distillation (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225020235)
+
+### Self-Supervised Learning

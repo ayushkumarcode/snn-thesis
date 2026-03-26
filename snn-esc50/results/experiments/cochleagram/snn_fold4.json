@@ -222,3 +222,14 @@
     "n_filters": 64,
     "f_min": 50.0,
     "f_max": 11025.0,
+    "n_fft": 1024,
+    "hop_length": 512,
+    "sr": 22050,
+    "duration": 5,
+    "num_steps": 25,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 10,
+    "num_epochs": 50
+  }

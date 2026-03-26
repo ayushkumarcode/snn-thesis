@@ -586,3 +586,31 @@ def run_fold(fold, args, device):
         train_data = torch.tensor(np.array(train_data)).unsqueeze(1)
         test_data = torch.tensor(np.array(test_data)).unsqueeze(1)
         train_labels = torch.tensor(train_labels, dtype=torch.long)
+        test_labels = torch.tensor(test_labels, dtype=torch.long)
+
+        train_ds = torch.utils.data.TensorDataset(train_data, train_labels)
+        test_ds = torch.utils.data.TensorDataset(test_data, test_labels)
+        train_loader = torch.utils.data.DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
+        test_loader = torch.utils.data.DataLoader(test_ds, batch_size=BATCH_SIZE, shuffle=False)
+    else:
+        train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+
+    encoder_fn = encode_direct
+
+    # Model
+    model = ComboSpikingCNN(args).to(device)
+
+    if args.hybrid_init:
+        model = load_ann_weights_into_snn(model, fold, device)
+
+    teacher = load_teacher(fold, device) if args.kd else None
+
+    param_count = sum(p.numel() for p in model.parameters())
+    print(f"  Model params: {param_count:,}")
+
+    lr = 1e-4 if args.hybrid_init else LEARNING_RATE
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=5)
+
+    epochs = args.epochs
+    best_acc = 0.0

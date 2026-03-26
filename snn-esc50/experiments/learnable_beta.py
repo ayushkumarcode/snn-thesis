@@ -54,3 +54,31 @@ class LearnableBetaCNN(nn.Module):
         self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
 
         self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        # NO dropout — keeping identical to baseline except learn_beta
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+    def forward(self, x):
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)

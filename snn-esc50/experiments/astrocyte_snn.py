@@ -166,3 +166,31 @@ class AstrocyteLIF(nn.Module):
         if mem.dim() == 4:
             mod = threshold_mod.view(1, -1, 1, 1)
         elif mem.dim() == 2:
+            mod = threshold_mod.view(1, -1)
+        else:
+            mod = threshold_mod.view(1, -1)
+
+        # Scale membrane potential (lower mod = easier to fire next step)
+        mem = mem / mod
+
+        effective_thresh = threshold_mod.mean().item()
+
+        return spk, mem, astro_state, effective_thresh
+
+
+# ============================================================
+# Astrocyte SNN Model
+# ============================================================
+
+class AstrocyteSNN(nn.Module):
+    """SpikingCNN with astrocyte-mediated homeostatic threshold regulation."""
+
+    def __init__(self, num_classes=NUM_CLASSES, beta=BETA, num_steps=NUM_STEPS):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1, slope=25)
+
+        # Conv block 1
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)

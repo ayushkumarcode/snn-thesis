@@ -54,3 +54,31 @@ from src.dataset import download_esc50
 from src.encoding import encode_direct
 
 
+# ============================================================
+# Gammatone filterbank implementation
+# ============================================================
+
+def erb(fc):
+    """Equivalent Rectangular Bandwidth (Glasberg & Moore, 1990).
+
+    ERB(fc) = 24.7 * (4.37 * fc/1000 + 1)
+
+    Args:
+        fc: Centre frequency in Hz (scalar or array).
+
+    Returns:
+        ERB bandwidth in Hz.
+    """
+    return 24.7 * (4.37 * fc / 1000.0 + 1.0)
+
+
+def gammatone_filterbank(sr, n_fft, n_filters=64, f_min=50.0, f_max=None):
+    """Create a gammatone filterbank matrix for applying to STFT magnitude.
+
+    Each row is one gammatone filter's frequency response, evaluated at the
+    STFT frequency bins. The filters are 4th-order gammatone with ERB-spaced
+    centre frequencies.
+
+    The gammatone frequency response magnitude for a 4th-order filter centred
+    at fc with bandwidth b is:
+        |H(f)| = 1 / (1 + ((f - fc) / b)^2)^2

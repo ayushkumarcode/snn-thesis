@@ -194,3 +194,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Implementation complexity:** LOW.
   ```python
   import torch
+  beta_init = torch.ones(256) * 0.95  # for FC1 layer with 256 neurons
+  self.lif3 = snn.Leaky(beta=beta_init, spike_grad=spike_grad, learn_beta=True)
+  ```
+- **Expected result:** +0.5-1pp on top of per-layer learnable
+
+---
+
+## 6. Temporal Batch Normalization
+
+### 6a. TEBN: Temporal Effective Batch Normalization
+
+- **Paper:** "Temporal Effective Batch Normalization in Spiking Neural Networks" (NeurIPS 2022)
+- **Key idea:** Assigns different learnable weights to each timestep to rescale presynaptic inputs. Smooths temporal distributions, stabilizes gradient norm.
+- **Accuracy:** CIFAR-100: 74.37% (vs 66.6% BNTT, +7.77pp). DVS-CIFAR10: 75.1% (vs 60.5% NeuNorm, +14.6pp).
+- **Applicability:** HIGH. Replace standard BN with TEBN. Compatible with our Conv-BN-MaxPool-LIF pattern.
+- **Implementation complexity:** MEDIUM. Need to implement TEBN layer (not in snnTorch by default) or use SpikingJelly which has it.
+- **Expected result:** +2-5pp
+
+### 6b. tdBN: Threshold-Dependent Batch Normalization
+
+- **Paper:** Zheng et al. (2021)
+- **Key idea:** Extends BN to temporal dimension, incorporates firing threshold as hyperparameter. Can be folded into weights for zero inference overhead.
+- **Accuracy:** Enables training deep SNNs from scratch with good accuracy.
+- **Applicability:** HIGH. Our architecture already uses BN.
+- **Implementation complexity:** MEDIUM.
+
+### 6c. BNTT: Batch Normalization Through Time
+

@@ -502,3 +502,31 @@
         "test_acc": 0.3225
       },
       {
+        "epoch": 20,
+        "train_loss": 44.0496,
+        "train_acc": 0.5694,
+        "test_loss": 60.1444,
+        "test_acc": 0.375
+      },
+      {
+        "epoch": 21,
+        "train_loss": 40.3053,
+        "train_acc": 0.62,
+        "test_loss": 67.1578,
+        "test_acc": 0.35
+      },
+      {
+        "epoch": 22,
+        "train_loss": 38.1575,
+        "train_acc": 0.64,
+        "test_loss": 59.2974,
+        "test_acc": 0.435
+      },
+      {
+        "epoch": 23,
+        "train_loss": 35.954,
+        "train_acc": 0.6594,
+        "test_loss": 61.2838,
+        "test_acc": 0.415
+      },
+      {

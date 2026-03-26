@@ -194,3 +194,31 @@ Environmental sounds are inherently rhythmic (clock_tick, helicopter rotor, foot
 
 **SpiNNaker Angle:** Oscillatory signals can be generated on SpiNNaker using periodic spike sources. Natural fit for the hardware.
 
+---
+
+### IDEA 5: Learnable Axonal/Synaptic Delays
+
+**Source:** Multiple papers:
+- "Learnable axonal delay in SNNs improves spoken word recognition" (Frontiers 2023)
+- "DelRec: learning delays in recurrent SNNs" (arXiv Sep 2025)
+- "Learning delays through gradients and structure" (Frontiers 2024)
+
+**Domain:** Neuroscience (Axonal Delays) + Signal Processing
+
+**Core Idea:**
+In biology, signals don't travel instantaneously between neurons -- there are axonal delays (1-20ms). These delays are NOT bugs; they enable coincidence detection across time. By making delays LEARNABLE, the network can align temporal features across different timescales.
+
+**How It Applies to ESC-50:**
+Sound classification requires detecting temporal patterns. With learnable delays:
+- A "dog bark" pattern across 3 time steps can be aligned even if barks occur at different delays
+- Spectral patterns at different frequencies can be synchronized
+- 13-18% accuracy improvement demonstrated in sparse networks
+
+Implementation: Replace `self.fc1 = nn.Linear(2304, 256)` with `self.fc1 = DelayedLinear(2304, 256, max_delay=10)` where each synapse has a learnable integer delay.
+
+**Expected Impact:**
+- 13.2% accuracy improvement with synaptic delays, 18% in sparse models
+- Especially beneficial for temporal pattern recognition in audio
+- For ESC-50: estimated 3-6 pp improvement
+
+**Implementation Feasibility:** HIGH

@@ -250,3 +250,31 @@ Winning tickets found at up to 97% sparsity without significant performance degr
 **Expected energy reduction:** 10-30x
 **Accuracy trade-off:** <3% at 95% sparsity, <5% at 97%
 **Implementation complexity:** Moderate (IMP: train, prune 20%, retrain, repeat)
+**SpiNNaker compatibility:** Excellent
+
+---
+
+### 4.4 QP-SNN: Quantized and Pruned (ICLR 2025)
+
+**Paper:** "QP-SNN: Quantized and Pruned Spiking Neural Networks," ICLR 2025.
+
+Combines weight rescaling (ReScaW) for 2-bit weights + singular value structured pruning (SVS). On TinyImageNet: 90.26% model size reduction with 3.71% accuracy IMPROVEMENT.
+
+**Expected energy reduction:** 5-10x (from combined quantization + pruning)
+**Accuracy trade-off:** Can be neutral or even positive
+**Implementation complexity:** High (novel training procedures)
+**SpiNNaker compatibility:** Partial -- SpiNNaker uses 16-bit fixed point weights, so quantization helps model size but energy savings come from pruning
+
+---
+
+## 5. Quantization + SNNs
+
+### 5.1 Ternary Spikes {-1, 0, 1}
+
+**Paper:** Guo et al., "Ternary Spike: Learning Ternary Spikes for SNNs," AAAI 2024.
+
+Ternary spikes carry 1.58 bits per spike vs 1 bit for binary. Better accuracy with negligible energy increase. The -1 spike enables inhibitory signaling without requiring separate populations.
+
+**Expected energy reduction:** Not direct energy reduction, but enables accuracy maintenance at lower timesteps
+**SpiNNaker compatibility:** Partial -- sPyNNaker supports inhibitory connections, but implementing ternary spike neurons requires custom logic
+

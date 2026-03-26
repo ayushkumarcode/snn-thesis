@@ -138,3 +138,31 @@ class EnhancedSpikingCNN(nn.Module):
         for step in range(self.num_steps):
             x_t = x[step]
 
+            # Conv block 1
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1 with dropout
+            cur3 = self.dropout(self.fc1(flat))
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            # FC block 2 (output)
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Weight transfer: ANN -> SNN

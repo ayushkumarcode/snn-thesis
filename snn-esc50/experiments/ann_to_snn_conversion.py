@@ -250,3 +250,31 @@ def transfer_weights(ann_model: ConvANN, snn_model: ConvertedSNN):
 
     # FC layers
     snn_model.fc1.load_state_dict(ann_model.classifier[0].state_dict())
+    snn_model.fc2.load_state_dict(ann_model.classifier[3].state_dict())
+
+
+# ============================================================
+# Evaluation
+# ============================================================
+
+@torch.no_grad()
+def evaluate_converted_snn(model, loader, device, num_steps):
+    """Evaluate converted SNN at a given number of timesteps."""
+    model.eval()
+    correct = 0
+    total = 0
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_out, mem_out = model(data, num_steps=num_steps)
+
+        # Predict from accumulated membrane potential at last timestep
+        predicted = mem_out[-1].argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return correct / total if total > 0 else 0.0
+
+
+@torch.no_grad()
+def evaluate_ann(model, loader, device):

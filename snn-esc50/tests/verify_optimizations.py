@@ -166,3 +166,31 @@ def test_tet_loss():
     var_loss_new = ((per_step_new - mean_loss_new) ** 2).mean()
     loss_new = mean_loss_new + lambda_tet * var_loss_new
 
+    # Compare per-step values
+    per_step_diff = (per_step_old - per_step_new).abs().max().item()
+    report("TET per-step losses match",
+           per_step_diff < 1e-6,
+           f"max per-step diff={per_step_diff:.2e}")
+
+    loss_diff = abs(loss_old.item() - loss_new.item())
+    report("TET total loss matches",
+           loss_diff < 1e-6,
+           f"old={loss_old.item():.10f}, new={loss_new.item():.10f}, diff={loss_diff:.2e}")
+
+    # Test with different lambda_tet
+    for lam in [0.0, 0.5, 2.0, 10.0]:
+        old = mean_loss_old + lam * var_loss_old
+        new = mean_loss_new + lam * var_loss_new
+        diff = abs(old.item() - new.item())
+        report(f"  TET lambda={lam}",
+               diff < 1e-6,
+               f"diff={diff:.2e}")
+
+
+# ============================================================
+# TEST 3: Eval loss -- OLD vs NEW (CRITICAL: different semantics!)
+# ============================================================
+def test_eval_loss():
+    """
+    OLD eval code:
+        loss = torch.zeros(1, device=device)

@@ -362,3 +362,31 @@ def train_fold(fold, device, epochs, patience, lambda_pred):
         if no_improve >= patience:
             print(f"  Early stop at epoch {epoch}, best={best_acc:.4f}")
             break
+
+    elapsed = time.time() - t0
+
+    # Final eval with best model for spike stats
+    if best_model_state is not None:
+        model.load_state_dict({k: v.to(device) for k, v in best_model_state.items()})
+    final_te = eval_model(model, test_loader, device, lambda_pred)
+
+    result = {
+        "fold": fold,
+        "lambda_pred": lambda_pred,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": elapsed,
+        "final_original_spikes_per_sample": final_te["avg_original_spikes"],
+        "final_error_spikes_per_sample": final_te["avg_error_spikes"],
+        "spike_reduction_pct": (1 - final_te["avg_error_spikes"] / max(final_te["avg_original_spikes"], 1)) * 100,
+        "history": history,
+    }
+
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Predictive Coding SNN -- transmit only prediction errors")
+    parser.add_argument("--fold", type=int, default=None,

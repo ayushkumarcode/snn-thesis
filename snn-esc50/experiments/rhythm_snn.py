@@ -278,3 +278,31 @@ class RhythmSpikingCNN(nn.Module):
 # ============================================================
 # Training and evaluation
 # ============================================================
+
+def train_epoch(model, loader, optimizer, device):
+    """Train one epoch with standard per-timestep CE loss on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+        spike_inputs = encode_direct(inputs).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out = model(spike_inputs)
+
+        # Per-timestep CE loss on membrane potentials (standard approach)
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], labels)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()

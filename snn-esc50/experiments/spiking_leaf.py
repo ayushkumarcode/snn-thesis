@@ -810,3 +810,23 @@ def main():
             "delta_vs_baseline_pp": round(diff, 2),
             "total_params": results[0]["total_params"],
             "frontend_params": results[0]["frontend_params"],
+            "per_fold": [
+                {
+                    "fold": r["fold"],
+                    "accuracy": r["best_accuracy"],
+                    "best_epoch": r["best_epoch"],
+                    "total_epochs": r["total_epochs"],
+                    "time_seconds": r["time_seconds"],
+                    "frontend_summary": r["frontend_summary"],
+                }
+                for r in results
+            ],
+        }
+
+    with open(out_dir / "summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSaved summary to {out_dir / 'summary.json'}")
+
+
+if __name__ == "__main__":
+    main()

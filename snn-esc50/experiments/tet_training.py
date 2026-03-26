@@ -306,3 +306,31 @@ def train_fold(fold, device, epochs, patience, lambda_tet, seed):
     out_dir = RESULTS_DIR / "experiments" / "tet_training"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    start_time = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr_loss, tr_ce, tr_var, tr_acc = train_epoch(
+            model, train_loader, optimizer, device, tet_loss_fn,
+        )
+        te_loss, te_ce, te_var, te_acc = eval_model(
+            model, test_loader, device, tet_loss_fn,
+        )
+        scheduler.step(te_loss)
+
+        history["train_loss"].append(tr_loss)
+        history["train_ce"].append(tr_ce)
+        history["train_var"].append(tr_var)
+        history["train_acc"].append(tr_acc)
+        history["test_loss"].append(te_loss)
+        history["test_ce"].append(te_ce)
+        history["test_var"].append(te_var)
+        history["test_acc"].append(te_acc)
+
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            no_improve = 0
+            torch.save(model.state_dict(), out_dir / f"best_fold{fold}.pt")
+        else:
+            no_improve += 1
+

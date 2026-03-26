@@ -362,3 +362,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 3. **Direct comparison of SNN vs ANN on ESC-50 in any prior work:** None exists. You are creating the baseline.
 4. **SNN + PANNs in any prior work:** Found no paper combining pretrained audio neural networks with SNN classifier heads. Your PANNs+SNN experiment appears to be genuinely novel.
 5. **Detailed reviewer criteria for ICONS:** No public rubric exists. Inference based on accepted papers and call for papers.
+
+---
+
+## 10. RECOMMENDED FOLLOW-UP ACTIONS
+
+1. **Reframe the paper around the gap-collapse thesis** (Option A above) -- this is the highest-impact change and requires only editing, not new experiments.
+2. **Consider reordering results** to lead with the gap-collapse finding.
+3. **Tighten the paper to 6-7 strong pages** rather than cramming everything into 8 pages. Move noise robustness and continual learning details to a brief mention or cut entirely -- they dilute the message.
+4. **Submit as a FULL paper (8 pages)** to ICONS 2026. Your work easily justifies a 20-minute talk.
+5. **If the paper is rejected from ICONS, immediately submit to EUSIPCO 2026 or similar.** The "first SNN on ESC-50" claim has a shelf life -- Larroza et al. may extend to ESC-50 in their next paper.
+6. **Consider a parallel arXiv preprint** to establish priority. The Larroza et al. paper is already on arXiv (March 2025). Getting your paper on arXiv before ICONS submission locks in your "first" claims.
+
+---
+
+## Sources
+
+### SNN Conference Papers (curated lists)
+- [Awesome SNN Conference Papers - GitHub](https://github.com/AXYZdong/awesome-snn-conference-paper)
+- [Awesome Spiking Neural Networks - GitHub](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
+
+### ICONS Conference
+- [ICONS 2026 Call for Papers](https://iconsneuromorphic.cc/calls-2026/)
+- [ICONS 2026 EasyChair CFP](https://easychair.org/cfp/ACM-ICONS-2026)
+- [ICONS 2024 Schedule](https://iconsneuromorphic.cc/icons-2024/schedule/)
+- [ICONS 2024 IEEE Proceedings](https://www.computer.org/csdl/proceedings/icons/2024/22lE6EOwpkA)
+- [ICONS 2023 ACM Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3589737)
+- [ICONS 2022 ACM Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3546790)
+

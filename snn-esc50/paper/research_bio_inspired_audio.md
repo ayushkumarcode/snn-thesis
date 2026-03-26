@@ -446,3 +446,31 @@ audio -> gammatonegram (64, 216) -> direct encoding -> SNN -> ???
 
 Using scipy.signal.gammatone or nnAudio2.Gammatonegram. Same approach as Phase 1.
 
+### Phase 3: Spike Encoding on Bio-Inspired Features (2-4 hours)
+
+Take the best representation from Phase 1/2 and try:
+1. TAE (Threshold Adaptive Encoding) instead of direct encoding
+2. SOD (Send-on-Delta) encoding
+3. LIF encoding on the cochleagram channels
+
+### Phase 4 (if time): BAE Pipeline (4-8 hours)
+
+Implement the full BAE pipeline from Pan et al. (2020):
+1. CQT cochlear filtering (20 channels)
+2. Psychoacoustic masking
+3. Temporal masking
+4. Threshold crossing encoding
+5. Train SNN on resulting spike patterns
+
+---
+
+## 10. Key Evidence Supporting the Hypothesis
+
+### Direct Evidence: Cochleagram > Mel for Spike Encoding
+
+1. **Wall et al. (ICONS 2022)**: "All encoding methods yield higher classification accuracy using significantly fewer spikes when encoding a bio-inspired cochleagram as opposed to a traditional STFT." SOD on cochleagram matches unencoded baseline (97% on TIDIGITS).
+
+2. **Pan et al. (2020)**: BAE with CQT cochlear bank achieves 99.5% on RWCP environmental sounds with only 245 spikes/sec. Population coding needs 19x more spikes for 99.0%.
+
+3. **Cochleagram noise robustness**: Cochleagram features outperform mel at SNR <= 15dB for speaker recognition (MDPI 2023). SNN + bio-inspired frontend should amplify this noise advantage.
+

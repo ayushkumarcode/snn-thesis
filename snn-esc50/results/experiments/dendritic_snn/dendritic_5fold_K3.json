@@ -978,3 +978,31 @@
           0.3338012993335724
         ],
         "gates_std": [
+          0.0057327598333358765,
+          0.0030216523446142673,
+          0.0034854018595069647
+        ]
+      }
+    },
+    "epoch_log": [
+      {
+        "epoch": 1,
+        "train_loss": 97.864,
+        "train_acc": 0.0238,
+        "test_loss": 97.5987,
+        "test_acc": 0.02
+      },
+      {
+        "epoch": 2,
+        "train_loss": 97.7157,
+        "train_acc": 0.0213,
+        "test_loss": 97.464,
+        "test_acc": 0.02
+      },
+      {
+        "epoch": 3,
+        "train_loss": 97.498,
+        "train_acc": 0.02,
+        "test_loss": 96.916,
+        "test_acc": 0.02
+      },

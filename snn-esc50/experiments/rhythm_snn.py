@@ -530,3 +530,14 @@ def main():
                 "time_seconds": r["time_seconds"],
                 "oscillation_summary": r["oscillation_summary"],
             }
+            for r in all_results
+        ],
+    }
+
+    with open(out_dir / "summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSaved summary to {out_dir / 'summary.json'}")
+
+
+if __name__ == "__main__":
+    main()

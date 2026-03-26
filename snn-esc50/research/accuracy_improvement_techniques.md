@@ -138,3 +138,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Accuracy:** +10pp on DVS-CIFAR10 (83% vs 73% prior SOTA). Consistent improvements on CIFAR-10/100/ImageNet.
 - **Applicability:** VERY HIGH. We already use per-timestep CE loss (standard snnTorch approach) -- but TET adds gradient re-weighting and momentum compensation. Trivial to implement. Code: https://github.com/Gus-Lab/temporal_efficient_training
 - **Implementation complexity:** LOW. Modify loss function only. ~20 lines of code change.
+- **Expected result:** +2-5pp (47% -> 49-52%)
+
+**CRITICAL NOTE:** Our current training already does per-timestep CE loss (line 71 of train.py: `loss += criterion(mem_out[step], targets)`). TET's key addition is gradient re-weighting to avoid bad local minima, plus a regularization term. This is probably our single easiest win.
+
+### 4b. Temporal Regularization Training
+
+- **Paper:** "Temporal Regularization Training: Unleashing the Potential of Spiking Neural Networks" (2025, arXiv:2506.19256)
+- **Key idea:** Regularize temporal consistency of SNN outputs across timesteps.
+- **Applicability:** MEDIUM. Complementary to TET.
+- **Implementation complexity:** LOW.
+
+---
+
+## 5. Learnable Neuron Parameters
+
+### 5a. PLIF: Parametric LIF with Learnable Membrane Time Constant
+
+- **Paper:** Fang et al., "Incorporating Learnable Membrane Time Constant to Enhance Learning of Spiking Neural Networks" (ICCV 2021)
+- **Key idea:** Make membrane time constant (tau, which controls beta in snnTorch) a learnable per-layer parameter. Different layers can learn different decay rates suited to their function.
+- **Accuracy:** CIFAR-10: 93.50% (vs lower with fixed beta). Robust to initialization.
+- **Applicability:** VERY HIGH. snnTorch already supports this! Just set `learn_beta=True` in `snn.Leaky()`. Zero architecture change needed.
+- **Implementation complexity:** TRIVIALLY LOW. Change 4 lines in snn_model.py:
+  ```python
+  self.lif1 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+  ```
+- **Expected result:** +1-2pp
+
+### 5b. Learnable Threshold

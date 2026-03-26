@@ -278,3 +278,31 @@ def eval_model(model, loader, device, beta_ib):
         total_loss += loss.item()
         total_ce += ce_loss.item()
         total_kl += kl_loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        total_mu_norm += bn_stats["avg_mu_norm"]
+        total_logvar_mean += bn_stats["avg_logvar_mean"]
+
+    n = len(loader)
+    stats = {
+        "loss": total_loss / n,
+        "ce_loss": total_ce / n,
+        "kl_loss": total_kl / n,
+        "accuracy": correct / total,
+        "avg_mu_norm": total_mu_norm / n,
+        "avg_logvar_mean": total_logvar_mean / n,
+    }
+    return stats
+
+
+def train_fold(fold, device, epochs, patience, beta_ib):
+    """Train information bottleneck SNN on one fold."""
+    torch.manual_seed(42 + fold)
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+    model = InfoBottleneckSNN().to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                 weight_decay=WEIGHT_DECAY)

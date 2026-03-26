@@ -194,3 +194,31 @@ Your closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-
 ### Formula 2: "X orders of magnitude improvement in Y"
 **Examples:**
 - Speech2Spikes: 109x energy reduction
+- QKFormer: 10.84pp improvement over Spikformer
+- Neuromorphic constraint solving: 1000x more efficient than CPUs
+
+**YOUR VERSION:** "6.0x adversarial robustness advantage" + "Gap collapses from 16.7pp to 0.95pp" (17.6x reduction in the gap)
+
+**Assessment:** The 6x robustness is solid. The "17.6x gap reduction" is a novel and dramatic framing. Consider using it.
+
+### Formula 3: "Novel analysis revealing Z"
+**Examples:**
+- Zenke & Vogels 2021: "Surrogate shape matters less than slope"
+- Sharmin et al. 2020: "Discrete encoding provides inherent adversarial robustness"
+- Nature Comms 2025: "Temporal processing is the key to SNN robustness"
+
+**YOUR VERSION:** "The SNN-ANN gap is a feature-learning problem, not a spiking computation limitation" + "Encoding specificity: SNN representations are encoding-dependent (transfer ratio 0.255)"
+
+**Assessment:** The gap-collapse insight is genuinely novel for audio. The encoding specificity finding (transfer ratio) has never been quantified before. Both are strong analytical contributions.
+
+### Formula 4: "Hardware deployment showing W"
+**Examples:**
+- Dominguez-Morales 2016: SpiNNaker for pure tones
+- Speech2Spikes: Loihi for keyword spotting
+- Yang & Chang 2024: Custom accelerator at 71.2 uW
+
+**YOUR VERSION:** "First SpiNNaker deployment for 50-class environmental sound, with documented root-cause analysis of deployment failures and validated hybrid approach"
+
+**Assessment:** The honesty about failure modes actually strengthens the paper. Reviewers value reproducibility and honest reporting over inflated claims.
+
+### Formula 5: "Comprehensive benchmark/comparison"

@@ -192,14 +192,13 @@ class DelayedLinear(nn.Module):
         delays = torch.sigmoid(self.delay_raw) * self.max_delay  # (out_features,)
         delay_floor = delays.long().clamp(0, self.max_delay - 1)
         delay_ceil = (delay_floor + 1).clamp(0, self.max_delay)
-        delay_frac = (delays - delay_floor.float()).unsqueeze(0)  # (1, out_features)
+        delay_frac = (delays - delay_floor.float()).view(-1, 1, 1)  # (out_features, 1, 1)
 
         # Gather delayed inputs: buffer is (max_delay+1, batch, in_features)
-        # Index with delay_floor/ceil per output neuron
         buf_lo = self.buffer[delay_floor]  # (out_features, batch, in_features)
         buf_hi = self.buffer[delay_ceil]   # (out_features, batch, in_features)
-        # Interpolate: (out_features, batch, in_features)
-        delayed = (1 - delay_frac.unsqueeze(-1)) * buf_lo + delay_frac.unsqueeze(-1) * buf_hi
+        # Interpolate: (out_features, batch, in_features) — frac broadcasts over batch & in_features
+        delayed = (1 - delay_frac) * buf_lo + delay_frac * buf_hi
         # delayed[j] is the delayed input for output neuron j, shape (batch, in_features)
         # Apply weight matrix: out[batch, j] = sum_i(W[j,i] * delayed[j, batch, i]) + bias[j]
         # This is: (batch, out, in) * (out, in) summed over in

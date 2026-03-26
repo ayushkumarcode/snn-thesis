@@ -754,3 +754,31 @@ def main():
     }
 
     summary = {
+        "experiment": "cochleagram",
+        "description": "Gammatone filterbank cochleagram replacing mel spectrogram",
+        "feature": "64-channel gammatone cochleagram (ERB-spaced, 50 Hz to Nyquist)",
+        "results": all_results,
+        "mel_baselines": mel_baselines,
+        "folds_run": folds,
+        "models_run": model_types,
+    }
+
+    # Add delta analysis if we have both model types
+    if "snn" in all_results and "ann" in all_results:
+        snn_mean = all_results["snn"]["mean_accuracy"]
+        ann_mean = all_results["ann"]["mean_accuracy"]
+        summary["analysis"] = {
+            "cochleagram_snn_vs_ann_gap_pp": round((ann_mean - snn_mean) * 100, 2),
+            "mel_snn_vs_ann_gap_pp": round((0.6385 - 0.4715) * 100, 2),
+            "snn_cochleagram_vs_mel_delta_pp": round((snn_mean - 0.4715) * 100, 2),
+            "ann_cochleagram_vs_mel_delta_pp": round((ann_mean - 0.6385) * 100, 2),
+            "hypothesis": (
+                "If SNN benefits more from cochleagram than ANN, the cochleagram "
+                "SNN-ANN gap should be smaller than the mel SNN-ANN gap (16.70 pp). "
+                "This would support the theory that biologically-motivated input "
+                "representations are better suited for spiking computation."
+            ),
+        }
+
+    summary_file = save_dir / "summary.json"
+    with open(summary_file, "w") as f:

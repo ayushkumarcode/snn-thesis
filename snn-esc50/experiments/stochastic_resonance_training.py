@@ -138,3 +138,31 @@ class SRLIF(nn.Module):
         beta_bc = beta
         sigma_bc = sigma
         for _ in range(ndim_extra):
+            beta_bc = beta_bc.unsqueeze(-1)
+            sigma_bc = sigma_bc.unsqueeze(-1)
+
+        # Leaky integration
+        mem = beta_bc * mem + input_current
+
+        # Add noise (training only)
+        if self.training:
+            noise = torch.randn_like(mem) * sigma_bc
+            mem = mem + noise
+
+        # Spike generation with surrogate gradient
+        spk = self.spike_grad(mem - self.threshold)
+
+        # Soft reset
+        mem = mem * (1.0 - spk.detach())
+
+        return spk, mem
+
+
+# ============================================================
+# SR+Rhythm LIF Neuron
+# ============================================================
+
+class SRRhythmLIF(nn.Module):
+    """LIF neuron combining trainable stochastic resonance AND oscillatory modulation.
+
+    Membrane dynamics:

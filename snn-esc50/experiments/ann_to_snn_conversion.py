@@ -110,3 +110,31 @@ class ActivationRecorder:
 
         Returns:
             Dict mapping layer name to threshold value.
+        """
+        thresholds = {}
+        for name, act_list in self.all_activations.items():
+            # Concatenate all batches: (total_samples, ...)
+            all_acts = torch.cat(act_list, dim=0)
+            # ReLU clips negatives, so only consider positive activations
+            positive = torch.clamp(all_acts, min=0.0)
+            # Compute percentile across all values
+            threshold = float(np.percentile(positive.numpy().flatten(), percentile))
+            thresholds[name] = max(threshold, 1e-6)  # avoid zero threshold
+        return thresholds
+
+
+# ============================================================
+# Converted SNN Model
+# ============================================================
+
+class ConvertedSNN(nn.Module):
+    """ANN-to-SNN converted model with calibrated thresholds.
+
+    Uses IF neurons (beta=1.0, no leak) which act as perfect integrators.
+    The threshold at each layer is calibrated from ANN activation statistics
+    so that the ANN-to-SNN rate mapping is preserved.
+
+    The ANN weights are directly transferred without modification.
+    The SNN accumulates input over T timesteps, and the fire rate at
+    each layer approximates the normalized ReLU activation.
+    """

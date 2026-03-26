@@ -334,3 +334,31 @@ class SpikingLEAF_SNN(nn.Module):
     """End-to-end learnable audio SNN: Gabor + PCEN + SpikingCNN.
 
     The frontend and classifier are jointly optimized.
+    Uses learn_beta=True, spike_rate_escape, and Dropout(0.3).
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        # Learnable frontend
+        self.frontend = SpikingLEAF()
+
+        spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # SNN backbone (same as SpikingCNN)
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_beta=True)
+

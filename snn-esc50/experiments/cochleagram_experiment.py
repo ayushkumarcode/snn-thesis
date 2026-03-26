@@ -194,3 +194,31 @@ def wav_to_cochleagram(filepath, sr=SAMPLE_RATE, duration=DURATION,
 def normalise_spectrogram(spec):
     """Min-max normalise to [0, 1]."""
     min_val = spec.min()
+    max_val = spec.max()
+    if max_val - min_val == 0:
+        return np.zeros_like(spec)
+    return (spec - min_val) / (max_val - min_val)
+
+
+# ============================================================
+# Dataset
+# ============================================================
+
+class CochleagramDataset(Dataset):
+    """ESC-50 dataset with gammatone cochleagram features.
+
+    Drop-in replacement for ESC50Dataset but uses cochleagram instead of
+    mel spectrogram.
+
+    Args:
+        folds: List of fold numbers to include (1-5).
+        transform: Optional transform applied to the tensor.
+        precompute: If True, load and cache all cochleagrams in memory.
+    """
+
+    def __init__(self, folds, transform=None, precompute=True):
+        self.transform = transform
+        self.precompute = precompute
+
+        meta = pd.read_csv(ESC50_META_PATH)
+        self.meta = meta[meta["fold"].isin(folds)].reset_index(drop=True)

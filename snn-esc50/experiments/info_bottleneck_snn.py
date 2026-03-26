@@ -418,3 +418,31 @@ def main():
     folds = [args.fold] if args.fold else list(range(1, 6))
 
     print(f"\n{'='*70}")
+    print(f"  INFORMATION BOTTLENECK SNN EXPERIMENT")
+    print(f"  Folds: {folds} | beta_ib: {args.beta_ib} | epochs: {args.epochs}")
+    print(f"{'='*70}")
+
+    all_results = []
+
+    for fold in folds:
+        print(f"\n--- Fold {fold}/5 ---")
+        result = train_fold(fold, device, args.epochs, PATIENCE, args.beta_ib)
+        all_results.append(result)
+
+        # Save per-fold result
+        fold_file = out_dir / f"fold{fold}_beta{args.beta_ib}.json"
+        with open(fold_file, "w") as f:
+            json.dump(result, f, indent=2)
+        print(f"  Fold {fold}: {result['best_accuracy']*100:.2f}% "
+              f"(KL={result['final_kl_loss']:.4f})")
+
+    # Summary
+    accs = [r["best_accuracy"] for r in all_results]
+    kls = [r["final_kl_loss"] for r in all_results]
+    mean_acc = sum(accs) / len(accs)
+    std_acc = (sum((a - mean_acc) ** 2 for a in accs) / len(accs)) ** 0.5
+    mean_kl = sum(kls) / len(kls)
+
+    summary = {
+        "experiment": "info_bottleneck_snn",
+        "beta_ib": args.beta_ib,

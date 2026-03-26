@@ -166,3 +166,31 @@ class DendriticLIF(nn.Module):
 
         return spk, new_mems
 
+
+class DelayedLinear(nn.Module):
+    """Linear layer with per-output-neuron learnable delays."""
+
+    def __init__(self, in_features, out_features, max_delay=5):
+        super().__init__()
+        self.linear = nn.Linear(in_features, out_features)
+        self.max_delay = max_delay
+        self.delay_raw = nn.Parameter(torch.empty(out_features).uniform_(0.1, 0.9))
+        self.buffer = None
+
+    def init_buffer(self, batch_size, in_features, device):
+        self.buffer = torch.zeros(self.max_delay + 1, batch_size, in_features, device=device)
+
+    def forward(self, x):
+        if self.buffer is None or self.buffer.shape[1] != x.shape[0]:
+            self.init_buffer(x.shape[0], x.shape[1], x.device)
+
+        # Shift buffer and add new input
+        self.buffer = torch.roll(self.buffer, 1, dims=0)
+        self.buffer[0] = x
+
+        # Soft delay lookup (differentiable)
+        delays = torch.sigmoid(self.delay_raw) * self.max_delay  # (out_features,)
+        delay_floor = delays.long().clamp(0, self.max_delay - 1)
+        delay_frac = delays - delay_floor.float()
+
+        # Gather delayed inputs for each output neuron

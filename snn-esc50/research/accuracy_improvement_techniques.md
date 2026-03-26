@@ -558,3 +558,12 @@ The most effective approach combines multiple complementary techniques:
 9. Bojkovic et al. (2024). AISTATS 2024. Data-driven threshold init.
 10. PASCAL (2025). arXiv:2505.01730. Near-lossless conversion.
 11. Guo et al. (2024). AAAI 2024. Ternary spikes.
+12. Three-stage hybrid (2025). Frontiers in Neuroscience. Audio SNN fine-tuning.
+13. TET (2022). ICLR 2022. Temporal efficient training.
+14. TEBN (2022). NeurIPS 2022. Temporal effective batch normalization.
+15. TCJA-SNN (2024). IEEE TNNLS. Temporal-channel joint attention.
+16. Spiking-LEAF (2024). arXiv:2309.09469. Learnable audio front-end.
+17. SpikeCLR (2026). arXiv:2603.16338. Contrastive self-supervised SNN.
+18. SpikeYOLO (2024). ECCV 2024. Integer-valued training.
+19. AdaLi (2026). Frontiers in Neuroscience. Adaptive surrogate gradients.
+20. MD-SNN (2024). arXiv:2512.04443. Membrane potential distillation.

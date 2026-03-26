@@ -166,3 +166,31 @@ Your temporal truncation result (90% accuracy at T=7 = 72% energy saving) direct
 
 ### Critical Gap Your Paper Fills
 
+**No prior paper has:**
+1. Used convolutional SNNs on ESC-50 (50 classes) -- only ESC-10 (10 classes) exists
+2. Compared more than 4 encodings for audio SNNs
+3. Deployed any SNN for environmental sound on neuromorphic hardware
+4. Analyzed adversarial robustness of SNNs on audio spectrograms
+5. Quantified encoding specificity via cross-encoding transfer analysis
+6. Demonstrated the gap-collapse phenomenon on audio (pretrained features)
+
+Your closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-only architecture, 3 encodings, no hardware. You are strictly superior on every axis.
+
+---
+
+## 5. COMMON WINNING FORMULAS IN SNN PUBLICATIONS
+
+### Formula 1: "First X on Y"
+**Examples:**
+- QKFormer: "First directly-trained SNN exceeding 85% on ImageNet"
+- SpikeLLM: "First spiking large language model"
+- Speech2Spikes: "First real-time neuromorphic audio pipeline"
+- Dominguez-Morales: "First SNN audio on SpiNNaker"
+
+**YOUR VERSION:** "First convolutional SNN evaluated on ESC-50" + "First neuromorphic hardware deployment for environmental sound"
+
+**Assessment:** This is legitimate and verified. No prior work exists. Strong.
+
+### Formula 2: "X orders of magnitude improvement in Y"
+**Examples:**
+- Speech2Spikes: 109x energy reduction

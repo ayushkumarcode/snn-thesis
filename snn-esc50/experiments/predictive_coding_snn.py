@@ -138,3 +138,31 @@ class PredictiveSNN(nn.Module):
             # Pool + flatten
             pooled = self.avg_pool(spk2)
             flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1 -- produce hidden spikes
+            cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            # Track original spike count
+            total_original_spikes += spk3.sum().item()
+
+            # Predictive coding: compute prediction error
+            if spk3_prev is not None:
+                # Predict current spikes from previous
+                predicted = self.predict_fc(spk3_prev)
+                error = spk3 - predicted
+
+                # Accumulate MSE for prediction loss
+                pred_error_sum = pred_error_sum + ((error) ** 2).mean()
+                pred_count += 1
+
+                # Feed error to FC2 instead of raw spikes
+                fc2_input = self.dropout(error)
+            else:
+                # First timestep: no prediction, use raw spikes
+                fc2_input = self.dropout(spk3)
+
+            # Track error "spikes" (non-zero elements)
+            total_error_spikes += (fc2_input.abs() > 0.01).float().sum().item()
+
+            # Save for next step prediction

@@ -558,3 +558,31 @@ def train_fold(fold, with_rhythm, device, epochs, patience, seed, init_sigma):
         "train_loss": [], "train_acc": [],
         "test_loss": [], "test_acc": [],
     }
+
+    start_time = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr_loss, tr_acc = train_epoch(model, train_loader, optimizer, device)
+        te_loss, te_acc = eval_model(model, test_loader, device)
+        scheduler.step(te_loss)
+
+        history["train_loss"].append(tr_loss)
+        history["train_acc"].append(tr_acc)
+        history["test_loss"].append(te_loss)
+        history["test_acc"].append(te_acc)
+
+        if te_acc > best_acc:
+            best_acc = te_acc
+            best_epoch = epoch
+            no_improve = 0
+            torch.save(model.state_dict(), out_dir / f"best_{variant.lower().replace('+','_')}_fold{fold}.pt")
+        else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            # Show current sigma statistics
+            sigmas = []
+            for m in model.modules():
+                if isinstance(m, (SRLIF, SRRhythmLIF)):
+                    sigmas.append(float(m.sigma.mean().item()))

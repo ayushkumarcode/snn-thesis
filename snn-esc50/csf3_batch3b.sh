@@ -26,3 +26,31 @@ echo "============================================"
 echo ""; echo ">>>>>>>>>> spiking_leaf SNN ($(date)) <<<<<<<<<<"
 python -m experiments.spiking_leaf --model snn --device cuda 2>&1
 echo ">>>>>>>>>> spiking_leaf SNN DONE ($(date)) <<<<<<<<<<"
+
+# 2. Spiking-LEAF ANN (raw waveform → learnable frontend → ANN, for comparison)
+echo ""; echo ">>>>>>>>>> spiking_leaf ANN ($(date)) <<<<<<<<<<"
+python -m experiments.spiking_leaf --model ann --device cuda 2>&1
+echo ">>>>>>>>>> spiking_leaf ANN DONE ($(date)) <<<<<<<<<<"
+
+# 3. Info Bottleneck beta=1e-4
+echo ""; echo ">>>>>>>>>> info_bottleneck beta=1e-4 ($(date)) <<<<<<<<<<"
+python -m experiments.info_bottleneck_snn --beta-ib 0.0001 --device cuda 2>&1
+echo ">>>>>>>>>> info_bottleneck beta=1e-4 DONE ($(date)) <<<<<<<<<<"
+
+# 4. Info Bottleneck beta=1e-3
+echo ""; echo ">>>>>>>>>> info_bottleneck beta=1e-3 ($(date)) <<<<<<<<<<"
+python -m experiments.info_bottleneck_snn --beta-ib 0.001 --device cuda 2>&1
+echo ">>>>>>>>>> info_bottleneck beta=1e-3 DONE ($(date)) <<<<<<<<<<"
+
+# 5. Info Bottleneck beta=1e-2
+echo ""; echo ">>>>>>>>>> info_bottleneck beta=1e-2 ($(date)) <<<<<<<<<<"
+python -m experiments.info_bottleneck_snn --beta-ib 0.01 --device cuda 2>&1
+echo ">>>>>>>>>> info_bottleneck beta=1e-2 DONE ($(date)) <<<<<<<<<<"
+
+echo ""
+echo "============================================"
+echo "  BATCH 3b COMPLETE: $(date)"
+echo "============================================"
+
+echo ""
+echo "=== RESULTS ==="

@@ -642,3 +642,31 @@ def run_fold(fold, args, device):
         if epoch % 5 == 0 or epoch == 1:
             print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | Test: {test_acc:.4f} | Best: {best_acc:.4f} (ep{best_epoch}) | {time.time()-start:.0f}s")
 
+        if patience_counter >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+    print(f"  Fold {fold}: {best_acc:.4f} (ep{best_epoch}) in {elapsed:.1f}s")
+
+    result = {
+        "fold": fold, "experiment": exp_name,
+        "best_acc": best_acc, "best_epoch": best_epoch,
+        "total_epochs": epoch, "time_seconds": elapsed,
+        "param_count": param_count,
+        "history": history,
+    }
+
+    save_dir = RESULTS_DIR / "experiments" / exp_name
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / f"result_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Combo SNN experiment")
+    # Fold/device
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)

@@ -362,3 +362,31 @@ def train_fold(fold, device, epochs, patience, seed):
     # Count parameters
     total_params = sum(p.numel() for p in model.parameters())
     osc_params = 0
+    for name, p in model.named_parameters():
+        if any(k in name for k in ["amplitude", "frequency", "phase", "beta_raw"]):
+            osc_params += p.numel()
+    print(f"  Total params: {total_params:,} (oscillation/beta: {osc_params:,})")
+
+    out_dir = RESULTS_DIR / "experiments" / "rhythm_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {
+        "train_loss": [], "train_acc": [],
+        "test_loss": [], "test_acc": [],
+    }
+
+    start_time = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr_loss, tr_acc = train_epoch(model, train_loader, optimizer, device)
+        te_loss, te_acc = eval_model(model, test_loader, device)
+        scheduler.step(te_loss)
+
+        history["train_loss"].append(tr_loss)
+        history["train_acc"].append(tr_acc)
+        history["test_loss"].append(te_loss)
+        history["test_acc"].append(te_acc)
+

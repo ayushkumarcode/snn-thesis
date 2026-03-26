@@ -390,3 +390,31 @@ Recent ANN work (2024) shows that Multi-Frequency Resolution (MFR) features comb
 ---
 
 ## 8. Synthesis: Ranked Recommendations
+
+### Tier 1: Highest Impact, Feasible for Thesis
+
+| Rank | Approach | Expected Impact | Novelty | Implementation Effort | Risk |
+|------|----------|-----------------|---------|----------------------|------|
+| 1 | **CARFAC cochleagram + direct encoding** | +5-15% over mel | VERY HIGH | LOW (drop-in replacement) | LOW |
+| 2 | **Gammatonegram + TAE encoding** | +3-10% over mel | HIGH | LOW | LOW |
+| 3 | **BAE pipeline (CQT + masking + threshold)** | +5-20% over mel | VERY HIGH | MODERATE | MODERATE |
+| 4 | **Cochleagram + Send-on-Delta** | +5-15% over mel | HIGH | LOW | LOW |
+
+### Tier 2: High Impact, Moderate Effort
+
+| Rank | Approach | Expected Impact | Novelty | Implementation Effort | Risk |
+|------|----------|-----------------|---------|----------------------|------|
+| 5 | Spiking-LEAF frontend | +5-10% | HIGH | MODERATE-HIGH | MODERATE |
+| 6 | CQT + rate encoding | +2-5% | MODERATE | LOW | LOW |
+| 7 | Wavelet scattering + SNN | Unknown | VERY HIGH | MODERATE | HIGH |
+
+### Tier 3: High Novelty, High Risk
+
+| Rank | Approach | Expected Impact | Novelty | Implementation Effort | Risk |
+|------|----------|-----------------|---------|----------------------|------|
+| 8 | RF neurons as input encoders | Unknown | EXTREMELY HIGH | HIGH | HIGH |
+| 9 | Full auditory nerve model | Unknown | EXTREMELY HIGH | HIGH | HIGH |
+| 10 | Raw waveform SNN (1D conv) | Unknown | HIGH | HIGH | HIGH |
+
+---
+

@@ -698,3 +698,31 @@ def main():
     print(f"  Init sigma: {args.init_sigma}")
 
     # Sigma evolution analysis
+    print(f"\n  Sigma evolution (init -> final):")
+    for r in all_results:
+        for layer, info in r["learned_sr_params"].items():
+            change = info["sigma_mean"] - args.init_sigma
+            direction = "increased" if change > 0 else "decreased"
+            print(f"    Fold {r['fold']} {layer}: {info['sigma_mean']:.5f} "
+                  f"({direction} by {abs(change):.5f})")
+
+    summary = {
+        "experiment": "stochastic_resonance_training",
+        "variant": variant,
+        "seed": args.seed,
+        "init_sigma": args.init_sigma,
+        "epochs": args.epochs,
+        "patience": args.patience,
+        "with_rhythm": args.with_rhythm,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "baseline_mean": 0.4715,
+        "baseline_std": 0.0450,
+        "delta_vs_baseline_pp": round(diff, 2),
+        "total_params": all_results[0]["total_params"],
+        "sr_params": all_results[0]["sr_params"],
+        "per_fold": [
+            {
+                "fold": r["fold"],
+                "accuracy": r["best_accuracy"],

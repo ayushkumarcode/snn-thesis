@@ -250,3 +250,31 @@ def train_epoch(model, loader, optimizer, device, lambda_pred):
     return stats
 
 
+@torch.no_grad()
+def eval_model(model, loader, device, lambda_pred):
+    """Evaluate the predictive coding SNN."""
+    model.eval()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_pred = 0.0
+    correct = 0
+    total = 0
+    total_orig_spikes = 0.0
+    total_err_spikes = 0.0
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        spk_out, mem_out, pred_mse, spike_stats = model(spike_input)
+
+        ce_loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            ce_loss = ce_loss + ce_criterion(mem_out[step], targets)
+
+        pred_loss = lambda_pred * pred_mse
+        loss = ce_loss + pred_loss
+
+        total_loss += loss.item()

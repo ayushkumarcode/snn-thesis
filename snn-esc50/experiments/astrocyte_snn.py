@@ -362,3 +362,31 @@ def eval_model(model, loader, device):
 
         total_loss += loss.item()
 
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        for layer in all_spike_rates:
+            sr = layer_stats["spike_rates"][layer]
+            th = layer_stats["thresholds"][layer]
+            all_spike_rates[layer] += sum(sr) / len(sr)
+            all_thresholds[layer] += sum(th) / len(th)
+
+    n = len(loader)
+    stats = {
+        "loss": total_loss / n,
+        "accuracy": correct / total,
+        "spike_rates": {k: v / n for k, v in all_spike_rates.items()},
+        "thresholds": {k: v / n for k, v in all_thresholds.items()},
+    }
+    return stats
+
+
+def get_learned_astrocyte_params(model):
+    """Extract learned astrocyte parameters from model."""
+    params = {}
+    for name in ["astro_lif1", "astro_lif2", "astro_lif3", "astro_lif4"]:
+        module = getattr(model, name)
+        params[name] = {
+            "tau_astro": module.tau_astro.item(),
+            "gain": module.gain.item(),

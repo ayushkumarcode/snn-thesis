@@ -278,3 +278,31 @@ Implementation: Change `self.lif1 = snn.Leaky(beta=0.95)` to use learnable beta 
 - Heterogeneous neurons are studied but rarely for audio
 - Never applied to ESC-50 or environmental sound
 - Combined with our encoding comparison and SpiNNaker deployment = novel
+
+**SpiNNaker Angle:** Each neuron on SpiNNaker already has individual tau_m parameters. Heterogeneous parameters map directly to hardware.
+
+---
+
+### IDEA 7: Stochastic Resonance as Trainable Feature
+
+**Source:**
+- "Noise and Dynamical Synapses as Optimization Tools for SNNs" (Entropy, Feb 2025)
+- "Novel classification algorithms inspired by firing rate stochastic resonance" (Nonlinear Dynamics, 2024)
+- "Robust neural networks using stochastic resonance neurons" (Communications Engineering, 2024)
+
+**Domain:** Physics (Stochastic Resonance) + Information Theory
+
+**Core Idea:**
+Stochastic resonance: adding noise to a nonlinear system can IMPROVE signal detection. This is counterintuitive but well-established in physics. In SNNs, noise boosts near-threshold membrane potentials to generate spikes that encode weak signals.
+
+**KEY INSIGHT:** We ALREADY found stochastic resonance in our SNN (sigma=0.02 gives +0.25pp). But current approaches inject FIXED noise. The radical idea: make the noise amplitude a TRAINABLE PARAMETER per neuron/layer. Let the SNN learn HOW MUCH noise helps each neuron.
+
+**How It Applies to ESC-50:**
+- Environmental sounds are inherently noisy (recorded in real environments)
+- Weak sounds (water_drops, breathing, mouse_click) benefit most from SR
+- Different sound categories have different optimal noise levels
+- Our existing SR experiment (sigma=0.02 = +0.25pp) proves the effect exists
+
+**Expected Impact:**
+- 7-17% improvement for suboptimal parameters (Entropy 2025)
+- Improved robustness to real-world noise

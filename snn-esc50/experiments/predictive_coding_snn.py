@@ -166,3 +166,31 @@ class PredictiveSNN(nn.Module):
             total_error_spikes += (fc2_input.abs() > 0.01).float().sum().item()
 
             # Save for next step prediction
+            spk3_prev = spk3.detach()  # detach to avoid backprop through time for prediction target
+
+            # FC block 2 (output)
+            cur4 = self.fc2(fc2_input)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        # Average MSE prediction error
+        if pred_count > 0:
+            pred_errors_mse = pred_error_sum / pred_count
+        else:
+            pred_errors_mse = torch.zeros(1, device=device)
+
+        spike_stats = {
+            "original_spikes": total_original_spikes,
+            "error_spikes": total_error_spikes,
+        }
+
+        return (torch.stack(spk_out_rec), torch.stack(mem_out_rec),
+                pred_errors_mse, spike_stats)
+
+
+# ============================================================
+# Training / Evaluation
+# ============================================================
+

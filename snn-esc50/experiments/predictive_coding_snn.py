@@ -306,3 +306,31 @@ def train_fold(fold, device, epochs, patience, lambda_pred):
 
     train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
     model = PredictiveSNN().to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                 weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": [],
+               "train_ce": [], "train_pred": [], "test_ce": [], "test_pred": [],
+               "train_orig_spikes": [], "train_err_spikes": [],
+               "test_orig_spikes": [], "test_err_spikes": []}
+
+    best_model_state = None
+    t0 = time.time()
+
+    for epoch in range(1, epochs + 1):
+        tr = train_epoch(model, train_loader, optimizer, device, lambda_pred)
+        te = eval_model(model, test_loader, device, lambda_pred)
+        scheduler.step(te["loss"])
+
+        history["train_loss"].append(tr["loss"])
+        history["train_acc"].append(tr["accuracy"])
+        history["train_ce"].append(tr["ce_loss"])
+        history["train_pred"].append(tr["pred_loss"])
+        history["train_orig_spikes"].append(tr["avg_original_spikes"])
+        history["train_err_spikes"].append(tr["avg_error_spikes"])

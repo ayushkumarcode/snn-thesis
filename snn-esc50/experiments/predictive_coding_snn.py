@@ -194,3 +194,31 @@ class PredictiveSNN(nn.Module):
 # Training / Evaluation
 # ============================================================
 
+def train_epoch(model, loader, optimizer, device, lambda_pred):
+    """Train for one epoch with predictive coding loss."""
+    model.train()
+    total_loss = 0.0
+    total_ce = 0.0
+    total_pred = 0.0
+    correct = 0
+    total = 0
+    total_orig_spikes = 0.0
+    total_err_spikes = 0.0
+
+    ce_criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out, pred_mse, spike_stats = model(spike_input)
+
+        # Per-timestep CE loss (standard snnTorch approach)
+        ce_loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            ce_loss = ce_loss + ce_criterion(mem_out[step], targets)
+
+        # Combined loss
+        pred_loss = lambda_pred * pred_mse
+        loss = ce_loss + pred_loss

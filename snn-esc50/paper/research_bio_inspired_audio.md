@@ -530,3 +530,31 @@ Implement the full BAE pipeline from Pan et al. (2020):
 - Lyon et al. "The CARFAC v2 Cochlear Model in Matlab, NumPy, and JAX" arXiv:2404.17490 (2024)
 - Xu et al. "A FPGA Implementation of the CAR-FAC Cochlear Model" Front. Neurosci. 12:198 (2018)
 - Xu et al. "Event-driven spectrotemporal feature extraction using a silicon cochlea model" Front. Neurosci. 17:1125210 (2023)
+- Zilany, Bruce, Carney. "Updated parameters for a model of the auditory periphery" JASA 135(1) (2014)
+
+### Spike Encoding for Audio
+- Wall et al. "Efficient spike encoding algorithms for neuromorphic speech recognition" ICONS 2022, arXiv:2207.07073
+- Larroza et al. "Spike Encoding for Environmental Sound: A Comparative Benchmark" arXiv:2503.11206 (2025)
+- Pan et al. "An Efficient and Perceptually Motivated Auditory Neural Encoding and Decoding Algorithm for SNNs" Front. Neurosci. 13:1420 (2020)
+- Gutierrez-Galan et al. "Evaluation of Neuromorphic Spike Encoding of Sound Using Information Theory" arXiv:2202.09619 (2022)
+- Forno et al. "Spike encoding techniques for IoT time-varying signals" Front. Neurosci. 16:999029 (2022)
+- Vasilache et al. "A PyTorch-Compatible Spike Encoding Framework" arXiv:2504.11026 (2025)
+
+### SNN Audio Classification
+- Wu et al. "A Spiking Neural Network Framework for Robust Sound Classification" Front. Neurosci. 12:836 (2018)
+- Baek & Lee. "SNN and sound: a comprehensive review" Biomed. Eng. Lett. 14:981-991 (2024)
+- Yu et al. "Robust Environmental Sound Recognition with Sparse Key-point Encoding" IEEE TNNLS (2020), arXiv:1902.01094
+- Song et al. "Spiking-LEAF: A Learnable Auditory front-end for SNNs" ICASSP 2024, arXiv:2309.09469
+
+### Event-Driven and Neuromorphic Audio
+- Yarga & Wood. "Neuromorphic Keyword Spotting with PDM MEMS Microphones" INTERSPEECH 2024, arXiv:2408.05156
+- Haghighatshoar & Muir. "Low-power SNN audio source localisation using Hilbert Transform" Comms Eng. (2025)
+- NeurIPS 2024: "Spike-based Neuromorphic Model for Sound Source Localization" (RF-PLC method)
+- Nature Electronics 2023: "Neuromorphic acoustic sensing using adaptive MEMS cochlea"
+
+### Audio Representations
+- Cochleagram classification: Sharan et al. "Acoustic Event Recognition Using Cochleagram Image" (2019) -- 98.03% vs mel 95.07%
+- Cochleagram noise robustness: MDPI "Analyzing Noise Robustness of Cochleogram and Mel Spectrogram" (2023)
+- Chang et al. "Spectrotemporal Modulation: Efficient Feature for Audio Classification" arXiv:2505.23509 (2025)
+- Auge et al. "Resonate-and-Fire Neurons as Frequency Selective Input Encoders" (2021)
+

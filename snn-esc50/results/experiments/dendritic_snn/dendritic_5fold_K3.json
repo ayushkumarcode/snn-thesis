@@ -1,0 +1,28 @@
+{
+  "fold_1": {
+    "fold": 1,
+    "best_accuracy": 0.025,
+    "best_epoch": 4,
+    "total_epochs": 14,
+    "total_params": 624350,
+    "num_branches": 3,
+    "branch_stats": {
+      "dlif1": {
+        "betas_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "betas_std": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_std": [
+          NaN,
+          NaN,

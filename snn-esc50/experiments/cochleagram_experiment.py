@@ -586,3 +586,31 @@ def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE)
         optimizer, mode="min", factor=0.5, patience=5
     )
 
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {
+        "train_loss": [], "train_acc": [],
+        "test_loss": [], "test_acc": [],
+    }
+
+    start = time.time()
+    for epoch in range(1, num_epochs + 1):
+        train_loss, train_acc = train_fn(model, train_loader, optimizer, device)
+        test_loss, test_acc = eval_fn(model, test_loader, device)
+        scheduler.step(test_loss)
+
+        history["train_loss"].append(train_loss)
+        history["train_acc"].append(train_acc)
+        history["test_loss"].append(test_loss)
+        history["test_acc"].append(test_acc)
+
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            # Save best model
+            save_dir = RESULTS_DIR / "experiments" / "cochleagram"
+            save_dir.mkdir(parents=True, exist_ok=True)
+            torch.save(model.state_dict(),
+                       save_dir / f"best_{model_type}_fold{fold}.pt")

@@ -446,3 +446,31 @@ def main():
     summary = {
         "experiment": "info_bottleneck_snn",
         "beta_ib": args.beta_ib,
+        "folds": folds,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "fold_kl_losses": kls,
+        "mean_kl_loss": mean_kl,
+        "baseline_comparison": {
+            "baseline_direct_5fold": 0.4715,
+            "note": "Baseline SNN (direct encoding, 5-fold): 47.15% +/- 4.50%"
+        }
+    }
+
+    summary_file = out_dir / f"summary_beta{args.beta_ib}.json"
+    with open(summary_file, "w") as f:
+        json.dump(summary, f, indent=2)
+
+    print(f"\n{'='*70}")
+    print(f"  INFORMATION BOTTLENECK SNN -- RESULTS")
+    print(f"{'='*70}")
+    print(f"  beta_ib:           {args.beta_ib}")
+    print(f"  Per-fold accuracy: {[f'{a*100:.2f}%' for a in accs]}")
+    print(f"  Mean accuracy:     {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Mean KL loss:      {mean_kl:.4f}")
+    print(f"  Baseline (direct): 47.15% +/- 4.50%")
+    print(f"\n  Suggested beta_ib sweep: 1e-4, 1e-3, 1e-2")
+    print(f"  Saved to: {summary_file}")
+    print(f"{'='*70}")
+

@@ -222,3 +222,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 
 ### 6c. BNTT: Batch Normalization Through Time
 
+- **Paper:** Panda et al. (Frontiers in Neuroscience, 2021). Code: https://github.com/Intelligent-Computing-Lab-Panda/BNTT-Batch-Normalization-Through-Time
+- **Key idea:** Separate BN parameters for each timestep. Learns time-varying input distribution.
+- **Accuracy:** Enables training deep SNNs with 25-30 timesteps (matches our setup).
+- **Applicability:** HIGH. Direct replacement for our BN layers.
+- **Implementation complexity:** MEDIUM.
+
+---
+
+## 7. Ternary Spikes (Negative Spikes)
+
+- **Paper:** Guo et al., "Ternary Spike: Learning Ternary Spikes for Spiking Neural Networks" (AAAI 2024)
+- **Key idea:** Replace binary {0,1} spikes with ternary {-1, 0, +1}. Dramatically increases information capacity while preserving event-driven and multiplication-free advantages. Learnable ternary threshold.
+- **Accuracy:** CIFAR-10: 95.60% (ResNet19), +0.09pp over prior binary. CIFAR-100: ~+7% over binary with 2 timesteps. Key: ternary representation far exceeds binary in information capacity.
+- **Applicability:** MEDIUM-HIGH. Would need to modify neuron model or use custom implementation. Not natively in snnTorch. Code: https://github.com/yfguo91/Ternary-Spike
+- **Implementation complexity:** MEDIUM. Custom neuron firing function.
+- **Expected result:** +2-5pp (especially beneficial for our information-bottleneck problem)
+
+---
+
+## 8. Residual/Skip Connections
+
+### 8a. SEW ResNet: Spike-Element-Wise Residual Learning
+
+- **Paper:** Fang et al., "Deep Residual Learning in Spiking Neural Networks" (NeurIPS 2021). Code: https://github.com/fangwei123456/Spike-Element-Wise-ResNet
+- **Key idea:** Element-wise addition of spike tensors (not membrane potentials) for skip connections. Enables identity mapping, overcomes vanishing/exploding gradients. First time >100 layer SNN training possible.
+- **Accuracy:** DVS Gesture: 97.92% (vs 90.97% for standard spiking ResNet, +6.95pp).
+- **Applicability:** MEDIUM. Our current architecture has NO skip connections. Adding them would increase model complexity slightly but could significantly help gradient flow through 4 LIF layers.
+- **Implementation complexity:** MEDIUM. Add skip connections between conv blocks.

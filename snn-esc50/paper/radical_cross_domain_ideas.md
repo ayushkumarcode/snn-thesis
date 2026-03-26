@@ -614,3 +614,31 @@ This creates a comprehensive story: "We bring three biologically-inspired mechan
 Every single idea above would be the FIRST application to environmental sound classification with SNNs.
 
 ---
+
+## Sources
+
+### State Space Models + SNNs
+- [P-SpikeSSM: Harnessing Probabilistic Spiking State Space Models](https://arxiv.org/html/2406.02923v1)
+- [SPikE-SSM: A Sparse, Precise, and Efficient Spiking State Space Model](https://arxiv.org/abs/2410.17268)
+- [SpikingSSMs: Learning Long Sequences with Sparse and Parallel Spiking SSMs (AAAI 2025)](https://ojs.aaai.org/index.php/AAAI/article/view/34245)
+
+### Dendritic Computation
+- [Flexible and Scalable Deep Dendritic SNNs (Dec 2024)](https://arxiv.org/html/2412.06355v1)
+- [Temporal dendritic heterogeneity in SNNs (Nature Communications 2024)](https://www.nature.com/articles/s41467-023-44614-z)
+- [Dendrites endow ANNs with accurate, robust learning (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-56297-9)
+- [Spiking world model with multicompartment neurons (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2513319122)
+- [Dendrify framework (Nature Communications 2022)](https://www.nature.com/articles/s41467-022-35747-8)
+
+### Cochlear / Auditory Frontends
+- [Spiking-LEAF: Learnable Auditory front-end (ICASSP 2024)](https://arxiv.org/abs/2309.09469)
+- [SNN Framework for Robust Sound Classification](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2018.00836/full)
+- [Event-driven spectrotemporal feature extraction using silicon cochlea](https://pmc.ncbi.nlm.nih.gov/articles/PMC10151790/)
+- [Benchmarking Audio Signal Representations for CNNs](https://pmc.ncbi.nlm.nih.gov/articles/PMC8156023/)
+
+### Learnable Delays
+- [Learnable axonal delay improves spoken word recognition](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1275944/full)
+- [DelRec: learning delays in recurrent SNNs](https://arxiv.org/html/2509.24852v1)
+- [Learning delays through gradients and structure (2024)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2024.1460309/full)
+
+### Oscillatory Modulation
+- [Rhythm-SNN: Efficient temporal processing with neural oscillations (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-63771-x)

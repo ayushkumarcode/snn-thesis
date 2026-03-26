@@ -82,3 +82,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 
 **Implementation**: `github.com/sciforce/lyon` (Python port from Auditory Toolbox)
 
+**Verdict**: Superseded by CARFAC v2. Use CARFAC instead.
+
+---
+
+## 2. Event-Driven Audio
+
+### 2.1 Dynamic Audio Sensor (DAS) / Silicon Cochlea
+
+**What it is**: Hardware neuromorphic cochlea developed at University of Zurich / ETH Zurich. An asynchronous event-based silicon cochlea that takes stereo audio inputs and outputs a stream of address-events (spikes) across 64 frequency channels (logarithmically distributed, 50 Hz - 20 kHz).
+
+**Key details**:
+- 0.5V, 55 uW power consumption
+- 64 x 2 channels (binaural)
+- Output: Address-Event Representation (AER) -- timestamp + channel + polarity
+- Models basilar membrane frequency selectivity, inner hair cell rectification, auditory nerve spike generation
+- Processes sound asynchronously and in parallel
+
+**Has it been tried with SNNs?**
+- Yes: FEAT-based networks achieve up to 97.7% on TIDIGITS
+- Yes: Sound source localization on SpiNNaker using AER from silicon cochlea
+- Multiple papers on neuromorphic audio processing (Delbruck lab, UZH)
+
+**For ESC-50?** Not practical -- requires hardware. But can be **emulated in software**.
+
+**Software emulation**:
+- CARFAC + LIF threshold = software DAS equivalent
+- The `cochlea` Python package (Rudnicki et al.) provides sound-in, spikes-out models
+- Spikify library (Politecnico di Torino): `pip install spikify` -- converts signals to spike trains with gammatone/Butterworth preprocessing

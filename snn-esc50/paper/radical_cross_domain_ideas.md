@@ -110,3 +110,31 @@ Implementation: Replace `snn.Leaky(beta=0.95)` with `DendriticLeaky(branches=3, 
 - Compatible with surrogate gradient training
 
 **Novelty Assessment:** VERY HIGH
+- No one has applied dendritic spiking neurons to audio classification
+- No one has applied them to environmental sound
+- Multi-timescale temporal processing is a natural fit for audio
+- Story: "Biologically-inspired dendritic computation enables multi-scale temporal processing in audio SNNs"
+
+**SpiNNaker Angle:** Each dendritic branch maps to a separate neuron on SpiNNaker connected to the soma neuron. The multi-core architecture handles this naturally. DenRAM (Nature Communications 2024) already demonstrates neuromorphic dendritic architectures.
+
+---
+
+### IDEA 3: Spiking State Space Model (SpikingSSM / S6)
+
+**Source:** Multiple recent papers:
+- "P-SpikeSSM: Harnessing Probabilistic Spiking SSMs" (arXiv Jun 2024)
+- "SpikingSSMs: Learning Long Sequences with Sparse and Parallel Spiking SSMs" (AAAI 2025)
+- "SPikE-SSM: Sparse, Precise, Efficient Spiking SSM" (arXiv Oct 2024)
+
+**Domain:** NLP/Sequence Modeling (S4/Mamba lineage) adapted for spikes
+
+**Core Idea:**
+State space models (S4, Mamba) have revolutionized sequence modeling. The key insight: LIF neurons are ALREADY a state space model! The membrane potential is a 1D hidden state with linear dynamics + nonlinear output (spike). But LIF uses only a SCALAR hidden state. SSMs use an N-DIMENSIONAL hidden state vector.
+
+SpikingSSM expands the LIF neuron to have a rich multi-dimensional state, enabling:
+- Parallel training (convert recurrence to convolution)
+- Better long-range dependency modeling
+- 90% network sparsity (still spike-based, energy efficient)
+
+**How It Applies to ESC-50:**
+Our spectrograms are 216 time frames long, and we simulate 25 timesteps. Environmental sounds like "train" or "helicopter" have long temporal structure that benefits from better sequence modeling. SpikingSSM would replace our LIF layers with richer state dynamics that can capture these patterns.

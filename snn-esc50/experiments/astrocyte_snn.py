@@ -110,3 +110,31 @@ class AstrocyteLIF(nn.Module):
     def target_rate(self):
         """Target firing rate in (0, 1), constrained by sigmoid."""
         return torch.sigmoid(self._target_rate_logit)
+
+    def init_astrocyte(self, device):
+        """Initialise astrocyte state (EMA of spike rate)."""
+        return torch.zeros(self.size, device=device)
+
+    def forward(self, cur, mem, astro_state):
+        """Forward pass with astrocyte modulation.
+
+        Args:
+            cur: Input current, shape (batch, size, ...).
+            mem: Previous membrane potential (from lif.init_leaky()).
+            astro_state: Previous astrocyte state, shape (size,).
+
+        Returns:
+            spk: Output spikes.
+            mem: Updated membrane potential.
+            astro_state: Updated astrocyte state.
+            effective_thresh: The modulated threshold used this step.
+        """
+        device = cur.device
+
+        # Compute spikes with current (base) threshold
+        spk, mem = self.lif(cur, mem)
+
+        # Compute population spike rate for this timestep
+        # Average over batch and spatial dims, keep channel/neuron dim
+        if spk.dim() == 4:
+            # Conv layer: (batch, channels, H, W) -> mean over batch, H, W

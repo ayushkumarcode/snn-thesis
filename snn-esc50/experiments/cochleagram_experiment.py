@@ -334,3 +334,31 @@ class CochleagramSNN(nn.Module):
         self.dropout = nn.Dropout(0.3)
 
         # FC block 2 (output)
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad,
+                               learn_beta=True, learn_threshold=True)
+
+    def forward(self, x):
+        """Forward pass.
+
+        Args:
+            x: Input of shape (num_steps, batch, 1, 64, time_frames).
+
+        Returns:
+            spk_out: (num_steps, batch, num_classes)
+            mem_out: (num_steps, batch, num_classes)
+        """
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+

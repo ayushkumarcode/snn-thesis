@@ -278,3 +278,31 @@ Ternary spikes carry 1.58 bits per spike vs 1 bit for binary. Better accuracy wi
 **Expected energy reduction:** Not direct energy reduction, but enables accuracy maintenance at lower timesteps
 **SpiNNaker compatibility:** Partial -- sPyNNaker supports inhibitory connections, but implementing ternary spike neurons requires custom logic
 
+---
+
+### 5.2 Temporal-Adaptive Weight Quantization
+
+**Paper:** "Temporal-adaptive Weight Quantization for SNNs," arXiv:2511.17567
+
+Converts weights to 1.58-bit ternary {+1, 0, -1}. Achieves 2.64% higher accuracy than competitors while consuming only 11.38% of the energy and using 59.56% of the model size.
+
+**Expected energy reduction:** ~9x from quantization alone
+**Accuracy trade-off:** Positive (better accuracy than full precision!)
+**Implementation complexity:** High
+**SpiNNaker compatibility:** Good -- ternary weights mean only +/- accumulate operations
+
+---
+
+### 5.3 Membrane Potential Quantization (SpQuant-SNN)
+
+**Paper:** "SpQuant-SNN: Ultra-low Precision Membrane Potential," Frontiers 2024.
+
+4-bit membrane potential quantization achieves 14.85x lower energy-delay-area product, 2.64x higher TOPS/W vs 32-bit baselines.
+
+**Expected energy reduction:** 2-15x depending on metric
+**SpiNNaker compatibility:** Limited -- SpiNNaker uses 32-bit ARM cores for neuron updates; quantization savings are more relevant for custom ASIC/FPGA
+
+---
+
+### 5.4 The Critical Question: Quantized ANNs vs SNNs
+

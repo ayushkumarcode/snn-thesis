@@ -194,3 +194,31 @@ class DelayedLinear(nn.Module):
         delay_frac = delays - delay_floor.float()
 
         # Gather delayed inputs for each output neuron
+        out = torch.zeros(x.shape[0], self.linear.out_features, device=x.device)
+        for j in range(self.linear.out_features):
+            d = delay_floor[j]
+            f = delay_frac[j]
+            delayed_input = (1 - f) * self.buffer[d] + f * self.buffer[min(d + 1, self.max_delay)]
+            out[:, j] = F.linear(delayed_input, self.linear.weight[j:j+1], self.linear.bias[j:j+1]).squeeze()
+
+        return out
+
+    def reset(self):
+        self.buffer = None
+
+
+# ============================================================
+# Cochleagram preprocessing
+# ============================================================
+
+def gammatone_filterbank(sr, n_fft, n_filters=64, fmin=50):
+    """Create gammatone filterbank matrix."""
+    import librosa
+    fmax = sr / 2
+    freqs = np.fft.rfftfreq(n_fft, 1.0 / sr)
+
+    # ERB-spaced center frequencies
+    ear_q = 9.26449
+    min_bw = 24.7
+    cf_low = -(ear_q * min_bw) + np.exp(np.log(fmin + ear_q * min_bw) +
+              np.arange(0, n_filters) * (-np.log(fmax + ear_q * min_bw) +

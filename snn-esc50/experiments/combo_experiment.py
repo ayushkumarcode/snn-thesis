@@ -614,3 +614,31 @@ def run_fold(fold, args, device):
 
     epochs = args.epochs
     best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
+
+    start = time.time()
+    for epoch in range(1, epochs + 1):
+        train_loss, train_acc = train_epoch(model, train_loader, optimizer, device, args, teacher, encoder_fn)
+        test_loss, test_acc = eval_model(model, test_loader, device, encoder_fn)
+        scheduler.step(test_loss)
+
+        history["train_loss"].append(train_loss)
+        history["train_acc"].append(train_acc)
+        history["test_loss"].append(test_loss)
+        history["test_acc"].append(test_acc)
+
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            save_dir = RESULTS_DIR / "experiments" / exp_name
+            save_dir.mkdir(parents=True, exist_ok=True)
+            torch.save(model.state_dict(), save_dir / f"best_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | Test: {test_acc:.4f} | Best: {best_acc:.4f} (ep{best_epoch}) | {time.time()-start:.0f}s")
+

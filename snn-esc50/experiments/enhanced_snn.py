@@ -250,3 +250,31 @@ def main():
 
     device = torch.device(args.device) if args.device else get_device()
     download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    results = []
+
+    for fold in folds:
+        result = run_fold(fold, device, args.epochs)
+        results.append(result)
+
+    if len(results) == 5:
+        accs = [r["best_acc"] for r in results]
+        mean_acc = sum(accs) / len(accs)
+        std_acc = (sum((a - mean_acc)**2 for a in accs) / len(accs))**0.5
+        print(f"\n{'='*60}")
+        print(f"  Enhanced SNN 5-Fold: {mean_acc:.4f} +/- {std_acc:.4f}")
+        print(f"  Per-fold: {[f'{a:.4f}' for a in accs]}")
+        print(f"{'='*60}")
+
+        summary = {
+            "experiment": "enhanced_snn",
+            "fold_accuracies": accs,
+            "mean_accuracy": mean_acc,
+            "std_accuracy": std_acc,
+        }
+        save_dir = RESULTS_DIR / "experiments" / "enhanced_snn"
+        with open(save_dir / "summary.json", "w") as f:
+            json.dump(summary, f, indent=2)
+
+

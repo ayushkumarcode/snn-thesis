@@ -278,3 +278,31 @@ class DendriticSpikingCNN(nn.Module):
             spk1, bmem1 = self.dlif1(cur1, bmem1)
 
             # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, bmem2 = self.dlif2(cur2, bmem2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1
+            cur3 = self.fc1(flat)
+            spk3, bmem3 = self.dlif3(cur3, bmem3)
+
+            # Dropout (only during training)
+            spk3_dropped = self.dropout(spk3)
+
+            # FC block 2 (output)
+            cur4 = self.fc2(spk3_dropped)
+            spk4, bmem4 = self.dlif4(cur4, bmem4)
+
+            spk_out_rec.append(spk4)
+
+            # Compute soma membrane for output recording (for CE loss)
+            # Recompute soma from current branch mems for loss computation
+            gates4 = self.dlif4.gates  # (K, num_classes)
+            soma4 = torch.zeros_like(cur4)
+            for k in range(self.num_branches):
+                gate_k = gates4[k].unsqueeze(0)  # (1, num_classes)
+                soma4 = soma4 + gate_k * bmem4[k]
+            # Add back the reset amount for neurons that just spiked

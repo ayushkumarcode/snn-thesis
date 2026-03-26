@@ -474,3 +474,31 @@ This is optimistic (ignores neuron update costs, memory access), but the order o
 | 3 | Combine #1 and #2 | ~12x energy | Minimal |
 
 ### TIER 2: Implement This Week (Days to Week)
+
+| # | Technique | Expected Gain | Effort |
+|---|-----------|--------------|--------|
+| 4 | Iterative magnitude pruning (IMP) | 3-10x additional | Moderate code |
+| 5 | Logits regularization (L2 on pre-softmax) | 1.3-2x | Trivial code |
+| 6 | Depthwise separable conv layers | 3-8x on conv | Architecture change |
+
+### TIER 3: Advanced (Week+)
+
+| # | Technique | Expected Gain | Effort |
+|---|-----------|--------------|--------|
+| 7 | AOI-SNN with early exit per sample | 2-3x | STR training + cutoff |
+| 8 | QP-SNN style quantization + pruning | 5-10x | Significant |
+| 9 | TTFS coding (0.3 spikes/neuron) | 10-50x | Major architecture change |
+| 10 | SDNN conversion for temporal redundancy | 10-17x | Major change |
+
+---
+
+## 11. SpiNNaker-Specific Considerations
+
+### What Works on SpiNNaker
+- Fewer spikes = fewer multicast packets = less router congestion (your Run 6 problems!)
+- Weight pruning = fewer synaptic connections = less memory, faster per-step processing
+- Reduced T = fewer simulation steps = proportionally less wall-clock time
+- Per-core neuron limits: `set_number_of_neurons_per_core(32)` already handles core splitting
+
+### What Does NOT Work on SpiNNaker
+- Adaptive timestep/early exit: sPyNNaker runs fixed-duration simulations

@@ -110,3 +110,31 @@ Notable paper directly relevant to you:
 
 **What this means for you:** Your 7-encoding comparison on ESC-50 is a direct and significant extension of an ICONS 2022 paper. ICONS reviewers will recognize this lineage and see your work as building on their own community's research. This is a STRONG positioning strategy.
 
+### ICONS 2026 Call for Papers (Your Target)
+
+**Location:** Chicago, IL, August 4-6, 2026
+**Deadline:** April 1 (or April 8, AoE -- sources differ slightly)
+**Format:** 8-page full papers (20-min talks), 4-page short papers (10-min talks)
+
+**Explicit topics of interest:**
+1. Neuromorphic circuits, sensors, and devices
+2. Non-von Neumann computing designs
+3. Event or spike-based systems
+4. Novel brain-inspired architectures
+5. Supervised, unsupervised and self-supervised learning methods
+6. Biologically-inspired algorithms
+7. Continual learning systems
+8. Energy-efficient edge AI
+9. Biomedical applications
+10. **Neuromorphic benchmarks and datasets**
+11. **Domain-specific implementations**
+12. Simulation techniques, programming frameworks, compilers
+
+**Your paper maps to: #3 (spike-based systems), #5 (supervised learning), #8 (energy-efficient edge AI), #10 (neuromorphic benchmarks), #11 (domain-specific: environmental sound)**
+
+**Special emphasis 2026:** "ICONS is welcoming work at the intersection of neuromorphic computing and energy-efficient AI, including ultra-low-power spike-based machine learning and processing, event-driven computation... and other approaches that achieve significant improvements in computational efficiency for edge deployment."
+
+Your temporal truncation result (90% accuracy at T=7 = 72% energy saving) directly addresses this emphasis.
+
+---
+

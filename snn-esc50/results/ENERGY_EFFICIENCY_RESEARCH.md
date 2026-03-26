@@ -110,3 +110,31 @@ The GSC result is particularly relevant -- this is an audio task similar to your
 
 ### 2.4 Backpropagation with Sparsity Regularization (BPSR)
 
+**Paper:** "Backpropagation With Sparsity Regularization for SNN Learning," Frontiers in Neuroscience, 2022.
+
+Combines L2 spiking regularization + L1 weight regularization + synaptic rewiring. The combined loss:
+```
+L = L_CE + lambda_s * ||spikes||_2 + lambda_w * ||weights||_1
+```
+
+Achieves high synaptic AND activation sparsity simultaneously.
+
+**Expected energy reduction:** 2-5x
+**Implementation complexity:** Low-moderate
+**SpiNNaker compatibility:** Full (sparse weights = fewer active synapses)
+
+---
+
+## 3. Temporal Optimization
+
+### 3.1 Reduced Timesteps (YOUR DATA SHOWS T=7 IS 90% OF FULL)
+
+Your temporal ablation (fold 1):
+| T  | Accuracy | % of Full | Energy vs T=25 |
+|----|----------|-----------|----------------|
+| 1  | 7.25%    | 17.9%     | 4% (96% saving)|
+| 3  | 24.75%   | 61.1%     | 12%            |
+| 5  | 33.50%   | 82.7%     | 20%            |
+| 7  | 36.50%   | 90.1%     | 28%            |
+| 10 | 38.25%   | 94.4%     | 40%            |
+| 15 | 40.25%   | 99.4%     | 60%            |

@@ -1,0 +1,28 @@
+{
+  "label": "step3c_fc1_bias0.1",
+  "n_input": 2304,
+  "n_layers": 1,
+  "run_time": 25,
+  "error": null,
+  "input_spikes_delivered": 35073,
+  "input_spikes_expected": 35073,
+  "layers": [
+    {
+      "name": "layer_0",
+      "n": 256,
+      "total_spikes": 38,
+      "neurons_fired": 38,
+      "neurons_fired_ids": [
+        10,
+        22,
+        25,
+        26,
+        33,
+        34,
+        37,
+        46,
+        58,
+        60,
+        67,
+        72,
+        75,

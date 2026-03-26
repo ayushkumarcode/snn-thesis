@@ -138,3 +138,31 @@ class AstrocyteLIF(nn.Module):
         # Average over batch and spatial dims, keep channel/neuron dim
         if spk.dim() == 4:
             # Conv layer: (batch, channels, H, W) -> mean over batch, H, W
+            spike_rate = spk.mean(dim=(0, 2, 3))  # (channels,)
+        elif spk.dim() == 2:
+            # FC layer: (batch, neurons) -> mean over batch
+            spike_rate = spk.mean(dim=0)  # (neurons,)
+        else:
+            spike_rate = spk.mean(dim=0).view(-1)
+
+        # Update astrocyte EMA
+        tau = self.tau_astro.to(device)
+        astro_state = tau * astro_state + (1 - tau) * spike_rate.detach()
+
+        # Compute threshold modulation for NEXT timestep
+        # (modifying this step's output retroactively would break causality)
+        target = self.target_rate.to(device)
+        gain = self.gain.to(device)
+        # threshold_mod > 1 when activity > target (suppress)
+        # threshold_mod < 1 when activity < target (excite)
+        threshold_mod = 1.0 + gain * (astro_state - target)
+        # Clamp to prevent negative or extreme thresholds
+        threshold_mod = threshold_mod.clamp(0.5, 2.0)
+
+        # Apply modulation to membrane potential: effectively scale the
+        # distance-to-threshold. We do this by dividing mem by threshold_mod,
+        # which is equivalent to multiplying the threshold.
+        # Reshape threshold_mod for broadcasting
+        if mem.dim() == 4:
+            mod = threshold_mod.view(1, -1, 1, 1)
+        elif mem.dim() == 2:

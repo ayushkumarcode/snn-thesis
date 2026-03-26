@@ -754,3 +754,31 @@ def main():
 
     if args.device:
         device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))
+    model_types = ["snn", "ann"] if args.model == "both" else [args.model]
+
+    out_dir = RESULTS_DIR / "experiments" / "spiking_leaf"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    all_results = {}
+
+    for model_type in model_types:
+        all_results[model_type] = []
+        for fold in folds:
+            result = train_fold(fold, model_type, device, args.epochs, args.patience, args.seed)
+            all_results[model_type].append(result)
+
+    # Print summary
+    print(f"\n{'='*60}")
+    print(f"  Spiking-LEAF Summary")
+    print(f"{'='*60}")
+
+    summary = {
+        "experiment": "spiking_leaf",
+        "seed": args.seed,

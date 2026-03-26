@@ -82,3 +82,31 @@ class SRLIF(nn.Module):
         super().__init__()
         self.threshold = threshold
 
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+        self.spike_grad = spike_grad
+
+        # Learnable membrane decay
+        if learn_beta:
+            self.beta_raw = nn.Parameter(
+                torch.full(neuron_shape, math.log(beta / (1.0 - beta)))
+            )
+        else:
+            self.register_buffer(
+                "beta_raw",
+                torch.full(neuron_shape, math.log(beta / (1.0 - beta)))
+            )
+
+        # Learnable noise amplitude (stored as log for positivity constraint)
+        # Initialize so that exp(log_sigma) = init_sigma
+        self.log_sigma = nn.Parameter(
+            torch.full(neuron_shape, math.log(max(init_sigma, 1e-8)))
+        )
+
+        self.neuron_shape = neuron_shape
+
+    @property
+    def beta(self):
+        return torch.sigmoid(self.beta_raw)
+
+    @property

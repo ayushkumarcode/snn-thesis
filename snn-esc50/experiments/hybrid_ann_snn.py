@@ -390,3 +390,31 @@ def main():
         description="Hybrid ANN->SNN weight transfer + fine-tuning"
     )
     parser.add_argument("--fold", type=int, default=0,
+                        help="Fold to train (1-5). 0 = all folds (default: 0)")
+    parser.add_argument("--device", default=None, help="Device (default: auto)")
+    parser.add_argument("--epochs", type=int, default=20,
+                        help="Max fine-tuning epochs (default: 20)")
+    parser.add_argument("--patience", type=int, default=PATIENCE,
+                        help=f"Early stopping patience (default: {PATIENCE})")
+    args = parser.parse_args()
+
+    # Device
+    if args.device:
+        device = torch.device(args.device)
+    else:
+        device = get_device()
+    print(f"Device: {device}")
+
+    download_esc50()
+
+    out_dir = RESULTS_DIR / "experiments" / "hybrid_ann_snn"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.fold >= 1:
+        # Single fold
+        train_fold(args.fold, device, args.epochs, args.patience)
+    else:
+        # All 5 folds
+        results = []
+        for fold in range(1, NUM_FOLDS + 1):
+            result = train_fold(fold, device, args.epochs, args.patience)

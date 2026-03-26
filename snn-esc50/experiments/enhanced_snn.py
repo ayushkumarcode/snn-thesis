@@ -194,3 +194,31 @@ def run_fold(fold, device, num_epochs=NUM_EPOCHS):
         scheduler.step(test_loss)
 
         history["train_loss"].append(train_loss)
+        history["train_acc"].append(train_acc)
+        history["test_loss"].append(test_loss)
+        history["test_acc"].append(test_acc)
+
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            save_dir = RESULTS_DIR / "experiments" / "enhanced_snn"
+            save_dir.mkdir(parents=True, exist_ok=True)
+            torch.save(model.state_dict(), save_dir / f"best_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | Test: {test_acc:.4f} | Best: {best_acc:.4f} (ep{best_epoch})")
+
+        if patience_counter >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+
+    # Log final learned betas/thresholds
+    print(f"\n  Learned parameters after training:")
+    for name, param in model.named_parameters():
+        if 'beta' in name or 'threshold' in name:
+            print(f"    {name}: {param.data.item():.4f}")

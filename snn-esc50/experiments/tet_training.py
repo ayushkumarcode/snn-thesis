@@ -334,3 +334,31 @@ def train_fold(fold, device, epochs, patience, lambda_tet, seed):
         else:
             no_improve += 1
 
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            print(
+                f"  Ep {epoch:3d}/{epochs} | "
+                f"tr_acc={tr_acc:.4f} te_acc={te_acc:.4f} best={best_acc:.4f} | "
+                f"CE={te_ce:.4f} Var={te_var:.4f} | {elapsed:.0f}s"
+            )
+
+        if no_improve >= patience:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - start_time
+
+    # Extract learned beta and threshold values
+    learned_params = {}
+    for name, module in model.named_modules():
+        if isinstance(module, snn.Leaky):
+            learned_params[name] = {
+                "beta": module.beta.item() if hasattr(module.beta, "item") else float(module.beta),
+                "threshold": module.threshold.item() if hasattr(module.threshold, "item") else float(module.threshold),
+            }
+
+    result = {
+        "fold": fold,
+        "seed": seed,
+        "lambda_tet": lambda_tet,
+        "best_accuracy": best_acc,

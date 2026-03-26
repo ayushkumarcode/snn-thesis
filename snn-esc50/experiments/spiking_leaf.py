@@ -166,3 +166,31 @@ class GaborFilterbank(nn.Module):
         self.center_freq = nn.Parameter(
             2.0 * math.pi * center_freqs / sample_rate
         )
+
+        # Learnable bandwidth (sigma of Gaussian envelope)
+        # Initialize proportional to center frequency (constant Q)
+        init_sigma = sample_rate / (2.0 * math.pi * center_freqs) * 2.0
+        init_sigma = init_sigma.clamp(min=2.0, max=kernel_size / 2.0)
+        self.log_sigma = nn.Parameter(torch.log(init_sigma))
+
+        # Time axis for kernel computation (centered at 0)
+        t = torch.arange(-(kernel_size // 2), kernel_size // 2 + 1, dtype=torch.float32)
+        self.register_buffer("t", t)
+
+    def _build_kernels(self) -> torch.Tensor:
+        """Build Gabor wavelet kernels from learnable parameters.
+
+        Returns:
+            kernels: Shape (n_filters, 1, kernel_size).
+        """
+        sigma = torch.exp(self.log_sigma).unsqueeze(1)  # (n_filters, 1)
+        omega = self.center_freq.unsqueeze(1)  # (n_filters, 1)
+        t = self.t.unsqueeze(0)  # (1, kernel_size)
+
+        # Gaussian envelope
+        gaussian = torch.exp(-0.5 * (t / sigma) ** 2)
+        # Cosine carrier
+        carrier = torch.cos(omega * t)
+        # Gabor wavelet = Gaussian * cosine
+        kernels = gaussian * carrier
+

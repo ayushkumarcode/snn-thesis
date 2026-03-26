@@ -278,3 +278,31 @@ class PCEN(nn.Module):
         M_list = []
         for t in range(time_frames):
             M = (1.0 - s) * M + s * x[:, :, t:t+1]
+            M_list.append(M)
+        M_full = torch.cat(M_list, dim=2)  # (batch, channels, time_frames)
+
+        # PCEN formula
+        smooth = (x / (self.eps + M_full).pow(alpha) + delta).pow(r) - delta.pow(r)
+        return smooth
+
+
+# ============================================================
+# Spiking-LEAF Frontend
+# ============================================================
+
+class SpikingLEAF(nn.Module):
+    """Learnable auditory frontend: Gabor filterbank + PCEN.
+
+    Converts raw waveform to a (batch, 1, 64, ~216) representation
+    that can be fed into the standard SpikingCNN / ConvANN backbone.
+    """
+
+    def __init__(
+        self,
+        n_filters: int = 64,
+        kernel_size: int = 401,
+        stride: int = HOP_LENGTH,
+    ):
+        super().__init__()
+        self.gabor = GaborFilterbank(
+            n_filters=n_filters, kernel_size=kernel_size, stride=stride,

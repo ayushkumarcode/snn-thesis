@@ -1,0 +1,11 @@
+{
+  "experiment": "enhanced_snn",
+  "fold_accuracies": [
+    0.57,
+    0.585,
+    0.5575,
+    0.5875,
+    0.5275
+  ],
+  "mean_accuracy": 0.5654999999999999,
+  "std_accuracy": 0.021874642854227366

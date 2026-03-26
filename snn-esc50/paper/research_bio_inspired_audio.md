@@ -362,3 +362,31 @@ Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerate
 **For ESC-50**: Environmental sounds have distinct modulation patterns (e.g., helicopter = low temporal modulation, dog bark = impulsive). STM features capture this naturally.
 
 **NOVELTY**: VERY HIGH for SNN application.
+
+---
+
+## 7. Specific to ESC-50: Environmental Sound Characteristics
+
+### 7.1 What Makes Environmental Sounds Special
+
+Environmental sounds differ from speech in key ways:
+- **Temporal structure varies enormously**: impulsive (gunshot, clap) vs. sustained (rain, wind) vs. periodic (helicopter, clock)
+- **Wide frequency range**: from 20 Hz (engine) to 20 kHz (crickets)
+- **Non-harmonic content**: many environmental sounds lack harmonic structure (unlike speech/music)
+- **Onset characteristics are critical**: many sounds identifiable from onset alone (dog bark, clock tick)
+
+### 7.2 Onset-Focused Representations
+
+**Delta encoding** (our current encoding #5) captures onsets naturally -- it fires spikes at signal changes. But it gets only 7.25% because it loses steady-state information.
+
+**Better approach**: Multi-scale temporal representation that captures BOTH onsets AND sustained energy. The BAE pipeline does this with simultaneous + temporal masking.
+
+### 7.3 Multi-Resolution Representations
+
+Recent ANN work (2024) shows that Multi-Frequency Resolution (MFR) features combining three different frequency resolutions outperform single-resolution features for environmental sound classification.
+
+**For SNN**: Use CARFAC (which naturally provides multi-resolution temporal processing via its cascade structure) + multi-threshold encoding (different thresholds capture different temporal scales).
+
+---
+
+## 8. Synthesis: Ranked Recommendations

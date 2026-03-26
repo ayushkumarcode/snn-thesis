@@ -558,3 +558,31 @@ Based on the analysis of impact, feasibility, novelty, and SpiNNaker compatibili
 ### FIRST CHOICE: Dendritic Computation (IDEA 2)
 
 **Why:**
+1. **Highest feasibility** -- only requires modifying the neuron model
+2. **Natural fit for audio** -- multi-timescale temporal processing
+3. **SpiNNaker compatible** -- dendrites map to additional neurons on hardware
+4. **Clean narrative** -- "Bio-inspired dendritic computation enables multi-scale temporal processing for environmental sound"
+5. **Builds on existing work** -- same architecture, same training, just better neurons
+6. **Multiple comparison points** -- DendSN vs LIF, different branch counts, heterogeneous vs homogeneous time constants
+7. **Recent publications** -- Nature Communications 2024, PNAS 2025, arXiv Dec 2024
+
+### SECOND CHOICE: Learnable Synaptic Delays (IDEA 5)
+
+**Why:**
+1. **SpiNNaker NATIVELY supports delays** -- this is the most hardware-natural idea
+2. **Well-demonstrated improvements** -- 13-18% accuracy gain in temporal tasks
+3. **Clean implementation** -- DCLS library exists
+4. **Strong narrative** -- "Biologically-inspired synaptic delays enable temporal pattern matching on neuromorphic hardware"
+5. **Only idea that fully exploits SpiNNaker's capabilities**
+
+### THIRD CHOICE: Heterogeneous Learnable Beta (IDEA 6)
+
+**Why:**
+1. **Easiest to implement** -- ONE LINE of code change
+2. **Risk-free** -- if it doesn't help, it's just an ablation
+3. **Complements other ideas** -- can be combined with dendrites or delays
+4. **Quick win** -- could run all 5 folds in hours
+
+---
+
+## COMBINATION STRATEGY

@@ -194,3 +194,31 @@ class DendriticLIF(nn.Module):
             reset_branch_mems.append(reset)
 
         return spk, reset_branch_mems
+
+
+# ============================================================
+# Dendritic SNN Model
+# ============================================================
+
+class DendriticSpikingCNN(nn.Module):
+    """Convolutional SNN with dendritic LIF neurons for ESC-50.
+
+    Same architecture as SpikingCNN but with DendriticLIF replacing Leaky:
+    Conv2d(1,32) -> BN -> MaxPool(2) -> DendLIF
+    Conv2d(32,64) -> BN -> MaxPool(2) -> DendLIF
+    AvgPool(4,6) -> FC(2304,256) -> DendLIF -> Dropout -> FC(256,50) -> DendLIF
+
+    Args:
+        num_classes: Number of output classes.
+        num_steps: Number of simulation timesteps.
+        num_branches: Number of dendritic branches per neuron.
+        spike_grad: Surrogate gradient function.
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        num_steps: int = NUM_STEPS,
+        num_branches: int = 3,
+        spike_grad=None,
+    ):

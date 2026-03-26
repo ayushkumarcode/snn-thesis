@@ -54,3 +54,31 @@
           "amplitude_std": 0.061167314648628235,
           "amplitude_abs_mean": 0.13232028484344482,
           "frequency_mean": 2.517104148864746,
+          "frequency_std": 1.2712265253067017,
+          "phase_mean": 0.11108975857496262,
+          "phase_std": 0.12823174893856049
+        },
+        "lif4": {
+          "beta_mean": 0.9527468681335449,
+          "beta_std": 0.0037442257162183523,
+          "amplitude_mean": 0.0038088234141469,
+          "amplitude_std": 0.04193274304270744,
+          "amplitude_abs_mean": 0.0333905965089798,
+          "frequency_mean": 2.3177123069763184,
+          "frequency_std": 1.3251641988754272,
+          "phase_mean": 0.0109639260917902,
+          "phase_std": 0.068426214158535
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.635,
+      "best_epoch": 45,
+      "total_epochs": 50,
+      "time_seconds": 301.7,
+      "oscillation_summary": {
+        "lif1": {
+          "beta_mean": 0.936331033706665,
+          "beta_std": 0.013441400602459908,
+          "amplitude_mean": -0.03311116620898247,

@@ -82,3 +82,31 @@ def gammatone_filterbank(sr, n_fft, n_filters=64, f_min=50.0, f_max=None):
     The gammatone frequency response magnitude for a 4th-order filter centred
     at fc with bandwidth b is:
         |H(f)| = 1 / (1 + ((f - fc) / b)^2)^2
+
+    This is the magnitude-squared of the transfer function of the cascade of
+    4 first-order bandpass filters, which is a good approximation of the
+    cochlear filter shape (Patterson et al., 1992).
+
+    Args:
+        sr: Sample rate in Hz.
+        n_fft: FFT size.
+        n_filters: Number of filters (channels). Default 64.
+        f_min: Lowest centre frequency in Hz. Default 50.
+        f_max: Highest centre frequency in Hz. Default sr/2.
+
+    Returns:
+        filterbank: np.ndarray of shape (n_filters, 1 + n_fft // 2).
+    """
+    if f_max is None:
+        f_max = sr / 2.0
+
+    # ERB-rate scale: convert Hz to ERB-rate, space linearly, convert back
+    # ERB-rate(f) = 21.4 * log10(4.37 * f/1000 + 1)  (Glasberg & Moore)
+    erb_lo = 21.4 * np.log10(4.37 * f_min / 1000.0 + 1.0)
+    erb_hi = 21.4 * np.log10(4.37 * f_max / 1000.0 + 1.0)
+    erb_points = np.linspace(erb_lo, erb_hi, n_filters)
+
+    # Convert back to Hz
+    center_freqs = (10.0 ** (erb_points / 21.4) - 1.0) * 1000.0 / 4.37
+
+    # STFT frequency bins

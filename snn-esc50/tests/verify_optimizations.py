@@ -530,3 +530,31 @@ def test_gradient_equivalence():
     (ml_new + 1.0 * vl_new).backward()
 
     tet_grad_diff = (mem_tet1.grad - mem_tet2.grad).abs().max().item()
+    tet_grad_rel = tet_grad_diff / (mem_tet1.grad.abs().max().item() + 1e-10)
+    report("TET gradient max absolute difference",
+           tet_grad_diff < 1e-5,
+           f"max_abs_diff={tet_grad_diff:.2e}")
+    report("TET gradient max relative difference",
+           tet_grad_rel < 1e-5,
+           f"max_rel_diff={tet_grad_rel:.2e}")
+
+
+# ============================================================
+# TEST 8: Edge cases
+# ============================================================
+def test_edge_cases():
+    """Test edge cases that could break the vectorized approach."""
+    print("\n=== TEST 8: Edge cases ===")
+
+    criterion = nn.CrossEntropyLoss()
+
+    # T=1: single timestep
+    T, B, C = 1, 16, 50
+    mem = torch.randn(T, B, C)
+    tgt = torch.randint(0, C, (B,))
+
+    old = criterion(mem[0], tgt)
+    new = F.cross_entropy(
+        mem.reshape(T * B, C),
+        tgt.unsqueeze(0).expand(T, -1).reshape(-1),
+    )

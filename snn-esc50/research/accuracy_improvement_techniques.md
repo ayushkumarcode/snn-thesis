@@ -166,3 +166,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 - **Expected result:** +1-2pp
 
 ### 5b. Learnable Threshold
+
+- **Paper:** Various (Diet-SNN, LTR-LIF, etc.)
+- **Key idea:** Make firing threshold a learnable parameter. snnTorch supports `learn_threshold=True`.
+- **Accuracy:** +1.58% improvement reported.
+- **Applicability:** VERY HIGH. Same as above -- single flag change.
+- **Implementation complexity:** TRIVIALLY LOW.
+  ```python
+  self.lif1 = snn.Leaky(beta=beta, spike_grad=spike_grad, learn_threshold=True, threshold=1.0)
+  ```
+- **Expected result:** +0.5-2pp
+
+### 5c. GLIF: Gated Leaky Integrate-and-Fire
+
+- **Paper:** Yao et al., "GLIF: A Unified Gated Leaky Integrate-and-Fire Neuron for Spiking Neural Networks" (NeurIPS 2022)
+- **Key idea:** Fuse multiple bio-features (membrane leak, input integration, firing threshold, reset) with learnable gating factors. Enlarges representation space beyond standard LIF.
+- **Accuracy:** ResNet-19 on CIFAR-100: 77.35% (+2.92% over Dspike). CIFAR-10: 95.03%.
+- **Applicability:** MEDIUM. Would require replacing snnTorch's Leaky with custom GLIF neuron. Code: https://github.com/Ikarosy/Gated-LIF
+- **Implementation complexity:** MEDIUM. Custom neuron model, but well-documented code available.
+- **Expected result:** +2-4pp
+
+### 5d. Per-Neuron Learnable Parameters
+
+- **Paper:** snnTorch documentation
+- **Key idea:** Instead of per-layer beta, initialize beta as a VECTOR (one per neuron) and set learn_beta=True. Each neuron learns its own optimal decay rate.
+- **Applicability:** VERY HIGH. Supported natively in snnTorch.
+- **Implementation complexity:** LOW.
+  ```python
+  import torch

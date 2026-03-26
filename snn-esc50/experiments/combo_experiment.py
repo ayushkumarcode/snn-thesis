@@ -110,3 +110,31 @@ class RhythmLIF(nn.Module):
         mem = b * mem + x + osc
         spk = self.spike_grad((mem - t) / t)
         mem = mem * (1 - spk.detach())
+        return spk, mem
+
+
+class DendriticLIF(nn.Module):
+    """Multi-compartment dendritic neuron with K branches."""
+
+    def __init__(self, size, K=3, spike_grad=None):
+        super().__init__()
+        if spike_grad is None:
+            spike_grad = surrogate.fast_sigmoid(slope=25)
+        self.spike_grad = spike_grad
+        self.K = K
+        self.size = size
+
+        # Branch betas (fast, medium, slow)
+        init_betas = [0.7, 0.9, 0.99] if K == 3 else [0.7 + 0.3 * i / (K - 1) for i in range(K)]
+        self.branch_beta_raw = nn.ParameterList([
+            nn.Parameter(torch.full((size,), math.log(b / (1 - b)))) for b in init_betas
+        ])
+        # Branch gating weights
+        self.gate_logits = nn.Parameter(torch.zeros(K, size))
+        self.threshold = nn.Parameter(torch.ones(size))
+
+    def init_mem(self, device=None):
+        if device is None:
+            device = self.branch_beta_raw[0].device
+        return [torch.zeros(1, device=device) for _ in range(self.K)]
+

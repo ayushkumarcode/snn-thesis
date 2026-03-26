@@ -894,3 +894,31 @@
     "total_epochs": 11,
     "total_params": 624350,
     "num_branches": 3,
+    "branch_stats": {
+      "dlif1": {
+        "betas_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "betas_std": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_mean": [
+          NaN,
+          NaN,
+          NaN
+        ],
+        "gates_std": [
+          NaN,
+          NaN,
+          NaN
+        ]
+      },
+      "dlif2": {
+        "betas_mean": [
+          0.699569582939148,
+          0.8997727632522583,
+          0.9899745583534241

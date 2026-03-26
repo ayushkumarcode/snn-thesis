@@ -446,3 +446,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 
 ## PRIORITY-RANKED IMPLEMENTATION PLAN
 
+Based on impact vs effort, here is the recommended implementation order:
+
+### Immediate Wins (< 1 hour each, combinable):
+
+| # | Technique | Change | Expected Gain |
+|---|-----------|--------|---------------|
+| 1 | **Learnable beta** | `learn_beta=True` in all 4 LIF neurons | +1-2pp |
+| 2 | **Learnable threshold** | `learn_threshold=True` in all 4 LIF neurons | +0.5-2pp |
+| 3 | **Dropout in SNN** | Add `nn.Dropout(0.3)` before fc2 | +1-3pp |
+| 4 | **Use SRE surrogate** | Already done (spike_rate_escape is best) | +0pp (already optimal) |
+
+### Short-Term Wins (1-4 hours each):
+
+| # | Technique | Change | Expected Gain |
+|---|-----------|--------|---------------|
+| 5 | **TET loss** | Modify loss with gradient re-weighting | +2-5pp |
+| 6 | **Per-neuron learnable beta** | Beta as vector, not scalar | +0.5-1pp |
+| 7 | **Synaptic neuron** | Replace Leaky with Synaptic (2nd order) | +0-2pp |
+| 8 | **Spike L1 regularization** | Add L1 penalty on spike outputs | +0.5-1pp |
+
+### Medium-Term (1-2 days each):
+
+| # | Technique | Change | Expected Gain |
+|---|-----------|--------|---------------|
+| 9 | **Knowledge distillation** | ANN teacher -> SNN student (SAKD) | +3-11pp |
+| 10 | **Hybrid training** | Convert ANN weights, fine-tune as SNN | +5-15pp |
+| 11 | **ANN-to-SNN conversion** | PASCAL or threshold calibration | +8-15pp |
+| 12 | **TEBN / BNTT** | Replace BN with temporal BN | +2-5pp |

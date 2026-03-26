@@ -278,3 +278,31 @@ Covered in Section 1.2. Key addition: `nnAudio2` provides PyTorch GPU-accelerate
 ### 5.3 Level-Crossing / Zero-Crossing Encoding
 
 **What it is**: Emit spikes at zero crossings or level crossings. Related to sigma-delta modulation.
+
+**Recent work**: Robust Zero-Crossing Conjugate (RZCC) method (Haghighatshoar & Muir, 2025) robustly extracts phase from wideband audio. Combined with LIF neurons for low-power processing.
+
+### 5.4 LIF Encoding (Direct Neural Encoding)
+
+**What it is**: Feed audio signal (or each frequency channel) directly into LIF neurons. The neurons naturally threshold, integrate, and produce spike trains. This IS our delta encoding, but applied to cochleagram channels instead of mel spectrogram pixels.
+
+**Key insight from information theory** (Gutierrez-Galan et al., arXiv:2202.09619): LIF encoding achieves the best coding efficiency (~80%) at ~18% spike density. BSA achieves ~71% at ~13%.
+
+### 5.5 PDM Microphone Direct-to-SNN
+
+**What it is**: Pulse Density Modulation (PDM) microphones output a binary stream that is mathematically similar to a spike train. Yarga & Wood (INTERSPEECH 2024) showed you can feed PDM directly into an SNN.
+
+**Result**: 91.54% on Google Speech Commands, surpassing Spiking Speech Commands SOTA.
+
+**For ESC-50**: Would require recording ESC-50 samples through a PDM microphone or simulating PDM conversion. Not directly applicable to existing dataset.
+
+---
+
+## 6. Wild Cards: Temporal and Raw Waveform Approaches
+
+### 6.1 Resonate-and-Fire (RF) Neurons as Input Encoders
+
+**What it is**: RF neurons have oscillatory membrane dynamics that resonate at specific frequencies. When used as an input layer, they perform frequency analysis AND spike encoding simultaneously -- replacing both the spectrogram computation and spike encoding step.
+
+**Key paper**: Auge et al. (2021) "Resonate-and-Fire Neurons as Frequency Selective Input Encoders for SNN"
+- RF neurons perform spectral transform directly on raw analog audio
+- Results comparable to FFT + conventional processing

@@ -306,3 +306,31 @@ class DendriticSpikingCNN(nn.Module):
                 gate_k = gates4[k].unsqueeze(0)  # (1, num_classes)
                 soma4 = soma4 + gate_k * bmem4[k]
             # Add back the reset amount for neurons that just spiked
+            # (bmem4 was already reset, so we need the pre-reset value for mem_out)
+            # Actually, use cur4 integrated: the soma before spike was what triggered it
+            # For CE loss we want the soma potential including the spike contribution
+            # Simple approach: record soma + spk * threshold (undo reset for recording)
+            mem_record = soma4 + spk4 * self.dlif4.threshold
+            mem_out_rec.append(mem_record)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Training and Evaluation
+# ============================================================
+
+def train_epoch(model, loader, optimizer, device, num_steps):
+    """Train for one epoch using per-timestep CE on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        # Direct encoding: repeat input across timesteps
+        spike_inputs = encode_direct(inputs, num_steps=num_steps)

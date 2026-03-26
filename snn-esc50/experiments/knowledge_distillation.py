@@ -474,3 +474,30 @@ def main():
         print(f"  Teacher (ANN) mean:           {mean_teacher:.4f}")
         print(f"    Per-fold: {[f'{a:.4f}' for a in teacher_accs]}")
         print(f"  Student (SNN+KD) mean:        {mean_acc:.4f} +/- {std_acc:.4f}")
+        print(f"    Per-fold: {[f'{a:.4f}' for a in accs]}")
+        print(f"  Baseline SNN (direct, no KD): 0.4715 +/- 0.0450")
+        print(f"  Baseline ANN:                 0.6385 +/- 0.0307")
+        improvement = mean_acc - 0.4715
+        print(f"  Improvement over baseline SNN: {improvement:+.4f}")
+        print(f"{'='*60}")
+
+        summary = {
+            "method": "knowledge_distillation",
+            "temperature": args.temperature,
+            "alpha": args.alpha,
+            "fold_accuracies": accs,
+            "mean_accuracy": float(mean_acc),
+            "std_accuracy": float(std_acc),
+            "teacher_fold_accuracies": teacher_accs,
+            "teacher_mean_accuracy": float(mean_teacher),
+            "baseline_snn_mean": 0.4715,
+            "baseline_ann_mean": 0.6385,
+        }
+
+        with open(out_dir / "summary_5fold.json", "w") as f:
+            json.dump(summary, f, indent=2)
+        print(f"\nSummary saved: {out_dir / 'summary_5fold.json'}")
+
+
+if __name__ == "__main__":
+    main()

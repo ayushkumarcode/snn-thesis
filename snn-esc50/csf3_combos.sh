@@ -138,3 +138,26 @@ run_combo "rhythm_kd_l1_1e3" --rhythm --kd --learn-beta --dropout --sre --l1-reg
 echo ""
 echo "===== TIER 6: KD HYPERPARAMETER SWEEPS ====="
 
+# 25-28. Temperature sweep with Rhythm + KD
+run_combo "rhythm_kd_T1" --rhythm --kd --temperature 1.0 --learn-beta --dropout --sre
+run_combo "rhythm_kd_T5" --rhythm --kd --temperature 5.0 --learn-beta --dropout --sre
+run_combo "rhythm_kd_T10" --rhythm --kd --temperature 10.0 --learn-beta --dropout --sre
+
+# 29-30. Alpha sweep
+run_combo "rhythm_kd_a03" --rhythm --kd --alpha 0.3 --learn-beta --dropout --sre
+run_combo "rhythm_kd_a07" --rhythm --kd --alpha 0.7 --learn-beta --dropout --sre
+
+echo ""
+echo "============================================"
+echo "  ALL COMBO EXPERIMENTS COMPLETE: $(date)"
+echo "============================================"
+
+# Final summary
+echo ""
+echo "=== FINAL RESULTS ==="
+for dir in results/experiments/combo_*/; do
+    summary="$dir/summary.json"
+    if [ -f "$summary" ]; then
+        python -c "import json; d=json.load(open('$summary')); print(f'  {d[\"experiment\"]: <40} {d[\"mean_accuracy\"]*100:.2f}% ± {d[\"std_accuracy\"]*100:.2f}%')"
+    fi
+done | sort -t'%' -k1 -rn

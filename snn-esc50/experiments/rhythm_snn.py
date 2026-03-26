@@ -250,3 +250,31 @@ class RhythmSpikingCNN(nn.Module):
             spk1, mem1 = self.lif1(cur1, mem1, step)
 
             # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))  # (batch, 64, 16, 54)
+            if not mem2_initialized:
+                mem2 = torch.zeros_like(cur2)
+                mem2_initialized = True
+            spk2, mem2 = self.lif2(cur2, mem2, step)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)  # (batch, 64, 4, 9)
+            flat = pooled.view(pooled.size(0), -1)  # (batch, 2304)
+
+            # FC block 1
+            cur3 = self.fc1(flat)  # (batch, 256)
+            spk3, mem3 = self.lif3(cur3, mem3, step)
+            spk3 = self.dropout(spk3)
+
+            # FC block 2 (output)
+            cur4 = self.fc2(spk3)  # (batch, 50)
+            spk4, mem4 = self.lif4(cur4, mem4, step)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Training and evaluation
+# ============================================================

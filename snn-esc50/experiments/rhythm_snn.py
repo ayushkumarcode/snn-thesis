@@ -194,3 +194,31 @@ class RhythmSpikingCNN(nn.Module):
         self.pool2 = nn.MaxPool2d(2)
         self.lif2 = RhythmLIF(
             neuron_shape=(64,), beta=beta, num_steps=num_steps, spike_grad=spike_grad,
+        )
+
+        # Pooling: (64, 16, 54) -> (64, 4, 9) -> flatten -> 2304
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = RhythmLIF(
+            neuron_shape=(256,), beta=beta, num_steps=num_steps, spike_grad=spike_grad,
+        )
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2 (output)
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = RhythmLIF(
+            neuron_shape=(num_classes,), beta=beta, num_steps=num_steps, spike_grad=spike_grad,
+        )
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass over all timesteps.
+
+        Args:
+            x: Input of shape (num_steps, batch, 1, n_mels, time_frames).
+
+        Returns:
+            spk_out: Output spikes, shape (num_steps, batch, num_classes).
+            mem_out: Output membrane potentials, shape (num_steps, batch, num_classes).
+        """

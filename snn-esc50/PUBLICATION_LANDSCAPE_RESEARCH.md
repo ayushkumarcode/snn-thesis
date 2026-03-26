@@ -138,3 +138,31 @@ Your temporal truncation result (90% accuracy at T=7 = 72% energy saving) direct
 
 ---
 
+## 4. SNN + AUDIO: COMPLETE LANDSCAPE (2016-2025)
+
+### Every known SNN audio/sound paper:
+
+| Year | Authors | Dataset | Task | Architecture | Accuracy | Hardware | Key Innovation |
+|------|---------|---------|------|-------------|----------|----------|----------------|
+| 2016 | Dominguez-Morales et al. | 8 pure tones (130-1397 Hz) | Tone classification | FC SNN | >85% at SNR>3dB | **SpiNNaker** | First SNN audio on SpiNNaker |
+| 2018 | Wu et al. | SHD, TIMIT | Sound classification | Conv SNN | 97.5% TIDIGITS | None | SOM + SNN framework |
+| 2018 | Dong et al. | TIDIGITS, TIMIT | Digit recognition | Conv SNN + STDP | 97.5% / 93.8% | None | Unsupervised STDP |
+| 2020 | Martinelli et al. | QUT-NOISE-TIMIT | Speech enhancement | Recurrent SNN | DCF 2.4-26.5% | None | Recurrent architecture |
+| 2021 | Amin | TIDIGITS, RWCP | Speech/sound | Adaptive threshold | 97.64% / 99.50% | None | Adaptive threshold module |
+| 2021 | Bensimon et al. | RWCP | Indoor sounds | SCTN | 98.73% | None | Spiking continuous time neuron |
+| 2022 | Yarga et al. | Speech digits | Encoding comparison | FC SNN | Variable | None | **4-encoding comparison at ICONS** |
+| 2022 | Blouw & Choo | Speech commands | Keyword spotting | Nengo SNN | ~95% | **Loihi** | Real-time deployment |
+| 2023 | Speech2Spikes (Intel) | Google Speech Commands | Keyword spotting | Feed-forward SNN | SOTA (>10pp above prior) | **Loihi** | Real-time audio pipeline, 109x energy |
+| 2023 | ISCAS paper | Multi-class audio | Classification | Spiking CNN | >98% | None | Sparsity + edge focus |
+| 2023 | Xiang et al. | TIDIGITS | Digit recognition | Photonic conv SNN | 93.75% | **Photonic** | Photonic neuromorphic |
+| 2023 | Guo et al. | CIFAR10-AV, UrbanSound8K-AV | Multimodal AV | Spiking Multi-Model Transformer | 98.01% / 96.85% | None | Cross-modal spiking attention |
+| 2024 | Yang & Chang | TIMIT | Speech recognition | RSNN accelerator | PER 22.6% | **Hardware accelerator (71.2 uW)** | Low-power accelerator |
+| 2024 | Liu et al. | Audio+Video | Multimodal | Attention-based cross-modal | 98.95% MNIST-DVS + N-TIDIGITS | None | Cross-modal attention |
+| 2024 | NeurIPS paper | Sound sources | Source localization | Resonate-and-Fire neurons | SOTA localization | None | RF neurons + phase-locking |
+| 2025 | Larroza et al. | **ESC-10** (10 classes) | Encoding comparison | FC SNN | 69% (TAE best) | None | 3 encodings on ESC-10 |
+| 2025 | SATRN (Gao et al.) | UrbanSound8K, FSD50K | Audio tagging | Attention-based SNN | mAP 0.455 (FSD50K) | None | Spiking attention + noise robustness |
+| 2025 | Haghighatshoar & Muir | Circular mic arrays | Localization | Hilbert Transform encoding | MAE 1.08 deg at 10dB | **Ultra-low-power SNN** | Hilbert transform encoding |
+| **2026** | **Ours** | **ESC-50 (50 classes)** | **Classification + encoding + robustness** | **Conv SNN** | **47.15%** | **SpiNNaker** | **7 encodings, gap-collapse, adversarial** |
+
+### Critical Gap Your Paper Fills
+

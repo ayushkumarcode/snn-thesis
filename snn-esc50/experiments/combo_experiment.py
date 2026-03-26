@@ -698,3 +698,31 @@ def main():
     exp_name = get_experiment_name(args)
     folds = [args.fold] if args.fold else list(range(1, 6))
     results = []
+
+    for fold in folds:
+        result = run_fold(fold, args, device)
+        results.append(result)
+
+    if len(results) == 5:
+        accs = [r["best_acc"] for r in results]
+        mean_acc = sum(accs) / len(accs)
+        std_acc = (sum((a - mean_acc)**2 for a in accs) / len(accs))**0.5
+        print(f"\n{'='*60}")
+        print(f"  {exp_name} 5-Fold: {mean_acc:.4f} +/- {std_acc:.4f}")
+        print(f"  Per-fold: {[f'{a:.4f}' for a in accs]}")
+        print(f"  Baseline SNN: 47.15% | ANN: 63.85%")
+        print(f"{'='*60}")
+
+        summary = {
+            "experiment": exp_name,
+            "fold_accuracies": accs,
+            "mean_accuracy": mean_acc,
+            "std_accuracy": std_acc,
+        }
+        save_dir = RESULTS_DIR / "experiments" / exp_name
+        save_dir.mkdir(parents=True, exist_ok=True)
+        with open(save_dir / "summary.json", "w") as f:
+            json.dump(summary, f, indent=2)
+
+
+if __name__ == "__main__":

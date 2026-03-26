@@ -166,3 +166,31 @@ class SRRhythmLIF(nn.Module):
     """LIF neuron combining trainable stochastic resonance AND oscillatory modulation.
 
     Membrane dynamics:
+        v[t] = beta * v[t-1] * (1-spk) + I[t] + sigma * N(0,1) + A * sin(2*pi*f*t/T + phi)
+
+    Combines both noise-based SR and rhythm oscillation for maximum
+    biologically-inspired temporal processing.
+    """
+
+    def __init__(
+        self,
+        neuron_shape: tuple,
+        beta: float = BETA,
+        threshold: float = 1.0,
+        init_sigma: float = 0.02,
+        num_steps: int = NUM_STEPS,
+        spike_grad=None,
+    ):
+        super().__init__()
+        self.threshold = threshold
+        self.num_steps = num_steps
+
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+        self.spike_grad = spike_grad
+
+        # Learnable beta
+        self.beta_raw = nn.Parameter(
+            torch.full(neuron_shape, math.log(beta / (1.0 - beta)))
+        )
+

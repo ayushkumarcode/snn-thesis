@@ -26,3 +26,31 @@ module load cuda/12.6.2 libs/cuda/12.8.1 python/3.13.1
 
 # Activate venv
 source ~/scratch/snn-esc50/.venv/bin/activate
+cd ~/scratch/snn-esc50
+
+export PYTHONUNBUFFERED=1
+
+# 9 experiments x 5 folds = 45 jobs (array 0-44)
+EXPERIMENTS=(
+    "learnable_beta"
+    "enhanced_snn"
+    "tet_training"
+    "rhythm_snn"
+    "hybrid_ann_snn"
+    "knowledge_distillation"
+    "dendritic_snn"
+    "learnable_delays"
+    "cochleagram_experiment"
+)
+
+# Calculate experiment index and fold from SLURM_ARRAY_TASK_ID
+EXP_IDX=$((SLURM_ARRAY_TASK_ID / 5))
+FOLD=$((SLURM_ARRAY_TASK_ID % 5 + 1))
+EXP_NAME="${EXPERIMENTS[$EXP_IDX]}"
+
+mkdir -p logs
+
+echo "============================================"
+echo "  Job: $SLURM_ARRAY_TASK_ID"
+echo "  Experiment: $EXP_NAME | Fold: $FOLD"
+echo "  Device: cuda | Start: $(date)"

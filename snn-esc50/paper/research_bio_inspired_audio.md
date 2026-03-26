@@ -26,3 +26,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 - Output: Neural Activity Pattern (NAP) -- estimated average instantaneous nerve firing rates per frequency channel
 - Typical configurations: 64-71 frequency channels (matching our 64 mel bins)
 - Output format: 2D array [frequency_channels x time_steps], directly analogous to mel spectrogram
+- Nonlinear frequency spacing (logarithmic, like the cochlea)
+- Includes automatic gain control (AGC) -- naturally handles dynamic range
+- Fine temporal structure preserved (instantaneous phase information retained, unlike frame-based STFT)
+
+**v2 (April 2024)**: New Python/NumPy and JAX implementations. Fixes DC distortion anomaly, reduces neural synchrony at high frequencies. JAX version is differentiable -- could be integrated into end-to-end training.
+
+**Implementation**:
+- `pip install carfac` or `github.com/google/carfac` (Python/NumPy, JAX, Matlab, C++)
+- Also: `github.com/vschaik/CARFAC` (Jupyter notebooks for education)
+- Integration with Auditory Modeling Toolbox (AMT)
+
+**Has it been tried with SNNs?**
+- Yes, on FPGA: Xu et al. (2018) implemented 70-section CARFAC + LIF neurons on Cyclone V FPGA
+- Xu et al. (2023, Frontiers in Neuroscience) combined CAR-FAC + LIF + FEAST for TIDIGITS classification
+- CARFAC + LSTM/SVM for speech emotion recognition (2025, Biomimetics)
+- **NOT tried on ESC-50 or any environmental sound dataset with SNN** -- HIGH NOVELTY
+
+**Expected accuracy impact**: Cochleagram consistently outperforms mel spectrogram in CNN studies:
+- Cochleagram 98.03% vs mel 95.07% on acoustic event recognition (Sharan et al.)
+- Better noise robustness: cochleagram features outperform mel at SNR <= 15dB
+- For SNN specifically: cochleagram + spike encoding yields higher accuracy with fewer spikes (Wall et al. 2022)
+
+**Spike compatibility**: EXCELLENT. NAP output directly represents neural firing rates. Natural fit for rate coding. With LIF threshold applied to NAP channels, produces spike trains directly.
+
+**References**:
+- Lyon et al. "The CARFAC v2 Cochlear Model" arXiv:2404.17490 (2024)
+- Xu et al. "A FPGA Implementation of the CAR-FAC Cochlear Model" Front. Neurosci. 12:198 (2018)
+- Xu et al. "Event-driven spectrotemporal feature extraction using a silicon cochlea model" Front. Neurosci. 17:1125210 (2023)

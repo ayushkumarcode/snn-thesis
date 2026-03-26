@@ -166,3 +166,31 @@ Uses Spatial-Temporal Regulariser (STR) during training + softmax confidence cut
 
 **Expected energy reduction:** 2-3x on top of base timestep reduction
 **Implementation complexity:** Moderate (requires STR regularizer in training + confidence monitoring at inference)
+**SpiNNaker compatibility:** Challenging -- SpiNNaker runs fixed-duration simulations. Would need custom early-stopping logic in PyNN. Possible but non-trivial.
+
+---
+
+### 3.3 Regularization + Cutoff (Top-K)
+
+**Paper:** "Optimizing Event-Driven SNN with Regularisation and Cutoff," Frontiers in Neuroscience 2025.
+
+Two techniques: (1) Regularizer of Cosine Similarity (RCS) trains network to be accurate at any timestep, (2) Top-K cutoff terminates inference when confidence gap exceeds threshold beta.
+
+**Results:**
+- CIFAR-10: 1.76-2.76x fewer timesteps
+- Event-based: 1.64-1.95x fewer timesteps
+- Near-zero accuracy loss
+
+**Expected energy reduction:** 2-3x
+**Implementation complexity:** Moderate
+**SpiNNaker compatibility:** Same challenge as AOI-SNN -- requires runtime decision logic
+
+---
+
+### 3.4 Train Directly at Low T
+
+**Paper:** "One Timestep is All You Need" and CPT-SNN (2025).
+
+CPT-SNN incorporates previous timestep outputs as inhibitory currents, achieving 95.44% on CIFAR-10 with average T=2.72.
+
+For your task: Training at T=5 with appropriate regularization should maintain 90%+ of baseline accuracy while reducing energy by 5x.

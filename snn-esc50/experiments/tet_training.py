@@ -138,3 +138,31 @@ class TETSpikingCNN(nn.Module):
 
             cur4 = self.fc2(spk3)
             spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# TET Loss
+# ============================================================
+
+class TETLoss(nn.Module):
+    """Temporal Efficient Training loss (Deng et al., ICLR 2022).
+
+    L_TET = L_CE + lambda_tet * L_var
+
+    where:
+        L_CE  = (1/T) * sum_t CE(mem_t, y)          -- mean per-timestep CE
+        L_var = (1/T) * sum_t (CE(mem_t, y) - L_CE)^2  -- temporal variance penalty
+
+    The variance term encourages the network to produce correct predictions
+    at every timestep, not just accumulate information over time.
+    """
+
+    def __init__(self, lambda_tet: float = 1.0):
+        super().__init__()
+        self.lambda_tet = lambda_tet
+        self.ce = nn.CrossEntropyLoss(reduction="none")

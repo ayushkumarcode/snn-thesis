@@ -26,3 +26,31 @@
       "time_seconds": 257.4,
       "oscillation_summary": {
         "lif1": {
+          "beta_mean": 0.9367728233337402,
+          "beta_std": 0.013530166819691658,
+          "amplitude_mean": -0.03314666822552681,
+          "amplitude_std": 0.19402185082435608,
+          "amplitude_abs_mean": 0.14141687750816345,
+          "frequency_mean": 2.1553874015808105,
+          "frequency_std": 1.2903406620025635,
+          "phase_mean": -0.003354571759700775,
+          "phase_std": 0.26070451736450195
+        },
+        "lif2": {
+          "beta_mean": 0.9410034418106079,
+          "beta_std": 0.00888154562562704,
+          "amplitude_mean": -0.06400997936725616,
+          "amplitude_std": 0.0969315841794014,
+          "amplitude_abs_mean": 0.09977192431688309,
+          "frequency_mean": 2.8766355514526367,
+          "frequency_std": 1.302096962928772,
+          "phase_mean": 0.05905616283416748,
+          "phase_std": 0.1791096031665802
+        },
+        "lif3": {
+          "beta_mean": 0.9466689229011536,
+          "beta_std": 0.004976917523890734,
+          "amplitude_mean": 0.13232028484344482,
+          "amplitude_std": 0.061167314648628235,
+          "amplitude_abs_mean": 0.13232028484344482,
+          "frequency_mean": 2.517104148864746,

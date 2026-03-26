@@ -138,3 +138,31 @@ def test_tet_loss():
     - These are IDENTICAL.
     """
     print("\n=== TEST 2: TET loss ===")
+
+    torch.manual_seed(42)
+    T, B, C = 25, 32, 50
+    mem_out = torch.randn(T, B, C)
+    targets = torch.randint(0, C, (B,))
+    criterion = nn.CrossEntropyLoss()
+    lambda_tet = 1.0
+
+    # OLD method
+    per_step_old = []
+    for step in range(T):
+        per_step_old.append(criterion(mem_out[step], targets))
+    per_step_old = torch.stack(per_step_old)
+    mean_loss_old = per_step_old.mean()
+    var_loss_old = ((per_step_old - mean_loss_old) ** 2).mean()
+    loss_old = mean_loss_old + lambda_tet * var_loss_old
+
+    # NEW method
+    per_sample_new = F.cross_entropy(
+        mem_out.reshape(T * B, C),
+        targets.unsqueeze(0).expand(T, -1).reshape(-1),
+        reduction='none'
+    ).reshape(T, B)
+    per_step_new = per_sample_new.mean(dim=1)
+    mean_loss_new = per_step_new.mean()
+    var_loss_new = ((per_step_new - mean_loss_new) ** 2).mean()
+    loss_new = mean_loss_new + lambda_tet * var_loss_new
+

@@ -726,3 +726,31 @@ def train_fold(fold, model_type, device, epochs, patience, seed):
 
     print(f"  Fold {fold} done in {elapsed:.1f}s | Best: {best_acc:.4f} at epoch {best_epoch}")
     print(f"  Frontend: {frontend_summary}")
+
+    return result
+
+
+# ============================================================
+# Main
+# ============================================================
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Spiking-LEAF: Learnable auditory frontend + SNN/ANN"
+    )
+    parser.add_argument(
+        "--fold", type=int, default=None,
+        help="Specific fold (1-5). If omitted, runs all 5 folds.",
+    )
+    parser.add_argument(
+        "--model", type=str, default="both", choices=["snn", "ann", "both"],
+        help="Which model to train (default: both).",
+    )
+    parser.add_argument("--device", type=str, default=None, help="Device (cuda/mps/cpu)")
+    parser.add_argument("--epochs", type=int, default=NUM_EPOCHS, help=f"Max epochs (default: {NUM_EPOCHS})")
+    parser.add_argument("--patience", type=int, default=PATIENCE, help=f"Early stop patience (default: {PATIENCE})")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    args = parser.parse_args()
+
+    if args.device:
+        device = torch.device(args.device)

@@ -474,3 +474,31 @@ Based on impact vs effort, here is the recommended implementation order:
 | 10 | **Hybrid training** | Convert ANN weights, fine-tune as SNN | +5-15pp |
 | 11 | **ANN-to-SNN conversion** | PASCAL or threshold calibration | +8-15pp |
 | 12 | **TEBN / BNTT** | Replace BN with temporal BN | +2-5pp |
+| 13 | **Skip connections** | SEW-style residual in conv blocks | +2-4pp |
+| 14 | **Ternary spikes** | {-1, 0, +1} instead of {0, 1} | +2-5pp |
+| 15 | **Channel attention** | TCJA/SECA after conv layers | +1-3pp |
+
+### Longer-Term (3+ days):
+
+| # | Technique | Change | Expected Gain |
+|---|-----------|--------|---------------|
+| 16 | **GLIF neuron** | Custom gated LIF implementation | +2-4pp |
+| 17 | **Self-supervised pre-training** | Contrastive learning on audio | +3-5pp |
+| 18 | **Spiking-LEAF front-end** | Replace mel-spectrogram | Uncertain |
+| 19 | **NAS** | Automated architecture search | +2-5pp |
+
+---
+
+## MOST PROMISING SINGLE TECHNIQUE
+
+**Hybrid Training (ANN init + SNN fine-tune)** is the single most impactful technique. Rationale:
+
+1. We ALREADY have a trained ANN at 63.85%
+2. Our ANN and SNN share IDENTICAL architecture (same Conv layers, same FC layers)
+3. Weight transfer is straightforward (just load ANN weights, add LIF neurons)
+4. Fine-tuning with surrogate gradients starting from good weights should converge much faster
+5. Expected accuracy: 55-62% (vs current 47.15%), representing a 8-15pp improvement
+
+The implementation would be:
+1. Load trained ANN weights into SNN (Conv, BN, FC weights are identical)
+2. Initialize LIF membrane potentials to 0

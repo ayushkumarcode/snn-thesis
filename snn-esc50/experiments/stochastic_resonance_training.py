@@ -26,3 +26,31 @@ import math
 import sys
 import time
 from pathlib import Path
+
+import numpy as np
+import torch
+import torch.nn as nn
+from snntorch import surrogate
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from src.config import (
+    NUM_CLASSES, BETA, NUM_STEPS, N_MELS,
+    NUM_EPOCHS, LEARNING_RATE, WEIGHT_DECAY, PATIENCE, BATCH_SIZE,
+    NUM_FOLDS, RESULTS_DIR, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+
+
+# ============================================================
+# SRLIF Neuron: LIF with Trainable Stochastic Resonance
+# ============================================================
+
+class SRLIF(nn.Module):
+    """Leaky Integrate-and-Fire neuron with learnable noise amplitude.
+
+    Membrane dynamics:
+        v[t] = beta * v[t-1] * (1 - spk[t-1]) + I[t] + sigma * N(0,1)
+
+    sigma is an nn.Parameter per neuron (per channel for conv, per unit for FC).

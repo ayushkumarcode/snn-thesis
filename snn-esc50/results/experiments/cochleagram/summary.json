@@ -26,3 +26,31 @@
         0.625,
         0.655,
         0.5625,
+        0.65,
+        0.6
+      ],
+      "mean_accuracy": 0.6185,
+      "std_accuracy": 0.03419064199455753,
+      "per_fold": {
+        "fold1": 0.625,
+        "fold2": 0.655,
+        "fold3": 0.5625,
+        "fold4": 0.65,
+        "fold5": 0.6
+      }
+    }
+  },
+  "mel_baselines": {
+    "snn_mel_direct": {
+      "mean": 0.4715,
+      "std": 0.045
+    },
+    "ann_mel": {
+      "mean": 0.6385,
+      "std": 0.0307
+    }
+  },
+  "folds_run": [
+    1,
+    2,
+    3,

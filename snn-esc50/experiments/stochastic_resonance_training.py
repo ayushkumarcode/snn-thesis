@@ -530,3 +530,31 @@ def train_fold(fold, with_rhythm, device, epochs, patience, seed, init_sigma):
     if with_rhythm:
         model = SRRhythmSNN(init_sigma=init_sigma).to(device)
     else:
+        model = SRSNN(init_sigma=init_sigma).to(device)
+
+    total_params = sum(p.numel() for p in model.parameters())
+    sr_params = 0
+    for pname, p in model.named_parameters():
+        if "log_sigma" in pname or "beta_raw" in pname:
+            sr_params += p.numel()
+        if with_rhythm and any(k in pname for k in ["amplitude", "frequency", "phase"]):
+            sr_params += p.numel()
+    print(f"  Total params: {total_params:,} (SR/rhythm params: {sr_params:,})")
+
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    out_dir = RESULTS_DIR / "experiments" / "stochastic_resonance_training"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    best_acc = 0.0
+    best_epoch = 0
+    no_improve = 0
+    history = {
+        "train_loss": [], "train_acc": [],
+        "test_loss": [], "test_acc": [],
+    }

@@ -278,3 +278,31 @@ def train_fold(fold: int, device, epochs: int, patience: int,
 
     Returns:
         Dict with fold results.
+    """
+    print(f"\n{'='*60}")
+    print(f"  Knowledge Distillation: ANN teacher -> SNN student | Fold {fold}/5")
+    print(f"  Device: {device} | Epochs: {epochs} | T={temperature} | alpha={alpha}")
+    print(f"{'='*60}")
+
+    # Load teacher ANN (frozen)
+    ann_path = RESULTS_DIR / "ann" / "none" / f"best_fold{fold}.pt"
+    if not ann_path.exists():
+        print(f"FATAL: ANN teacher weights not found: {ann_path}")
+        sys.exit(1)
+
+    teacher = ConvANN().to(device)
+    teacher.load_state_dict(
+        torch.load(ann_path, map_location=device, weights_only=True)
+    )
+    teacher.eval()
+    for param in teacher.parameters():
+        param.requires_grad = False
+    print(f"  Loaded teacher ANN: {ann_path}")
+
+    # Create student SNN (random init)
+    student = EnhancedSpikingCNN().to(device)
+    print(f"  Student: EnhancedSpikingCNN (learn_beta, learn_threshold, dropout, sre)")
+
+    # Data
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+

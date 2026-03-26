@@ -474,3 +474,31 @@ SNIB framework compresses spiking representations using an information bottlenec
 ---
 
 ### IDEA 13: Cochleagram (Gammatone Filterbank) Front-End
+
+**Source:** "Benchmarking Audio Signal Representation Techniques" (PMC 2021)
+**Domain:** Auditory Science
+
+**Core Idea:**
+Replace mel spectrogram with cochleagram (gammatone filterbank). Cochleagrams consistently outperform mel spectrograms by ~5% on sound event datasets because gammatone filters better model the cochlea with finer resolution at low frequencies where most environmental sound energy concentrates.
+
+**Implementation Feasibility:** VERY HIGH -- `pip install gammatone`, swap preprocessing
+**Novelty for ESC-50:** MEDIUM -- cochleagrams exist for CNNs but not for SNNs on ESC-50
+
+---
+
+### IDEA 14: Hyperdimensional Computing (HDC) Spike Encoder
+
+**Source:** "HyperEncoding: SNNs with Hyperdimensional Encoding" (GLSVLSI 2025)
+**Domain:** Brain-Inspired Computing (Kanerva's theory)
+
+**Core Idea:**
+Encode audio features as high-dimensional binary vectors (~10,000 dims) using HDC operations (bind, bundle, permute). These vectors are inherently robust to noise and can be processed efficiently by single-layer SNNs. HyperSpike achieves 31.5x more robustness to errors.
+
+**Implementation Feasibility:** MEDIUM
+**Novelty for ESC-50:** VERY HIGH -- completely unexplored territory
+
+---
+
+### IDEA 15: Spike-Driven Attention / Spiking Transformer
+
+**Source:** "Spiking Transformer with Spatial-Temporal Attention" (CVPR 2025)

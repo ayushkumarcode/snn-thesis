@@ -250,3 +250,31 @@ class CochleagramDataset(Dataset):
             filepath = ESC50_AUDIO_DIR / row["filename"]
             coch = wav_to_cochleagram(str(filepath))
             coch = normalise_spectrogram(coch)
+            label = row["target"]
+
+        # Shape: (1, n_filters, time_frames) -- single channel
+        tensor = torch.tensor(coch, dtype=torch.float32).unsqueeze(0)
+
+        if self.transform:
+            tensor = self.transform(tensor)
+
+        return tensor, torch.tensor(label, dtype=torch.long)
+
+
+def get_cochleagram_dataloaders(test_fold, batch_size=BATCH_SIZE):
+    """Create train/test DataLoaders using cochleagram features.
+
+    Args:
+        test_fold: Fold number (1-5) to use as test set.
+        batch_size: Batch size for DataLoaders.
+
+    Returns:
+        (train_loader, test_loader)
+    """
+    train_folds = [f for f in range(1, NUM_FOLDS + 1) if f != test_fold]
+
+    train_dataset = CochleagramDataset(folds=train_folds)
+    test_dataset = CochleagramDataset(folds=[test_fold])
+
+    train_loader = DataLoader(
+        train_dataset, batch_size=batch_size, shuffle=True, num_workers=0,

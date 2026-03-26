@@ -390,3 +390,31 @@ DA-SSDP: keep surrogate gradient forward pass but ADD dopamine-modulated plastic
 - DA-SSDP code is available (GitHub: NeuroSyd/DA-SSDP)
 - Can be added as auxiliary loss term alongside standard training
 - Compatible with existing architecture
+
+**Novelty Assessment:** VERY HIGH
+- Three-factor learning survey is from 2025 -- cutting edge
+- Never applied to audio classification
+- Strong biological motivation narrative
+
+---
+
+### IDEA 10: Astrocyte-Augmented SNN
+
+**Source:**
+- "Astrocyte-gated multi-timescale plasticity for online continual learning" (PMC 2025)
+- "Characterizing Learning in SNNs with Astrocyte-Like Units" (arXiv Mar 2025)
+- "Neuron-astrocyte associative memory" (PNAS 2025)
+
+**Domain:** Neuroscience (Glial Cell Computation)
+
+**Core Idea:**
+The brain isn't just neurons -- astrocytes (glial cells) modulate neural activity on SLOW timescales (seconds to minutes). They integrate neuronal activity, release gliotransmitters that gate synaptic plasticity, and enhance memory capacity. Recent PNAS 2025 paper shows astrocytes enhance associative memory.
+
+Add "astrocyte" modules that:
+1. Monitor average spike rates in local neuron populations
+2. Modulate excitability of those neurons on slow timescales
+3. Gate synaptic updates based on recent history
+
+**How It Applies to ESC-50:**
+- Astrocytes operating on slow timescales (5-second sound clips!) could capture clip-level statistics
+- Gate synaptic plasticity based on sound category difficulty

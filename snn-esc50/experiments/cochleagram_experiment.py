@@ -782,3 +782,24 @@ def main():
 
     summary_file = save_dir / "summary.json"
     with open(summary_file, "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"\nSummary saved to {summary_file}")
+
+    # Print comparison table
+    print(f"\n{'='*60}")
+    print(f"  COCHLEAGRAM vs MEL COMPARISON")
+    print(f"{'='*60}")
+    print(f"{'Feature':<25} {'Model':<8} {'Accuracy':>12}")
+    print(f"{'-'*48}")
+    print(f"{'Mel (baseline)':<25} {'SNN':<8} {'47.15 +/- 4.50':>12}")
+    print(f"{'Mel (baseline)':<25} {'ANN':<8} {'63.85 +/- 3.07':>12}")
+    for mt in model_types:
+        if mt in all_results:
+            m = all_results[mt]["mean_accuracy"] * 100
+            s = all_results[mt]["std_accuracy"] * 100
+            print(f"{'Cochleagram':<25} {mt.upper():<8} {f'{m:.2f} +/- {s:.2f}':>12}")
+    print(f"{'='*60}")
+
+
+if __name__ == "__main__":
+    main()

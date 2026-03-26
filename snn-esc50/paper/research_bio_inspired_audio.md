@@ -110,3 +110,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 - CARFAC + LIF threshold = software DAS equivalent
 - The `cochlea` Python package (Rudnicki et al.) provides sound-in, spikes-out models
 - Spikify library (Politecnico di Torino): `pip install spikify` -- converts signals to spike trains with gammatone/Butterworth preprocessing
+
+### 2.2 Converting Standard Audio to Events
+
+**Multiple approaches exist**:
+
+1. **Send-on-Delta (SOD)**: Emit spike when signal changes by more than threshold. Wall et al. showed SOD on cochleagram achieves 97% on TIDIGITS.
+
+2. **Threshold Adaptive Encoding (TAE)**: Dynamically adjusts threshold based on signal characteristics. Larroza et al. (2025) showed TAE is best for environmental sounds: 69% on ESC-10 (but with simple FC-SNN).
+
+3. **Level-Crossing ADC paradigm**: Neuromorphic level-crossing sampling with decaying threshold. Outperforms fixed-threshold approaches.
+
+4. **Sigma-Delta Modulation**: LIF neurons naturally implement sigma-delta modulation. Yarga & Wood (INTERSPEECH 2024): PDM microphone directly into SNN achieves 91.54% on Google Speech Commands, **bypassing all intermediate processing**.
+
+5. **Hilbert Transform + RZCC**: Haghighatshoar & Muir (Communications Engineering, 2025). Hilbert transform extracts robust phase signal, RZCC encodes as spike events. Achieves 0.29 degree MAE for sound localization, 25-59x more efficient than conventional approaches.
+
+**References**:
+- Wall et al. "Efficient spike encoding algorithms for neuromorphic speech recognition" ICONS 2022
+- Larroza et al. "Spike Encoding for Environmental Sound: A Comparative Benchmark" arXiv:2503.11206
+- Yarga & Wood "Neuromorphic Keyword Spotting with PDM MEMS Microphones" INTERSPEECH 2024
+- Haghighatshoar & Muir "Low-power SNN audio source localisation using Hilbert Transform" Comms Eng. 2025
+
+---
+
+## 3. Auditory Nerve Models
+
+### 3.1 cochlea Python Package (Zilany-Bruce-Carney Model)
+
+**What it is**: Full biophysical inner ear models. Sound in, spike trains out. Implements the Zilany, Bruce, & Carney (2014) auditory periphery model.

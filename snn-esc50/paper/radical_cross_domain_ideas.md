@@ -502,3 +502,31 @@ Encode audio features as high-dimensional binary vectors (~10,000 dims) using HD
 ### IDEA 15: Spike-Driven Attention / Spiking Transformer
 
 **Source:** "Spiking Transformer with Spatial-Temporal Attention" (CVPR 2025)
+**Domain:** NLP/Vision (Transformer) adapted for spikes
+
+**Core Idea:**
+Replace matrix multiplications in attention with spike-driven masking operations. Each spectrogram patch becomes a spiking token. Spike-Driven Self-Attention (SDSA) uses purely binary spike transmission.
+
+**Implementation Feasibility:** MEDIUM-LOW -- significant architecture change
+**Novelty for ESC-50:** HIGH -- spiking transformers for audio are very rare
+
+---
+
+### IDEA 16: ANN-to-SNN Knowledge Distillation
+
+**Source:** Multiple 2024-2025 papers on SNN-specific distillation
+**Domain:** Machine Learning (Knowledge Transfer)
+
+**Core Idea:**
+Train our 63.85% ANN as a TEACHER, then distill its knowledge into the SNN STUDENT. The SNN learns to match the ANN's soft probability distributions, not just hard labels. Recent methods (SAMD, HTA-KL) are specifically designed for the ANN-SNN distributional mismatch.
+
+**Implementation Feasibility:** HIGH -- we already have trained ANNs for each fold
+**Novelty for ESC-50:** MEDIUM -- KD is established, but SNN-specific KD for audio is novel
+
+---
+
+### IDEA 17: Recurrent SNN with E-prop On-Chip Learning on SpiNNaker
+
+**Source:** "E-prop on SpiNNaker 2" (Frontiers 2022)
+**Domain:** Hardware Co-Design + Biologically-Plausible Learning
+

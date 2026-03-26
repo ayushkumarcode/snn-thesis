@@ -446,3 +446,31 @@ def load_ann_weights_into_snn(model, fold, device):
     ann_state = torch.load(ann_path, map_location=device, weights_only=True)
 
     mapping = {
+        "features.0.weight": "conv1.weight", "features.0.bias": "conv1.bias",
+        "features.1.weight": "bn1.weight", "features.1.bias": "bn1.bias",
+        "features.1.running_mean": "bn1.running_mean", "features.1.running_var": "bn1.running_var",
+        "features.1.num_batches_tracked": "bn1.num_batches_tracked",
+        "features.4.weight": "conv2.weight", "features.4.bias": "conv2.bias",
+        "features.5.weight": "bn2.weight", "features.5.bias": "bn2.bias",
+        "features.5.running_mean": "bn2.running_mean", "features.5.running_var": "bn2.running_var",
+        "features.5.num_batches_tracked": "bn2.num_batches_tracked",
+    }
+    # FC layers - handle DelayedLinear wrapper
+    fc1_prefix = "fc1.linear" if hasattr(model.fc1, 'linear') else "fc1"
+    fc2_prefix = "fc2.linear" if hasattr(model.fc2, 'linear') else "fc2"
+    mapping["classifier.0.weight"] = f"{fc1_prefix}.weight"
+    mapping["classifier.0.bias"] = f"{fc1_prefix}.bias"
+    mapping["classifier.3.weight"] = f"{fc2_prefix}.weight"
+    mapping["classifier.3.bias"] = f"{fc2_prefix}.bias"
+
+    snn_state = model.state_dict()
+    transferred = 0
+    for ann_key, snn_key in mapping.items():
+        if ann_key in ann_state and snn_key in snn_state:
+            snn_state[snn_key] = ann_state[ann_key]
+            transferred += 1
+
+    model.load_state_dict(snn_state)
+    print(f"  Transferred {transferred} weight tensors from ANN")
+    return model
+

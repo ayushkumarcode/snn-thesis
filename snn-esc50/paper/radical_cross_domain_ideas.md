@@ -222,3 +222,31 @@ Implementation: Replace `self.fc1 = nn.Linear(2304, 256)` with `self.fc1 = Delay
 - For ESC-50: estimated 3-6 pp improvement
 
 **Implementation Feasibility:** HIGH
+- Dilated Convolutions with Learnable Spacings (DCLS) provides clean implementation
+- Compatible with existing architecture
+- DelRec works with standard LIF neurons
+- SpiNNaker NATIVELY supports synaptic delays (configurable per synapse)
+
+**Novelty Assessment:** HIGH
+- Delays have been studied for speech but NEVER for environmental sound classification
+- SpiNNaker's native delay support makes hardware deployment novel
+- Clean story: "Biologically-inspired synaptic delays improve temporal pattern recognition in audio SNNs"
+
+**SpiNNaker Angle:** EXCELLENT. SpiNNaker has NATIVE synaptic delay support -- each synapse can have a configurable delay. This is a natural hardware feature that we're not exploiting. Training delays on GPU, deploying with delays on SpiNNaker is a clean pipeline.
+
+---
+
+### IDEA 6: Heterogeneous Neuron Parameters (Learnable Beta)
+
+**Source:** Multiple papers:
+- "Neural heterogeneity as a unifying mechanism for efficient learning in SNNs" (Frontiers 2025)
+- "Biologically inspired heterogeneous learning" (National Science Review 2024)
+- "HetSyn: Versatile Timescale Integration via Heterogeneous Synapses" (arXiv 2025)
+
+**Domain:** Neuroscience (Neural Diversity)
+
+**Core Idea:**
+Our SNN uses beta=0.95 for ALL neurons. In the brain, every neuron has different membrane properties. Making beta a LEARNABLE, PER-NEURON parameter allows different neurons to specialize:
+- Fast neurons (beta=0.7): detect transient events (clicks, snaps)
+- Slow neurons (beta=0.99): integrate over long durations (rain, wind)
+- Medium neurons (beta=0.90): standard temporal integration

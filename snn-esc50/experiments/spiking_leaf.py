@@ -670,3 +670,31 @@ def train_fold(fold, model_type, device, epochs, patience, seed):
             no_improve = 0
             torch.save(model.state_dict(), out_dir / f"best_{model_type}_fold{fold}.pt")
         else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start_time
+            print(
+                f"  Ep {epoch:3d}/{epochs} | "
+                f"tr_acc={tr_acc:.4f} te_acc={te_acc:.4f} best={best_acc:.4f} | "
+                f"loss={te_loss:.2f} | {elapsed:.0f}s"
+            )
+
+        if no_improve >= patience:
+            print(f"  Early stopping at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - start_time
+
+    # Extract learned frontend parameters
+    frontend_summary = {}
+    gabor = model.frontend.gabor
+    center_freqs_hz = (gabor.center_freq.detach().cpu() * SAMPLE_RATE / (2 * math.pi)).tolist()
+    sigmas = torch.exp(gabor.log_sigma).detach().cpu().tolist()
+    frontend_summary["gabor"] = {
+        "center_freq_hz_min": min(center_freqs_hz),
+        "center_freq_hz_max": max(center_freqs_hz),
+        "center_freq_hz_mean": float(np.mean(center_freqs_hz)),
+        "sigma_min": min(sigmas),
+        "sigma_max": max(sigmas),
+        "sigma_mean": float(np.mean(sigmas)),

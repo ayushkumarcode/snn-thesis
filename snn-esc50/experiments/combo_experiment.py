@@ -390,3 +390,31 @@ class ComboSpikingCNN(nn.Module):
 
 
 # ============================================================
+# Training functions
+# ============================================================
+
+def compute_loss(mem_out, targets, args, spk_total=0, teacher_logits=None):
+    """Compute loss based on selected techniques."""
+    criterion = nn.CrossEntropyLoss()
+    T_steps = mem_out.shape[0]
+    device = mem_out.device
+
+    if args.tet:
+        # TET loss: mean CE + lambda * temporal variance
+        per_step_losses = []
+        for step in range(T_steps):
+            per_step_losses.append(criterion(mem_out[step], targets))
+        per_step = torch.stack(per_step_losses)
+        mean_loss = per_step.mean()
+        var_loss = ((per_step - mean_loss) ** 2).mean()
+        loss = mean_loss + args.lambda_tet * var_loss
+    else:
+        # Standard per-timestep CE
+        loss = torch.zeros(1, device=device)
+        for step in range(T_steps):
+            loss += criterion(mem_out[step], targets)
+        loss = loss / T_steps
+
+    # Knowledge distillation
+    if args.kd and teacher_logits is not None:
+        student_logits = mem_out.sum(dim=0)

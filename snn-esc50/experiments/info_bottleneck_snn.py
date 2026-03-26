@@ -334,3 +334,31 @@ def train_fold(fold, device, epochs, patience, beta_ib):
         history["train_logvar"].append(tr["avg_logvar_mean"])
         history["test_loss"].append(te["loss"])
         history["test_acc"].append(te["accuracy"])
+        history["test_ce"].append(te["ce_loss"])
+        history["test_kl"].append(te["kl_loss"])
+        history["test_mu_norm"].append(te["avg_mu_norm"])
+        history["test_logvar"].append(te["avg_logvar_mean"])
+
+        if te["accuracy"] > best_acc:
+            best_acc = te["accuracy"]
+            best_epoch = epoch
+            no_improve = 0
+            best_model_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+        else:
+            no_improve += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - t0
+            print(f"  Ep {epoch:3d}/{epochs} | "
+                  f"tr={tr['accuracy']:.3f} te={te['accuracy']:.3f} "
+                  f"best={best_acc:.3f} | "
+                  f"CE={te['ce_loss']:.2f} KL={te['kl_loss']:.4f} | "
+                  f"|mu|={te['avg_mu_norm']:.3f} logvar={te['avg_logvar_mean']:.3f} | "
+                  f"{elapsed:.0f}s")
+
+        if no_improve >= patience:
+            print(f"  Early stop at epoch {epoch}, best={best_acc:.4f}")
+            break
+
+    elapsed = time.time() - t0
+

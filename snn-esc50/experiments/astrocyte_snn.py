@@ -530,3 +530,31 @@ def main():
 
     # Aggregate learned params
     agg_params = {}
+    for layer in ["astro_lif1", "astro_lif2", "astro_lif3", "astro_lif4"]:
+        taus = [r["learned_astrocyte_params"][layer]["tau_astro"] for r in all_results]
+        gains = [r["learned_astrocyte_params"][layer]["gain"] for r in all_results]
+        targets = [r["learned_astrocyte_params"][layer]["target_rate"] for r in all_results]
+        agg_params[layer] = {
+            "mean_tau": sum(taus) / len(taus),
+            "mean_gain": sum(gains) / len(gains),
+            "mean_target": sum(targets) / len(targets),
+        }
+
+    summary = {
+        "experiment": "astrocyte_snn",
+        "folds": folds,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "aggregated_astrocyte_params": agg_params,
+        "baseline_comparison": {
+            "baseline_direct_5fold": 0.4715,
+            "note": "Baseline SNN (direct encoding, 5-fold): 47.15% +/- 4.50%"
+        }
+    }
+
+    summary_file = out_dir / "summary.json"
+    with open(summary_file, "w") as f:
+        json.dump(summary, f, indent=2)
+
+    print(f"\n{'='*70}")

@@ -1426,3 +1426,10 @@
       2.0,
       15.75
     ],
+    "num_branches": 3,
+    "encoding": "direct",
+    "num_steps": 25,
+    "max_epochs": 50,
+    "patience": 10,
+    "baseline_snn_accuracy": 0.4715
+  }

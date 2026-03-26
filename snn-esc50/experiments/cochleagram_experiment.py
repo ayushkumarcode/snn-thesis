@@ -138,3 +138,31 @@ def wav_to_cochleagram(filepath, sr=SAMPLE_RATE, duration=DURATION,
                        n_fft=N_FFT, hop_length=HOP_LENGTH,
                        n_filters=64, f_min=50.0, f_max=None):
     """Load audio and compute gammatone cochleagram.
+
+    Pipeline:
+      1. Load and pad audio to exactly `duration` seconds
+      2. Compute STFT magnitude
+      3. Apply gammatone filterbank (matrix multiply)
+      4. Convert to log scale (dB)
+      5. Output shape: (n_filters, time_frames)
+
+    The time_frames dimension matches mel spectrogram exactly because
+    we use the same n_fft and hop_length.
+
+    Args:
+        filepath: Path to WAV file.
+        sr: Sample rate.
+        duration: Audio duration in seconds.
+        n_fft: FFT window size.
+        hop_length: STFT hop length.
+        n_filters: Number of gammatone channels.
+        f_min: Lowest centre frequency.
+        f_max: Highest centre frequency (default: Nyquist).
+
+    Returns:
+        cochleagram: np.ndarray of shape (n_filters, time_frames).
+    """
+    # Load audio
+    y, _ = librosa.load(filepath, sr=sr, duration=duration)
+
+    # Pad to exactly duration seconds if shorter

@@ -166,3 +166,31 @@ class ConvertedSNN(nn.Module):
                               learn_beta=False, learn_threshold=False)
 
         # Pooling
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        thresh3 = self.thresholds.get("fc1", 1.0)
+        self.if3 = snn.Leaky(beta=1.0, threshold=thresh3, spike_grad=spike_grad,
+                              learn_beta=False, learn_threshold=False)
+
+        # FC block 2 (output) -- no spiking, accumulate membrane potential
+        self.fc2 = nn.Linear(256, num_classes)
+
+    def forward(
+        self, x: torch.Tensor, num_steps: int = 25,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass over num_steps timesteps.
+
+        The input spectrogram is presented identically at each timestep
+        (direct/repeat encoding). The IF neurons integrate without leak.
+
+        Args:
+            x: Spectrogram of shape (batch, 1, n_mels, time_frames).
+            num_steps: Number of simulation timesteps.
+
+        Returns:
+            spk_out: Output spikes from IF3, shape (num_steps, batch, 256).
+            mem_out: Accumulated membrane potential at output layer,
+                     shape (num_steps, batch, num_classes).
+        """

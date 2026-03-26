@@ -82,3 +82,31 @@ YOUR best "wow" numbers:
 
 **Award-winning papers:**
 - "Scalable Event-by-event Processing of Neuromorphic Sensory Signals With Deep State-Space Models" (Schone et al.)
+- "IM-SNN: Memory-Efficient Spiking Neural Network with Low-Precision Membrane Potentials and Weights" (Hassan et al.)
+- "Programmable Synapses and Dendritic Circuits for Superconducting Optoelectronic Neuromorphic Computing" (Primavera et al.)
+
+**Topics covered (~80+ presentations over 4 days):**
+- Lightning Talks: Algorithms (visualization, dendritic processing, sensor filtering, IP protection)
+- Lightning Talks: Hardware (analog neurons, CMOS memory, superconducting networks, memristors)
+- Lightning Talks: Applications (gaming, audio processing, materials science, gait analysis, RF fingerprinting, swarm robotics)
+- Full Talks: Vision processing, hardware mapping, spiking neuron training
+- 23+ poster presentations
+
+**Key insight:** ICONS 2024 accepted audio processing papers as lightning talks in the Applications session. Your paper combining SNN audio + SpiNNaker hardware + encoding analysis covers THREE of their tracks (algorithms, hardware, applications).
+
+### ICONS 2023 (Santa Fe, NM, Aug 1-3, 2023)
+
+**Best Paper:** "Dendritic Learning in Superconducting Optoelectronic Networks" (O'Loughlin, Primavera, Shainline)
+
+**Published in:** ACM proceedings (https://dl.acm.org/doi/proceedings/10.1145/3589737)
+
+Papers included continual learning for robots, prosthetic vision with event-based sensors, dictionary learning with accumulator neurons. Acceptance rate: 59% (13/22 in 2018 data).
+
+### ICONS 2022 (Knoxville, TN, Jul 27-29, 2022)
+
+Notable paper directly relevant to you:
+- **"Evaluating Encoding and Decoding Approaches for Spiking Neuromorphic Systems"** (published at ICONS 2022)
+- This is the Yarga et al. paper you already cite. They compared 4 encodings on speech digits.
+
+**What this means for you:** Your 7-encoding comparison on ESC-50 is a direct and significant extension of an ICONS 2022 paper. ICONS reviewers will recognize this lineage and see your work as building on their own community's research. This is a STRONG positioning strategy.
+

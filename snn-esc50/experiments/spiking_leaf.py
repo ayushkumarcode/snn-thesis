@@ -474,3 +474,31 @@ class SpikingLEAF_ANN(nn.Module):
             x: Raw waveform, shape (batch, 1, waveform_length).
 
         Returns:
+            logits: (batch, num_classes)
+        """
+        features = self.frontend(x)
+
+        # Truncate/pad time dimension
+        T_expected = 216
+        T_actual = features.shape[3]
+        if T_actual > T_expected:
+            features = features[:, :, :, :T_expected]
+        elif T_actual < T_expected:
+            pad_size = T_expected - T_actual
+            features = F.pad(features, (0, pad_size))
+
+        h = self.features(features)
+        flat = h.view(h.size(0), -1)
+        return self.classifier(flat)
+
+
+# ============================================================
+# Training and Evaluation
+# ============================================================
+
+def train_snn_epoch(model, loader, optimizer, device):
+    """Train one SNN epoch with per-timestep CE on membrane potentials."""
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0

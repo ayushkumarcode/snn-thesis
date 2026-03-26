@@ -388,9 +388,9 @@ class ComboSpikingCNN(nn.Module):
 
             spk_rec.append(spk4)
             mem_rec.append(mem4_scalar)
-            total_spikes += spk4.sum().item()
+            total_spikes = total_spikes + spk4.sum()
 
-        return torch.stack(spk_rec), torch.stack(mem_rec), total_spikes
+        return torch.stack(spk_rec), torch.stack(mem_rec), total_spikes.item() if isinstance(total_spikes, torch.Tensor) else total_spikes
 
 
 # ============================================================
@@ -403,21 +403,24 @@ def compute_loss(mem_out, targets, args, spk_total=0, teacher_logits=None):
     T_steps = mem_out.shape[0]
     device = mem_out.device
 
+    T, B, C = mem_out.shape
     if args.tet:
-        # TET loss: mean CE + lambda * temporal variance
-        per_step_losses = []
-        for step in range(T_steps):
-            per_step_losses.append(criterion(mem_out[step], targets))
-        per_step = torch.stack(per_step_losses)
+        # TET loss: mean CE + lambda * temporal variance (vectorized)
+        per_sample = F.cross_entropy(
+            mem_out.reshape(T * B, C),
+            targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            reduction='none'
+        ).reshape(T, B)
+        per_step = per_sample.mean(dim=1)  # (T,)
         mean_loss = per_step.mean()
         var_loss = ((per_step - mean_loss) ** 2).mean()
         loss = mean_loss + args.lambda_tet * var_loss
     else:
-        # Standard per-timestep CE
-        loss = torch.zeros(1, device=device)
-        for step in range(T_steps):
-            loss += criterion(mem_out[step], targets)
-        loss = loss / T_steps
+        # Vectorized per-timestep CE
+        loss = F.cross_entropy(
+            mem_out.reshape(T * B, C),
+            targets.unsqueeze(0).expand(T, -1).reshape(-1),
+        )
 
     # Knowledge distillation
     if args.kd and teacher_logits is not None:
@@ -484,20 +487,22 @@ def train_epoch(model, loader, optimizer, device, args, teacher=None, encoder_fn
     total_loss = 0.0
     correct = 0
     total = 0
+    use_amp = device.type == 'cuda'
 
     for data, targets in loader:
         data, targets = data.to(device), targets.to(device)
         spk_input = encoder_fn(data).to(device)
 
-        optimizer.zero_grad()
+        optimizer.zero_grad(set_to_none=True)
 
         teacher_logits = None
         if args.kd and teacher is not None:
             with torch.no_grad():
                 teacher_logits = teacher(data)
 
-        spk_out, mem_out, spk_total = model(spk_input)
-        loss = compute_loss(mem_out, targets, args, spk_total, teacher_logits)
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            spk_out, mem_out, spk_total = model(spk_input)
+            loss = compute_loss(mem_out, targets, args, spk_total, teacher_logits)
 
         loss.backward()
         optimizer.step()
@@ -516,16 +521,19 @@ def eval_model(model, loader, device, encoder_fn):
     total_loss = 0.0
     correct = 0
     total = 0
-    criterion = nn.CrossEntropyLoss()
+    use_amp = device.type == 'cuda'
 
     for data, targets in loader:
         data, targets = data.to(device), targets.to(device)
         spk_input = encoder_fn(data).to(device)
-        spk_out, mem_out, _ = model(spk_input)
 
-        loss = torch.zeros(1, device=device)
-        for step in range(mem_out.shape[0]):
-            loss += criterion(mem_out[step], targets)
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            spk_out, mem_out, _ = model(spk_input)
+            T, B, C = mem_out.shape
+            loss = F.cross_entropy(
+                mem_out.reshape(T * B, C),
+                targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            )
         total_loss += loss.item()
 
         predicted = mem_out.sum(dim=0).argmax(dim=1)

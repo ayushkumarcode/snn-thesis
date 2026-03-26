@@ -306,3 +306,31 @@ Stochastic resonance: adding noise to a nonlinear system can IMPROVE signal dete
 **Expected Impact:**
 - 7-17% improvement for suboptimal parameters (Entropy 2025)
 - Improved robustness to real-world noise
+- For ESC-50: estimated 1-3 pp improvement, but the STORY is powerful
+- Combined with our existing noise robustness results = comprehensive narrative
+
+**Implementation Feasibility:** VERY HIGH
+- Add learnable noise parameter: `noise = nn.Parameter(torch.tensor(0.02))`
+- In forward: `mem = mem + noise * torch.randn_like(mem)`
+- ~5 lines of code
+- Compatible with all training infrastructure
+
+**Novelty Assessment:** HIGH
+- Trainable stochastic resonance is very novel
+- Never applied to audio SNNs
+- Connects physics (SR), neuroscience (biological noise), and ML
+- We already have experimental evidence it works (our SR experiment)
+
+**SpiNNaker Angle:** SpiNNaker has inherent hardware noise (quantization, timing jitter) that acts as a natural SR source. We could quantify this: "SpiNNaker's hardware noise acts as beneficial stochastic resonance."
+
+---
+
+### IDEA 8: Predictive Coding SNN
+
+**Source:**
+- "Predictive Coding Light" (Nature Communications 2025)
+- "Predictive coding with spiking neural networks: A survey" (Neural Networks 2025)
+
+**Domain:** Neuroscience (Predictive Coding / Free Energy Principle)
+
+**Core Idea:**

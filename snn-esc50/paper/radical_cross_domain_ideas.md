@@ -698,3 +698,15 @@ Every single idea above would be the FIRST application to environmental sound cl
 - [LaSNN: Layer-wise ANN-to-SNN distillation (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225020235)
 
 ### Self-Supervised Learning
+- [Contrastive signal-dependent plasticity (Science Advances 2024)](https://www.science.org/doi/10.1126/sciadv.adn6076)
+
+### Criticality
+- [Mean-field approach to criticality in SNNs for reservoir computing (Sci Reports 2025)](https://www.nature.com/articles/s41598-025-18004-y)
+
+### Lateral Inhibition
+- [Inhibition SNN: various lateral inhibition learning (2024)](https://link.springer.com/article/10.1007/s42452-024-06332-z)
+- [SpiLiFormer: Spiking Transformers with Lateral Inhibition (ICCV 2025)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1652274/full)
+
+### Adaptive Threshold
+- [AT-LIF: Adaptive Threshold Leaky Integrate-and-Fire (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0950705125006215)
+- [Learning Neuron Dynamics within Deep SNNs (2025)](https://arxiv.org/pdf/2510.07341)

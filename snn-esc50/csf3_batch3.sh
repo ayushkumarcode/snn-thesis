@@ -26,3 +26,31 @@ echo "============================================"
 # 1. ANN-to-SNN conversion (no training, just inference — fast)
 echo ""; echo ">>>>>>>>>> ann_to_snn_conversion ($(date)) <<<<<<<<<<"
 python -m experiments.ann_to_snn_conversion --device cuda 2>&1
+echo ">>>>>>>>>> ann_to_snn_conversion DONE ($(date)) <<<<<<<<<<"
+
+# 2. Stochastic Resonance (standalone)
+echo ""; echo ">>>>>>>>>> stochastic_resonance_training ($(date)) <<<<<<<<<<"
+python -m experiments.stochastic_resonance_training --device cuda 2>&1
+echo ">>>>>>>>>> stochastic_resonance_training DONE ($(date)) <<<<<<<<<<"
+
+# 3. Stochastic Resonance + Rhythm (combined)
+echo ""; echo ">>>>>>>>>> sr_rhythm ($(date)) <<<<<<<<<<"
+python -m experiments.stochastic_resonance_training --with-rhythm --device cuda 2>&1
+echo ">>>>>>>>>> sr_rhythm DONE ($(date)) <<<<<<<<<<"
+
+# 4. Predictive Coding SNN
+echo ""; echo ">>>>>>>>>> predictive_coding_snn ($(date)) <<<<<<<<<<"
+python -m experiments.predictive_coding_snn --device cuda 2>&1
+echo ">>>>>>>>>> predictive_coding_snn DONE ($(date)) <<<<<<<<<<"
+
+# 5. Astrocyte SNN
+echo ""; echo ">>>>>>>>>> astrocyte_snn ($(date)) <<<<<<<<<<"
+python -m experiments.astrocyte_snn --device cuda 2>&1
+echo ">>>>>>>>>> astrocyte_snn DONE ($(date)) <<<<<<<<<<"
+
+# 6. Predictive Coding + Rhythm combo (modify pred coding to use rhythm neurons)
+# Run via combo_experiment with predictive coding flag if available, else skip
+
+echo ""
+echo "============================================"
+echo "  BATCH 3a COMPLETE: $(date)"

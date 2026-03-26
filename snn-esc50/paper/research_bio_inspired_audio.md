@@ -166,3 +166,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 ### 3.2 BAE (Biologically plausible Auditory Encoding) -- Pan et al. 2020
 
 **What it is**: A complete bio-inspired encoding pipeline that emulates the human auditory system: cochlear filter bank -> inner hair cells -> auditory masking -> spike encoding.
+
+**Key details (critical paper)**:
+- Pipeline: CQT-based cochlear filtering (20 channels, 200-8000 Hz) -> log energy -> simultaneous masking (frequency domain) -> temporal masking (exponential decay) -> threshold coding (15 thresholds per channel) -> sparse spike output
+- **Result on RWCP environmental sounds: 99.5% accuracy with only 245 spikes/sec**
+- Compare: population coding gets 99.0% with 4,627 spikes/sec (19x more spikes)
+- Compare: latency coding gets 10.1% with 1,598 spikes/sec
+- Auditory masking removes ~50% of spikes while maintaining accuracy
+- Released Spike-TIDIGITS and Spike-TIMIT datasets
+
+**Has it been tried with SNNs?** YES, that is its primary purpose. Validated on RWCP (environmental sounds) and TIDIGITS.
+
+**Has it been tried on ESC-50?** NO.
+
+**Expected accuracy impact**: HIGH. 99.5% on RWCP environmental sounds is remarkable. The 20-channel CQT cochlear bank + masking + threshold encoding is purpose-built for environmental sounds.
+
+**Implementation complexity**: MODERATE. The pipeline is well-defined:
+1. CQT cochlear filtering (20 channels) -- can use librosa or custom
+2. Log energy computation per frame
+3. Psychoacoustic masking (MPEG-1 Layer III model, well-documented)
+4. Temporal masking (exponential decay)
+5. Threshold crossing encoding (15 levels)
+
+**NOVELTY for ESC-50**: VERY HIGH. BAE on ESC-50 with convolutional SNN = completely novel.
+
+**Reference**: Pan et al. "An Efficient and Perceptually Motivated Auditory Neural Encoding and Decoding Algorithm for Spiking Neural Networks" Front. Neurosci. 13:1420 (2020)
+
+---
+

@@ -586,3 +586,31 @@ def eval_ann(model, loader, device):
     model.eval()
     total_loss = 0.0
     correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        logits = model(inputs)
+        loss = criterion(logits, labels)
+        total_loss += loss.item()
+
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+def train_fold(fold, model_type, device, epochs, patience, seed):
+    """Train a single fold for a given model type ('snn' or 'ann').
+
+    Returns:
+        dict with fold results.
+    """
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+

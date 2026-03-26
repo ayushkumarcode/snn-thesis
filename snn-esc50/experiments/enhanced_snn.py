@@ -166,3 +166,31 @@ def eval_model(model, loader, device):
 def run_fold(fold, device, num_epochs=NUM_EPOCHS):
     print(f"\n{'='*60}")
     print(f"  Enhanced SNN | Fold {fold}/5 | Device: {device}")
+    print(f"  Changes: dropout=0.3, learn_beta, learn_threshold, SRE")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+    model = EnhancedSpikingCNN().to(device)
+
+    # Log learned parameters
+    for name, param in model.named_parameters():
+        if 'beta' in name or 'threshold' in name:
+            print(f"  Init {name}: {param.data.item():.4f}")
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                  weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5)
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    history = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
+
+    start = time.time()
+    for epoch in range(1, num_epochs + 1):
+        train_loss, train_acc = train_epoch(model, train_loader, optimizer, device)
+        test_loss, test_acc = eval_model(model, test_loader, device)
+        scheduler.step(test_loss)
+
+        history["train_loss"].append(train_loss)

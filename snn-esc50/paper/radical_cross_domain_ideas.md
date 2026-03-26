@@ -54,3 +54,31 @@ Currently we compute mel spectrograms offline (fixed 64 mel bins, n_fft=1024, ho
 - Gabor filters and PCEN are standard operations
 - IHC-LIF neuron needs custom implementation but is essentially two coupled LIF equations
 - Training is end-to-end with surrogate gradients (we already do this)
+
+**Novelty Assessment:** VERY HIGH
+- No one has applied Spiking-LEAF or IHC-LIF to environmental sound classification
+- No one has applied ANY learnable cochlear front-end to ESC-50 with SNNs
+- Combines two frontier areas: bio-inspired audio + spiking neural networks
+- Direct comparison with our existing mel spectrogram results provides clean ablation
+
+**SpiNNaker Angle:** The cochlear front-end could potentially run on SpiNNaker itself (cascade of LIF neurons mimicking basilar membrane), creating a FULLY neuromorphic audio pipeline: cochlea -> SNN classifier, all in spikes.
+
+---
+
+### IDEA 2: Dendritic Spiking Neurons (DendSN / Multi-Compartment LIF)
+
+**Source:** Multiple recent papers:
+- "Flexible and Scalable Deep Dendritic SNNs with Multiple Nonlinear Branching" (arXiv Dec 2024)
+- "Temporal dendritic heterogeneity in SNNs for multi-timescale dynamics" (Nature Communications 2024)
+- "Dendrites endow ANNs with accurate, robust, parameter-efficient learning" (Nature Communications 2025)
+- "Spiking world model with multicompartment neurons" (PNAS 2025)
+
+**Domain:** Neuroscience (Dendritic Computation)
+
+**Core Idea:**
+Standard LIF neurons are "point neurons" that linearly sum all inputs. Real neurons have DENDRITES -- tree-like branches that perform nonlinear local computations before signals reach the cell body (soma). Each dendrite is essentially a mini-processor. A single dendritic neuron can compute functions that require a multi-layer network of point neurons.
+
+Replace our LIF neurons with DendSN (Dendritic Spiking Neurons):
+- Each neuron has K dendritic branches (K=2-5 typically)
+- Each branch has its own membrane dynamics (different time constants)
+- Branches perform nonlinear gating on their inputs

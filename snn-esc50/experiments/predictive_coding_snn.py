@@ -446,3 +446,27 @@ def main():
         "mean_accuracy": mean_acc,
         "std_accuracy": std_acc,
         "fold_spike_reductions_pct": spike_reds,
+        "mean_spike_reduction_pct": mean_red,
+        "baseline_comparison": {
+            "baseline_direct_5fold": 0.4715,
+            "note": "Baseline SNN (direct encoding, 5-fold): 47.15% +/- 4.50%"
+        }
+    }
+
+    summary_file = out_dir / f"summary_lambda{args.lambda_pred}.json"
+    with open(summary_file, "w") as f:
+        json.dump(summary, f, indent=2)
+
+    print(f"\n{'='*70}")
+    print(f"  PREDICTIVE CODING SNN -- RESULTS")
+    print(f"{'='*70}")
+    print(f"  Per-fold accuracy: {[f'{a*100:.2f}%' for a in accs]}")
+    print(f"  Mean accuracy:     {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Mean spike reduction: {mean_red:.1f}%")
+    print(f"  Baseline (direct): 47.15% +/- 4.50%")
+    print(f"  Saved to: {summary_file}")
+    print(f"{'='*70}")
+
+
+if __name__ == "__main__":
+    main()

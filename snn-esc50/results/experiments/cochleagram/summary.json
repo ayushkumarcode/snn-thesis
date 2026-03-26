@@ -1,0 +1,28 @@
+{
+  "experiment": "cochleagram",
+  "description": "Gammatone filterbank cochleagram replacing mel spectrogram",
+  "feature": "64-channel gammatone cochleagram (ERB-spaced, 50 Hz to Nyquist)",
+  "results": {
+    "snn": {
+      "fold_accuracies": [
+        0.6,
+        0.5175,
+        0.5325,
+        0.5925,
+        0.525
+      ],
+      "mean_accuracy": 0.5534999999999999,
+      "std_accuracy": 0.035305806887819466,
+      "per_fold": {
+        "fold1": 0.6,
+        "fold2": 0.5175,
+        "fold3": 0.5325,
+        "fold4": 0.5925,
+        "fold5": 0.525
+      }
+    },
+    "ann": {
+      "fold_accuracies": [
+        0.625,
+        0.655,
+        0.5625,

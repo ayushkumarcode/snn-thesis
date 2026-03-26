@@ -586,3 +586,21 @@ def main():
         ax.set_ylabel("Accuracy (%)", fontsize=12)
         ax.set_title("ANN-to-SNN Conversion: Accuracy vs Timesteps", fontsize=13)
         ax.legend(fontsize=10, loc="lower right")
+        ax.grid(True, alpha=0.3)
+        ax.set_xscale("log")
+        ax.set_xticks(mean_Ts)
+        ax.set_xticklabels([str(t) for t in mean_Ts])
+
+        plot_path = out_dir / "accuracy_vs_timesteps.png"
+        fig.savefig(plot_path, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+        print(f"Plot saved: {plot_path}")
+
+    except ImportError:
+        print("matplotlib not available -- skipping plots.")
+    except Exception as e:
+        print(f"Plotting failed ({e}) -- results JSON still saved.")
+
+
+if __name__ == "__main__":
+    main()

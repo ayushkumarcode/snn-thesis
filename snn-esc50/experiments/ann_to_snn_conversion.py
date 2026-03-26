@@ -446,3 +446,31 @@ def main():
     download_esc50()
 
     folds = [args.fold] if args.fold else list(range(1, NUM_FOLDS + 1))
+
+    out_dir = RESULTS_DIR / "experiments" / "ann_to_snn_conversion"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    all_results = []
+
+    for fold in folds:
+        result = convert_and_evaluate_fold(fold, device, args.percentile, args.max_timesteps)
+        if result is not None:
+            all_results.append(result)
+            # Save per-fold result
+            with open(out_dir / f"result_fold{fold}.json", "w") as f:
+                json.dump(result, f, indent=2)
+
+    if not all_results:
+        print("No results produced. Check that ANN models exist in results/ann/none/")
+        return
+
+    # Aggregate across folds
+    print(f"\n{'='*60}")
+    print(f"  ANN-to-SNN Conversion Summary ({len(all_results)} folds)")
+    print(f"{'='*60}")
+
+    # All timestep values (union across folds)
+    all_Ts = sorted(set(
+        T for r in all_results for T in r["timestep_values"]
+    ))
+

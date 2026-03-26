@@ -306,3 +306,31 @@ def train_epoch(model, loader, optimizer, device):
     ce_criterion = nn.CrossEntropyLoss()
 
     for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spike_input = encode_direct(data).to(device)
+
+        optimizer.zero_grad()
+        spk_out, mem_out, layer_stats = model(spike_input)
+
+        # Per-timestep CE loss
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss = loss + ce_criterion(mem_out[step], targets)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        # Accumulate spike rates
+        for layer in all_spike_rates:
+            all_spike_rates[layer] += sum(layer_stats["spike_rates"][layer]) / len(layer_stats["spike_rates"][layer])
+
+    n = len(loader)
+    stats = {
+        "loss": total_loss / n,
+        "accuracy": correct / total,

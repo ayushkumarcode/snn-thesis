@@ -278,3 +278,31 @@ class ComboSpikingCNN(nn.Module):
         # Conv layers (shared across all configs)
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
         self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC layers
+        if args.delays:
+            self.fc1 = DelayedLinear(64 * 4 * 9, 256, max_delay=args.max_delay)
+            self.fc2 = DelayedLinear(256, NUM_CLASSES, max_delay=args.max_delay)
+        else:
+            self.fc1 = nn.Linear(64 * 4 * 9, 256)
+            self.fc2 = nn.Linear(256, NUM_CLASSES)
+
+        # Dropout
+        self.dropout = nn.Dropout(0.3) if args.dropout else nn.Identity()
+
+        # Neuron layers
+        if args.dendritic:
+            self.n1 = DendriticLIF(32, K=args.branches, spike_grad=sg)
+            self.n2 = DendriticLIF(64, K=args.branches, spike_grad=sg)
+            self.n3 = DendriticLIF(256, K=args.branches, spike_grad=sg)
+            self.n4 = DendriticLIF(NUM_CLASSES, K=args.branches, spike_grad=sg)
+        elif args.rhythm:
+            self.n1 = RhythmLIF(32, BETA, sg, args.learn_beta)
+            self.n2 = RhythmLIF(64, BETA, sg, args.learn_beta)

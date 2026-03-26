@@ -110,3 +110,31 @@ class TETSpikingCNN(nn.Module):
             x: Input of shape (num_steps, batch, 1, n_mels, time_frames).
 
         Returns:
+            spk_out: Output spikes, shape (num_steps, batch, num_classes).
+            mem_out: Output membrane potentials, shape (num_steps, batch, num_classes).
+        """
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4)

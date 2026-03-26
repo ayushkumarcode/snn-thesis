@@ -54,3 +54,31 @@ class TETSpikingCNN(nn.Module):
 
     Differences from baseline:
         - learn_beta=True: beta (membrane decay) is a learnable parameter
+        - learn_threshold=True: threshold is a learnable parameter
+        - spike_rate_escape surrogate gradient (best from ablation study)
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # Convolutional feature extraction
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(

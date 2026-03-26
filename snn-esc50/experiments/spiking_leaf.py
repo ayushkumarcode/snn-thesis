@@ -306,3 +306,31 @@ class SpikingLEAF(nn.Module):
         super().__init__()
         self.gabor = GaborFilterbank(
             n_filters=n_filters, kernel_size=kernel_size, stride=stride,
+        )
+        self.pcen = PCEN(n_channels=n_filters)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Process raw waveform through learnable frontend.
+
+        Args:
+            x: Raw waveform, shape (batch, 1, waveform_length).
+
+        Returns:
+            Pseudo-spectrogram, shape (batch, 1, n_filters, time_frames).
+        """
+        # Gabor filterbank: (batch, 1, L) -> (batch, 64, T)
+        filtered = self.gabor(x)
+        # PCEN normalization
+        normalized = self.pcen(filtered)
+        # Add channel dim to match spectrogram format: (batch, 1, 64, T)
+        return normalized.unsqueeze(1)
+
+
+# ============================================================
+# Spiking-LEAF SNN Model
+# ============================================================
+
+class SpikingLEAF_SNN(nn.Module):
+    """End-to-end learnable audio SNN: Gabor + PCEN + SpikingCNN.
+
+    The frontend and classifier are jointly optimized.

@@ -418,3 +418,6 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 
 ### Robustness and Energy
 - [SNN Adversarial Robustness with Local Learning (2025)](https://arxiv.org/html/2504.08897v2)
+- [Reconsidering SNN Energy Efficiency (arXiv 2024)](https://arxiv.org/abs/2409.08290)
+- [SpikeFit: Optimal SNN Deployment (EurIPS 2025)](https://arxiv.org/html/2510.15542)
+- [Stochastic Resonance in SNNs (MDPI 2025)](https://www.mdpi.com/1099-4300/27/3/219)

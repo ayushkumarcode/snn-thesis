@@ -418,3 +418,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 
 ### 17b. Temporal Dendritic Heterogeneity
 
+- **Paper:** "Temporal dendritic heterogeneity incorporated with spiking neural networks for learning multi-timescale dynamics" (Nature Communications, 2024)
+- **Key idea:** Multi-compartment neuron with heterogeneous timing factors on different dendritic branches. Automatically learns multi-timescale dynamics.
+- **Applicability:** MEDIUM. Audio classification benefits from multi-timescale processing.
+- **Implementation complexity:** HIGH.
+
+---
+
+## 18. Integer-Valued Training
+
+- **Paper:** "Integer-Valued Training and Spike-Driven Inference Spiking Neural Network" (ECCV 2024, Best Paper Candidate)
+- **Key idea:** I-LIF neuron activates integer values during training while maintaining spike-driven inference. Reduces quantization errors. SpikeYOLO architecture.
+- **Accuracy:** COCO: 66.2% mAP@50 (+15pp over prior SNN SOTA). Gen1: 67.2% (beats ANN equivalent).
+- **Applicability:** MEDIUM. Primarily for object detection but integer-valued training concept is general.
+- **Implementation complexity:** MEDIUM-HIGH.
+
+---
+
+## 19. Curriculum Learning for SNNs
+
+- **Paper:** "Curriculum Design Helps Spiking Neural Networks to Classify Time Series" (2024, arXiv:2401.10257)
+- **Key idea:** Change neuron activation state during training, progressively training from easy to hard. Improves accuracy and convergence.
+- **Applicability:** MEDIUM. Could train on ESC-10 first (easy), then fine-tune on ESC-50 (hard).
+- **Implementation complexity:** LOW.
+
+---
+
+## PRIORITY-RANKED IMPLEMENTATION PLAN
+

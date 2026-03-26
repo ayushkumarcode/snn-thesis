@@ -54,3 +54,31 @@ Your paper is already stronger than you think. After exhaustive research across 
 | Spikingformer | AAAI 2026 | Pure event-driven spiking transformer | 75.85% ImageNet, 57.34% less energy |
 | High-performance SNNs with 0.3 spikes/neuron | Nature Comms 2024 | Ultra-sparse spiking for efficiency | 0.3 spikes/neuron, minimal accuracy loss |
 | "Exploiting Noise as Resource" | Patterns 2023 | Stochastic resonance in SNNs improves generalization | Competitive performance + improved robustness |
+| Continual Learning with Neuromorphic Computing | IEEE Access 2025 | Comprehensive survey of neuromorphic continual learning | Survey covering foundations + methods |
+| SpiNNaker2 | arXiv 2024 | Next-gen neuromorphic system (22nm, 153 ARM cores/chip) | 10x capacity per watt over SpiNNaker1 |
+| SpikeLM | 2024 | Spike-driven language modeling with elastic bi-spiking | Novel language modeling architecture |
+| Reconsidering SNN Energy Efficiency | arXiv 2024 | Honest assessment of SNN energy claims | Data movement costs often ignored |
+| SpikeFit | EurIPS 2025 | Optimal SNN deployment on neuromorphic hardware | Bridging simulation-to-hardware gap |
+
+### Key Observation About "Wow" Numbers
+
+The most impactful papers have ONE clear number:
+- QKFormer: **85.65%** (first SNN > 85% on ImageNet)
+- Speech2Spikes: **109x** energy reduction
+- Nature Comms robustness: **2x** more robust
+- Spikformer v2: **81.1%** with 1 timestep
+
+YOUR best "wow" numbers:
+- **Gap collapse: 16.7pp to 0.95pp** (feature learning bottleneck identified)
+- **6.0x adversarial robustness** (first audio analysis)
+- **7 encodings** (most comprehensive audio comparison)
+- **First SNN on ESC-50** (novelty claim)
+
+---
+
+## 3. ICONS SPECIFICALLY (2022-2024)
+
+### ICONS 2024 (Arlington, Virginia, July 30 - Aug 2, 2024)
+
+**Award-winning papers:**
+- "Scalable Event-by-event Processing of Neuromorphic Sensory Signals With Deep State-Space Models" (Schone et al.)

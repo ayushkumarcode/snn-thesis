@@ -334,3 +334,31 @@ Stochastic resonance: adding noise to a nonlinear system can IMPROVE signal dete
 **Domain:** Neuroscience (Predictive Coding / Free Energy Principle)
 
 **Core Idea:**
+The brain constantly PREDICTS its inputs and only transmits PREDICTION ERRORS up the hierarchy. PCL (Predictive Coding Light) suppresses predictable spikes and transmits compressed representations. This reduces spike activity (energy savings) while preserving information.
+
+**How It Applies to ESC-50:**
+Environmental sounds have LOTS of redundancy:
+- Sustained sounds (rain, engine) are highly predictable after the first 100ms
+- The SNN wastes energy re-transmitting the same pattern 25 times
+- Predictive coding would suppress redundant spikes and focus on NOVEL features
+- Transitions (onset, offset, changes) carry the most information
+
+**Expected Impact:**
+- Significant energy reduction (fewer spikes, same or better accuracy)
+- Potentially better accuracy by focusing on informative features
+- Natural fit with the SpiNNaker energy narrative
+
+**Implementation Feasibility:** MEDIUM
+- Requires top-down connections (feedback from higher layers)
+- PCL uses inhibitory STDP -- different from our surrogate gradient training
+- Hybrid approach possible: keep surrogate gradients but add predictive suppression
+- More architectural change than parameter change
+
+**Novelty Assessment:** VERY HIGH
+- Predictive coding SNNs are frontier research (Nature Communications 2025)
+- NEVER applied to audio classification
+- Would be genuinely novel contribution
+
+---
+
+### IDEA 9: Dopamine-Modulated Three-Factor Learning

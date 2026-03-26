@@ -278,3 +278,31 @@ def evaluate_converted_snn(model, loader, device, num_steps):
 
 @torch.no_grad()
 def evaluate_ann(model, loader, device):
+    """Evaluate original ANN for reference."""
+    model.eval()
+    correct = 0
+    total = 0
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        logits = model(data)
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return correct / total if total > 0 else 0.0
+
+
+# ============================================================
+# Main Conversion Pipeline
+# ============================================================
+
+def convert_and_evaluate_fold(
+    fold: int,
+    device,
+    percentile: float,
+    max_timesteps: int,
+):
+    """Full ANN-to-SNN conversion pipeline for one fold.
+
+    Steps:

@@ -502,3 +502,31 @@ def main():
     for r in all_results:
         print(f"  Fold {r['fold']}: {r['best_accuracy']*100:.2f}% (epoch {r['best_epoch']})")
     print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline (direct, standard LIF): 47.15% +/- 4.50%")
+    diff = mean_acc * 100 - 47.15
+    print(f"  Delta vs baseline: {diff:+.2f} pp")
+    print(f"  Param overhead: {all_results[0]['oscillation_params']} oscillation params "
+          f"({all_results[0]['oscillation_params']/all_results[0]['total_params']*100:.1f}% of total)")
+
+    summary = {
+        "experiment": "rhythm_snn",
+        "seed": args.seed,
+        "epochs": args.epochs,
+        "patience": args.patience,
+        "fold_accuracies": accs,
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "baseline_mean": 0.4715,
+        "baseline_std": 0.0450,
+        "delta_vs_baseline_pp": round(diff, 2),
+        "total_params": all_results[0]["total_params"],
+        "oscillation_params": all_results[0]["oscillation_params"],
+        "per_fold": [
+            {
+                "fold": r["fold"],
+                "accuracy": r["best_accuracy"],
+                "best_epoch": r["best_epoch"],
+                "total_epochs": r["total_epochs"],
+                "time_seconds": r["time_seconds"],
+                "oscillation_summary": r["oscillation_summary"],
+            }

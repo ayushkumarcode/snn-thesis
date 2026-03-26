@@ -54,3 +54,31 @@ from src.dataset import download_esc50, get_fold_dataloaders
 from src.encoding import encode_direct
 from src.models.ann_model import ConvANN
 
+
+# ============================================================
+# Enhanced SNN student with learnable parameters
+# ============================================================
+
+class EnhancedSpikingCNN(nn.Module):
+    """SpikingCNN student with learnable beta, threshold, dropout,
+    and spike_rate_escape surrogate gradient.
+
+    Same architecture dimensions as ConvANN/SpikingCNN for fair comparison.
+    """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        beta: float = BETA,
+        num_steps: int = NUM_STEPS,
+    ):
+        super().__init__()
+        self.num_steps = num_steps
+
+        spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+
+        # -- Convolutional feature extraction --
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.lif1 = snn.Leaky(

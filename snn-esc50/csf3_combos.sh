@@ -26,3 +26,31 @@ echo "============================================"
 run_combo() {
     local name="$1"
     shift
+    echo ""
+    echo ">>>>>>>>>> $name ($(date)) <<<<<<<<<<"
+    python -m experiments.combo_experiment "$@" --device cuda 2>&1
+    echo ">>>>>>>>>> $name DONE ($(date)) <<<<<<<<<<"
+}
+
+# ============================================
+# TIER 1: Build on Rhythm-SNN (best at 61.1%)
+# ============================================
+
+echo ""
+echo "===== TIER 1: RHYTHM-SNN COMBOS ====="
+
+# 1. Rhythm + KD (most promising for beating ANN)
+run_combo "rhythm_kd" --rhythm --kd --learn-beta --dropout --sre
+
+# 2. Rhythm + hybrid ANN init
+run_combo "rhythm_hybrid" --rhythm --hybrid-init --learn-beta --dropout --sre --epochs 30
+
+# 3. Rhythm + hybrid + KD (triple stack)
+run_combo "rhythm_hybrid_kd" --rhythm --hybrid-init --kd --learn-beta --dropout --sre --epochs 30
+
+# 4. Rhythm + TET
+run_combo "rhythm_tet" --rhythm --tet --learn-beta --dropout --sre
+
+# 5. Rhythm + TET + KD
+run_combo "rhythm_tet_kd" --rhythm --tet --kd --learn-beta --dropout --sre
+

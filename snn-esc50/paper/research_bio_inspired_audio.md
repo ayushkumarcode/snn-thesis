@@ -54,3 +54,31 @@ The dream finding (SNN beating ANN through input representation) is theoreticall
 - Lyon et al. "The CARFAC v2 Cochlear Model" arXiv:2404.17490 (2024)
 - Xu et al. "A FPGA Implementation of the CAR-FAC Cochlear Model" Front. Neurosci. 12:198 (2018)
 - Xu et al. "Event-driven spectrotemporal feature extraction using a silicon cochlea model" Front. Neurosci. 17:1125210 (2023)
+
+### 1.2 Gammatone Filterbanks
+
+**What it is**: A bank of filters whose impulse response is a gammatone function -- the product of a gamma distribution and a sinusoidal tone. Models the frequency selectivity of the basilar membrane. Produces a "gammatonegram" or when combined with hair cell model, a "cochleagram."
+
+**Key details**:
+- Standard: 64 channels, center frequencies 50 Hz - 8000 Hz (ERB scale)
+- Well-established psychoacoustic model
+- Computationally simpler than CARFAC
+- Available in scipy: `scipy.signal.gammatone`
+- PyTorch GPU: `nnAudio2` provides `Gammatonegram` on GPU
+- Also: `pip install gammatone` (detly package)
+
+**Has it been tried with SNNs?**
+- Indirectly: Wu et al. (2018, Frontiers) used mel-scaled filter banks (similar concept) for SOM-SNN achieving 99.6% on RWCP environmental sounds
+- Wall et al. (ICONS 2022): cochleagram (gammatone-based) + spike encoding dramatically outperforms STFT
+- **Not on ESC-50 with SNN** -- NOVEL
+
+**Expected accuracy impact**: Marginal improvement over mel spectrogram for CNNs (they use similar frequency scales), but **significant improvement for spike encoding** because gammatone's temporal response is closer to auditory nerve behavior.
+
+**Implementation complexity**: LOW. Drop-in replacement for mel spectrogram. Same dimensionality.
+
+### 1.3 Lyon's Cochlear Model (Original)
+
+**What it is**: Lyon's 1982 passive longwave cochlear model. Precursor to CARFAC.
+
+**Implementation**: `github.com/sciforce/lyon` (Python port from Auditory Toolbox)
+

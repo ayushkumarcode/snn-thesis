@@ -362,3 +362,31 @@ def eval_model(model, loader, device, num_steps):
         spike_inputs = encode_direct(inputs, num_steps=num_steps)
         spk_out, mem_out = model(spike_inputs)
 
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], labels)
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+def get_delay_stats(model):
+    """Extract learned delay values for analysis."""
+    stats = {}
+    for name, module in model.named_modules():
+        if isinstance(module, DelayedLinear):
+            delays = module.delays.detach().cpu()
+            stats[name] = {
+                "delays_mean": float(delays.mean()),
+                "delays_std": float(delays.std()),
+                "delays_min": float(delays.min()),
+                "delays_max": float(delays.max()),
+                "delays_median": float(delays.median()),
+                "delays_histogram": {
+                    f"d={d}": int((delays.round().long() == d).sum())
+                    for d in range(module.max_delay + 1)
+                },

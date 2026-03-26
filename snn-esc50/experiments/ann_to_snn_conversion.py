@@ -138,3 +138,31 @@ class ConvertedSNN(nn.Module):
     The SNN accumulates input over T timesteps, and the fire rate at
     each layer approximates the normalized ReLU activation.
     """
+
+    def __init__(
+        self,
+        num_classes: int = NUM_CLASSES,
+        thresholds: dict[str, float] = None,
+    ):
+        super().__init__()
+        self.thresholds = thresholds or {}
+
+        spike_grad = surrogate.fast_sigmoid(slope=25)
+
+        # Conv block 1
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        thresh1 = self.thresholds.get("conv1_bn", 1.0)
+        self.if1 = snn.Leaky(beta=1.0, threshold=thresh1, spike_grad=spike_grad,
+                              learn_beta=False, learn_threshold=False)
+
+        # Conv block 2
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        thresh2 = self.thresholds.get("conv2_bn", 1.0)
+        self.if2 = snn.Leaky(beta=1.0, threshold=thresh2, spike_grad=spike_grad,
+                              learn_beta=False, learn_threshold=False)
+
+        # Pooling

@@ -2014,3 +2014,31 @@
         "test_acc": 0.57
       },
       {
+        "epoch": 40,
+        "train_loss": 13.2091,
+        "train_acc": 0.9575,
+        "test_loss": 59.3658,
+        "test_acc": 0.55
+      },
+      {
+        "epoch": 41,
+        "train_loss": 13.1206,
+        "train_acc": 0.96,
+        "test_loss": 58.3547,
+        "test_acc": 0.55
+      },
+      {
+        "epoch": 42,
+        "train_loss": 12.8584,
+        "train_acc": 0.9669,
+        "test_loss": 57.4392,
+        "test_acc": 0.56
+      },
+      {
+        "epoch": 43,
+        "train_loss": 12.271,
+        "train_acc": 0.9725,
+        "test_loss": 58.2356,
+        "test_acc": 0.5625
+      },
+      {

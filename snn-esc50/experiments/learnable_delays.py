@@ -110,3 +110,31 @@ class DelayedLinear(nn.Module):
             Output tensor of shape (batch, out_features).
         """
         batch_size = x.shape[0]
+
+        # Initialize buffer on first call or if batch size changed
+        if self._buffer is None or self._buffer.shape[1] != batch_size:
+            self.init_buffer(batch_size, x.device)
+
+        # Store current input in circular buffer (detached to avoid graph explosion
+        # over many timesteps — gradient flows through the live tensor replacement below)
+        write_idx = self._buffer_idx % (self.max_delay + 1)
+        self._buffer[write_idx] = x.detach()
+
+        delays = self.delays  # (out_features,)
+
+        if self.training:
+            # Soft interpolation for gradient flow through delay parameters.
+            # For each output neuron j with delay d_j:
+            #   delayed_input_j = (1 - frac) * buffer[floor_idx] + frac * buffer[ceil_idx]
+
+            d_floor = delays.floor().long()  # (out_features,)
+            d_ceil = (d_floor + 1).clamp(max=self.max_delay)
+            frac = delays - delays.floor()  # fractional part, (out_features,)
+
+            # Buffer read indices (going back in time from current write position)
+            buf_size = self.max_delay + 1
+            floor_read = (write_idx - d_floor) % buf_size  # (out_features,)
+            ceil_read = (write_idx - d_ceil) % buf_size     # (out_features,)
+
+            # Gather delayed inputs: (out_features, batch, in_features)
+            floor_inputs = self._buffer[floor_read]

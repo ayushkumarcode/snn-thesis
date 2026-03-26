@@ -530,3 +530,31 @@ def main():
 
     download_esc50()
 
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    all_results = {}
+    fold_accs = []
+
+    for fold in folds:
+        result = train_fold(fold, args, device)
+        all_results[f"fold_{fold}"] = result
+        fold_accs.append(result["best_accuracy"])
+        print(f"\nFold {fold} result: {result['best_accuracy']*100:.2f}% "
+              f"at epoch {result['best_epoch']}")
+
+    # Summary
+    import numpy as np
+    mean_acc = float(np.mean(fold_accs))
+    std_acc = float(np.std(fold_accs))
+
+    all_results["summary"] = {
+        "mean_accuracy": mean_acc,
+        "std_accuracy": std_acc,
+        "fold_accuracies": [round(a * 100, 2) for a in fold_accs],
+        "max_delay": args.max_delay,
+        "encoding": "direct",
+        "num_steps": NUM_STEPS,
+        "max_epochs": args.epochs,
+        "patience": PATIENCE,
+        "learn_beta": True,
+        "learn_threshold": True,
+        "baseline_snn_accuracy": 0.4715,  # for comparison

@@ -530,3 +530,31 @@ Train our 63.85% ANN as a TEACHER, then distill its knowledge into the SNN STUDE
 **Source:** "E-prop on SpiNNaker 2" (Frontiers 2022)
 **Domain:** Hardware Co-Design + Biologically-Plausible Learning
 
+**Core Idea:**
+Train a recurrent SNN DIRECTLY on SpiNNaker using E-prop (eligibility propagation), a biologically plausible approximation to BPTT. Already achieved 91.12% on Google Speech Commands on SpiNNaker 2 with only 680KB memory.
+
+**Implementation Feasibility:** LOW -- requires SpiNNaker 2 (we have SpiNNaker 1)
+**Novelty for ESC-50:** VERY HIGH -- on-chip learning for environmental sound is unprecedented
+
+---
+
+### IDEA 18: Topological Data Analysis of Spike Trains
+
+**Source:** "A Persistent Homology Pipeline for Neural Spike Train Data" (arXiv Dec 2025)
+**Domain:** Mathematics (Algebraic Topology)
+
+**Core Idea:**
+Use persistent homology to extract topological features from spike train ensembles. These features capture structural patterns invisible to standard metrics. Could reveal WHY different encodings perform differently.
+
+**Implementation Feasibility:** MEDIUM -- `pip install ripser`, analysis tool
+**Novelty for ESC-50:** VERY HIGH -- completely unprecedented analysis approach
+
+---
+
+## RECOMMENDATION: Top 3 Ideas to Pursue
+
+Based on the analysis of impact, feasibility, novelty, and SpiNNaker compatibility:
+
+### FIRST CHOICE: Dendritic Computation (IDEA 2)
+
+**Why:**

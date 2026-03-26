@@ -474,3 +474,31 @@ def test_gradient_equivalence():
 
     torch.manual_seed(42)
     T, B, C = 25, 32, 50
+
+    # Create two identical parameter sets
+    mem_out1 = torch.randn(T, B, C, requires_grad=True)
+    mem_out2 = mem_out1.clone().detach().requires_grad_(True)
+    targets = torch.randint(0, C, (B,))
+    criterion = nn.CrossEntropyLoss()
+
+    # OLD gradient
+    loss_old = torch.zeros(1)
+    for step in range(T):
+        loss_old = loss_old + criterion(mem_out1[step], targets)
+    loss_old = loss_old / T
+    loss_old.backward()
+
+    # NEW gradient
+    loss_new = F.cross_entropy(
+        mem_out2.reshape(T * B, C),
+        targets.unsqueeze(0).expand(T, -1).reshape(-1),
+    )
+    loss_new.backward()
+
+    grad_diff = (mem_out1.grad - mem_out2.grad).abs().max().item()
+    grad_rel = grad_diff / (mem_out1.grad.abs().max().item() + 1e-10)
+    report("Gradient max absolute difference",
+           grad_diff < 1e-5,
+           f"max_abs_diff={grad_diff:.2e}")
+    report("Gradient max relative difference",
+           grad_rel < 1e-5,

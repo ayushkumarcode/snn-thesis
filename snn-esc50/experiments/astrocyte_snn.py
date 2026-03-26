@@ -250,3 +250,31 @@ class AstrocyteSNN(nn.Module):
 
             # Conv block 1
             cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, mem1, astro1, thresh1 = self.astro_lif1(cur1, mem1, astro1)
+
+            # Conv block 2
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, mem2, astro2, thresh2 = self.astro_lif2(cur2, mem2, astro2)
+
+            # Pool + flatten
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            # FC block 1
+            cur3 = self.fc1(flat)
+            spk3, mem3, astro3, thresh3 = self.astro_lif3(cur3, mem3, astro3)
+
+            # Dropout
+            spk3 = self.dropout(spk3)
+
+            # FC block 2
+            cur4 = self.fc2(spk3)
+            spk4, mem4, astro4, thresh4 = self.astro_lif4(cur4, mem4, astro4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+            # Record stats
+            spike_rates["lif1"].append(spk1.mean().item())
+            spike_rates["lif2"].append(spk2.mean().item())
+            spike_rates["lif3"].append(spk3.mean().item())

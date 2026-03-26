@@ -334,3 +334,31 @@ def eval_model(model, loader, device):
 
         predicted = mem_out.sum(dim=0).argmax(dim=1)
         correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+def train_fold(fold, device, epochs, patience, seed):
+    """Train a single fold and return results."""
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+
+    print(f"\n{'='*60}")
+    print(f"  Rhythm-SNN | Fold {fold}/5 | seed={seed}")
+    print(f"  Device: {device} | Epochs: {epochs} | Patience: {patience}")
+    print(f"{'='*60}")
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)
+    model = RhythmSpikingCNN().to(device)
+    optimizer = torch.optim.Adam(
+        model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5,
+    )
+
+    # Count parameters
+    total_params = sum(p.numel() for p in model.parameters())
+    osc_params = 0

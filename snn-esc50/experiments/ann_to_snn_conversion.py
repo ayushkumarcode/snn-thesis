@@ -390,3 +390,31 @@ def convert_and_evaluate_fold(
     # Find convergence point (first T where SNN >= 95% of ANN)
     convergence_T = None
     for T in timestep_values:
+        if snn_results[T]["pct_of_ann"] >= 95.0:
+            convergence_T = T
+            break
+
+    result = {
+        "fold": fold,
+        "percentile": percentile,
+        "max_timesteps": max_timesteps,
+        "thresholds": thresholds,
+        "ann_accuracy": ann_acc,
+        "timestep_values": timestep_values,
+        "snn_results": {str(k): v for k, v in snn_results.items()},
+        "convergence_T_95pct": convergence_T,
+    }
+
+    if convergence_T:
+        print(f"\n  Convergence: SNN reaches 95% of ANN at T={convergence_T}")
+    else:
+        print(f"\n  SNN did not reach 95% of ANN within T={max_timesteps}")
+
+    # Clean up
+    del ann_model, snn_model, recorder
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+    return result
+
+

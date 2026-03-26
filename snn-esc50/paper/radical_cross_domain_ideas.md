@@ -138,3 +138,31 @@ SpikingSSM expands the LIF neuron to have a rich multi-dimensional state, enabli
 
 **How It Applies to ESC-50:**
 Our spectrograms are 216 time frames long, and we simulate 25 timesteps. Environmental sounds like "train" or "helicopter" have long temporal structure that benefits from better sequence modeling. SpikingSSM would replace our LIF layers with richer state dynamics that can capture these patterns.
+
+**Expected Impact:**
+- S6 achieves 95.6% on Speech Commands (raw 16000-length signals)
+- SpikingSSM achieves competitive performance with 90% sparsity
+- psMNIST: 98.4% (state-of-the-art for spiking models)
+- For ESC-50: potentially large improvement due to better temporal modeling
+
+**Implementation Feasibility:** MEDIUM-LOW
+- Requires significant architecture changes
+- Less compatible with SpiNNaker (the parallel training trick doesn't transfer to hardware)
+- More of a research prototype than a deployable system
+- But the INFERENCE can still be sequential and spike-based
+
+**Novelty Assessment:** VERY HIGH
+- No one has applied spiking SSMs to environmental sound classification
+- Combines two hot research areas (SSMs + SNNs)
+- Would be among the first audio applications of spiking SSMs
+
+**SpiNNaker Angle:** WEAK. The parallel training is the main benefit and doesn't help on SpiNNaker. Inference is sequential but the expanded state requires more memory per neuron.
+
+---
+
+## TIER 2: High Impact, Strong Novelty
+
+---
+
+### IDEA 4: Oscillatory Modulation of Spiking Neurons (Rhythm-SNN)
+

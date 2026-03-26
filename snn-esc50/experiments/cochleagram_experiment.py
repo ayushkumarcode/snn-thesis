@@ -642,3 +642,31 @@ def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE)
         "time_seconds": round(elapsed, 1),
         "n_params": n_params,
         "history": history,
+        "config": {
+            "n_filters": 64,
+            "f_min": 50.0,
+            "f_max": SAMPLE_RATE / 2.0,
+            "n_fft": N_FFT,
+            "hop_length": HOP_LENGTH,
+            "sr": SAMPLE_RATE,
+            "duration": DURATION,
+            "num_steps": NUM_STEPS,
+            "batch_size": BATCH_SIZE,
+            "lr": LEARNING_RATE,
+            "weight_decay": WEIGHT_DECAY,
+            "patience": PATIENCE,
+            "num_epochs": NUM_EPOCHS,
+        },
+    }
+
+    save_dir = RESULTS_DIR / "experiments" / "cochleagram"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / f"{model_type}_fold{fold}.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+    return result
+
+
+# ============================================================
+# Main
+# ============================================================

@@ -26,3 +26,31 @@ import json
 import sys
 import time
 from pathlib import Path
+
+import numpy as np
+import torch
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from src.config import (
+    NUM_CLASSES, BETA, NUM_STEPS, N_MELS,
+    BATCH_SIZE, NUM_FOLDS, RESULTS_DIR, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.models.ann_model import ConvANN
+
+
+# ============================================================
+# Activation Recording Hook
+# ============================================================
+
+class ActivationRecorder:
+    """Records max activations at specified layers during ANN forward pass.
+
+    Attaches hooks to the 4 pre-activation points in ConvANN:
+      - After conv1+bn1 (before ReLU)
+      - After conv2+bn2 (before ReLU)
+      - After fc1 (before ReLU)

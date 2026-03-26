@@ -222,3 +222,31 @@ def train_epoch(student, teacher, loader, optimizer, device, temperature, alpha)
         spk_out, mem_out = student(spk_input)
         student_logits = mem_out.sum(dim=0)  # (batch, num_classes)
 
+        # Teacher forward: ANN (frozen, no grad)
+        with torch.no_grad():
+            teacher_logits = teacher(data)  # (batch, num_classes)
+
+        loss = distillation_loss(
+            student_logits, teacher_logits, targets,
+            temperature=temperature, alpha=alpha,
+        )
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = student_logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device):
+    """Evaluate SNN student on a dataset (standard CE accuracy)."""
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()

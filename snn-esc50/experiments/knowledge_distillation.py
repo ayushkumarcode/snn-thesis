@@ -446,3 +446,31 @@ def main():
 
     if args.fold >= 1:
         # Single fold
+        train_fold(
+            args.fold, device, args.epochs, args.patience,
+            args.temperature, args.alpha,
+        )
+    else:
+        # All 5 folds
+        results = []
+        for fold in range(1, NUM_FOLDS + 1):
+            result = train_fold(
+                fold, device, args.epochs, args.patience,
+                args.temperature, args.alpha,
+            )
+            results.append(result)
+
+        # Summary
+        accs = [r["best_acc"] for r in results]
+        teacher_accs = [r["teacher_acc"] for r in results]
+        mean_acc = np.mean(accs)
+        std_acc = np.std(accs)
+        mean_teacher = np.mean(teacher_accs)
+
+        print(f"\n{'='*60}")
+        print(f"  KNOWLEDGE DISTILLATION 5-FOLD SUMMARY")
+        print(f"  Temperature={args.temperature}, alpha={args.alpha}")
+        print(f"{'='*60}")
+        print(f"  Teacher (ANN) mean:           {mean_teacher:.4f}")
+        print(f"    Per-fold: {[f'{a:.4f}' for a in teacher_accs]}")
+        print(f"  Student (SNN+KD) mean:        {mean_acc:.4f} +/- {std_acc:.4f}")

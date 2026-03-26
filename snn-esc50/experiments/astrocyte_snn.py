@@ -82,3 +82,31 @@ class AstrocyteLIF(nn.Module):
         self.lif = snn.Leaky(beta=beta, spike_grad=spike_grad,
                              learn_beta=learn_beta, threshold=1.0)
 
+        # Learnable astrocyte parameters
+        # Use raw parameters and apply sigmoid/softplus for constraints
+        self._tau_astro_logit = nn.Parameter(
+            torch.tensor(self._inv_sigmoid(tau_astro_init)))
+        self._gain_raw = nn.Parameter(torch.tensor(gain_init))
+        self._target_rate_logit = nn.Parameter(
+            torch.tensor(self._inv_sigmoid(target_rate_init)))
+
+    @staticmethod
+    def _inv_sigmoid(x):
+        """Inverse sigmoid for parameter initialisation."""
+        x = max(min(x, 0.999), 0.001)
+        return torch.log(torch.tensor(x / (1 - x))).item()
+
+    @property
+    def tau_astro(self):
+        """Astrocyte time constant in (0, 1), constrained by sigmoid."""
+        return torch.sigmoid(self._tau_astro_logit)
+
+    @property
+    def gain(self):
+        """Modulation gain, unconstrained (can be positive or negative)."""
+        return self._gain_raw
+
+    @property
+    def target_rate(self):
+        """Target firing rate in (0, 1), constrained by sigmoid."""
+        return torch.sigmoid(self._target_rate_logit)

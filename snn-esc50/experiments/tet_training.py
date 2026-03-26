@@ -82,3 +82,31 @@ class TETSpikingCNN(nn.Module):
         self.bn2 = nn.BatchNorm2d(64)
         self.pool2 = nn.MaxPool2d(2)
         self.lif2 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        # After two MaxPool2d(2) on input (64, 216): (16, 54)
+        # AvgPool2d(4,6) on (16,54) -> (4, 9)
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # Fully connected classifier: 64 * 4 * 9 = 2304
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.lif3 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(
+            beta=beta, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass over all timesteps.
+
+        Args:
+            x: Input of shape (num_steps, batch, 1, n_mels, time_frames).
+
+        Returns:

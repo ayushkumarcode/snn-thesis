@@ -362,3 +362,31 @@ Not directly applicable to your CNN architecture, but worth noting for future wo
 |----------|-------------------------------|-------|
 | SpiNNaker 1 | 38.2 mJ | Full rate coding |
 | SpiNNaker 1 (TTFS) | 3.8 mJ | Time-to-first-spike |
+| Spikey (analog) | 0.2 mJ | Small network only |
+| Loihi 2 | 2.53 uJ (custom chip benchmark) | Much smaller networks |
+| Jetson Xavier NX | 129.0 uJ | GPU edge device |
+| Custom neuromorphic ASIC | 2.53 uJ | Specialized design |
+
+### 7.3 The Fair Comparison Problem
+
+**CRITICAL INSIGHT:** SpiNNaker 1 consumes ~1W per chip regardless of activity level (static power dominates). Your small network (622K params) uses maybe 2-4 cores on one chip. The chip still draws ~1W.
+
+**For your network specifically:**
+- At T=25, 1ms per step: 25ms simulation time
+- At 1W chip power: 25 mJ per sample (MUCH more than ANN)
+- But: If running continuous inference (streaming audio), the amortized cost drops because static power is shared
+
+**The honest comparison:**
+1. **Theoretical (operation counting):** Your SNN at 968 nJ vs ANN at 454 nJ -- ANN wins 2.1x
+2. **Theoretical with optimizations:** SNN at <100 nJ vs ANN at 454 nJ -- SNN wins 4.5x
+3. **Real SpiNNaker hardware:** Static power dominates, hard to beat Jetson for small models
+4. **Hypothetical neuromorphic ASIC:** SNN at <100 nJ is achievable, ANN at 454 nJ -- SNN wins dramatically
+
+---
+
+## 8. The Combined Strategy: How to Get 10x-100x
+
+### Strategy A: Conservative (10x energy reduction, high confidence)
+
+| Technique | Energy Multiplier | Accuracy Impact | Implementation |
+|-----------|------------------|-----------------|----------------|

@@ -390,3 +390,31 @@ def get_delay_stats(model):
                     f"d={d}": int((delays.round().long() == d).sum())
                     for d in range(module.max_delay + 1)
                 },
+                "delays_all": delays.tolist(),
+            }
+    return stats
+
+
+def get_lif_stats(model):
+    """Extract learned LIF parameters (beta, threshold)."""
+    stats = {}
+    for name, module in model.named_modules():
+        if isinstance(module, snn.Leaky):
+            beta = module.beta.detach().cpu()
+            threshold = module.threshold.detach().cpu()
+            stats[name] = {
+                "beta": float(beta) if beta.dim() == 0 else float(beta.mean()),
+                "threshold": float(threshold) if threshold.dim() == 0 else float(threshold.mean()),
+            }
+    return stats
+
+
+def train_fold(fold, args, device):
+    """Train and evaluate a single fold."""
+    print(f"\n{'='*60}")
+    print(f"Fold {fold} | max_delay={args.max_delay} | Device={device}")
+    print(f"{'='*60}")
+
+    torch.manual_seed(42 + fold)
+
+    train_loader, test_loader = get_fold_dataloaders(fold, batch_size=BATCH_SIZE)

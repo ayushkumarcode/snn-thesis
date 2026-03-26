@@ -418,3 +418,31 @@ class SpikingLEAF_SNN(nn.Module):
 
             pooled = self.avg_pool(spk2)
             flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, mem3 = self.lif3(cur3, mem3)
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        return torch.stack(spk_out_rec), torch.stack(mem_out_rec)
+
+
+# ============================================================
+# Spiking-LEAF ANN Model
+# ============================================================
+
+class SpikingLEAF_ANN(nn.Module):
+    """Learnable audio ANN: Gabor + PCEN + ConvANN backbone.
+
+    Same frontend, but ReLU-based classifier for comparison.
+    """
+
+    def __init__(self, num_classes: int = NUM_CLASSES):
+        super().__init__()
+
+        # Same learnable frontend

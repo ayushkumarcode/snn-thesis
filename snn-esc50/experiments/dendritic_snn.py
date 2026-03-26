@@ -26,3 +26,31 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from src.config import (
+    NUM_CLASSES, BETA, NUM_STEPS, N_MELS,
+    NUM_EPOCHS, LEARNING_RATE, WEIGHT_DECAY, PATIENCE, BATCH_SIZE,
+    RESULTS_DIR, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+
+
+# ============================================================
+# Dendritic LIF Neuron
+# ============================================================
+
+class DendriticLIF(nn.Module):
+    """Multi-compartment dendritic LIF neuron with learnable branch dynamics.
+
+    Each neuron has K dendritic branches. Each branch has:
+      - A learnable decay rate (beta_k), initialized to different timescales
+      - A learnable gating weight (w_k) controlling its contribution to the soma
+
+    The soma integrates weighted branch outputs and generates spikes
+    using a surrogate gradient when the membrane potential exceeds threshold.
+

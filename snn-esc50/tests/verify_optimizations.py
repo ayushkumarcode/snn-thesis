@@ -250,3 +250,31 @@ def test_eval_loss():
     )
     loss_new_val = loss_new.item()
 
+    ratio = loss_old_val / loss_new_val
+    report(f"Eval loss ratio = T = {T}",
+           abs(ratio - T) < 1e-4,
+           f"ratio={ratio:.6f}, expected={T}")
+
+    print(f"    Old eval loss: {loss_old_val:.6f}")
+    print(f"    New eval loss: {loss_new_val:.6f}")
+    print(f"    Ratio (old/new): {ratio:.6f}")
+    print(f"    Expected ratio: {T} (T timesteps)")
+    print(f"    >>> EVAL LOSS SCALE CHANGED by factor {T}x <<<")
+
+    # Verify ReduceLROnPlateau is scale-invariant
+    # Simulate two runs with different scale
+    print("\n    Verifying ReduceLROnPlateau scale-invariance...")
+    losses_raw = [5.0, 4.8, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5, 4.5]
+
+    # Old scale (T * raw)
+    opt1 = torch.optim.SGD([torch.zeros(1, requires_grad=True)], lr=0.1)
+    sched1 = torch.optim.lr_scheduler.ReduceLROnPlateau(opt1, mode="min", factor=0.5, patience=5)
+    lrs1 = []
+    for l in losses_raw:
+        sched1.step(l * T)
+        lrs1.append(opt1.param_groups[0]['lr'])
+
+    # New scale (raw)
+    opt2 = torch.optim.SGD([torch.zeros(1, requires_grad=True)], lr=0.1)
+    sched2 = torch.optim.lr_scheduler.ReduceLROnPlateau(opt2, mode="min", factor=0.5, patience=5)
+    lrs2 = []

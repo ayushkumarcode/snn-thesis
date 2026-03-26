@@ -166,3 +166,31 @@ class InfoBottleneckSNN(nn.Module):
             total_kl = total_kl + kl.mean()
 
             # Track stats
+            total_mu_norm += mu.norm(dim=1).mean().item()
+            total_logvar_mean += logvar.mean().item()
+
+            # Apply dropout to bottleneck output
+            z = self.dropout(z)
+
+            # FC block 2 (output)
+            cur4 = self.fc2(z)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_out_rec.append(spk4)
+            mem_out_rec.append(mem4)
+
+        # Average KL over timesteps
+        kl_loss = total_kl / self.num_steps
+
+        bottleneck_stats = {
+            "avg_mu_norm": total_mu_norm / self.num_steps,
+            "avg_logvar_mean": total_logvar_mean / self.num_steps,
+        }
+
+        return (torch.stack(spk_out_rec), torch.stack(mem_out_rec),
+                kl_loss, bottleneck_stats)
+
+
+# ============================================================
+# Training / Evaluation
+# ============================================================

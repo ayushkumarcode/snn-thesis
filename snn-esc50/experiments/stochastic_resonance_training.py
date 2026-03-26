@@ -670,3 +670,31 @@ def main():
     variant = "SR+Rhythm" if args.with_rhythm else "SR"
 
     out_dir = RESULTS_DIR / "experiments" / "stochastic_resonance_training"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    all_results = []
+
+    for fold in folds:
+        result = train_fold(
+            fold, args.with_rhythm, device,
+            args.epochs, args.patience, args.seed, args.init_sigma,
+        )
+        all_results.append(result)
+
+    # Summary
+    accs = [r["best_accuracy"] for r in all_results]
+    mean_acc = float(np.mean(accs))
+    std_acc = float(np.std(accs))
+
+    print(f"\n{'='*60}")
+    print(f"  Trainable {variant} SNN Summary")
+    print(f"{'='*60}")
+    for r in all_results:
+        print(f"  Fold {r['fold']}: {r['best_accuracy']*100:.2f}% (epoch {r['best_epoch']})")
+    print(f"  Mean: {mean_acc*100:.2f}% +/- {std_acc*100:.2f}%")
+    print(f"  Baseline (direct, standard LIF): 47.15% +/- 4.50%")
+    diff = mean_acc * 100 - 47.15
+    print(f"  Delta vs baseline: {diff:+.2f} pp")
+    print(f"  Init sigma: {args.init_sigma}")
+
+    # Sigma evolution analysis

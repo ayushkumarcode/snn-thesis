@@ -194,3 +194,31 @@ Two techniques: (1) Regularizer of Cosine Similarity (RCS) trains network to be 
 CPT-SNN incorporates previous timestep outputs as inhibitory currents, achieving 95.44% on CIFAR-10 with average T=2.72.
 
 For your task: Training at T=5 with appropriate regularization should maintain 90%+ of baseline accuracy while reducing energy by 5x.
+
+**Expected energy reduction:** 5x at T=5
+**Accuracy trade-off:** Need to retrain, but literature shows <5% loss
+**Implementation complexity:** Low -- just change config and retrain
+**SpiNNaker compatibility:** Full
+
+---
+
+## 4. Efficient SNN Architectures
+
+### 4.1 Depthwise Separable Spiking Convolutions
+
+**Paper:** "Spike-TCN with Depthwise-Separable Convolution," Springer 2025.
+
+Standard conv: K*K*C_in*C_out parameters
+Depthwise separable: K*K*C_in + C_in*C_out parameters
+Reduction factor: ~K*K (9x for 3x3 kernels)
+
+For your Conv2 (32->64, 3x3): 32*64*9 = 18,432 params -> (32*9 + 32*64) = 2,336 params = 7.9x reduction.
+
+**Expected energy reduction:** 3-8x for conv layers
+**Accuracy trade-off:** Typically 1-3% on image tasks
+**Implementation complexity:** Moderate -- architectural change, requires retraining
+**SpiNNaker compatibility:** Full -- fewer synaptic connections = fewer operations
+
+---
+
+### 4.2 Weight Pruning (ICLR 2024 -- 91x Efficiency!)

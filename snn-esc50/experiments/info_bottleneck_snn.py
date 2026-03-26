@@ -362,3 +362,31 @@ def train_fold(fold, device, epochs, patience, beta_ib):
 
     elapsed = time.time() - t0
 
+    # Final eval with best model
+    if best_model_state is not None:
+        model.load_state_dict({k: v.to(device) for k, v in best_model_state.items()})
+    final_te = eval_model(model, test_loader, device, beta_ib)
+
+    # Get learned betas
+    learned_betas = {}
+    for name, module in [("lif1", model.lif1), ("lif2", model.lif2),
+                         ("lif3", model.lif3), ("lif4", model.lif4)]:
+        beta_val = module.beta.item() if hasattr(module.beta, 'item') else module.beta
+        learned_betas[name] = beta_val
+
+    result = {
+        "fold": fold,
+        "beta_ib": beta_ib,
+        "best_accuracy": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": elapsed,
+        "final_kl_loss": final_te["kl_loss"],
+        "final_mu_norm": final_te["avg_mu_norm"],
+        "final_logvar_mean": final_te["avg_logvar_mean"],
+        "learned_betas": learned_betas,
+        "history": history,
+    }
+
+    return result
+

@@ -502,3 +502,31 @@ def train_ann_epoch(model, loader, optimizer, device):
         logits = model(data)
         loss = criterion(logits, targets)
         loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_ann(model, loader, device):
+    """Evaluate ANN on a dataset."""
+    model.eval()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+
+        logits = model(data)
+        loss = criterion(logits, targets)
+        total_loss += loss.item()
+
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()

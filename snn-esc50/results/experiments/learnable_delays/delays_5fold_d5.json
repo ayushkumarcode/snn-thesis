@@ -3386,3 +3386,23 @@
         "test_acc": 0.5275
       }
     ]
+  },
+  "summary": {
+    "mean_accuracy": 0.569,
+    "std_accuracy": 0.03776903493604252,
+    "fold_accuracies": [
+      51.0,
+      59.25,
+      57.5,
+      62.0,
+      54.75
+    ],
+    "max_delay": 5,
+    "encoding": "direct",
+    "num_steps": 25,
+    "max_epochs": 50,
+    "patience": 10,
+    "learn_beta": true,
+    "learn_threshold": true,
+    "baseline_snn_accuracy": 0.4715
+  }

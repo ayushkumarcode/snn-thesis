@@ -586,3 +586,31 @@ Based on the analysis of impact, feasibility, novelty, and SpiNNaker compatibili
 ---
 
 ## COMBINATION STRATEGY
+
+The most impactful paper would COMBINE multiple ideas:
+
+**"Bio-Inspired Multi-Scale Temporal Processing for Environmental Sound Classification on Neuromorphic Hardware"**
+
+1. **Heterogeneous learnable betas** (easy, immediate)
+2. **Dendritic neurons with multi-timescale branches** (medium effort, high impact)
+3. **Learnable synaptic delays** (medium effort, SpiNNaker-native)
+4. Deploy the full system on SpiNNaker, exploiting hardware-native delays
+
+This creates a comprehensive story: "We bring three biologically-inspired mechanisms (heterogeneous membrane dynamics, dendritic computation, and synaptic delays) to environmental sound classification on neuromorphic hardware, achieving X% improvement over standard LIF-based SNNs."
+
+---
+
+## Research Gaps Identified
+
+1. **ZERO prior work** combining dendritic SNNs with audio classification
+2. **ZERO prior work** using learnable delays for environmental sound
+3. **ZERO prior work** on Spiking-LEAF for non-speech audio
+4. **ZERO prior work** on oscillatory modulation for sound classification
+5. **ZERO prior work** on astrocyte-augmented SNNs for audio
+6. **ZERO prior work** on information bottleneck training for audio SNNs
+7. **ZERO prior work** on three-factor learning for audio SNNs
+8. **ZERO prior work** on hyperdimensional spike encoding for ESC-50
+
+Every single idea above would be the FIRST application to environmental sound classification with SNNs.
+
+---

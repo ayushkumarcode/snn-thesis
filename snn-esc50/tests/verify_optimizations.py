@@ -306,3 +306,31 @@ def test_eval_loss():
 
 
 # ============================================================
+# TEST 4: .item() deferral
+# ============================================================
+def test_item_deferral():
+    """
+    Old: total_spikes += spk4.sum().item()  (adds Python float each step)
+    New: total_spikes = total_spikes + spk4.sum()  (accumulates on GPU)
+         ... then total_spikes.item() at end
+
+    Edge case: total_spikes starts as 0 (Python int).
+    First iteration: 0 + spk4.sum() = tensor (int + tensor = tensor). OK.
+    Subsequent: tensor + tensor. OK.
+    """
+    print("\n=== TEST 4: .item() deferral ===")
+
+    torch.manual_seed(42)
+
+    # Simulate old approach
+    total_old = 0
+    tensors = [torch.randn(32, 50) for _ in range(25)]  # 25 timesteps
+
+    for t in tensors:
+        total_old += t.sum().item()
+
+    # Simulate new approach
+    total_new = 0
+    for t in tensors:
+        total_new = total_new + t.sum()
+

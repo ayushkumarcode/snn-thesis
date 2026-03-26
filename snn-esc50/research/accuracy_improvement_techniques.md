@@ -278,3 +278,31 @@ This report catalogues every promising technique found across ~40 recent papers 
 
 ### 10a. Gygax & Zenke: Theoretical Underpinnings
 
+- **Paper:** Gygax & Zenke, "Elucidating the Theoretical Underpinnings of Surrogate Gradient Learning" (Neural Computation 37(5):886-925, 2025)
+- **Key idea:** Proves that surrogate gradient = derivative of escape noise function for stochastic neurons. Spike Rate Escape (SRE) is theoretically grounded because it matches the stochastic firing model.
+- **Applicability:** Confirms our choice of SRE is theoretically optimal. Not an accuracy improvement per se, but validates our approach.
+- **Implementation complexity:** N/A (theoretical).
+
+### 10b. AdaLi: Adaptive Lightweight Surrogate Gradients
+
+- **Paper:** "Adaptive and lightweight surrogate gradients: enhancing training efficiency of spiking neural networks" (Frontiers in Neuroscience, 2026)
+- **Key idea:** Lightweight surrogate that reduces computational complexity. Adaptive mechanism adjusts gradient based on training epoch. Resolves gradient vanishing/explosion.
+- **Accuracy:** Outperforms baselines in both efficiency and accuracy.
+- **Applicability:** MEDIUM. Would need custom surrogate gradient implementation.
+- **Implementation complexity:** MEDIUM.
+
+### 10c. Learnable Surrogate Gradients
+
+- **Paper:** "Learnable Surrogate Gradient for Direct Training Spiking Neural Networks" (IJCAI 2023)
+- **Key idea:** Make surrogate gradient function parameters learnable alongside network weights.
+- **Applicability:** MEDIUM. snnTorch may not directly support this -- would need custom implementation.
+- **Implementation complexity:** MEDIUM.
+
+---
+
+## 11. Second-Order / Synaptic Neuron Models
+
+### 11a. Synaptic Neuron with Learnable Alpha
+
+- **Paper:** snnTorch built-in (Synaptic neuron model)
+- **Key idea:** 2nd-order LIF with separate synaptic current and membrane potential decay rates (alpha and beta). More biologically realistic. snnTorch supports `learn_alpha=True`.

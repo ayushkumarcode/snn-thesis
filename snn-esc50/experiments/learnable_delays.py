@@ -222,3 +222,31 @@ class DelayedSpikingCNN(nn.Module):
         self.lif1 = snn.Leaky(
             beta=BETA, spike_grad=spike_grad,
             learn_beta=True, learn_threshold=True,
+        )
+
+        # Conv block 2 (no delays)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.lif2 = snn.Leaky(
+            beta=BETA, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        # Pooling
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+
+        # FC block 1 with delays
+        self.fc1 = DelayedLinear(64 * 4 * 9, 256, max_delay=max_delay)
+        self.lif3 = snn.Leaky(
+            beta=BETA, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,
+        )
+
+        self.dropout = nn.Dropout(0.3)
+
+        # FC block 2 with delays
+        self.fc2 = DelayedLinear(256, num_classes, max_delay=max_delay)
+        self.lif4 = snn.Leaky(
+            beta=BETA, spike_grad=spike_grad,
+            learn_beta=True, learn_threshold=True,

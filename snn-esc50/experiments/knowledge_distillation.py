@@ -250,3 +250,31 @@ def eval_model(model, loader, device):
     correct = 0
     total = 0
     criterion = nn.CrossEntropyLoss()
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=model.num_steps)
+
+        spk_out, mem_out = model(spk_input)
+        student_logits = mem_out.sum(dim=0)
+
+        loss = criterion(student_logits, targets)
+        total_loss += loss.item()
+
+        predicted = student_logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+# ============================================================
+# Single fold training
+# ============================================================
+
+def train_fold(fold: int, device, epochs: int, patience: int,
+               temperature: float, alpha: float):
+    """Train KD student on a single fold.
+
+    Returns:
+        Dict with fold results.

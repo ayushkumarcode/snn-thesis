@@ -642,3 +642,31 @@ def test_target_expansion():
 
     This should produce: [t0, t1, ..., tB-1, t0, t1, ..., tB-1, ...] repeated T times
 
+    Verify this matches the old loop where each step uses the same `targets`.
+    """
+    print("\n=== TEST 9: Target expansion correctness ===")
+
+    B = 4
+    T = 3
+    targets = torch.tensor([10, 20, 30, 40])
+
+    expanded = targets.unsqueeze(0).expand(T, -1).reshape(-1)
+    expected = torch.tensor([10, 20, 30, 40, 10, 20, 30, 40, 10, 20, 30, 40])
+
+    report("Target expansion matches expected pattern",
+           torch.equal(expanded, expected),
+           f"got={expanded.tolist()}")
+
+    # Verify each timestep slice matches original targets
+    for t in range(T):
+        slice_t = expanded[t * B:(t + 1) * B]
+        report(f"  Timestep {t} targets match",
+               torch.equal(slice_t, targets),
+               f"got={slice_t.tolist()}")
+
+
+# ============================================================
+# TEST 10: DataLoader analysis (informational)
+# ============================================================
+def test_dataloader_analysis():
+    """

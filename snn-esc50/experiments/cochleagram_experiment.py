@@ -614,3 +614,31 @@ def run_fold(fold, model_type, device, num_epochs=NUM_EPOCHS, patience=PATIENCE)
             save_dir.mkdir(parents=True, exist_ok=True)
             torch.save(model.state_dict(),
                        save_dir / f"best_{model_type}_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            elapsed = time.time() - start
+            print(f"  Ep {epoch:3d}/{num_epochs} | "
+                  f"Train: {train_acc:.4f} | Test: {test_acc:.4f} | "
+                  f"Best: {best_acc:.4f} (ep{best_epoch}) | {elapsed:.0f}s")
+
+        if patience_counter >= patience:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+    print(f"  Fold {fold} {model_type.upper()} done in {elapsed:.1f}s | "
+          f"Best: {best_acc*100:.2f}% (ep{best_epoch})")
+
+    result = {
+        "fold": fold,
+        "model_type": model_type,
+        "experiment": "cochleagram",
+        "feature_type": "gammatone_cochleagram",
+        "best_acc": best_acc,
+        "best_epoch": best_epoch,
+        "total_epochs": epoch,
+        "time_seconds": round(elapsed, 1),
+        "n_params": n_params,
+        "history": history,

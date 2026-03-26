@@ -222,3 +222,31 @@ class GaborFilterbank(nn.Module):
 # PCEN (Per-Channel Energy Normalization)
 # ============================================================
 
+class PCEN(nn.Module):
+    """Learnable Per-Channel Energy Normalization.
+
+    PCEN(x) = (x / (eps + M)^alpha + delta)^r - delta^r
+    where M is a smoothed version of x using a learnable IIR filter.
+
+    All parameters (alpha, delta, r, s) are learnable per channel.
+
+    Args:
+        n_channels: Number of frequency channels.
+        eps: Small constant to prevent division by zero.
+        init_s: Initial smoothing coefficient (0 < s < 1).
+        init_alpha: Initial compression exponent.
+        init_delta: Initial offset.
+        init_r: Initial root compression exponent.
+    """
+
+    def __init__(
+        self,
+        n_channels: int = 64,
+        eps: float = 1e-6,
+        init_s: float = 0.025,
+        init_alpha: float = 0.98,
+        init_delta: float = 2.0,
+        init_r: float = 0.5,
+    ):
+        super().__init__()
+        self.eps = eps

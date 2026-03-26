@@ -54,3 +54,31 @@ class DendriticLIF(nn.Module):
     The soma integrates weighted branch outputs and generates spikes
     using a surrogate gradient when the membrane potential exceeds threshold.
 
+    Args:
+        size: Number of neurons (channels for conv, hidden_size for FC).
+        num_branches: Number of dendritic branches (K).
+        beta_inits: Initial beta values per branch. Defaults to [0.7, 0.9, 0.99]
+                    for fast/medium/slow timescales.
+        threshold: Spike threshold.
+        spike_grad: Surrogate gradient function.
+    """
+
+    def __init__(
+        self,
+        size: int,
+        num_branches: int = 3,
+        beta_inits: list[float] | None = None,
+        threshold: float = 1.0,
+        spike_grad=None,
+    ):
+        super().__init__()
+        self.size = size
+        self.num_branches = num_branches
+        self.threshold = threshold
+
+        if spike_grad is None:
+            spike_grad = surrogate.spike_rate_escape(beta=1.0, slope=25)
+        self.spike_grad = spike_grad
+
+        # Default branch timescales: fast, medium, slow
+        if beta_inits is None:

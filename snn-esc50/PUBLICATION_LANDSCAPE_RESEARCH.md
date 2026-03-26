@@ -278,3 +278,31 @@ Ranked by reviewer excitement (based on publication trends, conference emphasis,
 ### 8. New Application Domains
 - SNNs being applied to speech enhancement, EEG, medical imaging, structural mechanics
 - "First SNN on [domain]" papers are consistently publishable
+- **Relevance to you:** HIGHEST. Your "first SNN on ESC-50" claim is exactly this pattern.
+
+---
+
+## 7. GAP ANALYSIS AND SPECIFIC RECOMMENDATIONS
+
+### What You Have vs. What Top Papers Have
+
+| Dimension | Top Papers | Your Paper | Gap |
+|-----------|-----------|------------|-----|
+| Novelty of domain | "First X on Y" | First SNN on ESC-50 | **No gap -- you have this** |
+| Hardware deployment | Full pipeline on Loihi/SpiNNaker | FC2-only hybrid on SpiNNaker | Moderate gap (honest about it) |
+| Wow number | 85.65% ImageNet, 109x energy | 6x robustness, 16.7pp to 0.95pp gap collapse | **No gap -- your numbers are dramatic** |
+| Statistical rigor | Varies (many papers lack it) | 5-fold CV, p-values, Cohen's d | **You exceed most papers** |
+| Depth of analysis | Usually 1-2 analyses | 7 encodings + adversarial + transfer + temporal + CL + noise + surrogate + energy | **You exceed most papers** |
+| Clarity of thesis | One clear message | Multiple findings, unclear which is central | **This is your gap** |
+
+### THE SPECIFIC RECOMMENDED FRAMING
+
+**Current title:** "Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment"
+
+**Problem with current title:** It sounds like a survey/benchmark. "From X to Y" framing suggests breadth, not depth. Reviewers may think "lots of experiments but what is the insight?"
+
+**Recommended reframe -- Option A (Gap-Collapse as Central Thesis):**
+
+> **Title:** "The SNN-ANN Gap is a Feature-Learning Problem: Evidence from Environmental Sound Classification with Seven Encodings and SpiNNaker Deployment"
+>
+> **One-sentence thesis:** When given equal-quality features, SNNs match ANNs within 0.95pp on 50-class audio -- the 16.7pp scratch-training gap reflects a feature-learning bottleneck, not a spiking computation limitation.

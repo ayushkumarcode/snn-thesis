@@ -474,3 +474,31 @@ Implement the full BAE pipeline from Pan et al. (2020):
 
 3. **Cochleagram noise robustness**: Cochleagram features outperform mel at SNR <= 15dB for speaker recognition (MDPI 2023). SNN + bio-inspired frontend should amplify this noise advantage.
 
+4. **Gammatonegram classification**: Cochleagram produces best classification performance vs. mel, smoothed spectrogram, and standard spectrogram (Sharan et al., 98.03% vs 95.07%).
+
+### Indirect Evidence: Why This Should Work
+
+5. **Spike-compatible output**: CARFAC NAP output represents neural firing rates -- naturally spike-compatible. Mel spectrograms represent log-power-spectral-density -- designed for Fourier analysis, not spike generation.
+
+6. **Temporal preservation**: CARFAC preserves fine temporal structure (phase information). Mel spectrogram discards phase entirely. SNNs are temporal processors -- they need temporal information.
+
+7. **Biological precedent**: The biological auditory pathway IS a cochlea-to-SNN pipeline. We are currently asking an SNN to process a representation designed for a fundamentally different computational paradigm.
+
+8. **Information-theoretic evidence**: LIF encoding achieves 80% coding efficiency on biologically-structured signals (Gutierrez-Galan et al. 2022). The efficiency drops on spectrogram-structured signals because the signal statistics are different.
+
+---
+
+## 11. Research Gaps and Unknowns
+
+### What We Do NOT Know
+
+1. **No one has compared cochleagram vs mel spectrogram for convolutional SNN classification on ESC-50.** This is the central gap our experiment would fill.
+
+2. **The interaction between audio representation and spike encoding is under-studied.** Larroza et al. (2025) used mel spectrogram for their encoding comparison. Wall et al. (2022) showed cochleagram is better for spike encoding but only on speech (TIDIGITS).
+
+3. **Whether convolutional SNNs can leverage cochleagram structure better than FC SNNs.** All prior cochleagram + SNN work uses FC architectures or simple classifiers. Our Conv2D SNN might benefit differently.
+
+4. **CARFAC v2 + environmental sounds.** CARFAC v2 was validated primarily on speech. Environmental sounds have very different statistics.
+
+5. **The dream scenario -- SNN > ANN on cochleagram features.** This is theoretically possible if the temporal structure of cochleagram output aligns better with SNN dynamics, but no one has demonstrated it.
+

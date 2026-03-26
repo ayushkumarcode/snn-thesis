@@ -362,3 +362,31 @@ def eval_model(model, loader, device, num_steps):
     total_loss = 0.0
     correct = 0
     total = 0
+    criterion = nn.CrossEntropyLoss()
+
+    for inputs, labels in loader:
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        spike_inputs = encode_direct(inputs, num_steps=num_steps)
+        spk_out, mem_out = model(spike_inputs)
+
+        loss = torch.zeros(1, device=device)
+        for step in range(mem_out.shape[0]):
+            loss += criterion(mem_out[step], labels)
+        total_loss += loss.item()
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == labels).sum().item()
+        total += labels.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+def get_branch_stats(model):
+    """Extract learned branch parameters for analysis."""
+    stats = {}
+    for name, module in model.named_modules():
+        if isinstance(module, DendriticLIF):
+            betas = module.betas.detach().cpu()  # (K, size)
+            gates = module.gates.detach().cpu()  # (K, size)

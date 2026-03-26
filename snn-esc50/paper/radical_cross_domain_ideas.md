@@ -642,3 +642,31 @@ Every single idea above would be the FIRST application to environmental sound cl
 
 ### Oscillatory Modulation
 - [Rhythm-SNN: Efficient temporal processing with neural oscillations (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-63771-x)
+- [Deep oscillatory neural network (Scientific Reports 2025)](https://www.nature.com/articles/s41598-025-24837-4)
+
+### Stochastic Resonance
+- [Noise and Dynamical Synapses as Optimization Tools (Entropy 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11941097/)
+- [Novel classification algorithms inspired by stochastic resonance (2024)](https://link.springer.com/article/10.1007/s11071-024-10146-4)
+- [Robust neural networks using stochastic resonance (2024)](https://www.nature.com/articles/s44172-024-00314-0)
+
+### Predictive Coding
+- [Predictive Coding Light (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-64234-z)
+- [Predictive coding with spiking neural networks: A survey (2025)](https://arxiv.org/abs/2409.05386)
+
+### Three-Factor Learning / Neuromodulation
+- [Three-factor learning in SNNs: Overview (Patterns/Cell Press 2025)](https://www.sciencedirect.com/science/article/pii/S2666389925002624)
+- [DA-SSDP: Synchrony-Gated Plasticity with Dopamine Modulation (TMLR 2025)](https://arxiv.org/abs/2512.07194)
+
+### Astrocyte Modulation
+- [Astrocyte-gated multi-timescale plasticity (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12886396/)
+- [Characterizing Learning in SNNs with Astrocyte-Like Units (arXiv 2025)](https://arxiv.org/abs/2503.06798)
+- [Neuron-astrocyte associative memory (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2417788122)
+
+### Heterogeneous Neurons
+- [Neural heterogeneity for efficient learning in SNNs (Frontiers 2025)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2025.1661070/full)
+- [HetSyn: Heterogeneous Synapses (arXiv 2025)](https://arxiv.org/html/2508.11644)
+- [Biologically inspired heterogeneous learning (NSR 2024)](https://academic.oup.com/nsr/article/12/1/nwae301/7746334)
+
+### Reservoir Computing / LSM
+- [Liquid State Machine on SpiNNaker (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.819063/full)
+- [Optimizing Reservoir Separability in LSMs (2025)](https://www.mdpi.com/2079-9268/15/1/4)

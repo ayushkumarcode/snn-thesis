@@ -250,3 +250,31 @@ class DelayedSpikingCNN(nn.Module):
         self.lif4 = snn.Leaky(
             beta=BETA, spike_grad=spike_grad,
             learn_beta=True, learn_threshold=True,
+        )
+
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Forward pass over all timesteps.
+
+        Args:
+            x: Input of shape (num_steps, batch, 1, n_mels, time_frames).
+
+        Returns:
+            spk_out: Output spikes, shape (num_steps, batch, num_classes).
+            mem_out: Output membrane potentials, shape (num_steps, batch, num_classes).
+        """
+        batch_size = x.shape[1]
+
+        # Initialize LIF hidden states
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        # Initialize delay buffers
+        self.fc1.init_buffer(batch_size, x.device)
+        self.fc2.init_buffer(batch_size, x.device)
+
+        spk_out_rec = []
+        mem_out_rec = []
+
+        for step in range(self.num_steps):

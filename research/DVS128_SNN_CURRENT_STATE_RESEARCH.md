@@ -334,3 +334,31 @@ several papers include comparison tables, but a dedicated fair benchmark is **la
 ### practical thesis timeline
 
 | Phase | Duration |
+|-------|----------|
+| Environment setup + dataset download | 1-2 days |
+| Running SpikingJelly baseline | 1 day |
+| Understanding code + architecture | 3-5 days |
+| Implementing comparison experiments | 2-3 weeks |
+| Running all experiments | 1-2 weeks |
+| Analysis and visualization | 1-2 weeks |
+| Writing thesis | 3-4 weeks |
+
+---
+
+## 9. frontier directions (for context)
+
+don't need to advance these, but should know about them:
+
+- **SpikMamba (2024):** SNN + Mamba for long-range temporal dependencies. SOTA on multiple event-based action recognition datasets. Code: https://github.com/Typistchen/SpikMamba
+- **STAA-SNN (CVPR 2025):** Spatial-Temporal Attention Aggregator with spike-driven self-attention.
+- **ANN-to-SNN Knowledge Distillation:** HSD combines conversion with distillation. 7.50% improvement on DVS-Gesture.
+- **Hardware Deployment:** SpiNNaker2 gets 94.13% on-chip. CUTIE gets 7 microJ/inference at 0.9ms latency. hardware efficiency is where DVS128 still has genuine value.
+- **DVS-Gesture-Chain:** new variant testing temporal order perception rather than just gesture identity. tests whether SNNs truly use temporal info or just spatial patterns.
+
+---
+
+## 10. known gaps and open problems
+
+1. **small dataset reliance** -- most SNN papers rely on DVS128, CIFAR10-DVS, NMNIST. cross-dataset evaluation is rare.
+2. **reproducibility** -- few papers report standard deviations. run-to-run variance not well characterized.
+3. **preprocessing sensitivity** -- results are highly sensitive to event-to-frame conversion choices but this is rarely ablated.

@@ -110,3 +110,31 @@ def measure_snn_energy(model, loader, device, num_steps=NUM_STEPS,
     # Spike rates per layer
     spike_rates = {}
     total_neurons = {"conv1": 32*32*108, "conv2": 64*16*54,
+                     "fc1": 256, "fc2": NUM_CLASSES}
+    for layer in total_spikes_per_layer:
+        total_possible = (total_neurons[layer] * num_steps *
+                          total_samples)
+        spike_rates[layer] = (total_spikes_per_layer[layer] /
+                              total_possible if total_possible > 0 else 0)
+
+    overall_rate = sum(total_spikes_per_layer.values()) / (
+        sum(total_neurons[l] * num_steps * total_samples
+            for l in total_neurons))
+
+    return {
+        "accuracy": correct / total_samples,
+        "total_acs_per_sample": avg_acs,
+        "energy_nj": avg_energy_nj,
+        "spike_rates": spike_rates,
+        "overall_spike_rate": overall_rate,
+        "spikes_per_layer": {k: v / total_samples
+                             for k, v in total_spikes_per_layer.items()},
+    }
+
+
+@torch.no_grad()
+def measure_ann_energy(model, loader, device):
+    """Measure ANN energy by counting MACs."""
+    model.eval()
+    correct = 0
+    total = 0

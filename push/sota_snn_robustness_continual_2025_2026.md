@@ -361,31 +361,3 @@ Major approaches (2023-2026):
 | RSC-SNN | Vision (CIFAR-10) | 54.52% | 10.89% | FGSM | 8/255 |
 | RSC-SNN | Vision (CIFAR-100) | 34.89% | 4.56% | FGSM | 8/255 |
 | RandHet-SNN | Vision (CIFAR-10) | 53.53% | ~52% (standard SNN) | FGSM | 8/255 |
-| Robust Stable SNN | Vision (CIFAR-10) | 56.71% | N/A | FGSM | 8/255 |
-| RTE | Vision (CIFAR-10) | 36.38% | N/A | APGD | 8/255 |
-
-**SNN Continual Learning -- Literature Comparison:**
-
-| Work | Domain | Forgetting | Scenario | CL Method |
-|------|--------|-----------|----------|-----------|
-| **Ours (SNN)** | **Audio (ESC-50)** | **74.4%** | **TIL, 5 tasks** | **None (baseline)** |
-| **Ours (ANN)** | **Audio (ESC-50)** | **81.3%** | **TIL, 5 tasks** | **None (baseline)** |
-| HLOP-SNN | Vision (CIFAR-100) | ~0% | TIL | Orthogonal projection |
-| DSD-SNN | Vision (CIFAR-100) | ~5-10% | TIL | Structure growth |
-| LT-Gate | Vision | ~2.8pp drop | Domain-IL | Timescale gates |
-| Dequino et al. | Audio (SHD) | ~2.2% loss | Progressive CL | Latent replay |
-
----
-
-## PART 4: RESEARCH GAPS AND CONFIDENCE ASSESSMENT
-
-### 4.1 Research Gaps Identified
-
-1. **No SNN adversarial robustness work on audio** -- our work fills this gap
-2. **No SNN continual learning on environmental sound** -- our work fills this gap
-3. **Very few direct SNN-vs-ANN forgetting comparisons** without CL methods -- our work provides this
-4. **SA-PGD has not been applied to audio SNNs** -- future work
-5. **No large-scale SNN adversarial evaluation** (ImageNet-scale) with reliable attacks
-6. **Limited work on combining adversarial robustness and continual learning for SNNs**
-
-### 4.2 Confidence Assessment

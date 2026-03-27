@@ -54,3 +54,31 @@ Sources:
 
 ### Tier 2: Supplementary
 
+| Dataset | Description | Access |
+|---|---|---|
+| **Chapman-Shaoxing** | 45,152 patients, 12-lead, 500 Hz | Free on PhysioNet |
+| **St Petersburg INCART** | 32 Holter records, 12-lead, annotated | Free on PhysioNet |
+| **PhysioNet/CinC Challenge 2020** | Multi-database 12-lead ECG classification | Free on PhysioNet |
+| **QTDB** | QT interval annotations, used in some SNN studies | Free on PhysioNet |
+| **Icentia11k** | 11,000 patients, single-lead, 7 days continuous | Free (large download) |
+| **Kaggle MIT-BIH (CSV format)** | Pre-processed MIT-BIH in accessible CSV format | Free on Kaggle |
+
+All major datasets are freely available through PhysioNet (https://physionet.org). MIT-BIH is the de facto standard for SNN-ECG work (~90% of papers use it). PTB-XL is the gold standard for 12-lead but has NOT been used with SNNs -- that's a major gap. Kaggle versions of MIT-BIH give you ready-to-use CSV/numpy arrays.
+
+---
+
+## SNN Performance vs Conventional Deep Learning
+
+### Accuracy Comparison (MIT-BIH, 5-class AAMI)
+
+| Method | Architecture | Accuracy | F1 Score | Energy per Inference |
+|---|---|---|---|---|
+| CNN (conventional) | 1D-CNN | 97.4-99.5% | 95-98% | ~450 uJ (CPU) |
+| CNN-LSTM hybrid | CNN + BiLSTM + Attention | 99.2% | 98.3% | High (GPU) |
+| CNN-LSTM-SE | CNN + LSTM + Squeeze-Excite | 98.5% | >97% | High (GPU) |
+| SNN (SparrowSNN) | Co-designed SNN + ASIC | 98.29% | ~97% | **31.39 nJ** |
+| SNN + Attention | SNN + Channel-wise Attention | 98.26% | 89.09% | 346.33 uJ |
+| SNN (STDP) | Unsupervised STDP | 97.9% | -- | 1.78 uJ |
+| SNN (ANN-to-SNN) | Converted 14-layer CNN | 84.41% | -- | Low |
+| SNN (Neuromorphic 2025) | Lightweight SNN | 94.4% | >88% | 1.28M FLOPs |
+

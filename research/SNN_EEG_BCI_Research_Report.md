@@ -306,3 +306,31 @@ Evaluation:          scikit-learn metrics, MOABB benchmarks
 2. BCI Competition IV website documentation
 3. snnTorch Tutorial Series (Tutorials 1-5)
 4. "Spiking neural networks for EEG signal analysis: From theory to practice" (ScienceDirect, 2025)
+5. "An in-depth survey on Deep Learning-based Motor Imagery EEG classification" (ScienceDirect, 2023)
+
+---
+
+## 7. would this be considered novel for an undergrad thesis?
+
+### yeah, i think so
+
+reasons:
+
+1. **niche area** -- SNN-EEG classification is mostly published in top-tier journals (Nature Scientific Reports, Frontiers, IEEE TMLR, Neurocomputing) by PhD students and postdocs. doing this at undergrad level shows ambition.
+
+2. **few undergrad implementations** -- CNN-based EEG classification is becoming common in undergrad projects, but SNN-based approaches are still rare at this level. most undergrad BCI projects use traditional ML (SVM, Random Forest) or standard DL (EEGNet).
+
+3. **active research frontier** -- new papers monthly. best practices haven't converged yet, so even a comparison study contributes useful knowledge.
+
+4. **multiple angles for novelty:**
+
+| Approach | Description | Risk |
+|---|---|---|
+| Systematic SNN benchmark | Compare 3+ SNN architectures on same dataset with unified evaluation | Low risk, high value |
+| Novel spike encoding for EEG | Test wavelet-based or adaptive encoding vs standard rate/temporal | Medium risk |
+| Hybrid CNN-SNN architecture | CNN feature extraction + SNN temporal processing | Medium risk |
+| Cross-dataset SNN evaluation | Train on one MI dataset, test on another | Low risk, useful |
+| SNN for under-explored task | Apply SNN to P300 or SSVEP (few existing papers) | Medium-High risk, high novelty |
+| Energy-accuracy Pareto analysis | Study accuracy vs energy tradeoff across architectures | Low risk, high value |
+| Lightweight SNN for edge | Minimal SNN for real-time BCI on constrained hardware | Medium risk |
+

@@ -54,3 +54,31 @@ def compute_energy_model():
         },
         "ANN_int8": {
             "energy_nj": 227,   # ~2x reduction from quantization
+            "accuracy": 0.63,
+            "description": "INT8 quantized ANN",
+        },
+    }
+
+    # ============================================================
+    # Hardware platforms
+    # ============================================================
+    platforms = {
+        "SpiNNaker_1": {
+            "idle_power_mw": 1000,  # ~1W per chip
+            "active_overhead_mw": 0,  # Included in per-synop cost
+            "per_synop_pj": 630,  # nJ per synop on SpiNNaker 1
+            "note": "SpiNNaker 1 (48-core chip, ~1W total)",
+        },
+        "SpiNNaker_2": {
+            "idle_power_mw": 50,    # Much lower with DVFS
+            "active_overhead_mw": 0,
+            "per_synop_pj": 10,     # ~10 pJ/synop
+            "note": "SpiNNaker 2 (DVFS to 0.5V)",
+        },
+        "Xylo_Audio_2": {
+            "idle_power_mw": 0.217, # 217 µW idle
+            "active_power_mw": 0.298,  # 298 µW active
+            "energy_per_inf_uj": 6.6,
+            "note": "SynSense Xylo Audio 2",
+        },
+        "ARM_Cortex_M4": {

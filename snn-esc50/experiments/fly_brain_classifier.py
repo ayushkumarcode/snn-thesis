@@ -222,3 +222,31 @@ def train_epoch_snn(model, loader, optimizer, device):
 
     return total_loss / len(loader), correct / total
 
+
+@torch.no_grad()
+def eval_snn(model, loader, device):
+    model.eval()
+    correct = 0
+    total = 0
+    from src.encoding import encode_direct
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+        _, mem_out = model(spk_input)
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+    return correct / total
+
+
+def run_fold(fold, device, expansion, wta_ratio, mode="ann"):
+    print(f"\n  Fold {fold} ({mode}): expansion={expansion}x, WTA={wta_ratio}")
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+
+    if mode == "ann":
+        model = FlyBrainClassifier(
+            expansion=expansion, wta_ratio=wta_ratio).to(device)
+        train_fn = train_epoch_ann
+        eval_fn = eval_ann
+    else:

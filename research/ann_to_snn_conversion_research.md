@@ -110,3 +110,31 @@ for actually getting SOTA results:
 
 ### Where the Loss Comes From
 
+three fundamental error sources:
+1. **Quantization error**: continuous ReLU activations approximated by discrete spike counts
+2. **Clipping error**: values exceeding firing threshold are lost
+3. **Residual membrane potential**: info in membrane potential at end of simulation is discarded
+
+more timesteps = lower accuracy loss, but higher latency and energy. classic trade-off.
+
+### Concrete Numbers
+
+#### CIFAR-10
+
+| Method | Architecture | T | SNN Acc | ANN Acc | Loss |
+|--------|-------------|---|---------|---------|------|
+| QCFS (ICLR 2022) | VGG-16 | 4 | 93.05% | 93.63% | 0.58% |
+| SNN Calibration (ICML 2021) | VGG-16 | 16 | 93.63% | 93.71% | 0.08% |
+| SEENN (NeurIPS 2023) | VGG-16 | ~1.4 | 93.63% | -- | ~0 |
+| One-Timestep (2025) | ResNet-18 | 1 | 93.11% | ~93.5% | ~0.4% |
+
+#### ImageNet
+
+| Method | Architecture | T | SNN Acc | Loss |
+|--------|-------------|---|---------|------|
+| Group Neurons (ICASSP 2024) | ResNet-34 | 2 | 73.61% | ~0% |
+| QCFS + TPP | VGG-16 | 16 | 73.98% | ~0% |
+| Spiking Transformer (2025) | ViT/DeiT | 4 | 88.60% | ~1% |
+
+### Rules of Thumb
+

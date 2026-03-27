@@ -362,3 +362,31 @@ i'm pretty confident undergrad projects on SpiNNaker exist given:
 ## 7. related resources and platforms
 
 ### SpiNNaker software stack
+- **sPyNNaker**: PyNN implementation for SpiNNaker -- https://github.com/SpiNNakerManchester/sPyNNaker
+- **SpiNNTools**: Execution engine -- maps parallel applications, executes, extracts results
+- **SpiNNakerManchester GitHub**: https://github.com/SpiNNakerManchester (60+ repos)
+- **Documentation**: https://spinnakermanchester.readthedocs.io/
+
+### access to SpiNNaker
+- free test access via EBRAINS account (online via web browser)
+- local SpiNNaker boards available (SpiNN-3, SpiNN-5 boards loaned to ~100 labs)
+- full 1 million core machine at Manchester
+
+### SpiNNaker workshops (hands-on training)
+- regular workshops with lectures and hands-on labs
+- 8th workshop materials available: https://spinnakermanchester.github.io/workshops/eighth.html
+- EBRAINS/HBP tutorial sessions available online
+- tutorial notebooks from beginner to expert level
+
+---
+
+## 8. gaps and limitations
+
+1. **undergrad projects are hidden**: Manchester's 3rd year project system is behind auth. can't confirm specific SpiNNaker-related UG projects, though they almost certainly exist.
+
+2. **old APT website lost**: the original `apt.cs.manchester.ac.uk/publications/thesis.php` page has been redirected, losing the historical thesis listing. couldn't access the Wayback Machine to check.
+
+3. **MSc dissertations are under-documented**: only one MSc dissertation (Buttigieg 2019) was confirmed with public access. the Research Explorer focuses mainly on PhD theses.
+
+4. **Galluppi's MSc thesis (2009) details are lost**: we know he did an MSc with SpiNNaker but can't find the thesis title or text.
+

@@ -82,3 +82,31 @@ also, Larroza et al. was submitted to ICASSP 2026, a more prestigious venue. if 
 **problem 3:** PANNs+Linear (93.80%) beats both ANN and SNN heads. so the SNN head is actually the worst of three options. "why bother with spiking?"
 
 **problem 4:** this is ANN-to-SNN transfer in frozen embedding form, a well-studied approach in vision. the paper doesn't distinguish itself adequately from conversion literature.
+
+### my assessment
+**medium risk.** the "gap collapse" finding IS genuinely useful framing. but needs to defend against "trivially expected" criticism by arguing why it wasn't obvious a priori.
+
+---
+
+## C6: NeuroBench Energy Analysis
+
+### the strongest objections
+
+this is not a novelty contribution -- it's using an existing tool on a new model. NeuroBench itself provides the framework. the SNN is 2.1x MORE expensive than the ANN, which undercuts the energy narrative. the "5.1x per-operation advantage on neuromorphic hardware" is from 45nm theoretical values, not measured SpiNNaker energy. SpiNNaker 1 costs ~5.8 uJ/SOP at 130nm -- orders of magnitude worse than theoretical 0.9 pJ/AC.
+
+### my assessment
+**HIGH risk as a standalone contribution.** should be absorbed into deployment section, not listed separately.
+
+---
+
+## Overall Assessment
+
+| Claim | Challenge Severity | Novelty Risk | Fatal? |
+|-------|-------------------|-------------|--------|
+| C1: First SNN on ESC-50 | Moderate | MEDIUM | No -- dataset novelty is real but thin |
+| C2: 7-encoding comparison | Significant | MEDIUM | No -- survivable with rebuttal on TAE |
+| C3: SpiNNaker deployment | Severe | HIGH | Potentially -- partial deployment + semantic distinction |
+| C4: Adversarial robustness | Significant | MEDIUM | Potentially -- gradient masking must be addressed |
+| C5: PANNs+SNN gap collapse | Moderate | MEDIUM | No -- "trivially expected" is manageable |
+| C6: NeuroBench energy | Severe | HIGH | Yes as standalone -- absorb into C3 |
+

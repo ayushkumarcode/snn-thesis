@@ -194,3 +194,31 @@ def run_fold(fold, device, num_steps):
     elapsed = time.time() - start
     # Energy is proportional to T (linear in timesteps)
     energy_ratio = num_steps / 25.0
+    print(f"  Fold {fold}: {best_acc:.4f} (ep{best_epoch}), "
+          f"energy={energy_ratio:.2f}x of T=25")
+
+    return {
+        "fold": fold, "num_steps": num_steps,
+        "best_acc": best_acc, "best_epoch": best_epoch,
+        "energy_ratio": energy_ratio,
+        "energy_reduction_x": 25.0 / num_steps,
+        "time_seconds": elapsed,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--num-steps", type=int, default=None,
+                        help="If set, train only at this T. Otherwise sweep.")
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    if args.num_steps:
+        t_values = [args.num_steps]
+    else:
+        t_values = [3, 5, 7, 10, 15]
+

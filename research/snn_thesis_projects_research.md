@@ -194,3 +194,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - Four students, from-scratch, honest about limitations. Very achievable scope for a group undergrad project.
 - 47 stars, 9 forks, 73 commits
 
+### SNN Image Classification - SNN vs CNN Comparison
+- https://github.com/sofi12321/SNN_image_classification
+- Comparing SNN and CNN on multiple datasets
+- snnTorch, PyTorch
+- SOCOFing (fingerprints): SNN 98% vs CNN 83%; EMNIST: both 99%; Fashion-MNIST: both 86%. SNN training ~1.5x slower.
+- Great model for an undergrad project. Three datasets, clear comparison, achievable scope. Single Jupyter notebook format.
+- 9 stars, 2 forks, 21 commits
+
+### SNN Image Classification (AI3610 Homework)
+- https://github.com/HaoyiZhu/SNN_Image_Classification
+- Convolutional SNN with 12C5-MP2-64C5-MP2-1024FC10 architecture
+- snnTorch, PyTorch, Hydra config
+- Static: 99.12% accuracy; Spike data: 97.05% (20 epochs, RTX 3090)
+- Clean implementation. Shows what a course assignment looks like -- focused, achievable, good results.
+- 7 stars, 7 commits
+
+### Deep Learning with Biologically Plausible NNs
+- https://github.com/chiralevy/Deep-Learning-with-Biologically-Plausible-Neural-Networks
+- Performance comparison between SNNs and conventional NNs on three tasks
+- snnTorch. MNIST, CIFAR-10, Google Speech Commands.
+- MNIST: CSNN 98.06% vs CNN 98.39%. CIFAR-10: CSNN 70.60% vs CNN 68.00%. Speech Commands: LSNN 91.20% vs LSTM 94.40% vs CNN 87.60%.
+- Really good scope for a thesis project. Three tasks, clear comparisons, multiple architectures. The CIFAR-10 and Speech Commands results go meaningfully beyond MNIST.
+- 4 stars
+
+### SNN Gesture Classification with DVS128
+- https://github.com/DerrickL25/SNN_Gesture_Classification
+- Neuromorphic gesture classification from DVS128 event camera data
+- snnTorch, PyTorch. DVSGesture from IBM (1,077 samples, 11 gesture classes, 29 subjects).

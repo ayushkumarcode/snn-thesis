@@ -166,3 +166,31 @@ rate coding with one-to-one mapping from word vectors to spike-based attractor s
 words converted to integer indices, each generates a spike pattern. used in SSA-SpiNNaker.
 
 pros: dead simple
+cons: loses semantic information
+
+### what i'd recommend for an undergrad project
+
+**Poisson rate coding with pre-trained embeddings.** best documented, working code exists (Lvchangze/snn), compatible with snnTorch/SpikingJelly, straightforward to explain.
+
+---
+
+## SNN vs ANN performance summary
+
+| Model | Task | SNN Acc | ANN Baseline | Gap | Energy Savings |
+|-------|------|---------|-------------|-----|---------------|
+| SpikeGPT 216M | SST-2 | 88.76% | 91.73% (BERT) | -2.97% | 32x fewer ops |
+| SpikeLM | SST-2 | 87.0% | 92.3% (BERT-base) | -5.3% | 12.9x (T=1) |
+| SpikeZIP-TF | SST-2 | 93.79% | ~93% (BERT) | ~0% | TBD |
+| Spiking CNN | SST-2 | 80.91% | 83.25% (TextCNN) | -2.34% | >10x |
+| Spiking CNN | MR | 75.45% | 77.41% (TextCNN) | -1.96% | >10x |
+| SpikeLM | MNLI | 77.1% | 83.8% (BERT-base) | -6.7% | 12.9x |
+| SpikeLM | QNLI | 85.3% | 90.7% (BERT-base) | -5.4% | 12.9x |
+| SNNLP | Sentiment | -- | -- | -- | 32x inference |
+
+key findings:
+1. simple binary tasks (SST-2, MR, IMDB): SNNs within 1-5% of ANNs
+2. complex tasks (MNLI, CoLA): gap widens to 6-21%
+3. energy efficiency: consistently 10-60x better
+4. conversion approach (train ANN, convert to SNN) generally outperforms direct SNN training
+5. more timesteps = better accuracy but more energy; sweet spot is 50-100 timesteps
+

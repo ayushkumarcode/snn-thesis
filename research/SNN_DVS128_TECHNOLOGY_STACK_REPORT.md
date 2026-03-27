@@ -565,31 +565,3 @@ pip install tonic
 ```
 
 ### 5.2 Key Features
-
-- Downloads and loads 20+ neuromorphic datasets including DVSGesture
-- Event-specific transforms (denoise, spatial jitter, temporal jitter, etc.)
-- Frame conversion transforms (ToFrame, ToVoxelGrid, ToTimesurface)
-- DiskCachedDataset for fast reloading
-- Compatible with PyTorch DataLoader
-- Works with both PyTorch and JAX
-
-### 5.3 DVSGesture Dataset in Tonic
-
-```python
-import tonic
-
-# Load dataset (downloads automatically on first use)
-dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
-
-# Access sensor size
-sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
-
-# Get a sample
-events, label = dataset[0]
-# events: structured numpy array with fields (x, y, t, p)
-# label: integer class index
-```
-
-### 5.4 Available Transforms
-
-```python

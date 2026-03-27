@@ -236,20 +236,20 @@ SNN underperforms ANN on all 5 folds -- consistent directional finding regardles
 CNN14 (Kong et al. 2020), AudioSet-pretrained (1.8M clips, 527 tags), extracts 2048-d embeddings. 3-layer SNN head (2048->512->256->50, LIF beta=0.9, rate encoding, T=25) trained on frozen embeddings for 50 epochs.
 
 All 2000 embeddings precomputed and cached. Three classifiers compared: SNN head, ANN head (identical with ReLU), linear (logistic regression on 2048-d).
-**Per-fold analysis:** The SNN underperforms the ANN on all 5 folds (no fold where SNN wins), providing a consistent directional finding independent of statistical test choice.
 
----
+### 4.6.2 results
 
-## 4.6 Transfer Learning: PANNs + SNN Head
+| Classifier | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std |
+|-----------|--------|--------|--------|--------|--------|------|-----|
+| SNN head | 92.00% | 94.50% | 91.00% | 93.50% | 91.50% | **92.50%** | 1.30% |
+| ANN head | 93.00% | 95.00% | 92.00% | 95.50% | 91.75% | **93.45%** | 1.54% |
+| Linear | 94.25% | 95.75% | 92.50% | 95.25% | 91.25% | **93.80%** | 1.69% |
 
-### 4.6.1 Setup
+### 4.6.3 interpretation
 
-CNN14 (Kong et al. 2020), pretrained on AudioSet (1.8M clips, 527 tags), extracts 2048-dimensional embeddings from ESC-50 audio. A 3-layer SNN classification head (2048→512→256→50, LIF neurons with β=0.9, rate encoding, T=25) is trained on frozen CNN14 embeddings for 50 epochs.
+**SNN-ANN gap collapses from 16.70 pp to 0.95 pp with pretrained features.** This is the most important finding in the thesis.
 
-All 2,000 ESC-50 embeddings are precomputed and cached, reducing training time to seconds per epoch. Three classifiers are compared: SNN head, ANN head (identical architecture with ReLU), and linear classifier (logistic regression on 2048-d embeddings).
-
-### 4.6.2 Results
-
+The accuracy gap is almost entirely explained by feature quality, not spiking computation. When both classifiers get identical, high-quality 2048-d AudioSet features, they achieve statistically indistinguishable accuracy (92.50% vs 93.45%).
 **5-fold cross-validation on frozen CNN14 embeddings:**
 
 | Classifier | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std |

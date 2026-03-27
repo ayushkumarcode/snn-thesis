@@ -334,3 +334,31 @@ Smaller projects found via the snntorch GitHub topic:
 | search-and-rescue | Drone computer vision with SNN | 1 |
 | snn-image-classification | Computer vision basics | 0 |
 | Spiking-Classifier | Image classification with Gradio UI | 0 |
+| PredictiveSNNModels | MNIST sequence prediction | 0 |
+| snn-glacier-segmentation | Glacier image segmentation | 0 |
+| SNN-CL-AutonomousDriving | Autonomous driving + continual learning | 0 |
+| PulsePod | Arrhythmia detection framework | 0 |
+
+---
+
+## What a realistic 3rd-year undergrad SNN project looks like
+
+Based on analyzing all of these, here's what i think:
+
+### Typical characteristics
+1. Single focused task -- classification on one primary dataset, maybe tested on a second
+2. One framework -- snnTorch (most accessible) or Brian2 (more neuroscience-y)
+3. Standard datasets -- MNIST, Fashion-MNIST, CIFAR-10, DVS Gesture, N-MNIST
+4. Comparison angle -- SNN vs ANN/CNN is the most common approach
+5. Semester-long or year-long
+6. Deliverable is Jupyter notebooks + report/dissertation
+7. Code volume: 1-5 Python files or 1-3 Jupyter notebooks
+
+### Scope tiers
+
+**Tier 1 - Achievable (good grade)**
+- SNN classification on MNIST/Fashion-MNIST using snnTorch
+- Compare accuracy and training time with equivalent CNN
+- Example: sofi12321/SNN_image_classification
+
+**Tier 2 - Ambitious (very good grade)**

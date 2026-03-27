@@ -194,3 +194,31 @@ i couldn't find any undergrad projects specifically doing SNN audio classificati
 | **Norse** | PyTorch | Built-in dataset class | Intermediate | Moderate | Bio-inspired components |
 | **Rockpool** | PyTorch/JAX | Built-in tutorial | Intermediate | Moderate | Neuromorphic hardware deployment (Xylo) |
 | **SNN-delays** | PyTorch | Built-in, automatic | Intermediate | Moderate | Reproducing ICLR 2024 delay learning results |
+| **Tonic** | Python | Dedicated dataset class | Easy (data only) | N/A | Dataset loading and transforms only |
+
+### 5.2 What i'd recommend for an undergrad thesis
+
+**Primary: snnTorch + Tonic**
+- best tutorial series (8 interactive Jupyter notebooks)
+- built-in SHD dataset loader
+- modular neuron models (LIF, Leaky, Synaptic, Alpha)
+- easy integration with PyTorch
+- active community and documentation
+- `pip install snntorch tonic`
+
+**If you need speed: Spyx (JAX)**
+- train SHD models in under 60 seconds on a single GPU
+- JIT compilation for maximum GPU utilization
+- steeper learning curve but dramatically faster iteration
+
+**For reproducing SOTA: SNN-delays or sparch**
+- SNN-delays: clean ICLR 2024 code, easy to set up, auto-downloads SHD/SSC
+- sparch: purpose-built for speech command recognition with SNNs, supports LIF/RLIF/adLIF/RadLIF
+
+### 5.3 Training Time Benchmarks (100 epochs, SHD, single GPU)
+
+| Framework | Batch 64 | Batch 128 | Batch 256 |
+|-----------|----------|-----------|-----------|
+| snnTorch (uncompiled) | 4543s (~76 min) | 2313s (~39 min) | 1212s (~20 min) |
+| snnTorch (compiled) | 196s (~3.3 min) | 103s (~1.7 min) | 59s (~1 min) |
+| mlGeNN | 216s (~3.6 min) | 161s (~2.7 min) | 124s (~2 min) |

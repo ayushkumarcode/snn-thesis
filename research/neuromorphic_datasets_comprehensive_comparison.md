@@ -166,3 +166,31 @@ same pipeline as SHD but 10x larger and 35 classes. SOTA only ~86%. training tak
 ### eTraM (CVPR 2024)
 traffic monitoring, 10 hours, 2M bounding boxes. **not suitable.** object detection is much harder than classification.
 
+### EvDET200K
+object detection, 200K+ bounding boxes. **not suitable.** same reasons as eTraM.
+
+### other
+| Dataset | Year | Domain | Suitable? |
+|---|---|---|---|
+| HARDVS | 2023 | Action recognition (300 classes, 100K seqs) | No |
+| E-POSE | 2025 | Pose estimation | No |
+| LIPSFUS | 2023 | Audio-visual lip reading | No |
+| Prophesee Gen4 | 2020 | Automotive detection | No |
+
+---
+
+## comparison table
+
+| Dataset | Classes | Samples | Modality | SOTA SNN | Difficulty | Narrative | Training Time (est.) |
+|---|---|---|---|---|---|---|---|
+| **DVS128 Gesture** | 11 | 1,464 | Vision | 99.3% | Moderate | Strong | ~30 min |
+| **N-MNIST** | 10 | 70,000 | Vision | 99.6% | Too Easy | Weak | ~1 hr |
+| **N-Caltech101** | 101 | ~8,709 | Vision | 84.4% | Mod-Hard | Moderate | ~2-4 hrs |
+| **CIFAR10-DVS** | 10 | 10,000 | Vision | 92.5%* | Mod-Hard | Moderate | ~2-4 hrs |
+| **SHD** | 20 | 10,420 | Audio | 96.4% | Moderate | Strong | ~15-30 min |
+| **SSC** | 35 | 105,829 | Audio | 86.0% | Hard | Moderate | ~4-8 hrs |
+| **DVS-Lip** | 100 | 19,871 | Vision | ~60-65% | Very Hard | Very Strong | ~6-12 hrs |
+
+*92.5% uses transfer learning; typical SNN SOTA is ~81-84%.
+
+training times assume single consumer GPU (RTX 3060-3090 tier), ~100-200 epochs.

@@ -167,31 +167,3 @@ The accuracy gap follows a clear trend: **more timesteps = lower accuracy loss, 
 
 #### CIFAR-10 (Approximate ANN Baseline: VGG16 ~93.5%, ResNet-20 ~92%)
 
-| Method | Architecture | Timesteps (T) | SNN Accuracy | ANN Accuracy | Loss |
-|--------|-------------|---------------|-------------|-------------|------|
-| QCFS (ICLR 2022) | VGG-16 | 4 | 93.05% | 93.63% | 0.58% |
-| QCFS | VGG-16 | 1 | 93.05% | 93.63% | 0.58% |
-| SNN Calibration (ICML 2021) | VGG-16 | 16 | 93.63% | 93.71% | 0.08% |
-| SEENN (NeurIPS 2023) | VGG-16 | ~1.4 | 93.63% | -- | near-lossless |
-| SlipReLU (2023) | ResNet-20 | 2 | 82.25% | ~92% | ~10% |
-| One-Timestep (2025) | ResNet-18 | 1 | 93.11% | ~93.5% | ~0.4% |
-| PMSM (2024) | ViT-S | 1 | 98.5% | -- | near-lossless |
-
-#### CIFAR-100 (Approximate ANN Baseline: VGG16 ~73%, ResNet-34 ~77%)
-
-| Method | Architecture | Timesteps (T) | SNN Accuracy | Loss |
-|--------|-------------|---------------|-------------|------|
-| QCFS | VGG-16 | 4 | 70.15% | ~3% |
-| SNN Calibration | VGG-16 | 16 | ~71% | ~2% |
-| Various | ResNet-34 | 16 | ~70.97% | ~6% |
-| Knowledge Distillation (2024) | ResNet-34 | 4 | 70.04% | ~7% |
-
-#### ImageNet (Approximate ANN Baseline: VGG16 ~71.6%, ResNet-34 ~73.3%)
-
-| Method | Architecture | Timesteps (T) | SNN Accuracy | Loss |
-|--------|-------------|---------------|-------------|------|
-| Group Neurons (ICASSP 2024) | ResNet-34 | 2 | 73.61% | ~0% |
-| Threshold Balancing | VGG-16 | 250 | 73.87% | ~0% |
-| QCFS + TPP | VGG-16 | 16 | 73.98% | ~0% |
-| QCFS + TPP | ResNet-34 | 16 | 72.03% | ~1% |
-| Spiking Transformer (2025) | ViT/DeiT | 4 | 88.60% | ~1% |

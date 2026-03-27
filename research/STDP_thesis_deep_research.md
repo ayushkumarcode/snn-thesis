@@ -278,3 +278,31 @@ the thesis should NOT just replicate Diehl & Cook (2015) on MNIST. that is indee
 - **Why novel:** DVS cameras produce async spike-like events -- natural match for STDP's temporal learning rule. most DVS classification uses surrogate gradients, not STDP. there's a gap.
 - **What to do:** train STDP-based CSNN on N-MNIST or DVS128 Gesture using BindsNET or SpykeTorch. compare STDP-learned features vs random features vs surrogate-gradient features.
 - **Datasets:** N-MNIST, DVS128 Gesture (11 classes), CIFAR10-DVS
+- **Expected results:** 90-95% on N-MNIST, 80-90% on DVS128 Gesture
+- **Why it works as a thesis:** natural fit between data modality and learning rule, tells a coherent biological story
+- **Feasibility:** HIGH -- Tonic handles data loading, BindsNET/SpykeTorch handle STDP
+
+**Idea B: Three-Factor Learning (Reward-Modulated STDP) for RL**
+- **Why novel:** standard STDP is unsupervised. adding a dopamine-like reward signal creates three-factor learning: pre-synaptic x post-synaptic x reward. this is how the brain supposedly does RL. a 2025 Patterns review calls this "a crucial extension of traditional STDP."
+- **What to do:** implement R-STDP using BindsNET's MSTDP or MSTDPET rules. train an SNN agent on a simple RL task (CartPole, custom maze). compare vs standard DQN.
+- **Expected results:** R-STDP should solve simple tasks. the interesting bit is energy efficiency and bio-plausibility comparison.
+- **Why it works:** connects neuroscience (dopamine), ML (RL), and neuromorphic computing in one project
+- **Feasibility:** MEDIUM-HIGH -- BindsNET has R-STDP built in, RL envs via OpenAI Gym
+
+**Idea C: STDP for Continual/Lifelong Learning -- "Learning Without Forgetting"**
+- **Why novel:** catastrophic forgetting is a major unsolved problem. STDP's local nature means it only modifies synapses relevant to current inputs, potentially preserving old knowledge. a 2024 paper showed wake-sleep R-STDP networks can avoid forgetting.
+- **What to do:** train STDP on digits 0-4, then 5-9. measure how much 0-4 accuracy degrades. compare vs standard ANN (which will catastrophically forget). implement sleep/replay.
+- **Expected results:** STDP should show less forgetting than naive ANNs, but still some. the analysis is where thesis value lies.
+- **Feasibility:** MEDIUM -- requires careful experimental design
+
+#### Tier 2: Strong Angles
+
+**Idea D: Comparing STDP Variants**
+- many STDP variants now exist (pair-based, triplet, voltage-dependent, R-STDP, symmetric, S2-STDP). no undergrad-level comparison exists.
+- implement 3-4 variants in BindsNET/Brian2. train on MNIST and Fashion-MNIST. compare accuracy, convergence, energy, feature quality, bio-plausibility.
+- **Feasibility:** HIGH -- mostly parameter/rule changes in existing code
+
+**Idea E: STDP Features vs Unsupervised ANN Methods**
+- direct comparison: STDP (brain's rule) vs modern unsupervised methods (autoencoders, contrastive learning, k-means) as feature extractors.
+- extract features with each, classify with same SVM. which features are best? analyze quality, bio-plausibility, compute cost.
+- **Feasibility:** HIGH -- all methods have standard implementations

@@ -1125,31 +1125,3 @@ pip install matplotlib tensorboard
 
 # Optional
 pip install einops tqdm h5py scipy
-```
-
-### Project Directory Structure
-
-```
-thesisproject/
-|-- data/
-|   |-- DVS128Gesture/         # Raw dataset
-|   |-- cache/                  # Cached frame data
-|-- src/
-|   |-- models/
-|   |   |-- snn_model.py       # SNN architecture (SpikingJelly)
-|   |   |-- cnn_baseline.py    # ANN baseline
-|   |-- data/
-|   |   |-- dataset.py         # Dataset loading and transforms
-|   |-- train_snn.py           # SNN training script
-|   |-- train_cnn.py           # ANN baseline training
-|   |-- evaluate.py            # Evaluation metrics + energy estimation
-|   |-- visualize.py           # Spike raster, membrane potential plots
-|-- logs/                       # TensorBoard logs and checkpoints
-|-- notebooks/                  # Jupyter notebooks for analysis
-|-- requirements.txt
-|-- README.md
-```
-
----
-
-## 12. Sources

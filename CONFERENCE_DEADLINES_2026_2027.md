@@ -424,31 +424,3 @@ Sources: [IEEE CASS BioCAS](https://ieee-cas.org/event/conference/2026-ieee-biom
 | **Format** | IEEE conference template |
 | **Realistic for UG?** | MARGINAL. Biomedical focus. Would need strong medical/assistive framing. |
 
-Sources: [EMBC 2026](https://embc.embs.org/2026/), [Call for Papers](https://embc.embs.org/2026/papers/)
-
----
-
-## 6. NEURAL NETWORKS / AI CONFERENCES
-
-### 6.1 ICANN 2026 -- International Conference on Artificial Neural Networks
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 35th International Conference on Artificial Neural Networks |
-| **Paper Deadline** | **16 March 2026** |
-| **Notification** | 29 May 2026 |
-| **Camera-Ready** | TBD |
-| **Conference Dates** | 14-17 September 2026 |
-| **Location** | University of Padua, Padua, Italy |
-| **Page Limit** | 12 pages including references |
-| **Format** | Springer LNCS (Lecture Notes in Computer Science) |
-| **Proceedings** | Springer-Verlag LNCS with individual DOI |
-| **Acceptance Rate** | ~50-55% historically |
-| **Registration** | TBD (historically ~300-500 EUR; early bird 20% discount) |
-| **Realistic for UG?** | **YES -- STRONG FIT.** Dedicated special session on "Spiking Neural Networks and Neuromorphic Computing" + "Perception frontiers with neuromorphic methods". Springer LNCS proceedings are well-indexed. Moderate acceptance rate. |
-| **Focus** | Artificial neural networks, deep learning, neuroscience, brain-inspired computing |
-
-**Why this is a strong fit:** ICANN 2026 has a dedicated special session "Spiking Neural Networks and Neuromorphic Computing" that is a near-perfect match for this work. The 12-page LNCS format allows comprehensive results presentation. Springer proceedings with DOI provide good citation visibility.
-
-Sources: [ICANN 2026](https://e-nns.org/icann2026/), [Call for Papers](https://e-nns.org/icann2026/call-for-papers-2/)
-

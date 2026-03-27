@@ -406,31 +406,3 @@ def evaluate_ptbxl(y_true, y_score, y_pred):
 | **POTENTIAL BLOCKER** | LOW -- standard mitigation techniques apply |
 
 **Imbalance characteristics:**
-- NORM (~9,528) is ~3.6x more common than HYP (~2,655)
-- Multi-label nature adds complexity (some ECGs have 2-3 labels)
-- The benchmark paper does NOT use weighted loss -- it reports raw results
-
-**Recommended mitigation strategies (choose one):**
-
-1. **Weighted BCEWithLogitsLoss (simplest, recommended for thesis):**
-```python
-# Calculate class weights inversely proportional to frequency
-class_counts = y_train.sum(axis=0)
-pos_weight = (len(y_train) - class_counts) / class_counts
-criterion = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_weight))
-```
-
-2. **Focal Loss:** Down-weights easy examples, focuses on hard cases
-3. **ADASYN oversampling:** Adaptive synthetic sampling (more complex)
-
-**Practical recommendation:** Start WITHOUT weighted loss to match the benchmark, then add pos_weight to BCEWithLogitsLoss if HYP class performance is poor.
-
-**Sources:** [PTB-XL paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC7248071/), [ECG classification with class imbalance](https://www.mdpi.com/1099-4300/23/9/1121)
-
----
-
-### 11. GPU Requirements (SIGNIFICANT CONCERN)
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES (feasible with mitigations) |

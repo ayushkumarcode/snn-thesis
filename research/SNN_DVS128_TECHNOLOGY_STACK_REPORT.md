@@ -222,3 +222,31 @@ for epoch in range(epochs):
 
         # Mixed precision forward pass
         with amp.autocast():
+            out_fr = net(frame).mean(0)  # Average output spikes over time
+            loss = F.mse_loss(out_fr, label_onehot)
+
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+
+        train_samples += label.numel()
+        train_loss += loss.item() * label.numel()
+        train_acc += (out_fr.argmax(1) == label).float().sum().item()
+
+        # CRITICAL: Reset neuron states after each batch
+        functional.reset_net(net)
+
+    lr_scheduler.step()
+    train_loss /= train_samples
+    train_acc /= train_samples
+
+    # Evaluate
+    net.eval()
+    test_loss = test_acc = test_samples = 0
+    with torch.no_grad():
+        for frame, label in test_loader:
+            frame = frame.to(device).transpose(0, 1)
+            label = label.to(device)
+            label_onehot = F.one_hot(label, 11).float()
+            out_fr = net(frame).mean(0)
+            loss = F.mse_loss(out_fr, label_onehot)

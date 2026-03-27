@@ -334,3 +334,31 @@ these are overwhelmingly **hardware-focused engineering**: calibrating chips, ch
 Source: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
 
 ---
+
+## Takeaways for My Own Thesis
+
+### What's Normal and Expected
+
+based on these 14 examples, totally standard framing looks like:
+
+**"This thesis implements [X] for [task Y] using [framework Z], and evaluates its performance on [dataset W]."**
+
+or:
+- "This thesis investigates the feasibility of using [X] for [Y] by implementing and evaluating [Z]."
+- "This thesis compares [A] and [B] for [task C] on [dataset D], analyzing [metrics E and F]."
+- "This work presents an implementation of [X] on [platform Y] and characterizes its performance."
+
+### What You Don't Need to Claim
+
+- you do NOT need to claim a novel scientific discovery
+- you do NOT need to beat SOTA benchmarks
+- you do NOT need to propose a new algorithm or architecture
+- you DO need to show you built something, tested it carefully, and can interpret the results
+- honest reporting of bad results is totally fine (thesis 12: 45% validation accuracy)
+
+### The "Towards" Escape Hatch
+
+lots of KIP theses use "Towards" in titles -- signals progress toward a larger goal rather than completion. perfectly legitimate for undergrad work:
+- "Towards Spike-based Expectation Maximization in a Closed-Loop Setup..."
+- "Towards Balanced Random Networks on the BrainScaleS I System"
+- "Towards Fast Iterative Learning on the BrainScaleS Neuromorphic Hardware System"

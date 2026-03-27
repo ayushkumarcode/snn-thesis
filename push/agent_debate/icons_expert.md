@@ -82,3 +82,31 @@ frame the 47.15% as "establishing a baseline for future SNN audio work" and the 
 
 ---
 
+## Does SpiNNaker Carry Weight?
+
+**yes, substantially.** hardware deployment papers are first-class at ICONS. SpiNNaker papers appear in both full-talk and lightning-talk slots (Arfa et al. 2025, Seekings et al. 2024).
+
+the FC2-only hybrid is defensible -- the key is framing FC1 cancellation as a research finding, not a failure. the root cause (AvgPool produces fractional outputs incompatible with binary spike inputs) is genuinely non-obvious. the Option A result (MaxPool -> fc1_binary_fraction=1.0) shows the path forward.
+
+5-fold SpiNNaker validation (2,000 hardware inferences) is methodologically stronger than most hardware papers.
+
+at ICONS, 33.1% on SpiNNaker for 50-class environmental sound -- the first such deployment -- carries real weight.
+
+---
+
+## Publishability Assessment
+
+**publishable with moderate revisions. ~75% combined probability of acceptance as full or short paper.**
+
+scenarios:
+- **best case:** accept as full paper, 20-min talk (~35%)
+- **middle case:** accept as lightning talk / short paper (~40%)
+- **revision case:** major revision requested (~15%)
+- **reject:** ~10%
+
+primary rejection risk: reviewers feel 8-page full paper is too compressed for each contribution to have adequate depth. if rejected for this reason, likely accept-as-short-paper rather than reject-outright.
+
+**single most important addition:** clear "path to full deployment" narrative around Option A (MaxPool SNN). if there's time to run FC1+FC2 on SpiNNaker hardware, that transforms the hardware contribution from "FC2-only hybrid" to "first full convolutional SNN deployed on SpiNNaker for environmental sound."
+
+---
+

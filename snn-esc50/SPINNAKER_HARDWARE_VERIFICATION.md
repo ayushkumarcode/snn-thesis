@@ -1,16 +1,16 @@
-# SpiNNaker Hardware Verification
+# spinnaker hardware verification
 
-**Purpose:** Prove that our SNN inference ran on real SpiNNaker neuromorphic hardware, not a simulator.
-
----
-
-## Conclusion: CONFIRMED -- Real SpiNNaker Hardware
-
-The evidence is overwhelming and comes from multiple independent, unfakeable sources. We ran on a real SpiNNaker SpiNN-5 board (48-chip, Version 5) allocated from the million-core SpiNNaker machine at the University of Manchester's Department of Computer Science, accessed remotely via the spalloc resource allocation system.
+purpose: prove that our SNN inference ran on real SpiNNaker neuromorphic hardware, not a simulator.
 
 ---
 
-## Evidence 1: DNS and Network Infrastructure
+## conclusion: confirmed -- real SpiNNaker hardware
+
+the evidence is pretty overwhelming from multiple independent sources. we ran on a real SpiNNaker SpiNN-5 board (48-chip, Version 5) allocated from the million-core machine at UoM's Department of Computer Science, accessed remotely via spalloc.
+
+---
+
+## evidence 1: DNS and network infrastructure
 
 `spinnaker.cs.man.ac.uk` resolves to `130.88.193.57`.
 

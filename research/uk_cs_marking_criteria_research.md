@@ -251,31 +251,3 @@ Looking at the Cambridge breakdown:
 
 This suggests implementation carries about 1.5x the raw marks of the research framing.
 
-At Manchester, the "Report" (55%) encompasses both the research question AND the write-up of implementation, while "Achievements" (30%) is purely the practical output. So the implementation/achievements component is separately assessed and worth nearly a third of your total mark.
-
-### 4.2 Why the Research Question Still Matters Enormously
-
-Despite implementation carrying more raw marks, the research question is arguably more important in practice because:
-
-1. **It frames everything else.** A vague or poorly defined research question makes it impossible to write a good evaluation chapter, because you cannot evaluate something if you have not clearly stated what you are trying to achieve.
-
-2. **It determines the literature review quality.** A specific, well-scoped research question naturally leads to a focused, relevant literature review. A vague question leads to a meandering, unfocused background chapter.
-
-3. **It defines the evaluation criteria.** If your research question is "Can SNNs achieve comparable accuracy to ANNs on gesture recognition using the DVS128 dataset?", then your evaluation has a clear target: compare accuracy, latency, and energy metrics. If your question is vague ("explore SNNs"), markers have nothing to evaluate your success against.
-
-4. **It signals ambition level.** A well-formulated research question that is specific, testable, and grounded in the literature signals to markers that you understand the field and have thought carefully about what you are doing.
-
-### 4.3 The Interaction Between the Two
-
-The relationship is not "either/or" but rather "both, and they must be aligned":
-
-- A brilliant research question with poor implementation = 2:1 (you identified something interesting but could not execute it)
-- A brilliant implementation with no clear research question = 2:1 (you built something impressive but nobody knows why or what it proves)
-- A good research question with good implementation AND good evaluation = First (the holy trinity)
-
-### 4.4 Manchester-Specific Guidance
-
-Your COMP30040 report guidance states the report must contain "an elucidation of the problem and the objectives of the project" and "a description of any research hypothesis." This confirms that Manchester expects a clear problem statement with objectives. It also expects "a critical appraisal of the project, indicating the rationale for any design/implementation decisions, lessons learnt during the course of the project, and evaluation (with hindsight) of the project outcome."
-
-The word "hypothesis" is notable -- it suggests Manchester values projects that frame themselves around a testable proposition, not just a building exercise.
-

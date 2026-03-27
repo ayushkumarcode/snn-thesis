@@ -1160,3 +1160,16 @@ Uses calibrated weight_scale=5.0 from Run 6, skips scale sweep, ~100min runtime.
 **Result:** Sample 3 went from 0/256 → **61/256 hidden neurons fired** (matching Python simulation exactly). Sample 0: 61/256 (previously 41/256 — also improved!). Both samples now have highly active output layers (13-19/50 neurons).
 
 **Configuration:** Full FC1 weights (exc+inh), prune_threshold=0.05, scale=10.0, SpikeSourceArray 32/core, IF_curr_exp 16/core.
+
+## Decision #61: Energy Experiment Strategy (27 March 2026)
+
+**Decision:** Implement 12 energy experiments covering all promising strategies, submit as 3 CSF3 batch jobs (A, B, C), run SpiNNaker deployment in parallel.
+
+**Chosen experiments:**
+- Group A: Reduced-T training (T=3,5,7,10,15), layerwise spike reg sweep, ternary weights, combined energy
+- Group B: Early exit analysis, extreme pruning (95-99%), fly brain classifier, NeuroBench benchmarks
+- Group C: Spike budget with feedback controller (6 target rates)
+
+**Rationale:** Research identified ~26x combined reduction as realistic (spike reg 4.4x × early exit 3x × pruning 2x). The "narrative flip" from 968nJ (2.1x worse) to ~37nJ (12x better) is the key thesis contribution. Three parallel jobs maximize CSF3 utilization within 2-GPU limit.
+
+**SpiNNaker strategy:** Deploy baseline SNN FC2-only (already working, 33.1% 5-fold). Use standard LIF — rhythm neurons would require custom C model (feasible but 2-3 day effort, not worth the risk before deadline). Focus on energy MEASUREMENT, not architecture novelty.

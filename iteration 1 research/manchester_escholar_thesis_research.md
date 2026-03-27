@@ -586,3 +586,9 @@ for my final year project, a realistic scope would be roughly 1/4 to 1/6 of thes
 ## things to follow up on
 
 1. manchester undergrad dissertations aren't in Research Explorer. they might be in individual department archives (would need to contact CS department), the internal Blackboard/Canvas system (not public), or supervisor portfolios.
+
+2. for comparable undergrad scope, better to search other UK universities' FYP repositories (Imperial, Edinburgh), GitHub repos tagged "final year project" + neuromorphic, or conference papers from undergrad research programs.
+
+3. Manchester eScholar (escholar.manchester.ac.uk) is a different system focused on learning resources, not theses -- don't confuse with Research Explorer.
+
+4. EThOS (British Library) might have additional Manchester theses not in the Research Explorer.

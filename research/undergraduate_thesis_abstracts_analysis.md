@@ -250,3 +250,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 
 ---
 
+## Pattern Analysis
+
+### How Objectives Get Stated
+
+most common phrasings fall into these buckets:
+
+**Direct aim:**
+- "The aim of this research is to investigate whether..." (TU Delft)
+- "The primary goal was demonstrating that..." (Heidelberg KIP)
+- "The core goal is to design and implement..." (Peradeniya)
+
+**Problem-motivated:**
+- "One of the limitations of X is Y. In this document, the approach to solve this limitation is presented by..." (HAW Hamburg)
+
+**Understanding-oriented:**
+- "The team sought to obtain a better understanding of X by comparing..." (Osnabruck)
+
+**Exploratory:**
+- uses "Exploring" or "Towards" in the title (Radboud, Heidelberg)
+
+### What Gets Claimed as Contribution
+
+| Contribution Type | Count | Examples |
+|---|---|---|
+| "We implemented X on platform Y and showed it works" | 5 | Theses 1, 3, 5, 6, 7 |
+| "We compared/evaluated A vs B and report results" | 4 | Theses 2, 8, 9, 11 |
+| "We investigated/explored whether X can do Y" | 3 | Theses 12, 14, 4 |
+| "We reviewed the field and built a demo" | 1 | Thesis 13 |

@@ -114,31 +114,3 @@ The adversarial robustness analysis is conducted on fold 4 only. With 400 sample
 
 At eps=0.0, SNN=53.75% and ANN=68.75%. The SNN starts 15 pp lower. If we normalise adversarial accuracy as a fraction of clean accuracy: SNN at eps=0.1 retains 26/53.75 = 48.4% of its clean performance; ANN retains 1.75/68.75 = 2.5% of its clean performance. This relative comparison still favours the SNN dramatically. But a reviewer might argue that the ANN's catastrophic drop is partly because it had more to lose — higher clean accuracy means more information that adversarial perturbations can destroy. The robustness comparison is somewhat confounded by the accuracy differential.
 
-**Problem 4: The novelty claim is specifically "first on audio spectrograms" — which is very narrow.**
-
-Prior work (Sharmin et al. ECCV 2020, cited) already established SNN adversarial robustness on image inputs. The contribution is applying a known phenomenon (SNN robustness from binary thresholding) to audio spectrogram inputs. This is a domain transfer, not a fundamental discovery. A reviewer may accept it as a contribution but downgrade it from "novel finding" to "corroborating evidence in a new modality."
-
-### What a Reviewer Would Specifically Say
-
-"The adversarial robustness analysis is undermined by a critical methodological concern: Wang et al. (2025) demonstrate that standard FGSM/PGD attacks may not correctly evaluate SNN robustness due to the surrogate gradient approximation mismatch with the true spiking discontinuity. The paper acknowledges this limitation but then presents the 14.9x robustness advantage as a meaningful result without addressing whether the result reflects genuine adversarial robustness or gradient masking. The authors must either (a) use SA-PGD as Wang et al. recommend, (b) empirically verify that surrogate gradient attacks produce valid adversarial examples for their specific architecture, or (c) prominently reframe the finding as 'resistance to surrogate-gradient-based attacks' rather than 'adversarial robustness.' As presented, the 14.9x figure may be an optimistic artifact of the evaluation methodology rather than a genuine property of the SNN."
-
-### Novelty Risk: MEDIUM RISK
-
-The novelty claim ("first on audio spectrograms") is defensible but thin. The bigger risk is that the result itself may be challenged as a methodological artifact. This is survivable if the paper strongly foregrounds the Wang et al. (2025) caveat rather than burying it in a subordinate clause.
-
----
-
-## C5: First PANNs + SNN Combination
-
-### The Strongest Challenge
-
-**Problem 1: The result is trivial in hindsight and may not survive "why didn't you just use an ANN?" scrutiny.**
-
-The experiment shows that freezing CNN14 (a massive ANN trained on 2 million AudioSet clips) and attaching a tiny 3-layer SNN head achieves 92.50%, while attaching a tiny 3-layer ANN head achieves 93.45%. The 0.95 pp gap is the claimed scientific insight (gap collapses). However, a reviewer will observe: the tiny SNN head is a near-trivial classifier applied to already-excellent 2048-dimensional features. The fact that a tiny SNN can classify pre-extracted features at nearly the same accuracy as a tiny ANN is not scientifically surprising — it is what you would expect from any reasonably trained linear-ish classifier applied to good features. The interesting question is not "can a small SNN head classify CNN14 features?" (trivially yes) but "does the SNN head learn fundamentally different representations?" The paper does not address this.
-
-**Problem 2: The 0.95 pp advantage for ANN over SNN is not significant.**
-
-The SNN achieves 92.50% ± 1.30% and the ANN achieves 93.45% ± 1.54%. The difference is 0.95 pp. The confidence intervals overlap substantially. A t-test on these five-fold results would almost certainly not be significant. The paper claims this "demonstrates the SNN architecture can learn competitive classifiers from rich features" — but the tiny performance gap could equally be attributed to random variation from the 5-fold split.
-
-**Problem 3: This is ANN-to-SNN knowledge transfer in frozen embedding form, which is a well-studied approach.**
-

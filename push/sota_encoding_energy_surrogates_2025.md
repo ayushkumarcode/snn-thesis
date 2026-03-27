@@ -226,31 +226,3 @@ Three architectures analyzed: classical (GPU/TPU), neuromorphic dataflow (event-
 
 **Citation:** J. Yik et al. "The NeuroBench framework for benchmarking neuromorphic computing algorithms and systems." Nature Communications 16:1589, 2025. DOI:10.1038/s41467-025-56739-4.
 
-**Benchmark tasks (Algorithm Track v1.0):**
-
-| Task | Dataset | Metric | ANN Baseline | SNN Result | SNN Eff_ACs | ANN Eff_MACs |
-|------|---------|--------|-------------|-----------|-------------|-------------|
-| Keyword FSCIL | MSWC | Accuracy | 89.27% | 75.27% | 3.65x10^5 | 7.85x10^6 |
-| Event Detection | Prophesee 1MP | mAP | 0.429 | 0.271 (hybrid) | 5.60x10^8 | 3.76x10^10 |
-| Motor Prediction (Indy) | Primate Reaching | R^2 | 0.593 | 0.593 | 276 | 3,836 |
-| Motor Prediction (Loco) | Primate Reaching | R^2 | 0.558 | 0.568 | 551 | 6,103 |
-
-**System Track v1.0:**
-
-| System | Task | Accuracy | Dynamic Energy/sample |
-|--------|------|----------|-----------------------|
-| Arduino Nano (CPU) | Acoustic Scene Classification | 79.64% | 1.851 mJ |
-| Xylo (neuromorphic) | Acoustic Scene Classification | 79.90% | **0.028 mJ** |
-
-**Key finding:** The Xylo neuromorphic chip achieves 60.9x less dynamic inference power and 33.4x less dynamic energy than Arduino at comparable accuracy for audio classification.
-
-**Metrics defined:**
-- **Effective MACs:** Non-zero multiply-accumulate operations (activations not binary spikes)
-- **Effective ACs:** Non-zero accumulate operations (activations are binary +/-1)
-- **Dense:** Total operations (zero and non-zero)
-- **Activation Sparsity:** Fraction of zero activations
-- **Connection Sparsity:** Fraction of zero weights
-- **Footprint:** Memory in bytes
-
-**Relevance to thesis:** The thesis uses the same NeuroBench framework (v2.2.0) with SynapticOperations metric. The NeuroBench motor prediction result (SNN = ANN in accuracy with 14x fewer operations) is the strongest evidence that SNNs can match ANNs when tasks align with spike-based processing. The Xylo audio result (66x energy reduction) validates the thesis's energy narrative for neuromorphic hardware.
-

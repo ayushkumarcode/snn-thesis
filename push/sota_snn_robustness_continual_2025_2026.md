@@ -53,31 +53,3 @@ Our SNN adversarial evaluation uses standard FGSM and PGD with surrogate gradien
 **Literature Comparison Table (FGSM, eps = 8/255 unless noted):**
 
 | Paper | Year | Dataset | SNN Robust Acc | ANN Robust Acc | SNN/ANN Ratio | Notes |
-|-------|------|---------|---------------|---------------|---------------|-------|
-| **Ours** | 2026 | ESC-50 (audio) | 26.0% (eps=0.1) | 1.75% | **14.9x** | Standard FGSM |
-| RSC-SNN (Wu et al.) | 2024 | CIFAR-10 | 54.52% | 10.89% | **5.0x** | ACM MM 2024 |
-| RSC-SNN | 2024 | CIFAR-100 | 34.89% | 4.56% | **7.7x** | ACM MM 2024 |
-| Nature Comms (2025) | 2025 | CIFAR-10 | ~2x ANN | baseline | **~2x** | "Twice the robustness" claim |
-| Nature Comms (2025) | 2025 | FashionMNIST | ~20% (eps=0.5) | ~0% | **>>10x** | At high epsilon |
-| RandHet-SNN | 2025 | CIFAR-10 | 53.53% | N/A | N/A | vs standard SNN baseline |
-| Sharmin et al. | 2020 | CIFAR-10 | 3-6% higher than ANN | baseline | **~1.1-1.2x** | Seminal ECCV paper |
-
-**Key Observations:**
-- At **moderate epsilon** (e.g., 8/255 on CIFAR), the SNN/ANN robustness ratio is typically 2-8x
-- At **high epsilon** (e.g., 0.1 on audio, 0.5 on FashionMNIST), where ANN accuracy collapses to near-zero, the ratio can appear extremely large (10x+)
-- Our 14.9x ratio is measured at eps=0.1, which is a relatively aggressive perturbation for audio spectrograms
-- The ANN drops to 1.75% (near random for 50 classes = 2%), essentially complete failure
-- **The high ratio is partly an artifact of ANN near-total failure** rather than exceptional SNN robustness
-- **Gradient masking likely further inflates this** per Wang et al.
-
-**Recommendation for thesis:** Report the absolute numbers (SNN 26%, ANN 1.75%) rather than emphasizing the ratio. Frame it as: "The SNN retains non-trivial classification ability (26%) at perturbation magnitudes where the ANN is essentially defeated (1.75%, near chance level of 2%)." Acknowledge gradient masking caveat.
-
----
-
-### 1.3 SNN Adversarial Robustness in Audio -- Literature Gap
-
-**Finding: There are ZERO papers on SNN adversarial robustness specifically for audio classification.**
-
-All SNN adversarial robustness work (2020-2026) has been conducted on:
-- Image classification: CIFAR-10, CIFAR-100, MNIST, SVHN, Tiny-ImageNet, ImageNet
-- Neuromorphic vision: CIFAR10-DVS, DVS-CIFAR10, N-Caltech101

@@ -166,20 +166,20 @@ The AvgPool between LIF2 and FC1 averages binary spikes into fractional values i
 
 Validated hybrid: conv + FC1 + LIF3 in software (snnTorch CPU), produces binary hidden spike tensors (T, N, 256). Only FC2 + LIF4 (256->50) deployed on SpiNNaker.
 
+**Hardware:** SpiNN-5 at spinnaker.cs.man.ac.uk, sPyNNaker 1.0.0.
 
-**Calibrated parameters** (9-point scale sweep + LIF parameter calibration):
+**Neuron model:** IF_curr_exp
+
+**Calibrated params** (9-point scale sweep + LIF param calibration):
 ```
-cm = 1.0 nF                  # membrane capacitance
-tau_m = 20.0 ms              # membrane time constant
-tau_refrac = 0.1 ms          # refractory period
-tau_syn_E = 5.0 ms           # excitatory synaptic time constant
-v_thresh = 1.0 mV            # spike threshold
-v_rest = v_reset = 0.0 mV   # resting/reset potential
-weight_scale = 1.0           # FC2 weights scaled to integer SpiNNaker format
+cm = 1.0 nF
+tau_m = 20.0 ms
+tau_refrac = 0.1 ms
+tau_syn_E = 5.0 ms
+v_thresh = 1.0 mV
+v_rest = v_reset = 0.0 mV
+weight_scale = 1.0
 ```
-
-**Input encoding:** Binary hidden spikes (256-d per timestep, 21.7% active on average) fed as SpikeSourceArray with 1ms per simulation timestep, 25ms total per sample.
-
 **Classification:** Argmax of total output spike count over 25ms window.
 
 **Validated accuracy (Run 5, n=20):** 8/20 = 40.0% vs snnTorch reference 10/20 = 50.0%.

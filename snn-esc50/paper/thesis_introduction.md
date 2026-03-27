@@ -1,17 +1,17 @@
-# Chapter 1: Introduction
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 1: introduction
+
+working notes for the intro chapter. need to set up the motivation, research questions, and contributions. this is the chapter that frames everything else so it needs to be solid.
 
 ---
 
-## 1.1 Motivation
+## 1.1 motivation
 
-### 1.1.1 The Energy Crisis in Perceptual AI
+### 1.1.1 the energy problem in perceptual AI
 
-The last decade has produced remarkable progress in machine perception. Deep convolutional networks now classify environmental sounds, recognise speech, and identify objects in images with accuracy that matches or exceeds human performance on standardised benchmarks. But this progress has come at a striking energy cost. A single inference through a large convolutional network on a modern GPU consumes tens to hundreds of millijoules — three to four orders of magnitude more than the human brain expends on an equivalent perceptual task. The human auditory cortex classifies environmental sounds continuously at the scale of the whole brain's 20-watt budget (Attwell & Laughlin 2001); a single GPU inference for equivalent audio classification can consume 20–200 mJ (Yik et al. 2025).
+ok so the core argument here is: deep learning for audio perception works great but costs way too much energy for edge deployment. need to spell this out clearly.
 
-This mismatch matters increasingly because perceptual AI is being pushed to the edge. The most commercially important applications for audio intelligence — hearing aids, cochlear implants, wildlife acoustic monitors, smart building sensors, search-and-rescue robots, industrial fault detection — are battery-constrained, latency-sensitive, and privacy-critical. A hearing aid has an energy budget of approximately 1 mW with a weekly charge cycle; a wildlife acoustic sensor may run for months on a single cell. In these environments, transmitting raw audio to a cloud server for inference is not merely inconvenient — it is impossible within the energy budget, introduces unacceptable latency, and creates privacy exposure that is legally and ethically problematic for audio recorded in private spaces.
+The last decade has seen massive progress in machine perception -- deep CNNs can classify sounds, recognise speech, identify objects etc at or above human level on standard benchmarks. But the energy cost is absurd. A single inference through a large CNN on a GPU uses tens to hundreds of millijoules, which is 3-4 orders of magnitude more than what the brain does for an equivalent task. The human auditory cortex classifies sounds continuously within the whole brain's 20W budget (Attwell & Laughlin 2001); a GPU inference for audio classification can hit 20-200 mJ (Yik et al. 2025).
 
-The consequence is a genuine engineering gap. The algorithms that achieve state-of-the-art accuracy are too expensive to run locally on the devices where local inference is needed most. This gap is not closing at a rate commensurate with deployment demand: GPU energy efficiency improves roughly 1.5× per technology generation (Moore's Law for power), but model parameter counts have been growing substantially faster. The efficiency of the underlying compute paradigm — dense floating-point matrix multiplication — is fundamentally mismatched to the sparse, event-driven nature of perceptual signals.
 
 ### 1.1.2 The Biological Blueprint
 

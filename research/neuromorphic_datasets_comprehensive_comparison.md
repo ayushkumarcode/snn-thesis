@@ -222,3 +222,31 @@ training times assume single consumer GPU (RTX 3060-3090 tier), ~100-200 epochs.
 
 ### audio datasets
 1. load HDF5 (spike_times and spike_units)
+2. channel binning: 700 -> 140 (optional but common)
+3. temporal discretization: T steps (e.g., T=100 at 10ms)
+4. output: [T x C] where C=140 or 700
+5. zero-padding to 1 second
+
+### complexity ranking (easiest to hardest):
+1. SHD/SSC -- 1D data, clean HDF5, simple binning
+2. N-MNIST -- small 2D, standardized format
+3. DVS128 Gesture -- needs AEDAT parsing + clip segmentation, but well-tooled
+4. CIFAR10-DVS -- AEDAT format, no official split
+5. N-Caltech101 -- variable resolution, class imbalance, no standard split
+6. DVS-Lip -- multi-scale temporal processing, lip region extraction
+
+---
+
+## thesis narrative ranking
+
+### tier 1: best stories
+
+**DVS128 Gesture -- "brain-inspired gesture recognition"**
+- clear real-world application: touchless interfaces, AR/VR, accessibility
+- natural efficiency argument: event cameras use less data than RGB
+- easy to explain to non-specialists
+- enables SNN vs ANN comparison with energy analysis
+
+**SHD -- "biologically plausible speech processing"**
+- unique angle: audio SNNs are rare in undergrad work
+- strong biological motivation: cochlear model mimics inner ear

@@ -1174,3 +1174,8 @@ thesisproject/
 
 3. DVS128 Gesture download -- the original IBM source may require an account. Tonic provides an automated download of a preprocessed version. The SpikingJelly loader expects the original AEDAT format.
 
+4. MPS operator coverage -- not all PyTorch operators work in Apple MPS. Some SpikingJelly operations may silently fall back to CPU. Need to monitor performance on Mac.
+
+5. Training duration on Mac -- no published benchmarks for DVS128 Gesture training on Apple Silicon. Guessing roughly 2-4x slower than an RTX 2080 Ti based on general MPS benchmarks.
+
+6. Energy estimation accuracy -- SynOps-based energy estimation (45nm technology) is just a proxy. Real energy on actual neuromorphic hardware (Loihi, TrueNorth, etc.) will differ. But the 45nm estimates are standard in the literature for fair comparison, so it's fine.

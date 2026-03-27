@@ -54,3 +54,31 @@ audio-specific ANN-to-SNN conversion is basically nonexistent:
 | T = 16-64 | 0.5-2% | Threshold balancing + calibration |
 | T = 4-8 | 1-3% | Quantization-aware conversion |
 | T = 1 | 0-5% | Multi-level neurons (PMSM) |
+
+our T=25 sits in a comfortable zone. but again, we train directly with surrogate gradients rather than converting, so this comparison is more illustrative than anything.
+
+---
+
+## 2. Knowledge Distillation: ANN Teacher to SNN Student
+
+### Methods Taxonomy (2023-2025)
+
+there's been a ton of work here:
+
+| Method | Venue | Year | Approach | Key Innovation |
+|--------|-------|------|----------|----------------|
+| Xu et al. (BKD) | CVPR 2023 | 2023 | ANN-SNN joint training with KD | Blurred KD: random blurred SNN features restore ANN features |
+| BKDSNN | ECCV 2024 | 2024 | Feature-level BKD | Outperforms prior SOTA by 4.51% on ImageNet (CNN topology) |
+| SAKD (Qiu et al.) | Neural Networks 178 | 2024 | Self-architectural KD | Bilevel: (1) transfer ANN weights to SNN, (2) mimic ANN behavior |
+| Efficient Logit-based KD | ICML 2025 | 2025 | Temporal-wise logit distillation | Full-range timestep deployment without retraining |
+| SAMD + NLD (Liu et al.) | arXiv 2025 | 2025 | Saliency-scaled activation map + noise-smoothed logits | Addresses continuous-vs-sparse distribution mismatch |
+| HTA-KL | arXiv 2025 | 2025 | Head-tail aware KL divergence | Balances high- and low-probability regions |
+| Enhanced Self-Distillation | NeurIPS 2025 | 2025 | Rate-based self-distillation | Projects SNN firing rates onto lightweight ANN branches |
+| Cross KD (CKD) | arXiv 2025 | 2025 | Bidirectional ANN-SNN transfer | Semantic similarity + sliding replacement |
+| Temporal Separation + Entropy | arXiv 2025 | 2025 | Temporal entropy regularization | Separates knowledge along temporal dimension |
+| BSD | arXiv 2025 | 2025 | Bidirectional spike-based distillation | Biologically plausible; stimulus-to-concept encoding |
+
+### Key Distillation Findings
+
+the fundamental challenge everyone keeps running into: ANN outputs are continuous while SNN outputs are sparse and discrete. straightforward alignment doesn't work because of this architectural mismatch (Liu et al., 2025). solutions include gaussian noise smoothing of SNN logits, saliency-scaled activation maps, blurred feature restoration.
+

@@ -264,31 +264,3 @@ Key works:
 **Literature: 5-10 papers**
 
 Key works:
-- [SNN on neuromorphic hardware for energy-efficient SLAM (IEEE 2019)](https://ieeexplore.ieee.org/document/8967864/)
-- [Semantic Spiking Neural SLAM using Nengo (GitHub 2023)](https://github.com/nsdumont/Semantic-Spiking-Neural-SLAM-2023)
-- [Exploiting semantic information in spiking neural SLAM (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1190515/full)
-
-**Key finding:** SNN SLAM on Loihi consumes 100x less energy than GMapping on CPU with comparable accuracy.
-
-**Simulation-only possible?** Yes, using 2D grid worlds or simple environments. The Nengo-based implementation uses simulated environments.
-
-**macOS compatible?** Nengo runs on macOS. However, this uses Nengo, NOT snnTorch.
-
-**Feasibility for 28 days: LOW-MODERATE**
-- SLAM itself is complex (particle filters, occupancy grids, loop closure)
-- The existing Nengo implementation provides a starting point but requires Nengo expertise
-- Not in snnTorch -- would need to use Nengo or build from scratch
-- A simplified 1D SLAM demo might be feasible
-
-**System components:** Nengo + simulated 1D/2D environment + place cells + head direction cells
-
-**VERDICT: NOT RECOMMENDED unless you switch to Nengo. The scope is too large and framework mismatch with snnTorch is a deal-breaker.**
-
----
-
-### 2.3 SNN for Obstacle Avoidance
-
-**Literature: 10-20 papers**
-
-Key works:
-- [Directly-trained SNNs for DRL: Energy-efficient obstacle avoidance (ScienceDirect 2023)](https://www.sciencedirect.com/science/article/pii/S0925231223010081)

@@ -502,3 +502,31 @@ each MNIST/Fashion-MNIST run takes ~5-15 min. CIFAR-10 ~30-60 min. SHD ~15-30 mi
 | 6 | Vasilache et al. | 2025 | PyTorch-Compatible Spike Encoding Framework | arXiv | LIF, SF, PWM, BSA |
 | 7 | Auge et al. | 2021 | Survey of Encoding Techniques for SNNs | Neural Processing Letters | All major categories |
 | 8 | Petro et al. | 2019 | Selection and Optimization of Temporal Spike Encoding | IEEE TNNLS | BSA, SF, SW, other temporal |
+
+---
+
+## Sources
+
+### Survey Papers
+- [Auge et al. 2021 - Encoding techniques survey](https://link.springer.com/article/10.1007/s11063-021-10562-2)
+- [Guo et al. 2021 - Neural coding comparison](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full)
+- [SNN in Imaging review (2025)](https://www.mdpi.com/1424-8220/25/21/6747)
+
+### Encoding Comparison Studies
+- [Kim et al. 2022 - Rate vs Direct](https://arxiv.org/abs/2202.03133) + [code](https://github.com/Intelligent-Computing-Lab-Panda/Rate-vs-Direct)
+- [Forno et al. 2022 - IoT signals](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.999029/full)
+- [Bian et al. 2024 - Sensor signals](https://arxiv.org/html/2407.09260v1)
+- [Plank et al. 2022 - ICONS](https://dl.acm.org/doi/fullHtml/10.1145/3546790.3546792)
+- [IEEE 2023 - FPGA encoding comparison](https://ieeexplore.ieee.org/document/10021878/)
+- [Vasilache et al. 2025 - PyTorch framework](https://ar5iv.labs.arxiv.org/html/2504.11026)
+- [Petro et al. 2019 - Temporal encoding](https://ieeexplore.ieee.org/document/8689349/)
+
+### Rate vs Temporal / Direct
+- [First-spike coding for SNNs (2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1266003/full)
+- [Stochastic first-to-spike (2024)](https://arxiv.org/html/2404.17719v2)
+- [H-Direct homeostatic encoding (2024)](https://openreview.net/forum?id=QkDUdPRcma)
+
+### snnTorch
+- [Tutorial 1: Spike Encoding](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
+- [spikegen API docs](https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html)
+- [Population Coding Tutorial](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_pop.html)

@@ -250,3 +250,31 @@ this is where you actually need:
 the bottom line:
 
 1. **i don't need to invent something new.** i need to show i can independently plan, execute, and evaluate a substantial technical project.
+
+2. **applying existing methods competently is enough for a first.** if i implement a known SNN architecture on a standard dataset, evaluate it rigorously, and write a clear report -- that's a viable first class project.
+
+3. **originality is a bonus, not a requirement.** if the project happens to contain novel elements (new preprocessing, creative technique combination), that gets rewarded -- but it's not expected.
+
+4. **what IS expected:**
+   - clear understanding of the problem domain and literature
+   - sound technical implementation
+   - rigorous evaluation with appropriate metrics
+   - critical analysis (what worked, what didn't, why)
+   - good project management and professional presentation
+   - independent thinking and decision-making
+
+5. **"originality" at undergrad level means:** thinking for yourself, making your own design decisions rather than following a tutorial, showing you understand the material deeply enough to apply it sensibly. NOT inventing a new algorithm or beating SOTA.
+
+---
+
+## confidence notes
+
+### high confidence:
+- QAA framework descriptors (directly quoted from official docs)
+- Edinburgh marking criteria (publicly available, detailed)
+- Sussex marking criteria (publicly available, detailed)
+- Cambridge assessment guidelines (publicly available)
+- SOAS marking criteria (publicly available)
+- the fundamental UG/MSc/PhD originality distinction
+
+### medium confidence:

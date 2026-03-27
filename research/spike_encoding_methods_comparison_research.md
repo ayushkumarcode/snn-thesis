@@ -222,3 +222,31 @@ i went through every significant comparison study i could find and noted what ea
 - Compared: sliding window, PWM-based, step-forward, BSA
 - Focus: FPGA implementation
 - Strengths: practical FPGA selection criteria
+- Gaps: hardware-focused, no classification evaluation
+
+### What's Missing (the gap)
+
+| Gap | Description |
+|-----|-------------|
+| **No study compares ALL major methods** | Each covers 2-4; none includes rate + TTFS + delta + phase + burst + population + direct |
+| **No cross-modality study** | Nobody tests encodings across images AND audio AND time-series AND events |
+| **No modern deep SNN architectures** | Guo used 2-layer STDP; Kim used VGG. Nobody compares on ResNet-based or transformer-based SNNs |
+| **No unified framework** | Different frameworks, neuron models, and hyperparams everywhere, so you can't compare across studies |
+| **No snnTorch-based comparison** | snnTorch is the most popular educational framework but nobody benchmarks all its encoding options |
+| **No encoding-decoding interaction analysis** | Only Plank et al. touched this, on limited hardware |
+| **No GRF vs other methods** | GRF is well-documented but rarely compared head-to-head |
+
+---
+
+## Which Encoding for Which Data Type
+
+| Data Type | Best Encoding(s) | Why | Evidence |
+|-----------|-----------------|-----|----------|
+| **Static images (MNIST, CIFAR)** | Rate (baseline), Direct (best accuracy) | Pixel intensities map naturally to firing rates; direct learns optimal conversion | Kim et al. 2022; Guo et al. 2021 |
+| **Time-series sensor (IMU, IoT)** | Delta modulation, Rate with beta mapping | Delta captures changes; rate captures magnitude | Bian et al. 2024; Forno et al. 2022 |
+| **Audio / speech** | Temporal contrast, cochlea-inspired | Audio is inherently temporal; cochlea models produce sparse spike trains | Forno et al. 2022; SHD dataset papers |
+| **Event-driven (DVS cameras)** | Already spikes (no encoding needed), Delta for frame-based conversion | DVS data is natively event-driven | CIFAR10-DVS, DVS128 literature |
+| **Noisy environments** | Phase coding | Highest resilience to input noise | Guo et al. 2021 |
+| **Low-power / edge** | TTFS, Delta modulation | Fewest spikes = lowest energy | Guo et al. 2021; Bian et al. 2024 |
+| **Hardware with faults** | Burst coding | Best fault tolerance at 20% fault rate | Guo et al. 2021 |
+| **Real-time / low-latency** | TTFS, Direct coding (few timesteps) | TTFS fires once; direct works with T=5-10 | Guo et al. 2021; Kim et al. 2022 |

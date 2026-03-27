@@ -285,14 +285,6 @@ robustness and energy:
 - Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
 - Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
 
-**Recommended reframe -- Option B (Hardware Co-Design as Central Thesis):**
-
-> **Title:** "From Software to SpiNNaker: A Complete Pipeline for Neuromorphic Audio Classification on ESC-50"
->
-> **One-sentence thesis:** We present the first end-to-end pipeline for deploying SNNs for environmental sound classification on neuromorphic hardware, documenting the design space (7 encodings), software-hardware gap (12.8pp), and co-design constraints (AvgPool incompatibility).
->
-> **Why this works for ICONS:** ICONS is a systems conference. Hardware deployment stories resonate. The honest root-cause analysis of failure modes is valuable to the community.
-
 **RECOMMENDATION: Use Option A.** The gap-collapse finding is more scientifically significant and applies beyond ICONS. Option B is fine but limits the paper to a systems audience.
 
 ### Specific Structural Suggestions for the Paper

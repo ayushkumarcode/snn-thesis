@@ -152,20 +152,20 @@ FastSigmoid finishes at 44.75% (epoch 50), still improving at termination -- exc
 - **Learning group** (3): spike_rate_escape (46.00%), fast_sigmoid (44.75%), atan (35.75%)
 - **Failure group** (4): STE (10.25%), sigmoid (2.00%), SFS (2.00%), triangular (2.75%)
 
-**Bimodal pattern (confirmed across all 7 testable surrogates):** The results reveal a clear bimodal outcome distribution: either the surrogate supports learning (~35–46%) or it completely fails (~2–10%). Of 7 testable surrogates (LSO crashed due to snnTorch 0.9.4 + Python 3.14 incompatibility):
-- **Learning group** (3 surrogates): spike_rate_escape (**46.00%**, best), fast_sigmoid (44.75%), atan (35.75%)
-- **Failure group** (4 surrogates): STE (10.25%), sigmoid (2.00%), SFS (2.00%), triangular (2.75%)
+The learning surrogates all maintain non-zero gradient over a broad range away from threshold, enabling gradient flow even when most neurons are well below threshold. Failure surrogates have narrow bandwidth (triangular), piecewise-constant gradients (STE), or practical saturation at high slope (sigmoid, SFS). This bimodal split is stronger than Zenke & Vogels predicted -- shape matters substantially for 50-class audio, not just slope.
 
-The learning surrogates share a property: they maintain non-zero gradient for membrane potentials over a **broad range** of values away from threshold, enabling gradient flow through LIF neurons even when most neurons are well below threshold. spike_rate_escape in particular uses a stochastic escape rate model that provides larger gradients for high-intensity inputs. The failure surrogates either have narrow effective bandwidth (triangular), piecewise-constant gradients (STE), or practical saturation issues at high slope (sigmoid, SFS). This bimodal discrimination is stronger than Zenke & Vogels (2021) predicted — shape matters substantially for this 50-class audio task, not just slope.
-
-**Table: Surrogate gradient ablation results (fold 1, seed 42, direct encoding)**
-
-| Surrogate | Best Acc. (fold 1) | Best Epoch |
+| Surrogate | Best Acc (fold 1) | Best Epoch |
 |-----------|-------------------|------------|
-| fast_sigmoid | **44.75%** | 50 |
+| fast_sigmoid | 44.75% | 50 |
 | atan | 35.75% | 49 |
-| sigmoid | **2.00%** (early stop ep11) | 1 |
-| ste | **10.25%** (early stop ep11) | 1 |
+| sigmoid | 2.00% (early stop ep11) | 1 |
+| ste | 10.25% (early stop ep11) | 1 |
+| triangular | 2.75% (early stop ep23) | 13 |
+| spike_rate_escape | **46.00%** (+1.25 pp vs fast_sigmoid) | 50 |
+| lso | CRASHED (Python 3.14/snnTorch 0.9.4 thing) | -- |
+| sfs | 2.00% (early stop ep10) | 1 |
+
+Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`. 1-seed result; CSF3 3-seed pending. LSO crashes due to StochasticSpikeOperator.forward() missing `variance` arg -- Python 3.14 API mismatch.
 | triangular | **2.75%** (early stop ep23) | 13 |
 | spike_rate_escape | **46.00%** (best overall, +1.25 pp vs fast_sigmoid) | 50 |
 | lso | **CRASHED** — Python 3.14 + snnTorch 0.9.4 incompatibility | — |

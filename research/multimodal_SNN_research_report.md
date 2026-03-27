@@ -278,3 +278,31 @@ both freely available, small enough for a laptop GPU, natively supported by snnT
 | N-MNIST support | Yes (via Tonic) | Yes (native) | Yes | Via Tonic | Via Lava-DL |
 | SHD support | Yes (native) | Via custom | Yes | Via Tonic | Via custom |
 | Tutorials | Excellent (8+) | Good | Moderate | Basic | Moderate |
+| Documentation | Excellent | Good (some Chinese) | Moderate | Good | Good |
+| Community | Large | Large | Medium | Medium | Small |
+| Ease of learning | Easiest | Moderate | Moderate | Moderate | Hardest |
+| GPU acceleration | PyTorch CUDA | CuPy (fastest) | PyTorch CUDA | PyTorch CUDA | Loihi |
+
+### Stack I'd Use
+
+```
+Framework:     snnTorch 0.9.x (easiest, best tutorials)
+Dataset lib:   Tonic 1.x (neuromorphic dataset loader)
+Deep learning: PyTorch 2.x
+Visualization: matplotlib, seaborn
+Hardware:      Single GPU (laptop fine)
+Optional:      SpikingJelly (speed comparison)
+Optional:      SpiNNaker (if university has access)
+```
+
+### Installation
+
+```bash
+pip install snntorch tonic torch torchvision
+pip install spikingjelly  # optional
+pip install braincog      # optional, for S-CMRL reproduction
+```
+
+### Dataset Access
+
+```python

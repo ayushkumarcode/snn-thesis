@@ -362,3 +362,14 @@ The single strongest thesis option as of February 2026:
 
 ### 11.4 Final top 7 (all waves combined, February 2026)
 
+| Rank | Direction | Novelty | Effort | Risk | SNN Fit | Narrative | Pragmatic? |
+|------|-----------|---------|--------|------|---------|-----------|-----------|
+| **1** | **SNN on ESC-50 (Environmental Sound)** | VERY HIGH (0 papers) | LOW | LOW | HIGH | Strong | YES |
+| **2** | **SNN ECG on PTB-XL** | HIGH (no benchmark) | LOW-MED | LOW | HIGH | Excellent | YES |
+| **3** | **SNN Wildlife Camera Trap** | VERY HIGH (0 papers) | LOW-MED | LOW-MED | LOW | Excellent | YES |
+| **4** | **SNN Robot Reflexes (Simulation)** | HIGH (~5-10 papers) | MED-HIGH | MEDIUM | VERY HIGH | Excellent | Only if excited |
+| **5** | **Framework Shootout** | GENUINE (confirmed gap) | LOW-MED | LOW | N/A | Good | YES |
+| **6** | **SNN Satellite Classification** | MODERATE (~15-25) | LOW-MED | LOW | LOW | Strong | Mediocre |
+| **7** | **SNN Food Recognition (Food-101)** | VERY HIGH (0 papers) | LOW | LOW | LOW | Weak | YES but boring |
+
+Eliminated: Math proof verification (fundamental mismatch), Music Generation (gap closed), DVS128 (saturated), SHD as primary (approaching saturation), SVHN (standard benchmark), Wearable HAR (saturated)

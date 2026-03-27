@@ -194,3 +194,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 **Objectives:** "One of the limitations of supervised learning in deep learning algorithm is to gather and label a large set of data. In this document, the approach to solve this limitation is presented by using synthetic data."
 
 **Contribution:**
+- created 3D traffic scene with bicycles using THREE.js for synthetic training data
+- trained CNN on synthetic data
+- evaluated on real images
+
+**Framing:** "we built X to address limitation Y, evaluated on Z." classic problem-solution-evaluation.
+
+---
+
+### Thesis 12: A Deep Learning Prediction Model for Object Classification
+- **Author:** Nordin Sahla
+- **Type:** Bachelor Thesis (Mechanical Engineering)
+- **Institution:** TU Delft
+- **Year:** ~2020
+- **Source:** [TU Delft Repository](https://repository.tudelft.nl/islandora/object/uuid:f7667cb4-70d4-4b82-ac1b-75df476655cd)
+
+**Objectives:** "investigate whether a usable relation exists between object features such as size or shape, and barcode location, that can be used to robustly identify objects in a bin."
+
+**Contribution:** built a CNN in MATLAB, trained on a thousand product images. results: "training set accuracy reaches 100%, a maximum validation accuracy of only 45% is achieved." honest conclusion: "A larger dataset is required to reduce overfitting."
+
+**Framing:** "we investigated whether X and built Y to test it." reporting of underwhelming results without apology -- this is totally fine for undergrad work.
+
+---
+
+### Thesis 13: Artificial Neural Networks and Deep Learning: Possibilities and Limits
+- **Author:** Seila Laakso
+- **Type:** Bachelor Thesis
+- **Institution:** Oulu UAS, Finland
+- **Year:** Autumn 2022

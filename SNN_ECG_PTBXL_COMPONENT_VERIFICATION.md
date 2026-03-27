@@ -82,3 +82,31 @@ Y.scp_codes = Y.scp_codes.apply(lambda x: ast.literal_eval(x))
 # Load raw signal data
 X = load_raw_data(Y, sampling_rate, path)
 # X shape at 100 Hz: (21799, 1000, 12)  -- records x samples x leads
+# X shape at 500 Hz: (21799, 5000, 12)  -- records x samples x leads
+```
+
+**Source:** [PhysioNet example_physionet.py](https://www.physionet.org/content/ptb-xl/1.0.2/example_physionet.py), [WFDB Python GitHub](https://github.com/MIT-LCP/wfdb-python)
+
+---
+
+### 3. Signal Preprocessing
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | scipy docs, neurokit2 docs, published research |
+| **POTENTIAL BLOCKER** | NO |
+
+**Standard preprocessing for PTB-XL:**
+
+1. **Bandpass filter:** 0.5--40 Hz (removes baseline wander below 0.5 Hz and high-frequency noise above 40 Hz)
+2. **Normalization:** Z-score normalization per lead (zero mean, unit variance)
+3. **Important finding:** Research shows that for deep learning on PTB-XL, preprocessing makes minimal difference. The Strodthoff benchmark uses minimal/no preprocessing.
+
+**Exact scipy code for bandpass filtering:**
+
+```python
+from scipy.signal import butter, sosfiltfilt
+import numpy as np
+
+def bandpass_filter(signal, lowcut=0.5, highcut=40.0, fs=100, order=4):

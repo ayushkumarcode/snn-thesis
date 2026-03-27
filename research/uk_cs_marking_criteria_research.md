@@ -390,3 +390,31 @@ Source: [Warwick CS310](https://warwick.ac.uk/fac/sci/dcs/teaching/modules/cs310
 
 Sussex has the most detailed publicly available grade descriptors i could find for CS projects.
 
+For **final reports**:
+- 90-100%: "Truly outstanding project" with publishable-quality outcomes and original thinking
+- 80-89%: "Essentially faultless outcomes" with full objective achievement and originality
+- 70-79%: Complete understanding, demanding objectives fully achieved, thorough evaluation
+- 60-69%: Competent work with substantially achieved primary objectives
+- 50-59%: Competent in most respects, reasonably achieved objectives
+- 40-49%: Basic methodology understanding, fair progress
+
+Source: [Sussex Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
+
+---
+
+## 6. How important is writing quality?
+
+Very. It's not a minor factor -- every university flags it as make-or-break.
+
+### 6.1 What universities say directly
+
+**Cambridge:** "Better grades will arise from clarity and ease of reading, good pictures, clear explanations, minimal jargon and appropriate use of equations." They recommend allocating "at least four to six weeks" for writing.
+
+**Imperial:** A project CANNOT receive a Pass/Merit/Distinction if the report isn't independently at that standard. This is the strongest statement i found -- writing quality is a hard ceiling on your grade.
+
+**Bristol:** "It doesn't matter how much work you've done, if you don't write it up well, you will fail."
+
+**Manchester (COMP30040):** Report is 55% of the total mark. Formal writing style recommended: third person, passive voice, past tense. LaTeX is recommended. Spelling and grammar errors "might make it harder for the examiners to understand what you're attempting to communicate."
+
+### 6.2 Other advice
+

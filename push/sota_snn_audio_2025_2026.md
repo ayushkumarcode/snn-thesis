@@ -26,3 +26,31 @@ the field is moving fast though -- spiking Transformers for speech commands are 
 | SF      | 0.598  | 0.564        | 0.640      |
 | MW      | 0.620  | 0.530        | 0.550      |
 | **Baseline (non-spiking)** | **0.727** | **0.730** | **0.873** |
+
+they explicitly state: "To our knowledge, no state-of-the-art solution has yet encoded environmental sound datasets using spike-based methods and performed classification with a spiking neural network (SNN)."
+
+their best ESC-10 result (69.0% with TAE) uses only FC layers and only 10 classes. our ConvSNN gets 47.15% on the full ESC-50 (50 classes) -- fundamentally harder task. spike firing rates: TAE has 38.44% (ESC-10), lowest = most energy efficient.
+
+#### Guo et al. (2024) -- Multimodal Audio-Visual SNN
+- "Transformer-Based Spiking Neural Networks for Multimodal Audiovisual Classification"
+- IEEE TCDS, Vol. 16(3), June 2024
+- UrbanSound8K-AV Accuracy: 96.85% (timesteps=4)
+- but this is MULTIMODAL (audio+visual), not audio-only. not directly comparable.
+
+#### S-CMRL (2025) -- Semantic-Alignment Audio-Visual SNN
+- arXiv:2502.12488, February 2025
+- Transformer-based multimodal SNN with cross-modal residual learning
+
+| Dataset | S-CMRL | CMCI | SMMT (Guo) | WeightAttention |
+|---------|--------|------|------------|-----------------|
+| UrbanSound8K-AV | **98.13%** | 97.90% | 96.85% | 97.60% |
+| CREMA-D | **73.25%** | 70.02% | -- | 64.78% |
+
+again multimodal, not audio-only.
+
+### Speech Command Recognition (Keyword Spotting)
+
+#### SpikeSCR (Wang et al., 2024)
+- "Efficient Speech Command Recognition Leveraging SNN and Curriculum Learning-based Knowledge Distillation"
+- arXiv:2412.12858, published in Neural Networks 2025
+- fully spike-driven, Global-Local Hybrid Encoder (Spiking Self-Attention + Separable Gated Convolution)

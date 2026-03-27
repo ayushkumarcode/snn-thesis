@@ -306,3 +306,31 @@ Key works:
 - [TactileSGNet (ResearchGate 2020)](https://www.researchgate.net/publication/342588043)
 
 Simulation-only: not really in a meaningful way. Tactile sensing requires physical sensor data. Some public datasets exist (EvTouch, iCub tactile data) but they're niche.
+
+**Feasibility: LOW-MODERATE** -- data dependency is the main risk.
+
+---
+
+### 2.6 SNN for swarm robotics
+
+**Literature: 5-10 papers**
+
+**Feasibility: LOW** -- multi-agent systems add exponential complexity. SNN + multi-agent RL is bleeding-edge. No existing frameworks combining snnTorch with multi-agent environments. Debugging multi-agent systems is extremely time-consuming. This is PhD-level.
+
+---
+
+### 2.7 SNN for prosthetic / exoskeleton control
+
+**Literature: 10-15 papers**
+
+Key finding: SNN reduces power consumption by 1-2 orders of magnitude vs CNN/LSTM for EMG gesture recognition, with comparable or better accuracy under electrode shift conditions.
+
+Simulation-only: yes, using public EMG datasets. No physical prosthetic needed.
+
+**Feasibility: MODERATE** -- public datasets exist (Ninapro, Myo Armband, UCI EMG). snnTorch can process temporal EMG signals. Well-scoped: classify 5-10 hand gestures from EMG. But this overlaps with existing SNN for wearable sensor data research.
+
+**Verdict: feasible but may overlap with HAR/wearable domain. The EMG-specific angle (prosthetic control) adds a distinct narrative.**
+
+---
+
+### 2.8 SNN for optical flow estimation (event camera)

@@ -166,3 +166,31 @@ def train_epoch(model, loader, optimizer, device):
             loss = F.cross_entropy(
                 mem_out.reshape(T * B, C),
                 targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            )
+        loss.backward()
+        optimizer.step()
+        total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+        for k in all_rates:
+            all_rates[k] += rates[k]
+    n = len(loader)
+    return total_loss / n, correct / total, {k: v/n for k, v in all_rates.items()}
+
+
+@torch.no_grad()
+def eval_model(model, loader, device):
+    model.eval()
+    correct = 0
+    total = 0
+    all_rates = {"conv1": 0, "conv2": 0, "fc1": 0, "out": 0}
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+        _, mem_out, rates = model(spk_input)
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+        for k in all_rates:
+            all_rates[k] += rates[k]

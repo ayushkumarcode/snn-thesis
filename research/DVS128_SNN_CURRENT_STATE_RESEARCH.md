@@ -306,3 +306,31 @@ several papers include comparison tables, but a dedicated fair benchmark is **la
 ## 8. training time estimates
 
 ### SpikingJelly baseline (5-layer CSNN, LIF)
+
+| Config | GPU | Time/Epoch | Epochs to ~96% | Total |
+|--------|-----|-----------|----------------|-------|
+| T=16, batch=16, PyTorch backend | RTX 2080 Ti | 27.76 s | ~256 | ~2 hours |
+| T=16, batch=16, CuPy backend | RTX 2080 Ti | 18.17 s | ~256 | ~1.3 hours |
+| T=16, batch=16, AMP | RTX 2080 Ti | ~15-20 s | ~256 | ~1-1.5 hours |
+| T=16 (estimated) | Apple M1/M2 MPS | ~40-60 s | ~256 | ~3-4 hours |
+
+### scaling factors
+
+| Factor | Impact |
+|--------|--------|
+| T: 16 -> 32 | ~2x longer |
+| Batch: 16 -> 32 | ~1.3x (if GPU memory allows) |
+| Adding attention layers | ~1.5-2x |
+| Spiking Transformer architecture | ~2-3x vs CSNN |
+| Full hyperparameter sweep (10 configs) | 10-30 hours total |
+
+### memory constraints
+
+- T=16, batch=16 on 12GB GPU: fine
+- T=20, batch=16 on 12GB: might OOM (16GB recommended)
+- T=32: needs 24GB+ or smaller batch
+- Apple M-series (16-32GB unified): sufficient for most configs
+
+### practical thesis timeline
+
+| Phase | Duration |

@@ -39,31 +39,3 @@ In software simulation, our SNN uses MORE energy than the ANN (976 nJ vs 463 nJ)
 | 32-bit FP Multiply | 3.7 | 0.8x |
 | **32-bit FP MAC** | **4.6** | **1.0x** |
 | 32KB SRAM Read | 20 | 4.3x |
-| **DRAM Read** | **~640** | **139x** |
-
-**Key insight:** DRAM access (640 pJ) costs 139x more than a MAC. **Memory dominates energy**, not computation. This is why hardware-aware analyses give different results from operation-counting analyses.
-
-**Has Horowitz been updated?** No official update. The MAC/AC ratio (~5.1x) remains approximately constant across process nodes because both scale similarly. Absolute values decrease at modern nodes but the relative cost is stable.
-
----
-
-## 3. NeuroBench Benchmark Details
-
-**Yik et al., Nature Communications 16:1589 (Feb 2025)**. 60+ institutions.
-
-### Metrics Defined
-| Metric | Description |
-|--------|-------------|
-| Eff_MACs | Effective multiply-accumulates (non-binary activations, excluding zeros) |
-| Eff_ACs | Effective accumulates (binary/spike activations) |
-| Activation Sparsity | Proportion of zero activations (averaged over neurons, timesteps, samples) |
-| Connection Sparsity | Ratio of zero weights to total |
-| Footprint | Model memory in bytes |
-
-### Baseline Results from Paper
-| Task | ANN Eff_MACs | SNN Eff_ACs | SNN Activation Sparsity |
-|------|-------------|-------------|------------------------|
-| Keyword FSCIL | 7.85e6 | 3.65e5 | 0.916 |
-| NHP Motor (Indy) | 3,836 | 276 | 0.997 |
-
-The NHP motor result: SNN uses 276 ACs vs 3,836 MACs (13.9x fewer operations) with identical accuracy. With 5.1x per-operation cost advantage, that's ~71x energy reduction.

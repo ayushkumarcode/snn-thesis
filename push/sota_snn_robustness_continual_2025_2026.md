@@ -333,31 +333,3 @@ Major approaches (2023-2026):
 | 10 | SCA-SNN (Neural Networks 2024) | Context-aware SNN CL |
 | 11 | PS-SNN (Scientific Reports 2026) | Best SNN CIL result |
 | 12 | AGMP (Frontiers 2025) | Astrocyte-gated CL on SHD (audio) |
-
-**Should-cite (supporting context):**
-
-| # | Paper | Relevance |
-|---|-------|-----------|
-| 13 | SNN-RAT (NeurIPS 2022) | Baseline adversarial training method |
-| 14 | HIRE-SNN (ICCV 2021) | Crafted noise training for robustness |
-| 15 | Gradient Sparsity Trail (2509.23762) | Gradient sparsity mechanism |
-| 16 | HART Attack (ICLR 2024) | Rate+temporal combined attack |
-| 17 | Lin & Sengupta (2504.08897) | Local learning robustness |
-| 18 | Robust Stable SNN (2405.20694) | DLIF neuron + MPPD minimization |
-| 19 | RTE (2508.11279) | Temporal self-ensemble |
-| 20 | NACA (Science Advances 2023) | Bio-inspired CL |
-| 21 | Dequino et al. | SHD continual learning |
-| 22 | LT-Gate (2510.12843) | Timescale-robust continual learning |
-| 23 | Sparse Conversion (CPAL 2025) | Sparse + robust ANN-to-SNN |
-
-### 3.3 Quantitative Summary Table for Discussion Chapter
-
-**SNN Adversarial Robustness -- Literature Comparison:**
-
-| Work | Domain | SNN Robust | ANN Robust | Attack | Epsilon |
-|------|--------|-----------|-----------|--------|---------|
-| **Ours** | **Audio (ESC-50)** | **26.00%** | **1.75%** | **FGSM** | **0.1** |
-| **Ours** | **Audio (ESC-50)** | **19.25%** | **0.00%** | **PGD** | **0.05** |
-| RSC-SNN | Vision (CIFAR-10) | 54.52% | 10.89% | FGSM | 8/255 |
-| RSC-SNN | Vision (CIFAR-100) | 34.89% | 4.56% | FGSM | 8/255 |
-| RandHet-SNN | Vision (CIFAR-10) | 53.53% | ~52% (standard SNN) | FGSM | 8/255 |

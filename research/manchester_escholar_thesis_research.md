@@ -132,31 +132,3 @@ This means:
 | Field | Detail |
 |-------|--------|
 | **Author** | Mantas Mikaitis |
-| **Year** | 2020 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | David Lester (main), Steve Furber (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor/ |
-| **Abstract** | Investigates programmable accelerator for exponential and logarithm functions in SNN models within SpiNNaker2. Explores numerical accuracy of ODE solvers for Izhikevich neuron model. Investigates stochastic rounding methods. |
-| **What They Built** | Hardware accelerator designs for SpiNNaker2, numerical analysis of neuron model solvers |
-| **Tools/Frameworks** | SpiNNaker2, fixed-point/floating-point arithmetic |
-| **Datasets** | Not specified |
-| **Scope** | High -- chip-level hardware accelerator design |
-| **PDF Size** | 2.8 MB |
-
----
-
-### 1.8 Building and Operating Large-Scale SpiNNaker Machines
-| Field | Detail |
-|-------|--------|
-| **Author** | Jonathan Heathcote |
-| **Year** | 2016 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | James Garside (main), Steve Furber (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines |
-| **Abstract** | Addresses practical challenges in scaling SpiNNaker to simulate up to 1 billion neurons. Contributions: physical layout scheme for hexagonal torus topologies, improved routing algorithms, placement and routing algorithms that tolerate network faults. Demonstrated on half-million core prototype. |
-| **What They Built** | Physical layout schemes, routing algorithms, placement/routing algorithms for SpiNNaker at scale |
-| **Tools/Frameworks** | SpiNNaker, simulated annealing |
-| **Datasets** | Not specified |
-| **Scope** | Very high -- supercomputer-scale engineering |

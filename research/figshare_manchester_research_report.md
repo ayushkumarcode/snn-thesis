@@ -110,3 +110,31 @@ The only match for "neuromorphic" was a research-level publication (not undergra
 #### 3D-Printed Conductive EEG Electrodes
 - Le Xing, 2022
 - https://figshare.manchester.ac.uk/articles/online_resource/3d-printed_directly_conductive_EEG_electrode_models/19148987
+- 3D-printed directly conductive and flexible EEG electrode models for IEEE FLEPS 2022
+
+---
+
+### Other Stuff (for scope calibration)
+
+- MIRRAX Reconfigurable Robot -- ROS bag files, research-level
+- Fifty Hyperspectral Reflectance Images -- visual perception dataset, research-level
+- Training Data for Power Network Preventive Actions -- ML classifier training data, research-level
+- ECG-X AI Applications for ECG Interpretation -- attitudes towards AI in clinical ECG, research-level
+- Safety Case Framework for Autonomous Robotics -- framework doc, research-level
+
+---
+
+## How i searched
+
+1. **Figshare Manchester Web Interface** -- searched through the browser with 50+ terms
+2. **Figshare REST API v2** -- programmatic search using POST to /v2/articles/search
+3. **Group-based enumeration** -- identified all 17 Manchester group IDs and pulled ALL 833 unique articles
+4. **Keyword filtering** -- applied 150+ keyword filters across everything
+
+### Manchester Figshare Group IDs
+
+| Group ID | Description | Article Count |
+|----------|-------------|---------------|
+| 29325 | Faculty of Science and Engineering (parent) | 36 |
+| 29331 | School of Engineering | 149 |
+| 29337 | Sub-group (Engineering) | 1 |

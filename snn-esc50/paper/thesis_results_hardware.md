@@ -54,20 +54,20 @@ Software (snnTorch, CPU):
   Input mel spectrogram (1, 64, 216)
   -> Conv1 + BN + MaxPool + LIF1
   -> Conv2 + BN + MaxPool + LIF2
-  → FC₁ (2304→256) + LIF₃
-  → Binary hidden spike tensor: (T=25, N, 256)
+  -> AvgPool -> flatten
+  -> FC1 (2304->256) + LIF3
+  -> Binary hidden spike tensor: (T=25, N, 256)
 
 Hardware (SpiNNaker, IF_curr_exp):
-  Binary hidden spikes (25ms × 256 neurons)
-  → FC₂ (256→50) + IF_curr_exp
-  → Total output spike counts over 25ms
-  → Argmax → predicted class
+  Binary hidden spikes (25ms x 256 neurons)
+  -> FC2 (256->50) + IF_curr_exp
+  -> Total output spike counts over 25ms
+  -> Argmax -> predicted class
 ```
 
-The software portion produces binary spike tensors with 21.7% active neurons per timestep (55.6 of 256 neurons firing at each step), satisfying SpiNNaker's binary input requirement for FC₂.
+Software portion produces binary spikes with 21.7% active neurons/timestep (55.6 of 256 firing), satisfying SpiNNaker's binary requirement for FC2.
 
-### 5.2.2 SpiNNaker Configuration
-
+### 5.2.2 SpiNNaker configuration
 **Hardware:** SpiNN-5 board at `spinnaker.cs.man.ac.uk`, accessed via sPyNNaker 1.0.0.
 
 **Calibrated parameters** (determined by 9-point scale sweep + LIF parameter sweep):

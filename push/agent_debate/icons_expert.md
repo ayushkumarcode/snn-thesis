@@ -92,31 +92,3 @@ For this specific paper, ICONS reviewers will likely respond strongly to the fol
 
 The key question is not whether this paper is better than Yarga et al. — it clearly is. The key question is whether the 8-page limit allows the paper to present all contributions at sufficient depth, or whether reviewers will feel each individual contribution is too shallow. This is the primary tension.
 
----
-
-## 5. Is 47.15% Accuracy "Significant" at ICONS? What Is the Right Framing?
-
-**Short answer:** 47.15% is entirely acceptable at ICONS when properly contextualised. It is not the number that will make or break the paper.
-
-**The correct framing for an ICONS audience:**
-
-First, ICONS reviewers understand that 47.15% on a 50-class dataset with a random baseline of 2% (random = 2%) represents a 45.15 pp improvement over chance. They will not compare it to 98.25% ANN SOTA without context. They will ask: "given the architecture, the dataset size, and the training approach, what does this tell us about the current capability of directly-trained convolutional SNNs on a challenging audio benchmark?"
-
-Second, the ICONS community's point of reference for SNN accuracy is not ImageNet or ESC-50 SOTA — it is other SNN papers on comparable tasks. In that context:
-- Yarga et al. (ICONS 2022) matched CNN baseline on 10-class digits with Send-on-Delta
-- The ICONS 2024 audio paper (Schmitt et al.) focused on real-time capability, not absolute accuracy
-- ICONS 2025 paper #27 (Vasilache et al. on vibration predictive maintenance) focused on demonstrating SNN feasibility in a new domain
-
-47.15% is not "low" in this context — it is the first SNN result on this task. There is no prior bar to beat.
-
-Third, the PANNs+SNN result (92.50%) is the decisive rehabilitation. It proves that the 47.15% gap is not inherent to spiking computation. ICONS reviewers will understand that the 16.7 pp gap in scratch training — and its near-total collapse to 0.95 pp with pretrained features — is the scientific contribution. This is a cleaner and more interesting story than simply achieving high accuracy.
-
-**The framing that will land best at ICONS:** Frame the 47.15% as "establishing a baseline for future SNN audio work" and the gap-collapse finding as "demonstrating that the SNN formalism is not the bottleneck." Do not apologise for the number. Do not compare it to ANN SOTA without explanation. Do contextualise it against the 2% random baseline, the 81.3% human baseline, and the PANNs+SNN result.
-
-**What "significant" means at ICONS:** Significance at ICONS is not statistical significance or accuracy significance — it is novelty significance. The first SNN result on a well-known benchmark IS significant, regardless of the absolute value.
-
----
-
-## 6. Does the SpiNNaker Deployment Carry Weight at ICONS?
-
-**Yes, substantially — but the framing matters.**

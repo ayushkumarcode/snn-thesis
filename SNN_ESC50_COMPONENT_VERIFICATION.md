@@ -334,3 +334,31 @@ class SpectrogramCNN_ANN(nn.Module):
         self.conv1 = nn.Conv2d(1, 16, kernel_size=5, padding=2)
         self.relu1 = nn.ReLU()
         self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=5, padding=2)
+        self.relu2 = nn.ReLU()
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.fc1 = nn.Linear(32 * 32 * (T//4), 256)
+        self.relu3 = nn.ReLU()
+
+        self.fc2 = nn.Linear(256, num_classes)
+
+    def forward(self, x):
+        x = self.pool1(self.relu1(self.conv1(x)))
+        x = self.pool2(self.relu2(self.conv2(x)))
+        x = self.relu3(self.fc1(x.flatten(1)))
+        return self.fc2(x)
+```
+
+**Key differences in ANN baseline:**
+1. No temporal loop (single forward pass per sample)
+2. `nn.ReLU()` replaces `snn.Leaky()`
+3. Input is the mel-spectrogram directly (no spike encoding)
+4. Standard `nn.CrossEntropyLoss()` instead of spike count loss
+
+**From snnTorch Tutorial 5:** "You can train and test the same network architecture on the same data, except now using ReLU as the activation function instead of LIF."
+
+### Approach 2: More sophisticated ANN baseline
+
+For stronger comparison, use a published ESC-50 CNN architecture:

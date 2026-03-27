@@ -133,31 +133,3 @@ Both datasets are available through multiple loaders:
 |-------------|------|-------------------|-------|
 | SpikCommander | SNN (Transformer) | 85.98% (T=250) | Current SOTA |
 | SpikeSCR | SNN | 82.54% | Curriculum distillation |
-| DCLS-Delays | SNN (Feedforward) | 80.69% | 3-layer, no recurrence |
-| **GRU (3x512)** | **ANN** | **79.05%** | **Best ANN baseline** |
-| liBRU (3x512) | ANN | 78.70% | Lightweight bistable RNN |
-| CNN | ANN | 77.7% | Convolutional |
-| RadLIF (3x1024) | SNN (Recurrent) | 77.40% | 2022 baseline |
-| LSTM | ANN | ~73% | Standard LSTM |
-
-**Key finding: On SSC, SNNs also surpass ANNs (85.98% vs 79.05%), but the gap took longer to open.** The 2022 SNN baseline (77.4%) was below the GRU (79.05%), but by 2025, SNNs lead convincingly.
-
-### 3.3 Energy Efficiency
-
-| Metric | SNN | ANN |
-|--------|-----|-----|
-| Inference energy (general) | 5-15 mJ | ~200 mJ |
-| SynOps ratio vs ANN | 0.68x | 1.0x (baseline) |
-| Energy-delay product | Up to 8.2x better | Baseline |
-| Neuromorphic hardware (SpiNNaker) | ~0.3W | N/A |
-
-SNNs achieve energy efficiency through sparse, event-driven computation. The advantage is most pronounced on neuromorphic hardware (Loihi, SpiNNaker, BrainScaleS), where SNNs can be 10-100x more energy efficient than equivalent ANNs on GPU. Even when both run on GPU, SNNs use fewer multiply-accumulate operations due to spike sparsity.
-
-### 3.4 Why SNNs Win on These Audio Benchmarks
-
-1. **Natural temporal affinity**: Audio is inherently temporal. SNN spike trains naturally encode timing information, unlike frame-based ANNs that must learn temporal structure.
-2. **The data is already spike-encoded**: SHD/SSC data comes from an artificial cochlea model that outputs spike trains. SNNs process this natively; ANNs must convert it to dense tensors, losing temporal precision.
-3. **Learnable delays**: Methods like DCLS-Delays exploit the temporal structure of spike trains by learning optimal signal propagation delays, something ANNs cannot do naturally.
-4. **Biological plausibility**: The cochlea-to-spike encoding mirrors biological auditory processing, and SNNs process these signals in a biologically plausible manner.
-
----

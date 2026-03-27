@@ -453,31 +453,3 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch}: Train Loss={train_loss/len(trainloader):.4f}, "
           f"Train Acc={train_acc/train_samples:.4f}, "
           f"Test Acc={test_acc/test_samples:.4f}")
-```
-
----
-
-## 4. DVS128 Data Pipeline
-
-### 4.1 Dataset Overview
-
-| Property | Value |
-|---|---|
-| Sensor | DVS128 (Dynamic Vision Sensor) |
-| Resolution | 128 x 128 pixels |
-| Channels | 2 (ON polarity, OFF polarity) |
-| Classes | 11 hand/arm gestures |
-| Training samples | 1,176 |
-| Test samples | 288 |
-| Total subjects | 29 |
-| Lighting conditions | 3 (natural, fluorescent, LED) |
-| File format | AEDAT 3.1 |
-
-**Original source:** IBM Research - https://research.ibm.com/interactive/dvsgesture/
-
-### 4.2 The 11 Gesture Classes
-
-0. Hand Clapping
-1. Right Hand Wave
-2. Left Hand Wave
-3. Right Arm CW (Clockwise)

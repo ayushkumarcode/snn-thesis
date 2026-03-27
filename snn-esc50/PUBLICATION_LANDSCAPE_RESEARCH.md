@@ -209,19 +209,19 @@ title: "From Software to SpiNNaker: A Complete Pipeline for Neuromorphic Audio C
 
 fine for ICONS (it's a systems conference) but limits the paper to a systems audience.
 
-**Assessment:** The gap-collapse insight is genuinely novel for audio. The encoding specificity finding (transfer ratio) has never been quantified before. Both are strong analytical contributions.
+recommendation: use option A. the gap-collapse finding is more scientifically significant.
 
-### Formula 4: "Hardware deployment showing W"
-**Examples:**
-- Dominguez-Morales 2016: SpiNNaker for pure tones
-- Speech2Spikes: Loihi for keyword spotting
-- Yang & Chang 2024: Custom accelerator at 71.2 uW
+### what NOT to do
 
-**YOUR VERSION:** "First SpiNNaker deployment for 50-class environmental sound, with documented root-cause analysis of deployment failures and validated hybrid approach"
+1. don't add more experiments. we have enough. the risk is breadth without depth.
+2. don't chase SOTA accuracy. 47.15% is scientifically valid and interesting BECAUSE it reveals the gap.
+3. don't apologize for the gap. the gap IS the finding.
+4. don't hide the SpiNNaker failure. the FC1 cancellation root-cause analysis is genuinely valuable. papers that document what went wrong get cited more.
 
-**Assessment:** The honesty about failure modes actually strengthens the paper. Reviewers value reproducibility and honest reporting over inflated claims.
+---
 
-### Formula 5: "Comprehensive benchmark/comparison"
+## research gaps (what i couldn't find)
+
 **Examples:**
 - NeuroBench: Standardized framework for all neuromorphic computing
 - Yarga et al. ICONS 2022: 4-encoding comparison for speech digits

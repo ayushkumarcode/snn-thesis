@@ -474,3 +474,31 @@ Wang et al. (2025): parametric surrogate gradient strategy that iteratively find
 ```python
 spike_grad = surrogate.fast_sigmoid(slope=25)
 beta = 0.5           # Membrane decay
+threshold = 1.0      # Firing threshold
+num_steps = 25       # For static images
+optimizer = Adam(lr=1e-2 to 1e-3)
+loss_fn = SF.ce_rate_loss()
+```
+
+### What to Cite
+
+| Paper | Why |
+|-------|-----|
+| Neftci, Mostafa, Zenke (2019) | Original surrogate gradient formalization |
+| Zenke and Vogels (2021) | Robustness to surrogate shape |
+| Eshraghian et al. (2023) | Review, snnTorch paper |
+| Gygax and Zenke (2025) | Latest theoretical understanding |
+| Zhou et al. (2024) | Direct training review |
+
+### Timeline
+
+| Task | Time |
+|------|------|
+| Complete snnTorch tutorials 5-7 | 3-5 days |
+| Get baseline SNN working on dataset | 1-2 weeks |
+| Tune hyperparams | 1-2 weeks |
+| Run comparison experiments | 1-2 weeks |
+| Write up | 2-3 weeks |
+
+very feasible within a semester.
+

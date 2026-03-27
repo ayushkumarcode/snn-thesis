@@ -586,3 +586,31 @@ def evaluate_encoding(encode_fn, data_loader, model, num_steps, device):
     with torch.no_grad():
         for data, targets in data_loader:
             data, targets = data.to(device), targets.to(device)
+            t_start = time.time()
+            spike_data = encode_fn(data, num_steps)
+            t_encode = time.time() - t_start
+            t_start = time.time()
+            spk_rec, mem_rec = model(spike_data)
+            t_infer = time.time() - t_start
+            _, predicted = spk_rec.sum(0).max(1)
+            correct += (predicted == targets).sum().item()
+            total += targets.size(0)
+            total_spikes += spike_data.sum().item()
+            total_time += t_encode + t_infer
+    return {
+        'accuracy': correct / total,
+        'avg_spikes_per_sample': total_spikes / total,
+        'total_time': total_time,
+    }
+
+# ---- Main ----
+
+ENCODINGS = {
+    'rate': encode_rate,
+    'latency': encode_latency,
+    'delta': encode_delta,
+    # 'phase': encode_phase,
+    # 'burst': encode_burst,
+    # 'grf': encode_grf,
+}
+

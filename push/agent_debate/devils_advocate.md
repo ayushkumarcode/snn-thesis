@@ -110,3 +110,11 @@ this is not a novelty contribution -- it's using an existing tool on a new model
 | C5: PANNs+SNN gap collapse | Moderate | MEDIUM | No -- "trivially expected" is manageable |
 | C6: NeuroBench energy | Severe | HIGH | Yes as standalone -- absorb into C3 |
 
+### most likely reviewer split
+- **one reviewer:** enthusiastic. appreciates comprehensive evaluation, recognizes gap analysis insight, values hardware attempt
+- **one reviewer:** skeptical. raises SpiNNaker concerns, demands TAE comparison
+- **one reviewer:** hostile. argues no novel method, no competitive results, partial deployment doesn't count
+
+**the outcome depends on the rebuttal and framing.** if rejected, it'll be for the SpiNNaker partial deployment or the adversarial gradient masking concern, not the accuracy numbers.
+
+the paper is borderline publishable at ICONS 2026, with ICONS being the correct venue precisely because it explicitly welcomes benchmark and application papers with modest accuracy results.

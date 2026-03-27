@@ -334,3 +334,31 @@ Total: roughly 2000-3000 words for the lit review chapter.
 | **Training time** | Computational cost | `time.time()` before and after training loop |
 | **Training/test loss curves** | Learning dynamics | Log loss at each epoch, plot with matplotlib |
 
+### For a first: 5-7 metrics
+
+| Metric | What it measures | How to get it | Why examiners like it |
+|--------|-----------------|---------------|----------------------|
+| **Classification accuracy** | Correctness | Standard | Essential |
+| **Training time per epoch** | Computational cost | `time.time()` | Shows awareness of efficiency |
+| **Total spike count** | SNN activity level | `spk_rec.sum()` in snnTorch | SNN-specific, shows understanding |
+| **Synaptic operations (SOPs)** | Energy proxy | spike_count x connections per layer | Energy estimation without hardware |
+| **Confusion matrix** | Per-class performance | `sklearn.metrics.confusion_matrix` | Shows which classes are hard for SNNs |
+| **Number of parameters** | Model complexity | `sum(p.numel() for p in model.parameters())` | Fair comparison metric |
+| **F1-score** | Balanced accuracy | `sklearn.metrics.f1_score` | Better than accuracy for imbalanced data |
+
+### Energy efficiency estimation (without neuromorphic hardware):
+
+You don't need actual neuromorphic hardware to discuss energy efficiency. The standard approach in the literature is to use **synaptic operations (SOPs)** as a proxy:
+
+- **ANN energy per inference** is proportional to: number_of_MAC_operations x energy_per_MAC
+- **SNN energy per inference** is proportional to: number_of_AC_operations x energy_per_AC (only when a spike occurs)
+
+The key insight is that AC operations (additions, triggered by spikes) use roughly 5-10x less energy than MAC operations (multiply-accumulate, happening every forward pass). Combined with spike sparsity (most SNN neurons are silent most of the time), this is the theoretical basis for SNN energy efficiency.
+
+A simple calculation you can include:
+```
+Energy_ANN = num_parameters x num_layers x E_MAC
+Energy_SNN = total_spike_count x avg_connections x E_AC
+Ratio = Energy_ANN / Energy_SNN
+```
+

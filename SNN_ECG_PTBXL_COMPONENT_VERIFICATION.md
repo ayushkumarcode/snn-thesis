@@ -362,3 +362,31 @@ Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)
 
 ```python
 from sklearn.metrics import roc_auc_score, f1_score, classification_report
+
+# For multi-label AUROC (PTB-XL standard):
+auroc = roc_auc_score(y_true, y_score, average='macro')
+
+# Additional medical metrics:
+f1 = f1_score(y_true, y_pred, average='macro')
+
+# Per-class sensitivity (recall) and specificity:
+from sklearn.metrics import recall_score, confusion_matrix
+
+sensitivity = recall_score(y_true, y_pred, average=None)  # per-class
+# Specificity requires manual calculation from confusion matrix
+```
+
+**Full evaluation code:**
+
+```python
+from sklearn.metrics import roc_auc_score, f1_score, precision_recall_curve
+import numpy as np
+
+def evaluate_ptbxl(y_true, y_score, y_pred):
+    """Standard PTB-XL evaluation metrics."""
+    results = {}
+    results['macro_auroc'] = roc_auc_score(y_true, y_score, average='macro')
+    results['per_class_auroc'] = roc_auc_score(y_true, y_score, average=None)
+    results['macro_f1'] = f1_score(y_true, y_pred, average='macro')
+    results['per_class_f1'] = f1_score(y_true, y_pred, average=None)
+    return results

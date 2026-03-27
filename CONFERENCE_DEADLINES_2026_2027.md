@@ -110,3 +110,31 @@ Sources: [ICASSP 2026](https://2026.ieeeicassp.org/)
 
 | Field | Details |
 |-------|---------|
+| **Paper Deadline** | **~September 2026** (not yet announced) |
+| **Conference Dates** | 16-21 May 2027 |
+| **Location** | Toronto, Canada |
+| **Page Limit** | 4 pages + 1 references page (expected) |
+| **Acceptance Rate** | ~45-49% |
+| **Registration** | ~$900-1,200 expected |
+
+good target. audio classification is core ICASSP topic. SNN angle adds novelty.
+
+Sources: [ICASSP 2027](https://2027.ieeeicassp.org/)
+
+---
+
+### 2.4 INTERSPEECH 2026 [DEADLINE PASSED for regular papers]
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | 25 February 2026 (PASSED) |
+| **Show & Tell Deadline** | **7 May 2026** (demo track -- still open) |
+| **Conference Dates** | 27 September -- 1 October 2026 |
+| **Location** | Sydney, Australia |
+| **Acceptance Rate** | ~50% regular; <30% long paper track (new for 2026) |
+
+ESC-50 is environmental sound, not speech. INTERSPEECH is primarily speech-focused. would be a stretch unless framed as "audio classification" broadly. the Show & Tell demo track might work though.
+
+Sources: [INTERSPEECH 2026 CFP](https://interspeech2026.org/en-AU/pages/calls/call-for-papers)
+
+---

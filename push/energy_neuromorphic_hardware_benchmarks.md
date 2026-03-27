@@ -82,3 +82,31 @@ the NHP motor result is pretty compelling: SNN uses 276 ACs vs 3,836 MACs (13.9x
 | **TrueNorth** | 28nm | ~26 pJ/synaptic op | 65-275 mW | 46 GSOPS/W |
 | **SpiNNaker 1** | 130nm | ~5.8 uJ/synaptic op | ~1W/chip | real-time bio simulation |
 | **SpiNNaker 2** | 22nm FDSOI | 10x better than S1 | improved | 18x vs GPUs (claimed) |
+| **BrainScaleS-2** | 65nm | analog (low pJ) | ~1W | 0.2 mJ/inference |
+| **DarwinWafer** | wafer-scale | **4.9 pJ/SOP** | ~100W | new SOTA efficiency |
+| **Innatera T1** | 28nm | <200 fJ/spike | <10 mW | audio scene classification |
+
+### head-to-head benchmark (Ostrau et al. 2022, Frontiers)
+
+the only real apples-to-apples comparison:
+- **BrainScaleS-2 (Spikey)**: 0.2 mJ/inference -- most efficient
+- **Coral Edge TPU**: 0.3 mJ/inference
+- **SpiNNaker 1**: 38.2 mJ/inference -- relatively expensive (ARM core overhead)
+
+**SpiNNaker 1 is not energy-competitive** with purpose-built chips. its value is flexibility and programmability, not raw efficiency.
+
+---
+
+## 5. Commercial Neuromorphic Products (Shipping or Near-Production)
+
+### Innatera Pulsar (May 2025)
+- first mass-market neuromorphic microcontroller
+- audio scene classification, anomaly detection
+- <10 mW power, 500x lower energy, 100x lower latency vs conventional
+- demos at CES 2024 and 2025
+
+### BrainChip Akida / AKD1500
+- in production, M.2 modules shipping
+- vision, audio, sensor fusion
+- milliwatt range
+- $25M funding for Akida 2

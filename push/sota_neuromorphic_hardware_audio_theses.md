@@ -266,31 +266,3 @@ The hybrid deployment model (heavy ANN feature extraction on conventional hardwa
 
 **Full thesis PDF:** Available at https://idus.us.es/
 
-#### Thesis 2: Dampfhoffer (2023) -- Universite Grenoble Alpes
-
-**Title:** "Models and algorithms for implementing energy-efficient spiking neural networks on neuromorphic hardware at the edge"
-**Degree:** PhD
-**Institution:** Universite Grenoble Alpes / CEA-List / SPINTEC
-**Year:** September 2023
-**Supervisors:** Lorena Anghel (SPINTEC), Alexandre Valentian (CEA-List), Thomas Mesquida (CEA-List)
-
-**Summary:** Addressed the lack of general models for estimating SNN energy consumption on neuromorphic hardware. Proposed hardware-algorithm co-development strategies. Key contribution: the Dampfhoffer et al. (2023) IEEE TECI paper showing SNNs need <6.4% spike rate to beat quantized ANNs in energy efficiency.
-
-**Key results:**
-- Developed energy models for neuromorphic hardware
-- Showed conditions under which SNNs are actually more energy-efficient than ANNs
-- Published in IEEE Transactions on Emerging Topics in Computational Intelligence
-
-**Comparison with our work:**
-- We cite Dampfhoffer et al. (2023) extensively in our energy analysis
-- Our SNN activation sparsity is 74.16%, meaning spike rates are well below the 6.4% threshold, supporting the case for neuromorphic hardware advantage
-- Their work is theoretical/modeling; ours includes actual hardware deployment
-
-**Full thesis PDF:** Available at https://theses.hal.science/tel-04331152
-
-#### Thesis 3: Wall -- University of Manchester
-
-**Title:** "Spikes from sound: A model of the human auditory periphery on SpiNNaker"
-**Degree:** PhD
-**Institution:** University of Manchester
-**Year:** Pre-2020 (exact date not confirmed in search)

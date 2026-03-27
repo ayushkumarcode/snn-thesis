@@ -418,3 +418,31 @@ these are useful to bookmark:
 | **Brian2** | https://github.com/brian-team/brian2 | Biological neuroscience simulation | YES - great documentation |
 | **BindsNET** | https://github.com/BindsNET/bindsnet | STDP learning, PyTorch integration | YES - good examples |
 | **Norse** | https://github.com/norse/norse | Deep learning + SNNs in PyTorch | MODERATE |
+| **SpyTorch** | https://github.com/fzenke/spytorch | Surrogate gradient learning tutorials | YES - tutorial focused |
+| **Lava** | https://github.com/lava-nc/lava-dl | Intel Loihi deployment | NO - hardware specific |
+| **PySNN** | https://github.com/BasBuller/PySNN | Simple PyTorch SNN | YES - beginner friendly |
+
+---
+
+## snnTorch-tagged projects (from GitHub Topics)
+
+some smaller projects using snnTorch found via the snntorch GitHub topic:
+
+| Project | Description | Stars |
+|---------|-------------|-------|
+| neuromorphic_classifier | MNIST classification with SNN | 1 |
+| snn-tre | SNN model to classify MNIST | 0 |
+| IA_in_complex_game_snn | Evolving SNNs for trash collection game | 2 |
+| Spiking-ResNet | Blood pressure prediction from PPG | 2 |
+| search-and-rescue | Drone computer vision with SNN | 1 |
+| snn-image-classification | Computer vision basics | 0 |
+| Spiking-Classifier | Image classification with Gradio UI | 0 |
+| PredictiveSNNModels | MNIST sequence prediction | 0 |
+| snn-glacier-segmentation | Glacier image segmentation | 0 |
+| SNN-CL-AutonomousDriving | Autonomous driving + continual learning | 0 |
+| PulsePod | Arrhythmia detection framework | 0 |
+
+---
+
+## what does a typical 3rd year undergrad SNN project look like?
+

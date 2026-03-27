@@ -82,3 +82,31 @@ Add to the above:
 
 ### What examiners actually care about
 
+The Manchester marking criteria say the report needs:
+- "An elucidation of the problem and the objectives"
+- "An in-depth investigation of the context and literature"
+- "A critical appraisal... indicating the rationale for any design/implementation decisions"
+- "Evaluation (with hindsight) of the project outcome"
+
+The key insight here: examiners care MORE about your analysis of results than the quantity of results. Three well-analysed experiments with insightful discussion will outscore eight experiments with superficial commentary. For each result, you should explain: what you expected, what happened, and WHY.
+
+---
+
+## 3. How many datasets
+
+### Absolute minimum: 1 (MNIST)
+
+MNIST is universally accepted as the baseline benchmark for SNN research. Diehl & Cook (2015) used only MNIST and has 2000+ citations. Every SNN framework tutorial uses MNIST.
+
+### Recommended: 2 datasets
+
+| Dataset combination | Why this works | Difficulty |
+|--------------------|---------------|------------|
+| **MNIST + Fashion-MNIST** (recommended) | Same format (28x28 grayscale), harder task. Shows generalisability. Both load identically in PyTorch. | Easy -- literally change one line of code |
+| **MNIST + N-MNIST** | Static vs neuromorphic. Shows SNN advantage on temporal data. Uses Tonic library with snnTorch (Tutorial 7). | Medium -- different data loading pipeline |
+| **MNIST + CIFAR-10** | Tests on colour images. Good ANN comparison point. | Medium -- requires architecture changes |
+
+### For a first: 2-3 datasets
+
+Adding N-MNIST or DVS128 Gesture as a third dataset shows you understand neuromorphic data and puts SNNs in their natural domain. This is where the SNN advantage over ANNs actually appears.
+

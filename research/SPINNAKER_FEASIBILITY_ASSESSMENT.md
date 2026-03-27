@@ -334,3 +334,31 @@ Plan for SpiNNaker1 via EBRAINS. If Oliver Rhodes can arrange SpiNNaker2 access,
 
 What this tells us: Manchester undergrad SNN theses aren't publicly accessible (behind `studentnet.cs.manchester.ac.uk` auth). These students likely used snnTorch or similar frameworks rather than SpiNNaker hardware, since SpiNNaker deployment adds significant complexity. Worth asking Oliver Rhodes directly.
 
+---
+
+## 9. Time cost of adding SpiNNaker
+
+### Estimated time by pathway
+
+| Pathway | Time Estimate | Difficulty |
+|---------|--------------|------------|
+| SpiNNaker1 via EBRAINS (FC network, manual weight transfer) | 1-2 weeks | Moderate |
+| SpiNNaker1 via EBRAINS (conv network, KernelConnector) | 2-4 weeks | High |
+| SpiNNaker2 via NIR (if access is arranged) | 1-2 weeks | Moderate |
+| SpiNNaker2 via NIR (with quantization) | 2-3 weeks | Moderate-High |
+
+### What the time goes on
+
+1. Account setup and learning sPyNNaker/PyNN: 2-3 days
+2. Running tutorial examples on EBRAINS: 1-2 days
+3. Converting trained weights to PyNN format: 2-5 days (depends on architecture complexity)
+4. Debugging deployment issues: 2-5 days (fixed-point conversion, spike loss, timing)
+5. Running inference experiments: 1-2 days
+6. Collecting and analyzing energy/latency data: 1-2 days
+7. Writing up results: 2-3 days
+
+### Risk factors
+- Weight precision loss: snnTorch uses 32-bit float; SpiNNaker1 uses 16-bit fixed-point. Accuracy degradation is common.
+- Architecture mismatch: some snnTorch layer types may not have sPyNNaker equivalents
+- EBRAINS queue times: shared resource
+- Limited visibility into on-chip execution when debugging remotely

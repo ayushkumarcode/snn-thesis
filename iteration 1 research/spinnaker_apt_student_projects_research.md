@@ -194,3 +194,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | **PDF** | Available (2.8 MB) |
 | **URL** | https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor |
 
+### 1.15 Luca Peres -- Parallelisation of Neural Processing on Neuromorphic Hardware (2022)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Parallelisation of Neural Processing on Neuromorphic Hardware |
+| **Author** | Luca Peres |
+| **Year** | June 2022 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), Oliver Rhodes (co-supervisor) |
+| **Abstract** | World's first real-time simulation of Cortical Microcircuit model. 20x performance improvement over prior results. Up to 9x higher throughput of neural operations through enhanced partitioning. |
+| **PDF** | Available (15.4 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/parallelisation-of-neural-processing-on-neuromorphic-hardware |
+
+### 1.16 Mollie Ward -- Modelling Neural Dynamics on Neuromorphic Hardware (2024)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Modelling Neural Dynamics On Neuromorphic Hardware |
+| **Author** | Mollie Ward |
+| **Year** | February 2024 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Oliver Rhodes (main), James Garside (co-supervisor) |
+| **Abstract** | Hodgkin-Huxley and two-compartment neuron models on SpiNNaker and SpiNNaker2. Fixed- and floating-point implementations with excellent numerical accuracy. HH neurons only 8x computational overhead vs. LIF models. Lower energy consumption for pattern detection. |
+| **PDF** | Available (16.6 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/modelling-neural-dynamics-on-neuromorphic-hardware |
+
+---
+

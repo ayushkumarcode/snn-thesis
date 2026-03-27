@@ -166,3 +166,31 @@ Source: [Efficient Deployment of SNNs on SpiNNaker2](https://arxiv.org/html/2504
 | `IFCondExpStoc` | Extended | Stochastic threshold conductance-based |
 
 Source: [sPyNNaker Models and Limitations](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html)
+
+### Convolutional support
+
+- **SpiNNaker1 (sPyNNaker):** Supports `KernelConnector` and `ConvolutionConnector` for structured convolutional connectivity. Also supports digital retina input. But this is NOT the same as PyTorch `nn.Conv2d` -- you define convolutions as connectivity patterns between populations.
+- **SpiNNaker2 (py-spinnaker2):** Full convolutional layer support through NIR import. Conv2D layers map directly.
+- **Community code:** [SpikingConvNet](https://github.com/SvenGronauer/SpikingConvNet) provides infrastructure for deep spiking CNNs on SpiNNaker.
+
+### Training methods
+
+| Method | SpiNNaker1 | SpiNNaker2 |
+|--------|-----------|-----------|
+| STDP | YES (native) | YES |
+| Surrogate gradient backprop | NO (not on-chip) | Limited (e-prop demonstrated) |
+| Pre-trained weight loading | YES (via FromListConnector) | YES (via NIR/py-spinnaker2) |
+| RL (reward-modulated) | YES (3-factor STDP) | YES (spiking Q-networks demonstrated) |
+
+The standard approach is: train off-chip (snnTorch/PyTorch) -> load weights -> run inference on SpiNNaker.
+
+### Network size limits
+
+- Per core: 256 neurons max
+- Per chip (SpiNNaker1): 18 cores = ~4,608 neurons max
+- 48-chip board (SpiNNaker1): ~220,000 neurons
+- Full million-core machine: ~500,000+ neurons with complex connectivity
+- SpiNNaker2 single chip: 153 ARM cores, 19MB SRAM, 2GB DRAM
+- Weight precision: 16-bit fixed-point (SpiNNaker1), 8-bit integer (SpiNNaker2 via quantization)
+
+### Timing

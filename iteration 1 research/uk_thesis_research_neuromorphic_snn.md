@@ -223,31 +223,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 ## WHITE ROSE eTheses (Leeds/Sheffield/York) -- FULL LISTING
 
 13 theses found matching "neuromorphic spiking neural network":
-
-| Title | Author | Year | Degree | University |
-|-------|--------|------|--------|------------|
-| Bio-inspired reinforcement learning | Zhile Yang | 2025 | PhD | Leeds |
-| Energy-efficient Tracking of Mobile Audio Sources | Dimitrios Pappas | 2025 | PhD | Sheffield |
-| Qubit chains' emergent behaviour from biologically-inspired dynamics | Xavier Laurent | 2025 | MSc by research | York |
-| System Analysis and Design of Physical Delay-Feedback Reservoir Computing | Alexander McDonnell | 2024 | PhD | York |
-| Scaling up ESNs with Heterogeneous Reservoirs | Chester Wringe | 2024 | PhD | York |
-| Replicating cognitive self-sufficiency for AGI models | Ivan Kyambadde | 2023 | PhD | York |
-| Breaking Implicit Assumptions of Physical Delay-Feedback Reservoir Computing | Tian Gan | 2023 | PhD | York |
-| Embodying a Computational Model of Hippocampal Replay for Robotic RL | Matthew Whelan | 2020 | MPhil | Sheffield |
-| Social Insect-Inspired Adaptive Hardware | Matthew Rowlings | 2018 | PhD | York |
-| Learning spatio-temporal spike train encodings with ReSuMe/DelReSuMe/R-STDP | Ibrahim Ozturk | 2017 | PhD | York |
-| Reconstruction methods for spiking neural circuits | Dorian Florescu | 2016 | PhD | Sheffield |
-| Figuring Time by Space: Sensory motion in cortical maps | Stuart Wilson | 2011 | PhD | Sheffield |
-
-**URL pattern:** https://etheses.whiterose.ac.uk/id/eprint/[number]
-
----
-
-## OTHER NOTABLE STUDENT PROJECTS (Non-UK, for calibration)
-
-### Master's Theses
-
-| Title | Author | University | Year | Tools | Key Detail |
-|-------|--------|-----------|------|-------|------------|
-| ZynqNet: FPGA-Accelerated Embedded CNN | David Gschwend | (not specified) | 2016 | Caffe, Vivado HLS, Xilinx Zynq | 84.5% top-5 ImageNet, 200MHz, comprehensive MSc |
-| Modelling Learning Systems in Artificial and Spiking Neural Networks | Jegp | (not specified) | 2019 | Haskell, Futhark, NEST, PyNN, BrainScaleS | Volr DSL for unified ANN/SNN specification |

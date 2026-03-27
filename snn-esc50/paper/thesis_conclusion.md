@@ -93,5 +93,3 @@ This provides the first complete picture of SNN capability on a standard audio b
 ---
 
 Appendices follow: A (full results tables), B (confusion matrices), C (SpiNNaker params), D (reproducibility)
-
-*Appendices follow: A (Full results tables), B (Confusion matrices), C (SpiNNaker parameter tables), D (Reproducibility statement and GitHub link)*

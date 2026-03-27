@@ -306,3 +306,31 @@ Wide open gap. Could combine Spiking GNN + collaborative filtering. Very novel b
 | Fully Spiking VAE | 2022 | VAE | First all-SNN VAE; equal or better quality vs ANN VAE |
 | Spiking-Diffusion (VQ-SVAE + discrete diffusion) | 2023 | Diffusion | First fully-SNN diffusion model |
 | **Spiking DDPM (SDDPM)** | **2024** | **Diffusion** | **WACV 2024; FID 19.20 on CIFAR-10; 37.5% energy of ANN at T=4** |
+| **Spiking Diffusion Models** | **2024** | **Diffusion** | Outperforms SNN baselines across multiple datasets |
+
+This is maturing fast. Spiking diffusion models are particularly exciting. The FID scores are still much worse than ANN diffusion (19.20 vs ~2-3 for SOTA ANNs), but the energy savings are dramatic. Could be a strong thesis direction -- applying spiking diffusion to new domains (e.g., audio spectrograms).
+
+### 6F. Spiking graph neural networks
+**Paper count: 10-15 | Maturity: MEDIUM-HIGH**
+
+| Paper | Year | Venue | Key Result |
+|-------|------|-------|------------|
+| A Graph is Worth 1-bit Spikes | 2024 | ICLR | Contrastive learning + SNN for graphs |
+| Dynamic Spiking Graph Neural Networks | 2024 | AAAI | Dynamic graph processing |
+| Spiking GNN on Riemannian Manifolds | 2024 | NeurIPS | Geometry-aware SGNNs |
+| SGNNBench | 2025 | arXiv | Large-scale benchmark for SGNNs |
+| Fully Memristive SGNN for Graph Learning | 2025 | Nature Comm. | Hardware implementation |
+
+Well-established direction with top venue publications. Multiple architectures exist. Thesis-worthy but competitive.
+
+### 6G. SNN + reinforcement learning / robotics
+**Paper count: 10-20 | Maturity: MEDIUM-HIGH**
+
+Key highlights:
+- SNNs deployed on Loihi 2 for Astrobee robot control (NASA free-flying robot)
+- Spiking RL for Atari games, CartPole, lane-keeping
+- 6-DOF manipulator control with fully spiking networks
+- 140x less energy vs DNN approaches for inference
+- Autonomous driving with SNNs (NeurIPS 2024)
+
+Strong practical motivation. Hardware deployment demonstrated. Good thesis potential, especially for robotics labs.

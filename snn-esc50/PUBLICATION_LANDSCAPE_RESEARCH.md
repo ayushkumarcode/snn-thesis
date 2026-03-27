@@ -236,20 +236,20 @@ recommendation: use option A. the gap-collapse finding is more scientifically si
 2. consider reordering results to lead with gap-collapse
 3. tighten to 6-7 strong pages rather than cramming everything into 8. move noise robustness and CL to brief mention -- they dilute
 4. submit as full paper (8 pages) -- work easily justifies 20-min talk
+5. if rejected, immediately submit to EUSIPCO 2026
+6. consider parallel arXiv preprint to establish priority -- Larroza et al. is already on arXiv and they could extend to ESC-50
 
-### 1. Neuromorphic + LLMs (HOTTEST)
-- SpikeLLM at ICLR 2025 was a landmark
-- MatMul-free LLM on Loihi 2 (3x less energy than edge GPU)
-- ICONS 2024 had language model talks
-- **Relevance to you:** Low. Not your domain.
+---
 
-### 2. Event-Driven Sensing + Edge AI
-- Innatera T1 SNN processor at CES 2024
-- Event cameras + SNN processing
-- Always-on sensing with ultra-low power
-- **Relevance to you:** HIGH. Your "always-on audio sensing" framing in the introduction directly targets this.
+## sources
 
-### 3. Spiking Transformers
+SNN conference paper lists:
+- https://github.com/AXYZdong/awesome-snn-conference-paper
+- https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks
+
+ICONS:
+- ICONS 2026 CFP: https://iconsneuromorphic.cc/calls-2026/
+- ICONS 2026 EasyChair: https://easychair.org/cfp/ACM-ICONS-2026
 - QKFormer, Spikformer v2, SpikingResformer all at top venues
 - Race to close the SNN-ANN gap on ImageNet
 - **Relevance to you:** Medium. Your gap-collapse finding relates to this narrative.

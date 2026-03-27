@@ -166,3 +166,31 @@ def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
         spike_times = [[] for _ in range(H)]
         for t in range(T):
             for n in range(H):
+                if sample[t, n] > 0.5:
+                    spike_times[n].append(float(t))
+
+        try:
+            sim.setup(timestep=1.0)
+            sim.set_number_of_neurons_per_core(sim.IF_curr_exp, 32)
+            input_pop = sim.Population(H, sim.SpikeSourceArray(
+                spike_times=spike_times))
+            output_pop = sim.Population(NUM_CLASSES, sim.IF_curr_exp(
+                **LIF_PARAMS))
+            output_pop.initialize(v=0.0)
+            output_pop.record(["spikes", "v"])
+
+            if len(exc_conns) > 0:
+                sim.Projection(input_pop, output_pop,
+                    sim.FromListConnector(exc_conns.tolist()),
+                    receptor_type="excitatory")
+            if len(inh_conns) > 0:
+                sim.Projection(input_pop, output_pop,
+                    sim.FromListConnector(inh_conns.tolist()),
+                    receptor_type="inhibitory")
+
+            sim.run(T)
+
+            spikes = output_pop.get_data("spikes")
+            spike_counts = np.zeros(NUM_CLASSES)
+            for seg in spikes.segments:
+                for st in seg.spiketrains:

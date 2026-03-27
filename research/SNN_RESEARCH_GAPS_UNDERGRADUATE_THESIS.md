@@ -362,3 +362,31 @@ best candidates:
 ### datasets and tools
 - [Tonic Neuromorphic Data Library](https://tonic.readthedocs.io/)
 - [snnTorch Regression Tutorials](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_regression_1.html)
+- [SHD Dataset](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
+- [Open Neuromorphic](https://open-neuromorphic.org/)
+
+### existing student SNN projects (for scope reference)
+- [SNN4Space (ESA)](https://github.com/AndrzejKucik/SNN4Space)
+- [Musical Pattern Recognition in SNNs (mrahtz, BEng)](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks)
+- [SNN vs CNN Comparison (sofi12321)](https://github.com/sofi12321/SNN_image_classification)
+- [Bayesian Optimization 1D-CSNN for Fraud](https://github.com/dylanperdigao/Bayesian-Optimization-1D-CSNN)
+- [SNN Gesture Classification DVS128](https://github.com/DerrickL25/SNN_Gesture_Classification)
+
+### other relevant papers
+- [Neuromorphic Computing Robustness (Nature Communications, 2025)](https://www.nature.com/articles/s41467-025-65197-x)
+- [Random Heterogeneous SNN for Adversarial Defense (PMC, 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12159496/)
+- [SNNs for Sequential Tasks (NeurIPS 2024)](https://proceedings.neurips.cc/paper_files/paper/2024/file/2f55a8b7b1c2c6312eb86557bb9a2bd5-Paper-Conference.pdf)
+- [Neuromorphic Sentiment Analysis (PMC, 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10536645/)
+- [VMD-SNN Stock Prediction (PMC, 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11873965/)
+- [SNN Cross-Market Portfolio (arXiv, 2025)](https://arxiv.org/pdf/2510.15921)
+- [Brain-Inspired Catastrophic Forgetting (Science Advances, 2024)](https://www.science.org/doi/10.1126/sciadv.adi2947)
+- [Continual Multi-Label with Spiking Networks (ScienceDirect, 2025)](https://www.sciencedirect.com/science/article/abs/pii/S0952197625018913)
+- [Real-time CL on Loihi 2 (arXiv, 2025)](https://arxiv.org/html/2511.01553v1)
+- [Spiking-GAN (Semantic Scholar)](https://www.semanticscholar.org/paper/Spiking-GAN:-A-Spiking-Generative-Adversarial-Using-Kotariya-Ganguly/5d4aa57d0536c555a13c5be5ec30127866299f20)
+- [Feature Attribution for SNNs (arXiv, 2023)](https://arxiv.org/abs/2311.02110)
+
+---
+
+## confidence
+
+| Finding | Confidence |

@@ -465,31 +465,3 @@ From the literature:
 
 4. **The PANNs+SNN hybrid (92.5% accuracy) is the practical deployment story:** CNN14 extracts features once (software), SNN head classifies on neuromorphic hardware. This matches the hybrid architecture recommendations from Dampfhoffer et al.
 
-### 7.2 What You Should Not Claim
-
-1. Do NOT claim SNNs are universally more energy-efficient. The literature is clear that this depends on sparsity, hardware, and accounting methodology.
-2. Do NOT use the simple "ACs are 5x cheaper than MACs, therefore SNNs are 5x more efficient" argument. Total operations matter, not just per-operation cost.
-3. Do NOT ignore the memory access overhead argument -- it is the dominant factor in real systems.
-
-### 7.3 Recommended Thesis Framing
-
-Your NeuroBench results (SNN 976 nJ vs ANN 463 nJ) are actually STRONGER as an honest negative result:
-- "In software simulation, our SNN consumes 2.1x MORE energy than the ANN, despite per-operation costs being 5.1x lower, because the SNN performs 10.7x more operations."
-- "However, on dedicated neuromorphic hardware (Loihi, SpiNNaker), the native AC support and event-driven processing eliminate the multiply overhead entirely, and our measured 74.16% activation sparsity means only 25.84% of synaptic operations are executed per timestep."
-- "The SNN's energy advantage is therefore hardware-dependent, consistent with recent literature (Dampfhoffer 2023, Yan 2024, Shen 2024) showing that SNN energy superiority requires either very high sparsity (>92%) on digital hardware or dedicated neuromorphic hardware."
-
-### 7.4 Key References for Your Thesis
-
-**Must-cite for energy claims:**
-1. Horowitz 2014 (ISSCC) -- AC vs MAC cost
-2. Dampfhoffer et al. 2023 (IEEE TECI) -- Hardware-aware SNN energy analysis
-3. Yan et al. 2024 (arXiv:2409.08290) -- Reconsidering SNN energy efficiency
-4. Yik et al. 2025 (Nature Comms) -- NeuroBench framework
-5. Davies et al. 2018 (IEEE Micro) -- Loihi energy measurements
-
-**Should-cite for context:**
-6. Shen et al. 2024 (CVPR) -- Bit budget framework
-7. Ostrau et al. 2022 (Frontiers) -- Hardware benchmarking
-8. Blouw et al. 2019 -- Loihi keyword spotting benchmark
-9. Li et al. 2023 (arXiv:2309.03388) -- Hardware perspective on SNN efficiency
-

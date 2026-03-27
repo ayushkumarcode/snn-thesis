@@ -82,3 +82,31 @@ if the thesis goes deep convolutional:
 - comes with reimplementation of Kheradpisheh et al. (2018)
 - repo: https://github.com/miladmozafari/SpykeTorch
 
+**For the NCG SOTA results: SpikeNN**
+
+official NeurIPS 2024 code:
+- repo: https://github.com/ggoupy/SpikeNN
+- CPU-only, Python 3.8+
+- implements S2-STDP, SSTDP, and NCG architecture
+
+**For neuroscience accuracy: Brian2**
+
+if the thesis emphasizes biological plausibility over ML performance:
+- arbitrary differential equations for neuron and synapse models
+- has a Diehl & Cook 2015 example: https://brian2.readthedocs.io/en/2.9.0/examples/frompapers.Diehl_Cook_2015.html
+- CPU-only, slower for large networks but more biologically faithful
+
+### 2.3 Quick-Start Path
+
+1. install BindsNET: `pip install bindsnet`
+2. run `eth_mnist.py` from examples -- replicates Diehl & Cook 2015
+3. visualize learned weight filters (they'll look like digit templates)
+4. gives you a working STDP baseline in under 2 hours
+
+---
+
+## 3. Results on MNIST with STDP
+
+### 3.1 Benchmarks
+
+| Method | Architecture | MNIST Acc. | Year | Learning Type | Reference |

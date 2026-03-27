@@ -434,31 +434,3 @@ criterion = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_weight))
 | Field | Detail |
 |---|---|
 | **EXISTS** | YES (feasible with mitigations) |
-| **VERIFIED HOW** | Memory calculations, snnTorch GitHub discussions |
-| **POTENTIAL BLOCKER** | MEDIUM RISK -- requires TBPTT or design mitigation |
-
-**Raw data size calculation:**
-
-```
-At 100 Hz: 21,799 records x 12 leads x 1,000 samples x 4 bytes (float32) = ~1.05 GB
-At 500 Hz: 21,799 records x 12 leads x 5,000 samples x 4 bytes (float32) = ~5.23 GB
-```
-
-**The real problem is NOT data size -- it is the SNN time loop:**
-
-In snnTorch, the standard training pattern loops over `num_steps` timesteps, building a computational graph at each step for BPTT. A user reported that even with 30 timesteps, an Inception-based SNN consumed 5.7 GB of VRAM (up from 305 MB without SNN layers).
-
-**At 1000 timesteps (100 Hz ECG), this would require approximately:**
-- 30 steps -> 5.7 GB (reported)
-- 1000 steps -> extrapolated 190 GB (IMPOSSIBLE on any laptop GPU)
-
-**MITIGATION STRATEGIES (all verified to exist):**
-
-1. **Use TBPTT (Truncated Backpropagation Through Time):**
-```python
-from snntorch import backprop
-loss = backprop.TBPTT(net, train_loader, optimizer=optimizer,
-                      criterion=loss_fn, num_steps=1000,
-                      time_var=True, device='cuda', K=50)
-# K=50 means update weights every 50 steps -- keeps only 50 steps in memory
-```

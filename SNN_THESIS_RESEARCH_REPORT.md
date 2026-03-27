@@ -418,3 +418,31 @@ test: single FC + LIF layer, batch=16, 500 time steps, n neurons:
 
 | Framework | Forward+Backward Time | Notes |
 |-----------|----------------------|-------|
+| SpikingJelly (CuPy) | 0.26s | fastest |
+| Lava DL (SLAYER) | ~0.4-0.5s | custom CUDA |
+| Sinabs (EXODUS) | ~0.4-0.5s | custom CUDA |
+| Norse (torch.compile) | ~0.5-0.7s | close to JAX with compile |
+| snnTorch | ~1.0s+ | flexible but slower |
+
+### my recommendation
+start with snnTorch for learning and prototyping (best documentation). move to SpikingJelly if you need performance or want to work with neuromorphic datasets directly.
+
+---
+
+<a name="datasets"></a>
+## neuromorphic datasets guide
+
+### most accessible datasets for thesis work
+
+#### vision -- static (converted to spikes)
+
+| Dataset | Classes | Samples | Resolution | Access | Difficulty |
+|---------|---------|---------|------------|--------|------------|
+| MNIST | 10 digits | 70K | 28x28 | built into snnTorch/SpikingJelly | easiest |
+| Fashion-MNIST | 10 clothing | 70K | 28x28 | built into frameworks | easy |
+| CIFAR-10 | 10 objects | 60K | 32x32 | built into frameworks | moderate |
+| CIFAR-100 | 100 objects | 60K | 32x32 | built into frameworks | harder |
+| ImageNet-1K | 1000 objects | 1.2M | 224x224 | manual download | hard (compute) |
+
+#### vision -- neuromorphic (event camera / DVS)
+

@@ -126,31 +126,3 @@ import neurokit2 as nk
 # pip install neurokit2  (latest version, actively maintained)
 cleaned = nk.ecg_clean(ecg_signal, sampling_rate=100, method='neurokit')
 ```
-
-**Key finding from literature:** "Band-passing makes no measurable difference in performance" for deep learning on PTB-XL (arxiv 2311.04229). Recommendation: apply minimal preprocessing -- just Z-score normalization.
-
-**Sources:** [SciPy butter](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html), [SciPy sosfiltfilt](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.filtfilt.html), [NeuroKit2](https://pypi.org/project/neurokit2/), [ECG Pre-Processing Best Practices](https://arxiv.org/pdf/2311.04229)
-
----
-
-### 4. Delta Encoding in snnTorch
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES |
-| **VERIFIED HOW** | Official docs: https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html |
-| **POTENTIAL BLOCKER** | NO |
-
-**Exact function signature:**
-
-```python
-snntorch.spikegen.delta(
-    data,           # torch.Tensor, shape [num_steps x batch x input_size]
-    threshold=0.1,  # float: change magnitude to trigger spike
-    padding=False,  # bool: how first timestep is handled
-    off_spike=False  # bool: enable negative spikes for decreases
-)
-# Returns: torch.Tensor of spike values (0, 1, or -1 if off_spike=True)
-```
-
-**ECG-specific usage:**

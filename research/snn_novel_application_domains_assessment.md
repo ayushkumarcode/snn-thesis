@@ -499,31 +499,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 | Radar | UCI Sonar | 208 samples | Public |
 | Astronomy | LOFAR RFI data | Large | Public |
 
----
-
-## Research Gaps and Opportunities (Most Novel Combinations)
-
-The following specific combinations have essentially ZERO papers and represent genuine research frontiers:
-
-1. **SNN + wildlife acoustic monitoring** (e.g., bird call classification with spikes)
-2. **SNN + water quality prediction** from IoT sensors
-3. **Spiking GNN + molecular property prediction** (combining two emerging fields)
-4. **SNN + gravitational wave detection** from LIGO data
-5. **SNN + fast radio burst classification** from radio telescope data
-6. **SNN + speech emotion recognition** (audio sentiment, not text)
-7. **SNN + soil moisture prediction** for precision agriculture
-8. **SNN + sports activity recognition** from wearable IMUs
-9. **SNN + music emotion recognition** (classifying mood of music)
-10. **SNN + drone/UAV radar detection** with FMCW radar
-
----
-
-## Sources
-
-### Music Generation
-- [Mode-conditioned music learning and composition (2024)](https://arxiv.org/abs/2411.14773)
-- [MuSpike Benchmark (2025)](https://arxiv.org/abs/2508.19251)
-- [Stylistic Composition of Melodies (2021)](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2021.639484/full)
-- [Musical Pattern Recognition GitHub](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks)
-- [SpiNNaker Audio Classification GitHub](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker)
-

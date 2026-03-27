@@ -124,31 +124,3 @@ If the thesis emphasizes biological plausibility over ML performance:
 | **S2-STDP + NCG** | STDP-CSNN + NCG FC | **98.92%** | 2024 | Unsupervised STDP features + supervised S2-STDP + NCG | NeurIPS 2024 |
 | **S2-STDP + NCG (SoftHebb)** | SoftHebb-CNN + NCG FC | **99.17%** | 2024 | Unsupervised Hebbian features + supervised S2-STDP + NCG | NeurIPS 2024 |
 | **Deep STDP pre-train + supervised fine-tune** | Deep Conv SNN | ~98.0% | 2018 | STDP pre-training + gradient fine-tuning | Frontiers in Neuroscience |
-
-### 3.2 Key Observations
-
-- **Pure unsupervised STDP** (no labels at all during training) peaks at ~95% on MNIST with 6400 excitatory neurons
-- **STDP features + supervised classifier** pushes to 97-99%, competitive with many ANN baselines
-- **The NCG paper (NeurIPS 2024) represents the current state of the art** for STDP-based classification, at 98.92% (STDP-CSNN features) or 99.17% (SoftHebb-CNN features)
-- For comparison, surrogate-gradient SNNs achieve ~99.5% on MNIST, and standard CNNs achieve ~99.7%
-
-### 3.3 What 95% Actually Means
-
-Diehl & Cook's 95% with pure unsupervised STDP is remarkable because:
-1. No labels are used during training at all
-2. The network self-organizes to represent different digit classes
-3. Labels are assigned post-hoc by seeing which neuron fires most for which digit
-4. Each excitatory neuron's weight pattern visually resembles a digit template
-5. This is directly comparable to k-means clustering (~96%) or unsupervised autoencoders
-
----
-
-## 4. How to Combine STDP Feature Extraction + Supervised Classifier (Hybrid Approach)
-
-### 4.1 The Standard Pipeline
-
-This is the most practical and well-studied approach for a thesis:
-
-```
-[Input Image] --> [Spike Encoding] --> [STDP Conv/FC Layers] --> [Learned Features] --> [Supervised Classifier] --> [Output]
-     |                  |                      |                        |                      |

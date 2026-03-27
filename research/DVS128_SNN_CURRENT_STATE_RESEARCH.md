@@ -166,3 +166,31 @@ output shape: `[T, 2, 128, 128]` -- T time bins, 2 polarity channels (ON/OFF).
 
 ```python
 import tonic
+import tonic.transforms as transforms
+
+sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
+transform = transforms.Compose([
+    transforms.Denoise(filter_time=10000),
+    transforms.ToFrame(sensor_size=sensor_size, time_window=1000),
+])
+train_ds = tonic.datasets.DVSGesture(save_to='./data', train=True, transform=transform)
+from tonic import DiskCachedDataset
+cached_train = DiskCachedDataset(train_ds, cache_path='./cache/dvsg/train')
+train_dl = DataLoader(cached_train, batch_size=16,
+                      collate_fn=tonic.collation.PadTensors(batch_first=True))
+```
+
+this requires understanding event transforms, caching strategies, and custom collation functions. more complex than SpikingJelly's integrated approach, but more flexible.
+
+### complexity rating
+
+| Aspect | Difficulty (1-5) |
+|--------|------------------|
+| Dataset download | 2/5 (manual from IBM Box, one-time) |
+| Initial preprocessing | 1/5 (automatic in SpikingJelly) |
+| Understanding event representation | 4/5 (events vs frames is conceptually tricky) |
+| Frame conversion config | 3/5 (choosing bins, strategy) |
+| Batching variable-length data | 3/5 (padding, collation) |
+| Overall pipeline (SpikingJelly) | **2/5** |
+| Overall pipeline (snnTorch+Tonic) | **3/5** |
+

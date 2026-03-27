@@ -278,3 +278,31 @@ the field is about **2 years old** at the top-venue level. first major conferenc
 
 ### Watch Out For
 
+1. training instability -- surrogate gradients can be finicky, expect lots of tuning
+2. encoding choice matters and is non-trivial for continuous time-series
+3. spike computation is harder to debug than normal NNs
+4. smaller community = fewer StackOverflow answers
+5. metrics mismatch between SNN papers (RSE/R-squared) and Transformer papers (MSE/MAE) -- need to implement both
+
+### Possible Thesis Scopes (ranked by feasibility)
+
+**A: Benchmarking Study (most achievable)**
+- apply existing SNN architectures (SeqSNN) to ETTh, Weather, Electricity
+- compare against LSTM, Transformer, PatchTST
+- report accuracy (MSE/MAE) and theoretical energy
+- contribution: first systematic comparison on these standard benchmarks
+
+**B: Encoding Strategy Investigation**
+- compare rate, temporal, delta, derivative spike encoding on same datasets
+- contribution: practical guidelines on encoding choice
+
+**C: Domain Application (Financial/Weather)**
+- apply modern SNN architectures to an under-explored domain
+- contribution: first modern-SNN results in that domain
+
+**D: Hybrid Architecture**
+- SNN encoder + linear decoder or similar
+- contribution: novel architecture with better accuracy-efficiency trade-off
+
+### Minimum Viable Project
+

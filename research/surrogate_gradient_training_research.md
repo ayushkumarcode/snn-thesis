@@ -138,3 +138,31 @@ all interactive, all Colab-ready with free GPU.
 
 - snnTorch API: https://snntorch.readthedocs.io/en/latest/
 - Surrogate functions: https://snntorch.readthedocs.io/en/latest/snntorch.surrogate.html
+- Loss functions: https://snntorch.readthedocs.io/en/latest/snntorch.functional.html
+- "A Practical Tutorial on SNNs" (MDPI, 2025): https://www.mdpi.com/2673-4117/6/11/304
+- Neftci, Mostafa, Zenke (2019) -- the original: https://arxiv.org/abs/1901.09948
+
+---
+
+## Difficulty vs Standard ANN Training
+
+### What Stays the Same
+
+| Aspect | SNN with Surrogate Gradients | Standard ANN |
+|--------|------------------------------|--------------|
+| Framework | PyTorch (via snnTorch) | PyTorch |
+| Optimizer | Adam, SGD, etc. | Adam, SGD, etc. |
+| Loss function | Cross-entropy (adapted) | Cross-entropy |
+| Data loading | DataLoader | DataLoader |
+| GPU acceleration | CUDA via PyTorch | CUDA via PyTorch |
+| Gradient computation | loss.backward() | loss.backward() |
+| Weight update | optimizer.step() | optimizer.step() |
+
+### What's New
+
+| New Aspect | Description | Difficulty |
+|-----------|-------------|-----------|
+| **Time dimension** | iterate over T timesteps per input | Low-Medium |
+| **State management** | neurons maintain membrane potential; must reset between samples | Low (snnTorch handles it) |
+| **Surrogate gradient selection** | choose and configure surrogate | Low (use defaults) |
+| **Neuron hyperparams** | beta (decay), threshold, reset mechanism | Medium |

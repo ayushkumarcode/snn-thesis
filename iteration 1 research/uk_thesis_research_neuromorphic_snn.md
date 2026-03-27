@@ -250,3 +250,31 @@ URL pattern: https://etheses.whiterose.ac.uk/id/eprint/[number]
 
 ---
 
+## tools and frameworks commonly used in SNN theses
+
+| Framework | Type | Language | Used In |
+|-----------|------|----------|---------|
+| sPyNNaker / PyNN | SpiNNaker interface | Python | Manchester theses |
+| Brian2 | Simulator | Python | Musical pattern recognition project |
+| NEST | Simulator | Python/C++ | Jegp thesis, various |
+| snntorch | Deep learning | Python/PyTorch | Levy comparison, many modern projects |
+| Norse | Deep learning | Python/PyTorch | Various modern projects |
+| SpikingJelly | Deep learning | Python/PyTorch | Chinese university projects |
+| BindsNET | Simulation | Python/PyTorch | Various |
+| NeuroPack | Custom simulator | Python | Southampton memristor thesis |
+| hxtorch.snn | BrainScaleS interface | Python/PyTorch | Heidelberg theses |
+| Vivado HLS | FPGA synthesis | C++/SystemVerilog | Hardware theses |
+| Caffe / TensorFlow / PyTorch | DL frameworks | Python | ANN-to-SNN conversion theses |
+
+---
+
+## common datasets
+
+| Dataset | Domain | Used In |
+|---------|--------|---------|
+| MNIST | Handwritten digits | Nearly every SNN thesis |
+| CIFAR-10/100 | Image classification | Liu (Manchester), Levy |
+| N-MNIST | Neuromorphic digits | Event camera theses |
+| DVS Gesture | Hand gestures | Xing (Strathclyde) |
+| ASL-DVS | Sign language | Bi (UCL) |
+| IMDB Reviews | Sentiment analysis | Huang (Southampton) |

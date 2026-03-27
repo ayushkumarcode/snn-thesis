@@ -451,31 +451,3 @@ def phase_encode(data, num_steps, num_phases=8):
     spike_train = torch.zeros(num_steps, batch_size, input_size)
 
     # Create global oscillator (theta rhythm)
-    period = num_steps // num_phases
-    oscillator = torch.arange(num_steps) % period
-
-    # Map input values to phase offsets
-    # Higher values -> earlier phase (smaller offset)
-    phase_offsets = ((1 - data) * (period - 1)).long()  # [batch x input]
-
-    for t in range(num_steps):
-        current_phase = t % period
-        # Spike when current phase matches the neuron's phase offset
-        spike_train[t] = (current_phase == phase_offsets).float()
-
-    return spike_train
-```
-
-#### Burst Coding (Custom Implementation)
-
-```python
-def burst_encode(data, num_steps, max_burst_length=5, burst_gap=10):
-    """
-    Burst coding: encode input values as bursts of rapid spikes.
-
-    Args:
-        data: [batch x input_size], values in [0, 1]
-        num_steps: number of timesteps
-        max_burst_length: maximum spikes per burst
-        burst_gap: minimum gap between burst windows
-

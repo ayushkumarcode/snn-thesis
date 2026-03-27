@@ -1,0 +1,28 @@
+# Spike Encoding Methods: Could a Comparison Study Work as a Thesis?
+
+i went deep into spike encoding methods for SNNs -- how you convert real-valued data into spike trains -- and whether doing a comparison study would be a viable thesis topic.
+
+the key finding: several comparison studies exist, but none of them are truly complete. each one compares a subset of encodings on a narrow set of tasks (usually just MNIST/Fashion-MNIST, or one sensor modality). nobody has done a proper comparison of all major encoding methods across multiple data types (images, audio, time-series, event-driven) using a unified framework with consistent evaluation metrics. that gap is genuine and achievable for an undergrad thesis.
+
+encoding choice demonstrably matters -- accuracy differences of 3-5% between methods on the same task are common, while latency and energy can differ by 4-7.5x. this is not a trivial question with a known answer.
+
+---
+
+## Complete Taxonomy of Spike Encoding Methods
+
+based on Auge, Hille, Mueller, and Knoll (2021) in Neural Processing Letters plus other sources.
+
+### Rate-Based Encoding
+
+information is in firing frequency. robust against noise, simple to implement, but needs many timesteps and lots of spikes (energy-expensive).
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Poisson Rate Coding** | Each input value = probability of spike at each timestep (Bernoulli process). Higher value = more spikes on average. | Most common baseline; stochastic; high spike count |
+| **Regular Rate Coding** | Deterministic variant, spikes evenly spaced with frequency proportional to input. | Lower variance; easier to analyze |
+| **Population Rate Coding** | Group of neurons collectively encodes a value through combined firing rate. | Higher info capacity; uses more neurons |
+
+### Temporal/Latency-Based Encoding
+
+information is in precise timing of spikes. a single spike carries way more meaning than in rate codes. much fewer spikes needed, but more susceptible to noise.
+

@@ -138,3 +138,31 @@ Diehl & Cook's 95% with pure unsupervised STDP is actually kind of amazing when 
 ---
 
 ## 4. Hybrid Approach: STDP Features + Supervised Classifier
+
+### 4.1 The Standard Pipeline
+
+this is the most practical approach for a thesis:
+
+```
+[Input Image] --> [Spike Encoding] --> [STDP Conv/FC Layers] --> [Learned Features] --> [Supervised Classifier] --> [Output]
+     |                  |                      |                        |                      |
+  Raw pixels     Rate/temporal         Unsupervised            Fixed feature            SVM, logistic
+  or events       coding              weight learning           extraction             regression, or
+                                      (no labels)              (forward pass)          supervised STDP
+```
+
+### 4.2 Specific Architectures from the Literature
+
+**Architecture A: Kheradpisheh et al. (2018) -- Deep CSNN + SVM**
+1. input images encoded via DoG + temporal coding (first-spike)
+2. multiple conv layers trained layer-by-layer with STDP
+3. pooling between conv layers
+4. final feature map flattened
+5. linear SVM trained on flattened features
+6. results: 99.1% Caltech face/motorbike, 82.8% ETH-80, ~97% MNIST
+
+**Architecture B: NeurIPS 2024 NCG Pipeline**
+1. input images as Poisson spike trains
+2. STDP-trained conv SNN (STDP-CSNN) extracts features unsupervised
+3. features converted to first-spike times via temporal coding
+4. supervised S2-STDP trains a FC classification SNN

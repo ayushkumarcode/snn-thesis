@@ -390,3 +390,31 @@ Emerging field. SpikeGPT is notable but very small (46M params vs billions for G
 | SNN Object Detection | 20+ | Low | High | Low | Well-trodden path |
 | SNN Segmentation (Medical) | 10-15 | Medium | High | Low | Solid choice |
 | **SNN Anomaly Detection (Time Series)** | **5-10** | **High** | **High** | **Low** | **Practical + novel** |
+| SNN Diffusion Models | 3-5 | Very High | Medium | Medium-High | Exciting but challenging |
+| SNN Graph Neural Networks | 10-15 | Medium | Medium | Medium | Competitive field |
+| **SNN Multimodal (Audio-Visual)** | **3-5** | **High** | **Medium** | **Medium** | **Strong opportunity** |
+| SNN Continual Learning | 5-10 | Medium-High | Medium | Medium | Good research topic |
+| SNN + RL / Robotics | 10-20 | Medium | Medium-High | Medium | Requires hardware access |
+| SNN NLP / Text | 5-10 | Medium | Medium | Medium | Far behind ANN NLP |
+
+---
+
+## 8. Top 5 thesis directions i'd recommend
+
+### 1: SNN-based speech enhancement/denoising
+**Why:** 5-10 papers exist (room for novelty), well-defined metrics (PESQ, STOI), publicly available datasets (VoiceBank+DEMAND, Intel N-DNS), clear practical motivation (hearing aids, edge devices), and existing baselines to compare against.
+**Approach:** Implement SNN-ConvTasNet or SNN-Wave-U-Net in snnTorch/SpikingJelly, benchmark against ANN baselines, measure energy efficiency.
+**Novelty angle:** Apply to a specific domain (e.g., speech enhancement for hearing aids with specific noise profiles, or speech enhancement in specific languages).
+
+### 2: SNN vocoder (Spiking Vocos extension)
+**Why:** Only 1 paper exists, code is available on GitHub, builds on well-established Vocos framework, and the energy efficiency story is compelling (14.7% energy of ANN).
+**Approach:** Fork Spiking Vocos, experiment with different SNN neuron models, test on different speech datasets, optimize for deployment.
+**Novelty angle:** First SNN vocoder comparison across neuron models, or first SNN vocoder for a specific language/domain.
+
+### 3: SNN for time-series anomaly detection
+**Why:** SNNs' temporal processing is a natural fit, few papers exist, clear practical applications (IoT, industrial monitoring), and doesn't require massive compute.
+**Approach:** Implement SNN-based anomaly detector using snnTorch, benchmark on standard datasets (NAB, Yahoo, SMAP/MSL), compare energy/accuracy trade-off vs LSTM/Transformer baselines.
+**Novelty angle:** First comparison of SNN architectures for time-series anomaly detection, or application to a novel domain.
+
+### 4: SNN audio-visual multimodal fusion
+**Why:** 3-5 papers exist with top venue publications, SNNs' event-driven nature pairs well with multimodal streams, and combines speech + vision which is topical.

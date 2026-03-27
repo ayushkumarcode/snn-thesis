@@ -1,17 +1,17 @@
-# Appendices
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# appendices
+
+reference tables, confusion matrices, SpiNNaker params, reproducibility info. keeping all the detailed numbers here so the main chapters can focus on narrative.
 
 ---
 
-## Appendix A: Full Results Tables
+## appendix A: full results tables
 
-### A.1 Complete Per-Fold Accuracy — All Encodings (5-Fold Cross-Validation)
+### A.1 complete per-fold accuracy -- all encodings (5-fold CV)
 
-All results use the SpikingCNN architecture (622K parameters), ESC-50 5-fold CV (400 test samples per fold), Adam optimiser (lr=1e-3, wd=1e-4), 50 epochs with early stopping (patience=10). ANN uses identical architecture with ReLU replacing LIF. Accuracy = correct/400. Population coding uses 500 output neurons (10/class), MSE count loss. All other SNN encodings use cross-entropy on summed membrane potentials, T=25 timesteps. Standard deviation is population std (÷n).
+All use SpikingCNN (622K params), ESC-50 5-fold CV (400 test/fold), Adam (lr=1e-3, wd=1e-4), 50 epochs, early stopping patience=10. ANN identical arch with ReLU. Population uses 500 output neurons (10/class), MSE count loss. All others use CE on summed membrane, T=25. Std is population std.
 
-| Encoding | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | **Mean** | **Std** | **Gap vs ANN** |
-|----------|--------|--------|--------|--------|--------|----------|---------|----------------|
-| **ANN (baseline)** | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | **63.85%** | 3.07% | — |
+| Encoding | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std | Gap vs ANN |
+|----------|--------|--------|--------|--------|--------|------|-----|-----------|
 | SNN Direct | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | **47.15%** | 4.50% | −16.70 pp |
 | SNN Phase | 22.50% | 22.25% | 25.00% | 24.25% | 26.75% | **24.15%** | 1.66% | −39.70 pp |
 | SNN Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | **24.00%** | 1.90% | −39.85 pp |

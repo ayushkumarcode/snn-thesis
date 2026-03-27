@@ -110,3 +110,31 @@ start with **fast sigmoid (slope=25)** and **beta=0.5**. these are well-tested. 
 ## Best Tutorials and Code
 
 ### Tier 1: Start Here
+
+**1. snnTorch Tutorials (Colab Notebooks)**
+- Tutorial 5: FC SNN on MNIST -- https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html
+- Tutorial 6: ConvSNN on MNIST -- https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html
+  - Colab: https://colab.research.google.com/github/jeshraghian/snntorch/blob/master/examples/tutorial_6_CNN.ipynb
+- Tutorial 7: Neuromorphic Datasets -- https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html
+
+all interactive, all Colab-ready with free GPU.
+
+**2. SpyTorch (Friedemann Zenke)**
+- GitHub: https://github.com/fzenke/spytorch
+- Video: https://youtu.be/xPYiAjceAqU
+- implements surrogate gradients from scratch in pure PyTorch. by the co-author of the original paper.
+
+### Tier 2: Deeper Understanding
+
+**3. "Building and Training SNNs From Scratch" (R Gaurav, Jan 2024)**
+- https://r-gaurav.github.io/2024/01/04/Building-And-Training-Spiking-Neural-Networks-From-Scratch.html
+- builds everything from scratch in PyTorch. great for understanding what's happening under the hood. >97% on MNIST within 10 epochs with T=25.
+
+**4. Eshraghian et al. "Training SNNs Using Lessons From Deep Learning" (2023)**
+- https://arxiv.org/abs/2109.12894
+- Proceedings of the IEEE, 39 pages. the paper behind snnTorch.
+
+### Tier 3: Reference
+
+- snnTorch API: https://snntorch.readthedocs.io/en/latest/
+- Surrogate functions: https://snntorch.readthedocs.io/en/latest/snntorch.surrogate.html

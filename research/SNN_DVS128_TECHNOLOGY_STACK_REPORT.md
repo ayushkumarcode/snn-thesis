@@ -481,31 +481,3 @@ for epoch in range(num_epochs):
 1. Right Hand Wave
 2. Left Hand Wave
 3. Right Arm CW (Clockwise)
-4. Right Arm CCW (Counter-clockwise)
-5. Left Arm CW
-6. Left Arm CCW
-7. Arm Roll
-8. Air Drums
-9. Air Guitar
-10. Other Gestures
-
-### 4.3 Raw Data Format (AEDAT 3.1)
-
-Each recording is stored as a binary AEDAT 3.1 file with polarity events.
-
-**File structure:** [header][events][header][events]...
-
-**Header (28 bytes):**
-```
-uint16_t eventType
-uint16_t eventSource
-uint32_t eventSize
-uint32_t eventTSOffset
-uint32_t eventTSOverflow
-uint32_t eventCapacity
-uint32_t eventNumber
-uint32_t eventValid
-```
-
-**Each event (8 bytes):**
-```

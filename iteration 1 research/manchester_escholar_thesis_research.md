@@ -54,3 +54,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Author** | Luca Peres |
 | **Year** | 2022 |
 | **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Steve Furber (main), Oliver Rhodes (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/parallelisation-of-neural-processing-on-neuromorphic-hardware |
+| **Abstract** | Investigates parallelisation strategies for real-time SNN simulations on SpiNNaker. Achieved the world's first real-time simulation of the Cortical Microcircuit model (20x better than previous). Developed partitioning approaches demonstrating up to 9x higher throughput. |
+| **What They Built** | Novel parallelisation strategies, real-time Cortical Microcircuit simulation, partitioning algorithms |
+| **Tools/Frameworks** | SpiNNaker |
+| **Datasets** | Cortical Microcircuit benchmark model |
+| **Scope** | Very high -- world-first real-time simulation achievement |
+
+---
+
+### 1.4 Learning in Spiking Neural Networks
+| Field | Detail |
+|-------|--------|
+| **Author** | Sergio Davies |
+| **Year** | 2012 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Not listed |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/learning-in-spiking-neural-networks |
+| **Abstract** | Proposes a novel learning rule based on spike-pair STDP that is less computationally expensive. Addresses SpiNNaker implementation, spike injection via Ethernet, and population-based routing. |
+| **What They Built** | Novel STDP learning rule, SpiNNaker implementation, spike injection system, population-based routing |
+| **Tools/Frameworks** | SpiNNaker, LIF/HH neuron models, STDP variants |
+| **Datasets** | Not specified |
+| **Scope** | Very high -- foundational work on learning mechanisms for SpiNNaker |
+
+---
+

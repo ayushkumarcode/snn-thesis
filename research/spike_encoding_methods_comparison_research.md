@@ -110,3 +110,31 @@ from Guo et al. (2021), on a 2-layer STDP-trained SNN:
 from Bian et al. (2024), on IMU activity recognition:
 
 | Encoding | Accuracy |
+|----------|---------|
+| Rate (Beta mapping) | 91.7% |
+| TTFS (Log) | 89.2% |
+| Binary (10-bit) | 89.6% |
+| Multi-threshold Delta | 89.8% |
+
+### Latency
+
+from Guo et al. (2021):
+
+| Encoding | Training Latency (ms) | Inference Latency (ms) |
+|----------|----------------------|----------------------|
+| Rate | 320 | 150 |
+| TTFS | 80 | 20 |
+| Phase | 90 | 30 |
+| Burst | 60 | 30 |
+
+TTFS needs **4x lower training latency and 7.5x lower inference latency** vs rate coding. that's a big deal.
+
+### Synaptic Operations (Energy Proxy)
+
+from Guo et al. (2021), SOPs x 10^8:
+
+| Encoding | Training SOPs | Inference SOPs |
+|----------|-------------|---------------|
+| Rate | 130.785 | 9.932 |
+| TTFS | 37.300 | 1.506 |
+| Phase | 690.072 | 57.798 |

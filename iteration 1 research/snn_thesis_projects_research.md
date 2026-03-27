@@ -446,3 +446,31 @@ some smaller projects using snnTorch found via the snntorch GitHub topic:
 
 ## what does a typical 3rd year undergrad SNN project look like?
 
+based on analyzing 40+ projects, here's what i think is realistic:
+
+### typical characteristics
+1. **single focused task**: classification on one primary dataset, possibly tested on a second
+2. **one framework**: snnTorch (most accessible) or Brian2 (more neuroscience-oriented)
+3. **standard datasets**: MNIST, Fashion-MNIST, CIFAR-10, DVS Gesture, N-MNIST
+4. **comparison angle**: SNN vs ANN/CNN performance comparison is the most common approach
+5. **duration**: semester-long or year-long
+6. **deliverable**: Jupyter notebooks + report/dissertation
+7. **code volume**: 1-5 Python files or 1-3 Jupyter notebooks
+
+### scope tiers
+
+**Tier 1 - Achievable (Good Grade)**
+- SNN classification on MNIST/Fashion-MNIST using snnTorch
+- Compare accuracy and training time with equivalent CNN
+- Example: sofi12321/SNN_image_classification
+
+**Tier 2 - Ambitious (Very Good Grade)**
+- SNN on multiple datasets (MNIST + CIFAR-10 + one more)
+- OR neuromorphic dataset (DVS Gesture, N-MNIST)
+- OR novel application domain (audio, time series, medical)
+- Example: chiralevy/Deep-Learning-with-Biologically-Plausible-Neural-Networks
+
+**Tier 3 - Very Ambitious (Outstanding)**
+- Novel architecture or training method
+- Hardware deployment (FPGA, SpiNNaker if available)
+- Robotics integration

@@ -110,3 +110,31 @@ the key observation for scope: Heidelberg bachelor's theses typically involve ON
 
 ---
 
+## UK PhD theses (for scope calibration)
+
+### University of Manchester (SpiNNaker Group) -- most prolific UK source
+
+| Title | Author | Year | Supervisors | Key Contribution |
+|-------|--------|------|-------------|-----------------|
+| Deep Spiking Neural Networks | Qian Liu | 2018 | Furber, Lester | Noisy Softplus activation, 99.07% MNIST, spike-based autoencoders |
+| Ensemble Learning for Spiking Neural Networks | Alina Neculae | 2020 | Brown, Furber | Ensemble methods for SNNs, class probability interpretation |
+| Stochastic Processes For Neuromorphic Hardware | Gabriel Fonseca Guerra | 2020 | Furber, Lester | Ion channel models on SpiNNaker, constraint satisfaction |
+| Spikes from Sound: Human Auditory Periphery on SpiNNaker | Robert James | 2019 | Garside, Koch | Cochlear model on SpiNNaker, auditory processing |
+| Learning in Spiking Neural Networks | Sergio Davies | 2012 | Furber | STDP learning rule, SpiNNaker routing |
+| Parallel Simulation of Neural Networks on SpiNNaker | Andrew Rowley | ~2012 | Furber | STDP with plasticity, SpiNNaker feasibility |
+| Parallelisation of Neural Processing on Neuromorphic Hardware | Luca Peres | 2022 | Furber, Rhodes | 20x performance improvement, cortical microcircuit |
+| Modelling Neural Dynamics On Neuromorphic Hardware | Mollie Ward | 2024 | Rhodes, Garside | Hodgkin-Huxley on SpiNNaker/SpiNNaker2 |
+
+URL pattern: https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
+
+### Imperial College London
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Robust and efficient training on deep spiking neural networks | N. Perez | 2023 | Sparse backward pass (150x speedup), weight initialization for SNNs |
+
+URL: https://spiral.imperial.ac.uk/entities/publication/0bfc1732-2dac-4589-b50e-7eec99f8efdf
+
+### University of Kent
+
+| Title | Author | Year | Supervisor | Key Contribution |

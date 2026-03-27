@@ -390,3 +390,31 @@ this lets you:
 | Jason Eshraghian | UC Santa Cruz | snnTorch framework | Training SNNs tutorial (IEEE Proceedings) |
 | SpikingJelly team | Peking University | SpikingJelly framework | Science Advances publication |
 | SyNSense | Zurich | Xylo neuromorphic chip | Real-time seizure detection |
+
+### relevant conferences/journals
+
+- IEEE ICASSP
+- Frontiers in Neuroscience
+- Neurocomputing (Elsevier)
+- IEEE Transactions on Neural Systems and Rehabilitation Engineering
+- NeurIPS (Neuromorphic Computing Workshop)
+- Nature Scientific Reports
+- TMLR
+
+---
+
+## 10. how confident am i about all this
+
+| Finding | Confidence | Why |
+|---|---|---|
+| SNNs trail ANNs in MI accuracy by 5-10% | High | Multiple independent benchmarks |
+| SNNs achieve 95% energy reduction on Loihi | High | Published in TMLR with reproducible code |
+| EESCN gets 94.81% on DEAP | Medium-High | Single paper, not independently reproduced |
+| Field is growing fast (2024-2025) | High | Multiple new publications per month |
+| Undergrad feasibility | High | Tools, tutorials, and datasets all available |
+| Novelty at undergrad level | High | Based on what typical undergrad projects look like |
+| P300 SNN is a gap | High | Searched and found minimal dedicated work |
+| Accuracy gap will close by 2026 | Medium | Trend extrapolation, could be wrong |
+
+---
+

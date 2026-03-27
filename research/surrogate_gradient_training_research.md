@@ -635,31 +635,3 @@ snn.RLeaky(beta=0.5, spike_grad=spike_grad)
 
 **MP-Init and TrSG (2025):** Proposed membrane potential initialization and threshold-robust surrogate gradients to address temporal covariate shift and unstable gradient flow with learnable thresholds. These methods specifically target the instability problems that arise in deeper SNN architectures.
 
-- https://arxiv.org/abs/2511.08708
-
-### 10.4 Parametric Surrogate Gradients (2024-2025)
-
-**Wang et al. (2025):** Proposed a parametric surrogate gradient (PSG) strategy that iteratively updates to find the optimal surrogate for each layer, published in Neurocomputing. This removes the need to manually select surrogate gradient parameters.
-
-**Adaptive Gradient Learning (IJCAI 2025):** Methods that automatically calibrate surrogate gradient sharpness based on membrane potential distribution, improving gradient estimation.
-
-### 10.5 State-of-the-Art Benchmarks (2024-2025)
-
-| Dataset | Architecture | Accuracy | Time Steps | Method |
-|---------|-------------|----------|------------|--------|
-| MNIST | ConvSNN | 98.1% | 2 | Sigma-delta neurons |
-| CIFAR-10 | ResNet-19 | 96.43% | 4 | Direct training |
-| CIFAR-100 | ResNet-19 | 81.86% | 4 | Direct training |
-| ImageNet-1k | SGLFormer | 83.73% | 4 | Spiking Transformer |
-| ImageNet-1k | QKFormer | >85% | 4 | Spiking Transformer |
-| CIFAR10-DVS | VGG-SNN | 82.95% | - | LNM method |
-| DVS128 Gesture | Various | 96-97% | - | Direct training |
-
-### 10.6 Trends Summary
-
-1. **Learnable/adaptive surrogates** are replacing fixed surrogates in cutting-edge research
-2. **Spiking Transformers** have reached competitive performance with ANN Transformers
-3. **Theoretical foundations** are finally being established (Gygax and Zenke 2025)
-4. **Fewer time steps** are needed with modern techniques (T=2-4 achieving strong results)
-5. **Normalization techniques** (BNTT, tdBN, MP-Init) are crucial for deeper architectures
-6. **The gap between SNN and ANN accuracy is rapidly closing**, especially on ImageNet

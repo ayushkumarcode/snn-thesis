@@ -26,3 +26,31 @@ from snntorch import surrogate
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.config import (
+    NUM_CLASSES, NUM_STEPS, BETA, RESULTS_DIR, BATCH_SIZE, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+from src.models.snn_model import SpikingCNN
+
+# Import combo model for rhythm/dendritic
+from experiments.combo_experiment import ComboSpikingCNN
+
+
+# ============================================================
+# Early exit inference
+# ============================================================
+
+@torch.no_grad()
+def early_exit_inference(model, loader, device, thresholds,
+                         stability_k=2, model_type="baseline"):
+    """Run inference with confidence-based early exit.
+
+    At each timestep, check max softmax probability of accumulated
+    membrane potentials. If confidence > threshold for k consecutive
+    steps, exit early.
+
+    Returns dict mapping threshold -> results.
+    """
+    model.eval()
+    use_amp = device.type == 'cuda'
+

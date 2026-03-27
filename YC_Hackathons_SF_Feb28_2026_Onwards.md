@@ -54,3 +54,31 @@ the YC hackathon ecosystem is super active but event-driven -- most hackathons a
 ---
 
 ## RECENTLY PAST HACKATHONS AT YC (Before Feb 28, 2026 -- for pattern/context)
+
+These are included because they demonstrate the cadence and pattern of YC hackathons, and their organizers may run future editions:
+
+### 3. ChatGPT / MCP Apps Hackathon by Manufact @ YC
+- - **Location:** YC Office, San Francisco
+- **Organizer:** Manufact (YC S25, formerly mcp-use)
+- **YC Connection:** At YC office; by YC S25 company; YC partner Jon Xu was a judge; guaranteed YC interview as prize
+- **Focus:** Building MCP Apps for ChatGPT, Claude, and VS Code
+- **Source:** https://events.ycombinator.com/manufact-hackathon26, https://x.com/xuster/status/2020923920745103791
+
+### 4. Better Hack @ Y Combinator
+- - **Location:** Y Combinator, San Francisco
+- **Organizer:** Better Auth team (Bereket Engida, Ravi Mistri, Andre Landgraf, Erik Thorelli, Paola Estefania)
+- **Sponsors:** YC, Vercel, Neon, CodeRabbit, Sentry, Anthropic, Peak Design
+- **Prizes:** 1st place includes guaranteed YC interview + credits
+- **Capacity:** 100 people / 25 teams
+- **Source:** https://luma.com/yiephkxp, https://www.better-hack.com/
+
+### 5. Full Stack Hackathon @ Y Combinator
+- - **Location:** Y Combinator, San Francisco
+- **Organizers:** Sim (YC company) and Lovable
+- **Prizes:** 1st place includes guaranteed YC interview
+- **Capacity:** 250 hackers
+- **Source:** https://events.ycombinator.com/fullstackhackathon
+
+### 6. Hack the Stackathon @ Y Combinator
+- - **Location:** YC, San Francisco
+- **Organizers:** Firecrawl (YC S22), Reducto (YC W24), Resend (YC W23)

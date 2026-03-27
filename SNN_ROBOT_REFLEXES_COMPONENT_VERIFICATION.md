@@ -306,3 +306,31 @@ Component              Version          macOS Status      Install Command
 Python                 3.10-3.13        NATIVE            brew install python
 PyTorch                2.x              NATIVE + MPS      pip install torch
 snnTorch               0.9.4            NATIVE            pip install snntorch
+MuJoCo                 3.5.0            NATIVE (ARM64)    pip install mujoco
+Gymnasium              1.x              NATIVE            pip install "gymnasium[mujoco]"
+Stable-Baselines3      2.x              NATIVE            pip install stable-baselines3
+NumPy/SciPy/Matplotlib latest           NATIVE            pip install numpy scipy matplotlib
+```
+
+**Installation sequence (should work on your Mac):**
+```bash
+# Create conda environment
+conda create -n snn-reflex python=3.11
+conda activate snn-reflex
+
+# Install PyTorch with MPS support
+pip install torch torchvision torchaudio
+
+# Install simulation and RL
+pip install "gymnasium[mujoco]"
+pip install stable-baselines3
+
+# Install SNN library
+pip install snntorch
+
+# Verify MPS is available
+python -c "import torch; print(torch.backends.mps.is_available())"
+
+# Verify MuJoCo works
+python -c "import gymnasium as gym; env = gym.make('Ant-v5'); print('Ant-v5 loaded successfully')"
+```

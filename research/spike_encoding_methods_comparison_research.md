@@ -87,31 +87,3 @@ Information transmitted through rapid successive bursts of spikes within a short
 
 Each scalar input value is projected onto a population of neurons, each with a different Gaussian receptive field centre. The neuron whose centre is closest to the input fires earliest/most.
 
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **GRF Population Coding** | N neurons cover the input range with overlapping Gaussians. Activation level determines spike timing within each neuron. | High information capacity; requires multiple neurons per input feature |
-
-### 2.7 Direct / Learned Encoding
-
-A trainable neural network layer converts raw input into spike trains. The encoding is learned jointly with the rest of the network during training.
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Direct Coding** | A trainable linear layer converts input pixels to floating-point values at each timestep; thresholding produces spikes. | Best accuracy with few timesteps; requires multi-bit first layer; less robust to adversarial attacks |
-| **H-Direct (Homeostatic Direct)** | Improved direct coding with homeostasis mechanism to prevent encoding collapse. | Addresses training efficiency limitations of vanilla direct coding |
-
-### 2.8 Signal-Reconstruction-Oriented Encodings (for FPGA/hardware)
-
-These focus on accurate reconstruction of the original signal from the spike train, important for signal processing and hardware implementations.
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Step Forward (SF)** | Adjusts a baseline threshold when signal crosses it. | Fastest encoding speed; lowest energy; unstable with abrupt transitions |
-| **Ben's Spiker Algorithm (BSA)** | FIR filter deconvolution approach. | Good for square waves; very slow encoding speed |
-| **Pulse Width Modulation (PWM)** | Compares signal against sawtooth carrier wave. | Poor reconstruction accuracy |
-| **Binary Encoding** | Multi-bit binary representation of input value. | Best SNR (139dB with 10 bits); balanced noise resistance |
-
----
-
-## 3. Impact of Encoding Choice on SNN Performance
-

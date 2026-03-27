@@ -109,31 +109,3 @@ A growing application area with strong clinical motivation.
 | Method | Type | Valence (%) | Arousal (%) | Year |
 |---|---|---|---|---|
 | Graph CNN + Dual Attention | ANN | ~90+ | ~90+ | 2024 |
-| EESCN | SNN | 94.56 | 94.81 | 2024 |
-| NeuroSense | SNN | 67.76 | 78.97 | 2021 |
-| Bidirectional SNN (DREAMER) | SNN | 94.83 (overall) | -- | 2021 |
-
-### 2.4 Stress Detection
-
-| Method | Type | Accuracy (%) | Year |
-|---|---|---|---|
-| CSNN | SNN | 98.75 | 2025 |
-| Hybrid SNN | SNN | 94.00 | 2024 |
-
-### 2.5 Key Takeaway on Accuracy
-
-**The accuracy gap between SNNs and ANNs is task-dependent:**
-- **Emotion recognition and stress detection:** SNNs can match or even exceed ANN performance (EESCN at 94.81% is competitive with state-of-the-art ANNs on DEAP).
-- **Motor imagery (4-class):** SNNs still trail top ANNs by ~5-10 percentage points (77-82% vs. 85-87% for best ANNs), though the gap is narrowing rapidly.
-- **Seizure detection:** SNNs achieve comparable accuracy with orders-of-magnitude lower energy consumption.
-
-**The real argument for SNNs is not just accuracy but the accuracy-energy tradeoff.** An SNN achieving 80% accuracy at 1/20th the energy of a 85% accurate CNN may be the better choice for a wearable BCI.
-
----
-
-## 3. Available Datasets
-
-### 3.1 Motor Imagery Datasets
-
-| Dataset | Subjects | Channels | Classes | Sampling Rate | Access | Notes |
-|---|---|---|---|---|---|---|

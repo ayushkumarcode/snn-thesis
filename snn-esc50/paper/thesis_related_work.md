@@ -124,16 +124,17 @@ Adversarial examples (Goodfellow et al. 2015): inputs crafted to maximise loss: 
 ## 2.8 transfer learning for audio (PANNs)
 
 **PANNs** (Kong et al. 2020, IEEE TASLP) -- large CNNs pretrained on AudioSet (1.8M 10s clips, 527 tags). CNN14 gets 43.1% mAP on AudioSet and provides 2048-d embeddings that transfer extremely well: ESC-50 94.7% with CNN14 fine-tuning.
-This work uses CNN14 embeddings as fixed features and trains only a lightweight SNN classification head, demonstrating that the SNN-ANN accuracy gap closes from 16.7 pp to <1 pp when rich pretrained features are available. This is the first combination of PANNs with an SNN classifier.
+
+We use CNN14 embeddings as fixed features and train only a lightweight SNN head, showing the SNN-ANN gap closes from 16.7 pp to <1 pp with pretrained features. First PANNs + SNN combination as far as i can tell.
 
 ---
 
-## 2.9 Continual Learning in SNNs
+## 2.9 continual learning in SNNs
 
-Catastrophic forgetting (McCloskey & Cohen 1989) — the tendency of neural networks to forget previously learned tasks when trained on new ones — is a major challenge for lifelong learning systems. SNNs have been proposed as more biologically plausible candidates for continual learning due to their sparse, local activation patterns.
+Catastrophic forgetting (McCloskey & Cohen 1989) -- networks forget old tasks when trained on new ones. Major challenge for lifelong learning. SNNs have been proposed as more biologically plausible candidates for continual learning due to sparse, local activation patterns.
 
-**Golden et al. (2022, PLoS Computational Biology)** showed that offline consolidation (analogous to sleep) prevents catastrophic forgetting in SNNs by replaying patterns during quiescent periods.
+**Golden et al. (2022, PLoS Comp Bio)** showed offline consolidation (sleep analogue) prevents catastrophic forgetting in SNNs.
 
-**Zhang et al. (2023, Science Advances)** introduced NACA (Neuron Activation Consolidation Algorithm) for online continual learning in SNNs.
+**Zhang et al. (2023, Science Advances)** introduced NACA for online SNN continual learning.
 
-This work evaluates catastrophic forgetting in the simplest setting: sequential fine-tuning on 5 ESC-50 super-categories without any replay or regularisation mechanism. The SNN is compared directly to an identical ANN under the same sequential training protocol.
+We evaluate forgetting in the simplest setting: sequential fine-tuning on 5 ESC-50 super-categories, no replay, no regularisation. SNN compared directly to ANN under identical protocol.

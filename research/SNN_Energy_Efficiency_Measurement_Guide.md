@@ -166,3 +166,31 @@ if you're already using snnTorch, you can count spikes during inference:
 
 ```python
 import snntorch as snn
+import torch
+
+def count_spikes_per_layer(model, data_loader, num_steps):
+    spike_counts = {}
+    with torch.no_grad():
+        for data, targets in data_loader:
+            snn.functional.reset(model)
+            for step in range(num_steps):
+                spk_out, mem_out = model(data)
+                for name, module in model.named_modules():
+                    if isinstance(module, (snn.Leaky, snn.Synaptic)):
+                        if name not in spike_counts:
+                            spike_counts[name] = 0
+                        spike_counts[name] += spk_out.sum().item()
+    return spike_counts
+
+def estimate_energy(spike_counts, layer_fan_outs, flops_ann,
+                    E_AC=0.9e-12, E_MAC=4.6e-12):
+    total_sops = sum(
+        spike_counts[layer] * layer_fan_outs[layer]
+        for layer in spike_counts
+    )
+    E_SNN = total_sops * E_AC
+    E_ANN = flops_ann * E_MAC
+    energy_ratio = E_ANN / E_SNN
+    return {
+        'total_sops': total_sops,
+        'E_SNN_joules': E_SNN,

@@ -322,31 +322,3 @@ Note: Exact accuracy percentages are difficult to confirm from abstracts alone, 
 
 ## Part 2: Newer Datasets (2024-2025)
 
-### 8. DailyDVS-200 (ECCV 2024)
-
-| Property | Details |
-|---|---|
-| **Domain** | Visual / Human action recognition |
-| **Sensor** | DVXplorer Lite + RGB camera |
-| **Classes** | 200 daily actions |
-| **Total samples** | >22,000 event sequences |
-| **Subjects** | 47 participants |
-| **Annotations** | 14 attributes per sequence |
-| **Source** | https://github.com/QiWang233/DailyDVS-200 |
-
-**Assessment for undergraduate thesis:** TOO LARGE AND COMPLEX. 200 classes with 22K sequences from a cutting-edge 2024 paper. Insufficient baseline implementations and tooling. This is a research-frontier dataset intended for pushing SOTA, not for thesis projects.
-
-### 9. eTraM (CVPR 2024, Poster Highlight)
-
-| Property | Details |
-|---|---|
-| **Domain** | Visual / Traffic monitoring (object detection) |
-| **Sensor** | Prophesee EVK4 HD event camera |
-| **Classes** | 8 traffic participant classes |
-| **Total data** | 10 hours of recordings, 2M bounding boxes |
-| **Source** | https://eventbasedvision.github.io/eTraM/ |
-
-**Assessment for undergraduate thesis:** NOT SUITABLE. Object detection (not classification) requires significantly more complex architectures (RVT, RED, YOLO adaptations). The 10-hour dataset is massive. Detection tasks are inherently harder than classification for a thesis project.
-
-### 10. EvDET200K (arXiv 2024, CVPR 2025)
-

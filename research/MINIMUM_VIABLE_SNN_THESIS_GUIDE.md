@@ -390,3 +390,31 @@ This analysis, even as an estimate, really strengthens the thesis by connecting 
 | **6. Discussion** | 1000-1500 | Analysis of results, why SNN performed as it did, comparison with literature |
 | **7. Conclusion** | 500-800 | Summary, limitations, future work |
 | **TOTAL** | **8300-11800** | Well within typical UK CS dissertation range |
+
+### 3 research questions to structure around:
+
+1. **RQ1:** "How does the classification accuracy of a spiking neural network compare to an equivalent artificial neural network on standard image benchmarks?"
+
+2. **RQ2:** "What is the effect of key SNN hyperparameters (number of time steps, membrane decay rate) on classification performance?"
+
+3. **RQ3:** "What are the estimated computational and energy efficiency trade-offs between SNN and ANN approaches?"
+
+### Deliverables checklist:
+
+- [ ] Report (PDF, LaTeX using Manchester template, ~8000-10000 words main content)
+- [ ] Screencast (max 8 minutes video, explain project and show results)
+- [ ] Code (Jupyter notebooks or Python scripts, clean and documented)
+- [ ] Results (tables, figures, training logs)
+- [ ] Weekly supervisor meetings attendance (this directly affects the achievements mark)
+
+### What Manchester's marking criteria boil down to:
+
+1. **"An elucidation of the problem and the objectives"** -- State research questions clearly in chapter 1
+2. **"An in-depth investigation of context and literature"** -- The 20-30 reference lit review
+3. **"A critical appraisal... rationale for design/implementation decisions"** -- Explain WHY you chose snnTorch, WHY LIF neurons, WHY these datasets
+4. **"Evaluation with hindsight"** -- Discuss what you'd do differently. Be honest about limitations.
+5. **"Description of any research hypothesis"** -- State upfront what you expect to find (e.g., "SNNs will achieve comparable accuracy to ANNs on static images but with fewer synaptic operations")
+
+### Week-by-week execution plan (~12 weeks to submission):
+
+| Week | Focus | Output |

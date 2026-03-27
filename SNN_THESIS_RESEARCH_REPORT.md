@@ -726,3 +726,31 @@ why this project:
 concrete methodology:
 1. weeks 1-3: literature review + snnTorch Tutorials 1-7
 2. weeks 4-5: set up SpikingJelly, load DVS128 Gesture, run baseline
+3. weeks 6-8: implement 3-4 network variants (standard LIF, parametric LIF, different surrogates, optional attention)
+4. weeks 9-11: run experiments, collect metrics (accuracy, spike count, convergence speed, estimated energy)
+5. weeks 12-13: compare with ANN baseline on same task
+6. weeks 14-18: analysis, visualization, thesis writing
+
+### alternative 1: Audio Classification on Spiking Heidelberg Digits
+audio is temporal by nature, making it a natural fit for SNNs. SHD is small, well-curated, and the temporal processing advantage of SNNs is most clearly demonstrated on temporal data. would compare LIF-based SNNs with RNN baselines. SOTA is 96.41% (SpikCommander, 2025).
+
+### alternative 2: Surrogate Gradient Function Comparison Study
+more methodological/analytical. implement the same convolutional SNN on CIFAR-10 with 5-6 different surrogate gradient functions. measure accuracy, convergence speed, spike sparsity, and gradient flow.
+
+### alternative 3: ANN-to-SNN Conversion Accuracy-Latency Tradeoff
+take a pre-trained VGG-16 or ResNet-18 on CIFAR-10, convert to SNN using SpikingJelly ann2snn, and measure accuracy as time steps decrease from 256 to 1. compare with directly-trained SNN.
+
+---
+
+## things i couldn't fully determine
+
+1. **Paper 3 full content:** couldn't get the full text of Malcolm & Casco-Rodriguez
+2. **neuromorphic hardware at my university:** knowing about SpiNNaker access would change recommendations (turns out we do have it)
+3. **GPU resources available:** compute requirements vary a lot between MNIST-scale and ImageNet-scale
+4. **my prior PyTorch experience:** snnTorch assumes basic PyTorch familiarity
+
+## sources and references
+
+### papers analyzed
+- Yamazaki et al., "Spiking Neural Networks and Their Applications: A Review," Brain Sciences, 2022. https://pmc.ncbi.nlm.nih.gov/articles/PMC9313413/
+- Han et al., "Toward Large-scale Spiking Neural Networks," arXiv:2409.02111, 2024. https://arxiv.org/html/2409.02111v1

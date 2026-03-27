@@ -306,3 +306,18 @@ couldn't fully verify:
 - [Awesome SNN Conference Paper](https://github.com/AXYZdong/awesome-snn-conference-paper)
 - [Awesome Spiking Neural Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
 - [Open Neuromorphic](https://open-neuromorphic.org)
+- [SNN Framework Benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
+
+### surveys and reviews
+- [Neuromorphic Computing 2025: Current SotA](https://humanunsupervised.com/papers/neuromorphic_landscape.html)
+- [The Road to Commercial Success for Neuromorphic Technologies - Nature Communications 2025](https://www.nature.com/articles/s41467-025-57352-1)
+- [Toward Large-scale Spiking Neural Networks - Survey 2024](https://arxiv.org/abs/2409.02111)
+- [SNN Architecture Search Survey 2024](https://arxiv.org/abs/2510.14235)
+- [Continual Learning with Neuromorphic Computing 2024](https://arxiv.org/abs/2410.09218)
+- [SNNs for Ubiquitous Computing - Survey 2025](https://arxiv.org/abs/2506.01737)
+
+### frameworks and tools
+- [snnTorch](https://github.com/jeshraghian/snntorch)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [Intel Lava](https://github.com/lava-nc/lava)
+- [Norse](https://github.com/norse/norse)

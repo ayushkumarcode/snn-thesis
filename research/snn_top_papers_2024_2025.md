@@ -166,3 +166,31 @@ growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO varia
 
 1. SpikingResformer: Bridging ResNet and Vision Transformer in SNNs
 2. SFOD: Spiking Fusion Object Detector
+3. Are Conventional SNNs Really Efficient? A Perspective from Network Quantization
+
+### CVPR 2025 (14 SNN papers -- massive jump!)
+
+1. Brain-Inspired SNNs for Energy-Efficient Object Detection
+2. Spiking Transformer: Accurate Addition-Only Spiking Self-Attention
+3. STAA-SNN: Spatial-Temporal Attention Aggregator for SNNs
+4. USP-Gaussian: Unifying Spike-based Image Reconstruction, Pose Correction and Gaussian Splatting
+5. Spiking Transformer with Spatial-Temporal Attention
+6. Spk2SRImgNet: Super-Resolve Dynamic Scene from Spike Stream
+
+### ECCV 2024
+- DailyDVS-200: A Comprehensive Benchmark Dataset for Event-Based Action Recognition
+
+### AAAI 2025
+- SpikingYOLOX: Improved YOLOX with FFT convolution and SNNs
+- FSTA-SNN: Frequency-based Spatial-Temporal Attention Module for SNNs
+
+---
+
+## new benchmarks and datasets (2024-2025)
+
+### new datasets
+
+| Dataset | Year | What it is | Size | Application |
+|---------|------|-----------|------|-------------|
+| **DailyDVS-200** | ECCV 2024 | Event-based action recognition. 200 action categories, 47 participants, 22,000+ event sequences, 14 attributes per sequence. | Large | Action recognition |
+| **SGNNBench** | 2025 | Benchmark for spiking GNNs on large-scale graphs. 9 SGNN baselines vs 4 classic GNNs. | Multiple graph datasets | Graph learning |

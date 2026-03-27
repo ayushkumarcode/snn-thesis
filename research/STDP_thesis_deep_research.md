@@ -488,31 +488,3 @@ Chapter 6: Conclusion and Future Work
 ### 11.1 Information Gaps
 
 | Gap | Why It Exists | Impact |
-|---|---|---|
-| Exact S2-STDP + PCN accuracy numbers per dataset | Tables in Frontiers paper not fully extractable from web | Low -- NCG paper provides the state-of-art numbers |
-| BindsNET release date and version | GitHub releases page not deeply inspected | Low -- framework works regardless |
-| Brian2 STDP performance benchmarks vs BindsNET on same task | No direct comparison paper found | Medium -- would be useful for framework selection |
-| STDP on ImageNet or large-scale datasets | Appears to not exist -- likely too computationally expensive | Low -- not relevant for undergraduate thesis |
-
-### 11.2 Confidence Levels
-
-| Finding | Confidence | Basis |
-|---|---|---|
-| STDP achieves ~95% on MNIST (Diehl & Cook) | VERY HIGH | Original paper, 1000+ citations, replicated many times |
-| NCG achieves 98.92% on MNIST with STDP features | HIGH | NeurIPS 2024 paper, code available, results in paper |
-| STDP scales poorly to CIFAR-10 (66% with STDP-CSNN) | HIGH | Multiple sources confirm, NCG paper provides numbers |
-| BindsNET is the best framework for ML-oriented STDP | HIGH | Multiple comparison sources, most ML features |
-| STDP is still an active research area in 2025-2026 | VERY HIGH | NeurIPS 2024, ICML 2025, multiple 2025 reviews |
-| Three-factor learning is the most promising STDP extension | HIGH | 2025 Cell Press review, growing publication count |
-| STDP on DVS data is an underexplored thesis angle | MEDIUM-HIGH | Limited STDP-specific DVS papers; most DVS work uses surrogate gradients |
-
----
-
-## 12. Key References and Sources
-
-### Foundational Papers
-- [Diehl & Cook (2015) -- Unsupervised learning of digit recognition using STDP](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2015.00099/full)
-- [Masquelier & Thorpe (2007) -- Unsupervised learning of visual features through STDP](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030031)
-- [Kheradpisheh et al. (2018) -- STDP-based spiking deep CNNs for object recognition](https://www.sciencedirect.com/science/article/abs/pii/S0893608017302903)
-
-### State-of-the-Art (2024-2025)

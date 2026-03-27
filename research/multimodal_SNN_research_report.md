@@ -82,3 +82,31 @@ SSTFormer is worth noting -- it has a **publicly available codebase** (https://g
 
 | Paper/System | Year | Sensors | Platform | Key Finding |
 |---|---|---|---|---|
+| **Lopez-Osorio et al.** | 2024 | Neuromorphic vision + feedback sensors | SpiNNaker | Real-time robot adaptation using SNN sensor fusion |
+| **Spiking Neural-Invariant Kalman Fusion** | Jan 2026 | IMU | CPU/GPU | SNN extracts motion features from noisy IMU, fused with Kalman filter for pose estimation |
+| **Loihi-2 Sensor Fusion** | Aug 2024 | Camera, LIDAR, GPS, IMU | Intel Loihi-2 | 100x more efficient than CPU, 30x more than GPU |
+| **Marine-Inspired Navigation** | 2025 | Multiple underwater sensors | Neuromorphic | Multi-modal fusion for autonomous subaquatic navigation |
+
+the Loihi-2 result is pretty wild: **100x energy efficiency over CPU and ~30x over GPU** for sensor fusion tasks across AIODrive, Oxford Radar RobotCar, nuScenes, etc. that's the practical motivation for neuromorphic sensor fusion right there.
+
+### Sources
+- [Lopez-Osorio et al. - Wiley](https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202300646)
+- [Spiking Kalman - arXiv](https://arxiv.org/abs/2601.08248)
+- [Loihi-2 Sensor Fusion - arXiv](https://arxiv.org/abs/2408.16096)
+- [Marine Navigation - PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12608416/)
+- [Neuromorphic Solutions Book - Springer](https://link.springer.com/book/10.1007/978-3-031-63565-6)
+
+---
+
+## 4. Is This Still an Open Problem?
+
+**yes -- multiple survey papers explicitly call it out.**
+
+### Known Gaps
+
+1. **Limited exploration**: "Imaging applications remain strongly biased toward classification and regression tasks, with limited exploration of segmentation or multimodal integration" (SNN Imaging Survey, 2025)
+
+2. **Dataset scarcity**: lack of large-scale multimodal neuromorphic datasets
+
+3. **Modality imbalance**: when vision is way stronger than audio, the network just ignores audio. TAAF (2025) addresses this but it's still open
+

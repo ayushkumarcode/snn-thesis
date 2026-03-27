@@ -40,31 +40,3 @@ Title + Abstract (150-200 words)                ~0.3 pages
    3.4 SpiNNaker Deployment (Figure 2: pipeline)
    3.5 NeuroBench Energy Methodology
 4. Results                                       ~2.5 pages
-   4.1 Encoding Comparison (Table 1)
-   4.2 SpiNNaker Hardware Results (Table 2)
-   4.3 Transfer Learning: Gap Collapse (Table 3)
-   4.4 Adversarial Robustness (Table 4)
-   4.5 Energy Analysis (Table 5)
-5. Discussion                                    ~0.8 pages
-6. Conclusions & Future Work                     ~0.3 pages
-References                                       ~0.8 pages
-```
-
-**Target: 5 tables, 3 figures**
-
----
-
-## 3 ESSENTIAL FIGURES
-
-1. **Architecture diagram** — SpikingCNN with encoding input, Conv-BN-Pool-LIF blocks, output
-2. **SpiNNaker pipeline** — hybrid: snnTorch (conv+FC1) → binary spikes → SpiNNaker (FC2). Show FC1 cancellation as crossed-out path
-3. **Encoding bar chart** — 7 encodings + ANN baseline with error bars
-
----
-
-## TITLE OPTIONS
-
-| Option | Title |
-|--------|-------|
-| A (recommended) | Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment |
-| B (short) | First Convolutional SNN on ESC-50: Encoding Comparison and SpiNNaker Deployment |

@@ -131,31 +131,3 @@ All surrogate gradients share the same basic shape: a bell-shaped or peaked curv
 
 ## 4. Does the Choice of Surrogate Function Matter?
 
-### Short Answer: Shape matters little; scale matters a lot.
-
-### The Landmark Study
-
-Zenke and Vogels (2021), "The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks," systematically investigated this question. Their key findings:
-
-1. **Surrogate gradient learning is robust to different shapes of underlying surrogate derivatives.** Whether you use sigmoid, fast sigmoid, arctangent, or other smooth approximations, the network learns effectively.
-
-2. **The scale (width/slope) of the surrogate derivative substantially affects learning performance.** Too narrow and gradients vanish (neurons far from threshold receive no learning signal). Too wide and gradients become noisy (updates are imprecise, potentially harmful).
-
-3. **Activity regularization is critical.** When combined with appropriate firing rate regularization, spiking networks perform robust information processing even at the sparse activity limit.
-
-### Practical Implications
-
-| What Matters | What Does Not Matter Much |
-|-------------|--------------------------|
-| Slope/scale parameter of the surrogate | Exact mathematical form (sigmoid vs. atan vs. fast sigmoid) |
-| Activity/firing rate regularization | Whether the surrogate is symmetric or not |
-| Beta (membrane decay constant) | Minor differences in tail behavior |
-| Membrane threshold setting | |
-| Number of time steps | |
-
-### The Fine-Tuning Study (2024)
-
-A systematic study on fine-tuning surrogate gradient learning for hardware performance confirmed:
-- Fast sigmoid consistently delivers the best results across datasets due to its sharp gradient slopes
-- Fast sigmoid yields lower firing activity (higher sparsity) compared to arctangent at similar accuracy
-- By cross-sweeping beta and threshold hyperparameters, practitioners achieved a 48% reduction in hardware inference latency with only 2.88% accuracy trade-off

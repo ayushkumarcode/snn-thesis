@@ -82,3 +82,31 @@ key biological constants:
 - input intensity (0-255) mapped to timing within 0-1 time window
 
 ### learning mechanisms (Section 5)
+
+**Spike-Based Backpropagation Methods:**
+- **SpikeProp**: uses van Rossum distance as loss function; early work on gradient-based SNN training
+- **SuperSpike**: approximates spike derivatives using smooth temporal convolution
+- **SLAYER**: distributes error credit backward in time; enables simultaneous learning of weights AND axonal delays (unique feature)
+
+**Spike-Time-Dependent Plasticity (STDP):**
+- classic STDP follows exponential temporal dependence
+- if pre-synaptic spike arrives before post-synaptic: Long-Term Potentiation (LTP, strengthening)
+- if pre-synaptic spike arrives after post-synaptic: Long-Term Depression (LTD, weakening)
+- variants: anti-Hebbian (aSTDP), mirrored (mSTDP), probabilistic, reward-modulated (R-STDP)
+- Stable STDP (S-STDP): combines weight-dependent exponential rules with spike traces for stability
+
+**Other Learning Rules:**
+- **Prescribed Error Sensitivity (PES)**: supervised online learning used in Nengo
+- **Intrinsic Plasticity**: regulates neuron firing rates within optimal ranges
+- **ANN-to-SNN Conversion**: transfers pre-trained parameters from artificial neural networks
+
+### computer vision applications with specific results
+
+**Image Classification:**
+| Method | Year | Dataset | Accuracy | Notes |
+|--------|------|---------|----------|-------|
+| DCSNN | 2018 | MNIST | 97.2% | Conv SNN using STDP + R-STDP |
+| LM-SNNs | 2020 | MNIST | Not specified | Lattice map with unsupervised learning |
+| Medical SNN | 2020 | ISIC 2018 (melanoma) | 87.7% | 6,705 images, feature selection |
+| EEG SNN | - | SEED dataset | 96.67% | Emotion recognition from EEG |
+

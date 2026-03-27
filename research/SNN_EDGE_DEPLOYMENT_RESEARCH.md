@@ -110,3 +110,31 @@ workshop presented at ISFPGA 2024 by Jason Eshraghian and Fabrizio Ottati. repo:
 | SENECA neuromorphic | SNN | Vision | 927 uJ (62.5% of ANN time) | -- |
 | SENECA neuromorphic | ANN | Vision | 1,232 uJ | -- |
 | Analog SNN chip | SNN (STDP) | MNIST | 530 uW at 10 MHz | -- |
+| TrueNorth | SNN/CNN | DVS gesture | <200 mW | 96.5% |
+| SpiNNaker2 | SNN (Q-SNN) | DVS gesture | 459 mJ per gesture | 94.13% |
+| General estimate | SNN (STDP) | Various | ~5 mJ per inference | -- |
+| General estimate | ANN | Various | ~200 mJ per inference | -- |
+
+### the reality is nuanced
+
+the headline claim "SNNs are 10-100x more efficient" has caveats:
+
+**when SNNs win:**
+- on neuromorphic hardware designed for event-driven computation
+- when spike sparsity is low (<0.44 spikes/synapse)
+- for always-on, event-driven sensing (DVS input)
+- on FPGAs with spike-aware sparsity exploitation
+
+**when SNNs lose:**
+- on standard digital FPGAs without sparsity exploitation, SNNs are "clearly less energy efficient than their equivalent CNNs in the general case" (from a 2022 efficiency analysis)
+- when membrane potentials need to be stored in memory
+- when spike sparsity exceeds 0.5 spikes/synapse
+
+honestly, the most valuable thesis contribution would be measuring both SNN and ANN on the same edge hardware and presenting the real tradeoffs. that's a stronger thesis than cherry-picking favorable comparisons.
+
+---
+
+## 4. student projects that have done this
+
+### Purdue Polytechnic capstone: FPGA SNN lane-following robot
+- undergraduate capstone (senior project)

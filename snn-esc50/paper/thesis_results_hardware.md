@@ -236,20 +236,20 @@ Performed on all 5 folds (400 test samples each, direct encoding). 5-fold means:
 
 SNN is still more expensive even on neuromorphic hardware. Follows from Dampfhoffer et al. (2023): need <6.4% spike rate. Our 25.84% spike rate is well above this.
 
+**The energy story:** direct SNN uses 2.1x more energy in software. But the SNN enables deployment to AC-only neuromorphic hardware. And PANNs + SNN head (92.50%) represents a better pathway: expensive feature extraction runs once, energy-cheap SNN handles classification.
 
-**ANN baseline:**
+### 5.4.4 energy-accuracy pareto frontier
 
-| Metric | Value |
-|--------|-------|
-| Activation sparsity | 59.03% |
-| Dense SynOps | 166,298/sample |
-| Effective ACs | 0 |
-| Effective MACs | 100,561/sample |
-| **Energy (software sim)** | **100,561 × 4.6 pJ = 454 nJ (5-fold mean: 454±11 nJ) = 0.454 μJ** |
+| Model | Accuracy | Energy/sample | Hardware? |
+|-------|----------|---------------|-----------|
+| Direct SNN | 47.15% | 968 +/- 37 nJ (sw) | yes (SpiNNaker FC2 hybrid) |
+| Rate SNN | 24.00% | ~950 nJ (est) | yes |
+| ANN baseline | 63.85% | 454 +/- 11 nJ (sw) | no neuromorphic |
+| PANNs+SNN (full, sw) | 92.50% | ~8 uJ (head only) | no (software) |
+| PANNs+SNN (FC2 on SpiNNaker) | 92.50% | ~86 nJ (FC2 layer) | yes |
+| PANNs+ANN head | 93.45% | ~650 nJ (est) | no |
 
-### 5.4.3 Interpretation
-
-**On GPU/CPU (software simulation):** The SNN is **2.1× more expensive** than the ANN (968 ± 37 nJ vs 454 ± 11 nJ, 5-fold validated). This is expected: the SNN runs for T=25 timesteps while the ANN runs once, and the SNN's large number of binary ACs (1.08M) outnumbers the ANN's MACs (101K) despite the higher per-operation cost of MACs.
+The Pareto-optimal deployment: **PANNs embeddings + SpiNNaker FC2**: CNN14 extracts on CPU/NPU once, first two SNN layers in software, only 256->50 FC2 on SpiNNaker (~86 nJ). 92.50% accuracy with hardware-compatible neuromorphic inference for the classification step.
 
 **On neuromorphic hardware (SpiNNaker/Loihi):** The cost relationship inverts. Each SNN AC (binary × weight) costs ~0.9 pJ on neuromorphic hardware vs ~4.6 pJ for ANN MACs. If the SpiNNaker hardware achieves AC-only compute for the classification layer (fold 4 example calculation; 5-fold means: SNN 968 ± 37 nJ, ANN 454 ± 11 nJ):
 $$\text{SNN hardware energy} = 1,084,732 \times 0.9 \text{ pJ} = 976 \text{ nJ (fold 4)}$$

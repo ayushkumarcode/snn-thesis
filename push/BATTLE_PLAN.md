@@ -82,3 +82,31 @@ these go in the thesis, not the ICONS paper.
 | 2 | Temporal ablation (timestep truncation) | 0.5 | HIGH -- deployment finding |
 | 3 | Neuron ablation / fault tolerance | 1 | MED-HIGH |
 | 4 | Weight distribution analysis | 0.5 | MEDIUM |
+| 5 | Pruning resilience (30-90% sparsity) | 2 | MED-HIGH |
+
+### tier 2: high value, moderate effort
+
+| # | Experiment | Days | Value |
+|---|-----------|------|-------|
+| 6 | Noise robustness profiling | 2-3 | HIGH |
+| 7 | Few-shot learning curves | 2-3 | HIGH |
+| 8 | Spike efficiency Pareto (L1 reg) | 2-3 | HIGH |
+| 9 | SNN saliency maps (spike Grad-CAM) | 3-4 | HIGH |
+| 10 | Stochastic resonance | 1-2 | HIGH if positive |
+
+### tier 3: SpiNNaker-specific
+
+| # | Experiment | Days | Value |
+|---|-----------|------|-------|
+| 11 | Full deploy via IF_cond_exp + MaxPool | 2-3 | VERY HIGH if works |
+| 12 | Spike drop robustness | 1-2 | HIGH -- explains gap |
+| 13 | WTA lateral inhibition | 1-2 | MEDIUM |
+| 14 | SpiNNaker energy from provenance | 1-2 | HIGH |
+| 15 | SpiNNaker 2 readiness (NIR export) | 2-3 | MEDIUM |
+
+### tier 4: ambitious (only if everything else done)
+
+| # | Experiment | Days | Value |
+|---|-----------|------|-------|
+| 16 | On-chip STDP learning for FC2 | 5-7 | VERY HIGH |
+| 17 | LSM reservoir on SpiNNaker | 5-7 | VERY HIGH |

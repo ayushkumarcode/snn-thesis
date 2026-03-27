@@ -266,31 +266,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 ### STRONG Version (Grade: First -- publishable potential)
 
 **What it looks like**:
-- Title: "A Systematic Multi-Dimensional Comparison of Spiking and Artificial Neural Networks: Accuracy, Efficiency, and Robustness Trade-offs"
-- Three datasets (MNIST, Fashion-MNIST, CIFAR-10) plus one neuromorphic dataset (CIFAR10-DVS or DVS128 Gesture)
-- Three+ architectures with matched parameter counts
-- Systematic encoding comparison (rate, latency, delta, direct input)
-- Hyperparameter sensitivity analysis with Pareto frontiers
-- Energy estimation via NeuroBench (SynOps, spike sparsity, Eff_MACs vs Eff_ACs)
-- Adversarial robustness comparison (FGSM, PGD at multiple epsilon values)
-- Time steps vs accuracy vs efficiency three-way tradeoff curves
-- Statistical rigor (multiple seeds, confidence intervals, significance tests)
-- Clear conclusions with practical recommendations
-- Reproducible codebase with documentation
-
-**Why it is strong**:
-- Multi-dimensional analysis (not just accuracy)
-- Tests the actual claimed advantages of SNNs (efficiency, robustness)
-- Controlled methodology following best practices from published papers
-- Addresses open questions with practical implications
-- Significantly exceeds what any tutorial provides
-- Could be submitted to a workshop paper (e.g., NICE, NeuroAI workshop)
-
----
-
-## 7. Timeline Feasibility: Can This Be Done in 2-3 Months?
-
-### Assumption: 2-3 months of actual development time (roughly 8-12 weeks)
-
-### Week-by-Week Breakdown for the STRONG Version
-

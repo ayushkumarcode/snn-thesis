@@ -110,3 +110,31 @@ This is actually one of the strongest arguments for this research direction.
 
 2. **Sparse Representation**
    - Most of the ECG signal is baseline (isoelectric segments)
+   - Only ~20-30% of each heartbeat cycle has diagnostically relevant morphology
+   - SNNs naturally exploit this sparsity (neurons only fire during events)
+   - Delta modulation encoding converts ECG to sparse spike trains efficiently
+
+3. **Temporal Feature Importance**
+   - Arrhythmia diagnosis depends on timing: R-R intervals, P-R intervals, QT duration
+   - SNNs inherently encode timing info through spike timing
+   - Unlike CNNs which treat time as "just another dimension," SNNs process time natively
+
+4. **Biological Plausibility**
+   - The cardiac conduction system itself runs on electrical impulses (spikes)
+   - Biological neurons in the brainstem process cardiac signals as spike trains
+   - SNNs provide a biologically grounded model for cardiac signal processing
+
+### Spike Encoding Methods for ECG
+
+| Encoding Method | Description | Accuracy | Robustness | Firing Rate | Best For |
+|---|---|---|---|---|---|
+| **Rate Encoding** | Maps ECG amplitude to spike frequency | 91.7% | Moderate | High | General purpose |
+| **Time-to-First-Spike (TTFS)** | Maps amplitude to spike timing | 89% | Low (noise sensitive) | 2% (very sparse) | Energy-critical apps |
+| **Delta Modulation** | Encodes value changes as ON/OFF spikes | ~90% | Best (0.7% drop at 0.1 noise) | Low | Noisy real-world ECG |
+| **Peak Encoding** | Uses P/QRS/T peak timing as spike events | Novel approach | -- | Very sparse | Clinical interpretability |
+| **Gaussian Encoding** | One value -> time-magnified spike train | -- | -- | Medium | Time series tasks |
+
+Delta modulation deserves special attention. It takes the difference between consecutive ECG samples and generates ON spike (positive change > threshold) or OFF spike (negative change > threshold). The threshold controls the sparsity vs fidelity trade-off. Maps naturally to event-driven neuromorphic hardware. `snntorch.delta` implements this directly.
+
+---
+

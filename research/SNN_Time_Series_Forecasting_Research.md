@@ -194,3 +194,31 @@ the CPG-PE paper showed that sinusoidal positional encoding is mathematically a 
 | Lvchangze/SeqSNN | ICML + NeurIPS | PyTorch | https://github.com/Lvchangze/SeqSNN |
 
 ### General Frameworks
+
+| Framework | Strengths | URL |
+|-----------|-----------|-----|
+| **snnTorch** | Regression tutorials, beginner-friendly | https://github.com/jeshraghian/snntorch |
+| **SpikingJelly** | Fastest (0.26s forward+backward), deployment | https://github.com/fangwei123456/spikingjelly |
+| **Norse** | Bio-inspired, flexible custom neurons | https://github.com/norse/norse |
+| **Lava** (Intel) | Loihi 2 deployment | https://github.com/lava-nc/lava |
+
+### Getting Started
+
+1. **start with snnTorch** -- tutorials for regression exist:
+   - Tutorial 1: Spike Encoding
+   - Tutorial 5: Training SNNs
+   - Regression tutorials Part I and II
+
+2. **then look at SeqSNN** for time-series specific architectures:
+   ```
+   conda create -n SeqSNN python=3.10
+   git clone https://github.com/microsoft/SeqSNN/
+   cd SeqSNN && pip install .
+   python -m SeqSNN.entry.tsforecast exp/forecast/ispikformer/ispikformer_electricity.yml
+   ```
+
+### Paper Lists with Code
+
+- https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks
+- https://github.com/yfguo91/Awesome-Spiking-Neural-Networks
+- https://github.com/SpikingChen/SNN-Daily-Arxiv (daily arXiv updates)

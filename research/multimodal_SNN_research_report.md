@@ -362,3 +362,17 @@ shd_train = spikedata.SHD("data/shd", train=True)
 
 ---
 
+## Gaps and Next Steps
+
+### What i'm not sure about
+1. whether Bjorndahl released their code (probably not, but S-CMRL code exists)
+2. exact training times are estimates, not measured
+3. couldn't find any undergrad thesis specifically on multimodal SNNs
+4. not sure how beginner-friendly BrainCog actually is
+
+### What to do next
+1. read Bjorndahl et al. in full (arXiv 2409.00552) -- it's the template
+2. clone S-CMRL codebase (https://github.com/Brain-Cog-Lab/S-CMRL)
+3. do snnTorch tutorials 1-7
+4. start with single-modality baselines before attempting fusion
+5. check if SpiNNaker access is available at uni

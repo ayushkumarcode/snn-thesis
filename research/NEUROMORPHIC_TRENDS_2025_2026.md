@@ -423,31 +423,3 @@ Our closest competitors in the audio SNN space:
 
 ## SOURCES
 
-### Conference Proceedings
-- [ICONS 2025 Schedule](https://iconsneuromorphic.cc/Schedule-2025/)
-- [ICONS 2026 Call for Papers](https://iconsneuromorphic.cc/calls-2026/)
-- [ICONS 2024 Proceedings](https://www.computer.org/csdl/proceedings/icons/2024/22lE6EOwpkA)
-- [ICML 2025 Papers](https://icml.cc/virtual/2025/papers.html)
-- [NeurIPS 2025 Paper List](https://papercopilot.com/paper-list/neurips-paper-list/neurips-2025-paper-list/)
-- [ICLR 2026 Papers](https://iclr.cc/virtual/2026/papers.html)
-
-### High-Impact Publications
-- [Neuromorphic computing paradigms enhance robustness through SNNs (Nature Communications, 2025)](https://www.nature.com/articles/s41467-025-65197-x)
-- [NeuroBench framework (Nature Communications, 2025)](https://www.nature.com/articles/s41467-025-56739-4)
-- [Road to commercial success for neuromorphic technologies (Nature Communications, 2025)](https://www.nature.com/articles/s41467-025-57352-1)
-- [Neuromorphic computing at scale (Nature, 2025)](https://www.nature.com/articles/s41586-024-08253-8)
-- [Can neuromorphic computing help reduce AI's high energy cost? (PNAS, 2025)](https://www.pnas.org/doi/10.1073/pnas.2528654122)
-- [IBM NorthPole (Science, 2023)](https://www.science.org/doi/10.1126/science.adh1174)
-
-### SNN Audio and Encoding
-- [Spike Encoding for Environmental Sound (Larroza et al., March 2025)](https://arxiv.org/abs/2503.11206)
-- [SNN and Sound: A Comprehensive Review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
-- [Neuromorphic Keyword Spotting with PDM MEMS Microphones (Interspeech 2024)](https://arxiv.org/abs/2408.05156)
-- [Low-power SNN Audio Source Localization (Nature Comms Eng, 2025)](https://www.nature.com/articles/s44172-025-00359-9)
-- [Spiking Vocos: Energy-Efficient Neural Vocoder (2025)](https://arxiv.org/html/2509.13049v1)
-- [Audio-Visual SNN with Cross-Modal Residual Learning (2025)](https://arxiv.org/abs/2502.12488)
-
-### Hardware
-- [Intel Loihi 2 / Hala Point](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)
-- [SpiNNaker2 at Sandia (June 2025)](https://www.nextplatform.com/2025/06/16/sandia-deploys-spinnaker2-neuromorphic-system/)
-- [BrainChip AKD1500 Launch](https://www.edge-ai-vision.com/2025/11/brainchip-unveils-breakthrough-akd1500-edge-ai-co-processor-at-embedded-world-north-america/)

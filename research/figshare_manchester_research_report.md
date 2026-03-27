@@ -273,31 +273,3 @@ Despite Manchester being a major centre for neuromorphic computing (SpiNNaker pr
 2. The BitBrain entry from Furber's group is the sole neuromorphic item
 3. Alex Casson's EEG/BCI work represents the bulk of neural engineering content
 4. The repository appears to be a relatively recent adoption (most items from 2021-2025)
-
----
-
-## CONFIDENCE ASSESSMENT
-
-| Finding | Confidence Level |
-|---------|-----------------|
-| No undergraduate theses exist on Figshare Manchester | **VERY HIGH** (99%) -- Enumerated all 833 articles |
-| No neuromorphic computing undergraduate projects | **VERY HIGH** (99%) -- Searched 100+ terms, checked all articles |
-| The repository is not used for undergraduate work | **HIGH** (95%) -- No evidence of any undergraduate submissions |
-| Jieru Zhou's LSTM project might be a student project | **LOW** (30%) -- Single author, appropriate scope, but unconfirmed |
-| All other items are research-level publications | **HIGH** (90%) -- Multi-author, funded, journal-linked |
-
----
-
-## RECOMMENDED FOLLOW-UPS
-
-If you need to find Manchester undergraduate neuromorphic/ML thesis projects, consider:
-
-1. **Manchester eScholar** (https://www.research.manchester.ac.uk/) -- Check for electronic theses and dissertations
-2. **Contact the School of Engineering directly** -- Ask if they have a repository of third-year projects
-3. **Contact Steve Furber's APT group** -- They may have records of undergraduate projects on SpiNNaker/neuromorphic topics
-4. **Contact Alex Casson's Non-Invasive Bioelectronics Lab** -- For BCI/EEG-related undergraduate projects
-5. **Search other UK university Figshare portals** -- Some universities (e.g., Loughborough, Southampton) may use Figshare for student theses
-6. **Search the broader Figshare.com** -- Some Manchester students may have uploaded work to the general Figshare platform
-7. **GitHub search** -- Search for Manchester student repositories related to neuromorphic topics
-8. **Check the IEEE Xplore and conference proceedings** -- Some undergraduate projects get published as conference papers
-

@@ -530,3 +530,31 @@ Chapter 6: Conclusion and Future Work
 - [Wake-Sleep R-STDP for catastrophic forgetting](https://www.researchgate.net/publication/397358146_Wake-Sleep_Learning_in_R-STDP-Based_Spiking_Neural_Networks_to_Avoid_Catastrophic_Forgetting)
 
 ### Audio and Event-Based Vision
+- [SOM-Associated-SNN for audio (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225010884)
+- [Unsupervised speech recognition through STDP (PLOS ONE)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204596)
+- [Neuromorphic Vision Sensor survey (2025)](https://arxiv.org/html/2504.08588v1)
+
+### Continual Learning
+- [Brain-inspired algorithm for catastrophic forgetting (Science Advances)](https://www.science.org/doi/10.1126/sciadv.adi2947)
+- [Hybrid neural networks for continual learning (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-56405-9)
+
+### Neuromorphic Hardware
+- [Neuromorphic Computing 2025 landscape](https://humanunsupervised.com/papers/neuromorphic_landscape.html)
+- [Open Neuromorphic Hardware Guide](https://open-neuromorphic.org/neuromorphic-computing/hardware/)
+
+---
+
+## 13. Bottom Line
+
+STDP is a solid thesis topic for 2026. NeurIPS 2024, ICML 2025, multiple Nature/Cell Press pubs in 2025 -- clearly not dead. the "biologically plausible learning" framing is strong and differentiates from most SNN work (which uses surrogate gradients and has little biological connection).
+
+what i'd actually do:
+
+1. **Replicate** Diehl & Cook (2015) in BindsNET as baseline (~95% MNIST, 1-2 weeks)
+2. **Extend** to Fashion-MNIST and visualize what STDP learns on harder data (1 week)
+3. **Implement** hybrid: STDP features + SVM/logistic regression (1 week)
+4. **Compare** STDP features vs PCA/autoencoder features as ablation (1 week)
+5. **Novel contribution** (pick one): DVS data, STDP variant comparison, R-STDP, or continual learning angle (3-4 weeks)
+6. **Write up** with bio-plausibility discussion and energy analysis (ongoing)
+
+total: 8-10 weeks focused work, doable in a semester.

@@ -349,31 +349,3 @@ ICONS sits in a sweet spot: it is **selective enough to be meaningful** (~59% ac
 | Best paper awards exist | **HIGH** | Winners identified for 2023, 2024, 2025 |
 | Student-friendly venue | **HIGH** | Doctoral consortium, student poster competition, committee structure |
 | Open access publication 2026 | **HIGH** | ACM-wide policy change |
-
----
-
-## Recommended Follow-ups
-
-1. **Verify UoM ACM Open status:** Check https://libraries.acm.org/acmopen/open-participants or contact UoM library to confirm APC coverage.
-2. **Contact program chairs** (if needed) to clarify blind review type and number of reviewers: Maryam Parsa (mparsa@gmu.edu), Elisa Donati.
-3. **Register for ICONS 2026 early** -- the conference sells out its smaller venue capacity.
-4. **Prepare rebuttal strategy** -- the 7-day window is tight; draft template responses for likely reviewer concerns before submission.
-
----
-
-## Sources
-
-- ICONS 2026 CFP: https://iconsneuromorphic.cc/calls-2026/
-- ICONS 2026 EasyChair CFP: https://easychair.org/cfp/ACM-ICONS-2026
-- ICONS 2024 Schedule: https://iconsneuromorphic.cc/icons-2024/schedule/
-- ICONS 2025 Schedule: https://iconsneuromorphic.cc/Schedule-2025/
-- ICONS 2023 Proceedings (ACM DL): https://dl.acm.org/doi/proceedings/10.1145/3589737
-- ICONS 2023 Schedule (ORNL): https://icons.ornl.gov/schedule/
-- ICONS DBLP: https://dblp.org/db/conf/icons2/index.html
-- ORNL ICONS 2020 News: https://www.ornl.gov/news/scientists-share-latest-neuromorphic-news-virtual-icons-conference
-- ORNL ICONS 2021 News: https://www.ornl.gov/news/brain-inspired-computing-concepts-take-center-stage-icons-conference
-- ICONS 2018: https://ornlcda.github.io/icons2018/
-- ACM Open Access: https://www.acm.org/publications/openaccess
-- JISC ACM Open: https://libraries.acm.org/acmopen/acmopen-jisc
-- ICONS Committees 2025: https://iconsneuromorphic.cc/committees-2025/
-- IEEE Xplore ICONS 2024: https://ieeexplore.ieee.org/xpl/conhome/10766494/proceeding

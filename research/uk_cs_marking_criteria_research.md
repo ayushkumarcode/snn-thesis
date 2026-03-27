@@ -418,3 +418,31 @@ Very. It's not a minor factor -- every university flags it as make-or-break.
 
 ### 6.2 Other advice
 
+The Laramee guidelines for BSc CS dissertations (used at Swansea, Nottingham, and referenced across UK CS departments) emphasise that "a longer dissertation won't mean a better dissertation" and that markers value accuracy and methodological thoroughness over code quality or engineering practices unrelated to project objectives.
+
+A student who got 90% and the Distinguished Dissertation Prize (Dominik Rys) emphasises: be aware of the "curse of knowledge" -- don't assume readers understand your specialised concepts. Write for clarity, not to impress.
+
+### 6.3 What this means practically
+
+Using LaTeX (as Manchester recommends) immediately signals professionalism. Good figures, clear tables, proper referencing, and logical chapter structure aren't optional extras -- they're fundamental to getting a first.
+
+---
+
+## 7. What to prioritise
+
+Based on everything i've gone through, here's what matters most for targeting a first at Manchester COMP30040:
+
+| Priority | Action | Impact on Mark | Why |
+|---|---|---|---|
+| 1 | Write an excellent, well-structured report | Very High (55% of total) | The report IS the project in the eyes of markers |
+| 2 | Deliver working, well-evaluated implementation | Very High (30% of total) | Achievements are directly assessed; Q&A informs this |
+| 3 | Conduct rigorous evaluation with clear metrics | High (embedded in report + achievements) | The single biggest differentiator between 2:1 and first |
+| 4 | Frame a clear, testable research question/hypothesis | High (shapes entire report quality) | Without this, you can't write a good evaluation |
+| 5 | Thorough, well-synthesised literature review | Moderate-High (part of report mark) | Must identify gap/motivation clearly |
+| 6 | Produce a professional, clear screencast | Moderate (15% of total) | Easy marks if done well; hard to recover if done poorly |
+| 7 | Show independence and self-direction | Moderate (implicit in all marks) | Distinguishes first from 2:1 |
+| 8 | Demonstrate originality/novelty | Low-Moderate (bonus, not required) | Nice to have, not expected for a first |
+
+---
+
+## 8. What i couldn't find and confidence levels

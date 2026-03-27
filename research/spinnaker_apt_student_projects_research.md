@@ -26,3 +26,31 @@ Found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 
 ### Eustace Painkras -- A Chip Multiprocessor for a Large-scale Neural Simulator (2012)
 - PhD, Computer Science
+- Design of the actual SpiNNaker CMP chip -- many simple power-efficient ARM processors with small local memories, asynchronous networks-on-chip, and GALS architecture. Demonstrated successful neural simulation on 48-chip PCBs.
+- https://www.escholar.manchester.ac.uk/uk-ac-man-scw:198344
+
+### Sergio Davies -- Learning in Spiking Neural Networks (2012)
+- PhD, Computer Science
+- Novel learning rule based on spike-pair STDP algorithm. Developed SpikeServer tool for spike injection via Ethernet. Introduced population-based routing. Created STDP-TTS learning rule.
+- PDF: 14.1 MB at https://research.manchester.ac.uk/en/studentTheses/learning-in-spiking-neural-networks
+
+### Thomas Sharp -- Real-Time Million-Synapse Simulation of Cortical Tissue (2013)
+- PhD, supervised by Steve Furber (main), James Garside (co)
+- Real-time simulation of rodent somatosensory cortex on SpiNNaker prototype. Model: 10^5 neurons, 7x10^7 synapses across 360 processors on 23 chips. Each chip draws just 1 watt.
+- PDF: 21.7 MB at https://research.manchester.ac.uk/en/studentTheses/real-time-million-synapse-simulation-of-cortical-tissue
+
+### Francesco Galluppi -- Information Representation on a Universal Neural Chip (2013)
+- PhD, Computer Science
+- Modelling biologically plausible neural networks on SpiNNaker. Understanding how the brain represents and elaborates information. Also did hierarchical configuration systems.
+- Note: Galluppi first joined SpiNNaker in January 2009 for his MSc, then came back April 2010 for PhD.
+
+### Jonathan Heathcote -- Building and Operating Large-Scale SpiNNaker Machines (2016)
+- PhD, supervised by James Garside (main), Steve Furber (co)
+- Physical layout scheme for hexagonal torus topologies minimizing cable length. Improved routing algorithms. Placement and routing that tolerates network faults. Demonstrated on half-million core prototype.
+- GitHub: https://github.com/mossblaser/phd_thesis_experiments
+- PDF: 8.54 MB at https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines
+
+### James Knight -- Plasticity in Large-scale Neuromorphic Models of the Neocortex (2016)
+- PhD, supervised by Steve Furber (main), David Lester (co)
+- New SpiNNaker synaptic plasticity implementation. Neocortically-inspired model with 20K neurons and 51M plastic synapses -- largest plastic neural network ever simulated on neuromorphic hardware at that time.
+- PDF: 8.37 MB at https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex

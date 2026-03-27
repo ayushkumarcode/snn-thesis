@@ -114,31 +114,3 @@ The Kirchhoff Institute for Physics at Heidelberg publicly archives ALL bachelor
 
 | Year | Title | What They Did |
 |------|-------|---------------|
-| 2021 | Real-time Image Classification on Analog Neuromorphic Hardware | Ran image classifier on BrainScaleS-2 chip |
-| 2023 | Multi-Single-Chip Training of SNNs with BrainScaleS-2 | Multi-chip SNN training pipeline |
-| 2017 | Accelerated Classification in Hierarchical Neural Networks | Classification on neuromorphic hardware |
-| 2018 | Solving Map Coloring Problems on Analog Neuromorphic Hardware | Constraint satisfaction on hardware |
-| 2019 | Structural Plasticity for Feature Selection in Auditory Stimuli | Plasticity algorithms for audio |
-| 2015 | Boltzmann Sampling with Neuromorphic Hardware | Probabilistic computing |
-| 2014 | Binaural Sound Localization on Neuromorphic Hardware | Audio processing |
-| 2011 | Analysis of the Liquid Computing Paradigm on a Neuromorphic System | Reservoir computing |
-
-**Key observation:** Heidelberg bachelor's theses typically involve ONE focused task: characterising a component, implementing a specific algorithm, building a software tool, or running a specific experiment. They are 40-60 pages.
-
----
-
-## Part 5: Manchester PhD Theses (For Context Only)
-
-These are NOT representative of undergraduate scope but show what the SpiNNaker group works on. All PDFs are freely downloadable.
-
-| Author | Year | Title | Key Achievement |
-|--------|------|-------|-----------------|
-| Mollie Ward | 2024 | Modelling Neural Dynamics on Neuromorphic Hardware | HH models on SpiNNaker/SpiNNaker2 |
-| Luca Peres | 2022 | Parallelisation of Neural Processing | World's first real-time Cortical Microcircuit |
-| Qian Liu | 2018 | Deep Spiking Neural Networks | 99.07% MNIST, Noisy Softplus activation |
-| Petrut Bogdan | 2019 | Structural Plasticity on SpiNNaker | STDP + structural plasticity for digit classification |
-| Andrew Mundy | 2016 | Real Time Spaun on SpiNNaker | 9000x speedup of 2.5M neuron brain model |
-| Gabriel Fonseca Guerra | 2020 | Stochastic Processes for Neuromorphic HW | Cross-platform: SpiNNaker + Loihi |
-| Sergio Davies | 2012 | Learning in Spiking Neural Networks | Novel STDP learning rule |
-| James Knight | 2016 | Plasticity in Large-Scale Models | Largest plastic SNN on neuromorphic HW |
-

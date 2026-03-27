@@ -110,3 +110,31 @@ for a thesis, i'd use UNSW-NB15 as primary (modern, challenging, well-documented
 
 2. **the real advantage is efficiency.** Wang et al. (2024) showed this convincingly:
    - 70-90% energy reduction vs CNNs
+   - 0.034 MB model vs 68.77 MB for equivalent CNN
+   - 7,482 parameters vs 17.2M for CNN
+   - 5,333 samples/second vs 264 for CNN
+   - 204,800 FLOPs vs 149.5M for CNN
+
+3. **cross-dataset generalization works.** TASNN (2026) got GAR above 0.93 across NSL-KDD, KDDTest+21, and CICIDS-2017. not just memorizing one dataset.
+
+---
+
+## why SNNs actually make sense here
+
+honestly the domain fit argument for SNNs in cybersecurity is one of the strongest in the whole SNN literature. here's why:
+
+**network attacks are inherently sparse and temporal.** network traffic is a stream of discrete events (packets) at specific times. attacks are rare anomalous patterns in this stream. this maps directly to SNN event-driven processing -- neurons fire only when meaningful events happen, naturally ignoring the majority of benign traffic.
+
+**real-time detection is critical.** IDS must operate at line speed. SNNs on neuromorphic hardware get inference latencies of 2-3 ms (NeuEdge framework).
+
+**edge/IoT deployment needs low power.** security needs to run at edge gateways, routers, IoT devices. power budgets at the edge can be milliwatts. SNNs on neuromorphic chips get up to 15x energy improvement over ARM Cortex-M7 ANN implementations, 847 GOp/s/W efficiency (NeuEdge), and Intel Loihi packs 128 cores with 128M synapses in a single chip.
+
+**packet inter-arrival times carry temporal info.** timing between packets, burst patterns, flow durations -- these have discriminative value. SNNs encode temporal features natively via spike timing. CNNs and MLPs have to artificially flatten or window this data.
+
+**unsupervised/adaptive learning for novel attacks.** STDP lets SNNs learn without labels -- useful for detecting zero-day attacks. Mia et al. (2025) showed the network can incrementally learn new attack types without forgetting old ones.
+
+**adversarial robustness.** TASNN (2026) demonstrated resilience to noise, class imbalance, and adversarial perturbations -- matters because attackers actively try to evade detection.
+
+### the thesis narrative basically writes itself
+
+traditional IDS faces a trilemma: be accurate, be real-time, and deploy on resource-constrained edge devices. DL gets accuracy but needs big compute. rule-based systems are fast but brittle. SNNs offer a resolution -- matching DL accuracy while consuming orders of magnitude less energy and enabling real-time edge deployment.

@@ -250,3 +250,31 @@ def run_fold(fold, device, expansion, wta_ratio, mode="ann"):
         train_fn = train_epoch_ann
         eval_fn = eval_ann
     else:
+        model = FlyBrainSNN(
+            expansion=expansion, wta_ratio=wta_ratio).to(device)
+        train_fn = train_epoch_snn
+        eval_fn = eval_snn
+
+    # Only readout weights are trained
+    trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    total_params = sum(p.numel() for p in model.parameters())
+    print(f"  Trainable: {trainable:,} / {total_params:,} total")
+
+    optimizer = torch.optim.Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5)
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+
+    start = time.time()
+    for epoch in range(1, NUM_EPOCHS + 1):
+        train_loss, train_acc = train_fn(model, train_loader, optimizer,
+                                         device)
+        test_acc = eval_fn(model, test_loader, device)
+        scheduler.step(train_loss)
+
+        if test_acc > best_acc:

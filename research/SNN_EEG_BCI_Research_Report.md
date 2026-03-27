@@ -305,31 +305,3 @@ Evaluation:          scikit-learn metrics, MOABB benchmarks
 
 ### 6.3 Recommended Scope for Undergraduate Thesis
 
-**Minimum Viable Project (safe scope):**
-- Reproduce combra-lab/snn-eeg results on PhysioNet EEGMMIDB
-- Compare SNN vs. EEGNet (standard CNN baseline) on the same dataset
-- Report accuracy, parameter count, and estimated energy consumption
-- Timeline: ~3-4 months
-
-**Ambitious but Achievable Project:**
-- Implement an SNN for motor imagery classification using snnTorch on BCI Competition IV-2a
-- Compare multiple spike encoding methods (rate coding vs. temporal coding)
-- Benchmark against 2-3 CNN baselines (EEGNet, ShallowConvNet, DeepConvNet)
-- Analyze energy efficiency using theoretical multiply-accumulate operation counts
-- Timeline: ~4-6 months
-
-**Stretch Goals (if time permits):**
-- Cross-subject transfer learning with SNNs
-- Hybrid CNN-SNN architecture
-- Deployment on neuromorphic hardware simulator
-- Real-time inference demonstration
-
-### 6.4 Essential Background Reading (1-2 Week Crash Course)
-
-1. **EEG Basics:** "An Introduction to EEG" -- any introductory neuroscience textbook chapter
-2. **BCI Fundamentals:** BCI Competition IV website documentation
-3. **SNN Fundamentals:** snnTorch Tutorial Series (Tutorials 1-5)
-4. **SNN for EEG:** "Spiking neural networks for EEG signal analysis: From theory to practice" (ScienceDirect, 2025)
-5. **Motor Imagery BCI:** "An in-depth survey on Deep Learning-based Motor Imagery EEG classification" (ScienceDirect, 2023)
-
----

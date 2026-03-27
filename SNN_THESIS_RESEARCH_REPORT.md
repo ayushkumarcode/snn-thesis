@@ -707,31 +707,3 @@ ANN-to-SNN conversion is viable as a thesis topic but **not recommended as a pri
 ### Energy Efficiency Numbers for Motivation
 
 | Platform | Power | Task | Notes |
-|----------|-------|------|-------|
-| Intel Loihi 2 | 1.21 mJ/inference | Vision | 52x less than GPU |
-| Neuromorphic SNN | 5 mJ/inference | General | vs. 200 mJ for ANN |
-| TrueNorth | 67 mW | Keyword spotting | 82 days on coin cell battery |
-| GPU (Jetson Nano) | 62.9 mJ/inference | Vision | Baseline comparison |
-
----
-
-<a name="examples"></a>
-## EXAMPLE THESES AND PROJECTS
-
-### Published Example Projects
-
-1. **Master Thesis (Univ. Padova):** "Hardware Implementation of a Spiking Neural Network" -- RTL modeling and FPGA resource mapping of SNN architecture
-
-2. **GitHub Project (DerrickL25):** "SNN Gesture Classification" -- Neuromorphic gesture classification system using snnTorch and DVS128 event camera data
-
-3. **VCU Dissertation:** "Spiking Neural Networks: Neuron Models, Plasticity, and Graph Applications" -- Comprehensive treatment of neuron models and learning rules
-
-### Reproducible Paper Implementations
-
-| Paper | Task | Dataset | Framework | Difficulty |
-|-------|------|---------|-----------|------------|
-| DCSNN (2018) | MNIST classification | MNIST | BindsNet/snnTorch | Easy |
-| Spiking YOLO (2019) | Object detection | PASCAL VOC | Custom | Hard |
-| Spike-FlowNet (2020) | Optical flow | Event camera | Custom | Hard |
-| SiamSNN (2020) | Object tracking | - | Custom | Hard |
-| SpikeSEG (2021) | Semantic segmentation | Synthetic | Custom | Moderate |

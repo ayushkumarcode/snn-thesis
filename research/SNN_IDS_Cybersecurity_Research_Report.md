@@ -138,3 +138,31 @@ honestly the domain fit argument for SNNs in cybersecurity is one of the stronge
 ### the thesis narrative basically writes itself
 
 traditional IDS faces a trilemma: be accurate, be real-time, and deploy on resource-constrained edge devices. DL gets accuracy but needs big compute. rule-based systems are fast but brittle. SNNs offer a resolution -- matching DL accuracy while consuming orders of magnitude less energy and enabling real-time edge deployment.
+
+---
+
+## open-source code and tools
+
+### SNN-IDS specific repos
+
+| Repository | What it does | Datasets | Framework |
+|-----------|-------------|----------|-----------|
+| [zbs881314/Intrusion-detection](https://github.com/zbs881314/Intrusion-detection) | SNN with single-spike temporal coding for IDS | NSL-KDD, AWID | Custom Python |
+| [zbs881314/Temporal-Coded-Deep-SNN](https://github.com/zbs881314/Temporal-Coded-Deep-SNN) | Companion temporal coding implementation | NSL-KDD | Custom Python |
+
+### SNN frameworks for building your own
+
+| Framework | Repo | PyTorch? | Strengths | Stars |
+|-----------|------|----------|-----------|-------|
+| **snnTorch** | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) | Yes | Great tutorials, surrogate gradients, Colab notebooks | 1.5K+ |
+| **SpikingJelly** | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) | Yes | Full-stack, CuPy acceleration, Science Advances publication | 2K+ |
+| **Norse** | [norse/norse](https://github.com/norse/norse) | Yes | Bio-plausible models, PyTorch native | 700+ |
+| **BindsNET** | [BindsNET/bindsnet](https://github.com/BindsNET/bindsnet) | Yes | STDP learning, used in Mia 2025 | 1.3K+ |
+| **Brian2** | [brian-team/brian2](https://github.com/brian-team/brian2) | No (standalone) | Equation-based modeling, gold standard for neuroscience | 900+ |
+| **Intel Lava** | [lava-nc/lava](https://github.com/lava-nc/lava) | No (standalone) | Official Intel framework for Loihi | 500+ |
+
+### IDS/dataset tools
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| CICFlowMeter | Extract flow-based features from pcap files | UNB CIC GitHub |

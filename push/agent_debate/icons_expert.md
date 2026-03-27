@@ -176,31 +176,3 @@ Given what ICONS values, the hardware section (SpiNNaker) and the encoding compa
 
 The paper has two things that ICONS cannot ignore: (1) a genuine first — first SNN on full ESC-50, first SpiNNaker deployment for environmental sound classification — and (2) depth — 7 encodings, hardware deployment, adversarial, PANNs, NeuroBench, surrogate ablation. No other paper in the 2022-2025 ICONS proceedings has this breadth of contribution on a single task.
 
-The weaknesses (hybrid deployment, energy framing, single-seed surrogate ablation, modest continual learning result) are real but not fatal. They are the kinds of issues that get addressed in revision, not rejection reasons.
-
-**Scenarios:**
-
-- **Best case:** Accept as full paper, 20-minute talk. Probability: ~35%
-- **Middle case:** Accept as lightning talk / short paper (4 pages). Probability: ~40%
-- **Revision case:** Major revision requested, resubmit for poster. Probability: ~15%
-- **Reject:** ~10%
-
-The primary rejection risk is if reviewers feel the 8-page full paper format is too compressed to do justice to each contribution — i.e., each contribution is thin rather than deep. This is a real risk given the breadth. If the paper gets rejected for this reason, it would likely be accept-as-short-paper rather than reject-outright.
-
-**Acceptance probability (full or short paper combined): ~75%.**
-
----
-
-## 9. Single Most Important Addition to Strengthen Acceptance Odds
-
-**The single most important addition: A clear, quantified "path to full deployment" narrative around Option A (MaxPool SNN).**
-
-Here is why this matters more than any other addition:
-
-The current paper's hardware contribution has a gap: FC2-only deployment is honest but leaves reviewers wondering "so is the SNN actually running on neuromorphic hardware for the hard part of the task, or just the final classification layer?" This is a legitimate concern. The full-network deployment story is essential for the hardware contribution to land as strongly as it should.
-
-The Option A result already exists: threshold=3.0 achieves 43.75% accuracy on fold 4 with fc1_binary_fraction=1.0 (i.e., all FC1 inputs ARE binary). This means full SpiNNaker FC1+FC2 deployment is theoretically validated. What is missing is the actual hardware test of FC1+FC2 on SpiNNaker.
-
-**If there is time to run Option A on SpiNNaker hardware before April 1:** Do it. A result showing FC1+FC2 running on SpiNNaker — even if the accuracy degrades slightly from 43.75% — would transform the hardware contribution from "FC2-only hybrid" to "first full convolutional SNN deployed on SpiNNaker for environmental sound." This single addition would likely move the paper from the lightning-talk tier to the full-talk tier.
-
-**If there is no time to run Option A on hardware:** Add a dedicated subsection (0.5 pages) in the SpiNNaker section explaining: (a) why FC1-only was not feasible (AvgPool constraint), (b) what Option A found (binary fraction=1.0 at threshold≥1.0, 43.75% accuracy), and (c) what the FC1+FC2 deployment would look like in practice. Frame this as "the path to full deployment is validated in simulation; hardware execution is immediate future work." This strengthens the paper without requiring new experiments.

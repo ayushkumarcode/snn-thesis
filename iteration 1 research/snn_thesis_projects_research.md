@@ -138,3 +138,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Framework**: SpyTorch, NEST 2.16.0, PyNN, OpenAI Gym
 - **Dataset**: CartPole, MountainCar, Breakout (OpenAI Gym)
 - **Results**: Both conversion and direct training methods succeeded on CartPole
+- **Thesis PDF**: YES - included in repository
+- **Complexity**: ADVANCED
+- **Stars**: 11 | **Forks**: 3 | **Last updated**: Feb 2021
+
+### 2.5 SNN for Hand Kinematics from sEMG (Masters)
+- **URL**: https://github.com/davidkubanek/SNN-hand-kinematics-estimation-from-sEMG-signals
+- **Description**: Neuromorphic reservoir network for estimating hand movements from muscle signals
+- **Framework**: Brian2, Python, C++/Cython
+- **Dataset**: NinaPro public EMG database
+- **Results**: Not explicitly documented
+- **Thesis PDF**: Not in repo
+- **Complexity**: HIGH
+- **Stars**: 4 | **Commits**: 30
+
+### 2.6 Spiking Grid Cell Models on Neuromorphic Hardware (MSc, Manchester)
+- **URL**: https://github.com/nickybu/spiking_grid_cell_model
+- **Description**: Spiking grid cell models on SpiNNaker, supervised by Prof. Furber
+- **Framework**: SpiNNaker, sPyNNaker, Python 2.7, Brian2
+- **Dataset**: N/A (computational neuroscience simulation)
+- **Results**: Successfully implemented grid cell models on neuromorphic hardware
+- **Thesis PDF**: YES - linked in repository
+- **Complexity**: ADVANCED
+- **Stars**: 0 | **Commits**: 9 | **Last updated**: 2019
+
+### 2.7 Brain-Machine Interface using SpiNNaker (Masters)
+- **URL**: https://github.com/solversa/Master-Thesis-Brain-Machine-Interface
+- **Description**: Decoding 3D imaginary reach/grasp movements from EEG using SNNs on SpiNNaker
+- **Framework**: SpiNNaker (4 chips, 64 cores), STDP with reward-based training, Python

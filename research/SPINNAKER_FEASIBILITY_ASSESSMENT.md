@@ -230,31 +230,3 @@ A 2025 paper demonstrated the complete pipeline:
 **The standard approach is: Train off-chip (snnTorch/PyTorch) -> Load weights -> Run inference on SpiNNaker.**
 
 ### Maximum Network Size
-
-- **Per core:** 256 neurons maximum
-- **Per chip (SpiNNaker1):** 18 cores = ~4,608 neurons max
-- **48-chip board (SpiNNaker1):** ~220,000 neurons
-- **Full million-core machine:** ~500,000+ neurons with complex connectivity
-- **SpiNNaker2 single chip:** 153 ARM cores, 19MB SRAM, 2GB DRAM
-- **Weight precision:** 16-bit fixed-point (SpiNNaker1), 8-bit integer (SpiNNaker2 via quantization)
-
-### Delay and Timing
-
-- Delays: 1-144 timesteps (delays > 16 require automatic delay populations)
-- Timestep: configurable (typically 1.0ms)
-- Real-time: simulations run at biological real-time speed
-
----
-
-## Question 4: SpiNNaker Access at Manchester
-
-### SpiNNaker1 Access (EBRAINS -- Available NOW)
-
-**This is the accessible option.** The full SpiNNaker1 machine (1 million cores) is hosted at the University of Manchester and accessible remotely via EBRAINS.
-
-**How to get access:**
-1. Register for a free EBRAINS account at [ebrains.eu](https://www.ebrains.eu/)
-2. Email `neuromorphic@humanbrainproject.eu` with your EBRAINS username
-3. They create a Collab for you with test quota and examples -- **free of charge**
-4. Access via Jupyter notebook at `spinn-20.cs.man.ac.uk` or via the EBRAINS portal
-5. Write PyNN scripts, submit via the job queue, results returned to you

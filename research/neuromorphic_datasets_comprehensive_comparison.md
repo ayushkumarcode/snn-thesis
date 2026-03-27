@@ -306,3 +306,31 @@ use BOTH DVS128 and SHD across modalities. vision chapter + audio chapter + cros
 - ["Is Neuromorphic MNIST Neuromorphic?" (2021)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.608567/full)
 
 ### N-Caltech101
+- [NeuroMoCo (2024)](https://arxiv.org/html/2406.06305)
+- [NDA (2022)](https://arxiv.org/abs/2203.06145)
+
+### CIFAR10-DVS
+- [Original (Li et al., 2017)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full)
+- [Papers With Code](https://paperswithcode.com/dataset/cifar10-dvs)
+
+### SHD/SSC
+- [Zenke Lab datasets](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
+- [Original (Cramer et al., 2019)](https://arxiv.org/abs/1910.07407)
+- [SpikCommander (2025)](https://arxiv.org/html/2511.07883)
+- [sparch toolkit](https://github.com/idiap/sparch)
+
+### DVS-Lip
+- [CVPR 2022 MSTP](https://openaccess.thecvf.com/content/CVPR2022/papers/Tan_Multi-Grained_Spatio-Temporal_Features_Perceived_Network_for_Event-Based_Lip-Reading_CVPR_2022_paper.pdf)
+- [SpikGRU-DVSLip](https://github.com/manondampfhoffer/SpikGRU-DVSLip)
+
+### newer datasets
+- [DailyDVS-200 (ECCV 2024)](https://arxiv.org/abs/2407.05106)
+- [eTraM (CVPR 2024)](https://eventbasedvision.github.io/eTraM/)
+- [EvDET200K](https://github.com/Event-AHU/OpenEvDET)
+
+### frameworks
+- [Tonic](https://tonic.readthedocs.io/en/latest/datasets.html)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [snnTorch](https://snntorch.readthedocs.io/)
+- [Norse](https://github.com/norse/norse)
+- [NeuroBench](https://neurobench.ai/)

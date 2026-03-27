@@ -222,3 +222,31 @@ the CPG-PE paper showed that sinusoidal positional encoding is mathematically a 
 - https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks
 - https://github.com/yfguo91/Awesome-Spiking-Neural-Networks
 - https://github.com/SpikingChen/SNN-Daily-Arxiv (daily arXiv updates)
+
+---
+
+## How Novel Is This?
+
+### Publication Timeline
+
+| Year | Milestone |
+|------|-----------|
+| 2010 | First SNN for electricity price forecasting |
+| 2014 | Financial time series (PLOS ONE) |
+| 2022 | Online spiking reservoir for time series |
+| **2024** | **SeqSNN: first top-venue paper (ICML) -- breakthrough year** |
+| **2024** | **CPG-PE at NeurIPS** |
+| **2025** | **TS-LIF at ICLR** |
+| **2026** | **SpikySpace: first spiking state-space model** |
+
+the field is about **2 years old** at the top-venue level. first major conference paper was February 2024.
+
+### Under-Explored Sub-Areas
+
+| Sub-area | Novelty |
+|----------|---------|
+| SNNs on ETTh/ETTm/Weather benchmarks | **HIGH** -- not done |
+| SNNs for financial time series (modern architectures) | **HIGH** -- only hybrid/legacy |
+| SNNs for weather forecasting | **VERY HIGH** -- 2 papers, neither modern |
+| SNNs for IoT sensor forecasting | **HIGH** -- mostly classification not forecasting |
+| SNN vs Transformer long-horizon | **HIGH** -- limited comparison |

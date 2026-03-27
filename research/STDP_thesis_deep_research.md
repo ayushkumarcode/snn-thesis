@@ -208,31 +208,3 @@ For an undergraduate thesis, **Architecture B (simplified)** is the ideal target
 
 ### 4.4 Practical Implementation Notes
 
-Using BindsNET, the feature extraction step looks roughly like:
-
-```python
-# After training the Diehl & Cook network with STDP:
-# 1. Set network to inference mode (disable learning)
-network.learning = False
-
-# 2. Present each image and record spikes
-for image in dataset:
-    network.run(inputs={"X": image}, time=350)  # 350ms per image
-    spikes = network.monitors["Ae"].get("s")  # excitatory layer spikes
-    feature_vector = spikes.sum(dim=0)  # firing rate encoding
-    features.append(feature_vector)
-
-# 3. Train SVM on extracted features
-from sklearn.svm import SVC
-clf = SVC().fit(train_features, train_labels)
-accuracy = clf.score(test_features, test_labels)
-```
-
----
-
-## 5. Is STDP a Good Thesis Topic or Is It "Old News"?
-
-### 5.1 Verdict: STDP Is Alive, Active, and Publishable
-
-**Evidence that STDP is NOT old news:**
-

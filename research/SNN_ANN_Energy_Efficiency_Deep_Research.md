@@ -250,3 +250,31 @@ What this means: data movement, not compute, dominates energy. Papers using Horo
 | Castagnetti et al. 2025 | 0.9 | 4.6 | Standard Horowitz 45nm |
 
 The 0.9/4.6 pJ values i use in NeuroBench analysis are the standard reference. For my SNN (binary spikes as activations), the AC cost is appropriate. For my ANN (FP32 activations), the MAC cost is appropriate. The 5.1x ratio is the key number.
+
+---
+
+## 5. Spike sparsity thresholds
+
+### 5.1 The critical question: at what spike rate do SNNs become energy-competitive?
+
+| Source | Threshold | Conditions | Hardware |
+|:---|:---:|:---|:---|
+| Dampfhoffer et al. 2023 | >92-93% sparsity | T=6, includes memory | Digital |
+| Yan et al. 2024 | >92-93% (T=6), >97% (T>16) | Full analytical model | Digital |
+| Shen et al. 2024 | <10-15% spike rate | Bit budget framework | Digital |
+| General consensus | >90% sparsity | Conservative estimate | Digital |
+| On neuromorphic HW | More relaxed | Native AC support | Neuromorphic |
+
+### 5.2 My data in context
+
+From my NeuroBench results:
+- SNN activation sparsity: 74.16% (meaning ~25.84% spike rate)
+- ANN activation sparsity: 59%
+
+At 25.84% spike rate, my SNN is well above the ~6-8% threshold needed for software energy superiority:
+- On conventional digital hardware: my SNN is NOT more energy-efficient than a quantized ANN
+- On neuromorphic hardware: the per-operation advantage (5.1x per op) still holds, but total energy depends on total operations
+
+My energy calculation is honest: SNN 976 nJ (1.08M ACs x 0.9 pJ) vs ANN 463 nJ (101K MACs x 4.6 pJ). The SNN does more total operations despite each being cheaper. This is the correct and honest result.
+
+### 5.3 Strategies for improving SNN sparsity

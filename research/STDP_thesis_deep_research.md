@@ -446,3 +446,31 @@ Chapter 2: Background
   - Comparison with ANN learning rules
   - Neuromorphic hardware context
 
+Chapter 3: Methodology
+  - Network architecture (Diehl & Cook or convolutional STDP)
+  - STDP learning rule implementation details
+  - Hybrid pipeline: unsupervised features + supervised classifier
+  - Datasets: MNIST, Fashion-MNIST, [optional: N-MNIST or audio]
+  - Evaluation metrics
+
+Chapter 4: Experiments and Results
+  - Experiment 1: STDP feature learning on MNIST (baseline replication)
+  - Experiment 2: STDP vs. unsupervised ANN feature extractors
+  - Experiment 3: Hybrid STDP + classifier on Fashion-MNIST
+  - Experiment 4: [Novel angle]
+  - Experiment 5: Energy efficiency analysis
+
+Chapter 5: Analysis and Discussion
+  - What did STDP learn? (weight viz, selectivity analysis)
+  - Where does STDP succeed and fail?
+  - Biological plausibility assessment
+  - Energy-accuracy trade-off
+
+Chapter 6: Conclusion and Future Work
+```
+
+---
+
+## 11. Gaps and Confidence
+
+### 11.1 Info Gaps

@@ -166,3 +166,31 @@ This is the simplified hardware-agnostic approach. The hardware-aware approach a
 - Keyword spotting benchmark: 5.3x to 109.1x improvement in energy cost per inference vs conventional hardware. Advantage improves for larger networks.
 
 **Intel Loihi 2 (2021):**
+- Intel 4 process, 1M neurons, 120M synapses. ~1W. 10x faster spike processing.
+- State Space Model benchmark: 1000x less energy than Jetson Orin Nano, 75x lower latency.
+- Caveat: Jetson performs better in offline batched processing mode.
+
+**IBM TrueNorth (Merolla et al., Science 2014):**
+- 4,096 cores, 1M neurons, 256M synapses, 28nm. 65 mW typical. ~26 pJ/synaptic event. 46 GSOPS/W.
+
+**IBM NorthPole (2023):**
+- Not spiking -- optimized DNN inference chip. 5x more energy efficient than H100. ~4,000x faster than TrueNorth. All memory on-chip.
+
+**SpiNNaker 1 (Furber et al., 2014):**
+- 130nm, 18 ARM968 cores per chip. ~1W per chip. ~5.8 uJ per synaptic event. Full machine: 1M ARM cores, ~100 kW.
+
+**SpiNNaker 2 (Mayr et al.):**
+- 22nm FDSOI, 153 ARM cores. 10x neural sim capacity per watt vs SpiNNaker 1. Operates down to 0.5V.
+- Sandia deployment (March 2025): 1,152 chips, 175M neurons. Claims 18x more efficient than GPUs.
+- MNIST: 96.6% accuracy at ~23 uJ per image classification.
+
+**BrainScaleS-2 (Heidelberg, 2022):**
+- Mixed-signal. 1000x acceleration vs biological real time.
+- Spikey (BrainScaleS precursor): 0.2 mJ per inference -- most efficient in the Ostrau benchmarking study.
+
+**DarwinWafer (2025):**
+- Wafer-scale: 64 chiplets. 0.15B neurons, 6.4B synapses. 4.9 pJ/SOP at 333 MHz. ~100W for entire wafer.
+
+### 3.3 Single-neuron energy comparison (Ostrau et al. 2022)
+
+Energy for simulating 1 second of a single neuron:

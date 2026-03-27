@@ -129,31 +129,3 @@ The key challenge SpikeVoice solved: SNNs produce discrete spike outputs, but sp
 
 ## 3. SPEECH-TO-SPEECH WITH SNNs (Enhancement, Conversion, Translation)
 
-### Paper Count: **5-10 papers** (growing rapidly, mostly speech enhancement)
-
-### Key Papers
-
-| Paper | Year | Task | Key Result |
-|-------|------|------|------------|
-| **Spiking-FullSubNet** | 2024 | Speech Enhancement | Won Intel N-DNS Challenge; state-of-the-art with large margins |
-| DPSNN: Dual-Path SNN for Streaming Speech Enhancement | 2024 | Speech Enhancement | ~5ms latency; suitable for hearing aids |
-| When Audio Denoising Meets SNN (Hao et al.) | 2024 | Audio Denoising | IEEE CAI 2024 |
-| SNN-Wave-U-Net | 2025 | Speech Enhancement | 4.63J/inference (3.2x reduction vs ANN Wave-U-Net) |
-| SNN-ConvTasNet | 2025 | Speech Enhancement | ~7x energy reduction vs ConvTasNet |
-| Three-Stage Hybrid SNN Fine-Tuning for Speech Enhancement | 2025 | Speech Enhancement | Conversion + fine-tuning approach |
-| End-to-end Neuromorphic Speech Enhancement with PDM Microphones | 2025 | Speech Enhancement | Direct PDM microphone to enhanced speech |
-
-### Detailed Analysis
-
-**Speech Enhancement is the strongest SNN speech application beyond classification.**
-
-**Spiking-FullSubNet** is the standout:
-- Uses full-band and sub-band fused approach (inspired by human auditory system)
-- Novel spiking neuron model with dynamic input integration and forgetting
-- **Won the Intel Neuromorphic Deep Noise Suppression (N-DNS) Challenge**
-- Outperforms state-of-the-art methods with large margins
-- Directly applicable to hearing aids, conferencing, edge devices
-
-**DPSNN** addresses real-time requirements:
-- Phase 1: Spiking CNNs capture global context
-- Phase 2: Spiking RNNs focus on frequency features

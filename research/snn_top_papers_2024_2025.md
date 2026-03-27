@@ -160,31 +160,3 @@ Key papers:
 3. Quantized Spike-driven Transformer
 4. TS-LIF: Temporal Segment Spiking Neuron Network for Time Series Forecasting
 5. Spiking Vision Transformer with Saccadic Attention
-6. DeepTAGE: Deep Temporal-Aligned Gradient Enhancement for Optimizing SNNs
-7. SPAM: Spike-Aware Adam with Momentum Reset for Stable LLM Training
-8. Rethinking Spiking Neural Networks from an Ensemble Learning Perspective
-
-### ICML 2024 (3+ SNN papers)
-Key papers:
-1. SpikeLM: Towards General Spike-Driven Language Modeling via Elastic Bi-Spiking
-2. Temporal Spiking Neural Networks with Synaptic Delay for Graph Reasoning
-3. Efficient and Effective Time-Series Forecasting with Spiking Neural Networks
-
-### CVPR 2024 (3 SNN papers)
-1. SpikingResformer: Bridging ResNet and Vision Transformer in SNNs
-2. SFOD: Spiking Fusion Object Detector
-3. Are Conventional SNNs Really Efficient? A Perspective from Network Quantization
-
-### CVPR 2025 (14 SNN papers - massive increase!)
-Key papers:
-1. Brain-Inspired Spiking Neural Networks for Energy-Efficient Object Detection
-2. Spiking Transformer: Accurate Addition-Only Spiking Self-Attention
-3. STAA-SNN: Spatial-Temporal Attention Aggregator for SNNs
-4. USP-Gaussian: Unifying Spike-based Image Reconstruction, Pose Correction and Gaussian Splatting
-5. Spiking Transformer with Spatial-Temporal Attention
-6. Spk2SRImgNet: Super-Resolve Dynamic Scene from Spike Stream
-
-### ECCV 2024
-- DailyDVS-200: A Comprehensive Benchmark Dataset for Event-Based Action Recognition
-
-### AAAI 2025

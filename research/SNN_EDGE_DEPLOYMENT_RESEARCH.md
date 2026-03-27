@@ -407,31 +407,3 @@ An interesting thesis angle is using a Raspberry Pi as the host controller conne
 ### 9.4 Free/Cloud Options
 
 | Platform | Cost | Access |
-|----------|------|--------|
-| Google Colab | Free | SNN training with GPU |
-| Intel INRC (Loihi 2) | Free for researchers | Cloud-hosted Loihi systems, requires membership |
-| SpiNNaker (Manchester) | Free for academics | Cloud access via sPyNNaker |
-
----
-
-## 10. Feasibility Assessment and Recommended Project Paths
-
-### 10.1 Overall Feasibility Verdict: HIGHLY FEASIBLE
-
-A "deploy SNN on real hardware" thesis project is not only feasible but represents a strong, timely, and demonstrable thesis topic. The field has matured significantly in 2024-2025 with frameworks like Spiker+, NIR, and the fpga-snntorch workshop specifically designed to make this accessible.
-
-### 10.2 Recommended Project Path A: "SNN Edge Deployment Benchmark" (Strongest Thesis)
-
-**Concept:** Train an SNN for DVS128 gesture recognition, deploy on multiple platforms, measure and compare.
-
-**Pipeline:**
-1. Train SNN using snnTorch on DVS128 Gesture dataset (GPU/Colab)
-2. Deploy as optimized C runtime on STM32 or Raspberry Pi
-3. Deploy on FPGA via HLS (PYNQ-Z2 or Kria KV260)
-4. Train equivalent ANN (CNN) for the same task
-5. Deploy ANN on same platforms using TensorFlow Lite Micro / TFLite
-6. Measure and compare: accuracy, latency, power consumption, memory footprint
-7. Analyze when and why SNNs offer advantages (or not)
-
-**Hardware cost:** $200-400 total (PYNQ-Z2 + STM32 Discovery + USB power meter)
-**Timeline:** 12-16 weeks

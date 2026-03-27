@@ -362,3 +362,31 @@ loss_fn = SF.ce_temporal_loss()   # cross-entropy on first spike time
 **Neuron models:**
 ```python
 snn.Leaky(beta=0.5, spike_grad=spike_grad)           # LIF (most common)
+snn.Synaptic(alpha=0.9, beta=0.85, spike_grad=spike_grad)  # 2nd-order
+snn.RLeaky(beta=0.5, spike_grad=spike_grad)           # Recurrent LIF
+```
+
+### All Surrogates in snnTorch
+
+| Function | Usage | Key Param |
+|----------|-------|-----------|
+| `surrogate.atan(alpha=2.0)` | Arctangent | alpha |
+| `surrogate.fast_sigmoid(slope=25)` | Fast sigmoid | slope |
+| `surrogate.sigmoid(slope=25)` | Sigmoid | slope |
+| `surrogate.triangular(threshold=1)` | Triangular | threshold |
+| `surrogate.straight_through_estimator()` | STE | none |
+| `surrogate.spike_rate_escape(beta=1, slope=25)` | Escape rate | beta, slope |
+| `surrogate.LSO(slope=0.1)` | Leaky spike operator | slope |
+| `surrogate.SFS(slope=25, B=1)` | Sparse fast sigmoid | slope, B |
+| `surrogate.SSO(mean=0, variance=0.2)` | Stochastic spike operator | mean, variance |
+| `surrogate.heaviside()` | True derivative (not useful for training) | none |
+| `surrogate.custom_surrogate(fn)` | User-defined | custom function |
+
+### How Straightforward Is snnTorch?
+
+pretty straightforward honestly:
+- **Installation:** single pip install, no special deps
+- **Learning curve:** if you know PyTorch CNNs, working SNN in under 1 hour via Tutorial 6
+- **API:** neuron models (snn.Leaky etc.) drop in between standard nn.Linear/nn.Conv2d layers
+- **Docs:** excellent. 7+ interactive tutorials, all Colab-ready. created by Jason Eshraghian at UCSC specifically for teaching
+- **Community:** 1.9k GitHub stars, active issues/discussions

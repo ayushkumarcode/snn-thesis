@@ -291,21 +291,6 @@ Output expanded to 500 neurons (50 x 10). All 10 neurons per class contribute vi
 4. **PANNs finding:** gap collapses 16.70 pp to 0.95 pp with pretrained features. Its a feature-learning problem, not a spiking-computation problem. (C5)
 
 5. **Statistical significance:** SNN-ANN gap significant at p=0.001 (paired t-test).
-**Comparison to standard rate coding:** Rate coding with CE loss achieves 24.00% ± 1.90% at lower computational cost (50 output neurons, 3× fewer parameters in output layer). Population coding does not compensate for its training disadvantage.
-
-**Note on variance:** Population coding exhibits the highest fold-to-fold variance of all non-random-chance encodings (std=2.79%). Folds 3 and 5 perform near-chance (15.75%, 16.75%), while folds 1 and 4 approach rate coding performance (22.75%, 22.00%). This inconsistency suggests the MSE loss landscape has multiple local minima that may or may not be escaped depending on initialisation.
-
----
-
-## 4.8 Chapter Summary
-
-The core findings of this chapter are:
-
-1. **ANN baseline:** 63.85% ± 3.07% — a reasonable from-scratch baseline for ESC-50 with a lightweight CNN.
-
-2. **Best SNN (direct encoding):** 47.15% ± 4.50% — **the first convolutional SNN result on ESC-50** (C1).
-
-3. **Encoding ordering (direct > rate ≈ phase > population > latency >> delta ≈ burst):** Explained by information preservation: encodings that better retain spectrogram magnitude and structure achieve higher accuracy. The near-equality of rate (24.00%) and phase (24.15%) is particularly notable — deterministic single-spike timing achieves the same accuracy as stochastic multi-spike counting at T=25. Population coding (19.15%) underperforms both despite 10× more output neurons — the MSE count loss is harder to optimise than CE rate loss. Delta and burst coding fail near-chance for distinct mechanistic reasons — delta because static spectrograms have no temporal contrast; burst because a 5-timestep signal window mismatches the 25-timestep LIF integration window. (C2 contribution: systematic comparison with 7 methods, all complete.)
 
 4. **The PANNs finding:** SNN-ANN gap collapses from 16.70 pp to 0.95 pp with AudioSet-pretrained features, demonstrating that the gap is a feature-learning problem, not a spiking-computation problem (C5).
 

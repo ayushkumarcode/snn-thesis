@@ -154,31 +154,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 
 **Why it adds value**: The paper ["Are SNNs Really More Energy-Efficient Than ANNs?"](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf) showed that SNN energy advantage is conditional and often overstated. Replicating this analysis at an undergraduate level using NeuroBench would be genuinely valuable. Key finding to test: SNNs need >93% spike sparsity with VGG16 at T=6 to be more efficient than ANNs.
 
-**What makes it thesis-worthy**:
-- Goes beyond accuracy to address the *actual claimed advantage* of SNNs
-- Uses a real benchmarking framework (NeuroBench) with standardized metrics
-- Can produce Pareto curves of accuracy vs energy proxy
-- Challenges a common claim in the field with empirical evidence
-
-**Estimated time**: 4-6 weeks (NeuroBench has good documentation and tutorials)
-
-### Angle D: Adversarial Robustness Comparison (High Value, Moderate Feasibility)
-
-**What it is**: Compare SNN and ANN vulnerability to adversarial attacks (FGSM, PGD) and natural noise/corruption.
-
-**Why it adds value**: SNNs exhibit inherent robustness advantages ([ECCV 2020 paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123740392.pdf)). SNN-BP shows 2-4.6% improvement in adversarial accuracy over equivalent ANNs on CIFAR-10 with VGG and ResNet. This is a genuinely useful and somewhat under-explored angle at the undergraduate level.
-
-**What makes it thesis-worthy**:
-- Tests a non-obvious SNN advantage (not just accuracy)
-- Practical relevance for safety-critical applications
-- Combines two interesting research areas
-- Can use standard adversarial attack libraries (Foolbox, ART)
-
-**Estimated time**: 3-5 weeks
-
-### Angle E: Architecture-Controlled Fair Comparison (Moderate Value, High Feasibility)
-
-**What it is**: Build identical architectures for ANN and SNN (same layers, same parameter count), following the methodology from [Deng et al., "Rethinking the performance comparison between SNNs and ANNs"](https://web.ece.ucsb.edu/~lip/publications/SNN-vs-ANN-NeuralNetworks2020.pdf) and [Event-based Optical Flow comparison](https://arxiv.org/html/2407.20421v1).
-
-**Why it adds value**: Most naive comparisons are unfair -- different architectures, different training regimes, different hyperparameter budgets. A rigorously controlled comparison is more scientifically valuable than a casual one.
-

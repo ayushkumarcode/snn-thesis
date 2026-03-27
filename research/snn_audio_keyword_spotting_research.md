@@ -410,31 +410,3 @@ At minimum, a passing thesis could:
 
 This is achievable in one semester of focused work.
 
----
-
-## 9. Recommended Tool Stack
-
-```
-Primary framework:     snnTorch (beginner-friendly, great tutorials)
-Secondary framework:   SpikingJelly (for code comparison, has audio example)
-Data loading:          Tonic (PyTorch-compatible neuromorphic data loaders)
-Audio preprocessing:   torchaudio (Mel-spectrograms, MFCC)
-Deep learning:         PyTorch 2.x
-Experiment tracking:   Weights & Biases (free for students)
-Visualization:         matplotlib, seaborn
-Notebook environment:  Google Colab (free GPU) or local Jupyter
-Version control:       Git + GitHub
-```
-
-### Installation commands:
-```bash
-pip install snntorch
-pip install spikingjelly
-pip install tonic
-pip install torchaudio
-pip install wandb
-```
-
----
-
-## 10. Key References and Resources

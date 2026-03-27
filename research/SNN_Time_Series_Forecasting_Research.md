@@ -178,31 +178,3 @@ The CPG-PE paper demonstrated that the commonly used sinusoidal positional encod
 
 ### 5.2 Standard Time-Series Forecasting Benchmarks (Not Yet Widely Used with SNNs)
 
-| Dataset | Domain | Variables | Frequency | Notes |
-|---------|--------|-----------|-----------|-------|
-| ETTh1 / ETTh2 | Electricity Transformer Temperature | 7 | Hourly | Standard long-term forecasting benchmark |
-| ETTm1 / ETTm2 | Electricity Transformer Temperature | 7 | 15-minute | Standard long-term forecasting benchmark |
-| Weather | Meteorological measurements | 21 | 10-minute | Max Planck Institute, Jena, Germany (2020) |
-| Traffic | California highway occupancy | 862 | Hourly | CalTrans PEMS |
-| ILI (Illness) | Influenza-like illness | 7 | Weekly | CDC data |
-
-**Key observation**: Most SNN papers use Metr-LA, Pems-Bay, Solar, Electricity. The ETTh/ETTm, Weather, and ILI datasets widely used in Transformer-based forecasting have **NOT been systematically benchmarked with SNNs**. This is a clear research gap.
-
-### 5.3 Standard Evaluation Protocol
-
-- Train/val/test split: 6:2:2 for ETT datasets, 7:1:2 for others
-- Prediction horizons: {96, 192, 336, 720} for most datasets; {24, 36, 48, 60} for ILI
-- Metrics: MSE and MAE are standard for Transformer comparisons; RSE and R-squared used in SNN papers (complicates direct comparison)
-
-### 5.4 Dataset Sources
-
-- ETT datasets: https://github.com/zhouhaoyi/ETDataset
-- Comprehensive collection: https://github.com/juyongjiang/TimeSeriesDatasets
-- SeqSNN datasets: Available via Google Drive from the SeqSNN repository
-
----
-
-## 6. Open-Source Implementations
-
-### 6.1 SNN Time-Series Forecasting Specific
-

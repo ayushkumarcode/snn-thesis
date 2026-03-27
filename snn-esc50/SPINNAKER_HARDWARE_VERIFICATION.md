@@ -1,33 +1,33 @@
-# spinnaker hardware verification
+# SpiNNaker Hardware Verification
 
-purpose: prove that our SNN inference ran on real SpiNNaker neuromorphic hardware, not a simulator.
-
----
-
-## conclusion: confirmed -- real SpiNNaker hardware
-
-the evidence is pretty overwhelming from multiple independent sources. we ran on a real SpiNNaker SpiNN-5 board (48-chip, Version 5) allocated from the million-core machine at UoM's Department of Computer Science, accessed remotely via spalloc.
+**Purpose:** Prove that our SNN inference ran on real SpiNNaker neuromorphic hardware, not a simulator.
 
 ---
 
-## evidence 1: DNS and network infrastructure
+## Conclusion: CONFIRMED -- Real SpiNNaker Hardware
+
+The evidence is overwhelming and comes from multiple independent, unfakeable sources. We ran on a real SpiNNaker SpiNN-5 board (48-chip, Version 5) allocated from the million-core SpiNNaker machine at the University of Manchester's Department of Computer Science, accessed remotely via the spalloc resource allocation system.
+
+---
+
+## Evidence 1: DNS and Network Infrastructure
 
 `spinnaker.cs.man.ac.uk` resolves to `130.88.193.57`.
 
-WHOIS confirms:
+WHOIS verification:
 ```
 inetnum:      130.88.0.0 - 130.88.255.255
 netname:      MANLAN
 descr:        The University of Manchester Local Area Network
 org-name:     The University of Manchester
-address:      Kilburn Building, Oxford Road, M13 9PL, Manchester
+address:      Kilburn Building, Oxford Road, M13 9PL, Manchester, UNITED KINGDOM
 ```
 
-the Kilburn Building is where CS (and the SpiNNaker machine) is physically housed.
+The Kilburn Building is where the Department of Computer Science (and the SpiNNaker machine) is physically housed.
 
-## evidence 2: official docs confirm this server
+## Evidence 2: Official Documentation Confirms This Server
 
-the official sPyNNaker install guide gives this exact config for the Manchester million-core machine:
+The [official sPyNNaker installation guide](https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html) provides this exact configuration for the Manchester million-core machine:
 
 ```ini
 [Machine]
@@ -35,99 +35,99 @@ spalloc_server = spinnaker.cs.man.ac.uk
 spalloc_user = user.name@email.address
 ```
 
-our config (`~/.spynnaker.cfg`):
+Our config (`~/.spynnaker.cfg`):
 ```ini
 [Machine]
 spalloc_server = spinnaker.cs.man.ac.uk
 spalloc_user = r36859ak@manchester.ac.uk
 ```
 
-## evidence 3: hardware fingerprint -- SC&MP firmware version
+## Evidence 3: Hardware Fingerprint -- SC&MP Firmware Version
 
-from our run logs:
+From our run logs:
 ```
 Found board with version [Version: SC&MP 4.0.0 at SpiNNaker:0:0:0 (built Fri Nov 17 09:35:48 2023)]
 ```
 
-SC&MP is "Spinnaker Control & Monitor Program" -- the firmware on each chip's monitor core. confirmed by source code on GitHub (spinnaker_tools/scamp/scamp-3.c).
+**SC&MP** = "Spinnaker Control & Monitor Program" -- the firmware running on the monitor core of each SpiNNaker chip. Confirmed by [source code on GitHub](https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c).
 
-this version is obtained via SCP (SpiNNaker Command Protocol) -- a real hardware-level handshake. the virtual transceiver returns a hardcoded fake version `SC&MP/SpiNNaker 3.4.2`. our logs show `SC&MP 4.0.0`, read from real hardware.
+This version is obtained via SCP (SpiNNaker Command Protocol) -- a real hardware-level handshake. The virtual transceiver (`Virtual5Transceiver`) returns a hardcoded fake version `SC&MP/SpiNNaker 3.4.2`. Our logs show `SC&MP 4.0.0`, which was read from real hardware.
 
-## evidence 4: machine specs match real SpiNNaker 1
+## Evidence 4: Machine Specifications Match Real SpiNNaker1
 
-from our provenance database:
+From our provenance database (`reports/.../global_provenance.sqlite3`):
 ```
 Detected Machine on 10.11.219.113 with 47 Chips, 836 cores and 114.0 links.
 Chips have sdram of 123469792 bytes, router table of size 1023,
 between 17 and 18 cores and between 3 and 6 links.
 ```
 
-| spec | detected | SpiNN-5 board spec | match? |
+| Spec | Detected | SpiNN-5 Board Spec | Match? |
 |------|----------|--------------------|--------|
-| chips per board | 47 (one faulty) | 48 | yes (faults are normal) |
-| cores per chip | 17-18 | 18 ARM968E-S (1 monitor) | yes |
-| total cores | 836 | ~864 max | yes |
-| SDRAM per chip | 123,469,792 bytes (~118 MB) | 128 MB (minus overhead) | yes |
-| router table | 1,023 entries | 1,024 (1 reserved) | yes |
-| links per chip | 3-6 | up to 6 (fewer at edges) | yes |
+| Chips per board | 47 (one faulty) | 48 | Yes (faults normal) |
+| Cores per chip | 17-18 | 18 ARM968E-S (1 monitor) | Yes |
+| Total cores | 836 | ~864 max | Yes |
+| SDRAM per chip | 123,469,792 bytes (~118 MB) | 128 MB (minus overhead) | Yes |
+| Router table | 1,023 entries | 1,024 (1 reserved) | Yes |
+| Links per chip | 3-6 | Up to 6 (fewer at edges) | Yes |
 
-the imperfect chip count (47 not 48) is actually stronger evidence of real hardware -- a simulator always returns perfect numbers.
+The imperfect chip count (47 not 48) is actually **stronger** evidence of real hardware -- a simulator always returns perfect numbers.
 
-## evidence 5: spalloc job allocation lifecycle
+## Evidence 5: Spalloc Job Allocation Lifecycle
 
 ```
 2026-03-03 13:13:03 INFO: Requesting job with 1 boards
 Created spalloc job 99729
 Job has been queued by the spalloc server.
-Waiting for board power commands to complete.     <- real power relays switching
+Waiting for board power commands to complete.     ← real power relays switching
 2026-03-03 13:14:12 INFO: Creating transceiver for 10.11.219.177
 Attempting to boot machine
 Found board with version [Version: SC&MP 4.0.0 ...]
 Machine communication successful
 ```
 
-different runs got different physical boards:
-- run at 13:01: board `10.11.219.97` (48 chips, 855 cores)
-- run at 13:14: board `10.11.219.177` (47 chips, 836 cores)
-- run at 13:16: board `10.11.219.113` (47 chips, 836 cores)
+Different runs allocated different physical boards:
+- Run at 13:01: Board `10.11.219.97` (48 chips, 855 cores)
+- Run at 13:14: Board `10.11.219.177` (47 chips, 836 cores)
+- Run at 13:16: Board `10.11.219.113` (47 chips, 836 cores)
 
-this shows spalloc is partitioning a real multi-board machine and assigning differnt available boards to different jobs.
+This proves the spalloc server is partitioning a real multi-board machine and assigning different available boards to different jobs.
 
-## evidence 6: on-chip firmware IOBUF logs
+## Evidence 6: On-Chip Firmware IOBUF Logs
 
-emergency IOBUF files in `reports/.../provenance_data/system_provenance_data/` contain output from C firmware running on individual ARM968 cores:
+Emergency IOBUF files in `reports/.../provenance_data/system_provenance_data/` contain output from C firmware running on individual ARM968 cores:
 
 ```
 [INFO] (data_speed_up_packet_gatherer.c: 938): Configuring packet gatherer
 [INFO] (data_specification.c: 111): magic = ad130ad6, version = 1.0
 ```
 
-file naming: `emergency_iobuf_X_Y_P.txt` (chip coordinates X,Y and processor P). files exist across dozens of chip positions (0_0, 0_1, 1_0, etc.), confirming firmware ran on multiple physical chips.
+File naming: `emergency_iobuf_X_Y_P.txt` (chip coordinates X,Y and processor P). Files exist across dozens of chip positions (0_0, 0_1, 1_0, etc.), confirming firmware ran on multiple physical chips.
 
-## evidence 7: not running in virtual/simulation mode
+## Evidence 7: Not Running in Virtual/Simulation Mode
 
-| check | virtual mode | our run | verdict |
+| Check | Virtual Mode | Our Run | Verdict |
 |-------|-------------|---------|---------|
-| SC&MP version | hardcoded `3.4.2` | `4.0.0` from real chip | real |
-| transceiver type | `Virtual5Transceiver` | `Spalloc Old` (real) | real |
-| board power | skipped | "Waiting for board power commands" | real |
-| setup time | milliseconds | 27-37 seconds (network RTT) | real |
-| chip count | always perfect 48 | 47 or 48 (faulty chip) | real |
-| IOBUF files | none | real ARM968 firmware logs | real |
+| SC&MP version | Hardcoded `3.4.2` | `4.0.0` from real chip | Real |
+| Transceiver type | `Virtual5Transceiver` | `Spalloc Old` (real) | Real |
+| Board power | Skipped | "Waiting for board power commands" | Real |
+| Setup time | Milliseconds | 27-37 seconds (network RTT) | Real |
+| Chip count | Always perfect 48 | 47 or 48 (faulty chip) | Real |
+| IOBUF files | None | Real ARM968 firmware logs | Real |
 
-## evidence 8: timing characteristics
+## Evidence 8: Timing Characteristics
 
-from provenance timing data:
-- mapping stage: 28,124 ms -- placing neurons onto physical chip topology
-- loading stage: 25,589 ms -- transferring data over Ethernet to board
-- running stage: 1,521 ms -- 25 ms biological time on hardware
-- simulation on-chip: 25 ms (25 timesteps at 1 ms each)
+From provenance timing data:
+- **Mapping stage:** 28,124 ms -- placing neurons onto physical chip topology
+- **Loading stage:** 25,589 ms -- transferring data over Ethernet to board
+- **Running stage:** 1,521 ms -- 25 ms biological time on hardware
+- **Simulation on-chip:** 25 ms (25 timesteps at 1 ms each)
 
-the 25+ second loading time is consistent with real Ethernet data transfer to remote hardware.
+The 25+ second loading time is consistent with real Ethernet data transfer to remote hardware.
 
-## evidence 9: software stack
+## Evidence 9: Software Stack
 
-all official SpiNNaker Manchester packages installed:
+All official SpiNNaker Manchester packages installed:
 ```
 sPyNNaker          1!7.4.1
 SpiNNMan           1!7.4.1
@@ -138,31 +138,31 @@ spalloc            1!7.4.1
 PyNN               0.12.4
 ```
 
-published by SpiNNakerManchester on GitHub/PyPI.
+Published by [SpiNNakerManchester](https://github.com/SpiNNakerManchester) on GitHub/PyPI.
 
 ---
 
-## summary
+## Summary Table
 
-| evidence | finding | confidence |
+| Evidence | Finding | Confidence |
 |----------|---------|------------|
-| DNS/WHOIS | `130.88.193.57` registered to UoM, Kilburn Building | definitive |
-| official docs | `spinnaker.cs.man.ac.uk` is the documented server | definitive |
-| SC&MP firmware | version `4.0.0` read via SCP from real chip | definitive |
-| hardware specs | 47-48 chips, 836-855 cores, 118 MB SDRAM match SpiNN-5 | definitive |
-| spalloc jobs | multiple board IPs across runs | strong |
-| IOBUF firmware | ARM968 C logs from individual chip coordinates | strong |
-| timing | 27-37s setup, 25s data loading = real network transfer | strong |
-| imperfect hardware | 47/48 chips (faulty chip) impossible in simulation | strong |
+| DNS/WHOIS | `130.88.193.57` registered to UoM, Kilburn Building | Definitive |
+| Official docs | `spinnaker.cs.man.ac.uk` is the documented server | Definitive |
+| SC&MP firmware | Version `4.0.0` read via SCP from real chip | Definitive |
+| Hardware specs | 47-48 chips, 836-855 cores, 118 MB SDRAM match SpiNN-5 | Definitive |
+| Spalloc jobs | Multiple board IPs allocated across runs | Strong |
+| IOBUF firmware | ARM968 C logs from individual chip coordinates | Strong |
+| Timing | 27-37s setup, 25s data loading = real network transfer | Strong |
+| Imperfect hardware | 47/48 chips (faulty chip) impossible in simulation | Strong |
 
 ---
 
-## references
+## References
 
-- SpiNNaker project (University of Manchester): https://www.scieng.manchester.ac.uk/tomorrowlabs/spinnaker/
-- SpiNNaker Wikipedia: https://en.wikipedia.org/wiki/SpiNNaker
-- Spalloc docs: https://spalloc.readthedocs.io/en/stable/index.html
-- PyNN on SpiNNaker install guide: https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html
-- SpiNNaker Tools SCAMP source: https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c
-- sPyNNaker paper (Frontiers in Neuroscience): https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full
-- SpiNNTools paper (Frontiers in Neuroscience): https://www.frontiersin.org/articles/10.3389/fnins.2019.00231/full
+- [SpiNNaker project (University of Manchester)](https://www.scieng.manchester.ac.uk/tomorrowlabs/spinnaker/)
+- [SpiNNaker Wikipedia](https://en.wikipedia.org/wiki/SpiNNaker)
+- [Spalloc Documentation](https://spalloc.readthedocs.io/en/stable/index.html)
+- [PyNN on SpiNNaker Installation Guide](https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html)
+- [SpiNNaker Tools SCAMP Source](https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c)
+- [sPyNNaker Paper (Frontiers in Neuroscience)](https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full)
+- [SpiNNTools Paper (Frontiers in Neuroscience)](https://www.frontiersin.org/articles/10.3389/fnins.2019.00231/full)

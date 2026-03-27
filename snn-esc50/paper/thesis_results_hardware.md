@@ -292,20 +292,17 @@ Original SNN direct fold 4: 54.0%. MaxPool at threshold=3.0: 43.75% -- 10.25 pp 
 
 ---
 
-```
-LIF₂ spikes (binary 0/1) → MaxPool2d(4,6) → binary values {0,1} → FC₁
-```
+## 5.6 chapter summary
 
-The MaxPool2d(4,6) produces the same spatial output shape (4,9) as the original AvgPool2d(4,6) applied to input (16,54). All FC layer sizes remain unchanged (2304→256→50). This is a purely architectural fix applied at training time.
+1. **FC1 cancellation** is the fundamental barrier. AvgPool between LIF layers produces fractional inputs, violating spike-driven compute. Weight re-centering (Option C) failed because it assumes binary inputs.
 
-### 5.5.2 Threshold Sweep
+2. **FC2-only hybrid** validated: software extracts binary hidden spikes (21.7% active), SpiNNaker classifies 256->50. Run 5 = 40%, Run 6 = 43.0% vs 51.25% snnTorch (8.25 pp gap, 64.5% agreement). Gap fluctuates through the run. SpiNNaker leads on airplane (+37.5 pp), mouse_click (+25 pp).
 
-An additional LIF threshold sweep ({1.0, 1.5, 2.0, 3.0}) reduces FC₁ input density. Higher thresholds require stronger cumulative membrane potential to trigger a spike, reducing the mean number of active FC₁ inputs per timestep. Target: <500 active inputs/step (from ~1,398 with AvgPool).
+3. **Energy (NeuroBench, 5-fold):** SNN 2.1x more expensive in software (968 vs 454 nJ). PANNs + SpiNNaker FC2 is Pareto-optimal at 92.50% and ~86 nJ.
 
-**Status:** Threshold sweep on fold 4 complete (4 March 2026). Results from `results/snn/maxpool/threshold_sweep_fold4.json`.
+4. **5-fold SpiNNaker:** 33.1% +/- 6.9% vs 46.0% snnTorch (12.8 pp gap). Models restored from backup after augmented training overwrote them.
 
-**Key metrics reported:**
-- `fc1_binary_fraction`: fraction of FC₁ inputs that are exactly 0 or 1 (must be 1.000 for SpiNNaker, guaranteed by MaxPool on binary spikes)
+5. **Option A (MaxPool):** threshold sweep confirms binary fraction = 1.000 at all thresholds. threshold=3.0 gets 43.75% with 956 active/step. Full SpiNNaker deployment theoretically unblocked pending router test.
 - `fc1_mean_active_per_step`: mean simultaneous active FC₁ inputs per timestep (decreases with higher threshold)
 
 **Exit criteria for full SpiNNaker deployment:**

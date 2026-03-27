@@ -401,31 +401,3 @@ This analysis, even as an estimate, significantly strengthens your thesis by con
 
 ### The 3 research questions to structure your project around:
 
-1. **RQ1:** "How does the classification accuracy of a spiking neural network compare to an equivalent artificial neural network on standard image benchmarks?"
-
-2. **RQ2:** "What is the effect of key SNN hyperparameters (number of time steps, membrane decay rate) on classification performance?"
-
-3. **RQ3:** "What are the estimated computational and energy efficiency trade-offs between SNN and ANN approaches?"
-
-### Your deliverables checklist:
-
-- [ ] Report (PDF, LaTeX using Manchester template, ~8000-10000 words main content)
-- [ ] Screencast (max 8 minutes video, explain project and show results)
-- [ ] Code (Jupyter notebooks or Python scripts, clean and documented)
-- [ ] Results (tables, figures, training logs)
-- [ ] Weekly supervisor meetings attendance (this directly affects your Achievements mark)
-
-### Critical success factors from Manchester's marking criteria:
-
-1. **"An elucidation of the problem and the objectives"** -- State your research questions clearly in Chapter 1
-2. **"An in-depth investigation of context and literature"** -- Your 20-30 reference literature review
-3. **"A critical appraisal... rationale for design/implementation decisions"** -- Explain WHY you chose snnTorch, WHY you chose LIF neurons, WHY these datasets
-4. **"Evaluation with hindsight"** -- Discuss what you would do differently. Be honest about limitations.
-5. **"Description of any research hypothesis"** -- State upfront what you expect to find (e.g., "We hypothesize that SNNs will achieve comparable accuracy to ANNs on static images but with fewer synaptic operations")
-
-### Week-by-week execution plan (assuming semester 2 start with ~12 weeks to submission):
-
-| Week | Focus | Output |
-|------|-------|--------|
-| 1-2 | snnTorch tutorials 1-6 | Working SNN code, understanding of framework |
-| 3 | ANN baseline + first SNN experiment on MNIST | Initial accuracy numbers |

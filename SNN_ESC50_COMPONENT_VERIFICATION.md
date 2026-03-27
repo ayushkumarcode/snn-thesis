@@ -310,31 +310,3 @@ class SpectrogramCSNN(nn.Module):
 
         return torch.stack(spk_rec), torch.stack(mem_rec)
 ```
-
-**Tutorial reference:** Tutorial 6 -- Surrogate Gradient Descent in a Convolutional SNN
-(https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html)
-
-**Key point:** The architecture above is a straightforward adaptation of Tutorial 6's MNIST CSNN. The only changes are: (a) input dimensions match mel-spectrogram shape instead of 28x28, (b) output classes = 50 instead of 10, (c) potentially more filters since spectrograms are higher resolution than MNIST.
-
-**Verification method:** Tutorial 6 code confirmed from official documentation. Architecture adaptation is mechanical -- Conv2d + snn.Leaky pattern is identical regardless of input modality.
-
----
-
-## COMPONENT 6: ANN BASELINE
-
-### EXISTS: YES
-### POTENTIAL BLOCKER: NO
-
-### Approach 1: Direct swap (simplest)
-
-The snnTorch tutorial explicitly demonstrates this approach. Replace `snn.Leaky` layers with `nn.ReLU()` and remove the temporal loop:
-
-```python
-class SpectrogramCNN_ANN(nn.Module):
-    """ANN equivalent of the SNN for direct comparison"""
-    def __init__(self, num_classes=50):
-        super().__init__()
-        self.conv1 = nn.Conv2d(1, 16, kernel_size=5, padding=2)
-        self.relu1 = nn.ReLU()
-        self.pool1 = nn.MaxPool2d(2)
-

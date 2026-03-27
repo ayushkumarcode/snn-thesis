@@ -871,31 +871,3 @@ def evaluate_encoding(encode_fn, data_loader, model, num_steps, device):
     return {
         'accuracy': accuracy,
         'avg_spikes_per_sample': avg_spikes,
-        'total_time': total_time,
-    }
-
-# ---- Main Experiment Loop ----
-
-ENCODINGS = {
-    'rate': encode_rate,
-    'latency': encode_latency,
-    'delta': encode_delta,
-    # 'phase': encode_phase,
-    # 'burst': encode_burst,
-    # 'grf': encode_grf,
-    # 'direct': encode_direct,  # (uses DirectEncoder module)
-}
-
-DATASETS = ['mnist', 'cifar10', 'shd']
-
-results = {}
-for dataset_name in DATASETS:
-    results[dataset_name] = {}
-    # data_loader, model = setup_dataset_and_model(dataset_name)
-    for enc_name, enc_fn in ENCODINGS.items():
-        # metrics = evaluate_encoding(enc_fn, data_loader, model, num_steps=100)
-        # results[dataset_name][enc_name] = metrics
-        pass
-
-# Save results to CSV/JSON for analysis
-```

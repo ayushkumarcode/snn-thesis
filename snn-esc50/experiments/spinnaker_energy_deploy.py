@@ -82,3 +82,31 @@ def extract_features(fold, model_type, num_samples):
                 cur1 = model.pool1(model.bn1(model.conv1(x_t)))
                 spk1, mem1 = model.lif1(cur1, mem1)
                 cur2 = model.pool2(model.bn2(model.conv2(spk1)))
+                spk2, mem2 = model.lif2(cur2, mem2)
+                pooled = model.avg_pool(spk2)
+                flat = pooled.view(B, -1)
+                cur3 = model.fc1(flat)
+                spk3, mem3 = model.lif3(cur3, mem3)
+                hidden_spk.append(spk3.cpu())
+                cur4 = model.fc2(spk3)
+                spk4, mem4 = model.lif4(cur4, mem4)
+                mem_out.append(mem4)
+
+            hidden_spk = torch.stack(hidden_spk)
+            mem_out_t = torch.stack(mem_out)
+            preds = mem_out_t.sum(dim=0).argmax(dim=1).cpu()
+            hidden_features.append(hidden_spk.numpy())
+            predictions.append(preds.numpy())
+
+    hidden_features = np.concatenate(
+        [h.transpose(1, 0, 2) for h in hidden_features], axis=0)
+    predictions = np.concatenate(predictions, axis=0)
+    labels = all_labels[:num_samples].numpy()
+
+    fc2_weight = model.fc2.weight.data.cpu().numpy()
+    connections = []
+    for post in range(NUM_CLASSES):
+        for pre in range(256):
+            w = float(fc2_weight[post, pre])
+            if abs(w) > 0.01:
+                connections.append([pre, post, w, 1.0])

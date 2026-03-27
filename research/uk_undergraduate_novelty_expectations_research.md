@@ -248,31 +248,3 @@ Source: [The Student Room -- How important are undergrad dissertations in the UK
 **What "originality" means:** "Creation and interpretation of new knowledge through original research, of a quality to satisfy peer review, extend the forefront of the discipline, and merit publication" (QAA).
 
 **What IS required:**
-- A genuine, original contribution to knowledge
-- Work that extends the state of the art
-- Results of publishable quality
-- Something that was not known before your research
-
----
-
-## 5. Consolidated Evidence Table
-
-| University | Level | Grade Band | What They Say About Originality |
-|-----------|-------|------------|-------------------------------|
-| Cambridge | UG (Part II) | Highest band (36-45/45) | "Genuine contribution to the field" is "strong evidence" for this band but "not a requirement" |
-| Edinburgh (Informatics) | UG/MSc | General | "Not expected that the dissertation will report notable or original contributions to knowledge" |
-| Edinburgh (Informatics) | UG | A2 (80-89) | "Significant personal insight/creativity/originality" |
-| Edinburgh (Informatics) | UG | A3 (70-79) | "Elements of personal insight/creativity/originality" |
-| Edinburgh (Informatics) | UG | B (60-69) | No originality requirement -- "competent thinking" |
-| Sussex | UG | 90-100 | "Evidence of original thought"; "publishable quality" |
-| Sussex | UG | 80-89 | "Evidence of original thought" |
-| Sussex | UG | 70-79 | No originality requirement |
-| Manchester (EEE) | UG | 90-100 | "Significant originality"; "push the boundaries of existing knowledge" |
-| Manchester (EEE) | UG | 80-89 | "Intellectual originality and imagination" |
-| Manchester | UG | First (general) | "Originality and logical development of argument; clarity and originality of thought" |
-| SOAS | UG | 80+ | "Evidence of original thinking" |
-| SOAS | UG | 70-79 | No explicit originality requirement |
-| King's College London | UG | First | Work "which may show some originality" (note: "may", not "must") |
-| Edinburgh (SPS) | UG | A1 (90-100) | "Flair and originality"; "potentially publishable" |
-| Edinburgh (SPS) | UG | A3 (70-79) | "Creatively arrive at independent conclusions" |
-| QAA FHEQ | Level 6 | National standard | "Self-direction and originality in tackling and solving problems" (i.e., application, not creation) |

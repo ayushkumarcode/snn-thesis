@@ -81,31 +81,3 @@ A growing application area with strong clinical motivation.
 
 | Method | Type | Accuracy (%) | Year |
 |---|---|---|---|
-| EEGEncoder (Transformer) | ANN | 86.46 | 2024 |
-| CIACNet (Attention CNN) | ANN | 85.15 | 2024 |
-| SNA-MHC (custom SNN+Attn) | SNN | 92.80* | 2024 |
-| RDSNN (Lightweight SNN) | SNN | 81.75 | 2024 |
-| HR-SNN (End-to-End SNN) | SNN | 77.58 | 2024 |
-| CNN1D_MF | ANN | 69.20 | 2023 |
-| DFBRTS | ANN | 78.16 | 2024 |
-
-*Note: SNA-MHC's 92.80% is an outlier result that may use different evaluation protocols. Most SNN results cluster around 75-82% on this benchmark.
-
-### 2.2 Motor Imagery (PhysioNet EEGMMIDB)
-
-| Method | Type | Accuracy (%) | Year |
-|---|---|---|---|
-| Novel DL approach | ANN | 95.70 | 2025 |
-| Optimized DL + DWT | ANN | 97.05 | 2024 |
-| HR-SNN (transfer) | SNN | 74.95 | 2024 |
-| HR-SNN (global) | SNN | 67.24 | 2024 |
-| RDSNN | SNN | 73.65 | 2024 |
-| combra-lab SNN-EEG | SNN | ~similar to DNN* | 2022 |
-
-*combra-lab reports "similar classification performance" to DNNs with 95% less energy.
-
-### 2.3 Emotion Recognition (DEAP Dataset)
-
-| Method | Type | Valence (%) | Arousal (%) | Year |
-|---|---|---|---|---|
-| Graph CNN + Dual Attention | ANN | ~90+ | ~90+ | 2024 |

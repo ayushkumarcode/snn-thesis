@@ -194,20 +194,20 @@ option A (gap-collapse as central thesis):
 title: "The SNN-ANN Gap is a Feature-Learning Problem: Evidence from Environmental Sound Classification with Seven Encodings and SpiNNaker Deployment"
 
 one-sentence thesis: when given equal-quality features, SNNs match ANNs within 0.95pp on 50-class audio -- the 16.7pp scratch-training gap reflects a feature-learning bottleneck, not a spiking computation limitation.
-- QKFormer: 10.84pp improvement over Spikformer
-- Neuromorphic constraint solving: 1000x more efficient than CPUs
 
-**YOUR VERSION:** "6.0x adversarial robustness advantage" + "Gap collapses from 16.7pp to 0.95pp" (17.6x reduction in the gap)
+this works because it positions everything else as supporting evidence for a single scientific claim:
+- 7-encoding comparison shows encoding matters enormously (direct = continuous features win)
+- PANNs gap-collapse is the central proof
+- adversarial robustness shows SNNs have unique advantages despite the accuracy gap
+- SpiNNaker deployment demonstrates practical viability of the hybrid approach implied by the thesis
+- encoding transfer analysis shows WHY encoding matters
+- temporal truncation shows path to energy efficiency
 
-**Assessment:** The 6x robustness is solid. The "17.6x gap reduction" is a novel and dramatic framing. Consider using it.
+option B (hardware co-design):
 
-### Formula 3: "Novel analysis revealing Z"
-**Examples:**
-- Zenke & Vogels 2021: "Surrogate shape matters less than slope"
-- Sharmin et al. 2020: "Discrete encoding provides inherent adversarial robustness"
-- Nature Comms 2025: "Temporal processing is the key to SNN robustness"
+title: "From Software to SpiNNaker: A Complete Pipeline for Neuromorphic Audio Classification on ESC-50"
 
-**YOUR VERSION:** "The SNN-ANN gap is a feature-learning problem, not a spiking computation limitation" + "Encoding specificity: SNN representations are encoding-dependent (transfer ratio 0.255)"
+fine for ICONS (it's a systems conference) but limits the paper to a systems audience.
 
 **Assessment:** The gap-collapse insight is genuinely novel for audio. The encoding specificity finding (transfer ratio) has never been quantified before. Both are strong analytical contributions.
 

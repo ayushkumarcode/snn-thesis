@@ -847,31 +847,3 @@ Based on comprehensive analysis of all three survey papers and supplementary res
 
 ## SOURCES AND REFERENCES
 
-### Papers Analyzed
-- Yamazaki et al., "Spiking Neural Networks and Their Applications: A Review," Brain Sciences, 2022. https://pmc.ncbi.nlm.nih.gov/articles/PMC9313413/
-- Han et al., "Toward Large-scale Spiking Neural Networks," arXiv:2409.02111, 2024. https://arxiv.org/html/2409.02111v1
-- Malcolm & Casco-Rodriguez, "A Comprehensive Review of Spiking Neural Networks," arXiv:2303.10780, 2023. https://arxiv.org/abs/2303.10780
-
-### Frameworks
-- snnTorch: https://github.com/jeshraghian/snntorch | Documentation: https://snntorch.readthedocs.io/
-- SpikingJelly: https://github.com/fangwei123456/spikingjelly
-- Norse: https://github.com/norse/norse | Documentation: https://norse.github.io/norse/
-- snn_toolbox: https://github.com/NeuromorphicProcessorProject/snn_toolbox
-- NengoDL: https://www.nengo.ai/nengo-dl/examples/keras-to-snn.html
-- Open Neuromorphic: https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/
-
-### Datasets
-- SHD/SSC: https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/
-- Neuromorphic Dataset List: https://www.simonwenkel.com/lists/datasets/list-of-neuromorphic-datasets.html
-- DVS128 Gesture: https://ibm.ent.box.com/s/3hiq58ww1pbbjrinh367ykfdf60xsfm8/folder/50167556794
-- N-MNIST: https://www.garrickorchard.com/datasets/n-mnist
-- CIFAR10-DVS: https://figshare.com/articles/dataset/CIFAR10-DVS_New/4724671
-- Tonic (dataset loader): https://tonic.readthedocs.io/
-
-### Benchmarks
-- Open Neuromorphic SNN Benchmarks: https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/
-- SNN Library Benchmark Code: https://github.com/open-neuromorphic/snn-library-benchmarks
-
-### Additional Reading
-- Eshraghian et al., "Training Spiking Neural Networks Using Lessons From Deep Learning," 2023 (companion to snnTorch)
-- NeuroBench: https://www.nature.com/articles/s41467-025-56739-4

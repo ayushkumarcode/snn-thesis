@@ -222,3 +222,31 @@ The hardware landscape is maturing fast. Papers that show actual deployment on r
 - SHD/SSC (Spiking Heidelberg Digits / Spiking Speech Commands) -- the de facto standard
 - Google Speech Commands -- for keyword spotting
 - ESC-10/ESC-50 -- environmental sound (my domain, ZERO prior SNN work on full ESC-50)
+- UrbanSound8K -- urban environmental audio
+
+**Gaps that are my opportunities:**
+1. No SNN on full ESC-50 -- i'm first
+2. No 7-encoding comparison on audio -- Larroza only tested 3 methods on ESC-10
+3. No PANNs+SNN transfer learning for audio -- entirely novel
+4. No adversarial robustness study for SNN audio -- entirely novel
+5. Very few hardware deployments for audio SNNs -- Dominguez-Morales 2016 (pure tones only) is the closest
+
+---
+
+## 8. What makes a paper "go viral" in the neuromorphic community
+
+Based on looking at high-impact recent papers and community discussion:
+
+### What works
+
+1. **Real hardware + real numbers**: The community is tired of theoretical energy estimates. Papers with actual hardware deployment get way more attention. My SpiNNaker deployment is genuine gold.
+
+2. **Address the AI energy narrative**: The PNAS 2025 paper on AI energy crisis + neuromorphic hit mainstream news. Anything that contributes data to "can neuromorphic computing save AI from its energy problem?" gets amplified.
+
+3. **Honest about limitations**: The community has developed an allergy to overclaiming. Papers that honestly report where SNNs fall short (like my 47.15% vs 63.85% gap) while explaining WHY are more trusted.
+
+4. **Bridge SNN and mainstream ML**: Papers connecting SNNs to transformers, LLMs, or pretrained models generate excitement because they lower the barrier for mainstream ML researchers.
+
+5. **Novel domain + rigorous methodology**: Audio is underexplored. Seven encoding methods is thorough. The combination works well.
+
+6. **Reproducible with code**: Open Neuromorphic's peer review program specifically rewards reproducibility. Publishing code is now table stakes.

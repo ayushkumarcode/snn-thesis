@@ -98,31 +98,3 @@ Eight neuromorphic datasets were investigated in depth, along with three newer d
 **Critical caveat:** A seminal 2021 paper ("Is Neuromorphic MNIST Neuromorphic?") demonstrated that N-MNIST can be classified with 99%+ accuracy by simply collapsing time information into a static image and using a standard CNN. The temporal dynamics add almost no discriminative value. This means the dataset does NOT actually test whether your SNN leverages temporal spike patterns -- it is essentially just MNIST with extra steps.
 
 **Difficulty assessment:** TOO EASY. The dataset is essentially solved. Even basic SNNs reach >99% accuracy. There is virtually no room for meaningful contribution or interesting analysis.
-
-**Thesis narrative strength:** WEAK. "I classified handwritten digits" is not a compelling thesis narrative. The dataset exists primarily as a sanity check / tutorial exercise. The "Is Neuromorphic MNIST Neuromorphic?" criticism undermines the entire premise. Examiners familiar with the field will view this as insufficient scope.
-
----
-
-### 3. N-Caltech101
-
-| Property | Details |
-|---|---|
-| **Domain** | Visual / Object classification |
-| **Sensor** | ATIS (same as N-MNIST) |
-| **Classes** | 101 (100 object classes + 1 background class) |
-| **Total samples** | ~8,709 (based on original Caltech101 minus "Faces" class) |
-| **Data format** | Binary event files (x, y, timestamp, polarity) |
-| **Spatial resolution** | Variable (ATIS sensor moved across images of varying sizes) |
-| **Creation method** | ATIS sensor on motorized pan-tilt viewing Caltech101 on LCD |
-| **Train/test split** | No standard split; researchers use various splits (commonly 80/20) |
-| **Year introduced** | 2015 (Orchard et al., same paper as N-MNIST) |
-
-**Preprocessing required:**
-- Read binary event files (same format as N-MNIST)
-- Handle variable spatial resolution (images are different sizes)
-- Resize/crop to fixed dimensions (commonly 180x240 or 128x128)
-- Temporal binning into frames
-- Handle class imbalance (some classes have only 31 images, others have 800+)
-
-**Framework support:**
-- SpikingJelly: Native support

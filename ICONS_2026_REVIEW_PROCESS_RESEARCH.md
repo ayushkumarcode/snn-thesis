@@ -82,3 +82,31 @@ ICONS-specific focus areas (from CFP):
 - training algorithms (supervised, unsupervised, self-supervised, continual learning)
 - energy-efficient AI and biomedical applications
 - neuromorphic software, simulators, compilers, and visualization tools
+
+---
+
+## rebuttal phase
+
+**yes -- ICONS 2026 has a formal rebuttal phase.** this is relatively new (introduced for 2025/2026).
+
+- reviews sent to authors: May 18, 2026
+- rebuttal deadline: May 25, 2026 (7 days to respond)
+- rebuttal goes to program co-chairs (not directly to reviewers)
+- final decision after rebuttal: June 5, 2026 (11 days for deliberation)
+
+the 7-day window is short -- worth preparing template responses in advance. since rebuttals go to PC chairs, should focus on factual corrections and addressing key concerns.
+
+---
+
+## what happens if accepted?
+
+### presentation format
+
+**full papers (8 pages):** prioritized for 20-minute oral talks. published in ACM proceedings. available via ACM Digital Library (open access from 2026).
+
+**short papers (4 pages):** prioritized for 10-minute oral talks. published in ACM proceedings.
+
+### conference structure (based on 2024/2025 programs)
+- day 1: keynote + award talks + lightning talks + poster session
+- day 2: full talks + lightning talks
+- day 3: full talks + lightning talks + closing

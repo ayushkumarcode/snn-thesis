@@ -306,3 +306,31 @@ Source: [Hardware-Aware Fine-Tuning of Spiking Q-Networks on SpiNNaker2](https:/
 | External memory | 128MB SDRAM per chip | 2GB LPDDR4 per chip |
 | Total SRAM | ~2.3MB per chip | 19MB per chip |
 | ML accelerators | None | MAC array, exp/log, RNG |
+| Floating point | No | Yes (Cortex-M4F) |
+| DVFS | No | Yes (down to 0.5V) |
+| Power efficiency | Baseline | 10x improvement per watt |
+| Software | sPyNNaker (mature, stable) | py-spinnaker2 (early, restricted) |
+| NIR support | NO | YES |
+| Public access | YES (EBRAINS) | NO (restricted) |
+
+Is SpiNNaker2 available to students? Not generally. Single-chip dev boards exist. Remote access can potentially be arranged by contacting TU Dresden. The `py-spinnaker2` library has private dependencies. sPyNNaker does NOT run on SpiNNaker2.
+
+Plan for SpiNNaker1 via EBRAINS. If Oliver Rhodes can arrange SpiNNaker2 access, that'd be a bonus.
+
+---
+
+## 8. Previous undergrad projects (Tyler Gaffey, Brian Ezinwoke)
+
+### Brian Ezinwoke
+- Co-authored a paper with Oliver Rhodes on SNN for financial time-series prediction (arXiv:2512.05868, December 2025)
+- Used SNNs trained with STDP
+- SpiNNaker usage not confirmed in the paper -- might have been software-only
+- Tools: custom SNN with STDP, Bayesian Optimization
+
+### Tyler Gaffey
+- LinkedIn lists "Deep Neural Network Research" at Manchester
+- No publicly accessible thesis or paper found
+- No confirmed SpiNNaker usage
+
+What this tells us: Manchester undergrad SNN theses aren't publicly accessible (behind `studentnet.cs.manchester.ac.uk` auth). These students likely used snnTorch or similar frameworks rather than SpiNNaker hardware, since SpiNNaker deployment adds significant complexity. Worth asking Oliver Rhodes directly.
+

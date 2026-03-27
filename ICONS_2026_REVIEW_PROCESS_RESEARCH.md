@@ -321,31 +321,3 @@ ICONS sits in a sweet spot: it is **selective enough to be meaningful** (~59% ac
 | 2025 | Bellevue, WA | Unknown | Unknown | **26+** | Best paper: Sandia NL |
 | 2026 | Chicago, IL | TBD | TBD | TBD | First with rebuttal phase |
 
-**Growth trend:** ICONS has evolved from a small ORNL-hosted workshop (~134 attendees, 15 papers) to a substantial conference with 85+ presentations. The shift from ORNL to rotating venues and the IEEE co-sponsorship in 2024 signal growing maturity.
-
----
-
-## Research Gaps
-
-1. **Exact number of reviewers per paper:** Not publicly disclosed. Estimated 2-3 based on ACM norms.
-2. **Blind review type:** Not publicly disclosed. Estimated single-blind based on community norms.
-3. **ICONS 2024/2025 acceptance rates:** Not published. Only ICONS 2023 (59%) is confirmed.
-4. **Exact proceedings paper counts for 2024-2025:** DBLP shows ~16 for 2024, but could not verify the exact number on IEEE Xplore.
-5. **UoM participation in JISC/ACM Open:** JISC has signed with ACM covering 70+ UK institutions, but UoM-specific confirmation not found.
-6. **Detailed review scoring rubric:** Not publicly available for ICONS specifically.
-
----
-
-## Confidence Assessment
-
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
-| Peer-reviewed: YES | **HIGH** | ACM sponsorship, explicit review timeline, proceedings publication |
-| Single-blind review | **MEDIUM** | Inference from community norms and conference size; not explicitly stated |
-| 2-3 reviewers | **MEDIUM** | ACM standard practice; not confirmed for ICONS specifically |
-| ~59% acceptance rate (proceedings) | **HIGH** | ACM DL metadata for ICONS 2023 |
-| Rebuttal phase exists | **HIGH** | Explicitly on ICONS 2026 CFP with dates |
-| Rejected papers -> poster option | **HIGH** | Explicitly stated in CFP |
-| Best paper awards exist | **HIGH** | Winners identified for 2023, 2024, 2025 |
-| Student-friendly venue | **HIGH** | Doctoral consortium, student poster competition, committee structure |
-| Open access publication 2026 | **HIGH** | ACM-wide policy change |

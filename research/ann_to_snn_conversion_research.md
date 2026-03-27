@@ -138,3 +138,31 @@ more timesteps = lower accuracy loss, but higher latency and energy. classic tra
 
 ### Rules of Thumb
 
+| Timesteps | Typical Loss (CIFAR-10) | Typical Loss (ImageNet) |
+|-----------|------------------------|------------------------|
+| T = 1 | 0-1% (modern methods) | 2-5% |
+| T = 2-4 | 0-0.5% | 0-2% |
+| T = 8-16 | Near-lossless | 0-1% |
+| T = 32-64 | Lossless | Near-lossless |
+| T >= 500 | Lossless (classical methods) | Lossless |
+
+with modern methods (QCFS, calibration, group neurons), less than 1% loss at T=4-16 on CIFAR-10/100. ImageNet needs slightly more steps but is feasible at T=4-16 with latest methods.
+
+---
+
+## Which Architectures Convert Best
+
+| Architecture | Difficulty | Key Challenges | Status (2025) |
+|-------------|-----------|----------------|---------------|
+| **VGG-16** | EASY | Pure Conv+ReLU+Pool, no skip connections | Fully solved |
+| **ResNet-18/20/34** | MODERATE | Skip connections cause "deviation error" | Well-studied, good results with calibration |
+| **MobileNet v1/v2** | MODERATE-HARD | Depthwise separable convs, squeeze-excite | Limited work, **gap opportunity** |
+| **EfficientNet** | HARD | Compound scaling, Swish/SiLU (not ReLU), SE blocks | Very few results, **significant gap** |
+| **ConvNeXt** | HARD | GELU, LayerNorm | First converted in ICML 2024 |
+| **Vision Transformer** | VERY HARD | Softmax, LayerNorm, GELU, multi-head attention | First successful in 2025 |
+| **YOLO** | HARD | Multi-scale, NMS, detection heads | SpikeYOLO (ECCV 2024) |
+
+VGG converts easiest because: standard Conv2D+ReLU+MaxPool only, no skip connections, BatchNorm folds cleanly, sequential structure maps naturally to spiking dynamics.
+
+ResNets are harder because the skip connection addition after the last ReLU creates "deviation error" -- spike-based approximation of adding two activations introduces systematic bias.
+

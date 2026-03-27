@@ -250,3 +250,31 @@ def main():
         print(f"\n{'='*60}")
         print(f"  5-Fold Summary: Early Exit ({model_type})")
         print(f"{'='*60}")
+        summary = {}
+        for thresh in thresholds:
+            accs = [all_fold_results[f][thresh]["accuracy"]
+                    for f in all_fold_results]
+            steps = [all_fold_results[f][thresh]["avg_timesteps"]
+                     for f in all_fold_results]
+            mean_acc = np.mean(accs)
+            std_acc = np.std(accs)
+            mean_steps = np.mean(steps)
+            reduction = NUM_STEPS / mean_steps
+            summary[str(thresh)] = {
+                "mean_accuracy": float(mean_acc),
+                "std_accuracy": float(std_acc),
+                "mean_avg_timesteps": float(mean_steps),
+                "energy_reduction_x": float(reduction),
+                "per_fold_acc": [float(a) for a in accs],
+                "per_fold_steps": [float(s) for s in steps],
+            }
+            print(f"  thresh={thresh:.2f}: acc={mean_acc:.4f}±{std_acc:.4f}, "
+                  f"avg_T={mean_steps:.1f}, {reduction:.1f}x energy reduction")
+        output["summary_5fold"] = summary
+
+    with open(save_dir / "early_exit_results.json", "w") as f:
+        json.dump(output, f, indent=2)
+    print(f"\nSaved to {save_dir / 'early_exit_results.json'}")
+
+
+if __name__ == "__main__":

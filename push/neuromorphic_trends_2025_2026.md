@@ -63,31 +63,3 @@ The community has matured: **SNNs are complementary specialized accelerators, no
 ## Neuromorphic Audio Community (Small but Growing)
 
 | Group | Focus |
-|-------|-------|
-| Seville (Dominguez-Morales) | SpiNNaker audio (pure tones only) |
-| Spain (Larroza et al.) | Spike encoding for ESC-10 (2025) |
-| Zenke Lab | SHD dataset (speech digits) |
-| Innatera | Commercial audio on neuromorphic |
-| SynSense | Xylo Audio chip |
-
-**Nobody has:** full ESC-50 with SNNs, 7-encoding comparison for audio, PANNs+SNN transfer, adversarial robustness for SNN audio, or SpiNNaker deployment for environmental sound.
-
----
-
-## How to Make the Paper Stand Out
-
-1. Real hardware deployment (we have this)
-2. Honest energy analysis (we do this)
-3. Bridge SNN and mainstream ML (PANNs transfer does this)
-4. Clear memorable insight ("gap is feature-learning, not spiking")
-5. Address the AI energy narrative (topical, relevant to sustainability)
-
----
-
-## Sources
-- ICONS 2025 schedule analysis
-- ICLR 2026 / NeurIPS 2025 / ICML 2025 proceedings
-- Nature Communications (Nov 2025) — SNN adversarial robustness
-- Nature (Jan 2025) — "Neuromorphic computing at a pivotal moment"
-- Innatera product specs
-- Open Neuromorphic community

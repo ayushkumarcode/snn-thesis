@@ -42,18 +42,18 @@ spalloc_server = spinnaker.cs.man.ac.uk
 spalloc_user = r36859ak@manchester.ac.uk
 ```
 
-## Evidence 3: Hardware Fingerprint -- SC&MP Firmware Version
+## evidence 3: hardware fingerprint -- SC&MP firmware version
 
-From our run logs:
+from our run logs:
 ```
 Found board with version [Version: SC&MP 4.0.0 at SpiNNaker:0:0:0 (built Fri Nov 17 09:35:48 2023)]
 ```
 
-**SC&MP** = "Spinnaker Control & Monitor Program" -- the firmware running on the monitor core of each SpiNNaker chip. Confirmed by [source code on GitHub](https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c).
+SC&MP is "Spinnaker Control & Monitor Program" -- the firmware on each chip's monitor core. confirmed by source code on GitHub (spinnaker_tools/scamp/scamp-3.c).
 
-This version is obtained via SCP (SpiNNaker Command Protocol) -- a real hardware-level handshake. The virtual transceiver (`Virtual5Transceiver`) returns a hardcoded fake version `SC&MP/SpiNNaker 3.4.2`. Our logs show `SC&MP 4.0.0`, which was read from real hardware.
+this version is obtained via SCP (SpiNNaker Command Protocol) -- a real hardware-level handshake. the virtual transceiver returns a hardcoded fake version `SC&MP/SpiNNaker 3.4.2`. our logs show `SC&MP 4.0.0`, read from real hardware.
 
-## Evidence 4: Machine Specifications Match Real SpiNNaker1
+## evidence 4: machine specs match real SpiNNaker 1
 
 From our provenance database (`reports/.../global_provenance.sqlite3`):
 ```

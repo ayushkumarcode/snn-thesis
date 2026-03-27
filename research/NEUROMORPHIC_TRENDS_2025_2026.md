@@ -395,31 +395,3 @@ Our closest competitors in the audio SNN space:
 
 1. **Loihi 2 deployment**: If we could also deploy on Loihi 2, comparing SpiNNaker vs Loihi would be a separate high-impact paper.
 
-2. **Neuromorphic audio challenge**: Proposing an ESC-50 SNN benchmark/challenge through Open Neuromorphic or NeuroBench could establish us as community leaders.
-
-3. **Event-driven audio encoding**: Moving from frame-based spectrograms to true event-driven audio (like Hilbert Transform encoding) would be a natural next step.
-
-4. **Innatera Pulsar evaluation**: If we could get our model onto Innatera's platform, the power numbers would be compelling for the always-on audio use case.
-
-5. **SpiNNaker 2 deployment**: SpiNNaker 2 at Sandia/SpiNNcloud would be the obvious hardware upgrade path.
-
----
-
-## CONFIDENCE ASSESSMENT
-
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
-| No prior SNN work on full ESC-50 | HIGH | Multiple searches, Larroza only covers ESC-10 |
-| ICONS has no audio papers (2024-2025) | HIGH | Full schedule analysis |
-| Adversarial robustness is hot topic | HIGH | Nature Communications 2025, multiple NeurIPS papers |
-| Transfer learning is hot topic | HIGH | Knowledge distillation papers at NeurIPS 2025, ICLR 2026 |
-| Hardware deployment valued by reviewers | HIGH | ICONS 2025 schedule analysis, community discourse |
-| SNN paper counts at top conferences | HIGH | Cross-referenced GitHub lists and official programs |
-| Energy break-even threshold (~6.4% spike rate) | MEDIUM-HIGH | Dampfhoffer 2023, cited in multiple 2025 papers |
-| Commercial neuromorphic market projections | MEDIUM | Multiple sources but projections vary widely |
-| Community view on SNN vs ANN | HIGH | Synthesized from surveys, Nature papers, community discussions |
-
----
-
-## SOURCES
-

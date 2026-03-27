@@ -234,31 +234,3 @@ The CPG-PE paper demonstrated that the commonly used sinusoidal positional encod
 2. **Then examine SeqSNN** for reference implementations of time-series specific architectures:
    ```
    conda create -n SeqSNN python=3.10
-   conda activate SeqSNN
-   git clone https://github.com/microsoft/SeqSNN/
-   cd SeqSNN
-   pip install .
-   python -m SeqSNN.entry.tsforecast exp/forecast/ispikformer/ispikformer_electricity.yml
-   ```
-
-### 6.4 Curated Paper Lists with Code
-
-- https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks
-- https://github.com/yfguo91/Awesome-Spiking-Neural-Networks
-- https://github.com/AXYZdong/awesome-snn-conference-paper
-- https://github.com/SpikingChen/SNN-Daily-Arxiv (daily arXiv updates)
-
----
-
-## 7. How Novel is This Direction?
-
-### 7.1 Publication Timeline
-
-| Year | Milestone |
-|------|-----------|
-| 2010 | First SNN for electricity price forecasting (IEEE, temporal encoding) |
-| 2014 | Financial time series with SNN (PLOS ONE) |
-| 2015 | Polychronous SNN for weather (Springer) |
-| 2022 | Online spiking reservoir for time series (Neurocomputing) |
-| 2023 | NeuCube for multimodal financial time series (Scientific Reports) |
-| **2024** | **SeqSNN: First top-venue paper (ICML) -- the breakthrough year** |

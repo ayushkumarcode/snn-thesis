@@ -26,3 +26,31 @@ Loihi 2 is the most thoroughly benchmarked neuromorphic platform for audio as of
 
 key takeaways for Loihi 2:
 - near-zero hardware-software gap when using quantization-aware training and 8-bit integer weights
+- dominant platform for audio benchmarks in 2024-2025
+- energy advantage of 100-250x over edge GPUs (Jetson Orin Nano)
+- primarily benchmarked on keyword spotting and digit recognition, NOT environmental sound classification
+- no published ESC-50 or ESC-10 deployment on Loihi
+
+Loihi 2 also supports Resonate-and-Fire neurons that can approximate spectrograms from audio inputs -- the RF neurons intrinsically resonate to the strongest spectral components, encoding STFT 47x more efficiently than conventional approach. this is a unique capability not available on SpiNNaker 1.
+
+---
+
+### 1.2 SpiNNaker and SpiNNaker2
+
+#### SpiNNaker 1 (our platform)
+
+| Paper | Year | Venue | Task | Accuracy | Notes |
+|-------|------|-------|------|----------|-------|
+| Dominguez-Morales et al. | 2016 | ICANN (LNCS 9886) | Pure tone classification (8 classes) | 99.8% (clean), 95% (SNR=3dB) | 130-1397 Hz tones only. Not environmental sounds. |
+| Wall (thesis) | ~2016 | UoM eScholar | Auditory periphery model | N/A (biological model) | Cochlear model on SpiNNaker, not classification |
+| **our work** | **2026** | **COMP30040 / ICONS** | **ESC-50 (50-class)** | **33.1% +/- 6.9% (5-fold)** | **First ever ESC-50 deployment on SpiNNaker. FC2-only hybrid. Gap: 12.8pp vs software SNN (46.0%).** |
+
+SpiNNaker 1 has barely any published work on audio classification. Dominguez-Morales et al. (2016) is literally the only prior SpiNNaker audio classification paper and it used simple pure tones (8 frequency classes). our ESC-50 deployment is a big step up in complexity.
+
+#### SpiNNaker2
+
+| Paper | Year | Venue | Task | Dataset | Accuracy | Notes |
+|-------|------|-------|------|---------|----------|-------|
+| Rostami et al., "E-prop on SpiNNaker 2" | 2022 | Frontiers Neurosci. | Speech classification | Google Speech Commands (12-class) | 91.12% | On-chip e-prop learning. 12x more energy efficient than V100 GPU. 682KB memory. Gap vs TF baseline: 0.08 pp. |
+| Mayr et al., "Language Modeling on SpiNNaker2" | 2023 | arXiv (2312.09084) | Language modeling | N/A | N/A | First LM on neuromorphic hardware (EGRU). Not audio classification. |
+| Vogginger et al., "Event-based backpropagation on SpiNNaker2" | 2024 | NeurIPS | On-chip training | Yin-Yang | Proof of concept | EventProp on SpiNNaker2. Not audio-specific. |

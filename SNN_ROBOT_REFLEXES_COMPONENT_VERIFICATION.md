@@ -334,3 +334,31 @@ python -c "import torch; print(torch.backends.mps.is_available())"
 # Verify MuJoCo works
 python -c "import gymnasium as gym; env = gym.make('Ant-v5'); print('Ant-v5 loaded successfully')"
 ```
+
+**Source:** [Gymnasium docs](https://gymnasium.farama.org/environments/mujoco/) | [snnTorch install](https://snntorch.readthedocs.io/en/latest/installation.html) | [MuJoCo GitHub](https://github.com/google-deepmind/mujoco)
+
+---
+
+### 11. Existing End-to-End Code
+
+| Field | Value |
+|-------|-------|
+| **EXISTS** | PARTIALLY -- no single repo does exactly what you need |
+| **Usable as-is?** | **NO** |
+| **Usable as reference?** | YES |
+| **POTENTIAL BLOCKER** | **YES (MEDIUM)** -- you must write integration code yourself |
+
+**Closest existing repositories:**
+
+| Repository | Stars | Last Commit | What It Does | What's Missing |
+|-----------|-------|-------------|-------------|----------------|
+| [pop-spiking-deep-rl](https://github.com/combra-lab/pop-spiking-deep-rl) | 64 | Oct 2020 | SNN + PPO/TD3/SAC on MuJoCo locomotion | Outdated deps, custom SNN (not snnTorch), no modern Gymnasium |
+| [RL-SNN-Quadrupeds](https://github.com/tganamur/RL-SNN-Quadrupeds) | 13 | May 2024 | SNN + PPO on MuJoCo quadruped (Go1) | SNN only achieved standing, not walking; course project quality |
+| [SpikeGym](https://gitlab.com/ecs-lab/spikegym) | N/A | May 2024 | SNN + PPO on Isaac Gym/MuJoCo (skrl-based) | 3 commits, requires Isaac Gym for full functionality |
+| [snn-rl](https://github.com/tartavull/snn-rl) | ~50 | Old | Basic SNN + RL | Uses Brian simulator (not PyTorch), no locomotion |
+
+**reality check:** there's no GitHub repository where you can clone and run "SNN robot locomotion" end-to-end with modern dependencies. you have to build the integration yourself. which is actually fine for a thesis -- the integration IS the contribution.
+
+**Source:** Links above
+
+---

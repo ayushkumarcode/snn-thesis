@@ -45,31 +45,3 @@ Every encoding pairwise: all p<0.002
 Adversarial each epsilon: all p<0.05
 
 ## Findings CORRECTED by 5-fold validation
-
-### Pruning Resilience — CORRECTED
-- Single-fold: "SNN retains 93.2%, ANN collapses to 36.8%"
-- **5-fold: SNN=33.0% (61% ret), ANN=35.0% (57% ret) — similar degradation**
-- SNN slightly more resilient at 90% but both are severely degraded
-
-### Neuron Ablation — CORRECTED
-- Single-fold: "SNN beats ANN at 10-30% ablation"
-- **5-fold: ANN maintains higher absolute accuracy at all rates**
-- On relative basis SNN retains slightly more but both collapse rapidly
-
-### Stochastic Resonance — CORRECTED
-- Single-fold: "SR detected at sigma=0.02 (+0.25pp)"
-- **5-fold: +0.10pp at sigma=0.2, detected in only 3/5 folds — NOISE**
-- Cannot be claimed as a finding
-
-## Clean Accuracy Discrepancy — EXPLAINED
-- Training-time canonical: 47.15% (CSF3 CUDA, used in encoding table)
-- Re-evaluation on GPU: 54.25% (same models, used in adversarial/noise tables)
-- Cause: BatchNorm running statistics differ across hardware
-- Robustness RATIOS are unaffected (both numerator and denominator use same eval)
-
-## Remaining Gaps
-1. UrbanSound8K cross-dataset: script exists, never run
-2. Continual learning: single-fold only (thesis contribution C6)
-3. NeuroBench energy: single-fold only
-4. Surrogate ablation: single-fold, single-seed
-5. SpiNNaker latency/energy: no actual hardware measurement

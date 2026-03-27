@@ -194,3 +194,31 @@ Undergrad projects on SpiNNaker almost certainly exist given:
 ### Access
 - Free test access via EBRAINS account (online via web browser)
 - Local SpiNNaker boards available (SpiNN-3, SpiNN-5 boards loaned to ~100 labs)
+- Full 1 million core machine at Manchester
+
+### Workshops
+- Regular workshops with lectures and hands-on labs
+- 8th workshop materials: https://spinnakermanchester.github.io/workshops/eighth.html
+- EBRAINS/HBP tutorial sessions available online
+- Tutorial notebooks from beginner to expert level
+
+---
+
+## Things i couldn't find or verify
+
+1. **Undergrad projects are behind auth** -- can't confirm specific SpiNNaker UG projects exist, though they almost certainly do
+2. **Old APT website lost** -- the original `apt.cs.manchester.ac.uk/publications/thesis.php` page got redirected, losing the full historical thesis listing
+3. **MSc dissertations are under-documented** -- only one (Buttigieg 2019) confirmed with public access
+4. **Galluppi's MSc thesis (2009) details are lost** -- know he did an MSc with SpiNNaker but can't find title or text
+5. **Furber's profile lists 22 supervised theses** but couldn't extract the full list (403 error on the supervisedBy filter)
+
+---
+
+## Where to look next
+
+1. Contact Oliver Rhodes or Michael Hopkins about current/past 3rd year and MSc project offerings
+2. Ask on the SpiNNaker Users Google Group (https://groups.google.com/g/spinnakerusers) about student project examples
+3. Check EBRAINS for student project reports or tutorials
+4. Try Wayback Machine for the old APT thesis page to recover the historical listing
+5. Search Manchester eScholar (https://www.escholar.manchester.ac.uk/) for additional MSc theses
+6. Get a Manchester contact to check the StudentNet project listings

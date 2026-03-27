@@ -166,20 +166,20 @@ Conv + FC1 + LIF3 in software -> binary hidden spikes (256-d, 21.7% active). Onl
 ### 6.3 Energy analysis (NeuroBench [7])
 
 | Model | Ops/sample | Energy/sample | Type |
-**Full 400-sample validation (Run 6, fold 4):** SpiNNaker 43.0% vs snnTorch 51.25% (8.25 pp gap, agreement 64.5%). **Five-fold cross-validation (2,000 inferences):** **SpiNNaker 33.1% ± 6.9%** vs snnTorch 46.0% (hardware gap 12.8 ± 4.1 pp). Per-fold: F1=29.0%; F2=32.0%; F3=36.5%; F4=43.0%; F5=25.2%. The hardware gap is variable across folds (std=4.1 pp), confirming the FC2-only hybrid approach generalises across the full 5-fold ESC-50 evaluation protocol.
+|-------|-----------|---------------|------|
+| SNN | 1.08M ACs | 968 +/- 37 nJ (5-fold) | AC x 0.9 pJ |
+| ANN | 101K MACs | 454 +/- 11 nJ (5-fold) | MAC x 4.6 pJ |
 
-### 6.3 Energy Analysis (NeuroBench [7])
+In software ANN is 2.1x cheaper (T=25 overhead). On neuromorphic hardware each AC is 5.1x cheaper than MAC but SNN has more total ops so still costs more at our 25.8% spike rate. Dampfhoffer et al. [8]: need <6.4% spike rate to beat quantised ANNs. We're at 25.8%.
 
-| Model | Eff. Ops/sample | Energy/sample | Type |
-|-------|----------------|---------------|------|
-| SNN | 1.08M ACs | **968 ± 37 nJ** (5-fold) | Accum-only (AC×0.9 pJ) |
-| ANN | 101K MACs | **454 ± 11 nJ** (5-fold) | Multiply-accum (MAC×4.6 pJ) |
+todo: should probably add a sentence about how this motivates the energy reduction work we're doing
 
-**Software simulation (GPU/CPU):** ANN is 2.1× cheaper — SNN = 968 ± 37 nJ; ANN = 454 ± 11 nJ (5-fold validated). The T=25 timestep overhead dominates.
+---
 
-**Neuromorphic hardware (AC-only):** Each SNN AC costs 0.9 pJ vs 4.6 pJ for ANN MAC — 5.1× per-operation advantage. The SNN's 1.08M ACs vs ANN's 101K MACs means the SNN still uses 2.1× more energy (same calculation), but the SNN is hardware-compatible (binary spikes) while the ANN is not. The SNN energy footprint is bounded by its AC count regardless of deployment platform.
+## 7. Discussion
 
-SNN ActivationSparsity = 74.2% (NeuroBench). Dampfhoffer et al. [8] show SNNs beat quantized ANNs when spike rate < 6.4%; current spike rate (25.8% = 1 − 0.742 sparsity) exceeds this threshold, explaining the 2.1× software-simulation energy disadvantage. On physical neuromorphic hardware, AC operations cost ~5.1× less than MAC operations, narrowing but not eliminating the gap at current sparsity. Actual SpiNNaker wall-clock energy per sample is left for future measurement with multi-fold hardware deployment.
+**Why direct wins:** feeds continuous values every timestep; LIF does its own rate computation. Rate discards magnitude by Poisson sampling; latency loses temporal richness; delta amplifies noise.
+
 
 ---
 

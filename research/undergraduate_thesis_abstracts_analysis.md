@@ -306,3 +306,31 @@ when stated explicitly, they follow predictable patterns:
 3. **What happens when we do X?** -- "what are the firing patterns under different configurations?"
 4. **Can we solve X using Y?** -- "can synthetic data solve the limited training data problem?"
 
+most questions are **closed** (yes/no answerable) rather than open-ended. "can we?" or "does it work?" rather than "why?" or "how does the mechanism function?"
+
+---
+
+## Heidelberg KIP Bachelor's Theses: Worth Noting Separately
+
+the Heidelberg KIP theses are a special case -- 70+ bachelor's theses mostly on BrainScaleS/Spikey hardware.
+
+**Common title patterns:**
+- "Towards X on BrainScaleS" (progress, not completion)
+- "Characterization of X on neuromorphic hardware" (measurement)
+- "Calibration of X on Y" (getting hardware working)
+- "Implementation of X for neuromorphic hardware" (building stuff)
+- "Development of X for BrainScaleS" (engineering)
+- "Testing X for neuromorphic hardware" (verification)
+
+these are overwhelmingly **hardware-focused engineering**: calibrating chips, characterizing circuits, implementing software, testing components. framing is almost always "I built/implemented/characterized X on hardware Y." scientific investigation (e.g., "Investigating Competitive Dynamics") is less common but does happen. many contribute to a larger research infrastructure rather than standalone results.
+
+**Selected titles for reference:**
+- "Real-time Image Classification on Analog Neuromorphic Hardware" (Ebert, 2021)
+- "Multi-Single-Chip Training of SNNs with BrainScaleS-2" (Straub, 2023)
+- "Gradient-Based Training of Multi-Compartmental Neuron Models on BrainScaleS-2" (Janz, 2025)
+- "Structural Plasticity for Feature Selection in Auditory Stimuli on Neuromorphic Hardware" (Kreft, 2019)
+- "Solving Map Coloring Problems on Analog Neuromorphic Hardware" (Steidel, 2018)
+
+Source: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
+
+---

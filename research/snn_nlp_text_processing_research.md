@@ -26,3 +26,31 @@ does it work? partially:
 
 claims 32.2x fewer operations on neuromorphic hardware. works competitively on simple classification (within 1-3% of BERT). generation is weaker. the 216M pretrained model is needed -- 45M underperforms badly.
 
+code: https://github.com/ridgerchu/SpikeGPT
+
+---
+
+### SpikingBERT (Penn State, AAAI 2024)
+
+spiking language model created by distilling BERT into a spiking architecture using implicit differentiation. novel spiking attention mechanism based on Average Spiking Rate convergence at equilibrium. 3-stage training pipeline: general KD, task-based internal layer KD, prediction layer KD.
+
+works on GLUE tasks (SST-2, MNLI, QQP, QNLI, RTE, MRPC, STS-B). first spiking LM evaluated on multiple GLUE tasks. without distillation, 4-5% performance loss. with distillation, competitive but still below BERT-base.
+
+not trivial to reproduce -- 125 convergence timesteps, multi-GPU DataParallel needed.
+
+code: https://github.com/NeuroCompLab-psu/SpikingBERT
+
+---
+
+### SpikeLM (ICML 2024)
+
+first *fully spiking* mechanism for general language tasks (discriminative + generative). introduces "elastic bi-spiking" -- spikes have bi-directional amplitude and frequency encoding while staying additive.
+
+this is currently the best-performing spiking language model:
+
+| Task | BERT-base | SpikeLM | Gap |
+|------|-----------|---------|-----|
+| SST-2 | 92.3% | 87.0% | -5.3% |
+| MNLI-m/mm | 83.8/83.4 | 77.1/77.2 | -6.7/-6.2% |
+| QQP (F1) | 90.5 | 83.9 | -6.6% |
+| QNLI | 90.7 | 85.3 | -5.4% |

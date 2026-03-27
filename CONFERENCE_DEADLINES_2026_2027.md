@@ -368,31 +368,3 @@ Sources: [Edge AI Foundation](https://www.edgeaifoundation.org/), [EasyChair CFP
 | **Registration** | Early bird (by May 1): IEEE member 950 EUR, student member 550 EUR, student non-member 700 EUR. Regular: student member 750 EUR. All include 21% Dutch VAT. |
 | **Realistic for UG?** | **YES -- EXCELLENT FIT.** IJCNN is the main venue for neural network research. SNN topics, neuromorphic hardware, and sound classification all in scope. Special sessions on neuromorphic (SS40) and NeuroSNN exist. |
 | **Focus** | Neural networks, computational intelligence, deep learning, spiking neural networks |
-
-**CRITICAL:** The late-breaking paper deadline is 10 March 2026 -- only 5 days away. This requires an immediate decision. Late-breaking papers follow the same 6-page IEEE format.
-
-**Relevant Special Sessions at WCCI/IJCNN 2026:**
-- SS40: "Design Challenges, Methods and Applications in Sustainable Neuromorphic Hardware"
-- NeuroSNN: "Recent advances in spiking neural networks and neuromorphic computing"
-
-Sources: [WCCI 2026 Dates](https://attend.ieee.org/wcci-2026/important-dates-deadlines/), [Registration](https://attend.ieee.org/wcci-2026/registrations/), [Author Info](https://attend.ieee.org/wcci-2026/information-for-authors/), [NeuroSNN SS](https://sites.google.com/nyu.edu/neurosnn-wcci-2026/home)
-
----
-
-### 5.2 ISCAS 2026 -- IEEE International Symposium on Circuits and Systems [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Paper Deadline** | 19 October 2025 (PASSED) |
-| **Conference Dates** | 24-27 May 2026 |
-| **Location** | Shanghai, China |
-| **Page Limit** | 5 pages |
-| **Format** | IEEE conference template |
-| **Realistic for UG?** | Deadline passed. |
-
-Sources: [ISCAS 2026](https://2026.ieee-iscas.org/)
-
----
-
-### 5.3 BioCAS 2026 -- IEEE Biomedical Circuits and Systems Conference
-

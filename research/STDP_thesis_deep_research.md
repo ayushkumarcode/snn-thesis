@@ -306,3 +306,31 @@ the thesis should NOT just replicate Diehl & Cook (2015) on MNIST. that is indee
 - direct comparison: STDP (brain's rule) vs modern unsupervised methods (autoencoders, contrastive learning, k-means) as feature extractors.
 - extract features with each, classify with same SVM. which features are best? analyze quality, bio-plausibility, compute cost.
 - **Feasibility:** HIGH -- all methods have standard implementations
+
+**Idea F: STDP + Audio/Speech Recognition**
+- audio is inherently temporal -- natural fit for STDP. recent work got 93.3% on Spoken-MNIST and 88.1% on SHD.
+- apply STDP feature extraction to audio spectrograms or spike-encoded audio. compare with standard audio ML pipelines.
+- **Feasibility:** MEDIUM -- audio spike encoding needs more setup
+
+#### Tier 3: Solid But More Standard
+
+**Idea G: Replicating and Extending Diehl & Cook (2015)**
+- replicate the 95% MNIST result in BindsNET, then extend with: conv topology, more neurons, different datasets (Fashion-MNIST, EMNIST), supervised readout
+- **Feasibility:** VERY HIGH -- most straightforward project
+
+### 6.2 Thesis Title Ideas
+
+- "Biologically Plausible Feature Learning: A Comparative Study of STDP Variants for Visual Pattern Recognition"
+- "Learning Without Labels: STDP-Based Unsupervised Feature Extraction in Spiking Neural Networks"
+- "From Spikes to Decisions: Hybrid STDP Feature Extraction with Supervised Classification in Spiking Neural Networks"
+- "Brain-Inspired Learning for Event-Driven Vision: STDP on Dynamic Vision Sensor Data"
+- "Three-Factor Learning in Spiking Neural Networks: Reward-Modulated STDP for Reinforcement Learning Tasks"
+- "Can the Brain's Learning Rule Prevent Forgetting? STDP for Continual Learning in Spiking Neural Networks"
+
+---
+
+## 7. STDP Variants from Recent Papers
+
+### 7.1 Variant Table
+
+| Variant | Key Innovation | Reference | Year | Maturity |

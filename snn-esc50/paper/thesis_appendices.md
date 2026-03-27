@@ -180,20 +180,20 @@ Scale multiplies FC2 weights before integer conversion.
 
 | Scale | SpiNNaker Acc (n=20) | Notes |
 |-------|---------------------|-------|
+| 0.1x | 5% | weights round to 0 |
+| 0.5x | 20% | below baseline |
+| 1.0x | **40%** | **selected** |
+| 2.0x | 30% | overflow artifacts |
+| 5.0x | 25% | saturation |
+| 10.0x | 20% | saturation |
 
-| Scale | SpiNNaker Accuracy (20 samples) | Notes |
-|-------|--------------------------------|-------|
-| 0.1× | 5% | Too sparse — weights round to 0 |
-| 0.5× | 20% | Below snnTorch baseline |
-| 1.0× | **40%** | **Selected** |
-| 2.0× | 30% | Integer overflow artifacts |
-| 5.0× | 25% | Saturation |
-| 10.0× | 20% | Saturation |
+Source: `results/spinnaker_results/scale_sweep_run5.json`.
 
-*Source: `results/spinnaker_results/scale_sweep_run5.json` (Run 5 pilot results).*
+### C.3 Option A threshold sweep -- FC1 sparsity (fold 4)
 
-### C.3 Option A Threshold Sweep — FC1 Sparsity Analysis (Fold 4)
+MaxPool replaces AvgPool. fc1_binary_fraction = fraction of FC1 inputs guaranteed binary (= 1.000 for MaxPool at all thresholds).
 
+| Threshold | Test Acc | FC1 active/step | Active % | Sparse % | Binary frac |
 Retraining with MaxPool replacing AvgPool. `fc1_binary_fraction` = fraction of FC1 input steps where input is guaranteed binary (= 1.000 for MaxPool model at all thresholds, since MaxPool preserves binary spikes through the conv layers).
 
 | LIF threshold | Test Acc. | FC1 active/step | FC1 active% | FC1 sparse% | fc1_binary_fraction |

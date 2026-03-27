@@ -278,3 +278,31 @@ key findings:
 | Norse | None | Research-oriented |
 | BindsNET | None | Bio-plausible learning |
 
+---
+
+## novelty vs feasibility
+
+**novelty: 9/10** -- almost no undergrad has attempted this. the field is 2-3 years old. even PhD work here is rare and published at AAAI/ICML/ICLR. an undergrad demonstrating SNN text classification with energy analysis could be publishable.
+
+**feasibility: 5/10 (full-scale) / 7/10 (properly scoped)**
+
+### recommended scope
+
+**minimum viable project:**
+1. train TextCNN on IMDB (binary sentiment) -- standard ANN baseline
+2. convert to Spiking CNN using Lvchangze/snn pipeline
+3. fine-tune with surrogate gradients
+4. compare accuracy vs ANN
+5. estimate energy consumption
+6. report on 2 datasets (IMDB + SST-2)
+
+**stretch goals:**
+- test different encodings (Poisson vs latency)
+- try spam detection as second task
+- vary timesteps, analyze accuracy-energy tradeoff
+- test adversarial robustness
+- deploy on SpiNNaker
+
+---
+
+## confidence notes

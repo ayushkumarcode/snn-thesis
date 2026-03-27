@@ -82,3 +82,31 @@ class AdaptiveLIF(nn.Module):
         thresh = state["adaptive_thresh"].view(shape)
         mem = b * mem + x + osc
         spk = self.spike_grad((mem - thresh) / thresh.abs().clamp(min=0.1))
+        mem = mem * (1 - spk.detach())
+        if x.dim() == 4:
+            current_rate = spk.detach().mean(dim=(0, 2, 3))
+        else:
+            current_rate = spk.detach().mean(dim=0)
+        ema_alpha = 0.1
+        state["running_rate"] = (1 - ema_alpha) * state["running_rate"] + ema_alpha * current_rate
+        error = state["running_rate"] - self.target_rate
+        state["adaptive_thresh"] = (self.base_threshold + self.kp * error).clamp(min=0.5)
+        state["mem"] = mem
+        return spk, state
+
+
+class SpikeBudgetSNN(nn.Module):
+    """SNN with spike budget control per layer."""
+
+    def __init__(self, target_rate=0.06, kp=0.1):
+        super().__init__()
+        self.num_steps = NUM_STEPS
+        self.target_rate = target_rate
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)

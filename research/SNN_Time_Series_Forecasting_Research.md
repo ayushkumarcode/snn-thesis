@@ -346,31 +346,3 @@ Several factors make this the right time:
 
 At minimum, a successful undergraduate thesis could:
 1. Implement a basic SNN (e.g., LIF-based recurrent network) using snnTorch
-2. Apply it to 2-3 standard time-series forecasting datasets
-3. Compare against a baseline LSTM and a simple Transformer
-4. Measure and report accuracy metrics (MSE, MAE) and estimated energy consumption
-5. Discuss the temporal encoding strategy used and its impact
-
-This would produce a valid contribution because **no systematic comparison using standard forecasting metrics (MSE/MAE) on standard forecasting datasets (ETTh, Weather) currently exists for SNNs**.
-
----
-
-## 9. Key Papers -- Annotated Bibliography
-
-### Tier 1: Must-Read (Directly Relevant, Top Venues)
-
-1. **Lv et al., "Efficient and Effective Time-Series Forecasting with Spiking Neural Networks," ICML 2024.**
-   - arXiv: https://arxiv.org/abs/2402.01533
-   - Code: https://github.com/microsoft/SeqSNN
-   - The foundational paper. Converts TCN, RNN, and iTransformer to SNN equivalents. Shows comparable accuracy with ~70% energy reduction.
-
-2. **Lv et al., "Advancing Spiking Neural Networks for Sequential Modeling with Central Pattern Generators," NeurIPS 2024.**
-   - PDF: https://proceedings.neurips.cc/paper_files/paper/2024/file/2f55a8b7b1c2c6312eb86557bb9a2bd5-Paper-Conference.pdf
-   - Code: https://github.com/microsoft/SeqSNN
-   - Introduces CPG-PE positional encoding for SNNs. Shows SNNs with CPG-PE outperform conventional counterparts on time-series forecasting.
-
-3. **Feng et al., "TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting," ICLR 2025.**
-   - arXiv: https://arxiv.org/abs/2503.05108
-   - Code: https://github.com/kkking-kk/TS-LIF
-   - Novel dual-compartment architecture. Best average ranking (3.3) outperforming iTransformer (4.4).
-

@@ -194,3 +194,31 @@ URL pattern: https://etheses.whiterose.ac.uk/id/eprint/[number]
 | SNNs for Image Classification | Osaze Shears | Course project | Python | MNIST/CIFAR10 comparison |
 
 ---
+
+## Common Tools and Frameworks in SNN Theses
+
+| Framework | Type | Used In |
+|-----------|------|---------|
+| sPyNNaker / PyNN | SpiNNaker interface | Manchester theses |
+| Brian2 | Simulator | Musical pattern recognition project |
+| NEST | Simulator | Jegp thesis, various |
+| snntorch | Deep learning | Levy comparison, many modern projects |
+| Norse | Deep learning | Various modern projects |
+| SpikingJelly | Deep learning | Chinese university projects |
+| BindsNET | Simulation | Various |
+| NeuroPack | Custom simulator | Southampton memristor thesis |
+| hxtorch.snn | BrainScaleS interface | Heidelberg theses |
+| Vivado HLS | FPGA synthesis | Hardware theses |
+| Caffe / TensorFlow / PyTorch | DL frameworks | ANN-to-SNN conversion theses |
+
+---
+
+## Common Datasets
+
+| Dataset | Domain | Used In |
+|---------|--------|---------|
+| MNIST | Handwritten digits | Nearly every SNN thesis |
+| CIFAR-10/100 | Image classification | Liu (Manchester), Levy |
+| N-MNIST | Neuromorphic digits | Event camera theses |
+| DVS Gesture | Hand gestures | Xing (Strathclyde) |
+| ASL-DVS | Sign language | Bi (UCL) |

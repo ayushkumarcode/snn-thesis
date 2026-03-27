@@ -82,3 +82,31 @@ What an undergrad thesis would look like:
 ```
 Title: "Mitigating Catastrophic Forgetting in Spiking Neural Networks:
         A Comparative Study of Continual Learning Strategies"
+
+Components:
+1. SNN baseline trained on MNIST (snnTorch, standard tutorial approach)
+2. Split-MNIST benchmark: Train on digits 0-1, then 2-3, then 4-5, etc.
+3. Measure forgetting: accuracy on task 1 after training on task 2, 3, etc.
+4. Implement 2-3 mitigation strategies:
+   a. Elastic Weight Consolidation (EWC) adapted for SNN
+   b. Experience Replay (store and replay old spike trains)
+   c. Threshold Modulation (freeze/protect important neurons)
+5. Compare SNN vs ANN forgetting behavior
+6. Energy efficiency comparison (spike count analysis)
+
+Datasets: MNIST, Fashion-MNIST (standard, well-understood)
+Framework: snnTorch + PyTorch
+Hardware: CPU/MPS on macOS (no GPU needed for MNIST-scale)
+```
+
+**Feasibility for ~4 weeks: MODERATE-HIGH**
+- Week 1: MNIST SNN baseline (Tutorial 5 from snnTorch gets you there)
+- Week 2: Split-MNIST setup + measure baseline forgetting
+- Week 3: Implement EWC and one other strategy
+- Week 4: Experiments, analysis, comparison with ANN, write-up
+
+Risks:
+- EWC adaptation to SNNs requires understanding Fisher Information Matrix calculation for spiking models
+- The existing paper "Investigating Continuous Learning in SNNs" (2023) already does some of this
+- Need to find a novel angle
+

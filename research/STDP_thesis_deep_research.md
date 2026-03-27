@@ -250,3 +250,31 @@ accuracy = clf.score(test_features, test_labels)
 
 4. **Neuromorphic hardware maturation:** Loihi 2, SpiNNaker2, BrainScaleS-2, memristive chips all implement STDP natively. hardware exists, now researchers need algorithms.
 
+5. **Biological understanding:** neuroscience is discovering increasingly complex STDP variants (dendritic STDP, voltage-dependent plasticity, heterosynaptic plasticity). computational models are needed.
+
+### 5.3 What Would Make It Old News
+
+the thesis should NOT just replicate Diehl & Cook (2015) on MNIST. that is indeed a 10-year-old result. needs a novel angle (see section 6).
+
+### 5.4 The Narrative Advantage
+
+"biologically plausible learning" is actually a great thesis narrative because:
+- connects to neuroscience (interdisciplinary appeal)
+- connects to energy-efficient AI (practical relevance)
+- connects to neuromorphic hardware (cutting-edge tech)
+- clear research question: "how well can the brain's learning rule work for ML tasks?"
+- produces visually compelling results (learned filters look like Gabor filters or digit templates)
+- examiners tend to find the biological angle intellectually interesting
+
+---
+
+## 6. What Would Make an STDP Project Interesting in 2026?
+
+### 6.1 Project Ideas (ranked)
+
+#### Tier 1: Strongest Novel Angles
+
+**Idea A: STDP on Event-Camera (DVS) Data -- "Learning the Way the Brain Sees"**
+- **Why novel:** DVS cameras produce async spike-like events -- natural match for STDP's temporal learning rule. most DVS classification uses surrogate gradients, not STDP. there's a gap.
+- **What to do:** train STDP-based CSNN on N-MNIST or DVS128 Gesture using BindsNET or SpykeTorch. compare STDP-learned features vs random features vs surrogate-gradient features.
+- **Datasets:** N-MNIST, DVS128 Gesture (11 classes), CIFAR10-DVS

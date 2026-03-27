@@ -530,3 +530,31 @@ All prior SNN-ECG work uses MIT-BIH Arrhythmia Database (much simpler: single-le
 
 **snnTorch Gotchas:**
 1. **No Conv1d examples exist in official tutorials.** You must adapt the Conv2d pattern yourself.
+2. **init_hidden=True is essential** when using nn.Sequential or TBPTT.
+3. **GPU memory explodes with many timesteps** (discussed in Component 11).
+4. **The time dimension must be first** when using spikegen.delta: shape is [num_steps, batch, features].
+5. **Surrogate gradient selection matters:** Use `spike_grad = surrogate.fast_sigmoid(slope=25)` as default.
+
+**PTB-XL-Specific Gotchas:**
+1. **Multi-label, not multi-class:** Use BCEWithLogitsLoss, NOT CrossEntropyLoss.
+2. **Some records have NO diagnostic labels** -- filter these out before training.
+3. **Fold 10 test set quality is higher** (cardiologist-validated) -- do not use it for training or hyperparameter tuning.
+
+**Sources:** [WFDB GitHub Issues](https://github.com/MIT-LCP/wfdb-python/issues), [snnTorch GPU Discussion](https://github.com/jeshraghian/snntorch/discussions/63), [PyTorch Forum Conv1d](https://discuss.pytorch.org/t/1d-data-surrogate-gradient-descent-in-a-convolutional-spiking-neural-network/157693)
+
+---
+
+### 14. End-to-End Pipeline Feasibility
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES -- fully buildable |
+| **VERIFIED HOW** | All components verified individually above |
+| **POTENTIAL BLOCKER** | NO (with mitigations for GPU memory) |
+
+**Complete pipeline, step by step:**
+
+```
+Step 1: Download PTB-XL (wget from PhysioNet, CC BY 4.0, no agreement needed)
+Step 2: Load with wfdb.rdsamp() at 100 Hz (1000 samples x 12 leads)
+Step 3: Parse labels with ast.literal_eval + aggregate to 5 superclasses

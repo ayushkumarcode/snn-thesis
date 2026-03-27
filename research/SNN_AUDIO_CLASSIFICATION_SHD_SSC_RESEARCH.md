@@ -105,31 +105,3 @@ Both datasets are available through multiple loaders:
 
 **Pfa-SNN (2025)** -- Adds a parameter-free attention mechanism directly into the spiking neuron. No additional parameters required. Achieves 96.26% on SHD.
 
-**MCRE (2025)** -- Multi-Scale Chunked Residual Encoding inspired by hippocampus-cortex information reorganization. Achieves 96.44% on SHD (current best) and 80.92% on SSC, while reducing energy consumption by up to 55%.
-
-**RadLIF / adLIF (2022)** -- The surrogate gradient baseline from Bittar and Garner. RadLIF = Recurrent Adaptive LIF. adLIF = Adaptive LIF (non-recurrent). These established the competitive SNN baselines for SHD/SSC. Open-source via the sparch toolkit.
-
----
-
-## 3. SNN vs. Traditional ANN Comparison
-
-### 3.1 Accuracy Comparison on SHD
-
-| Architecture | Type | Best SHD Accuracy | Notes |
-|-------------|------|-------------------|-------|
-| SpikCommander | SNN (Transformer) | 96.41% | 0.19M params |
-| DCLS-Delays | SNN (Feedforward) | 95.07% | 0.20M params, no recurrence |
-| RadLIF | SNN (Recurrent) | 94.62% | Surrogate gradient |
-| **CNN (Cramer 2020)** | **ANN** | **92.4%** | **Best ANN baseline** |
-| GRU (3x128) | ANN | 90.40% | Gated recurrent unit |
-| liBRU (3x128) | ANN | 89.61% | Lightweight bistable RNN |
-| LSTM | ANN | ~89% | Standard LSTM |
-
-**Key finding: SNNs now SURPASS ANNs on SHD by a significant margin (96.4% vs 92.4%).** This is one of the few benchmarks where SNNs definitively outperform traditional deep learning approaches.
-
-### 3.2 Accuracy Comparison on SSC
-
-| Architecture | Type | Best SSC Accuracy | Notes |
-|-------------|------|-------------------|-------|
-| SpikCommander | SNN (Transformer) | 85.98% (T=250) | Current SOTA |
-| SpikeSCR | SNN | 82.54% | Curriculum distillation |

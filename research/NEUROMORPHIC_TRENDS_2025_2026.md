@@ -59,31 +59,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 | CVPR | 2025 | **5** | Vision-focused |
 | ICLR | 2025 | 11 | Steady |
 | NeurIPS | 2024 | ~15 | Baseline |
-
-### Dominant Topics Across These Conferences
-
-1. **Spiking Transformers** (HOTTEST): SpikFormer, Spike-driven Transformer V2, Binary Event-Driven Spiking Transformer. ImageNet SOTA for SNNs now at 83.73% (SGLFormer). This is the "transformer moment" for SNNs.
-
-2. **SNN-LLM intersection** (EMERGING, HIGH IMPACT): SpikeGPT, SpikeLLM (ICLR 2025), Neuromorphic Spike-Based LLM (National Science Review 2025), MatMul-free LLM on Loihi 2. The field is racing to apply neuromorphic principles to language models.
-
-3. **Knowledge Distillation / Self-Distillation** (NeurIPS 2025): "SNNs are Inherently Self-Distillers," Enhanced Self-Distillation Framework. ANN-to-SNN knowledge transfer is a major research direction.
-
-4. **Adversarial Robustness** (NATURE COMMUNICATIONS 2025): "Neuromorphic computing paradigms enhance robustness through spiking neural networks." SNNs achieve 2x ANN robustness on CIFAR-10. BUT: Wang et al. (2025) warns robustness may be overestimated due to vanishing gradients in spike activations.
-
-5. **ANN-to-SNN Conversion** (CVPR 2025, IJCAI 2025): Training-free conversion for transformers, negative spike methods, inference-scale complexity reduction. Gap closing to <0.04% in some settings.
-
-6. **Temporal Processing** (NeurIPS 2025): "SNNs Need High-Frequency Information," Temporal Shift modules, Spiking NeRF. Exploiting temporal dynamics is a key differentiator.
-
-7. **Multimodal SNNs** (2025): Audio-visual spiking transformers, cross-modal residual learning, temporal attention-guided fusion.
-
-8. **State Space Models + SNNs** (EMERGING): SpikySpace (first fully spiking SSM), delays in SNNs via state variables, Mamba-inspired spiking architectures.
-
-9. **Federated Learning + SNNs** (2025): Privacy-preserving properties of spike-based communication, energy-efficient distributed training.
-
-10. **Neural Architecture Search for SNNs** (arXiv survey 2025): Hardware-aware NAS without training on neuromorphic platforms.
-
----
-
-## 3. HARDWARE LANDSCAPE: WHAT THE BIG PLAYERS ARE DOING
-
-### Intel Loihi 2

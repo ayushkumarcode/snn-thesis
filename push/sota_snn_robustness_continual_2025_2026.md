@@ -109,31 +109,3 @@ Key evidence from 2024-2026 literature:
 
 **Consensus:** Standard FGSM/PGD with a fixed surrogate gradient function will **overestimate** SNN robustness. The degree of overestimation varies by architecture and neuron model but can be substantial (5-13+ pp in attack success rate).
 
-**Implication for our thesis:** Our standard FGSM/PGD evaluation likely overestimates our SNN's true adversarial robustness. However, the **relative ordering** (SNN > ANN) is likely correct -- every paper in the literature confirms SNNs have some inherent robustness advantage, the debate is about how large that advantage truly is.
-
----
-
-### 1.5 Comprehensive Landscape of SNN Adversarial Robustness (2024-2026)
-
-#### Major Papers and Best Numbers Reported
-
-**A. Defense Methods:**
-
-| Paper | Venue | Method | CIFAR-10 PGD-7 | CIFAR-10 FGSM | CIFAR-10 Clean |
-|-------|-------|--------|----------------|---------------|----------------|
-| SNN-RAT (Ding et al.) | NeurIPS 2022 | Regularized AT | 45.23% | ~52% | ~89% |
-| FEEL-SNN (2024) | NeurIPS 2024 | Frequency Encoding + Evolutionary Leak | Improved over RAT | Improved | ~89% |
-| Robust Stable SNN (2024) | arXiv 2405.20694 | DLIF + MPPD + AT+Reg | **40.30%** (VGG11) | **56.71%** | **88.91%** |
-| RSC-SNN (Wu et al.) | ACM MM 2024 | Randomized Smoothing Coding | 39.98% | 54.52% | 82.03% |
-| RandHet-SNN (Wang et al.) | iScience 2025 | Random heterogeneous time constants | **44.86%** (PGD10) | 53.53% | 90.25% |
-| TGO (Wang et al.) | ICLR 2026 | Threshold Guarding Optimization | 6.14% (vanilla), better w/ AT | 51.40% | 88.79% |
-| RTE (Wang et al.) | arXiv 2508.11279 | Robust Temporal Self-Ensemble | 36.38% (APGD) | N/A | 81.90% |
-| Sparse Conversion (Schmolli et al.) | CPAL 2025 | ANN-to-SNN conversion + sparsity | 40.0% | N/A | 83.2% |
-
-**B. Attack Methods (making evaluation more reliable):**
-
-| Paper | Venue | Attack Method | Key Finding |
-|-------|-------|---------------|-------------|
-| SA-PGD (Wang et al.) | arXiv Dec 2025 | Adaptive surrogate + adaptive step | Robustness overestimated by 5-13 pp |
-| HART (Bu et al.) | ICLR 2024 | Combined rate + temporal attack | Stronger than rate-only attacks |
-| Hybrid Attack (Lin & Sengupta) | arXiv Apr 2025 | Transferability-based | Local-learning robustness largely disappears |

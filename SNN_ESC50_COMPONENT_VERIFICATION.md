@@ -950,3 +950,4 @@ pip install neurobench
 - ANN-to-SNN Conversion with snnTorch: https://github.com/Saad-data/ANN-to-SNN-Conversion-with-snnTorch
 - ESC-50 PyTorch Implementation: https://github.com/hasithsura/Environmental-Sound-Classification
 - ESC-50 CNN: https://github.com/kamalesh0406/Audio-Classification
+- Piczak 2015 Paper: https://www.karolpiczak.com/papers/Piczak2015-ESC-Dataset.pdf

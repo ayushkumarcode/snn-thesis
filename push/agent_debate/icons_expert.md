@@ -54,3 +54,31 @@ thinking through what ICONS reviewers actually care about, based on analyzing 50
 
 ## Comparison to Yarga et al. ICONS 2022
 
+| Dimension | Yarga 2022 | Our Paper |
+|-----------|-----------|-----------|
+| Encodings | 4 | 7 |
+| Task difficulty | 10-class digits | 50-class environmental sounds |
+| Hardware deployment | None | SpiNNaker 5-fold |
+| Energy analysis | None | NeuroBench |
+| Adversarial | None | FGSM + PGD, 7 eps values |
+| Transfer learning | None | PANNs+SNN, gap-collapse |
+| Surrogate ablation | None | 8 surrogates |
+| Continual learning | None | 5-task sequential |
+| Negative results documented | Partial | Full |
+
+we are substantially more comprehensive on every dimension. Yarga was accepted as a full paper. by the ICONS 2022 bar, we're stronger. by 2025 bar (conference has grown, quality may have risen), still competitive if hardware story is well-framed.
+
+---
+
+## Is 47.15% "Significant" at ICONS?
+
+**yes.** ICONS reviewers understand 47.15% on 50 classes (random=2%) represents 45.15pp improvement over chance. they won't compare to 98.25% ANN SOTA without context. they'll ask: given the architecture, dataset size, and training approach, what does this tell us about current SNN capability?
+
+the ICONS community's reference is other SNN papers, not ANN leaderboards. 47.15% as the first SNN result on this task -- there's no prior bar to beat. ICONS 2025 best paper was about turbulence modeling with no accuracy metric at all.
+
+the PANNs result rehabilitates: 92.5% proves the 47.15% gap isn't inherent to spiking. the gap-collapse insight is a cleaner and more interesting story than just achieving high accuracy.
+
+frame the 47.15% as "establishing a baseline for future SNN audio work" and the collapse as "demonstrating SNN formalism is not the bottleneck." don't apologize for the number.
+
+---
+

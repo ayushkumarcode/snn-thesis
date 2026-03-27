@@ -306,3 +306,31 @@ The assessment criteria doc (project_assessment.pdf) is on Canvas but i couldn't
 ### 5.2 Cambridge (Part II)
 
 **Assessment:** 100% dissertation (no separate implementation mark)
+
+**Breakdown:**
+- Introduction and Preparation: 30/100
+- Implementation and Contribution: 45/100
+- Evaluation and Conclusions: 25/100
+
+**Key requirements:**
+- Max 12,000 words / 40 pages for main body
+- Strict chapter structure required (Introduction, Preparation, Implementation, Evaluation, Conclusions)
+- Write for reader with general CS knowledge but no specialist knowledge in your area
+- Must demonstrate ethical and professional approaches
+- Must include repository overview section in implementation chapter
+
+**What makes a first at Cambridge:**
+- Professional approach to design and implementation
+- Evaluation with confidence metrics
+- Clear, literate writing
+- Structured design planning and design-for-test considerations
+- Honest, nuanced discussion of successes and failures
+
+Source: [Cambridge Part II Projects](https://www.cst.cam.ac.uk/teaching/part-ii/projects)
+
+### 5.3 Edinburgh
+
+**Assessment:** Holistic marking using Common Marking Scheme (A1-H bands)
+
+**Grade bands:**
+- A1 (90-100): "Often faultless. Well beyond that expected."

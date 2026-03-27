@@ -164,31 +164,3 @@ Source: [KCL Marking Framework](https://www.kcl.ac.uk/assets/policyzone/assessme
 
 ## 3. What Examiners and Markers Actually Look For
 
-Based on published guidance from Cambridge, Swansea/Nottingham (Bob Laramee's widely-cited guidelines), and Student Room discussions with markers:
-
-### What Gets You a First (70+):
-1. **Clear problem definition** and well-motivated objectives
-2. **Thorough literature review** showing awareness of related work
-3. **Sound methodology** with justified design decisions
-4. **Working implementation** that meets stated objectives
-5. **Rigorous evaluation** using appropriate metrics
-6. **Critical reflection** on what worked, what didn't, and why
-7. **Professional presentation** -- clear writing, good diagrams, well-structured report
-8. **Project management** demonstrated through progress
-
-### What Gets You a High First (80+):
-All of the above PLUS:
-- **Independent thought** -- going beyond what the supervisor suggested
-- **Evidence of original thinking** in approach or analysis
-- **Ambitious scope** with demanding objectives achieved
-- **Thorough evaluation** with statistical rigour
-
-### What Gets You 90+ (Exceptional):
-All of the above PLUS:
-- **Genuine contribution** to the field (but still not required everywhere)
-- Work of **potentially publishable quality**
-- **Deep insight** that surprises even the markers
-
-### What Examiners DON'T Require:
-- A brand new algorithm or technique
-- Something never done before

@@ -54,3 +54,31 @@ again multimodal, not audio-only.
 - "Efficient Speech Command Recognition Leveraging SNN and Curriculum Learning-based Knowledge Distillation"
 - arXiv:2412.12858, published in Neural Networks 2025
 - fully spike-driven, Global-Local Hybrid Encoder (Spiking Self-Attention + Separable Gated Convolution)
+
+| Dataset | SpikeSCR (100 steps) | With KDCL (40 steps) | Previous SOTA |
+|---------|---------------------|---------------------|---------------|
+| SHD (20 classes) | **95.70%** | 93.60% | 95.07% (DCLS) |
+| SSC (35 classes) | **82.79%** | 80.25% | 80.69% (DCLS) |
+| GSC v2 (35 classes) | **95.60%** | 95.01% | 95.35% (DCLS) |
+
+KDCL reduces timesteps by 60%, energy by 54.8% (0.0314mJ to 0.0142mJ on SSC). uses AC=0.9pJ, MAC=4.6pJ energy model -- same as what we use for NeuroBench.
+
+#### SpikCommander (2025/2026)
+- arXiv:2511.07883, January 2026
+- Multi-view Spiking Spatio-Temporal Attention + Spiking Contextual Refinement MLP
+
+| Dataset | SpikCommander | SpikeSCR | DCLS |
+|---------|--------------|----------|------|
+| SHD     | **96.41%**   | 95.70%   | 95.07% |
+| SSC     | **83.26%**   | 82.79%   | 80.69% |
+| GSC v2  | **96.71%**   | 95.60%   | 95.35% |
+
+0.19M params (SHD), 1.12M (SSC/GSC). current SOTA for SNN speech command recognition.
+
+#### SIDC-KWS (Interspeech 2025)
+- Spiking Inception-Dilated Conformer
+- GSC v2 12-class: 96.8%
+- 75.59% less energy than ANN counterpart
+
+#### E-prop on SpiNNaker 2 (Yan et al., 2022)
+- Frontiers in Neuroscience, 2022

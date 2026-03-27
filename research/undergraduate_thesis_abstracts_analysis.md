@@ -390,3 +390,31 @@ typical undergrad thesis abstract follows this:
   - "We use framework X to implement Y on platform Z"
 
 [1-2 sentences: Key results]
+  - "Results show X achieves Y% accuracy on Z"
+
+[Optional: 1 sentence on implications]
+  - "These results suggest X is viable for Y"
+```
+
+---
+
+## Sources
+
+- [Musical Pattern Recognition in SNNs - GitHub](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks)
+- [BEng Report](http://amid.fish/beng_project_report.pdf)
+- [UNSW Honours Thesis](https://imagescience.org/meijering/publications/1233/)
+- [Heidelberg KIP Thesis List](http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/)
+- [KIP - Kriener](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3106)
+- [KIP - Korcsak-Gorzo](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3155&lang=en)
+- [KIP - Fischer](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3533)
+- [Peradeniya NoC Project](https://cepdnaclk.github.io/e17-4yp-Neuromorphic-NoC-Architecture-for-SNNs/)
+- [Osnabruck SNN-STDP](https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP)
+- [Virginia Tech SNN](https://oshears.github.io/adv-ml-2020-snn-project/)
+- [Rochester Thesis - Xu](https://www.sas.rochester.edu/mth/undergraduate/honorspaperspdfs/d_xu23.pdf)
+- [HAW Hamburg - Son](https://reposit.haw-hamburg.de/bitstream/20.500.12738/9168/1/Bachelorthesis_JeonghyunSon.pdf)
+- [TU Delft - Sahla](https://repository.tudelft.nl/islandora/object/uuid:f7667cb4-70d4-4b82-ac1b-75df476655cd)
+- [Oulu UAS - Laakso](https://www.theseus.fi/handle/10024/779806)
+- [Radboud - Kuppers](https://www.cs.ru.nl/bachelors-theses/2024/Philipp_K%C3%BCppers___1073738___Exploring_the_Chemical_Universe_with_Spiking_Neural_Networks.pdf)
+- [BrainScaleS Publications](https://brainscales.kip.uni-heidelberg.de/jss/Publications)
+
+---

@@ -166,3 +166,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - PyTorch, TensorFlow, Jupyter
 - BNCI Horizon 2020 EEG, Harvard P300, MNIST, Fashion MNIST
 - Successfully converted CNN to SNN for EEG; surrogate gradient training on image datasets
+- 2 stars, 157 commits
+
+### SNN Formation Control for Multi-Agent Systems
+- https://github.com/ViktorNfa/SpikingNeuralNet_FormationControl
+- SNN using Norse framework to learn formation control with collision avoidance
+- SNN learned formation control comparable to classical controllers
+- 4 stars, 18 commits
+
+### Design Space Exploration of Associative Memories (Masters, Bielefeld)
+- https://github.com/astoeckel/master-thesis-astoeckel-2015
+- Willshaw model for associative memories using spiking neurons targeting neuromorphic hardware
+- LaTeX, Python, MATLAB, C++
+- **Thesis PDF: downloadable v1.2 from GitHub releases (CC BY-ND 4.0)**
+- 2 stars
+
+---
+
+## Student Course Projects / Research Group Projects
+
+### Simple SNN with STDP (University of Osnabruck Course Project)
+- https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP
+- From-scratch SNN with STDP trained on MNIST
+- Python, TF/Keras (just for MNIST loading), partial MNIST
+- Got reasonable accuracy after 1 epoch then plateaued quickly. Dense NNs outperformed significantly.
+- **Report: Paper.pdf in repo**
+- Four students, from-scratch, honest about limitations. Very achievable scope for a group undergrad project.
+- 47 stars, 9 forks, 73 commits
+

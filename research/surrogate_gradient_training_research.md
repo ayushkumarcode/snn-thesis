@@ -82,3 +82,31 @@ all surrogates share the same basic shape: bell/peak centered at firing threshol
 ### The Landmark Study
 
 Zenke and Vogels (2021), "The Remarkable Robustness of Surrogate Gradient Learning":
+
+1. **learning is robust to different surrogate shapes.** sigmoid, fast sigmoid, atan -- all work.
+2. **the scale (width/slope) substantially affects performance.** too narrow = gradients vanish (neurons far from threshold get no signal). too wide = noisy/imprecise updates.
+3. **activity regularization is critical.** with proper firing rate regularization, networks work even at very sparse activity.
+
+### What Matters vs What Doesn't
+
+| What Matters | What Doesn't Matter Much |
+|-------------|--------------------------|
+| Slope/scale parameter | Exact mathematical form |
+| Activity/firing rate regularization | Whether surrogate is symmetric or not |
+| Beta (membrane decay) | Minor tail behavior differences |
+| Threshold setting | |
+| Number of time steps | |
+
+### The Fine-Tuning Study (2024)
+
+confirmed that fast sigmoid consistently delivers best results across datasets because of sharp gradient slopes. fast sigmoid also yields lower firing rates (higher sparsity) than atan at similar accuracy. by cross-sweeping beta and threshold, you can get 48% reduction in hardware inference latency with only 2.88% accuracy trade-off. optimal: beta=0.5, threshold=1.5.
+
+### My Recommendation
+
+start with **fast sigmoid (slope=25)** and **beta=0.5**. these are well-tested. only explore other surrogates if comparing them is part of your thesis contribution.
+
+---
+
+## Best Tutorials and Code
+
+### Tier 1: Start Here

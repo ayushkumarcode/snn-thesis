@@ -107,31 +107,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 | Paper | Year | Venue | Key Contribution |
 |-------|------|-------|------------------|
 | Reinforcement-Guided Hyper-Heuristic for SNN-Based Financial Fraud Detection | 2025 | arxiv (2508.16915) | CSNPC model, 90.8% recall at 5% FPR on BAF dataset |
-| SNN for Financial Time Series Prediction | 2014 | PLOS ONE | Foundational work on SNN for financial data |
-| High-Frequency Trading with SNNs | 2021 | Published paper | SNN for HFT prediction |
-| SNN for Financial Data Prediction | 2013 | IEEE Conference | Early exploration |
-| VMD-SNNs for Stock Market Index Prediction | 2025 | PMC | Hybrid TCN-LSTM-SNN for stock prediction |
-| ICS-SNN for Financial Time Series Forecasting | 2025 | Algorithms (MDPI) | Optimized SNN for financial forecasting |
-
-**Natural SNN Advantage: MODERATE**
-- Financial transactions are event-driven (discrete events in time)
-- Temporal patterns in fraud (velocity checks, time-of-day patterns) match SNN dynamics
-- Energy efficiency less critical here (server-side processing)
-- Spike-based threshold detection could naturally flag anomalous transactions
-- However: tabular data (not temporal sequences) reduces SNN advantage for many fraud tasks
-
-**Undergraduate Feasibility: MODERATE**
-- Public datasets: Kaggle Credit Card Fraud, Bank Account Fraud (BAF) dataset
-- Challenge: class imbalance is extreme (~0.17% fraud in typical datasets)
-- Encoding tabular features into spikes is non-trivial
-- Comparison with well-established baselines (XGBoost, Random Forest) may be unfavorable
-- The 2025 CSNPC paper sets a high bar
-
-**Novelty Assessment: MODERATE-HIGH**
-- Very few SNN papers specifically on fraud detection
-- Most financial SNN work focuses on time series prediction, not classification
-- Novel angle: real-time streaming fraud detection with online learning
-
-**Verdict: MODERATE thesis candidate -- novel but encoding challenge is significant**
-
----

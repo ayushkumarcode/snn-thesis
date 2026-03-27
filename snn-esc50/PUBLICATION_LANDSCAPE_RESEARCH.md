@@ -152,19 +152,19 @@ formula 5: "comprehensive benchmark/comparison"
 
 ranked by how excited reviewers seem to be about them:
 
-| 2023 | Speech2Spikes (Intel) | Google Speech Commands | Keyword spotting | Feed-forward SNN | SOTA (>10pp above prior) | **Loihi** | Real-time audio pipeline, 109x energy |
-| 2023 | ISCAS paper | Multi-class audio | Classification | Spiking CNN | >98% | None | Sparsity + edge focus |
-| 2023 | Xiang et al. | TIDIGITS | Digit recognition | Photonic conv SNN | 93.75% | **Photonic** | Photonic neuromorphic |
-| 2023 | Guo et al. | CIFAR10-AV, UrbanSound8K-AV | Multimodal AV | Spiking Multi-Model Transformer | 98.01% / 96.85% | None | Cross-modal spiking attention |
-| 2024 | Yang & Chang | TIMIT | Speech recognition | RSNN accelerator | PER 22.6% | **Hardware accelerator (71.2 uW)** | Low-power accelerator |
-| 2024 | Liu et al. | Audio+Video | Multimodal | Attention-based cross-modal | 98.95% MNIST-DVS + N-TIDIGITS | None | Cross-modal attention |
-| 2024 | NeurIPS paper | Sound sources | Source localization | Resonate-and-Fire neurons | SOTA localization | None | RF neurons + phase-locking |
-| 2025 | Larroza et al. | **ESC-10** (10 classes) | Encoding comparison | FC SNN | 69% (TAE best) | None | 3 encodings on ESC-10 |
-| 2025 | SATRN (Gao et al.) | UrbanSound8K, FSD50K | Audio tagging | Attention-based SNN | mAP 0.455 (FSD50K) | None | Spiking attention + noise robustness |
-| 2025 | Haghighatshoar & Muir | Circular mic arrays | Localization | Hilbert Transform encoding | MAE 1.08 deg at 10dB | **Ultra-low-power SNN** | Hilbert transform encoding |
-| **2026** | **Ours** | **ESC-50 (50 classes)** | **Classification + encoding + robustness** | **Conv SNN** | **47.15%** | **SpiNNaker** | **7 encodings, gap-collapse, adversarial** |
+1. neuromorphic + LLMs (hottest) - SpikeLLM at ICLR 2025 was a landmark. not our domain though.
 
-### Critical Gap Your Paper Fills
+2. event-driven sensing + edge AI - Innatera T1 processor, event cameras + SNN. our "always-on audio sensing" framing targets this. HIGH relevance.
+
+3. spiking transformers - QKFormer, Spikformer v2, race to close SNN-ANN gap on ImageNet. our gap-collapse relates. MEDIUM.
+
+4. neuromorphic robustness - Nature Comms 2025 paper, growing interest. our 6x adversarial robustness is directly relevant. HIGH.
+
+5. hardware-software co-design - SpiNNaker2 at Sandia, SpikeFit. our SpiNNaker deployment with documented failures is a case study. HIGH.
+
+6. standardized benchmarking (NeuroBench) - community push for reproducibility. we use NeuroBench metrics and provide 5-fold validated results with p-values. HIGH.
+
+7. continual/online learning - survey in IEEE Access 2025, explicit ICONS topic. our result is preliminary but present. MEDIUM.
 
 **No prior paper has:**
 1. Used convolutional SNNs on ESC-50 (50 classes) -- only ESC-10 (10 classes) exists

@@ -462,31 +462,3 @@ loss = backprop.TBPTT(net, train_loader, optimizer=optimizer,
                       time_var=True, device='cuda', K=50)
 # K=50 means update weights every 50 steps -- keeps only 50 steps in memory
 ```
-
-2. **Reduce timesteps via downsampling:** Use 100 Hz data (1000 samples) and further downsample to 250 samples per ECG. Most diagnostic information is preserved.
-
-3. **Spatial-first architecture:** Process with Conv1d layers FIRST (no time loop), THEN use only a short SNN time loop (e.g., 25-50 steps) on the compressed features.
-
-4. **Batch size control:** Use small batch sizes (16-32) to reduce per-step memory.
-
-**Laptop GPU feasibility:**
-- 4 GB VRAM: Tight but possible with aggressive TBPTT (K=10-20) and small batches
-- 6-8 GB VRAM: Comfortable with TBPTT (K=50) and batch size 32
-- Google Colab free (T4, 15 GB): Very comfortable
-
-**RECOMMENDATION:** Use the spatial-first approach:
-1. Conv1d layers process raw ECG spatially (no time loop, standard PyTorch)
-2. Delta-encode the Conv1d features (compressed representation)
-3. Run SNN time loop only on compressed features for 25-50 steps
-4. This fits comfortably on any modern laptop GPU
-
-**Sources:** [snnTorch GPU Memory Discussion](https://github.com/jeshraghian/snntorch/discussions/63), [snnTorch TBPTT docs](https://snntorch.readthedocs.io/en/latest/snntorch.backprop.html)
-
----
-
-### 12. Existing SNN-ECG Code
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | PARTIAL -- no PTB-XL SNN code exists |
-| **VERIFIED HOW** | Exhaustive search of GitHub, literature reviews |

@@ -138,3 +138,31 @@ Adding N-MNIST or DVS128 Gesture as a third dataset shows you understand neuromo
 
 1. **Use Google Colab** for GPU access. Free tier is enough for MNIST-scale stuff. No local setup needed.
 
+2. **Work through snnTorch tutorials in order.** Tutorials 1-6 progressively build understanding AND code. The tutorial code IS your project code -- you modify it, you don't write from scratch.
+
+3. **Batch your experiments.** Set up all training runs in one session, let them run, then analyse results together.
+
+4. **Use the same architecture for ANN and SNN.** Makes comparison fair AND reduces coding work. Same layers, same hidden dimensions -- just swap activations for LIF neurons.
+
+5. **Automate plotting.** Write one plotting function that works for all experiments. Reuse it.
+
+### Realistic calendar (for someone with other commitments):
+
+| Week | Task | Hours |
+|------|------|-------|
+| Week 1 | Set up environment, work through Tutorials 1-3 | 8-10 |
+| Week 2 | Tutorials 5-6, implement ANN baseline | 8-10 |
+| Week 3 | Adapt SNN code, run initial experiments on MNIST | 8-10 |
+| Week 4 | Add second dataset, run remaining experiments | 6-8 |
+| Week 5 | Generate all plots/tables, start writing results chapter | 6-8 |
+| Week 6 (buffer) | Fix issues, re-run experiments if needed | 4-6 |
+
+**Total: 6 weeks at ~8 hours/week = ~48 hours of coding/experimentation.**
+
+Report writing (separate from coding) typically takes another 40-60 hours for a good report. Budget 2-3 weeks for writing.
+
+---
+
+## 5. Existing code and tutorials to adapt (don't build from scratch)
+
+### Primary resource: snnTorch (start here, don't look elsewhere until you've done these)

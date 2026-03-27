@@ -278,3 +278,31 @@ reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
 | Setup | Environment | Estimated Wall-Clock Time |
 |-------|------------|--------------------------|
 | MacBook (CPU only) | InvertedPendulum | ~10-30 minutes |
+| MacBook (CPU only) | Ant-v5 (20M steps PPO) | ~4-12 hours |
+| MacBook (MPS GPU) | Ant-v5 (20M steps PPO) | ~2-6 hours (estimated) |
+| Google Colab (T4 GPU) | Ant-v5 (20M steps PPO) | ~1-3 hours |
+| Isaac Gym (full GPU) | Ant-v5 | ~7 minutes |
+
+**Key insight:** MuJoCo simulation itself runs on CPU and is very fast (optimized C code). The bottleneck is the neural network forward/backward pass during PPO training. For a standard MLP policy, CPU training on Ant-v5 takes several hours. For an SNN policy (which adds temporal simulation steps), expect 2-3x longer than MLP.
+
+**Recommendation:** Develop and debug on your MacBook. For long training runs (5+ seeds), use Google Colab or Kaggle.
+
+**Source:** [MuJoCo Playground report](https://playground.mujoco.org/assets/playground_technical_report.pdf) | [GPU simulation paper](https://arxiv.org/pdf/1810.05762)
+
+---
+
+### 10. macOS Compatibility (Full Pipeline)
+
+| Field | Value |
+|-------|-------|
+| **Full pipeline on macOS?** | **YES -- confirmed** |
+| **POTENTIAL BLOCKER** | **NO** |
+
+**Verified macOS-compatible stack:**
+
+```
+Component              Version          macOS Status      Install Command
+-----------------------------------------------------------------------
+Python                 3.10-3.13        NATIVE            brew install python
+PyTorch                2.x              NATIVE + MPS      pip install torch
+snnTorch               0.9.4            NATIVE            pip install snntorch

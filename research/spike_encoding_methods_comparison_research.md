@@ -115,31 +115,3 @@ These focus on accurate reconstruction of the original signal from the spike tra
 
 ## 3. Impact of Encoding Choice on SNN Performance
 
-### 3.1 The Impact Is Significant and Well-Documented
-
-The choice of encoding method has a demonstrable and meaningful impact on SNN performance across every metric measured. This is not a marginal effect.
-
-### 3.2 Accuracy Impact
-
-From Guo et al. (2021), on a 2-layer STDP-trained SNN:
-
-| Encoding | MNIST Accuracy | Fashion-MNIST Accuracy |
-|----------|---------------|----------------------|
-| Rate Coding | 87.46% | 68.29% |
-| TTFS Coding | 88.57% | 71.31% |
-| Phase Coding | 88.18% | 71.36% |
-| Burst Coding | 88.39% | 71.27% |
-
-Accuracy differences of ~1-3% on MNIST and ~3% on Fashion-MNIST between rate coding and temporal methods. On more complex datasets with deeper networks, Kim et al. (2022) found that direct coding achieves better accuracy than rate coding, especially with smaller numbers of timesteps (T=5-10).
-
-From Bian et al. (2024), on IMU-based activity recognition:
-
-| Encoding | Accuracy |
-|----------|---------|
-| Rate (Beta mapping) | 91.7% |
-| TTFS (Log) | 89.2% |
-| Binary (10-bit) | 89.6% |
-| Multi-threshold Delta | 89.8% |
-
-### 3.3 Latency Impact
-

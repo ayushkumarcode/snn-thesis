@@ -138,3 +138,31 @@ class CombinedEnergySNN(nn.Module):
 
                 if curr_pred == prev_pred:
                     stable_count += 1
+                else:
+                    stable_count = 1
+                prev_pred = curr_pred
+
+                if (mean_conf > early_exit_thresh and
+                        stable_count >= stability_k):
+                    exit_step = step + 1
+                    break
+
+        if len(spk_rec) == 0:
+            # All steps were gated — return zeros
+            B = x.shape[1]
+            spk_rec = [torch.zeros(B, NUM_CLASSES, device=device)]
+            mem_rec = [torch.zeros(B, NUM_CLASSES, device=device)]
+
+        # Normalize spike rates
+        if active_steps > 0:
+            for k in layer_spikes:
+                layer_spikes[k] = layer_spikes[k] / max(active_steps, 1)
+
+        exit_info = {
+            "active_steps": active_steps,
+            "total_steps": self.num_steps,
+            "exit_step": exit_step,
+            "energy_ratio": active_steps / self.num_steps,
+        }
+
+        return (torch.stack(spk_rec), torch.stack(mem_rec),

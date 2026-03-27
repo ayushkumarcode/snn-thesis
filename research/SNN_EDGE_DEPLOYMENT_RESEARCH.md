@@ -138,3 +138,31 @@ honestly, the most valuable thesis contribution would be measuring both SNN and 
 
 ### Purdue Polytechnic capstone: FPGA SNN lane-following robot
 - undergraduate capstone (senior project)
+- SNN controller for autonomous lane-following with obstacle avoidance
+- FPGA (Xilinx board): 4 input neurons -> 16 synapses -> 4 hidden -> 8 synapses -> 2 output neurons
+- functional lane-following with SNN replacing binary logic controller
+
+### Washington University CSE462M (Spring 2025): SNNs on FPGAs
+- undergrad course project
+- PYNQ-Z2 (Xilinx Zynq XC7Z020)
+- key finding: initial single neuron used 13% of LUTs at 32-bit fixed-point; optimized to Q2.6 (8-bit), dramatically reducing to ~28 LUTs/neuron
+- precision vs resource tradeoff is the critical design decision
+
+### UCSD CSE237D: PYNQ SNN accelerator
+- graduate course project (achievable scope for strong undergrads)
+- PYNQ-Z1 (Xilinx Zynq)
+- SNN inference accelerator on FPGA
+
+### other relevant projects
+- [ANN-vs-SNN comparison](https://github.com/NicolaCST/ANN-vs-SNN): benchmarking performance and power, could be extended with hardware measurements
+- [SNN Arduino Library](https://github.com/RishabhMalviya/SNN_Arduino): LIF neurons for Arduino-based robots, liquid state machine paradigm
+
+---
+
+## 5. FPGA deployment for undergrads
+
+### is it feasible? yes, with the right approach
+
+**what makes it feasible:**
+- Spiker+ auto-generates VHDL from Python -- no hand-written HDL
+- ISFPGA 2024 workshop provides complete bitstream and scripts

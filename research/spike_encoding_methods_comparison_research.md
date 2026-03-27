@@ -474,3 +474,31 @@ yes, pretty clearly. the evidence:
 
 ### Experimental Matrix
 
+| Encoding | MNIST | CIFAR-10 | SHD (Audio) | Sensor (TBD) |
+|----------|-------|----------|-------------|---------------|
+| Rate (Poisson) | X | X | X | X |
+| Latency (TTFS) | X | X | X | X |
+| Delta | X | X | X | X |
+| Phase | X | X | X | X |
+| Burst | X | X | X | X |
+| GRF Population | X | X | X | X |
+| Direct (Learned) | X | X | X | X |
+
+= 7 encodings x 4 datasets x 5+ metrics x 3 repetitions = 420+ experiment runs
+
+each MNIST/Fashion-MNIST run takes ~5-15 min. CIFAR-10 ~30-60 min. SHD ~15-30 min. total: roughly 50-100 GPU-hours, doable on a personal GPU or free Colab over several weeks.
+
+---
+
+## Key Papers
+
+| # | Authors | Year | Title | Venue | Encodings Covered |
+|---|---------|------|-------|-------|-------------------|
+| 1 | Guo et al. | 2021 | Neural Coding in SNNs: A Comparative Study | Frontiers in Neuroscience | Rate, TTFS, Phase, Burst |
+| 2 | Kim et al. | 2022 | Rate Coding or Direct Coding: Which One is Better? | ICASSP 2022 | Rate, Direct |
+| 3 | Forno et al. | 2022 | Spike encoding for IoT time-varying signals | Frontiers in Neuroscience | Rate variants, Temporal variants |
+| 4 | Bian et al. | 2024 | Evaluation of Encoding Schemes on Sensor Signal | arXiv | Rate, TTFS, Binary, Delta |
+| 5 | Plank et al. | 2022 | Evaluating Encoding and Decoding for Neuromorphic Systems | ICONS (ACM) | Rate, Temporal, Population |
+| 6 | Vasilache et al. | 2025 | PyTorch-Compatible Spike Encoding Framework | arXiv | LIF, SF, PWM, BSA |
+| 7 | Auge et al. | 2021 | Survey of Encoding Techniques for SNNs | Neural Processing Letters | All major categories |
+| 8 | Petro et al. | 2019 | Selection and Optimization of Temporal Spike Encoding | IEEE TNNLS | BSA, SF, SW, other temporal |

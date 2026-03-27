@@ -110,3 +110,31 @@ class CombinedEnergySNN(nn.Module):
 
             pooled = self.avg_pool(spk2)
             flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, m3 = self.n3(cur3, m3, step)
+            layer_spikes["fc1"] = layer_spikes["fc1"] + spk3.mean()
+
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, m4 = self.n4(cur4, m4, step)
+
+            spk_rec.append(spk4)
+            mem_rec.append(m4)
+
+            # Early exit check
+            if early_exit_thresh is not None and not self.training:
+                if cum_mem is None:
+                    cum_mem = m4.clone()
+                else:
+                    cum_mem = cum_mem + m4
+                probs = F.softmax(cum_mem, dim=1)
+                max_conf, pred = probs.max(dim=1)
+
+                # Check stability across batch
+                mean_conf = max_conf.mean().item()
+                curr_pred = pred[0].item()
+
+                if curr_pred == prev_pred:
+                    stable_count += 1

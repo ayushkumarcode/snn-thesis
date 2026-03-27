@@ -447,31 +447,3 @@ Based on all evidence gathered, here is a prioritised action guide for targeting
 | 5 | Thorough, well-synthesised literature review | Moderate-High (part of report mark) | Must identify gap/motivation clearly |
 | 6 | Produce a professional, clear screencast | Moderate (15% of total) | Easy marks if done well; hard to recover if done poorly |
 | 7 | Show independence and self-direction | Moderate (implicit in all marks) | Distinguishes First from 2:1 |
-| 8 | Demonstrate originality/novelty | Low-Moderate (bonus, not required) | Nice to have, not expected for a First |
-
----
-
-## 8. RESEARCH GAPS AND CONFIDENCE ASSESSMENT
-
-### What I Could Not Find
-- The specific COMP30040 project_assessment.pdf document from Manchester Canvas (requires login). This document reportedly contains the detailed grade descriptors for your exact course. **ACTION: Download this from Canvas immediately and study it.**
-- Detailed internal rubrics from Bristol (COMS30044) and Edinburgh (INFR10044) for undergraduate projects specifically -- these are behind institutional logins.
-- York Computer Science UG3 project marking criteria (requires authentication at york.ac.uk).
-- Exact percentage weighting for literature review vs implementation vs evaluation within the Manchester report mark.
-
-### Confidence Levels
-- **High confidence:** Manchester COMP30040 component weightings (55/30/15) -- directly from your course documents.
-- **High confidence:** Cambridge sub-category breakdown (30/45/25) -- from official department website.
-- **High confidence:** Publishable results NOT expected from undergraduates -- consistent across all sources.
-- **High confidence:** Evaluation quality is the key differentiator between grade bands -- universal finding.
-- **Moderate confidence:** Synthesised "typical" percentage breakdown across dimensions -- inferred from multiple schemes, not directly stated by most universities.
-- **Moderate confidence:** Imperial and Cardiff criteria apply similarly to UG as to MSc -- some criteria documents were MSc-specific.
-
----
-
-## 9. RECOMMENDED FOLLOW-UP ACTIONS
-
-1. **Download project_assessment.pdf from Manchester Canvas** -- this is the most important document you can read. It contains the detailed marking criteria specific to COMP30040.
-
-2. **Study past Manchester dissertations** -- look at previous COMP30040 projects that achieved high marks. The Q&A document mentions previous screencasts are available on Blackboard; there may also be exemplar reports.
-

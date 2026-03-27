@@ -335,31 +335,3 @@ The word "hypothesis" is notable -- it suggests Manchester values projects that 
 Source: [Cambridge Part II Projects](https://www.cst.cam.ac.uk/teaching/part-ii/projects)
 
 ### 5.3 University of Edinburgh (Informatics)
-
-**Assessment:** Holistic marking using Common Marking Scheme (A1-H bands)
-
-**Grade Bands:**
-- A1 (90-100): "Often faultless. Well beyond that expected."
-- A2 (80-89): "Truly scholarly and/or professional, often with an absence of errors."
-- A3 (70-79): "Comprehensive material, good command of subject, deep thinking, some personal creativity."
-- B (60-69): "Firm grasp but may be gaps. Shows initiative, sound conclusions with minor weaknesses."
-- C (50-59): "Sound but limited knowledge. Adequate understanding, limited analysis."
-- D (40-49): "Basic knowledge with potential inaccuracies. Superficial understanding."
-
-**UG4 Degree Weighting:** Years 3 and 4 are equally weighted (50% each).
-
-Source: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme)
-
-### 5.4 Imperial College London (Computing)
-
-**Assessment Dimensions (equally weighted):**
-1. Technical Achievement
-2. Background Research
-3. Quality of Dissertation
-
-**Grade Bands:**
-- Distinguished (D*): 85-100% -- Exceptional work
-- Distinction (D): 73-84% -- "Significant breadth and depth", outstanding implementation or theoretical work
-- Merit (M): 63-67% -- "Both breadth and depth", high technical competence, at least moderate risk
-- Pass (P): 53-57% -- Competence in "well defined, moderately low-risk problems"
-

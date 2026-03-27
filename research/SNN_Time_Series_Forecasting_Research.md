@@ -430,31 +430,3 @@ This would produce a valid contribution because **no systematic comparison using
 
 7. **Univariate vs multivariate comparison**: Limited investigation of when SNNs help vs hurt on univariate time series.
 
-8. **Explainability**: Only NeuCube offers explainability. Spike timing patterns in forecasting models have not been interpreted.
-
----
-
-## 11. Confidence Assessment
-
-| Finding | Confidence |
-|---------|-----------|
-| SNNs achieve comparable accuracy to ANNs on standard benchmarks | **HIGH** -- Demonstrated at ICML 2024, ICLR 2025 with code |
-| SNNs achieve 60-99% energy savings | **HIGH** -- Consistently reported, but mostly theoretical calculations |
-| Long-range dependency remains a challenge for SNNs | **HIGH** -- Confirmed by critical survey (Feb 2025) |
-| Financial/weather domains are under-explored | **HIGH** -- Verified by exhaustive search |
-| The field is emerging and timely | **HIGH** -- First top-venue paper was February 2024 |
-| Undergraduate thesis is feasible | **MEDIUM-HIGH** -- Depends on PyTorch experience and supervisor support |
-| Encoding strategy matters significantly | **MEDIUM** -- Suggested by multiple papers but not rigorously compared |
-| Real hardware energy savings match theoretical | **LOW** -- Almost no real hardware deployment reported |
-
----
-
-## 12. Recommended Follow-ups
-
-1. Read the SeqSNN (ICML 2024) paper in full -- it is the most complete reference
-2. Clone and run the SeqSNN repository to verify it works on your machine
-3. Work through snnTorch tutorials 1, 5, and the regression tutorials
-4. Download ETTh1/ETTh2 and Weather datasets from https://github.com/zhouhaoyi/ETDataset
-5. Check OpenReview for ICLR 2025 reviews of TS-LIF to understand reviewer concerns
-6. Look at the TS-LIF ICLR poster for concise architecture overview: https://iclr.cc/virtual/2025/poster/28210
-7. Read the "Practical Tutorial on SNNs" (Preprints.org, Sept 2025) for implementation guidance

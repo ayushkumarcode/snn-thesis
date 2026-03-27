@@ -68,20 +68,20 @@ SNN: direct, fold 4 (53.75% clean). ANN: fold 4 (68.75% clean).
 | 0.30 | 20.75% | 0.75% | 1.25% | 0.00% |
 
 Source: `results/adversarial/robustness_fold4.json`. PGD may overestimate SNN robustness (Wang et al. 2025 caveat).
-*Source: `results/adversarial/robustness_fold4.json`.*
-*Note: PGD results may overestimate SNN robustness due to vanishing surrogate gradients (Wang et al. 2025). FGSM results are more reliable.*
 
-### A.5 NeuroBench Energy Analysis (5-Fold Validated)
+### A.5 NeuroBench energy (5-fold validated)
 
 | Metric | SNN (direct) | ANN |
 |--------|-------------|-----|
 | Effective ACs/sample | 1,080,000 | 0 |
 | Effective MACs/sample | 0 | 101,000 |
 | Dense SynOps/sample | 50,688,000 | 101,000 |
-| Energy/sample (sim.) | **968 ± 37 nJ** (AC × 0.9 pJ) | **454 ± 11 nJ** (MAC × 4.6 pJ) |
+| Energy/sample (sim) | 968 +/- 37 nJ | 454 +/- 11 nJ |
 | ActivationSparsity | 74.16% | 59% |
 | Model footprint | 2.49 MB | 2.49 MB |
 | ConnectionSparsity | 0.00% | 0.00% |
+
+Source: `results/neurobench/analysis_fold{1-5}.json`. AC = 0.9 pJ, MAC = 4.6 pJ (45nm CMOS, Yik et al. 2025).
 
 *Source: `results/neurobench/analysis_fold{1-5}.json` (5-fold validated).*
 *Energy per AC = 0.9 pJ (8-bit ADD at 45nm CMOS), Energy per MAC = 4.6 pJ (8-bit MAC at 45nm CMOS), per Yik et al. 2025 NeuroBench defaults.*

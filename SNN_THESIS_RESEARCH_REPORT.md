@@ -539,31 +539,3 @@ Test: Single FC + LIF layer, batch=16, 500 time steps, n neurons:
 | 2 | The Leaky Integrate and Fire Neuron | LIF model fundamentals | Yes |
 | 3 | A Feedforward Spiking Neural Network | Building basic SNN architecture | Yes |
 | 4 | 2nd Order Spiking Neuron Models | Synaptic, Alpha neuron models | Yes |
-| 5 | Training SNNs with snnTorch | Backprop through time, loss functions | Yes |
-| 6 | Surrogate Gradient Descent in a Conv SNN | Convolutional SNN on MNIST | Yes |
-| 7 | Neuromorphic Datasets with Tonic + snnTorch | Loading DVS data with Tonic library | Yes |
-
-**Advanced Tutorials:**
-
-| Tutorial | Title | Topic |
-|----------|-------|-------|
-| Population Coding | Population Coding Methods | Multi-neuron encoding |
-| Regression I | Membrane Potential Learning with LIF | Regression tasks |
-| Regression II | Regression-based Classification with Recurrent LIF | Recurrent architectures |
-| Binarized SNNs | Binarized Spiking Neural Networks | Binary weight optimization |
-| IPU Acceleration | Accelerating snnTorch on IPUs | Hardware acceleration |
-| Forward-Forward | Forward-Forward Algorithm for SNNs | Alternative to backprop |
-
-**Domain-Specific Tutorials:**
-
-| Tutorial | Title | Domain |
-|----------|-------|--------|
-| Exoplanet Hunter | Finding Planets Using Light Intensity | Astronomy/time series |
-| ST-MNIST | Spiking-Tactile MNIST Dataset | Tactile neuromorphic data |
-
-### Recommended Learning Path for Thesis
-1. Tutorials 1-3 (fundamentals, ~4 hours)
-2. Tutorials 5-6 (training, ~4 hours)
-3. Tutorial 7 (neuromorphic datasets, ~2 hours)
-4. Then branch to your specific project direction
-

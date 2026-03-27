@@ -82,3 +82,14 @@ the principal risk is framing: if the paper leads with 47.15% rather than the ga
 3. adversarial with Wang et al. caveat foregrounded (not buried)
 
 ### summary table
+
+| Contribution | Novelty | Risk | Notes |
+|---|---|---|---|
+| First SNN on ESC-50 | Strong | Low | watertight, confirmed by 2 surveys + competitor |
+| 7-encoding comparison | Strong | Low | most comprehensive in audio SNN |
+| PANNs gap collapse | Strong | Low | central scientific contribution, must be centrepiece |
+| SpiNNaker deployment | Strong (at ICONS) | Moderate | frame as characterisation |
+| Adversarial robustness | Moderate-Strong | Moderate | Wang et al. caveat must be addressed |
+| NeuroBench energy | Moderate | Low | correct application, honest framing |
+| Surrogate ablation | Weak-Moderate | Low | useful but not primary |
+| Continual learning | Weak | Low | secondary result only |

@@ -188,31 +188,3 @@ This means:
 | **Author** | Andrew Mundy |
 | **Year** | 2016 |
 | **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | James Garside (main), Steve Furber (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/real-time-spaun-on-spinnaker-functional-brain-simulation-on-a-mas |
-| **Abstract** | Achieves real-time execution of Spaun (2.5M neuron functional brain model) on SpiNNaker. 9000x speed-up over previously reported results. Only 5% of cores previously needed. Novel routing table optimization. |
-| **What They Built** | Real-time Spaun brain model on SpiNNaker; memory/compute reduction; routing table optimization |
-| **Tools/Frameworks** | SpiNNaker, Neural Engineering Framework (NEF), Spaun model |
-| **Datasets** | Spaun model benchmarks |
-| **Scope** | Extremely high -- 9000x speedup of complete brain model |
-| **PDF Size** | 4.77 MB |
-
----
-
-### 1.11 Biologically Inspired Neural Computation
-| Field | Detail |
-|-------|--------|
-| **Author** | Adam Perrett |
-| **Year** | 2022 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | Steve Furber (main), Oliver Rhodes (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/biologically-inspired-neural-computation |
-| **Abstract** | Contrasts biological learning with current ML. Three areas: (1) biologically-inspired visual attention on SpiNNaker; (2) e-prop learning algorithm implementation; (3) gradient-descent-free architecture using dendritic abstractions with neurogenesis, achieving comparable performance to Adam optimizer. |
-| **What They Built** | Visual attention model on SpiNNaker, e-prop implementation, neurogenesis-based learning architecture |
-| **Tools/Frameworks** | SpiNNaker, iCub robot platform |
-| **Datasets** | General benchmarks |
-| **Scope** | Very high -- three distinct research contributions |
-| **PDF Size** | 20 MB |
-

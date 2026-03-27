@@ -1,17 +1,17 @@
-# Chapter 8: Conclusion and Future Work
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 8: conclusion and future work
+
+wrapping it all up. need to restate contributions clearly, answer each RQ directly, and give future directions.
 
 ---
 
-## 8.1 Summary of Contributions
+## 8.1 contributions
 
-This thesis has made six original contributions to the literature on spiking neural networks for audio classification:
+Six original contributions:
 
-**C1: First convolutional SNN evaluation on ESC-50.**
-A convolutional SNN (SpikingCNN: 2 conv blocks + 2 FC layers, 622K parameters) achieves 47.15% ± 4.50% on the ESC-50 benchmark (50-class, 5-fold cross-validation). This is the first published result for a convolutional SNN on the full ESC-50 benchmark. Prior work (Larroza et al. 2025) used fully-connected networks on 10 of 50 classes only.
+**C1: First conv SNN evaluation on ESC-50.** SpikingCNN (2 conv + 2 FC, 622K params) gets 47.15% +/- 4.50% on ESC-50 (50 classes, 5-fold). First published conv SNN result on the full benchmark. Prior work (Larroza et al. 2025) used FC-only on 10/50 classes.
 
-**C2: Systematic spike encoding comparison for audio.**
-Seven encoding methods are evaluated under identical experimental conditions: direct (47.15%), rate (24.00%), phase (24.15% ± 1.66%), population (19.15% ± 2.79%), latency (16.30%), delta (7.25%), and burst (6.50% ± 1.54%, near-chance). The ordering **direct > rate ≈ phase > population > latency >> delta ≈ burst** is explained by the information preservation principle: encodings that better retain spectrogram magnitude and temporal structure achieve higher accuracy. The near-equality of rate and phase coding (0.15 pp difference) is a novel finding: deterministic single-spike timing achieves equivalent information content to stochastic multi-spike counting at T=25 timesteps. Population coding (19.15%) underperforms rate/phase despite 10× more output neurons — the MSE count loss formulation is harder to optimise than cross-entropy rate loss. This is the most comprehensive encoding comparison for any audio SNN benchmark in the published literature.
+**C2: Systematic encoding comparison for audio.** Seven methods under identical conditions: direct (47.15%), rate (24.00%), phase (24.15%), population (19.15%), latency (16.30%), delta (7.25%), burst (6.50%). Ordering explained by information preservation. Rate/phase near-equality (0.15 pp) is novel: deterministic 1-spike timing ~ stochastic ~7-spike counting at T=25. Population underperforms despite 10x output neurons due to MSE loss difficulty. Most comprehensive audio SNN encoding comparison in published literature.
+
 
 **C3: First SNN deployment on SpiNNaker for environmental sound.**
 A trained SpikingCNN is partially deployed on a SpiNN-5 SpiNNaker board using a validated FC2-only hybrid approach. The deployment achieves 40% accuracy (20-sample pilot, Run 5); 400-sample validation (Run 6, fold 4) achieves **43.0% SpiNNaker accuracy vs 51.25% snnTorch (8.25 pp gap)**. Five-fold cross-validation (2,000 total inferences) yields **33.1% ± 6.9% SpiNNaker mean accuracy** vs 46.0% snnTorch reference (hardware gap: 12.8 ± 4.1 pp) — the first published deployment of any SNN trained on environmental sound recordings to neuromorphic hardware, and the first 5-fold cross-validated SpiNNaker result for any audio classification task. The FC1 cancellation problem (AvgPool producing fractional outputs that break SpiNNaker's spike-only compute model) is documented as a new and practically important failure mode for neuromorphic deployment of spiking CNNs.

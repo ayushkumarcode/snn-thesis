@@ -222,3 +222,31 @@ key findings:
 | Project | Scope | Result |
 |---------|-------|--------|
 | Shape Detector SNN (Manchester BSc) | Single-layer SNN for shapes | Clean, 107 commits |
+| Musical Pattern SNN (BEng) | Audio pattern recognition | "Only small portion achieved" |
+| SNN for Digit Recognition (KCL) | MNIST classification | Successful |
+| **SNN for Sentiment** | **Binary text classification** | **Higher novelty, similar complexity** |
+
+---
+
+## simpler NLP tasks that could work
+
+### tier 1: most feasible (recommended)
+
+**binary sentiment analysis (IMDB or SST-2)**
+- clear pos/neg labels, large datasets, proven SNN results
+- expected accuracy: ~80-88% (vs ~90-93% for ANNs)
+- code: https://github.com/Lvchangze/snn
+
+**spam detection**
+- even simpler -- highly separable classes
+- datasets: SMS Spam Collection (5,574 messages), Enron
+- expected accuracy: should exceed 90%
+- no existing SNN spam detection paper found -- this would be novel
+
+### tier 2: moderately feasible
+
+**subjectivity classification** -- binary task, proven results (90.60% on Subj dataset)
+
+**news topic classification (binary subset)** -- take AG News or 20 Newsgroups, reduce to 2 categories
+
+### tier 3: stretch goals

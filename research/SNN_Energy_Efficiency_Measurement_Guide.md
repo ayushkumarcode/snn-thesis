@@ -414,31 +414,3 @@ This accounts for spike routing, membrane state updates, leak operations, and ne
 ## 7. Can an Undergraduate Credibly Include Energy Analysis Without Hardware?
 
 ### Answer: YES, absolutely.
-
-Here is why:
-
-1. **It is what the majority of published papers do.** The Tier 1 (SOP-based) methodology is used by papers at the top conferences (CVPR, ICLR, NeurIPS, ECCV). If it is good enough for peer review at these venues, it is good enough for an undergraduate thesis.
-
-2. **NeuroBench makes it trivial.** With `pip install neurobench`, you can compute standardised energy proxy metrics in a few lines of code. This framework was published in Nature Communications.
-
-3. **You are estimating, not measuring.** Frame it correctly in your thesis: "We *estimate* energy consumption using the standard synaptic operations methodology (Horowitz 2014; Lemaire et al. 2022)" -- not "we *measure* energy consumption."
-
-4. **Critical analysis adds value.** Discussing the limitations of software-based estimation (assumptions about hardware, memory hierarchy, etc.) shows methodological awareness that many published papers lack.
-
-### What Would Make It Even More Credible
-
-- Use NeuroBench for standardised metrics
-- Report results in a clear table with controlled variables
-- Include firing rate analysis per layer
-- Show energy vs accuracy tradeoff (vary T, threshold)
-- Acknowledge limitations in a dedicated discussion subsection
-- Cite the critical papers (Kundu et al. 2023, Shen et al. 2024) that question SNN efficiency claims
-- Compare against a properly trained ANN baseline (not a strawman)
-
-### What NOT to Do
-
-- Do not claim "our SNN is X times more energy efficient" without specifying the assumptions
-- Do not ignore timestep overhead
-- Do not compare against an unoptimised ANN
-- Do not claim hardware-level energy savings from a software simulation
-- Do not ignore memory access costs entirely (at least acknowledge them)

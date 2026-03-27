@@ -124,20 +124,20 @@ Frozen CNN14 [6] embeddings (2048-d), 3-layer SNN head.
 |-------|------|-----|
 | PANNs + SNN | **92.50%** | 1.30% |
 | PANNs + ANN | 93.45% | 1.54% |
-|-------|----------|-------|
-| PANNs + SNN head | **92.50%** | 1.30% |
-| PANNs + ANN head | 93.45% | 1.54% |
 | PANNs + Linear | 93.80% | 1.69% |
 
-The SNN-ANN gap collapses from 16.7 pp to <1 pp. This demonstrates the SNN architecture can learn competitive classifiers from rich features; the bottleneck in scratch training is feature learning from raw spectrograms, not spiking computation itself.
+Gap collapses from 16.7 pp to <1 pp. SNN can classify competitively when given good features. The scratch-training gap is feature learning, not spiking computation.
 
 ---
 
-## 5. Adversarial Robustness
+## 5. Adversarial robustness
 
-We attack both models with FGSM [11] and PGD [12] (torchattacks, fold 4 test set, 400 samples) across 7 epsilon values. Prior work shows SNNs exhibit inherent adversarial robustness from discrete spike encoding [10]; we conduct the first such analysis on audio spectrograms.
+FGSM [11] and PGD [12] (torchattacks, fold 4, 400 samples), 7 epsilon values. First such analysis on audio SNNs.
 
-**Table: Accuracy (%) under adversarial attack**
+| eps | FGSM SNN | FGSM ANN | PGD SNN | PGD ANN |
+|-----|----------|----------|---------|---------|
+| 0.00 | 53.75% | 68.75% | 53.75% | 68.75% |
+| 0.01 | 37.50% | 22.50% | 23.50% | 14.75% |
 
 | ε | FGSM SNN | FGSM ANN | PGD SNN | PGD ANN |
 |---|---------|---------|---------|---------|

@@ -222,3 +222,31 @@ Note: these energy numbers are estimated from synaptic operation counts, not mea
 - Most papers estimate energy using synaptic operation counts and assumed hardware energy costs. True measurements require actual neuromorphic hardware.
 - An undergrad thesis can credibly argue energy efficiency using SOP counting methodology -- that's standard practice in the field.
 
+The thesis narrative would be something like: keyword spotting must run continuously on edge devices with strict power budgets (smartwatches, hearing aids, IoT sensors). SNNs can exploit temporal sparsity in audio and event-driven computation. If you can show competitive accuracy (>95%) with 5-55x fewer synaptic operations than equivalent ANNs, that projects significant energy savings on neuromorphic hardware.
+
+---
+
+## Would This Work as an Undergrad Thesis?
+
+i think so. Here's the breakdown:
+
+| Factor | Assessment | Notes |
+|--------|-----------|-------|
+| Novelty | Strong | SNN audio is active but many angles unexplored |
+| Feasibility | Strong | Frameworks, code, tutorials all available |
+| Scope | Well-defined | Clear benchmarks (SHD, GSC) with published baselines |
+| Literature | Abundant | 50+ relevant papers, several surveys |
+| Code availability | Good | Multiple complete implementations |
+| Compute needs | Moderate | SHD trainable on single GPU in hours; GSC in a day |
+| Learning curve | Moderate | Need PyTorch proficiency + SNN concepts |
+| Originality opportunity | Good | See below |
+| Industry relevance | Strong | Edge AI, smart devices, always-on audio |
+
+### Possible contributions (don't need to beat SOTA)
+
+1. **Neuron type comparison:** Compare LIF, RLIF, adLIF, RadLIF on SHD and GSC using identical experimental setup (using sparch)
+2. **Framework comparison:** Same model, different frameworks (snnTorch vs SpikingJelly vs Norse) -- compare training speed, accuracy, ease of use
+3. **Encoding study:** Compare Mel-spectrogram vs cochlea model vs rate coding for audio-to-spike conversion on GSC
+4. **Efficiency-accuracy tradeoff:** How does reducing timesteps, network size, or spike rates affect accuracy and estimated energy
+5. **Robustness study:** Test SNN keyword spotting under noise vs ANN baselines
+6. **Small-footprint models:** Competitive accuracy with very few parameters (following ED-sKWS direction)

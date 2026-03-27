@@ -334,3 +334,31 @@ reasons:
 | Energy-accuracy Pareto analysis | Study accuracy vs energy tradeoff across architectures | Low risk, high value |
 | Lightweight SNN for edge | Minimal SNN for real-time BCI on constrained hardware | Medium risk |
 
+### what would NOT be novel
+- just reproducing combra-lab/snn-eeg without extension or comparison
+- using a standard CNN on a standard dataset with no SNN component
+- lit review without implementation
+
+### recommended framing
+
+something like: "A evaluation of spiking neural network architectures for motor imagery EEG classification: accuracy, energy efficiency, and practical deployment"
+
+this lets you:
+- implement and compare 2-3 SNN approaches (basic LIF SNN, SCNet-style hybrid, attention-based NiSNN)
+- benchmark against CNN baselines (EEGNet)
+- evaluate on standard dataset (BCI IV-2a or PhysioNet)
+- analyze accuracy-energy tradeoff (novel contribution)
+- discuss implications for wearable BCI deployment
+- even negative results are useful
+
+---
+
+## 8. research gaps and opportunities
+
+### identified gaps
+
+1. **P300 classification with SNNs** -- very few dedicated papers. most P300 BCI work uses CNNs. an SNN-based P300 speller would be genuinely novel.
+
+2. **standardized SNN-EEG benchmarks** -- no MOABB equivalent for SNN-based BCI. papers use different preprocessing, splits, and metrics, making comparison hard.
+
+3. **cross-subject SNN generalization** -- most papers report within-subject. cross-subject transfer learning with SNNs is under-explored.

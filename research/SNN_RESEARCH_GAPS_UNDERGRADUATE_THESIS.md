@@ -166,3 +166,31 @@ the Open Neuromorphic benchmark (Feb 2024) tested 11 frameworks but only on a sy
 
 ## 5. single-paper domains (easy second data point)
 
+these are areas where only ONE substantial paper exists. a second study -- even a replication or extension -- is a genuine contribution.
+
+| Topic | What exists | What a 2nd paper could do | Effort |
+|-------|-----------|--------------------------|--------|
+| **SNN for satellite images** | SNN4Space (ESA) on EuroSAT/UC Merced | different architecture/framework, add a 3rd dataset | LOW |
+| **SNN for nonlinear regression** | Henkes, Eshraghian, Wessels (Royal Soc, 2024) | different regression benchmarks (Boston Housing, California Housing, energy). compare encodings. | LOW-MEDIUM |
+| **SNN for underwater detection** | SU-YOLO (2025) | different underwater datasets or compare with Spiking-YOLO | MEDIUM |
+| **SNN for fraud detection** | Bayesian-Opt 1D-CSNN on BAF (2024) | Kaggle Credit Card Fraud. compare with non-spiking baselines. | LOW |
+| **SNN for music pattern recognition** | mrahtz BEng thesis (2016, Brian2) | redo with modern snnTorch. use proper datasets (GTZAN, MagnaTagATune). | LOW-MEDIUM |
+| **SNN for driver distraction** | Spiking-DD (2024) | different driving datasets or architectures | MEDIUM |
+| **SNN for lip reading** | SpikGRU2+ on DVSLip (CVPR 2024 workshop) | different architecture on same dataset, or same approach on new dataset | MEDIUM |
+| **SNN for glacier segmentation** | snn-glacier-segmentation (GitHub, 0 stars) | any formal study would be the first peer-reviewed contribution | LOW-MEDIUM |
+| **SNN for sign language (event-based)** | DVS_Sign dataset with basic SNN | apply modern architectures (CSNN, transformer-based) | MEDIUM |
+| **SNN for 3D rendering (NeRF)** | SpiNeRF (Li et al., 2025) | any follow-up or comparison is novel | HIGH |
+
+---
+
+## 6. cross-domain transfers
+
+### vision methods to audio
+
+| Transfer | Idea | Effort |
+|----------|------|--------|
+| CSNN from image classification to audio spectrograms | take a proven CSNN from CIFAR-10, apply to ESC-50 or UrbanSound8K spectrograms | LOW |
+| data augmentation from vision to audio events | NDA tested only on vision; apply to SHD/SSC | LOW-MEDIUM |
+| spiking ResNet from ImageNet to SHD | transfer architecture, not weights | MEDIUM |
+
+### classification to regression

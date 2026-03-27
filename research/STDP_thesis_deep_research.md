@@ -502,3 +502,31 @@ Chapter 6: Conclusion and Future Work
 - [Diehl & Cook (2015) -- Unsupervised learning of digit recognition using STDP](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2015.00099/full)
 - [Masquelier & Thorpe (2007) -- Unsupervised learning of visual features through STDP](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030031)
 - [Kheradpisheh et al. (2018) -- STDP-based spiking deep CNNs](https://www.sciencedirect.com/science/article/abs/pii/S0893608017302903)
+
+### State-of-the-Art (2024-2025)
+- [Goupy et al. (NeurIPS 2024) -- Neuronal Competition Groups](https://arxiv.org/abs/2410.17066)
+- [Goupy et al. (2024) -- Paired competing neurons](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2024.1401690/full)
+- [Unsupervised post-training learning (Scientific Reports, 2025)](https://www.nature.com/articles/s41598-025-01749-x)
+- [Deep Unsupervised Learning Using STDP (arXiv, 2023)](https://arxiv.org/abs/2307.04054)
+
+### Reviews
+- [Three-factor learning review (Patterns/Cell Press, Nov 2025)](https://www.cell.com/patterns/fulltext/S2666-3899(25)00262-4)
+- [Modulated STDP review (Neurocomputing, 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0925231224019416)
+- [Fremaux & Gerstner (2016) -- Neuromodulated STDP](https://pmc.ncbi.nlm.nih.gov/articles/PMC4717313/)
+
+### Frameworks and Code
+- [BindsNET](https://github.com/BindsNET/bindsnet)
+- [SpykeTorch](https://github.com/miladmozafari/SpykeTorch)
+- [SpikeNN -- NeurIPS 2024 NCG code](https://github.com/ggoupy/SpikeNN)
+- [ngc-learn](https://ngc-learn.readthedocs.io/en/latest/)
+- [Brian2 Diehl & Cook example](https://brian2.readthedocs.io/en/2.9.0/examples/frompapers.Diehl_Cook_2015.html)
+- [Original Diehl & Cook code](https://github.com/peter-u-diehl/stdp-mnist)
+
+### Novel Directions
+- [Meta-learning in SNNs with R-STDP (Neurocomputing, Oct 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0925231224009445)
+- [SADP (arXiv, Jan 2026)](https://arxiv.org/html/2601.08526v1)
+- [Dendritic Localized Learning (ICML 2025)](https://arxiv.org/abs/2501.09976)
+- [TEXEL chip (Nature Communications, 2025)](https://www.nature.com/articles/s41467-025-61576-6)
+- [Wake-Sleep R-STDP for catastrophic forgetting](https://www.researchgate.net/publication/397358146_Wake-Sleep_Learning_in_R-STDP-Based_Spiking_Neural_Networks_to_Avoid_Catastrophic_Forgetting)
+
+### Audio and Event-Based Vision

@@ -54,3 +54,31 @@ class TernaryQuantize(torch.autograd.Function):
 
 class TernaryConv2d(nn.Module):
     """Conv2d with ternary weights during forward pass."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        self.conv = nn.Conv2d(*args, **kwargs)
+        self.threshold = 0.05
+
+    def forward(self, x):
+        tw = TernaryQuantize.apply(self.conv.weight, self.threshold)
+        return F.conv2d(x, tw, self.conv.bias, self.conv.stride,
+                        self.conv.padding)
+
+
+class TernaryLinear(nn.Module):
+    """Linear with ternary weights during forward pass."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        self.linear = nn.Linear(*args, **kwargs)
+        self.threshold = 0.05
+
+    def forward(self, x):
+        tw = TernaryQuantize.apply(self.linear.weight, self.threshold)
+        return F.linear(x, tw, self.linear.bias)
+
+
+class TernarySNN(nn.Module):
+    """SNN with ternary quantized weights."""
+

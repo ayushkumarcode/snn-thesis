@@ -208,20 +208,20 @@ Augmented SNN drops 6.40 pp and variance goes from 4.50% to 16.03% -- the opposi
 
 **Why augmentation hurts SNNs more:** the LIF threshold interacts badly with mean-value masked inputs. When a freq band is masked to the mean, it produces a spike pattern thats neither "present" nor "absent" -- its constant undifferentiated current that competes with discriminative signal over 25 timesteps. ANN's ReLU handles mean-value infill better (just processes it continuously). For the SNN, masked regions contribute current that competes with the real signal.
 
-**Root cause analysis:**
+**Conclusion:** augmentation (SpecAugment + TimeShift, patience=10) is **not recommended** for conv SNNs on small audio datasets. Mean accuracy drops and variance triples. But fold 4 exception (+9.75 pp) suggests with longer patience (20-30) and smaller masks (F=4, T=10) it could work. Future work.
 
-1. **Early stopping is too aggressive for augmented training.** SNN folds 3 and 5 stopped at epochs 39 and 33 respectively — before convergence. At ep 39 (fold 3), training accuracy was only 26.4%, far from plateau. Augmentation slows convergence by increasing input diversity, requiring more epochs for the model to find stable representations. With patience=10 and a harder loss landscape, early stopping fires prematurely on some folds. The result is bimodal: folds where learning accelerated past the patience threshold (folds 1, 2, 4) get reasonable results; folds where early plateaus triggered early stopping (folds 3, 5) get near-chance accuracy.
+**Baseline SNN (47.15%) remains primary result.** Augmented SNN (40.75%) documented as negative result.
 
-2. **Small dataset + aggressive augmentation = information loss.** With only 1,600 training samples per fold, SpecAugment's frequency and time masking removes a substantial fraction of the discriminative spectral content. For a 64-mel × 216-frame spectrogram, masking 2 frequency bands of 8 bins each removes 25% of mel bins; masking 2 time windows of 20 frames removes 18% of time. For sounds with compact spectral features (insects, glass_breaking), masking can remove the entire diagnostic region in a given epoch. The ANN, being more data-efficient with ReLU activations, handles this better than the SNN's threshold-based LIF neurons.
+---
 
-3. **Fold 4 is a genuine exception.** SNN fold 4 jumped from 54.00% (baseline) to 63.75% (augmented) — a +9.75 pp gain, the highest SNN fold accuracy recorded in this study. This is not noise: fold 4 ran for the full 100 epochs and reached training accuracy 80.2% at ep 100 with best test at ep 90 (63.75%). Fold 4's composition apparently benefits from augmentation, possibly because its test set contains more sounds where temporal position invariance is genuinely useful (door_knock, clock_tick, mouse_click — events that can occur at any point in the 5-second clip).
+## 4.5 statistical significance
 
-**Why augmentation hurts SNNs more than ANNs:**
-The LIF threshold introduces a hard non-linearity that interacts badly with masked spectrogram inputs. When a frequency band is masked to the mean value, it produces a spike pattern that is neither "present" nor "absent" in the same way a clean spectrogram produces. The mean-value mask creates a constant, non-discriminative input signal that can mislead the LIF membrane potential integration across 25 timesteps. The ANN's ReLU activations are better calibrated to handle mean-value infill (the value is simply processed continuously). For the SNN, the masked region contributes undifferentiated current that competes with the discriminative signal from unmasked regions.
+SNN-ANN gap is 16.70 pp. Significance via paired tests on 5 fold accuracies:
 
-**Conclusion:** Data augmentation as implemented here (SpecAugment + TimeShift, patience=10 early stopping) is **not recommended** for convolutional SNNs on small audio datasets. The mean accuracy decrease (−6.40 pp SNN, −2.15 pp ANN) and dramatically increased variance rule it out as an improvement strategy. However, the fold 4 exception (+9.75 pp) suggests that with longer patience (patience=20–30) and fold-specific augmentation strength, augmentation could be beneficial for specific data distributions. Future work should use patience=20 and reduce mask widths to F=4, T=10 for small-dataset SNN training.
-
-**The baseline SNN (47.15%) remains the primary result for all subsequent analyses.** The augmented SNN (40.75%) is documented as a negative result with mechanistic explanation.
+| Test | Statistic | p-value | Significant? |
+|------|-----------|---------|--------------|
+| Paired t-test (two-sided) | t = 8.64 | p = 0.0010 | yes (p < 0.01) |
+| Wilcoxon signed-rank | W = 0.0 | p = 0.0625 | no (p > 0.05) |
 
 ---
 

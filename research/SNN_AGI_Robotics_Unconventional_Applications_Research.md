@@ -586,3 +586,31 @@ Only found one relevant paper: [Cost-Effective On-Device Sequential Recommendati
 | Recommendation Systems | 1-2 | Very High | YES | Low-Moderate | NO -- NEW |
 
 ---
+
+## Part 4: Cross-cutting analysis and recommendations
+
+---
+
+### Truly new directions not previously covered
+
+Based on cross-referencing with all existing research files, these are the genuinely new findings:
+
+| Rank | Direction | Novelty | Feasibility | Risk |
+|---|---|---|---|---|
+| 1 | **SNN for Continual Learning (Split-MNIST)** | Moderate-High | Moderate-High | Moderate (needs novel angle) |
+| 2 | **SNN for Image Denoising** | Very High | Moderate-High | Moderate (architecture complexity) |
+| 3 | **SNN for Robotic Arm Control (MuJoCo)** | Moderate | Moderate | Moderate (RL instability) |
+| 4 | **SNN for Privacy/Federated Learning** | Very High | Low-Moderate | High (complexity) |
+| 5 | **SNN for Obstacle Avoidance RL** | Low-Moderate | Moderate-High | Moderate (well-trodden) |
+
+---
+
+### Detailed plans for top 3 new candidates
+
+#### Candidate A: SNN for Continual Learning
+
+Week-by-week plan:
+- Week 1: snnTorch MNIST baseline (Tutorial 5), implement Split-MNIST data loader
+- Week 2: Measure baseline catastrophic forgetting, implement EWC for SNN
+- Week 3: Implement experience replay for SNN, run experiments
+- Week 4: ANN comparison, energy analysis, write-up

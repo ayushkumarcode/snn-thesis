@@ -52,31 +52,3 @@ The Bjorndahl et al. (2024) paper is particularly relevant: they found that **la
 ## 2. Combining Event Camera Data + Conventional Camera Data
 
 **Yes -- this is one of the most active areas in neuromorphic computing (2024-2025).**
-
-### Key Papers and Systems
-
-| Paper/System | Year | Task | Key Contribution |
-|---|---|---|---|
-| **SFDNet** | 2025 | Object Detection | Fully spiking RGB-event fusion detector with LIMF neuron; state-of-the-art on PKU-DAVIS-SOD |
-| **SSTFormer** | 2023-2025 | Frame-Event Recognition | Hybrid SNN-ANN with Memory Support Transformer for RGB + spiking event encoding |
-| **DSF-Net** | 2025 | High-Speed Detection | Dynamic sparse fusion of event-RGB via spike-triggered attention |
-| **SpikeFET** | 2025 | Object Tracking | First fully spiking frame-event tracker |
-| **SNNPTrack** | 2025 | RGBE Tracking | SNN-based prompt learning for RGB-Event tracking (ICASSP 2025) |
-| **RGB-Event Collision Prediction** | 2025 | Collision Prediction | Self-attention fusion for UAV collision prediction (IJCNN 2025) |
-
-### Technical Approach
-
-The standard pattern is:
-- **RGB branch**: Processes conventional camera frames (sometimes using ANN layers)
-- **Event branch**: Processes DVS event streams using spiking neurons (LIF/PLIF)
-- **Fusion module**: Combines features via attention, concatenation, or cross-modal mechanisms
-
-SSTFormer is notable because it has a **publicly available codebase** on GitHub (https://github.com/Event-AHU/SSTFormer) and a custom PokerEvent dataset with 114 classes and 27,102 frame-event pairs.
-
-### Sources
-- [SFDNet - MDPI Electronics](https://www.mdpi.com/2079-9292/14/6/1105)
-- [SSTFormer - arXiv](https://arxiv.org/abs/2308.04369)
-- [SSTFormer Code - GitHub](https://github.com/Event-AHU/SSTFormer)
-- [DSF-Net - ACM MM 2025](https://dl.acm.org/doi/10.1145/3746027.3755846)
-- [SpikeFET - arXiv](https://arxiv.org/pdf/2505.20834)
-- [RGB-Event Collision - IJCNN 2025](https://arxiv.org/html/2505.04258v2)

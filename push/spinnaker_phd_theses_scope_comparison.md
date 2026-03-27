@@ -82,3 +82,31 @@ confirmed: no Masters or PhD thesis has deployed an SNN on ESC-50 (or any enviro
 | Energy analysis | NeuroBench, AC/MAC | Sometimes | Rarely |
 | Surrogate ablation | 8 surrogates | Not done | Not done |
 | Continual learning | 5-task sequential + BWT | Not done | Not done |
+| ANN baseline | Full matched architecture | Sometimes | Sometimes |
+| 5-fold CV | All experiments | Varies | Rare for hardware |
+
+honestly looking at this table, our project is at Masters+ scope, approaching early-PhD scope. each of the 8-10 experimental threads could be a Masters thesis chapter by itself. typical SpiNNaker PhDs cover 1-2 dimensions deeply over 3-4 years. we're doing a lot of things at shallower depth but the breadth is unusual.
+
+---
+
+## Steve Furber & SpiNNaker 2
+
+- **Steve Furber**: retired, now Professor Emeritus. won 2022 Charles Stark Draper Prize.
+- **SpiNNaker 1**: operational but suffered cooling failure Easter 2025 (~80% capacity)
+- **SpiNNaker 2**: big upgrade -- 22nm FDSOI, 152 ARM Cortex-M4F cores/chip, 64 MAC accelerators, 2GB DRAM/chip
+- **TU Dresden** leads SpiNNaker 2 development (Christian Mayr)
+- **SpiNNcloud Systems GmbH**: first commercially available neuromorphic supercomputer (May 2024)
+- **Sandia National Labs**: deployed SpiNNaker2 for AI/national security (June 2025, ~175M neurons)
+- claims **18x energy efficiency** over GPUs
+
+### SpiNNaker 2 vs SpiNNaker 1
+
+| Feature | SpiNNaker 1 | SpiNNaker 2 |
+|---------|-------------|-------------|
+| Process | 130nm CMOS | 22nm FDSOI |
+| Cores/chip | 18 ARM968 | 152 ARM Cortex-M4F |
+| SRAM/core | 96KB | 128KB + 19MB total |
+| DRAM/chip | 128MB | 2GB |
+| ML accelerator | None | 64 MAC units |
+| Target scale | 1M cores | 10M cores |
+

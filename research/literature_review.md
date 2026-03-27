@@ -222,3 +222,11 @@ Based on all three papers, here's what i think the most viable project direction
 | **Multi-modal spiking network** | Combine event camera + audio in one SNN | Open problem, high novelty, but unclear if achievable |
 | **Spiking NLP** | Adapt SpikingBERT for a text task | Very new area, limited existing work to build on |
 
+---
+
+## Next Steps
+
+1. Read Paper 2 (applications review) -- skim the use cases, pick 2-3 that interest me
+2. Check dataset/tool availability for those use cases
+3. Read Paper 1 (large-scale survey) -- for shortlisted areas, check state-of-the-art and what's missing
+4. Commit to one direction and start scoping the MVP

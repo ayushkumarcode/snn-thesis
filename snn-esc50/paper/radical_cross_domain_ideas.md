@@ -1,15 +1,15 @@
-# Radical Cross-Domain Research: Novel Ideas for SNN Audio Classification
+# radical cross-domain ideas for SNN audio classification
 
-**Research Date:** 25 March 2026
-**Context:** Convolutional SNN for ESC-50, 47.15% accuracy (vs ANN 63.85%), deployed on SpiNNaker
-**Goal:** Identify ONE big novel finding that justifies a publication
+25 march 2026
+context: conv SNN for ESC-50, 47.15% accuracy (vs ANN 63.85%), deployed on SpiNNaker
+goal: find ONE big novel finding that justifies a publication
 
 ---
 
-## Executive Summary
+after a lot of reading across neuroscience, signal processing, physics, NLP, info theory, and hardware co-design, i came up with 18 ideas ranked by novelty potential. the top three:
 
-After exhaustive cross-domain research spanning neuroscience, signal processing, physics, NLP, information theory, and hardware co-design, I identified **18 radical ideas** ranked by their potential to create a genuinely novel contribution. The top three candidates are:
-
+1. **cochlear-inspired learnable frontend (Spiking-LEAF / IHC-LIF)** -- replace mel spectrogram with a bio-inspired cochlear model. published ICASSP 2024 but NEVER applied to environmental sound.
+2. **dendritic computation with multi-compartment neurons** -- replace LIF point neurons with dendritic spiking neurons that have nonlinear branches. Nature Comms 2023/2024 but NEVER applied to audio SNNs.
 1. **Cochlear-Inspired Learnable Auditory Frontend (Spiking-LEAF / IHC-LIF)** -- Replace mel spectrogram with a biologically-inspired cochlear model using two-compartment spiking neurons as the front-end. Published at ICASSP 2024 but NEVER applied to environmental sound classification.
 
 2. **Dendritic Computation with Multi-Compartment Neurons** -- Replace LIF point neurons with dendritic spiking neurons that have nonlinear branches, enabling each neuron to perform richer temporal computations. Published in Nature Communications 2023/2024 but NEVER applied to audio SNNs.

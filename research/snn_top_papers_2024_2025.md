@@ -110,3 +110,31 @@ growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO varia
 | **SpikingJelly** | Full-stack SNN framework with neuromorphic dataset support | [github.com/fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) |
 | **Intel Lava** | Open-source framework for neuromorphic computing (works with Loihi) | [github.com/lava-nc/lava](https://github.com/lava-nc/lava) |
 | **Norse** | Bio-inspired neural components for PyTorch | [github.com/norse/norse](https://github.com/norse/norse) |
+| **Awesome-SNN-Conference-Paper** | Curated list of all SNN papers from top conferences with code links | [github.com/AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper) |
+| **Awesome-Spiking-Neural-Networks** | Paper list with code and websites | [github.com/TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) |
+| **SGNNBench** | Benchmark for spiking graph neural networks | [github.com/Zhhuizhe/SGNNBench](https://github.com/Zhhuizhe/SGNNBench) |
+| **Open Neuromorphic** | Community hub for neuromorphic software projects | [open-neuromorphic.org](https://open-neuromorphic.org) |
+
+---
+
+## conference papers by venue (2024-2025)
+
+### NeurIPS 2024 (23 SNN papers)
+
+1. QKFormer: Hierarchical Spiking Transformer using Q-K Attention **(Spotlight)**
+2. Latent Diffusion for Neural Spiking Data
+3. Autonomous Driving with Spiking Neural Networks
+4. Spiking Graph Neural Network on Riemannian Manifolds
+5. SpikeReveal: Unlocking Temporal Sequences from Real Blurry Inputs with Spike Streams
+6. Advancing SNNs for Sequential Modeling through Central Pattern Generators
+7. Take A Shortcut Back: Mitigating the Gradient Vanishing for Training SNNs
+8. FEEL-SNN: Robust SNNs with Frequency Encoding and Evolutionary Leak Factor
+9. Spiking Neural Network as Adaptive Event Stream Slicer
+10. Spiking Token Mixer
+
+### ICLR 2024 (~10 SNN papers)
+
+1. Spike-driven Transformer V2: Meta Spiking Neural Network Architecture
+2. SpikeGCL: A Graph is Worth 1-bit Spikes
+3. SpikePoint: Efficient Point-based SNN for Event Cameras Action Recognition
+4. LMUFormer: Low Complexity Spiking Model With Legendre Memory Units

@@ -223,31 +223,3 @@ However, environmental sound classification with SNNs remains severely underexpl
 3. The Baek & Lee (2024) comprehensive review finding no ESC-50 SNN results
 
 ### 3.2 ESC-10 (10 classes)
-
-| Method | Architecture | Accuracy/F1 | Year | Reference |
-|--------|-------------|-------------|------|-----------|
-| Larroza et al. (TAE) | 4-layer FC SNN, 128 LIF neurons | 69.0% (accuracy) | 2025 | arXiv:2503.11206 |
-| Larroza et al. (MW) | Same | 62.0% | 2025 | Same |
-| Larroza et al. (SF) | Same | 59.8% | 2025 | Same |
-| Non-spiking baseline | -- | 72.7% | 2025 | Same |
-
-### 3.3 UrbanSound8K
-
-| Method | Architecture | Accuracy | Notes | Year |
-|--------|-------------|----------|-------|------|
-| S-CMRL | Transformer SNN | 98.13% | Multimodal (AV) | 2025 |
-| SMMT (Guo) | Transformer SNN | 96.85% | Multimodal (AV) | 2024 |
-| Larroza et al. (SF) | FC SNN | 56.4% | Audio-only | 2025 |
-| Larroza et al. (TAE) | FC SNN | 53.5% | Audio-only | 2025 |
-| Non-spiking baseline | -- | 73.0% | Audio-only | 2025 |
-
-**Important caveat:** The high UrbanSound8K numbers (96-98%) are MULTIMODAL audio-visual results, not audio-only SNN results. Audio-only SNN performance on UrbanSound8K peaks at only 56.4%.
-
----
-
-## 4. Spike Encoding Methods Used in Audio SNNs
-
-### 4.1 Summary Table of Encoding Usage
-
-| Encoding Method | Used In | Domain | Notes |
-|----------------|---------|--------|-------|

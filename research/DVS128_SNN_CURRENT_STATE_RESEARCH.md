@@ -353,31 +353,3 @@ Several papers include comparison tables, but a dedicated, fair benchmark study 
 | MSVIT | Multi-Scale ViT | 98.80 | 16 | 2025 |
 | SG-SNN | Self-Organizing | 99.30 | - | 2025 |
 | TENNs-PLEIADES | Temporal Kernel | 99.59 | Variable | 2024 |
-| STREAM | Temporal Kernel | 100.0 | - | 2024 |
-| SpikMamba | SNN + Mamba | ~99% | - | 2024 |
-| STAA-SNN (CVPR 2025) | Attention Aggregator | ~98.5 (est.) | Low | 2025 |
-| SpiNNaker2 deployment | Hardware SNN | 94.13 | - | 2025 |
-| Embedded TCN | Ternarized CNN | 97.7 | - | 2023 |
-| NSPDI-SNN | Lightweight (<7K params) | ~97 (est.) | - | 2025 |
-| ParaRevSNN | Reversible SNN | ~97 (est.) | - | 2025 |
-
-### The Gap in the Literature
-
-**There is no single paper that implements 5+ architectures in the same framework with the same preprocessing and reports accuracy, parameters, training time, and energy for all of them.** This is a genuine contribution an undergraduate thesis could make.
-
-### Relevant Papers with Comparison Tables
-
-1. **Temporal-wise Attention SNN (TA-SNN)** - Compares against ~8 prior methods with ablation on timesteps
-2. **SpikePoint** - Compares against 10+ methods including both SNN and ANN approaches
-3. **ParaRevSNN** - Compares training efficiency across methods
-4. **NSPDI-SNN** - Compares lightweight models
-
-**Source:** [SpikePoint Paper](https://arxiv.org/html/2310.07189v2), [TA-SNN Paper](https://arxiv.org/pdf/2107.11711), [TENNs-PLEIADES Paper](https://arxiv.org/abs/2405.12179), [SG-SNN Paper](https://link.springer.com/article/10.1007/s11571-024-10199-6)
-
----
-
-## 8. Training Time Estimates
-
-### SpikingJelly Baseline (5-layer CSNN, LIF neurons)
-
-| Configuration | GPU | Time/Epoch | Epochs to ~96% | Total Time |

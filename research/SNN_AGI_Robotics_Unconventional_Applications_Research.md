@@ -614,3 +614,31 @@ Week-by-week plan:
 - Week 2: Measure baseline catastrophic forgetting, implement EWC for SNN
 - Week 3: Implement experience replay for SNN, run experiments
 - Week 4: ANN comparison, energy analysis, write-up
+
+Novel angle options:
+1. "EWC adapted specifically for spiking neuron dynamics" (Fisher Information over membrane potentials)
+2. "Comparing spike-timing-based vs rate-based encoding for continual learning"
+3. "Threshold modulation as a biologically-inspired continual learning mechanism"
+
+Biggest risk: a 2023 paper already covers Split-MNIST with SNNs. Must differentiate clearly.
+
+snnTorch compatibility: FULL -- standard classification pipeline with multiple training phases.
+
+#### Candidate B: SNN for Image Denoising
+
+Week-by-week plan:
+- Week 1: Implement DnCNN ANN baseline, prepare Set12/BSD68 data
+- Week 2: Design and implement SNN denoising network in snnTorch
+- Week 3: Train with different noise levels (sigma=15,25,50), evaluate PSNR/SSIM
+- Week 4: Energy analysis, ablation studies, write-up
+
+Novel angle: being one of the first snnTorch-based image denoising implementations. SPIDEN uses custom code, not snnTorch.
+
+Biggest risk: SNN architecture for denoising may need skip connections and multi-scale features that are non-trivial in snnTorch.
+
+#### Candidate C: SNN for Robotic Arm Control in MuJoCo
+
+Week-by-week plan:
+- Week 1: Set up MuJoCo Reacher-v4 in Gymnasium, implement ANN-DQN baseline
+- Week 2: Replace policy network with SNN, adapt training loop
+- Week 3: Hyperparameter tuning, convergence analysis

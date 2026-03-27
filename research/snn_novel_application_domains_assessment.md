@@ -331,31 +331,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 
 ### 9. SNN for Astronomy Data (Transient Detection)
 
-**Existing Literature: SPARSE-MODERATE (5-8 papers)**
-
-| Paper | Year | Venue | Key Contribution |
-|-------|------|-------|------------------|
-| SNNs for RFI Detection in Radio Astronomy | 2024 | arxiv (2412.06124) / Nature Comms Physics | First from-scratch trained SNN on real radio astronomy data |
-| Neuromorphic Astronomy: End-to-End SNN Pipeline for RFI on Hardware | 2025 | arxiv (2511.16060) | Full pipeline on SynSense Xylo chips at 100mW |
-| Potential Impact of Neuromorphic Computing on Radio Telescopes | 2025 | arxiv (2601.07130) | Vision paper for neuromorphic radio astronomy |
-| SNN for Anomaly Detection at CERN (particle physics) | 2021 | IRIS-HEP | SNN for particle physics anomaly detection |
-| UWA PhD Project: SNNs for Transient Event Detection | Active | University of Western Australia | Ongoing PhD project |
-
-**Natural SNN Advantage: HIGH**
-- Radio telescope data is inherently temporal (time-domain astronomy)
-- RFI events are transient -- naturally suited to spike-based detection
-- Data volumes are enormous (SKA: ~1 TB/s) -- energy efficiency is critical
-- Real-time processing requirements match SNN's event-driven nature
-- Time-varying SNN dynamics naturally process visibility data
-- Demonstrated 100mW power consumption on neuromorphic hardware
-
-**Undergraduate Feasibility: LOW-MODERATE**
-- Radio astronomy data requires domain knowledge
-- LOFAR data is publicly available but complex
-- Simulated RFI data can be generated
-- The 2024 RFI detection paper provides a clear methodology to follow/extend
-- Narrow scope possible: RFI detection on simulated data
-- Astronomical transient detection (FRBs, pulsars) requires deeper expertise
-
-**Novelty Assessment: HIGH**
-- Only 5-8 papers in the entire SNN + astronomy space

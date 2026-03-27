@@ -222,20 +222,20 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 ---
 
 ## References
-| SpiNNaker pilot (Run 5) | 40% (8/20) | spinnaker_results/run5/ |
-| SpiNNaker Run 6 (n=400, **complete**) | **43.0% SpiNN**, 51.25% snnTorch, **8.25 pp gap**, agree 64.5% | spinnaker_results/fc2_all_iterations.jsonl |
-| ESC-50 human performance | 81.3% | Piczak 2015 |
-| ESC-50 SOTA | 98.25% | Piczak leaderboard |
 
----
+1. **Piczak, K.J. (2015).** ESC: Dataset for Environmental Sound Classification. ACM MM'15, 1015-1018.
 
-## References (Draft — to be formatted as ACM BibTeX)
+2. **Furber, S.B., Galluppi, F., Temple, S., & Plana, L.A. (2014).** The SpiNNaker Project. Proc. IEEE, 102(5), 652-665.
 
-1. **Piczak, K.J. (2015).** ESC: Dataset for Environmental Sound Classification. *Proceedings of the 23rd ACM International Conference on Multimedia (ACM MM'15)*, 1015–1018.
+3. **Eshraghian, J.K., Ward, M., Neftci, E.O., Wang, X., Liang, G., Linares-Barranco, B., & Lu, W.D. (2023).** Training Spiking Neural Networks Using Lessons From Deep Learning. Proc. IEEE, 111(9), 1016-1054.
 
-2. **Furber, S.B., Galluppi, F., Temple, S., & Plana, L.A. (2014).** The SpiNNaker Project. *Proceedings of the IEEE*, 102(5), 652–665.
+4. **Zenke, F., & Vogels, T.P. (2021).** The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks. Neural Computation, 33(4), 899-925.
 
-3. **Eshraghian, J.K., Ward, M., Neftci, E.O., Wang, X., Liang, G., Linares-Barranco, B., & Lu, W.D. (2023).** Training Spiking Neural Networks Using Lessons From Deep Learning. *Proceedings of the IEEE*, 111(9), 1016–1054.
+5. **Neftci, E.O., Mostafa, H., & Zenke, F. (2019).** Surrogate Gradient Learning in Spiking Neural Networks. IEEE SPM, 36(6), 51-63.
+
+6. **Kong, Q., Cao, Y., Iqbal, T., Wang, Y., Wang, W., & Plumbley, M.D. (2020).** PANNs: Large-Scale Pretrained Audio Neural Networks. IEEE/ACM TASLP, 28, 2880-2894.
+
+7. **Yik, J., Ahmed, S., Ahmed, Z., ..., & Bengio, Y. (2025).** Neurobench: A Framework for Benchmarking Neuromorphic Computing. Nature Communications, 16, 1589.
 
 4. **Zenke, F., & Vogels, T.P. (2021).** The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks. *Neural Computation*, 33(4), 899–925.
 

@@ -1034,3 +1034,31 @@ for epoch in range(50):
 ---
 
 ## State-of-the-Art Benchmarks
+
+### DVS128 Gesture Recognition Leaderboard (as of early 2026)
+
+| Model | Type | Accuracy (%) | Year |
+|---|---|---|---|
+| TENNs-PLEIADES | SNN | Current SOTA | 2024 |
+| STREAM | SNN | 100.0 | 2024 |
+| EventMix (SNN-based) | SNN | 99.3 | 2024 |
+| SpikePoint | SNN | 98.74 | 2023 |
+| TA-SNN (Temporal Attention) | SNN | 98.6 | 2021 |
+| TCN (2-stage) | ANN | 97.7 | -- |
+| PLIF (SpikingJelly DVSGestureNet) | SNN | 97.6 | 2021 |
+| SpikingJelly baseline (LIF, T=16) | SNN | 96.18 | Reference |
+| MS-ResNet | SNN | 94.44 | 2023 |
+| SCRNN (Spiking Conv RNN) | SNN | 96.59 (10-class) | 2020 |
+| IBM TrueNorth (original paper) | SNN | 96.5 | 2017 |
+
+Source: https://paperswithcode.com/sota/gesture-recognition-on-dvs128-gesture
+
+---
+
+## Recommended Stack Configuration
+
+### For a Thesis Project
+
+```
+Python:          3.10 or 3.11
+PyTorch:         2.2+ (latest stable recommended)

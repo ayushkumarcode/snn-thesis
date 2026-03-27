@@ -166,3 +166,31 @@ we are literally the first and only work on full ESC-50 with an SNN. confirmed b
 
 | Method | Architecture | Accuracy | Notes | Year |
 |--------|-------------|----------|-------|------|
+| S-CMRL | Transformer SNN | 98.13% | Multimodal (AV) | 2025 |
+| SMMT (Guo) | Transformer SNN | 96.85% | Multimodal (AV) | 2024 |
+| Larroza et al. (SF) | FC SNN | 56.4% | Audio-only | 2025 |
+| Larroza et al. (TAE) | FC SNN | 53.5% | Audio-only | 2025 |
+| Non-spiking baseline | -- | 73.0% | Audio-only | 2025 |
+
+important: the high UrbanSound8K numbers (96-98%) are MULTIMODAL audio-visual, not audio-only. audio-only SNN on UrbanSound8K peaks at only 56.4%.
+
+---
+
+## 4. Spike Encoding Methods Used in Audio SNNs
+
+| Encoding Method | Used In | Domain | Notes |
+|----------------|---------|--------|-------|
+| **Direct (learnable)** | SpikeSCR, SpikCommander, our thesis | Speech, ESC | Most common for surrogate gradient training |
+| **Rate coding** | Wu et al. 2018, our thesis | Speech, ESC | Straightforward but needs many timesteps |
+| **Threshold Adaptive (TAE)** | Larroza 2025, Ternary Spike 2024 | ESC, speech | Best for environmental sound in Larroza study |
+| **Step Forward (SF)** | Larroza 2025 | ESC | Second-best on UrbanSound8K |
+| **Moving Window (MW)** | Larroza 2025 | ESC | Worst overall in their study |
+| **Latency (time-to-first-spike)** | our thesis, TTFS literature | ESC | 4-7.5x fewer operations than rate |
+| **Phase coding** | our thesis | ESC | Tied with rate in our study |
+| **Population coding** | our thesis | ESC | Underperformed in our study |
+| **Delta (temporal difference)** | our thesis | ESC | Very poor for static spectrograms |
+| **Burst coding** | our thesis | ESC | Worst in our study (6.50%) |
+| **Hilbert Transform** | Haghighatshoar 2025 | SSL | Event-based encoding of analytic signal phase |
+| **RF-PLC** | Zhang 2024 (NeurIPS) | SSL | Phase-locking with Resonate-and-Fire neurons |
+| **Speech2Spikes** | Orchard et al. 2023 | KWS | Delta-based; 88.5% on GSC |
+| **Cochlear/IHC-LIF** | Spiking-LEAF 2024 | KWS | Learnable auditory frontend |

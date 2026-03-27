@@ -138,3 +138,31 @@ ICONS gives best paper awards annually.
 
 | Year | Paper | Authors | Affiliation |
 |------|-------|---------|-------------|
+| 2025 | "A Comparison of Custom and Standard Neuron Model Random Walks on the Ornstein-Uhlenbeck Equation for Simplified Turbulence" | Brady Taylor, J. Darby Smith, Felix Wang, Hemanth Kolla, Michael J. Schmidt | Sandia National Labs |
+| 2024 | multiple award talks including "Scalable Event-by-event Processing of Neuromorphic Sensory Signals With Deep State-Space Models" | Various | TU Dresden, NIST, various |
+| 2023 | "Dendritic Learning in Superconducting Optoelectronic Networks" | Ryan O'Loughlin, Bryce Primavera, Jeffrey Shainline | NIST |
+
+winners come from national labs (Sandia, NIST) and research universities. there seem to be multiple "award talks" (possibly best paper + runner-up or categorical awards).
+
+---
+
+## quality bar and typical authors
+
+### who publishes at ICONS?
+
+**steering committee:** Oak Ridge National Laboratory (Thomas Potok -- conference founder), Duke University (Yiran Chen), U.S. Department of Energy (Robinson Pino), ETH Zurich / University of Zurich (Melika Payvand), Sandia National Laboratories (Brad Aimone), University of Tennessee, Knoxville (Catherine Schuman).
+
+**typical author affiliations:**
+- national labs: Oak Ridge, Sandia, NIST, Argonne
+- major research universities: Duke, Penn State, UTK, George Mason, UW-Madison, ETH Zurich
+- mid-tier universities: University of Seville, Bielefeld, IIT Bombay, various US state universities
+- industry: IBM (occasional), Intel (occasional), smaller startups
+- PhD students: yes -- ICONS explicitly supports students with a doctoral consortium (running since 2020), student poster competition (21 student posters at ICONS 2023), and student program co-chairs
+
+### quality bar assessment
+
+ICONS feels approachable for well-executed student work:
+1. small community (~150-250 attendees)
+2. moderate acceptance rate (~59% for proceedings)
+3. many presentations are from PhD students and early-career researchers
+4. dedicated student programs

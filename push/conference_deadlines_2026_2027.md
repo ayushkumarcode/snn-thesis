@@ -26,3 +26,31 @@ quick reference for where we can submit and when.
 - Chicago, Illinois, 4-6 August 2026
 - 8 pages ACM
 - APC $250 (ACM member) / $350 (non-member), zero via UoM
+- THE neuromorphic systems conference. perfect venue.
+- draft already written with all refs resolved
+
+### 5. ICNCE 2026 -- **3 April 2026 (29 days)**
+- Aachen, Germany, 29 June - 2 July 2026
+- 1-page abstract only (no full paper proceedings)
+- bachelor/master students get sponsored participation
+- good for visibility, low effort
+
+---
+
+## Later Targets (3+ months out)
+
+| Conference | Est. Deadline | Format | Notes |
+|---|---|---|---|
+| IEEE SiPS 2026 | 12 April 2026 | IEEE | Hardware signal processing, Bordeaux |
+| NeurIPS 2026 | ~May 2026 | 9+refs pages | Top-tier, ~25% acceptance. probably too competitive for us |
+| DCASE 2026 | ~July 2026 | Varies | **perfect topic fit** -- environmental sound is exactly what DCASE does |
+| ICASSP 2027 | ~Sep 2026 | IEEE | strong for audio+ML, Toronto |
+| ICLR 2027 | ~Sep 2026 | OpenReview | top-tier, very competitive |
+
+---
+
+## Deadlines Already Passed
+
+| Conference | Deadline | Notes |
+|---|---|---|
+| ICML 2026 | 28 Jan 2026 | top-tier ML |

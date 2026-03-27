@@ -334,3 +334,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 5. [Inference-Scale Complexity (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/html/Bu_Inference-Scale_Complexity_in_ANN-SNN_Conversion_for_High-Performance_and_Low-Power_Applications_CVPR_2025_paper.html)
 6. [Spiking Transformers (ICLR 2025)](https://arxiv.org/abs/2502.21193)
 7. [SpikeYOLO (ECCV 2024)](https://github.com/BICLab/SpikeYOLO)
+8. [Group Neurons (ICASSP 2024)](https://github.com/Lyu6PosHao/ANN2SNN_GN)
+9. [One-Timestep (2025)](https://arxiv.org/pdf/2510.23383)
+10. [Unified Framework (ICML 2023)](https://proceedings.mlr.press/v202/jiang23a/jiang23a.pdf)
+11. [Are SNNs Really More Energy-Efficient?](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf)
+12. [SEENN (NeurIPS 2023)](https://proceedings.neurips.cc/paper_files/paper/2023/file/c801e68207da477bbc44182b9fac1129-Paper-Conference.pdf)
+
+### Tools and Frameworks
+
+- [snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox) + [docs](https://snntoolbox.readthedocs.io/)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly) + [ann2snn docs](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.12/clock_driven_en/5_ann2snn.html)
+- [snnTorch](https://github.com/jeshraghian/snntorch)
+- [QCFS code](https://github.com/putshua/ANN_SNN_QCFS)
+- [SNN_Calibration code](https://github.com/yhhhli/SNN_Calibration)
+- [SignGD code](https://github.com/snuhcs/snn_signgd)
+- [Differential Coding code](https://github.com/h-z-h-cell/ANN-to-SNN-DCGS)
+
+### Curated Lists
+
+- [Awesome-Spiking-Neural-Networks](https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks)
+- [awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)
+- [SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv)
+- [ann-to-snn-conversion topic](https://github.com/topics/ann-to-snn-conversion)
+
+### Surveys
+
+- [Toward Large-scale SNNs (2024)](https://arxiv.org/pdf/2409.02111)
+- [SpikingJelly (Science Advances 2023)](https://www.science.org/doi/10.1126/sciadv.adi1480)
+- [Practical Tutorial on SNNs (MDPI 2024)](https://www.mdpi.com/2673-4117/6/11/304)

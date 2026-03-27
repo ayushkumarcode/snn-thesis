@@ -222,3 +222,31 @@ EEG is inherently temporal, and SNNs handle this naturally:
 | **Norse** | [norse/norse](https://github.com/norse/norse) | PyTorch primitives for bio-inspired neural components. More research-oriented. | [norse.github.io/norse](https://norse.github.io/norse/) |
 
 ### EEG processing libraries
+
+| Library | Repo | What it does |
+|---|---|---|
+| **TorchEEG** | [torcheeg/torcheeg](https://github.com/torcheeg/torcheeg) | PyTorch-based EEG analysis. Plug-and-play API, built-in DEAP/SEED loaders, multiple DL models. |
+| **MNE-Python** | [mne-tools/mne-python](https://github.com/mne-tools/mne-python) | Industry standard for EEG preprocessing, filtering, artifact removal. Essential. |
+| **MOABB** | [NeuroTechX/moabb](https://github.com/NeuroTechX/moabb) | Mother of All BCI Benchmarks. Standardized evaluation framework for BCI algorithms. |
+
+### what i'd use for a project
+
+```
+EEG Data Loading:    TorchEEG (for DEAP/SEED) or MNE-Python (for PhysioNet/BCI IV)
+EEG Preprocessing:   MNE-Python (filtering, artifact removal, epoching)
+SNN Framework:       snnTorch (best tutorials) or SpikingJelly (most features)
+Base Framework:      PyTorch
+Spike Encoding:      snnTorch built-in encoders (rate coding, latency coding)
+Evaluation:          scikit-learn metrics, MOABB benchmarks
+```
+
+---
+
+## 6. could an undergrad without neuroscience background do this?
+
+### short answer: yes, with the right scope
+
+**why it's feasible:**
+
+1. **no wet-lab work** -- all datasets are public and pre-recorded. no recruiting subjects, no ethics approval, no EEG equipment.
+

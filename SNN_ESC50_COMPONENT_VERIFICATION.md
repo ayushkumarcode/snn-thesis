@@ -726,3 +726,31 @@ The pipeline you need to build can be constructed by combining:
 **With pretraining / transfer learning:**
 
 | Method | Year | Accuracy |
+|--------|------|----------|
+| AST (Audio Spectrogram Transformer) | 2021 | 95.7% |
+| CLAP | 2022 | 96.7% |
+| HTS-AT | 2022 | 97.0% |
+| BEATs | 2023 | 98.1% |
+| HTSAT-22 | 2023 | 98.25% |
+
+### SNN baselines on ESC-10 (subset of ESC-50):
+
+| Method | Year | Accuracy | Framework |
+|--------|------|----------|-----------|
+| FC-SNN + TAE encoding | 2025 | 69.0% | snnTorch 0.9.1 |
+| FC-SNN + Step Forward | 2025 | ~41% | snnTorch 0.9.1 |
+| FC-SNN + Moving Window | 2025 | ~35% | snnTorch 0.9.1 |
+
+### What these baselines mean for your project:
+
+1. **Your ANN baseline** (simple CNN from scratch on mel-spectrograms): Expect **64-75% on ESC-50**
+2. **Your SNN** (convolutional SNN with rate encoding): The only existing reference achieved 69% on ESC-10 with FC layers. A CSNN on ESC-50 might achieve **40-65%** (rough estimate)
+3. **The accuracy gap itself IS the interesting finding** -- your thesis analyzes WHY and quantifies the energy tradeoff
+4. **If your CSNN beats 69% on ESC-10, you have a result better than the only published SNN benchmark**
+
+**Verification method:** Baselines confirmed from ESC-50 GitHub README results table. SNN baselines from arXiv:2503.11206 (March 2025).
+
+---
+
+## master verification table
+

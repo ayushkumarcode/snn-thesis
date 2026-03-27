@@ -26,3 +26,31 @@ research focus breakdown:
 - infrastructure/architecture: 4 theses
 - biological brain simulation: 4 theses
 - learning and plasticity: 3 theses
+- deep learning/classification: 2 theses
+- **audio classification: ZERO**
+
+### key staff (not PhDs but worth noting):
+- **Andrew Rowley** -- Senior Research Software Engineer, led SpiNNTools/sPyNNaker
+- **Oliver Rhodes** -- Lecturer, basal ganglia models (PhD from Imperial)
+- **Michael Hopkins** -- Research Fellow, numerical precision
+- **Luis Plana** -- Hardware engineer, spiNNlink FPGA
+- **Steve Temple** -- Core chip architect (retired ~2017)
+
+---
+
+## SNN Masters Theses (Audio/Classification)
+
+| Author | Topic | Institution | Year |
+|--------|-------|-------------|------|
+| Daniel Peterson | Bio-inspired learning for audio SNNs | U. Calgary | 2021 |
+| Manon Dampfhoffer | Energy-efficient SNNs at edge (SpikGRU, keyword spotting) | U. Grenoble Alpes | 2023 (PhD) |
+| Tim Krause | Rate vs temporal coding comparison | Ruhr-U. Bochum | ~2020 |
+| Sven Gronauer | Deep spiking ConvNets on SpiNNaker | TU Munich | ~2018 |
+
+confirmed: no Masters or PhD thesis has deployed an SNN on ESC-50 (or any environmental sound dataset >10 classes) on neuromorphic hardware.
+
+---
+
+## SpiNNaker Applications Beyond Bio Simulation
+
+### classification/deep learning

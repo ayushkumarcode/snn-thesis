@@ -254,31 +254,3 @@ The originality is entirely in the combination and the dataset. This is a "first
 ## Recommended Responses to Each Challenge
 
 **On C1:** Accept the framing critique. Lead with the scientific insight (gap analysis, encoding hierarchy) rather than dataset novelty. Frame as "comprehensive evaluation" not "first application."
-
-**On C2:** Address the TAE omission explicitly. Either add TAE as an encoding (computationally feasible) or explain in the limitations why it was not included. Acknowledge that delta and burst encodings were included as contrastive negative controls, not competitive alternatives. Fix the Wilcoxon p=0.0625 framing.
-
-**On C3:** This is the hardest challenge. Options: (a) Reframe as "hardware characterisation study" rather than a deployment novelty claim, explicitly acknowledging the FC2-only scope and documenting the root cause of FC1 failure as the primary technical contribution; (b) the Option A (MaxPool SNN threshold sweep) result showing fc1_binary_fraction=1.000 should be emphasised as the path forward; (c) remove the "first" claim and simply document the hardware gap as a novel measurement.
-
-**On C4:** Immediately front-load the Wang et al. (2025) caveat. Consider reframing as "resistance to surrogate-gradient-based adversarial attacks" and proposing SA-PGD as future work. The finding is still interesting even with the caveat.
-
-**On C5:** Emphasise the scientific insight (feature learning bottleneck) rather than the method novelty. The 0.95 pp gap significance issue should be addressed with explicit confidence interval reporting.
-
-**On C6:** Do not list as a separate contribution. Merge energy analysis into the SpiNNaker deployment section.
-
----
-
-## Bottom Line Verdict
-
-The paper is **borderline publishable at ICONS 2026**, with ICONS being the correct venue precisely because it explicitly welcomes benchmark and application-focused papers with modest accuracy results. The paper will not be accepted trivially — it requires a strong rebuttal capacity on C3 (SpiNNaker partial deployment) and C4 (gradient masking concern). The most likely reviewer outcome is:
-
-- **One reviewer:** Enthusiastic. Appreciates the comprehensive evaluation, recognises the gap analysis insight, values the hardware deployment attempt.
-- **One reviewer:** Skeptical. Raises C3 hardware gap concerns, C4 methodology concerns, demands TAE comparison.
-- **One reviewer:** Hostile. Argues no novel method, no competitive results, partial hardware deployment does not count.
-
-The outcome will depend heavily on the rebuttal phase and on how the paper is framed in its final submission. The largest single risk is if a reviewer with deep SpiNNaker expertise (or the Dominguez-Morales group) reviews the paper and dismantles the C3 claim. The second largest risk is a reviewer who has read Wang et al. (2025) and flags the adversarial robustness as gradient masking.
-
-**If the paper is rejected, it will be for one of these two reasons, not for the accuracy numbers.**
-
----
-
-*This review represents the most adversarial reading of the submission. Actual ICONS reviewers may be more sympathetic to benchmark contributions. The goal of this document is to identify every vulnerability before submission, not to predict rejection.*

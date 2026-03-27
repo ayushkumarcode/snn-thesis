@@ -249,31 +249,3 @@ EEG signals are inherently temporal, and SNNs have native temporal processing ca
 | Library | Repository | Key Features |
 |---|---|---|
 | **TorchEEG** | [torcheeg/torcheeg](https://github.com/torcheeg/torcheeg) | PyTorch-based EEG analysis. Plug-and-play API for preprocessing, built-in DEAP/SEED dataset loaders, multiple DL models. |
-| **MNE-Python** | [mne-tools/mne-python](https://github.com/mne-tools/mne-python) | Industry standard for EEG preprocessing, filtering, artifact removal. Essential tool. |
-| **MOABB** | [NeuroTechX/moabb](https://github.com/NeuroTechX/moabb) | Mother of All BCI Benchmarks. Standardized evaluation framework for BCI algorithms. |
-
-### 5.4 Recommended Stack for Undergraduate Project
-
-```
-EEG Data Loading:    TorchEEG (for DEAP/SEED) or MNE-Python (for PhysioNet/BCI IV)
-EEG Preprocessing:   MNE-Python (filtering, artifact removal, epoching)
-SNN Framework:       snnTorch (best tutorials) or SpikingJelly (most features)
-Base Framework:      PyTorch
-Spike Encoding:      snnTorch built-in encoders (rate coding, latency coding)
-Evaluation:          scikit-learn metrics, MOABB benchmarks
-```
-
----
-
-## 6. Feasibility for an Undergraduate Without Neuroscience Background
-
-### 6.1 Assessment: FEASIBLE with Appropriate Scoping
-
-**Reasons it IS feasible:**
-
-1. **No wet-lab work required:** All datasets are publicly available and pre-recorded. No need to recruit subjects, apply for ethics approval, or operate EEG equipment.
-
-2. **Strong tooling ecosystem:** Libraries like TorchEEG, MNE-Python, and snnTorch abstract away much of the complexity. TorchEEG can load DEAP/SEED datasets with a few lines of code.
-
-3. **PyTorch foundation:** If you know PyTorch, the jump to snnTorch is manageable. snnTorch extends PyTorch and the tutorials are written for people with deep learning (not neuroscience) backgrounds.
-

@@ -306,3 +306,31 @@ why this works:
     -------------------
     - Penn State (Sengupta group) -- neuromorphic cybersecurity, lifelong learning
     - UTM Malaysia (Wang, Ghaleb, Zainal) -- ConvSNN efficiency
+    - Various IEEE/Springer authors -- hybrid architectures
+    - Quantum Ventura -- Cyber-Neuro RT commercial
+```
+
+---
+
+## what i couldn't find
+
+1. **no published SNN-IDS on Intel Loihi 2 with full deployment metrics.** Mia 2025 used Lava simulation but not actual chip deployment for IDS.
+
+2. **no benchmark comparing all SNN-IDS papers on identical settings.** everyone uses different subsets, preprocessing, splits. direct comparison is unreliable.
+
+3. **no undergrad thesis on SNN-IDS that i could find.** supports the novelty argument -- existing work is from research groups.
+
+4. **limited explainability work.** nobody explains what the spiking patterns mean in security terms.
+
+5. **no truly unsupervised zero-day detection with SNNs** beyond the STDP proof-of-concept.
+
+---
+
+## confidence levels
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| SNNs have been applied to IDS | Very High | 15+ peer-reviewed papers |
+| 98-99% on standard benchmarks | High | Multiple independent papers confirm |
+| 70-90% energy savings over CNNs | High | Wang 2024 has detailed measurements |
+| Edge deployment is feasible | Medium-High | Demonstrated in simulation; limited real hardware |

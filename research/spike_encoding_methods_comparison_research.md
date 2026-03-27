@@ -306,3 +306,31 @@ spike_data = spikegen.delta(data, threshold=0.1, padding=False, off_spike=True)
 ```python
 spike_targets = spikegen.targets_convert(
     targets, num_classes=10, code='rate',
+    num_steps=100, correct_rate=0.8, incorrect_rate=0.2
+)
+```
+
+### Custom Implementations Needed
+
+these would need to be written as custom PyTorch functions. here are sketches:
+
+#### Phase Coding
+
+```python
+def phase_encode(data, num_steps, num_phases=8):
+    batch_size, input_size = data.shape
+    spike_train = torch.zeros(num_steps, batch_size, input_size)
+    period = num_steps // num_phases
+    phase_offsets = ((1 - data) * (period - 1)).long()
+    for t in range(num_steps):
+        current_phase = t % period
+        spike_train[t] = (current_phase == phase_offsets).float()
+    return spike_train
+```
+
+#### Burst Coding
+
+```python
+def burst_encode(data, num_steps, max_burst_length=5, burst_gap=10):
+    batch_size, input_size = data.shape
+    spike_train = torch.zeros(num_steps, batch_size, input_size)

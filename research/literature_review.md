@@ -35,31 +35,3 @@
 
 ### Training Methods
 
-| Method | Type | How it works | Pros / Cons |
-|--------|------|-------------|-------------|
-| **STDP** | Unsupervised | Strengthen synapse if pre fires before post, weaken if after | Biologically plausible, no labels needed / limited scalability |
-| **Reward-modulated STDP** | Reinforcement | STDP + dopamine-like reward signal | Can learn from sparse rewards / slow convergence |
-| **SpikeProp / SuperSpike** | Supervised | Gradient descent adapted for spikes | Can train deeper networks / needs surrogate gradients |
-| **SLAYER** | Supervised | Temporal credit assignment via backprop | Good for temporal tasks / memory intensive |
-| **ANN-to-SNN Conversion** | Transfer | Train a normal ANN, then convert weights to SNN | Leverages existing ANN tools / may need many timesteps |
-
-### Applications Covered
-
-#### Computer Vision
-- **Image classification:** DCSNN achieved 97.2% on MNIST using STDP + reward learning
-- **Object detection:** Spiking YOLO — energy-efficient detection with channel-wise normalization
-- **Object tracking:** SiamSNN — 50 FPS on IBM TrueNorth with extremely low energy
-- **Segmentation:** UNet-based SNN deployed on Intel Loihi
-- **Optical flow:** Spike-FlowNet for event-camera processing
-- **Medical imaging:** STDP-based melanoma detection at 87.7% accuracy
-
-#### Robotics
-- **Locomotion:** Spiking Central Pattern Generators (sCPG) for hexapod walking on SpiNNaker hardware
-- **Motor control:** Event-based PID on Loihi for drone stabilization (0.005g thrust error)
-- **Navigation:** Spiking RatSLAM using place cells + grid cells for SLAM
-- **Autonomous mapping:** Gridbot — 1,321 LIF neurons, 100x less energy than CPU-based GMapping
-
-### Key Software Frameworks
-
-| Framework | Best for | Notes |
-|-----------|---------|-------|

@@ -306,3 +306,31 @@ marginal fit. biomedical focus. would need strong medical/assistive framing.
 | **Proceedings** | Springer-Verlag LNCS with individual DOI |
 | **Acceptance Rate** | ~50-55% historically |
 
+strong fit. ICANN 2026 has a dedicated special session "Spiking Neural Networks and Neuromorphic Computing" -- near-perfect match. the 12-page LNCS format allows presenting results more thoroughly. Springer proceedings with DOI provide good citation visibility. registration is typically 300-500 EUR with early bird discount.
+
+Sources: [ICANN 2026](https://e-nns.org/icann2026/)
+
+---
+
+### 6.2 ESANN 2026 [DEADLINE PASSED]
+
+deadline passed (19 November 2025).
+
+---
+
+## 7. workshops at major conferences
+
+### 7.1 ICLR 2026 Workshops
+
+checked all 40 accepted ICLR 2026 workshops (out of 135 proposals). none are dedicated to neuromorphic computing or spiking neural networks. closest is "Representational Alignment" but it's not SNN-focused.
+
+### 7.2 ICML 2026 Workshops
+
+not yet announced (notification 20 March 2026). one potentially relevant: "Workshop on Low-Power Edge AI for Industrial Applications (LPAI4IA)" at WCCI 2026 on SNNs, graph NNs, and neuromorphic computing under energy constraints.
+
+### 7.3 NeurIPS 2026 Workshops
+
+not yet announced. call will probably open ~June-July 2026 with workshop paper deadlines ~September-October. NeurIPS has historically hosted NeuroAI Workshop, Non-Traditional Computing workshop, etc.
+
+---
+

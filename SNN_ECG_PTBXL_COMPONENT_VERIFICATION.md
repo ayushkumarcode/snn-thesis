@@ -418,3 +418,31 @@ class_counts = y_train.sum(axis=0)
 pos_weight = (len(y_train) - class_counts) / class_counts
 criterion = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_weight))
 ```
+
+2. **Focal Loss:** Down-weights easy examples, focuses on hard cases
+3. **ADASYN oversampling:** Adaptive synthetic sampling (more complex)
+
+**Practical recommendation:** Start WITHOUT weighted loss to match the benchmark, then add pos_weight to BCEWithLogitsLoss if HYP class performance is poor.
+
+**Sources:** [PTB-XL paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC7248071/), [ECG classification with class imbalance](https://www.mdpi.com/1099-4300/23/9/1121)
+
+---
+
+### 11. GPU Requirements (SIGNIFICANT CONCERN)
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES (feasible with mitigations) |
+| **VERIFIED HOW** | Memory calculations, snnTorch GitHub discussions |
+| **POTENTIAL BLOCKER** | MEDIUM RISK -- requires TBPTT or design mitigation |
+
+**Raw data size calculation:**
+
+```
+At 100 Hz: 21,799 records x 12 leads x 1,000 samples x 4 bytes (float32) = ~1.05 GB
+At 500 Hz: 21,799 records x 12 leads x 5,000 samples x 4 bytes (float32) = ~5.23 GB
+```
+
+**The real problem is NOT data size -- it is the SNN time loop:**
+
+In snnTorch, the standard training pattern loops over `num_steps` timesteps, building a computational graph at each step for BPTT. A user reported that even with 30 timesteps, an Inception-based SNN consumed 5.7 GB of VRAM (up from 305 MB without SNN layers).

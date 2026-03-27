@@ -124,20 +124,20 @@ The fundamental insight: **information preservation** (not biological plausibili
 ## 4.3 surrogate gradient ablation
 
 **Setup:** 8 surrogates from snnTorch 0.9.4, fold 1, direct encoding, seed=42. ATan (alpha=2.0), FastSigmoid (slope=25), Sigmoid (slope=25), STE, Triangular, SpikeRateEscape, LSO (slope=0.1), SFS (slope=25).
-## 4.3 Surrogate Gradient Ablation
 
-**Setup:** Eight surrogate gradient functions available in snnTorch 0.9.4 are evaluated on fold 1 of the direct encoding experiment (3 seeds per surrogate for CSF3; 1 seed for local preliminary): ATan (α=2.0), FastSigmoid (slope=25), Sigmoid (slope=25), Straight-Through Estimator (STE), Triangular, SpikeRateEscape, LSO (slope=0.1), and SFS (slope=25).
+**Literature hypothesis (Zenke & Vogels 2021):** shape matters less than slope. Steeper = sharper gradients near threshold = higher sparsity but instability. FastSigmoid expected highest sparsity; triangular expected worst.
 
-**Hypothesis from literature (Zenke & Vogels 2021):** Surrogate shape matters less than slope parameter; steeper slopes → sharper gradients near threshold → higher activation sparsity but potential instability. FastSigmoid is expected to produce highest sparsity; Triangular is expected to perform worst.
+**Significance:** no prior surrogate ablation exists for any audio task. Publishable regardless of outcome.
 
-**Significance:** No prior ablation of surrogate gradient functions exists for any audio classification task. This is a publishable contribution regardless of outcome direction.
+**FastSigmoid trajectory (fold 1, seed 42):**
 
-**FastSigmoid training trajectory (fold 1, seed 42):**
-
-| Epoch | Train Acc | Test Acc | Best Checkpoint |
-|-------|-----------|----------|-----------------|
+| Epoch | Train Acc | Test Acc | Best |
+|-------|-----------|----------|------|
 | 10 | 8.4% | 10.0% | 10.2% |
 | 20 | 19.4% | 17.2% | 17.2% |
+| 30 | 36.6% | 24.7% | 27.5% |
+| 40 | 47.6% | 29.2% | 36.7% |
+| 50 | 67.0% | 44.8% | **44.75%** |
 | 30 | 36.6% | 24.7% | 27.5% |
 | 40 | 47.6% | 29.2% | 36.7% |
 | 50 | 67.0% | 44.8% | **44.75%** |

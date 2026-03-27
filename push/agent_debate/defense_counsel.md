@@ -136,31 +136,3 @@ The first surrogate gradient ablation on an audio task revealing a bimodal patte
 
 ### Why It Is Genuinely Novel
 
-Zenke and Vogels (Neural Computation 2021) established the dominant view: surrogate gradient learning is robust to the shape of the surrogate derivative; what matters is the scale (steepness), not the shape. This finding was demonstrated on relatively simple tasks (XOR, MNIST variants). The thesis ablation — 8 surrogate functions tested on fold 1, direct encoding, ESC-50 50-class — produces a result that partially contradicts this on a harder task: sigmoid fails (2%), STE fails (10.25%), SFS fails (2%), and triangular fails (2.75%), all early-stopping within the first 10-23 epochs at chance-level performance. Meanwhile, spike_rate_escape (46.00%), fast_sigmoid (44.75%), and atan (35.75%) all learn successfully.
-
-This bimodal pattern has not been reported before for audio classification. Lian et al. (IJCAI 2023) showed that surrogate gradient width should adapt to the membrane potential distribution, providing a theoretical mechanism for why some shapes fail. Gygax and Zenke (Neural Computation 2025) showed spike_rate_escape is the only surrogate with rigorous theoretical grounding in escape noise theory — which may explain why it performs best (46.00%, outperforming fast_sigmoid by 1.25pp). The fact that sigmoid fails (2%) is particularly striking given Zenke's 2021 paper listed sigmoid as a working surrogate — the implication is that task complexity and dataset size interact with surrogate shape in ways the 2021 paper did not capture.
-
-### Why It Has Scientific Significance Beyond Just "First"
-
-Practitioners implementing SNN audio classifiers need to know which surrogate to use. The existing guidance ("shape doesn't matter, tune the slope") would lead a practitioner to reasonably choose sigmoid or STE based on availability — and in this domain, those choices result in training failure. The bimodal split provides an empirical warning: for audio classification with a mel-spectrogram input and a convolutional SNN architecture, at least 4 commonly available surrogates fail completely. The three working surrogates share a property — broader effective gradient support near the threshold — that is theoretically consistent with Lian et al.'s width-matching argument. This gives practitioners a principled selection criterion (not just empirical trial and error).
-
-The finding also contributes to understanding SNN trainability for hard, real-world tasks. Most surrogate gradient papers demonstrate on MNIST, N-MNIST, CIFAR-10, or DVS-Gesture — datasets where the signal-to-noise ratio is high and the surrogate shape may genuinely not matter. ESC-50 is a harder task where the membrane potential distribution at threshold is more sensitive to gradient approximation quality. The bimodal result is not a failure of the experiment — it is a finding that the field needs.
-
-### Strongest Honest Framing for ICONS Reviewers
-
-"We conduct an 8-function surrogate gradient ablation on audio classification, revealing a bimodal outcome: 3 surrogates learn (spike_rate_escape 46.00%, fast_sigmoid 44.75%, atan 35.75%), 4 fail at chance level, contradicting the 'shape doesn't matter' consensus (Zenke 2021) for complex audio tasks. The theoretically grounded spike_rate_escape (Gygax and Zenke 2025) achieves best performance, consistent with escape noise theory."
-
----
-
-## Cross-Cutting Questions
-
-### Is 47.15% Publishable at ICONS Given the Context?
-
-Yes, with two important caveats and one crucial context point.
-
-The caveats first. The number requires context: random baseline is 2% (50 classes), human performance is 81.3%, and the matched ANN baseline is 63.85%. Presented without context, 47.15% sounds weak. Presented as the first-ever SNN result on a 50-class benchmark, achieved by a convolutional architecture trained from scratch on 1,600 samples with surrogate gradients — it is a meaningful anchor point.
-
-The crucial context is the precedent set by the field. The ICONS 2025 best paper had no accuracy metric at all. The ICONS 2025 paper "SNN for Low-Power Vibration-Based Predictive Maintenance" was accepted as an application benchmark where the contribution is demonstrating SNN feasibility in a new domain. Larroza et al. — the closest competitor in audio SNNs — report F1=0.661 on ESC-10 (10 classes), which maps to roughly 60-65% accuracy on a problem 5x easier than ESC-50 (50 classes). Our 47.15% on the harder task is arguably more impressive in relative terms; at minimum it is not categorically worse. The ICONS 2022 Yarga paper was accepted precisely for the encoding comparison methodology, not for its absolute accuracy numbers on speech digit recognition.
-
-What matters at ICONS is: (a) is the contribution scientifically valid? Yes — 5-fold CV, matched architecture, reproducible protocol. (b) Is it genuinely novel? Yes — confirmed by exhaustive literature review. (c) Does it advance the field's understanding? Yes — the encoding comparison, gap collapse, and hardware analysis all do. Absolute accuracy is not the primary review criterion for this type of paper at this conference.
-

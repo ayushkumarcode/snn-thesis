@@ -68,31 +68,3 @@ References                                       ~0.8 pages
 |--------|-------|
 | A (recommended) | Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment |
 | B (short) | First Convolutional SNN on ESC-50: Encoding Comparison and SpiNNaker Deployment |
-| C (finding) | Bridging the SNN-ANN Gap in Environmental Sound Classification |
-| D (hardware-forward) | SpiNNaker Deployment of Spiking Neural Networks for 50-Class Environmental Sound Classification |
-
----
-
-## REVIEWER OBJECTIONS — PREPARED RESPONSES
-
-### "47% accuracy is low"
-Frame as baseline datum, not final word. PANNs+SNN (92.5%) proves the architecture works when features are good. The 47% identifies the bottleneck (feature learning from small data).
-
-### "SNN uses MORE energy than ANN"
-Three-part honest framing:
-1. Quantify: SNN 976 nJ vs ANN 463 nJ due to T=25 timesteps
-2. Path to efficiency: spike rate 25.8% vs threshold <6.4%. Reducing T and increasing sparsity closes gap
-3. Position: first quantified energy baseline for SNN audio. SNN is AC-only → deployable on neuromorphic hardware without multiplier circuits
-
-### "SpiNNaker 33% with high variance"
-Dominguez-Morales (2016) only classified 8 pure tones. Our 50-class task is 6.25x harder. 12.8pp gap has documented root cause. First quantified hardware gap for SNN audio.
-
-### "Only ESC-50, no cross-dataset"
-Acknowledge. ESC-50's 5-fold CV is the standard. Propose UrbanSound8K as future work. Better: run 1-fold on UrbanSound8K in next 2 weeks.
-
-### "PANNs+SNN is not really neuromorphic"
-Frame as hybrid edge deployment: CNN14 in cloud, SNN head on neuromorphic edge. Cite Seekings et al. (ICONS 2024) as precedent for hybrid approaches.
-
-### "Standard PGD, not SA-PGD"
-FGSM results (single-step, no SNN adaptation) provide clean lower bound. Cite Wang et al. (2025) and acknowledge SA-PGD as future work.
-

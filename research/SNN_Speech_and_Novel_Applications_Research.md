@@ -325,31 +325,3 @@ No dedicated papers found on SNN-based recommendation systems. Graph Neural Netw
 **Assessment:** Rapidly maturing. Spiking diffusion models are particularly exciting. The FID scores are still much worse than ANN diffusion models (19.20 vs ~2-3 for SOTA ANNs), but the energy savings are dramatic. **Strong thesis opportunity to apply spiking diffusion to new domains (e.g., audio spectrograms).**
 
 ### 6F. Spiking Graph Neural Networks
-**Paper Count: 10-15 papers | Maturity: MEDIUM-HIGH**
-
-| Paper | Year | Venue | Key Result |
-|-------|------|-------|------------|
-| A Graph is Worth 1-bit Spikes | 2024 | ICLR | Contrastive learning + SNN for graphs |
-| Dynamic Spiking Graph Neural Networks | 2024 | AAAI | Dynamic graph processing |
-| Spiking GNN on Riemannian Manifolds | 2024 | NeurIPS | Geometry-aware SGNNs |
-| SGNNBench | 2025 | arXiv | Large-scale benchmark for SGNNs |
-| Fully Memristive SGNN for Graph Learning | 2025 | Nature Comm. | Hardware implementation |
-
-**Assessment:** Well-established research direction with top venue publications. Multiple architectures exist. Thesis-worthy but competitive.
-
-### 6G. SNN + Reinforcement Learning / Robotics
-**Paper Count: 10-20 papers | Maturity: MEDIUM-HIGH**
-
-Key highlights:
-- SNNs deployed on Loihi 2 for Astrobee robot control (NASA free-flying robot)
-- Spiking RL for Atari games, CartPole, lane-keeping
-- 6-DOF manipulator control with fully spiking networks
-- **140x less energy** vs DNN approaches for inference
-- Autonomous driving with SNNs (NeurIPS 2024)
-
-**Assessment:** Strong practical motivation. Hardware deployment demonstrated. Good thesis potential, especially for robotics labs.
-
-### 6H. SNN + Natural Language Processing
-**Paper Count: 5-10 papers | Maturity: MEDIUM**
-
-| Paper | Year | Key Result |

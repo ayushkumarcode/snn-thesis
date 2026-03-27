@@ -82,3 +82,31 @@ frame as baseline datum, not final word. PANNs+SNN (92.5%) proves the architectu
 three-part honest framing:
 1. quantify: SNN 976 nJ vs ANN 463 nJ due to T=25 timesteps
 2. path to efficiency: spike rate 25.8% vs threshold <6.4%. reducing T and increasing sparsity closes gap
+3. position: first quantified energy baseline for SNN audio. SNN is AC-only -> deployable on neuromorphic hardware without multiplier circuits
+
+### "SpiNNaker 33% with high variance"
+Dominguez-Morales (2016) only classified 8 pure tones. our 50-class task is 6.25x harder. 12.8pp gap has documented root cause. first quantified hardware gap for SNN audio.
+
+### "Only ESC-50, no cross-dataset"
+acknowledge. ESC-50's 5-fold CV is the standard. propose UrbanSound8K as future work. better yet: run 1-fold on UrbanSound8K in next 2 weeks.
+
+### "PANNs+SNN is not really neuromorphic"
+frame as hybrid edge deployment: CNN14 in cloud, SNN head on neuromorphic edge. cite Seekings et al. (ICONS 2024) as precedent for hybrid approaches.
+
+### "Standard PGD, not SA-PGD"
+FGSM results (single-step, no SNN adaptation) provide clean lower bound. cite Wang et al. (2025), acknowledge SA-PGD as future work.
+
+---
+
+## experiments to strengthen the paper (next 2 weeks)
+
+### must do:
+1. SpiNNaker latency measurement -- wall-clock ms per inference. free to measure.
+2. SpiNNaker energy from provenance data -- real hardware energy, not theoretical
+3. statistical significance tests -- Wilcoxon for all key comparisons
+
+### nice to have:
+4. reduce SpiNNaker hardware gap (tune tau_syn, weight quantization)
+5. 1-fold on UrbanSound8K
+
+---

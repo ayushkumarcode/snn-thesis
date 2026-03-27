@@ -194,3 +194,31 @@ spike_data = spikegen.delta(ecg_tensor, threshold=0.1, off_spike=True)
 
 4. **BatchNormTT1d exists** in snnTorch specifically for 1D temporal batch normalization, confirming 1D data is a supported use case.
 
+5. **One PyTorch Forum user attempted Conv1d + snnTorch** (https://discuss.pytorch.org/t/157693) and encountered shape errors, but these were caused by incorrect channel/feature dimensions in their architecture, NOT a fundamental incompatibility.
+
+**Recommended Conv1d SNN architecture for ECG:**
+
+```python
+import torch.nn as nn
+import snntorch as snn
+
+class ECG_SNN(nn.Module):
+    def __init__(self, beta=0.9):
+        super().__init__()
+        # Input: (batch, 12, 1000) -- 12 leads, 1000 timesteps at 100Hz
+        self.conv1 = nn.Conv1d(12, 32, kernel_size=7, padding=3)
+        self.lif1 = snn.Leaky(beta=beta, init_hidden=True)
+        self.pool1 = nn.MaxPool1d(2)
+
+        self.conv2 = nn.Conv1d(32, 64, kernel_size=5, padding=2)
+        self.lif2 = snn.Leaky(beta=beta, init_hidden=True)
+        self.pool2 = nn.MaxPool1d(2)
+
+        self.conv3 = nn.Conv1d(64, 128, kernel_size=3, padding=1)
+        self.lif3 = snn.Leaky(beta=beta, init_hidden=True)
+        self.pool3 = nn.AdaptiveAvgPool1d(1)
+
+        self.fc = nn.Linear(128, 5)  # 5 superclasses
+        self.lif_out = snn.Leaky(beta=beta, init_hidden=True, output=True)
+
+    def forward(self, x):

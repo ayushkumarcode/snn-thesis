@@ -120,31 +120,3 @@ Third, the PANNs+SNN result (92.50%) is the decisive rehabilitation. It proves t
 ## 6. Does the SpiNNaker Deployment Carry Weight at ICONS?
 
 **Yes, substantially — but the framing matters.**
-
-Hardware deployment papers are first-class citizens at ICONS. The 2025 program included a dedicated SpiNNaker2 paper (Arfa et al., "Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform") in the lightning-talk slot. The 2024 program included "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware" (Seekings et al.). The community actively publishes work that grapples with real hardware constraints.
-
-The FC2-only hybrid approach is defensible at ICONS — and the key is to frame the FC1 cancellation problem as a research finding, not a failure. The root cause (AvgPool produces fractional outputs that cannot serve as binary spike inputs to SpiNNaker's IF neurons) is a genuinely non-obvious hardware-software co-design constraint. Publishing this analysis helps future researchers avoid the same problem. The Option A result (MaxPool replacement → fc1_binary_fraction=1.0 for all thresholds) shows the path to full deployment.
-
-The 5-fold SpiNNaker validation (2,000 total hardware inferences) is methodologically stronger than most hardware deployment papers, which typically report a single run. The fold-level variance (F1=29.0%, F2=32.0%, F3=36.5%, F4=43.0%, F5=25.2%) is reported honestly.
-
-**What carries weight:**
-- 33.1% ± 6.9% on SpiNNaker (first ESC-50 hardware result)
-- 8.25 pp gap on 400-sample fold-4 validation with 64.5% agreement rate
-- Root-cause analysis of FC1 cancellation
-- Option A path to full deployment
-
-**What may be questioned:**
-- "If only FC2 is on hardware, is this really a deployment paper?" — Answer: FC2 executes 256→50 classification on live neuromorphic hardware. That is real deployment. The hybrid approach is the current practical reality given SpiNNaker's binary input constraint.
-- "Why is the gap 12.8 pp?" — Need to contextualise against DYNAP-SE (7.1 pp on simpler task), Loihi 2 (near-zero with QAT), and the SpiNNaker 1 platform's 2012-era 130nm design.
-
-At ICONS, 33.1% on SpiNNaker for 50-class environmental sound classification — the first such deployment — carries meaningful weight. It is not 91.12% on 12-class speech commands (SpiNNaker2), but it is a more complex task on older, more constrained hardware.
-
----
-
-## 7. What the Paper Should Emphasise and De-emphasise for ICONS
-
-### Emphasise:
-
-**Primary message:** "We establish the first SNN baseline on ESC-50 (50-class), deploy it on SpiNNaker hardware, and demonstrate that the SNN-ANN accuracy gap is a feature-learning problem, not a spiking computation problem."
-
-**Secondary messages (in order of ICONS impact):**

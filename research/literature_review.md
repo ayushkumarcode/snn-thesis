@@ -194,3 +194,31 @@ Wanted to read this for practical advice on building and evaluating SNNs properl
 - Covers evaluation methodology -- important for a thesis that needs rigorous results
 
 ---
+
+## Potential Thesis Directions
+
+Based on all three papers, here's what i think the most viable project directions are, ranked by feasibility:
+
+### Tier 1: Most achievable, clear deliverables
+
+| Direction | What you'd build | Why it works |
+|-----------|-----------------|-------------|
+| **ANN-to-SNN conversion benchmark** | Convert a pre-trained CNN to SNN, measure accuracy vs efficiency on CIFAR-10/100 | Well-documented method, existing tools (snn_toolbox), clear metrics |
+| **SNN on neuromorphic dataset** | Train SNN classifier on DVS128 Gesture or N-MNIST | Natural fit for spikes, public datasets, snnTorch tutorials exist |
+| **SNN vs ANN energy comparison** | Same task solved by both, compare accuracy + estimated energy + latency | Examiners love comparisons, strong narrative |
+
+### Tier 2: More ambitious, stronger thesis
+
+| Direction | What you'd build | Why it works |
+|-----------|-----------------|-------------|
+| **Spiking Transformer implementation** | Reproduce or adapt Spikformer on a vision task | Cutting-edge area, but more complex to implement |
+| **STDP unsupervised + supervised hybrid** | STDP for feature extraction + supervised classifier on top | Shows understanding of both learning paradigms |
+| **Edge deployment demo** | SNN for a sensor task (gesture/heartbeat) optimized for low power | Practical application angle, good for presentation |
+
+### Tier 3: Research-level (risky for undergrad thesis)
+
+| Direction | What you'd build | Why it works |
+|-----------|-----------------|-------------|
+| **Multi-modal spiking network** | Combine event camera + audio in one SNN | Open problem, high novelty, but unclear if achievable |
+| **Spiking NLP** | Adapt SpikingBERT for a text task | Very new area, limited existing work to build on |
+

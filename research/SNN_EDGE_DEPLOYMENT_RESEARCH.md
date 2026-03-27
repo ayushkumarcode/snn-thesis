@@ -127,31 +127,3 @@ The open-neuromorphic/fpga-snntorch repository provides the most complete, docum
 
 1. **Train** SNN using snnTorch (Python, GPU via Google Colab)
 2. **Quantize** weights and states (quantization-aware training)
-3. **Export** to HLS C++ using AMD Vitis HLS compiler
-4. **Synthesize** hardware design (dataflow architecture for deep SNNs)
-5. **Deploy** on AMD Kria KV260 using PYNQ Python interface
-6. **Test** using provided bitstream, PYNQ scripts, and hardware handoff files
-
-Workshop presented at ISFPGA 2024 by Jason Eshraghian (UC Santa Cruz) and Fabrizio Ottati (NXP Semiconductors). Repository: https://github.com/open-neuromorphic/fpga-snntorch
-
----
-
-## 4. Power Consumption: SNN vs ANN on Edge Devices
-
-### 4.1 Concrete Measurements
-
-| Platform | Network Type | Task | Power/Energy | Accuracy |
-|----------|-------------|------|--------------|----------|
-| FPGA (Spiker+) | SNN (LIF) | MNIST | 180 mW per inference | Competitive |
-| FPGA (SYNtzulu) | SNN | Time-series | 14.2 mW peak, 0.3 mW idle | -- |
-| FPGA (Hybrid HNN) | SNN+ANN | Classification | 1,192 mW | 87% |
-| FPGA (Pure ANN) | CNN | Classification | 1,248 mW | 88% |
-| SENECA neuromorphic | SNN | Vision | 927 uJ (62.5% of ANN time) | -- |
-| SENECA neuromorphic | ANN | Vision | 1,232 uJ | -- |
-| Analog SNN chip | SNN (STDP) | MNIST | 530 uW at 10 MHz | -- |
-| TrueNorth | SNN/CNN | DVS gesture | <200 mW | 96.5% |
-| SpiNNaker2 | SNN (Q-SNN) | DVS gesture | 459 mJ per gesture | 94.13% |
-| General estimate | SNN (STDP) | Various | ~5 mJ per inference | -- |
-| General estimate | ANN | Various | ~200 mJ per inference | -- |
-| FPGA Artix XC7A200T | CNN | ImageNet-class | 1,775 mW at 100 MHz | -- |
-

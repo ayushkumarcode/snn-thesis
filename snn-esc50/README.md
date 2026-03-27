@@ -124,13 +124,7 @@ snn-esc50/
 
 - snnTorch 0.9.4 -- spiking neural network framework (on top of PyTorch)
 - PyTorch 2.6+
-```
-
-## Tools & Dependencies
-
-- **snnTorch 0.9.4** -- Spiking neural network framework (built on PyTorch)
-- **PyTorch 2.6+** -- Deep learning framework
-- **librosa** -- Audio processing (mel spectrograms)
-- **sPyNNaker** -- SpiNNaker interface (optional, for hardware deployment)
-- **Training hardware:** NVIDIA A100-SXM4-80GB (CSF3 cluster)
-- **Neuromorphic hardware:** SpiNNaker1 (spinnaker.cs.man.ac.uk)
+- librosa -- audio processing, mel spectrograms
+- sPyNNaker -- SpiNNaker interface (optional, hardware deployment)
+- training hardware: NVIDIA A100-SXM4-80GB (CSF3)
+- neuromorphic hardware: SpiNNaker1 (spinnaker.cs.man.ac.uk)

@@ -111,31 +111,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 | 2017 | Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware | C. Fischer | Classification |
 | 2016 | Towards Fast Iterative Learning on the BrainScaleS System | L. Pilz | Learning algorithms |
 | 2015 | Boltzmann Sampling with Neuromorphic Hardware | D. Stockel | Sampling |
-| 2015 | Investigating Competitive Dynamics in a Recurrent Neural Network on Neuromorphic Hardware | D. Alevi | Network dynamics |
-| 2014 | Binaural Sound Localization on Neuromorphic Hardware | L. Kriener | Audio processing |
-| 2011 | Analysis of the Liquid Computing Paradigm on a Neuromorphic Hardware System | D. Probst | Reservoir computing |
-
-**Total bachelor's theses at Heidelberg (neuromorphic): ~60+ spanning 2003-2025**
-**Total master's theses: ~50+ spanning 2003-2025**
-
-**Key observation for scope calibration:** Heidelberg bachelor's theses typically involve ONE focused task on BrainScaleS hardware -- characterizing a component, implementing a specific algorithm, building a software tool, or running a specific experiment. They are well-scoped, hardware-oriented, and typically 40-60 pages.
-
----
-
-## UK PhD THESES (for scope calibration)
-
-### University of Manchester (SpiNNaker Group) -- Most Prolific UK Source
-
-| Title | Author | Year | Supervisors | Key Contribution |
-|-------|--------|------|-------------|-----------------|
-| Deep Spiking Neural Networks | Qian Liu | 2018 | Furber, Lester | Noisy Softplus activation, 99.07% MNIST, spike-based autoencoders |
-| Ensemble Learning for Spiking Neural Networks | Alina Neculae | 2020 | Brown, Furber | Ensemble methods for SNNs, class probability interpretation |
-| Stochastic Processes For Neuromorphic Hardware | Gabriel Fonseca Guerra | 2020 | Furber, Lester | Ion channel models on SpiNNaker, constraint satisfaction |
-| Spikes from Sound: Human Auditory Periphery on SpiNNaker | Robert James | 2019 | Garside, Koch | Cochlear model on SpiNNaker, auditory processing |
-| Learning in Spiking Neural Networks | Sergio Davies | 2012 | Furber | STDP learning rule, SpiNNaker routing |
-| Parallel Simulation of Neural Networks on SpiNNaker | Andrew Rowley | ~2012 | Furber | STDP with plasticity, SpiNNaker feasibility |
-| Parallelisation of Neural Processing on Neuromorphic Hardware | Luca Peres | 2022 | Furber, Rhodes | 20x performance improvement, cortical microcircuit |
-| Modelling Neural Dynamics On Neuromorphic Hardware | Mollie Ward | 2024 | Rhodes, Garside | Hodgkin-Huxley on SpiNNaker/SpiNNaker2 |
-
-**URL pattern:** https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
-

@@ -14,18 +14,18 @@ the evidence is pretty overwhelming from multiple independent sources. we ran on
 
 `spinnaker.cs.man.ac.uk` resolves to `130.88.193.57`.
 
-WHOIS verification:
+WHOIS confirms:
 ```
 inetnum:      130.88.0.0 - 130.88.255.255
 netname:      MANLAN
 descr:        The University of Manchester Local Area Network
 org-name:     The University of Manchester
-address:      Kilburn Building, Oxford Road, M13 9PL, Manchester, UNITED KINGDOM
+address:      Kilburn Building, Oxford Road, M13 9PL, Manchester
 ```
 
-The Kilburn Building is where the Department of Computer Science (and the SpiNNaker machine) is physically housed.
+the Kilburn Building is where CS (and the SpiNNaker machine) is physically housed.
 
-## Evidence 2: Official Documentation Confirms This Server
+## evidence 2: official docs confirm this server
 
 The [official sPyNNaker installation guide](https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html) provides this exact configuration for the Manchester million-core machine:
 

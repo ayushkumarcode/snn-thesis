@@ -61,31 +61,3 @@ Training on a single GPU (e.g., RTX 2080 Ti with 12GB VRAM) takes approximately 
 pip install torch torchvision torchaudio
 
 # Install SpikingJelly stable release
-pip install spikingjelly
-
-# Or install latest from GitHub
-pip install git+https://github.com/fangwei123456/spikingjelly.git
-
-# Optional: Triton backend (typically comes with PyTorch 2.x)
-# Tested on triton==3.3.1
-
-# Optional: CuPy backend (NVIDIA CUDA only)
-# pip install cupy-cuda12x  # For CUDA 12.x
-# pip install cupy-cuda11x  # For CUDA 11.x
-```
-
-### 2.3 Neuron Models
-
-SpikingJelly provides the following spiking neuron models in `spikingjelly.activation_based.neuron`:
-
-| Neuron Model | Description |
-|---|---|
-| `IFNode` | Integrate-and-Fire neuron. Simplest model: V += X; fire if V > threshold |
-| `LIFNode` | Leaky Integrate-and-Fire. V += (X - (V - V_reset)) / tau. Most commonly used |
-| `ParametricLIFNode` | PLIF: learnable membrane time constant tau per layer, from ICCV 2021 paper |
-| `QIFNode` | Quadratic Integrate-and-Fire neuron |
-| `EIFNode` | Exponential Integrate-and-Fire neuron |
-| `IzhikevichNode` | Izhikevich neuron model |
-
-All neurons support:
-- **Single-step mode** (`'s'`): process one timestep at a time

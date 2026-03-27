@@ -307,31 +307,3 @@ Our thesis is one of very few works to deploy an SNN for ENVIRONMENTAL SOUND (no
 
 Our thesis result -- PANNs CNN14 frozen embeddings + 3-layer SNN head achieving 92.50% on ESC-50 -- is NOVEL. The key insight that the SNN-ANN gap collapses from 16.7pp (scratch) to 0.95pp (PANNs features) is an original contribution.
 
-Related but distinct work:
-- **ANN-to-SNN conversion** literature (Bu et al., CVPR 2025; ICLR 2024) converts pretrained ANNs to SNNs, but focuses on vision and NLP, not audio
-- **Knowledge distillation** (SpikeSCR 2024) transfers knowledge from longer-timestep SNN teacher to shorter-timestep SNN student, but does not use pretrained audio features
-- **Spiking-LEAF** (ICASSP 2024) uses a learnable auditory frontend but trains from scratch
-
-### 6.2 Significance
-
-Our PANNs+SNN experiment addresses a fundamental question: "Is the SNN accuracy gap a feature-learning problem or a spiking computation problem?" The answer -- it is a feature-learning problem -- is a key scientific contribution that has not been demonstrated in the audio domain before.
-
----
-
-## 7. Survey Papers and Reviews (2024--2025)
-
-### 7.1 Basu et al. (2025) -- Fundamental Survey on Neuromorphic Audio Classification
-- **arXiv:** 2502.15056 (February 2025)
-- **Authors:** Amlan Basu, Pranav Chaudhari, Gaetano Di Caterina
-- **Scope:** 24-page survey covering SNNs, memristors, neuromorphic hardware for audio
-- **Key datasets reviewed:** UrbanSound, AudioSet, ESC-50
-- **Finding:** No SNN results reported on ESC-50
-
-### 7.2 Baek & Lee (2024) -- SNN and Sound: A Comprehensive Review
-- **Journal:** Biomedical Engineering Letters, Vol. 14(5):981-991, 2024
-- **Coverage:** Sound localization, speech recognition, classification
-- **Key papers surveyed:**
-  - Wu et al. (2018): SOM-SNN, 99.60% RWCP, 97.4% TIDIGITS
-  - Dong et al. (2018): Conv SNN, 97.5% TIDIGITS, 93.8% TIMIT
-  - Amin (2021): ATM-SNN, 97.64% TIDIGITS, 99.50% RWCP
-  - Bensimon et al. (2021): SCTN-SNN, 98.73% RWCP

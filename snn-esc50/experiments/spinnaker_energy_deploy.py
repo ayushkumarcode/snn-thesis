@@ -138,3 +138,31 @@ def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
     snn_preds = np.load(weights_dir / "snn_predictions.npy")
     fc2_conns = np.load(weights_dir / "fc2_connections.npy")
 
+    N, T, H = features.shape
+    num_samples = min(num_samples, N)
+    print(f"[{ts()}] SpiNNaker FC2: {num_samples} samples, scale={weight_scale}")
+
+    exc_mask = fc2_conns[:, 2] > 0
+    inh_mask = fc2_conns[:, 2] < 0
+    exc_conns = fc2_conns[exc_mask].copy()
+    exc_conns[:, 2] *= weight_scale
+    inh_conns = fc2_conns[inh_mask].copy()
+    inh_conns[:, 2] = np.abs(inh_conns[:, 2]) * weight_scale
+    print(f"  Exc: {len(exc_conns)}, Inh: {len(inh_conns)}")
+
+    LIF_PARAMS = {
+        "cm": 1.0, "tau_m": 20.0, "tau_refrac": 0.1,
+        "v_reset": 0.0, "v_rest": 0.0, "v_thresh": 1.0,
+        "tau_syn_E": 5.0, "tau_syn_I": 5.0,
+    }
+
+    results = []
+    correct = 0
+    start_time = time.time()
+
+    for idx in range(num_samples):
+        sample = features[idx]
+        true_label = int(labels[idx])
+        spike_times = [[] for _ in range(H)]
+        for t in range(T):
+            for n in range(H):

@@ -468,31 +468,3 @@ This means:
 | **Author** | Vicki Kennedy |
 | **Year** | 2024 |
 | **Degree** | Clinical Science Doctorate (ClinSciD) |
-| **Department** | Psychology Communication and Human Neuroscience |
-| **Supervisors** | Chris Plack (main) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/use-of-machine-learning-to-analyse-auditory-evoked-electrophysiol |
-| **Abstract** | ML for auditory brainstem response (ABR) analysis. Wave V latency estimation (R2 = 0.8925), tinnitus classification (80% sensitivity, 81.82% specificity), noise exposure prediction (poor). |
-| **What They Built** | ML classifiers for ABR analysis; tinnitus detection system |
-| **Tools/Frameworks** | SVM, Gaussian process regression, ANNs, wavelet feature extraction |
-| **Datasets** | ABR waveforms from tinnitus/non-tinnitus subjects |
-| **Scope** | Moderate -- applied ML to clinical data |
-| **PDF Size** | 2.59 MB |
-
----
-
-## SECTION 6: EDGE / IoT / EMBEDDED
-
-### 6.1 Sensing and Image Processing Methods for IoT Applications
-| Field | Detail |
-|-------|--------|
-| **Author** | Yu Li |
-| **Year** | 2023 |
-| **Degree** | **MPhil (Master of Philosophy)** |
-| **Department** | Electrical & Electronic Engineering |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/sensing-and-image-processing-methods-for-iot-applications |
-| **Abstract** | Monitoring industrial production processes, baked potato quality assessment, oven anomaly detection. Uses HSV, LBP, OCSVM. |
-| **What They Built** | IoT monitoring pipeline with image processing + sensor analysis |
-| **Tools/Frameworks** | HSV, LBP, wavelet packets, OCSVM |
-| **Datasets** | Camera images, thermocouple data, accelerometer data |
-| **Scope** | Moderate (MPhil) -- applied image processing and ML |
-| **PDF Size** | 4.79 MB |

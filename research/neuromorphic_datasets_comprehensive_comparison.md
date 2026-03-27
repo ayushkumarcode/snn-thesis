@@ -182,31 +182,3 @@ Eight neuromorphic datasets were investigated in depth, along with three newer d
 | I2E-ImageNet pretrain + finetune | 2025 | 92.5% | Transfer learning from synthetic events |
 | ICLR 2024 paper | 2024 | 84.9% | Sparse connectivity (6.8%) |
 | VGG-11 SNN | 2024 | 81.23% | Standard architecture |
-| HSD (Hybrid Distillation) | 2024 | 81.10% | 5 time steps |
-| TET | 2022 | 78.80% | Popular baseline |
-| Typical baseline SNN | -- | ~74-78% | Standard training |
-
-**Difficulty assessment:** MODERATE-HARD. More challenging than DVS128 Gesture due to harder object categories and lower resolution (128x128 DVS capturing 32x32 CIFAR images). The lack of an official train/test split requires care. SOTA accuracy is much lower than DVS128, meaning a ~78% result is perfectly respectable for an undergraduate. The 10,000 sample size is manageable.
-
-**Thesis narrative strength:** MODERATE. Object classification is a standard ML task, but the "neuromorphic conversion of a classic benchmark" angle is somewhat artificial. The story improves if framed as "can SNNs match ANN performance on event-converted data while using fewer operations?" The efficiency comparison narrative works well here.
-
----
-
-### 5. SHD (Spiking Heidelberg Digits)
-
-| Property | Details |
-|---|---|
-| **Domain** | Audio / Spoken digit classification |
-| **Sensor** | Artificial cochlea model (software-based spike generation) |
-| **Classes** | 20 (digits 0-9 in English and German) |
-| **Total samples** | ~10,420 (8,332 train / 2,088 test) |
-| **Speakers** | 12 distinct speakers (2 only in test set) |
-| **Input channels** | 700 (cochlear frequency channels) |
-| **Data format** | HDF5 (spike times + neuron IDs) |
-| **Download source** | https://zenkelab.org/datasets/ and IEEE DataPort |
-| **Duration** | Each sample ~1 second, zero-padded |
-| **Year introduced** | 2019 (Cramer et al., IEEE TNNLS) |
-
-**Preprocessing required:**
-- Load HDF5 files containing spike times and unit IDs
-- Bin 700 input channels into 140 channels (5:1 spatial binning)

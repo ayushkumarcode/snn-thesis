@@ -222,3 +222,31 @@ key innovations:
 
 **CIFAR-10 Direct Training Results:**
 | Method | Year | Accuracy | Time Steps |
+|--------|------|----------|------------|
+| MPBN | 2023 | 96.47% | 2 |
+| RecDis-SNN | 2023 | 95.55% | 6 |
+| IM-Loss | 2022 | 95.49% | 6 |
+
+**ImageNet Direct Training Results:**
+| Method | Year | Accuracy | Time Steps |
+|--------|------|----------|------------|
+| IM-Loss | 2022 | 70.65% | 5 |
+| Attention SNN | 2023 | 69.15% | 1 |
+| GLIF | 2022 | 67.52% | 4 |
+
+**DVS CIFAR-10 Results:**
+| Method | Year | Accuracy | Time Steps |
+|--------|------|----------|------------|
+| STSC-SNN | 2022 | 81.40% | 10 |
+| IM-LIF | 2024 | 80.50% | 10 |
+| TET | 2022 | 77.33% | 6 |
+
+### network architectures
+
+#### Deep Convolutional SNNs
+- **SEW-ResNet**: spike-element-wise with activation-before-addition; 69.26% on ImageNet (60.19M params, 5 time steps)
+- **MS-ResNet**: membrane-shortcut preserving full-precision potentials; 74.21% on ImageNet (78.37M params, 5 time steps)
+- **NAS Approaches**: AutoSNN, SNASNet, AutoST for automated architecture discovery
+
+#### Spiking Transformer Architectures (big focus of this paper)
+

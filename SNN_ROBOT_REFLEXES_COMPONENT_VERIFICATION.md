@@ -362,3 +362,31 @@ python -c "import gymnasium as gym; env = gym.make('Ant-v5'); print('Ant-v5 load
 **Source:** Links above
 
 ---
+
+### 12. Setup Complexity
+
+| Field | Value |
+|-------|-------|
+| **MuJoCo + Gymnasium setup** | 1-2 hours (modern pip install, no license needed) |
+| **snnTorch setup** | 30 minutes |
+| **Full stack integration** | 1-2 weeks |
+| **First working SNN+RL agent** | 2-4 weeks |
+| **POTENTIAL BLOCKER** | **NO** (but budget time accordingly) |
+
+**Breakdown of expected setup timeline:**
+
+| Phase | Time | What Happens |
+|-------|------|-------------|
+| Install Python/PyTorch/MuJoCo/Gymnasium | 1-2 hours | `pip install` everything, verify basic environments work |
+| Install snnTorch, run tutorials | 1-2 days | Go through snnTorch tutorials 1-6 |
+| Train MLP baseline with SB3 on Ant-v5 | 1 day | Standard PPO training to establish baseline reward |
+| Build custom SNN policy network | 3-5 days | Replace MLP with snnTorch LIF neurons, handle temporal dimension |
+| Debug SNN+PPO integration | 3-7 days | Fix gradient issues, dimension mismatches, spike encoding |
+| First successful SNN training run | 1-2 days | May only achieve partial locomotion initially |
+| Hyperparameter tuning | 3-5 days | Beta, threshold, number of timesteps, learning rate |
+| Full evaluation with 5 seeds | 2-3 days | Statistical significance, generate plots |
+
+**Total estimated time: 3-5 weeks of active development** (assuming prior Python/PyTorch experience)
+
+**The old warning about "2 hours to 2 weeks" for MuJoCo setup refers to the OLD mujoco-py era.** Modern MuJoCo (3.x) with Gymnasium is dramatically simpler -- just `pip install "gymnasium[mujoco]"`.
+

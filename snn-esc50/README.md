@@ -68,20 +68,20 @@ needs a separate Python 3.11 venv with sPyNNaker and access to SpiNNaker hardwar
 ```bash
 python -m venv .venv-spinnaker --python=python3.11
 source .venv-spinnaker/bin/activate
-
-### SpiNNaker Deployment (Optional)
-
-Requires separate Python 3.11 venv with sPyNNaker and access to SpiNNaker hardware.
-
-```bash
-python -m venv .venv-spinnaker --python=python3.11
-source .venv-spinnaker/bin/activate
 pip install spynnaker
-python spinnaker/convert_weights.py    # Convert snnTorch weights
-python spinnaker/extract_features.py   # Extract conv features
-python spinnaker/run_on_spinnaker.py   # Run FC classifier on SpiNNaker
+python spinnaker/convert_weights.py
+python spinnaker/extract_features.py
+python spinnaker/run_on_spinnaker.py
 ```
 
+## architecture
+
+```
+input: mel spectrogram (1, 64, 216)
+
+Conv2d(1, 32, 3x3) -> BatchNorm -> MaxPool(2) -> LIF
+Conv2d(32, 64, 3x3) -> BatchNorm -> MaxPool(2) -> LIF
+AvgPool(4, 6) -> Flatten (2304)
 ## Architecture
 
 ```

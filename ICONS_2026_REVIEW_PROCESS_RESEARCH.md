@@ -54,3 +54,31 @@ the ~59% acceptance rate for proceedings papers is moderate. for comparison: IJC
 | May 25 - June 5 | PC deliberation (~11 days) |
 | June 5, 2026 | Final acceptance decision |
 | June 5 - June 24 | Camera-ready preparation (~19 days) |
+| June 24, 2026 | Camera-ready deadline |
+| August 4-6, 2026 | Conference |
+
+total: submission to decision = 65 days (~9.3 weeks). submission to conference = 126 days (~18 weeks).
+
+the timeline is consistent year-to-year. the review cycle is ~5-6 weeks, which is shorter than major conferences (NeurIPS: ~3 months).
+
+---
+
+## review criteria
+
+ICONS doesn't publicly disclose specific review criteria or scoring rubric. based on ACM standard review criteria and typical EasyChair review forms:
+
+- originality/novelty of contribution
+- technical correctness/soundness
+- significance/importance to the field
+- clarity of exposition and presentation quality
+- relevance to the conference scope
+- completeness of evaluation/experiments
+
+typical scoring is 1-5 on each dimension, with an overall recommendation (strong accept through strong reject).
+
+ICONS-specific focus areas (from CFP):
+- neuromorphic circuits, sensors, and non-von Neumann architectures
+- event/spike-based systems and emerging hardware implementations
+- training algorithms (supervised, unsupervised, self-supervised, continual learning)
+- energy-efficient AI and biomedical applications
+- neuromorphic software, simulators, compilers, and visualization tools

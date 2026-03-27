@@ -138,3 +138,17 @@ i'd put us in the top 20-30% of ICONS submissions in terms of scientific content
 ---
 
 ## top 5 actions (priority order)
+
+1. cut to 4 contributions. remove surrogate, CL, augmentation, t-SNE, temporal
+2. make SpiNNaker the star. expand deployment section, add pipeline figure, add latency/energy measurements
+3. create 3 polished figures
+4. rewrite abstract to 150-200 words with tight narrative arc
+5. frame energy honestly with three-part argument
+
+---
+
+## Sources
+- ICONS 2023-2025 proceedings analysis (50+ papers)
+- [Seekings et al. ICONS 2024](https://arxiv.org/abs/2407.08704)
+- [An et al. ICONS 2025](https://arxiv.org/abs/2509.21345)
+- [Schone et al. ICONS 2024 Best Paper](https://arxiv.org/abs/2404.18508)

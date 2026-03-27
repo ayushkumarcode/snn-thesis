@@ -194,3 +194,31 @@ Three mechanisms:
 2. **Addition-only operations:** SNN inference uses accumulate (AC) operations instead of multiply-accumulate (MAC). AC costs ~0.9 pJ vs ~4.6 pJ for MAC in 45nm CMOS.
 3. **Temporal sparsity:** audio signals are naturally sparse -- silence and low-activity periods need no computation
 
+### Concrete energy numbers
+
+| Platform | Task | Energy/Inference | Relative |
+|----------|------|-----------------|----------|
+| **Intel Loihi** | KWS | ~110 mJ | 1x (baseline) |
+| **Intel Loihi 2** | Audio | -- | 200x less than Jetson Orin Nano |
+| NVIDIA Jetson TX1 | KWS | ~1.7 J (est.) | ~15x more |
+| CPU (Cortex-M7) | KWS | ~1.65 J (est.) | ~15x more |
+| GPU (general) | KWS | -- | ~109x more |
+
+### SNN-specific energy from SpikCommander (2025)
+
+| Model | Energy (mJ) | SOPs (G) | Accuracy (GSC) |
+|-------|-------------|---------|----------------|
+| SpikCommander 1L | **0.028** | 0.008 | 96.71% |
+| SpikCommander 2L | **0.042** | 0.020 | 96.92% |
+| Spiking LMUFormer | 0.059 | 0.031 | 96.12% |
+| SpikeSCR 2L | ~0.093 | -- | 95.60% |
+
+Note: these energy numbers are estimated from synaptic operation counts, not measured on actual hardware.
+
+### Caveats to keep in mind
+
+- True energy gains need neuromorphic hardware (Loihi, SpiNNaker). On standard GPUs, SNNs may actually be slower and less efficient than ANNs because of the timestep loop.
+- For SNNs to be more efficient than ANNs, the spike count per synapse needs to be below ~0.42-0.44 (verified empirically for VGG16/AlexNet topologies).
+- Most papers estimate energy using synaptic operation counts and assumed hardware energy costs. True measurements require actual neuromorphic hardware.
+- An undergrad thesis can credibly argue energy efficiency using SOP counting methodology -- that's standard practice in the field.
+

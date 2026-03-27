@@ -166,3 +166,31 @@ Speech enhancement is the strongest SNN speech application beyond classification
 - VoiceBank+DEMAND dataset commonly used
 
 ### Gaps
+1. Voice conversion with SNNs: 0 papers -- wide open
+2. Speech separation with modern SNNs: essentially unexplored
+3. Speech-to-speech translation with SNNs: 0 papers
+4. Real-time SNN speech enhancement on neuromorphic hardware: only Spiking-FullSubNet approaches this
+5. SNN for personalized hearing aid processing: limited work despite obvious application
+
+---
+
+## 4. SNN for generative audio
+
+### Paper count: 3-5 papers
+
+| Paper | Year | Task | Key Result |
+|-------|------|------|------------|
+| Music Neurotechnology for Sound Synthesis (Miranda) | 2009 | Sound synthesis | Neurogranular Sampler using Izhikevich spiking network |
+| Spiking Music: Audio Compression with Event-Based Autoencoders | 2024 | Audio Compression | Binary autoencoders perform well on neural audio compression; event-based coding emerges |
+| When Audio Denoising Meets SNN | 2024 | Audio Denoising | SNN-based audio denoising framework |
+| SNN-based Audio Fidelity Evaluation (SAFE) | 2024 | Audio Quality Assessment | SNN for evaluating audio quality |
+
+**Music generation with SNNs:** Essentially non-existent in the modern deep learning sense. The Neurogranular Sampler (2009) is a creative art/music project using Izhikevich neurons to trigger audio grains, not a trainable generative model. No papers apply modern SNN architectures (Spikformer, surrogate gradient training) to music generation.
+
+**Audio compression with SNNs:** "Spiking Music" (2024) is a notable paper showing that:
+- Simple binary autoencoders achieve surprisingly good results on neural audio compression benchmarks
+- Event-based coding emerges naturally, synchronized with musical events (piano keystrokes)
+- Demonstrates computational advantages of sparsity in audio compression
+- Opens a new benchmark where event-based models can leverage advantages
+
+### Feasibility: MEDIUM (audio compression), LOW (music generation)

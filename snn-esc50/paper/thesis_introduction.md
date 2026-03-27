@@ -96,20 +96,20 @@ Using NeuroBench v2.2.0 (Yik et al. 2025), 5-fold validated: direct SNN uses 1.0
 
 ---
 
+## 1.4 scope and limitations
 
-The SpiNNaker deployment uses a **hybrid approach**: convolutional feature extraction runs in software (snnTorch on CPU), and only the final classification layer (FC₂, 256→50) runs on SpiNNaker. A fully on-chip pipeline is architecturally constrained by the AvgPool-FC1 incompatibility described above. An Option A re-training strategy (replacing AvgPool with MaxPool) is validated on fold 4 and resolves this constraint theoretically; full 5-fold SpiNNaker deployment with the Option A model is left for future work.
+This thesis evaluates SNNs trained with surrogate gradient descent -- BPTT with smooth surrogate for spike derivative. This is the current mainstream for competitive SNN accuracy. Bio-inspired learning (STDP, Hebbian) not evaluated -- outside scope and substantially less competitive.
 
-**Energy estimates** use NeuroBench's software-simulation-based SynapticOperations methodology, not direct hardware power measurement. Actual on-chip energy would differ due to routing costs, communication overhead, and chip-level static power.
+SpiNNaker deployment uses a hybrid approach: conv feature extraction in software (snnTorch on CPU), only FC2 (256->50) on SpiNNaker. Full on-chip is architecturally constrained by the AvgPool-FC1 thing. Option A (replacing AvgPool with MaxPool) is validated on fold 4 and resolves this theoretically; full 5-fold SpiNNaker with Option A is left for future work.
 
-**Adversarial evaluation** uses standard FGSM and PGD (40 steps). As noted by Wang et al. (2025), vanishing surrogate gradients make standard PGD less effective against SNNs, potentially overestimating SNN robustness. Results should be interpreted as upper bounds; Stable Adaptive PGD evaluation is recommended for future rigorous assessment.
+Energy estimates use NeuroBench's software-simulation SynapticOperations, not direct hardware power measurement. Actual on-chip energy would differ due to routing, comms overhead, and static power.
+
+Adversarial evaluation uses standard FGSM and PGD (40 steps). As Wang et al. (2025) note, vanishing surrogate gradients make standard PGD less effective against SNNs, potentially overestimating robustness. Results should be interpretted as upper bounds; SA-PGD evaluation recommended for future work.
 
 ---
 
-## 1.5 Thesis Structure
+## 1.5 thesis structure
 
-**Chapter 2: Background and Related Work** reviews environmental sound classification (§2.1), spiking neural network fundamentals including LIF neurons and surrogate gradient training (§2.2), the seven spike encoding methods evaluated (§2.3), prior SNN work on audio tasks (§2.4), the SpiNNaker platform (§2.5), energy efficiency considerations (§2.6), adversarial robustness in SNNs (§2.7), transfer learning via PANNs (§2.8), and continual learning in SNNs (§2.9).
-
-**Chapter 3: Methodology** describes the experimental design philosophy of controlled comparison (§3.1), the ESC-50 dataset and preprocessing pipeline (§3.2), the SpikingCNN and ConvANN architectures (§3.3), all seven spike encoding methods with mathematical formulations (§3.4), the training protocol (§3.5), and the SpiNNaker deployment strategy including the hybrid FC2-only approach (§3.6). Advanced experiments are described in §3.7.
 
 **Chapter 4: Core Results — Encoding Comparison** presents the ANN baseline (§4.1), the systematic encoding comparison across all seven methods (§4.2), the surrogate gradient ablation (§4.3), the effect of data augmentation as a negative result (§4.4), statistical significance analysis (§4.5), and the PANNs transfer learning result (§4.6).
 

@@ -142,31 +142,3 @@ Reviews SNN-based sound processing, emphasizing low power consumption and minima
 Novel Hilbert-Transform-based audio-to-signed-event encoding for SNN sound source localization. Achieves MAE of 0.25--0.65 degrees on microphone arrays. Demonstrates that signal processing co-designed with SNN implementations can achieve significant power efficiency improvements.
 
 ### 1.4 Why Direct Encoding Outperforms Rate Coding
-
-The literature converges on several explanations:
-
-1. **Information preservation:** Direct encoding feeds continuous-valued inputs, preserving full-precision information in the first layer. Rate coding discretizes inputs into binary spikes, losing information. (Kim et al. 2022)
-
-2. **Timestep efficiency:** With few timesteps (T <= 10), rate coding cannot generate enough spikes to accurately represent input intensities. Direct coding achieves full accuracy from T=1. (Kim et al. 2022; Practical Tutorial 2025)
-
-3. **Gradient flow:** Direct encoding provides richer gradient information since the first layer processes continuous values with standard backpropagation. Rate coding introduces stochastic Bernoulli sampling that impedes gradient flow. (Neftci et al. 2019)
-
-4. **Feature learning capacity:** For pre-extracted features (e.g., mel-spectrograms), the continuous-valued input already carries rich information that is degraded by spike quantization. (Thesis finding: direct=47.15% vs rate=24.00% on mel-spectrograms)
-
-5. **Dataset complexity scaling:** The performance gap between direct and rate increases with dataset complexity. ESC-50 with 50 classes and complex audio features is a harder task where the information loss from rate encoding is more damaging. (Kim et al. 2022)
-
-### 1.5 Novel Encoding Schemes (2024--2025)
-
-| Scheme | Year | Key Innovation | Reference |
-|--------|------|----------------|-----------|
-| Multiplexed Rate+TTFS (RTF) | 2024 | Hardware-based neuron combining rate and temporal coding | Nature Communications 15:3808 (2024) |
-| At-Most-Two-Spike Exponential Coding (AEC) | 2024 | Primary + compensating spike reduces quantization error | Neural Networks (ScienceDirect, 2024) |
-| Stochastic First-to-Spike | 2024 | Stochastic LIF with temporal coding; improves noise robustness at cost of sparsity | arXiv:2404.17719, ICCAD 2024 |
-| Input-aware Multi-Level Spike (IMLS) | 2025 | Multi-timestep firing in single timestep via adaptive thresholding | IML-Spikeformer (2025) |
-| Sigma-Delta Network Conversion | 2025 | Sigma-delta neurons exploiting temporal redundancy | arXiv:2505.06417 (Loihi 2 conversion) |
-| Hilbert Transform Encoding | 2025 | Phase-based event encoding from analytic signal | Nature Comms Eng (2025) |
-| Threshold Adaptive Encoding (TAE) | 2025 | Dynamically adjusting thresholds for environmental sounds | arXiv:2503.11206 |
-| Hyperdimensional Computing Decoding | 2025 | HD computing + SNN for robust low-latency decoding | arXiv:2511.08558 |
-
-**High-Performance Deep SNNs with 0.3 Spikes per Neuron (Nature Communications, 2024):**
-Stanojevic et al. from IBM Research demonstrate TTFS-based SNNs achieving exact ANN-equivalent accuracy on MNIST, Fashion-MNIST, CIFAR-10, CIFAR-100, and PLACES365 with only 0.3 spikes per neuron. This establishes that temporal coding can match ANN accuracy with extreme sparsity when properly trained.

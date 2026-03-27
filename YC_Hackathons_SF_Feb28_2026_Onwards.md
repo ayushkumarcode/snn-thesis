@@ -177,31 +177,3 @@ Based on the data collected, the following patterns are clear:
 3. **Future hackathons not yet announced.** Given YC's pattern of announcing events 2-6 weeks out, hackathons for March-June 2026 likely exist in planning but are not yet public.
 
 4. **The Agentic Payments Hackathon date ambiguity.** The November 2025 edition has passed, but the events.ycombinator.com page remains live. It is unclear if this indicates a future edition.
-
----
-
-## CONFIDENCE ASSESSMENT
-
-| Finding | Confidence |
-|---------|------------|
-| Browser Use Hackathon (Feb 28 - Mar 1) at YC with YC interview prize | CONFIRMED -- HIGH |
-| More YC hackathons will be announced for Mar-Jun 2026 | HIGH (based on cadence) |
-| Agentic Payments Hackathon may have a future edition | MEDIUM |
-| Pattern: ~2-3 hackathons/month at YC HQ | HIGH |
-| Guaranteed YC interview is a standard hackathon prize | HIGH |
-| Cal Hacks 2026 will likely include YC partnership | MEDIUM (based on history) |
-
----
-
-## RECOMMENDED FOLLOW-UPS
-
-1. **Check events.ycombinator.com weekly** -- this is the single best source for YC-hosted hackathons
-2. **Follow @ycombinator on X/Twitter** -- they promote hackathons 1-3 weeks before
-3. **Monitor Luma SF Hackathon Collection** -- https://luma.com/hackathon_collections
-4. **Sign up for Cerebral Valley newsletter** -- https://cerebralvalley.beehiiv.com/
-5. **Check GarysGuide SF events** -- https://www.garysguide.com/events?region=sf
-6. **Register for the Browser Use hackathon NOW** if interested -- it's in 4 days
-
----
-
-## SOURCES USED

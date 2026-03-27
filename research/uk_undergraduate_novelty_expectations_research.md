@@ -26,3 +26,31 @@ introduces "originality in the application of knowledge" -- but this is still *a
 
 Source: [QAA Characteristics Statement -- Master's Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-masters-degrees)
 
+### level 8 -- doctoral (PhD)
+
+> "the creation and interpretation of new knowledge, through original research or other advanced scholarship, of a quality to satisfy peer review, extend the forefront of the discipline, and merit publication"
+
+ONLY at Level 8 does the QAA require "creation of new knowledge" that "extends the forefront of the discipline" and "merits publication." that's the fundamental distinction.
+
+Source: [QAA Characteristics Statement -- Doctoral Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-doctoral-degrees)
+
+### summary
+
+| Level | Qualification | Originality requirement |
+|-------|-------------|------------------------|
+| 6 | Bachelor's (BSc/BEng) | "Self-direction and originality in tackling and solving problems" -- applying existing methods independently |
+| 7 | Master's (MSc/MEng) | "Originality in the application of knowledge" |
+| 8 | Doctoral (PhD) | "Creation and interpretation of new knowledge through original research" that "extends the forefront" and "merits publication" |
+
+---
+
+## 2. what actual university marking rubrics say
+
+### cambridge -- CS Part II project
+
+cambridge assesses the Part II dissertation across three categories totalling 110 marks. for the highest band (36-45/45) in Implementation and Contribution:
+
+> "Where a project makes a genuine contribution to the field, that is strong evidence that it should score in the 36-45 band for implementation and contribution. **However, this is not a requirement of the band.**"
+
+even at cambridge, even for the HIGHEST band, a genuine contribution is explicitly stated as NOT REQUIRED. it's just "strong evidence" for a high mark.
+

@@ -284,8 +284,6 @@ robustness and energy:
 - SNN adversarial local learning 2025: https://arxiv.org/html/2504.08897v2
 - Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
 - Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
 | No prior SNN work on full ESC-50 | **Very High** | Confirmed by Larroza et al. 2025 arXiv paper, comprehensive literature search, SNN+sound review (PMC 2024) |
 | 7-encoding comparison is most comprehensive for audio | **Very High** | Yarga et al. (4 encodings, digits), Larroza et al. (3 encodings, ESC-10) are the closest; no one has done 7 |
 | Gap-collapse finding is novel for audio | **High** | ANN-to-SNN gap closure via pretrained features is known conceptually for images, but never quantified for audio with PANNs |

@@ -250,3 +250,31 @@ Key finding: SNN SLAM on Loihi consumes 100x less energy than GMapping on CPU wi
 **Feasibility: LOW-MODERATE** -- SLAM itself is complex, and the existing implementation uses Nengo not snnTorch. Framework mismatch is a deal-breaker.
 
 ---
+
+### 2.3 SNN for obstacle avoidance
+
+**Literature: 10-20 papers**
+
+Key works:
+- [Directly-trained SNNs for DRL: Energy-efficient obstacle avoidance (ScienceDirect 2023)](https://www.sciencedirect.com/science/article/pii/S0925231223010081)
+- [SNN for UAV Obstacle Avoidance targeting Neuromorphic Processors (IEEE 2019)](https://ieeexplore.ieee.org/document/8867860/)
+- [Artificial vs Spiking NNs for RL in UAV obstacle avoidance (ACM 2022)](https://dl.acm.org/doi/abs/10.1145/3528416.3530865)
+
+Simulation-only: YES. CartPole, LunarLander, and simple 2D navigation all work.
+macOS: YES. Gymnasium (OpenAI Gym) runs fine on macOS.
+
+**Feasibility: MODERATE-HIGH** (if scoped to simple environments)
+
+What the thesis would look like:
+```
+Title: "SNN-Based Deep Reinforcement Learning for Obstacle Avoidance:
+        An Energy-Efficiency Analysis"
+
+Components:
+1. Standard DQN agent on CartPole/LunarLander (ANN baseline)
+2. Replace DQN network with Spiking DQN (LIF neurons, surrogate gradient)
+3. Train both, compare performance (reward curves)
+4. Compare energy efficiency (spike count, operations)
+5. Extend to simple 2D navigation if time permits
+
+Framework: snnTorch + Gymnasium + PyTorch

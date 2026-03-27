@@ -250,3 +250,31 @@ A reasonable scope:
 - Implement 1-2 SNN architectures using snntorch/Norse/Brian2
 - Test on 1-2 standard datasets (MNIST, DVS Gesture, SHD)
 - Compare with conventional ANN baseline
+- Analyze energy/spike efficiency metrics
+- 40-80 pages including background lit review
+
+---
+
+## Sources
+
+### University Repositories
+- Imperial College Spiral: https://spiral.imperial.ac.uk/
+- University of Edinburgh ERA: https://era.ed.ac.uk/
+- UCL Discovery: https://discovery.ucl.ac.uk/
+- University of Southampton ePrints: https://eprints.soton.ac.uk/
+- White Rose eTheses: https://etheses.whiterose.ac.uk/
+- Manchester Research Explorer: https://research.manchester.ac.uk/
+- Kent Academic Repository: https://kar.kent.ac.uk/
+- Strathclyde STAX: https://stax.strath.ac.uk/
+- Glasgow Enlighten: https://theses.gla.ac.uk/
+- Heidelberg KIP: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
+- British Library EThOS: https://ethos.bl.uk/
+
+### GitHub Repos (Undergrad Projects)
+- Ferrari SNN shape detector: https://github.com/filippoferrari/shape_detector_snn
+- Ferrari BSc dissertation LaTeX: https://github.com/filippoferrari/bsc_dissertation
+- mrahtz musical pattern recognition: https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks
+- Fabio Deo SNN time-stepping: https://github.com/Fabio752/Randomised-time-stepping-methods-for-SNN-simulations
+
+### Key PhD Thesis URLs
+- Ward (2024): https://research.manchester.ac.uk/en/studentTheses/modelling-neural-dynamics-on-neuromorphic-hardware/

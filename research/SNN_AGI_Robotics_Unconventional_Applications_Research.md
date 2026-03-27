@@ -502,3 +502,31 @@ Key works:
 - [SNNSIR: Simple SNN for Stereo Image Restoration (arxiv 2025)](https://arxiv.org/pdf/2508.12271)
 
 SPIDEN achieves 30.18 dB PSNR on Set12 (only 0.25 dB below equivalent DCNN) with 20% energy reduction. Surprisingly competitive.
+
+**Feasibility: MODERATE-HIGH**
+
+```
+Title: "Energy-Efficient Image Denoising with Spiking Neural Networks"
+
+Components:
+1. Implement DnCNN (standard denoising CNN) as ANN baseline
+2. Convert/train equivalent SNN denoising network using snnTorch
+3. Test on standard benchmarks (Set12, BSD68) with various noise levels
+4. Compare PSNR/SSIM quality metrics
+5. Compare energy metrics (operations, activations)
+6. Explore different spike encoding strategies for images
+
+Datasets: Set12, BSD68, Urban100 (standard denoising benchmarks)
+```
+
+Why this is interesting:
+- Only 3-5 papers in total -- very high novelty
+- Image processing is mainstream ML, so the comparison framework is well-understood
+- PSNR/SSIM are standard, well-defined metrics
+- The "SNN processes images" angle is novel (most SNN work is on temporal data)
+- Energy efficiency story is clear
+- Can start from SPIDEN architecture as a reference
+
+Risks: U-Net architectures with skip connections may be tricky in snnTorch. Image denoising isn't a "natural" SNN task (images aren't temporal). SPIDEN uses custom architecture, not directly snnTorch.
+
+**Verdict: excellent novel candidate. 3-5 papers means genuine contribution potential.**

@@ -516,31 +516,3 @@ Hardware: macOS CPU (MuJoCo is CPU-efficient)
 ### 3.1 SNN for Game AI (Atari, Board Games)
 
 **Literature: 10-15 papers**
-
-Key works:
-- [Deep Spiking Q-Network (DSQN) outperforms DQN on 17 Atari games (arxiv 2022)](https://arxiv.org/abs/2201.09754)
-- [Multi-compartment neuron for deep distributional RL (arxiv 2023)](https://arxiv.org/html/2301.07275)
-- [Improved robustness of RL policies upon conversion to SNN, Atari Breakout (ScienceDirect 2019)](https://www.sciencedirect.com/science/article/abs/pii/S0893608019302266)
-
-**Assessment:**
-- Papers: 10-15 (moderate)
-- Simulation-only: YES
-- macOS: YES (Gymnasium + Atari ROMs)
-- 28-day feasibility: **MODERATE** (CartPole is feasible; full Atari is hard)
-- Components: snnTorch + Gymnasium + Atari Learning Environment
-
-**Key finding:** DSQN represents Q-values via membrane voltage of non-spiking output neurons, outperforming standard DQN on most Atari games while being more robust to input noise.
-
-**Novel angle:** Most papers use custom SNN frameworks. Implementing spiking DQN in snnTorch specifically, with energy analysis, could be novel.
-
-**VERDICT: MODERATE candidate. CartPole/LunarLander scope is feasible. Full Atari is too ambitious. Overlaps heavily with the obstacle avoidance RL direction (2.3).**
-
----
-
-### 3.2 SNN for Cybersecurity / Intrusion Detection
-
-**Literature: 10-20 papers, actively growing**
-
-Key works:
-- [Efficient intrusion detection based on convolutional SNN (Nature Scientific Reports 2024)](https://www.nature.com/articles/s41598-024-57691-x)
-- [Energy-aware protocol-aware transformer-spiking hybrid (Nature Scientific Reports 2026)](https://www.nature.com/articles/s41598-026-37367-4)

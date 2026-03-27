@@ -43,31 +43,3 @@ Surrogate ablation, continual learning, augmentation, t-SNE, temporal analysis, 
 | Experiment | Time | What it produces | Why it helps |
 |-----------|------|------------------|-------------|
 | Noise robustness profiling (SNR sweep) | 2-3 days | SNN vs ANN degradation curves | Bridges adversarial to real-world |
-| 1-fold UrbanSound8K | 2 days | Cross-dataset validation | Kills "single dataset" objection |
-| Neuron ablation / fault tolerance | 1 day | Graceful degradation comparison | Hardware reliability finding |
-
-**HIGH-RISK HIGH-REWARD (attempt only if ahead of schedule):**
-
-| Experiment | Time | What it produces | Why it helps |
-|-----------|------|------------------|-------------|
-| Full SpiNNaker deploy via IF_cond_exp | 2-3 days | FC1+FC2 on hardware | Game-changer if it works |
-| Few-shot learning curves | 2-3 days | Data efficiency comparison | Tests central thesis narrative |
-
-### Paper production (parallel with experiments)
-
-| Task | Time | Owner |
-|------|------|-------|
-| Set up Overleaf with ACM template | 0.5 day | You |
-| Convert ICONS2026_draft.md to LaTeX | 1-2 days | Claude |
-| Create Figure 1: Architecture diagram | 1 day | Claude + you |
-| Create Figure 2: SpiNNaker pipeline | 1 day | Claude + you |
-| Create Figure 3: Encoding bar chart | 0.5 day | Claude |
-| Rewrite abstract (150-200 words) | 0.5 day | Claude + you |
-| Final polish + supervisor review | 2-3 days | You + supervisor |
-| Submit on EasyChair | 0.5 day | You |
-
-### Title (recommended)
-> **Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment**
-
----
-

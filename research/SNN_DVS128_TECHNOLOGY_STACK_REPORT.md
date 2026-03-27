@@ -173,31 +173,3 @@ from spikingjelly.activation_based import neuron, surrogate, functional
 net = parametric_lif_net.DVSGestureNet(
     channels=128,                        # Number of channels in conv layers
     spiking_neuron=neuron.LIFNode,       # Can also use ParametricLIFNode
-    surrogate_function=surrogate.ATan(),  # Surrogate gradient function
-    detach_reset=True                     # Detach reset for better gradient flow
-)
-
-# Enable multi-step mode (processes all timesteps in parallel)
-functional.set_step_mode(net, 'm')
-
-# Optional: Use CuPy backend for speedup (NVIDIA only)
-# functional.set_backend(net, 'cupy', instance=neuron.LIFNode)
-```
-
-### 2.7 Complete Training Loop
-
-```python
-import torch
-import torch.nn.functional as F
-from torch.cuda import amp
-from spikingjelly.activation_based import functional, surrogate, neuron
-from spikingjelly.activation_based.model import parametric_lif_net
-from spikingjelly.datasets.dvs128_gesture import DVS128Gesture
-
-# === Configuration ===
-T = 16              # Timesteps
-batch_size = 16
-epochs = 64
-lr = 0.1
-device = 'cuda:0'   # or 'mps' for Mac
-channels = 128

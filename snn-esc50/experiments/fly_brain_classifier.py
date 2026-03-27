@@ -278,3 +278,31 @@ def run_fold(fold, device, expansion, wta_ratio, mode="ann"):
         scheduler.step(train_loss)
 
         if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | "
+                  f"Test: {test_acc:.4f} | Best: {best_acc:.4f}")
+
+        if patience_counter >= PATIENCE:
+            break
+
+    elapsed = time.time() - start
+    return {
+        "fold": fold, "mode": mode, "expansion": expansion,
+        "wta_ratio": wta_ratio, "best_acc": best_acc,
+        "best_epoch": best_epoch, "time_seconds": elapsed,
+        "trainable_params": trainable, "total_params": total_params,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--expansion", type=int, default=40)
+    parser.add_argument("--wta-ratio", type=float, default=0.05)

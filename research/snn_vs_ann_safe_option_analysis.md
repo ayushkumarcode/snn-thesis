@@ -98,31 +98,3 @@ Sources: [STAA-SNN CVPR 2025](https://arxiv.org/pdf/2503.02689), [ANN-SNN Conver
 This is the critical question. Here is an honest assessment.
 
 ### What the snnTorch tutorials already cover (your baseline risk)
-
-The snnTorch documentation provides 8+ tutorials that already demonstrate:
-- Spike encoding (rate, latency, delta) -- [Tutorial 1](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
-- Training a fully-connected SNN on MNIST -- [Tutorial 5](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html)
-- Training a convolutional SNN on MNIST -- [Tutorial 6](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html)
-- Neuromorphic datasets with Tonic -- [Tutorial 7](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
-- Rate vs latency coded loss functions
-
-**If your thesis is "I ran tutorials 5 and 6, then also trained a CNN on the same data, and compared accuracies" -- that is NOT a thesis. It is a lab exercise.** A high school student has already published this exact comparison in the [National High School Journal of Science](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/), comparing SNNs, CNNs, and ANNs on MNIST, CIFAR-10, and N-MNIST.
-
-### What elevates it beyond tutorials
-
-To cross the threshold from "lab exercise" to "thesis," you need at least ONE of:
-
-1. **A systematic study with controlled variables** -- not just "does it work" but "how do specific factors affect the accuracy-efficiency tradeoff across conditions"
-2. **An original experimental design** -- testing a hypothesis that is not already answered in existing literature
-3. **A novel combination** -- applying known techniques to a new context, or combining techniques not previously combined
-4. **A quantitative analysis dimension** that tutorials do not cover (energy estimation, robustness, Pareto analysis)
-
----
-
-## 4. Specific Angles That Could Add Value
-
-### Angle A: Systematic Encoding Scheme Comparison (Moderate Value, High Feasibility)
-
-**What it is**: Compare rate coding, latency (TTFS) coding, delta coding, phase coding, and burst coding on the same architectures and datasets, with controlled variables.
-
-**Why it adds value**: The [Frontiers paper by Park et al.](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full) did this for a limited set of encodings. You could extend it with:

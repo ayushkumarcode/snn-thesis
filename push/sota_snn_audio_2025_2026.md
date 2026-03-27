@@ -194,3 +194,31 @@ important: the high UrbanSound8K numbers (96-98%) are MULTIMODAL audio-visual, n
 | **RF-PLC** | Zhang 2024 (NeurIPS) | SSL | Phase-locking with Resonate-and-Fire neurons |
 | **Speech2Spikes** | Orchard et al. 2023 | KWS | Delta-based; 88.5% on GSC |
 | **Cochlear/IHC-LIF** | Spiking-LEAF 2024 | KWS | Learnable auditory frontend |
+| **Mel spectrogram + LIF embedding** | SpikeSCR, SpikCommander | Speech | Standard in Spiking Transformer literature |
+| **ANN-to-SNN conversion** | Spiking-FullSubNet 2024 | SE | Post-training conversion |
+
+the most successful recent audio SNNs (SpikeSCR, SpikCommander) use **direct encoding** where mel spectrograms go through learnable linear layers into spike embeddings via LIF neurons. this is basically what we call "direct encoding" -- it bypasses handcrafted encoding entirely and lets the network learn optimal spike representations.
+
+our thesis is the ONLY work to compare 7 encoding methods on the same architecture and dataset for environmental sound. the encoding hierarchy we found (direct >> rate = phase > population > latency >> delta = burst) is a novel contribution with no precedent.
+
+---
+
+## 5. Neuromorphic Hardware for Audio SNNs
+
+| Hardware | Audio Task | Accuracy | Energy | Reference |
+|----------|-----------|----------|--------|-----------|
+| **SpiNNaker 1** | Pure tone classification (8 classes) | >85% (SNR>3dB) | -- | Dominguez-Morales et al. 2016 |
+| **SpiNNaker 1** | ESC-50 FC2-only (ours) | 33.1% +/- 6.9% | 86 nJ/sample | our thesis |
+| **SpiNNaker 2** | Keyword spotting (GSC) | 91.12% | 12x < V100 GPU | Yan et al. 2022 |
+| **Intel Loihi** | Keyword spotting (GSC) | ~88.5% | 109x < GPU, 23x < CPU | Speech2Spikes 2023 |
+| **Intel Loihi 2** | Keyword spotting | ~comparable | 200x < embedded GPU | 2024 demos |
+| **Synsense Xylo** | Sound source localization | MAE 0.25-0.65 deg | Ultra-low-power | Haghighatshoar 2025 |
+| **FPGA** | Event-graph audio classification | SOTA for FPGA | Low latency/power | 2025 |
+
+our thesis is one of very few works deploying SNN for environmental sound (not just speech) on neuromorphic hardware. only prior work is Dominguez-Morales et al. (2016) with 8 pure tones on SpiNNaker. our work is a massive step up in complexity.
+
+---
+
+## 6. PANNs / Pretrained Audio Features with SNNs
+
+**found nothing.** no prior work combines PANNs (or any pretrained audio features) with an SNN classifier head for environmental sound classification.

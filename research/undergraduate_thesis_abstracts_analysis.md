@@ -284,31 +284,3 @@ Application of SNNs (trained using surrogate gradients) to molecular property pr
 
 The most frequently used phrasings for stating objectives fall into these categories:
 
-**Direct aim statements:**
-- "The aim of this research is to investigate whether..."  (TU Delft, Thesis 12)
-- "The primary goal was demonstrating that..."  (Heidelberg KIP, Thesis 3)
-- "The core goal is to design and implement..."  (Peradeniya, Thesis 7)
-- "The thesis aimed to implement..."  (Heidelberg KIP, Thesis 5)
-
-**Problem-motivated framing:**
-- "One of the limitations of X is Y. In this document, the approach to solve this limitation is presented by..."  (HAW Hamburg, Thesis 11)
-- "Learning experiments are generally time-consuming... but can be efficiently emulated using..."  (Heidelberg KIP, Thesis 6)
-
-**Understanding-oriented framing:**
-- "The team sought to obtain a better understanding of X by comparing..."  (Osnabruck, Thesis 8)
-- "The research aimed to examine X, with particular focus on Y"  (Heidelberg KIP, Thesis 4)
-
-**Exploration framing:**
-- "This thesis presents a thorough review of X... and introduces a novel method for Y"  (Rochester, Thesis 10)
-- Uses "Exploring" or "Towards" in the title to signal investigative nature  (Radboud Thesis 14, Heidelberg Thesis 6)
-
-### 3.2 What Do They Claim as Output/Contribution?
-
-| Contribution Type | Count | Examples |
-|---|---|---|
-| "We implemented X on platform Y and demonstrated it works" | 5 | Theses 1, 3, 5, 6, 7 |
-| "We compared/evaluated A vs B and report results" | 4 | Theses 2, 8, 9, 11 |
-| "We investigated/explored whether X can do Y" | 3 | Theses 12, 14, 4 |
-| "We reviewed the field and built a demo" | 1 | Thesis 13 |
-| "We proposed/introduced a novel method" | 1 | Thesis 10 |
-

@@ -138,3 +138,31 @@ def eval_model(model, loader, device, num_steps):
 
     for data, targets in loader:
         data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=num_steps).to(device)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            _, mem_out, _ = model(spk_input)
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return correct / total
+
+
+def run_fold(fold, device, num_steps):
+    print(f"\n  Fold {fold}: T={num_steps}")
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+
+    model = ReducedTSNN(num_steps=num_steps).to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                 weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5)
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+
+    save_dir = RESULTS_DIR / "energy" / f"reduced_t_{num_steps}"
+    save_dir.mkdir(parents=True, exist_ok=True)

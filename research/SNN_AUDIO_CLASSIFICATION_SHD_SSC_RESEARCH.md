@@ -110,3 +110,31 @@ both datasets are available through multiple loaders:
 
 ### 3.1 Accuracy Comparison on SHD
 
+| Architecture | Type | Best SHD Accuracy | Notes |
+|-------------|------|-------------------|-------|
+| SpikCommander | SNN (Transformer) | 96.41% | 0.19M params |
+| DCLS-Delays | SNN (Feedforward) | 95.07% | 0.20M params, no recurrence |
+| RadLIF | SNN (Recurrent) | 94.62% | Surrogate gradient |
+| **CNN (Cramer 2020)** | **ANN** | **92.4%** | **Best ANN baseline** |
+| GRU (3x128) | ANN | 90.40% | Gated recurrent unit |
+| liBRU (3x128) | ANN | 89.61% | Lightweight bistable RNN |
+| LSTM | ANN | ~89% | Standard LSTM |
+
+the big takeaway: SNNs actually beat ANNs on SHD by a pretty wide margin (96.4% vs 92.4%). this is one of the few benchmarks where SNNs clearly outperform traditional deep learning.
+
+### 3.2 Accuracy Comparison on SSC
+
+| Architecture | Type | Best SSC Accuracy | Notes |
+|-------------|------|-------------------|-------|
+| SpikCommander | SNN (Transformer) | 85.98% (T=250) | Current SOTA |
+| SpikeSCR | SNN | 82.54% | Curriculum distillation |
+| DCLS-Delays | SNN (Feedforward) | 80.69% | 3-layer, no recurrence |
+| **GRU (3x512)** | **ANN** | **79.05%** | **Best ANN baseline** |
+| liBRU (3x512) | ANN | 78.70% | Lightweight bistable RNN |
+| CNN | ANN | 77.7% | Convolutional |
+| RadLIF (3x1024) | SNN (Recurrent) | 77.40% | 2022 baseline |
+| LSTM | ANN | ~73% | Standard LSTM |
+
+on SSC, SNNs also beat ANNs (85.98% vs 79.05%), but the gap took longer to emerge. the 2022 SNN baseline (77.4%) was actually below the GRU (79.05%), but by 2025 SNNs lead convincingly.
+
+### 3.3 Energy Efficiency

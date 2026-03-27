@@ -166,3 +166,31 @@ Based on looking at 40+ projects:
 4. Use obscure datasets without good reason
 
 ### Typical deliverables:
+- 1-3 Jupyter notebooks or 1-5 Python files
+- 40-80 page report including literature review
+- Clear experimental results with tables/graphs
+- Energy efficiency analysis (even estimated)
+
+---
+
+## Framework and Dataset Recommendations
+
+### Frameworks (ranked by student-friendliness):
+
+| Framework | Best For | Tutorials? | Recommendation |
+|-----------|----------|-----------|----------------|
+| **snnTorch** | PyTorch users, gradient-based training | Excellent (18 Colab notebooks) | Start here |
+| **Brian2** | Neuroscience-oriented simulation | Good documentation | Good for biological realism |
+| **Norse** | Deep learning + SNNs in PyTorch | Moderate | Good alternative to snnTorch |
+| **BindsNET** | STDP learning, PyTorch integration | Good examples | Good for unsupervised learning |
+| **SpikingJelly** | Full-stack SNN, high performance | Moderate (some Chinese docs) | Best pre-built DVS models |
+
+### Datasets (ranked by suitability):
+
+| Dataset | Type | Difficulty | Notes |
+|---------|------|-----------|-------|
+| MNIST / Fashion-MNIST | Static images | Easy | Standard baseline, everyone uses it |
+| N-MNIST | Neuromorphic events | Medium | Natural fit for SNNs |
+| DVS128 Gesture | Neuromorphic events | Medium | 11 gestures |
+| SHD (Heidelberg Spiking Dataset) | Audio spikes | Medium | Spoken digits, native spike format |
+| CIFAR-10 | Static images | Medium | Good for ANN comparison |

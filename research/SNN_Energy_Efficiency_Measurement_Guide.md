@@ -78,31 +78,3 @@ Tools like SANA-FE and SpikeSim simulate actual neuromorphic hardware behaviour,
 
 | Metric | Definition | How to Compute |
 |--------|-----------|----------------|
-| **Synaptic Operations (SOPs)** | Total spike-driven operations during inference | Sum across all layers: spike_count * fan_out * timesteps |
-| **Effective ACs (Eff_ACs)** | Accumulate ops excluding zero activations | Count only non-zero (spiking) activations |
-| **Effective MACs (Eff_MACs)** | Multiply-accumulate ops for non-spiking layers | Standard FLOP count for non-spiking layers (e.g., first encoding layer) |
-| **Firing Rate / Spike Sparsity** | Average fraction of neurons that spike per timestep | (total spikes) / (total neurons * timesteps) |
-| **Energy per Inference** | Estimated joules for one forward pass | E = SOP * E_AC + FLOPs_nonspiking * E_MAC |
-
-### Secondary Metrics (Good to Include)
-
-| Metric | Definition | How to Compute |
-|--------|-----------|----------------|
-| **Activation Sparsity** | Fraction of zero activations | 1 - firing_rate |
-| **Connection Sparsity** | Fraction of zero weights (if pruned) | count_zero_weights / total_weights |
-| **Memory Footprint** | Model size in bytes | sum of all parameter sizes |
-| **Timesteps (T)** | Number of simulation steps | Hyperparameter of your SNN |
-| **Energy Ratio** | E_SNN / E_ANN | Ratio of estimated energies on same task |
-
-### Advanced Metrics (From Recent Literature)
-
-- **EMAC (Equivalent MAC):** Normalises all SNN operations into MAC-equivalents for direct comparison. Used in hardware-agnostic analysis. ([Source](https://arxiv.org/abs/2508.19654))
-- **Bit Budget:** Refines SOPs by considering weight bit-width and spike patterns. From Shen et al. CVPR 2024. ([Source](https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Are_Conventional_SNNs_Really_Efficient_A_Perspective_from_Network_Quantization_CVPR_2024_paper.pdf))
-- **BES / EAS Composite Metrics:** Jointly account for normalised accuracy and SOP-based energy proxies.
-
----
-
-## 3. Is There a Standard Methodology? (Answer: Emerging, Not Yet Fully Standardised)
-
-### The De Facto Standard (What Most Papers Do)
-

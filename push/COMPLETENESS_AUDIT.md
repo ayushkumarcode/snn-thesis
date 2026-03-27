@@ -26,3 +26,7 @@ NeuroBench energy, continual learning, few-shot learning, spike Pareto.
 - FC2-only remains primary result: 33.1%+/-6.9% (5-fold validated)
 
 ## ICONS Paper Status
+- 7 pages (pdflatex), 10 tables, 3 figures, 23 references
+- all proofreading fixes applied
+- simulated review: "Weak Accept" -- key concerns addressed
+- ready for final review before submission

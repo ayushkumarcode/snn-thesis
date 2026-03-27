@@ -110,3 +110,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Results**: Demonstrated topology-preserving translation between ANN and SNN paradigms
 - **Thesis PDF**: YES - report/report.pdf included
 - **Complexity**: VERY HIGH - multiple frameworks, Haskell DSL, neuromorphic hardware
+- **Stars**: 4 | **Commits**: 99
+
+### 2.2 Recurrent SNNs for POMDPs (Masters)
+- **URL**: https://github.com/Quickblink/rsnn
+- **Description**: Recurrent Spiking Neural Networks for Partially Observable Markov Decision Processes
+- **Framework**: PyTorch, Docker, multiple neuron architectures (LIF, Adaptive, etc.)
+- **Dataset**: Sequential MNIST, encoded MNIST variants
+- **Results**: Not explicitly documented
+- **Thesis PDF**: Not in repo
+- **Complexity**: ADVANCED
+- **Stars**: 3 | **Commits**: 185+
+
+### 2.3 SNNs for Reinforcement Learning Tasks (Masters by Research, UTS)
+- **URL**: https://github.com/andrewrafeUTS/SNNTechnicalAppendix
+- **Description**: Evolutionary experiments with SNNs for CartPole and LunarLander RL tasks
+- **Framework**: Python 3.8, matplotlib, numpy, gym (custom SNN implementation)
+- **Dataset**: CartPole, LunarLander environments
+- **Results**: Tested multiple decoding methods (f2f, rate, etc.)
+- **Thesis PDF**: Not in repo
+- **Complexity**: MODERATE-ADVANCED
+- **Stars**: 1 | **Commits**: 5
+
+### 2.4 Deep Spiking Q-Networks (TUM Masters)
+- **URL**: https://github.com/vhris/Deep-Spiking-Q-Networks
+- **Description**: Spiking DQN training using conversion and surrogate gradients for RL tasks
+- **Framework**: SpyTorch, NEST 2.16.0, PyNN, OpenAI Gym
+- **Dataset**: CartPole, MountainCar, Breakout (OpenAI Gym)
+- **Results**: Both conversion and direct training methods succeeded on CartPole

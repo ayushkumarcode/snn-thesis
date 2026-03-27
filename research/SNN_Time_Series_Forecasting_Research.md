@@ -150,31 +150,3 @@ SNNs transmit binary outputs sparsely and asynchronously as spikes. This event-b
 
 ### 4.4 Biological Plausibility (STDP)
 
-Spike-Timing-Dependent Plasticity (STDP) provides a biologically-plausible learning mechanism where long-term changes in synapse strength are modulated by temporal relationships between pre- and post-synaptic spikes. Neurons learn sequences over long timescales and shift their spikes towards the first inputs in a sequence -- a form of **efficient coding** that naturally captures temporal patterns.
-
-### 4.5 Central Pattern Generator Analogy (NeurIPS 2024)
-
-The CPG-PE paper demonstrated that the commonly used sinusoidal positional encoding is mathematically a specific solution to the membrane potential dynamics of a particular CPG. This establishes a direct theoretical link between biological rhythm generation and positional encoding in sequence models.
-
-### 4.6 Counterarguments and Caveats
-
-- Training SNNs via surrogate gradients introduces approximation errors
-- The non-differentiable spiking function makes optimisation harder than in ANNs
-- Long-range dependency modelling remains a fundamental challenge
-- Current SNN architectures often **adopt ANN architectures directly**, which are likely sub-optimal for spike-based computation
-
----
-
-## 5. Available Datasets and Benchmarks
-
-### 5.1 Datasets Used in SNN Time-Series Forecasting Papers
-
-| Dataset | Domain | Variables | Samples | Frequency | Used In |
-|---------|--------|-----------|---------|-----------|---------|
-| Metr-LA | Traffic speed (Los Angeles) | 207 | 34,272 | 5 min | SeqSNN, TS-LIF, SpikySpace, SpikeSTAG |
-| Pems-Bay | Traffic speed (Bay Area) | 325 | 52,116 | 5 min | SeqSNN, TS-LIF, SpikySpace, SpikeSTAG |
-| Solar-Energy | Solar power production | 137 | 52,560 | Hourly | SeqSNN, TS-LIF, SpikySpace |
-| Electricity | Electricity consumption | 321 | 26,304 | Hourly | SeqSNN, TS-LIF, SpikySpace |
-
-### 5.2 Standard Time-Series Forecasting Benchmarks (Not Yet Widely Used with SNNs)
-

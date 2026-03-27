@@ -334,3 +334,17 @@ for related work and discussion chapters:
 25. Jin, X. "Deep Spiking Neural Networks." PhD thesis, University of Manchester
 26. Davies, S. "Learning in Spiking Neural Networks." PhD thesis, University of Manchester
 
+---
+
+## Confidence
+
+| Finding | Confidence | Basis |
+|---------|------------|-------|
+| No prior ESC-50 on neuromorphic hardware | Very high | searched all major platforms and databases |
+| Loihi 2 achieves near-zero gap on SHD/SSC | High | multiple corroborating papers |
+| SpiNNaker2 achieves 91.12% on GSC-12 | High | published in Frontiers in Neuroscience |
+| Xylo Audio 2 achieves 95% on Aloha KWS | High | published benchmark with specific measurements |
+| Our 12.8pp gap is within expected range | High | DYNAP-SE 7.1pp on easier task; no QAT in our pipeline |
+| BrainScaleS-2 has no audio classification results | Medium | searched extensively but can't guarantee full coverage of Heidelberg publications |
+| No award-winning undergraduate SNN thesis found | Medium | undergrad theses are poorly indexed |
+| Dampfhoffer thesis is most relevant energy modeling work | High | directly cited; only systematic energy modeling for SNN neuromorphic hardware |

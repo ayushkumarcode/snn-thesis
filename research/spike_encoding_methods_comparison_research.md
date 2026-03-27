@@ -278,3 +278,31 @@ spike_data = spikegen.rate(data_it, num_steps=100, gain=1.0)
 # Output: [num_steps x batch x input_size]
 # Each element is 0 or 1 (Bernoulli trial per timestep)
 ```
+
+key params: `num_steps`, `gain` (scale factor), `offset`, `first_spike_time`, `time_var_input`
+
+#### Latency/TTFS: `spikegen.latency()`
+
+```python
+spike_data = spikegen.latency(
+    data_it, num_steps=100, tau=5,
+    threshold=0.01, normalize=True, linear=True, clip=True
+)
+# Each neuron fires AT MOST once
+```
+
+key params: `tau` (RC time constant), `threshold` (min input), `normalize`, `linear` (vs log), `clip`
+
+#### Delta Modulation: `spikegen.delta()`
+
+```python
+# data: [num_steps x batch x input_size] (time-series)
+spike_data = spikegen.delta(data, threshold=0.1, padding=False, off_spike=True)
+# Values are +1 (increase), -1 (decrease), or 0 (below threshold)
+```
+
+#### Target Encoding: `spikegen.targets_convert()`
+
+```python
+spike_targets = spikegen.targets_convert(
+    targets, num_classes=10, code='rate',

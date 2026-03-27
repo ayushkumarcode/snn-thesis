@@ -278,3 +278,31 @@ The word "hypothesis" is notable -- it suggests Manchester values projects that 
 ## 5. University-by-university details
 
 ### 5.1 Manchester (COMP30040) -- my university
+
+**Assessment:**
+- Report: 55%
+- Achievements: 30%
+- Screencast: 15%
+- Q&A: Not directly assessed (informs achievements mark)
+
+**Double marking:** Both supervisor and second marker assess independently, then discuss and agree a final mark.
+
+**Report requirements:**
+- Problem elucidation and project objectives
+- In-depth context and literature investigation
+- Life cycle stages (where appropriate)
+- Verification and validation description
+- Tools used in development
+- Critical appraisal with rationale for decisions
+- Research hypothesis description
+- LaTeX recommended (Overleaf with university account)
+- Formal writing style: third person, passive voice, past tense
+
+The assessment criteria doc (project_assessment.pdf) is on Canvas but i couldn't find it publicly. Should download and study that carefully since it has the detailed grade descriptors.
+
+**Manchester generic grade descriptors:**
+- 70-85%: "Designed and developed a substantial, well-rounded product of good quality in all aspects, with all its parts working and overall showing a high degree of creativity"
+
+### 5.2 Cambridge (Part II)
+
+**Assessment:** 100% dissertation (no separate implementation mark)

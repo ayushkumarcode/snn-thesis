@@ -26,3 +26,31 @@ information is in firing frequency. robust against noise, simple to implement, b
 
 information is in precise timing of spikes. a single spike carries way more meaning than in rate codes. much fewer spikes needed, but more susceptible to noise.
 
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Time-to-First-Spike (TTFS)** | Each neuron fires exactly once. Stronger inputs fire earlier. Based on LIF RC model. | Very low spike count; fast inference; ~4x lower latency than rate |
+| **Rank-Order Coding** | Only relative ordering of spike times matters, not absolute times. | Robust to time distortions; loses amplitude info |
+| **Inter-Spike Interval (ISI)** | Information in time gap between consecutive spikes from same neuron. | Compact; good for periodic signals |
+
+### Delta Modulation / Temporal Contrast
+
+event-driven encoding that generates spikes only when input changes by more than a threshold. inspired by how biological retinas and DVS cameras work.
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Simple Delta** | Spike when diff between consecutive timesteps exceeds threshold. Optional "off-spikes" for decreases. | Natural for time-series; very sparse; event-driven |
+| **Multi-Threshold Delta** | Multiple threshold levels for finer-grained encoding. | Better reconstruction; more spikes |
+| **Sigma-Delta Modulation** | Accumulates error (sigma), spikes when accumulated error exceeds threshold (delta). | Lower quantization error; hardware-efficient |
+
+### Phase Coding
+
+input encoded in spike patterns whose phases correlate with internal oscillations (inspired by hippocampal theta oscillations).
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Phase Coding** | Input features determine phase offset relative to global oscillator. Higher values = earlier phase spikes. | Best noise resilience; periodic; highest SOP cost |
+
+### Burst Coding
+
+information through rapid successive bursts within short time windows.
+

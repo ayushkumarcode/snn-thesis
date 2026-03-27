@@ -474,3 +474,31 @@ File structure: [header][events][header][events]...
 
 Header (28 bytes):
 ```
+uint16_t eventType
+uint16_t eventSource
+uint32_t eventSize
+uint32_t eventTSOffset
+uint32_t eventTSOverflow
+uint32_t eventCapacity
+uint32_t eventNumber
+uint32_t eventValid
+```
+
+Each event (8 bytes):
+```
+uint32_t data       # Contains x, y, polarity packed
+uint32_t timestamp  # Microsecond timestamp
+```
+
+Extracting x, y, polarity from data field:
+```python
+x = (data >> 17) & 0x00001FFF
+y = (data >> 2) & 0x00001FFF
+polarity = (data >> 1) & 0x00000001
+```
+
+### Event-to-Frame Conversion Methods
+
+Events need to be binned into dense frame tensors for batch training. There's basically three strategies:
+
+**Method 1: Fixed number of frames (most common)**

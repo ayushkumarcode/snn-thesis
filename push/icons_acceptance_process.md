@@ -54,3 +54,6 @@ at 59% acceptance rate with genuine novelty claims, i think we're in good shape.
 
 ## Sources
 - [ICONS 2026 CFP](https://iconsneuromorphic.cc/calls-2026/)
+- [ICONS 2023 Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3589737)
+- [EasyChair submission](https://easychair.org/cfp/ACM-ICONS-2026)
+- [JISC/ACM Open](https://libraries.acm.org/acmopen/acmopen-jisc)

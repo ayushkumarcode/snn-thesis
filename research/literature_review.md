@@ -175,31 +175,3 @@
 
 **Source:** Malcolm & Casco-Rodriguez, arXiv, 2023
 **Link:** https://arxiv.org/abs/2303.10780
-**Purpose for us:** Practical guide — how to actually build and evaluate SNNs properly.
-
-*(Full text was access-restricted; summary from abstract and metadata)*
-
-### Key Focus Areas
-1. **Interpretation** — how to understand what SNNs are doing internally
-2. **Optimization** — best training strategies and hyperparameter choices
-3. **Energy efficiency** — how to measure and compare power consumption fairly
-4. **Best practices** — practical recommendations for SNN development
-
-### Why This Paper Matters
-- Written as an accessible entry point starting from first principles
-- Emphasizes SNNs for **low-power, mobile, and hardware-constrained settings**
-- Covers evaluation methodology — important for a thesis that needs rigorous results
-
----
-
-## Summary: Potential Thesis Directions
-
-Based on all three papers, here are the most viable project directions ranked by feasibility:
-
-### Tier 1: Most achievable, clear deliverables
-
-| Direction | What you'd build | Why it works |
-|-----------|-----------------|-------------|
-| **ANN-to-SNN conversion benchmark** | Convert a pre-trained CNN to SNN, measure accuracy vs efficiency on CIFAR-10/100 | Well-documented method, existing tools (snn_toolbox), clear metrics |
-| **SNN on neuromorphic dataset** | Train SNN classifier on DVS128 Gesture or N-MNIST | Natural fit for spikes, public datasets, snnTorch tutorials exist |
-| **SNN vs ANN energy comparison** | Same task solved by both, compare accuracy + estimated energy + latency | Examiners love comparisons, strong narrative |

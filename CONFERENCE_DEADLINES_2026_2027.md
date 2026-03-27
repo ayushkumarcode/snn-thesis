@@ -564,31 +564,3 @@ Sources: [Bernstein Conference](https://bernstein-network.de/en/bernstein-confer
 
 ### Tier 3: Later (3+ months)
 | # | Conference | Deadline | Fit Rating |
-|---|-----------|----------|------------|
-| 10 | DCASE 2026 | ~Jul 2026 | Excellent fit for topic |
-| 11 | ICASSP 2027 | ~Sep 2026 | Strong |
-| 12 | ICLR 2027 | ~Sep 2026 | Hard (top-tier) |
-| 13 | BioCAS 2026 | ~May-Jun 2026 | Marginal |
-| 14 | EMBC 2026 | Nov 2026 | Marginal |
-
----
-
-## RECOMMENDATION SUMMARY
-
-**For an undergraduate thesis project on SNNs + ESC-50 + SpiNNaker, the realistic and strategic targets are:**
-
-1. **ICONS 2026 (April 1)** -- Perfect fit. Neuromorphic systems conference. ACM proceedings. The existing 8-page draft is already formatted for this.
-
-2. **WCCI/IJCNN 2026 Late-Breaking (March 10)** -- Excellent fit but only 5 days away. If the ICONS draft can be reformatted to 6-page IEEE in time, this is worth a shot. IJCNN has relevant special sessions on neuromorphic hardware and SNNs.
-
-3. **ICANN 2026 (March 16)** -- Strong fit with dedicated SNN special session. 12-page Springer LNCS allows comprehensive treatment. 11 days to adapt.
-
-4. **AICAS 2026 (March 22)** -- Strong fit for the hardware/SpiNNaker angle. 5-page IEEE format. Focus on AI circuits and neuromorphic systems.
-
-5. **DCASE 2026 (~July)** -- Perfect topic fit (environmental sound classification is core DCASE material). SNN angle would be highly novel there.
-
-6. **ICASSP 2027 (~Sep 2026)** -- Strong general signal processing venue. Audio classification + SNN is a compelling story.
-
-**Avoid:** ICML, NeurIPS, ICLR main conferences (too competitive for this scope). Workshop submissions at these venues could work if relevant workshops appear.
-
-**Cost consideration:** IEEE conferences (WCCI, AICAS) tend to be expensive (550-950 EUR student). ACM ICONS has minimal APC ($250-350). ICANN is typically moderate (300-500 EUR). DCASE workshops are usually affordable.

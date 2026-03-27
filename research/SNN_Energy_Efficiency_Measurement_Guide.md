@@ -470,31 +470,3 @@ This is the single most referenced table in the SNN energy literature. You shoul
 |-----------|------------|-------|
 | 8-bit Integer Add | 0.03 | |
 | 32-bit Integer Add | 0.1 | This is the E_AC for integer SNNs |
-| 16-bit Float Add | 0.4 | |
-| 32-bit Float Add | 0.9 | **E_AC for FP32 SNNs** |
-| 8-bit Integer Multiply | 0.2 | |
-| 32-bit Integer Multiply | 3.1 | |
-| 16-bit Float Multiply | 1.1 | |
-| 32-bit Float Multiply | 3.7 | |
-| **32-bit FP MAC** | **4.6** | **E_MAC = 3.7 + 0.9 (mult + add)** |
-| 8KB SRAM Read (64-bit) | 10 | On-chip cache |
-| 32KB SRAM Read (64-bit) | 20 | |
-| 1MB SRAM Read (64-bit) | 100 | |
-| DRAM Read (64-bit) | 1300-2600 | Off-chip, 100-200x SRAM |
-
-**Source:** M. Horowitz, "Computing's energy problem (and what we can do about it)," IEEE International Solid-State Circuits Conference (ISSCC), 2014.
-
-**Key takeaway for your thesis:** A MAC (4.6 pJ) costs ~5.1x more than an AC (0.9 pJ) at FP32. But SRAM access (10-100 pJ) can cost more than either operation. This is why memory-aware analysis matters.
-
----
-
-## Appendix B: Recommended Thesis Structure for Energy Analysis Section
-
-```
-4. Energy Efficiency Analysis
-
-4.1 Methodology
-    - Describe operation-counting approach
-    - Cite Horowitz 2014 for energy constants
-    - Cite Lemaire et al. 2022 for analytical framework
-    - State all assumptions (45nm process, ideal sparse hardware, etc.)

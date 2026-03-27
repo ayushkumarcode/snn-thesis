@@ -412,31 +412,3 @@ This means:
 | **Department** | Physics & Astronomy |
 | **Supervisors** | Anna Scaife (main), Albert Zijlstra (co) |
 | **URL** | https://research.manchester.ac.uk/en/studentTheses/bayesian-deep-learning-for-pulsar-classification |
-| **Abstract** | Develops "BonNet" classifier for automated pulsar classification with uncertainty quantification. 99% accuracy on HTRU1, 97% on HTRU2. |
-| **What They Built** | BonNet neural network classifier with Bayesian uncertainty |
-| **Tools/Frameworks** | Neural networks with dropout (Bayesian approximation) |
-| **Datasets** | HTRU1, HTRU2 (High Time Resolution Universe survey) |
-| **Scope** | Moderate (MSc level) -- single classifier with clear benchmarks |
-| **PDF Size** | 7.93 MB |
-| **NOTE** | **This is one of only 2 non-PhD theses found -- MSc by Research level. Most relevant for calibrating masters-level scope.** |
-
----
-
-### 3.4 Object Detection with Few-Shot Learning, Vision-Language Knowledge and Vision Transformers
-| Field | Detail |
-|-------|--------|
-| **Author** | Mengyuan Ma |
-| **Year** | 2025 |
-| **Degree** | PhD |
-| **Department** | Electrical & Electronic Engineering |
-| **Supervisors** | Hujun Yin (main), Krikor Ozanyan (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/object-detection-with-few-shot-learning-vision-language-knowledge/ |
-| **Abstract** | Three contributions: SCENet (scene context + person identity), DINO-FocalNet (64.8% AP on low-quality images), EPNet/KDNet (few-shot detection with knowledge distillation). |
-| **What They Built** | Multiple novel object detection architectures |
-| **Tools/Frameworks** | DINO, FocalNet, CutMix, Vision Transformers |
-| **Datasets** | MS COCO, PASCAL VOC |
-| **Scope** | Very high -- three novel architectures |
-| **PDF Size** | 14.8 MB |
-
----
-

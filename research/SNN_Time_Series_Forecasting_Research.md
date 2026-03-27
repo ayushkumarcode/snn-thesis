@@ -26,3 +26,31 @@ key findings:
 niche but growing. most work uses older SNN architectures or hybrids. applying modern frameworks (iSpikformer, TS-LIF) to financial data would be novel.
 
 ### Weather Prediction
+
+| Paper | Year | Approach | Key Result |
+|-------|------|----------|------------|
+| Polychronous SNN | 2015 | PSNN with axonal delay encoding | Well-suited to complex weather signals |
+| Binarized SNN | 2024 | Knowledge & Info Systems | Enhanced weather prediction using binarized SNNs |
+
+very under-explored. only a handful of papers, none using modern architectures or standard weather benchmarks (like the Jena Weather dataset).
+
+### Sensor / IoT Forecasting
+
+| Paper | Year | Approach | Key Result |
+|-------|------|----------|------------|
+| Online spiking reservoir | 2022 | Neurocomputing | Online time series forecasting with temporal spike encoding |
+| SNN for ECG/EEG | 2020-2025 | Multiple | Lots of work on sensor classification (not forecasting) |
+| Vacuum Spiker | 2025 | arXiv | SNN-based anomaly detection in time series |
+| Evolving SNN | 2022 | Machine Learning (Springer) | Unsupervised anomaly detection in multivariate time series |
+| Enhanced quantile regression SNN | 2025 | arXiv | 92.3% accuracy in component failure prediction, 90-hour advance warning |
+
+sensor classification is well-explored (especially ECG/EEG). sensor **forecasting** with SNNs is under-explored -- clear gap.
+
+### Standard Forecasting Benchmarks (Traffic, Electricity, Solar)
+
+this is where the most rigorous SNN forecasting work lives:
+
+| Paper | Year | Venue | Datasets | Models |
+|-------|------|-------|----------|--------|
+| SeqSNN (Lv et al.) | 2024 | ICML | Metr-LA, Pems-Bay, Solar, Electricity | Spike-TCN, Spike-RNN, Spike-GRU, iSpikformer |
+| CPG-PE (Lv et al.) | 2024 | NeurIPS | Multiple including forecasting | Central Pattern Generator positional encoding |

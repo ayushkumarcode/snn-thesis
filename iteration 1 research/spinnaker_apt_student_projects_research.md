@@ -41,31 +41,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 | **PDF** | Available at https://apt.cs.manchester.ac.uk/ftp/pub/amulet/theses/mmkhan09_phd.pdf |
 
 ### 1.3 Alexander Rast -- Scalable Event-Driven Modelling Architectures (2011)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Scalable Event-Driven Modelling Architectures for Neuromimetic Hardware |
-| **Author** | Alexander D. Rast |
-| **Year** | January 2011 |
-| **Degree** | PhD, School of Computer Science |
-| **Supervisors** | Steve Furber (supervisor), James Garside (advisor) |
-| **Abstract** | Developed a library of predesigned event-driven neural components for SpiNNaker. Addressed burstiness, scalability, and asynchronous event-driven models. |
-| **PDF** | Available at https://apt.cs.manchester.ac.uk/ftp/pub/apt/theses/Rast11_phd.pdf |
-| **URL** | https://www.escholar.manchester.ac.uk/uk-ac-man-scw:111900 |
-
-### 1.4 Eustace Painkras -- A Chip Multiprocessor for a Large-scale Neural Simulator (2012)
-
-| Field | Details |
-|-------|---------|
-| **Title** | A Chip Multiprocessor for a Large-scale Neural Simulator |
-| **Author** | Eustace Painkras |
-| **Year** | December 2012 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (likely) |
-| **Abstract** | Design of the SpiNNaker CMP chip -- many simple power-efficient ARM processors with small local memories, asynchronous networks-on-chip, and GALS architecture. Demonstrated successful neural simulation on 48-chip PCBs. |
-| **URL** | https://www.escholar.manchester.ac.uk/uk-ac-man-scw:198344 |
-
-### 1.5 Sergio Davies -- Learning in Spiking Neural Networks (2012)
-
-| Field | Details |
-|-------|---------|

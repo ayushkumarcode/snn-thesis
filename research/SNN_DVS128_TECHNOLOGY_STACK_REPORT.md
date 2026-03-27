@@ -621,31 +621,3 @@ transform = transforms.Compose([
 ```python
 from tonic import DiskCachedDataset
 
-# First epoch: processes and caches all samples to disk
-# Subsequent epochs: loads from cache (much faster)
-cached_dataset = DiskCachedDataset(
-    dataset,
-    transform=torch.from_numpy,  # Post-cache transform (applied each time)
-    cache_path='./cache/dvs_gesture/train'
-)
-```
-
-### 5.6 Collation for Variable-Length Sequences
-
-```python
-# When using time-based binning, sequences have different lengths
-# PadTensors pads all sequences in a batch to the same length
-loader = DataLoader(
-    dataset,
-    batch_size=16,
-    collate_fn=tonic.collation.PadTensors(batch_first=False)
-    # batch_first=False: output shape [T, N, C, H, W]
-    # batch_first=True:  output shape [N, T, C, H, W]
-)
-```
-
----
-
-## 6. Training Infrastructure
-
-### 6.1 GPU Requirements

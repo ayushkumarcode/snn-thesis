@@ -558,3 +558,31 @@ import tonic
 dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
 
 # Access sensor size
+sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
+
+# Get a sample
+events, label = dataset[0]
+# events: structured numpy array with fields (x, y, t, p)
+# label: integer class index
+```
+
+### Available Transforms
+
+```python
+import tonic.transforms as transforms
+
+# === Event-level transforms ===
+transforms.Denoise(filter_time=10000)               # Remove isolated events
+transforms.SpatialJitter(sensor_size, variance_x=2, variance_y=2)
+transforms.TimeJitter(std=100)               # Add temporal noise
+transforms.RefractoryPeriod(delta=1000)      # Enforce refractory period
+transforms.DropEvent(p=0.1)                  # Random event dropout
+
+# === Frame conversion transforms ===
+transforms.ToFrame(sensor_size, time_window=10000)    # Fixed time bins
+transforms.ToFrame(sensor_size, event_count=5000)     # Fixed event count
+transforms.ToFrame(sensor_size, n_time_bins=16)       # Fixed number of bins
+transforms.ToVoxelGrid(sensor_size, n_time_bins=16)   # Voxel grid (similar)
+transforms.ToTimesurface(sensor_size, tau=50000)       # Time surface
+
+# === Compose transforms ===

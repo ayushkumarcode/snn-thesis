@@ -68,31 +68,3 @@ STDP is fundamentally a feature extraction mechanism, not a classifier. Its stre
 | **Custom (from scratch)** | Python/NumPy | Whatever you build | No | Deep understanding | N/A | N/A |
 
 ### 2.2 Recommended Stack for This Thesis
-
-**Primary recommendation: BindsNET**
-
-Reasons:
-- Built on PyTorch, so GPU acceleration works out of the box
-- Ships with a near-replication of Diehl & Cook 2015 (`eth_mnist.py`) that achieves ~95% on MNIST
-- Supports multiple STDP variants: standard pair-based, post-pre only, reward-modulated (MSTDP, MSTDPET)
-- Well-documented with examples for unsupervised, supervised, and RL tasks
-- The `DiehlAndCook2015` network class provides a ready-made baseline
-- Running time: ~1 hour on Intel i7 CPU for full MNIST training; faster on GPU
-- Repository: https://github.com/BindsNET/bindsnet
-- Paper: Hazan et al., "BindsNET: A Machine Learning-Oriented Spiking Neural Networks Library in Python," Frontiers in Neuroinformatics, 2018
-
-**Secondary recommendation: SpykeTorch (for convolutional STDP)**
-
-If the thesis focuses on deep convolutional STDP feature extraction:
-- Implements STDP and R-STDP for convolutional layers with at-most-one-spike-per-neuron constraint
-- Comes with a reimplementation of Kheradpisheh et al. (2018) deep CSNN
-- Repository: https://github.com/miladmozafari/SpykeTorch
-
-**For the NCG/S2-STDP state-of-the-art results:**
-
-SpikeNN is the official code from the NeurIPS 2024 paper:
-- Repository: https://github.com/ggoupy/SpikeNN
-- CPU-only, Python 3.8+
-- Implements S2-STDP, SSTDP, and the NCG architecture
-
-**For neuroscience accuracy: Brian2**

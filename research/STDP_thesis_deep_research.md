@@ -348,31 +348,3 @@ The thesis should NOT simply replicate Diehl & Cook (2015) on MNIST. That is ind
 | **Triplet STDP** | Considers triplets of spikes (pre-post-pre, post-pre-post) for richer dynamics | Pfister & Gerstner (2006) | 2006 | Mature |
 | **R-STDP (Reward-Modulated)** | Multiplies STDP update by a global reward/dopamine signal | Izhikevich (2007), Fremaux & Gerstner (2016) | 2007/2016 | Mature |
 | **Voltage-Dependent Plasticity (VDSP)** | Updates based on membrane potential rather than spike timing | Clopath et al. (2010) | 2010 | Moderate |
-| **Symmetric STDP** | LTP for both pre-before-post and post-before-pre timing | Hao & Huang (2019) | 2019 | Moderate |
-| **SSTDP (Supervised STDP)** | Bridges backpropagation and STDP using both spatial and temporal information | Mirsadeghi et al. (2021) | 2021 | Moderate |
-| **S2-STDP (Stabilized Supervised)** | Dynamic target timestamps; alternates firing between target and non-target times | Goupy et al. (2024) | 2024 | Recent |
-| **NCG (Neuronal Competition Groups)** | Architecture with intra-class WTA and two-compartment thresholds | Goupy et al. (NeurIPS 2024) | 2024 | State-of-art |
-| **SADP (Spike Agreement Dependent Plasticity)** | Replaces pairwise timing with population-level agreement metrics | arXiv, Jan 2026 | 2026 | Cutting-edge |
-| **Dendritic Localized Learning (DLL)** | Three-compartment neuron (soma, apical, basal) with local error computation | ICML 2025 | 2025 | Cutting-edge |
-| **Meta-Learning R-STDP** | R-STDP with hippocampus/prefrontal-cortex-inspired meta-learning | Neurocomputing, Oct 2024 | 2024 | Recent |
-| **Wake-Sleep R-STDP** | R-STDP during "day phase" + generative replay during "night phase" for continual learning | 2024 | 2024 | Recent |
-| **Heterogeneous STDP** | Different STDP rules at different synapses in the same network | Advanced Materials, 2025 | 2025 | Emerging |
-| **Forecast-based STDP** | Predictive coding version -- learns to predict future spikes | Nature Communications, 2023 | 2023 | Moderate |
-
-### 7.2 Most Thesis-Relevant Novel Variants
-
-**S2-STDP + NCG (NeurIPS 2024)** is the most impactful recent contribution. The key innovations:
-1. S2-STDP dynamically computes target timestamps (Ttarget, Tnon-target) per sample based on average firing time
-2. Target neurons learn to fire before the mean; non-target neurons after
-3. NCG groups multiple neurons per class with intra-class competition
-4. Two-compartment thresholds regulate competition
-5. Code available: https://github.com/ggoupy/SpikeNN
-
-**Three-Factor Learning Rules (2025 Review in Patterns/Cell Press)**:
-The formal three-factor rule is: Delta_w = M * F(pre, post), where M is a neuromodulatory signal (reward, error, attention) and F is a Hebbian/STDP-like coincidence detector. Variants include:
-- **R-max:** Maximal for pre-before-post coincidences, modulated by reward minus baseline
-- **R-STDP:** Bi-phasic coincidence window, modulated by success signal
-- **TD-STDP:** Modulated by temporal-difference error (for RL)
-- **e-prop:** Eligibility propagation with eligibility traces (biologically plausible gradient approximation)
-
----

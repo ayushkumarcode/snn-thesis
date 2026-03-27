@@ -250,3 +250,31 @@ class ECG_SNN(nn.Module):
 ```python
 # PTB-XL raw shape from wfdb: (1000, 12)  -- samples x leads
 # Transpose to PyTorch Conv1d format: (12, 1000)  -- channels x length
+# With batch: (batch_size, 12, 1000)  -- batch x channels x length
+
+# Conv1d with 12 input channels:
+nn.Conv1d(in_channels=12, out_channels=32, kernel_size=7)
+# Input: (batch, 12, 1000) -> Output: (batch, 32, 994)
+```
+
+**No special handling needed.** The 12 leads are treated as 12 input channels, exactly as you would treat multi-channel audio or multi-sensor data. This is standard practice in all published PTB-XL deep learning work (xresnet1d, inception1d, etc.).
+
+**Source:** [PyTorch Conv1d](https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv1d.html)
+
+---
+
+### 7. Label Structure
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | PTB-XL paper (Wagner et al. 2020), PhysioNet, official loading code |
+| **POTENTIAL BLOCKER** | NO |
+
+**Hierarchical label structure:**
+- **71 individual SCP-ECG statements** (raw annotations)
+- **Diagnostic superclass (5 classes):** NORM, MI, STTC, CD, HYP -- **this is the standard benchmark task**
+- **Diagnostic subclass (23-24 classes):** finer-grained diagnoses
+- **Form statements:** morphological patterns
+- **Rhythm statements:** rhythm-related findings
+

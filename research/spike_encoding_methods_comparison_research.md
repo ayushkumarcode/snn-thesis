@@ -591,31 +591,3 @@ class DirectEncoder(nn.Module):
 | **BindsNET** | Rate, Poisson, Rank-order, GRF/Binning | More biologically-oriented; STDP focus |
 | **SpikingJelly** | Rate, Latency, Direct, Poisson | More complete; better for deep SNNs; Chinese documentation |
 | **Norse** | Current-based, LIF-based, custom | Lower-level; maximum flexibility |
-| **Lava (Intel)** | Custom (hardware-oriented) | For Loihi hardware; production focus |
-
-For the thesis, **snnTorch is recommended** as the primary framework due to its tutorial ecosystem, PyTorch integration, and the fact that implementing the missing encodings constitutes part of the contribution.
-
----
-
-## 7. Thesis Viability Assessment
-
-### 7.1 Is This a Valid Thesis Topic?
-
-**Yes, unambiguously.** Here is the evidence:
-
-1. **Active research area:** Papers are still being published on encoding comparison in 2024-2025 (Bian et al. 2024, Vasilache et al. 2025), demonstrating that the question is not settled.
-
-2. **Acknowledged research gap:** Plank et al. (2022) explicitly state: "There are a variety of commonly used input encoding approaches... but it is not clear which is the most appropriate approach or whether the choice has a significant impact on performance." Bian et al. (2024) note that "a systematic approach to quantitatively evaluate spike encoding performance is currently lacking."
-
-3. **Practical relevance:** Every SNN practitioner must choose an encoding method, and there is no definitive guide. A well-organised comparison would be immediately useful to the community.
-
-4. **Clear methodology:** The thesis follows an established pattern (systematic evaluation / benchmarking study) that is well-understood in computer science.
-
-5. **Publishable potential:** If the comparison is broader than existing studies (more methods, more datasets, more metrics), it could be submitted to a workshop or conference (e.g., ICONS, NICE, or SNN workshops at NeurIPS/ICML).
-
-### 7.2 What Would Make It Novel vs. Existing Work?
-
-| Existing Work Covers | Your Thesis Could Add |
-|----------------------|----------------------|
-| 2-4 encoding methods per study | 6-8 encoding methods in one unified study |
-| Single data modality per study | Multiple modalities (image + audio + time-series) |

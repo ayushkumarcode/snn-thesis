@@ -511,31 +511,3 @@ Test: Single FC + LIF layer, batch=16, 500 time steps, n neurons:
 |---------|------|--------|
 | DVS_barrel | Character recognition | garrickorchard.com |
 | DVS Planes | Airplane detection | greg-cohen.com |
-| KITTI | 3D point cloud driving | kitti.ai |
-| ISBI 2D EM | Biomedical segmentation | isbi.org |
-| SEED | EEG emotion | BCMI lab |
-| ISIC 2018 | Skin lesion (melanoma) | isic-archive.com |
-
-### Dataset Loading Tools
-- **Tonic**: PyTorch-compatible loader for neuromorphic datasets (like TorchVision but for events)
-- **SpikingJelly**: Built-in dataset loaders for N-MNIST, CIFAR10-DVS, DVS128 Gesture, NavGesture, ASLDVS
-- **snnTorch**: Built-in spikevision.spikedata for N-MNIST and other datasets
-
-### Recommendation for Thesis
-**Start with MNIST** (rate-encoded) to verify your pipeline works. Then move to **N-MNIST** or **DVS128 Gesture** for neuromorphic-native data. **SHD** is excellent if you want audio classification.
-
----
-
-<a name="snntorch"></a>
-## snnTorch TUTORIALS AND RESOURCES
-
-### Complete Tutorial Catalog (v0.9.4)
-
-**Core Tutorials (Progressive Learning Path):**
-
-| Tutorial | Title | Topic | Colab |
-|----------|-------|-------|-------|
-| 1 | Spike Encoding with snnTorch | Rate/latency/delta encoding | Yes |
-| 2 | The Leaky Integrate and Fire Neuron | LIF model fundamentals | Yes |
-| 3 | A Feedforward Spiking Neural Network | Building basic SNN architecture | Yes |
-| 4 | 2nd Order Spiking Neuron Models | Synaptic, Alpha neuron models | Yes |

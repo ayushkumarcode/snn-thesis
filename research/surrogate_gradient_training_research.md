@@ -47,31 +47,3 @@ A spiking neuron fires a discrete binary spike (0 or 1) when its membrane potent
 ```
 S = H(U - U_threshold) = { 1 if U >= U_threshold, 0 otherwise }
 ```
-
-The derivative of the Heaviside function is the Dirac delta function, which is zero almost everywhere and infinite at the threshold. This means:
-
-- **Subthreshold region:** Gradient is exactly 0 -- no learning signal propagates
-- **At threshold:** Gradient is undefined/infinite -- numerically useless
-- Small weight perturbations either produce no change in output spikes or cause large discontinuous changes
-
-This is the "dead neuron problem" of SNNs. Without a workaround, gradient-based training is impossible.
-
-### The Surrogate Gradient Solution
-
-The surrogate gradient method uses a two-pass strategy:
-
-1. **Forward pass:** Use the true Heaviside function. The network produces real discrete spikes. Spiking dynamics are preserved exactly.
-2. **Backward pass:** Replace the Heaviside derivative with a smooth, continuous approximation (the "surrogate gradient"). This allows gradients to flow through the spiking nonlinearity.
-
-This approach was formalized by Neftci, Mostafa, and Zenke (2019) in their seminal paper "Surrogate Gradient Learning in Spiking Neural Networks" and has since become the standard method for direct SNN training.
-
-### Why It Works
-
-The surrogate gradient does not need to be an exact gradient of anything. It serves as a "gradient-like" signal that provides a reasonable direction for weight updates. Empirically, this works extremely well across a wide range of tasks, and recent theoretical work by Gygax and Zenke (2025) has begun to explain why: for single neurons, surrogate gradients are equivalent to the gradient of the expected output under a stochastic interpretation, though this equivalence breaks in deep networks where they function as "smoothed stochastic derivatives."
-
-### Reference
-
-> Neftci, E.O., Mostafa, H., and Zenke, F. (2019). Surrogate Gradient Learning in Spiking Neural Networks: Bringing the Power of Gradient-based optimization to spiking neural networks. IEEE Signal Processing Magazine, 36, 51-63. https://arxiv.org/abs/1901.09948
-
----
-

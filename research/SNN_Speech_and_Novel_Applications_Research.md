@@ -73,31 +73,3 @@ The most critical insight for thesis planning: **SNN generative tasks are no lon
 4. Few studies comparing SNN inference latency vs ANN on actual neuromorphic hardware for speech
 5. **Gap opportunity:** SNN for low-resource language ASR (no papers found)
 
----
-
-## 2. TEXT-TO-SPEECH (TTS) WITH SNNs
-
-### Paper Count: **2-3 papers** (genuinely novel frontier)
-
-### Key Papers
-
-| Paper | Year | Venue | Key Result |
-|-------|------|-------|------------|
-| **SpikeVoice: High-Quality TTS Via Efficient SNN** | 2024 | **ACL 2024** (top NLP venue) | First SNN-based TTS; comparable quality to ANN with only 10.5% energy consumption |
-| **Spiking Vocos: An Energy-Efficient Neural Vocoder** | 2025 | arXiv | First SNN-based vocoder; UTMOS 3.74, PESQ 3.45; 14.7% energy of ANN Vocos |
-
-### Detailed Analysis
-
-**SpikeVoice (ACL 2024)** -- This is a landmark paper. It is explicitly stated as "the first TTS work in the SNN field." Key innovations:
-- Introduced **Spiking Temporal-Sequential Attention (STSA)** to handle long-term dependencies
-- Addressed the "partial-time dependency" problem: spiking neurons' serial nature limits capturing sequence dependencies across timesteps
-- Tested on 4 datasets covering Chinese and English, single-speaker and multi-speaker
-- Achieved **comparable speech quality to ANN** while using only **10.5% of the energy**
-- Published at ACL 2024, demonstrating high-quality peer review
-
-**Spiking Vocos (2025)** -- The first SNN-based frequency-domain vocoder:
-- Built on the Vocos framework
-- Uses Spiking ConvNeXt module with amplitude shortcut to prevent information loss
-- Self-architectural distillation + Temporal Shift Module for temporal modeling
-- UTMOS: 3.74, PESQ: 3.45 (comparable to ANN Vocos)
-- Only 14.7% energy consumption of ANN counterpart

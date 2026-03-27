@@ -299,31 +299,3 @@ This is very manageable for a semester-long thesis project.
 
 **Cause:** Membrane potential never reaches threshold (too much leak / too high threshold) or always exceeds threshold (too little leak / too low threshold).
 
-**Solution:**
-- Start with beta=0.5 (moderate decay) and threshold=1.0
-- Monitor average firing rates per layer during training
-- Add firing rate regularization loss to encourage moderate activity
-- Use `snn.Leaky(beta=0.5, threshold=1.0)` as starting point
-
-### Pitfall 2: Gradient Vanishing/Exploding
-
-**Problem:** Gradients become extremely small or large during BPTT through many time steps.
-
-**Cause:**
-- Too many time steps combined with the surrogate gradient approximation
-- The gradient explosion/vanishing problem in SNNs is more severe than in ANNs because of tanh-like surrogate function behavior
-- Narrow surrogate gradient (high slope) causes gradient vanishing; wide surrogate (low slope) causes noisy, potentially harmful updates
-
-**Solution:**
-- Use fewer time steps (25-50 is usually sufficient for static images)
-- Use gradient clipping: `torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=1.0)`
-- Use moderate slope values (25 for fast_sigmoid is a good default)
-- Consider batch normalization adapted for SNNs (tdBN or BNTT)
-
-### Pitfall 3: Surrogate Gradient Scale Mismatch
-
-**Problem:** Learning stalls or oscillates despite gradients flowing.
-
-**Cause:** The slope parameter of the surrogate gradient is inappropriately scaled. Research shows that while shape does not matter much, scale has a major impact on learning performance.
-
-**Solution:**

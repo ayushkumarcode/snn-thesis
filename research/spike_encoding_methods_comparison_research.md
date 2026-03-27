@@ -731,31 +731,3 @@ For the thesis, **snnTorch is recommended** as the primary framework due to its 
 
 | Encoding | MNIST | CIFAR-10 | SHD (Audio) | Sensor (TBD) |
 |----------|-------|----------|-------------|---------------|
-| Rate (Poisson) | X | X | X | X |
-| Latency (TTFS) | X | X | X | X |
-| Delta Modulation | X | X | X | X |
-| Phase Coding | X | X | X | X |
-| Burst Coding | X | X | X | X |
-| GRF Population | X | X | X | X |
-| Direct (Learned) | X | X | X | X |
-
-= 7 encodings x 4 datasets x 5+ metrics x 3 repetitions = 420+ experiment runs
-
-Each run on MNIST/Fashion-MNIST takes ~5-15 minutes. CIFAR-10 takes ~30-60 minutes. SHD takes ~15-30 minutes. Total compute: approximately 50-100 GPU-hours, well within a personal GPU or free Google Colab tier over several weeks.
-
----
-
-## 10. Key Papers Reference Table
-
-| # | Authors | Year | Title | Venue | Key Contribution | Encodings Covered |
-|---|---------|------|-------|-------|-----------------|-------------------|
-| 1 | Guo, Fouda, Eltawil, Salama | 2021 | Neural Coding in SNNs: A Comparative Study for Robust Neuromorphic Systems | Frontiers in Neuroscience | Most comprehensive multi-metric comparison | Rate, TTFS, Phase, Burst |
-| 2 | Kim, Park, Moitra et al. | 2022 | Rate Coding or Direct Coding: Which One is Better? | ICASSP 2022 | Rate vs. Direct on larger datasets | Rate, Direct |
-| 3 | Forno, Fra, Pignari et al. | 2022 | Spike encoding techniques for IoT time-varying signals | Frontiers in Neuroscience | Multi-modal IoT benchmarking | Rate variants, Temporal variants |
-| 4 | Bian, Donati, Magno | 2024 | Evaluation of Encoding Schemes on Ubiquitous Sensor Signal | arXiv | Most diverse metrics including deployment | Rate, TTFS, Binary, Delta |
-| 5 | Plank et al. | 2022 | Evaluating Encoding and Decoding Approaches for Spiking Neuromorphic Systems | ICONS (ACM) | Encoding + decoding on neuromorphic hardware | Rate, Temporal, Population |
-| 6 | Vasilache et al. | 2025 | A PyTorch-Compatible Spike Encoding Framework | arXiv | Open-source encoding framework | LIF, SF, PWM, BSA |
-| 7 | Auge, Hille, Mueller, Knoll | 2021 | A Survey of Encoding Techniques for Signal Processing in SNNs | Neural Processing Letters | Definitive survey/taxonomy of encoding methods | All major categories |
-| 8 | Petro, Kasabov, Kiss | 2019 | Selection and Optimization of Temporal Spike Encoding Methods | IEEE Trans Neural Networks | Temporal encoding optimisation | BSA, SF, SW, other temporal |
-
----

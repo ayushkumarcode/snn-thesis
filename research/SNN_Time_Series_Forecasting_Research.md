@@ -54,3 +54,31 @@ this is where the most rigorous SNN forecasting work lives:
 |-------|------|-------|----------|--------|
 | SeqSNN (Lv et al.) | 2024 | ICML | Metr-LA, Pems-Bay, Solar, Electricity | Spike-TCN, Spike-RNN, Spike-GRU, iSpikformer |
 | CPG-PE (Lv et al.) | 2024 | NeurIPS | Multiple including forecasting | Central Pattern Generator positional encoding |
+| TS-LIF (Feng et al.) | 2025 | ICLR | Metr-LA, Pems-Bay, Solar, Electricity | Temporal Segment LIF with dual-compartment |
+| SpikySpace (Tang et al.) | 2026 | arXiv (Jan 2026) | Metr-LA, Pems-Bay, Solar, Electricity | First full spiking state-space model |
+| SpikeSTAG (Hu et al.) | 2025 | arXiv | Same four | GNN-SNN collaboration |
+| Derivative spike encoding | 2024 | MDPI Computers | Electricity load | SLAYER-trained SNN with novel encoding |
+
+---
+
+## Results vs LSTMs and Transformers
+
+### SeqSNN (ICML 2024) -- Microsoft Research
+
+| Model Type | Energy Reduction vs ANN | Performance |
+|------------|------------------------|-------------|
+| Spike-TCN vs TCN | 63.60% less energy | Comparable accuracy |
+| Spike-GRU vs GRU | 75.05% less energy | Comparable accuracy |
+| iSpikformer vs iTransformer | 66.30% less energy | Lowest avg RSE; R-squared only 0.001 below iTransformer |
+
+average energy savings: ~70% on 45nm neuromorphic hardware. the key thing: **iSpikformer achieves the lowest average RSE compared to ALL methods including ANNs** while nearly matching R-squared.
+
+### TS-LIF (ICLR 2025)
+
+on Electricity dataset, 96-step prediction:
+
+| Model | R-squared | RSE |
+|-------|-----------|-----|
+| TS-former (proposed) | 0.977 | 0.261 |
+| iSpikformer | 0.963 | 0.348 |
+| Spike-GRU | 0.959 | 0.317 |

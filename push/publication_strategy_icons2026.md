@@ -354,31 +354,3 @@ These demonstrate that accuracy alone does not determine acceptance:
 
 2. **ICONS 2024** -- "Stochastic Spiking Neural Networks with First-to-Spike Coding" (Sengupta group) -- Methodology-focused paper on a novel SNN coding scheme, valued for the approach not the absolute numbers.
 
-3. **ICONS 2024** -- "Continuous Learning for Real-Time Auditory Blind Source Separation" -- Audio application paper at ICONS that focuses on methodology and real-time capability, not SOTA accuracy.
-
-4. **ICONS 2025** -- "SNN for Low-Power Vibration-Based Predictive Maintenance" -- Application benchmark paper where the contribution is demonstrating SNN feasibility in a new domain, not beating ANNs.
-
-5. **Larroza et al. 2025** (submitted to EUSIPCO) -- Reports 69% on ESC-10 (10 classes). Our 47.15% on ESC-50 (50 classes) is arguably more impressive given the 5x harder task. Their best encoding (TAE) gets only F1=0.661.
-
-### Papers Demonstrating Hardware Gap Is Acceptable
-
-1. **SpiNNaker2 DVS Gesture Recognition** (arXiv 2504.06748, 2025) -- Reports 94.13% on SpiNNaker2 using quantization-aware training. But this is SpiNNaker**2** (vastly more capable) on a simpler task (11 gesture classes). Our 33.1% on SpiNNaker1 with 50 classes and FC2-only hybrid approach is a valid contribution documenting real hardware constraints.
-
-2. **Loihi SNN deployments** -- Multiple papers at ICONS/NICE document Loihi accuracy gaps. The community understands and values honest hardware characterization.
-
-### Adversarial Robustness Context
-
-Our SNN adversarial result (SNN 26% vs ANN 1.75% at FGSM eps=0.1) is strong:
-- Nature Communications 2025 paper confirms SNN robustness advantage under FGSM
-- NeurIPS 2024 FEEL-SNN paper works on improving SNN robustness
-- Our finding of 14.8x robustness advantage at eps=0.1 is a striking, publishable result
-
----
-
-## Part 7: Final Recommendations
-
-### Primary Recommendation: Submit to ICONS 2026
-
-**Deadline: April 1, 2026 (27 days from now)**
-
-**Reasons:**

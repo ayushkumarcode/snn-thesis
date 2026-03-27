@@ -54,3 +54,31 @@ strongest thesis framing: "Evaluating the Practicality of ANN-to-SNN Conversion 
 ---
 
 ## Tools and Frameworks
+
+### Comparison
+
+| Feature | snn_toolbox | SpikingJelly (ann2snn) | snnTorch | Custom Paper Code |
+|---------|------------|----------------------|---------|-------------------|
+| **Input framework** | Keras, PyTorch, Caffe, Lasagne | PyTorch | PyTorch | Usually PyTorch |
+| **Conversion method** | Weight norm + threshold balancing | MaxNorm / RobustNorm / Scaling | Basic IF replacement | Method-specific |
+| **Hardware deployment** | SpiNNaker, Loihi | Limited | No | Varies |
+| **Docs** | Good (ReadTheDocs) | Good (English + Chinese) | Excellent (tutorials, Colab) | Varies (often minimal) |
+| **Learning curve** | Moderate | Low | Low | High (read the paper) |
+| **Maintenance** | Low activity (~387 stars) | Active (Science Advances pub) | Active | Depends |
+| **Best for** | Multi-backend, SpiNNaker/Loihi | Fast prototyping, research | Learning, education | SOTA results |
+
+### snn_toolbox
+
+- repo: https://github.com/NeuromorphicProcessorProject/snn_toolbox
+- pipeline: Load ANN -> Parse -> Normalize -> Convert -> Simulate
+- known issues: Conv1D normalization problems, Keras compatibility, lower maintenance in 2024-25
+- best if you need SpiNNaker or Loihi deployment
+
+### SpikingJelly ann2snn
+
+- repo: https://github.com/fangwei123456/spikingjelly
+- published in Science Advances (2023)
+- modes: MaxNorm, RobustNorm, Scaling
+- pre-built examples: resnet18_cifar10.py, cnn_mnist.py
+- up to 11x speedup over other frameworks at T=32
+- best for research prototyping

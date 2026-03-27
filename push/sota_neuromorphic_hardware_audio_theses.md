@@ -222,3 +222,31 @@ we cite this extensively. our SNN activation sparsity is 74.16%, meaning spike r
 | "Neural Encoding by Bursts of Spikes" | -- | -- | Burst coding neuroscience | Encoding schemes |
 
 Manchester has a strong tradition of SpiNNaker PhD theses but they all focus on biological neural simulation and learning algorithms, NOT audio classification. our thesis fills a pretty clear gap in the Manchester SpiNNaker portfolio by applying the platform to a practical ML task.
+
+---
+
+### Other Relevant Graduate Theses
+
+**TU Dresden / SpiNNaker2 Group:** the e-prop on SpiNNaker2 work (Rostami et al., 2022) came from Christian Mayr's group. most advanced audio-related work on SpiNNaker2.
+
+**ETH Zurich / Neuromorphic Intelligence Group:** significant work on mixed-signal neuromorphic processors and SNNs under Giacomo Indiveri. recent PhD work includes error-propagation SNNs deployed on Intel Loihi.
+
+**University of Zurich:** recent work (2025) deployed SNNs on DYNAP-SE for cognitive load classification from EEG with 7.1pp hardware-software gap -- comparable to ours and confirms hardware degradation is an expected challenge.
+
+### Award-Winning Undergraduate Theses on SNNs
+
+didn't find any specific undergraduate/honours theses on SNNs that won awards or were published as standalone works. not surprising -- SNNs on hardware is typically graduate-level, undergraduate theses are rarely indexed in searchable databases, and most published SNN work credits grad students or postdocs.
+
+i think this actually makes our thesis notable -- deploying SNNs on SpiNNaker for ESC-50 with 5-fold cross-validation and all the ablation studies we did is typically PhD-level scope. getting a conference paper submission (ICONS 2026) out of an undergrad thesis is itself worth mentioning.
+
+---
+
+## Part 3: Key Surveys and Review Papers
+
+| Survey | Year | Scope | Key Value |
+|--------|------|-------|-----------|
+| Basu et al., "Fundamental Survey on Neuromorphic Based Audio Classification" | Feb 2025 | SNN audio classification review | Most recent survey. Covers hardware platforms, encoding methods, learning approaches. arXiv: 2502.15056 |
+| Kim et al., "SNN and Sound: A Comprehensive Review" | 2024 | SNN applications in sound | Biomedical Engineering Letters. Covers speech, environmental sound, music. |
+| Larroza et al., "Spike Encoding for Environmental Sound: A Comparative Benchmark" | March 2025 | Spike encoding comparison for ESC-10 | Closest work to ours. ESC-10 only, FC only, no hardware. arXiv: 2503.11206 |
+| Meunier et al., "Comparison of Hardware-friendly Audio-to-spikes Cochlear Encoding" | 2025 | Audio encoding for neuromorphic hardware | IEEE AICAS 2025. Bio-mimetic vs hardware-friendly encoding on SHD and GSC. |
+| Yik et al., "NeuroBench" | 2025 | Neuromorphic benchmarking framework | Nature Communications 16:1589. Includes audio benchmarks. |

@@ -362,3 +362,31 @@ a MAC (4.6 pJ) costs ~5.1x more than an AC (0.9 pJ) at FP32. but SRAM access (10
 
 ## 13 energy metrics taxonomy (Pereira et al. 2025)
 
+| Metric | Accessible | High Fidelity | Actionable | Trend-Based |
+|--------|:----------:|:-------------:|:----------:|:-----------:|
+| Parameters | Yes | No | No | No |
+| Effective Synaptic Ops | Yes | No | No | Yes |
+| Membrane Updates | Yes | No | No | Yes |
+| Activation Sparsity | Yes | No | Yes | Yes |
+| Memory Footprint | Yes | No | No | No |
+| Connection Sparsity | Yes | No | No | No |
+| Memory Accesses | Yes | No | No | Yes |
+| Training Time | Yes | No | No | Yes |
+| Energy per Inference | No | Yes | No | No |
+| Energy per Learning | No | Yes | No | No |
+| Energy Area FoM | No | Yes | No | No |
+| Peak Energy Consumption | No | Yes | No | No |
+| Power Density | No | Yes | Yes | No |
+
+there's a gap between accessible metrics (computable in software) and high-fidelity metrics (require hardware). a thesis will use accessible metrics -- that's standard practice. just acknowledge the gap.
+
+Source: [Pereira et al. 2025](https://arxiv.org/html/2506.09599v1)
+
+---
+
+## quick reference
+
+```
+Do you have neuromorphic hardware?
+  |
+  NO (most likely)

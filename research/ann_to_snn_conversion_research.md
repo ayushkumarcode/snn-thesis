@@ -223,31 +223,3 @@ The accuracy gap follows a clear trend: **more timesteps = lower accuracy loss, 
 | **MobileNet v1/v2** | MODERATE-HARD | Depthwise separable convolutions, squeeze-excite blocks | Limited published work, gap opportunity |
 | **EfficientNet** | HARD | Compound scaling, Swish/SiLU activation (not ReLU), SE blocks | Very few published results, significant gap |
 | **DenseNet** | MODERATE-HARD | Dense connections, high memory, feature concatenation | Minimal published results |
-| **ConvNeXt** | HARD | GELU activation, LayerNorm, not standard ReLU | First converted in ICML 2024 (SignGD) |
-| **MLP-Mixer** | HARD | Token mixing, GELU, non-convolutional | First converted in ICML 2024 (SignGD) |
-| **Vision Transformer (ViT/DeiT)** | VERY HARD | Softmax attention, LayerNorm, GELU, multi-head attention | First successful conversion in 2025 |
-| **YOLO (detection)** | HARD | Multi-scale features, non-max suppression, detection heads | SpikeYOLO (ECCV 2024), Spiking-YOLO |
-| **U-Net (segmentation)** | MODERATE-HARD | Encoder-decoder, skip connections, upsampling | Spiking-UNet exists, limited conversion studies |
-
-### 5.2 Why VGG Converts Best
-
-VGG architectures convert most easily because:
-1. They use only standard Conv2D, ReLU, MaxPool, and Dense layers
-2. No skip connections means no "deviation error" from residual additions
-3. BatchNorm can be cleanly folded into preceding Conv layers
-4. The deep, sequential structure maps naturally to layer-by-layer spiking dynamics
-
-### 5.3 Why ResNets are Harder
-
-ResNets suffer from a specific problem: the last ReLU in each residual block is followed by a skip connection addition. This creates a "deviation error" because the spike-based approximation of the addition of two activations introduces systematic bias. Modern methods (calibration, QCFS) largely solve this, but ResNets still require more careful threshold tuning than VGGs.
-
-### 5.4 The Non-ReLU Frontier
-
-The biggest recent breakthrough is converting architectures that do NOT use ReLU:
-- **ConvNeXt** uses GELU activation
-- **Transformers** use GELU + Softmax + LayerNorm
-- The SignGD paper (ICML 2024) was the **first** to convert these successfully
-- This remains a frontier area with opportunities for contribution
-
----
-

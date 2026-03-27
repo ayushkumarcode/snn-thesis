@@ -138,3 +138,31 @@ Based on the data collected, the following patterns are clear:
 4. **Recurring organizer companies** that are likely to host future hackathons at YC:
    - Browser Use (YC W25) -- already running Feb 28 hackathon
    - Manufact/mcp-use (YC S25) -- ran Feb 21 hackathon
+   - Firecrawl (YC S22), Reducto (YC W24), Resend (YC W23) -- Hack the Stackathon organizers
+   - Locus (YC F25) -- Agentic Payments Hackathon
+   - Mentra (YC) -- Smart glasses hackathon
+   - AgentMail (YC) -- HackHalloween
+   - Sim (YC) -- Full Stack hackathon
+   - Greptile (YC), Gumloop, Mintlify -- MCP Hackathon
+
+5. **The YC Spring 2026 batch** runs April-June 2026. Historically, hackathons increase during batch periods as YC companies seek to build community and test products.
+
+6. **Best monitoring sources for new announcements:**
+   - https://events.ycombinator.com (official -- check weekly)
+   - https://luma.com/sf (SF event aggregator)
+   - https://x.com/ycombinator (YC's X/Twitter)
+   - https://www.garysguide.com/events?region=sf
+   - https://cerebralvalley.ai/events
+
+---
+
+## research gaps
+
+1. **events.ycombinator.com pages are JavaScript-rendered** and could not be fully scraped. Some event details (especially exact dates for the Agentic Payments Hackathon) were not extractable.
+
+2. **Instagram posts** from YC companies were not directly accessible for content extraction (Instagram blocks automated access). Web searches for Instagram content yielded limited results. The following Instagram accounts are worth monitoring manually:
+   - @ycombinator
+   - @browser_use (confirmed hackathon promotion)
+   - @sf.hacks
+   - @stanfordtreehacks
+

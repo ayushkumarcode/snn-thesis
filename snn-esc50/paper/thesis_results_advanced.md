@@ -223,19 +223,19 @@ Per-class accuracy for both SNN (direct) and ANN across all 5 folds (n=40 test s
 
 ### 6.5.2 results
 
-**Hardest classes (SNN):** Classes with high within-cluster overlap are the hardest for the SNN. Preliminary analysis suggests transient, impulsive sounds (glass breaking, sneezing, gunshots) are harder for the SNN than continuous, harmonic sounds (insects, water). This is consistent with the SNN's temporal integration accumulating evidence over 25 timesteps — impulsive events at a single timestep may not trigger sufficient integration.
+**Top 10 SNN classes (5-fold, direct):**
 
----
-
-## 6.5 Per-Class Difficulty Analysis
-
-### 6.5.1 Setup
-
-Per-class accuracy is computed for both SNN (direct) and ANN across all 5 folds (n=40 test samples per class total). This is the 5-fold aggregate from `results/snn/direct/evaluation.json` and `results/ann/none/evaluation.json`. Classes are ranked from easiest to hardest for each model, and the intersection of "hardest 10" classes is analysed.
-
-### 6.5.2 Results
-
-**Top 10 classes by SNN accuracy (all 5 folds, direct encoding, corrected data):**
+| Class | SNN | ANN | SNN-ANN |
+|-------|-----|-----|---------|
+| toilet_flush | 83% | 85% | -2% |
+| crying_baby | 80% | 73% | **+7%** |
+| door_wood_knock | 80% | 73% | **+7%** |
+| rooster | 78% | 88% | -10% |
+| pouring_water | 75% | 70% | **+5%** |
+| thunderstorm | 75% | 95% | -20% |
+| can_opening | 73% | 78% | -5% |
+| hand_saw | 73% | 83% | -10% |
+| crackling_fire | 68% | 65% | **+3%** |
 
 | Class | SNN Accuracy | ANN Accuracy | SNN−ANN |
 |-------|-------------|-------------|---------|

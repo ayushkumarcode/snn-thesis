@@ -1013,31 +1013,3 @@ class DVSGestureCNN(nn.Module):
             nn.BatchNorm2d(256),
             nn.ReLU(),
             nn.AdaptiveAvgPool2d(4),  # 4x4
-        )
-
-        self.classifier = nn.Sequential(
-            nn.Flatten(),
-            nn.Linear(256 * 4 * 4, 512),
-            nn.ReLU(),
-            nn.Dropout(0.5),
-            nn.Linear(512, num_classes)
-        )
-
-    def forward(self, x):
-        # x shape: [N, T, 2, 128, 128]
-        N, T, C, H, W = x.shape
-        x = x.reshape(N, T * C, H, W)  # Stack time bins as channels
-        x = self.features(x)
-        x = self.classifier(x)
-        return x
-
-# Training the ANN baseline
-model = DVSGestureCNN(num_time_bins=10, num_classes=11).to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-criterion = nn.CrossEntropyLoss()
-
-for epoch in range(50):
-    model.train()
-    for frames, labels in trainloader:
-        frames = frames.to(device).float()  # [T, N, 2, 128, 128]
-        frames = frames.permute(1, 0, 2, 3, 4)  # [N, T, 2, 128, 128]

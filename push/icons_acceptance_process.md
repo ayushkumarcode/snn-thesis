@@ -26,31 +26,3 @@
 | June 24 | Camera-ready deadline |
 | Aug 4-6 | Conference (Chicago, Marriott Naperville) |
 
-## Review Criteria (Based on ACM Standards)
-1. Novelty / originality
-2. Technical soundness
-3. Presentation quality
-4. Relevance to neuromorphic systems
-5. Significance of contribution
-
-Typical 1-5 scale with overall accept/reject recommendation.
-
-## Conference Size
-- ICONS 2023: 22 proceedings submissions, 13 accepted, 87 total presentations (incl. posters/talks)
-- ICONS 2024: 85+ presentations
-- ICONS 2021: 29 submissions
-
-## Assessment for Our Paper
-**Strong candidate.** We check every box:
-- Novelty: First SNN on ESC-50 ✅
-- Technical soundness: 5-fold CV, matched architectures, multiple encodings ✅
-- Relevance: SpiNNaker hardware deployment ✅
-- Significance: Encoding hierarchy + gap collapse finding ✅
-
-At 59% acceptance rate with genuine novelty claims, we're in good shape.
-
-## Sources
-- [ICONS 2026 CFP](https://iconsneuromorphic.cc/calls-2026/)
-- [ICONS 2023 Proceedings](https://dl.acm.org/doi/proceedings/10.1145/3589737)
-- [EasyChair submission](https://easychair.org/cfp/ACM-ICONS-2026)
-- [JISC/ACM Open](https://libraries.acm.org/acmopen/acmopen-jisc)

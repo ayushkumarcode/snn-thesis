@@ -90,31 +90,3 @@ cell_params = {
 
 # Create populations (NOT layers -- groups of neurons)
 input_pop = sim.Population(784, sim.SpikeSourceArray(spike_times=[...]))
-hidden_pop = sim.Population(500, sim.IF_curr_exp(**cell_params))
-output_pop = sim.Population(10, sim.IF_curr_exp(**cell_params))
-
-# Create projections (connections between populations)
-proj1 = sim.Projection(
-    input_pop, hidden_pop,
-    sim.AllToAllConnector(),
-    sim.StaticSynapse(weight=0.5, delay=1.0)
-)
-proj2 = sim.Projection(
-    hidden_pop, output_pop,
-    sim.AllToAllConnector(),
-    sim.StaticSynapse(weight=0.5, delay=1.0)
-)
-
-# Record spikes
-output_pop.record(['spikes', 'v'])
-
-# Run simulation (in biological real-time on SpiNNaker)
-sim.run(1000)  # 1000ms
-
-# Retrieve data
-spikes = output_pop.get_data('spikes')
-voltages = output_pop.get_data('v')
-
-sim.end()
-```
-

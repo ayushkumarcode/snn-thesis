@@ -222,3 +222,31 @@ scope:
 5. analyze which encoding best captures temporal features of network traffic
 
 why this works:
+- achievable in one semester
+- the field actually lacks this kind of study
+- comparison structure makes for a clean thesis
+- multiple datasets strengthen claims
+- energy analysis adds practical relevance
+- results are publishable regardless of which encoding "wins"
+
+---
+
+## full paper catalog (2023-2026)
+
+### 2023
+
+1. **"Binarized Spiking Neural Network with blockchain based intrusion detection framework"** -- Rajagopalan & Rethinam, Knowledge-Based Systems, 2023. Binarized SNNs + blockchain consensus for cloud IDS.
+
+2. **"Encrypted internet traffic classification using a supervised spiking neural network"** -- Rouxelin et al., Neurocomputing, 2023. SNN using packet size/timing for encrypted traffic. Beats SOTA on precision/recall.
+
+3. **"A Homomorphic Encryption Framework for Privacy-Preserving Spiking Neural Networks"** -- Nikfam et al., Information, 2023. Compares SNNs and DNNs under fully homomorphic encryption.
+
+### 2024
+
+4. **"An efficient intrusion detection model based on convolutional spiking neural network"** -- Wang et al., Scientific Reports 14:7054, March 2024. *Key paper*. ConvSNN, 98.82%, 0.034 MB model, 70-90% energy reduction.
+
+5. **"SURFS: Sustainable IntrUsion Detection with HieraRchical Federated Spiking Neural Networks"** -- Aouedi & Piamrat, IEEE ICC 2024, June 2024.
+
+6. **"A revolutionary approach to use convolutional spiking neural networks for robust intrusion detection"** -- Cluster Computing (Springer), 2024. 23% accuracy improvement over prior SNN methods.
+
+7. **"An Intrusion Detection System for 5G SDN Network Utilizing Binarized Deep Spiking Capsule Fire Hawk Neural Networks"** -- Future Internet (MDPI), October 2024.

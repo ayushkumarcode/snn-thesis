@@ -362,3 +362,31 @@ cost: $15-80. timeline: 8-12 weeks.
 ## sources
 
 ### frameworks and tools
+- [snnTorch](https://snntorch.readthedocs.io/) / [GitHub](https://github.com/jeshraghian/snntorch)
+- [snnTorch NIR Export](https://snntorch.readthedocs.io/en/latest/snntorch.export_nir.html)
+- [Lava](https://lava-nc.org/) / [GitHub](https://github.com/lava-nc/lava)
+- [NIR](https://neuroir.org/) / [GitHub](https://github.com/neuromorphs/NIR)
+- [Spiker+ GitHub](https://github.com/smilies-polito/Spiker)
+- [S2NN-HLS GitHub](https://github.com/eejlny/S2NN-HLS)
+- [SNN Arduino](https://github.com/RishabhMalviya/SNN_Arduino)
+- [ModNEF (ACM TACO)](https://dl.acm.org/doi/10.1145/3730581)
+- [Open Neuromorphic](https://open-neuromorphic.org/)
+
+### workshop/tutorial resources
+- [ISFPGA 2024: fpga-snntorch](https://github.com/open-neuromorphic/fpga-snntorch)
+- [Open Neuromorphic Workshops](https://open-neuromorphic.org/workshops/)
+
+### key papers
+- [NIR (Nature Communications, 2024)](https://www.nature.com/articles/s41467-024-52259-9)
+- [Spiker+ (arXiv, 2024)](https://arxiv.org/html/2401.01141v1)
+- [SNNs on SpiNNaker2 via NIR (arXiv, 2025)](https://arxiv.org/html/2504.06748v1)
+- [SNN Compression for Constrained Hardware (arXiv, 2025)](https://arxiv.org/html/2511.12136)
+- [Energy-Aware FPGA SNN (arXiv, 2024)](https://arxiv.org/html/2411.01628v1)
+- [SNN FPGA Survey (Neural Networks, 2025)](https://www.sciencedirect.com/science/article/abs/pii/S0893608025001352)
+- [SNN vs ANN Efficiency on FPGAs (JSA, 2022)](https://www.sciencedirect.com/science/article/abs/pii/S1383762122002508)
+- [SNNs on Embedded Microcontrollers (Neural Computing, 2024)](https://link.springer.com/article/10.1007/s00521-024-10191-5)
+- [SpikeExplorer (Electronics, 2024)](https://www.mdpi.com/2079-9292/13/9/1744)
+- [Open-Source SNNs on Low-End FPGAs (arXiv, 2025)](https://arxiv.org/html/2507.07284v1)
+- [TENNLab Embedder (ICONS, 2025)](https://neuromorphic.eecs.utk.edu/publications/2025-07-29-generating-spiking-neural-network-code-libraries-for-embedded-systems/)
+
+### student projects

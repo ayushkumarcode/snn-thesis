@@ -418,3 +418,31 @@ Key works:
 - [Efficient intrusion detection based on convolutional SNN (Nature Scientific Reports 2024)](https://www.nature.com/articles/s41598-024-57691-x)
 - [Energy-aware protocol-aware transformer-spiking hybrid (Nature Scientific Reports 2026)](https://www.nature.com/articles/s41598-026-37367-4)
 - [Intrusion Detection for 5G SDN with binarized deep spiking capsule network (MDPI 2024)](https://www.mdpi.com/1999-5903/16/10/359)
+
+Published results: SNN models achieve 99.0% accuracy on NSL-KDD, 99.53% on CICIDS2017, 96.80% on UNSW-NB15. Competitive with ANNs.
+
+**Feasibility: HIGH**
+
+```
+Title: "Energy-Efficient Intrusion Detection Using Spiking Neural Networks"
+
+Components:
+1. Preprocess NSL-KDD/CICIDS2017 (feature engineering, normalization)
+2. Encode tabular features into spike trains (rate coding, latency coding)
+3. Train SNN classifier (fully-connected or convolutional)
+4. ANN baseline (MLP, CNN) for comparison
+5. Energy analysis (spike counts, operations comparison)
+6. Per-attack-type analysis (DDoS, probe, U2R, R2L)
+
+Framework: snnTorch + PyTorch + scikit-learn (preprocessing)
+Datasets: NSL-KDD (available on Kaggle), CICIDS2017
+```
+
+Key advantages: tabular data is straightforward to preprocess, datasets are public and well-documented, clear "energy efficiency for edge deployment" narrative.
+
+**Verdict: strong candidate.**
+
+---
+
+### 3.3 SNN for financial trading
+

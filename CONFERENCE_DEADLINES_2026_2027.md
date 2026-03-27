@@ -340,31 +340,3 @@ Sources: [AICAS 2026](https://2026.ieee-aicas.org/), [IEEE CASS CFP](https://iee
 | **Full Name** | Edge AI Research Symposium 2026 (formerly tinyML Research Symposium) |
 | **Paper Deadline** | ~December 2025 (PASSED) |
 | **Conference** | Edge AI San Diego, 24-26 March 2026 |
-| **Location** | San Diego, USA |
-| **Realistic for UG?** | Deadline passed. Monitor for future events at Edge AI London 2026 or 2027. |
-| **Focus** | Edge AI, embedded ML, tiny ML, energy-efficient inference |
-
-Sources: [Edge AI Foundation](https://www.edgeaifoundation.org/), [EasyChair CFP](https://easychair.org/cfp/EdgeAI2026)
-
----
-
-## 5. IEEE CONFERENCES
-
-### 5.1 WCCI/IJCNN 2026 -- IEEE World Congress on Computational Intelligence [URGENT: LATE-BREAKING]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | IEEE World Congress on Computational Intelligence (includes IJCNN 2026) |
-| **Regular Paper Deadline** | 31 January 2026 (PASSED) |
-| **Late-Breaking Deadline** | **10 March 2026** (5 DAYS FROM NOW) |
-| **Late-Breaking Notification** | 1 April 2026 |
-| **Camera-Ready** | 15 April 2026 |
-| **Conference Dates** | 21-26 June 2026 |
-| **Location** | MECC, Maastricht, Netherlands |
-| **Page Limit** | 6 pages (up to 8 with extra page charges at 100 EUR/page) |
-| **Format** | IEEE conference template, 10pt, `\documentclass[10pt,conference]{IEEEtran}` |
-| **Proceedings** | IEEE Xplore |
-| **Acceptance Rate** | ~50-60% for IJCNN historically |
-| **Registration** | Early bird (by May 1): IEEE member 950 EUR, student member 550 EUR, student non-member 700 EUR. Regular: student member 750 EUR. All include 21% Dutch VAT. |
-| **Realistic for UG?** | **YES -- EXCELLENT FIT.** IJCNN is the main venue for neural network research. SNN topics, neuromorphic hardware, and sound classification all in scope. Special sessions on neuromorphic (SS40) and NeuroSNN exist. |
-| **Focus** | Neural networks, computational intelligence, deep learning, spiking neural networks |

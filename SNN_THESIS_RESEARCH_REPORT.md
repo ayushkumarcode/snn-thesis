@@ -194,3 +194,31 @@ key techniques:
 - layer-wise calibration and potential initialization
 - quantization-aware conversion methods
 
+**CIFAR-10 Conversion Results:**
+| Method | Year | Accuracy | Time Steps |
+|--------|------|----------|------------|
+| clip-floor-shift | 2022 | 95.54% | 32 |
+| Fast-SNN | 2023 | 95.42% | 3 |
+| Parameter Calibration | 2024 | 94.75% | 4 |
+
+**ImageNet Conversion Results:**
+| Method | Year | Accuracy | Time Steps |
+|--------|------|----------|------------|
+| Spiking ResNet | 2021 | 73.77% | 350 |
+| Fast-SNN | 2023 | 71.31% | 3 |
+| clip-floor-shift | 2022 | 68.47% | 32 |
+
+interesting observation: time steps have dropped from 350 to just 3 -- massive latency reduction.
+
+#### Direct Training with Surrogate Gradients
+uses BPTT with surrogate gradient functions to approximate non-differentiable spike functions.
+
+key innovations:
+- learnable surrogate gradients (LSG) adapting function width dynamically
+- Information Maximization Loss (IM-Loss) optimizing surrogate shape
+- parametric LIF neurons with learnable time constants
+- Membrane Potential Batch Normalization (MPBN)
+- Temporal Efficient Training (TET) compensating momentum loss
+
+**CIFAR-10 Direct Training Results:**
+| Method | Year | Accuracy | Time Steps |

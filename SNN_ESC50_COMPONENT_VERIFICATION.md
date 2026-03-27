@@ -810,3 +810,31 @@ Every component exists and is accessible. The project is technically feasible.
 - spikegen rate/latency/delta encoding of spectrograms (15+ functions available)
 - Conv2d + snn.Leaky architecture (Tutorial 6 pattern, works identically for spectrograms)
 - ANN baseline with ReLU swap (explicitly documented approach)
+- 5-fold cross-validation using metadata CSV (built into dataset design)
+- Training on CPU (snnTorch docs confirm this is viable)
+
+---
+
+## recommended technology stack
+
+```
+Python 3.11 (required for snnTorch 3.9-3.11 AND NeuroBench >=3.10 overlap)
+PyTorch 2.5.x (stable, well-tested with snnTorch; torch >=2.0.1 for NeuroBench)
+torchaudio 2.5.x (matched to PyTorch; torchaudio >=2.0.2 for NeuroBench)
+snnTorch 0.9.4 (latest; snntorch >=0.7.0 for NeuroBench)
+librosa 0.11.0
+neurobench 2.2.0
+numpy >=1.24.3, <2.0 (to avoid NeuroBench conflicts)
+pandas, matplotlib, scikit-learn
+```
+
+### Installation script for macOS (DEPENDENCY ORDER MATTERS):
+
+```bash
+# Create clean environment with Python 3.11
+python3.11 -m venv ~/snn_esc50_env
+source ~/snn_esc50_env/bin/activate
+pip install --upgrade pip
+
+# Step 1: Install PyTorch ecosystem FIRST
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1

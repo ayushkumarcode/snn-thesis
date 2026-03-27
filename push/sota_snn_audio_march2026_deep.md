@@ -166,3 +166,4 @@ we have the most comprehensive encoding comparison for audio SNNs. nobody else h
 - [Xylo Audio 2 2024](https://arxiv.org/abs/2406.15112)
 - [OmniVec2 CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Srivastava_OmniVec2)
 - [EventProp Loihi 2 2025](https://arxiv.org/abs/2510.13757)
+- [ESC-50 SOTA tracker](https://paperswithcode.com/sota/audio-classification-on-esc-50)

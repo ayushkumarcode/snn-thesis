@@ -870,31 +870,3 @@ python3.11 -m venv ~/neurobench_env
 source ~/neurobench_env/bin/activate
 pip install neurobench
 # Export model, load in this env, run benchmark, export results
-```
-
----
-
-## KEY REFERENCE: THE CLOSEST EXISTING WORK
-
-**"Spike Encoding for Environmental Sound: A Comparative Benchmark"**
-- arXiv: 2503.11206 (March 2025)
-- URL: https://arxiv.org/html/2503.11206v1
-- Framework: snnTorch 0.9.1
-- Dataset: ESC-10 (subset of ESC-50)
-- Architecture: 4 FC layers, 128 LIF neurons each
-- Best encoding: Threshold Adaptive Encoding (TAE), 69% F1 on ESC-10
-- Mel-spectrogram: 128 bands, 1024 FFT, 256 hop, 44100 Hz
-- Training: batch 32, lr 0.01, 100 epochs
-- Key quote: "No state-of-the-art solution has yet encoded environmental sound datasets using spike-based methods for SNNs"
-
-**Your thesis can improve upon this by:**
-1. Using convolutional layers (they used only fully-connected)
-2. Testing on full ESC-50 (50 classes, not just 10)
-3. Adding energy/SynOps comparison with ANN baseline
-4. Using snnTorch's built-in rate encoding (they used custom encoding)
-5. Reporting 5-fold CV results (they did not clearly report this)
-
----
-
-## SOURCES
-

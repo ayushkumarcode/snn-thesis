@@ -194,3 +194,31 @@ key findings:
 4. conversion approach (train ANN, convert to SNN) generally outperforms direct SNN training
 5. more timesteps = better accuracy but more energy; sweet spot is 50-100 timesteps
 
+---
+
+## is this too ambitious for an undergrad?
+
+### honest answer
+
+**full-scale SNN-NLP (SpikingBERT, SpikeLM) is too ambitious.** but a focused subset is achievable and would be outstanding.
+
+### why full-scale is too hard:
+1. multi-stage training pipelines (SpikingBERT needs 3 distillation stages, 200+ epochs)
+2. custom CUDA kernels (SpikeLM is 7.6% CUDA code)
+3. multi-GPU requirements (SpikingBERT uses DataParallel on 8 A800 GPUs)
+4. novel neuron models not in standard frameworks
+5. sparse documentation
+6. debugging SNN dynamics is fundamentally harder than ANNs
+
+### why a focused version IS feasible:
+1. the Spiking CNN text classification pipeline is well-documented with public code
+2. binary sentiment is simple and well-understood with clean datasets (IMDB, SST-2)
+3. conversion + fine-tuning means you train a standard ANN first (familiar territory)
+4. snnTorch has 14+ tutorials even if none are NLP-specific
+5. novelty is in the APPLICATION, not the architecture -- don't need to invent new neuron models
+
+### comparison with other undergrad SNN projects:
+
+| Project | Scope | Result |
+|---------|-------|--------|
+| Shape Detector SNN (Manchester BSc) | Single-layer SNN for shapes | Clean, 107 commits |

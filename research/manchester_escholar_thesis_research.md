@@ -110,3 +110,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 - World-record simulation
 - 8.37 MB PDF
 
+---
+
+## Adjacent Hardware / FPGA Theses
+
+### Memristive Crossbar Arrays for Machine Learning Systems
+- **Manu Vijayagopalan Nair**, 2015, **MPhil** (not PhD), EEE
+- Supervised by Piotr Dudek (main), Hujun Yin (co)
+- https://research.manchester.ac.uk/en/studentTheses/memristive-crossbar-arrays-for-machine-learning-systems/
+- Specialized computing systems diverging from Von-Neumann architectures. Presents Unregulated Step Descent (USD) algorithm for training memristive crossbar arrays. References TrueNorth, SpiNNaker, Neurogrid.
+- **One of only 2 non-PhD theses found**
+- 4.34 MB PDF
+
+### Efficient Execution of CNNs on Low Powered Heterogeneous Systems
+- **Crefeda Rodrigues**, 2020, PhD, Computer Science
+- Supervised by Graham Riley (main), Mikel Lujan (co)
+- https://research.manchester.ac.uk/en/studentTheses/efficient-execution-of-convolutional-neural-networks-on-low-power
+- SyNERGY framework for evaluating DL models on execution time and energy metrics on mobile platforms. NNTaskSim for task-parallel neural network computation exploration. Energy-efficient ML on edge devices.
+- Tested on Jetson TX1, Snapdragon 820
+
+### Modular FPGA Systems with Dynamic Workloads
+- **Anuj Vaishnav**, 2020, PhD, Computer Science
+- Supervised by Dirk Koch (main), James Garside (co)
+- https://research.manchester.ac.uk/en/studentTheses/modular-fpga-systems-with-support-for-dynamic-workloads-and-virtu/
+- FPGA OS, OpenCL scheduling across CPU/FPGA, resource elasticity, live migration across FPGA clusters.
+- 7.42 MB PDF
+
+### FPGA Virtualisation on Heterogeneous Computing Systems
+- **Khoa Pham**, 2020, PhD, Computer Science

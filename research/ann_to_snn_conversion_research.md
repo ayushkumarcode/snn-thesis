@@ -475,31 +475,3 @@ A strong thesis framed around ANN-to-SNN conversion should follow this structure
 ### 10.2 Strongest Thesis Titles (Pick One)
 
 1. "Evaluating the Practicality of ANN-to-SNN Conversion for Medical Image Classification"
-2. "A Systematic Comparison of ANN-to-SNN Conversion Tools for Deep Neural Networks"
-3. "Beyond VGG and ResNet: ANN-to-SNN Conversion of Modern Efficient Architectures"
-4. "Energy-Accuracy Tradeoffs in ANN-to-SNN Conversion: A Practical Assessment"
-5. "From Training to Spiking: How Well Do Standard Vision Models Survive ANN-to-SNN Conversion?"
-6. "ANN-to-SNN Conversion for Edge Deployment: A Feasibility Study on Lightweight Architectures"
-
----
-
-## 11. Consolidated Accuracy Tables
-
-### 11.1 CIFAR-10 State of the Art (ANN-to-SNN Conversion Only)
-
-| Method | Year | Venue | Arch | T | SNN Acc (%) | ANN Acc (%) | Gap |
-|--------|------|-------|------|---|-------------|-------------|-----|
-| Sengupta et al. | 2019 | Front. Neuro. | VGG-16 | 2500 | 91.55 | 91.70 | 0.15 |
-| Hybrid (Rathi) | 2020 | -- | VGG-16 | 200 | 92.65 | -- | -- |
-| SNN Calibration | 2021 | ICML | VGG-16 | 16 | 93.63 | 93.71 | 0.08 |
-| QCFS | 2022 | ICLR | VGG-16 | 4 | 93.05 | 93.63 | 0.58 |
-| SEENN | 2023 | NeurIPS | VGG-16 | ~1.4 | 93.63 | -- | ~0 |
-| One-Timestep | 2025 | -- | ResNet-18 | 1 | 93.11 | ~93.5 | ~0.4 |
-| PMSM | 2024 | -- | ViT-S | 1 | 98.50 | -- | ~0 |
-
-### 11.2 ImageNet State of the Art (ANN-to-SNN Conversion Only)
-
-| Method | Year | Venue | Arch | T | Top-1 Acc (%) |
-|--------|------|-------|------|---|--------------|
-| Sengupta et al. | 2019 | Front. Neuro. | VGG-16 | 2500 | 69.96 |
-| SNN Calibration | 2021 | ICML | ResNet-34 | 32 | 71.78 |

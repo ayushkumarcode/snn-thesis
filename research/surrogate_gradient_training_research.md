@@ -54,3 +54,31 @@ the surrogate gradient doesn't need to be an exact gradient of anything. it just
 | **Sigmoid** | k * exp(-kU) / (exp(-kU)+1)^2 | slope=25 | Smooth, classic |
 | **ATan (Arctangent)** | 1 / (pi * (1 + (pi*U*alpha/2)^2)) | alpha=2.0 | snnTorch default, smooth tails |
 | **Triangular** | Piecewise linear | threshold=1 | Simple but weaker gradient strength |
+| **STE** | 1 (constant) | none | Simplest possible, coarse |
+| **Spike Rate Escape** | k * exp(-beta|U-1|) | beta=1, slope=25 | Biologically inspired escape rate |
+
+### Details
+
+**Fast Sigmoid (my recommendation):**
+efficient because no `exp()`. produces lower firing rates (higher sparsity) than atan at similar accuracy. slope controls sharpness: higher = closer to true Heaviside but potentially less stable.
+
+**ATan (Arctangent):**
+default in snnTorch. smooth tails give gradients over wider membrane potential range. slightly higher firing rates vs fast sigmoid. well-studied theoretically.
+
+**Triangular:**
+piecewise linear, simplest geometrically. research says it "struggles significantly, performing poorly across datasets" due to weak gradient strength. would avoid as primary choice.
+
+**STE:**
+simplest possible -- gradient is always 1. coarse but sometimes works for simple tasks. no tunable params.
+
+all surrogates share the same basic shape: bell/peak centered at firing threshold. key differences are width (how far gradient extends), height (peak magnitude), and tail behavior (decay rate).
+
+---
+
+## Does the Choice of Surrogate Actually Matter?
+
+### short answer: shape barely matters; scale matters a lot.
+
+### The Landmark Study
+
+Zenke and Vogels (2021), "The Remarkable Robustness of Surrogate Gradient Learning":

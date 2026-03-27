@@ -82,20 +82,20 @@ directly relevant: "Evaluating Encoding and Decoding Approaches for Spiking Neur
 ### ICONS 2026 (our target)
 
 Chicago, IL. August 4-6, 2026. deadline: April 1 (maybe April 8 AoE). 8-page full papers (20-min talks), 4-page short (10-min).
-- "IM-SNN: Memory-Efficient Spiking Neural Network with Low-Precision Membrane Potentials and Weights" (Hassan et al.)
-- "Programmable Synapses and Dendritic Circuits for Superconducting Optoelectronic Neuromorphic Computing" (Primavera et al.)
 
-**Topics covered (~80+ presentations over 4 days):**
-- Lightning Talks: Algorithms (visualization, dendritic processing, sensor filtering, IP protection)
-- Lightning Talks: Hardware (analog neurons, CMOS memory, superconducting networks, memristors)
-- Lightning Talks: Applications (gaming, audio processing, materials science, gait analysis, RF fingerprinting, swarm robotics)
-- Full Talks: Vision processing, hardware mapping, spiking neuron training
-- 23+ poster presentations
+explicit topics: neuromorphic circuits/sensors, non-von Neumann computing, event/spike-based systems, brain-inspired architectures, supervised/unsupervised/self-supervised learning, continual learning, energy-efficient edge AI, neuromorphic benchmarks, domain-specific implementations, simulation techniques.
 
-**Key insight:** ICONS 2024 accepted audio processing papers as lightning talks in the Applications session. Your paper combining SNN audio + SpiNNaker hardware + encoding analysis covers THREE of their tracks (algorithms, hardware, applications).
+we map to: #3 (spike-based), #5 (supervised learning), #8 (energy-efficient edge AI), #10 (neuromorphic benchmarks), #11 (domain-specific: environmental sound)
 
-### ICONS 2023 (Santa Fe, NM, Aug 1-3, 2023)
+special emphasis 2026: "welcoming work at the intersection of neuromorphic computing and energy-efficient AI, including ultra-low-power spike-based machine learning..."
 
+our temporal truncation result (90% accuracy at T=7 = 72% energy saving) directly addresses this.
+
+---
+
+## SNN + audio: complete landscape (2016-2025)
+
+every known SNN audio/sound paper i could find:
 **Best Paper:** "Dendritic Learning in Superconducting Optoelectronic Networks" (O'Loughlin, Primavera, Shainline)
 
 **Published in:** ACM proceedings (https://dl.acm.org/doi/proceedings/10.1145/3589737)

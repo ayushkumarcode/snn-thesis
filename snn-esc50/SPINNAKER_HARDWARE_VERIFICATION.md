@@ -152,17 +152,17 @@ published by SpiNNakerManchester on GitHub/PyPI.
 | hardware specs | 47-48 chips, 836-855 cores, 118 MB SDRAM match SpiNN-5 | definitive |
 | spalloc jobs | multiple board IPs across runs | strong |
 | IOBUF firmware | ARM968 C logs from individual chip coordinates | strong |
-| Timing | 27-37s setup, 25s data loading = real network transfer | Strong |
-| Imperfect hardware | 47/48 chips (faulty chip) impossible in simulation | Strong |
+| timing | 27-37s setup, 25s data loading = real network transfer | strong |
+| imperfect hardware | 47/48 chips (faulty chip) impossible in simulation | strong |
 
 ---
 
-## References
+## references
 
-- [SpiNNaker project (University of Manchester)](https://www.scieng.manchester.ac.uk/tomorrowlabs/spinnaker/)
-- [SpiNNaker Wikipedia](https://en.wikipedia.org/wiki/SpiNNaker)
-- [Spalloc Documentation](https://spalloc.readthedocs.io/en/stable/index.html)
-- [PyNN on SpiNNaker Installation Guide](https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html)
-- [SpiNNaker Tools SCAMP Source](https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c)
-- [sPyNNaker Paper (Frontiers in Neuroscience)](https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full)
-- [SpiNNTools Paper (Frontiers in Neuroscience)](https://www.frontiersin.org/articles/10.3389/fnins.2019.00231/full)
+- SpiNNaker project (University of Manchester): https://www.scieng.manchester.ac.uk/tomorrowlabs/spinnaker/
+- SpiNNaker Wikipedia: https://en.wikipedia.org/wiki/SpiNNaker
+- Spalloc docs: https://spalloc.readthedocs.io/en/stable/index.html
+- PyNN on SpiNNaker install guide: https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html
+- SpiNNaker Tools SCAMP source: https://github.com/SpiNNakerManchester/spinnaker_tools/blob/master/scamp/scamp-3.c
+- sPyNNaker paper (Frontiers in Neuroscience): https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full
+- SpiNNTools paper (Frontiers in Neuroscience): https://www.frontiersin.org/articles/10.3389/fnins.2019.00231/full

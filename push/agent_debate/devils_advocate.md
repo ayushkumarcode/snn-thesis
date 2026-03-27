@@ -170,31 +170,3 @@ NeuroBench is a published framework (Yik et al., Nature Communications 2025). Us
 
 The SNN uses 976 nJ vs 463 nJ for the ANN — a 2.1x penalty. The paper then constructs an argument that this would be reversed on neuromorphic hardware (because ACs cost 5.1x less than MACs). However, the 5.1x per-operation advantage comes from 45nm CMOS energy values (Horowitz, ISSCC 2014), not from measured SpiNNaker energy. SpiNNaker 1 uses 130nm CMOS and costs approximately 5.8 μJ/SOP — orders of magnitude more expensive than the theoretical 0.9 pJ/AC at 45nm. The paper is using theoretical hardware numbers to argue for hardware efficiency while the actual hardware used (SpiNNaker 1) is not energy-efficient by any modern measure. The "5.1x per-operation advantage on neuromorphic hardware" claim is not validated by SpiNNaker measurement and would be falsified if applied to SpiNNaker 1's actual energy cost.
 
-**Problem 3: The activation sparsity (74.16%) is below the break-even threshold for software energy efficiency.**
-
-The paper correctly cites Dampfhoffer et al. (2023) and notes that the spike rate (25.8%) is above the 6.4% threshold. However, it does not state clearly enough that this means the energy argument for SNNs is currently unconvincing. Yang et al. (2024) show that for T>16 timesteps (the paper uses T=25), sparsity must exceed 97% for energy efficiency — the paper's 74.16% sparsity falls far short. On the paper's chosen hardware (SpiNNaker 1), which is not an efficient neuromorphic chip by modern standards, the energy argument is even weaker.
-
-### What a Reviewer Would Specifically Say
-
-"Contribution C6 (NeuroBench-compliant energy analysis) is not a novelty claim — it is a routine benchmarking exercise using an existing tool. The energy analysis reveals that the SNN is 2.1x more expensive than the ANN in software simulation and does not reach the sparsity threshold (<6.4% spike rate required; paper's spike rate is 25.8%) for energy efficiency. The paper argues that neuromorphic hardware would reverse this penalty via the 5.1x AC/MAC cost ratio, but this claim is based on 45nm theoretical values, not on measured SpiNNaker 1 energy (which is ~5.8 μJ/SOP at 130nm — far worse than the 0.9 pJ/AC theoretical value). The energy narrative as presented is misleading: the theoretical hardware advantage is presented as if it applies to the actual hardware used, when in fact the real hardware measurement is missing."
-
-### Novelty Risk: HIGH RISK (as a contribution claim)
-
-C6 is essentially the most likely to be rejected as a contribution claim by reviewers — it may be accepted as a validation/benchmarking exercise but not as a novelty contribution in its own right. This claim should be absorbed into the SpiNNaker deployment section rather than listed as a standalone contribution.
-
----
-
-## Overarching Questions: Significance and Publishability
-
-### Is 47.15% on ESC-50 "Significant"?
-
-In absolute terms: no. Human performance is 81.3%, ANN SOTA is 98.25-99.1%. The SNN achieves 47.15%, which is 34 pp below human performance and 51 pp below ANN SOTA. Against the matched ANN, the SNN is 16.7 pp worse. If a student reported that their model achieves 47.15% on a task where humans score 81.3% and ANNs score 98.25%, a typical machine learning reviewer would view this as a failed model, not a publishable result.
-
-The paper's argument is that this is "the first SNN on ESC-50, so any result is informative." This is true as a benchmark statement, but it is a weak justification for ICONS specifically. ICONS values hardware-neuromorphic systems work, not pure benchmarking. The 47.15% becomes defensible only in the context of the PANNs experiment (gap collapses) and the encoding comparison (seven methods, systematic analysis). Even then, a reviewer may ask: if the PANNs+SNN achieves 92.50%, why not submit a paper primarily about PANNs+SNN, with the scratch SNN as a baseline comparison, rather than leading with a 47.15% result?
-
-### Does This "Advance State of the Art"?
-
-It does not advance ANN SOTA on ESC-50. It does not advance SNN SOTA on any benchmark (the paper is the only SNN on ESC-50, so it cannot be claimed to advance SNN SOTA — it establishes a baseline). It does not advance SpiNNaker deployment capability (the deployment is partial). The strongest case for "advancing state of the art" is:
-- Establishing the first SNN ESC-50 baseline (C1)
-- The encoding hierarchy finding (C2)
-- The "gap collapse with pretrained features" insight from PANNs (C5)

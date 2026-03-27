@@ -110,3 +110,31 @@ Results are actually really good:
 - This could be a solid thesis approach -- leverage existing ANN training infrastructure
 
 #### Surrogate Gradient Training (direct SNN training)
+- Problem: spikes are binary (0 or 1), so gradients are either 0 or undefined
+- Solution: replace the true gradient with a smooth approximation during backprop
+- Recent advances: learnable neuron parameters, batch normalization for membranes
+- CIFAR-10: 96.47% accuracy with just 2 timesteps (better than conversion!)
+
+#### STDP (biologically plausible but limited)
+- Local learning rule, no backprop needed
+- Doesn't scale well to deep networks
+- Mostly used for unsupervised feature extraction in early layers
+
+### Architectures
+
+#### Spiking CNNs
+- Spiking ResNets (SEW-ResNet, MS-ResNet) -- adapted residual connections for spikes
+- Key challenge: maintaining gradient flow through spiking layers
+
+#### Spiking Transformers (this is the cutting edge stuff, 2023-2024)
+- Replace softmax attention with spike-based matrix operations
+- Spikformer: 74.81% ImageNet (4 timesteps)
+- QKFormer: 84.22% ImageNet -- approaching ANN-level performance
+- Spike-driven Transformer V2: 79.7% with meta-architecture design
+- This is where the field is moving fast
+
+#### Spiking Language Models (very new)
+- SpikingBERT, SpikingGPT, SpikingMiniLM -- early explorations
+- 70B parameter SpikeLLM demonstrating scalability is possible
+- Very early stage but shows the direction
+

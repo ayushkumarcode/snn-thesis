@@ -446,3 +446,31 @@ Based on everything i've gone through, here's what matters most for targeting a 
 ---
 
 ## 8. What i couldn't find and confidence levels
+
+### What i couldn't find
+- The specific COMP30040 project_assessment.pdf document from Manchester Canvas (requires login). This document supposedly has the detailed grade descriptors. Need to download this from Canvas and study it.
+- Detailed internal rubrics from Bristol (COMS30044) and Edinburgh (INFR10044) for undergrad projects specifically -- behind institutional logins.
+- York Computer Science UG3 project marking criteria (requires auth).
+- Exact percentage weighting for lit review vs implementation vs evaluation within the Manchester report mark.
+
+### Confidence levels
+- **High confidence:** Manchester COMP30040 component weightings (55/30/15) -- directly from course documents.
+- **High confidence:** Cambridge sub-category breakdown (30/45/25) -- from official department website.
+- **High confidence:** Publishable results NOT expected from undergrads -- consistent across all sources.
+- **High confidence:** Evaluation quality is the key differentiator between grade bands -- universal finding.
+- **Moderate confidence:** The "typical" percentage breakdown across dimensions -- inferred from multiple schemes, not directly stated by most universities.
+- **Moderate confidence:** Imperial and Cardiff criteria apply similarly to UG as to MSc -- some criteria documents were MSc-specific.
+
+---
+
+## 9. Things to do next
+
+1. **Download project_assessment.pdf from Manchester Canvas** -- this is probably the most important document i can read. It has the detailed marking criteria specific to COMP30040.
+
+2. **Look at past Manchester dissertations** -- previous COMP30040 projects that got high marks. The Q&A document mentions previous screencasts are available on Blackboard; there might also be exemplar reports.
+
+3. **Ask my supervisor** what specific criteria they and the second marker will use. Supervisors often have their own views on what matters most.
+
+4. **Plan the evaluation methodology early** -- this is the most commonly under-invested chapter and the one that most separates grade bands.
+
+5. **Allocate at least 4-6 weeks for writing** -- Cambridge recommends this explicitly, and every university emphasises writing quality.

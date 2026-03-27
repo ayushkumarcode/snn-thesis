@@ -138,20 +138,20 @@ formula 3: "novel analysis revealing Z"
 - ours: "the SNN-ANN gap is a feature-learning problem, not a spiking limitation" + "encoding specificity: transfer ratio 0.255"
 - gap-collapse insight is genuinely novel for audio. encoding specificity has never been quantified before.
 
-## 4. SNN + AUDIO: COMPLETE LANDSCAPE (2016-2025)
+formula 4: "hardware deployment showing W"
+- ours: "first SpiNNaker deployment for 50-class environmental sound, with documented root-cause analysis of deployment failures and validated hybrid approach"
+- the honesty about failure modes actually strengthens the paper. reviewers value reproduciblity over inflated claims.
 
-### Every known SNN audio/sound paper:
+formula 5: "comprehensive benchmark/comparison"
+- ours: "most comprehensive SNN encoding comparison for audio: 7 methods, 50 classes, 5-fold validated"
+- no prior audio SNN paper compares more than 4 encodings. this alone could be a short paper at ICONS.
 
-| Year | Authors | Dataset | Task | Architecture | Accuracy | Hardware | Key Innovation |
-|------|---------|---------|------|-------------|----------|----------|----------------|
-| 2016 | Dominguez-Morales et al. | 8 pure tones (130-1397 Hz) | Tone classification | FC SNN | >85% at SNR>3dB | **SpiNNaker** | First SNN audio on SpiNNaker |
-| 2018 | Wu et al. | SHD, TIMIT | Sound classification | Conv SNN | 97.5% TIDIGITS | None | SOM + SNN framework |
-| 2018 | Dong et al. | TIDIGITS, TIMIT | Digit recognition | Conv SNN + STDP | 97.5% / 93.8% | None | Unsupervised STDP |
-| 2020 | Martinelli et al. | QUT-NOISE-TIMIT | Speech enhancement | Recurrent SNN | DCF 2.4-26.5% | None | Recurrent architecture |
-| 2021 | Amin | TIDIGITS, RWCP | Speech/sound | Adaptive threshold | 97.64% / 99.50% | None | Adaptive threshold module |
-| 2021 | Bensimon et al. | RWCP | Indoor sounds | SCTN | 98.73% | None | Spiking continuous time neuron |
-| 2022 | Yarga et al. | Speech digits | Encoding comparison | FC SNN | Variable | None | **4-encoding comparison at ICONS** |
-| 2022 | Blouw & Choo | Speech commands | Keyword spotting | Nengo SNN | ~95% | **Loihi** | Real-time deployment |
+---
+
+## hot topics in neuromorphic computing (2025-2026)
+
+ranked by how excited reviewers seem to be about them:
+
 | 2023 | Speech2Spikes (Intel) | Google Speech Commands | Keyword spotting | Feed-forward SNN | SOTA (>10pp above prior) | **Loihi** | Real-time audio pipeline, 109x energy |
 | 2023 | ISCAS paper | Multi-class audio | Classification | Spiking CNN | >98% | None | Sparsity + edge focus |
 | 2023 | Xiang et al. | TIDIGITS | Digit recognition | Photonic conv SNN | 93.75% | **Photonic** | Photonic neuromorphic |

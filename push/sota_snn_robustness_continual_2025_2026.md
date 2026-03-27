@@ -54,3 +54,31 @@ this is a clear novelty claim.
 evidence from 2024-2026:
 
 1. **Wang et al. (Dec 2025):** quantifies gradient vanishing in surrogates. attack success rates increase 4-13pp when addressed via ASSG
+2. **Lin & Sengupta (Apr 2025):** gradient-based attacks are ineffective against SNNs with local learning. hybrid transferability-based attack is much stronger. apparent robustness largely disappears under their attack
+3. **Gradient Sparsity Trail (Sep 2025):** identifies two types of gradient sparsity in SNNs that impair white-box attacks, creating false robustness signals
+4. **HART Attack (ICLR 2024):** attacks combining rate and temporal information are significantly stronger than either alone
+5. **RSC-SNN (ACM MM 2024):** addresses gradient obfuscation via EOT (Expectation Over Transformation)
+
+**consensus:** standard FGSM/PGD with fixed surrogate will overestimate SNN robustness. degree of overestimation is 5-13+ pp. but the relative ordering (SNN > ANN) is likely correct -- every paper confirms some inherent advantage, the debate is about magnitude.
+
+### defense and attack landscape (2024-2026)
+
+**defense methods:**
+
+| Paper | Venue | Method | CIFAR-10 PGD-7 | CIFAR-10 FGSM | Clean |
+|-------|-------|--------|----------------|---------------|-------|
+| SNN-RAT | NeurIPS 2022 | Regularized AT | 45.23% | ~52% | ~89% |
+| FEEL-SNN | NeurIPS 2024 | Frequency Encoding + Evolutionary Leak | Improved over RAT | Improved | ~89% |
+| Robust Stable SNN | arXiv 2024 | DLIF + MPPD + AT+Reg | **40.30%** | **56.71%** | **88.91%** |
+| RSC-SNN | ACM MM 2024 | Randomized Smoothing Coding | 39.98% | 54.52% | 82.03% |
+| RandHet-SNN | iScience 2025 | Random heterogeneous time constants | **44.86%** (PGD10) | 53.53% | 90.25% |
+| TGO | ICLR 2026 | Threshold Guarding Optimization | 6.14% (vanilla) | 51.40% | 88.79% |
+
+**mechanistic understanding:**
+- RSC-SNN: Poisson coding is conceptually equivalent to randomized smoothing
+- TGO: threshold-neighboring neurons are the weak point; reducing them by 40% improves robustness
+- natural spike-induced gradient sparsity creates inherent (but limited) robustness
+- temporal encoding + early-exit decoding = key to SNN robustness advantage (Nature Comms 2025)
+
+---
+

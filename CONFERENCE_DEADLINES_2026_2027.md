@@ -228,31 +228,3 @@ Sources: [DCASE Community](https://dcase.community/), [DCASE 2026 Challenge](htt
 | **Page Limit** | 8 pages main + unlimited refs/appendices |
 | **Format** | ICML LaTeX template |
 | **Acceptance Rate** | ~24-28% (avg 27.9%, last 5yr ~23.3%). 2026: 24,371 submissions. |
-| **Registration** | ~$500-1,000+ (TBD for 2026) |
-| **Realistic for UG?** | **VERY HARD.** Top-tier venue. ESC-50 dataset and current results unlikely to pass the novelty bar for ICML. |
-| **Focus** | All areas of machine learning |
-
-Sources: [ICML 2026 Dates](https://icml.cc/Conferences/2026/Dates), [ICML 2026 CFP](https://icml.cc/Conferences/2026/CallForPapers)
-
----
-
-### 3.2 NeurIPS 2026 -- Conference on Neural Information Processing Systems
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | Conference on Neural Information Processing Systems |
-| **Abstract Deadline** | **~May 11, 2026** (estimated from 2025 pattern; not yet announced) |
-| **Paper Deadline** | **~May 15, 2026** (estimated; not yet announced) |
-| **Conference Dates** | 6-12 December 2026 |
-| **Location** | Sydney, Australia |
-| **Page Limit** | 9 pages main + unlimited refs/appendices (based on 2025) |
-| **Format** | NeurIPS LaTeX template |
-| **Acceptance Rate** | ~24-26% (2025: 24.5%, 2024: 25.8%) |
-| **Registration** | ~$600-1,500 (2025 reference) |
-| **Realistic for UG?** | **VERY HARD.** Top-tier venue. Same concerns as ICML. |
-| **Focus** | Neural information processing, machine learning, computational neuroscience |
-
-**Note:** NeurIPS has a Datasets & Benchmarks track and occasionally workshop papers on neuromorphic computing. A workshop submission would be more realistic than main conference.
-
-Sources: [NeurIPS](https://neurips.cc/), [NeurIPS 2026 OpenReview](https://openreview.net/group?id=NeurIPS.cc/2026/Conference)
-

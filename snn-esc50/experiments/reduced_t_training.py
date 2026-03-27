@@ -54,3 +54,31 @@ class ReducedTSNN(nn.Module):
         self.fc1 = nn.Linear(64 * 4 * 9, 256)
         self.fc2 = nn.Linear(256, NUM_CLASSES)
         self.dropout = nn.Dropout(0.3)
+
+        self.n1 = RhythmLIF(32, BETA, sg, learn_beta=True)
+        self.n2 = RhythmLIF(64, BETA, sg, learn_beta=True)
+        self.n3 = RhythmLIF(256, BETA, sg, learn_beta=True)
+        self.n4 = RhythmLIF(NUM_CLASSES, BETA, sg, learn_beta=True)
+
+    def forward(self, x):
+        device = x.device
+        m1 = self.n1.init_mem(device)
+        m2 = self.n2.init_mem(device)
+        m3 = self.n3.init_mem(device)
+        m4 = self.n4.init_mem(device)
+
+        spk_rec, mem_rec = [], []
+        total_spikes = 0.0
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, m1 = self.n1(cur1, m1, step)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, m2 = self.n2(cur2, m2, step)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+

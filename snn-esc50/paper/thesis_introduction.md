@@ -26,20 +26,20 @@ The critical properties are: (1) binary communication -- neurons fire or don't, 
 
 SNNs try to engineer these properties into artificial systems. Each neuron maintains a membrane potential that integrates weighted input spikes over time. When it crosses a threshold, the neuron emits a spike and resets. The most common model is LIF (Leaky Integrate-and-Fire), which adds exponential decay: $\tau_m \frac{dV}{dt} = -V + R \sum_i w_i s_i(t)$, where V is membrane potential, tau_m is the time constant, w_i are weights, and s_i(t) are binary spike inputs.
 
+The energy implication is critical. ANN inference needs a multiply-accumulate (MAC) for each active connection -- multiply activation by weight, accumulate into next layer. At 45nm, an 8-bit MAC costs ~0.2 pJ. For an SNN, binary spikes reduce this to a conditional accumulate-only (AC) operation -- either add the weight or do nothing. An AC costs ~0.03-0.09 pJ, roughly 4-7x cheaper per op (Yik et al. 2025). And sparse activation means most ops are skipped entirely. SNN energy scales with spike count, not parameter count.
 
-### 1.1.4 The Training Problem and Its Resolution
+Dedicated neuromorphic hardware -- SpiNNaker (Furber et al. 2014) at UoM, Intel Loihi 2, IBM TrueNorth -- exploits exactly these properties. They route binary spikes between simulated neurons using massively parallel event-driven hardware, consuming orders of magnitude less energy than equivalent GPU compute. SpiNNaker uses a custom multicast router, each event consuming ~nJ vs uJ-mJ for a GPU kernel launch.
 
-For most of the past decade, SNNs underperformed conventional ANNs significantly on benchmark tasks. The fundamental difficulty is training: because spike emission is a non-differentiable, binary threshold operation, standard backpropagation cannot compute gradients through it directly. Biologically inspired learning rules (spike-timing-dependent plasticity, STDP) are local and unsupervised, producing networks that fail to generalise on complex, high-dimensional benchmarks.
+### 1.1.4 the training problem and its resolution
 
-The breakthrough that makes competitive SNN training tractable is **surrogate gradient descent** (Neftci & Mostafa 2019). The key insight is that for the forward pass, exact binary spikes are used; for the backward pass, the derivative of the spike function is approximated with a smooth surrogate (typically the derivative of a sigmoid or arctangent). This "straight-through" trick allows the full machinery of backpropagation-through-time to be applied to spiking networks, enabling training on exactly the same datasets and with exactly the same loss functions as conventional deep networks. Since 2019, surrogate gradient training has become the dominant approach for competitive SNN research, producing networks within a few percentage points of matched-architecture ANNs on image benchmarks (Eshraghian et al. 2023).
+For most of the past decade SNNs significantly underperformed ANNs. The fundamental issue is training: spike emission is non-differentiable (binary threshold), so standard backprop cant compute gradients through it. Bio-inspired learning rules (STDP) are local and unsupervised, producing networks that don't generalise on complex benchmarks.
 
-This thesis uses surrogate gradient training throughout, implemented via snnTorch 0.9.4. It represents the current state of the art for SNN optimisation with standard deep learning infrastructure.
+The breakthrough is surrogate gradient descent (Neftci & Mostafa 2019). The insight: use exact binary spikes in the forward pass, but approximate the spike derivative with a smooth surrogate (sigmoid, arctan etc) in the backward pass. This "straight-through" trick lets you apply full BPTT to spiking networks, training on the same datasets with the same losses as conventional networks. Since 2019 this has become the dominant approach, producing SNNs within a few pp of matched ANNs on image benchmarks (Eshraghian et al. 2023).
 
-### 1.1.5 Why Environmental Sound Classification?
+This thesis uses surrogate gradient training throughout, via snnTorch 0.9.4.
 
-Environmental sound classification (ESC) is a particularly well-matched testbed for SNN research for three reasons.
+### 1.1.5 why environmental sound classification?
 
-**First, audio spectrograms are structurally compatible with spiking computation.** A mel spectrogram of an environmental sound is a 2D representation of time-frequency energy. The temporal axis directly maps to the timestep axis of an SNN simulation — the network processes successive frames as it would process successive timesteps of sensory input. The sparse, transient nature of many sounds (a door knock, a glass breaking, a dog bark) produces naturally sparse spectrogram representations, matching the sparse activation regime where SNNs are most energy-efficient.
 
 **Second, the application domain demands the efficiency properties SNNs offer.** The hearing aid, wildlife sensor, and smart building use cases described above all require audio classification on devices where the energy overhead of a GPU is prohibitive. Edge audio intelligence is the target market for neuromorphic computing, and ESC is one of its core tasks.
 

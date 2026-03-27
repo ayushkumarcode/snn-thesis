@@ -12,20 +12,20 @@ ESC is a core task in computational auditory scene analysis -- applications in s
 
 Standard input representation is the log-mel spectrogram: audio -> STFT -> mel filterbanks (mimics cochlear spacing) -> dB scale. This works well across CNN, Transformer, and recurrent architectures.
 
+---
 
-## 2.2 Spiking Neural Networks
+## 2.2 spiking neural networks
 
-### 2.2.1 Leaky Integrate-and-Fire Neurons
+### 2.2.1 LIF neurons
 
-The Leaky Integrate-and-Fire (LIF) neuron is the standard computational unit in modern SNNs:
+The Leaky Integrate-and-Fire neuron is the standard unit in modern SNNs:
 $$\tau_m \frac{dU(t)}{dt} = -U(t) + RI(t)$$
 
-where $U(t)$ is membrane potential, $\tau_m$ is the membrane time constant, and $I(t)$ is the input current. When $U(t)$ reaches the spike threshold $\vartheta$, the neuron emits a spike and resets. In the discrete-time formulation used in snnTorch:
+where U(t) is membrane potential, tau_m is time constant, I(t) is input current. When U reaches threshold theta, neuron spikes and resets. Discrete form (snnTorch):
 $$U[t] = \beta U[t-1] + I[t] - S[t-1]\vartheta$$
 $$S[t] = \mathbf{1}[U[t] \geq \vartheta]$$
 
-where $\beta = e^{-\Delta t/\tau_m}$ is the membrane decay rate (set to 0.95 throughout this work).
-
+where beta = exp(-dt/tau_m) is decay rate (0.95 in this work).
 ### 2.2.2 Surrogate Gradient Training
 
 The spike function $S[t] = \mathbf{1}[U[t] \geq \vartheta]$ is discontinuous, making standard backpropagation impossible ($\partial S/\partial U = 0$ almost everywhere). Surrogate gradient descent (Neftci et al. 2019; Zenke & Vogels 2021) substitutes a smooth function in the backward pass:

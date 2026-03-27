@@ -250,3 +250,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 
 ### Backprop for Amplitude Classification using SNNs
 - https://github.com/aravsi77/spiking_neural_network_thesis
+- SNN for 4QAM modulation classification
+- BindsNet, 4QAM signal data at 18dB SNR
+- 1 star, 34 commits
+
+---
+
+## Notable Non-Student Projects (for comparison)
+
+### Pure Python SNN (IIT Guwahati)
+- https://github.com/Shikhargupta/Spiking-Neural-Network
+- Hardware-efficient SNN with STDP and WTA lateral inhibition. Pure Python. MNIST.
+- Binary and multi-class classification with clear neuron specialization via weight reconstruction.
+- **1,200+ stars, 294 forks** -- most popular SNN educational implementation on GitHub. Great reference for understanding SNNs from scratch.
+
+### SNN++ (C++ High-Performance)
+- https://github.com/ianmkim/snnpp
+- C++ with SIMD optimization, 2000% faster than reference Python
+- MNIST. ~50 seconds vs ~18 minutes for reference.
+- 13 stars, 30 commits
+
+### Python SNN with STDP and RL
+- https://github.com/maael/SpikingNeuralNetwork
+- SNN with basic STDP, homeostatic STDP, and reward-based RL STDP variants
+- 133 stars, 37 forks
+
+### FPGA SNN STDP Acceleration
+- https://github.com/rafamedina97/FPGA_SNN_STDP
+- FPGA hardware acceleration of STDP learning for SNNs

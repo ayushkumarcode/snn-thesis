@@ -166,3 +166,31 @@ all of the above plus:
 Source: [Ivory Research](https://www.ivoryresearch.com/library/dissertation-articles/bachelor-dissertation-undergraduate-dissertation/)
 
 ### from The Student Room (examiner/student discussions):
+
+> "At undergraduate level, **a unique contribution to knowledge is not expected**, but of course any new insight is going to be impressive and beneficial to you, particularly if you want to undertake Masters study."
+
+> "You do not have to come up with a brand new idea or angle -- **that's what a PhD is for.**"
+
+Source: [The Student Room](https://www.thestudentroom.co.uk/showthread.php?t=5408798)
+
+---
+
+## 4. what "originality" means at each level
+
+### level 6 (BSc/BEng) -- undergraduate
+
+what it actually means: applying existing methods independently and thoughtfully. showing you can think for yourself and understand the field well enough to make sensible design decisions.
+
+examples of sufficient "originality":
+- applying an existing algorithm to a new dataset
+- combining two known techniques in a sensible way
+- implementing a known approach from the literature and evaluating it properly
+- reproducing a paper's results with thorough critical analysis
+- building a system that solves a practical problem using established methods
+
+NOT required:
+- inventing a new algorithm
+- beating state-of-the-art benchmarks
+- publishing a paper
+- discovering something nobody found before
+

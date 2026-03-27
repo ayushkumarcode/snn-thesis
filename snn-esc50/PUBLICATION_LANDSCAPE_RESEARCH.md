@@ -284,20 +284,6 @@ robustness and energy:
 - SNN adversarial local learning 2025: https://arxiv.org/html/2504.08897v2
 - Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
 - Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
-| No prior SNN work on full ESC-50 | **Very High** | Confirmed by Larroza et al. 2025 arXiv paper, comprehensive literature search, SNN+sound review (PMC 2024) |
-| 7-encoding comparison is most comprehensive for audio | **Very High** | Yarga et al. (4 encodings, digits), Larroza et al. (3 encodings, ESC-10) are the closest; no one has done 7 |
-| Gap-collapse finding is novel for audio | **High** | ANN-to-SNN gap closure via pretrained features is known conceptually for images, but never quantified for audio with PANNs |
-| ICONS 2026 acceptance likelihood | **Medium-High** | 59% acceptance rate, paper fits 5+ explicit topics, has hardware deployment + novel domain |
-| Cross-encoding transfer analysis is first of its kind | **High** | Exhaustive search found no prior quantification of encoding specificity via transfer matrix |
-| 6x adversarial robustness is first for audio | **High** | Sharmin et al. 2020 (images), Wang et al. 2025 (images) -- no audio adversarial SNN work found |
-
----
-
-## 9. RESEARCH GAPS (What I Could Not Find)
-
-1. **ICONS 2024 complete paper list:** The proceedings are behind IEEE paywall. I could see the schedule (80+ presentations) but not every paper title.
-2. **ICONS acceptance rate since 2018:** Only 2018 data (59%) is publicly available. May have changed.
-3. **Direct comparison of SNN vs ANN on ESC-50 in any prior work:** None exists. You are creating the baseline.
 4. **SNN + PANNs in any prior work:** Found no paper combining pretrained audio neural networks with SNN classifier heads. Your PANNs+SNN experiment appears to be genuinely novel.
 5. **Detailed reviewer criteria for ICONS:** No public rubric exists. Inference based on accepted papers and call for papers.
 

@@ -110,3 +110,31 @@ class TernarySNN(nn.Module):
         m1 = self.n1.init_mem(device)
         m2 = self.n2.init_mem(device)
         m3 = self.n3.init_mem(device)
+        m4 = self.n4.init_mem(device)
+
+        spk_rec, mem_rec = [], []
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, m1 = self.n1(cur1, m1, step)
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, m2 = self.n2(cur2, m2, step)
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, m3 = self.n3(cur3, m3, step)
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, m4 = self.n4(cur4, m4, step)
+
+            spk_rec.append(spk4)
+            mem_rec.append(m4)
+
+        return torch.stack(spk_rec), torch.stack(mem_rec)
+

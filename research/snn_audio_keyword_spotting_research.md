@@ -382,31 +382,3 @@ The strongest thesis narrative is:
 An undergraduate thesis does not need to beat SOTA. Credible contributions include:
 
 1. **Systematic comparison:** Compare LIF, RLIF, adLIF, RadLIF on SHD and GSC using identical experimental setup (using sparch)
-2. **Framework comparison:** Same model architecture, different frameworks (snnTorch vs SpikingJelly vs Norse) -- compare training speed, accuracy, ease of use
-3. **Encoding study:** Compare Mel-spectrogram vs. cochlea model vs. rate coding for audio-to-spike conversion on GSC
-4. **Efficiency-accuracy tradeoff:** Characterize how reducing timesteps, network size, or spike rates affects accuracy and estimated energy
-5. **Robustness study:** Test SNN keyword spotting under noise conditions vs ANN baselines
-6. **Small-footprint models:** Demonstrate competitive accuracy with very few parameters (following ED-sKWS direction)
-
-### 8.3 Risk Assessment
-
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Cannot reproduce published results | Medium | Medium | Use sparch (designed for reproducibility) |
-| Training takes too long | Low | Medium | Start with SHD (10K samples); use Colab GPU |
-| Difficulty understanding SNN math | Medium | Low | snnTorch tutorials are excellent |
-| Framework bugs / compatibility | Medium | Low | snnTorch and SpikingJelly are mature |
-| Cannot access neuromorphic hardware | High | Low | Energy estimation via SOP counting is standard |
-| Scope creep | Medium | Medium | Fix scope to SHD + GSC 12-class + 1 contribution |
-
-### 8.4 Minimum Viable Thesis
-
-At minimum, a passing thesis could:
-1. Implement a LIF-based SNN for SHD classification using snnTorch (~90%+ accuracy)
-2. Implement an equivalent ANN baseline for comparison
-3. Extend to GSC V2 12-class with Mel-spectrogram preprocessing
-4. Compare accuracy, parameter count, and estimated energy (SOP counting)
-5. Write up with proper literature review and analysis
-
-This is achievable in one semester of focused work.
-

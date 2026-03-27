@@ -54,3 +54,28 @@ the methodology review graded findings on peer review standards (would a reviewe
 |---------|------------|-------------|---------------|
 | 7 encodings | B | A- | systematic, comprehensive, novel |
 | PANNs gap collapse | C+ | A- | experimental design, clear insight |
+| Adversarial 5-fold | C | B+ | properly validated, honest about limitations |
+| SpiNNaker deployment | C- | A- | hardware deployment is RARE for UG |
+| Temporal ablation | C+ | B+ | 5-fold validated, actionable |
+| Encoding transfer | B- | A | novel, validated, nobody has this |
+| Self-correction of pruning/SR | N/A | A | this IS evaluation quality |
+| Full SpiNNaker attempt (failed) | D | B+ | failure analysis is a contribution |
+| 14 experiment scripts | N/A | A- | scope and ambition |
+| ICONS paper draft | N/A | A | attempting publication is 80+ territory |
+
+## Overall Estimate
+
+based on COMP30040 criteria:
+- **Report:** 75-80% (content is 80+, but needs LaTeX conversion + polish)
+- **Achievements:** 80-85% (hardware deployment + novelty + scope)
+- **Screencast:** TBD
+
+**weighted estimate: 78-82%** (high first)
+
+the project is solidly in First territory with potential for 80+ if report and screencast are polished. publishable-quality work (ICONS paper) puts it in "exceptional" territory.
+
+## What Would Push It to 85+
+1. get the thesis report into polished LaTeX
+2. create a strong 8-minute screencast
+3. successfully submit to ICONS (even if not accepted, the attempt matters)
+4. clean up code (tests, documentation, README)

@@ -334,3 +334,31 @@ for a 3rd year thesis, the question should be:
 
 option A seems strongest because the delay-vs-recurrence question is currently debated in the literature, the tools exist to answer it, and the results have clear implications for neuromorphic hardware deployment (feedforward networks are way easier to put on hardware than recurrent ones).
 
+---
+
+## 8. Key Papers to Read
+
+### Essential (read these first)
+
+1. **Cramer et al. (2020)** -- "The Heidelberg Spiking Data Sets for the Systematic Evaluation of Spiking Neural Networks" -- [arXiv:1910.07407](https://arxiv.org/abs/1910.07407)
+   the dataset paper. defines SHD and SSC.
+
+2. **Bittar & Garner (2022)** -- "A Surrogate Gradient Spiking Baseline for Speech Command Recognition" -- [Frontiers in Neuroscience](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.865897/full)
+   establishes the baseline SNN results on SHD/SSC. introduces adLIF and RadLIF. sparch toolkit comes from this.
+
+3. **Hammouamri, Khalfaoui-Hassani & Masquelier (2024)** -- "Learning Delays in Spiking Neural Networks using Dilated Convolutions with Learnable Spacings" -- [ICLR 2024](https://openreview.net/forum?id=4r2ybzJnmN)
+   the DCLS-Delays breakthrough. shows feedforward SNNs with delays beat recurrent SNNs. clean code available.
+
+### Important (read for depth)
+
+4. **Ding et al. (2024)** -- "Advancing Spatio-Temporal Processing in Spiking Neural Networks through Adaptation" -- [arXiv:2408.07517](https://arxiv.org/html/2408.07517)
+   the SE-adLIF paper. improved neuron discretization.
+
+5. **Sun & Wu (2025)** -- "Towards Parameter-free Attentional Spiking Neural Networks" -- [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0893608025000334)
+   Pfa-SNN. attention in SNNs without extra parameters.
+
+6. **SpikCommander (2025)** -- "A High-performance Spiking Transformer with Multi-view Learning for Efficient Speech Command Recognition" -- [arXiv:2511.07883](https://arxiv.org/abs/2511.07883)
+   current SOTA on SSC. spiking transformer architecture.
+
+### Review Papers
+

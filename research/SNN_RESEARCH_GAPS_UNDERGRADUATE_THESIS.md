@@ -138,3 +138,31 @@ the Open Neuromorphic benchmark (Feb 2024) tested 11 frameworks but only on a sy
 - speech enhancement with SNNs is "very recent" with very limited research
 - music generation with SNNs is "significantly underexplored"
 - environmental sound classification with SNNs: near-zero papers
+
+**"Reconsidering the Energy Efficiency of SNNs" (arXiv, Sept 2024):**
+- prevailing energy evaluations "often oversimplify by focusing on computational aspects while neglecting data movement and memory access"
+- suggested: honest energy comparisons accounting for full system overhead
+- under typical neuromorphic hardware conditions, SNNs need average spike rate below 6.4% to beat quantized ANNs
+
+### from individual papers
+
+**"SNN for Nonlinear Regression" (Royal Society Open Science, May 2024):**
+- first paper on SNN regression ever. authors explicitly suggest:
+  - applying to different regression tasks (temperature, load forecasting, etc.)
+  - comparing spike encodings for regression
+  - snnTorch now has regression tutorials (added late 2024)
+
+**"Neuromorphic Data Augmentation for Training SNNs" (ECCV 2022):**
+- NDA improved CIFAR10-DVS by 10.1% and N-Caltech101 by 13.7%
+- suggested: test NDA on other neuromorphic datasets (DVS128 Gesture, ASL-DVS, SHD)
+
+**"MuSpike: A Benchmark for Symbolic Music Generation with SNNs" (arXiv, May 2025):**
+- "standardized benchmarks and evaluation methods are lacking" for SNN music generation
+- provides 5 datasets, evaluates 5 architectures. easy to add a 6th or new dataset.
+
+**the 2025 multimodal framework benchmark** tested 5 frameworks but excluded snnTorch, Norse, and BindsNET. authors explicitly say future work should include additional frameworks, more diverse datasets, and standardized energy measurement.
+
+---
+
+## 5. single-paper domains (easy second data point)
+

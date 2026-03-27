@@ -74,31 +74,3 @@ Spiking Neural Networks (SNNs) for audio keyword spotting and speech command rec
 | **BindsNET** | UMass | Python | PyTorch | No dedicated audio | Examples | Intermediate | Yes |
 | **Tonic** | Community | Python | PyTorch | SHD, SSC loaders | Data loading tutorials | Beginner-friendly | Yes |
 | **Rockpool** | SynSense | Python | PyTorch | WaveSense tutorial | Good docs | Intermediate | Yes |
-
-### 2.2 snnTorch (Recommended for Beginners)
-
-- **Website:** https://snntorch.readthedocs.io/
-- **GitHub:** https://github.com/jeshraghian/snntorch
-- **Key features:**
-  - 18 tutorials covering neuron models, feedforward SNNs, training, surrogate gradients, neuromorphic datasets
-  - Built-in SHD dataset loader via `snntorch.spikevision.spikedata.SHD`
-  - Google Colab notebook support (no local GPU needed)
-  - Active maintenance, good community
-- **Audio-specific:** Has SHD dataset example, but no dedicated audio classification tutorial. The general tutorials are directly applicable.
-- **Install:** `pip install snntorch`
-
-### 2.3 SpikingJelly
-
-- **GitHub:** https://github.com/fangwei123456/spikingjelly
-- **Published in Science Advances** (high-quality, peer-reviewed framework)
-- **Key features:**
-  - Includes a complete 594-line Speech Commands audio recognition example
-  - Supports both activation-based and timestep-based training
-  - CuPy acceleration for faster training
-  - Internal MelScale implementation
-- **Audio-specific:** `spikingjelly/activation_based/examples/speechcommands.py` -- a complete convolutional SNN for 12-class GSC
-- **Install:** `pip install spikingjelly` or build from source
-
-### 2.4 sparch (Purpose-Built for Audio)
-
-- **GitHub:** https://github.com/idiap/sparch

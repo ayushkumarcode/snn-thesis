@@ -110,20 +110,20 @@ Adversarial evaluation uses standard FGSM and PGD (40 steps). As Wang et al. (20
 
 ## 1.5 thesis structure
 
+todo: make sure these section refs stay consistent with actual chapter content
 
-**Chapter 4: Core Results — Encoding Comparison** presents the ANN baseline (§4.1), the systematic encoding comparison across all seven methods (§4.2), the surrogate gradient ablation (§4.3), the effect of data augmentation as a negative result (§4.4), statistical significance analysis (§4.5), and the PANNs transfer learning result (§4.6).
+**Chapter 2: Background and Related Work** -- ESC, SNN fundamentals (LIF, surrogate gradients), seven encoding methods, prior SNN audio work, SpiNNaker, energy efficiency, adversarial robustness, PANNs, continual learning.
 
-**Chapter 5: Neuromorphic Hardware Results** documents the SpiNNaker deployment challenges and FC1 cancellation problem (§5.1), the validated FC2-only hybrid approach (§5.2), SpiNNaker inference accuracy (§5.3), NeuroBench energy analysis and energy-accuracy Pareto frontier (§5.4), and the Option A hardware-aware retraining strategy (§5.5).
+**Chapter 3: Methodology** -- experimental design philosophy, ESC-50 dataset and preprocessing, architectures, all seven encodings with math, training protocol, SpiNNaker deployment strategy, advanced experiments.
 
-**Chapter 6: Advanced Analysis** covers adversarial robustness (§6.1), continual learning (§6.2), temporal spike pattern analysis (§6.3), representation analysis via t-SNE (§6.4), and per-class difficulty analysis (§6.5).
+**Chapter 4: Core Results** -- ANN baseline, systematic encoding comparison, surrogate gradient ablation, augmentation negative result, statistical significance, PANNs transfer learning.
 
-**Chapter 7: Discussion** synthesises findings across all experiments, addressing each research question and discussing implications for neuromorphic audio intelligence, including the augmentation negative result (§7.9).
+**Chapter 5: Neuromorphic Hardware** -- SpiNNaker deployment challenges and FC1 cancellation, FC2-only hybrid, inference accuracy, NeuroBench energy, Option A retraining.
 
-**Chapter 8: Conclusion** summarises contributions, provides direct answers to each research question, and identifies ten directions for future work.
+**Chapter 6: Advanced Analysis** -- adversarial robustness, continual learning, temporal spike patterns, t-SNE representation analysis, per-class difficulty.
 
----
+**Chapter 7: Discussion** -- synthesises everything, addresses each RQ, implications for neuromorphic audio, augmentation negative result.
 
-## 1.6 Reproducibility Statement
 
 All code, model checkpoints, and experiment scripts are available at [GitHub repository — TBD upon submission]. Fixed random seeds (torch.manual_seed(42), numpy.random.seed(42)) are used throughout. All results reported are from the best validation accuracy per fold, not final-epoch accuracy. The ESC-50 dataset is freely available from the official repository (Piczak 2015, GitHub).
 

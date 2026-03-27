@@ -54,20 +54,20 @@ The deployment failures are honestly some of the most instructive parts of this 
 
 ---
 
+## 7.4 adversarial robustness: a surprising finding
 
-The adversarial robustness results (§6.1) are the most striking finding in this thesis and deserve extended discussion. At ε=0.1 (FGSM), the SNN retains 26.00% accuracy while the ANN collapses to 1.75% — a 24.25 pp advantage for the SNN, and 14.9× more robust by ratio, despite starting from a 15 pp accuracy deficit on clean inputs (fold 4 local: SNN 53.75% vs ANN 68.75%).
+The adversarial results are honestly the most striking finding. At eps=0.1 FGSM, SNN retains 26.00% while ANN collapses to 1.75% -- 24.25 pp advantage, 14.9x ratio, despite starting from 15 pp accuracy deficit on clean inputs.
 
-**This finding has a clear mechanistic explanation (§6.1.4):** the spike threshold acts as a non-linear input filter. Adversarial perturbations of magnitude ε add or subtract at most ε from each spectrogram pixel. For pixels near the threshold, this pushes them across; for pixels far from the threshold, it does not. The binary spike output is unchanged unless the perturbation is sufficient to change the spike pattern — and the ANN, without this hard threshold, is more sensitive to small gradient-aligned perturbations.
+**Mechanism:** spike threshold is a non-linear filter. Adversarial perturbations of magnitude eps shift pixels by at most eps. For pixels near threshold, this pushes them across; for pixels far from it, nothing happens. Binary output unchanged unless perturbation changes the spike pattern. ANN without this hard threshold is more sensitive.
 
-**Why is this practically important?** Adversarial robustness matters for audio intelligence in two scenarios:
-1. **Adversarial attacks on intelligent audio monitors** — an attacker could add imperceptible perturbations to audio to prevent a smart building system from detecting an intrusion (glass breaking, alarm). The SNN is substantially harder to fool.
-2. **Natural noise and distribution shift** — real audio recordings contain electrical noise, acoustic reflections, and bandwidth limitations. The spike threshold's filtering effect may generalise to natural robustness, not just adversarial perturbations.
+**Why it matters practically:**
+1. Adversarial attacks on audio monitors -- attacker adds imperceptible perturbations to prevent detection (glass breaking, alarm). SNN substantially harder to fool.
+2. Natural noise and distribution shift -- threshold filtering may generalise beyond adversarial to natural robustness.
 
-**Caveat (standard PGD limitation):** The PGD results should be interpreted cautiously. Standard PGD with vanishing surrogate gradients may underestimate SNN vulnerability by computing inaccurate gradient directions (Wang et al. 2025). Future work should apply Stable Adaptive PGD for rigorous evaluation. The FGSM results (single-step attack) are less affected by this issue and are more reliable.
+**Caveat:** PGD results should be interpreted cautiously. Standard PGD + vanishing surrogate gradients may underestimate vulnerability (Wang et al. 2025). FGSM results more reliable. Future work: SA-PGD for rigorous evaluation.
 
-**Comparison with Sharmin et al. (2020):** Our finding is consistent in direction with Sharmin et al., who reported higher SNN adversarial accuracy with Poisson (rate) encoding in black-box settings. We extend this to white-box attacks on audio spectrograms, confirming that the robustness advantage generalises beyond images to audio and beyond rate encoding to direct encoding.
+Consistent with Sharmin et al. (2020) who reported similar effects with rate encoding in black-box settings. We extend to white-box attacks on audio, confirming robustness generalises beyond images to audio and beyond rate to direct encoding.
 
----
 
 ## 7.5 PANNs + SNN: What it Reveals About Feature Learning
 

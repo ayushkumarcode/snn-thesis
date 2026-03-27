@@ -559,31 +559,3 @@ A strong thesis framed around ANN-to-SNN conversion should follow this structure
 | A working pipeline can be set up in 1-2 weeks | MEDIUM-HIGH -- depends on environment and GPU |
 | An undergrad can produce a meaningful thesis on this | HIGH -- clear scope, reproducible tools, identifiable contributions |
 
----
-
-## 14. Sources
-
-### Key Papers
-
-1. [Optimal ANN-SNN Conversion for High-accuracy and Ultra-low-latency Spiking Neural Networks (QCFS)](https://arxiv.org/abs/2303.04347) - ICLR 2022
-2. [SNN Calibration (ICML 2021)](https://proceedings.mlr.press/v202/jiang23a/jiang23a.pdf)
-3. [Sign Gradient Descent-based Neuronal Dynamics: ANN-to-SNN Conversion Beyond ReLU Network (ICML 2024)](https://arxiv.org/abs/2407.01645)
-4. [Differential Coding for Training-Free ANN-to-SNN Conversion (ICML 2025)](https://openreview.net/forum?id=OxBWTFSGcv)
-5. [Inference-Scale Complexity in ANN-SNN Conversion (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/html/Bu_Inference-Scale_Complexity_in_ANN-SNN_Conversion_for_High-Performance_and_Low-Power_Applications_CVPR_2025_paper.html)
-6. [Towards High-performance Spiking Transformers from ANN to SNN Conversion (ICLR 2025)](https://arxiv.org/abs/2502.21193)
-7. [SpikeYOLO: Integer-Valued Training for Object Detection (ECCV 2024)](https://github.com/BICLab/SpikeYOLO)
-8. [Optimal ANN-SNN Conversion with Group Neurons (ICASSP 2024)](https://github.com/Lyu6PosHao/ANN2SNN_GN)
-9. [One-Timestep is Enough: Scale-and-Fire Neurons (2025)](https://arxiv.org/pdf/2510.23383)
-10. [A Unified Optimization Framework of ANN-SNN Conversion (ICML 2023)](https://proceedings.mlr.press/v202/jiang23a/jiang23a.pdf)
-11. [Going Deeper in Spiking Neural Networks: VGG and Residual Architectures (2019)](https://arxiv.org/pdf/1802.02627)
-12. [Are SNNs Really More Energy-Efficient than ANNs? (Hardware-Aware Study)](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf)
-13. [SEENN: Towards Temporal Spiking Early-Exit Neural Networks (NeurIPS 2023)](https://proceedings.neurips.cc/paper_files/paper/2023/file/c801e68207da477bbc44182b9fac1129-Paper-Conference.pdf)
-14. [A universal ANN-to-SNN framework (Neural Networks 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0893608024001680)
-15. [Adversarially Robust SNN Through Conversion (TMLR 2024)](https://github.com/IGITUGraz/RobustSNNConversion)
-16. [SNN and Sound: Comprehensive Review (PMC 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
-17. [Analog Spiking U-Net for Medical Image Segmentation (Neural Networks 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0893608024006890)
-18. [CS-QCFS: Bridging Performance Gap in Ultra-Low Latency SNNs (2024)](https://www.sciencedirect.com/science/article/abs/pii/S0893608024010050)
-
-### Tool and Framework Sources
-
-19. [snn_toolbox GitHub Repository](https://github.com/NeuromorphicProcessorProject/snn_toolbox)

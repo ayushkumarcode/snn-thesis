@@ -182,31 +182,3 @@ This is the most comprehensive published cross-platform comparison for audio tas
 | SpiNNaker 1 (Dominguez-Morales) | Pure tones | 8 | 99.8% | 2016 |
 | Xylo Audio | Ambient audio | Custom | 98% | 2022 |
 | Xylo Audio 2 | Keyword spotting (Aloha) | Binary (KW/not) | 95.31% | 2024 |
-| Loihi 2 (Eventprop) | Heidelberg Digits | 20 | ~99% | 2025 |
-| Loihi 2 (Eventprop) | Speech Commands | 35 | ~97% | 2025 |
-| SpiNNaker2 (e-prop) | Speech Commands | 12 | 91.12% | 2022 |
-| Loihi 1 (Speech2Spikes) | Speech Commands | 35 | 88.5% | 2023 |
-| **Our SpiNNaker 1** | **ESC-50** | **50** | **33.1%** | **2026** |
-
-**Critical context:** Our ESC-50 result should not be directly compared to keyword spotting or digit recognition results. ESC-50 has 50 diverse classes (animals, machines, nature, domestic, urban) with only 1600 training samples. It is a fundamentally harder task. The relevant comparison is our software SNN (47.15%) and the hardware gap (12.8 pp).
-
----
-
-### 1.8 Hardware vs. Software Accuracy Gap: Literature Context
-
-| Work | Platform | Gap (pp) | Task Complexity | Quantization | Notes |
-|------|----------|----------|-----------------|--------------|-------|
-| Loihi 2 (Eventprop, 2025) | Loihi 2 | ~0 | Medium (SHD/SSC) | 8-bit QAT | Best case. Quantization-aware training. |
-| SpiNNaker2 (e-prop, 2022) | SpiNNaker2 | 0.08 | Medium (12-class GSC) | Float (on ARM) | E-prop on-chip. Near-perfect match. |
-| Loihi 2 (ICASSP, 2024) | Loihi 2 | <1 | Medium (SHD/SSC) | 8-bit | Good quantization pipeline. |
-| S4D on Loihi 2 (2024) | Loihi 2 | 1--3 | Medium (sequential) | 8-bit | SSM architecture, novel paradigm. |
-| DYNAP-SE (2025) | DYNAP-SE | 7.1 | Low (simple classification) | Analog | Analog variability a major factor. |
-| **Our work (2026)** | **SpiNNaker 1** | **12.8** | **High (50-class ESC-50)** | **16-bit fixed** | **Binary input constraint. FC2-only hybrid.** |
-
-**Our 12.8 pp gap is explained by:**
-1. Task complexity: 50-class ESC-50 vs 12--35 class speech benchmarks
-2. Architecture constraint: FC2-only deployment due to SpiNNaker's binary input requirement
-3. No quantization-aware training: weights converted post-hoc
-4. Platform generation: SpiNNaker 1 (2012 design) vs Loihi 2 (2021 design)
-
----

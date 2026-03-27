@@ -186,31 +186,3 @@ ICONS 2025 (Bellevue/Seattle, July 29--31, 2025) accepted the following:
 | Speech2Spikes | 2023 | NICE 2023 | Google Speech Commands | 35 commands | 88.5% | Intel Loihi (demo) |
 | Xylo SNN audio | 2022 | ESSCIRC 2022 | Ambient sounds | ~5 classes | 98% | Xylo (sub-mW) |
 
-### Why Our Paper Is Unique
-
-1. **First SNN on full ESC-50:** Every prior SNN audio paper uses simpler datasets (ESC-10, speech commands, pure tones). Nobody has tackled the full 50-class environmental sound challenge.
-
-2. **Most comprehensive encoding comparison:** 7 encodings is the largest comparison in SNN audio literature. Larroza compared 3 encodings on ESC-10. Yarga compared 4 on speech digits.
-
-3. **Hardware deployment:** Only Dominguez-Morales (2016) has done SpiNNaker audio, but on pure tones. We deploy on a real 50-class task.
-
-4. **Multi-dimensional analysis:** Adversarial robustness, continual learning, energy benchmarking, surrogate gradient ablation -- no single prior paper covers all of these.
-
-### What About The 47.15% Accuracy?
-
-This is a critical question. Here is why 47.15% is publishable at ICONS:
-
-1. **ICONS values methodology over accuracy:** The conference scope explicitly welcomes "benchmark tasks for neuromorphic computing." The scientific contribution is the systematic comparison, not hitting SOTA.
-
-2. **Context matters:** 47.15% on 50 classes (random baseline = 2%) is a meaningful result. ESC-50 human performance is 81.3%. ANN SOTA is 98.25%. The gap IS the scientific finding.
-
-3. **The PANNs result rehabilitates the SNN:** 92.5% with PANNs+SNN shows the gap is in feature learning, not spiking computation. This is a key scientific insight.
-
-4. **Comparable precedents exist:** The Larroza et al. paper (submitted to EUSIPCO) reports 69% on ESC-10 (10 classes, simpler task). The Yarga ICONS 2022 paper focused on encoding comparison quality, not absolute accuracy. The ICONS 2025 best paper was about turbulence modeling with neuron random walks -- not about achieving high classification accuracy at all.
-
-5. **Hardware deployment adds a separate contribution dimension:** The SpiNNaker results (33.1%) are about demonstrating feasibility and analyzing the hardware gap, not about beating software performance.
-
----
-
-## Part 4: Alternative Publication Venues
-

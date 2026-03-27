@@ -83,19 +83,19 @@ Source: `results/adversarial/robustness_fold4.json`. PGD may overestimate SNN ro
 
 Source: `results/neurobench/analysis_fold{1-5}.json`. AC = 0.9 pJ, MAC = 4.6 pJ (45nm CMOS, Yik et al. 2025).
 
-*Source: `results/neurobench/analysis_fold{1-5}.json` (5-fold validated).*
-*Energy per AC = 0.9 pJ (8-bit ADD at 45nm CMOS), Energy per MAC = 4.6 pJ (8-bit MAC at 45nm CMOS), per Yik et al. 2025 NeuroBench defaults.*
+### A.6 SpiNNaker Run 6 -- 400-sample detail
 
-### A.6 SpiNNaker Run 6 — 400-Sample Validation Detail
+| Super-category | SpiNNaker | snnTorch | delta |
+|---------------|-----------|---------|-------|
+| Animals (0-9) | 45.0% | 57.5% | -12.5 pp |
+| Nature (10-19) | 61.3% | 68.8% | -7.5 pp |
+| Human (20-29) | 46.2% | 56.2% | -10.0 pp |
+| Domestic (30-39) | 31.2% | 37.5% | -6.3 pp |
+| Urban (40-49) | 31.2% | 36.2% | -5.0 pp |
+| **Overall** | **43.0%** | **51.25%** | **-8.25 pp** |
 
-| Super-category | SpiNNaker acc | snnTorch acc | Δ (SpiNN − snnTorch) |
-|---------------|--------------|-------------|----------------------|
-| Animals (classes 0–9) | 45.0% | 57.5% | −12.5 pp |
-| Nature (classes 10–19) | 61.3% | 68.8% | −7.5 pp |
-| Human (classes 20–29) | 46.2% | 56.2% | −10.0 pp |
-| Domestic (classes 30–39) | 31.2% | 37.5% | −6.3 pp |
-| Urban (classes 40–49) | 31.2% | 36.2% | −5.0 pp |
-| **Overall** | **43.0%** | **51.25%** | **−8.25 pp** |
+Agreement: 64.5% (258/400). Both correct: 36.2% (145). Both wrong: 42.0% (168). SpiNNaker right only: 6.8% (27). snnTorch right only: 15.0% (60).
+
 
 Agreement rate: 64.5% (258/400 same prediction). Both correct: 36.2% (145/400). Both wrong: 42.0% (168/400). SpiNNaker correct, snnTorch wrong: 6.8% (27/400). snnTorch correct, SpiNNaker wrong: 15.0% (60/400).
 

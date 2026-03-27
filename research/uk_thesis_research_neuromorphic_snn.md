@@ -222,3 +222,31 @@ URL pattern: https://etheses.whiterose.ac.uk/id/eprint/[number]
 | N-MNIST | Neuromorphic digits | Event camera theses |
 | DVS Gesture | Hand gestures | Xing (Strathclyde) |
 | ASL-DVS | Sign language | Bi (UCL) |
+| IMDB Reviews | Sentiment analysis | Huang (Southampton) |
+| SHD/SSC | Heidelberg spiking datasets | Audio/speech SNN theses |
+| Custom audio | Music/speech | James (Manchester), mrahtz project |
+
+---
+
+## Why undergrad SNN theses are so hard to find
+
+1. **UK universities don't typically archive undergrad dissertations publicly.** Only PhD theses (sometimes MPhil) get deposited in institutional repositories. This is just how it is, not specific to the research area.
+
+2. **GitHub is the main way to find undergrad work.** Only students who open-source their code are discoverable.
+
+3. **The SpiNNaker group at Manchester almost certainly supervises undergrad projects** -- Furber supervised Ferrari's BSc, and the group is big enough to take final-year students. But these aren't publicly archived.
+
+4. **Heidelberg is the exception** -- their department archives everything publicly, making it the best place for finding bachelor's thesis scope examples.
+
+### What a realistic UK undergrad SNN thesis looks like, based on all this:
+
+- Ferrari (Manchester BSc): single SNN for shape detection -- one model, one task
+- mrahtz (BEng): first layer of a multi-layer SNN for music -- partial implementation, honest about limitations
+- Fabio Deo (Imperial): mathematical investigation of time-stepping methods
+- Heidelberg bachelors: typically one focused hardware experiment or software tool, 40-60 pages
+- Levy (thesis-level): SNN vs ANN comparison across 3 tasks using snntorch
+
+A reasonable scope:
+- Implement 1-2 SNN architectures using snntorch/Norse/Brian2
+- Test on 1-2 standard datasets (MNIST, DVS Gesture, SHD)
+- Compare with conventional ANN baseline

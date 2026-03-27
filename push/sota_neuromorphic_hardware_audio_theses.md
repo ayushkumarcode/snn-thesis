@@ -138,3 +138,31 @@ i know our number looks bad in this table but these aren't apples-to-apples comp
 
 ---
 
+### 1.8 Hardware vs. Software Accuracy Gap: Literature Context
+
+| Work | Platform | Gap (pp) | Task Complexity | Quantization | Notes |
+|------|----------|----------|-----------------|--------------|-------|
+| Loihi 2 (Eventprop, 2025) | Loihi 2 | ~0 | Medium (SHD/SSC) | 8-bit QAT | Best case. Quantization-aware training. |
+| SpiNNaker2 (e-prop, 2022) | SpiNNaker2 | 0.08 | Medium (12-class GSC) | Float (on ARM) | E-prop on-chip. Near-perfect match. |
+| Loihi 2 (ICASSP, 2024) | Loihi 2 | <1 | Medium (SHD/SSC) | 8-bit | Good quantization pipeline. |
+| S4D on Loihi 2 (2024) | Loihi 2 | 1-3 | Medium (sequential) | 8-bit | SSM architecture. |
+| DYNAP-SE (2025) | DYNAP-SE | 7.1 | Low (simple classification) | Analog | Analog variability a major factor. |
+| **our work (2026)** | **SpiNNaker 1** | **12.8** | **High (50-class ESC-50)** | **16-bit fixed** | **Binary input constraint. FC2-only hybrid.** |
+
+our 12.8pp gap comes from:
+1. task complexity: 50-class ESC-50 vs 12-35 class speech benchmarks
+2. architecture constraint: FC2-only deployment due to SpiNNaker's binary input requirement
+3. no quantization-aware training: weights converted post-hoc
+4. platform generation: SpiNNaker 1 (2012 design) vs Loihi 2 (2021 design)
+
+---
+
+### 1.9 Hybrid ANN-SNN Deployment on Hardware
+
+our PANNs+SNN approach fits into a growing trend:
+
+| Work | Year | Architecture | Accuracy | Hardware |
+|------|------|-------------|----------|----------|
+| Hybrid ANN-SNN deployment (Shrestha) | 2024 | ANN feature extraction + SNN classification | Various | Loihi 2 (SNN) + Jetson Nano (ANN) |
+| End-to-end hybrid NN mapping (PMC) | 2021 | ANN-SNN hybrid | Near-zero degradation | Custom neuromorphic |
+| SpikeFit (EurIPS 2025) | 2025 | Quantized SNN deployment | SOTA compression | Various neuromorphic |

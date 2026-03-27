@@ -26,3 +26,16 @@ looked at 8 full papers and 50 titles from recent ICONS proceedings to figure ou
 3. statistical rigor above ICONS norm
 4. 7-encoding comparison more comprehensive than any prior ICONS encoding paper
 
+## References to Consider Adding
+- Schuman et al. 2022 (ICONS encoding/decoding comparison)
+- Yarga et al. 2022 (ICONS spike encoding for speech)
+- Seekings et al. 2024 (ICONS hybrid SNN deployment)
+- Arfa et al. 2025 (ICONS SpiNNaker2)
+
+## Action Items for Final Polish
+1. generate proper figure PDFs (not text placeholders)
+2. trim abstract to ~135 words
+3. add 4-5 ICONS-specific references
+4. add GitHub code availability statement
+5. get ORCID IDs for all authors
+6. supervisor name as co-author

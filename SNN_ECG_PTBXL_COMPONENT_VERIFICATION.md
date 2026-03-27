@@ -110,3 +110,31 @@ from scipy.signal import butter, sosfiltfilt
 import numpy as np
 
 def bandpass_filter(signal, lowcut=0.5, highcut=40.0, fs=100, order=4):
+    sos = butter(order, [lowcut, highcut], btype='band', fs=fs, output='sos')
+    filtered = sosfiltfilt(sos, signal, axis=0)
+    return filtered
+
+# Apply per-record: filtered_ecg = bandpass_filter(X[i], fs=100)
+```
+
+**NeuroKit2 alternative:**
+
+```python
+import neurokit2 as nk
+
+# pip install neurokit2  (latest version, actively maintained)
+cleaned = nk.ecg_clean(ecg_signal, sampling_rate=100, method='neurokit')
+```
+
+**Key finding from literature:** "Band-passing makes no measurable difference in performance" for deep learning on PTB-XL (arxiv 2311.04229). Recommendation: apply minimal preprocessing -- just Z-score normalization.
+
+**Sources:** [SciPy butter](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html), [SciPy sosfiltfilt](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.filtfilt.html), [NeuroKit2](https://pypi.org/project/neurokit2/), [ECG Pre-Processing Best Practices](https://arxiv.org/pdf/2311.04229)
+
+---
+
+### 4. Delta Encoding in snnTorch
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | Official docs: https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html |

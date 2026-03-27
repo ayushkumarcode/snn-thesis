@@ -110,3 +110,31 @@ Risks:
 - The existing paper "Investigating Continuous Learning in SNNs" (2023) already does some of this
 - Need to find a novel angle
 
+macOS compatible: YES (MNIST is tiny, CPU is fine, snnTorch runs natively)
+
+**Verdict: viable and interesting. The space is active enough for good references but not so saturated that novelty is impossible. The key risk is that it's been done before -- need a clear novel angle.**
+
+---
+
+### 1.4 SNN for meta-learning / learning to learn
+
+The idea: can SNNs learn how to learn new tasks quickly (few-shot learning)? Directly relevant to AGI because general intelligence requires rapid adaptation.
+
+**Literature: 5-10 papers**
+
+Key papers:
+| Paper | Year | Key Finding |
+|---|---|---|
+| Meta-SpikePropamine | 2023 | Three-factor learning rules trained via meta-learning for online learning |
+| SNN-MAML (Meta-learning SNNs with surrogate gradients) | 2022 | MAML works with SNNs, matches ANN performance on event-based tasks |
+| Robust Spike-Based Continual Meta-Learning | 2022 | Combined continual and meta-learning with minimum error entropy |
+
+What it would involve:
+- Implementing MAML (Model-Agnostic Meta-Learning) with snnTorch
+- Training SNN to rapidly adapt to new classification tasks (e.g., Omniglot, mini-ImageNet)
+- Comparing SNN-MAML vs ANN-MAML in few-shot scenarios
+
+**Feasibility for ~4 weeks: LOW**
+- MAML itself is complex (second-order gradients, inner/outer loops)
+- Combining MAML with SNN surrogate gradients adds another layer
+- No existing snnTorch tutorial or implementation for meta-learning

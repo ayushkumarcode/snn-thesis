@@ -82,3 +82,31 @@ class CombinedEnergySNN(nn.Module):
         # For early exit tracking
         cum_mem = None
         stable_count = 0
+        prev_pred = -1
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            # Silence gating: skip if input energy is below threshold
+            if silence_gate:
+                energy = x_t.abs().mean()
+                if energy < self.silence_threshold:
+                    # Still decay membrane potentials (leaky behavior)
+                    # but don't compute any layers
+                    if len(mem_rec) > 0:
+                        mem_rec.append(mem_rec[-1])
+                        spk_rec.append(torch.zeros_like(spk_rec[-1]))
+                    continue
+
+            active_steps += 1
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, m1 = self.n1(cur1, m1, step)
+            layer_spikes["conv1"] = layer_spikes["conv1"] + spk1.mean()
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, m2 = self.n2(cur2, m2, step)
+            layer_spikes["conv2"] = layer_spikes["conv2"] + spk2.mean()
+
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)

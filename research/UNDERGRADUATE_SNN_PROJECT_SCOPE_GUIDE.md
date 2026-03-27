@@ -82,3 +82,31 @@ These are the most realistic comparisons:
 | Project | Framework | Datasets | Key Result |
 |---------|-----------|----------|------------|
 | Deep Learning with Biologically Plausible NNs (chiralevy) | snnTorch | MNIST, CIFAR-10, Speech Commands | MNIST 98.06%, CIFAR-10 70.60%, Speech 91.20% |
+| SNN Gesture Classification (DerrickL25) | snnTorch | DVS128 Gesture | Neuromorphic event data classification |
+| Convolutional SNN for Speech Recognition | PyTorch, scikit-learn | TIDIGITS | 92% accuracy |
+
+### Tier 3 -- Outstanding (but risky)
+
+| Project | Framework | What Makes It Special |
+|---------|-----------|----------------------|
+| Shape Detector SNN (Ferrari, Manchester) | pyDVS, Python | Supervised by Furber, clean engineering |
+| Musical Pattern Recognition (mrahtz) | Brian 2, STDP | Novel domain, published thesis PDF |
+| RL-SNN-Quadrupeds (UC Berkeley) | MuJoCo, PPO | Real hardware deployment (partially failed) |
+
+---
+
+## Heidelberg BrainScaleS -- Gold Standard for Bachelor's Scope
+
+The Kirchhoff Institute for Physics at Heidelberg publicly archives ALL bachelor's and master's theses on neuromorphic hardware. This is genuinely the best resource for understanding what a bachelor's thesis in this field looks like.
+
+Full listing: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
+
+Selected bachelor's theses:
+
+| Year | Title | What They Did |
+|------|-------|---------------|
+| 2021 | Real-time Image Classification on Analog Neuromorphic Hardware | Ran classifier on BrainScaleS-2 chip |
+| 2023 | Multi-Single-Chip Training of SNNs with BrainScaleS-2 | Multi-chip SNN training pipeline |
+| 2017 | Accelerated Classification in Hierarchical Neural Networks | Classification on neuromorphic hardware |
+| 2018 | Solving Map Coloring Problems on Analog Neuromorphic Hardware | Constraint satisfaction on hardware |
+| 2019 | Structural Plasticity for Feature Selection in Auditory Stimuli | Plasticity algorithms for audio |

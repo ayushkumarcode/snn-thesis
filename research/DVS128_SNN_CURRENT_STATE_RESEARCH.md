@@ -129,31 +129,3 @@ For a 16K neuron network forward+backward pass:
 snnTorch is better for learning fundamentals and has better documentation, but its DVS128 support is broken and requires workarounds through Tonic. If you choose snnTorch, budget extra time for data pipeline setup.
 
 **Source:** [SNN Library Benchmarks - Open Neuromorphic](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/), [SpikingJelly GitHub](https://github.com/fangwei123456/spikingjelly), [snnTorch GitHub Issue #285](https://github.com/jeshraghian/snntorch/issues/285)
-
----
-
-## 4. Data Pipeline Complexity
-
-### Dataset Specifications
-
-| Property | Value |
-|----------|-------|
-| **Source** | IBM DVS128 camera |
-| **Resolution** | 128 x 128 pixels |
-| **Classes** | 11 hand/body gestures |
-| **Subjects** | 29 people |
-| **Lighting conditions** | 3 (natural, LED, fluorescent) |
-| **Training samples** | 1,176 |
-| **Test samples** | 288 |
-| **Total samples** | 1,464 |
-| **Raw format** | AEDAT 3.1 (binary) |
-| **Download size** | ~3 GB (tar file), ~5 GB extracted |
-| **Download source** | IBM Box (manual download required, no API) |
-| **Event format** | (x, y, timestamp, polarity) per event |
-
-### Pipeline Steps (SpikingJelly)
-
-The data pipeline has **moderate complexity**. It is not trivial but is largely handled by the framework.
-
-**Step 1: Download (Manual)**
-- Download from IBM Box: https://ibm.ent.box.com/s/3hiq58ww1pbbjrinh367ykfdf60xsfm8

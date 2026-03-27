@@ -82,3 +82,31 @@ Parameter efficiency is interesting too: SpikCommander gets 96.71% with only 1.1
 - The audio example is at `spikingjelly/activation_based/examples/speechcommands.py` -- complete convolutional SNN for 12-class GSC
 
 ### sparch (purpose-built for audio)
+- https://github.com/idiap/sparch
+- Paper: "A Surrogate Gradient Spiking Baseline for Speech Command Recognition" (Frontiers in Neuroscience, 2022)
+- Purpose-built for SNN speech command recognition
+- Supports 4 datasets: SHD, SSC, HD, GSC
+- Implements 4 neuron types: LIF, RLIF, adLIF, RadLIF
+- Clean PyTorch module design, command-line experiment runner
+- Best for reproducing published results and running comparative experiments
+
+### Tonic (data loading)
+- https://tonic.readthedocs.io/
+- PyTorch-compatible loader for neuromorphic datasets (like torchvision but for spikes)
+- SHD and SSC support built-in, transform pipeline for event-based data
+- Works with snnTorch and SpikingJelly
+
+---
+
+## Implementations and How to Get Started
+
+### Available implementations ranked by accessibility
+
+| Repository | Accessibility | Framework | Accuracy | LOC (core) | Dataset |
+|-----------|-------------|-----------|----------|------------|---------|
+| **SpikingJelly speechcommands.py** | Good | SpikingJelly/PyTorch | Competitive | ~494 | GSC V1 (12-class) |
+| **sparch** | Good | PyTorch | SOTA | ~500-800 | SHD, SSC, GSC |
+| **GoogleSpeechCommandsRNN** | Moderate | TensorFlow 2 | 91.2% (SNN) | ~1000+ | GSC V1 (12-class) |
+| **SCommander** | Moderate | SpikingJelly | 96.9% | ~800+ | SHD, SSC, GSC |
+| **RSNN** | Difficult | TensorFlow 1.2 | -- | ~500 | Custom |
+

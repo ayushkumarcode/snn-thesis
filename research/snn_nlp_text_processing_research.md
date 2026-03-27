@@ -306,3 +306,31 @@ key findings:
 ---
 
 ## confidence notes
+
+| Finding | Confidence |
+|---------|-----------|
+| SpikeGPT ~88% on SST-2 | High (published with code) |
+| SpikeLM closes gap to 6.7% from BERT | High (ICML 2024, detailed tables) |
+| Spiking CNN drops ~2.5% on text tasks | High (ICLR 2023, code, 6 datasets) |
+| Energy savings of 10-60x | Medium (multiple papers, measured differently) |
+| SSA-SpiNNaker 100% on IMDB | Low (likely subset, inflated) |
+| Undergrad can do binary sentiment SNN | Medium-High (scope comparison) |
+
+### couldn't determine:
+- exact SpikingBERT GLUE task accuracy (some access barriers)
+- whether any UK undergrad has tried SNN-NLP (probably not)
+- actual training times on consumer GPUs for the conversion pipeline
+- whether snnTorch has undocumented NLP work in development
+
+---
+
+## sources
+
+### papers
+- [SpikeGPT (2023)](https://arxiv.org/abs/2302.13939)
+- [SpikingBERT (AAAI 2024)](https://arxiv.org/abs/2308.10873)
+- [SpikeLM (ICML 2024)](https://arxiv.org/abs/2406.03287)
+- [SpikeLLM (ICLR 2025)](https://arxiv.org/abs/2407.04752)
+- [Spiking CNNs for Text (ICLR 2023)](https://arxiv.org/abs/2406.19230)
+- [Neuromorphic Sentiment Analysis (PMC 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10536645/)
+- [SNNLP (2024)](https://arxiv.org/abs/2401.17911)

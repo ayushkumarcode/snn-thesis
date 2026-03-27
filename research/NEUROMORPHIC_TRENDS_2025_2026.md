@@ -278,3 +278,31 @@ Based on looking at high-impact recent papers and community discussion:
 ### Conference workshops (2025-2026)
 - CVPR 2025: Fifth International Workshop on Event-based Vision
 - ICCV 2025: 2nd Workshop on Neuromorphic Vision (NeVi)
+- IROS 2025: Workshop on Neuromorphic Perception for Real World Robotics
+- NeurIPS 2025: Machine Learning and the Physical Sciences (neuromorphic angle)
+
+### No dedicated "neuromorphic audio challenge" exists yet
+This is actually an opportunity -- proposing one based on ESC-50 + SNN could be high-impact future work.
+
+---
+
+## 10. The SNN vs ANN narrative: has the community view shifted?
+
+### 2020 view: "SNNs will replace ANNs"
+Overoptimistic. Many papers claimed energy efficiency without hardware evidence.
+
+### 2023 view: "SNNs are interesting but not practical"
+Skepticism peaked. ImageNet gap was large. No commercial deployments.
+
+### 2025-2026 view: "SNNs are complementary specialized accelerators"
+The consensus has settled into a mature, nuanced position:
+
+1. **Energy efficiency is conditional, not automatic**:
+   - SNNs need >93% sparsity to beat ANNs on most hardware (Dampfhoffer 2023)
+   - Hardware-agnostic estimates: ~50-60% SNN advantage
+   - Hardware-aware on conventional hardware: no advantage
+   - On actual neuromorphic hardware: 100-1000x advantage IS real (but task-specific)
+
+2. **Accuracy gap is narrowing but not closed**:
+   - Best SNN on ImageNet: 83.73% (SGLFormer, 2025) vs best ANN: 90%+
+   - Gap is smallest when: pretrained features are used, the task is temporal, or the data is event-driven

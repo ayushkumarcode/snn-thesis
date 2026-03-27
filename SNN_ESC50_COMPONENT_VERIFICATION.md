@@ -166,3 +166,31 @@ mel_spec = mel_transform(waveform)
 
 # Convert to log scale
 log_mel = T.AmplitudeToDB()(mel_spec)
+```
+
+Documentation: https://docs.pytorch.org/audio/stable/generated/torchaudio.transforms.MelSpectrogram.html
+
+### Parameters from recent SNN+ESC literature (arXiv:2503.11206)
+
+The March 2025 paper "Spike Encoding for Environmental Sound: A Comparative Benchmark" used exactly these parameters for their SNN pipeline on ESC-10:
+- **n_mels:** 128
+- **n_fft:** 1024
+- **hop_length:** 256
+- **frequency range:** 20-20,000 Hz
+- **sample_rate:** 44,100 Hz (original, not downsampled)
+
+**Verification method:** Confirmed via librosa 0.11.0 docs, torchaudio 2.10.0 docs, and validated against parameters used in the only existing SNN+environmental-sound paper.
+
+---
+
+## COMPONENT 4: SPIKE ENCODING IN snnTorch
+
+### EXISTS: YES
+### POTENTIAL BLOCKER: NO
+
+**Module:** `snntorch.spikegen`
+**Documentation:** https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html
+
+### Available encoding methods:
+
+| Function | Type | Description |

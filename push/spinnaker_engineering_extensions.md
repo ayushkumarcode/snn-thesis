@@ -38,31 +38,3 @@ Deploy FC2 with STDP enabled, fine-tune on-chip using teacher signals. sPyNNaker
 | 12 | Real-time audio streaming via SpynnakerLiveSpikesConnection | 3-4d | Medium |
 | 13 | Sub-millisecond timestep precision | 2-3d | Medium |
 | 14 | Multi-chip ensemble (parallel classifiers, majority vote) | 2-3d | Medium-High |
-
----
-
-## Key Technical Details
-
-### IF_cond_exp Parameters (for full deployment attempt)
-```python
-lif_params_cond = {
-    "cm": 1.0, "tau_m": 20.0, "tau_refrac": 0.1,
-    "v_reset": -65.0, "v_rest": -65.0, "v_thresh": -50.0,
-    "tau_syn_E": 5.0, "tau_syn_I": 5.0,
-    "e_rev_E": 0.0, "e_rev_I": -80.0,  # prevents cancellation!
-}
-```
-
-### Energy Provenance Query
-```sql
-SELECT description, the_value
-FROM provenance_data
-WHERE description LIKE '%dropped%' OR description LIKE '%synaptic%';
-```
-
-### WTA Implementation
-```python
-wta_conns = [(i, j, wta_weight, 1.0) for i in range(50) for j in range(50) if i != j]
-sim.Projection(output_pop, output_pop, sim.FromListConnector(wta_conns),
-    receptor_type="inhibitory")
-```

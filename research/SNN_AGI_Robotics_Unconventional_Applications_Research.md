@@ -138,3 +138,31 @@ What it would involve:
 - MAML itself is complex (second-order gradients, inner/outer loops)
 - Combining MAML with SNN surrogate gradients adds another layer
 - No existing snnTorch tutorial or implementation for meta-learning
+- Would need to build from scratch based on arxiv papers
+- Debugging meta-learning + SNN is extremely time-consuming
+
+**Verdict: too advanced for an undergrad in a few weeks. If continual learning is the interest, stick with 1.3 above.**
+
+---
+
+### 1.5 SNN-based cognitive architectures
+
+**SPAUN (Semantic Pointer Architecture Unified Network):**
+- 2.5 million spiking neurons, 20 brain areas, 8 cognitive tasks
+- Built with Nengo framework
+- Processes visual input, produces handwritten output via simulated arm
+- Includes working memory, reinforcement learning, fluid reasoning
+- Published: Eliasmith et al. (2012), Science
+- Source: [Nengo SPA Documentation](https://www.nengo.ai/nengo-spa/user-guide/spa-intro.html)
+
+**BrainCog:**
+- Open-source SNN-based cognitive intelligence engine
+- Implements perception, decision-making, motor control, reasoning, social cognition
+- Available on [PyPI](https://pypi.org/project/braincog/) and [GitHub](https://github.com/braincog-x/brain-cog)
+- Python/PyTorch-based, includes 18+ functional SNN algorithms
+- Brain simulations at multiple scales (drosophila to human)
+
+**Nengo:**
+- General-purpose neural simulator
+- Can run on CPU (no GPU required)
+- Source: [Nengo Documentation](https://www.nengo.ai/)

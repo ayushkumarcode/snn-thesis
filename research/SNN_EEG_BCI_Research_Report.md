@@ -82,3 +82,31 @@ key papers:
 | Method | Type | Accuracy (%) | Year |
 |---|---|---|---|
 | Novel DL approach | ANN | 95.70 | 2025 |
+| Optimized DL + DWT | ANN | 97.05 | 2024 |
+| HR-SNN (transfer) | SNN | 74.95 | 2024 |
+| HR-SNN (global) | SNN | 67.24 | 2024 |
+| RDSNN | SNN | 73.65 | 2024 |
+| combra-lab SNN-EEG | SNN | ~similar to DNN* | 2022 |
+
+*combra-lab reports "similar classification performance" to DNNs with 95% less energy.
+
+### emotion recognition (DEAP dataset)
+
+| Method | Type | Valence (%) | Arousal (%) | Year |
+|---|---|---|---|---|
+| Graph CNN + Dual Attention | ANN | ~90+ | ~90+ | 2024 |
+| EESCN | SNN | 94.56 | 94.81 | 2024 |
+| NeuroSense | SNN | 67.76 | 78.97 | 2021 |
+| Bidirectional SNN (DREAMER) | SNN | 94.83 (overall) | -- | 2021 |
+
+### stress detection
+
+| Method | Type | Accuracy (%) | Year |
+|---|---|---|---|
+| CSNN | SNN | 98.75 | 2025 |
+| Hybrid SNN | SNN | 94.00 | 2024 |
+
+### the takeaway on accuracy
+
+the gap between SNNs and ANNs depends a lot on the task:
+- **emotion recognition and stress detection:** SNNs can match or beat ANNs (EESCN at 94.81% is competitive with SOTA on DEAP)

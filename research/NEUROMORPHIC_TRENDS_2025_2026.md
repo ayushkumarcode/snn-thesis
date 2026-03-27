@@ -311,31 +311,3 @@ Skepticism peaked. ImageNet gap was large. No commercial deployments.
 The consensus has settled into a **mature, nuanced position:**
 
 1. **Energy efficiency is CONDITIONAL, not automatic**:
-   - SNNs need >93% sparsity to beat ANNs on most hardware (Dampfhoffer 2023)
-   - Hardware-agnostic estimates show ~50-60% SNN advantage
-   - Hardware-aware estimates on conventional hardware show NO advantage
-   - On actual neuromorphic hardware, 100-1000x advantage IS real (but task-specific)
-
-2. **Accuracy gap is narrowing but not closed**:
-   - Best SNN on ImageNet: 83.73% (SGLFormer, 2025) vs best ANN: 90%+
-   - The gap is SMALLEST when: pretrained features are used, the task is temporal, or the data is event-driven
-   - Our PANNs finding (gap collapses from 17pp to 1pp with pretrained features) perfectly illustrates this
-
-3. **The killer app is EDGE, not cloud**:
-   - Always-on sensing (audio, vibration, vision)
-   - Battery-powered devices (wearables, IoT, implants)
-   - Real-time control (robotics, drones, autonomous vehicles)
-   - Privacy-preserving on-device processing
-
-4. **Hybrid architectures are the pragmatic path**:
-   - ANN feature extraction + SNN classification (exactly our PANNs approach)
-   - ANN training + SNN inference
-   - Heterogeneous systems with both conventional and neuromorphic processors
-
-5. **The "biological plausibility" argument has weakened**:
-   - The community increasingly values practical performance over bio-plausibility
-   - Surrogate gradients (not biologically plausible) are accepted as standard
-   - "Brain-inspired" is a design philosophy, not a constraint
-
-### Key Quote from Nature Communications (2025):
-"After several false starts, advances now promise widespread commercial adoption."

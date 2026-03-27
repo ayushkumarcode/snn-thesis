@@ -390,3 +390,14 @@ cost: $15-80. timeline: 8-12 weeks.
 - [TENNLab Embedder (ICONS, 2025)](https://neuromorphic.eecs.utk.edu/publications/2025-07-29-generating-spiking-neural-network-code-libraries-for-embedded-systems/)
 
 ### student projects
+- [Purdue FPGA SNN Lane-Following Robot](https://polytechnic.purdue.edu/capstone-project/fpga-implementation-of-spiking-neural-network-based-controller-for-lane-following)
+- [WashU CSE462M: SNNs on FPGAs](https://ese.washu.edu/documents/Spiking-Neural-Networks-on-FPGAs.pdf)
+- [UCSD CSE237D: PYNQ SNN Accelerator](https://kastner.ucsd.edu/ryan/wp-content/uploads/sites/5/2014/03/admin/Pynq-SNN.pdf)
+
+### hardware
+- [Intel Loihi 2](https://open-neuromorphic.org/neuromorphic-computing/hardware/loihi-2-intel/)
+- [BrainChip Akida](https://brainchip.com/ip/)
+- [SynSense Xylo](https://www.synsense.ai/products/xylo/)
+- [SynSense Speck](https://www.synsense.ai/products/speck-2/)
+- [AMD Kria KV260](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html)
+- [PYNQ-Z2](https://www.seeedstudio.com/PYNQ-Z2-board-based-on-Xilinx-Zynq-C7Z020-SoC-p-2835.html)

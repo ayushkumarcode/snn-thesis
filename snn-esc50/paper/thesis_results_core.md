@@ -166,20 +166,20 @@ The learning surrogates all maintain non-zero gradient over a broad range away f
 | sfs | 2.00% (early stop ep10) | 1 |
 
 Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`. 1-seed result; CSF3 3-seed pending. LSO crashes due to StochasticSpikeOperator.forward() missing `variance` arg -- Python 3.14 API mismatch.
-| triangular | **2.75%** (early stop ep23) | 13 |
-| spike_rate_escape | **46.00%** (best overall, +1.25 pp vs fast_sigmoid) | 50 |
-| lso | **CRASHED** — Python 3.14 + snnTorch 0.9.4 incompatibility | — |
-| sfs | **2.00%** (early stop ep10, failed) | 1 |
-
-*Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`. Note: 1-seed result (n=1); CSF3 3-seed run pending retrieval. LSO crashes due to `StochasticSpikeOperator.forward()` missing `variance` argument — a Python 3.14/snnTorch 0.9.4 API mismatch.*
 
 ---
 
-## 4.4 Effect of Data Augmentation
+## 4.4 effect of data augmentation
 
-**Results: Complete (4 March 2026).** Training ran locally on MPS (Apple Silicon). SNN: 100 epochs, all 5 folds, 2860/2624/1239/3164/1064s per fold. ANN: 100 epochs, all 5 folds, ~80s per fold.
+**Complete (4 March 2026).** Ran locally on MPS. SNN: 100 epochs, all 5 folds. ANN: 100 epochs, all 5 folds.
 
-### 4.4.1 Setup
+### 4.4.1 setup
+
+Augmentation on training spectrograms only:
+1. **SpecAugment** (Park et al. 2019): 2 freq masks width F=8, 2 time masks width T=20. Masks set to spectrogram mean. Per-sample per-epoch.
+2. **TimeShift**: cyclic shift +/-10% frames (+/-22), random per sample per epoch.
+
+Both applied simultaneously. Otherwise identical to baseline: same arch, same training, but 100 epochs instead of 50.
 
 Data augmentation is applied to training spectrograms only (not to validation/test spectrograms), using two techniques:
 

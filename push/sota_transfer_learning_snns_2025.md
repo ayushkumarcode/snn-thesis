@@ -418,3 +418,31 @@ things nobody has done yet:
 9. Zhou, Z., et al. (2024). "Spikformer V2: Join the High Accuracy Club on ImageNet." arXiv:2401.02020.
 10. Larroza, A., et al. (2025). "Spike Encoding for Environmental Sound: A Comparative Benchmark." arXiv:2503.11206.
 
+### should-cite (supporting context)
+
+11. STA: Spatio-Temporal Approximation, ICLR 2024 (CLIP-to-SNN conversion).
+12. Xu, Q., et al. (2023). "Constructing Deep SNNs from ANNs with KD." CVPR 2023.
+13. Aydin, A., et al. (2024). "A Hybrid ANN-SNN Architecture." CVPRW 2024.
+14. SAFE: SNN-based Audio Fidelity Evaluation, ICLR 2025 submission.
+15. SpikeVoice, ACL 2024 (first SNN TTS).
+16. He et al. (2025). "Differential Coding for Training-Free ANN-to-SNN Conversion." ICML 2025.
+17. Yu, C., et al. (2025). "Efficient Logit-based KD of Deep SNNs." ICML 2025.
+18. SATRN: Spiking Audio Tagging Robust Network, Electronics 2025.
+19. Steennis, C. (2025). MSc Thesis, Leiden University. (ANN-SNN conversion and quantization.)
+20. Gao, Y., & Deng, M. (2025). "SATRN: Spiking Audio Tagging Robust Network." Electronics 14(4).
+
+---
+
+## 14. What This Means for the Thesis
+
+based on all of this, i think we can confidently claim:
+
+1. **"Our PANNs+SNN approach is the first to combine an AudioSet-pretrained feature extractor with an SNN classifier for environmental sound classification."** -- backed by finding zero prior work anywhere.
+
+2. **"The SNN-ANN accuracy gap collapse from 16.7pp to 0.95pp with equal features demonstrates that the bottleneck is feature learning, not spiking computation."** -- consistent with vision evidence (Spikformer V2, Bu et al.) and audio generation (Spiking Vocos), but first quantified demonstration for audio classification.
+
+3. **"The frozen-feature + SNN head paradigm is the least explored of the four SNN transfer learning paradigms."** -- only one other audio instance (SAFE, 2025).
+
+4. **"Our work on full ESC-50 with SNNs remains unique."** -- closest is Larroza et al. (2025) who only did ESC-10 with FC networks.
+
+5. **"The 17.6x gap collapse ratio exceeds the ~7x typical in vision."** -- suggesting audio classification may benefit disproportionately from pretrained features when combined with SNN classifiers. interesting to think about why -- probably because audio feature learning from 1,600 samples is just that much harder.

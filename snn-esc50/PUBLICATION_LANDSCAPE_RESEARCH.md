@@ -264,20 +264,20 @@ key SNN papers:
 - Sharmin et al. 2020 adversarial: https://arxiv.org/abs/2003.10399
 
 SNN + audio:
+- Larroza et al. 2025: https://arxiv.org/abs/2503.11206
+- SNN sound review (PMC 2024): https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/
+- SATRN: https://www.mdpi.com/2079-9292/14/4/761
+- Speech2Spikes: https://dl.acm.org/doi/10.1145/3584954.3584995
+- Spike sound localization NeurIPS 2024: https://proceedings.neurips.cc/paper_files/paper/2024/file/ce953d71deeb33d9ffa2c879b518d273-Paper-Conference.pdf
+- Dominguez-Morales 2016: https://link.springer.com/chapter/10.1007/978-3-319-44778-0_6
 
-### 6. Standardized Benchmarking (NeuroBench)
-- NeuroBench in Nature Communications 2025
-- Community push for reproducible, comparable results
-- **Relevance to you:** HIGH. You use NeuroBench metrics. You provide 5-fold validated results with p-values.
+encoding comparisons:
+- Neural coding comparative (Frontiers 2021): https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full
+- Spike encoding IoT (Frontiers 2022): https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.999029/full
 
-### 7. Continual/Online Learning on Neuromorphic Hardware
-- Survey in IEEE Access 2025
-- ICONS has "continual learning systems" as explicit topic
-- **Relevance to you:** Medium. Your continual learning result is preliminary but present.
-
-### 8. New Application Domains
-- SNNs being applied to speech enhancement, EEG, medical imaging, structural mechanics
-- "First SNN on [domain]" papers are consistently publishable
+hardware:
+- SpiNNaker2: https://arxiv.org/abs/2401.04491
+- Neuromorphic LLM on Loihi 2: https://arxiv.org/html/2503.18002v2
 - **Relevance to you:** HIGHEST. Your "first SNN on ESC-50" claim is exactly this pattern.
 
 ---

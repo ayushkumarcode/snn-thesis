@@ -110,20 +110,20 @@ fold 1, seed=42, 8 surrogates from snnTorch 0.9.4. 3-seed CSF3 run pending.
 | sigmoid | 2.00% (early stop) | 1 |
 | ste | 10.25% (early stop) | 1 |
 | triangular | 2.75% (early stop) | 13 |
-| fast_sigmoid | **44.75%** | 50 |
-| atan | 35.75% | 49 |
-| sigmoid | 2.00% (early stop ep11) | 1 |
-| ste | 10.25% (early stop ep11) | 1 |
-| triangular | **2.75%** (early stop ep23) | 13 |
-| spike_rate_escape | **46.00%** (best overall) | 50 |
-| lso | CRASHED (Python 3.14 incompatibility) | — |
-| sfs | 2.00% (early stop ep10) | 1 |
+| spike_rate_escape | **46.00%** | 50 |
+| lso | CRASHED | -- |
+| sfs | 2.00% (early stop) | 1 |
 
-### 4.3 Transfer Learning: PANNs + SNN Head
+**Bimodal split:** {sre, fast_sigmoid, atan} learn (35-46%) vs {STE, sigmoid, sfs, triangular} fail (2-10%). Stronger shape effect than Zenke & Vogels [4] predicted.
 
-We freeze CNN14 [6] (AudioSet-pretrained PANNs, 2048-d embeddings) and train only a 3-layer SNN classification head.
+### 4.3 PANNs + SNN head
 
-| Model | Mean Acc. | ± Std |
+Frozen CNN14 [6] embeddings (2048-d), 3-layer SNN head.
+
+| Model | Mean | Std |
+|-------|------|-----|
+| PANNs + SNN | **92.50%** | 1.30% |
+| PANNs + ANN | 93.45% | 1.54% |
 |-------|----------|-------|
 | PANNs + SNN head | **92.50%** | 1.30% |
 | PANNs + ANN head | 93.45% | 1.54% |

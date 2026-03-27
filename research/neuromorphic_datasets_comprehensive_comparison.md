@@ -266,31 +266,3 @@ Eight neuromorphic datasets were investigated in depth, along with three newer d
 | Method | Year | Accuracy | Notes |
 |---|---|---|---|
 | SpikCommander (T=250) | 2025 | 85.98% | Best reported, but 250 time steps |
-| SpikCommander (T=100) | 2025 | 83.49% | Standard time steps |
-| SpikeSCR | 2024 | 82.54% | 100 time steps |
-| DCLS | 2023 | 80.69% | Previous SOTA |
-| Typical baseline | -- | ~75-80% | Standard RSNN |
-
-**Difficulty assessment:** HARD. The dataset is 10x larger than SHD (105K vs 10K samples), has 35 classes (vs 20), and SOTA accuracy is only ~86%. Training time is significantly longer. The accuracy ceiling is lower, meaning results can look mediocre even with good methods. The 100+ time steps required for good performance increase memory usage.
-
-**Thesis narrative strength:** MODERATE. Similar to SHD but the story is less clean because the dataset is much larger and harder, making it difficult to achieve competitive results in an undergraduate timeframe. If you use SHD, you can reference SSC as "future work" for scale-up.
-
----
-
-### 7. DVS-Lip
-
-| Property | Details |
-|---|---|
-| **Domain** | Visual / Lip reading (word-level) |
-| **Sensor** | DAVIS346 event camera |
-| **Classes** | 100 words (25 visually-confusing pairs + 50 random words from LRW) |
-| **Total samples** | 19,871 (14,896 train / 4,975 test) |
-| **Subjects** | 40 volunteers (30 train / 10 test, no speaker overlap) |
-| **Spatial resolution** | 128 pixels (preprocessed) |
-| **Data format** | Event streams |
-| **Year introduced** | 2022 (Tan et al., CVPR 2022) |
-
-**Preprocessing required:**
-- Event data from DAVIS346 sensor
-- Spatial cropping/resizing to 128-pixel resolution
-- Frame integration (multi-rate for different temporal granularities)

@@ -26,3 +26,31 @@
 ### cut from paper (thesis only)
 surrogate ablation, continual learning, augmentation, t-SNE, temporal analysis, per-class analysis
 
+### new experiments to add
+
+**must do (zero risk, 1-2 days each):**
+
+| Experiment | Time | What it produces | Why it helps |
+|-----------|------|------------------|-------------|
+| SpiNNaker latency measurement | 0.5 day | ms per inference on hardware | ICONS reviewers expect real numbers |
+| SpiNNaker energy from provenance | 1-2 days | mJ per inference (real, not theoretical) | fills biggest gap |
+| Temporal ablation (truncate timesteps) | 0.5 day | accuracy-vs-timesteps curve | "X% accuracy in Y ms" = headline result |
+| Encoding transfer matrix | 1 day | 7x7 heatmap | novel figure nobody has published |
+
+**should do (if time permits):**
+
+| Experiment | Time | What it produces | Why it helps |
+|-----------|------|------------------|-------------|
+| Noise robustness profiling | 2-3 days | SNN vs ANN degradation curves | bridges adversarial to real-world |
+| 1-fold UrbanSound8K | 2 days | cross-dataset validation | kills "single dataset" objection |
+| Neuron ablation / fault tolerance | 1 day | graceful degradation comparison | hardware reliability finding |
+
+**high-risk high-reward (only if ahead of schedule):**
+
+| Experiment | Time | What it produces | Why it helps |
+|-----------|------|------------------|-------------|
+| Full SpiNNaker deploy via IF_cond_exp | 2-3 days | FC1+FC2 on hardware | game-changer if it works |
+| Few-shot learning curves | 2-3 days | data efficiency comparison | tests central thesis narrative |
+
+### paper production (parallel with experiments)
+

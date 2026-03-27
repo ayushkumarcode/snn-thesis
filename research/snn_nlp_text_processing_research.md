@@ -454,31 +454,3 @@ This is the central technical challenge for SNN-NLP. Four main approaches exist:
 ## Part 9: Confidence Assessment
 
 | Finding | Confidence | Source Quality |
-|---------|-----------|---------------|
-| SpikeGPT achieves ~88% on SST-2 | HIGH | Published paper with code |
-| SpikeLM closes gap to 6.7% from BERT | HIGH | ICML 2024 paper with detailed tables |
-| Spiking CNN drops ~2.5% accuracy on text tasks | HIGH | ICLR 2023 poster with code and 6 datasets |
-| Energy savings of 10-60x are real | MEDIUM | Multiple papers claim this, but measured differently |
-| SSA-SpiNNaker achieves 100% on IMDB | LOW | Likely tested on subset, claims seem inflated |
-| Undergraduate can complete binary sentiment SNN | MEDIUM-HIGH | Based on scope comparison with existing UG projects |
-| SNN NLP will remain niche for 2-3 more years | MEDIUM | Based on publication trajectory |
-
----
-
-## Part 10: Research Gaps and Follow-Up Recommendations
-
-### What Could Not Be Determined:
-1. Exact SpikingBERT accuracy numbers on individual GLUE tasks (paper PDF behind some access barriers)
-2. Whether any UK undergraduate has attempted SNN-NLP (likely not, but cannot confirm)
-3. Actual wall-clock training times for the conversion pipeline on consumer GPUs
-4. Whether snnTorch has any undocumented NLP examples in development
-
-### Recommended Follow-Up Actions:
-1. **Download and run** the Lvchangze/snn code on a sample dataset to verify it works
-2. **Contact Jason Eshraghian** (SpikeGPT author, very active on Twitter/GitHub) -- he is known to be supportive of students
-3. **Check if Manchester SpiNNaker access is available** for deployment experiments
-4. **Read the full SpikeLM paper** (https://arxiv.org/abs/2406.03287) for architecture details
-5. **Start with snnTorch tutorials 1-5** to build SNN fundamentals before tackling text
-
----
-

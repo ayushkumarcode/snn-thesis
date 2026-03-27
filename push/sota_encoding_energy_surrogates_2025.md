@@ -338,31 +338,3 @@ Two types of sparsity in SNNs:
 
 | Metric | Thesis SNN | Thesis ANN | Literature Context |
 |--------|-----------|-----------|-------------------|
-| Energy/sample (software) | 976 nJ | 463 nJ | SNN 2.1x MORE expensive---consistent with Dampfhoffer/Yang |
-| Effective ACs | 1.08M | 0 | Binary spike operations |
-| Effective MACs | 0 | 101K | Multiply-accumulate operations |
-| Activation sparsity | 74.16% | 59% | Below 93% threshold (Yang 2024) |
-| Implied spike rate | ~25.8% | N/A | Above 6.4% threshold (Yang 2024) |
-| Per-op cost (32b) | 0.9 pJ/AC | 4.6 pJ/MAC | 5.1x per-op advantage (Horowitz) |
-| Hypothetical neuromorphic | ~190 nJ | 463 nJ | 2.4x cheaper IF hardware exploits sparsity |
-
----
-
-## Part 3: Surrogate Gradients
-
-### 3.1 Foundational Work: Zenke & Vogels (2021)
-
-**Citation:** F. Zenke, T. P. Vogels. "The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks." Neural Computation 33(4):899--925, 2021.
-
-**Key finding:** Surrogate gradient learning is **robust to the shape** of the surrogate derivative, but the **scale (steepness) parameter substantially affects performance**.
-
-Tested three surrogate derivatives:
-1. SuperSpike (fast sigmoid derivative)
-2. Standard sigmoid derivative (sigma')
-3. Piece-wise linear function
-
-All three worked comparably when scale was tuned. The paper's central claim: "what matters is not the exact shape, but the scale."
-
-**Relevance to thesis:** The thesis ablation partially contradicts this---some functions (sigmoid, STE, triangular, SFS) categorically fail. This may be because Zenke & Vogels used simpler tasks (XOR, MNIST-like) where the surrogate shape genuinely does not matter, while the thesis's audio classification task is harder and more sensitive.
-
-### 3.2 Gygax & Zenke (Neural Computation, 2025) --- Theoretical Foundation

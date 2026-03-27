@@ -239,31 +239,3 @@ FPGA-based SNN deployment is achievable for an undergraduate thesis. The key fac
 **Recommended approach for an undergraduate:**
 
 Option A -- Use Spiker+ (Fastest to results):
-1. Design SNN architecture in Python using Spiker+ framework
-2. Auto-generate VHDL accelerator
-3. Deploy on PYNQ-Z2 or similar small FPGA
-4. Measure power, latency, accuracy
-5. Compare against software-only implementation
-
-Option B -- Use snnTorch + HLS (Most educational):
-1. Train SNN in snnTorch with quantization-aware training
-2. Follow ISFPGA 2024 workshop pipeline
-3. Deploy on AMD Kria KV260 using Vitis HLS
-4. Use PYNQ Python interface for testing
-
-Option C -- Use ModNEF (Most flexible):
-1. Use the open-source modular FPGA SNN emulator
-2. Configure LIF neurons with desired precision
-3. Deploy on Zynq XC7Z020 (PYNQ-Z2)
-4. Evaluate MNIST/N-MNIST classification
-
-### 6.2 Required Skills and Learning Timeline
-
-| Skill | Time to Learn | Resources |
-|-------|---------------|-----------|
-| snnTorch basics | 1-2 weeks | Official tutorials (7 tutorials available) |
-| FPGA/Vivado basics | 2-3 weeks | PYNQ getting started guide, Xilinx tutorials |
-| Vitis HLS | 1-2 weeks | AMD documentation, HLS examples |
-| Fixed-point quantization | 1 week | snnTorch quantization tutorial |
-| PYNQ Python overlay | 1 week | PYNQ documentation |
-| End-to-end integration | 2-3 weeks | fpga-snntorch repository |

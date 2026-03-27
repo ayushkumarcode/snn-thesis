@@ -278,3 +278,31 @@ Components:
 5. Extend to simple 2D navigation if time permits
 
 Framework: snnTorch + Gymnasium + PyTorch
+```
+
+Risks: SNN+RL training is finicky (hyperparameter sensitivity). May not converge as well as ANN baseline. Limited novelty if just doing CartPole (many papers already).
+
+**Verdict: feasible and well-scoped. The CartPole/LunarLander framing keeps scope manageable. Novelty is low unless you add an angle (e.g., energy analysis, or a novel encoding scheme).**
+
+---
+
+### 2.4 SNN for drone control
+
+**Literature: 10-15 papers**
+
+Simulation-only: yes, but drone simulators (AirSim, Gazebo) are heavyweight. AirSim is deprecated. Gazebo is Linux-only.
+
+**Feasibility: LOW** -- drone dynamics are 6-DOF, much more complex than CartPole. Sim setup alone could take a week. If interested in RL+SNN, use CartPole/LunarLander instead.
+
+---
+
+### 2.5 SNN for tactile sensing (neuromorphic touch)
+
+**Literature: 15-20 papers, active field**
+
+Key works:
+- [Event-Driven Tactile Sensing with Dense Spiking GNNs (IEEE 2025)](https://ieeexplore.ieee.org/document/10884798/)
+- [Recent advances in spike-based neural coding for tactile perception (Nature 2025)](https://www.nature.com/articles/s41378-025-01074-3)
+- [TactileSGNet (ResearchGate 2020)](https://www.researchgate.net/publication/342588043)
+
+Simulation-only: not really in a meaningful way. Tactile sensing requires physical sensor data. Some public datasets exist (EvTouch, iCub tactile data) but they're niche.

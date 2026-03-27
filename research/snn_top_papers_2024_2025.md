@@ -138,3 +138,31 @@ growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO varia
 2. SpikeGCL: A Graph is Worth 1-bit Spikes
 3. SpikePoint: Efficient Point-based SNN for Event Cameras Action Recognition
 4. LMUFormer: Low Complexity Spiking Model With Legendre Memory Units
+5. Online Stabilization of Spiking Neural Networks
+6. Towards Energy Efficient SNNs: An Unstructured Pruning Framework
+7. Can we get the best of both Binary Neural Networks and SNNs?
+8. Spatio-Temporal Approximation: Training-Free SNN Conversion for Transformers
+9. Hebbian Learning based Orthogonal Projection for Continual Learning of SNNs
+10. Adaptive deep SNN with global-local learning via balanced excitatory/inhibitory mechanism
+
+### ICLR 2025 (11+ SNN papers)
+
+1. SpikeLLM: Scaling up SNN to Large Language Models via Saliency-based Spiking
+2. P-SpikeSSM: Probabilistic Spiking State Space Models for Long-Range Tasks
+3. Quantized Spike-driven Transformer
+4. TS-LIF: Temporal Segment Spiking Neuron Network for Time Series Forecasting
+5. Spiking Vision Transformer with Saccadic Attention
+6. DeepTAGE: Deep Temporal-Aligned Gradient Enhancement for Optimizing SNNs
+7. SPAM: Spike-Aware Adam with Momentum Reset for Stable LLM Training
+8. Rethinking Spiking Neural Networks from an Ensemble Learning Perspective
+
+### ICML 2024 (3+ SNN papers)
+
+1. SpikeLM: Towards General Spike-Driven Language Modeling via Elastic Bi-Spiking
+2. Temporal Spiking Neural Networks with Synaptic Delay for Graph Reasoning
+3. Efficient and Effective Time-Series Forecasting with Spiking Neural Networks
+
+### CVPR 2024 (3 SNN papers)
+
+1. SpikingResformer: Bridging ResNet and Vision Transformer in SNNs
+2. SFOD: Spiking Fusion Object Detector

@@ -250,3 +250,31 @@ our SNN has 74.16% activation sparsity. on hardware that skips zero-spike comput
 
 foundational paper. key claim: surrogate gradient learning is **robust to the shape** of the surrogate derivative, but **scale (steepness) substantially affects performance.** tested SuperSpike (fast sigmoid), standard sigmoid, and piecewise linear -- all worked comparably when scale was tuned.
 
+our ablation partially contradicts this. some functions (sigmoid, STE, triangular, SFS) categorically fail. might be because they tested simpler tasks (XOR, MNIST-like) where shape genuinely doesn't matter, while ESC-50 audio classification is harder and more sensitive.
+
+### Gygax & Zenke (Neural Computation, 2025)
+
+theoretical foundation paper. investigates relation of surrogate gradients to: (1) smoothed probabilistic models providing derivatives for single neurons, and (2) stochastic automatic differentiation. key finding: spike_rate_escape is theoretically justified as the derivative of the neuronal **escape noise function** (Boltzmann distribution).
+
+this might explain why SRE outperforms other surrogates (46.00% vs 44.75% for fast_sigmoid) -- it's the most theoretically justified surrogate for stochastic LIF neurons.
+
+### Lian et al., "Learnable Surrogate Gradient" (IJCAI 2023)
+
+key innovation: LSG modulates SG width according to membrane potential distribution. addresses the problem that fixed-width surrogates cause gradient vanishing when membrane potentials are far from threshold.
+
+this might explain our bimodal failure pattern -- surrogates with appropriate effective widths for the audio task's membrane potential distribution succeed; those with mismatched widths catastrophically fail.
+
+### Other Recent Surrogate Work
+
+**Sparse Surrogate Gradients (Neural Networks, 2024):** Masked Surrogate Gradients (MSGs) apply sparsity masks to preserve SNN sparsity during training. also introduces Temporal Weighted Output for decoding.
+
+**Klos et al. (Physical Review Letters, 2025):** eliminates surrogate gradients entirely using "pseudospikes" that provide exact (not approximate) gradients. smooth and exact but only demonstrated on MNIST so far. potential future direction.
+
+**Efficient Surrogate Gradients (NeurIPS 2025):** Chi-based pipeline that adaptively trades off between shape and effective domain. shows keeping fixed surrogate for all layers is suboptimal.
+
+### Surrogate Functions: Literature vs Our Results
+
+| Function | Our Result | Literature Status | Key Reference |
+|----------|-----------|-------------------|---------------|
+| **Spike Rate Escape** | **46.00% (BEST)** | Theoretically justified via escape noise | Gygax & Zenke 2025 |
+| **Fast Sigmoid** | **44.75%** | SuperSpike original; widely used | Zenke & Ganguli 2018 |

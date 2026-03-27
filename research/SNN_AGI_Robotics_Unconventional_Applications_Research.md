@@ -362,3 +362,31 @@ macOS: YES. MuJoCo 2.1+ works on macOS natively.
 Title: "Energy-Efficient Robotic Arm Control Using Spiking Neural Networks
         in Simulated Environments"
 
+Components:
+1. MuJoCo Reacher-v2/v4 environment setup (Gymnasium)
+2. ANN-based policy network (PPO or DQN) as baseline
+3. Replace policy network with SNN (LIF neurons, snnTorch)
+4. Train both, compare task performance, training efficiency, energy proxy
+5. Analysis of SNN temporal dynamics in control
+
+Framework: snnTorch + Gymnasium + MuJoCo
+```
+
+Risks: SNN+RL training instability. MuJoCo compatibility quirks. Hyperparameter tuning for spiking RL is time-consuming. A 2025 MDPI paper already does something very similar.
+
+**Verdict: feasible if carefully scoped. The Reacher environment is well-documented and simple enough. Novelty angle: using snnTorch specifically (most papers use SpyTorch or custom implementations).**
+
+---
+
+### 2.10 Part 2 summary
+
+| Robotics Application | Papers | Simulation-Only? | macOS? | Feasible? | Components |
+|---|---|---|---|---|---|
+| **Obstacle Avoidance (CartPole/LunarLander)** | 10-20 | **YES** | **YES** | **MODERATE-HIGH** | snnTorch + Gymnasium |
+| **Robotic Arm Control (MuJoCo)** | 5-10 | **YES** | **YES** | **MODERATE** | snnTorch + Gymnasium + MuJoCo |
+| Optical Flow (Event Camera) | 10-15 | YES (datasets) | YES | MODERATE | snnTorch + MVSEC/DSEC data |
+| Prosthetic/EMG Control | 10-15 | YES (datasets) | YES | MODERATE | snnTorch + Ninapro/UCI EMG |
+| Tactile Sensing | 15-20 | Partially | YES | LOW-MODERATE | snnTorch + tactile dataset |
+| SLAM | 5-10 | YES | YES (Nengo) | LOW-MODERATE | Nengo (not snnTorch) |
+| Drone Control | 10-15 | Partially | Difficult | LOW | Complex sim setup |
+| Grasping/Manipulation | 5-10 | Partially | YES | LOW | MuJoCo + custom env |

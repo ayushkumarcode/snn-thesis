@@ -422,31 +422,3 @@ The resulting gradients are smooth and exact, avoiding the fundamental approxima
 
 ### 3.7 Surrogate Gradient Functions: Literature Consensus
 
-| Function | Thesis Result | Literature Status | Key Reference |
-|----------|--------------|-------------------|---------------|
-| **Spike Rate Escape** | **46.00% (BEST)** | Theoretically justified via escape noise; used in snnTorch | Gygax & Zenke 2025 |
-| **Fast Sigmoid** | **44.75%** | SuperSpike original; widely used, empirically strong | Zenke & Ganguli 2018 |
-| **Arctan (atan)** | **35.75%** | Generally preferred in recent literature | Multiple (2024 consensus) |
-| STE (Straight-Through) | 10.25% (failed) | Known to struggle with deeper networks | Standard observation |
-| Sigmoid | 2.00% (failed) | Vanishing gradient problems noted | Lian et al. 2023 |
-| SFS | 2.00% (failed) | Less commonly used | Limited literature |
-| Triangular | 2.75% (failed) | Piece-wise linear; Zenke 2021 said it works | **Contradicts Zenke 2021** |
-| LSO (Stochastic) | Crashed | Python 3.14 incompatibility | Implementation issue |
-
-### 3.8 Explaining the Bimodal Pattern
-
-The thesis's bimodal result (3 surrogates learn, 4 fail) is a significant finding. Possible explanations from the literature:
-
-1. **Effective gradient width:** Lian et al. (2023) show that membrane potential distribution determines optimal SG width. Audio classification may produce membrane potential distributions that are incompatible with narrow surrogates (sigmoid, STE, triangular). The three working surrogates (SRE, fast_sigmoid, atan) all have broader effective domains.
-
-2. **Gradient magnitude at threshold:** SRE and fast_sigmoid have larger gradient magnitudes near the threshold compared to sigmoid. In a complex multi-class task (50 classes), stronger gradients near threshold may be necessary for learning.
-
-3. **Task complexity:** Zenke 2021 demonstrated robustness on relatively simple tasks (XOR, MNIST variants). The ESC-50 audio classification task with mel-spectrogram inputs may be complex enough that surrogate shape DOES matter---contradicting the "shape doesn't matter" claim for harder tasks.
-
-4. **Training dynamics:** Failed surrogates often collapsed to chance-level within the first 10--15 epochs, suggesting they never found a useful gradient landscape. This early-stage failure is consistent with gradient vanishing rather than slow convergence.
-
-5. **Escape noise theory:** Gygax & Zenke (2025) show SRE is theoretically grounded for stochastic neurons. Other surrogates are heuristic approximations that may not align with the true gradient landscape for audio tasks.
-
----
-
-## Part 4: Cross-Cutting Themes

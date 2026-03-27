@@ -110,3 +110,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - https://github.com/davidkubanek/SNN-hand-kinematics-estimation-from-sEMG-signals
 - Neuromorphic reservoir network for estimating hand movements from muscle signals
 - Brian2, Python, C++/Cython. NinaPro public EMG database.
+- 4 stars, 30 commits
+
+### Spiking Grid Cell Models on SpiNNaker (MSc, Manchester)
+- https://github.com/nickybu/spiking_grid_cell_model
+- Spiking grid cell models on SpiNNaker, supervised by Prof. Furber
+- SpiNNaker, sPyNNaker, Python 2.7, Brian2
+- **Thesis PDF linked in repository**
+- 0 stars, 9 commits
+
+### Brain-Machine Interface using SpiNNaker (Masters)
+- https://github.com/solversa/Master-Thesis-Brain-Machine-Interface
+- Decoding 3D imaginary reach/grasp movements from EEG using SNNs on SpiNNaker
+- SpiNNaker (4 chips, 64 cores), STDP with reward-based training
+- 73.4% mean accuracy (only 4.12% below state-of-the-art ML)
+- **Thesis PDF included**
+- 2 stars, 5 forks, 102 commits
+
+### Spiking Deep Belief Network (Masters)
+- https://github.com/MazdakFatahi/Spiking-Deep-Belief-Network
+- Spike-Based Deep Belief Network with LIF neurons using contrastive divergence
+- MNIST, 94.9% accuracy
+- **Thesis PDF: "MazdakFatahi(Ms Thesis).pdf"**
+- 1 star, 3 commits
+
+### SNN-RL: Training SNNs with RL (Masters)
+- https://github.com/BSVogler/SNN-RL
+- Actor-critic RL framework with spiking network actors using R-STDP
+- NEST 3, Python 3.7/3.8, Docker, MongoDB. Line-following task.

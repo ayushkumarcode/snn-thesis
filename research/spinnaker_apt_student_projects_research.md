@@ -69,31 +69,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 
 | Field | Details |
 |-------|---------|
-| **Title** | Learning in Spiking Neural Networks |
-| **Author** | Sergio Davies |
-| **Year** | December 2012 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Not listed (likely Steve Furber) |
-| **Abstract** | Novel learning rule based on spike-pair STDP algorithm. Developed SpikeServer tool for spike injection via Ethernet. Introduced population-based routing. Created STDP-TTS learning rule. |
-| **Keywords** | TTS, STDP, Asynchronous software execution, Real-time software, Population-based routing, Neuromorphic hardware, SpiNNaker |
-| **Tools** | SpiNNaker hardware, custom C, Python |
-| **PDF** | Available (14.1 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/learning-in-spiking-neural-networks |
-
-### 1.6 Thomas Sharp -- Real-Time Million-Synapse Simulation of Cortical Tissue (2013)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Real-Time Million-Synapse Simulation of Cortical Tissue |
-| **Author** | Thomas Sharp |
-| **Year** | June 2013 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (main), James Garside (co-supervisor) |
-| **Abstract** | Demonstrated real-time simulation of rodent somatosensory cortex on SpiNNaker prototype. Model: 10^5 neurons, 7x10^7 synapses across 360 processors on 23 chips. Each chip draws just 1 watt. |
-| **Tools** | SpiNNaker hardware |
-| **PDF** | Available (21.7 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/real-time-million-synapse-simulation-of-cortical-tissue |
-
-### 1.7 Francesco Galluppi -- Information Representation on a Universal Neural Chip (2013)
-
-| Field | Details |

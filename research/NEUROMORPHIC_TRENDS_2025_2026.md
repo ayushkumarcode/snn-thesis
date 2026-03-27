@@ -166,3 +166,31 @@ The hardware landscape is maturing fast. Papers that show actual deployment on r
 2. Energy-accuracy Pareto analysis becoming mandatory
 3. Neuromorphic + embodied intelligence / robotics
 4. Privacy as an inherent SNN property
+5. Temporal coding gaining over rate coding
+
+---
+
+## 6. Open problems and grand challenges
+
+### Tier 1: Critical unsolved problems
+1. **Software ecosystem gap**: No PyTorch/TensorFlow equivalent for neuromorphic. Lava, snnTorch, Norse, SpikingJelly all fragmented. Open Neuromorphic explicitly calls this the #1 barrier.
+
+2. **Scaling SNNs**: Directly-trained SNNs top out at ~85M parameters (SpikeLLM). Brain has ~86 billion neurons. Multiple orders of magnitude to bridge.
+
+3. **The accuracy gap**: Best SNN on ImageNet (83.73% SGLFormer) still trails best ANN (90%+). Narrowing but not closed.
+
+4. **Killer application**: No single application has proven neuromorphic superiority definitively in real-world deployment at scale.
+
+5. **Energy claims need hardware verification**: Most "energy efficiency" claims are theoretical (counting ACs/MACs). Very few papers do actual hardware power measurement.
+
+### Tier 2: Active research challenges
+6. **Spike rate break-even**: SNNs only beat quantized ANNs when spike rate < 6.4% (Dampfhoffer 2023). Most practical SNNs run 20-30%. Closing this gap is critical.
+
+7. **Hardware mapping efficiency**: Naive mappings achieve only 30-50% neuromorphic hardware utilization.
+
+8. **Continual learning at scale**: On-chip learning demonstrated in small settings but not production scale.
+
+9. **Temporal coding advantages**: Theory says temporal codes should be more efficient, but rate coding still dominates in practice. Not clear why.
+
+10. **Standardized benchmarking**: NeuroBench is helping but adoption is incomplete.
+

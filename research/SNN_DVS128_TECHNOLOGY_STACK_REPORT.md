@@ -334,3 +334,31 @@ import torchvision
 device = (torch.device("cuda") if torch.cuda.is_available()
           else torch.device("mps") if torch.backends.mps.is_available()
           else torch.device("cpu"))
+
+# === Dataset with Tonic ===
+sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
+
+frame_transform = transforms.Compose([
+    transforms.Denoise(filter_time=10000),            # Remove noise
+    transforms.ToFrame(sensor_size=sensor_size,
+                       n_time_bins=16)                 # Convert to 16 frames
+])
+
+trainset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=True)
+testset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=False)
+
+# Cache to disk for faster loading on subsequent runs
+cached_trainset = DiskCachedDataset(trainset,
+    transform=tonic.transforms.Compose([torch.from_numpy,
+                                        torchvision.transforms.RandomRotation([-10, 10])]),
+    cache_path='./cache/dvs_gesture/train')
+cached_testset = DiskCachedDataset(testset,
+    transform=torch.from_numpy,
+    cache_path='./cache/dvs_gesture/test')
+
+trainloader = DataLoader(cached_trainset, batch_size=16, shuffle=True,
+                         collate_fn=tonic.collation.PadTensors(batch_first=False))
+testloader = DataLoader(cached_testset, batch_size=16,
+                        collate_fn=tonic.collation.PadTensors(batch_first=False))
+
+# === Network Architecture ===

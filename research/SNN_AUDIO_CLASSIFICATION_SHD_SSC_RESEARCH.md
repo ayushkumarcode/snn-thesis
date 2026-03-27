@@ -138,3 +138,31 @@ the big takeaway: SNNs actually beat ANNs on SHD by a pretty wide margin (96.4% 
 on SSC, SNNs also beat ANNs (85.98% vs 79.05%), but the gap took longer to emerge. the 2022 SNN baseline (77.4%) was actually below the GRU (79.05%), but by 2025 SNNs lead convincingly.
 
 ### 3.3 Energy Efficiency
+
+| Metric | SNN | ANN |
+|--------|-----|-----|
+| Inference energy (general) | 5-15 mJ | ~200 mJ |
+| SynOps ratio vs ANN | 0.68x | 1.0x (baseline) |
+| Energy-delay product | Up to 8.2x better | Baseline |
+| Neuromorphic hardware (SpiNNaker) | ~0.3W | N/A |
+
+SNNs get their energy efficiency through sparse, event-driven computation. the advantage is biggest on neuromorphic hardware (Loihi, SpiNNaker, BrainScaleS), where SNNs can be 10-100x more efficient than equivalent ANNs on GPU. even when both run on GPU, SNNs use fewer multiply-accumulate operations thanks to spike sparsity.
+
+### 3.4 Why SNNs Win on These Audio Benchmarks
+
+been thinking about why SNNs do so well here specifically:
+
+1. **Natural temporal affinity**: audio is inherently temporal. spike trains naturally encode timing info, unlike frame-based ANNs that have to learn temporal structure from scratch.
+2. **Data is already spike-encoded**: SHD/SSC comes from an artificial cochlea that outputs spike trains. SNNs process this natively; ANNs have to convert it to dense tensors which loses temporal precision.
+3. **Learnable delays**: methods like DCLS-Delays exploit the temporal structure of spike trains by learning optimal signal propagation delays -- something ANNs can't really do naturally.
+4. **Biological plausibility**: the cochlea-to-spike encoding mirrors biological auditory processing, and SNNs process these in a biologically plausible way.
+
+---
+
+## 4. Student and Undergraduate Projects
+
+### 4.1 Confirmed Student SNN Audio Projects
+
+| Project | Level | University | Tools | Results |
+|---------|-------|-----------|-------|---------|
+| Musical Pattern Recognition in SNNs | BEng | Unknown (~2016) | Brian 2, STDP | First layer of multi-layer SNN for music patterns. Author notes "only a small portion of what was originally intended was achieved" -- realistic and honest. [GitHub](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks) |

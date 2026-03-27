@@ -54,3 +54,31 @@ Every strong paper followed this intro structure:
 3. **Aims & objectives** (numbered, measurable, with success criteria)
 4. **Evaluation strategy** (metrics defined before experiments)
 5. **Report structure** (chapter-by-chapter roadmap)
+
+### 2.4 What makes a paper stand out
+- **Quantitative results in the abstract** (specific numbers, not vague claims)
+- **Explicit success criteria** defined before experiments
+- **Multi-axis evaluation** (not just accuracy -- also efficiency, robustness, failure analysis)
+- **Honest limitation acknowledgment** (valued, not penalised)
+- **Comparison against at least one baseline**
+- **Negative results reported and analysed** (several papers actually gained credibility from honest failures)
+
+### 2.5 Common patterns that are apparently fine
+- Descoping from original ambitious goals (Yi Wu, Aggarwal)
+- Delivering fewer objectives than planned with rest as "future work" (Aggarwal)
+- Supervisor-suggested novel contributions (Gill)
+- Modest accuracy/results with thorough analysis (Yi Wu's 66.7% was sufficient)
+- Proof-of-concept framing without full deployment (Devine)
+- No code at all for a research project (Oldfield)
+
+---
+
+## 3. The two directly SNN papers (most relevant precedents)
+
+### Tyler Gaffey (2024) -- SNN for music genre classification
+- **Supervisor:** Oliver Rhodes (SpiNNaker group)
+- **Framework:** snnTorch + PyTorch + librosa
+- **Approach:** Compared 5 spike encoding methods on audio spectrograms
+- **Key result:** Poisson encoding matched ANN performance
+- **Novelty:** Application to underexplored domain + thorough comparison
+- **Lessons:** The "can SNNs compete with ANNs on X?" framing works. Negative results (autoencoders failed, CNNs underperformed) were valued. Honest about compute constraints.

@@ -366,31 +366,3 @@ All three worked comparably when scale was tuned. The paper's central claim: "wh
 **Relevance to thesis:** The thesis ablation partially contradicts this---some functions (sigmoid, STE, triangular, SFS) categorically fail. This may be because Zenke & Vogels used simpler tasks (XOR, MNIST-like) where the surrogate shape genuinely does not matter, while the thesis's audio classification task is harder and more sensitive.
 
 ### 3.2 Gygax & Zenke (Neural Computation, 2025) --- Theoretical Foundation
-
-**Citation:** J. Gygax, F. Zenke. "Elucidating the Theoretical Underpinnings of Surrogate Gradient Learning in Spiking Neural Networks." Neural Computation 37(5):886--925, 2025. arXiv:2404.14964.
-
-**Key contributions:**
-- Investigates the relation of surrogate gradients to two theoretically well-founded approaches:
-  1. **Smoothed probabilistic models:** Provide derivatives equivalent to surrogate gradients for single neurons
-  2. **Stochastic automatic differentiation (StochAD):** Compatible with discrete randomness but not yet used for multi-layer SNNs
-- The spike_rate_escape surrogate is theoretically justified as the derivative of the neuronal **escape noise function** (Boltzmann distribution)
-- Finding: SNN training is robust to surrogate gradient steepness (extending earlier claims)
-
-**Relevance to thesis:** The spike_rate_escape's theoretical grounding via escape noise theory may explain why it outperforms other surrogates (46.00% vs 44.75% for fast_sigmoid)---it is the most theoretically justified surrogate for stochastic LIF neurons.
-
-### 3.3 Lian et al., "Learnable Surrogate Gradient" (IJCAI 2023)
-
-**Citation:** S. Lian, J. Shen, Q. Liu, Z. Wang, R. Yan, H. Tang. "Learnable Surrogate Gradient for Direct Training Spiking Neural Networks." IJCAI-23, 2023.
-
-**Key innovation:** The Learnable Surrogate Gradient (LSG) method modulates the width of SG according to the distribution of membrane potentials, using trainable decay factors.
-
-**Problem addressed:** Fixed-width surrogate gradients cause:
-- Gradient vanishing when membrane potentials are far from threshold
-- Gradient mismatch when the surrogate shape does not match the true gradient landscape
-
-**Relevance to thesis:** The bimodal failure pattern (SRE/fast_sigmoid/atan succeed vs STE/sigmoid/sfs/triangular fail) may be explained by width mismatch. Surrogates with appropriate effective widths for the audio task's membrane potential distribution succeed; those with mismatched widths catastrophically fail.
-
-### 3.4 Sparse Surrogate Gradients (Neural Networks, 2024)
-
-**Citation:** "Directly Training Temporal Spiking Neural Network with Sparse Surrogate Gradient." Neural Networks, July 2024. arXiv:2406.19645.
-

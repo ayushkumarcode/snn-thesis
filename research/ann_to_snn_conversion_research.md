@@ -82,3 +82,31 @@ strongest thesis framing: "Evaluating the Practicality of ANN-to-SNN Conversion 
 - pre-built examples: resnet18_cifar10.py, cnn_mnist.py
 - up to 11x speedup over other frameworks at T=32
 - best for research prototyping
+
+### snnTorch
+
+- repo: https://github.com/jeshraghian/snntorch
+- great tutorials, Colab notebooks
+- simpler conversion approach -- more educational
+- best for learning fundamentals
+
+### Standalone Paper Code (often the best option)
+
+for actually getting SOTA results:
+
+| Repository | Paper | Venue | Ease |
+|-----------|-------|-------|------|
+| `putshua/ANN_SNN_QCFS` | QCFS | ICLR 2022 | High |
+| `yhhhli/SNN_Calibration` | Calibration | ICML 2021 | High |
+| `snuhcs/snn_signgd` | SignGD beyond ReLU | ICML 2024 | Medium |
+| `Lyu6PosHao/ANN2SNN_GN` | Group Neurons | ICASSP 2024 | Medium |
+| `IGITUGraz/RobustSNNConversion` | Adversarial robustness | TMLR 2024 | Medium |
+| `h-z-h-cell/ANN-to-SNN-DCGS` | Differential coding | ICML 2025 | Medium-High |
+| `BICLab/SpikeYOLO` | SpikeYOLO | ECCV 2024 | Medium |
+
+---
+
+## Accuracy Loss During Conversion
+
+### Where the Loss Comes From
+

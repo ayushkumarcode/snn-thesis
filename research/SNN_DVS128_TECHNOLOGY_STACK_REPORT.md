@@ -502,3 +502,31 @@ polarity = (data >> 1) & 0x00000001
 Events need to be binned into dense frame tensors for batch training. There's basically three strategies:
 
 **Method 1: Fixed number of frames (most common)**
+- Divide all events in a sample into N equal-sized groups
+- Accumulate events in each group into a frame
+- Result: [N, 2, 128, 128] tensor with consistent shape across samples
+- SpikingJelly: `split_by='number', frames_number=16`
+
+**Method 2: Fixed time duration**
+- Divide events into windows of fixed duration (e.g., 1 second)
+- Variable number of frames per sample
+- Requires padding for batching
+- SpikingJelly: `split_by='time', duration=1000000`
+
+**Method 3: Fixed event count per frame**
+- Each frame accumulates exactly K events
+- Variable number of frames
+- Tonic: `ToFrame(event_count=3000)`
+
+### Preprocessing Steps
+
+1. Download and extract raw AEDAT files
+2. Parse AEDAT 3.1 binary format into structured events (t, x, y, p)
+3. Segment recordings - each file may contain multiple gesture labels; split by label timestamps
+4. Denoise - remove isolated, spurious events (Tonic: `Denoise(filter_time=10000)`)
+5. Bin into frames - convert event stream to [T, C, H, W] tensors
+6. Optional: spatial transforms - random rotation, random crop, horizontal flip
+7. Cache to disk - first-time processing is slow; cache frames for reuse
+
+---
+

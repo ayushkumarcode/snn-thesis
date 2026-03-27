@@ -222,3 +222,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 ### 2.13 Use of Spiking Neural Networks (Thesis)
 - **URL**: https://github.com/honzikv/use-of-snn
 - **Description**: Three experiments - EEG classification, P300 detection, surrogate gradient MNIST/Fashion-MNIST
+- **Framework**: PyTorch, TensorFlow, Jupyter
+- **Dataset**: BNCI Horizon 2020 EEG, Harvard P300, MNIST, Fashion MNIST
+- **Results**: Successfully converted CNN to SNN for EEG; surrogate gradient training on image datasets
+- **Thesis PDF**: Not in repo (title: "Use of Spiking Neural Networks")
+- **Complexity**: MODERATE-ADVANCED (three separate experiments)
+- **Stars**: 2 | **Commits**: 157
+
+### 2.14 SNN Formation Control for Multi-Agent Systems
+- **URL**: https://github.com/ViktorNfa/SpikingNeuralNet_FormationControl
+- **Description**: SNN using Norse framework to learn formation control with collision avoidance
+- **Framework**: Norse, PyTorch
+- **Results**: SNN learned formation control comparable to classical controllers
+- **Complexity**: MODERATE-HIGH
+- **Stars**: 4 | **Commits**: 18 | **Last updated**: July 2024
+
+### 2.15 Design Space Exploration of Associative Memories (Masters, Bielefeld)
+- **URL**: https://github.com/astoeckel/master-thesis-astoeckel-2015
+- **Description**: Willshaw model for associative memories using spiking neurons targeting neuromorphic hardware
+- **Framework**: LaTeX, Python, MATLAB, C++
+- **Thesis PDF**: YES - downloadable v1.2 from GitHub releases (CC BY-ND 4.0)
+- **Complexity**: HIGH
+- **Stars**: 2
+
+---
+
+## student course projects / research group projects
+
+### 3.1 Simple SNN with STDP (University of Osnabruck Course Project)

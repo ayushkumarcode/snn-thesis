@@ -719,31 +719,3 @@ Even at the undergraduate level, you could contribute:
 ### Timeline Estimate
 
 | Task | Time |
-|------|------|
-| Complete snnTorch tutorials 5-7 | 3-5 days |
-| Get baseline SNN working on your dataset | 1-2 weeks |
-| Tune hyperparameters for good accuracy | 1-2 weeks |
-| Run comparison experiments | 1-2 weeks |
-| Write up methodology and results | 2-3 weeks |
-
-This is very feasible within a single semester.
-
----
-
-## 12. Sources
-
-### Foundational Papers
-
-- Neftci, E.O., Mostafa, H., and Zenke, F. (2019). Surrogate Gradient Learning in Spiking Neural Networks. IEEE Signal Processing Magazine, 36, 51-63. https://arxiv.org/abs/1901.09948
-- Zenke, F. and Vogels, T.P. (2021). The Remarkable Robustness of Surrogate Gradient Learning. Neural Computation, 33(4), 899-925. https://direct.mit.edu/neco/article/33/4/899/97482
-- Eshraghian, J.K. et al. (2023). Training Spiking Neural Networks Using Lessons From Deep Learning. Proceedings of the IEEE, 111, 1016-1054. https://arxiv.org/abs/2109.12894
-
-### Recent Advances (2024-2025)
-
-- Gygax, J. and Zenke, F. (2025). Elucidating the Theoretical Underpinnings of Surrogate Gradient Learning. Neural Computation, 37(5), 886-925. https://direct.mit.edu/neco/article/37/5/886/128506
-- Klos, C. and Memmesheimer, R.M. (2025). Smooth Exact Gradient Descent Learning in Spiking Neural Networks. Physical Review Letters, 134, 027301. https://doi.org/10.1103/PhysRevLett.134.027301
-- Stabilizing Direct Training of SNNs: MP-Init and TrSG (2025). https://arxiv.org/abs/2511.08708
-- Wang et al. (2025). Potential Distribution Adjustment and Parametric Surrogate Gradient. Neurocomputing. https://www.sciencedirect.com/science/article/abs/pii/S092523122401960X
-- Fine-Tuning Surrogate Gradient Learning for Optimal Hardware Performance (2024). https://arxiv.org/abs/2402.06211
-- Zhou et al. (2024). Direct Training High-Performance Deep SNNs: A Review. Frontiers in Neuroscience. https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2024.1383844/full
-- Adaptive Gradient Learning for SNNs (IJCAI 2025). https://www.ijcai.org/proceedings/2025/0464.pdf

@@ -396,31 +396,3 @@ Sources: [ISCAS 2026](https://2026.ieee-iscas.org/)
 
 ### 5.3 BioCAS 2026 -- IEEE Biomedical Circuits and Systems Conference
 
-| Field | Details |
-|-------|---------|
-| **Full Name** | IEEE Biomedical Circuits and Systems Conference |
-| **Paper Deadline** | **~May-June 2026** (not yet announced; based on historical pattern) |
-| **Conference Dates** | 8-10 October 2026 |
-| **Location** | Incheon, Korea |
-| **Page Limit** | TBD (typically 4 pages) |
-| **Format** | IEEE conference template |
-| **Realistic for UG?** | MARGINAL. BioCAS focuses on biomedical applications. Environmental sound classification is not core scope unless framed as hearing-aid or assistive technology. |
-| **Focus** | Biomedical circuits and systems, neural interfaces, biosensors |
-
-Sources: [IEEE CASS BioCAS](https://ieee-cas.org/event/conference/2026-ieee-biomedical-circuits-and-systems-conference)
-
----
-
-### 5.4 IEEE EMBC 2026 -- Engineering in Medicine and Biology Conference
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 48th Annual International Conference of the IEEE Engineering in Medicine and Biology Society |
-| **Intention to Submit** | 1 September 2026 |
-| **Paper Deadline** | **1 November 2026** |
-| **Conference Dates** | 26-30 July 2026 (NOTE: conference before deadline -- this is for 2027 proceedings) |
-| **Location** | Toronto, Canada |
-| **Page Limit** | Full papers: 4-7 pages; Poster abstracts: 1 page |
-| **Format** | IEEE conference template |
-| **Realistic for UG?** | MARGINAL. Biomedical focus. Would need strong medical/assistive framing. |
-

@@ -54,3 +54,31 @@ def measure_snn_energy(model, loader, device, num_steps=NUM_STEPS,
         "fc2": NUM_CLASSES, # 50 output neurons
     }
 
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        B = data.shape[0]
+        spk_input = encode_fn(data, num_steps=num_steps).to(device)
+
+        # Forward pass with spike counting
+        mem1 = model.lif1.init_leaky()
+        mem2 = model.lif2.init_leaky()
+        mem3 = model.lif3.init_leaky()
+        mem4 = model.lif4.init_leaky()
+
+        batch_spikes = {"conv1": 0, "conv2": 0, "fc1": 0, "fc2": 0}
+        mem_out_list = []
+
+        for step in range(num_steps):
+            x_t = spk_input[step]
+            cur1 = model.pool1(model.bn1(model.conv1(x_t)))
+            spk1, mem1 = model.lif1(cur1, mem1)
+            batch_spikes["conv1"] += spk1.sum().item()
+
+            cur2 = model.pool2(model.bn2(model.conv2(spk1)))
+            spk2, mem2 = model.lif2(cur2, mem2)
+            batch_spikes["conv2"] += spk2.sum().item()
+
+            pooled = model.avg_pool(spk2)
+            flat = pooled.view(B, -1)
+
+            cur3 = model.fc1(flat)

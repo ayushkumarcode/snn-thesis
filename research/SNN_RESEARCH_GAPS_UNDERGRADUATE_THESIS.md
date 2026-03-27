@@ -390,3 +390,12 @@ best candidates:
 ## confidence
 
 | Finding | Confidence |
+|---------|-----------|
+| Zero SNN papers on ESC-50, UrbanSound8K, Food-101, GTZAN, SVHN, PlantVillage, PTB-XL | HIGH -- searched multiple databases |
+| No framework comparison on real neuromorphic datasets | HIGH -- confirmed via Open Neuromorphic benchmark |
+| SNN regression is brand new (first paper May 2024) | HIGH -- confirmed via Royal Society paper |
+| Environmental sound classification with SNNs unexplored | HIGH -- confirmed via "SNN and Sound" review |
+| NLP/text with SNNs underexplored | HIGH -- multiple surveys confirm |
+| Multimodal SNN barely explored | HIGH -- recent papers confirm |
+| Music generation/classification with SNNs minimal | HIGH -- MuSpike benchmark paper confirms |
+| SOTA accuracy numbers for SHD, CIFAR-10, ImageNet | HIGH -- from published papers |

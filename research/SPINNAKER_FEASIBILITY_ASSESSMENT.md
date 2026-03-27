@@ -390,3 +390,31 @@ Having a SpiNNaker deployment chapter would:
 The SpiNNaker2 RL paper reported: SpiNNaker2 consumed 0.006J vs GPU's 0.19J for CartPole inference -- a 32x reduction. Being able to report similar findings would seriously strengthen the thesis.
 
 ---
+
+## 11. Documentation and resources
+
+| Resource | URL | Quality |
+|----------|-----|---------|
+| sPyNNaker GitHub | [github.com/SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker) | Active, well-maintained |
+| PyNN Examples | [github.com/SpiNNakerManchester/PyNNExamples](https://github.com/SpiNNakerManchester/PyNNExamples) | Good variety |
+| sPyNNaker ReadTheDocs | [spynnaker.readthedocs.io](https://spynnaker.readthedocs.io/) | API reference, adequate |
+| SpiNNaker Tutorial | [spinnaker-tutorial.readthedocs.io](https://spinnaker-tutorial.readthedocs.io/) | Setup and basic usage |
+| Models & Limitations | [SPyNNakerModelsAndLimitations](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html) | Critical reference |
+| EBRAINS Guidebook | [electronicvisions.github.io](https://electronicvisions.github.io/hbp-sp9-guidebook/mc/using_spiNNaker.html) | Platform-specific |
+| sPyNNaker Paper | [Frontiers 2018](https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full) | Definitive reference |
+| SpiNNaker Users Group | [Google Groups](https://groups.google.com/g/spinnakerusers) | Community support |
+| NIR Documentation | [neuroir.org/docs](https://neuroir.org/docs/) | Cross-platform conversion |
+| snnTorch export_nir | [snntorch docs](https://snntorch.readthedocs.io/en/latest/snntorch.export_nir.html) | snnTorch-specific NIR export |
+
+Strengths: well-structured API docs, active GitHub, research papers provide depth. Weaknesses: some docs are for older versions, limited cookbook-style tutorials, EBRAINS portal can be confusing, py-spinnaker2 docs are sparse.
+
+### Quickstart path
+
+1. Register for EBRAINS account
+2. Read the Lab Manual PDF
+3. Run the synfire chain example
+4. Explore PyNNExamples repository
+5. Study the Models & Limitations page
+
+---
+

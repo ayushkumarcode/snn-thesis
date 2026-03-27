@@ -414,31 +414,3 @@ Based on this research, the field can be organized into four paradigms:
 | SATRN | 2025 | Audio tagging | Spiking attention | Comparable to CNNs on US8K |
 | Spiking-LEAF | 2024 | Keyword spotting | Learnable auditory front-end | Outperforms mel spectrograms |
 | SpikSLC-Net | 2025 | Sound localization + classification | Spiking hybrid attention | Joint localization-classification |
-| MISNet | 2025 | Audio-visual classification | Multimodal LIF neuron | First balanced accuracy+efficiency |
-| Larroza et al. | 2025 | Spike encoding benchmark | FC SNN | ESC-10 only (69% TAE) |
-| **Thesis** | **2026** | **ESC-50 classification** | **CNN14 features + SNN head** | **92.50%, 0.95pp gap to ANN** |
-
-### Table 3: Accuracy Gap Collapse Evidence
-
-| Work | Domain | Scratch Gap | Pretrained Gap | Collapse Ratio | Year |
-|------|--------|------------|----------------|----------------|------|
-| **Thesis** | **Audio (ESC-50)** | **16.70pp** | **0.95pp** | **17.6x** | **2026** |
-| Spikformer V2 | Vision (ImageNet) | 7.42pp | ~1pp (SSL) | 7.4x | 2024 |
-| Bu et al. | Vision (ImageNet) | ~7pp | ~1pp (conversion) | ~7x | 2025 |
-| Spiking Vocos | Audio (vocoder) | N/A | ~0pp (distillation) | N/A | 2025 |
-| SAFE | Audio (fidelity) | N/A | ~0pp (hybrid) | N/A | 2025 |
-
----
-
-## 11. Research Gaps Identified
-
-1. **No prior work on PANNs + SNN head.** The thesis is the first.
-2. **No prior work on any audio foundation model + SNN classifier.** No wav2vec, HuBERT, Whisper, CLAP, AudioMAE, or BEATs combined with SNN.
-3. **No prior work on full ESC-50 with SNNs.** Larroza et al. (2025) only tested ESC-10.
-4. **No explicit "gap collapse" measurement in audio.** The thesis provides the first quantified evidence that SNN-ANN gap is a feature-learning problem in the audio domain.
-5. **No ANN-to-SNN conversion for environmental sound classification.** All conversion work is vision-focused or speech-focused.
-6. **No PhD/MSc theses on SNN transfer learning for audio.**
-7. **Limited hybrid ANN-SNN deployment for audio on neuromorphic hardware.** Only DPSNN and thesis's SpiNNaker work exist.
-
----
-

@@ -452,31 +452,3 @@ Sources: [EMBC 2026](https://embc.embs.org/2026/), [Call for Papers](https://emb
 
 Sources: [ICANN 2026](https://e-nns.org/icann2026/), [Call for Papers](https://e-nns.org/icann2026/call-for-papers-2/)
 
----
-
-### 6.2 ESANN 2026 -- European Symposium on Artificial Neural Networks [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 34th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning |
-| **Paper Deadline** | 19 November 2025 (PASSED) |
-| **Conference Dates** | 22-24 April 2026 |
-| **Location** | Bruges, Belgium |
-| **Page Limit** | 6 pages |
-| **Realistic for UG?** | Deadline passed. |
-
-Sources: [ESANN 2026](https://www.esann.org/)
-
----
-
-## 7. WORKSHOPS AT MAJOR CONFERENCES
-
-### 7.1 ICLR 2026 Workshops [NO NEUROMORPHIC WORKSHOP]
-
-ICLR 2026 accepted 40 workshops (out of 135 proposals). **None are dedicated to neuromorphic computing or spiking neural networks.** The closest is "Representational Alignment (Re4-Align)" which covers neural systems alignment but is not SNN-focused.
-
-Workshop dates: 26-27 April 2026, Rio de Janeiro.
-
-Sources: [ICLR 2026 Workshops](https://iclr.cc/virtual/2026/events/workshop)
-
----

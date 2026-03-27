@@ -54,3 +54,31 @@ Parameter efficiency is interesting too: SpikCommander gets 96.71% with only 1.1
 ## Frameworks and Tools
 
 ### Framework Comparison
+
+| Framework | Maintainer | Audio Support | Tutorials | Difficulty | Install |
+|-----------|-----------|--------------|-----------|------------|---------|
+| **snnTorch** | UCSC (Eshraghian) | SHD loader built-in | 18 tutorials | Beginner-friendly | `pip install snntorch` |
+| **SpikingJelly** | Peking Univ. | Speech Commands example (594 LOC) | Extensive docs | Intermediate | `pip install spikingjelly` |
+| **sparch** | Idiap Research | SHD, SSC, GSC, HD | Minimal (research code) | Intermediate | Clone from GitHub |
+| **Norse** | Community | No dedicated audio | Intro notebooks | Intermediate | `pip install norse` |
+| **Lava** | Intel | Loihi deployment | Good docs | Advanced | `pip install lava` |
+| **BindsNET** | UMass | No dedicated audio | Examples | Intermediate | `pip install bindsnet` |
+| **Tonic** | Community | SHD, SSC loaders | Data loading tutorials | Beginner-friendly | `pip install tonic` |
+| **Rockpool** | SynSense | WaveSense tutorial | Good docs | Intermediate | `pip install rockpool` |
+
+### snnTorch (probably the best starting point)
+- https://github.com/jeshraghian/snntorch
+- 18 tutorials covering neuron models, feedforward SNNs, training, surrogate gradients, neuromorphic datasets
+- Built-in SHD dataset loader via `snntorch.spikevision.spikedata.SHD`
+- Google Colab support (no local GPU needed)
+- Has SHD example but no dedicated audio classification tutorial -- the general tutorials apply directly though.
+
+### SpikingJelly
+- https://github.com/fangwei123456/spikingjelly
+- Published in Science Advances
+- Has a complete 594-line Speech Commands audio recognition example
+- Supports activation-based and timestep-based training, CuPy acceleration
+- Internal MelScale implementation
+- The audio example is at `spikingjelly/activation_based/examples/speechcommands.py` -- complete convolutional SNN for 12-class GSC
+
+### sparch (purpose-built for audio)

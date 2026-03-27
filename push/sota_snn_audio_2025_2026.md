@@ -251,31 +251,3 @@ However, environmental sound classification with SNNs remains severely underexpl
 
 | Encoding Method | Used In | Domain | Notes |
 |----------------|---------|--------|-------|
-| **Direct (learnable)** | SpikeSCR, SpikCommander, our thesis | Speech, ESC | Most common for surrogate gradient training |
-| **Rate coding** | Wu et al. 2018, our thesis | Speech, ESC | Straightforward but requires many timesteps |
-| **Threshold Adaptive (TAE)** | Larroza 2025, Ternary Spike 2024 | ESC, speech | Best for environmental sound in Larroza study |
-| **Step Forward (SF)** | Larroza 2025 | ESC | Second-best on UrbanSound8K |
-| **Moving Window (MW)** | Larroza 2025 | ESC | Worst overall in comparative study |
-| **Latency (time-to-first-spike)** | Our thesis, TTFS literature | ESC | 4-7.5x fewer operations than rate |
-| **Phase coding** | Our thesis | ESC | Tied with rate coding in our study |
-| **Population coding** | Our thesis | ESC | Underperformed in our study |
-| **Delta (temporal difference)** | Our thesis | ESC | Very poor for static spectrograms |
-| **Burst coding** | Our thesis | ESC | Worst in our study (6.50%) |
-| **Hilbert Transform** | Haghighatshoar 2025 | SSL | Event-based encoding of analytic signal phase |
-| **RF-PLC** | Zhang 2024 (NeurIPS) | SSL | Phase-locking with Resonate-and-Fire neurons |
-| **Speech2Spikes** | Orchard et al. 2023 | KWS | Delta-based; 88.5% on GSC |
-| **Cochlear/IHC-LIF** | Spiking-LEAF 2024 | KWS | Learnable auditory frontend, best for KWS |
-| **Mel spectrogram + LIF embedding** | SpikeSCR, SpikCommander | Speech | Standard in Spiking Transformer literature |
-| **ANN-to-SNN conversion** | Spiking-FullSubNet 2024 | SE | Post-training conversion for speech enhancement |
-
-### 4.2 Key Insight from Literature
-
-The most successful recent audio SNNs (SpikeSCR, SpikCommander) use **direct encoding** where mel spectrograms are projected through learnable linear layers into spike embeddings via LIF neurons. This is effectively what we call "direct encoding" in our thesis. It bypasses handcrafted spike encoding entirely and lets the network learn optimal spike representations via surrogate gradient training.
-
-Our thesis is the ONLY work to systematically compare 7 encoding methods on the same architecture and dataset for environmental sound. The encoding hierarchy we found (direct >> rate = phase > population > latency >> delta = burst) is a novel contribution with no precedent.
-
----
-
-## 5. Neuromorphic Hardware for Audio SNNs
-
-### 5.1 Hardware Deployment Summary

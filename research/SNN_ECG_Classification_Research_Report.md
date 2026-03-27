@@ -311,31 +311,3 @@ This alone would be a solid contribution given the limited existing implementati
 **Why novel**: Almost all SNN-ECG papers use MIT-BIH (single-lead, 5 classes). PTB-XL is the modern gold-standard but is virtually untouched by SNN research.
 **Feasibility**: MODERATE-HIGH -- larger dataset and multi-label adds complexity, but the framework is the same.
 **Impact**: HIGH -- fills a glaring gap in the literature.
-
-#### 3. SNN Interpretability via Spike Pattern Analysis
-**What**: Analyze what the SNN "sees" by visualizing spike patterns corresponding to different arrhythmia classes. Map spike timing to clinical ECG features (P-wave, QRS, T-wave).
-**Why novel**: SNN interpretability for ECG is almost completely unexplored. Spike timing patterns could map to clinically meaningful ECG intervals.
-**Feasibility**: MODERATE -- requires creativity in visualization and analysis.
-**Impact**: HIGH -- bridges gap between computational neuroscience and clinical cardiology.
-
-#### 4. Energy-Accuracy Pareto Analysis Across SNN Architectures
-**What**: Systematically map the energy-accuracy trade-off curve for multiple SNN architectures (feed-forward, recurrent, convolutional) with different encoding methods.
-**Why novel**: Most papers report a single accuracy/energy point. No comprehensive Pareto frontier analysis exists.
-**Feasibility**: HIGH -- straightforward to implement multiple architectures and measure.
-**Impact**: MODERATE-HIGH -- practical guidance for deployment decisions.
-
-#### 5. Continual Learning SNN for ECG (Ambitious)
-**What**: Train an SNN that can learn new arrhythmia classes over time without forgetting old ones, leveraging STDP's natural online learning capabilities.
-**Why novel**: Zero papers found combining SNN continual learning with ECG. STDP is inherently suited to online learning.
-**Feasibility**: MODERATE -- requires understanding of continual learning; more research-heavy.
-**Impact**: VERY HIGH -- would be genuinely novel.
-
-### Combined Approach (Recommended for Maximum Impact)
-A strong thesis could combine angles 1 + 4:
-- **Title**: "Energy-Efficient ECG Classification with Spiking Neural Networks: A Systematic Study of Encoding Methods and Architecture Trade-offs"
-- This provides: (a) clear methodology, (b) multiple experiments, (c) practical conclusions, (d) fills a gap in the literature.
-
----
-
-## 9. Research Gaps and Limitations
-

@@ -362,3 +362,31 @@ this lets you:
 2. **standardized SNN-EEG benchmarks** -- no MOABB equivalent for SNN-based BCI. papers use different preprocessing, splits, and metrics, making comparison hard.
 
 3. **cross-subject SNN generalization** -- most papers report within-subject. cross-subject transfer learning with SNNs is under-explored.
+
+4. **real-time SNN-BCI demos** -- few papers show actual real-time decoding. most are offline.
+
+5. **spike encoding optimization for EEG** -- the best way to convert EEG to spikes isn't settled. rate, temporal, delta modulation, learned encodings all exist but rarely compared head-to-head.
+
+6. **hybrid SNN-Transformer for EEG** -- spiking transformers exist for vision but their EEG application is just beginning.
+
+### easy contributions for an undergrad
+
+- compare spike encoding methods on the same EEG dataset
+- reproduce EESCN or HR-SNN and extend to a new dataset
+- energy analysis of SNN vs CNN for EEG (lots of papers claim efficiency but few quantify it rigorously)
+- applying snnTorch to EEG with proper documentation
+
+---
+
+## 9. key research groups and venues
+
+### research groups
+
+| Group | Affiliation | Focus | Notable Work |
+|---|---|---|---|
+| COMBRA Lab | Various | SNN on neuromorphic hardware for EEG | snn-eeg (Loihi deployment) |
+| BCMI Lab (Wei-Long Zheng) | Shanghai Jiao Tong University | SEED dataset, EEG emotion recognition | SEED, SEED-IV, SEED-VII |
+| Nikola Kasabov | AUT, New Zealand | NeuCube framework | Pioneering SNN-EEG work |
+| Jason Eshraghian | UC Santa Cruz | snnTorch framework | Training SNNs tutorial (IEEE Proceedings) |
+| SpikingJelly team | Peking University | SpikingJelly framework | Science Advances publication |
+| SyNSense | Zurich | Xylo neuromorphic chip | Real-time seizure detection |

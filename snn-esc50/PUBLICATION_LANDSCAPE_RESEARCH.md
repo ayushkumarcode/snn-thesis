@@ -180,20 +180,20 @@ what we have vs what top papers have:
 | hardware | full pipeline on Loihi/SpiNNaker | FC2-only hybrid | moderate (honest about it) |
 | wow number | 85.65% ImageNet, 109x energy | 6x robustness, 16.7pp to 0.95pp | no gap |
 | statistical rigor | varies (many papers lack it) | 5-fold, p-values, Cohen's d | we exceed most |
-### Formula 1: "First X on Y"
-**Examples:**
-- QKFormer: "First directly-trained SNN exceeding 85% on ImageNet"
-- SpikeLLM: "First spiking large language model"
-- Speech2Spikes: "First real-time neuromorphic audio pipeline"
-- Dominguez-Morales: "First SNN audio on SpiNNaker"
+| depth of analysis | usually 1-2 analyses | 7 enc + adversarial + transfer + temporal + CL + noise + surrogate + energy | we exceed most |
+| clarity of thesis | one clear message | multiple findings, unclear which is central | THIS is our gap |
 
-**YOUR VERSION:** "First convolutional SNN evaluated on ESC-50" + "First neuromorphic hardware deployment for environmental sound"
+### the specific recommended framing
 
-**Assessment:** This is legitimate and verified. No prior work exists. Strong.
+current title: "Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment"
 
-### Formula 2: "X orders of magnitude improvement in Y"
-**Examples:**
-- Speech2Spikes: 109x energy reduction
+problem: sounds like a survey/benchmark. "from X to Y" suggests breadth not depth. reviewers may think "lots of experiments but what's the insight?"
+
+option A (gap-collapse as central thesis):
+
+title: "The SNN-ANN Gap is a Feature-Learning Problem: Evidence from Environmental Sound Classification with Seven Encodings and SpiNNaker Deployment"
+
+one-sentence thesis: when given equal-quality features, SNNs match ANNs within 0.95pp on 50-class audio -- the 16.7pp scratch-training gap reflects a feature-learning bottleneck, not a spiking computation limitation.
 - QKFormer: 10.84pp improvement over Spikformer
 - Neuromorphic constraint solving: 1000x more efficient than CPUs
 

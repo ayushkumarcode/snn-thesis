@@ -82,20 +82,20 @@ The gap collapse from 16.70 pp to 0.95 pp with pretrained features is the most p
 
 **Practical deployment:**
 1. Frozen pretrained ANN (CNN14 or similar) extracts features -- runs once on CPU/NPU
-3. The overall pipeline achieves 92.50% accuracy with hardware-compatible SNN inference
+2. SNN classifier runs on SpiNNaker/Loihi, ~86 nJ/sample (FC2 layer)
+3. 92.50% accuracy with hardware-compatible inference
 
-This is a more promising direction for near-term deployment than end-to-end spiking computation.
+More promising than end-to-end spiking for near-term deployment.
 
 ---
 
-## 7.6 Continual Learning: What the Experiment Reveals
+## 7.6 continual learning: what the experiment reveals
 
-The continual learning experiment (§6.2) confirms the expected finding — both SNN and ANN suffer severe catastrophic forgetting — but provides a quantitative comparison and an unexpected finding: **the SNN forgets 4.7 pp less than the ANN** (69.9% ± 4.3% vs 74.7% ± 2.4% mean forgetting, 5-fold validated).
+CL experiment (section 6.2) confirms the expected -- both suffer severe forgetting -- but with a quantitative surprise: **SNN forgets 4.7 pp less** (69.9% +/- 4.3% vs 74.7% +/- 2.4%, 5-fold validated).
 
-**Why the SNN forgets less:** The mechanism is the same as for adversarial robustness — the spike threshold acts as a computational gate. During backward pass, only weights connected to neurons that actually fired receive gradient updates. With 74.16% activation sparsity, approximately 74% of weights receive zero gradient per forward pass. When fine-tuning on a new task, fewer weights are modified, preserving more of the earlier task representation. The ANN's dense activations produce non-zero gradients for all weights on all forward passes, enabling more complete overwriting. The 5-fold validation confirms this advantage is consistent across folds (SNN std=4.3%, ANN std=2.4%).
+**Why:** same mechanism as adversarial robustness. Spike threshold = computational gate. During backward pass, only weights connected to neurons that fired get updates. With 74.16% sparsity, ~74% of weights get zero gradient per pass. Fine-tuning on new task modifies fewer weights, preserving earlier representation. ANN's dense activations = non-zero gradients for all weights = more complete overwriting.
 
-**Why both forget aggressively:** The experimental setting is extreme — no replay, no regularisation, 320 training samples per task out of 1,600 total. The gradient pressure on each task is proportionally large relative to the task size. Mean forgetting of 69.9% and 74.7% (5-fold validated) significantly exceeds the 30–50% typical in regularisation-equipped continual learning. This is baseline forgetting, not regularised forgetting, and should be interpreted as such.
-
+**Why both forget aggressively:** extreme setting -- no replay, no regularisation, 320 samples/task out of 1600. 69.9% and 74.7% significantly exceeds the 30-50% typical with regularisation. This is baseline forgetting, not regularised.
 **Relationship to the adversarial robustness finding (§6.1):** Both findings point to the same underlying property of SNNs: the binary spike threshold creates selective information flow. For adversarial robustness, this makes the SNN harder to fool by small perturbations. For continual learning, this makes the SNN harder to fully overwrite by new task gradients. The spike threshold is not just a training approximation — it is a computational primitive that shapes information processing at inference and training time.
 
 **Implications for future work:** The baseline forgetting rate (69.9% ± 4.3% for SNN, 5-fold validated) quantifies the improvement achievable by SNN-specific consolidation mechanisms. Golden et al. (2022, PLoS Comp Bio) demonstrated sleep-based consolidation reducing forgetting by >50% in simpler spike-rate networks. Applied to this architecture, that would project to ~35% forgetting with consolidation, approaching the 30–40% ANN forgetting with EWC regularisation (Kirkpatrick et al. 2017).

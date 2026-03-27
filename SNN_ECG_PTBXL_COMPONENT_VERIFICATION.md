@@ -490,31 +490,3 @@ loss = backprop.TBPTT(net, train_loader, optimizer=optimizer,
 |---|---|
 | **EXISTS** | PARTIAL -- no PTB-XL SNN code exists |
 | **VERIFIED HOW** | Exhaustive search of GitHub, literature reviews |
-| **POTENTIAL BLOCKER** | LOW -- novelty is good for thesis |
-
-**What exists:**
-
-| Repository / Paper | Dataset | Framework | Architecture | Notes |
-|---|---|---|---|---|
-| [Efficient-spiking-networks](https://github.com/byin-cwi/Efficient-spiking-networks) | QTDB (PhysioNet) | Custom PyTorch | Adaptive spiking recurrent | ECG is one of many tasks |
-| [HDL-SpikingNet-ECG](https://github.com/alirezaamir/HDL-SpikingNet-ECG) | Unspecified | Verilog (FPGA) | STDP-based | Hardware only, no training code |
-| Amirshahi et al. 2019 | MIT-BIH | Custom | 3-layer STDP | 97.9% on 4 classes |
-| Banerjee et al. | MIT-BIH | Custom | STDP 1-layer | 94.3% on 4 classes |
-| Feng et al. | PhysioNet 2017 | Custom | 14-layer converted CNN | 84.4% on 4 classes |
-| Buettner et al. | MIT-BIH | Intel Loihi | Converted CNN | 97.8% on 5 classes |
-
-**Critical finding: ZERO papers/repos implement SNN on PTB-XL.**
-
-All prior SNN-ECG work uses MIT-BIH Arrhythmia Database (much simpler: single-lead, beat-level classification) or smaller datasets. PTB-XL (12-lead, record-level, multi-label) is significantly more complex.
-
-**This is actually GOOD for a thesis** -- you would be producing genuinely novel work.
-
-**Closest usable reference code:** The [ecg_ptbxl_benchmarking](https://github.com/helme/ecg_ptbxl_benchmarking) repo provides the ANN pipeline (data loading, evaluation, splits) that you can reuse, replacing only the model with an SNN.
-
-**Sources:** [SNN-ECG Review Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362428/), [SpikingJelly publications](https://github.com/fangwei123456/spikingjelly/blob/master/publications.md)
-
----
-
-### 13. Known Issues and Gotchas
-
-| Field | Detail |

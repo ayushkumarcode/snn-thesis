@@ -82,3 +82,31 @@ class SpikeRegSNN(nn.Module):
             spk2, m2 = self.n2(cur2, m2, step)
             layer_spikes["conv2"] = layer_spikes["conv2"] + spk2.mean()
 
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+
+            cur3 = self.fc1(flat)
+            spk3, m3 = self.n3(cur3, m3, step)
+            layer_spikes["fc1"] = layer_spikes["fc1"] + spk3.mean()
+
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, m4 = self.n4(cur4, m4, step)
+            layer_spikes["out"] = layer_spikes["out"] + spk4.mean()
+
+            spk_rec.append(spk4)
+            mem_rec.append(m4)
+
+        # Normalize by timesteps to get average spike rate
+        for k in layer_spikes:
+            layer_spikes[k] = layer_spikes[k] / self.num_steps
+
+        return torch.stack(spk_rec), torch.stack(mem_rec), layer_spikes
+
+
+def train_epoch(model, loader, optimizer, device, lambda_conv, lambda_fc):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0

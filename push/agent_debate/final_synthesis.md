@@ -104,31 +104,3 @@ Conv2d → BN → MaxPool → LIF, repeated twice, then FC layers is a standard 
 ### 2.3 The SpiNNaker accuracy gap may be questioned
 
 33.1% SpiNNaker vs 47.15% software (12.8 pp gap) will prompt questions about whether the FC2-only hybrid approach is a fair evaluation of "SpiNNaker deployment." Technically, the SNN is not fully deployed on SpiNNaker — FC1 and LIF layers 1-3 run in software. The paper documents this honestly, but a reviewer could argue this is not a real hardware result. The counter-argument — that the hybrid approach is itself the novel contribution, documenting what can and cannot run on SpiNNaker and why — is correct, but requires clear framing in the paper.
-
-### 2.4 The adversarial robustness result has a known methodological caveat
-
-Wang et al. (arXiv:2512.22522, 2025) argue that standard FGSM/PGD attacks may underestimate SNN vulnerability due to the gradient approximation through the surrogate function. This means the SNN's apparent robustness advantage (26% vs 1.75% at ε=0.1) could partially reflect gradient masking rather than genuine robustness. The paper should acknowledge this explicitly and note it as a limitation. Failure to do so would invite a sharp reviewer comment. The finding is still worth reporting as a first-of-its-kind result, but the caveat must be foregrounded.
-
-### 2.5 The continual learning experiment lacks baselines
-
-The forgetting comparison (SNN 74.4%, ANN 81.3%) is reported without any standard continual learning baselines. There is no EWC, no PackNet, no replay buffer comparison. The result describes what happens, not why. For a dedicated continual learning paper, this would be a fatal flaw. At ICONS, in an 8-page paper where it appears as one of several secondary results, it is acceptable as a descriptive finding, but it should be framed explicitly as preliminary.
-
-### 2.6 Augmented training is a negative result, not a novel one
-
-Data augmentation hurting SNN training on small datasets is consistent with known SNN sensitivity to training instability. It is an honest result to report, but it does not add novelty to the paper.
-
-### 2.7 The PANNs+SNN result at 92.5% is driven almost entirely by CNN14
-
-CNN14 was trained on 2 million AudioSet clips. The SNN head trained on its frozen embeddings only needs to classify 50 classes from already-excellent representations. The 92.5% is real and reproducible, but it should not be presented as "the SNN achieving 92.5% accuracy." It is more precisely "an SNN classifier head trained on CNN14 features achieving 92.5%." The scientific contribution is the gap analysis, not the 92.5% headline. Reviewers who misread this framing will object.
-
----
-
-## Part 3: The Scientific Story
-
-### The single most important finding
-
-**The SNN-ANN accuracy gap on audio classification is a feature-learning problem, not a spiking computation problem.**
-
-This is the one finding worth remembering from this thesis. Everything else — the 47.15% encoding result, the SpiNNaker deployment, the adversarial robustness — is individually interesting but parochial. The gap-collapse finding has implications beyond this paper and beyond ESC-50.
-
-The argument, spelled out explicitly:

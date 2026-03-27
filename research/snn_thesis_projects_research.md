@@ -26,3 +26,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - 49 stars, 17 forks. That's a lot for a student project -- clearly struck a chord (pun intended). Novel application domain, strong documentation. Good model for an ambitious but achievable BEng project.
 
 ### SNN for Digit Recognition (King's College London BSc)
+- https://github.com/LucaMozzo/SpikingNeuralNetwork
+- Efficient C++ implementation of a stochastic SNN for handwritten digit recognition
+- C/C++ (custom, no framework), OpenCV3, SQLite, Visual Studio 2017. MNIST.
+- Multiple decoding methods explored (rate, first-to-spike). Original implementation needed 2h37m per epoch, then heavily optimized.
+- Impressively low-level for an undergrad. Building from scratch in C++ is unusual -- most students use existing frameworks. The optimization challenge shows real engineering effort.
+- 11 stars, 3 forks, 45 commits
+
+### SNN for Autonomous Locomotion Control (Bachelor Thesis)
+- https://github.com/romenr/bachelorthesis
+- Using SNNs to control a mobile robot following a red object
+- V-REP (robot sim), ROS, Python, R-STDP learning
+- **Honest about failure:** "network weights do not seem to converge"
+- TeX source and presentation slides in repo. 2 stars, 191 commits.
+- Realistic bachelor thesis outcome. The project was ambitious (robotics + SNN + learning), and partial results are normal for this scope. Not every thesis succeeds fully and that's ok.
+
+### Spiking Stereo Matching (BSc Thesis)
+- https://github.com/gdikov/SpikingStereoMatching
+- Real-time event-based stereo matching using DVS, deployed on SpiNNaker
+- sPyNNaker toolchain, PyNN, SpiNNaker hardware
+- 2ms latency with neuromorphic hardware (published in Biomimetic and Biohybrid Systems, 2017)
+- Very advanced for a BSc thesis. Published paper from the work. Probably had SpiNNaker access through Manchester's facilities.
+- 2 stars, 2 forks, 182 commits
+
+### QuadBot-NeuroMorphic (Cambridge Undergraduate Research)
+- https://github.com/Cambridge-Control-Lab/QuadBot-NeuroMorphic
+- Neuromorphic control of quadrupedal robot locomotion using spiking neural circuits (CPGs)
+- MATLAB/Simulink R2022b+, SOLIDWORKS, VEX V5 Robot Brain, Python
+- Successfully implemented biologically-inspired gaits on physical robots (NeuroPup and Synapider)

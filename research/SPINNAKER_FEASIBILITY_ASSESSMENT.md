@@ -362,3 +362,31 @@ What this tells us: Manchester undergrad SNN theses aren't publicly accessible (
 - Architecture mismatch: some snnTorch layer types may not have sPyNNaker equivalents
 - EBRAINS queue times: shared resource
 - Limited visibility into on-chip execution when debugging remotely
+- Documentation gaps
+
+---
+
+## 10. What SpiNNaker adds to the thesis
+
+### Measurable metrics from real hardware
+
+| Metric | How Measured | Value to Thesis |
+|--------|-------------|----------------|
+| Real energy per inference (Joules) | SpiNNaker power monitoring | HIGH -- real hardware vs simulated estimate |
+| Real inference latency (ms) | Wall-clock time | HIGH -- biological real-time demonstration |
+| Power draw (Watts) | Hardware power measurement | MODERATE |
+| Accuracy on hardware | Compare with software accuracy | HIGH -- quantifies precision loss |
+| Throughput (inferences/sec) | Batch inference timing | MODERATE |
+
+### Why it matters
+
+Having a SpiNNaker deployment chapter would:
+1. Demonstrate practical neuromorphic deployment (not just simulation)
+2. Validate energy efficiency claims with real measurements
+3. Show cross-platform portability (snnTorch -> NIR -> SpiNNaker)
+4. Differentiate from pure-software theses (most undergrad SNN theses are software-only)
+5. Align with supervisor expertise (Oliver Rhodes is a SpiNNaker developer)
+
+The SpiNNaker2 RL paper reported: SpiNNaker2 consumed 0.006J vs GPU's 0.19J for CartPole inference -- a 32x reduction. Being able to report similar findings would seriously strengthen the thesis.
+
+---

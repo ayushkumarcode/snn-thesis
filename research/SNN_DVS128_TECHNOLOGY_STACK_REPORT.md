@@ -838,3 +838,31 @@ python -m spikingjelly.activation_based.examples.classify_dvsg \
     -T 16 \
     -device cuda:0 \
     -b 16 \
+    -epochs 64 \
+    -data-dir ./data/DVS128Gesture \
+    -out-dir ./logs \
+    -amp \
+    -opt adam \
+    -lr 0.001 \
+    -channels 128
+```
+
+Expected results:
+- Epoch 0: ~40% train accuracy, ~62% test accuracy
+- After 64 epochs: ~93-95% test accuracy
+- After 256 epochs: ~96% peak test accuracy
+- Training speed: ~28 sec/epoch (torch backend) or ~18 sec/epoch (cupy backend)
+
+Source code: `spikingjelly/activation_based/examples/classify_dvsg.py` in the SpikingJelly repo.
+
+### Full Pipeline: Data Download to Trained Model
+
+**Step 1: Environment Setup**
+```bash
+conda create -n snn python=3.10
+conda activate snn
+pip install torch torchvision torchaudio  # From pytorch.org
+pip install spikingjelly
+pip install tonic
+pip install syops
+pip install matplotlib tensorboard

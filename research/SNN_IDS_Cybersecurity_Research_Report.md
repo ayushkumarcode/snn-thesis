@@ -87,31 +87,3 @@ As a thesis topic, this is well-positioned: the field is active enough to provid
 |-------|---------|----------|--------|--------|--------|
 | ConvSNN (Wang 2024) | CSE-CIC-IDS2018 | 98.82% | -- | 1.775 x10^-4 kWh/10K | Scientific Reports |
 | ConvSNN (Wang 2024) | CIC-DDoS2019 | 99.86% | -- | (same model) | Scientific Reports |
-| Single-Spike SNN (Zhou 2020) | NSL-KDD | 99.0% | AUC=1.00 | -- | arXiv |
-| Single-Spike SNN (Zhou 2020) | UNSW-NB15 | 96.80% | -- | -- | arXiv |
-| Single-Spike SNN (Zhou 2020) | CICIDS-2017 | 99.53% | -- | -- | arXiv |
-| TASNN (2026) | NSL-KDD | -- | F1=0.93, AUC=0.98 | Low (spiking) | Scientific Reports |
-| LOA-BHLESNN (2025) | ToN-IoT | 99.96% | -- | -- | JAIT |
-| LOA-BHLESNN (2025) | BoT-IoT | 99.94% | -- | -- | JAIT |
-| HRSNN (2025) | IoT datasets | 99.60% | -- | -- | PMC |
-| Lifelong SNN (Mia 2025) | UNSW-NB15 (continual) | 85.3% | -- | Very low (Lava) | ACM ICONS |
-| Cyber-Neuro RT (2022) | NSL-KDD | 98.4% (9-class) | -- | Neuromorphic SWaP-C | Procedia CS |
-| NeuCube SNN (2024) | CIC-Darknet2020 | 84.31% | -- | -- | ICN |
-| FedCSIS SNN (2024) | IoT dataset | -- | F1=0.957 | -- | FedCSIS |
-
-### 4.2 Comparison with Traditional ML/DL Baselines
-
-| Method | NSL-KDD (typical) | UNSW-NB15 (typical) | CICIDS-2017 (typical) |
-|--------|-------------------|---------------------|------------------------|
-| Random Forest | 95-99% | 93-97% | 97-99% |
-| SVM | 92-97% | 88-93% | 95-98% |
-| Decision Tree | 93-97% | 90-95% | 96-99% |
-| CNN | 97-99% | 95-98% | 98-99% |
-| LSTM/RNN | 96-99% | 93-97% | 97-99% |
-| **SNN (best reported)** | **98.4-99.0%** | **85.3-96.8%** | **99.53%** |
-
-### 4.3 Key Insights
-
-1. **Accuracy is competitive but not the main selling point.** SNNs match traditional DL on most benchmarks. On some datasets (CICIDS), they exceed. On harder tasks like continual learning (UNSW-NB15), accuracy drops to 85.3% but this is expected -- the comparison should be against other continual learning methods, not static models.
-
-2. **The real advantage is efficiency.** Wang et al. (2024) demonstrated this decisively:

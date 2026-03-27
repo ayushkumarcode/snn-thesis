@@ -306,3 +306,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 
 ---
 
+## Framework Ecosystem
+
+| Framework | URL | Best For | Student-Friendly? |
+|-----------|-----|----------|-------------------|
+| **snnTorch** | https://github.com/jeshraghian/snntorch | PyTorch-based training, gradient descent, tutorials | YES -- excellent tutorials |
+| **SpikingJelly** | https://github.com/fangwei123456/spikingjelly | Full-stack SNN development, PyTorch-based | Moderate -- some Chinese docs |
+| **Brian2** | https://github.com/brian-team/brian2 | Biological neuroscience simulation | YES -- great docs |
+| **BindsNET** | https://github.com/BindsNET/bindsnet | STDP learning, PyTorch integration | YES -- good examples |
+| **Norse** | https://github.com/norse/norse | Deep learning + SNNs in PyTorch | Moderate |
+| **SpyTorch** | https://github.com/fzenke/spytorch | Surrogate gradient learning tutorials | YES -- tutorial focused |
+| **Lava** | https://github.com/lava-nc/lava-dl | Intel Loihi deployment | NO -- hardware specific |
+| **PySNN** | https://github.com/BasBuller/PySNN | Simple PyTorch SNN | YES -- beginner friendly |
+
+---
+
+## snnTorch-Tagged Projects (from GitHub Topics)
+
+Smaller projects found via the snntorch GitHub topic:
+
+| Project | Description | Stars |
+|---------|-------------|-------|
+| neuromorphic_classifier | MNIST classification with SNN | 1 |
+| snn-tre | SNN model to classify MNIST | 0 |
+| IA_in_complex_game_snn | Evolving SNNs for trash collection game | 2 |
+| Spiking-ResNet | Blood pressure prediction from PPG | 2 |
+| search-and-rescue | Drone computer vision with SNN | 1 |
+| snn-image-classification | Computer vision basics | 0 |
+| Spiking-Classifier | Image classification with Gradio UI | 0 |

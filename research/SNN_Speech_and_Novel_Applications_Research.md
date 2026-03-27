@@ -353,31 +353,3 @@ Key highlights:
 **Paper Count: 5-10 papers | Maturity: MEDIUM**
 
 | Paper | Year | Key Result |
-|-------|------|------------|
-| SpikeGPT | 2023 | First spiking language model; 46M params; 33.2x energy reduction |
-| SpikeBERT | 2023 | Comparable to BERT on text classification |
-| SpikingBERT (AAAI) | 2024 | Knowledge distillation from BERT |
-| SpikingMiniLM | 2024 | Energy-efficient NLU |
-| SNNLP | 2024 | Comprehensive SNN for NLP framework |
-
-**Assessment:** Emerging field. SpikeGPT is notable but very small (46M params vs billions for GPT-3/4). Practical NLP with SNNs remains far behind ANNs. Thesis opportunity in niche tasks (sentiment analysis, intent detection for edge devices).
-
-### 6I. Other Creative Applications
-
-**SNN + Point Cloud / 3D Processing:**
-- S3DNet: 92.34% on ModelNet40, first SNN point cloud segmentation (85.0% ShapeNetPart)
-- Spiking Point Transformer (AAAI 2025)
-
-**SNN + Image Super-Resolution:**
-- SpikeSR for remote sensing super-resolution
-- MLFIN for general image super-resolution
-- ESDNet for image deraining (IJCAI 2024)
-
-**SNN + Optical Flow / Depth Estimation:**
-- Natural pairing with event cameras
-- StereoSpike for depth estimation on MVSEC
-- SDformerFlow: Spiking transformer for event-based optical flow
-
-**SNN + Continual/Lifelong Learning:**
-- CLP-SNN on Loihi 2 for real-time continual learning
-- Brain-inspired NACA algorithm for catastrophic forgetting mitigation

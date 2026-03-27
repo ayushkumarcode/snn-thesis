@@ -54,3 +54,31 @@ Only 3 confirmed undergrad SNN projects found publicly:
 
 | Project | Tools | Results | Thesis PDF? |
 |---------|-------|---------|-------------|
+| Spiking Grid Cells on SpiNNaker (Manchester MSc, Buttigieg 2019) | SpiNNaker, sPyNNaker, Python 2.7 | Grid cell spatial navigation model | Yes (Google Drive) |
+| Event-Based Robot Control (TUM, 59 stars) | TensorFlow, V-REP, ROS, NEST, DVS | Lane-following with DRL+SNN | Yes |
+| Deep Spiking Q-Networks (TUM, 11 stars) | SpyTorch, NEST, OpenAI Gym | CartPole + RL with SNNs | Yes |
+| Brain-Machine Interface (SpiNNaker) | SpiNNaker 4 chips, STDP | 73.4% EEG classification | Yes |
+| SNN-RL Actor-Critic (21 stars) | NEST 3, Docker, MongoDB | R-STDP for line-following | Yes |
+| SNN for Hand Kinematics from sEMG | Brian2, C++/Cython | EMG-to-hand-movement decoding | No |
+| SNN Formation Control | Norse, PyTorch | Multi-agent formation control | No |
+
+---
+
+## Course/Research Projects (best scope calibration for 3rd year)
+
+These are the most realistic comparisons:
+
+### Tier 1 -- Achievable (good grade)
+
+| Project | Framework | Datasets | Key Result |
+|---------|-----------|----------|------------|
+| SNN vs CNN Comparison (sofi12321) | snnTorch | SOCOFing, EMNIST, Fashion-MNIST | SNN 98% vs CNN 83% on fingerprints |
+| SNN Image Classification (HaoyiZhu) | snnTorch | Static + spike data | 99.12% static, 97.05% spike |
+| Simple SNN with STDP (4 students, Osnabruck) | Python from scratch | MNIST | Plateaued quickly, honest about limits |
+| ANN vs SNN Comparison (NicolaCST) | Python | Various | Power consumption analysis |
+
+### Tier 2 -- Ambitious (very good grade)
+
+| Project | Framework | Datasets | Key Result |
+|---------|-----------|----------|------------|
+| Deep Learning with Biologically Plausible NNs (chiralevy) | snnTorch | MNIST, CIFAR-10, Speech Commands | MNIST 98.06%, CIFAR-10 70.60%, Speech 91.20% |

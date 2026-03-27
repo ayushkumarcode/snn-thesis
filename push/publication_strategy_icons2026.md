@@ -18,31 +18,3 @@ The EUSIPCO 2026 deadline has already passed (13 February 2026). ICASSP 2026 dea
 
 ### Conference Details
 
-| Field | Details |
-|-------|---------|
-| **Full Name** | ACM International Conference on Neuromorphic Systems (ICONS 2026) |
-| **Year** | 10th edition |
-| **Location** | Chicago, Illinois, USA |
-| **Dates** | August 4--6, 2026 |
-| **Publisher** | ACM (fully open access from 2026) |
-| **Submission Portal** | EasyChair: https://easychair.org/conferences?conf=icons26 |
-| **Website** | https://iconsneuromorphic.cc/ |
-
-### Key Deadlines
-
-| Milestone | Date |
-|-----------|------|
-| Paper submission deadline | **April 1, 2026 (AoE)** |
-| Reviews due | May 13, 2026 |
-| Reviews to authors | May 18, 2026 |
-| Author rebuttals due | May 25, 2026 |
-| Final notification | June 5, 2026 |
-| Camera-ready papers due | June 24, 2026 |
-| Conference | August 4--6, 2026 |
-
-**Note:** Rebuttals are permitted, which is favorable -- it gives an opportunity to address reviewer concerns.
-
-### Formatting Requirements
-
-- **Full papers:** 8 pages maximum (priority for 20-minute talks; otherwise posters)
-- **Short papers:** 4 pages maximum (eligible for 10-minute talks; otherwise posters)

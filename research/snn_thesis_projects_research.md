@@ -138,3 +138,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - https://github.com/BSVogler/SNN-RL
 - Actor-critic RL framework with spiking network actors using R-STDP
 - NEST 3, Python 3.7/3.8, Docker, MongoDB. Line-following task.
+- **Thesis PDF: Thesis.pdf in repo**
+- 21 stars, 3 forks
+
+### Event-Based End-to-End Robot Control (TUM Masters)
+- https://github.com/clamesc/Training-Neural-Networks-for-Event-Based-End-to-End-Robot-Control
+- Robot steering with DVS event camera using DRL and SNNs for lane-keeping
+- TensorFlow, V-REP, ROS, NEST 2.10.0, Python 2.7
+- Both DQN-SNN and R-STDP methods worked for lane following.
+- **Thesis PDF included**
+- 59 stars, 23 forks -- most popular thesis project i found. Great documentation. Combines DVS, robotics, and SNNs.
+
+### CartPole with SNNs inspired by Theory of Mind
+- https://github.com/atenagm1375/cartpole
+- SNN-based CartPole control inspired by Theory of Mind concepts
+- PyTorch, BindsNet, OpenAI Gym. CartPole, River Raid.
+- 1 star, 77 commits
+
+### GANs for Spiking Time Series (UvA Masters)
+- https://github.com/HitLuca/GANs_for_spiking_time_series
+- Generating spiking time series patterns using GANs (University of Amsterdam)
+- Interesting intersection of GANs and spiking data
+
+### Use of Spiking Neural Networks (Thesis)
+- https://github.com/honzikv/use-of-snn
+- Three experiments: EEG classification, P300 detection, surrogate gradient MNIST/Fashion-MNIST
+- PyTorch, TensorFlow, Jupyter
+- BNCI Horizon 2020 EEG, Harvard P300, MNIST, Fashion MNIST
+- Successfully converted CNN to SNN for EEG; surrogate gradient training on image datasets

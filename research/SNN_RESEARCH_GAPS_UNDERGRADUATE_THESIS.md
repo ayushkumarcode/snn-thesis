@@ -250,3 +250,31 @@ these are mostly "running experiments" rather than "inventing methods." each fil
 
 ### tier 2: moderate effort, strong novelty
 
+#### 2A. timestep sensitivity study
+- vary T=2,4,8,16,32,64 on 3+ datasets (MNIST, Fashion-MNIST, CIFAR-10, SHD). measure accuracy, training time, estimated energy.
+- why: no study like this exists. papers pick arbitrary T values.
+- effort: MEDIUM. lots of training runs but each is simple.
+
+#### 2B. encoding method comparison on audio
+- compare rate, latency, delta modulation, direct spike encoding on SHD and SSC with same architecture.
+- why: zero comparison studies for audio neuromorphic data.
+- effort: MEDIUM. need to implement multiple encoders.
+
+#### 2C. SNN for ECG arrhythmia classification
+- snnTorch CSNN on MIT-BIH or PTB-XL. compare with CNN and LSTM.
+- why: 2-3 SNN ECG papers exist, none using snnTorch. PTB-XL has zero SNN results.
+- effort: MEDIUM. need ECG preprocessing + spike encoding.
+
+#### 2D. SNN for network intrusion detection
+- SNN on CICIDS-2017 or UNSW-NB15. compare with RF, XGBoost, DNN.
+- why: few papers exist but none use snnTorch, none have reproducible comparisons with standard ML.
+- effort: MEDIUM. tabular data needs spike encoding strategy.
+
+#### 2E. neuromorphic data augmentation on DVS128 Gesture
+- apply NDA techniques to DVS128 Gesture (NDA was only tested on CIFAR10-DVS and N-Caltech101).
+- why: NDA paper explicitly suggests this.
+- effort: MEDIUM. code available, need to adapt.
+
+### tier 3: higher effort, very strong novelty
+
+#### 3A. SNN for sentiment analysis / text classification

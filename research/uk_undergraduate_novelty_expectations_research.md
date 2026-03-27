@@ -82,3 +82,31 @@ Sources: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-s
 one of the most detailed publicly available marking rubrics i found:
 
 - **90-100%:** "evidence of original thought", "publishable quality in a peer-reviewed national conference"
+- **80-89%:** "evidence of original thought" within "full achievement of demanding objectives"
+- **70-79%:** no explicit originality requirement; focuses on "understanding of all aspects" and "thorough evaluation"
+- **60-69%:** "clear understanding of technical and professional issues" -- no originality
+- **50-59%:** "familiarity with the project area" -- no originality
+- **40-49%:** "basic understanding of the methods" -- no originality
+
+so originality only enters at 80+. you can get a first (70-79) with zero originality, as long as you show thorough understanding and evaluation.
+
+Source: [Sussex Informatics Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
+
+### manchester
+
+university-wide standard marking descriptors for first class mention "originality and logical development of argument" and "clarity and originality of thought" -- but this refers to originality of argument and thought, not novel contribution to the field.
+
+the EEE third year project descriptors:
+- **90-100%:** "significant originality", "push the boundaries of existing knowledge"
+- **80-89%:** "intellectual originality and imagination", "innovative analysis"
+- **70-79%:** comprehensive knowledge and competent analysis -- originality not mentioned
+
+only at 80+ does originality come up. "pushing boundaries" is at 90+, the very top of the scale.
+
+Sources: [Manchester Standard Marking System](http://www.tlso.manchester.ac.uk/media/services/tlso/content/files/assessmentmarking/), [Manchester EEE Mark Descriptors](https://personalpages.manchester.ac.uk/staff/fumie.costen/pastwork/DATA/markingscheme/EEEUGMarksScaleDescriptors.pdf)
+
+### SOAS
+
+- **80+ (High First):** "provides evidence of original thinking"
+- **70-79 (First):** "shows some sophistication of argument" and "intelligent use of source materials" -- no explicit originality
+- **60-69 (2:1):** "competent" analysis

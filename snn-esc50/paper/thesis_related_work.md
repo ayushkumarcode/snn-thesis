@@ -96,20 +96,20 @@ Deployment challenges:
 For this work, FC2-only hybrid (256->50) fits comfortably on SpiNNaker.
 
 ---
-## 2.6 Energy Efficiency: SNNs vs ANNs
 
-The energy argument for SNNs is nuanced and depends critically on the execution platform.
+## 2.6 energy efficiency: SNNs vs ANNs
 
-**On neuromorphic hardware** (Loihi, SpiNNaker, TrueNorth): communication is AC-only. Mahowald & Douglas (1991) estimated the energy cost of a single spike as ~20 fJ in biological neurons; CMOS estimates are ~0.9 pJ/AC (Yik et al. 2025, NeuroBench, 45nm CMOS). MACs cost ~4.6 pJ at 45nm. The 5.1× AC/MAC ratio means SNNs are cheaper **if** their spike rate is reasonably low.
+The energy argument is nuanced and depends on the execution platform.
 
-**In software simulation** (GPU/CPU): SNNs run for T timesteps per inference, while ANNs run once. Each timestep requires the same matrix multiply operations, but the SNN may benefit from spike sparsity (many zeroes in the weight matrices are skipped). However, the T× overhead typically dominates; software SNNs are generally less efficient than ANNs (Dampfhoffer et al. 2023 show SNNs need <6.4% spike rate to beat quantized ANNs on CPU).
+**On neuromorphic hardware** (Loihi, SpiNNaker, TrueNorth): AC-only communication. Bio neurons ~20 fJ/spike; CMOS ~0.9 pJ/AC at 45nm (Yik et al. 2025). MACs cost ~4.6 pJ at 45nm. The 5.1x ratio means SNNs are cheaper *if* spike rate is low enough.
 
-**NeuroBench** (Yik et al. 2025, Nature Communications 16:1589) provides a standardised framework for measuring SNN energy via SynapticOperations metrics: Effective_ACs (non-zero binary activations), Effective_MACs (non-zero continuous activations), and Dense (total ignoring sparsity). This work uses NeuroBench v2.2.0 for all energy comparisons.
+**In software simulation** (GPU/CPU): SNNs run T timesteps while ANNs run once. Each timestep has same matrix ops, but SNN may benefit from sparsity. However T overhead typically dominates; software SNNs are generally less efficient (Dampfhoffer et al. 2023 show need <6.4% spike rate to beat quantized ANNs on CPU).
+
+**NeuroBench** (Yik et al. 2025, Nature Comms 16:1589) provides standardised framework -- SynapticOperations metrics: Effective_ACs, Effective_MACs, Dense. This work uses NeuroBench v2.2.0 for all energy comparisons.
 
 ---
 
-## 2.7 Adversarial Robustness in SNNs
-
+## 2.7 adversarial robustness in SNNs
 Adversarial examples (Goodfellow et al. 2015) are inputs crafted to maximise model loss: $x' = x + \epsilon \cdot \text{sign}(\nabla_x \mathcal{L})$ (FGSM). For SNNs, adversarial robustness is complex:
 
 **Sharmin et al. (ECCV 2020, arXiv:2003.10399)** showed that SNNs with Poisson encoding exhibit higher adversarial accuracy in black-box scenarios, attributing this to the stochasticity of rate coding.

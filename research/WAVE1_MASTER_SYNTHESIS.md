@@ -138,3 +138,31 @@ Biggest differentiator between 2:1 and first: the critical appraisal section. A 
 - **Encoding:** Rate coding (baseline) > Direct coding (best accuracy) > TTFS (best energy)
 - **Energy measurement:** NeuroBench or manual SynOps counting (no hardware needed)
 
+### Previously identified project directions:
+1. Framework Shootout (snnTorch vs SpikingJelly on SHD + DVS128)
+2. SNN on ESC-50/UrbanSound8K (zero prior papers)
+3. SNN for Music Generation (MIDI)
+4. SNN for Plant Disease (PlantVillage)
+5. Multi-dimensional SNN vs ANN comparison
+
+---
+
+## 7. How to frame the project
+
+Based on all 21 papers, the formula that works at Manchester BSc level:
+
+```
+1. Pick a well-defined task/domain
+2. Apply existing SNN methods to it (or extend modestly)
+3. Compare against a baseline (ANN or alternative SNN config)
+4. Evaluate along multiple axes (accuracy + efficiency + at least one more)
+5. Analyse honestly (including failures and limitations)
+6. Frame as "comparative study" or "investigation of X" rather than "I invented Y"
+```
+
+### Three viable framings:
+
+**Framing A: "SNN for Domain X" (Novel Application)**
+> "Can Spiking Neural Networks achieve competitive performance on [domain] classification while offering energy efficiency advantages?"
+- Pick a domain with zero or few SNN papers
+- The novelty is automatic (first SNN results on this data)

@@ -26,3 +26,31 @@ for an undergrad thesis, the best balance of difficulty, tooling, narrative stre
 **framework support:** SpikingJelly (native, built-in loader + model + scripts), snnTorch (via Tonic), Tonic (full support), Norse (via Tonic).
 
 **SOTA SNN accuracy:**
+| Method | Year | Accuracy |
+|---|---|---|
+| Self-organizing Glial SNN | 2024 | 99.3% |
+| TCJA-SNN | 2023 | 99.59% |
+| SpikePoint | 2024 | 98.74% |
+| Typical baseline | -- | ~95-97% |
+
+**difficulty:** MODERATE. small enough to iterate fast, 11 classes, near-perfect accuracy with modern methods. an undergrad can realistically hit 95-97% and still explore architecture choices, timestep ablations, efficiency analysis.
+
+**thesis narrative:** STRONG. gesture recognition maps to real applications -- sign language, touchless control, AR/VR, accessibility. "brain-inspired computing for HCI" is compelling and easy for examiners.
+
+---
+
+### 2. N-MNIST (Neuromorphic MNIST)
+
+| Property | Details |
+|---|---|
+| Domain | Visual / handwritten digits |
+| Sensor | ATIS |
+| Classes | 10 (digits 0-9) |
+| Samples | 70,000 (60K train / 10K test) |
+| Resolution | 34 x 34 |
+| Year | 2015 (Orchard et al.) |
+
+**preprocessing:** read binary events, temporal binning (T=10-30 steps). simple.
+
+**critical caveat:** a 2021 paper ("Is Neuromorphic MNIST Neuromorphic?") showed N-MNIST can be classified 99%+ by collapsing time into a static image and using a standard CNN. the temporal dynamics add almost no value. so the dataset doesn't actually test whether your SNN uses temporal spike patterns -- it's just MNIST with extra steps.
+

@@ -957,31 +957,3 @@ import torch
 from torch.utils.data import DataLoader
 
 sensor_size = tonic.datasets.DVSGesture.sensor_size
-
-# === Method 1: Accumulate all events into a single frame ===
-# Simple but loses all temporal information
-transform_single = transforms.Compose([
-    transforms.Denoise(filter_time=10000),
-    transforms.ToFrame(sensor_size=sensor_size, n_time_bins=1)  # Single frame
-])
-
-# === Method 2: Create fixed number of frames and stack as channels ===
-# Preserves some temporal info; treat T frames as T*2 channels
-transform_multi = transforms.Compose([
-    transforms.Denoise(filter_time=10000),
-    transforms.ToFrame(sensor_size=sensor_size, n_time_bins=10)
-])
-
-# Load dataset
-trainset = tonic.datasets.DVSGesture(save_to='./data', transform=transform_multi, train=True)
-testset = tonic.datasets.DVSGesture(save_to='./data', transform=transform_multi, train=False)
-```
-
-### 9.3 ANN Baseline with Standard CNN
-
-```python
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-class DVSGestureCNN(nn.Module):

@@ -446,3 +446,18 @@ Key quote from Nature Communications (2025): "After several false starts, advanc
 ### Energy and efficiency
 - [Are SNNs Really More Energy-Efficient? (Dampfhoffer et al., IEEE TECI 2023)](https://ieeexplore.ieee.org/document/9927729/)
 - [Reconsidering SNN Energy Efficiency (2024)](https://arxiv.org/abs/2409.08290)
+- [SpikeFit (2025)](https://arxiv.org/html/2510.15542)
+- [Energy-Efficient SNN for Edge AI (2025)](https://arxiv.org/html/2602.02439v1)
+
+### Surveys and roadmaps
+- [Roadmap to Neuromorphic Computing (2024)](https://arxiv.org/html/2407.02353v1)
+- [Solving Neuromorphic Computing's Key Challenges (Open Neuromorphic)](https://open-neuromorphic.org/getting-involved/solving-neuromorphic-computings-key-challenges/)
+- [Neuromorphic Computing 2025 Landscape](https://humanunsupervised.com/papers/neuromorphic_landscape.html)
+- [Neuromorphic Computing for Embodied Intelligence (2025)](https://arxiv.org/abs/2507.18139)
+- [Awesome SNN Conference Papers (GitHub)](https://github.com/AXYZdong/awesome-snn-conference-paper)
+- [Awesome Spiking Neural Networks (GitHub)](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
+
+### Community and ecosystem
+- [Open Neuromorphic Community](https://open-neuromorphic.org/)
+- [NeuroBench](https://neurobench.ai/)
+- [SpiNNcloud Systems](https://spinncloud.com/)

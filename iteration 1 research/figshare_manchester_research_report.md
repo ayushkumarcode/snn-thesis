@@ -26,3 +26,31 @@ the one match for "neuromorphic" is a research-level publication from Steve Furb
 - this is a research-level publication supplement by members of the APT group -- Steve Furber's team. not an undergrad project. it's a supplement for "Frontiers in Neuroinformatics: Physical Neuromorphic Computing and its Industrial Applications." but it does show what Manchester researchers are doing in neuromorphic computing.
 
 ---
+
+## closest adjacent ML/AI/neural engineering items
+
+### Deep Autoencoder for Real-Time EEG Artifact Removal
+- **Authors:** Le Xing, Alex Casson (2023)
+- **URL:** https://figshare.manchester.ac.uk/articles/software/Deep_autoencoder_for_real-time_EEG_artifact_removal_and_its_Android_smartphone_implementation/23093759
+- **Type:** Software (GitHub linked)
+- **Description:** A Deep Convolutional Autoencoder for single-channel EEG artifact removal in real-time. Implemented as Android app for mobile EEG and portable BCI applications.
+- research publication by Alex Casson's Non-Invasive Bioelectronics Lab. not an undergrad project.
+
+### LSTM Robot Navigation in Warehouse Environments
+- **Author:** Jieru Zhou (2024)
+- **URL:** https://figshare.manchester.ac.uk/articles/software/Optimizing_Warehouse_Robot_Navigation_with_LSTM_Networks_and_Adaptive_Greedy_Weight_Techniques/26870128
+- **Type:** Software (Python code, 9 kB)
+- **Description:** Combines LSTM with adaptive greedy weight strategies for path planning in dynamic warehouse environments.
+- single author, School of Engineering. **possibly a student project** based on single authorship and scope, but can't confirm if undergraduate. the code is only 9 kB, so it's pretty focused.
+
+### ECG, EEG and IMU Data for Motion Artefact Removal
+- **Authors:** Christopher Beach, Mingjie Li, Ertan Balaban, Alex Casson (2021)
+- **URL:** https://figshare.manchester.ac.uk/articles/dataset/ECG_EEG_and_IMU_data_for_local_motion_artefact_removal/13626395
+- **Type:** Dataset
+- research dataset from Casson's lab.
+
+### Low Power Computer Vision for Landmine Detection
+- **Authors:** Adam Fletcher et al. (2025)
+- **URL:** https://figshare.manchester.ac.uk/articles/dataset/Evaluation_of_a_Low_Power_Computer_Vision_Based_Positioning_System_for_a_Handheld_Landmine_Detector_using_AprilTag_Markers_-_Supporting_Data/30030226
+- **Type:** Dataset
+- research publication, tangentially related through low power + computer vision.

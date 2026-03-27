@@ -143,31 +143,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 | SpiNNaker2: Large-Scale Neuromorphic System | arXiv (Jan 2024) | SpiNNaker2 architecture paper |
 | Spike-driven Transformer V2 | ICLR 2024 | Next-gen neuromorphic chip design via SNN transformers |
 | SpikeLLM: Scaling SNNs to LLMs | ICLR 2025 | First large-scale spiking language model |
-
-### Key Survey Papers
-- "Toward Large-scale Spiking Neural Networks: A Comprehensive Survey" (2024)
-- "SNN Architecture Search: A Survey" (Oct 2025)
-- "SNNs on FPGA: A Survey" (Neural Networks, 2025)
-- "SNN and Sound: A Comprehensive Review" (Aug 2024)
-- "Continual Learning with Neuromorphic Computing" (Oct 2024)
-
----
-
-## 5. TRENDING ON arXiv (cs.NE and cs.SD)
-
-### cs.NE (Neural and Evolutionary Computing)
-- **Spiking transformers** dominate submissions
-- **Hardware-aware optimization** (quantization, pruning, SpikeFit)
-- **Theoretical understanding** of SNNs (stability, robustness, generalization)
-- **SSM-SNN hybrids** (state space models meet spiking)
-- **Neuromorphic LLMs** (MatMul-free inference)
-
-### cs.SD (Sound) + Neuromorphic
-- **Larroza et al. (March 2025)**: "Spike Encoding for Environmental Sound: A Comparative Benchmark" -- ESC-10 only, FC network only, no hardware deployment. **This is our closest competitor and we substantially exceed their scope.**
-- **Spiking Vocos** (2025): Energy-efficient neural vocoder using SNNs
-- **Audio-visual multimodal SNNs** (Feb 2025): Cross-modal spiking transformers
-- **Neuromorphic keyword spotting** with PDM microphones (Interspeech 2024): 91.54% on Google Speech Commands
-- **Hilbert Transform encoding** for audio source localization (Nature Communications Engineering, 2025)
-- **HPCNeuroNet**: Transformer-enhanced SNN for audio (2023, still cited)
-
-### Key arXiv Trends (last 6 months)

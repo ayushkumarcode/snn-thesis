@@ -110,3 +110,31 @@ train_set = DVS128Gesture(
 )
 # Returns tensors of shape [T, C, H, W] = [16, 2, 128, 128]
 ```
+
+Loading as frames (fixed duration):
+```python
+# Split events into frames of fixed duration
+train_set = DVS128Gesture(
+    root='./data/DVS128Gesture',
+    train=True,
+    data_type='frame',
+    duration=1000000,       # 1 second per frame (in microseconds)
+    split_by='time'
+)
+# Returns variable-length tensors (different T per sample)
+```
+
+Handling variable-length sequences:
+```python
+from spikingjelly.datasets.utils import pad_sequence_collate
+
+# When using duration-based splitting, samples have different T
+# Use pad_sequence_collate to handle this
+train_loader = torch.utils.data.DataLoader(
+    train_set,
+    batch_size=16,
+    collate_fn=pad_sequence_collate,
+    shuffle=True
+)
+# Returns (frames, labels, mask) where mask indicates valid timesteps
+```

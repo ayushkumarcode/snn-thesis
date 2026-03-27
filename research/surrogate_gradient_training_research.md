@@ -194,3 +194,31 @@ for data, targets in train_loader:
     spk_rec = torch.stack(spk_rec)
     loss = loss_fn(spk_rec, targets)  # Spike-count loss
     optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+difference is essentially: (1) a time loop, (2) state reset, (3) stacking spike outputs. everything else is identical PyTorch.
+
+### Honest Time Estimate
+
+for someone who's trained a CNN in PyTorch:
+- **getting a basic SNN running:** 1-2 days following tutorials
+- **understanding what's happening:** 3-5 days of reading + experimentation
+- **tuning for good performance:** 1-2 weeks
+- **understanding theory well enough to write about it:** 1-2 weeks
+
+totally manageable for a semester project.
+
+---
+
+## Common Pitfalls
+
+### Dead Neurons (most common)
+
+neurons never fire (or fire every step). both prevent learning. cause: membrane potential never reaches threshold (too much leak / threshold too high) or always exceeds it. fix: start with beta=0.5, threshold=1.0. monitor firing rates. add firing rate regularization.
+
+### Gradient Vanishing/Exploding
+
+gradients go tiny or huge during BPTT through many steps. worse in SNNs than ANNs because of tanh-like surrogate behavior. narrow surrogate (high slope) = vanishing; wide (low slope) = noisy. fix: fewer time steps (25-50 usually fine for images), gradient clipping, moderate slope values, consider SNN-adapted batch norm (tdBN or BNTT).
+

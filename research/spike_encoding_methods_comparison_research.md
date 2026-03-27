@@ -362,3 +362,31 @@ def grf_population_encode(data, num_steps, num_neurons_per_feature=10, tau=5, th
         threshold=threshold, normalize=True, linear=True
     )
     return spike_train
+```
+
+#### Direct Coding (Trainable)
+
+```python
+class DirectEncoder(nn.Module):
+    def __init__(self, input_size, num_steps):
+        super().__init__()
+        self.num_steps = num_steps
+        self.encoder = nn.Linear(input_size, input_size * num_steps, bias=True)
+
+    def forward(self, x):
+        batch_size, input_size = x.shape
+        encoded = self.encoder(x)
+        encoded = encoded.reshape(batch_size, self.num_steps, input_size)
+        encoded = encoded.permute(1, 0, 2)
+        spikes = (encoded > 0.5).float()
+        spikes = spikes + encoded - encoded.detach()  # STE for gradient
+        return spikes
+```
+
+### Other Frameworks with More Built-in Encodings
+
+| Framework | Built-in Encodings | Notes |
+|-----------|-------------------|-------|
+| **snnTorch** | Rate, Latency, Delta | Best tutorials; PyTorch-based |
+| **BindsNET** | Rate, Poisson, Rank-order, GRF/Binning | More bio-oriented; STDP focus |
+| **SpikingJelly** | Rate, Latency, Direct, Poisson | More complete; better for deep SNNs; some Chinese docs |

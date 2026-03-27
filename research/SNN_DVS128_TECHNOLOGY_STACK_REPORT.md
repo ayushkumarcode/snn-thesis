@@ -313,31 +313,3 @@ pip install tonic
 # Full install with all optional dependencies
 pip install snntorch[full]
 ```
-
-### 3.3 Neuron Models
-
-Available in `snntorch`:
-
-| Neuron Model | Description |
-|---|---|
-| `snn.Leaky` | 1st-order Leaky Integrate-and-Fire (LIF). Primary model. |
-| `snn.RLeaky` | Recurrent LIF with output spike feedback connections |
-| `snn.Synaptic` | 2nd-order LIF with synaptic conductance (alpha + beta decay) |
-| `snn.RSynaptic` | Recurrent 2nd-order LIF |
-| `snn.Lapicque` | Lapicque's RC circuit model (equivalent to Leaky, parameterized differently) |
-| `snn.Alpha` | Alpha membrane model (recursive Spike Response Model) |
-| `snn.LeakyParallel` | Parallelized 1st-order LIF (faster for long sequences) |
-| `snn.SLSTM` | Spiking LSTM with state-thresholding |
-| `snn.SConv2dLSTM` | Spiking 2D convolutional LSTM |
-
-Key parameters for `snn.Leaky`:
-- `beta`: Membrane potential decay rate (0 to 1). Higher = more memory.
-- `spike_grad`: Surrogate gradient function (e.g., `surrogate.atan()`)
-- `threshold`: Firing threshold (default: 1.0)
-- `init_hidden`: Initialize hidden states internally (simplifies forward pass)
-- `output`: Set True for the final layer to return both spikes and membrane potential
-
-### 3.4 Complete DVS128 Gesture Training with snnTorch + Tonic
-
-```python
-import torch

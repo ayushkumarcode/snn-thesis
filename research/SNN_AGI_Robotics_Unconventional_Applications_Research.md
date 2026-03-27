@@ -642,3 +642,31 @@ Week-by-week plan:
 - Week 1: Set up MuJoCo Reacher-v4 in Gymnasium, implement ANN-DQN baseline
 - Week 2: Replace policy network with SNN, adapt training loop
 - Week 3: Hyperparameter tuning, convergence analysis
+- Week 4: Energy comparison, analysis, write-up
+
+Novel angle: snnTorch-based implementation (most papers use SpyTorch or custom). Could also compare different neuron models (LIF vs Synaptic vs Alpha).
+
+Biggest risk: SNN+RL convergence is notoriously difficult. May spend all of week 3 on hyperparameter tuning without good results.
+
+---
+
+### What NOT to pursue (and why)
+
+| Direction | Why Not |
+|---|---|
+| SNN for AGI (philosophical) | Not a technical thesis. Kyambadde's approach is philosophy. |
+| SNN Meta-Learning | MAML + SNN is PhD-level complexity |
+| SNN Cognitive Architecture | PhD-scale, massive scope, neuroscience prerequisite |
+| SNN for Drones | Simulator setup alone takes a week+ on macOS |
+| SNN for Swarm Robotics | Multi-agent complexity, bleeding-edge research |
+| SNN for Autonomous Driving | Too established, needs NVIDIA GPU, CARLA Linux-only |
+| SNN for Drug Discovery | 1-2 papers, biochemistry domain knowledge needed |
+| SNN for Financial Trading | Ezinwoke already did it at Manchester with same supervisor |
+| SNN for SLAM | Requires Nengo (not snnTorch), SLAM is inherently complex |
+
+---
+
+### Confidence assessment
+
+| Finding | Confidence |
+|---|---|

@@ -166,20 +166,20 @@ Tighter diagonal than SNN (63.85% vs 47.15%). Better discrimination within super
 |-------|-------|-----|
 | Neuron model | IF_curr_exp | sPyNNaker default, compatible with snnTorch LIF |
 | v_thresh | 1.0 mV | matches snnTorch threshold=1.0 |
-|-----------|-------|---------------|
-| Neuron model | IF_curr_exp | sPyNNaker default; compatible with snnTorch LIF semantics |
-| v_thresh | 1.0 (mV) | Matches snnTorch `threshold=1.0` |
-| v_rest | 0.0 (mV) | Matches snnTorch `v_rest=0.0` |
-| v_reset | 0.0 (mV) | Hard reset post-spike (matches snnTorch default) |
-| tau_m | 20.0 ms | Selected by scale sweep on 20 diverse samples |
-| tau_syn_E | 5.0 ms | Selected by scale sweep; faster decay than tau_m |
-| tau_syn_I | 5.0 ms | Symmetric (no inhibitory synapses in this model) |
-| cm | 1.0 nF | Default; affects integration speed |
-| i_offset | 0.0 nA | No bias current |
+| v_rest | 0.0 mV | matches snnTorch |
+| v_reset | 0.0 mV | hard reset post-spike |
+| tau_m | 20.0 ms | from scale sweep on 20 samples |
+| tau_syn_E | 5.0 ms | from scale sweep, faster decay than tau_m |
+| tau_syn_I | 5.0 ms | symmetric (no inhibitory synapses) |
+| cm | 1.0 nF | default |
+| i_offset | 0.0 nA | no bias current |
 
-### C.2 Scale Sweep Results (FC2-Only, 20 Samples, Run 5)
+### C.2 scale sweep results (FC2-only, 20 samples, Run 5)
 
-The scale factor multiplies all FC2 weights before converting to integers for SpiNNaker. Scale selected = 1.0× (maximising accuracy on 20-sample held-out set).
+Scale multiplies FC2 weights before integer conversion.
+
+| Scale | SpiNNaker Acc (n=20) | Notes |
+|-------|---------------------|-------|
 
 | Scale | SpiNNaker Accuracy (20 samples) | Notes |
 |-------|--------------------------------|-------|

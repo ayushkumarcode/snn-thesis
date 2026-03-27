@@ -250,3 +250,31 @@ i went through every significant comparison study i could find and noted what ea
 | **Low-power / edge** | TTFS, Delta modulation | Fewest spikes = lowest energy | Guo et al. 2021; Bian et al. 2024 |
 | **Hardware with faults** | Burst coding | Best fault tolerance at 20% fault rate | Guo et al. 2021 |
 | **Real-time / low-latency** | TTFS, Direct coding (few timesteps) | TTFS fires once; direct works with T=5-10 | Guo et al. 2021; Kim et al. 2022 |
+
+the "no free lunch" principle applies hard here. no single encoding wins on all dimensions. choice has to be guided by application priorities:
+- accuracy? **Direct** or **TTFS**
+- energy? **TTFS** or **Delta**
+- noise robustness? **Phase**
+- hardware reliability? **Burst**
+- simplicity? **Rate**
+
+this trade-off space is exactly what makes the comparison thesis valuable -- practitioners need actual guidance.
+
+---
+
+## Implementation in snnTorch
+
+### Built-in Encodings (snntorch.spikegen)
+
+snnTorch has three natively. phase, burst, GRF, and direct need custom implementation.
+
+#### Rate Coding: `spikegen.rate()`
+
+```python
+import snntorch as snn
+from snntorch import spikegen
+
+spike_data = spikegen.rate(data_it, num_steps=100, gain=1.0)
+# Output: [num_steps x batch x input_size]
+# Each element is 0 or 1 (Bernoulli trial per timestep)
+```

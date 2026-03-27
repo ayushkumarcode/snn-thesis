@@ -138,19 +138,19 @@ Results in `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json
 | Rate (membrane sum) | 51.50% |
 | First-spike latency | 25.75% |
 
+### 6.3.2 interpretation
 
-| Readout Method | Accuracy (fold 4) |
-|----------------|-------------------|
-| Rate (membrane sum) | 51.50% |
-| First-spike latency | 25.75% |
+Rate dramatically beats first-spike (51.50% vs 25.75%). This means:
 
-### 6.3.2 Interpretation
+1. SNN encodes info in total spike count, not timing. Model trained with rate loss (sum membrane over T) and optimises for rate-code output.
 
-Rate readout dramatically outperforms first-spike readout (51.50% vs 25.75%). This finding indicates that:
+2. First-spike timing is noisy -- class may spike early by chance, not because its most active. Rate averages over T=25, suppressing noise.
 
-1. **The SNN encodes information in total spike count, not timing.** The model was trained with rate-based loss (sum of membrane potentials over T timesteps) and optimises for rate-code output. The temporal structure of spikes is not being specifically trained.
+3. To exploit first-spike timing, need temporal objective. As Yu et al. (2025) show, surrogate gradient training can enable timing-based learning but only with a loss that specifically rewards early correct-class firing.
 
-2. **First-spike timing is noisy.** A class may accumulate its first spike early by chance, not because it is genuinely the most active output. The rate code averages over T=25 timesteps, suppressing noise; the first-spike code is sensitive to the earliest random firing.
+**Practical implication:** this SNN is fundamentally a rate-coded classifer implemented in spiking hardware. Temporal sparsity exists from LIF thresholding but isn't informationally exploited beyond rate integration.
+
+### 6.3.3 raster plots
 
 3. **To exploit first-spike timing, the model needs to be trained with a temporal objective.** As shown by Yu et al. (2025, arXiv:2507.16043), surrogate gradient training can enable spike-timing-based learning, but only when the loss function specifically rewards early correct-class firing.
 

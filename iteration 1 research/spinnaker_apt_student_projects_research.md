@@ -138,3 +138,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | **Year** | November 2016 |
 | **Degree** | PhD, Department of Computer Science |
 | **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |
+| **Abstract** | Three optimization techniques for simulating Spaun (2.5M neuron model): (1) reducing NEF memory/compute (1/20th cores needed); (2) additional cores to minimize network traffic; (3) novel logic minimization for routing tables. Achieved 9000x speed-up over prior results. |
+| **PDF** | Available (4.77 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/real-time-spaun-on-spinnaker-functional-brain-simulation-on-a-mas |
+
+### 1.11 Qian Liu -- Deep Spiking Neural Networks (2018)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Deep Spiking Neural Networks |
+| **Author** | Qian Liu |
+| **Year** | January 2018 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
+| **Abstract** | Bridging the performance gap between SNNs and ANNs. Proposed "Noisy Softplus" activation function. Achieved 99.07% accuracy on MNIST with spiking convolutional networks. Spike-based rate multiplication for online training. |
+| **PDF** | Available (15.1 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/deep-spiking-neural-networks |
+
+### 1.12 Petrut Bogdan -- Structural Plasticity on SpiNNaker (2019)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Structural Plasticity on SpiNNaker |
+| **Author** | Petrut Bogdan |
+| **Year** | September 2019 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
+| **Abstract** | Structural synaptic plasticity implementation on SpiNNaker. Combined with STDP for topographic map quality. Handwritten digit classification and motion detection. Simulations spanning 5+ hours with responses resembling Visual Cortex and Superior Colliculus. |
+| **PDF** | Available (47.6 MB) |

@@ -119,31 +119,3 @@ Key biological constants cited:
 | Spiking YOLO | 2019 | PASCAL VOC | mAP 51.83% |
 | Spiking YOLO | 2019 | MS COCO | mAP 25.66% |
 | Deep SCNN | 2020 | KITTI | 56.24% mean sparsity, 0.247 mJ energy |
-
-**Object Tracking:**
-- SiamSNN (2020): First SNN for tracking, achieving 50 FPS on TrueNorth with low precision loss
-
-**Optical Flow:**
-- Spike-FlowNet (2020): Hybrid SNN-ANN architecture for event camera data
-- Hierarchical cuSNN (2019): Uses stable STDP on Event Camera Dataset
-
-**Segmentation:**
-| Method | Year | Dataset | Accuracy | Notes |
-|--------|------|---------|----------|-------|
-| UNet-SNN | 2021 | ISBI 2D EM | 92.13% | Lower than 94.98% ANN baseline but energy-efficient on Loihi |
-| SpikeSEG | 2021 | Synthetic | 97% accuracy, 74% mIoU | Semantic segmentation |
-
-### 1.6 Robotics Applications
-
-**Pattern Generation:**
-- NeuroPod (2019): First real-time neuromorphic central pattern generator (CPG) on SpiNNaker controlling hexapod locomotion
-- Lamprey robot (2014): Analog/digital VLSI with ~60 ms periodic bursting and 35 Hz spiking frequency
-
-**Motor Control:**
-- Loihi drone control (2020): Root-mean-square error of 0.005 g in thrust setpoint with 99.8% spike sequence matching
-- Event-based PID controller improved Loihi performance by reducing saturation issues
-
-**Navigation and SLAM:**
-- Spiking RatSLAM (2012): Place and grid cells on SpiNNaker for landmark detection
-- Gridbot (2018): Robot with 1,321 spiking neurons for autonomous environment mapping
-- SLAM SNN (2019): 100x less energy than GMapping with comparable accuracy

@@ -898,31 +898,3 @@ pip install neurobench
 
 ## SOURCES
 
-### Dataset
-- ESC-50 Dataset (official): https://github.com/karolpiczak/ESC-50
-- ESC-50 Direct Download: https://github.com/karoldvl/ESC-50/archive/master.zip
-- ESC-50 on HuggingFace: https://huggingface.co/datasets/ashraq/esc50
-- ESC-50 on Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YDEPUT
-- PapersWithCode ESC-50 Leaderboard: https://paperswithcode.com/sota/audio-classification-on-esc-50
-
-### snnTorch
-- snnTorch Documentation: https://snntorch.readthedocs.io/en/latest/
-- snnTorch PyPI (version history): https://pypi.org/project/snntorch/#history
-- snnTorch GitHub: https://github.com/jeshraghian/snntorch
-- snnTorch Releases: https://github.com/jeshraghian/snntorch/releases
-- snnTorch setup.py: https://github.com/jeshraghian/snntorch/blob/master/setup.py
-- snnTorch Tutorial 1 (Spike Encoding): https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html
-- snnTorch Tutorial 5 (Training): https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html
-- snnTorch Tutorial 6 (CSNN): https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html
-- snnTorch spikegen API: https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html
-- snnTorch Neuron Models: https://snntorch.readthedocs.io/en/latest/snntorch.html
-- snn.Leaky docs: https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html
-- snn.Synaptic docs: https://snntorch.readthedocs.io/en/latest/snn.neurons_synaptic.html
-
-### snnTorch Bug Reports (verified 2026-03-03)
-- Issue #401 (Reset mechanism bug): https://github.com/jeshraghian/snntorch/issues/401
-- Issue #328 (GPU memory leak): https://github.com/jeshraghian/snntorch/issues/328
-- Issue #394 (CUDA OOM): https://github.com/jeshraghian/snntorch/issues/394
-- Issue #341 (Reset equation wrong): https://github.com/jeshraghian/snntorch/issues/341
-- Discussion #63 (Memory leak in forward pass): https://github.com/jeshraghian/snntorch/discussions/63
-

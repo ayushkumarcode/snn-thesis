@@ -26,3 +26,31 @@ the dominant trend in 2024-2025 is training-free conversion -- just take a pretr
 | Training-Free Spiking Transformers | arXiv 2025 | Near-lossless on CV, NLU, NLG | Low | Universal Group Operators + Spatial Rectification Self-Attention |
 | PASCAL | TMLR 2025 | Mathematically equivalent to quantized ANN | Minimal | Proves inhibitory (negative) spikes essential |
 | Wang et al., "Negative Spikes" | IJCAI 2025 | Outperforms two-stage algorithm by 1.29% at T=4 | 4 | Leaky ReLU-based neuron model |
+| LAS | arXiv 2025 | Loss-less conversion of LLMs (OPT-66B) | Low | Outlier-Aware Threshold neurons; fully spike-driven LLMs |
+
+for our thesis: we use 25 timesteps which is generous by modern conversion standards. recent work gets near-lossless with T=1-4. but conversion methods target pretrained ANNs, not from-scratch SNN training like we do. different paradigm entirely.
+
+### Conversion for Audio Specifically
+
+audio-specific ANN-to-SNN conversion is basically nonexistent:
+
+**Abuhajar et al. (2025) -- "Three-Stage Hybrid SNN Fine-Tuning for Speech Enhancement"**
+- Frontiers in Neuroscience (April 2025)
+- (1) Train ANN (Wave-U-Net or ConvTasNet), (2) Convert to SNN, (3) Hybrid fine-tuning
+- for speech enhancement, not classification
+- this is probably the closest methodological parallel to our PANNs+SNN approach
+
+**DPSNN (Sun & Bohte, 2024) -- "Spiking Neural Network for Low-Latency Streaming Speech Enhancement"**
+- encoder-separator-decoder architecture, spiking neurons only in separator
+- demonstrates hybrid ANN-SNN works for audio but totally different architecture
+
+**nobody has done ANN-to-SNN conversion for environmental sound classification.**
+
+### Timestep-Accuracy Trade-off
+
+| Timesteps | Typical Accuracy Loss | Method Class |
+|-----------|----------------------|--------------|
+| T >= 256 | ~0% (lossless) | Rate coding conversion |
+| T = 16-64 | 0.5-2% | Threshold balancing + calibration |
+| T = 4-8 | 1-3% | Quantization-aware conversion |
+| T = 1 | 0-5% | Multi-level neurons (PMSM) |

@@ -674,31 +674,3 @@ numba: >=0.57.1
 | Resource | Type | Relevance | URL |
 |----------|------|-----------|-----|
 | snnTorch Tutorial 6 (CSNN) | Official tutorial | HIGH -- same Conv2d+Leaky architecture, just different input | https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html |
-| snnTorch Tutorial 1 (Spike Encoding) | Official tutorial | HIGH -- covers rate/latency/delta encoding | https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html |
-| NeuroBench GSC Tutorial | Official tutorial | MEDIUM -- audio SNN with snnTorch, but uses Speech Commands not ESC-50 | https://neurobench.readthedocs.io/en/latest/tutorial/index.html |
-| arXiv:2503.11206 (2025) | Research paper | HIGHEST -- SNN on ESC-10 with snnTorch 0.9.1, mel-spectrogram, LIF neurons | https://arxiv.org/html/2503.11206v1 |
-| hasithsura/Environmental-Sound-Classification | GitHub repo | MEDIUM -- ESC-50 CNN in PyTorch (ANN baseline code) | https://github.com/hasithsura/Environmental-Sound-Classification |
-| kamalesh0406/Audio-Classification | GitHub repo | MEDIUM -- ESC-50 CNN with spectrograms | https://github.com/kamalesh0406/Audio-Classification |
-
-### What does NOT exist:
-
-- No snnTorch tutorial specifically for audio/spectrogram classification
-- No end-to-end ESC-50 SNN code repository
-- No snnTorch tutorial covering energy measurement
-
-### Gap analysis:
-
-The pipeline you need to build can be constructed by combining:
-
-1. **Audio loading + mel-spectrogram:** Use existing PyTorch ESC-50 repos (hasithsura, kamalesh0406)
-2. **Spike encoding:** snnTorch Tutorial 1 (`spikegen.rate()`)
-3. **Convolutional SNN architecture:** snnTorch Tutorial 6 (change input dims and num_classes)
-4. **Training loop:** snnTorch Tutorial 5/6
-5. **Energy measurement:** NeuroBench tutorial
-6. **ANN baseline:** Same architecture with ReLU swap (Tutorial 5)
-
-**The March 2025 arXiv paper (2503.11206) is the closest existing work.** It used snnTorch 0.9.1 with ESC-10, mel-spectrograms (128 bands, 1024 FFT, 256 hop), 4 FC layers with 128 LIF neurons, and achieved 69% on ESC-10. However:
-- They used FC layers, not convolutional (opportunity for you to improve)
-- They used ESC-10 (10 classes), not ESC-50 (50 classes)
-- They did not report energy metrics
-- No code was released

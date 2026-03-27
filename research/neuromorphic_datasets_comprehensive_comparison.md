@@ -278,3 +278,31 @@ achievable baseline 95-97%. contribution angles: architecture comparison (LIF vs
 
 achievable baseline 88-92%. contribution angles: feedforward vs recurrent SNN comparison, temporal resolution study, SNN vs RNN comparison, speaker generalization, delay learning. low-medium risk, dataset is clean and fast but recurrent SNNs are trickier to train.
 
+### option C: dual dataset (most ambitious)
+
+use BOTH DVS128 and SHD across modalities. vision chapter + audio chapter + cross-cutting analysis of whether same SNN principles transfer. medium risk, double the implementation but each dataset trains fast.
+
+---
+
+## confidence notes
+
+**confident about:** dataset sizes/classes/specs, framework support (confirmed via docs), SOTA accuracy ranges (cross-referenced), preprocessing pipelines (confirmed via tutorials/code).
+
+**lower confidence:** DVS-Lip absolute accuracy (papers report relative improvements, estimated 55-65% SNN), exact download sizes, training time estimates (hardware-dependent), DVS128 "100%" claim (one paper, not replicated).
+
+**couldn't determine:** exact GPU memory requirements per dataset/model, preprocessing time comparison across frameworks, community adoption metrics.
+
+---
+
+## sources
+
+### DVS128 Gesture
+- [IBM original (CVPR 2017)](https://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf)
+- [SpikePoint (2024)](https://arxiv.org/html/2310.07189v2)
+- [CatalyzeX benchmarks](https://www.catalyzex.com/s/Dvs128%20Gesture%20Dataset)
+
+### N-MNIST
+- [Original (Orchard et al., 2015)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4644806/)
+- ["Is Neuromorphic MNIST Neuromorphic?" (2021)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.608567/full)
+
+### N-Caltech101

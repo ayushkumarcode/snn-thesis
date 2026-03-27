@@ -125,9 +125,9 @@ from provenance timing data:
 
 the 25+ second loading time is consistent with real Ethernet data transfer to remote hardware.
 
-## Evidence 9: Software Stack
+## evidence 9: software stack
 
-All official SpiNNaker Manchester packages installed:
+all official SpiNNaker Manchester packages installed:
 ```
 sPyNNaker          1!7.4.1
 SpiNNMan           1!7.4.1

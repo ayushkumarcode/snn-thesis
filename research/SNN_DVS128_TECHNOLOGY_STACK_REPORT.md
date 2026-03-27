@@ -229,31 +229,3 @@ lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
 scaler = amp.GradScaler()  # For mixed precision
 
 # === Training ===
-max_test_acc = 0
-for epoch in range(epochs):
-    # Train
-    net.train()
-    train_loss = train_acc = train_samples = 0
-    for frame, label in train_loader:
-        optimizer.zero_grad()
-        frame = frame.to(device)
-        # Reshape [N, T, C, H, W] -> [T, N, C, H, W] for multi-step mode
-        frame = frame.transpose(0, 1)
-        label = label.to(device)
-        label_onehot = F.one_hot(label, 11).float()
-
-        # Mixed precision forward pass
-        with amp.autocast():
-            out_fr = net(frame).mean(0)  # Average output spikes over time
-            loss = F.mse_loss(out_fr, label_onehot)
-
-        scaler.scale(loss).backward()
-        scaler.step(optimizer)
-        scaler.update()
-
-        train_samples += label.numel()
-        train_loss += loss.item() * label.numel()
-        train_acc += (out_fr.argmax(1) == label).float().sum().item()
-
-        # CRITICAL: Reset neuron states after each batch
-        functional.reset_net(net)

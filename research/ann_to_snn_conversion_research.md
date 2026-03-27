@@ -222,3 +222,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 
 ### Tier 2: Stronger Contribution
 
+**D: Energy Analysis**
+- convert models, measure spike counts/sparsity at different timesteps
+- use syops library for energy estimation
+- compare theoretical vs actual GPU energy measurements
+- energy claims in SNN papers are often unverified
+
+**E: Hybrid (Conversion + Direct Training)**
+- convert ANN to SNN, then fine-tune with surrogate gradients for a few epochs
+- measure whether this recovers accuracy lost during conversion
+- growing research direction
+
+### Tier 3: Ambitious
+
+**F: First Systematic MobileNet/EfficientNet Conversion**
+- need to handle depthwise separable convolutions
+- need to address Swish/SiLU for EfficientNet
+- could use SignGD (ICML 2024) as starting point
+- genuinely novel, potential workshop paper
+
+---
+
+## Getting a Working Pipeline
+
+### Timeline Estimates
+
+| Phase | snn_toolbox | SpikingJelly | QCFS Code |
+|-------|-----------|-------------|-----------|
+| Setup | 1-2 days | 0.5-1 day | 0.5-1 day |

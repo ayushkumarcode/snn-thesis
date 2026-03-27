@@ -83,31 +83,3 @@ Source: [Cardiff Dissertation Guide](https://pats.cs.cf.ac.uk/wiki/doku.php?id=m
 ### 1.6 Synthesised "Typical" Percentage Breakdown
 
 Based on cross-referencing all the schemes above, here is a synthesised approximation of where marks typically fall in a UK CS undergraduate project, expressed as percentage of the overall project mark:
-
-| Assessment Dimension | Typical Weight | Range Across Universities |
-|---|---|---|
-| **Literature Review / Background** | 15-20% | 10-30% |
-| **Design & Implementation** | 30-40% | 25-45% |
-| **Evaluation & Testing** | 15-20% | 15-25% |
-| **Writing Quality & Presentation** | 15-20% | 15-25% |
-| **Novelty / Originality** | 0-5% (bonus territory) | 0-10% |
-| **Project Management / Process** | 5-10% | 0-15% |
-
-**Important caveat**: Most UK universities do NOT assign fixed percentages to these sub-dimensions within the report itself. The report is marked holistically. These figures are inferred from the Cambridge breakdown, Imperial's three-pillar system, Edinburgh's tiered criteria, and the way Manchester separates "Report" (55%) from "Achievements" (30%).
-
-### 1.7 Your Manchester COMP30040 Breakdown Specifically
-
-From your own course documents:
-
-| Component | Weight | Notes |
-|---|---|---|
-| **Report** | 55% | Marked independently by supervisor and second marker, then agreed |
-| **Achievements** | 30% | Project output: software, hardware, research, experimentation |
-| **Screencast** | 15% | 8-minute video presentation of work |
-| **Q&A** | 0% (indirect) | 25-minute interview with second marker; informs achievements mark but not directly scored |
-
-The report must contain:
-- Elucidation of the problem and objectives
-- In-depth investigation of context and literature, and similar products
-- Description of life cycle stages undertaken
-- Description of verification and validation

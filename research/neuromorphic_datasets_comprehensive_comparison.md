@@ -378,31 +378,3 @@ Note: Exact accuracy percentages are difficult to confirm from abstracts alone, 
 | **DVS128 Gesture** | 11 | 1,464 | 128x128 | Vision | 99.3% | Moderate | Strong | Excellent | ~30 min/full train |
 | **N-MNIST** | 10 | 70,000 | 34x34 | Vision | 99.6% | Too Easy | Weak | Excellent | ~1 hr/full train |
 | **N-Caltech101** | 101 | ~8,709 | Variable | Vision | 84.4% | Mod-Hard | Moderate | Good | ~2-4 hrs |
-| **CIFAR10-DVS** | 10 | 10,000 | 128x128 | Vision | 92.5%* | Mod-Hard | Moderate | Excellent | ~2-4 hrs |
-| **SHD** | 20 | 10,420 | 700 ch | Audio | 96.4% | Moderate | Strong | Excellent | ~15-30 min |
-| **SSC** | 35 | 105,829 | 700 ch | Audio | 86.0% | Hard | Moderate | Good | ~4-8 hrs |
-| **DVS-Lip** | 100 | 19,871 | 128px | Vision | ~60-65% | Very Hard | Very Strong | Limited | ~6-12 hrs |
-
-*The 92.5% for CIFAR10-DVS uses transfer learning from synthetic events; a more typical SNN SOTA is ~81-84%.
-
-Estimated training times assume a single consumer GPU (RTX 3060-3090 tier, 12-24GB VRAM), standard architectures, and ~100-200 epochs.
-
----
-
-## Part 4: Framework Support Matrix
-
-| Dataset | SpikingJelly | Tonic | snnTorch (via Tonic) | Norse (via Tonic) | sparch | Dedicated Code |
-|---|---|---|---|---|---|---|
-| DVS128 Gesture | Built-in loader + model | Yes | Yes | Yes | No | Multiple GitHub repos |
-| N-MNIST | Built-in | Yes | Yes | Yes | No | Multiple |
-| N-Caltech101 | Built-in | Yes | Yes | Yes | No | Few |
-| CIFAR10-DVS | Built-in | Yes | Yes | Yes | No | Multiple |
-| SHD | Built-in | Yes | Yes | Yes | Yes | spytorch, Rockpool |
-| SSC | Built-in | Yes | Yes | Yes | Yes | sparch |
-| DVS-Lip | Listed | Yes | Yes | Yes | No | SpikGRU-DVSLip |
-
----
-
-## Part 5: Preprocessing Pipeline Comparison
-
-### Vision Datasets (DVS128, N-MNIST, N-Caltech101, CIFAR10-DVS, DVS-Lip)

@@ -111,19 +111,19 @@ Both suffer severe catastrophic forgetting -- worse than the +/-50% BWT from lit
 | Final avg accuracy | 18.3% | 18.8% |
 | Final Task 4 only | 78.75% | 88.75% |
 
-*Note: Summary statistics are 5-fold validated means ± std. The accuracy matrices above show fold 4 as a representative example; all 5 folds were evaluated.*
+### 6.2.3 analysis
 
-### 6.2.3 Analysis
+**SNN forgets less than ANN (69.9% vs 74.7%, -4.7 pp advantage).** Both suffer catastrophically though -- way worse than literature's "~50% BWT" for regularisation-free CL. Expected given the extreme setup.
 
-**FINDING (5-fold validated): SNN forgets less than ANN (69.9% ± 4.3% vs 74.7% ± 2.4% forgetting, −4.7 pp advantage for SNN).** Both suffer catastrophic forgetting far worse than the "±50% BWT" commonly cited for regularisation-free continual learning. This severity is expected given the extreme scenario: training on 10/50-class subsets with gradients that point entirely away from the remaining 40 classes.
+**Why ANN forgets more:** continuous activations produce larger gradient magnitudes when fine-tuning on new tasks, overwriting weights more completely. SNN's binary outputs mean sparser gradient flow -- only neurons that fired get gradient updates. ~74% of weights get zero gradient per pass. Fewer weights modified per new task = more original representation preserved. Same mechanism as adversarial robustness -- spike threshold gates information flow.
 
-**Why the ANN forgets more:** The ANN's continuous activations produce larger gradient magnitudes when fine-tuned on new tasks, overwriting weights more completely. The SNN's binary spike outputs produce sparser gradient flow — only neurons that actually fired during the new task's forward pass receive gradient updates. This sparsity means fewer weights are modified per new task, leaving more of the original representation intact. This is mechanistically consistent with the adversarial robustness finding (§6.1): the spike threshold acts as a computational gate that limits information flow, both resisting perturbation (robustness) and limiting gradient propagation (continual learning).
+**ANN has higher per-task peak accuracy** (93.75% vs 87.50% for Nature, 88.75% vs 78.75% for Urban), reflecting larger effective capacity per task. The forgetting difference isn't about peak performance but gradient interference.
 
-**ANN retains higher mid-training accuracy:** The ANN's per-task peak accuracy is higher (93.75% vs 87.50% for Nature; 88.75% vs 78.75% for Urban), reflecting its larger effective capacity per task. The forgetting difference is therefore not about peak performance but about gradient interference: the ANN's stronger gradients cause more destructive interference with previously learned weights.
+**Both converge to last task:** after all 5, both classify mainly Urban. Animals, Nature, Human collapse to 0% for both. Classic "last task dominance" -- hallmark of catastrophic forgetting without replay.
 
-**Both converge to the most recently seen task:** After all 5 tasks, both models classify primarily Urban sounds. Animals, Nature, and Human tasks collapse to 0% for both. This "last task dominance" is the hallmark of catastrophic forgetting without replay.
+Results in `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json`.
 
-**Comparison to literature:** Golden et al. (2022, PLoS Computational Biology) demonstrated sleep-based consolidation reducing SNN forgetting by >50% in simplified spike-rate networks. Our result confirms the baseline (no consolidation) forgetting is severe, and provides a quantitative reference: 69.9% ± 4.3% mean forgetting for this architecture (5-fold validated). Future work with EWC (Kirkpatrick et al. 2017) or replay buffers could substantially reduce this.
+---
 
 **Result files:** `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json` (5-fold validated)
 

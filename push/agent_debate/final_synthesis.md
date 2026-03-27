@@ -188,31 +188,3 @@ The hardware story frames as: "We characterise for the first time what SNN envir
 
 ### The 2-3 things that make or break the submission
 
-**1. The gap-collapse analysis must be the centrepiece, not a result among others.**
-
-If the paper presents the gap-collapse as a subsection buried after encoding results and SpiNNaker tables, reviewers may miss its significance. It needs to be foregrounded in the abstract, introduction, and conclusion. The 17.6× collapse ratio needs to be explicitly compared to the vision-domain evidence (7× in Spikformer V2) to show this is not a trivial replication but a domain-specific finding. If this framing is absent, the paper reads as "here are many experiments on ESC-50 with a SNN" rather than "here is a scientific insight about why SNNs underperform on audio."
-
-**2. The SpiNNaker deployment must be framed as characterisation, not as a performance claim.**
-
-The 33.1% SpiNNaker result will draw scrutiny. A reviewer who sees "SpiNNaker accuracy: 33.1%" without the surrounding context will immediately conclude the hardware deployment is poor. The paper needs to make clear that the contribution is not the 33.1% number but the root-cause analysis: why FC1 cannot run on SpiNNaker (near-zero-mean weights + 1398 binary inputs + integer weight representation), what the FC2-only hybrid approach achieves, and what the 12.8 pp gap tells us about the engineering challenges of deploying convolutional SNNs on SpiNNaker 1. If reviewers understand this is a characterisation paper, not a performance paper, the hardware section is a contribution. If they read it as a performance claim, it is a weakness.
-
-**3. The adversarial robustness result must be accompanied by the Wang et al. caveat or it will draw a pointed reviewer comment.**
-
-Wang et al. (arXiv:2512.22522, 2025) specifically warn that FGSM/PGD attacks may underestimate SNN vulnerability due to gradient estimation inaccuracies introduced by the surrogate function. This paper is known enough in the community that at least one reviewer is likely to raise it. The correct response is not to suppress the adversarial result but to acknowledge the limitation and argue that: (a) the finding is the first audio-domain adversarial SNN result regardless of the exact magnitude, (b) the qualitative advantage of SNN over ANN is robust to methodological concerns at ε=0.1 (even if the numbers overestimate by some factor, an ANN at 1.75% and an SNN at 26% are qualitatively in different regimes), and (c) this is a direction for future work to validate with adaptive attacks. Without this framing, a reviewer familiar with Wang et al. will reject the adversarial section as methodologically naive.
-
----
-
-## Summary Table
-
-| Contribution | Novelty Strength | Publication Risk | Notes |
-|---|---|---|---|
-| First SNN on full ESC-50 | Strong | Low | Watertight; confirmed by 2 surveys + competitor paper |
-| 7-encoding comparison | Strong | Low | Most comprehensive in audio SNN literature |
-| PANNs+SNN gap-collapse finding | Strong | Low | Central scientific contribution; must be centrepiece |
-| SpiNNaker hardware deployment | Strong (at ICONS) | Moderate | Framing as characterisation, not performance claim, is critical |
-| Adversarial robustness | Moderate-to-Strong | Moderate | Wang et al. (2025) caveat must be addressed explicitly |
-| NeuroBench energy analysis | Moderate | Low | Correct application; honest framing; no new methodology |
-| Surrogate gradient ablation | Weak-to-Moderate | Low | Useful but not primary; fits in supplementary if space is tight |
-| Continual learning | Weak | Low | Novel domain, modest finding, include as secondary result only |
-
-**Overall verdict: Submit. The work is publishable at ICONS 2026. The novelty is genuine across multiple dimensions, the literature search is rigorous, and the central scientific finding is significant. The principal risk is framing: if the paper leads with 47.15% rather than the gap-collapse, it will read below its actual quality. Reframe and submit.**

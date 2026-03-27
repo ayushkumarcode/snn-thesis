@@ -244,31 +244,3 @@ These are research gaps explicitly or implicitly suggested in the future work se
 ### Accessibility Level: MODERATE (Requires some novel implementation but builds on existing code)
 
 6. **Spiking Neural Architecture Search (NAS)**
-   - A recent survey (arXiv:2510.14235) maps the SNN NAS landscape but identifies many untried search spaces and strategies. Adapting existing ANN NAS methods (DARTS, etc.) for SNNs is tractable.
-   - *Source:* SNN Architecture Search Survey (2024).
-
-7. **SNN for audio/speech with event-driven encoding**
-   - Spiking-LEAF proposes a learnable auditory front-end. Combining this with recent SNN architectures (e.g., P-SpikeSSM) for speech command recognition is a clear next step.
-   - *Source:* Spiking-LEAF paper, P-SpikeSSM paper.
-
-8. **ANN-to-SNN conversion for modern architectures**
-   - Converting Mamba/SSM models or mixture-of-experts architectures to SNNs is completely unexplored. Even a negative result (showing what fails) would be publishable.
-   - *Source:* ANN-to-SNN conversion survey, training-free conversion papers.
-
-9. **Pruning and compression of spiking Transformers**
-   - While pruning has been studied for CNN-based SNNs, pruning the new spiking Transformers (QKFormer, SpikingResformer) is unexplored.
-   - *Source:* QP-SNN (ICLR 2025), various pruning papers.
-
-10. **SNN + reinforcement learning for simple robotics tasks**
-    - Recent papers show SNN-based RL for locomotion and navigation. Applying this to simulated robotic manipulation (e.g., OpenAI Gym or MuJoCo environments) with SNNs is feasible with frameworks like snnTorch.
-    - *Source:* Zanatta et al. (2024), Kumar et al. (2025).
-
-### Accessibility Level: ADVANCED (Novel research contributions, but feasible for a strong undergrad)
-
-11. **Spiking state space models for new sequence tasks**
-    - P-SpikeSSM opened this area. Applying spiking SSMs to genomics, protein sequences, or music generation would be novel.
-    - *Source:* P-SpikeSSM (ICLR 2025).
-
-12. **Multi-modal spiking fusion (event camera + RGB)**
-    - Most SNN papers use either event data or RGB frames. Fusing both modalities in a spiking architecture is an active gap.
-    - *Source:* SFOD (CVPR 2024), neuromorphic vision surveys.

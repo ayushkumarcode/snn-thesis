@@ -432,31 +432,3 @@ Do NOT frame the thesis as "STDP vs. backpropagation" -- STDP will lose on accur
 | **Gaspard Goupy et al.** | University of Lille / Fox team | S2-STDP, PCN, NCG architecture | NeurIPS 2024 NCG paper |
 | **Timothee Masquelier** | CNRS CerCo, Toulouse | Unsupervised visual feature learning with STDP | PLOS Comp Bio (2007), extensive STDP work |
 | **Wulfram Gerstner** | EPFL | Three-factor learning theory, neuromodulated STDP | Fremaux & Gerstner (2016) review |
-| **Alexander Ororbia** | RIT | ngc-learn framework, biologically plausible computing | ngc-learn documentation + papers |
-| **Hananel Hazan & Daniel Saunders** | UMass Amherst / BINDS Lab | BindsNET framework | BindsNET paper (2018) |
-| **Mike Davies** | Intel Labs | Loihi processor with on-chip STDP | Loihi papers |
-
----
-
-## 10. Recommended Thesis Structure
-
-For a thesis framed as "Biologically Plausible Feature Learning with STDP":
-
-```
-Chapter 1: Introduction
-  - Motivation: energy crisis in AI, biological inspiration
-  - Research question: "How effective is the brain's STDP learning rule
-    for unsupervised feature extraction in visual recognition tasks?"
-  - Contributions: implementation, comparison, analysis
-
-Chapter 2: Background
-  - Spiking neural networks (LIF neurons, spike coding)
-  - STDP: biological evidence and computational models
-  - Comparison with ANN learning rules
-  - Neuromorphic hardware context
-
-Chapter 3: Methodology
-  - Network architecture (Diehl & Cook or convolutional STDP)
-  - STDP learning rule implementation details
-  - Hybrid pipeline: unsupervised features + supervised classifier
-  - Datasets: MNIST, Fashion-MNIST, [optional: N-MNIST or audio]

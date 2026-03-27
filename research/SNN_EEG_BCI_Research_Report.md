@@ -137,31 +137,3 @@ A growing application area with strong clinical motivation.
 
 | Dataset | Subjects | Channels | Classes | Sampling Rate | Access | Notes |
 |---|---|---|---|---|---|---|
-| **BCI Competition IV-2a** | 9 | 22 (EEG) + 3 (EOG) | 4 (left hand, right hand, feet, tongue) | 250 Hz | [BBCI website](https://www.bbci.de/competition/iv/) / [Kaggle](https://www.kaggle.com/datasets/thngdngvn/bci-competition-iv-data-sets-2a) | Most popular MI benchmark (used in 31+ studies). 288 trials per subject across 2 sessions. |
-| **BCI Competition IV-2b** | 9 | 3 (EEG) + 3 (EOG) | 2 (left hand, right hand) | 250 Hz | [BBCI website](https://www.bbci.de/competition/iv/) | Second most popular MI benchmark (14+ studies). |
-| **PhysioNet EEGMMIDB** | 109 | 64 | 4 (open/close fists, imagine fists/feet) | 160 Hz | [PhysioNet](https://www.physionet.org/content/eegmmidb/1.0.0/) | Freely downloadable, no application needed. Largest freely available MI dataset. Third most popular (11+ studies). |
-| **BNCI Horizon 2020** | Various | Various | Various | Various | [BNCI database](https://bnci-horizon-2020.eu/database/data-sets) | Collection of multiple BCI datasets. |
-
-### 3.2 Emotion Recognition Datasets
-
-| Dataset | Subjects | Channels | Classes | Stimuli | Access | Notes |
-|---|---|---|---|---|---|---|
-| **DEAP** | 32 | 32 (EEG) + 8 (peripheral) | Valence/Arousal/Dominance (continuous) | 40 music videos (1 min each) | [DEAP official](http://eecs.qmul.ac.uk/mmv/datasets/deap/) | Requires university email application (~1 month approval). 512 Hz sampling. Preprocessed files available (downsampled to 128 Hz). |
-| **SEED** | 15 | 62 (EEG) | 3 (negative, neutral, positive) | Film clips | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/seed.html) | 200 Hz preprocessed. 3 sessions per subject (~1 week apart). |
-| **SEED-IV** | 15 | 62 (EEG) | 4 (happy, sad, fear, neutral) | Film clips | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/index.html) | Extension of SEED with 4 emotion classes. |
-| **SEED-VII** | -- | -- | 6 basic emotions + continuous | Multimodal | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/) | Newest variant with continuous labels. |
-| **DREAMER** | 23 | 14 (EEG) | Valence/Arousal/Dominance | Film clips | Public | Lower channel count, useful for lightweight models. |
-
-### 3.3 Seizure Detection Datasets
-
-| Dataset | Notes |
-|---|---|
-| **CHB-MIT** | Scalp EEG from pediatric subjects with intractable seizures. PhysioNet. |
-| **Bonn University** | 5 classes (healthy, epileptic zone, seizure). Classic benchmark. |
-| **TUH EEG Corpus** | Large-scale clinical EEG dataset from Temple University Hospital. |
-
-### 3.4 Recommendation for an Undergraduate Project
-
-**Best starting point:** PhysioNet EEGMMIDB
-- Freely available without application process
-- Large (109 subjects)

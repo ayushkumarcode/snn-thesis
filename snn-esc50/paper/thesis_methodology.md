@@ -180,20 +180,20 @@ v_thresh = 1.0 mV
 v_rest = v_reset = 0.0 mV
 weight_scale = 1.0
 ```
-**Classification:** Argmax of total output spike count over 25ms window.
 
-**Validated accuracy (Run 5, n=20):** 8/20 = 40.0% vs snnTorch reference 10/20 = 50.0%.
+**Input:** binary hidden spikes (256-d/timestep, 21.7% active avg) as SpikeSourceArray, 1ms/timestep, 25ms total.
+
+**Classification:** argmax of total output spike count over 25ms.
+
+**Run 5 validation (n=20):** 8/20 = 40.0% vs snnTorch 10/20 = 50.0%.
 
 ---
 
-## 3.7 Advanced Experiments
+## 3.7 advanced experiments
 
-### 3.7.1 Adversarial Robustness
+### 3.7.1 adversarial robustness
 
-FGSM and PGD attacks (torchattacks library) at 7 ε values ∈ {0.0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}, applied to fold 4 test set (400 samples). The SNN is wrapped in SNNWrapper that computes $\sum_t \text{mem}_t$ as differentiable logits. PGD uses 40 steps (following Wang et al. 2025 recommendation for reliable SNN evaluation).
-
-### 3.7.2 Transfer Learning (PANNs + SNN Head)
-
+FGSM and PGD (torchattacks) at 7 eps values {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}, fold 4 test set (400 samples). SNN wrapped in SNNWrapper computing sum_t mem_t as differentiable logits. PGD: 40 steps per Wang et al. 2025 recommendation.
 CNN14 (Kong et al. 2020), pretrained on AudioSet (2M clips, 527 tags), extracts 2048-d embeddings. A 3-layer SNN classification head (2048→512→256→50, LIF neurons, rate encoding) is trained on frozen PANNs embeddings for 50 epochs. All 2,000 ESC-50 embeddings are precomputed and cached.
 
 ### 3.7.3 NeuroBench Energy Analysis

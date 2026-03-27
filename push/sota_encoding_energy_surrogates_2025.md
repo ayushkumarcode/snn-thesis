@@ -394,31 +394,3 @@ All three worked comparably when scale was tuned. The paper's central claim: "wh
 
 **Citation:** "Directly Training Temporal Spiking Neural Network with Sparse Surrogate Gradient." Neural Networks, July 2024. arXiv:2406.19645.
 
-**Key innovation:** Masked Surrogate Gradients (MSGs)---applies sparsity masks to surrogate gradients to preserve SNN's inherent sparsity during training.
-
-**Problem:** Introducing surrogate gradients causes SNNs to lose their original sparsity, leading to performance degradation. MSGs balance training effectiveness with sparsity retention.
-
-**Also introduces:** Temporal Weighted Output (TWO) method for output decoding, reinforcing the importance of correct timesteps.
-
-### 3.5 Klos et al., "Smooth Exact Gradient Descent" (Physical Review Letters, 2025)
-
-**Citation:** C. Klos et al. "Smooth Exact Gradient Descent Learning in Spiking Neural Networks." Physical Review Letters 134(2):027301, January 2025.
-
-**Key innovation:** Eliminates the need for surrogate gradients entirely. Uses "pseudospikes" that can be continuously moved in/out of the trial period, providing exact (not approximate) gradients.
-
-Splits simulation into:
-1. Trial period: input presentation and output reading
-2. Extended period: facilitated spiking via increasing input current
-
-The resulting gradients are smooth and exact, avoiding the fundamental approximation of surrogate gradients.
-
-**Relevance to thesis:** This is a potential future direction---exact gradient methods may resolve the bimodal failure pattern by avoiding surrogate approximation entirely. However, the method has only been demonstrated on MNIST so far.
-
-### 3.6 Efficient Surrogate Gradients (2025)
-
-**Citation:** "Efficient Surrogate Gradients for Training Spiking Neural Networks." OpenReview/NeurIPS 2025.
-
-**Key innovation:** Chi-based training pipeline that adaptively trades off between surrogate gradient shape and effective domain. Shows that keeping a fixed surrogate for all layers is suboptimal---different layers benefit from different surrogate widths.
-
-### 3.7 Surrogate Gradient Functions: Literature Consensus
-

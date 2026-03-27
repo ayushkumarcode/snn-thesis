@@ -455,31 +455,3 @@ This paper is most useful as an INTRODUCTORY reference -- it was specifically de
 | CARLsim | Large-scale with realistic synapses | Multi-GPU support |
 
 ### Framework Performance Benchmarks (Open Neuromorphic, 2024)
-
-Test: Single FC + LIF layer, batch=16, 500 time steps, n neurons:
-
-| Framework | Forward+Backward Time | Notes |
-|-----------|----------------------|-------|
-| SpikingJelly (CuPy) | 0.26s | Fastest |
-| Lava DL (SLAYER) | ~0.4-0.5s | Custom CUDA |
-| Sinabs (EXODUS) | ~0.4-0.5s | Custom CUDA |
-| Norse (torch.compile) | ~0.5-0.7s | Close to JAX with compile |
-| snnTorch | ~1.0s+ | Flexible but slower |
-
-### Recommendation for Thesis
-**Start with snnTorch** for learning and prototyping (best documentation). **Move to SpikingJelly** if you need performance or want to work with neuromorphic datasets directly.
-
----
-
-<a name="datasets"></a>
-## NEUROMORPHIC DATASETS GUIDE
-
-### Most Accessible Datasets for Thesis Work
-
-#### Vision -- Static (Converted to Spikes)
-
-| Dataset | Classes | Samples | Resolution | Access | Difficulty |
-|---------|---------|---------|------------|--------|------------|
-| MNIST | 10 digits | 70K | 28x28 | Built into snnTorch/SpikingJelly | Easiest |
-| Fashion-MNIST | 10 clothing | 70K | 28x28 | Built into frameworks | Easy |
-| CIFAR-10 | 10 objects | 60K | 32x32 | Built into frameworks | Moderate |

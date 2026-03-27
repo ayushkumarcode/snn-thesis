@@ -642,3 +642,31 @@ pip install librosa
 
 The project has an active maintainer (Jason Eshraghian, UCSC) but release cadence slowed significantly between 0.9.1 and 0.9.4. This means bugs may take months to be fixed. **Plan to work around known issues rather than waiting for patches.**
 
+### NeuroBench dependency details (from pyproject.toml):
+
+NeuroBench 2.2.0 has snnTorch as a **required** (not optional) dependency:
+```
+python: ^3.10
+torch: >=2.0.1
+torchaudio: >=2.0.2
+snntorch: >=0.7.0
+numpy: >=1.24.3 (Python <3.12) | >=1.25.0 (Python >=3.12)
+tonic: ^1.4.0
+numba: >=0.57.1
+```
+
+**Known NeuroBench issue (GH #238):** NumPy version conflicts when installed alongside PyTorch Lightning or packages requiring numpy>=2.0. Workaround: install NeuroBench first, then other packages.
+
+**Verification method:** Version info confirmed from PyPI pages for all packages. setup.py confirmed from snnTorch GitHub. NeuroBench pyproject.toml confirmed from NeuroBench GitHub. Bug assessment from snnTorch GitHub issues (48 open issues reviewed). Compatibility assessment based on full dependency chain analysis.
+
+---
+
+## COMPONENT 11: EXISTING AUDIO SNN TUTORIALS
+
+### EXISTS: PARTIALLY
+### POTENTIAL BLOCKER: LOW RISK (requires adaptation work, not missing tools)
+
+### What exists:
+
+| Resource | Type | Relevance | URL |
+|----------|------|-----------|-----|

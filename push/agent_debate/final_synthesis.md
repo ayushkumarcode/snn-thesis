@@ -48,31 +48,3 @@ One honest caveat: the gap-collapse finding is consistent with a pattern already
 **Why this is novel.** Hardware deployment papers at ICONS are first-class contributions, not ancillary ones. The community values honest characterisation of what works and what does not on real hardware. The fact that the result is 33.1% rather than matching the 47.15% software result is not a weakness — it is the scientific content. The FC1 cancellation root-cause analysis (near-zero-mean weights across 1398 simultaneous binary inputs producing net negative current) and the FC2-only hybrid solution are exactly the kind of insight that accelerates subsequent work by others attempting SpiNNaker deployment. The Option A and Option C experiments further document what does and does not transfer from software to hardware in a systematic way. There is nothing comparable in the literature for environmental sound on any neuromorphic chip.
 
 **Novelty strength: Strong at ICONS specifically.** For a general ML venue, hardware deployment at 33% accuracy would be a weakness. At ICONS, which explicitly includes systematic hardware characterisation as a category of valued contribution, this is well within the normal profile of accepted hardware papers.
-
----
-
-### Claim 5: First adversarial robustness analysis of SNNs on audio spectrograms
-
-**The claim.** All prior adversarial SNN robustness work is in the vision domain (Sharmin et al. ECCV 2020; Wang et al. arXiv:2512.22522 2025). No paper has studied FGSM or PGD attacks on audio SNNs. The results here are striking: at FGSM ε=0.1, SNN retains 26.00% accuracy while the matched ANN collapses to 1.75%. At PGD ε=0.05, SNN retains 19.25% while ANN reaches 0%.
-
-**Why this is novel.** The quantitative gap (14.8× advantage at ε=0.1 FGSM) is larger than what has been reported in vision. The interpretive explanation — that binary thresholding in LIF neurons acts as a natural high-frequency noise filter, attenuating gradient-based perturbations that do not reach threshold — is mechanistically sound and has not been stated in the audio context before. The caveat that Wang et al. (2025) warns that FGSM/PGD may underestimate SNN vulnerability due to surrogate gradient inaccuracies must be acknowledged and is acknowledged, but the qualitative finding of robustness advantage remains meaningful even if the exact numbers are uncertain. This is a novel empirical result with a clear practical implication: SNNs may offer a robustness advantage for safety-critical audio sensing applications without any adversarial training.
-
-**Novelty strength: Moderate-to-Strong.** The result is genuinely new in the audio domain, but the vision-domain context means a savvy reviewer will immediately contextualise it. The uncertainty about surrogate gradient robustness evaluation also adds a caveat that reduces confidence in the exact numbers.
-
----
-
-### Claim 6: NeuroBench-compliant energy analysis with honest framing
-
-**The claim.** The thesis applies NeuroBench (Yik et al., Nature Communications 2025) to measure SNN energy (976 nJ/sample, 1.08M ACs) and ANN energy (463 nJ/sample, 101K MACs) and explicitly acknowledges the SNN uses more energy in software simulation.
-
-**Why this is notable.** Most SNN papers either avoid energy comparison or cherry-pick metrics that favour SNNs. This paper does neither. It correctly identifies that the SNN is 4× above the break-even spike rate for software simulation, and that the energy advantage only materialises on hardware where ACs are 5.1× cheaper than MACs. The honest framing — "on dedicated neuromorphic hardware, ACs cost 5.1× less than MACs, making the SNN hardware-compatible for AC-only execution — though total energy remains higher due to T=25× more operations" — is more rigorous than typical published claims. The use of NeuroBench as a standardised framework rather than a custom metric also makes the results directly comparable to other NeuroBench-reported systems.
-
-**Novelty strength: Moderate.** This is not a new scientific finding; NeuroBench itself provides the framework. The contribution is correct application and honest reporting, which is genuinely valuable but is not a primary novelty claim.
-
----
-
-### Claim 7: Surrogate gradient ablation across 8 surrogate functions for audio SNN training
-
-**The claim.** This thesis tests 8 surrogate gradient functions (spike_rate_escape, fast_sigmoid, atan, STE, sigmoid, sfs, triangular, LSO) on fold 1 of ESC-50. Key finding: bimodal split — 3 learning surrogates (sre=46%, fast_sigmoid=44.75%, atan=35.75%) vs 4 failing surrogates (STE=10.25%, sigmoid=2%, sfs=2%, triangular=2.75%). Sigmoid failure is surprising given Zenke (2021) claims shape matters less than slope.
-
-**Why this is notable.** The bimodal failure pattern is unexpected and the sigmoid failure specifically contradicts prior theoretical predictions. No prior paper has done this comparison for audio SNNs. However, surrogate gradient comparisons for vision SNNs do exist (e.g., Li et al. IJCAI 2023), so the methodological approach is not novel — the application to audio is the novelty. The finding is useful to future audio SNN practitioners.

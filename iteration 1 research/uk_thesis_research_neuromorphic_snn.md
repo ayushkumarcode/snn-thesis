@@ -251,31 +251,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 |-------|--------|-----------|------|-------|------------|
 | ZynqNet: FPGA-Accelerated Embedded CNN | David Gschwend | (not specified) | 2016 | Caffe, Vivado HLS, Xilinx Zynq | 84.5% top-5 ImageNet, 200MHz, comprehensive MSc |
 | Modelling Learning Systems in Artificial and Spiking Neural Networks | Jegp | (not specified) | 2019 | Haskell, Futhark, NEST, PyNN, BrainScaleS | Volr DSL for unified ANN/SNN specification |
-| Spiking Neural Network Accelerator (EE552 class project) | zwhexplorer | (not specified) | 2022 | SystemVerilog | Mesh network SNN accelerator |
-
-### Undergraduate-Level Thesis Comparison
-
-| Title | Author | Level | Tools | Scope |
-|-------|--------|-------|-------|-------|
-| Paths to Less Artificial Intelligence | Chira Levy | Thesis-level | snntorch, PyTorch | SNN vs ANN comparison on MNIST/CIFAR-10/Speech Commands |
-| Spiking Neural Networks for Image Classification | Osaze Shears | Course project | Python | MNIST/CIFAR10 comparison |
-
----
-
-## TOOLS AND FRAMEWORKS COMMONLY USED IN SNN THESES
-
-| Framework | Type | Language | Used In |
-|-----------|------|----------|---------|
-| sPyNNaker / PyNN | SpiNNaker interface | Python | Manchester theses |
-| Brian2 | Simulator | Python | Musical pattern recognition project |
-| NEST | Simulator | Python/C++ | Jegp thesis, various |
-| snntorch | Deep learning | Python/PyTorch | Levy comparison, many modern projects |
-| Norse | Deep learning | Python/PyTorch | Various modern projects |
-| SpikingJelly | Deep learning | Python/PyTorch | Chinese university projects |
-| BindsNET | Simulation | Python/PyTorch | Various |
-| NeuroPack | Custom simulator | Python | Southampton memristor thesis |
-| hxtorch.snn | BrainScaleS interface | Python/PyTorch | Heidelberg theses |
-| Vivado HLS | FPGA synthesis | C++/SystemVerilog | Hardware theses |
-| Caffe / TensorFlow / PyTorch | DL frameworks | Python | ANN-to-SNN conversion theses |
-
----

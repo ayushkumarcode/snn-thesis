@@ -110,3 +110,31 @@ things to note:
 - our SpiNNaker 1 energy measurement (976 nJ/sample = 0.976 uJ) is actually in the same ballpark as Loihi's per-inference energy, but for a much harder task
 
 ---
+
+### 1.6 Other Platforms
+
+**DYNAP-SE (SynSense, analog mixed-signal):** hardware-software gap of 80.6% -> 73.5% = 7.1pp on a simple classification task. analog circuit variability is a major source of accuracy degradation. our 12.8pp gap on a much harder task is comparable.
+
+**FPGA-based:** HPCNeuroNet (2023) does SNN+Transformer on Xilinx FPGA, 71.11 GOP/s at 3.55W for audio. also Graph Neural Networks for audio classification on SoC FPGA (2025).
+
+**NorthPole (IBM):** successor to TrueNorth. no published audio classification results found.
+
+---
+
+### 1.7 Best Hardware Accuracy Numbers for Neuromorphic Audio Classification
+
+| Platform | Task | Classes | Accuracy | Year |
+|----------|------|---------|----------|------|
+| SpiNNaker 1 (Dominguez-Morales) | Pure tones | 8 | 99.8% | 2016 |
+| Xylo Audio | Ambient audio | Custom | 98% | 2022 |
+| Xylo Audio 2 | Keyword spotting (Aloha) | Binary (KW/not) | 95.31% | 2024 |
+| Loihi 2 (Eventprop) | Heidelberg Digits | 20 | ~99% | 2025 |
+| Loihi 2 (Eventprop) | Speech Commands | 35 | ~97% | 2025 |
+| SpiNNaker2 (e-prop) | Speech Commands | 12 | 91.12% | 2022 |
+| Loihi 1 (Speech2Spikes) | Speech Commands | 35 | 88.5% | 2023 |
+| **our SpiNNaker 1** | **ESC-50** | **50** | **33.1%** | **2026** |
+
+i know our number looks bad in this table but these aren't apples-to-apples comparisons at all. ESC-50 has 50 diverse classes (animals, machines, nature, domestic, urban) with only 1600 training samples. keyword spotting and digit recognition are fundamentally simpler tasks. the relevant comparison is our software SNN (47.15%) and the hardware gap (12.8pp).
+
+---
+

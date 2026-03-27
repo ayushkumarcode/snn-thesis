@@ -362,3 +362,31 @@ testloader = DataLoader(cached_testset, batch_size=16,
                         collate_fn=tonic.collation.PadTensors(batch_first=False))
 
 # === Network Architecture ===
+spike_grad = surrogate.atan()
+beta = 0.5
+
+# Input: [T, N, 2, 128, 128]
+net = nn.Sequential(
+    nn.Conv2d(2, 12, 5),
+    nn.MaxPool2d(2),
+    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
+    nn.Conv2d(12, 32, 5),
+    nn.MaxPool2d(2),
+    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
+    nn.Flatten(),
+    nn.Linear(32 * 29 * 29, 11),  # Adjust based on actual spatial dims
+    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True, output=True)
+).to(device)
+
+# === Forward Pass (iterates over timesteps) ===
+def forward_pass(net, data):
+    spk_rec = []
+    utils.reset(net)  # Reset all neuron states
+
+    for step in range(data.size(0)):  # Iterate over T timesteps
+        spk_out, mem_out = net(data[step])
+        spk_rec.append(spk_out)
+
+    return torch.stack(spk_rec)
+
+# === Training ===

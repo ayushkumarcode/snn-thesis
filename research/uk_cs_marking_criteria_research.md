@@ -27,31 +27,3 @@ The table below shows how different universities weight their assessment compone
 Cambridge provides the most granular publicly available breakdown of what markers assess within the dissertation itself. The dissertation is marked out of 100 with these sub-categories:
 
 | Category | Marks (out of 100) | What It Covers |
-|---|---|---|
-| **Introduction and Preparation** | 30 | Problem statement, literature review, project planning, background research, understanding of related work |
-| **Implementation and Contribution** | 45 | Technical work, design decisions, code quality, system architecture, the actual "doing" of the project |
-| **Evaluation and Conclusions** | 25 | Testing, benchmarking, critical analysis of results, reflection on achievements, future work |
-
-Source: [Cambridge CST Assessment](https://www.cst.cam.ac.uk/teaching/part-ii/projects/assessment)
-
-### 1.3 Edinburgh Informatics -- Tiered Criteria System
-
-Edinburgh uses a qualitative rather than percentage-based approach, with three tiers:
-
-**Basic Criteria** (must be satisfied for a pass):
-- Understanding of the problem
-- Completion of the work
-- Quality of the work
-- Quality of the dissertation
-
-**Additional Criteria** (needed for good marks, 60+):
-- Knowledge of the literature
-- Critical evaluation of previous work
-- Critical evaluation of own work
-- Justification of design decisions
-- Solution of conceptual problems
-- Amount of work
-
-**Exceptional Criteria** (needed for 80+):
-- Evidence of outstanding merit, e.g. originality
-- Inclusion of material worthy of publication

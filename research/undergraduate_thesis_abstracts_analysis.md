@@ -396,31 +396,3 @@ Source: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
 ## 5. Key Takeaways for Your Own Thesis
 
 ### 5.1 Safe and Expected Framing for an Undergraduate Thesis
-
-Based on these 14 examples, the following framing would be entirely standard and expected:
-
-**"This thesis implements [algorithm/approach X] for [task Y] using [framework/platform Z], and evaluates its performance on [dataset/benchmark W]."**
-
-Variations:
-- "This thesis investigates the feasibility of using [X] for [Y] by implementing and evaluating [Z]."
-- "This thesis compares [approach A] and [approach B] for [task C] on [dataset D], analyzing [metrics E and F]."
-- "This work presents an implementation of [X] on [platform Y] and characterizes its performance with respect to [Z]."
-
-### 5.2 What You Do NOT Need to Claim
-
-- You do NOT need to claim a novel scientific discovery
-- You do NOT need to beat state-of-the-art benchmarks
-- You do NOT need to propose a new algorithm or architecture
-- You DO need to show you built something, tested it systematically, and can interpret the results
-- Honest reporting of negative or underwhelming results is perfectly acceptable (see Thesis 12: 45% validation accuracy)
-
-### 5.3 The "Towards" Escape Hatch
-
-Many Heidelberg KIP theses use "Towards" in their titles, which is a signal that the work represents progress toward a larger goal rather than a completed system. This is a perfectly legitimate framing for undergraduate work. Examples:
-- "Towards Spike-based Expectation Maximization in a Closed-Loop Setup..."
-- "Towards Balanced Random Networks on the BrainScaleS I System"
-- "Towards Fast Iterative Learning on the BrainScaleS Neuromorphic Hardware System"
-
-### 5.4 Acceptable Contribution Types (Ranked by Ambition)
-
-1. **Implementation + Demonstration:** "I implemented X and showed it works" (lowest bar, very common)

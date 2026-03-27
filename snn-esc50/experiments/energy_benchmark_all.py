@@ -222,3 +222,31 @@ def main():
             if not model_path.exists():
                 continue
 
+            try:
+                result = benchmark_model(
+                    name, model_path, fold, device, model_class)
+                if result:
+                    energy = result.get("energy_nj", 0)
+                    acc = result.get("accuracy", 0)
+                    print(f"  {name:35s}: acc={acc:.4f}, energy={energy:.1f} nJ")
+                    all_results.append(result)
+            except Exception as e:
+                print(f"  {name}: FAILED ({e})")
+
+    # Save
+    save_dir = RESULTS_DIR / "energy" / "benchmark_all"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_benchmarks.json", "w") as f:
+        json.dump(all_results, f, indent=2, default=str)
+
+    # Summary table
+    if len(folds) == 5:
+        print(f"\n{'='*60}")
+        print(f"  5-Fold Energy Benchmark Summary")
+        print(f"{'='*60}")
+        model_names = set(r["model_name"] for r in all_results)
+        ann_energy = None
+        for name in sorted(model_names):
+            fold_results = [r for r in all_results if r["model_name"] == name]
+            if len(fold_results) == 5:
+                energies = [r.get("energy_nj", 0) for r in fold_results]

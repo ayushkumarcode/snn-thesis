@@ -222,3 +222,31 @@ this is the pattern i keep seeing across the literature:
 
 our gap collapse from 16.7pp to 0.95pp is actually the most dramatic demonstration of this in the audio domain. the ratio (16.7 / 0.95 = 17.6x reduction) exceeds what's typically reported in vision (7.42 / ~1 = 7.4x).
 
+### The "Feature Learning Bottleneck" Hypothesis
+
+our central claim -- that the SNN-ANN gap is a *feature learning* problem, not a *spiking computation* problem -- is backed by converging evidence:
+
+1. **Spikformer V2 (2024):** self-supervised pretraining (improving feature quality) narrows the gap from 7.42pp to ~1pp on ImageNet
+2. **ANN-to-SNN conversion (2024-2025):** converting a pretrained ANN to SNN loses only 1-2pp, confirming spiking computation itself isn't the bottleneck
+3. **BKDSNN (ECCV 2024):** knowledge distillation transfers ANN feature representations to SNNs, recovering most of the gap
+4. **STA/CLIP conversion (ICLR 2024):** converting CLIP to SNN retains zero-shot capability -- spiking neurons can preserve complex learned representations
+5. **Spiking Vocos (2025):** self-architectural distillation achieves ANN-comparable audio quality
+
+**but nobody has explicitly articulated and empirically demonstrated this hypothesis for audio classification before.** that's our contribution.
+
+---
+
+## 6. Audio SNN Landscape: ESC-50 and Environmental Sound
+
+### SNN on ESC-50: Prior Work
+
+| Paper | Year | Dataset | SNN Accuracy | ANN Reference | Notes |
+|-------|------|---------|-------------|---------------|-------|
+| **our thesis** | **2026** | **ESC-50 (full, 50 classes)** | **47.15% (scratch), 92.50% (PANNs)** | **63.85% (scratch), 93.45% (PANNs)** | **First SNN on full ESC-50** |
+| Larroza et al. | 2025 | ESC-10 only | 69.0% (best, TAE encoding) | -- | Spike encoding benchmark; FC-only; no hardware |
+| Dennis et al. | 2018 | ESC-50 subset | Limited | -- | SNN framework; non-deep |
+| Dominguez-Morales et al. | 2016 | Pure tones only | Limited | -- | SpiNNaker; not ESC-50 |
+
+we're still the first and only work reporting SNN accuracy on the full 50-class ESC-50 dataset.
+
+### SNN on UrbanSound8K

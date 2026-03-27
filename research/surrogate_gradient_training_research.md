@@ -166,3 +166,31 @@ all interactive, all Colab-ready with free GPU.
 | **State management** | neurons maintain membrane potential; must reset between samples | Low (snnTorch handles it) |
 | **Surrogate gradient selection** | choose and configure surrogate | Low (use defaults) |
 | **Neuron hyperparams** | beta (decay), threshold, reset mechanism | Medium |
+| **Loss adaptation** | spike-count or rate-based loss | Low (snnTorch provides these) |
+| **Memory overhead** | BPTT stores activations for all T steps | Medium (limits batch size) |
+| **Training time** | ~T times slower per epoch | Medium |
+| **Debugging** | can't just look at "activations" -- need to monitor spike rates and membrane potentials | Medium |
+
+### Training Loop Comparison
+
+**ANN:**
+```python
+for data, targets in train_loader:
+    output = model(data)
+    loss = criterion(output, targets)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+**SNN:**
+```python
+for data, targets in train_loader:
+    utils.reset(net)  # Reset neuron states
+    spk_rec = []
+    for step in range(num_steps):  # Time loop
+        spk_out, mem_out = net(data)
+        spk_rec.append(spk_out)
+    spk_rec = torch.stack(spk_rec)
+    loss = loss_fn(spk_rec, targets)  # Spike-count loss
+    optimizer.zero_grad()

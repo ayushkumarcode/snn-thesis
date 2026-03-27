@@ -1,17 +1,17 @@
-# Chapter 5: Neuromorphic Hardware Results
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 5: neuromorphic hardware results
+
+SpiNNaker deployment chapter. this one was a rollercoaster -- lots of failures before things worked. need to document all the troubleshooting honestly since the co-design insights are a main contribution.
 
 ---
 
-## 5.1 SpiNNaker Deployment: Challenges and Solutions
+## 5.1 SpiNNaker deployment: challenges and solutions
 
-Deploying a trained SpikingCNN to SpiNNaker neuromorphic hardware requires satisfying a set of hard constraints that are not present in software simulation:
+Deploying a trained SpikingCNN to SpiNNaker requires satisfying hard constraints that dont exist in software:
 
-**Constraint 1: Binary spike inputs.** SpiNNaker communicates exclusively via spike packets (4-byte address event). Each input to a neuron must be a binary 0 or 1 (spike or no spike). The network cannot receive continuous-valued inputs.
+**Constraint 1: binary spike inputs.** SpiNNaker communicates via spike packets (4-byte address events). Each input must be binary 0 or 1. No continuous values.
 
-**Constraint 2: Fixed-point arithmetic.** All weights and membrane potentials are represented in fixed-point arithmetic on ARM cores. This limits precision but enables hardware-efficient compute.
+**Constraint 2: fixed-point arithmetic.** All weights and membrane potentials in fixed-point on ARM cores. Limits precision but enables efficient compute.
 
-**Constraint 3: IF_curr_exp neuron model.** sPyNNaker supports integrate-and-fire neurons with exponential synaptic current (IF_curr_exp), which approximates but does not exactly match the snnTorch LIF model.
 
 **Constraint 4: No native convolutional support.** SpiNNaker's native execution model is a point-neuron population connected by synaptic matrices. Convolutional layers must be unrolled into explicit weight matrices.
 

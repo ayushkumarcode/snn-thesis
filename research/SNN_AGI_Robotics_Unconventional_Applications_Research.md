@@ -656,31 +656,3 @@ Components:
 3. Train SNN-based forecasting model
 4. Compare with LSTM, Transformer baselines
 5. Energy efficiency analysis
-
-Framework: snnTorch + PyTorch
-Datasets: ETTh1 (Electricity Transformer Temperature), Weather dataset
-Hardware: CPU on macOS
-```
-
-**Novel angle:** Most SNN time series work (5-10 papers) doesn't use snnTorch. The field is young enough that a snnTorch-based implementation with systematic benchmarking could contribute.
-
-**VERDICT: INTERESTING emerging field. Feasible scope, moderate novelty. But overlaps with your existing Time_Series_Forecasting research file.**
-
----
-
-### 3.6 SNN for Drug Discovery / Molecular Property Prediction
-
-**Literature: 1-2 papers**
-
-Key work:
-- [Screening P450 Enzyme Bioactivity by SNNs (Springer 2025)](https://link.springer.com/chapter/10.1007/978-3-031-90714-2_20)
-
-**Assessment:**
-- Papers: 1-2 (EXTREMELY sparse)
-- Simulation-only: YES
-- macOS: YES
-- 28-day feasibility: **LOW**
-- Domain knowledge requirement: HIGH (biochemistry, molecular fingerprints)
-
-**VERDICT: NOT RECOMMENDED. Minimal SNN precedent, high domain knowledge barrier. Graph Neural Networks dominate this space, and for good reason -- molecular structures are naturally graphs, not temporal sequences.**
-

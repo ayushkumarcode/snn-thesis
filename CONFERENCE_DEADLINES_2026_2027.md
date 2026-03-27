@@ -390,3 +390,22 @@ Sources: [Frontiers Research Topic](https://www.frontiersin.org/research-topics/
 
 ---
 
+## what i think i should do
+
+for an undergrad thesis on SNNs + ESC-50 + SpiNNaker, the realistic and strategic targets are:
+
+1. **ICONS 2026 (April 1)** -- perfect fit. neuromorphic systems conference. ACM proceedings. the existing 8-page draft is already formatted for this.
+
+2. **WCCI/IJCNN 2026 Late-Breaking (March 10)** -- excellent fit but only 5 days away. if the ICONS draft can be reformatted to 6-page IEEE in time, worth a shot. IJCNN has relevant special sessions.
+
+3. **ICANN 2026 (March 16)** -- strong fit with dedicated SNN special session. 12-page Springer LNCS allows comprehensive treatment.
+
+4. **AICAS 2026 (March 22)** -- strong fit for the hardware/SpiNNaker angle. 5-page IEEE format.
+
+5. **DCASE 2026 (~July)** -- perfect topic fit. environmental sound classification is core DCASE material. SNN angle would be really novel there.
+
+6. **ICASSP 2027 (~Sep 2026)** -- strong general signal processing venue. audio classification + SNN is a compelling story.
+
+should avoid ICML, NeurIPS, ICLR main conferences (too competitive for this scope). workshop submissions at these venues could work if relevant workshops appear.
+
+cost-wise: IEEE conferences (WCCI, AICAS) tend to be expensive (550-950 EUR student). ACM ICONS has minimal APC ($250-350). ICANN is typically moderate (300-500 EUR). DCASE workshops are usually affordable.

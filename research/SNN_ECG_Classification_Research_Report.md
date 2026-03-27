@@ -138,3 +138,31 @@ Delta modulation deserves special attention. It takes the difference between con
 
 ---
 
+## Open-Source Implementations
+
+### ECG-Specific SNN Repos
+
+| Repository | Language/Framework | Description | Stars |
+|---|---|---|---|
+| [federicohyo/ecgheartbeat](https://github.com/federicohyo/ecgheartbeat) | Python | ECG to spike conversion using delta modulation; spike train visualization | ~30 |
+| [alirezaamir/HDL-SpikingNet-ECG](https://github.com/alirezaamir/HDL-SpikingNet-ECG) | Verilog/FPGA | FPGA implementation of SNN for ECG inference | ~15 |
+| [byin-cwi/Efficient-spiking-networks](https://github.com/byin-cwi/Efficient-spiking-networks) | PyTorch | Adaptive spiking recurrent networks for ECG (+ SHD, SSC) | ~50 |
+| [VELIDIPRADEEPKUMAR/SPIKING-NEURAL-NETWORK](https://github.com/VELIDIPRADEEPKUMAR/SPIKING-NEURAL-NETWORK) | Verilog | AdEx neuron model for ECG spike encoding and arrhythmia detection | ~5 |
+
+### General SNN Frameworks
+
+| Framework | GitHub | ECG Support | Best For |
+|---|---|---|---|
+| **snnTorch** | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) | Built-in delta encoding | **Recommended for thesis** |
+| **SpikingJelly** | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) | Via publications | Large-scale SNN research |
+| **Norse** | [norse/norse](https://github.com/norse/norse) | Not direct | Bio-plausible models |
+| **BindsNET** | [BindsNET/bindsnet](https://github.com/BindsNET/bindsnet) | Not direct | STDP/unsupervised learning |
+
+snnTorch seems like the best option for what i'd need: best tutorials (9 covering encoding, training, deployment), PyTorch integration, built-in `snntorch.delta` for ECG-to-spike encoding, active community, surrogate gradient training out of the box.
+
+---
+
+## Feasibility for an Undergrad Thesis
+
+i think this would work really well. Here's why:
+

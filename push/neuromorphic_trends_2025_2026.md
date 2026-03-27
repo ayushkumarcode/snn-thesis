@@ -26,3 +26,31 @@ a major paper on SNN adversarial robustness was published in Nature Comms. our a
 | BrainChip Akida | AKD1500 shipping | $25M raised |
 | **Innatera Pulsar** | **Mass-produced** | **Audio classification at 400 uW** |
 
+Innatera is basically validating the audio neuromorphic market. our work on SNN audio classification is directly aligned with commercial hardware trends.
+
+---
+
+## Most Impactful SNN Papers
+
+1. **Eshraghian et al.** -- "Training SNNs Using Lessons From Deep Learning" -- **2024 Proceedings of IEEE Best Paper Award** (this is the snnTorch paper we use!)
+2. **NeuroBench** (Yik et al.) -- Nature Communications Feb 2025 (we use this)
+3. **Nature Jan 2025** -- "Neuromorphic computing at a pivotal moment"
+4. **SNN adversarial robustness** -- Nature Communications Nov 2025
+
+---
+
+## Grand Challenges (Unsolved)
+
+1. software ecosystem gap (no PyTorch equivalent for SNNs)
+2. scaling SNNs to large models
+3. accuracy gap (best SNN: 83.73% ImageNet vs ANN: 90%+)
+4. finding a killer application
+5. verifying energy claims on real hardware
+
+**we directly address #4 (novel application) and #5 (NeuroBench + SpiNNaker deployment).**
+
+---
+
+## The Narrative Shift
+
+the community has matured: SNNs are complementary specialized accelerators, not ANN replacements. energy advantage is conditional (>93% sparsity). the gap is smallest with pretrained features (exactly our PANNs finding). hybrid ANN+SNN is the pragmatic path.

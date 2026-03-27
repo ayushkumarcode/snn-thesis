@@ -138,3 +138,31 @@ binary sparse outputs, asynchronous. reduces communication, lowers energy up to 
 the CPG-PE paper showed that sinusoidal positional encoding is mathematically a specific solution to membrane potential dynamics of a particular Central Pattern Generator. direct theoretical link between biological rhythm generation and sequence model positional encoding. cool.
 
 ### Counterarguments
+
+- surrogate gradients introduce approximation errors
+- non-differentiable spiking makes optimization harder
+- long-range dependencies remain fundamentally challenging
+- current SNN architectures often just adopt ANN architectures directly, which is probably sub-optimal for spikes
+
+---
+
+## Datasets and Benchmarks
+
+### Used in SNN Forecasting Papers
+
+| Dataset | Domain | Variables | Samples | Frequency | Used In |
+|---------|--------|-----------|---------|-----------|---------|
+| Metr-LA | Traffic (LA) | 207 | 34,272 | 5 min | SeqSNN, TS-LIF, SpikySpace, SpikeSTAG |
+| Pems-Bay | Traffic (Bay Area) | 325 | 52,116 | 5 min | Same |
+| Solar-Energy | Solar power | 137 | 52,560 | Hourly | Same |
+| Electricity | Consumption | 321 | 26,304 | Hourly | Same |
+
+### Standard Benchmarks NOT Yet Used with SNNs
+
+| Dataset | Domain | Variables | Frequency | Notes |
+|---------|--------|-----------|-----------|-------|
+| ETTh1 / ETTh2 | Transformer temperature | 7 | Hourly | Standard long-term forecasting benchmark |
+| ETTm1 / ETTm2 | Same | 7 | 15-min | Same |
+| Weather | Meteorological | 21 | 10-min | Max Planck Institute, Jena (2020) |
+| Traffic | Highway occupancy | 862 | Hourly | CalTrans PEMS |
+| ILI | Influenza-like illness | 7 | Weekly | CDC data |

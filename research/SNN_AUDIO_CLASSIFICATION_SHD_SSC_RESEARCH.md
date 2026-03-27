@@ -278,3 +278,31 @@ these are for a 128-neuron feedforward SNN getting ~70-75% accuracy. SOTA models
 - implement 1 ANN baseline (GRU or LSTM) on SHD
 - compare accuracy, training time, and estimated energy
 - write up with clear methodology and analysis
+- expected accuracy: SNN 85-92%, ANN 88-92%
+- time required: 4-6 weeks of focused work
+
+### 6.5 Ambitious Version (first-class potential)
+
+- compare 3-4 neuron models (LIF, RLIF, adLIF, RadLIF) on both SHD and SSC
+- implement delay learning (reproduce DCLS-Delays ICLR 2024 paper)
+- compare against GRU, LSTM, and small Transformer
+- detailed energy analysis with SynOps
+- spike train visualization and interpretability
+- ablation study on key hyperparameters (layers, neurons, time steps)
+- expected accuracy: 93-95% on SHD
+- time required: full semester of consistent work
+
+---
+
+## 7. Research Question Ideas
+
+### 7.1 Options
+
+**Option A (i think this is the strongest):**
+> "To what extent can feedforward spiking neural networks with learnable synaptic delays match or exceed recurrent networks for spoken digit classification on the SHD benchmark, and what are the energy efficiency implications?"
+
+i like this one because:
+- clear independent variable (delays vs. recurrence)
+- measurable outcomes (accuracy, energy)
+- builds on DCLS-Delays (ICLR 2024) which showed feedforward SNNs with delays can match recurrent ones
+- achievable -- the SNN-delays codebase can be directly used

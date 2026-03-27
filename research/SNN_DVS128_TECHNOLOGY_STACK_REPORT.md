@@ -1097,31 +1097,3 @@ Dataset Loader:  SpikingJelly built-in (DVS128Gesture) OR Tonic
 Transforms:      Tonic (for advanced transforms) or SpikingJelly built-in
 Visualization:   snnTorch spikeplot + matplotlib + TensorBoard
 Energy Metrics:  syops library
-ANN Baseline:    Standard PyTorch CNN
-```
-
-### Minimal Installation
-
-```bash
-# Create environment
-conda create -n snn python=3.10
-conda activate snn
-
-# Core (choose platform-specific PyTorch from pytorch.org)
-pip install torch torchvision torchaudio
-
-# SNN frameworks
-pip install spikingjelly
-pip install snntorch
-
-# Data loading
-pip install tonic
-
-# Energy metrics
-pip install syops
-
-# Visualization and logging
-pip install matplotlib tensorboard
-
-# Optional
-pip install einops tqdm h5py scipy

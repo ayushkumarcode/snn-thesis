@@ -138,3 +138,31 @@ Source: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-st
 
 ### 2.2 Sussex
 
+**70-79%:**
+- Complete understanding of all aspects of the project material
+- Reasonably demanding project objectives fully achieved
+- Thorough evaluation with clear evidence of background research
+
+**60-69%:**
+- Competent work with substantially achieved primary objectives
+- Clear technical understanding with problem analysis
+- Reasonable presentation standards
+
+**80-89%:**
+- Essentially faultless outcomes
+- Full objective achievement AND originality
+- All objectives fully achieved with evidence of going beyond what was required
+
+**90-100%:**
+- Truly outstanding project with publishable-quality outcomes
+- Original thinking that pushes boundaries
+
+Source: [Sussex Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
+
+### 2.3 Bristol -- the independence factor
+
+Bristol has a revealing indicator about student independence:
+- **60-69%**: "Some self directed work with significant supervisor input"
+- **70+**: Greater autonomy implied, with students driving their own decisions
+
+Source: [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.github.io/qanda/)

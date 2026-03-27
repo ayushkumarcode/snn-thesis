@@ -77,31 +77,3 @@ Both datasets are available through multiple loaders:
 ### 2.2 SSC Leaderboard (as of February 2026)
 
 | Rank | Model | Accuracy | Params | Time Steps | Year | Code Available |
-|------|-------|----------|--------|------------|------|----------------|
-| 1 | SpikCommander (2L, T=250) | **85.98%** | 2.13M | 250 | 2025 | -- |
-| 2 | SpikCommander (2L, T=200) | 85.52% | 2.13M | 200 | 2025 | -- |
-| 3 | SpikCommander (2L, T=100) | 83.49% | 2.13M | 100 | 2025 | -- |
-| 4 | SpikCommander (1L, T=100) | 83.26% | 1.12M | 100 | 2025 | -- |
-| 5 | SpikeSCR (2L) | 82.79% | 3.30M | 100 | 2025 | -- |
-| 6 | SpikeSCR (1L) | 82.54% | 1.71M | 100 | 2025 | -- |
-| 7 | DH-SNN (3L) | 82.46% | 0.35M | 1000 | -- | -- |
-| 8 | MCRE | 80.92% | -- | -- | 2025 | -- |
-| 9 | DCLS-Delays (3L) | 80.69% | 2.50M | 100 | 2024 | [GitHub](https://github.com/Thvnvtos/SNN-delays) |
-| 10 | SE-adLIF (2L) | 80.44% | 1.60M | 250 | 2024 | [GitHub](https://github.com/IGITUGraz/SE-adlif) |
-| 11 | d-cAdLIF (2L) | 80.23% | 0.70M | 100 | 2024 | -- |
-| 12 | Pfa-SNN | 80.18% | 0.71M | 100 | 2025 | -- |
-| 13 | DCLS-Delays (2L) | 80.16% | 1.40M | 100 | 2024 | [GitHub](https://github.com/Thvnvtos/SNN-delays) |
-| 14 | Spikformer (2L) | 80.18% | 2.57M | 100 | -- | -- |
-| 15 | SDT (2L) | 79.82% | 2.57M | 100 | -- | -- |
-| 16 | RadLIF (3x1024) | 77.40% | -- | -- | 2022 | [sparch](https://github.com/idiap/sparch) |
-
-### 2.3 Key Methods Explained
-
-**DCLS-Delays (ICLR 2024)** -- The breakthrough paper. Uses Dilated Convolutions with Learnable Spacings to learn synaptic delays in feedforward SNNs. Each synapse gets a 1D Gaussian kernel whose position (representing the delay) is learned during training. Achieves 95.07% on SHD with only 2 feedforward layers of 256 LIF neurons each, **without recurrent connections**. The Gaussians narrow during training to produce discrete delays compatible with neuromorphic hardware. Open-source, clean implementation, and easy to reproduce.
-
-**SE-adLIF (2024)** -- Uses an improved discretization scheme (Symplectic Euler) for adaptive Leaky Integrate-and-Fire neurons. The standard Euler-forward discretization introduces systematic errors; the SE scheme corrects this. Achieves 95.81% on SHD with recurrent connections.
-
-**SpikCommander (2025)** -- A fully spike-driven transformer architecture using Multi-view Spiking Temporal-Aware Self-Attention (MSTASA) and Spiking Contextual Refinement Channel MLP (SCR-MLP). Achieves 96.41% on SHD with just 0.19M parameters and 83.49-85.98% on SSC.
-
-**Pfa-SNN (2025)** -- Adds a parameter-free attention mechanism directly into the spiking neuron. No additional parameters required. Achieves 96.26% on SHD.
-

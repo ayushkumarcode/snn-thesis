@@ -138,3 +138,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Author** | Jonathan Heathcote |
 | **Year** | 2016 |
 | **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | James Garside (main), Steve Furber (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines |
+| **Abstract** | Addresses practical challenges in scaling SpiNNaker to simulate up to 1 billion neurons. Contributions: physical layout scheme for hexagonal torus topologies, improved routing algorithms, placement and routing algorithms that tolerate network faults. Demonstrated on half-million core prototype. |
+| **What They Built** | Physical layout schemes, routing algorithms, placement/routing algorithms for SpiNNaker at scale |
+| **Tools/Frameworks** | SpiNNaker, simulated annealing |
+| **Datasets** | Not specified |
+| **Scope** | Very high -- supercomputer-scale engineering |
+
+---
+
+### 1.9 Structural Plasticity on SpiNNaker
+| Field | Detail |
+|-------|--------|
+| **Author** | Petrut Bogdan |
+| **Year** | 2019 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Steve Furber (main), David Lester (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker |
+| **Abstract** | Implements structural plasticity model on SpiNNaker that operates in real-time alongside STDP. Applications in topographic map generation, unsupervised handwritten digit classification, and motion detection. |
+| **What They Built** | Structural plasticity implementation on SpiNNaker; topographic map, digit classification, motion detection demos |
+| **Tools/Frameworks** | SpiNNaker, STDP |
+| **Datasets** | Handwritten digits (likely MNIST) |
+| **Scope** | Very high -- novel plasticity mechanism on neuromorphic hardware |
+
+---
+

@@ -227,31 +227,3 @@ The natural fit between ECG signals (temporal, quasi-periodic, spike-like QRS co
 **Strengths:**
 1. **Well-defined problem**: ECG classification is a standard, well-benchmarked task
 2. **Accessible datasets**: MIT-BIH is small (~100 MB), well-documented, freely available, and pre-processed versions exist on Kaggle
-3. **Mature tooling**: snnTorch provides a PyTorch-based framework with excellent tutorials
-4. **Clear evaluation**: Standard metrics (accuracy, F1, sensitivity, specificity) and AAMI classification standards
-5. **Reproducible baselines**: Multiple CNN baselines exist for comparison
-6. **Manageable scope**: A single-lead, 5-class classification task is tractable
-7. **Strong narrative**: Energy-efficient cardiac monitoring for wearables is compelling and timely
-8. **Publication potential**: Under-explored enough that novel contributions are achievable
-
-**Challenges (Manageable):**
-1. SNN training is less mature than CNN training (more hyperparameter tuning needed)
-2. Surrogate gradient methods require understanding (but snnTorch abstracts most complexity)
-3. Limited existing code specifically for ECG (will need to adapt general SNN code)
-4. Reproducing exact results from papers can be tricky (preprocessing details often missing)
-
-#### Suggested Thesis Architecture
-
-```
-Phase 1 (Weeks 1-3): Foundation
-  - Literature review (this report provides the foundation)
-  - Set up Python environment (PyTorch + snnTorch)
-  - Download and preprocess MIT-BIH dataset
-  - Complete snnTorch tutorials 1-5
-
-Phase 2 (Weeks 4-6): Baseline Implementation
-  - Implement CNN baseline for ECG classification (1D-CNN)
-  - Implement basic SNN using snnTorch (LIF neurons, surrogate gradient)
-  - Implement ECG-to-spike encoding (delta modulation)
-  - Evaluate on MIT-BIH with AAMI 5-class split
-

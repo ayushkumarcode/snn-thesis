@@ -149,31 +149,3 @@ Adding N-MNIST or DVS128 Gesture as a third dataset demonstrates understanding o
 2. **Work through snnTorch tutorials IN ORDER.** Tutorials 1-6 are designed to progressively build your understanding AND your code. The tutorial code IS your project code -- you modify it, not write from scratch.
 
 3. **Batch your experiments.** Set up all training runs in one session, let them run, then analyse results together.
-
-4. **Use the same model architecture for ANN and SNN.** This makes comparison fair AND reduces coding work. Same number of layers, same hidden dimensions -- just swap activation functions for LIF neurons.
-
-5. **Automate plotting.** Write one plotting function that works for all experiments. Reuse it.
-
-### Realistic calendar timeline (for someone with other commitments):
-
-| Week | Task | Hours |
-|------|------|-------|
-| Week 1 | Set up environment, work through Tutorials 1-3 | 8-10 |
-| Week 2 | Tutorials 5-6, implement ANN baseline | 8-10 |
-| Week 3 | Adapt SNN code, run initial experiments on MNIST | 8-10 |
-| Week 4 | Add second dataset, run remaining experiments | 6-8 |
-| Week 5 | Generate all plots/tables, start writing results chapter | 6-8 |
-| Week 6 (buffer) | Fix issues, re-run experiments if needed | 4-6 |
-
-**Total: 6 weeks at ~8 hours/week = ~48 hours of coding/experimentation.**
-
-The report writing (separate from coding) typically takes another 40-60 hours for a good report. Budget 2-3 weeks for writing.
-
----
-
-## 5. EXISTING CODE AND TUTORIALS TO ADAPT (NOT BUILD FROM SCRATCH)
-
-### Primary resource: snnTorch (start here, do not look elsewhere until you have completed these)
-
-| Tutorial | What it gives you | Direct thesis use |
-|----------|------------------|-------------------|

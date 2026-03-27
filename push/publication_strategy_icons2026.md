@@ -250,3 +250,28 @@ reasons:
 
 | Venue | Type | Deadline | Status | Location | Fit |
 |-------|------|----------|--------|----------|-----|
+| ICONS 2026 | Conference | Apr 1, 2026 | **OPEN** | Chicago, USA | Perfect |
+| ICNCE 2026 | Abstracts | Apr 3, 2026 | **OPEN** | Aachen, Germany | Good |
+| AICAS 2026 | Conference | Mar 22, 2026 | Likely passed | Vietnam | Good |
+| EUSIPCO 2026 | Conference | Feb 13, 2026 | Passed | Bruges, Belgium | Good |
+| INTERSPEECH 2026 | Conference | Feb 25, 2026 | Passed | Sydney | Moderate |
+| ICASSP 2026 | Conference | Sep 17, 2025 | Passed | Barcelona | Good |
+| ISCAS 2026 | Conference | Oct 26, 2025 | Passed | Shanghai | Moderate |
+| NICE 2026 | Conference | ~Jan 2026 | Passed | TBD | Good |
+| NeurIPS 2026 WS | Workshop | ~Oct 2026 | Future | TBD | Good |
+| ICASSP 2027 | Conference | ~Sep 2026 | Future | TBD | Good |
+| ICLR 2027 | Conference | ~Sep 2026 | Future | TBD | Reach |
+| Frontiers NeuroSci | Journal | Rolling | Always open | N/A | Excellent |
+| NCE (IOP) | Journal | Rolling | Always open | N/A | Excellent |
+
+## Source URLs
+
+- ICONS 2026: https://iconsneuromorphic.cc/calls-2026/
+- EasyChair: https://easychair.org/cfp/ACM-ICONS-2026
+- ICONS 2025 Schedule: https://iconsneuromorphic.cc/Schedule-2025/
+- ICONS 2024 DBLP: https://dblp.org/db/conf/icons2/icons2024.html
+- ACM Open Access: https://www.acm.org/special-interest-groups/volunteer-resources/acms-transition-to-open-access
+- UoM ACM OA Agreement: https://manchester-uk.libanswers.com/OOR/faq/279168
+- Yarga et al. ICONS 2022: https://dl.acm.org/doi/10.1145/3546790.3546803
+- Larroza et al. 2025: https://arxiv.org/abs/2503.11206
+- NeuroBench: https://www.nature.com/articles/s41467-025-56739-4

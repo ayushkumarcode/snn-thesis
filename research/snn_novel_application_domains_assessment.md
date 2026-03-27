@@ -26,3 +26,31 @@ for an undergrad thesis balancing novelty, feasibility, and natural SNN advantag
 | Spiking Vocos | 2025 | Spiking vocoder for audio synthesis |
 
 **why SNNs make sense here:** music is inherently temporal and spike-like (note onsets, rhythmic patterns). MIDI events are discrete, event-driven data. biological auditory processing uses spike-timing codes. STDP mirrors associative musical memory. energy efficiency matters for real-time embedded music.
+
+**feasibility:** HIGH. MIDI datasets are abundant (JSB Chorales, POP909, Lakh MIDI). MuSpike benchmark (2025) provides evaluation methodology. snnTorch/SpikingJelly work fine. single-instrument melody generation is well-scoped. easy LSTM baselines.
+
+**novelty:** VERY HIGH. MuSpike (2025) explicitly notes the field is "significantly underexplored." enormous creative space.
+
+**verdict: excellent thesis candidate**
+
+---
+
+### 2. SNN for Industrial IoT Anomaly Detection
+
+**papers: about 10-20**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Evolving SNN for Multivariate Time Series | 2022 | Evolving SNN for streaming data |
+| Deep SNN Anomaly Detection | 2022 | Vibration analysis for oil infrastructure |
+| Vacuum Spiker | 2025 | Efficient anomaly detection model |
+| End-to-End Bearing Fault Diagnosis | 2024 | Industrial bearing diagnosis (KDD 2025) |
+| Multi-modal Sensor Fusion | 2024 | Multi-sensor bearing fault detection |
+| Hybrid Recurrent + SNN for IoT Security | 2025 | IoT intrusion detection |
+| Brain-Inspired SNNs for Fault Diagnosis (Survey) | 2024 | Survey of the field |
+
+**why SNNs make sense:** sensor data is temporal and event-driven (anomalies are transients). spike-based threshold detection naturally catches events. low power critical for IoT edge. real-time processing fits event-driven nature. online/evolving learning enables adaptation.
+
+**feasibility:** MODERATE-HIGH. public datasets exist (CWRU Bearing, NASA Bearing, SMD, SMAP). encoding continuous sensor data into spikes takes some thought. well-scoped: single-sensor anomaly detection (e.g., bearing vibration).
+
+**novelty:** MODERATE. active but not saturated. novel angles: specific industrial domains (CNC machining, HVAC), combining online learning with anomaly detection.

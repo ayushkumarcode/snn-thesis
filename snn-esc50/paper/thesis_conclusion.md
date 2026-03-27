@@ -82,19 +82,16 @@ Three main limitations:
 
 ---
 
+## 8.5 final statement
 
-10. **Generalisation to larger benchmarks:** FSD50k (51,000 clips, Fonseca et al. 2022) and UrbanSound8K (8,732 clips, Salamon et al. 2014) would test whether the encoding hierarchy (direct > rate ≈ phase > latency >> delta ≈ burst) generalises beyond ESC-50.
+SNNs for environmental sound classification aren't yet competitive with ANNs from scratch on small datasets. This thesis establishes the baseline numbers, documents which encodings work and which dont, deploys the first SNN for environmental sound on neuromorphic hardware, and -- maybe most importantly -- shows the SNN-ANN gap collapses when good features are available.
 
----
+The energy argument remains nuanced: SNNs are cheaper per op on neuromorphic hardware but need more total ops in current implementations. The adversarial robustness argument is not nuanced at all: its dramatic, reproducible, and potentially decisive for secure edge audio.
 
-## 8.5 Final Statement
-
-Spiking neural networks for environmental sound classification are not yet competitive with ANNs when trained from scratch on small datasets. This thesis establishes the baseline numbers, documents the encoding methods that work and those that do not, deploys the first SNN for environmental sound on neuromorphic hardware, and — perhaps most importantly — shows that the SNN-ANN gap collapses when good features are available.
-
-The energy argument for SNNs remains nuanced: SNNs are cheaper per operation on neuromorphic hardware, but require more total operations than equivalent ANNs in current implementations. The adversarial robustness of SNNs is not nuanced: it is dramatic, reproducible, and potentially decisive for secure edge audio applications.
-
-This work provides the first complete picture of SNN capability on a standard audio benchmark, from feature encoding to neuromorphic hardware deployment. Future work building on these results has clear directions: better features, hardware-native architectures, and temporal coding objectives that exploit the temporal nature of spiking computation that current rate-coded approaches leave untapped.
+This provides the first complete picture of SNN capability on a standard audio benchmark, from encoding to hardware deployment. Future work has clear directions: better features, hardware-native architectures, and temporal coding objectives that exploit the temporal nature of spiking computation that current rate-coded approaches leave on the table.
 
 ---
+
+Appendices follow: A (full results tables), B (confusion matrices), C (SpiNNaker params), D (reproducibility)
 
 *Appendices follow: A (Full results tables), B (Confusion matrices), C (SpiNNaker parameter tables), D (Reproducibility statement and GitHub link)*

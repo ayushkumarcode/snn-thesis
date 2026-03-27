@@ -418,3 +418,31 @@ this lets you:
 
 ---
 
+## 11. next steps if i were to do this
+
+1. download and explore PhysioNet EEGMMIDB -- no application needed, immediate access
+2. do snnTorch tutorials 1-5 (~1 week)
+3. clone and run combra-lab/snn-eeg to reproduce baseline results
+4. install TorchEEG and load a sample dataset to understand the data format
+5. read the EESCN paper (CMPB 2024) for a complete SNN-EEG pipeline
+6. apply for DEAP dataset access now (takes ~1 month)
+7. draft thesis proposal around SNN vs CNN comparison for motor imagery
+8. check supervisor is comfortable with the scope -- this sits at the intersection of neuromorphic computing and signal processing
+
+---
+
+## references
+
+### key papers
+- [Spiking neural networks for EEG signal analysis using wavelet transform](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1652274/full) (Frontiers, 2025)
+- [A lightweight spiking neural network for EEG-based motor imagery classification](https://www.sciencedirect.com/science/article/abs/pii/S0893608025006215) (Neural Networks, 2025)
+- [Decoding EEG With Spiking Neural Networks on Neuromorphic Hardware](https://openreview.net/forum?id=ZPBJPGX3Bz) (TMLR, 2022)
+- [EESCN: A novel spiking neural network method for EEG-based emotion recognition](https://www.sciencedirect.com/science/article/abs/pii/S016926072300593X) (CMPB, 2024)
+- [A convolutional spiking neural network with adaptive coding for motor imagery classification](https://www.sciencedirect.com/science/article/abs/pii/S0925231223005933) (Neurocomputing, 2023)
+- [HR-SNN: An End-to-End Spiking Neural Network for Four-class Classification Motor Imagery Brain-Computer Interface](https://ieeexplore.ieee.org/document/10511071/) (IEEE, 2024)
+- [NiSNN-A: Non-iterative Spiking Neural Networks with Attention](https://arxiv.org/html/2312.05643) (arXiv, 2024)
+- [Constructing lightweight and efficient spiking neural networks for EEG-based motor imagery classification](https://www.sciencedirect.com/science/article/abs/pii/S1746809424010589) (BSPC, 2024)
+- [Advancing EEG based stress detection using spiking neural networks](https://www.nature.com/articles/s41598-025-10270-0) (Scientific Reports, 2025)
+- [Efficient and generalizable cross-patient epileptic seizure detection through a spiking neural network](https://pmc.ncbi.nlm.nih.gov/articles/PMC10805904/) (Frontiers, 2024)
+- [Real-time Sub-milliwatt Epilepsy Detection Implemented on a Spiking Neural Network Edge Inference Processor](https://arxiv.org/html/2410.16613v1) (Computers in Biology and Medicine, 2024)
+- [Fractal Spiking Neural Network Scheme for EEG-Based Emotion Recognition](https://pmc.ncbi.nlm.nih.gov/articles/PMC10712674/) (2023)

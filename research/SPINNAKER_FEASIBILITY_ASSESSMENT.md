@@ -222,3 +222,31 @@ Source: [EBRAINS Neuromorphic Getting Access](https://wiki.ebrains.eu/bin/view/C
 
 - Single-chip boards exist but access is restricted
 - `py-spinnaker2` dependencies are in private repos
+- Access requires direct contact with TU Dresden / SpiNNcloud Systems
+- sPyNNaker (SpiNNaker1 software) does NOT run on SpiNNaker2
+- No public student access program exists
+
+### Oliver Rhodes as supervisor
+
+Oliver Rhodes is a Lecturer in Bio-Inspired Computing at Manchester, part of the APT group that built SpiNNaker. He co-authored the sPyNNaker paper, has supervised 4+ student projects, works directly on SpiNNaker software, and could potentially facilitate access beyond EBRAINS quotas. Having him as supervisor is a significant advantage for SpiNNaker access.
+
+---
+
+## 5. Training vs inference on SpiNNaker
+
+### The standard workflow
+
+```
+[Train on GPU/CPU]          [Deploy on SpiNNaker]
+snnTorch + PyTorch    --->   sPyNNaker (SpiNNaker1)
+  |                          or py-spinnaker2 (SpiNNaker2)
+  |-- surrogate gradients     |-- inference only
+  |-- backpropagation          |-- pre-loaded weights
+  |-- GPU acceleration         |-- real-time execution
+  |-- batch training           |-- energy measurement
+  v                            v
+Trained weights (.pt)    Spike output + energy data
+```
+
+SpiNNaker is primarily used for inference, not training. Training happens on conventional hardware.
+

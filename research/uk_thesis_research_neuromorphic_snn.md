@@ -139,31 +139,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 
 **URL pattern:** https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
 
-### Imperial College London
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|
-| Robust and efficient training on deep spiking neural networks | N. Perez | 2023 | Sparse backward pass (150x speedup), weight initialization for SNNs |
-
-**URL:** https://spiral.imperial.ac.uk/entities/publication/0bfc1732-2dac-4589-b50e-7eec99f8efdf
-
-### University of Kent
-
-| Title | Author | Year | Supervisor | Key Contribution |
-|-------|--------|------|------------|-----------------|
-| Towards Neuromorphic Gradient Descent | Florian Bacho | 2024 | Dominique Chu | Exact gradients for temporally-coded SNNs, local online learning |
-| Towards Modelling of Autonomous Neuromorphic Learning | Jakub Fil | 2022 | -- | Autonomous neuromorphic learning systems |
-
-**URLs:**
-- https://kar.kent.ac.uk/104801/
-- https://kar.kent.ac.uk/95778/
-
-### UCL
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|
-| Bio-mimetic SNNs for unsupervised clustering | Katarzyna Kozdon | 2022 | STDP, structural plasticity, evolutionary learning |
-| Graph-based Feature Learning for Neuromorphic Vision | Yin Bi | 2020 | Graph neural networks for event cameras, ASL-DVS dataset |
-| Classification of Finger Movements from ECoG using SNN | -- | -- | First SNN-based ECoG decoder |
-
-**URLs:**

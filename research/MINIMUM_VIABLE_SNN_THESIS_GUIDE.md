@@ -222,3 +222,31 @@ Manchester's report guidance says you need "an in-depth investigation of the con
 3. Hodgkin, A.L. & Huxley, A.F. (1952). "A quantitative description of membrane current..." -- The biological foundation
 
 **SNN training methods:**
+4. Bohte, S.M. et al. (2002). "Error-backpropagation in temporally encoded networks of spiking neurons" -- Early SNN training
+5. Neftci, E.O. et al. (2019). "Surrogate gradient learning in spiking neural networks" -- THE key paper on how modern SNNs are trained
+6. Eshraghian, J.K. et al. (2023). "Training Spiking Neural Networks Using Lessons From Deep Learning" -- The snnTorch authors' tutorial/survey
+
+**STDP and biological learning:**
+7. Bi, G. & Poo, M. (1998). "Synaptic modifications in cultured hippocampal neurons" -- STDP discovery
+8. Diehl, P.U. & Cook, M. (2015). "Unsupervised learning of digit recognition using spike-timing-dependent plasticity" -- Seminal STDP-MNIST paper (95% accuracy with 6400 neurons)
+
+**SNN vs ANN comparison:**
+9. Deng, L. et al. (2020). "Rethinking the performance comparison between SNNs and ANNs" -- Directly relevant
+10. Lemaire, E. et al. (2022). "Are SNNs really more energy-efficient than ANNs?" -- Energy efficiency analysis
+
+**Encoding schemes:**
+11. Kim, J. et al. (2021). "Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems" -- Rate vs temporal coding comparison
+
+**Framework:**
+12. Eshraghian, J.K. et al. (2023). "snnTorch: A Python package for training spiking neural networks" -- Cite your tool
+
+### Additional references by topic (pick 10-15 based on your focus):
+
+**Neuromorphic computing context:**
+- Furber, S.B. et al. (2014). "The SpiNNaker Project" -- Manchester connection
+- Davies, M. et al. (2018). "Loihi: A Neuromorphic Manycore Processor" -- Intel's chip
+- Merolla, P.A. et al. (2014). "A million spiking-neuron integrated circuit" -- IBM TrueNorth
+
+**Deep SNNs:**
+- Wu, Y. et al. (2018). "Spatio-temporal backpropagation for training high-performance spiking neural networks"
+- Fang, W. et al. (2021). "Incorporating learnable membrane time constants to enhance learning of spiking neural networks"

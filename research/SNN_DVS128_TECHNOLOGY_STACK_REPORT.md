@@ -642,3 +642,31 @@ Training does work on Apple Silicon via PyTorch MPS (Metal Performance Shaders).
 device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
 ```
 
+Caveats:
+- MPS support requires macOS Monterey 12.3+ and PyTorch >= 1.12
+- MPS is still marked experimental -- some PyTorch ops aren't implemented yet
+- Set `PYTORCH_ENABLE_MPS_FALLBACK=1` to auto fall back to CPU for unsupported ops
+- SpikingJelly CuPy and Triton backends are not available on Mac (NVIDIA-only). Have to use `torch` backend.
+- snnTorch works natively on MPS since it uses standard PyTorch operations
+- For small models and datasets like DVS128 (1464 samples), MPS gives meaningful speedup over CPU
+- For big experiments, really want an NVIDIA GPU
+
+One nice thing about Apple Silicon: unified memory means no separate GPU VRAM limit -- the GPU shares system RAM. An M3 Pro with 36GB can handle larger batches than a discrete GPU with 12GB VRAM.
+
+### Training Duration Estimates
+
+Based on SpikingJelly benchmarks on RTX 2080 Ti:
+
+| Configuration | Time per Epoch | Notes |
+|---|---|---|
+| torch backend, T=16, batch=16 | ~28 sec | Standard Python implementation |
+| cupy backend, T=16, batch=16 | ~18 sec | CuPy-accelerated (34% faster) |
+| 64 epochs total | ~19-30 min | Minimal training run |
+| 256 epochs total | ~77-120 min | Full training run to convergence |
+
+First-time dataset processing: converting AEDAT files to frames takes 10-30 minutes on first run (cached after that).
+
+### Memory Requirements
+
+- DVS128 Gesture dataset raw download: ~5.8 GB
+- Processed frame data (cached): ~2-4 GB (depends on T and split strategy)

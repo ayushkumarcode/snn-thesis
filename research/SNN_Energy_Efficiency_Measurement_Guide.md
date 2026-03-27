@@ -334,3 +334,31 @@ a MAC (4.6 pJ) costs ~5.1x more than an AC (0.9 pJ) at FP32. but SRAM access (10
     - Reference critical papers (Kundu 2023, Shen 2024)
     - Where does your SNN's sparsity fall vs critical thresholds?
 
+4.5 Summary
+    - Key finding and consistency with literature
+```
+
+---
+
+## papers to cite in energy analysis
+
+### foundational (must cite)
+1. **Horowitz 2014** -- energy per operation constants at 45nm. ISSCC.
+2. **Lemaire et al. 2022** -- analytical SNN energy model. [arXiv:2210.13107](https://arxiv.org/abs/2210.13107)
+3. **NeuroBench 2025** -- standardized benchmarking. [Nature Communications](https://www.nature.com/articles/s41467-025-56739-4)
+
+### critical/nuanced (should cite for balance)
+4. **Kundu et al. 2023** -- hardware perspective on SNN efficiency. [arXiv:2309.03388](https://arxiv.org/abs/2309.03388)
+5. **Shen et al. 2024 (CVPR)** -- SNNs equivalent to quantized ANNs. [CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Are_Conventional_SNNs_Really_Efficient_A_Perspective_from_Network_Quantization_CVPR_2024_paper.pdf)
+6. **Dampfhoffer et al. 2023** -- hardware-aware study. [HAL archive](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf)
+7. **Li et al. 2024** -- sparsity thresholds (93-97%). [arXiv:2409.08290](https://arxiv.org/html/2409.08290v1)
+8. **Lunghi et al. 2025** -- hardware-aware vs agnostic estimation. [arXiv:2508.19654](https://arxiv.org/abs/2508.19654)
+
+### methodology examples
+9. **Yao et al. 2024 (ICLR)** -- Spike-driven Transformer V2. clear per-layer methodology. [arXiv:2404.03663](https://arxiv.org/html/2404.03663v1)
+10. **Kundu et al. 2021 (WACV)** -- Spike-Thrift. energy-aware training. [WACV 2021](https://openaccess.thecvf.com/content/WACV2021/papers/Kundu_Spike-Thrift_Towards_Energy-Efficient_Deep_Spiking_Neural_Networks_by_Limiting_Spiking_WACV_2021_paper.pdf)
+
+---
+
+## 13 energy metrics taxonomy (Pereira et al. 2025)
+

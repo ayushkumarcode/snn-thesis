@@ -43,31 +43,3 @@
 
 **Takeaway:** The sweet spot is (b) or (c). Nobody does pure replication, but genuinely novel methods are rare and not expected. Most successful theses take existing techniques and either apply them to a new context or extend them modestly.
 
-### 2.2 Word Count Distribution
-- **Range:** 10,896 -- 21,588 words
-- **Median:** ~14,000 words
-- **Most common range:** 12,000 -- 15,000 words
-
-### 2.3 Structural Patterns (Universal)
-Every high-quality paper followed this introduction structure:
-1. **Motivation** (real-world context, statistics, why this matters)
-2. **Problem Statement** (specific gap or question)
-3. **Aims & Objectives** (numbered, measurable, with success criteria)
-4. **Evaluation Strategy** (metrics defined before experiments)
-5. **Report Structure** (chapter-by-chapter roadmap)
-
-### 2.4 What Differentiates Strong Papers
-- **Quantitative results in the abstract** (specific numbers, not vague claims)
-- **Explicit success criteria** defined before experiments
-- **Multi-axis evaluation** (not just accuracy -- also efficiency, robustness, failure analysis)
-- **Honest limitation acknowledgment** (valued, not penalised)
-- **Comparison against at least one baseline**
-- **Negative results reported and analysed** (several papers gained credibility from honest failures)
-
-### 2.5 Common Acceptable Patterns
-- Descoping from original ambitious goals (Yi Wu, Aggarwal)
-- Delivering fewer objectives than planned with rest as "future work" (Aggarwal)
-- Supervisor-suggested novel contributions (Gill)
-- Modest accuracy/results with thorough analysis (Yi Wu's 66.7% was sufficient)
-- Proof-of-concept framing without full deployment (Devine)
-- No code at all for a research project (Oldfield)

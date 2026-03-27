@@ -250,3 +250,31 @@ very poor accuracy despite correct architecture. too few = not enough time for m
 [ ] Are gradients flowing? Check gradient norms per layer
 [ ] States being reset? Verify utils.reset()
 [ ] Slope reasonable? Try defaults first
+[ ] Beta appropriate? Start with 0.5
+[ ] Time steps reasonable? Try 25 for images
+[ ] Batch size causing OOM? Reduce
+[ ] Learning rate appropriate? 1e-3 to 1e-2 for Adam
+[ ] Spike counts used correctly in loss?
+```
+
+---
+
+## snnTorch Implementation Guide
+
+### Installation
+
+```bash
+pip install snntorch
+```
+
+that's it. only depends on PyTorch.
+
+### Minimal Working Example (MNIST)
+
+```python
+import torch
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+from snntorch import functional as SF
+from snntorch import utils

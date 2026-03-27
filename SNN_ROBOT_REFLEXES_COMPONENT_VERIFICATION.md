@@ -60,31 +60,3 @@
 | **NVIDIA GPU Required?** | **YES -- ABSOLUTELY REQUIRED** |
 | **CUDA Version** | Requires NVIDIA driver 470+ (implies CUDA 11.x+) |
 | **macOS Support** | **NO. Linux only (Ubuntu 18.04/20.04).** |
-| **Current Status** | DEPRECATED. NVIDIA recommends Isaac Lab as replacement |
-| **POTENTIAL BLOCKER** | **YES -- HARD BLOCKER FOR macOS** |
-
-**Why it is a blocker:** Isaac Gym requires (1) Linux, (2) an NVIDIA GPU with at least 8GB VRAM, (3) NVIDIA driver 470+. It is completely impossible to run on macOS with Apple Silicon. It is also deprecated and no longer supported by NVIDIA. Its replacement, Isaac Lab, also requires Linux + NVIDIA GPU.
-
-**Verdict:** Do NOT use Isaac Gym for this project. Use MuJoCo instead.
-
-**Source:** [NVIDIA Isaac Gym](https://developer.nvidia.com/isaac-gym) | [NVIDIA Forum on deprecation](https://forums.developer.nvidia.com/t/isaac-gym-deprecation-transition-to-isaac-lab/322978) | [Forum on macOS](https://forums.developer.nvidia.com/t/is-it-possible-to-develop-using-macos/164267)
-
----
-
-### 3. MuJoCo
-
-| Field | Value |
-|-------|-------|
-| **EXISTS** | YES |
-| **URL** | https://github.com/google-deepmind/mujoco |
-| **Stars** | 12,100+ |
-| **Latest Version** | 3.5.0 (released February 13, 2026) |
-| **Free?** | YES -- Apache 2.0 license, fully open source |
-| **macOS Support** | **YES -- native universal binary (Intel + Apple Silicon)** |
-| **Apple Silicon** | YES -- "MuJoCo on the M1 Max is lightning fast" (Google DeepMind) |
-| **GPU Acceleration** | MJX (MuJoCo XLA) supports Apple Silicon via JAX |
-| **POTENTIAL BLOCKER** | **NO** |
-
-**This is the correct simulation engine for this project.** MuJoCo is:
-- Free and open source
-- Actively maintained by Google DeepMind (monthly releases)

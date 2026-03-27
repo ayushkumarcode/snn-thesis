@@ -152,20 +152,20 @@ Rate dramatically beats first-spike (51.50% vs 25.75%). This means:
 
 ### 6.3.3 raster plots
 
-3. **To exploit first-spike timing, the model needs to be trained with a temporal objective.** As shown by Yu et al. (2025, arXiv:2507.16043), surrogate gradient training can enable spike-timing-based learning, but only when the loss function specifically rewards early correct-class firing.
+Key observations from the raster plots (fold 4, direct, T=25):
+- Output spike density: ~3-5 spikes/step out of 50 neurons (6-10%)
+- Correct samples show clear winner (one neuron consistently active)
+- Misclassified show ties between multiple output neurons
+- Spikes not temporally structured -- approximately uniform across T=25 (consistent with constant current from direct encoding)
 
-**Practical implication:** The direct encoding SNN in this work is fundamentally a rate-coded classifier implemented in spiking hardware. The temporal sparsity arises from LIF thresholding but is not informationally exploited beyond rate integration. Future work with temporal coding losses could improve accuracy or reduce required timesteps.
+### 6.3.4 per-class first-spike latency
 
-### 6.3.3 Raster Plots
+Mean timestep of first correct-class spike, averaged over fold 4 test samples. Source: `results/temporal_analysis/temporal_analysis_fold4.json`.
 
-![Raster plots: output spike patterns for 5 correctly classified and 5 misclassified samples (fold 4, direct encoding, T=25 timesteps). Correctly classified samples show a dominant output neuron with consistent spiking; misclassified samples show ambiguous competition between multiple output neurons.](../results/temporal_analysis/raster_fold4.png)
+**Earliest firing (step < 1.0):**
 
-Key observations from raster plots:
-- Average output spike density per timestep: ~3–5 spikes/step out of 50 output neurons (6–10% rate)
-- Correct samples show clear winner (one output neuron consistently more active)
-- Misclassified samples show tie or near-tie between multiple output neurons
-- Spike pattern is not temporally structured — spikes are approximately uniformly distributed across T=25 steps (consistent with direct encoding producing constant current input)
-
+| Class | Mean first-spike |
+|-------|-----------------|
 ### 6.3.4 Per-Class First-Spike Latency
 
 The mean timestep at which the output spike first fires for the correct class output neuron, averaged over fold 4 test samples of that class. Lower values indicate earlier firing (more active output neuron → "easier" for first-spike readout). *Source: `results/temporal_analysis/temporal_analysis_fold4.json`.*

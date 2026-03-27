@@ -495,31 +495,3 @@ spike_grad = surrogate.fast_sigmoid(slope=25)
 # Option 2: Arctangent (default if unspecified)
 spike_grad = surrogate.atan(alpha=2.0)
 
-# Option 3: Sigmoid
-spike_grad = surrogate.sigmoid(slope=25)
-
-# Option 4: Custom surrogate
-def my_grad(input_, grad_input, spikes):
-    slope = 25
-    grad = grad_input / (slope * torch.abs(input_) + 1.0) ** 2
-    return grad
-spike_grad = surrogate.custom_surrogate(my_grad)
-```
-
-**Available Loss Functions:**
-```python
-# Rate coding: classify by which neuron fires most often
-loss_fn = SF.ce_rate_loss()      # Cross-entropy on total spike counts
-loss_fn = SF.mse_count_loss()    # MSE on spike counts
-
-# Temporal coding: classify by which neuron fires first
-loss_fn = SF.ce_temporal_loss()  # Cross-entropy on first spike time
-```
-
-**Neuron Models:**
-```python
-# Leaky Integrate-and-Fire (most common, recommended)
-snn.Leaky(beta=0.5, spike_grad=spike_grad)
-
-# Synaptic (2nd-order, with current and membrane dynamics)
-snn.Synaptic(alpha=0.9, beta=0.85, spike_grad=spike_grad)

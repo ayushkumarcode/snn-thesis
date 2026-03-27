@@ -278,3 +278,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 ### FPGA SNN STDP Acceleration
 - https://github.com/rafamedina97/FPGA_SNN_STDP
 - FPGA hardware acceleration of STDP learning for SNNs
+- VHDL, SystemVerilog, Vivado, MATLAB. MNIST (784-20-10).
+- 40 stars, 7 forks
+
+### SNN4Space (ESA)
+- https://github.com/AndrzejKucik/SNN4Space
+- ANN-to-SNN conversion for satellite land cover classification
+- KerasSpiking, TensorFlow. UC Merced 91.43%, EuroSAT 95.07%.
+- 14 stars, 128 commits
+
+### Bayesian Optimization 1D-CSNN for Fraud Detection
+- https://github.com/dylanperdigao/Bayesian-Optimization-1D-CSNN
+- 1D-Convolutional SNN optimized with Bayesian methods for fraud detection
+- snnTorch. Bank Account Fraud (BAF) Dataset from NeurIPS 2022.
+- Published at EPIA 2024. 3 stars.
+
+---
+
+## Curated Lists and Resource Collections
+
+- **awesome-snn**: https://github.com/coderonion/awesome-snn -- collection of public SNN projects
+- **Awesome-Spiking-Neural-Networks**: https://github.com/yfguo91/Awesome-Spiking-Neural-Networks -- papers organized by topic
+- **Awesome-SNN-Conference-Paper**: https://github.com/AXYZdong/awesome-snn-conference-paper -- papers from top conferences with code
+- **Awesome-SNN-Paper-Collection**: https://github.com/Ruichen0424/Awesome-SNN-Paper-Collection -- papers organized by topic including spike cameras
+- **Open Neuromorphic**: https://github.com/open-neuromorphic/open-neuromorphic (https://open-neuromorphic.org/) -- global community with workshops, student talks, peer review
+- **Event-Based Vision Resources**: https://github.com/uzh-rpg/event-based_vision_resources
+
+---
+

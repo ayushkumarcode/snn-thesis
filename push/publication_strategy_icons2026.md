@@ -222,3 +222,31 @@ reasons:
 1. perfect topical fit
 2. clear novelty -- first SNN on full ESC-50
 3. multi-contribution paper matches what ICONS publishes
+4. SpiNNaker deployment is first-class
+5. ~59% acceptance rate -- very achievable
+6. ACM proceedings, indexed, OA via UoM (zero APC)
+7. rebuttal process
+8. Chicago, August 2026
+
+### priority list
+
+| Priority | Venue | Timeline | Action |
+|----------|-------|----------|--------|
+| 1st | **ICONS 2026** | April 1, 2026 | 8-page ACM paper |
+| 2nd | **ICNCE 2026 abstract** | April 3, 2026 | 1-page abstract for poster/talk |
+| 3rd | **NeurIPS 2026 MLNCP Workshop** | ~Oct 2026 | 4-page workshop paper |
+| 4th | **Frontiers in Neuroscience** | Anytime | Expanded journal version |
+| 5th | **ICASSP 2027** | ~Sep 2026 | Condensed audio-focused version |
+
+### title options
+
+1. "Spiking Neural Networks for Environmental Sound Classification: A Comprehensive Benchmark on ESC-50 with SpiNNaker Deployment"
+2. "From Spike Encoding to Neuromorphic Hardware: A Complete Pipeline for SNN-Based Environmental Sound Classification"
+3. "Bridging the SNN-ANN Gap in Audio Classification: Encoding Comparison, Transfer Learning, and SpiNNaker Deployment on ESC-50"
+
+---
+
+## Appendix: All Venue Deadlines
+
+| Venue | Type | Deadline | Status | Location | Fit |
+|-------|------|----------|--------|----------|-----|

@@ -265,15 +265,7 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 
 21. **Wang, J., Zhao, D., Chen, R., Zhang, Q., & Zeng, Y. (2025).** Towards Reliable Evaluation of Adversarial Robustness for Spiking Neural Networks. arXiv:2512.22522.
 
-18. **Hoppner, S., Yan, Y., Garbers, C., ..., & Furber, S. (2024).** SpiNNaker 2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning. *arXiv:2401.04491*.
-
-19. **Park, D.S., Chan, W., Zhang, Y., Chiu, C.C., Zoph, B., Cubuk, E.D., & Le, Q.V. (2019).** SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition. *Interspeech 2019*, 2613–2617.
-
-20. **Dominguez-Morales, J.P., Jiménez-Fernandez, Á., Rios-Navarro, A., Cerezuela-Escudero, E., Gutierrez-Galan, D., Domínguez-Morales, M.J., & Jiménez-Moreno, G. (2016).** Multilayer Spiking Neural Network for Audio Samples Classification Using SpiNNaker. *Artificial Neural Networks and Machine Learning – ICANN 2016*, LNCS Vol. 9886, pp. 45–53. Springer. DOI: 10.1007/978-3-319-44778-0_6.
-
-21. **Wang, J., Zhao, D., Chen, R., Zhang, Q., & Zeng, Y. (2025).** Towards Reliable Evaluation of Adversarial Robustness for Spiking Neural Networks. *arXiv:2512.22522*.
-
 ---
 
-*ICONS 2026 deadline: April 1, 2026. ACM format, 8 pages.*
-*Target: submit by March 25 to allow revision time.*
+ICONS 2026 deadline: April 1, 2026. ACM format, 8 pages.
+need to convert to latex, format refs as bibtex, make sure it actually fits in 8 pages

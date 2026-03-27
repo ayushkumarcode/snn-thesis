@@ -691,31 +691,3 @@ loss_fn = SF.ce_rate_loss()
 ```
 
 ### Suggested Thesis Structure Around Surrogate Gradients
-
-1. **Literature Review:** Cite Neftci et al. (2019), Zenke and Vogels (2021), Eshraghian et al. (2023)
-2. **Methodology:** Explain surrogate gradient concept, justify choice of fast sigmoid
-3. **Experiments:** Train SNN on your target dataset, report accuracy, spike rates, training dynamics
-4. **Analysis:** Compare performance across 2-3 surrogate functions as an ablation study
-5. **Discussion:** Relate findings to Zenke's "remarkable robustness" result
-
-### Potential Thesis Contributions Involving Surrogate Gradients
-
-Even at the undergraduate level, you could contribute:
-1. **Comparative ablation study** of surrogate functions on DVS128 Gesture dataset (fast sigmoid vs. atan vs. sigmoid)
-2. **Hyperparameter sensitivity analysis** of slope/scale on your specific task
-3. **Firing rate analysis** showing how different surrogates affect network sparsity
-4. **Energy efficiency estimation** comparing surrogate-gradient-trained SNN vs. equivalent ANN
-
-### What to Cite in Your Thesis
-
-| Paper | Why Cite It |
-|-------|-------------|
-| Neftci, Mostafa, Zenke (2019) | Original surrogate gradient formalization |
-| Zenke and Vogels (2021) | Robustness to surrogate shape |
-| Eshraghian et al. (2023) | Comprehensive review, snnTorch paper |
-| Gygax and Zenke (2025) | Latest theoretical understanding |
-| Zhou et al. (2024) | Direct training review |
-
-### Timeline Estimate
-
-| Task | Time |

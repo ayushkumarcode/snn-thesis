@@ -205,31 +205,3 @@ A standard PyTorch CNN for MNIST is available in every deep learning tutorial on
 
 | Tool | Purpose | Install |
 |------|---------|---------|
-| Python 3.8+ | Language | Already installed |
-| PyTorch | Deep learning framework | `pip install torch torchvision` |
-| snnTorch | SNN framework | `pip install snntorch` |
-| Tonic | Neuromorphic data loading | `pip install tonic` (only if using N-MNIST) |
-| matplotlib | Plotting | `pip install matplotlib` |
-| Google Colab | Free GPU | browser-based, no install |
-
----
-
-## 6. MINIMUM LITERATURE REVIEW SCOPE
-
-### For a 2:1: 20-25 references
-
-### For a First: 25-35 references
-
-The Manchester report guidance states you need "an in-depth investigation of the context and literature." The Student Room consensus for UK dissertations is approximately 30-40 references for a 10,000-word report. For a CS project where implementation is a large component, 20-30 well-chosen references is adequate.
-
-### Core papers you MUST cite (the essential 12):
-
-**Foundational SNN papers:**
-1. Maass, W. (1997). "Networks of spiking neurons: The third generation of neural network models." -- Defines SNNs as the "third generation"
-2. Gerstner, W. & Kistler, W. (2002). "Spiking Neuron Models" (textbook) -- LIF model reference
-3. Hodgkin, A.L. & Huxley, A.F. (1952). "A quantitative description of membrane current..." -- The biological foundation
-
-**SNN training methods:**
-4. Bohte, S.M. et al. (2002). "Error-backpropagation in temporally encoded networks of spiking neurons" -- Early SNN training
-5. Neftci, E.O. et al. (2019). "Surrogate gradient learning in spiking neural networks" -- THE key paper on how modern SNNs are trained
-6. Eshraghian, J.K. et al. (2023). "Training Spiking Neural Networks Using Lessons From Deep Learning" -- Comprehensive tutorial/survey (the snnTorch authors)

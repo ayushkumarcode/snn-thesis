@@ -250,3 +250,31 @@ At Manchester, the "Report" (55%) covers both the research question AND the writ
 ### 4.2 Why the research question still matters a lot
 
 Despite implementation carrying more raw marks, the research question might actually be more important in practice because:
+
+1. **It frames everything else.** A vague or poorly defined research question makes it impossible to write a good evaluation, because you can't evaluate something if you haven't clearly stated what you're trying to achieve.
+
+2. **It determines the lit review quality.** A specific, well-scoped research question naturally leads to a focused, relevant lit review. A vague question leads to a meandering, unfocused background chapter.
+
+3. **It defines the evaluation criteria.** If the research question is "Can SNNs achieve comparable accuracy to ANNs on gesture recognition using DVS128?", then the evaluation has a clear target: compare accuracy, latency, and energy metrics. If the question is vague ("explore SNNs"), markers have nothing to evaluate success against.
+
+4. **It signals ambition level.** A well-formulated research question that's specific, testable, and grounded in the literature signals to markers that you understand the field and have thought carefully about what you're doing.
+
+### 4.3 The interaction
+
+The relationship isn't "either/or" but "both, and they need to be aligned":
+
+- A brilliant research question with poor implementation = 2:1 (you identified something interesting but couldn't execute it)
+- A brilliant implementation with no clear research question = 2:1 (you built something impressive but nobody knows why or what it proves)
+- A good research question with good implementation AND good evaluation = first (the holy trinity)
+
+### 4.4 Manchester-specific guidance
+
+The COMP30040 report guidance says the report must contain "an elucidation of the problem and the objectives of the project" and "a description of any research hypothesis." So Manchester expects a clear problem statement with objectives. It also expects "a critical appraisal of the project, indicating the rationale for any design/implementation decisions, lessons learnt during the course of the project, and evaluation (with hindsight) of the project outcome."
+
+The word "hypothesis" is notable -- it suggests Manchester values projects that frame themselves around a testable proposition, not just a building exercise.
+
+---
+
+## 5. University-by-university details
+
+### 5.1 Manchester (COMP30040) -- my university

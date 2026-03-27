@@ -82,3 +82,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | **Author** | Thomas Sharp |
 | **Year** | June 2013 |
 | **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), James Garside (co-supervisor) |
+| **Abstract** | Demonstrated real-time simulation of rodent somatosensory cortex on SpiNNaker prototype. Model: 10^5 neurons, 7x10^7 synapses across 360 processors on 23 chips. Each chip draws just 1 watt. |
+| **Tools** | SpiNNaker hardware |
+| **PDF** | Available (21.7 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/real-time-million-synapse-simulation-of-cortical-tissue |
+
+### 1.7 Francesco Galluppi -- Information Representation on a Universal Neural Chip (2013)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Information Representation on a Universal Neural Chip |
+| **Author** | Francesco Galluppi |
+| **Year** | 2013 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (likely) |
+| **Abstract** | Modelling biologically plausible neural networks on SpiNNaker. Understanding mechanisms the brain uses to represent and elaborate information. Also developed hierarchical configuration systems. |
+| **Note** | Galluppi first joined SpiNNaker in January 2009 for his MSc thesis, then returned April 2010 for PhD. |
+
+### 1.8 Jonathan Heathcote -- Building and Operating Large-Scale SpiNNaker Machines (2016)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Building and Operating Large-Scale SpiNNaker Machines |
+| **Author** | Jonathan Heathcote |
+| **Year** | October 2016 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |
+| **Abstract** | Physical layout scheme for hexagonal torus topologies minimizing cable length. Improved routing algorithms. Placement and routing algorithms minimizing congestion and tolerating network faults. Demonstrated on half-million core prototype. |

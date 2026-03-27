@@ -186,31 +186,3 @@ A minimal working SNN for SHD classification can be achieved in approximately **
 | **SHD** | 20 (digits 0-9, EN+DE) | ~10,420 | Spike trains | Yes | ~700 MB | Digit recognition | Free (Zenke Lab) |
 | **SSC** | 35 (speech commands) | ~105,829 | Spike trains | Yes | ~6 GB | Command recognition | Free (Zenke Lab) |
 | **GSC V2** | 35 (or 12 subset) | ~105,829 | Raw audio (16kHz) | No | ~2.3 GB | Command recognition | Free (TensorFlow) |
-| **TIDIGITS** | 11 (digits 0-9 + "oh") | ~25,104 | Raw audio | No | ~500 MB | Digit recognition | Licensed (LDC) |
-
-### 4.2 Recommendation for Thesis
-
-**Primary dataset: SHD (Spiking Heidelberg Digits)**
-- Already in spike format (no encoding pipeline needed)
-- Small enough for rapid iteration (~10K samples)
-- Well-established benchmarks for comparison
-- 20 classes -- enough complexity for a thesis
-- Built-in loader in snnTorch and Tonic
-- Published state-of-the-art: 96.41% (SpikCommander) to 97.60% (RadLIF)
-
-**Secondary dataset: GSC V2 (Google Speech Commands, 12-class subset)**
-- Industry-standard benchmark
-- Requires audio-to-spike encoding (adds thesis content)
-- Large community with many baselines
-- 12-class subset is manageable; 35-class is stretch goal
-- Published SNN SOTA: ~96.9%
-
-**Why NOT TIDIGITS:**
-- Requires LDC license (may cost money or institutional access)
-- Fewer published SNN benchmarks
-- Less active research community
-
-**Why NOT SSC alone:**
-- Very large dataset (6GB, long training times)
-- 35 classes is challenging for a first SNN project
-- Better as a stretch goal after SHD

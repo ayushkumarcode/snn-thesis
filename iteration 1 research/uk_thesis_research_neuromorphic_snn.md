@@ -54,3 +54,31 @@ repositories i searched:
 ### 3. Randomised Time-Stepping Methods for SNN Simulations
 - **Author:** Fabio Deo (Fabio752 on GitHub)
 - **University:** Imperial College London
+- **Year:** 2021
+- **Degree:** Final Year Project (undergraduate -- likely MEng/BEng)
+- **Description:** Investigated the effect of introducing various degrees of randomness in spiking neural network time-stepping methods.
+- **Tools:** Python (98.9% of repository)
+- **Repository:** https://github.com/Fabio752/Randomised-time-stepping-methods-for-SNN-simulations
+- **Full text:** Complete thesis PDF included in repository
+- **Scope:** Mathematical/computational investigation -- appropriate for Imperial undergraduate
+- confidence: HIGH -- profile indicates final year project
+
+---
+
+## Heidelberg University (BrainScaleS) -- bachelor's theses on neuromorphic hardware
+
+this is honestly the richest single source of undergrad-level neuromorphic theses i found anywhere. the KIP (Kirchhoff Institute for Physics) at Heidelberg publicly archives ALL bachelor's and master's theses. these are not UK universities but they're incredibly useful for scope calibration.
+
+full listing: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
+
+### selected bachelor's theses (most relevant to SNN/neuromorphic):
+
+| Year | Title | Author | Key Topic |
+|------|-------|--------|-----------|
+| 2025 | Model-Guided Parametrisation for Flexible Operating Points on BrainScaleS-2 | A.K. Stsepankova | Hardware calibration |
+| 2025 | An Intermediate Data Format for In-the-loop Training on Neuromorphic Hardware | B.L. Kroehs | Training pipeline |
+| 2025 | Event-based Learning of Synaptic Delays and Arbitrary Topologies | F. Fischer | Learning algorithms |
+| 2025 | Gradient-Based Training of Multi-Compartmental Neuron Models on BrainScaleS-2 | T. Janz | Neuron model training |
+| 2024 | Placement strategies for multi-compartment neurons on BrainScaleS-2 | D. Baumeister | Hardware mapping |
+| 2024 | Enabling Delay Learning in a Scalable ML Framework for Neuromorphic Hardware | L. Tabel | ML framework |
+| 2024 | Runtime-dynamic reconfiguration for a time-continuous neuromorphic system | T. Auberer | System reconfiguration |

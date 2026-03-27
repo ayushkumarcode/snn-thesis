@@ -985,31 +985,3 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class DVSGestureCNN(nn.Module):
-    """Standard CNN baseline for DVS128 Gesture classification.
-    Input: frames integrated from events [N, T*2, 128, 128]
-    where T is number of time bins and 2 is on/off polarity channels.
-    """
-    def __init__(self, num_time_bins=10, num_classes=11):
-        super().__init__()
-        in_channels = num_time_bins * 2  # T frames * 2 polarities
-
-        self.features = nn.Sequential(
-            nn.Conv2d(in_channels, 64, 3, padding=1),
-            nn.BatchNorm2d(64),
-            nn.ReLU(),
-            nn.MaxPool2d(2),  # 64x64
-
-            nn.Conv2d(64, 128, 3, padding=1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(),
-            nn.MaxPool2d(2),  # 32x32
-
-            nn.Conv2d(128, 256, 3, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(),
-            nn.MaxPool2d(2),  # 16x16
-
-            nn.Conv2d(256, 256, 3, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(),
-            nn.AdaptiveAvgPool2d(4),  # 4x4

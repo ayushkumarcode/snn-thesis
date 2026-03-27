@@ -264,20 +264,20 @@ Option A addresses FC1 cancellation by replacing AvgPool with MaxPool and retrai
 LIF2 spikes (binary) -> AvgPool2d(4,6) -> fractional [0,0.5] -> FC1
 ```
 
+**Option A (compatible):**
+```
+LIF2 spikes (binary) -> MaxPool2d(4,6) -> binary {0,1} -> FC1
+```
 
-| Model | Accuracy | Energy/sample | Hardware-compatible? |
-|-------|----------|---------------|---------------------|
-| Direct SNN | 47.15% | 968 ± 37 nJ (sw, 5-fold) | ✅ SpiNNaker (FC2 hybrid) |
-| Rate SNN | 24.00% | ~950 nJ (est) | ✅ SpiNNaker (FC2 hybrid) |
-| ANN baseline | 63.85% | 454 ± 11 nJ (sw, 5-fold) | ❌ No neuromorphic |
-| PANNs+SNN head (full, software) | 92.50% | ~8 μJ (head only, est) | ❌ Software only |
-| PANNs+SNN head (FC2 on SpiNNaker) | 92.50% | ~86 nJ (FC2 layer) | ✅ SpiNNaker (FC2 layer) |
-| PANNs+ANN head | 93.45% | ~650 nJ (est) | ❌ No neuromorphic |
+Same output shape (4,9). All FC sizes unchanged. Purely architectural fix at training time.
 
-*Full SNN head (3-layer, 2048→512→256→50, T=25, 70% sparsity est.) ≈ 29.8M dense ops × 0.30 × 0.9 pJ ≈ 8.0 μJ. FC2 layer only (256→50, T=25, 30% active): 320K ops × 0.9 pJ ≈ 86 nJ.*
+### 5.5.2 threshold sweep
 
-The most promising **Pareto-optimal** deployment is **PANNs embeddings + SpiNNaker FC2 classification**: CNN14 extracts embeddings on CPU/NPU (once per sample), the first two SNN layers run in software, and only the 256→50 FC₂ layer runs on SpiNNaker (~86 nJ). This achieves 92.50% accuracy with hardware-compatible neuromorphic inference for the classification step — the same hybrid approach validated for the from-scratch SNN (§5.2), but with PANNs-quality features.
+Additional LIF threshold sweep ({1.0, 1.5, 2.0, 3.0}) to reduce FC1 input density. Higher threshold = fewer spikes = sparser FC1 input. Target: <500 active/step (from ~1398 with AvgPool).
 
+**Status:** fold 4 complete. From `results/snn/maxpool/threshold_sweep_fold4.json`.
+
+| Threshold | Test Acc | FC1 Active/step | Binary Frac | SpiNNaker-ready? |
 ---
 
 ## 5.5 SpiNNaker Option A: Hardware-Aware Retraining

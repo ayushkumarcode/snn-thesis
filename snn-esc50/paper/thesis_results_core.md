@@ -40,20 +40,20 @@ Direct gets 47.15% +/- 4.50%, highest of all SNN configs. Normalised spectrogram
 **Sparsity:** 74.16% activations are zero (NeuroBench, see 4.4), vs 59% for ANN. High sparsity despite non-sparse inputs -- LIF threshold filters continuous input into sparse spikes.
 
 ### 4.2.3 rate coding: stochasticity limits accuracy
-### 4.2.3 Rate Coding: Stochasticity Limits Accuracy
 
-Rate coding achieves 24.00% ± 1.90%. In rate coding, each spectrogram pixel fires at each timestep with probability equal to its normalised intensity. This stochastic encoding introduces noise: two identical spectrograms produce different spike patterns on each forward pass, increasing the effective training noise.
+Rate gets 24.00% +/- 1.90%. Each pixel fires at each timestep with probability = normalised intensity. Stochastic encoding introduces noise: same spectrogram produces different spike patterns each forward pass.
 
-**Why rate underperforms direct:** Rate coding at T=25 timesteps cannot reliably reconstruct fine-grained spectral structure. A pixel at intensity 0.3 fires, on average, 7.5 times over 25 steps — but the variance is high (Bernoulli noise), and nearby pixels with similar intensities become indistinguishable. The convolutional layers must learn to classify despite this stochasticity.
+**Why rate < direct:** at T=25, rate can't reliably reconstruct fine spectral structure. Pixel at 0.3 fires ~7.5 times on average but with high variance (Bernoulli), nearby pixels become indistinguishable. Conv layers have to learn despite this noise.
 
-**Consistency with literature:** Larroza et al. (2025) report rate coding accuracy of ~60% on ESC-10 (10 classes) with direct encoding outperforming rate. The relative ordering (direct > rate) is consistent with our findings.
+Consistent with Larroza et al. (2025): rate < direct on ESC-10 too.
 
-### 4.2.4 Latency Coding: Sparse but Lossy
+### 4.2.4 latency coding: sparse but lossy
 
-Latency coding achieves 16.30% ± 1.62%. Each neuron fires exactly once per window, with higher intensity producing an earlier spike. This is the most information-efficient encoding in theory (one spike per neuron), but in practice it is sensitive to the global intensity range: if all pixels are in a narrow range (e.g., all between 0.2 and 0.6), spike times cluster together and become difficult to discriminate.
+16.30% +/- 1.62%. Each neuron fires once, higher intensity = earlier spike. Most information-efficient in theory but sensitive to global intensity range -- if all pixels are 0.2-0.6, spike times cluster together.
 
-**Sensitivity to normalisation:** Latency coding with τ=5.0, θ=0.01 concentrates most spikes in the first 5 timesteps for high-intensity regions, leaving the remaining 20 timesteps empty. This effectively reduces the usable window from T=25 to T≈5, limiting temporal information capacity.
+**Sensitivity to normalisation:** with tau=5.0, theta=0.01, most spikes cluster in first ~5 timesteps for high-intensity regions. Effectively reduces usable window from T=25 to T~5.
 
+### 4.2.5 delta coding: near-chance
 ### 4.2.5 Delta Coding: Near-Chance Performance
 
 Delta (temporal contrast) coding achieves 7.25% ± 0.94%, near the chance level (2%) for 50 classes. In this scheme, spikes are generated when pixel intensity increases above a threshold across consecutive timesteps. Applied to a static spectrogram (which has no inherent temporal variation), delta coding generates almost no spikes — a noise-perturbed repetition produces only sparse, uninformative contrast signals.

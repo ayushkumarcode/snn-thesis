@@ -82,19 +82,19 @@ Both SpikingCNN (direct) and ConvANN, identical protocol (20 epochs/task, Adam l
 
 Both suffer severe catastrophic forgetting -- worse than the +/-50% BWT from literature. Makes sense given the extreme imbalance: each task trains on only 10/50 classes (320 samples), gradient pressure from each subset rapidly overwrites global representation.
 
-**Accuracy Matrix — SNN (direct encoding, pretrained from fold 4 checkpoint):**
+**SNN accuracy matrix (fold 4 representative):**
 
-| | After Task 0 | After Task 1 | After Task 2 | After Task 3 | After Task 4 |
+| | After T0 | After T1 | After T2 | After T3 | After T4 |
 |---|---|---|---|---|---|
-| **Task 0 (Animals)** | **78.75%** | 8.75% | 2.50% | 11.25% | 0.00% |
-| **Task 1 (Nature)** | — | **87.50%** | 20.00% | 8.75% | 0.00% |
-| **Task 2 (Human)** | — | — | **75.00%** | 0.00% | 0.00% |
-| **Task 3 (Domestic)** | — | — | — | **68.75%** | 12.50% |
-| **Task 4 (Urban)** | — | — | — | — | **78.75%** |
+| Task 0 (Animals) | 78.75% | 8.75% | 2.50% | 11.25% | 0.00% |
+| Task 1 (Nature) | -- | 87.50% | 20.00% | 8.75% | 0.00% |
+| Task 2 (Human) | -- | -- | 75.00% | 0.00% | 0.00% |
+| Task 3 (Domestic) | -- | -- | -- | 68.75% | 12.50% |
+| Task 4 (Urban) | -- | -- | -- | -- | 78.75% |
 
-**Accuracy Matrix — ANN (pretrained from fold 4 checkpoint):**
+**ANN accuracy matrix (fold 4):**
 
-| | After Task 0 | After Task 1 | After Task 2 | After Task 3 | After Task 4 |
+| | After T0 | After T1 | After T2 | After T3 | After T4 |
 |---|---|---|---|---|---|
 | **Task 0 (Animals)** | **81.25%** | 45.00% | 17.50% | 6.25% | 1.25% |
 | **Task 1 (Nature)** | — | **93.75%** | 46.25% | 15.00% | 0.00% |

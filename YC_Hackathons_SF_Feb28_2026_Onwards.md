@@ -121,31 +121,3 @@ These are from 2025 and are included to identify organizers who regularly run ev
 | 17 | Agent Jam by Brex | Aug 23, 2025 | Brex | Used YC APIs/datasets; many YC company judges | $10K+ |
 | 18 | Uncanny Valley Fest | Nov 9, 2025 | Machine Cinema, Koyal, fal, Y Combinator | At YC; YC was co-host | YC partner interview |
 | 19 | Supabase AI Hackathon at YC | Nov 22-23, 2024 | Supabase (YC) | At YC; Anthropic provided credits | - |
-
----
-
-## RELATED YC-ADJACENT EVENTS (Not Hackathons, But Relevant Context)
-
-- **TreeHacks 2026** (Feb 13-15, Stanford): YC was a sponsor with a dedicated "Build an Iconic YC Company with AI" track. YC hosted an afterparty (events.ycombinator.com/treehacks-yc-afterparty-26). Past editions have offered YC interviews as prizes.
-- **YC Summer Grants 2026** (events.ycombinator.com/summer-grants-26): Grants for students to build projects in SF over summer 2026. Not a hackathon but related pipeline.
-- **YC AI Startup School 2025** (June 16-17, SF): 2,000 CS students. Had hackathon satellite events. A 2026 edition has not yet been announced.
-- **Cal Hacks** (historically October, Bay Area): Has offered YC interviews as prizes in past years. 2026 dates not yet announced.
-
----
-
-## KEY PATTERNS AND PREDICTIONS
-
-Based on the data collected, the following patterns are clear:
-
-1. **YC hosts 2-3 hackathons per month** at their SF office, nearly all organized by current-batch YC companies.
-
-2. **Hackathons are announced 2-6 weeks before** they happen. As of Feb 24, 2026, only the Browser Use hackathon (Feb 28) has been announced for the upcoming period.
-
-3. **Common prize: Guaranteed YC interview.** This appears in nearly every YC-hosted hackathon (Browser Use, Better Hack, Full Stack, MCP Hackathon, AI Coding Agents, Manufact, Agentic Payments, Metorial).
-
-4. **Recurring organizer companies** that are likely to host future hackathons at YC:
-   - Browser Use (YC W25) -- already running Feb 28 hackathon
-   - Manufact/mcp-use (YC S25) -- ran Feb 21 hackathon
-   - Firecrawl (YC S22), Reducto (YC W24), Resend (YC W23) -- Hack the Stackathon organizers
-   - Locus (YC F25) -- Agentic Payments Hackathon
-   - Mentra (YC) -- Smart glasses hackathon

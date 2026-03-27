@@ -166,3 +166,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
 | **Abstract** | Structural synaptic plasticity implementation on SpiNNaker. Combined with STDP for topographic map quality. Handwritten digit classification and motion detection. Simulations spanning 5+ hours with responses resembling Visual Cortex and Superior Colliculus. |
 | **PDF** | Available (47.6 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker |
+
+### 1.13 Gabriel Fonseca Guerra -- Stochastic Processes for Neuromorphic Hardware (2020)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Stochastic Processes For Neuromorphic Hardware |
+| **Author** | Gabriel Fonseca Guerra |
+| **Year** | February 2020 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
+| **Abstract** | Stochastic processes in neuronal dynamics on both SpiNNaker and Loihi chips. Constraint satisfaction problems. Modelled intrinsic ion-channel currents and realistic postsynaptic potentials. Bridging neuromorphic technology with neurophysiology. |
+| **PDF** | Available (22.5 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/stochastic-processes-for-neuromorphic-hardware |
+
+### 1.14 Mantas Mikaitis -- Arithmetic Accelerators for a Digital Neuromorphic Processor (2020)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Arithmetic Accelerators for a Digital Neuromorphic Processor |
+| **Author** | Mantas Mikaitis |
+| **Year** | February 2020 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | David Lester (main), Steve Furber (co-supervisor) |
+| **Abstract** | Programmable accelerator for exponential and logarithm functions in SNN models for SpiNNaker2 chip. Stochastic rounding techniques for numerical accuracy. |
+| **PDF** | Available (2.8 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor |
+

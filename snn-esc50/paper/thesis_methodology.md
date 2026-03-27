@@ -26,20 +26,20 @@ Follows Deng & Gu (Neural Networks 2020) recommendation for fair SNN-ANN compari
 Human accuracy: 81.3%. ANN SOTA: 98.25%.
 
 **Preprocessing pipeline** (all fixed, no tuning):
-1. Load WAV at sr = 22,050 Hz, duration = 5.0 s
-2. Zero-pad if shorter than 110,250 samples
-3. Compute mel spectrogram: n_mels=64, n_fft=1024, hop_length=512, f_min=0, f_max=None
-   → shape: (64, 216) for 5s at hop=512
+```
+1. Load WAV at sr=22050 Hz, duration=5.0s
+2. Zero-pad if shorter than 110250 samples
+3. Mel spectrogram: n_mels=64, n_fft=1024, hop_length=512, f_min=0, f_max=None
+   -> shape: (64, 216)
 4. Convert to dB: librosa.power_to_db(mel, ref=np.max)
 5. Min-max normalise per sample to [0, 1]
 6. Add channel dim: (1, 64, 216)
 ```
 
-The normalisation to [0, 1] is critical for spike encoding methods: rate coding generates spikes with probability equal to the pixel value, latency coding maps value to spike time, and direct coding feeds values as membrane currents. All three require inputs in [0, 1].
+The [0,1] normalisation is critical for spike encoding -- rate coding generates spikes with probability equal to pixel value, latency maps value to spike time, direct feeds values as membrane currents. All need [0,1].
 
-All 2,000 spectrograms are precomputed and cached in memory at dataset initialisation (precompute=True), avoiding I/O overhead during training.
+All 2000 spectrograms precomputed and cached in memory (precompute=True) to avoid I/O overhead during training.
 
----
 
 ## 3.3 Model Architecture
 

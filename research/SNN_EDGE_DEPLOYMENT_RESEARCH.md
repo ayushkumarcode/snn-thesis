@@ -491,31 +491,3 @@ A "deploy SNN on real hardware" thesis project is not only feasible but represen
 | Learning curve too steep | Low-Medium | Follow existing tutorials (ISFPGA 2024 workshop); start with Tier 1 |
 | Power measurement difficulty | Medium | Use USB power meters; document methodology carefully |
 
----
-
-## 11. Sources
-
-### Frameworks and Tools
-- [snnTorch Documentation](https://snntorch.readthedocs.io/)
-- [snnTorch GitHub](https://github.com/jeshraghian/snntorch)
-- [snnTorch NIR Export](https://snntorch.readthedocs.io/en/latest/snntorch.export_nir.html)
-- [Lava Software Framework](https://lava-nc.org/)
-- [Lava GitHub](https://github.com/lava-nc/lava)
-- [NIR (Neuromorphic Intermediate Representation)](https://neuroir.org/)
-- [NIR GitHub](https://github.com/neuromorphs/NIR)
-- [Spiker+ GitHub](https://github.com/smilies-polito/Spiker)
-- [S2NN-HLS GitHub](https://github.com/eejlny/S2NN-HLS)
-- [SNN Arduino Library](https://github.com/RishabhMalviya/SNN_Arduino)
-- [ModNEF Paper (ACM TACO)](https://dl.acm.org/doi/10.1145/3730581)
-- [Open Neuromorphic](https://open-neuromorphic.org/)
-
-### Workshop and Tutorial Resources
-- [ISFPGA 2024 Workshop: fpga-snntorch](https://github.com/open-neuromorphic/fpga-snntorch)
-- [Open Neuromorphic Workshops](https://open-neuromorphic.org/workshops/)
-- [Neuromorphic Software Guide](https://open-neuromorphic.org/neuromorphic-computing/software/)
-- [Neuromorphic Hardware Guide](https://open-neuromorphic.org/neuromorphic-computing/hardware/)
-
-### Key Research Papers
-- [NIR: A Unified Instruction Set for Brain-Inspired Computing (Nature Communications, 2024)](https://www.nature.com/articles/s41467-024-52259-9)
-- [Spiker+: SNN FPGA Accelerators for Inference at the Edge (arXiv, 2024)](https://arxiv.org/html/2401.01141v1)
-- [Efficient Deployment of SNNs on SpiNNaker2 via NIR (arXiv, 2025)](https://arxiv.org/html/2504.06748v1)

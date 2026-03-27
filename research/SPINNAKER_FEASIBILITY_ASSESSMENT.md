@@ -26,3 +26,31 @@ These are **completely different programming models**. They share the concept of
 ### Side-by-side code comparison
 
 **snnTorch: Simple 2-layer SNN**
+
+```python
+import torch
+import torch.nn as nn
+import snntorch as snn
+
+class SimpleSNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(784, 500)
+        self.lif1 = snn.Leaky(beta=0.9)
+        self.fc2 = nn.Linear(500, 10)
+        self.lif2 = snn.Leaky(beta=0.9)
+
+    def forward(self, x):
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        spk_rec = []
+        for step in range(num_steps):
+            cur1 = self.fc1(x[step])
+            spk1, mem1 = self.lif1(cur1, mem1)
+            cur2 = self.fc2(spk1)
+            spk2, mem2 = self.lif2(cur2, mem2)
+            spk_rec.append(spk2)
+        return torch.stack(spk_rec)
+
+net = SimpleSNN()
+optimizer = torch.optim.Adam(net.parameters(), lr=1e-3)

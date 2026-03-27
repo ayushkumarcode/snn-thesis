@@ -82,3 +82,31 @@ def count_sparsity(model):
     for name, param in model.named_parameters():
         if "weight" in name:
             total += param.numel()
+            zeros += (param == 0).sum().item()
+    return zeros / total if total > 0 else 0
+
+
+def fine_tune(model, train_loader, device, epochs=10, lr=1e-4):
+    """Fine-tune after pruning."""
+    model.train()
+    optimizer = torch.optim.Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=lr, weight_decay=WEIGHT_DECAY)
+    use_amp = device.type == 'cuda'
+
+    for epoch in range(epochs):
+        for data, targets in train_loader:
+            data, targets = data.to(device), targets.to(device)
+            spk_input = encode_direct(data).to(device)
+            optimizer.zero_grad(set_to_none=True)
+
+            with torch.amp.autocast('cuda', dtype=torch.bfloat16,
+                                     enabled=use_amp):
+                _, mem_out, _ = model(spk_input)
+                T, B, C = mem_out.shape
+                loss = F.cross_entropy(
+                    mem_out.reshape(T * B, C),
+                    targets.unsqueeze(0).expand(T, -1).reshape(-1),
+                )
+            loss.backward()
+            optimizer.step()

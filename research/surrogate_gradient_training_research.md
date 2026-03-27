@@ -306,3 +306,31 @@ net = nn.Sequential(
 # Data
 transform = torchvision.transforms.Compose([
     torchvision.transforms.Resize((28, 28)),
+    torchvision.transforms.Grayscale(),
+    torchvision.transforms.ToTensor(),
+    torchvision.transforms.Normalize((0,), (1,)),
+])
+train_ds = torchvision.datasets.MNIST("./data", train=True, download=True, transform=transform)
+train_loader = torch.utils.data.DataLoader(train_ds, batch_size=batch_size, shuffle=True, drop_last=True)
+
+# Loss and optimizer
+loss_fn = SF.ce_rate_loss()
+optimizer = torch.optim.Adam(net.parameters(), lr=lr)
+
+# Forward pass
+def forward_pass(net, data, num_steps):
+    spk_rec, mem_rec = [], []
+    utils.reset(net)
+    for step in range(num_steps):
+        spk_out, mem_out = net(data)
+        spk_rec.append(spk_out)
+        mem_rec.append(mem_out)
+    return torch.stack(spk_rec), torch.stack(mem_rec)
+
+# Training
+for epoch in range(1):
+    for i, (data, targets) in enumerate(train_loader):
+        data, targets = data.to(device), targets.to(device)
+        net.train()
+        spk_rec, mem_rec = forward_pass(net, data, num_steps)
+        loss = loss_fn(spk_rec, targets)

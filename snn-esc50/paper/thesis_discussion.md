@@ -1,17 +1,17 @@
-# Chapter 7: Discussion
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 7: discussion
+
+this is where i tie everything together and actually answer the research questions. need to be careful to connect the findings rather than just restating results.
 
 ---
 
-## 7.1 The Accuracy-Efficiency Trade-off
+## 7.1 the accuracy-efficiency trade-off
 
-The central finding of this work can be stated concisely: **a convolutional SNN trained from scratch on ESC-50 achieves 47.15% accuracy (direct encoding), compared to 63.85% for a matched ANN — a gap of 16.70 percentage points, significant at p=0.001.** On neuromorphic hardware, this accuracy is partially delivered on SpiNNaker via FC2-only hybrid: 40% on 20-sample pilot (Run 5); 400-sample validation (Run 6, complete) yields **43.0% SpiNNaker** vs snnTorch 51.25% — an **8.25 pp hardware gap**, with a corresponding 5.1× reduction in per-operation energy cost at the hardware level.
+Core finding: **conv SNN from scratch on ESC-50 gets 47.15% (direct), ANN gets 63.85% -- 16.70 pp gap, p=0.001.** On SpiNNaker via FC2 hybrid: 40% pilot (Run 5), 400-sample validation = 43.0% vs 51.25% snnTorch (8.25 pp hardware gap, 5.1x per-op energy reduction at hardware level).
 
-This gap is not a failure of spiking computation — it is a well-understood consequence of the current state of SNN training and a meaningful empirical result for the field. Deng & Gu (2020, Neural Networks) explicitly argue that researchers should "rethink the performance comparison between SNNs and ANNs" by isolating confounding factors (architecture, training data, pretraining) — an argument this thesis directly implements through its matched-architecture experimental design. The 16.70 pp gap, measured under controlled conditions, represents the genuine cost of spiking computation with surrogate gradient training on small-data audio tasks.
+This gap isn't a failure of spiking computation -- its a well-understood consequence of current SNN training. Deng & Gu (2020) explicitly argue researchers should "rethink the performance comparison between SNNs and ANNs" by isolating confounders. That's exactly what the matched-architecture design does. The 16.70 pp gap under controlled conditions is the genuine cost of spiking computation with surrogate gradients on small-data audio.
 
-**The PANNs transfer learning result reframes the narrative.** When the feature-learning burden is removed by providing AudioSet-pretrained CNN14 embeddings, the SNN-ANN gap collapses from 16.70 pp to 0.95 pp (92.50% vs 93.45%). This is the strongest evidence that the accuracy gap is fundamentally a **feature-learning problem, not a spiking computation problem.** Given equal-quality features, spiking and non-spiking classifiers achieve statistically indistinguishable accuracy on a 50-class audio benchmark.
+**PANNs reframes the narrative.** When feature-learning burden is removed (AudioSet CNN14 embeddings), gap collapses from 16.70 pp to 0.95 pp (92.50% vs 93.45%). Strongest evidence that the gap is a **feature-learning problem, not a spiking computation problem.** With equal-quality features, spiking and non-spiking classifiers achieve statistically indistinguishable accuracy on 50-class audio.
 
-The practical implication is architecturally important: for real-world deployment, the optimal pipeline is not a fully spiking network trained end-to-end, but a **hybrid system** in which an energy-efficient feature extractor (ANN or biological-inspired auditory model) provides rich representations to a lightweight SNN classifier. This is precisely the architecture we validate on SpiNNaker: software CNN feature extraction + SpiNNaker SNN classification.
 
 ---
 

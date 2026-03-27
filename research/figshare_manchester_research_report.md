@@ -194,3 +194,31 @@ Despite Manchester being a major centre for neuromorphic computing (SpiNNaker pr
 | No neuromorphic undergrad projects | Very high (99%) -- searched 100+ terms, checked everything |
 | The repository isn't used for undergrad work | High (95%) -- no evidence of any undergrad submissions |
 | Jieru Zhou's LSTM project might be a student project | Low (30%) -- single author, right scope, but unconfirmed |
+| Everything else is research-level | High (90%) -- multi-author, funded, journal-linked |
+
+---
+
+## Where else to look
+
+If i need to find Manchester undergrad neuromorphic/ML thesis projects:
+
+1. **Manchester eScholar** (https://www.research.manchester.ac.uk/) -- electronic theses and dissertations
+2. **Contact School of Engineering** -- ask about a repository of third-year projects
+3. **Contact Steve Furber's APT group** -- might have records of undergrad projects on SpiNNaker/neuromorphic
+4. **Contact Alex Casson's lab** -- for BCI/EEG undergrad projects
+5. **Search other UK university Figshare portals** -- some unis (Loughborough, Southampton) may use Figshare for student theses
+6. **Search broader Figshare.com** -- students might have uploaded to the general platform
+7. **GitHub search** -- look for Manchester student repos on neuromorphic topics
+8. **IEEE Xplore / conference proceedings** -- some undergrad projects get published as conference papers
+
+---
+
+## Summary table of everything found
+
+| # | Title | Authors | Year | Type | Relevance | Undergrad? |
+|---|-------|---------|------|------|-----------|------------|
+| 1 | BitBrain algorithm in C | Fil, Hopkins, Furber, Jones | 2022 | Software | DIRECT neuromorphic | No (Research) |
+| 2 | Deep autoencoder EEG artifact removal | Xing, Casson | 2023 | Software | HIGH (BCI/Neural Eng) | No (Research) |
+| 3 | LSTM Warehouse Robot Navigation | Zhou | 2024 | Software | MEDIUM (ML/Robotics) | Possibly |
+| 4 | ECG/EEG/IMU motion artefact data | Beach, Li, Balaban, Casson | 2021 | Dataset | MEDIUM (Biosignal) | No (Research) |
+| 5 | Low Power Computer Vision landmine | Fletcher et al. | 2025 | Dataset | LOW-MED (Edge CV) | No (Research) |

@@ -68,19 +68,19 @@ Practical implications:
 
 Sequential training on 5 ESC-50 super-categories (10 classes each):
 - Task 1: Animals (0-9): dog, rooster, pig, cow, frog, cat, hen, insects, sheep, crow
-- **Task 3:** Human (20–29): crying baby, sneezing, clapping, breathing, coughing, footsteps, laughing, brushing teeth, snoring, drinking/sipping
-- **Task 4:** Domestic (30–39): door knock, mouse click, keyboard typing, door/wood creaks, can opening, washing machine, vacuum cleaner, clock alarm, clock tick, glass breaking
-- **Task 5:** Urban (40–49): helicopter, chainsaw, siren, car horn, engine, train, church bells, airplane, fireworks, hand saw
+- Task 2: Nature (10-19): rain, sea waves, crackling fire, crickets, chirping birds, water drops, wind, pouring water, toilet flush, thunderstorm
+- Task 3: Human (20-29): crying baby, sneezing, clapping, breathing, coughing, footsteps, laughing, brushing teeth, snoring, drinking/sipping
+- Task 4: Domestic (30-39): door knock, mouse click, keyboard, door creaks, can opening, washing machine, vacuum cleaner, clock alarm, clock tick, glass breaking
+- Task 5: Urban (40-49): helicopter, chainsaw, siren, car horn, engine, train, church bells, airplane, fireworks, hand saw
 
-After training on each task, backward transfer (BWT) is measured:
+BWT measured after each task:
 $$\text{BWT} = \frac{1}{T-1}\sum_{i<T}(R_{T,i} - R_{i,i})$$
-where $R_{k,i}$ is accuracy on task $i$ after training through task $k$. Negative BWT = forgetting.
 
-Both SpikingCNN (direct encoding) and ConvANN are evaluated under identical sequential training protocol (20 epochs per task, Adam lr=1e-3, no replay, no regularisation).
+Both SpikingCNN (direct) and ConvANN, identical protocol (20 epochs/task, Adam lr=1e-3, no replay, no regularisation).
 
-### 6.2.2 Results
+### 6.2.2 results
 
-Both SNN and ANN suffer severe catastrophic forgetting — significantly worse than the ±50% BWT predicted by literature for balanced experiments. The explanation is the extreme task imbalance: each task trains on only 10 of 50 classes (320 samples/task), while the pretrained models learned all 50. The gradient pressure from each task's small subset overwrites the global representation rapidly.
+Both suffer severe catastrophic forgetting -- worse than the +/-50% BWT from literature. Makes sense given the extreme imbalance: each task trains on only 10/50 classes (320 samples), gradient pressure from each subset rapidly overwrites global representation.
 
 **Accuracy Matrix — SNN (direct encoding, pretrained from fold 4 checkpoint):**
 

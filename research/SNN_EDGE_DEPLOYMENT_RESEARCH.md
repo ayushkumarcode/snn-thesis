@@ -82,3 +82,31 @@ so the task, encoding scheme, and architecture directly determine whether edge d
 
 **S2NN-HLS:** SNN for Zynq via Vivado HLS. Izhikevich neuron model. DDR energy reduction up to 77%, PL energy reduction up to 76%. https://github.com/eejlny/S2NN-HLS
 
+### the snnTorch-to-FPGA pipeline (probably the best path for a thesis)
+
+the open-neuromorphic/fpga-snntorch repo has the most complete documented pipeline:
+
+1. train SNN using snnTorch (Python, GPU via Colab)
+2. quantize weights/states (quantization-aware training)
+3. export to HLS C++ via AMD Vitis HLS
+4. synthesize hardware design (dataflow architecture)
+5. deploy on AMD Kria KV260 using PYNQ Python interface
+6. test using provided bitstream and scripts
+
+workshop presented at ISFPGA 2024 by Jason Eshraghian and Fabrizio Ottati. repo: https://github.com/open-neuromorphic/fpga-snntorch
+
+---
+
+## 3. power consumption: SNN vs ANN on edge hardware
+
+### concrete measurements
+
+| Platform | Type | Task | Power/Energy | Accuracy |
+|----------|------|------|-------------|----------|
+| FPGA (Spiker+) | SNN (LIF) | MNIST | 180 mW | Competitive |
+| FPGA (SYNtzulu) | SNN | Time-series | 14.2 mW peak, 0.3 mW idle | -- |
+| FPGA (Hybrid HNN) | SNN+ANN | Classification | 1,192 mW | 87% |
+| FPGA (Pure ANN) | CNN | Classification | 1,248 mW | 88% |
+| SENECA neuromorphic | SNN | Vision | 927 uJ (62.5% of ANN time) | -- |
+| SENECA neuromorphic | ANN | Vision | 1,232 uJ | -- |
+| Analog SNN chip | SNN (STDP) | MNIST | 530 uW at 10 MHz | -- |

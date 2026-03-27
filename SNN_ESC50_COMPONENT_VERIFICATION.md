@@ -114,31 +114,3 @@ waveform, sample_rate = torchaudio.load('1-100032-A-0.wav')
 **For this project, all needed functionality remains available.** If you encounter deprecation warnings with torchaudio >= 2.8, they can be safely ignored for load() and MelSpectrogram().
 
 **Verification method:** Confirmed via official documentation for both libraries. Both have native WAV support and macOS ARM64 builds.
-
----
-
-## COMPONENT 3: MEL-SPECTROGRAM CONVERSION
-
-### EXISTS: YES
-### POTENTIAL BLOCKER: NO
-
-### librosa approach
-
-```python
-import librosa
-import numpy as np
-
-# Standard ESC-50 parameters (from literature)
-audio, sr = librosa.load('audio.wav', sr=44100, mono=True)
-
-S = librosa.feature.melspectrogram(
-    y=audio,
-    sr=44100,
-    n_fft=1024,       # FFT window size
-    hop_length=256,    # Step between windows
-    n_mels=128,        # Number of mel bands
-    fmin=20,           # Min frequency
-    fmax=20000         # Max frequency (Nyquist for 44.1kHz)
-)
-
-# Convert to log scale (decibels)

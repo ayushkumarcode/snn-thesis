@@ -194,3 +194,31 @@ This is the simplified hardware-agnostic approach. The hardware-aware approach a
 ### 3.3 Single-neuron energy comparison (Ostrau et al. 2022)
 
 Energy for simulating 1 second of a single neuron:
+
+| Platform | Total Energy (J) |
+|:---|:---:|
+| Spikey (BrainScaleS precursor) | 1.49e-6 |
+| SpiNNaker | 3.33e-4 |
+| GPU (RTX 2070) | 3.18e-5 |
+| Human Brain | 2.49e-10 |
+
+The biological brain is ~4 orders of magnitude more efficient than current neuromorphic hardware. Humbling.
+
+---
+
+## 4. AC vs MAC energy cost
+
+### 4.1 Horowitz ISSCC 2014 -- the canonical reference
+
+This is THE foundational reference for energy per arithmetic operation. All values for 45nm CMOS at 0.9V.
+
+| Operation | Energy (pJ) |
+|:---|:---:|
+| 8-bit Integer Add | 0.03 |
+| 8-bit Integer Multiply | 0.2 |
+| 16-bit Integer Add | ~0.05 |
+| 16-bit Integer Multiply | ~1.0 |
+| 32-bit Integer Add | 0.1 |
+| 32-bit Integer Multiply | 3.1 |
+| 32-bit FP Add | 0.9 |
+| 32-bit FP Multiply | 3.7 |

@@ -334,3 +334,31 @@ not yet announced. call will probably open ~June-July 2026 with workshop paper d
 
 ---
 
+## 8. journal special issues
+
+### 8.1 Frontiers in Neuroscience -- Neuromorphic Systems Research Topic
+
+| Field | Details |
+|-------|---------|
+| **Title** | "Advances in Neuromorphic Systems and Hardware: Circuits, Architectures, and Brain-Inspired Computation" |
+| **Abstract Deadline** | **17 May 2026** |
+| **Manuscript Deadline** | **4 September 2026** |
+| **Journal** | Frontiers in Neuroscience (Neuromorphic Engineering section) |
+| **APC** | ~$2,950 (check for institutional agreements) |
+
+content fits but APC is expensive.
+
+Sources: [Frontiers Research Topic](https://www.frontiersin.org/research-topics/77146/)
+
+---
+
+## 9. other events (not paper venues)
+
+- **Bernstein Conference 2026** -- 28 Sep - 1 Oct, Frankfurt. computational neuroscience. abstract/poster only.
+- **CapoCaccia 2026** -- intensive 2-week neuromorphic engineering workshop. no papers, just hands-on collaboration.
+- **BNEW 2026** -- training workshop for upcoming researchers in neuromorphic tech.
+
+---
+
+## priority ranking
+

@@ -419,31 +419,3 @@ Our adversarial robustness experiment should cite Wang et al. (2025) and acknowl
 ## 11. Continual Learning with Audio SNNs
 
 No prior work studies continual learning specifically with audio SNNs. Our thesis experiment (SNN forgetting: 74.4% vs ANN forgetting: 81.3%, showing SNN forgets 6.9pp less on ESC-50 super-categories) is novel.
-
----
-
-## 12. Key Narrative for Thesis Positioning
-
-### 12.1 What Makes Our Work Novel
-
-1. **First SNN on full ESC-50 (50 classes):** Confirmed by literature search. No prior work exists.
-2. **Most comprehensive encoding comparison:** 7 encodings (direct, rate, phase, population, latency, delta, burst) on same architecture. Larroza (2025) compared only 3 encodings on ESC-10.
-3. **First PANNs+SNN hybrid for audio:** No prior work combines pretrained audio features with SNN classifier.
-4. **First SNN adversarial robustness study for audio:** Prior adversarial SNN work is vision-only.
-5. **First continual learning study for audio SNNs:** No prior work exists.
-6. **SpiNNaker deployment for ESC-50:** First deployment of environmental sound SNN on neuromorphic hardware beyond trivial pure tones.
-7. **Surrogate gradient ablation for audio SNNs:** No prior systematic comparison of 8 surrogate functions for audio SNN training.
-
-### 12.2 Where Our Work Fits in the Landscape
-
-```
-                    AUDIO SNN COMPLEXITY SPECTRUM
-
-Simple                                              Complex
-|----|----|----|----|----|----|----|----|----|----|
-Pure     Digits    KWS      ESC-10   ESC-50   Full
-tones                                         AudioSet
-
-Dominguez  Wu/Dong  SpikeSCR Larroza  [US]     [None]
--Morales   2018     2024     2025
-2016                         (FC-only)

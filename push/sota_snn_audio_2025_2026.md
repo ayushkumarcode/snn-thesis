@@ -418,3 +418,4 @@ things i couldn't fully resolve:
 - [Abuhajar et al. (2025)](https://www.frontiersin.org/articles/10.3389/fnins.2025.1567347/full)
 - [Wang et al. (2025) adversarial](https://arxiv.org/abs/2512.22522)
 - [SAFE (2024, withdrawn)](https://openreview.net/forum?id=QWDZE2mYIe)
+- [Daddinounou (2024) PhD](https://theses.hal.science/tel-04957484v1)

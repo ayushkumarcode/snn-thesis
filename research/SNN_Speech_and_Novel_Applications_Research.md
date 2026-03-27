@@ -278,3 +278,31 @@ Object detection with SNNs is pretty mature. SpikeYOLO was an ECCV 2024 Best Pap
 
 Active area with clear applications in medical imaging and autonomous driving. Medical image segmentation with SNNs is particularly promising for thesis work.
 
+### 6C. Anomaly detection with SNNs
+**Paper count: 5-10 | Maturity: MEDIUM**
+
+| Paper | Year | Key Result |
+|-------|------|------------|
+| Online Evolving SNN for Multivariate Time Series Anomaly | 2022 | Machine Learning journal |
+| Recurrent SNN for Time Series Prediction and Anomaly Detection | 2023 | IEEE |
+| **Vacuum Spiker: SNN for Time Series Anomaly Detection** | 2025 | Uses STDP; competitive with deep learning; validated on solar inverters |
+| SNN Autoencoder for Industrial Process Fault Detection | 2024 | Information Sciences |
+
+Underexplored but promising. SNNs' temporal processing nature makes them naturally suited for time series anomaly detection. The Vacuum Spiker paper shows SNNs can match deep learning with much lower energy. Could be a really good thesis direction.
+
+### 6D. Recommendation systems with SNNs
+**Paper count: 0-1 | Maturity: VERY LOW**
+
+Didn't find any dedicated papers on SNN-based recommendation systems. Graph Neural Networks dominate this space, and while Spiking GNNs exist (see 6F), they haven't been applied to recommendation.
+
+Wide open gap. Could combine Spiking GNN + collaborative filtering. Very novel but high risk -- unclear if SNNs provide any advantage here.
+
+### 6E. SNN + generative models (diffusion, GAN, VAE)
+**Paper count: 5-10 | Maturity: MEDIUM (growing fast)**
+
+| Paper | Year | Model Type | Key Result |
+|-------|------|-----------|------------|
+| Spiking-GAN | 2021 | GAN | First spike-based GAN; time-to-first-spike coding; 57x lower energy |
+| Fully Spiking VAE | 2022 | VAE | First all-SNN VAE; equal or better quality vs ANN VAE |
+| Spiking-Diffusion (VQ-SVAE + discrete diffusion) | 2023 | Diffusion | First fully-SNN diffusion model |
+| **Spiking DDPM (SDDPM)** | **2024** | **Diffusion** | **WACV 2024; FID 19.20 on CIFAR-10; 37.5% energy of ANN at T=4** |

@@ -1041,31 +1041,3 @@ for epoch in range(50):
     for frames, labels in trainloader:
         frames = frames.to(device).float()  # [T, N, 2, 128, 128]
         frames = frames.permute(1, 0, 2, 3, 4)  # [N, T, 2, 128, 128]
-        labels = labels.to(device)
-
-        outputs = model(frames)
-        loss = criterion(outputs, labels)
-
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-```
-
-### 9.4 Fair Comparison Metrics
-
-| Metric | ANN | SNN |
-|---|---|---|
-| Accuracy (%) | Report test accuracy | Report test accuracy |
-| Parameters | Count all weights | Count all weights (same) |
-| FLOPs / SynOps | Compute FLOPs (all MACs) | Compute SynOps (mostly ACs) |
-| Energy (estimated) | FLOPs * E_MAC (4.6 pJ) | ACs * E_AC (0.9 pJ) + MACs * E_MAC (4.6 pJ) |
-| Latency | Single forward pass | T timesteps of forward pass |
-
----
-
-## 10. State-of-the-Art Benchmarks
-
-### DVS128 Gesture Recognition Leaderboard (as of early 2026)
-
-| Model | Type | Accuracy (%) | Year |
-|---|---|---|---|

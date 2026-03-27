@@ -26,3 +26,31 @@ from snntorch import surrogate
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.config import (
     NUM_CLASSES, NUM_STEPS, BETA, RESULTS_DIR, BATCH_SIZE,
+    LEARNING_RATE, WEIGHT_DECAY, PATIENCE, NUM_EPOCHS, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+
+from experiments.combo_experiment import RhythmLIF
+
+
+class TernaryQuantize(torch.autograd.Function):
+    """Ternary quantization with STE gradient."""
+
+    @staticmethod
+    def forward(ctx, weight, threshold=0.05):
+        # Threshold-based ternary: w > thresh -> +1, w < -thresh -> -1, else 0
+        scale = weight.abs().mean()
+        ternary = torch.zeros_like(weight)
+        ternary[weight > threshold * scale] = scale
+        ternary[weight < -threshold * scale] = -scale
+        return ternary
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        # STE: pass gradient straight through
+        return grad_output, None
+
+
+class TernaryConv2d(nn.Module):
+    """Conv2d with ternary weights during forward pass."""

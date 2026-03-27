@@ -1,0 +1,28 @@
+# Transfer Learning for SNNs -- What's Out There (2024-2026)
+
+so i went deep into the literature on transfer learning for SNNs because our PANNs+SNN head gets 92.50% on ESC-50 while scratch SNN only gets 47.15%. the gap collapse from 16.7pp to 0.95pp with equal features felt like it should be a known thing, and i wanted to see if anyone else has shown this.
+
+turns out the field has exploded recently. ANN-to-SNN conversion can now do single-timestep lossless conversion for vision models (ICML 2025, CVPR 2025), there are at least 8 distinct knowledge distillation methods from 2024-2025 alone, and hybrid ANN-SNN architectures are becoming a real deployment paradigm.
+
+the key finding from all this reading: **our gap collapse result (16.7pp to 0.95pp) is consistent with the broader literature but nobody has shown it for environmental sound classification before.** closest thing is Spiking Vocos (2025) which gets ANN-comparable audio quality at 14.7% energy using self-architectural distillation. SAFE (ICLR 2025 submission) uses CNN features + SNN classifier for audio fidelity. but nobody has done this for ESC-50.
+
+**zero prior works combine PANNs (or any AudioSet-pretrained model) with an SNN classifier head for ESC-50.** that's our gap in the literature.
+
+---
+
+## 1. ANN-to-SNN Conversion: Recent Advances
+
+### Training-Free Conversion Methods
+
+the dominant trend in 2024-2025 is training-free conversion -- just take a pretrained ANN and convert it directly to an SNN.
+
+| Paper | Venue | Key Result | Timesteps | Notes |
+|-------|-------|------------|-----------|-------|
+| Bu et al., "Inference-Scale Complexity" | CVPR 2025 | Near-lossless on ImageNet, segmentation, detection | Variable | Channel-wise threshold balancing; leverages open-source pretrained ANNs directly |
+| STA (Spatio-Temporal Approximation) | ICLR 2024 | Converts CLIP ViT-B/32 to SNN; retains zero-shot capability | Low | First training-free conversion of a pretrained Transformer |
+| He et al., "Differential Coding" | ICML 2025 | SOTA accuracy with reduced spike count and energy | Variable | Transmits rate changes rather than absolute rates |
+| "One Timestep Is Enough" (PMSM) | arXiv 2025 | 81.6% ImageNet with T=1 (ViT-S) | **1** | Polarity Multi-Spike Mapping; 4-level spiking neurons |
+| "All In One Timestep" | arXiv 2025 | 75.12% ImageNet with T=4 | 4 | Exponentially fewer timesteps than prior work |
+| Training-Free Spiking Transformers | arXiv 2025 | Near-lossless on CV, NLU, NLG | Low | Universal Group Operators + Spatial Rectification Self-Attention |
+| PASCAL | TMLR 2025 | Mathematically equivalent to quantized ANN | Minimal | Proves inhibitory (negative) spikes essential |
+| Wang et al., "Negative Spikes" | IJCAI 2025 | Outperforms two-stage algorithm by 1.29% at T=4 | 4 | Leaky ReLU-based neuron model |

@@ -735,31 +735,3 @@ ANN-to-SNN conversion is viable as a thesis topic but **not recommended as a pri
 | Spike-FlowNet (2020) | Optical flow | Event camera | Custom | Hard |
 | SiamSNN (2020) | Object tracking | - | Custom | Hard |
 | SpikeSEG (2021) | Semantic segmentation | Synthetic | Custom | Moderate |
-| Spikformer (2022) | Image classification | CIFAR/ImageNet | SpikingJelly | Moderate-Hard |
-
----
-
-<a name="recommendation"></a>
-## SYNTHESIS AND THESIS PROJECT RECOMMENDATION
-
-### Assessment of the Field
-
-Based on comprehensive analysis of all three survey papers and supplementary research:
-
-1. **SNNs are maturing rapidly.** The accuracy gap between SNNs and ANNs on standard benchmarks has narrowed significantly. On CIFAR-10, SNNs achieve 96.47% (vs. ANN ~97%). On ImageNet, the gap is larger but closing (84-88% SNN vs. ~90% ANN).
-
-2. **Surrogate gradient training is the dominant paradigm.** Direct training via BPTT with surrogate gradients has overtaken ANN-to-SNN conversion as the primary research approach. It requires fewer time steps and gives more control.
-
-3. **Spiking Transformers are the hottest research area.** The field has moved from convolutional SNNs to transformer-based architectures, with rapid progress in 2023-2024.
-
-4. **Tooling has matured significantly.** snnTorch and SpikingJelly provide production-quality frameworks with good documentation, tutorials, and community support.
-
-5. **The energy efficiency argument is real but hard to measure.** Theoretical advantages of 50-100x are cited, but practical measurement requires neuromorphic hardware access.
-
-### PRIMARY RECOMMENDATION: DVS128 Gesture Recognition with Surrogate Gradient Training
-
-**Title suggestion:** "Energy-Efficient Gesture Recognition Using Spiking Neural Networks: A Comparative Study of Neuron Models and Training Approaches"
-
-**Why this project:**
-- Clear, well-defined problem (11-class gesture classification)
-- Native neuromorphic dataset (DVS128 Gesture) -- you work with real event camera data, not converted static images

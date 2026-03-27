@@ -166,3 +166,31 @@ no GitHub repos found for SNN + environmental monitoring specifically.
 **feasibility:** HIGH. public datasets: UCI HAR, WISDM, PAMAP2, Spiking-IMU. well-scoped: classify 6-10 activities from accelerometer data. clear energy efficiency narrative. easy CNN/LSTM baselines.
 
 **novelty:** MODERATE. growing but many unexplored angles: specific activities (fall detection, sports), multi-sensor fusion, on-device continual learning.
+
+**verdict: strong thesis candidate -- best natural SNN advantage, very practical**
+
+---
+
+### 8. SNN for Radar/Sonar
+
+**papers: about 10-15**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Imec SNN Chip for Radar | 2020 | First SNN chip for radar, 100x power reduction |
+| Automotive Radar with SNNs | 2022 | Concepts for automotive radar |
+| Radar Emitter Recognition | 2024 | Radar emitter classification |
+| Spiking Neural Resonators for FMCW | 2025 | Range/angle estimation, 0.02% data transmission |
+| Radar-Based Gesture Recognition | 2021 | Gesture recognition via radar + SNN |
+
+**why SNNs make sense:** VERY HIGH advantage. radar/sonar signals are inherently temporal and oscillatory. resonate-and-fire neurons naturally match radar frequency analysis. extreme low power for embedded radar (automotive, IoT). real-time processing with minimal latency. imec demonstrated 100x power reduction.
+
+**feasibility:** LOW-MODERATE. radar/sonar datasets are harder to get (often restricted). signal processing knowledge required (FFT, Doppler, beamforming). more specialized domain knowledge. UCI Sonar dataset exists but is basic. micro-Doppler gesture recognition is more accessible.
+
+**novelty:** MODERATE. active for automotive radar. sonar classification genuinely sparse.
+
+**verdict: moderate -- great SNN fit but high domain barrier for undergrads**
+
+---
+
+### 9. SNN for Astronomy (Transient Detection)

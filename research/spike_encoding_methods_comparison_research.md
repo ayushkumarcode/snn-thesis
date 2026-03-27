@@ -390,3 +390,31 @@ class DirectEncoder(nn.Module):
 | **snnTorch** | Rate, Latency, Delta | Best tutorials; PyTorch-based |
 | **BindsNET** | Rate, Poisson, Rank-order, GRF/Binning | More bio-oriented; STDP focus |
 | **SpikingJelly** | Rate, Latency, Direct, Poisson | More complete; better for deep SNNs; some Chinese docs |
+| **Norse** | Current-based, LIF-based, custom | Lower-level; max flexibility |
+| **Lava (Intel)** | Custom (hardware-oriented) | Loihi; production focus |
+
+i'd use snnTorch as the primary framework since implementing the missing encodings is part of the contribution.
+
+---
+
+## Thesis Viability
+
+### Is This Valid?
+
+yes, pretty clearly. the evidence:
+
+1. **Active research**: papers still being published in 2024-2025 (Bian et al. 2024, Vasilache et al. 2025), so the question isn't settled
+2. **Acknowledged gap**: Plank et al. (2022): "it is not clear which is the most appropriate approach or whether the choice has a significant impact on performance." Bian et al. (2024): "a systematic approach to quantitatively evaluate spike encoding performance is currently lacking."
+3. **Practical relevance**: every SNN practitioner must choose an encoding and there's no definitive guide
+4. **Clear methodology**: systematic evaluation / benchmarking is well-understood in CS
+5. **Publishable potential**: if broader than existing studies, could go to ICONS, NICE, or SNN workshops
+
+### What Would Make It Novel vs What Already Exists
+
+| Existing Work | Your Thesis Could Add |
+|--------------|----------------------|
+| 2-4 methods per study | 6-8 in one unified study |
+| Single data modality | Multiple (image + audio + time-series) |
+| MNIST/Fashion-MNIST only | MNIST + CIFAR-10 + SHD + sensor data |
+| 2-layer STDP networks | Modern deep SNNs with surrogate gradients |
+| Accuracy only or accuracy + 1-2 metrics | Accuracy, latency, spike count, energy proxy, noise robustness |

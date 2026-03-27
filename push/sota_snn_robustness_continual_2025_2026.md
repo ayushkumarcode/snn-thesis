@@ -389,31 +389,3 @@ Major approaches (2023-2026):
 6. **Limited work on combining adversarial robustness and continual learning for SNNs**
 
 ### 4.2 Confidence Assessment
-
-| Finding | Confidence | Basis |
-|---------|------------|-------|
-| SNNs have inherent adversarial robustness advantage over ANNs | **HIGH** | 20+ papers, multiple groups, 2020-2026 |
-| Standard FGSM/PGD overestimates SNN robustness | **HIGH** | Wang et al. 2025, Lin & Sengupta 2025, gradient sparsity work |
-| Our 14.9x ratio is directionally correct but magnitude inflated | **HIGH** | Consistent with literature pattern at high epsilon |
-| SNNs have mild inherent CL advantage | **MEDIUM** | Theoretical support strong, empirical comparisons scarce |
-| Our 6.9pp gap is meaningful | **MEDIUM** | Consistent with theory, but single experiment (fold 4, 5 tasks) |
-| Audio SNN adversarial robustness is novel | **HIGH** | Exhaustive literature search found zero prior work |
-| Audio SNN continual learning on ESC-50 is novel | **HIGH** | No prior work on environmental sound CL with SNNs |
-
-### 4.3 Recommended Follow-ups (Future Work)
-
-1. Apply SA-PGD or ASSG-enhanced attacks to our audio SNN to get more reliable robustness estimates
-2. Apply a dedicated CL method (HLOP or DSD-SNN) to our ESC-50 task structure
-3. Test adversarial robustness with AutoAttack (gradient-free component removes masking concern)
-4. Evaluate on additional audio datasets (UrbanSound8K, SHD)
-5. Investigate whether encoding method affects adversarial robustness (our work uses direct encoding; RSC-SNN shows randomized smoothing coding helps)
-6. Study the interaction between adversarial robustness and continual learning -- does adversarial training help or hurt CL?
-
----
-
-## SOURCES
-
-### Adversarial Robustness
-
-- [Wang et al. (2025) -- SA-PGD, ASSG](https://arxiv.org/abs/2512.22522)
-- [Wang et al. (2025) -- TGO, ICLR 2026](https://arxiv.org/abs/2602.20548)

@@ -390,3 +390,31 @@ things i couldn't fully resolve:
 | SpikCommander is current SOTA on SHD/SSC/GSC | High (85%) | arXiv Jan 2026, most recent |
 | Larroza best ESC-10 result is 69.0% | Very high (95%) | directly from paper |
 | Our 47.15% is competitive given ESC-50 difficulty | Very high (95%) | 50 classes vs 10, CNN arch vs FC-only |
+
+---
+
+## Sources
+
+- [Larroza et al. (2025)](https://arxiv.org/abs/2503.11206)
+- [Basu et al. (2025)](https://arxiv.org/abs/2502.15056)
+- [Baek & Lee (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
+- [SpikeSCR (Wang et al. 2024)](https://arxiv.org/abs/2412.12858)
+- [SpikCommander (2025/2026)](https://arxiv.org/abs/2511.07883)
+- [Guo et al. (2024)](https://ieeexplore.ieee.org/document/10293172/)
+- [S-CMRL (2025)](https://arxiv.org/abs/2502.12488)
+- [Zhang et al. (NeurIPS 2024)](https://openreview.net/forum?id=CyCDqnrymT)
+- [Spiking-FullSubNet (2024)](https://arxiv.org/abs/2410.04785)
+- [Haghighatshoar & Muir (2025)](https://www.nature.com/articles/s44172-025-00359-9)
+- [SIDC-KWS (Interspeech 2025)](https://www.isca-archive.org/interspeech_2025/lim25_interspeech.pdf)
+- [E-prop on SpiNNaker 2 (2022)](https://www.frontiersin.org/articles/10.3389/fnins.2022.1018006/full)
+- [Dominguez-Morales et al. (2016)](https://link.springer.com/chapter/10.1007/978-3-319-44778-0_6)
+- [Wu et al. (2018)](https://www.frontiersin.org/articles/10.3389/fnins.2018.00836/full)
+- [SOM-Associated-SNN (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225010884)
+- [Ternary Spike System (2024)](https://arxiv.org/abs/2407.05310)
+- [Meunier et al. (2025)](https://hal.science/hal-05344616v1)
+- [Spiking-LEAF (ICASSP 2024)](https://arxiv.org/abs/2309.09469)
+- [TDE Keyword Spotting (2025)](https://arxiv.org/abs/2503.15402)
+- [Speech2Spikes (2023)](https://dl.acm.org/doi/10.1145/3584954.3584995)
+- [Abuhajar et al. (2025)](https://www.frontiersin.org/articles/10.3389/fnins.2025.1567347/full)
+- [Wang et al. (2025) adversarial](https://arxiv.org/abs/2512.22522)
+- [SAFE (2024, withdrawn)](https://openreview.net/forum?id=QWDZE2mYIe)

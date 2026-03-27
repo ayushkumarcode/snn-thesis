@@ -670,3 +670,31 @@ First-time dataset processing: converting AEDAT files to frames takes 10-30 minu
 
 - DVS128 Gesture dataset raw download: ~5.8 GB
 - Processed frame data (cached): ~2-4 GB (depends on T and split strategy)
+- Model parameters (DVSGestureNet, channels=128): ~11 million parameters
+- GPU memory during training: ~4-8 GB (depends on T and batch size)
+- Disk space for logs/checkpoints: ~200 MB
+
+---
+
+## Evaluation and Visualization
+
+### Energy Efficiency Estimation (Without Neuromorphic Hardware)
+
+#### The SynOps Metric
+
+Synaptic Operations (SynOps) count accumulate (AC) and multiply-accumulate (MAC) operations during inference:
+
+- ANN computation: uses MAC operations (multiply + add). Energy: ~4.6 pJ per MAC (45nm technology)
+- SNN computation: uses AC operations (add only, because binary spikes). Energy: ~0.9 pJ per AC (45nm technology)
+- Energy ratio: E_AC is roughly 32x lower than E_MAC
+
+#### Using the syops Library
+
+```bash
+pip install syops
+```
+
+```python
+import torch
+from spikingjelly.activation_based import surrogate, neuron, functional
+from spikingjelly.activation_based.model import spiking_resnet

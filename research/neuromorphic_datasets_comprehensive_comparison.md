@@ -54,3 +54,31 @@ for an undergrad thesis, the best balance of difficulty, tooling, narrative stre
 
 **critical caveat:** a 2021 paper ("Is Neuromorphic MNIST Neuromorphic?") showed N-MNIST can be classified 99%+ by collapsing time into a static image and using a standard CNN. the temporal dynamics add almost no value. so the dataset doesn't actually test whether your SNN uses temporal spike patterns -- it's just MNIST with extra steps.
 
+**difficulty:** TOO EASY. basically solved. even basic SNNs hit >99%.
+
+**thesis narrative:** WEAK. "i classified handwritten digits" isn't a compelling thesis. examiners familiar with the field will see this as insufficient scope.
+
+---
+
+### 3. N-Caltech101
+
+| Property | Details |
+|---|---|
+| Classes | 101 |
+| Samples | ~8,709 |
+| Resolution | Variable |
+| Year | 2015 |
+
+**problems:** severe class imbalance (some classes have 31 images, others 800+), no standard train/test split, variable spatial resolution.
+
+**SOTA SNN:** 84.35% (NeuroMoCo 2024). the lower accuracy ceiling means results can look "bad" even if the method is good.
+
+**difficulty:** MODERATE-HARD. might be overly ambitious for undergrad scope.
+
+**thesis narrative:** MODERATE. artificial creation (sensor viewing LCD) weakens the "real neuromorphic data" story.
+
+---
+
+### 4. CIFAR10-DVS
+
+| Property | Details |

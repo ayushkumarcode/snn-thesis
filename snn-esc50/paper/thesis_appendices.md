@@ -292,17 +292,12 @@ tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)  # (1, 64, 216
 | scikit-learn | latest | t-SNE, stats |
 | scipy | latest | Wilcoxon test |
 
-| torchattacks | latest | FGSM/PGD adversarial attacks |
-| sPyNNaker | 1.0.0 | SpiNNaker deployment (Python 3.11 venv) |
-| scikit-learn | latest | t-SNE, statistical tests |
-| scipy | latest | Wilcoxon signed-rank test |
+sPyNNaker needs Python 3.11; everything else runs on 3.14.
 
-*Note: sPyNNaker requires Python 3.11; all other packages run on Python 3.14.*
+### D.5 dataset
 
-### D.5 Dataset
+ESC-50: https://github.com/karolpiczak/ESC-50
 
-ESC-50 is freely available at: https://github.com/karolpiczak/ESC-50
-
-The dataset contains 2,000 five-second recordings across 50 classes with predefined 5-fold cross-validation splits. No modifications to the dataset were made. The dataset auto-downloads to `snn-esc50/data/ESC-50-master/` when running `src/dataset.py` for the first time.
+2000 five-second recordings, 50 classes, predefined 5-fold CV. No modifications. Auto-downloads to `snn-esc50/data/ESC-50-master/` on first run.
 
 ---

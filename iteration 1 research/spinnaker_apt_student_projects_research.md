@@ -54,3 +54,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 |-------|---------|
 | **Title** | A Chip Multiprocessor for a Large-scale Neural Simulator |
 | **Author** | Eustace Painkras |
+| **Year** | December 2012 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (likely) |
+| **Abstract** | Design of the SpiNNaker CMP chip -- many simple power-efficient ARM processors with small local memories, asynchronous networks-on-chip, and GALS architecture. Demonstrated successful neural simulation on 48-chip PCBs. |
+| **URL** | https://www.escholar.manchester.ac.uk/uk-ac-man-scw:198344 |
+
+### 1.5 Sergio Davies -- Learning in Spiking Neural Networks (2012)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Learning in Spiking Neural Networks |
+| **Author** | Sergio Davies |
+| **Year** | December 2012 |
+| **Degree** | PhD, Department of Computer Science |
+| **Abstract** | Novel learning rule based on spike-pair STDP algorithm. Developed SpikeServer tool for spike injection via Ethernet. Introduced population-based routing. Created STDP-TTS learning rule. |
+| **Keywords** | TTS, STDP, Asynchronous software execution, Real-time software, Population-based routing, Neuromorphic hardware, SpiNNaker |
+| **Tools** | SpiNNaker hardware, custom C, Python |
+| **PDF** | Available (14.1 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/learning-in-spiking-neural-networks |
+
+### 1.6 Thomas Sharp -- Real-Time Million-Synapse Simulation of Cortical Tissue (2013)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Real-Time Million-Synapse Simulation of Cortical Tissue |
+| **Author** | Thomas Sharp |
+| **Year** | June 2013 |
+| **Degree** | PhD, Department of Computer Science |

@@ -429,31 +429,3 @@ This analysis, even as an estimate, significantly strengthens your thesis by con
 |------|-------|--------|
 | 1-2 | snnTorch tutorials 1-6 | Working SNN code, understanding of framework |
 | 3 | ANN baseline + first SNN experiment on MNIST | Initial accuracy numbers |
-| 4 | Second dataset (Fashion-MNIST) + time step experiments | Additional results |
-| 5 | Energy analysis + encoding comparison (if going for First) | Complete experimental results |
-| 6 | Generate all figures and tables | Results chapter draft |
-| 7-8 | Write Introduction + Literature Review + Methodology | Report chapters 1-3 |
-| 9 | Write Implementation + Results | Report chapters 4-5 |
-| 10 | Write Discussion + Conclusion | Report chapters 6-7 |
-| 11 | Supervisor review, revisions, screencast recording | Near-final report |
-| 12 | Final polish, submission | Submitted report + screencast |
-
----
-
-## APPENDIX A: QUICK-START CODE SKELETON
-
-The following shows the approximate structure of your project code. This is NOT complete code -- it is a skeleton showing that the actual implementation is small when building on snnTorch:
-
-```python
-# experiment_snn_vs_ann.py -- Approximate structure
-# Total: ~200-300 lines for the core comparison
-
-import torch
-import torch.nn as nn
-import snntorch as snn
-from snntorch import surrogate
-import torchvision
-
-# 1. Data loading (identical for ANN and SNN)
-train_loader = torch.utils.data.DataLoader(
-    torchvision.datasets.MNIST('./data', train=True, download=True,

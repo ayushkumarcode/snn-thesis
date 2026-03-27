@@ -82,3 +82,31 @@ nobody's tried converting Mamba/SSM models or mixture-of-experts architectures y
 ### 8. object detection and dense prediction
 
 growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO variants, event-camera fusion, spiking U-Net for segmentation. but SNN performance on COCO-level benchmarks is still way below ANN counterparts.
+
+---
+
+## papers with open-source code that i could actually use
+
+### tier A -- most accessible for an undergrad project
+
+| Paper | Framework | GitHub Stars | Difficulty | What you can build on |
+|-------|-----------|-------------|------------|----------------------|
+| **snnTorch** (Eshraghian) | PyTorch | 2,900+ | Beginner-friendly | Classification, tutorials, tons of examples |
+| **SpikingJelly** | PyTorch | 3,500+ | Beginner to intermediate | Full SNN pipeline: datasets, training, deployment |
+| **QKFormer** | SpikingJelly/PyTorch | Active | Intermediate | Image classification with spiking transformers |
+| **Spike-Driven Transformer V2** | PyTorch | 200+ | Intermediate | Multi-task vision with spiking transformers |
+| **SpikingResformer** | PyTorch | Active | Intermediate | Hybrid ResNet-Transformer SNN architecture |
+| **P-SpikeSSM** | PyTorch | Active | Intermediate-Advanced | Long-range sequence tasks with spiking SSMs |
+| **GRSNN** (Graph Reasoning) | PyTorch/TorchDrug | Active | Intermediate | Graph reasoning with temporal spiking |
+| **SpikeGCL** | PyTorch | Active | Intermediate | Graph contrastive learning with spikes |
+| **SpikeLM** | PyTorch | Active | Advanced | Spiking language models |
+| **TS-LIF** | PyTorch | Active | Intermediate | Time-series forecasting with SNNs |
+
+### tier B -- useful frameworks and resource collections
+
+| Resource | What it is | Link |
+|----------|-----------|------|
+| **snnTorch Tutorials** | Interactive Jupyter notebooks for learning SNN training with backprop | [github.com/snntorch/Spiking-Neural-Networks-Tutorials](https://github.com/snntorch/Spiking-Neural-Networks-Tutorials) |
+| **SpikingJelly** | Full-stack SNN framework with neuromorphic dataset support | [github.com/fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) |
+| **Intel Lava** | Open-source framework for neuromorphic computing (works with Loihi) | [github.com/lava-nc/lava](https://github.com/lava-nc/lava) |
+| **Norse** | Bio-inspired neural components for PyTorch | [github.com/norse/norse](https://github.com/norse/norse) |

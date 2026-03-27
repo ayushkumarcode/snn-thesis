@@ -446,3 +446,31 @@ yes, pretty clearly. the evidence:
 ### Primary Gaps (highest value)
 
 1. **Unified cross-modality comparison**: test same 6+ encodings on image + audio + time-series using same architecture and training. nobody's done this.
+2. **Encoding-architecture interaction**: does the best encoding change with network architecture (feedforward vs recurrent vs conv)? no systematic study on this.
+3. **Practitioner decision framework**: a flowchart or decision matrix for choosing encoding based on data type, hardware constraints, performance priorities. doesn't exist.
+
+### Secondary Gaps (nice extensions)
+
+4. **Encoding + decoding interaction**: which combo works best? only Plank et al. partially addressed this.
+5. **Impact on learning dynamics**: how does encoding affect convergence speed, loss curves, gradient flow?
+6. **Sensitivity analysis**: how sensitive is each encoding to its hyperparameters (tau, threshold, etc.)?
+7. **Information-theoretic analysis**: mutual information between input signal and spike train for each encoding.
+
+### Stretch Goals
+
+8. Deploy on Loihi or SpiNNaker and compare on real hardware
+9. Propose a hybrid that combines strengths of multiple methods
+10. Adaptive encoding that switches based on input characteristics
+
+---
+
+## Thesis Structure
+
+### Title Ideas
+
+- "A Systematic Evaluation of Spike Encoding Methods for Spiking Neural Networks Across Data Modalities"
+- "Comparing Spike Encoding Strategies: Performance Trade-offs in Modern Spiking Neural Networks"
+- "Which Spike Encoding? A Benchmark Study Across Tasks, Architectures, and Metrics"
+
+### Experimental Matrix
+

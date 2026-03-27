@@ -246,31 +246,3 @@ The pattern across the literature is clear:
 | Setting | ANN Accuracy | SNN Accuracy | Gap | Source |
 |---------|-------------|-------------|-----|--------|
 | **ESC-50 from scratch (thesis)** | **63.85%** | **47.15%** | **16.70pp** | **Thesis** |
-| **ESC-50 PANNs features (thesis)** | **93.45%** | **92.50%** | **0.95pp** | **Thesis** |
-| ImageNet from scratch | 80.80% | 73.38% | 7.42pp | Spikformer V2 |
-| ImageNet with SSL pretraining | ~82% | 81.10% | ~1pp | Spikformer V2 |
-| ImageNet conversion (pretrained) | 88.60% | ~87.60% | ~1pp | Bu et al. 2025 |
-| Neural vocoder (self-distillation) | ANN Vocos | 14.7% energy, comparable quality | ~0pp (quality) | Spiking Vocos 2025 |
-| Audio fidelity (SAFE) | ANN SOTA | Comparable | ~0pp | SAFE 2025 |
-| Speech (TTS, SpikeVoice) | ANN TTS | 10.5% energy, comparable | ~0pp (quality) | SpikeVoice 2024 |
-
-**The thesis finding that the gap collapses from 16.7pp to 0.95pp is the most dramatic demonstration of this phenomenon in the audio domain.** The ratio (16.7 / 0.95 = 17.6x reduction) exceeds what is typically reported in vision (7.42 / ~1 = 7.4x).
-
-### 5.3 The "Feature Learning Bottleneck" Hypothesis
-
-The thesis's central insight -- that the SNN-ANN gap is a *feature learning* problem, not a *spiking computation* problem -- is supported by converging evidence:
-
-1. **Spikformer V2 (2024):** Self-supervised pretraining (which improves feature quality) narrows the gap from 7.42pp to ~1pp on ImageNet.
-
-2. **ANN-to-SNN conversion (2024-2025):** Converting a pretrained ANN (which already has good features) to SNN loses only 1-2pp, confirming that spiking computation itself is not the bottleneck.
-
-3. **BKDSNN (ECCV 2024):** Knowledge distillation transfers ANN feature representations to SNNs, recovering most of the gap.
-
-4. **STA/CLIP conversion (ICLR 2024):** Converting CLIP (which has extremely rich pretrained features) to SNN retains zero-shot capability, demonstrating that spiking neurons can preserve complex learned representations.
-
-5. **Spiking Vocos (2025):** Self-architectural distillation achieves ANN-comparable audio quality, confirming that the feature extraction is the hard part, not the spiking computation.
-
-**However, no prior paper has explicitly articulated and empirically demonstrated this hypothesis for audio classification.** The thesis makes a clear, quantified contribution.
-
----
-

@@ -467,31 +467,3 @@ def forward_pass(net, data, num_steps):
 
     return torch.stack(spk_rec), torch.stack(mem_rec)
 
-# --- Training loop ---
-for epoch in range(num_epochs):
-    for i, (data, targets) in enumerate(train_loader):
-        data, targets = data.to(device), targets.to(device)
-        net.train()
-
-        spk_rec, mem_rec = forward_pass(net, data, num_steps)
-        loss = loss_fn(spk_rec, targets)
-
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-
-        if i % 50 == 0:
-            acc = SF.accuracy_rate(spk_rec, targets)
-            print(f"Epoch {epoch}, Iter {i}, Loss: {loss.item():.4f}, Acc: {acc*100:.2f}%")
-```
-
-### Key snnTorch Design Decisions
-
-**Surrogate Gradient Selection:**
-```python
-# Option 1: Fast sigmoid (RECOMMENDED -- fast, good sparsity)
-spike_grad = surrogate.fast_sigmoid(slope=25)
-
-# Option 2: Arctangent (default if unspecified)
-spike_grad = surrogate.atan(alpha=2.0)
-

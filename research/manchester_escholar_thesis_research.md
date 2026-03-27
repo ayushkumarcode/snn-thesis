@@ -222,3 +222,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 - 4.79 MB PDF
 
 ---
+
+## Reinforcement Learning / Robotics
+
+### Simulation Architectures for RL in Robotics
+- **Diego Ferigo**, 2023, PhD, Computer Science
+- Supervised by Angelo Cangelosi (main), Daniele Pucci (co)
+- https://research.manchester.ac.uk/en/studentTheses/simulation-architectures-for-reinforcement-learning-applied-to-ro
+- RL simulation framework, JAX-based physics engine, push-recovery controller for iCub humanoid robot.
+- 3.36 MB PDF
+
+---
+
+## Summary table
+
+| # | Title (abbreviated) | Author | Year | Degree | Dept | Core Topic |
+|---|---------------------|--------|------|--------|------|------------|
+| 1 | Modelling Neural Dynamics on Neuromorphic HW | Mollie Ward | 2024 | PhD | CS | Neuromorphic/SpiNNaker |
+| 2 | Deep Spiking Neural Networks | Qian Liu | 2018 | PhD | CS | SNN/Deep Learning |
+| 3 | Parallelisation on Neuromorphic HW | Luca Peres | 2022 | PhD | CS | SpiNNaker/Parallel |
+| 4 | Learning in SNNs | Sergio Davies | 2012 | PhD | CS | SNN/STDP |
+| 5 | Stochastic Processes for Neuromorphic HW | Gabriel Fonseca Guerra | 2020 | PhD | CS | SpiNNaker/Loihi |
+| 6 | Parallel Sim of NNs on SpiNNaker | Xin Jin | 2010 | PhD | CS | SpiNNaker |
+| 7 | Arithmetic Accelerators for Neuromorphic Proc | Mantas Mikaitis | 2020 | PhD | CS | SpiNNaker2/HW |
+| 8 | Building Large-Scale SpiNNaker | Jonathan Heathcote | 2016 | PhD | CS | SpiNNaker/Systems |
+| 9 | Structural Plasticity on SpiNNaker | Petrut Bogdan | 2019 | PhD | CS | SpiNNaker/Plasticity |
+| 10 | Real Time Spaun on SpiNNaker | Andrew Mundy | 2016 | PhD | CS | SpiNNaker/Brain Model |
+| 11 | Bio-Inspired Neural Computation | Adam Perrett | 2022 | PhD | CS | SpiNNaker/Bio-inspired |
+| 12 | Scalability and Robustness of ANNs | Evangelos Stromatias | 2016 | PhD | CS | SpiNNaker/Power |

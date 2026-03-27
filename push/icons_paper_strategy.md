@@ -26,3 +26,31 @@ arc: nobody has tried SNNs on ESC-50 -> we built it, compared 7 encodings -> dep
 **cut:** surrogate ablation, continual learning, augmentation, t-SNE, temporal analysis, per-class analysis. those go in the thesis.
 
 ---
+
+## paper structure (8 pages)
+
+```
+Title + Abstract (150-200 words)                ~0.3 pages
+1. Introduction                                  ~1.0 pages
+2. Background & Related Work                     ~0.8 pages
+3. Methods                                       ~1.5 pages
+   3.1 Architecture (Figure 1: arch diagram)
+   3.2 Spike Encoding Methods (compact table)
+   3.3 Training Protocol
+   3.4 SpiNNaker Deployment (Figure 2: pipeline)
+   3.5 NeuroBench Energy Methodology
+4. Results                                       ~2.5 pages
+   4.1 Encoding Comparison (Table 1)
+   4.2 SpiNNaker Hardware Results (Table 2)
+   4.3 Transfer Learning: Gap Collapse (Table 3)
+   4.4 Adversarial Robustness (Table 4)
+   4.5 Energy Analysis (Table 5)
+5. Discussion                                    ~0.8 pages
+6. Conclusions & Future Work                     ~0.3 pages
+References                                       ~0.8 pages
+```
+
+target: 5 tables, 3 figures.
+
+---
+

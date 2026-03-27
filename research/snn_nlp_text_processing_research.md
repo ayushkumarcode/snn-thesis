@@ -54,3 +54,31 @@ this is currently the best-performing spiking language model:
 | MNLI-m/mm | 83.8/83.4 | 77.1/77.2 | -6.7/-6.2% |
 | QQP (F1) | 90.5 | 83.9 | -6.6% |
 | QNLI | 90.7 | 85.3 | -5.4% |
+| CoLA | 60.0 | 38.8 | -21.2% |
+| STS-B | 89.4 | 84.9 | -4.5% |
+| RTE | 69.3 | 69.0 | -0.3% |
+| **Avg gap** | -- | -- | **~6.7%** |
+
+reduces the gap from 28.3% (LIF-BERT) to 6.7% vs BERT-base. 12.9x energy savings at T=1, 3.7x at T=4.
+
+code: https://github.com/Xingrun-Xing/SpikeLM
+
+---
+
+### SpikeLLM (ICLR 2025)
+
+scales SNNs to large language models (7B-70B parameters) using saliency-based spiking. first attempt at billion-parameter spiking LLMs. uses Generalized Integrate-and-Fire neurons with saliency detection.
+
+results on LLaMA-2:
+
+| Model | Config | WikiText2 PPL | Zero-shot Avg |
+|-------|--------|---------------|---------------|
+| LLaMA-2-7B | 4W4A | -- | 50.65% |
+| LLaMA-2-7B | 2W16A | 14.16 | -- |
+| LLaMA-2-70B | 2W16A | 6.35 | 59.93% |
+
+impressive that spiking works at 70B. but honestly this is more of a quantization/compression technique than a from-scratch spiking model.
+
+code: https://github.com/Xingrun-Xing2/SpikeLLM (sparse docs)
+
+---

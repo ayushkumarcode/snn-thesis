@@ -26,3 +26,31 @@ repositories i searched:
 ## confirmed undergraduate (BSc/BEng) final year projects
 
 ### 1. Shape Detector Spiking Neural Network
+- **Author:** Filippo Ferrari
+- **University:** University of Manchester
+- **Year:** ~2018 (estimated from repository dates)
+- **Degree:** BSc Artificial Intelligence (Final Year Project)
+- **Supervisor:** Prof. Steve Furber
+- **Description:** Developed a spiking neural network for shape detection, likely running on or related to the SpiNNaker platform.
+- **Tools:** Python, SNN simulation (likely sPyNNaker/PyNN)
+- **Repository:** https://github.com/filippoferrari/shape_detector_snn and https://github.com/filippoferrari/bsc_dissertation (LaTeX thesis source)
+- **Full text:** Thesis source available in LaTeX; compiled PDF likely available
+- **Scope:** Single-layer SNN for shape classification -- appropriate BSc scope
+- confidence that this is legit: HIGH -- explicitly labeled as BSc dissertation
+
+### 2. Musical Pattern Recognition in Spiking Neural Networks
+- **Author:** mrahtz (GitHub username)
+- **University:** Not specified (likely UK based on "BEng" designation)
+- **Year:** ~2016 (repository created April 2016)
+- **Degree:** BEng (Final Year Project)
+- **Description:** Implemented the first layer of a spiking neural network model capable of recognizing musical patterns in audio input, based on Peter Diehl's unsupervised learning model.
+- **Tools:** Brian 2 (neural simulation), Brian 1 with Hears bridge, Python, NumPy, matplotlib, FFmpeg, Mingus music library, Fluid R3 SoundFont
+- **Datasets:** Custom .wav test sequences including monophonic audio and a sequence from Yann Tiersen
+- **Repository:** https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks
+- **Full text:** Code available; author notes "only a small portion of what was originally intended was actually achieved"
+- **Scope:** Partial implementation -- first network layer only. Honest about limitations, which i appreciate.
+- confidence: HIGH -- explicitly labeled as BEng final year project
+
+### 3. Randomised Time-Stepping Methods for SNN Simulations
+- **Author:** Fabio Deo (Fabio752 on GitHub)
+- **University:** Imperial College London

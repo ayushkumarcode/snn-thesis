@@ -222,3 +222,13 @@ If i need to find Manchester undergrad neuromorphic/ML thesis projects:
 | 3 | LSTM Warehouse Robot Navigation | Zhou | 2024 | Software | MEDIUM (ML/Robotics) | Possibly |
 | 4 | ECG/EEG/IMU motion artefact data | Beach, Li, Balaban, Casson | 2021 | Dataset | MEDIUM (Biosignal) | No (Research) |
 | 5 | Low Power Computer Vision landmine | Fletcher et al. | 2025 | Dataset | LOW-MED (Edge CV) | No (Research) |
+| 6 | Closed Loop Sound Stimulation Sleep | Casson | 2022 | Software | MEDIUM (Real-time EEG) | No (Research) |
+| 7 | 3D-printed EEG electrodes | Xing | 2022 | Online resource | LOW-MED (EEG hw) | No (Research) |
+| 8 | hBET2 EEG Alpha analysis code | Casson, Halpin, Xing | 2024 | Software | LOW-MED (EEG) | No (Research) |
+| 9 | Radiation Autonomous Exploration | West | 2022 | Dataset | LOW (Autonomous robot) | No (Research) |
+| 10 | Gaussian mixture neural network | Price, Menary | 2021 | Dataset | LOW (NN in physics) | No (Research) |
+| 11 | Turbulent Flow PyTorch tensors | Sardar, Skillen | 2025 | Dataset | LOW (ML for CFD) | No (Research) |
+| 12 | ML ATR-FTIR Spectroscopy | Pal chowdhury et al. | 2022 | Dataset | LOW (ML archaeology) | No (PhD thesis) |
+| 13 | Hyperspectral images | Foster et al. | 2022 | Dataset | LOW (Vision dataset) | No (Research) |
+| 14 | Power network training data | Noebels et al. | 2021 | Dataset | LOW (ML for power) | No (Research) |
+| 15 | ECG-X AI for ECG | Hughes-Noehrer, Jay | 2024 | Online resource | LOW (AI in healthcare) | No (Research) |

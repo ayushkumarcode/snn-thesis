@@ -222,3 +222,31 @@ This is THE foundational reference for energy per arithmetic operation. All valu
 | 32-bit Integer Multiply | 3.1 |
 | 32-bit FP Add | 0.9 |
 | 32-bit FP Multiply | 3.7 |
+| **32-bit FP MAC (MUL+ADD)** | **4.6** |
+| **32-bit FP AC (ADD only)** | **0.9** |
+| 8-bit FP MAC | ~1.1 |
+| 8-bit FP AC | ~0.2 |
+| 32-bit SRAM Read (8KB) | 5 |
+| 32-bit SRAM Read (32KB) | 20 |
+| 32-bit DRAM Read | ~640 |
+
+Key ratios:
+- MAC/AC ratio at 32-bit FP: **4.6/0.9 = 5.1x** (MACs cost 5.1x more than ACs)
+- DRAM access vs compute: **640 pJ vs 4.6 pJ = 139x** (memory dominates energy)
+
+### 4.2 Has this been updated?
+
+No official update, but the ratios remain approximately valid. Absolute pJ values scale down with process node. At modern nodes (7nm, 5nm), compute energy has decreased but DRAM access energy hasn't kept pace -- the memory-to-compute ratio has actually increased. The MAC/AC ratio stays about the same (~5x) because both operations scale similarly.
+
+What this means: data movement, not compute, dominates energy. Papers using Horowitz 45nm values for modern hardware are providing upper bounds on compute energy, meaning the actual sparsity requirements for SNN advantage may be less strict on modern hardware.
+
+### 4.3 How different papers use AC/MAC costs
+
+| Paper | E_AC (pJ) | E_MAC (pJ) | Note |
+|:---|:---:|:---:|:---|
+| NeuroBench (Yik et al. 2025) | 0.9 | 4.6 | Standard Horowitz 45nm |
+| Dampfhoffer et al. 2023 | Hardware-specific | Hardware-specific | Full memory model |
+| Yan et al. 2024 | 0.03 (8-bit ADD) | 0.2 (8-bit MUL) | 8-bit integer, includes memory model |
+| Castagnetti et al. 2025 | 0.9 | 4.6 | Standard Horowitz 45nm |
+
+The 0.9/4.6 pJ values i use in NeuroBench analysis are the standard reference. For my SNN (binary spikes as activations), the AC cost is appropriate. For my ANN (FP32 activations), the MAC cost is appropriate. The 5.1x ratio is the key number.

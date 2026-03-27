@@ -110,3 +110,31 @@ key papers:
 
 the gap between SNNs and ANNs depends a lot on the task:
 - **emotion recognition and stress detection:** SNNs can match or beat ANNs (EESCN at 94.81% is competitive with SOTA on DEAP)
+- **motor imagery (4-class):** SNNs still trail top ANNs by ~5-10pp (77-82% vs 85-87% for best ANNs), though the gap is narrowing
+- **seizure detection:** SNNs get comparable accuracy with orders-of-magnitude lower energy
+
+the real argument for SNNs isn't just accuracy -- it's the accuracy-energy tradeoff. an SNN at 80% accuracy that uses 1/20th the energy of an 85% CNN might be the better choice for a wearable BCI.
+
+---
+
+## 3. available datasets
+
+### motor imagery
+
+| Dataset | Subjects | Channels | Classes | Sampling Rate | Access | Notes |
+|---|---|---|---|---|---|---|
+| **BCI Competition IV-2a** | 9 | 22 EEG + 3 EOG | 4 (left hand, right hand, feet, tongue) | 250 Hz | [BBCI website](https://www.bbci.de/competition/iv/) / [Kaggle](https://www.kaggle.com/datasets/thngdngvn/bci-competition-iv-data-sets-2a) | Most popular MI benchmark (31+ studies). 288 trials/subject across 2 sessions. |
+| **BCI Competition IV-2b** | 9 | 3 EEG + 3 EOG | 2 (left hand, right hand) | 250 Hz | [BBCI website](https://www.bbci.de/competition/iv/) | Second most popular (14+ studies). |
+| **PhysioNet EEGMMIDB** | 109 | 64 | 4 (open/close fists, imagine fists/feet) | 160 Hz | [PhysioNet](https://www.physionet.org/content/eegmmidb/1.0.0/) | Freely downloadable, no application needed. Largest free MI dataset. |
+| **BNCI Horizon 2020** | Various | Various | Various | Various | [BNCI database](https://bnci-horizon-2020.eu/database/data-sets) | Collection of multiple BCI datasets. |
+
+### emotion recognition
+
+| Dataset | Subjects | Channels | Classes | Stimuli | Access | Notes |
+|---|---|---|---|---|---|---|
+| **DEAP** | 32 | 32 EEG + 8 peripheral | Valence/Arousal/Dominance (continuous) | 40 music videos (1 min each) | [DEAP official](http://eecs.qmul.ac.uk/mmv/datasets/deap/) | Needs university email application (~1 month wait). 512 Hz, preprocessed files at 128 Hz available. |
+| **SEED** | 15 | 62 EEG | 3 (negative, neutral, positive) | Film clips | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/seed.html) | 200 Hz preprocessed. 3 sessions/subject (~1 week apart). |
+| **SEED-IV** | 15 | 62 EEG | 4 (happy, sad, fear, neutral) | Film clips | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/index.html) | Extension of SEED with 4 emotions. |
+| **SEED-VII** | -- | -- | 6 basic emotions + continuous | Multimodal | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/) | Newest, continuous labels. |
+| **DREAMER** | 23 | 14 EEG | Valence/Arousal/Dominance | Film clips | Public | Lower channel count, good for lightweight models. |
+

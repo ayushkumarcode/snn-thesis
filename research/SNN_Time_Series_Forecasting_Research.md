@@ -38,31 +38,3 @@ Key findings:
 | Binarized SNN (SWP-AAFT-BSNN) | 2024 | Knowledge and Information Systems | Enhanced Smart Weather Prediction using binarized SNNs for atmospheric analysis |
 
 **Assessment**: Weather prediction with SNNs is **very under-explored**. Only a handful of papers exist, and none use modern SNN architectures or standard weather benchmarks (e.g., the Jena Weather dataset used in mainstream forecasting).
-
-### 2.3 Sensor Data / IoT Forecasting
-
-| Paper | Year | Approach | Key Result |
-|-------|------|----------|------------|
-| Online spiking reservoir | 2022 | Neurocomputing | Spiking reservoir-based network for online time series forecasting with temporal spike encoding |
-| SNN for ECG/EEG classification | 2020-2025 | Multiple | Extensive work on wearable sensor time-series classification (not forecasting) |
-| Vacuum Spiker | 2025 | arXiv | SNN-based anomaly detection in time series |
-| Evolving SNN anomaly detection | 2022 | Machine Learning (Springer) | Unsupervised anomaly detection in multivariate time series with online evolving SNNs |
-| Enhanced quantile regression SNN | 2025 | arXiv | 92.3% accuracy in component failure prediction, 90-hour advance warning |
-
-**Assessment**: Sensor data classification with SNNs is well-explored (especially ECG/EEG). Sensor data **forecasting** with SNNs is **under-explored** and represents a clear gap.
-
-### 2.4 Standard Forecasting Benchmarks (Traffic, Electricity, Solar)
-
-This is where the most rigorous SNN time-series forecasting work exists:
-
-| Paper | Year | Venue | Datasets | Key Models |
-|-------|------|-------|----------|------------|
-| SeqSNN (Lv et al.) | 2024 | ICML | Metr-LA, Pems-Bay, Solar, Electricity | Spike-TCN, Spike-RNN, Spike-GRU, iSpikformer |
-| CPG-PE (Lv et al.) | 2024 | NeurIPS | Multiple including time-series forecasting | Central Pattern Generator positional encoding for SNNs |
-| TS-LIF (Feng et al.) | 2025 | ICLR | Metr-LA, Pems-Bay, Solar, Electricity | Temporal Segment LIF with dual-compartment architecture |
-| SpikySpace (Tang et al.) | 2026 | arXiv (Jan 2026) | Metr-LA, Pems-Bay, Solar, Electricity | First full spiking state-space model |
-| SpikeSTAG (Hu et al.) | 2025 | arXiv | Metr-LA, Pems-Bay, Solar, Electricity | GNN-SNN collaboration for spatial-temporal forecasting |
-| Derivative spike encoding | 2024 | MDPI Computers | Electricity load forecasting | SLAYER-trained SNN with novel encoding |
-
----
-

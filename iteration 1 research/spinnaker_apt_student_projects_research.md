@@ -26,3 +26,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 ### 1.2 M.M. Khan -- Configuring a Massively Parallel CMP System (2009)
 
 | Field | Details |
+|-------|---------|
+| **Title** | Configuring a Massively Parallel CMP System for Real Time Neural Applications |
+| **Author** | M.M. Khan |
+| **Year** | 2009 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (likely) |
+| **Abstract** | Configuration and mapping of neural networks onto the SpiNNaker massively parallel chip multiprocessor system. |
+| **PDF** | Available at https://apt.cs.manchester.ac.uk/ftp/pub/amulet/theses/mmkhan09_phd.pdf |
+
+### 1.3 Alexander Rast -- Scalable Event-Driven Modelling Architectures (2011)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Scalable Event-Driven Modelling Architectures for Neuromimetic Hardware |
+| **Author** | Alexander D. Rast |
+| **Year** | January 2011 |
+| **Degree** | PhD, School of Computer Science |
+| **Supervisors** | Steve Furber (supervisor), James Garside (advisor) |
+| **Abstract** | Developed a library of predesigned event-driven neural components for SpiNNaker. Addressed burstiness, scalability, and asynchronous event-driven models. |
+| **PDF** | Available at https://apt.cs.manchester.ac.uk/ftp/pub/apt/theses/Rast11_phd.pdf |
+| **URL** | https://www.escholar.manchester.ac.uk/uk-ac-man-scw:111900 |
+
+### 1.4 Eustace Painkras -- A Chip Multiprocessor for a Large-scale Neural Simulator (2012)
+
+| Field | Details |
+|-------|---------|
+| **Title** | A Chip Multiprocessor for a Large-scale Neural Simulator |
+| **Author** | Eustace Painkras |

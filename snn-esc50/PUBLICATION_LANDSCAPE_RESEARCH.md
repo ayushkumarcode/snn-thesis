@@ -40,20 +40,20 @@ Spikformer v2 (AAAI 2024) - 81.1% ImageNet with 1 timestep
 SpikingResformer (CVPR 2024) - bridge between ResNet and ViT in SNNs
 SpikedAttention (NeurIPS 2024) - training-free transformer-to-SNN conversion
 Spike-based Sound Source Localization (NeurIPS 2024) - RF neurons, SOTA + robustness
-| Spikformer v2 | AAAI 2024 | Masked image modeling for spiking transformers | 81.1% ImageNet with 1 timestep |
-| SpikingResformer | CVPR 2024 | Bridge between ResNet and ViT in SNNs | Competitive ImageNet accuracy |
-| SpikedAttention | NeurIPS 2024 | Training-free transformer-to-SNN conversion | No retraining needed |
-| Spike-based Sound Source Localization | NeurIPS 2024 | Neuromorphic sound localization with RF neurons | SOTA sound localization + robustness |
-| "Take A Shortcut Back" | NeurIPS 2024 | Gradient vanishing mitigation for deep SNNs | Significant accuracy improvement |
-| Neuromorphic Robustness Paradigms | Nature Comms 2025 | SNNs achieve 2x robustness of ANNs via temporal processing | **2x robustness on CIFAR-10** |
-| Speech2Spikes | ACM NICE 2023 | Audio encoding pipeline for real-time neuromorphic | 109x lower energy than GPU, 23x lower than CPU |
-| SATRN | Electronics 2025 | Spiking audio tagging with attention | Comparable to CNN, better noise robustness |
-| Spiking Hybrid Attentive Mechanism | OpenReview 2025 | Joint sound localization and classification with SNNs | Novel joint task formulation |
-| FEEL-SNN | NeurIPS 2024 | Frequency encoding + evolutionary leak factor | Improved SNN training stability |
-| Autonomous Driving with SNNs | NeurIPS 2024 | SNN applied to autonomous driving | Competitive with ANNs, lower energy |
-| Spikingformer | AAAI 2026 | Pure event-driven spiking transformer | 75.85% ImageNet, 57.34% less energy |
-| High-performance SNNs with 0.3 spikes/neuron | Nature Comms 2024 | Ultra-sparse spiking for efficiency | 0.3 spikes/neuron, minimal accuracy loss |
-| "Exploiting Noise as Resource" | Patterns 2023 | Stochastic resonance in SNNs improves generalization | Competitive performance + improved robustness |
+Nature Comms 2025 robustness paper - SNNs 2x robustness of ANNs via temporal processing
+Speech2Spikes (ACM NICE 2023) - 109x lower energy than GPU, 23x lower than CPU
+SATRN (Electronics 2025) - spiking audio tagging, comparable to CNN, better noise robustness
+Spikingformer (AAAI 2026) - pure event-driven spiking transformer, 75.85% ImageNet, 57.34% less energy
+Chen et al. (Nature Comms 2024) - 0.3 spikes/neuron, minimal accuracy loss
+"Exploiting Noise as Resource" (Patterns 2023) - stochastic resonance improves generalization
+SpiNNaker2 (arXiv 2024) - 22nm, 153 ARM cores/chip, 10x capacity per watt
+
+the key observation about "wow" numbers -- the most impactful papers always have ONE clear number:
+- QKFormer: 85.65% (first SNN > 85% on ImageNet)
+- Speech2Spikes: 109x energy reduction
+- Nature Comms robustness: 2x more robust
+
+our best "wow" numbers:
 | Continual Learning with Neuromorphic Computing | IEEE Access 2025 | Comprehensive survey of neuromorphic continual learning | Survey covering foundations + methods |
 | SpiNNaker2 | arXiv 2024 | Next-gen neuromorphic system (22nm, 153 ARM cores/chip) | 10x capacity per watt over SpiNNaker1 |
 | SpikeLM | 2024 | Spike-driven language modeling with elastic bi-spiking | Novel language modeling architecture |

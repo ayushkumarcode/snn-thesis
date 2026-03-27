@@ -250,3 +250,31 @@ key findings:
 **news topic classification (binary subset)** -- take AG News or 20 Newsgroups, reduce to 2 categories
 
 ### tier 3: stretch goals
+
+**multi-class sentiment (SST-5)** -- 5 classes is harder. expected ~41-51%.
+
+**aspect-based sentiment** -- recent paper (Jan 2026) but more complex, less code available.
+
+---
+
+## open-source code
+
+### directly relevant
+
+| Repo | What | Usability |
+|------|------|-----------|
+| [Lvchangze/snn](https://github.com/Lvchangze/snn) | Spiking CNN text classification | **Best starting point** |
+| [ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT) | SpikeGPT | Complex to run |
+| [NeuroCompLab-psu/SpikingBERT](https://github.com/NeuroCompLab-psu/SpikingBERT) | SpikingBERT | Needs multi-GPU |
+| [Xingrun-Xing/SpikeLM](https://github.com/Xingrun-Xing/SpikeLM) | SpikeLM | Needs 8xA800 |
+| [Xingrun-Xing2/SpikeLLM](https://github.com/Xingrun-Xing2/SpikeLLM) | SpikeLLM | Sparse docs |
+
+### SNN frameworks
+
+| Framework | NLP support | Best for |
+|-----------|------------|---------|
+| snnTorch | No NLP tutorials | Building custom SNN models |
+| SpikingJelly | Limited | PyTorch-native SNN ops |
+| Norse | None | Research-oriented |
+| BindsNET | None | Bio-plausible learning |
+

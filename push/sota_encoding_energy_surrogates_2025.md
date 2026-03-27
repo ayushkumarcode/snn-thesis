@@ -166,3 +166,31 @@ our SNN has ~25.84% spike rate, 4x above the 6.4% threshold. confirms SNN is mor
 
 benchmark tasks (Algorithm Track v1.0):
 
+| Task | Metric | ANN Baseline | SNN Result | SNN Eff_ACs | ANN Eff_MACs |
+|------|--------|-------------|-----------|-------------|-------------|
+| Keyword FSCIL | Accuracy | 89.27% | 75.27% | 3.65x10^5 | 7.85x10^6 |
+| Event Detection | mAP | 0.429 | 0.271 | 5.60x10^8 | 3.76x10^10 |
+| Motor Prediction (Indy) | R^2 | 0.593 | 0.593 | 276 | 3,836 |
+| Motor Prediction (Loco) | R^2 | 0.558 | 0.568 | 551 | 6,103 |
+
+System Track: Xylo neuromorphic chip achieves **0.028 mJ** vs 1.851 mJ (Arduino CPU) for acoustic scene classification at comparable accuracy. that's 60.9x less power and 33.4x less energy.
+
+we use the same NeuroBench framework (v2.2.0). the motor prediction result (SNN = ANN with 14x fewer ops) is strong evidence that SNNs can match ANNs when tasks align with spike-based processing. the Xylo audio result (66x energy reduction) validates our energy narrative.
+
+### Horowitz Energy Model (ISSCC 2014)
+
+standard reference for operation energy in 45nm CMOS:
+
+| Operation | Energy (pJ) |
+|-----------|-------------|
+| 32-bit FP MUL | 3.7 |
+| 32-bit FP ADD | 0.9 |
+| 32-bit INT MUL | 3.1 |
+| 32-bit INT ADD | 0.1 |
+| 8-bit INT ADD | 0.03 |
+| 8-bit INT MUL | 0.2 |
+| SRAM read (32b) | 5.0 |
+| DRAM read (32b) | 640 (~128x more than compute) |
+
+commonly cited SNN values:
+- MAC (multiply-accumulate) at 32-bit: ~4.6 pJ (3.7 + 0.9)

@@ -446,3 +446,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Datasets** | ABR waveforms from tinnitus/non-tinnitus subjects |
 | **Scope** | Moderate -- applied ML to clinical data |
 
+---
+
+## edge / IoT / embedded
+
+### 6.1 Sensing and Image Processing Methods for IoT Applications
+| Field | Detail |
+|-------|--------|
+| **Author** | Yu Li |
+| **Year** | 2023 |
+| **Degree** | **MPhil** |
+| **Department** | Electrical & Electronic Engineering |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/sensing-and-image-processing-methods-for-iot-applications |
+| **Abstract** | Monitoring industrial production processes, baked potato quality assessment, oven anomaly detection. Uses HSV, LBP, OCSVM. |
+| **What They Built** | IoT monitoring pipeline with image processing + sensor analysis |
+| **Tools/Frameworks** | HSV, LBP, wavelet packets, OCSVM |
+| **Datasets** | Camera images, thermocouple data, accelerometer data |
+| **Scope** | Moderate (MPhil) -- applied image processing and ML |
+| **NOTE** | MPhil level -- somewhat closer to masters scope |
+
+---
+
+## reinforcement learning / robotics (adjacent)
+
+### 7.1 Simulation Architectures for Reinforcement Learning applied to Robotics
+| Field | Detail |
+|-------|--------|
+| **Author** | Diego Ferigo |
+| **Year** | 2023 |

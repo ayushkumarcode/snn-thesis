@@ -502,3 +502,31 @@ for test_fold in range(1, 6):
 ## COMPONENT 9: GPU / macOS REQUIREMENTS
 
 ### EXISTS: WORKABLE
+### POTENTIAL BLOCKER: LOW RISK -- see details
+
+### Dataset size analysis:
+
+| Property | Value |
+|----------|-------|
+| Total samples | 2,000 |
+| Training set (4 folds) | 1,600 |
+| Test set (1 fold) | 400 |
+| Mel-spectrogram per sample | ~128 x 862 floats = ~443 KB |
+| Full dataset in memory (spectrograms) | ~886 MB |
+| Batch of 32 spectrograms | ~14 MB |
+
+This is a **small dataset** by deep learning standards. Training is feasible on CPU alone.
+
+### macOS MPS (Apple Silicon GPU) status:
+
+| Item | Status |
+|------|--------|
+| PyTorch MPS backend | Stable in PyTorch 2.5+ |
+| snnTorch MPS support | Partially supported (PR #247 merged Oct 2023, PR #415 in progress Feb 2026) |
+| Known issue | Backward pass errors reported on MPS with some snnTorch operations |
+| Workaround | Use `PYTORCH_ENABLE_MPS_FALLBACK=1` environment variable |
+| Alternative | Train on CPU (feasible for this dataset size) |
+
+### CPU-only training feasibility:
+
+**snnTorch documentation explicitly states:** "The lean requirements of snnTorch enable small and large networks to be viably trained on CPU, where needed."

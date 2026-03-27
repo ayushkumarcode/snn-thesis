@@ -26,3 +26,31 @@ the matched-architecture comparison (SNN vs ANN under identical training) is met
 
 the most comprehensive encoding comparison ever conducted on a standard audio benchmark. the ordering (direct >> rate ~ phase > population > latency >> delta ~ burst) is internally consistent and mechanistically explicable. each failure has a different root cause: delta fails because static spectrograms have no temporal variation; burst fails because front-loading creates temporal window mismatch; latency fails because spectrogram features aren't naturally compatible with first-spike timing; population underperforms because MSE count loss is harder to optimize than CE rate loss.
 
+the rate-phase tie is the most interesting finding within this: phase coding achieves 24.15% using exactly 1 spike per neuron while rate coding gets 24.00% using ~7 spikes per neuron. statistically indistinguishable despite 7x spike count difference. this confirms temporal window coverage matters, not spike count -- with direct implications for energy-efficient inference (7x spike reduction = 7x fewer ACs).
+
+---
+
+## C3: SpiNNaker Deployment
+
+the root-cause analysis of FC1 cancellation is itself a novel finding. the discovery that AvgPool produces fractional outputs incompatible with SpiNNaker's binary input requirement reveals a fundamental constraint: standard conv SNN architectures can't be directly deployed on spike-only hardware without modification. the documented failure of weight re-centering (53.75% -> 8.50%) shows this isn't trivially fixable. this saves future researchers from repeating the mistake.
+
+the FC2-only hybrid approach is a validated engineering contribution. the 5-fold hardware evaluation (2,000 total inferences) is methodologically stronger than most hardware papers which typically report a single run. the fold-level variance (25.2% to 43.0%) is reported honestly.
+
+the hardware gap (12.8 +/- 4.1pp) is the first such measurement for audio classification on SpiNNaker. researchers designing SNN->SpiNNaker pipelines now know what to expect. the per-fold variability reveals fold-specific factors systematically affect translation fidelity.
+
+Option A (MaxPool SNN achieving fc1_binary_fraction=1.000 at all thresholds, 43.75% accuracy) shows the path to full deployment. the paper documents not just current state but the roadmap.
+
+---
+
+## C4: Adversarial Robustness
+
+all prior SNN adversarial work is vision-domain. at FGSM eps=0.1, ANN retains only 1.75% (essentially chance on 50 classes) while SNN retains 26%. at PGD eps=0.05, ANN hits 0%, SNN retains 19.25%.
+
+the robustness is not engineered -- it's a free property of the spiking mechanism. no adversarial training, no certified defenses, no additional compute. the crossover point (where SNN overtakes ANN) at eps=0.01 provides a practical decision criterion.
+
+re: the Wang et al. caveat about gradient masking -- this actually suggests the true SNN robustness advantage may be even larger than measured (since attacks are LESS effective against SNNs due to gradient masking). the qualitative finding (SNN is dramatically more robust) is robust even if exact numbers are uncertain.
+
+edge audio sensing is a security-sensitive application. always-on microphones could be targeted by adversarial attacks. finding that SNNs provide natural robustness has direct practical implications.
+
+---
+

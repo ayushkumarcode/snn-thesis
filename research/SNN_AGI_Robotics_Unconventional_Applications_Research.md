@@ -348,31 +348,3 @@ Key works:
 
 **VERDICT: NOT RECOMMENDED. Too complex for the timeline. If interested in RL+SNN, use CartPole/LunarLander instead.**
 
----
-
-### 2.5 SNN for Tactile Sensing (Neuromorphic Touch)
-
-**Literature: 15-20 papers, active field**
-
-Key works:
-- [Event-Driven Tactile Sensing with Dense Spiking GNNs (IEEE 2025)](https://ieeexplore.ieee.org/document/10884798/)
-- [Recent advances in spike-based neural coding for tactile perception (Nature 2025)](https://www.nature.com/articles/s41378-025-01074-3)
-- [TactileSGNet: Spiking GNN for event-based tactile recognition (ResearchGate 2020)](https://www.researchgate.net/publication/342588043)
-- [Neuromorphic Tactile Perception System for Texture Recognition (Springer 2024)](https://link.springer.com/chapter/10.1007/978-981-96-0789-1_13)
-
-**Simulation-only possible?** NO in a meaningful way. Tactile sensing requires physical sensor data. Some public datasets exist (EvTouch, iCub tactile data) but they are niche.
-
-**macOS compatible?** Processing existing datasets: yes. Generating new data: no (requires hardware).
-
-**Feasibility for 28 days: LOW-MODERATE**
-- If using an existing public dataset, could be feasible
-- But finding and preparing neuromorphic tactile datasets is a challenge in itself
-- Graph Neural Network variants (TactileSGNet) add complexity
-
-**VERDICT: NOT RECOMMENDED unless a good public dataset can be found. The data dependency is the main risk.**
-
----
-
-### 2.6 SNN for Swarm Robotics
-
-**Literature: 5-10 papers**

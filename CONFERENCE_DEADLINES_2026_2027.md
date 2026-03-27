@@ -278,3 +278,31 @@ deadline passed (19 October 2025).
 marginal fit. BioCAS focuses on biomedical applications. environmental sound classification isn't core scope unless framed as hearing-aid or assistive technology.
 
 ---
+
+### 5.4 IEEE EMBC 2026
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **1 November 2026** |
+| **Conference Dates** | 26-30 July 2026, Toronto |
+| **Page Limit** | Full papers: 4-7 pages; Poster abstracts: 1 page |
+
+marginal fit. biomedical focus. would need strong medical/assistive framing.
+
+---
+
+## 6. neural networks / AI conferences
+
+### 6.1 ICANN 2026
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **16 March 2026** |
+| **Notification** | 29 May 2026 |
+| **Conference Dates** | 14-17 September 2026 |
+| **Location** | University of Padua, Padua, Italy |
+| **Page Limit** | 12 pages including references |
+| **Format** | Springer LNCS |
+| **Proceedings** | Springer-Verlag LNCS with individual DOI |
+| **Acceptance Rate** | ~50-55% historically |
+

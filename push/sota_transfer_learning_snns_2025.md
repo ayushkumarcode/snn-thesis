@@ -194,3 +194,31 @@ some interesting work here but not directly related to us:
 ---
 
 ## 5. SNN-ANN Accuracy Gap: What Does the Literature Say?
+
+### Gap on Standard Benchmarks (Vision)
+
+| Task | ANN Accuracy | SNN Accuracy | Gap | Method | Year |
+|------|-------------|-------------|-----|--------|------|
+| ImageNet (from scratch) | 80.80% (Transformer-8-512) | 73.38% (Spikformer-8-512) | **7.42pp** | Direct training | 2024 |
+| ImageNet (pretrained SSL) | ~82% | 81.10% (Spikformer V2) | **~1pp** | Self-supervised pretraining | 2024 |
+| ImageNet (conversion) | ~88.60% (ANN) | ~87.60% (converted SNN) | **~1pp** | Training-free conversion | 2025 |
+| ImageNet (conversion T=1) | ~82% | 81.6% (PMSM ViT-S) | **~0.4pp** | Multi-level single-timestep | 2025 |
+| CIFAR-100 (KD) | ANN teacher | Within 1-2pp | **1-2pp** | BKDSNN, SAKD | 2024 |
+
+### Gap Collapse with Pretrained Features
+
+this is the pattern i keep seeing across the literature:
+
+| Setting | ANN Accuracy | SNN Accuracy | Gap | Source |
+|---------|-------------|-------------|-----|--------|
+| **ESC-50 from scratch (ours)** | **63.85%** | **47.15%** | **16.70pp** | **our thesis** |
+| **ESC-50 PANNs features (ours)** | **93.45%** | **92.50%** | **0.95pp** | **our thesis** |
+| ImageNet from scratch | 80.80% | 73.38% | 7.42pp | Spikformer V2 |
+| ImageNet with SSL pretraining | ~82% | 81.10% | ~1pp | Spikformer V2 |
+| ImageNet conversion (pretrained) | 88.60% | ~87.60% | ~1pp | Bu et al. 2025 |
+| Neural vocoder (self-distillation) | ANN Vocos | 14.7% energy, comparable quality | ~0pp (quality) | Spiking Vocos 2025 |
+| Audio fidelity (SAFE) | ANN SOTA | Comparable | ~0pp | SAFE 2025 |
+| Speech (TTS, SpikeVoice) | ANN TTS | 10.5% energy, comparable | ~0pp (quality) | SpikeVoice 2024 |
+
+our gap collapse from 16.7pp to 0.95pp is actually the most dramatic demonstration of this in the audio domain. the ratio (16.7 / 0.95 = 17.6x reduction) exceeds what's typically reported in vision (7.42 / ~1 = 7.4x).
+

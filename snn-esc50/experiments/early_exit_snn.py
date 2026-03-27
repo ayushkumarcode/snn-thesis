@@ -138,3 +138,31 @@ def early_exit_inference(model, loader, device, thresholds,
             "energy_ratio": energy_ratio,
             "energy_reduction_x": T / avg_steps,
             "exit_distribution": {
+                str(t): (exit_steps == t).sum().item()
+                for t in range(1, T + 1)
+            },
+            "per_class_avg_steps": per_class_steps,
+            "num_samples": N,
+            "num_correct": correct,
+        }
+
+        print(f"  thresh={thresh:.2f}: acc={accuracy:.4f}, "
+              f"avg_T={avg_steps:.1f}/{T}, "
+              f"energy={energy_ratio:.3f}x ({T/avg_steps:.1f}x reduction)")
+
+    return results
+
+
+def load_model(model_type, fold, device):
+    """Load trained model by type."""
+    if model_type == "baseline":
+        model = SpikingCNN().to(device)
+        path = RESULTS_DIR / "snn" / "direct" / f"best_fold{fold}.pt"
+        model.load_state_dict(
+            torch.load(path, map_location=device, weights_only=True))
+        return model
+
+    # For combo models, construct args namespace
+    exp_map = {
+        "rhythm": "combo_rhythm_lbeta_drop_sre",
+        "dendritic_delays": "combo_dendritic_delays_drop_sre",

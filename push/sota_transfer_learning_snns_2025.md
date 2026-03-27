@@ -386,31 +386,3 @@ Based on this research, the field can be organized into four paradigms:
 
 ## 10. Data Tables: Summary of Key Papers
 
-### Table 1: ANN-to-SNN Knowledge Distillation Methods (2023-2025)
-
-| Method | Year | Venue | Teacher | Student | Transfer Level | Key Result |
-|--------|------|-------|---------|---------|---------------|------------|
-| Xu et al. | 2023 | CVPR | ANN | SNN | Features + Logits | SOTA on static + neuromorphic datasets |
-| BKDSNN | 2024 | ECCV | ANN | SNN | Blurred features | +4.51% on ImageNet (CNN) |
-| SAKD | 2024 | Neural Networks | Same-arch ANN | SNN | Weights + Behavior | Bilevel transfer |
-| Efficient Logit KD | 2025 | ICML | ANN | SNN | Temporal logits | Full-range timestep deployment |
-| Liu et al. (SAMD+NLD) | 2025 | arXiv | ANN | SNN | Saliency maps + smoothed logits | Addresses distribution mismatch |
-| HTA-KL | 2025 | arXiv | ANN | SNN | Head-tail KL | Balanced probability transfer |
-| Enhanced Self-Distillation | 2025 | NeurIPS | Self (SNN) | Self (SNN) | Firing rate projections | Reduces training complexity |
-| CKD | 2025 | arXiv | ANN | SNN | Bidirectional | Cross-modality + cross-architecture |
-| BSD | 2025 | arXiv | Bidirectional | Bidirectional | Spike-based | Biologically plausible |
-| Spiking Vocos | 2025 | arXiv | ANN Vocos | Spiking Vocos | Self-architectural | 14.7% energy, comparable quality |
-
-### Table 2: SNN Audio Systems (2024-2026)
-
-| System | Year | Task | Architecture | Key Finding |
-|--------|------|------|-------------|-------------|
-| Spiking-FullSubNet | 2025 | Speech enhancement | Full-band + sub-band SNN | Won Intel N-DNS Challenge |
-| DPSNN | 2024 | Speech enhancement | ANN encoder + SNN separator | Low-latency streaming |
-| Abuhajar et al. | 2025 | Speech enhancement | Converted Wave-U-Net/ConvTasNet | Three-stage hybrid fine-tuning |
-| SpikeVoice | 2024 | Text-to-speech | Spiking TTS with STSA | 10.5% energy of ANN |
-| Spiking Vocos | 2025 | Neural vocoder | Spiking ConvNeXt | 14.7% energy, self-distillation |
-| SAFE | 2025 | Fake audio detection | CNN features + SNN classifier | Comparable to ANN SOTA |
-| SATRN | 2025 | Audio tagging | Spiking attention | Comparable to CNNs on US8K |
-| Spiking-LEAF | 2024 | Keyword spotting | Learnable auditory front-end | Outperforms mel spectrograms |
-| SpikSLC-Net | 2025 | Sound localization + classification | Spiking hybrid attention | Joint localization-classification |

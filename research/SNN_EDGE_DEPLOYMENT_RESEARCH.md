@@ -295,31 +295,3 @@ The Raspberry Pi is a viable SNN deployment target, but with important caveats:
 3. Implement lightweight C SNN runtime on Raspberry Pi
 4. Compare inference speed/power vs. equivalent ANN (TensorFlow Lite Micro or similar)
 5. Measure actual power consumption using a USB power meter
-
-### 7.2 Other Accessible Hardware Options
-
-**Arduino Portenta H7 (~$80):**
-- Cortex-M7 at 480 MHz, 1024 KB SRAM
-- Proven for SNN inference: N-MNIST with ~250 KB memory footprint
-- C runtime achieves usable inference times
-- Good for demonstrating "SNN on a microcontroller" angle
-
-**STM32 Discovery Boards (~$15-30):**
-- STM32F407 (Cortex-M4, 168 MHz, 192 KB RAM)
-- Demonstrated for eLSNN with 54% lower execution time vs naive implementation
-- Very affordable, well-documented ecosystem (STM32CubeAI)
-
-**ESP32 (~$5-10):**
-- Dual-core 240 MHz, 520 KB RAM
-- WiFi/Bluetooth for IoT demonstration
-- Tight memory constraints but feasible for small SNNs
-
-**BrainChip Akida Development Kit (price on application):**
-- Actual neuromorphic SoC with SNN support
-- Available for Raspberry Pi form factor
-- Edge Impulse integration for training and deployment
-- Sub-1W operation
-- Limitation: Pricing not publicly available, may be expensive
-
-**SynSense Xylo/Speck Development Kits (price on application):**
-- True neuromorphic hardware

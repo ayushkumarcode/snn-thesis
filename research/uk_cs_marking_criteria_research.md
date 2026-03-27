@@ -82,3 +82,31 @@ Cross-referencing all the schemes, here's roughly where marks fall for a UK CS u
 
 | Assessment Dimension | Typical Weight | Range Across Universities |
 |---|---|---|
+| **Literature Review / Background** | 15-20% | 10-30% |
+| **Design & Implementation** | 30-40% | 25-45% |
+| **Evaluation & Testing** | 15-20% | 15-25% |
+| **Writing Quality & Presentation** | 15-20% | 15-25% |
+| **Novelty / Originality** | 0-5% (bonus territory) | 0-10% |
+| **Project Management / Process** | 5-10% | 0-15% |
+
+Worth noting: most UK universities don't actually assign fixed percentages to these sub-dimensions within the report itself. The report is marked holistically. These figures are inferred from Cambridge's breakdown, Imperial's three pillars, Edinburgh's tiered criteria, and how Manchester separates "Report" (55%) from "Achievements" (30%).
+
+### 1.7 My Manchester COMP30040 breakdown
+
+| Component | Weight | Notes |
+|---|---|---|
+| **Report** | 55% | Marked independently by supervisor and second marker, then agreed |
+| **Achievements** | 30% | Project output: software, hardware, research, experimentation |
+| **Screencast** | 15% | 8-minute video presentation of work |
+| **Q&A** | 0% (indirect) | 25-minute interview with second marker; informs achievements mark but not directly scored |
+
+The report must contain:
+- Elucidation of the problem and objectives
+- In-depth investigation of context and literature, and similar products
+- Description of life cycle stages undertaken
+- Description of verification and validation
+- Description of tools used
+- Critical appraisal with rationale for design/implementation decisions
+- Lessons learnt and evaluation of outcome
+- Description of any research hypothesis
+

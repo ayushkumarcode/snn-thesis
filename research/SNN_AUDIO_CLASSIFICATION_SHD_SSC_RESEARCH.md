@@ -82,3 +82,31 @@ both datasets are available through multiple loaders:
 | 7 | DH-SNN (3L) | 82.46% | 0.35M | 1000 | -- | -- |
 | 8 | MCRE | 80.92% | -- | -- | 2025 | -- |
 | 9 | DCLS-Delays (3L) | 80.69% | 2.50M | 100 | 2024 | [GitHub](https://github.com/Thvnvtos/SNN-delays) |
+| 10 | SE-adLIF (2L) | 80.44% | 1.60M | 250 | 2024 | [GitHub](https://github.com/IGITUGraz/SE-adlif) |
+| 11 | d-cAdLIF (2L) | 80.23% | 0.70M | 100 | 2024 | -- |
+| 12 | Pfa-SNN | 80.18% | 0.71M | 100 | 2025 | -- |
+| 13 | DCLS-Delays (2L) | 80.16% | 1.40M | 100 | 2024 | [GitHub](https://github.com/Thvnvtos/SNN-delays) |
+| 14 | Spikformer (2L) | 80.18% | 2.57M | 100 | -- | -- |
+| 15 | SDT (2L) | 79.82% | 2.57M | 100 | -- | -- |
+| 16 | RadLIF (3x1024) | 77.40% | -- | -- | 2022 | [sparch](https://github.com/idiap/sparch) |
+
+### 2.3 Key Methods
+
+**DCLS-Delays (ICLR 2024)** -- this was the breakthrough paper. they use Dilated Convolutions with Learnable Spacings to learn synaptic delays in feedforward SNNs. each synapse gets a 1D Gaussian kernel whose position (representing the delay) is learned during training. hits 95.07% on SHD with just 2 feedforward layers of 256 LIF neurons each, no recurrent connections at all. the Gaussians narrow during training to produce discrete delays that'd work on neuromorphic hardware. open source, clean implementation, pretty easy to reproduce.
+
+**SE-adLIF (2024)** -- uses an improved discretization scheme (Symplectic Euler) for adaptive LIF neurons. the standard Euler-forward discretization introduces systematic errors; SE corrects this. gets 95.81% on SHD with recurrent connections.
+
+**SpikCommander (2025)** -- a fully spike-driven transformer using Multi-view Spiking Temporal-Aware Self-Attention (MSTASA) and Spiking Contextual Refinement Channel MLP (SCR-MLP). 96.41% on SHD with only 0.19M params and 83.49-85.98% on SSC.
+
+**Pfa-SNN (2025)** -- adds parameter-free attention directly into the spiking neuron. no additional parameters needed. 96.26% on SHD. pretty elegant approach actually.
+
+**MCRE (2025)** -- Multi-Scale Chunked Residual Encoding inspired by hippocampus-cortex information reorganization. 96.44% on SHD (current best) and 80.92% on SSC, while reducing energy consumption by up to 55%.
+
+**RadLIF / adLIF (2022)** -- the surrogate gradient baseline from Bittar and Garner. RadLIF = Recurrent Adaptive LIF, adLIF = Adaptive LIF (non-recurrent). these established the competitive baselines. open source via the sparch toolkit.
+
+---
+
+## 3. SNN vs Traditional ANN Comparison
+
+### 3.1 Accuracy Comparison on SHD
+

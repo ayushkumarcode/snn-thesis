@@ -110,3 +110,31 @@ FGSM results (single-step, no SNN adaptation) provide clean lower bound. cite Wa
 5. 1-fold on UrbanSound8K
 
 ---
+
+## full vs short paper
+
+**full paper (8 pages).** no question.
+- we have more than enough content
+- full = 20-min talk (more visibility)
+- carries more academic weight
+- if not accepted as full, automatically considered for poster (safety net)
+
+---
+
+## how we compare to typical ICONS papers
+
+| Dimension | Typical ICONS | Us | |
+|-----------|--------------|----|-|
+| Novelty | Incremental | First SNN on ESC-50 | above average |
+| Hardware | Often sim only | SpiNNaker 5-fold (2000 inferences) | above average |
+| Eval rigor | 1-2 folds | 5-fold CV, 7 encodings | well above average |
+| Dataset | 10-35 classes | 50 classes | above average |
+| Contributions | 1-2 | 4 focused | above average |
+| Accuracy | Often >90% | 47% scratch, 92.5% PANNs | needs framing |
+| Energy analysis | Absent/hand-wavy | NeuroBench, honest | above average |
+
+i'd put us in the top 20-30% of ICONS submissions in terms of scientific content.
+
+---
+
+## top 5 actions (priority order)

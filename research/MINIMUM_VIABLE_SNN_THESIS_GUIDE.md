@@ -250,3 +250,31 @@ Manchester's report guidance says you need "an in-depth investigation of the con
 **Deep SNNs:**
 - Wu, Y. et al. (2018). "Spatio-temporal backpropagation for training high-performance spiking neural networks"
 - Fang, W. et al. (2021). "Incorporating learnable membrane time constants to enhance learning of spiking neural networks"
+- Zheng, H. et al. (2021). "Going deeper with directly-trained larger spiking neural networks"
+
+**ANN-to-SNN conversion:**
+- Diehl, P.U. et al. (2015). "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing"
+- Bu, T. et al. (2022). "Optimal ANN-SNN conversion for high-accuracy and ultra-low-latency spiking neural networks"
+
+**Neuromorphic datasets:**
+- Orchard, G. et al. (2015). "Converting Static Image Datasets to Spiking Neuromorphic Datasets" -- N-MNIST
+- Amir, A. et al. (2017). "A Low Power, Fully Event-Based Gesture Recognition System" -- DVS128 Gesture
+
+**Energy efficiency:**
+- Horowitz, M. (2014). "Computing's energy problem (and what we can do about it)" -- MAC vs AC operations
+- Yousefzadeh, A. et al. (2022). "An analytical estimation of spiking neural networks energy efficiency"
+
+### How to structure the lit review:
+
+1. **Introduction to neural networks** (1-2 paragraphs, 2-3 refs)
+2. **Biological neurons and spiking** (1-2 paragraphs, 2-3 refs)
+3. **SNN neuron models** (LIF, Izhikevich) (1-2 paragraphs, 3-4 refs)
+4. **SNN training methods** (STDP, surrogate gradients, ANN-to-SNN conversion) (2-3 paragraphs, 4-5 refs)
+5. **Encoding schemes** (rate coding, temporal coding) (1 paragraph, 2-3 refs)
+6. **SNN vs ANN performance comparisons** (1-2 paragraphs, 3-4 refs)
+7. **Tools and frameworks** (1 paragraph, 2-3 refs)
+8. **Summary and research gap** (1 paragraph, identifying what your project addresses)
+
+Total: roughly 2000-3000 words for the lit review chapter.
+
+---

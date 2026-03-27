@@ -390,3 +390,31 @@ things nobody has done yet:
 
 ---
 
+## 12. How Confident Am I
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| No prior PANNs+SNN work exists | Very high | searched Google Scholar, arXiv, Semantic Scholar, IEEE Xplore |
+| No prior full ESC-50 SNN work exists | Very high | consistent with earlier research; confirmed by 2025 survey |
+| Gap collapse is under-reported in audio | High | only our thesis and Spiking Vocos demonstrate it; vision has more evidence |
+| KD from ANN to SNN is a mature field | Very high | 10+ papers in 2024-2025 alone |
+| ANN-to-SNN conversion is vision-dominated | High | all major conversion papers (CVPR, ICLR, ICML) are vision; audio has 2 papers |
+| Hybrid ANN feature + SNN head is under-explored | High | only SAFE and our thesis explicitly use this paradigm |
+
+---
+
+## 13. What to Cite
+
+### must-cite (directly relevant)
+
+1. Bu, T., Li, M., & Yu, Z. (2025). "Inference-Scale Complexity in ANN-SNN Conversion." CVPR 2025.
+2. Abuhajar, R., et al. (2025). "Three-stage hybrid spiking neural networks fine-tuning for speech enhancement." Frontiers in Neuroscience.
+3. Chen, Y., et al. (2025). "Spiking Vocos: An Energy-Efficient Neural Vocoder." arXiv:2509.13049.
+4. Xu, Z., et al. (2024). "BKDSNN: Enhancing the Performance of Learning-based SNN Training with BKD." ECCV 2024.
+5. Qiu, H., et al. (2024). "Self-architectural knowledge distillation for spiking neural networks." Neural Networks 178.
+6. Song, Z., et al. (2024). "Spiking-LEAF: A Learnable Auditory front-end for SNNs." ICASSP 2024.
+7. Hao, X., et al. (2025). "Toward Ultra-Low-Power Neuromorphic Speech Enhancement with Spiking-FullSubNet." IEEE TNNLS.
+8. Kim, T., et al. (2024). "SNN and Sound: A Comprehensive Review." Biomedical Engineering Letters 14(5).
+9. Zhou, Z., et al. (2024). "Spikformer V2: Join the High Accuracy Club on ImageNet." arXiv:2401.02020.
+10. Larroza, A., et al. (2025). "Spike Encoding for Environmental Sound: A Comparative Benchmark." arXiv:2503.11206.
+

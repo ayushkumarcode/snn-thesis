@@ -15,31 +15,3 @@
 | 4 | Shay Boual | Cellular automata GOE | 2/5 | (c) Extension + optimisation | ~14,984 | Theory + implementation + evaluation triad |
 | 5 | Yi Wu | EEG classification (SVM) | 2/5 | (b) Application | ~10,896 | Descoped original goal; 66.7% accuracy sufficient |
 | 6 | Vishal K. Sekar | Alzheimer's prediction (ML) | 2/5 | (b) Systematic comparison | ~14,982 | 749 ensemble configs; breadth over depth |
-| 7 | Asma Ali | MANET/FANET simulation | 1/5 | (b) Existing methods, new condition | ~12,000 | Comparative simulation study |
-| 8 | Salman Ashraf | Fake news detection (BERT) | 2/5 | (b)/(c) Novel combination | ~13,967 | 9 model configs; in-domain vs out-of-domain |
-| 9 | Alexander Havlin | ZK-SNARKs + CNN smart contracts | 2/5 | (b)/(c) Integration novelty | N/A | Two complex domains integrated |
-| 10 | Robert Chiru | Motion diffusion (UNet->Transformer) | 2/5 | (c) Modification + novel augmentation | ~70 pages | Testable hypotheses; ablation studies |
-| 11 | Jakub Rozanski | Low-light CV pedestrian guidance | 2/5 | (b)/(c) Application + modification | ~14,168 | Multi-axis evaluation; custom dataset |
-| 12 | Rose Halsall | 3D hand modelling + texture | 1.5/5 | (b)/(c) Integration novelty | ~14,472 | Pipeline approach; success criteria upfront |
-| 13 | Hanin Muhammad Amri | LLM cultural alignment (evo opt) | 1/5 | (c) Novel combination | ~14,234 | Clear research questions; quantitative results |
-| 14 | Alexandru Buburuzan | Diffusion inpainting (multimodal) | 1/5 | **(d) Novel method** | ~14,074 | **Outlier -- conference-grade, the ceiling** |
-| 15 | Patrick Gransbury | Mathematics of Transformers | 2/5 | (c) Modification + extension | ~15,000 | Math derivation + implementation + novel "Enough Attention" |
-| 16 | **Brian Ezinwoke** | **SNN for HFT price spikes** | **5/5** | **(c) Extension of existing** | **~14,695** | **Directly SNN; Oliver Rhodes supervisor; STDP + Bayesian Opt** |
-| 17 | Shubham Aggarwal | Drone landing (Decision Transformer) | 2/5 | (b) Application | ~12,345 | Delivered 1/3 objectives; rest as "future work" |
-| 18 | Maximilian Bolt | Adversarial attacks on LLMs | 2/5 | (c)/(d) Novel metric | ~11,525 | Novel "cost" metric; human survey validation |
-| 19 | Benjamin Hatton | Slimmable NNs on NVDLA hardware | 2/5 | (c) Integration novelty | ~13,807 | Hardware-software integration project |
-| 20 | Patrick Devine | ECG analysis web tool (Django) | 2/5 | (b) Application | ~10,940 | NHS collaboration; proof-of-concept sufficient |
-| 21 | Nathan Oldfield | Ethics of neuromorphic computing | 4/5 | (b) Qualitative research | N/A | **No code at all; purely qualitative; still passed** |
-
----
-
-## 2. Key Patterns Extracted
-
-### 2.1 Novelty Distribution
-- **Level (b) -- Apply existing methods to new domain:** 8/21 papers (38%)
-- **Level (c) -- Modify/extend existing methods:** 11/21 papers (52%)
-- **Level (d) -- Novel method:** 1/21 papers (5%) -- the outlier (Buburuzan)
-- **Level (a) -- Pure replication:** 0/21 papers (0%)
-
-**Takeaway:** The sweet spot is (b) or (c). Nobody does pure replication, but genuinely novel methods are rare and not expected. Most successful theses take existing techniques and either apply them to a new context or extend them modestly.
-

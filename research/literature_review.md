@@ -147,31 +147,3 @@
 
 ### The Honest Performance Gap
 
-- SNNs at 4 timesteps ≈ 2-bit quantized ANNs in terms of representational capacity
-- Single-timestep inference is significantly worse than ANNs
-- Binary spike representation is fundamentally limited — this is an open research problem
-
-### Hardware Platforms
-
-| Platform | Maker | Notes |
-|----------|-------|-------|
-| **Loihi / Loihi 2** | Intel | Most accessible for research, good software support (Lava) |
-| **TrueNorth** | IBM | 1 million neurons, very low power, but limited programmability |
-| **SpiNNaker** | University of Manchester | Designed for large-scale brain simulation |
-| **Darwin** | Chinese Academy of Sciences | Emerging platform |
-
-### Open Problems (potential thesis topics!)
-
-1. **Information loss in deep SNNs** — binary spikes lose information as networks get deeper
-2. **Surrogate gradient mismatch** — the smooth approximation doesn't perfectly match real spike dynamics
-3. **Temporal efficiency** — more timesteps = better accuracy but slower inference; how to minimize timesteps?
-4. **Spiking attention mechanisms** — current spike-based attention lacks the non-linearity of softmax
-5. **Multi-modal SNNs** — combining vision, audio, text in a single spiking architecture
-6. **Hardware-software co-design** — algorithms optimized for specific neuromorphic chips
-
----
-
-## Paper 3: A Comprehensive Review of Spiking Neural Networks: Interpretation, Optimization, Efficiency, and Best Practices
-
-**Source:** Malcolm & Casco-Rodriguez, arXiv, 2023
-**Link:** https://arxiv.org/abs/2303.10780

@@ -318,31 +318,3 @@ Several factors make this the right time:
 3. **Debugging complexity**: Spike-based computation is harder to visualise and debug than standard neural networks
 4. **Limited community**: Fewer Stack Overflow answers and tutorials compared to LSTMs/Transformers
 5. **Metrics mismatch**: SNN papers use RSE/R-squared while Transformer papers use MSE/MAE -- you would need to implement both for fair comparison
-
-### 8.3 Recommended Thesis Scopes (Ranked by Feasibility)
-
-**Scope A: Benchmarking Study (Most Achievable)**
-- Apply existing SNN architectures (from SeqSNN) to standard forecasting benchmarks (ETTh, Weather, Electricity)
-- Compare against LSTM, Transformer, PatchTST baselines
-- Report both accuracy (MSE/MAE) and theoretical energy consumption
-- Contribution: First systematic comparison on these standard benchmarks
-
-**Scope B: Encoding Strategy Investigation**
-- Compare rate coding, temporal coding, delta coding, and derivative spike encoding on the same time-series datasets
-- Measure impact on accuracy and energy efficiency
-- Contribution: Practical guidelines for practitioners on encoding choice
-
-**Scope C: Domain Application (Financial/Weather)**
-- Apply modern SNN architectures to a specific under-explored domain
-- Compare against domain-specific baselines
-- Contribution: First modern-SNN results in the chosen domain
-
-**Scope D: Hybrid Architecture**
-- Design a simple hybrid SNN-ANN architecture (e.g., SNN encoder + linear decoder)
-- Test on standard benchmarks
-- Contribution: Novel architecture with potentially better accuracy-efficiency trade-off
-
-### 8.4 Minimum Viable Project
-
-At minimum, a successful undergraduate thesis could:
-1. Implement a basic SNN (e.g., LIF-based recurrent network) using snnTorch

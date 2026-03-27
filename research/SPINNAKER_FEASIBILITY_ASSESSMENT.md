@@ -342,31 +342,3 @@ Yes. Two key papers document it end-to-end:
 2. For SpiNNaker1: possibly simplify to a fully-connected architecture (easier to port)
 3. For SpiNNaker2: the full conv architecture could transfer via NIR
 
-### ECG PTB-XL (1D Time Series)
-
-| Aspect | Feasibility |
-|--------|-------------|
-| 1D convolutions | No direct 1D conv support in sPyNNaker -- would need to flatten to 2D or use FC layers |
-| Time-series input | Convert to spike trains (rate or latency coding) |
-| Real-time processing | SpiNNaker runs at biological real-time, suitable for ECG |
-| Precedent | No ECG-specific SpiNNaker papers found |
-
-**Assessment:** ECG on SpiNNaker is feasible but has no direct precedent. You would need to convert 1D convolutions to equivalent connectivity patterns or use fully-connected layers on SpiNNaker.
-
-### Robot Reflexes (RL Policy Inference)
-
-| Aspect | Feasibility |
-|--------|-------------|
-| Real-time inference | YES -- SpiNNaker's core strength |
-| RL policy execution | YES -- Spiking Q-Networks demonstrated on SpiNNaker2 |
-| Energy efficiency | 24-32x reduction vs GPU demonstrated |
-| Precedent | Strong -- multiple RL + SpiNNaker papers |
-
-**This is the BEST fit for SpiNNaker deployment.** The Spiking Q-Network paper demonstrated:
-- CartPole and Acrobot environments
-- snnTorch training -> SpiNNaker2 deployment
-- 0.006 J per inference (CartPole), 0.333W average power
-- 24-32x energy reduction vs GTX 1650
-
-**Source:** [Hardware-Aware Fine-Tuning of Spiking Q-Networks on SpiNNaker2](https://arxiv.org/html/2507.23562v1)
-

@@ -40,20 +40,20 @@ Source: `results/adversarial/robustness_fold4.json`. Clean accuracy (53.75% SNN,
 SNN is dramatically more robust across all eps and both attack types. The advantage grows with eps: at small eps both degrade similarly, but above ~0.02 the ANN collapses while SNN retains meaningful accuracy.
 
 ### 6.1.4 mechanism: spike threshold filtering
-The adversarial robustness of SNNs in this domain arises from the spike threshold acting as a non-linear filter. FGSM and PGD compute gradients with respect to the input and add small perturbations along the gradient direction. However, for the SNN:
 
-1. **Hard threshold at membrane potential:** Small changes to input values (Δx ≈ ε) produce small changes to membrane current, which may not cross the spike threshold. If the threshold is not crossed, the output spike pattern is unchanged.
+The robustness comes from the spike threshold acting as a non-linear filter:
 
-2. **Gradient masking:** The surrogate gradient $\sigma'(U - \vartheta)$ is zero almost everywhere in the forward pass (genuine spike threshold is non-differentiable). The true gradient through the SNN is effectively masked, weakening gradient-based attacks.
+1. **Hard threshold at membrane potential:** small input changes (delta ~ eps) produce small current changes that may not cross threshold. If threshold isnt crossed, output spike pattern is unchanged.
 
-3. **Temporal averaging:** The SNN decision is based on summed membrane potential over T=25 timesteps. Adversarial perturbations targeting a single timestep may not persist across the full temporal integration.
+2. **Gradient masking:** surrogate gradient is zero almost everywhere in the forward pass. The true gradient is effectively masked, weakening gradient-based attacks.
 
-This mechanism is consistent with Sharmin et al. (2020, ECCV), who showed that SNNs with Poisson encoding exhibit higher adversarial accuracy in black-box scenarios, and with the broader finding that binary thresholding provides implicit input filtering.
+3. **Temporal averaging:** SNN decision based on summed membrane over T=25 timesteps. Perturbations targeting one timestep may not persist across full integration.
 
-**Limitation:** As noted in §6.1.1, standard PGD may underestimate vulnerability. The true adversarial robustness under SA-PGD (Stable Adaptive PGD, Wang et al. 2025) may be lower. Future work should apply SA-PGD for reliable evaluation.
+Consistent with Sharmin et al. (2020 ECCV) who showed similar effects with Poisson encoding in black-box scenarios.
 
-### 6.1.5 Implications for Edge Audio Security
+**Limitation:** standard PGD may underestimate vulnerability. SA-PGD (Wang et al. 2025) would give more reliable numbers. todo for future work
 
+### 6.1.5 implications for edge audio security
 This finding has practical implications for edge audio intelligence:
 - An SNN deployed on a smart building sensor is substantially harder to fool with adversarial audio perturbations than an equivalent ANN
 - At ε = 0.1 (a perturbation below the JND — just-noticeable difference — for human hearing in many contexts), the ANN is essentially non-functional (1.75%) while the SNN retains 26% accuracy

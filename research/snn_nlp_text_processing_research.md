@@ -82,3 +82,31 @@ impressive that spiking works at 70B. but honestly this is more of a quantizatio
 code: https://github.com/Xingrun-Xing2/SpikeLLM (sparse docs)
 
 ---
+
+### SpikeZIP-TF (ICML 2024)
+
+lossless ANN-to-SNN conversion for transformers. ANN and SNN are *exactly equivalent* -- zero accuracy degradation.
+
+gets **93.79% on SST-2** (highest SNN result for this benchmark). outperforms SpikeGPT and SpikingBERT.
+
+if you want to show SNN equivalence with no accuracy loss, this is the strongest approach. but energy savings may be smaller since exact conversion needs more timesteps.
+
+paper: https://arxiv.org/abs/2406.03470
+
+---
+
+### SpikingMiniLM (2024)
+
+energy-efficient spiking transformer for NLU. targets MiniLM (smaller than BERT). multistep encoding for text embeddings to spike trains. might be more feasible for an undergrad project due to smaller size.
+
+paper: https://link.springer.com/article/10.1007/s11432-024-4101-6
+
+---
+
+## SNNs for sentiment analysis and text classification
+
+several groups have done this successfully:
+
+### spiking CNN for text classification (ICLR 2023)
+the most relevant paper for an undergrad project. conversion + fine-tuning of TextCNN, Poisson spike trains from word embeddings.
+

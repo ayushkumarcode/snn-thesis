@@ -138,3 +138,31 @@ the real argument for SNNs isn't just accuracy -- it's the accuracy-energy trade
 | **SEED-VII** | -- | -- | 6 basic emotions + continuous | Multimodal | [BCMI Lab](https://bcmi.sjtu.edu.cn/home/seed/) | Newest, continuous labels. |
 | **DREAMER** | 23 | 14 EEG | Valence/Arousal/Dominance | Film clips | Public | Lower channel count, good for lightweight models. |
 
+### seizure detection
+
+| Dataset | Notes |
+|---|---|
+| **CHB-MIT** | Scalp EEG from pediatric subjects with intractable seizures. PhysioNet. |
+| **Bonn University** | 5 classes (healthy, epileptic zone, seizure). Classic benchmark. |
+| **TUH EEG Corpus** | Large-scale clinical EEG from Temple University Hospital. |
+
+### what i'd recommend for an undergrad project
+
+**best starting point:** PhysioNet EEGMMIDB -- freely available, no application process, large (109 subjects), well-documented, lots of published baselines, and directly supported by the combra-lab/snn-eeg codebase.
+
+**best for emotion recognition:** DEAP -- industry standard, supported by TorchEEG, but you need to apply with a university email (plan ahead, takes ~1 month).
+
+---
+
+## 4. why SNNs actually make sense for BCI
+
+### biological plausibility
+
+SNNs communicate through discrete spikes, which is what real neurons do. this creates a natural alignment between the computation model and the biological signals being decoded:
+
+- EEG reflects aggregate neural spiking activity
+- SNNs process through spike timing and rates -- same coding schemes biological neurons use
+- STDP in SNNs mirrors actual synaptic learning rules
+- membrane potential and refractory periods naturally capture temporal structure in EEG
+
+this isn't just philosophical -- SNN architectures can leverage neuroscience knowledge about EEG generation to inform network design.

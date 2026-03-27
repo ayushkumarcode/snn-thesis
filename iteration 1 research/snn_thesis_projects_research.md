@@ -166,3 +166,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **URL**: https://github.com/solversa/Master-Thesis-Brain-Machine-Interface
 - **Description**: Decoding 3D imaginary reach/grasp movements from EEG using SNNs on SpiNNaker
 - **Framework**: SpiNNaker (4 chips, 64 cores), STDP with reward-based training, Python
+- **Dataset**: Motor imagery EEG data
+- **Results**: 73.4% mean classification accuracy (only 4.12% below state-of-art ML)
+- **Thesis PDF**: YES - included in repository
+- **Complexity**: VERY HIGH
+- **Stars**: 2 | **Forks**: 5 | **Commits**: 102
+
+### 2.8 Spiking Deep Belief Network (Masters)
+- **URL**: https://github.com/MazdakFatahi/Spiking-Deep-Belief-Network
+- **Description**: Spike-Based Deep Belief Network with LIF neurons using contrastive divergence
+- **Framework**: Custom implementation, LIF neurons, rate-based CD
+- **Dataset**: MNIST
+- **Results**: 94.9% accuracy on MNIST
+- **Thesis PDF**: YES - "MazdakFatahi(Ms Thesis).pdf"
+- **Complexity**: HIGH
+- **Stars**: 1 | **Commits**: 3
+
+### 2.9 SNN-RL: Training SNNs with Reinforcement Learning (Masters)
+- **URL**: https://github.com/BSVogler/SNN-RL
+- **Description**: Actor-critic RL framework with spiking neural network actors using R-STDP
+- **Framework**: NEST 3, Python 3.7/3.8, Docker, MongoDB
+- **Dataset**: Line-following task environments
+- **Results**: Successful line-following behavior
+- **Thesis PDF**: YES - Thesis.pdf in repository
+- **Complexity**: HIGH
+- **Stars**: 21 | **Forks**: 3
+
+### 2.10 Event-Based End-to-End Robot Control (TUM Masters)
+- **URL**: https://github.com/clamesc/Training-Neural-Networks-for-Event-Based-End-to-End-Robot-Control

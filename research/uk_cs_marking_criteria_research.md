@@ -475,31 +475,3 @@ Based on all evidence gathered, here is a prioritised action guide for targeting
 
 2. **Study past Manchester dissertations** -- look at previous COMP30040 projects that achieved high marks. The Q&A document mentions previous screencasts are available on Blackboard; there may also be exemplar reports.
 
-3. **Ask your supervisor** what specific criteria they and the second marker will use. Supervisors often have personal views on what matters most.
-
-4. **Plan your evaluation methodology early** -- this is the most commonly under-invested chapter and the one that most separates grade bands.
-
-5. **Allocate at least 4-6 weeks for writing** -- Cambridge recommends this explicitly, and every university emphasises writing quality.
-
----
-
-## Sources
-
-- [Cambridge CST Part II Assessment](https://www.cst.cam.ac.uk/teaching/part-ii/projects/assessment)
-- [Cambridge CST Dissertation Guide](https://www.cst.cam.ac.uk/teaching/part-ii/projects/dissertation)
-- [Cambridge Marking Scheme](https://www.cst.cam.ac.uk/teaching/exams/marking-and-classing)
-- [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme)
-- [Edinburgh DISS Project Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
-- [Edinburgh UG4 Assessment](https://www.inf.ed.ac.uk/teaching/years/ug4/assessment.html)
-- [Imperial Projects Guide](https://www.doc.ic.ac.uk/lab/mac-mcs-projects/ProjectsGuide.html)
-- [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.github.io/qanda/)
-- [Bristol Level 6 Marking Criteria](https://www.bristol.ac.uk/academic-quality/assessment/regulations-and-code-of-practice-for-taught-programmes/marking-criteria/)
-- [Sussex Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
-- [Warwick CS310 Module](https://warwick.ac.uk/fac/sci/dcs/teaching/modules/cs310/)
-- [Cardiff Dissertation Guide](https://pats.cs.cf.ac.uk/wiki/doku.php?id=masters_dissertation_guide)
-- [Glasgow Marking System](https://www.gla.ac.uk/myglasgow/apg/policies/assessment/codeofassessment/understandingthemarkingsystem/)
-- [King's College London Marking Framework](https://www.kcl.ac.uk/assets/policyzone/assessment/college-marking-framework.pdf)
-- [10 Tips for CS Dissertation - Dominik Rys](https://dominikrys.com/posts/cs-dissertation-tips/)
-- [Laramee BSc Dissertation Guidelines](https://people.cs.nott.ac.uk/blaramee/teaching/projects/laramee10projectGuideline.pdf)
-- Manchester COMP30040 Assessment & Feedback document (local: `/Users/kumar/Documents/University/Year3/thesisproject/Assessment & Feedback_ COMP30040 & COMP30030 Third Year Project Laboratory 2025_26 Full Year.pdf`)
-- Manchester COMP30040 Report Guidance document (local: `/Users/kumar/Documents/University/Year3/thesisproject/Report Guidance_ COMP30040 & COMP30030 Third Year Project Laboratory 2025_26 Full Year.pdf`)

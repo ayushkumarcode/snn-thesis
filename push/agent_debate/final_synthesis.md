@@ -54,3 +54,31 @@ scratch SNN: 47.15%. scratch ANN: 63.85%. gap: 16.7pp. identical architectures e
 
 PANNs+SNN head: 92.50%. PANNs+ANN head: 93.45%. gap: 0.95pp. same architecture, same features, only activation differs.
 
+the 17.6x collapse means 16.7 - 0.95 = 15.75pp of the scratch gap is attributable to features, and only 0.95pp to spiking itself. approximately 94% of the gap is about what the network learns, not how it computes.
+
+this matters because the dominant narrative has implicitly attributed the gap to LIF nonlinearity, surrogate approximation, or binary spike constraint. this finding says: no, on a small dataset the bottleneck is representation quality. this reframes the research agenda -- instead of asking "how to make spiking better," ask "how to give SNNs better features." pre-training, transfer learning, ANN-to-SNN conversion are the correct remedies.
+
+the 17.6x ratio exceeding vision's ~7x suggests audio may be even more feature-starved in the low-data regime -- plausible since acoustic representations are harder to learn from scratch than visual ones.
+
+**this is publishable at ICONS regardless of what else is in the paper.**
+
+---
+
+## Is 47.15% Publishable?
+
+yes, with proper framing. at ICONS, significance is novelty significance, not accuracy significance. the first SNN result on a well-known benchmark IS significant regardless of absolute value. don't present it as an achievement -- present it as the reference point in a scientific study. the PANNs result (92.5%) rehabilitates everything.
+
+---
+
+## Publication Verdict
+
+**submit. the work is publishable at ICONS 2026.** novelty is genuine across multiple dimensions, literature search is rigorous, central scientific finding is significant.
+
+the principal risk is framing: if the paper leads with 47.15% rather than the gap-collapse, it reads below its actual quality. lead with: "SNN-ANN accuracy gap collapses 17.6x -- from 16.7pp to under 1pp -- when both networks receive equal-quality pretrained features, revealing the bottleneck is feature learning, not spiking computation."
+
+### framing priority
+1. gap-collapse as centrepiece (not buried after encoding results)
+2. SpiNNaker as characterisation (not performance claim)
+3. adversarial with Wang et al. caveat foregrounded (not buried)
+
+### summary table

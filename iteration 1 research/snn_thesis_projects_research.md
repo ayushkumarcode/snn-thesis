@@ -502,3 +502,31 @@ based on analyzing 40+ projects, here's what i think is realistic:
 | Simple SNN STDP | Course | Paper.pdf in repo |
 | SNN Speech Recognition | Research | Report.pdf in repo |
 | ANN vs SNN | Course | VCS_doc.pdf in repo |
+| SNN Accelerator EE552 | Course | Final report PDF in repo |
+
+---
+
+## datasets commonly used
+
+| Dataset | Usage Frequency | Type | Difficulty |
+|---------|----------------|------|------------|
+| MNIST | Very High | Static images | Easy |
+| Fashion-MNIST | High | Static images | Easy-Medium |
+| CIFAR-10 | Medium | Static images | Medium |
+| N-MNIST | Medium | Neuromorphic events | Medium |
+| DVS Gesture (IBM) | Medium | Neuromorphic events | Medium-Hard |
+| CIFAR10-DVS | Low-Medium | Neuromorphic events | Hard |
+| Google Speech Commands | Low | Audio | Medium |
+| TIDIGITS | Low | Audio | Medium |
+| EEG datasets (various) | Low | Time series | Hard |
+| Custom datasets | Variable | Various | Variable |
+
+---
+
+## things i couldn't find / gaps
+
+1. very few explicitly labeled "3rd year" projects -- most undergrad projects are labeled "BSc" or "final year" without specifying year
+2. limited thesis PDFs for undergraduate work -- masters students are more likely to include PDFs
+3. energy consumption benchmarks -- few student projects actually measure or estimate energy savings
+4. deployment on edge devices -- very few projects deploy SNNs on actual neuromorphic hardware (those that do are typically at Manchester with SpiNNaker access)
+5. NLP/text applications with SNNs -- almost nothing in this domain

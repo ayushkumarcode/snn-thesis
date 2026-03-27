@@ -166,3 +166,31 @@ neuromorphic, spiking neural network, SNN, brain-inspired computing, event-drive
 
 2. **Manchester undergrad theses are probably stored elsewhere:**
    - University of Manchester Library thesis archive
+   - University's student submission system (Blackboard, Turnitin)
+   - Department-specific repositories
+   - Manchester eScholar (https://www.research.manchester.ac.uk/) -- mostly PhD/research theses
+   - Student GitHub repos (not centrally indexed)
+
+3. **The entire repository only has 833 articles** across ALL departments. For a university Manchester's size, that's tiny -- confirms it's used selectively for research deposits, not broadly for student work.
+
+4. **Nothing is tagged as "undergraduate" or "student project."** The "thesis" tag only appears for PhD theses.
+
+### Why so little ML/AI/neuromorphic content?
+
+Despite Manchester being a major centre for neuromorphic computing (SpiNNaker project, Steve Furber's group), the Figshare portal has minimal AI/ML content because:
+
+1. Manchester's AI/ML researchers probably use other repositories (GitHub, Zenodo, arXiv)
+2. The BitBrain entry is the only neuromorphic item
+3. Alex Casson's EEG/BCI work is the bulk of neural engineering content
+4. The repository seems to be a relatively recent adoption (most items from 2021-2025)
+
+---
+
+## How confident am i
+
+| Finding | Confidence |
+|---------|-----------|
+| No undergrad theses exist on Figshare Manchester | Very high (99%) -- went through all 833 articles |
+| No neuromorphic undergrad projects | Very high (99%) -- searched 100+ terms, checked everything |
+| The repository isn't used for undergrad work | High (95%) -- no evidence of any undergrad submissions |
+| Jieru Zhou's LSTM project might be a student project | Low (30%) -- single author, right scope, but unconfirmed |

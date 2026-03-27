@@ -193,31 +193,3 @@ This biological plausibility provides not just a philosophical argument but prac
 
 This is the strongest practical argument for SNNs in BCI:
 
-- **combra-lab SNN on Intel Loihi:** 95% less energy per inference than DNNs on NVIDIA Jetson TX2
-- **Spiking Conformer for seizure detection:** 10x fewer operations than non-spiking equivalent
-- **SyNSense Xylo deployment:** Sub-milliwatt real-time epilepsy detection
-- **Theoretical basis:** SNNs use additions instead of multiplications (no multiply-accumulate operations), and event-driven processing means energy is consumed only during spike transmission
-
-**Why this matters for BCI:** Brain-computer interfaces, especially implantable or wearable ones, demand extreme energy efficiency. A BCI device running on a battery for days/weeks requires the kind of energy budgets only neuromorphic computing can deliver. The human brain operates complex neural networks on approximately 20W total -- SNNs on neuromorphic hardware approach this efficiency paradigm.
-
-### 4.3 Real-Time Processing and Low Latency
-
-- SNNs process temporal information natively -- they do not need to accumulate a window of data before processing
-- Event-driven computation means processing happens asynchronously as spikes arrive
-- Neuromorphic hardware (Loihi, SpiNNaker, Xylo, TrueNorth) enables parallel, event-driven operations with minimal latency
-- This is critical for BCI applications where milliseconds matter (e.g., motor intent decoding for prosthetic control)
-
-### 4.4 Temporal Dynamics
-
-EEG signals are inherently temporal, and SNNs have native temporal processing capabilities:
-
-- Spiking neurons maintain internal state (membrane potential) that naturally integrates temporal information
-- No need for explicit temporal feature engineering or sliding windows
-- Recurrent connections in SNNs can capture long-range temporal dependencies
-- This contrasts with CNNs that treat EEG as quasi-static images and may miss temporal dynamics
-
-### 4.5 Compact Models
-
-- SNNs tend to have fewer parameters than equivalent ANNs
-- EESCN showed faster running speed and less memory footprint than prior methods
-- Lightweight SNN architectures (LENet) replace fully connected layers with classification convolution blocks, reducing parameter count

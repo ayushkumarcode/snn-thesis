@@ -208,20 +208,20 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 | SNN population | 19.15% +/- 2.79% | results/snn/population/summary.json |
 | PANNs+SNN | 92.50% +/- 1.30% | results/panns/ |
 | PANNs+ANN | 93.45% +/- 1.54% | same |
-| SNN latency | 16.30% ± 1.62% | results/snn/latency/summary.json |
-| SNN delta | 7.25% ± 0.94% | results/snn/delta/summary.json |
-| SNN burst | 6.50% ± 1.54% | results/snn/burst/ (all folds) |
-| SNN phase | 24.15% ± 1.66% | results/snn/phase/summary.json |
-| SNN population | 19.15% ± 2.79% | results/snn/population/summary.json |
-| PANNs+SNN 5-fold | 92.50% ± 1.30% | results/panns/panns_snn_head_all_folds_50ep.json |
-| PANNs+ANN 5-fold | 93.45% ± 1.54% | same |
-| FGSM ε=0.1: SNN | 26.00% | results/adversarial/robustness_fold4.json |
-| FGSM ε=0.1: ANN | 1.75% | same |
-| PGD ε=0.05: SNN | 19.25% | same |
-| PGD ε=0.05: ANN | 0.00% | same |
-| SNN NeuroBench energy | 968 ± 37 nJ/sample (5-fold) | results/neurobench/analysis_fold{1-5}.json |
-| ANN NeuroBench energy | 454 ± 11 nJ/sample (5-fold) | same |
-| SNN ActivationSparsity | 74.2% | same |
+| FGSM eps=0.1 SNN | 26.00% | results/adversarial/ |
+| FGSM eps=0.1 ANN | 1.75% | same |
+| PGD eps=0.05 SNN | 19.25% | same |
+| PGD eps=0.05 ANN | 0.00% | same |
+| SNN energy | 968 +/- 37 nJ (5-fold) | results/neurobench/ |
+| ANN energy | 454 +/- 11 nJ (5-fold) | same |
+| SpiNNaker pilot | 40% (8/20) | spinnaker_results/ |
+| SpiNNaker Run 6 | 43.0% SpiNN, 51.25% snnTorch, 8.25 pp gap | same |
+| Human | 81.3% | Piczak 2015 |
+| SOTA | 98.25% | leaderboard |
+
+---
+
+## References
 | SpiNNaker pilot (Run 5) | 40% (8/20) | spinnaker_results/run5/ |
 | SpiNNaker Run 6 (n=400, **complete**) | **43.0% SpiNN**, 51.25% snnTorch, **8.25 pp gap**, agree 64.5% | spinnaker_results/fc2_all_iterations.jsonl |
 | ESC-50 human performance | 81.3% | Piczak 2015 |

@@ -390,3 +390,31 @@ def evaluate_ptbxl(y_true, y_score, y_pred):
     results['macro_f1'] = f1_score(y_true, y_pred, average='macro')
     results['per_class_f1'] = f1_score(y_true, y_pred, average=None)
     return results
+```
+
+**Sources:** [sklearn roc_auc_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html), [sklearn model evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+---
+
+### 10. Class Imbalance
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES (confirmed imbalance) |
+| **VERIFIED HOW** | PTB-XL paper Table 6, published research |
+| **POTENTIAL BLOCKER** | LOW -- standard mitigation techniques apply |
+
+**Imbalance characteristics:**
+- NORM (~9,528) is ~3.6x more common than HYP (~2,655)
+- Multi-label nature adds complexity (some ECGs have 2-3 labels)
+- The benchmark paper does NOT use weighted loss -- it reports raw results
+
+**Recommended mitigation strategies (choose one):**
+
+1. **Weighted BCEWithLogitsLoss (simplest, recommended for thesis):**
+```python
+# Calculate class weights inversely proportional to frequency
+class_counts = y_train.sum(axis=0)
+pos_weight = (len(y_train) - class_counts) / class_counts
+criterion = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(pos_weight))
+```

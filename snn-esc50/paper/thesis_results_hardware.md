@@ -303,23 +303,6 @@ Original SNN direct fold 4: 54.0%. MaxPool at threshold=3.0: 43.75% -- 10.25 pp 
 4. **5-fold SpiNNaker:** 33.1% +/- 6.9% vs 46.0% snnTorch (12.8 pp gap). Models restored from backup after augmented training overwrote them.
 
 5. **Option A (MaxPool):** threshold sweep confirms binary fraction = 1.000 at all thresholds. threshold=3.0 gets 43.75% with 956 active/step. Full SpiNNaker deployment theoretically unblocked pending router test.
-- `fc1_mean_active_per_step`: mean simultaneous active FC₁ inputs per timestep (decreases with higher threshold)
-
-**Exit criteria for full SpiNNaker deployment:**
-- `fc1_binary_fraction` = 1.000 (guaranteed by MaxPool) — **all thresholds pass** ✅
-- `fc1_mean_active_per_step` < 500 (reduced by higher threshold) — **none achieved** (range: 956–1662)
-- Test accuracy > 42% (within 10 pp of FC2-only hybrid reference) — **threshold=3.0 passes** (43.75%) ✅
-
-**Table: Option A threshold sweep results (fold 4)**
-
-| Threshold | Test Acc | FC1 Active/step | FC1 Binary Frac | SpiNNaker-ready? |
-|-----------|---------|-----------------|-----------------|------------------|
-| 1.0 | 9.25% | 1662.4/2304 (72.2% active, 27.8% sparse) | **1.000** ✅ | Theoretically yes; fc1 dense (72.2% active) |
-| 1.5 | 27.0% | 1409.7/2304 (61.2% active, 38.8% sparse) | **1.000** ✅ | Theoretically yes; fc1 dense (61.2% active) |
-| 2.0 | 34.25% | 1253.1/2304 (54.4% active, 45.6% sparse) | **1.000** ✅ | Theoretically yes; fc1 dense (54.4% active) |
-| **3.0** | **43.75%** | **956.1/2304 (41.5% active, 58.5% sparse)** | **1.000** ✅ | **Best candidate**: binary, 43.75% acc, 956/step |
-
-*Source: `results/snn/maxpool/threshold_sweep_fold4.json`.*
 
 **Interpretation:** MaxPool guarantees fc1_binary_fraction = 1.000 for all thresholds (confirmed). This eliminates the fundamental AvgPool-FC1 cancellation incompatibility documented in §5.1. The threshold=3.0 model achieves the best accuracy (43.75%) while reducing FC1 density to 956/2304 (41.5% active). The <500/step target is not met by any threshold in this sweep — thresholds above 3.0 could potentially reduce density further at cost of additional accuracy loss.
 

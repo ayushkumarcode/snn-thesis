@@ -479,31 +479,3 @@ def burst_encode(data, num_steps, max_burst_length=5, burst_gap=10):
         max_burst_length: maximum spikes per burst
         burst_gap: minimum gap between burst windows
 
-    Returns:
-        spike_train: [num_steps x batch x input_size]
-    """
-    batch_size, input_size = data.shape
-    spike_train = torch.zeros(num_steps, batch_size, input_size)
-
-    # Number of spikes in burst proportional to input value
-    burst_lengths = (data * max_burst_length).long().clamp(0, max_burst_length)
-
-    # Place burst at beginning of each burst window
-    num_windows = num_steps // burst_gap
-    for w in range(num_windows):
-        start = w * burst_gap
-        for b in range(max_burst_length):
-            t = start + b
-            if t < num_steps:
-                spike_train[t] = (b < burst_lengths).float()
-
-    return spike_train
-```
-
-#### Population Coding with Gaussian Receptive Fields (Custom Implementation)
-
-```python
-def grf_population_encode(data, num_steps, num_neurons_per_feature=10,
-                           tau=5, threshold=0.01):
-    """
-    Gaussian Receptive Field population coding.

@@ -782,3 +782,31 @@ anim = splt.spike_count(spk_rec[:, sample_idx].detach().cpu(),
 from IPython.display import HTML
 HTML(anim.to_html5_video())
 ```
+
+### Input Event Visualization (snnTorch)
+
+```python
+# Animate DVS frames
+frame_data = train_set[0][0]  # [T, 2, 128, 128]
+summed = frame_data[:, 0] + frame_data[:, 1]  # Sum on/off channels
+
+fig, ax = plt.subplots()
+anim = splt.animator(summed, fig, ax, interval=40, cmap='plasma')
+anim.save("dvs_gesture_input.gif", writer='ffmpeg', fps=25)
+```
+
+### Visualization with Tonic
+
+```python
+import tonic
+
+# Plot events as a grid of frames
+dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
+events, label = dataset[0]
+tonic.utils.plot_event_grid(events)
+```
+
+### TensorBoard Integration (SpikingJelly)
+
+SpikingJelly's training script logs to TensorBoard:
+```python

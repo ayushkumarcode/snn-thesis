@@ -194,3 +194,31 @@ Phase 1 (Weeks 1-3): Foundation
 Phase 2 (Weeks 4-6): Baseline Implementation
   - Implement CNN baseline for ECG (1D-CNN)
   - Implement basic SNN with snnTorch (LIF neurons, surrogate gradient)
+  - Implement ECG-to-spike encoding (delta modulation)
+  - Evaluate on MIT-BIH with AAMI 5-class split
+
+Phase 3 (Weeks 7-10): Novel Contribution
+  - Choose novelty angle (see below)
+  - Implement and experiment
+  - Compare SNN vs CNN on accuracy AND energy metrics
+  - Iterate on architecture/encoding
+
+Phase 4 (Weeks 11-14): Analysis and Writing
+  - Evaluation and comparison tables
+  - Ablation studies (encoding methods, neuron types, network depth)
+  - Write thesis
+  - Visualizations (spike raster plots, confusion matrices, energy charts)
+```
+
+### Minimum viable thesis
+At minimum, could:
+1. Implement an SNN for MIT-BIH 5-class classification using snnTorch
+2. Compare against a CNN baseline
+3. Analyze accuracy vs energy trade-off
+4. Try 2-3 spike encoding methods
+5. Provide spike raster visualizations showing how ECG maps to spikes
+
+That alone would be solid given the limited existing implementations.
+
+---
+

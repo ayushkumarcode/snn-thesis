@@ -202,31 +202,3 @@ Several groups have successfully applied SNNs to sentiment analysis:
 ## Part 3: How to Encode Text as Spikes
 
 This is the central technical challenge for SNN-NLP. Four main approaches exist:
-
-### 3.1 Poisson Rate Coding (Most Common)
-
-**How it works:**
-1. Take a pre-trained word embedding (e.g., Word2Vec, GloVe) for each word
-2. Normalize and shift all embedding components to [0, 1] range
-3. Each component generates a Poisson spike train with firing rate proportional to its value
-4. Higher value = more frequent spikes; lower value = fewer spikes
-
-**Process (from Spiking CNN paper):**
-- Calculate mean (mu) and standard deviation (sigma) of embedding values
-- Clip within [mu - 3*sigma, mu + 3*sigma]
-- Normalize by subtracting mu and dividing by 6*sigma
-- Scale to [0, 1]
-- Generate Poisson spike trains proportional to each scaled value
-
-**Pros:** Simple, well-understood, preserves semantic information from pre-trained embeddings
-**Cons:** Requires many timesteps (50-100), introduces stochastic noise, slow inference
-
-### 3.2 Temporal/Latency Coding
-
-**How it works:** Information is encoded in the *timing* of spikes rather than their rate. Higher values produce earlier spikes, lower values produce later spikes.
-
-**Pros:** More information per spike, faster inference, lower energy
-**Cons:** More complex to implement, less robust to noise, less explored for text
-
-### 3.3 Direct Embedding Encoding (SpikeLM approach)
-

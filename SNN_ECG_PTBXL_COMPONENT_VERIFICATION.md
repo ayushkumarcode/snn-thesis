@@ -378,31 +378,3 @@ sensitivity = recall_score(y_true, y_pred, average=None)  # per-class
 ```
 
 **Full evaluation code:**
-
-```python
-from sklearn.metrics import roc_auc_score, f1_score, precision_recall_curve
-import numpy as np
-
-def evaluate_ptbxl(y_true, y_score, y_pred):
-    """Standard PTB-XL evaluation metrics."""
-    results = {}
-    results['macro_auroc'] = roc_auc_score(y_true, y_score, average='macro')
-    results['per_class_auroc'] = roc_auc_score(y_true, y_score, average=None)
-    results['macro_f1'] = f1_score(y_true, y_pred, average='macro')
-    results['per_class_f1'] = f1_score(y_true, y_pred, average=None)
-    return results
-```
-
-**Sources:** [sklearn roc_auc_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html), [sklearn model evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html)
-
----
-
-### 10. Class Imbalance
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES (confirmed imbalance) |
-| **VERIFIED HOW** | PTB-XL paper Table 6, published research |
-| **POTENTIAL BLOCKER** | LOW -- standard mitigation techniques apply |
-
-**Imbalance characteristics:**

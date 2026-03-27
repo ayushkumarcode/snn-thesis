@@ -381,31 +381,3 @@ At 25.84% spike rate, your SNN is **well above** the ~6-8% threshold needed for 
 
 **Your energy calculation is honest:** SNN 976 nJ (1.08M ACs x 0.9 pJ) vs ANN 463 nJ (101K MACs x 4.6 pJ). The SNN does more total operations despite each being cheaper. This is the correct and honest result.
 
-### 5.3 Strategies for Improving SNN Sparsity
-
-From the literature:
-1. **Spike-Thrift (Kundu et al. 2021):** Attention-guided compression, up to 33.4x compression
-2. **Multi-level SNNs (Castagnetti et al. 2025):** 2-3x energy reduction, single timestep
-3. **Sparsity regularization (Yan et al. 2024):** Achieved 94.19% sparsity at T=6, 92.76% accuracy on CIFAR-10
-4. **Quantized SNNs (Shen et al. 2024):** Bit budget optimization between weight quantization and temporal steps
-5. **Hybrid architectures (Dampfhoffer et al. 2023):** SNN for high-sparsity layers, ANN for others
-
----
-
-## 6. Edge Deployment: Real-World Neuromorphic Products
-
-### 6.1 Commercial Products
-
-#### BrainChip Akida
-- **Product:** AKD1500 neuromorphic processor
-- **Status:** In production, shipping in M.2 form factors and embedded modules
-- **Applications:** Vision, audio, olfactory, smart transducers
-- **Power:** Milliwatts range for always-on intelligence
-- **Funding:** $25M raised (December 2025) for Akida 2 and GenAI edge products
-- **Audio capability:** Real-time audio and sensor fusion processing at the edge
-
-#### BrainChip Akida Pulsar (announced 2025)
-- **Claim:** World's first mass-market neuromorphic microcontroller
-- **Power:** 500x lower energy consumption vs conventional AI cores
-- **Latency:** 100x reduction vs conventional AI cores
-- **Target:** Sensor edge applications (audio-scene classification, presence detection, people counting, anomaly detection)

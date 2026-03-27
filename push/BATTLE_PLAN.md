@@ -110,3 +110,29 @@ these go in the thesis, not the ICONS paper.
 |---|-----------|------|-------|
 | 16 | On-chip STDP learning for FC2 | 5-7 | VERY HIGH |
 | 17 | LSM reservoir on SpiNNaker | 5-7 | VERY HIGH |
+| 18 | Izhikevich resonator neurons | 3-5 | HIGH |
+| 19 | Cross-domain transfer (Speech Commands) | 3-4 | MED-HIGH |
+| 20 | Real-time microphone demo | 2-3 | LOW (science), HIGH (demo) |
+
+---
+
+## PHASE 3: AFTER ICONS SUBMISSION
+
+| Date | Event | Action |
+|------|-------|--------|
+| April 1 | ICONS submitted | shift to thesis writing |
+| May 18 | Reviews back | prepare rebuttals (pre-drafted responses ready) |
+| May 25 | Rebuttal due | submit |
+| June 5 | Decision | celebrate or plan poster |
+| ~July | DCASE 2026 deadline | second paper opportunity (perfect topic match) |
+| ~Sep | ICASSP 2027 deadline | third paper opportunity |
+
+---
+
+## prepared reviewer responses
+
+1. **"47% is low"** -- baseline datum. PANNs+SNN proves 92.5% when features are good. gap identifies the bottleneck.
+2. **"SNN uses more energy"** -- honest: yes in software. path: reduce spike rate from 25.8% to <6.4%. on neuromorphic hardware, AC costs 5.1x less than MAC.
+3. **"SpiNNaker 33% with high variance"** -- first quantified hardware gap. 50-class task is 6.25x harder than prior work (8 pure tones). root cause documented.
+4. **"Only ESC-50"** -- standard benchmark with predefined 5-fold. UrbanSound8K as future work (or add 1-fold result).
+5. **"PANNs isn't neuromorphic"** -- hybrid edge paradigm: CNN14 in cloud, SNN on edge. precedent: Seekings et al. ICONS 2024.

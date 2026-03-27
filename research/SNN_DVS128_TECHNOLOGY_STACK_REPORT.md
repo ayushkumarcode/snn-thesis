@@ -586,3 +586,31 @@ transforms.ToVoxelGrid(sensor_size, n_time_bins=16)   # Voxel grid (similar)
 transforms.ToTimesurface(sensor_size, tau=50000)       # Time surface
 
 # === Compose transforms ===
+transform = transforms.Compose([
+    transforms.Denoise(filter_time=10000),
+    transforms.ToFrame(sensor_size=sensor_size, n_time_bins=16)
+])
+```
+
+### Caching for Performance
+
+```python
+from tonic import DiskCachedDataset
+
+# First epoch: processes and caches all samples to disk
+# Subsequent epochs: loads from cache (much faster)
+cached_dataset = DiskCachedDataset(
+    dataset,
+    transform=torch.from_numpy,  # Post-cache transform (applied each time)
+    cache_path='./cache/dvs_gesture/train'
+)
+```
+
+### Collation for Variable-Length Sequences
+
+```python
+# When using time-based binning, sequences have different lengths
+# PadTensors pads all sequences in a batch to the same length
+loader = DataLoader(
+    dataset,
+    batch_size=16,

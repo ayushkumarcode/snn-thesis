@@ -124,20 +124,20 @@ Progression across the run:
 | **400/400** | **43.0%** | **51.25%** | **8.25 pp** | **64.5%** |
 
 Hardware gap fluctuates a lot -- not monotonically converging. Ranges from 0.0 pp (n=208) to 8.25 pp (final). Later samples included harder classes for SpiNNaker (insects, helicopter, engine all 0%). Agreement dropped from ~81% mid-run to 64.5% final.
-| **400/400** | **43.0%** | **51.25%** | **8.25 pp** | **64.5%** |
 
-The hardware gap fluctuates substantially across the run — it is not monotonically converging. The gap ranges from 0.0 pp (at n=208) to 8.25 pp (final). The fluctuation reflects sample-batch variability: samples processed later in the run included more challenging classes for SpiNNaker (e.g., insects, helicopter, engine — all 0% SpiNNaker accuracy). The agreement rate dropped from a mid-run peak of ~81% (at n=189) to 64.5% at n=400, indicating that the final samples were disproportionately harder for SpiNNaker than snnTorch. The large gap seen in Run 5 (n=20, 10 pp) was partly a warning signal rather than noise — at n=400, SpiNNaker finishes with a substantial 8.25 pp deficit.
+### 5.3.3 accuracy analysis
 
-### 5.3.3 SpiNNaker vs snnTorch Accuracy Analysis
+**Super-category breakdown (Run 6 final, n=400):**
 
-| Metric | SpiNNaker (Run 5, n=20) | snnTorch (same 20 samples) |
-|--------|--------------------------|----------------------------|
-| Accuracy | 40.0% | 50.0% |
-| Agreement | 60% | — |
-| Errors (SpiNNaker wrong, snnTorch right) | 5/20 = 25% | — |
-| Both wrong | 3/20 = 15% | — |
+| Category | SpiNNaker | snnTorch | Gap |
+|----------|-----------|---------|-----|
+| Animals (0-9) | 45.0% | 57.5% | snnTorch +12.5 pp |
+| Nature (10-19) | 61.3% | 68.8% | snnTorch +7.5 pp |
+| Human (20-29) | 46.2% | 56.2% | snnTorch +10.0 pp |
+| Domestic (30-39) | 31.2% | 37.5% | snnTorch +6.2 pp |
+| Urban (40-49) | 31.2% | 36.2% | snnTorch +5.0 pp |
 
-**Super-category analysis (Run 6, n=400 final, from `results/spinnaker_results/run6_analysis.json`):**
+snnTorch leads all five categories at n=400. Urban has smallest gap (5.0 pp). Nature easiest for both; Domestic and Urban hardest.
 
 | Category | SpiNNaker Acc | snnTorch Acc | Gap |
 |----------|--------------|-------------|-----|

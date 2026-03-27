@@ -166,3 +166,31 @@ functional.set_step_mode(net, 'm')
 
 ```python
 import torch
+import torch.nn.functional as F
+from torch.cuda import amp
+from spikingjelly.activation_based import functional, surrogate, neuron
+from spikingjelly.activation_based.model import parametric_lif_net
+from spikingjelly.datasets.dvs128_gesture import DVS128Gesture
+
+# === Configuration ===
+T = 16              # Timesteps
+batch_size = 16
+epochs = 64
+lr = 0.1
+device = 'cuda:0'   # or 'mps' for Mac
+channels = 128
+
+# === Model ===
+net = parametric_lif_net.DVSGestureNet(
+    channels=channels,
+    spiking_neuron=neuron.LIFNode,
+    surrogate_function=surrogate.ATan(),
+    detach_reset=True
+)
+functional.set_step_mode(net, 'm')
+net.to(device)
+
+# === Dataset ===
+train_set = DVS128Gesture(root='./data/DVS128Gesture', train=True,
+                          data_type='frame', frames_number=T, split_by='number')
+test_set = DVS128Gesture(root='./data/DVS128Gesture', train=False,

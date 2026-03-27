@@ -278,3 +278,31 @@ Achievable in one semester of focused work.
 ## Recommended Tool Stack
 
 ```
+Primary framework:     snnTorch (beginner-friendly, great tutorials)
+Secondary framework:   SpikingJelly (for comparison, has audio example)
+Data loading:          Tonic (PyTorch-compatible neuromorphic data loaders)
+Audio preprocessing:   torchaudio (Mel-spectrograms, MFCC)
+Deep learning:         PyTorch 2.x
+Experiment tracking:   Weights & Biases (free for students)
+Visualization:         matplotlib, seaborn
+Notebook environment:  Google Colab (free GPU) or local Jupyter
+Version control:       Git + GitHub
+```
+
+```bash
+pip install snntorch
+pip install spikingjelly
+pip install tonic
+pip install torchaudio
+pip install wandb
+```
+
+---
+
+## Recent Papers (2024-2025) with Code
+
+| Paper | Venue | Year | Key Result | Code |
+|-------|-------|------|-----------|------|
+| **SpikCommander** | AAAI 2026 | 2025 | 96.92% GSC, 96.41% SHD, 83.49% SSC | [GitHub](https://github.com/JackieWang9811/SCommander) |
+| **SpikeSCR (KDCL)** | arXiv | 2024 | 95.60% GSC, 95.70% SHD | Code promised (pending) |
+| **sparch** | Frontiers Neurosci. | 2022 | 96.60% GSC, 97.60% SHD | [GitHub](https://github.com/idiap/sparch) |

@@ -390,3 +390,31 @@ Based on analyzing all of these, here's what i think:
 | Musical Pattern Recognition | BEng | http://amid.fish/beng_project_report.pdf |
 | Jegp/thesis (Volr DSL) | Masters | report/report.pdf in repo |
 | Deep Spiking Q-Networks | Masters | In repository |
+| Spiking Grid Cell Models | MSc | Linked in repo |
+| Brain-Machine Interface | Masters | In repository |
+| Spiking Deep Belief Network | Masters | MazdakFatahi(Ms Thesis).pdf |
+| SNN-RL | Masters | Thesis.pdf in repo |
+| Event-Based Robot Control | Masters | In repository |
+| Master thesis Astoeckel 2015 | Masters | GitHub releases v1.2 |
+| Simple SNN STDP | Course | Paper.pdf in repo |
+| SNN Speech Recognition | Research | Report.pdf in repo |
+| ANN vs SNN | Course | VCS_doc.pdf in repo |
+| SNN Accelerator EE552 | Course | Final report PDF in repo |
+
+---
+
+## Common Datasets Across Projects
+
+| Dataset | Usage Frequency | Type | Difficulty |
+|---------|----------------|------|------------|
+| MNIST | Very High | Static images | Easy |
+| Fashion-MNIST | High | Static images | Easy-Medium |
+| CIFAR-10 | Medium | Static images | Medium |
+| N-MNIST | Medium | Neuromorphic events | Medium |
+| DVS Gesture (IBM) | Medium | Neuromorphic events | Medium-Hard |
+| CIFAR10-DVS | Low-Medium | Neuromorphic events | Hard |
+| Google Speech Commands | Low | Audio | Medium |
+| TIDIGITS | Low | Audio | Medium |
+| EEG datasets (various) | Low | Time series | Hard |
+| Custom datasets | Variable | Various | Variable |
+

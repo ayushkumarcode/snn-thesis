@@ -166,3 +166,31 @@ our PANNs+SNN approach fits into a growing trend:
 | Hybrid ANN-SNN deployment (Shrestha) | 2024 | ANN feature extraction + SNN classification | Various | Loihi 2 (SNN) + Jetson Nano (ANN) |
 | End-to-end hybrid NN mapping (PMC) | 2021 | ANN-SNN hybrid | Near-zero degradation | Custom neuromorphic |
 | SpikeFit (EurIPS 2025) | 2025 | Quantized SNN deployment | SOTA compression | Various neuromorphic |
+| **our PANNs+SNN** | **2026** | **CNN14 (ANN) + 3-layer SNN head** | **92.50%** | **Conceptual: CNN14 on GPU, SNN head on SpiNNaker** |
+
+the hybrid deployment model (heavy ANN feature extraction on conventional hardware, lightweight SNN classifier on neuromorphic) is increasingly recognized as practical. our PANNs+SNN work is a demonstration of this for audio.
+
+---
+
+### 1.10 Energy Efficiency Summary
+
+| Platform | Process | Power (inference) | Energy/Op | Key Audio Result |
+|----------|---------|-------------------|-----------|-----------------|
+| Loihi 2 | Intel 7 (~7nm) | 0.04-0.5 mW per inference | ~0.037-0.5 uJ/inf | 99% SHD, 97% SSC |
+| Xylo Audio 2 | 28nm CMOS | 291 uW dynamic | 6.6 uJ/inf | 95% Aloha KWS |
+| SpiNNaker2 | 22nm FDSOI | <0.34W total | 7.1 nJ/inf (dynamic) | 91.12% GSC-12 |
+| Akida Pico | N/A | <1 mW | N/A | KWS with TENNs |
+| SpiNNaker 1 | 130nm | Higher | 0.9 pJ/AC (theoretical) | 33.1% ESC-50 (ours) |
+| BrainScaleS-2 | 65nm | ~200 mW (chip) | N/A for audio | No audio classification results |
+
+---
+
+## Part 2: Relevant PhD and MSc Theses
+
+### Directly Relevant Theses (Audio + SNN/Neuromorphic)
+
+#### Dominguez-Morales (2018) -- University of Seville
+
+"Neuromorphic audio processing through real-time embedded spiking neural networks" -- PhD in Computer Engineering. developed speech recognition and audio processing systems based on a spiking artificial cochlea. implemented multilayer SNN on 48-chip SpiNNaker for audio classification. created NAVIS and pyNAVIS tools.
+
+key results: pure tone classification on SpiNNaker 99.8% (8 classes, clean), 95% at SNR=3dB.

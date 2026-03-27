@@ -314,31 +314,3 @@ This is the central technical challenge for SNN-NLP. Four main approaches exist:
 
 | Project | Scope | Result |
 |---------|-------|--------|
-| Shape Detector SNN (Manchester BSc) | Single-layer SNN for shapes | Clean project, 107 commits |
-| Musical Pattern SNN (BEng) | Audio pattern recognition | "Only small portion achieved" |
-| SNN for Digit Recognition (KCL) | MNIST classification | Successful |
-| **Proposed: SNN for Sentiment** | **Binary text classification** | **Higher novelty, similar complexity** |
-
-**An SNN sentiment analysis project would be MORE novel than any existing undergraduate SNN project found in our research.**
-
----
-
-## Part 6: Simpler NLP Tasks Where SNNs Could Work
-
-### Tier 1: Most Feasible (Recommended)
-
-#### Binary Sentiment Analysis (IMDB or SST-2)
-- **Why:** Clear positive/negative labels, large datasets, proven SNN results
-- **Expected accuracy:** ~80-88% (vs ~90-93% for ANNs)
-- **Datasets:** IMDB (50K reviews), SST-2 (67K sentences)
-- **Approach:** TextCNN -> convert to Spiking CNN -> fine-tune
-- **Code base:** https://github.com/Lvchangze/snn
-
-#### Spam Detection (Binary Classification)
-- **Why:** Even simpler than sentiment -- highly separable classes
-- **Datasets:** SMS Spam Collection (5,574 messages), Enron spam dataset
-- **Expected accuracy:** Should exceed 90% (spam is easier than sentiment)
-- **Approach:** Same conversion pipeline, simpler features
-- **Note:** No existing SNN spam detection paper found -- this would be novel
-
-### Tier 2: Moderately Feasible

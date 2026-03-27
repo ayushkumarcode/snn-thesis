@@ -26,3 +26,31 @@ i went through 21 Manchester BSc thesis papers, 5 course guidance documents, and
 | 16 | **Brian Ezinwoke** | **SNN for HFT price spikes** | **5/5** | **(c) Extension of existing** | **~14,695** | **Directly SNN; Oliver Rhodes supervisor; STDP + Bayesian Opt** |
 | 17 | Shubham Aggarwal | Drone landing (Decision Transformer) | 2/5 | (b) Application | ~12,345 | Delivered 1/3 objectives; rest as "future work" |
 | 18 | Maximilian Bolt | Adversarial attacks on LLMs | 2/5 | (c)/(d) Novel metric | ~11,525 | Novel "cost" metric; human survey validation |
+| 19 | Benjamin Hatton | Slimmable NNs on NVDLA hardware | 2/5 | (c) Integration novelty | ~13,807 | Hardware-software integration project |
+| 20 | Patrick Devine | ECG analysis web tool (Django) | 2/5 | (b) Application | ~10,940 | NHS collaboration; proof-of-concept sufficient |
+| 21 | Nathan Oldfield | Ethics of neuromorphic computing | 4/5 | (b) Qualitative research | N/A | **No code at all; purely qualitative; still passed** |
+
+---
+
+## 2. Patterns i noticed
+
+### 2.1 Novelty distribution
+- **Level (b) -- apply existing methods to new domain:** 8/21 papers (38%)
+- **Level (c) -- modify/extend existing methods:** 11/21 papers (52%)
+- **Level (d) -- novel method:** 1/21 papers (5%) -- the outlier (Buburuzan)
+- **Level (a) -- pure replication:** 0/21 papers (0%)
+
+The sweet spot is (b) or (c). Nobody does pure replication, but genuinely novel methods are rare and not expected. Most successful theses take existing techniques and either apply them to a new context or extend them a bit.
+
+### 2.2 Word count distribution
+- **Range:** 10,896 -- 21,588 words
+- **Median:** ~14,000 words
+- **Most common range:** 12,000 -- 15,000 words
+
+### 2.3 Structural patterns (basically universal)
+Every strong paper followed this intro structure:
+1. **Motivation** (real-world context, statistics, why this matters)
+2. **Problem statement** (specific gap or question)
+3. **Aims & objectives** (numbered, measurable, with success criteria)
+4. **Evaluation strategy** (metrics defined before experiments)
+5. **Report structure** (chapter-by-chapter roadmap)

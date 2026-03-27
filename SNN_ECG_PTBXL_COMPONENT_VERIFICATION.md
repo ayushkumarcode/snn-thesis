@@ -518,31 +518,3 @@ All prior SNN-ECG work uses MIT-BIH Arrhythmia Database (much simpler: single-le
 ### 13. Known Issues and Gotchas
 
 | Field | Detail |
-|---|---|
-| **EXISTS** | YES (several documented) |
-| **VERIFIED HOW** | GitHub issues, PyTorch forums, user reports |
-| **POTENTIAL BLOCKER** | LOW if you know about them |
-
-**WFDB Loading Gotchas:**
-1. **ast.literal_eval is mandatory:** The scp_codes column in ptbxl_database.csv stores Python dicts as strings. You MUST use `ast.literal_eval()` to parse them.
-2. **Path handling:** `wfdb.rdsamp()` expects the path WITHOUT the .hea/.dat extension. If your path ends with `.hea`, it will fail.
-3. **Version mismatch:** Code written for PTB-XL v1.0.1 may need minor path adjustments for v1.0.3.
-4. **Memory:** Loading all 21,799 records at 500 Hz into RAM at once requires ~5 GB. Load at 100 Hz to reduce to ~1 GB, or load lazily.
-
-**snnTorch Gotchas:**
-1. **No Conv1d examples exist in official tutorials.** You must adapt the Conv2d pattern yourself.
-2. **init_hidden=True is essential** when using nn.Sequential or TBPTT.
-3. **GPU memory explodes with many timesteps** (discussed in Component 11).
-4. **The time dimension must be first** when using spikegen.delta: shape is [num_steps, batch, features].
-5. **Surrogate gradient selection matters:** Use `spike_grad = surrogate.fast_sigmoid(slope=25)` as default.
-
-**PTB-XL-Specific Gotchas:**
-1. **Multi-label, not multi-class:** Use BCEWithLogitsLoss, NOT CrossEntropyLoss.
-2. **Some records have NO diagnostic labels** -- filter these out before training.
-3. **Fold 10 test set quality is higher** (cardiologist-validated) -- do not use it for training or hyperparameter tuning.
-
-**Sources:** [WFDB GitHub Issues](https://github.com/MIT-LCP/wfdb-python/issues), [snnTorch GPU Discussion](https://github.com/jeshraghian/snntorch/discussions/63), [PyTorch Forum Conv1d](https://discuss.pytorch.org/t/1d-data-surrogate-gradient-descent-in-a-convolutional-spiking-neural-network/157693)
-
----
-
-### 14. End-to-End Pipeline Feasibility

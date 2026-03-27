@@ -82,20 +82,20 @@ No prior work has systematically compared these seven on ESC-50 or any standard 
 ---
 
 ## 2.5 SpiNNaker neuromorphic platform
-**SpiNNaker** (Furber et al. 2014) is a massively parallel neuromorphic platform developed at the University of Manchester. Each chip contains 18 ARM968 processors connected by a custom packet-switched network. Communication is entirely spike-driven: each event is a 4-byte packet containing a neuron address, propagated asynchronously across the network. This AC-only communication (no multiply operations) is the source of SpiNNaker's energy efficiency.
 
-**sPyNNaker** provides a PyNN-compatible Python interface for specifying neural networks, which are compiled to SpiNNaker machine code. Supported neuron models include IF_curr_exp, IF_cond_exp, Izhikevich, and HH. Each neuron's membrane dynamics are simulated in fixed-point arithmetic on an ARM core.
+**SpiNNaker** (Furber et al. 2014) -- massively parallel neuromorphic platform from UoM. Each chip has 18 ARM968 processors connected by custom packet-switched network. Communication is entirely spike-driven: each event is a 4-byte packet with neuron address, propagated asynchronously. AC-only communication (no multiply) is the source of energy efficiency.
 
-**Deployment challenges:**
-1. All weights and membrane potentials must be representable in fixed-point arithmetic
+**sPyNNaker** provides PyNN-compatible Python interface. Supported models: IF_curr_exp, IF_cond_exp, Izhikevich, HH. Membrane dynamics simulated in fixed-point on ARM cores.
+
+Deployment challenges:
+1. All weights and membrane potentials must be fixed-point representable
 2. Input must be binary spikes (SpikeSourceArray or SpikeSourcePoisson)
-3. Maximum network size is limited by available ARM cores (~1,000 neurons per chip)
-4. Timing is synchronous at 1ms resolution (timestep)
+3. Max network size limited by available ARM cores (~1000 neurons/chip)
+4. Timing synchronous at 1ms resolution
 
-For this work, the FC2-only hybrid approach (FC2: 256→50) fits comfortably on SpiNNaker with 256 input neurons and 50 output neurons.
+For this work, FC2-only hybrid (256->50) fits comfortably on SpiNNaker.
 
 ---
-
 ## 2.6 Energy Efficiency: SNNs vs ANNs
 
 The energy argument for SNNs is nuanced and depends critically on the execution platform.

@@ -26,3 +26,31 @@ risk: LOW. the worst case is "SNNs don't work well on ESC-50" and that's still a
 
 why pick this: best novelty-to-effort ratio. the literature review practically writes itself ("no SNN papers exist, here's why this matters"). supervisor will see i identified a genuine gap. the report framing is strong.
 
+why not: it's an application paper, not technically groundbreaking. i'm applying existing methods to a new dataset. that's fine for undergrad, but it won't feel "cool" in the way robot reflexes would.
+
+---
+
+## Option 2: SNN ECG Classification on PTB-XL
+
+the pitch: SNNs for cardiac monitoring. wearable heart monitors need to run on tiny batteries for days. SNNs use 30-1000x less energy than standard deep learning. PTB-XL (21,799 ECGs, 12-lead) has no proper SNN benchmark.
+
+what i'd actually build:
+- load PTB-XL dataset (free, well-documented)
+- use snnTorch's delta encoding (designed for ECG-like signals)
+- train SNN classifier for cardiac conditions (5 superclasses or 23 subclasses)
+- compare against ANN baseline
+- report energy efficiency
+
+iteration cycle: similar to ESC-50 -- standard train loops. PTB-XL is bigger (21K samples) so training takes a bit longer but still minutes, not hours. the 12-lead aspect adds preprocessing complexity compared to single-lead MIT-BIH.
+
+what "good" looks like: MIT-BIH SNN SOTA is 98.3% (SparrowSNN). PTB-XL is harder -- current DNN benchmarks hit ~75-85% depending on the task. getting competitive SNN results here would be strong.
+
+novelty: HIGH. some SNN-ECG papers exist (~20-30 total) but none do a proper benchmark on PTB-XL with modern frameworks.
+
+risk: LOW-MEDIUM. 12-lead ECG has more preprocessing complexity than audio spectrograms. if it gets annoying, i can fall back to MIT-BIH (single-lead, simpler, but less novel).
+
+why pick this: killer real-world narrative. "SNNs for energy-efficient cardiac monitoring" makes sense to everyone. the clinical angle makes for a compelling motivation section.
+
+why not: slightly more preprocessing than ESC-50. the 12-lead format can be fiddly. less "automatic novelty" than ESC-50 since some SNN-ECG work exists.
+
+---

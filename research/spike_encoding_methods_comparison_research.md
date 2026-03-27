@@ -395,31 +395,3 @@ spike_data = spikegen.latency(
 
 ```python
 # data: shape [num_steps x batch x input_size] (time-series input)
-spike_data = spikegen.delta(
-    data,
-    threshold=0.1,      # Change threshold for spike generation
-    padding=False,       # First timestep handling
-    off_spike=True       # Enable negative spikes (-1) for decreases
-)
-# Output shape: [num_steps x batch x input_size]
-# Values are +1 (increase), -1 (decrease), or 0 (below threshold)
-```
-
-**Key parameters:**
-- `threshold` (float, default=0.1): Magnitude of change required
-- `padding` (bool): How to handle the first timestep
-- `off_spike` (bool): Generate -1 for negative changes
-
-#### Target Encoding: `spikegen.targets_convert()`
-
-```python
-# Encode target labels as spike trains for supervised learning
-spike_targets = spikegen.targets_convert(
-    targets,             # Class indices [0, C-1]
-    num_classes=10,
-    code='rate',         # 'rate' or 'latency'
-    num_steps=100,
-    correct_rate=0.8,    # Firing rate for correct class
-    incorrect_rate=0.2   # Firing rate for incorrect classes
-)
-```

@@ -54,3 +54,31 @@ has Horowitz been updated? no official update. the MAC/AC ratio (~5.1x) stays ap
 | Eff_MACs | effective multiply-accumulates (non-binary activations, excluding zeros) |
 | Eff_ACs | effective accumulates (binary/spike activations) |
 | Activation Sparsity | proportion of zero activations (averaged over neurons, timesteps, samples) |
+| Connection Sparsity | ratio of zero weights to total |
+| Footprint | model memory in bytes |
+
+### baseline results from their paper
+| Task | ANN Eff_MACs | SNN Eff_ACs | SNN Activation Sparsity |
+|------|-------------|-------------|------------------------|
+| Keyword FSCIL | 7.85e6 | 3.65e5 | 0.916 |
+| NHP Motor (Indy) | 3,836 | 276 | 0.997 |
+
+the NHP motor result is pretty compelling: SNN uses 276 ACs vs 3,836 MACs (13.9x fewer operations) with identical accuracy. with 5.1x per-op cost advantage, that's ~71x energy reduction.
+
+### our NeuroBench results
+- SNN: 1.08M ACs -> 976 nJ (at 0.9 pJ/AC)
+- ANN: 101K MACs -> 463 nJ (at 4.6 pJ/MAC)
+- SNN activation sparsity: 74.16%
+- ANN activation sparsity: ~59%
+
+---
+
+## 4. Measured Energy on Real Neuromorphic Hardware
+
+| Platform | Process | Energy/Op | Power | Key Benchmark |
+|----------|---------|-----------|-------|---------------|
+| **Loihi 1** | 14nm | ~23.6 pJ/synaptic op | ~0.5W | KWS: 5.3-109x better than CPU/GPU |
+| **Loihi 2** | Intel 4 | improved | ~1W | SSM: 1000x less energy vs Jetson |
+| **TrueNorth** | 28nm | ~26 pJ/synaptic op | 65-275 mW | 46 GSOPS/W |
+| **SpiNNaker 1** | 130nm | ~5.8 uJ/synaptic op | ~1W/chip | real-time bio simulation |
+| **SpiNNaker 2** | 22nm FDSOI | 10x better than S1 | improved | 18x vs GPUs (claimed) |

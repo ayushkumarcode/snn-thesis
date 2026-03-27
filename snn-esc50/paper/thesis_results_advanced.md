@@ -26,20 +26,20 @@ Both applied to normalised mel spectrogram input (not raw audio), eps in {0, 0.0
 | 0.010 | 37.50% | 22.50% | 23.50% | 14.75% |
 | 0.020 | 32.00% | 8.75% | 20.50% | 2.00% |
 | 0.050 | 29.00% | 2.50% | 19.25% | 0.00% |
+| 0.100 | **26.00%** | **1.75%** | 6.25% | 0.00% |
 | 0.200 | 21.50% | 1.25% | 1.25% | 0.00% |
 | 0.300 | 20.75% | 0.75% | 1.25% | 0.00% |
 
-*Source: `results/adversarial/robustness_fold4.json`. Note: Clean accuracy (53.75% SNN, 68.75% ANN) is consistent with CSF3-canonical fold 4 values (54.0% SNN, 68.75% ANN from `results/snn/direct/summary.json`). The 0.25 pp SNN difference reflects minor hardware-backend variation (MPS vs CUDA). The relative SNN vs ANN comparison and all qualitative conclusions are unaffected.*
+Source: `results/adversarial/robustness_fold4.json`. Clean accuracy (53.75% SNN, 68.75% ANN) consistent with canonical fold 4 values. 0.25 pp SNN difference is MPS vs CUDA backend variation -- doesn't affect any conclusions.
 
-### 6.1.3 Key Finding: Dramatic SNN Adversarial Robustness
+### 6.1.3 key finding: dramatic SNN robustness
 
-**At ε = 0.1 (FGSM):** SNN retains 26.00% accuracy vs ANN's 1.75% — a 24.25 pp advantage (14.9× more robust by ratio).
-**At ε = 0.05 (PGD):** SNN retains 19.25% vs ANN's 0.00% — complete ANN collapse vs SNN surviving.
+**eps=0.1 FGSM:** SNN keeps 26.00% vs ANN's 1.75% -- 24.25 pp advantage, 14.9x more robust.
+**eps=0.05 PGD:** SNN keeps 19.25% vs ANN's 0.00% -- complete ANN collapse while SNN survives.
 
-The SNN exhibits dramatically higher adversarial robustness across all ε values and both attack types. The robustness advantage grows with ε: at small ε the ANN and SNN degrade similarly, but above ε ≈ 0.02, the ANN collapses while the SNN retains meaningful accuracy.
+SNN is dramatically more robust across all eps and both attack types. The advantage grows with eps: at small eps both degrade similarly, but above ~0.02 the ANN collapses while SNN retains meaningful accuracy.
 
-### 6.1.4 Mechanism: Spike Threshold Filtering
-
+### 6.1.4 mechanism: spike threshold filtering
 The adversarial robustness of SNNs in this domain arises from the spike threshold acting as a non-linear filter. FGSM and PGD compute gradients with respect to the input and add small perturbations along the gradient direction. However, for the SNN:
 
 1. **Hard threshold at membrane potential:** Small changes to input values (Δx ≈ ε) produce small changes to membrane current, which may not cross the spike threshold. If the threshold is not crossed, the output spike pattern is unchanged.

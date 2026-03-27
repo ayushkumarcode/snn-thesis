@@ -362,3 +362,31 @@ Based on analyzing all of these, here's what i think:
 - Example: sofi12321/SNN_image_classification
 
 **Tier 2 - Ambitious (very good grade)**
+- SNN on multiple datasets (MNIST + CIFAR-10 + one more)
+- OR neuromorphic dataset (DVS Gesture, N-MNIST)
+- OR novel application domain (audio, time series, medical)
+- Example: chiralevy/Deep-Learning-with-Biologically-Plausible-Neural-Networks
+
+**Tier 3 - Very ambitious (outstanding)**
+- Novel architecture or training method
+- Hardware deployment (FPGA, SpiNNaker if available)
+- Robotics integration
+- Published results
+- Example: filippoferrari/shape_detector_snn, mrahtz/musical-pattern-recognition
+
+### What distinguishes the good projects
+1. Clear research question (not just "implement an SNN")
+2. Meaningful comparison (SNN vs ANN on same task)
+3. Multiple evaluation metrics (accuracy, training time, energy estimates)
+4. Good documentation (README, code comments, report)
+5. Honest about limitations (convergence issues, accuracy gaps)
+
+---
+
+## Projects with Thesis PDFs Available
+
+| Project | Level | PDF Location |
+|---------|-------|--------------|
+| Musical Pattern Recognition | BEng | http://amid.fish/beng_project_report.pdf |
+| Jegp/thesis (Volr DSL) | Masters | report/report.pdf in repo |
+| Deep Spiking Q-Networks | Masters | In repository |

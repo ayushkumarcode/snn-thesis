@@ -82,3 +82,31 @@ These are included because they demonstrate the cadence and pattern of YC hackat
 ### 6. Hack the Stackathon @ Y Combinator
 - - **Location:** YC, San Francisco
 - **Organizers:** Firecrawl (YC S22), Reducto (YC W24), Resend (YC W23)
+- **Backers:** MongoDB, ElevenLabs, OpenRouter, Supabase, Mux, Lovable
+- **Source:** https://events.ycombinator.com/HacktheStackathon
+
+### 7. Gemini 3 SuperHack (Cerebral Valley)
+- - **Location:** San Francisco (address on registration)
+- **Organizers:** Google DeepMind & Cerebral Valley
+- **Partners:** Vercel, Google AI Futures Fund, fal, Antigravity, Cline, Browser Use (YC W25), VisionAgents, Pipecat, Livekit
+- **YC Connection:** Browser Use (YC W25) is a partner
+- **Prizes:** $150,000+ in Gemini API credits
+- **Source:** https://cerebralvalley.ai/e/gemini-3-superhack
+
+---
+
+## PAST HACKATHONS AT YC (2025 -- Completed, But May Have Future Editions)
+
+These are from 2025 and are included to identify organizers who regularly run events at YC:
+
+| # | Name | Date | Organizer | YC Connection | Key Prize |
+|---|------|------|-----------|---------------|-----------|
+| 8 | $65K-$80K YC Agents Hackathon | Aug 22-23, 2025 | YC-batch companies (Dedalus, Kernel, Interfere, Nozomio, Browser Use, AgentMail, Autumn) | At YC; YC partner Jared Friedman was judge | $80K prizes |
+| 9 | AI Coding Agents Hackathon | Aug 9, 2025 | Anthropic, Freestyle, Same.new, Morph LLM | At YC Office; guaranteed YC interview as 1st prize | YC interview |
+| 10 | Mentra Live Hackathon | Jul 12-13, 2025 | Mentra (YC company) | At YC; YC promoted on X | Smart glasses prizes |
+| 11 | YC AI Startup School Mixer/Hackathon | Jun 21, 2025 | Community organizers | YC-affiliated; at DraperU | ~40 pax |
+| 12 | World's Biggest MCP Hackathon | May 17, 2025 | Greptile, Gumloop, Mintlify | At YC; Gustaf (YC partner) + Guillermo Rauch (Vercel) judged; YC interview as prize | $10K+, YC interview |
+| 13 | Agentic Payments Hackathon | Nov 15, 2025 | Locus (YC F25) | At YC; with Coinbase, OpenAI, Anthropic, Replit | $25K, YC interview |
+| 14 | YC Agent Jam by Metorial | Nov 1-2, 2025 | Metorial (YC F25) | At YC; YC partner Andrew Miklas judged | YC interview |
+| 15 | AgentMail HackHalloween | Oct 2025 | AgentMail (YC), Replit (YC W18), Browser Use (YC W25) | At YC | - |
+| 16 | Gemini x Pipecat Hackathon | Oct 11, 2025 | Daily (YC W16), Google DeepMind | At YC Office | $50K Gemini credits |

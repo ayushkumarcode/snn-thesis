@@ -789,31 +789,3 @@ plt.show()
 ### 7.3 Membrane Potential Traces (snnTorch)
 
 ```python
-# mem_data shape: [num_steps, num_neurons]
-# spk_data shape: [num_steps, num_neurons] (optional spike overlay)
-splt.traces(mem_data, spk=spk_data, dim=(3, 3), spk_height=5)
-plt.show()
-```
-
-### 7.4 Spike Count Animation (snnTorch)
-
-```python
-# spk_rec shape: [num_steps, num_classes]
-labels = ['Clap', 'RWave', 'LWave', 'RCW', 'RCCW',
-          'LCW', 'LCCW', 'Roll', 'Drums', 'Guitar', 'Other']
-
-fig, ax = plt.subplots(facecolor='w', figsize=(12, 7))
-anim = splt.spike_count(spk_rec[:, sample_idx].detach().cpu(),
-                        fig, ax, labels=labels,
-                        animate=True, interpolate=1)
-# Save as GIF
-from IPython.display import HTML
-HTML(anim.to_html5_video())
-```
-
-### 7.5 Input Event Visualization (snnTorch)
-
-```python
-# Animate DVS frames
-frame_data = train_set[0][0]  # [T, 2, 128, 128]
-summed = frame_data[:, 0] + frame_data[:, 1]  # Sum on/off channels

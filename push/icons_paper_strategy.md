@@ -124,31 +124,3 @@ FGSM results (single-step, no SNN adaptation) provide clean lower bound. Cite Wa
 ## HOW WE COMPARE TO TYPICAL ICONS PAPERS
 
 | Dimension | Typical ICONS | Us | |
-|-----------|--------------|----|-|
-| Novelty | Incremental | First SNN on ESC-50 | **Above average** |
-| Hardware | Often sim only | SpiNNaker 5-fold (2000 inferences) | **Above average** |
-| Eval rigor | 1-2 folds | 5-fold CV, 7 encodings | **Well above average** |
-| Dataset | 10-35 classes | 50 classes | **Above average** |
-| Contributions | 1-2 | 4 focused | **Above average** |
-| Accuracy | Often >90% | 47% scratch, 92.5% PANNs | **Needs framing** |
-| Energy analysis | Absent/hand-wavy | NeuroBench, honest | **Above average** |
-
-**Overall: Top 20-30% of ICONS submissions in scientific content.**
-
----
-
-## TOP 5 ACTIONS (Priority Order)
-
-1. **Cut to 4 contributions.** Remove surrogate, CL, augmentation, t-SNE, temporal
-2. **Make SpiNNaker the star.** Expand deployment section, add pipeline figure, add latency/energy measurements
-3. **Create 3 polished figures.** Architecture, SpiNNaker pipeline, encoding bar chart
-4. **Rewrite abstract to 150-200 words.** Tight narrative arc
-5. **Frame energy honestly.** Three-part argument, no overclaiming
-
----
-
-## Sources
-- ICONS 2023-2025 proceedings analysis (50+ papers)
-- [Seekings et al. ICONS 2024 — Hybrid SNN](https://arxiv.org/abs/2407.08704)
-- [An et al. ICONS 2025 — DYNAP-SE deployment](https://arxiv.org/abs/2509.21345)
-- [Schone et al. ICONS 2024 — Best Paper](https://arxiv.org/abs/2404.18508)

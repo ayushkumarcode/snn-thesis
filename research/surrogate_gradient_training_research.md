@@ -663,31 +663,3 @@ snn.RLeaky(beta=0.5, spike_grad=spike_grad)
 4. **Fewer time steps** are needed with modern techniques (T=2-4 achieving strong results)
 5. **Normalization techniques** (BNTT, tdBN, MP-Init) are crucial for deeper architectures
 6. **The gap between SNN and ANN accuracy is rapidly closing**, especially on ImageNet
-
----
-
-## 11. Practical Recommendations for the Thesis
-
-### Framework Choice
-
-**Use snnTorch** for your thesis. Reasons:
-- Best tutorials and documentation for learning
-- Runs on Google Colab (free GPU)
-- Integrates with Tonic for neuromorphic datasets (DVS128)
-- Used in university courses, including at UCSC
-- Active maintenance (1.9k GitHub stars)
-- If you need maximum training speed, SpikingJelly with CuPy backend is faster, but snnTorch is more accessible
-
-### Recommended Default Configuration
-
-```python
-# These defaults will give you a strong starting point
-spike_grad = surrogate.fast_sigmoid(slope=25)
-beta = 0.5           # Membrane decay
-threshold = 1.0      # Firing threshold (snnTorch default)
-num_steps = 25       # Time steps (for static images)
-optimizer = Adam(lr=1e-2 to 1e-3)
-loss_fn = SF.ce_rate_loss()
-```
-
-### Suggested Thesis Structure Around Surrogate Gradients

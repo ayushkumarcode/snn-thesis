@@ -203,31 +203,3 @@ This paper is particularly useful for understanding the FOUNDATIONS. It provides
 | Method | Year | Accuracy | Time Steps |
 |--------|------|----------|------------|
 | clip-floor-shift | 2022 | 95.54% | 32 |
-| Fast-SNN | 2023 | 95.42% | 3 |
-| Parameter Calibration | 2024 | 94.75% | 4 |
-
-**ImageNet Conversion Results:**
-| Method | Year | Accuracy | Time Steps |
-|--------|------|----------|------------|
-| Spiking ResNet | 2021 | 73.77% | 350 |
-| Fast-SNN | 2023 | 71.31% | 3 |
-| clip-floor-shift | 2022 | 68.47% | 32 |
-
-Critical observation: Time steps have dropped from 350 to just 3, representing massive latency reduction.
-
-#### Direct Training with Surrogate Gradients
-**Framework:** Backpropagation-through-time (BPTT) using surrogate gradient functions to approximate non-differentiable spike functions.
-
-**Key Innovations:**
-- Learnable surrogate gradients (LSG) adapting function width dynamically
-- Information Maximization Loss (IM-Loss) optimizing surrogate shape
-- Parametric LIF neurons with learnable time constants
-- Membrane Potential Batch Normalization (MPBN)
-- Temporal Efficient Training (TET) compensating momentum loss
-
-**CIFAR-10 Direct Training Results:**
-| Method | Year | Accuracy | Time Steps |
-|--------|------|----------|------------|
-| MPBN | 2023 | 96.47% | 2 |
-| RecDis-SNN | 2023 | 95.55% | 6 |
-| IM-Loss | 2022 | 95.49% | 6 |

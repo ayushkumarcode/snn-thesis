@@ -507,31 +507,3 @@ def grf_population_encode(data, num_steps, num_neurons_per_feature=10,
                            tau=5, threshold=0.01):
     """
     Gaussian Receptive Field population coding.
-
-    Args:
-        data: [batch x input_size], values in [0, 1]
-        num_steps: number of timesteps
-        num_neurons_per_feature: number of GRF neurons per input
-        tau: time constant for latency conversion
-
-    Returns:
-        spike_train: [num_steps x batch x input_size * num_neurons_per_feature]
-    """
-    from snntorch import spikegen
-
-    batch_size, input_size = data.shape
-    n = num_neurons_per_feature
-
-    # GRF centres evenly spaced in [0, 1]
-    centres = torch.linspace(0, 1, n)  # [n]
-    # GRF width (sigma) based on spacing
-    sigma = 1.0 / (2 * (n - 1))
-
-    # Compute activation for each neuron
-    # data: [batch x input_size] -> [batch x input_size x 1]
-    # centres: [n] -> [1 x 1 x n]
-    data_exp = data.unsqueeze(-1)  # [batch x input x 1]
-    centres_exp = centres.unsqueeze(0).unsqueeze(0)  # [1 x 1 x n]
-
-    # Gaussian activation
-    activations = torch.exp(-0.5 * ((data_exp - centres_exp) / sigma) ** 2)

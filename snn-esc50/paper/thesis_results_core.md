@@ -181,19 +181,19 @@ Augmentation on training spectrograms only:
 
 Both applied simultaneously. Otherwise identical to baseline: same arch, same training, but 100 epochs instead of 50.
 
-Data augmentation is applied to training spectrograms only (not to validation/test spectrograms), using two techniques:
+### 4.4.2 results
 
-1. **SpecAugment** (Park et al. 2019): 2 frequency masks of width F=8 mel bins (randomly placed), and 2 time masks of width T=20 frames (randomly placed). Masks set the masked region to the spectrogram mean value. Applied per-sample, per-epoch with a new random mask each time.
+| Model | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std | vs baseline |
+|-------|--------|--------|--------|--------|--------|------|-----|-------------|
+| SNN direct (no aug) | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | 47.15% | 4.50% | -- |
+| **SNN direct (aug)** | **46.00%** | **48.75%** | **24.50%** | **63.75%** | **20.75%** | **40.75%** | **16.03%** | **-6.40 pp** |
+| ANN (no aug) | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | 63.85% | 3.07% | -- |
+| **ANN (aug)** | **63.25%** | **59.75%** | **62.50%** | **68.50%** | **54.50%** | **61.70%** | **4.58%** | **-2.15 pp** |
 
-2. **TimeShift**: Cyclic shift of ±10% of frames (±22 frames), randomly sampled per sample, per epoch. Simulates the temporal location of the sound within the 5-second clip.
+Source: `results/snn/direct_aug/summary.json`, `results/ann/none_aug/summary.json`.
 
-Both augmentations are applied simultaneously. The augmented model is otherwise identical to the baseline: same architecture (SpikingCNN / ConvANN, 622K params), same training protocol (Adam, ReduceLROnPlateau, early stopping patience=10), but with 100 training epochs instead of 50.
+### 4.4.3 analysis
 
-### 4.4.2 Results
-
-**5-fold cross-validation: Baseline vs Augmented**
-
-| Model | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std | Δ vs baseline |
 |-------|--------|--------|--------|--------|--------|------|-----|---------------|
 | SNN direct (no aug) | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | 47.15% | 4.50% | — |
 | **SNN direct (aug)** | **46.00%** | **48.75%** | **24.50%** | **63.75%** | **20.75%** | **40.75%** | **16.03%** | **−6.40 pp** |

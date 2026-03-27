@@ -194,3 +194,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 
 ### 2.10 Event-Based End-to-End Robot Control (TUM Masters)
 - **URL**: https://github.com/clamesc/Training-Neural-Networks-for-Event-Based-End-to-End-Robot-Control
+- **Description**: Robot steering with DVS event camera using DRL and SNNs for lane-keeping
+- **Framework**: TensorFlow, V-REP, ROS, NEST 2.10.0, Python 2.7
+- **Dataset**: Simulated lane-following task with DVS
+- **Results**: Both DQN-SNN and R-STDP methods succeeded at lane following
+- **Thesis PDF**: YES - full thesis PDF included
+- **Complexity**: VERY HIGH
+- **Stars**: 59 | **Forks**: 23
+- most popular thesis project i found. excellent documentation. combines DVS, robotics, and SNNs.
+
+### 2.11 CartPole with SNNs inspired by Theory of Mind (Masters)
+- **URL**: https://github.com/atenagm1375/cartpole
+- **Description**: SNN-based CartPole control inspired by Theory of Mind concepts
+- **Framework**: PyTorch, BindsNet, OpenAI Gym
+- **Dataset**: CartPole, River Raid environments
+- **Complexity**: MODERATE-ADVANCED
+- **Stars**: 1 | **Commits**: 77
+
+### 2.12 GANs for Spiking Time Series (Masters, UvA)
+- **URL**: https://github.com/HitLuca/GANs_for_spiking_time_series
+- **Description**: Generating spiking time series patterns using GANs (Master in AI, University of Amsterdam)
+- **Framework**: Not detailed
+- **Dataset**: Spiking time series data
+- **Complexity**: HIGH
+- interesting intersection of GANs and spiking data
+
+### 2.13 Use of Spiking Neural Networks (Thesis)
+- **URL**: https://github.com/honzikv/use-of-snn
+- **Description**: Three experiments - EEG classification, P300 detection, surrogate gradient MNIST/Fashion-MNIST

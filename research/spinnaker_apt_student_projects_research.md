@@ -13,31 +13,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 
 ## 1. PhD Theses from the SpiNNaker/APT Group (University of Manchester)
 
-### 1.1 Xin Jin -- Parallel Simulation of Neural Networks on SpiNNaker (2010)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Parallel Simulation of Neural Networks on SpiNNaker Universal Neuromorphic Hardware |
-| **Author** | Xin Jin |
-| **Year** | June 2010 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Not listed in retrieved data (likely Steve Furber) |
-| **Abstract** | Investigated efficient modelling schemes for SpiNNaker considering communication, processing, and storage constraints across spiking neural networks with STDP and parallel distributed processing models with backpropagation. Demonstrated feasibility and linear scalability. |
-| **Keywords** | PDP, STDP, Backpropagation, MLP, Real-time, Parallel simulation, Izhikevich, Spiking neural network, SpiNNaker, ARM |
-| **Tools** | SpiNNaker hardware, custom C on ARM968 |
-| **PDF** | Available (6.57 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/parallel-simulation-of-neural-networks-on-spinnaker-universal-neu/ |
-
-### 1.2 M.M. Khan -- Configuring a Massively Parallel CMP System (2009)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Configuring a Massively Parallel CMP System for Real Time Neural Applications |
-| **Author** | M.M. Khan |
-| **Year** | 2009 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (likely) |
-| **Abstract** | Configuration and mapping of neural networks onto the SpiNNaker massively parallel chip multiprocessor system. |
-| **PDF** | Available at https://apt.cs.manchester.ac.uk/ftp/pub/amulet/theses/mmkhan09_phd.pdf |
-
-### 1.3 Alexander Rast -- Scalable Event-Driven Modelling Architectures (2011)

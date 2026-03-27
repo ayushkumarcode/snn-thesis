@@ -523,31 +523,3 @@ snn.Leaky(beta=0.5, spike_grad=spike_grad)
 
 # Synaptic (2nd-order, with current and membrane dynamics)
 snn.Synaptic(alpha=0.9, beta=0.85, spike_grad=spike_grad)
-
-# Recurrent LIF
-snn.RLeaky(beta=0.5, spike_grad=spike_grad)
-```
-
-### All Available Surrogate Functions in snnTorch
-
-| Function | Usage | Key Parameter |
-|----------|-------|---------------|
-| `surrogate.atan(alpha=2.0)` | Arctangent | alpha (default 2.0) |
-| `surrogate.fast_sigmoid(slope=25)` | Fast sigmoid | slope (default 25) |
-| `surrogate.sigmoid(slope=25)` | Sigmoid | slope (default 25) |
-| `surrogate.triangular(threshold=1)` | Triangular | threshold (default 1) |
-| `surrogate.straight_through_estimator()` | STE | none |
-| `surrogate.spike_rate_escape(beta=1, slope=25)` | Escape rate | beta, slope |
-| `surrogate.LSO(slope=0.1)` | Leaky spike operator | slope (default 0.1) |
-| `surrogate.SFS(slope=25, B=1)` | Sparse fast sigmoid | slope, B |
-| `surrogate.SSO(mean=0, variance=0.2)` | Stochastic spike operator | mean, variance |
-| `surrogate.heaviside()` | Heaviside (true derivative) | none |
-| `surrogate.custom_surrogate(fn)` | User-defined | custom function |
-
-### How Straightforward Is snnTorch?
-
-**Very straightforward.** Here is the honest assessment:
-
-- **Installation:** Single pip install, no special dependencies beyond PyTorch
-- **Learning curve:** If you know PyTorch CNN training, you can have a working SNN in under 1 hour following Tutorial 6
-- **API design:** Neuron models (snn.Leaky, snn.Synaptic) are drop-in replacements that go between standard nn.Linear/nn.Conv2d layers

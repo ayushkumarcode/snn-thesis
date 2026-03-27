@@ -250,3 +250,26 @@ def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
         "gap": snn_acc - accuracy, "seconds": elapsed,
         "results": results,
     }
+    with open(results_dir / "spinnaker_results.json", "w") as f:
+        json.dump(summary, f, indent=2)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=4)
+    parser.add_argument("--num-samples", type=int, default=20)
+    parser.add_argument("--model-type", default="baseline",
+                        choices=["baseline", "rhythm"])
+    parser.add_argument("--weight-scale", type=float, default=1.0)
+    parser.add_argument("--extract-only", action="store_true")
+    args = parser.parse_args()
+
+    if args.extract_only:
+        extract_features(args.fold, args.model_type, args.num_samples)
+    else:
+        run_spinnaker_inference(args.fold, args.num_samples,
+                                args.weight_scale)
+
+
+if __name__ == "__main__":
+    main()

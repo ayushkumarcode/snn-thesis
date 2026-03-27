@@ -474,3 +474,29 @@ Emerging field. SpikeGPT is notable but very small (46M params vs billions for G
 - Spiking Speech Commands (SSC) -- neuromorphic
 - VoiceBank+DEMAND (speech enhancement)
 - Intel N-DNS Challenge dataset (speech denoising)
+- LibriSpeech (large vocabulary ASR)
+- TIMIT (phone recognition)
+
+### Conferences to watch
+- NeurIPS, ICLR, ICML (top ML)
+- ICASSP, Interspeech (speech)
+- ACL, EMNLP (NLP -- SpikeVoice was here)
+- ECCV, CVPR (vision -- SpikeYOLO was here)
+- WACV (vision -- SDDPM was here)
+- ICONS (neuromorphic computing)
+
+---
+
+## 11. How confident am i in these findings
+
+| Finding | Confidence |
+|---------|-----------|
+| SNN ASR is mature with 20+ papers | Very High |
+| IML-Spikeformer achieves ~3.4% WER on LibriSpeech | High (single paper, not yet independently verified) |
+| SpikeVoice is the first SNN TTS | Very High (explicitly stated, peer-reviewed at ACL) |
+| SNNs can generate continuous outputs via membrane potential | Very High (multiple implementations confirm) |
+| SNN speech enhancement won Intel N-DNS Challenge | High |
+| 0 papers on SNN voice conversion | High (extensive search, nothing came up) |
+| 0 papers on SNN music generation (modern) | High |
+| SNN diffusion models achieve FID ~19 on CIFAR-10 | High (WACV 2024 paper) |
+| Energy efficiency claims (5-100x reduction) | Medium-High (theoretical estimates, limited hardware validation) |

@@ -418,3 +418,31 @@ yes, pretty clearly. the evidence:
 | MNIST/Fashion-MNIST only | MNIST + CIFAR-10 + SHD + sensor data |
 | 2-layer STDP networks | Modern deep SNNs with surrogate gradients |
 | Accuracy only or accuracy + 1-2 metrics | Accuracy, latency, spike count, energy proxy, noise robustness |
+| Different frameworks per study | Unified snnTorch for everything |
+| No practical guidelines | Decision framework / recommendation guide |
+
+### Feasibility
+
+| Aspect | Assessment |
+|--------|-----------|
+| Technical difficulty | Moderate. rate/latency/delta are trivial (built-in). phase/burst/GRF need custom code but are straightforward. direct needs basic NN knowledge. |
+| Compute | Low-Moderate. MNIST on laptop in minutes. CIFAR-10 needs GPU but runs in hours. SHD manageable. No HPC needed. |
+| Background knowledge | LIF model, surrogate gradients, basic signal processing. learnable in a few weeks from snnTorch tutorials. |
+| Risk | Low. experiments are well-defined, reproducible, not dependent on external resources. worst case = confirming existing results (still valid as replication + extension). |
+| Timeline | 8-12 weeks for core experiments (6 encodings x 3 datasets x 3 metrics). |
+
+### Potential Concerns
+
+| Concern | Response |
+|---------|---------|
+| "It's just a comparison" | "systematic evaluation" is a recognized contribution type in CS. you're creating knowledge about trade-offs that doesn't exist in one place. adding a decision framework adds originality. |
+| "Guo et al. already did this" | they used STDP on MNIST with 4 methods. you'd use modern training (surrogate gradients), more datasets, more methods. overlap is partial. |
+| "Results might be obvious" | they're not -- phase coding has best noise resilience but worst SOPs, TTFS has best efficiency but worst noise tolerance. these trade-offs are complex and data-dependent. |
+
+---
+
+## Research Gaps and Contribution Opportunities
+
+### Primary Gaps (highest value)
+
+1. **Unified cross-modality comparison**: test same 6+ encodings on image + audio + time-series using same architecture and training. nobody's done this.

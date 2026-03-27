@@ -54,20 +54,20 @@ Despite active SNN research and strong audio motivation, **no prior published wo
 
 ---
 
+## 1.2 research questions
+
+Four research questions, each targeting a distinct open question:
 
 **RQ1: Can convolutional SNNs classify environmental sounds competitively with matched ANNs?**
-The ANN state-of-the-art on ESC-50 is 98.25%, achieved with external pretraining on 2 million clips. This thesis does not aim to match that number with SNN-from-scratch training on 1,600 clips. The question is whether SNNs trained from scratch achieve accuracy within a useful margin of a matched-architecture ANN (same convolutional structure, same dataset, same training protocol). The "gap" itself is a scientific measurement, not a failure — it quantifies the efficiency cost of spiking computation under the current training paradigm.
+ANN SOTA on ESC-50 is 98.25% with external pretraining on 2M clips. I'm not trying to match that with from-scratch SNN training on 1600 clips. The question is whether SNNs trained from scratch get within a useful margin of a matched-architecture ANN (same conv structure, same dataset, same training). The "gap" itself is the scientific measurement, not a failure -- it quantifies the cost of spiking computation under current training.
 
 **RQ2: Which spike encoding method performs best for environmental sound classification, and why?**
-A static mel spectrogram must be converted to a temporal spike train before processing by an SNN. Seven encoding strategies are evaluated: rate coding, latency coding, delta (temporal contrast) coding, direct (continuous) coding, burst coding, phase coding, and population coding. Each makes different assumptions about how information should be represented in spike timing and count. No prior work has compared more than three encoding methods on any audio benchmark. The goal is not merely to rank them, but to explain the ranking mechanistically — identifying which properties of a spectrogram are preserved or destroyed by each encoding.
+Static mel spectrograms need converting to temporal spike trains. Seven encodings evaluated: rate, latency, delta, direct, burst, phase, population. Each makes different assumptions about information representation in spike timing/count. No prior work compared more than 3 methods on any audio benchmark. Goal isn't just ranking -- its explaining the ranking mechanistically.
 
-**RQ3: Can a trained SNN be deployed on SpiNNaker neuromorphic hardware, and what is the accuracy cost?**
-SpiNNaker operates with binary spike inputs, fixed-point arithmetic, and no native convolutional compute. These constraints create a significant engineering challenge: a network trained in floating-point software must be mapped to a hardware substrate with fundamentally different computational properties. This thesis documents the complete deployment process — including the failures, the root causes of those failures, and the hybrid approach that ultimately produced valid hardware results. The hardware-software co-design insights from this process are a primary contribution.
+**RQ3: Can a trained SNN be deployed on SpiNNaker, and what's the accuracy cost?**
+SpiNNaker has binary spikes, fixed-point arithmetic, no native conv compute. These constraints create significant engineering challenges: a float-trained network must map to fundamentally different hardware. This thesis documents the complete deployment -- including the failures, their root causes, and the hybrid approach that ultimately worked. The hardware-software co-design insights are a primary contribution.
 
-**RQ4: Do SNNs exhibit natural adversarial robustness compared to matched ANNs on audio inputs?**
-Prior work on image SNNs (Sharmin et al. 2020) suggests that binary spike thresholding may implicitly filter adversarial perturbations by requiring them to cross a hard non-linearity. This thesis tests whether this effect holds for audio spectrograms — a qualitatively different signal domain — using FGSM and PGD attacks across a range of perturbation magnitudes. The result has practical implications for edge audio security.
-
----
+**RQ4: Do SNNs exhibit natural adversarial robustness vs matched ANNs on audio?**
 
 ## 1.3 Contributions
 

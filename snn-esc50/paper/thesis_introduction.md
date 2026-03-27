@@ -124,7 +124,12 @@ todo: make sure these section refs stay consistent with actual chapter content
 
 **Chapter 7: Discussion** -- synthesises everything, addresses each RQ, implications for neuromorphic audio, augmentation negative result.
 
+**Chapter 8: Conclusion** -- contributions summary, RQ answers, ten future work directions.
 
-All code, model checkpoints, and experiment scripts are available at [GitHub repository — TBD upon submission]. Fixed random seeds (torch.manual_seed(42), numpy.random.seed(42)) are used throughout. All results reported are from the best validation accuracy per fold, not final-epoch accuracy. The ESC-50 dataset is freely available from the official repository (Piczak 2015, GitHub).
+---
 
-The primary framework is snnTorch 0.9.4 (Eshraghian et al. 2023). The Python environment is specified in requirements.txt; the critical dependencies are PyTorch 2.10, snnTorch 0.9.4, librosa 0.10.x, neurobench 2.2.0, panns-inference, torchattacks, and sPyNNaker 1.0.0.
+## 1.6 reproducibility
+
+All code, checkpoints, and scripts at [GitHub -- TBD]. Fixed seeds (torch.manual_seed(42), numpy.random.seed(42)) throughout. All results are best validation accuracy per fold, not final-epoch. ESC-50 freely available from Piczak's repo.
+
+Primary framework: snnTorch 0.9.4 (Eshraghian et al. 2023). Critical deps: PyTorch 2.10, snnTorch 0.9.4, librosa 0.10.x, neurobench 2.2.0, panns-inference, torchattacks, sPyNNaker 1.0.0.

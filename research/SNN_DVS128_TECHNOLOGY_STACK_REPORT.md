@@ -614,3 +614,31 @@ cached_dataset = DiskCachedDataset(
 loader = DataLoader(
     dataset,
     batch_size=16,
+    collate_fn=tonic.collation.PadTensors(batch_first=False)
+    # batch_first=False: output shape [T, N, C, H, W]
+    # batch_first=True:  output shape [N, T, C, H, W]
+)
+```
+
+---
+
+## Training Infrastructure
+
+### GPU Requirements
+
+| Configuration | VRAM | Notes |
+|---|---|---|
+| RTX 2080 Ti (12GB) | 12 GB | T=16 timesteps, batch_size=16. Reference GPU in SpikingJelly benchmarks |
+| RTX 3090 (24GB) | 24 GB | Can use T=20 (original paper setting) with larger batches |
+| RTX 4090 (24GB) | 24 GB | Faster clock; comfortable for training |
+| A100 (40/80GB) | 40-80 GB | Large batch training; multi-run experiments |
+| MacBook M1/M2/M3 | 8-36 GB unified | Works via PyTorch MPS backend. Caveats below. |
+
+### Apple M-Series Mac Compatibility
+
+Training does work on Apple Silicon via PyTorch MPS (Metal Performance Shaders).
+
+```python
+device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
+```
+

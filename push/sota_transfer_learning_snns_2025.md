@@ -22,31 +22,3 @@ The report identifies zero prior works combining PANNs (or any AudioSet-pretrain
 
 The dominant trend in 2024-2025 is training-free conversion of pretrained ANNs to SNNs, eliminating the need for SNN-specific training entirely.
 
-| Paper | Venue | Key Result | Timesteps | Notes |
-|-------|-------|------------|-----------|-------|
-| Bu et al., "Inference-Scale Complexity" | CVPR 2025 | Near-lossless on ImageNet, segmentation, detection | Variable | Channel-wise threshold balancing; leverages open-source pretrained ANNs directly |
-| STA (Spatio-Temporal Approximation) | ICLR 2024 | Converts CLIP ViT-B/32 to SNN; retains zero-shot capability | Low | First training-free conversion of a pretrained Transformer; inherits CLIP transferability |
-| He et al., "Differential Coding" | ICML 2025 | SOTA accuracy with reduced spike count and energy | Variable | Transmits rate changes rather than absolute rates; threshold iteration optimization |
-| "One Timestep Is Enough" (PMSM) | arXiv 2025 | 81.6% ImageNet with T=1 (ViT-S) | **1** | Polarity Multi-Spike Mapping; 4-level spiking neurons |
-| "All In One Timestep" | arXiv 2025 | 75.12% ImageNet with T=4 | 4 | Exponentially fewer timesteps than prior work |
-| Training-Free Spiking Transformers | arXiv 2025 | Near-lossless on CV, NLU, NLG | Low | Universal Group Operators + Spatial Rectification Self-Attention |
-| PASCAL | TMLR 2025 | Mathematically equivalent to quantized ANN | Minimal | Proves inhibitory (negative) spikes essential; per-layer optimal quantization |
-| Wang et al., "Negative Spikes" | IJCAI 2025 | Outperforms two-stage algorithm by 1.29% at T=4 | 4 | Leaky ReLU-based neuron model; joint layer calibration |
-| LAS | arXiv 2025 | Loss-less conversion of LLMs (OPT-66B) | Low | Outlier-Aware Threshold neurons; fully spike-driven LLMs |
-
-**Key Insight for Thesis:** The thesis uses 25 timesteps for the SNN, which is generous by modern conversion standards. Recent work achieves near-lossless conversion with T=1-4. However, conversion methods target pretrained ANNs, not from-scratch SNN training. The thesis's direct training approach (surrogate gradients, 25 timesteps) follows a fundamentally different paradigm.
-
-### 1.2 Conversion Specifically for Audio
-
-Audio-specific ANN-to-SNN conversion remains extremely sparse:
-
-**Abuhajar et al. (2025) -- "Three-Stage Hybrid SNN Fine-Tuning for Speech Enhancement"**
-- Venue: Frontiers in Neuroscience (April 2025)
-- Method: (1) Train ANN (Wave-U-Net or ConvTasNet), (2) Convert to SNN, (3) Hybrid fine-tuning (spiking forward pass, ANN backward pass)
-- Application: Speech enhancement (not classification)
-- Key result: Hybrid fine-tuning recovers most of the ANN's speech quality
-- **Relevance to thesis:** This is the closest methodological parallel to the thesis's PANNs+SNN approach -- ANN features transferred to SNN domain -- but for speech enhancement rather than classification.
-
-**DPSNN (Sun & Bohte, 2024) -- "Spiking Neural Network for Low-Latency Streaming Speech Enhancement"**
-- Encoder-separator-decoder architecture
-- Spiking neurons in separator; non-spiking encoder/decoder

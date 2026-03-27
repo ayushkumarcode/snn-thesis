@@ -60,31 +60,3 @@ Sources: [ICONS 2026 Calls](https://iconsneuromorphic.cc/calls-2026/), [EasyChai
 | **Proceedings** | Abstract-only (no full paper in proceedings) |
 | **Registration** | Master/bachelor students receive sponsored participation |
 | **Acceptance Rate** | Not reported |
-| **Realistic for UG?** | **YES.** Abstract-only = low barrier. Student sponsorship available. Interdisciplinary neuromorphic focus. |
-| **Focus** | Neuromorphic computing hardware, AI/neuroscience intersection, electrical engineering, energy-efficient architectures |
-
-**Note:** This is abstract-only, not a full paper venue. Good for visibility and networking but does not produce a citable proceedings paper.
-
-Sources: [ICNCE 2026](https://icnce-2026.de/), [NeuroPAC listing](https://www.neuropac.info/event/icnce-2026-international-conference-on-neuromorphic-computing-and-engineering/)
-
----
-
-### 1.3 NICE 2026 -- Neuro-Inspired Computational Elements Conference [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | Neuro-Inspired Computational Elements Conference |
-| **Paper Deadline** | 24 November 2025 (PASSED) |
-| **Late-Breaking** | 1 February 2026 (PASSED) |
-| **Conference Dates** | 24-26 March 2026 |
-| **Location** | TBD (IEEE proceedings) |
-| **Page Limit** | Varies by track |
-| **Realistic for UG?** | N/A -- deadline passed |
-
-Sources: [NICE 2026](https://niceworkshop.org/nice-2026/), [EasyChair CFP](https://easychair.org/cfp/NICE-2026)
-
----
-
-## 2. SIGNAL PROCESSING CONFERENCES
-
-### 2.1 EUSIPCO 2026 -- European Signal Processing Conference [DEADLINE PASSED]

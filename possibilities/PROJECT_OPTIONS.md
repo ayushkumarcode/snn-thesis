@@ -25,31 +25,3 @@
 **Risk:** LOW. The worst case is "SNNs don't work well on ESC-50" and that's still a publishable negative result with good analysis.
 
 **Why pick this:** Best novelty-to-effort ratio. The literature review practically writes itself ("no SNN papers exist, here's why this matters"). Your supervisor will see you identified a genuine gap. The report framing is strong.
-
-**Why not:** It's an application paper, not technically groundbreaking. You're applying existing methods to a new dataset. That's fine for undergrad, but it won't feel "cool" in the way robot reflexes would.
-
----
-
-## Option 2: SNN ECG Classification on PTB-XL
-
-**The pitch:** SNNs for cardiac monitoring. Wearable heart monitors need to run on tiny batteries for days. SNNs use 30-1000x less energy than standard deep learning. PTB-XL (21,799 ECGs, 12-lead) has no comprehensive SNN benchmark.
-
-**What you'd actually build:**
-- Load PTB-XL dataset (free, well-documented)
-- Use snnTorch's delta encoding (designed for ECG-like signals)
-- Train SNN classifier for cardiac conditions (5 superclasses or 23 subclasses)
-- Compare against ANN baseline
-- Report energy efficiency
-
-**Iteration cycle:** Similar to ESC-50 -- standard train loops. PTB-XL is bigger (21K samples) so training takes a bit longer but still minutes, not hours. The 12-lead aspect adds preprocessing complexity compared to single-lead MIT-BIH.
-
-**What "good" looks like:** MIT-BIH SNN SOTA is 98.3% (SparrowSNN). PTB-XL is harder -- current DNN benchmarks hit ~75-85% depending on the task. Getting competitive SNN results here would be strong.
-
-**Novelty:** HIGH. Some SNN-ECG papers exist (~20-30 total) but none do a proper benchmark on PTB-XL with modern frameworks.
-
-**Risk:** LOW-MEDIUM. 12-lead ECG has more preprocessing complexity than audio spectrograms. If it gets annoying, you can fall back to MIT-BIH (single-lead, simpler, but less novel).
-
-**Why pick this:** Killer real-world narrative. "SNNs for energy-efficient cardiac monitoring" is a sentence that makes sense to everyone. The clinical angle makes for a compelling motivation section.
-
-**Why not:** Slightly more preprocessing than ESC-50. The 12-lead format can be fiddly. Less "automatic novelty" than ESC-50 since some SNN-ECG work exists.
-

@@ -166,3 +166,31 @@ def run_fold(fold, device, sparsity_levels):
         model = ComboSpikingCNN(args).to(device)
         model.load_state_dict(
             torch.load(model_path, map_location=device, weights_only=True))
+
+        # Iterative pruning in 10% steps with fine-tuning
+        current = 0.0
+        step_size = 0.1
+        while current < target:
+            next_target = min(current + step_size, target)
+            # Incremental amount to prune from remaining weights
+            incremental = (next_target - current) / (1.0 - current + 1e-10)
+            incremental = min(incremental, 0.99)
+
+            apply_global_pruning(model, incremental)
+            fine_tune(model, train_loader, device, epochs=5, lr=1e-4)
+            current = count_sparsity(model)
+
+        remove_pruning(model)
+        actual_sparsity = count_sparsity(model)
+        acc = eval_model(model, test_loader, device)
+        retention = acc / base_acc if base_acc > 0 else 0
+
+        print(f"  Pruning {target*100:.0f}% (actual {actual_sparsity*100:.1f}%): "
+              f"acc={acc:.4f} (retention={retention:.4f})")
+
+        results.append({
+            "fold": fold, "target_sparsity": target,
+            "actual_sparsity": actual_sparsity,
+            "accuracy": acc, "retention": retention,
+            "energy_reduction_x": 1.0 / (1.0 - actual_sparsity + 1e-10),
+        })

@@ -26,3 +26,31 @@
 - SNN fc2 kurtosis: 24.6 vs ANN 14.6 (SNN more peaked/heavy-tailed)
 - both models have similar overall norms
 - finding: spiking constraint produces denser, more peaked weight distributions
+
+### 5. Neuron Ablation / Fault Tolerance (fold 1)
+- **SNN more fault-tolerant**: retains 13.7% at 50% ablation vs ANN 12.6%
+- at 10-30% ablation, SNN actually BEATS ANN in absolute accuracy
+- takeaway: "SNN surpasses ANN accuracy when 10-30% of neurons fail"
+
+### 6. Stochastic Resonance (fold 1)
+- **stochastic resonance detected**: sigma=0.02 improves SNN by +0.25pp
+- no SR in ANN (expected)
+- SNN dramatically more noise-resilient: at sigma=0.5, SNN=39.25% vs ANN=13.1%
+- takeaway: "biological stochastic resonance manifests in trained LIF network"
+
+## Running on CSF3 (job 12168476, A100 GPU)
+
+- adversarial robustness 5-fold (fixes the single-fold gap)
+- noise robustness (SNR sweep)
+- temporal ablation 5-fold
+- few-shot learning curves
+- spike efficiency Pareto
+
+## Not Yet Run (need SpiNNaker or UrbanSound8K)
+
+- SpiNNaker latency/energy measurement
+- spike drop robustness
+- full SpiNNaker IF_cond_exp deployment
+- UrbanSound8K cross-dataset (needs dataset download)
+- SNN saliency maps (can run locally)
+

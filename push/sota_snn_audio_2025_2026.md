@@ -82,3 +82,31 @@ KDCL reduces timesteps by 60%, energy by 54.8% (0.0314mJ to 0.0142mJ on SSC). us
 
 #### E-prop on SpiNNaker 2 (Yan et al., 2022)
 - Frontiers in Neuroscience, 2022
+- spiking RNN with e-prop learning rule, trained ONLINE on SpiNNaker 2
+- 91.12% on Google Speech Commands
+- 680 KB for 25K weights, 12x less energy than V100 GPU
+
+### Speech Enhancement
+
+#### Spiking-FullSubNet (Hao et al., 2024)
+- arXiv:2410.04785, IEEE TNNLS 2025
+- **1st Place Winner, Intel N-DNS Challenge (Track 1: Algorithmic)**
+- full-band + sub-band SNN with Gated Spiking Neurons
+- nearly 3 orders of magnitude less energy than best ANN (CMGAN)
+- first SNN to win a major speech processing competition
+
+#### Three-Stage Hybrid SNN Fine-Tuning (Abuhajar et al., 2025)
+- Frontiers in Neuroscience, April 2025
+- ANN train -> ANN-to-SNN conversion -> hybrid fine-tuning (spiking forward, ANN backward)
+- spiking Wave-U-Net and spiking Conv-TasNet
+- operates in temporal domain (no FFT needed)
+
+### Sound Source Localization
+
+#### RF-PLC SSL (Zhang et al., NeurIPS 2024)
+- "Spike-based Neuromorphic Model for Sound Source Localization"
+- NeurIPS 2024 Poster
+- Resonate-and-Fire neurons with Phase-Locking Coding + Multi-Auditory Attention
+- SOTA accuracy in SSL tasks, strong noise robustness
+- first SNN at NeurIPS for audio processing
+

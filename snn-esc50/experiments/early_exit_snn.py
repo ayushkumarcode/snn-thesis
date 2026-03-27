@@ -222,3 +222,31 @@ def main():
         print(f"\n=== Early Exit | {model_type} | Fold {fold} ===")
         model = load_model(model_type, fold, device)
         if model is None:
+            continue
+
+        _, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+        results = early_exit_inference(
+            model, test_loader, device, thresholds,
+            stability_k=args.stability_k, model_type=model_type)
+        all_fold_results[fold] = results
+
+    # Save results
+    save_dir = RESULTS_DIR / "energy" / f"early_exit_{model_type}"
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    output = {
+        "model_type": model_type,
+        "stability_k": args.stability_k,
+        "full_timesteps": NUM_STEPS,
+        "folds": {},
+    }
+    for fold, results in all_fold_results.items():
+        output["folds"][str(fold)] = {
+            str(t): r for t, r in results.items()
+        }
+
+    # Compute 5-fold averages per threshold
+    if len(all_fold_results) == 5:
+        print(f"\n{'='*60}")
+        print(f"  5-Fold Summary: Early Exit ({model_type})")
+        print(f"{'='*60}")

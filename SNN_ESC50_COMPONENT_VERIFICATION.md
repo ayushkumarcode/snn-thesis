@@ -198,31 +198,3 @@ The March 2025 paper "Spike Encoding for Environmental Sound: A Comparative Benc
 
 | Function | Type | Description |
 |----------|------|-------------|
-| `spikegen.rate(data, num_steps)` | Rate coding | Poisson spike trains; features = mean of binomial distribution |
-| `spikegen.rate_conv(data)` | Rate coding | Simplified version, input clipped to [0,1] |
-| `spikegen.latency(data, num_steps, tau)` | Temporal coding | Time-to-first-spike using LIF model; high values fire early |
-| `spikegen.latency_code(data, num_steps, tau)` | Temporal coding | Returns spike times without temporal expansion |
-| `spikegen.delta(data, threshold)` | Event-driven | Spikes when consecutive timestep difference exceeds threshold |
-
-### Code for converting mel-spectrogram to spike train:
-
-```python
-import snntorch.spikegen as spikegen
-import torch
-
-# Assume mel_spec shape: [batch, 1, 128, time_frames] normalized to [0, 1]
-mel_spec_normalized = (mel_spec - mel_spec.min()) / (mel_spec.max() - mel_spec.min())
-
-# Rate encoding: repeat spectrogram across num_steps, generate Poisson spikes
-num_steps = 25
-spike_data = spikegen.rate(mel_spec_normalized, num_steps=num_steps)
-# Output shape: [num_steps, batch, 1, 128, time_frames]
-
-# Latency encoding: high-intensity pixels fire earlier
-spike_data_latency = spikegen.latency(
-    mel_spec_normalized,
-    num_steps=num_steps,
-    tau=5.0,
-    threshold=0.01,
-    normalize=True
-)

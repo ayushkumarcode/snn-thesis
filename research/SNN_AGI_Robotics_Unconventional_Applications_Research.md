@@ -558,3 +558,31 @@ Very novel (the arxiv 2026 paper is literally weeks old). But federated learning
 
 ---
 
+### 3.12 SNN for recommendation systems (new finding)
+
+**Literature: 1-2 papers**
+
+Only found one relevant paper: [Cost-Effective On-Device Sequential Recommendation with SNNs (IJCAI 2025)](https://www.ijcai.org/proceedings/2025/0398.pdf)
+
+**Verdict: too sparse to build on. Only 1-2 papers means almost no reference framework.**
+
+---
+
+### 3.13 Part 3 summary
+
+| Application | Papers | Novel? | macOS? | Feasible? | Already Covered? |
+|---|---|---|---|---|---|
+| Game AI (CartPole) | 10-15 | Low | YES | Moderate-High | Partially (overlaps RL) |
+| **Cybersecurity/IDS** | **10-20** | **Moderate** | **YES** | **HIGH** | **YES (existing report)** |
+| Financial Trading | 10-15 | Low | YES | Moderate | YES (Ezinwoke did it) |
+| Autonomous Driving | 20+ | Very Low | No (CARLA) | Low | No |
+| Weather/Time Series | 5-10 | Moderate | YES | Moderate-High | YES (existing report) |
+| Drug Discovery | 1-2 | Very High | YES | Low | No |
+| **ECG Classification** | **15-20** | **Low** | **YES** | **HIGH** | **YES (existing report)** |
+| NLP/Text | 15-25 | Low | YES | Moderate | YES (existing report) |
+| **Image Denoising** | **3-5** | **VERY HIGH** | **YES** | **Moderate-High** | **NO -- NEW** |
+| EEG/BCI | 15-20 | Low | YES | High | YES (existing report) |
+| **Privacy/Federated Learning** | **3-5** | **VERY HIGH** | **YES** | **Low-Moderate** | **NO -- NEW** |
+| Recommendation Systems | 1-2 | Very High | YES | Low-Moderate | NO -- NEW |
+
+---

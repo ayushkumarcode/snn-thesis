@@ -54,3 +54,31 @@ the phase coding noise resilience parallels our finding that phase ties with rat
 4 encoding families with variants on RecGym IMU dataset, deployed on Loihi 2:
 
 | Encoding | Accuracy | Avg Fire Rate | Loihi 2 Energy (mJ) | Robustness (acc drop at 0.1 noise) |
+|----------|----------|---------------|----------------------|-------------------------------------|
+| Rate (Beta) | **91.7%** | 49.9% | 250.15 | -9.5% |
+| Rate (Normal) | 90.9% | 49.9% | 402.14 | -10.6% |
+| Delta Modulation | 89.8% | 38.5% | 24.47 | **-0.7%** |
+| Binary (10-bit) | 89.6% | 46.9% | **6.31** | -1.0% |
+| TTFS (Logarithmic) | 89.2% | **2%** | 144.39 | -37.3% |
+| Binary (6-bit) | 86.5% | 33.3% | 8.87 | -2.5% |
+| Rate (Uniform) | 85.4% | 49.9% | 436.51 | -11.1% |
+
+**no single encoding wins across all metrics.** rate wins accuracy, delta wins robustness, binary wins energy, TTFS wins sparsity but has worst robustness. this mirrors our findings exactly.
+
+interesting: their delta modulation has best robustness (only -0.7% drop) while our delta encoding performed poorly (7.25%) -- probably because they use multi-threshold adaptive delta modulation vs our simple threshold-based version. TTFS fragility (-37.3% under noise) is consistent with our latency encoding weakness (16.30%).
+
+#### Petro et al. (Frontiers in Neuroscience, 2022)
+
+benchmarks rate-based and temporal coding on Free Spoken Digit Dataset and WISDM sensor data with cochlea-inspired preprocessing. confirms encoding choice depends heavily on preprocessing pipeline and target application.
+
+### Encoding for Audio Specifically
+
+#### Larroza et al. (arXiv:2503.11206, March 2025)
+
+closest paper to our work. compares 3 spike encodings on **ESC-10** (not ESC-50):
+
+| Encoding | F1 Score |
+|----------|----------|
+| TAE (Threshold Adaptive) | **0.661** |
+| Step Forward | 0.409 |
+| Moving Window | 0.354 |

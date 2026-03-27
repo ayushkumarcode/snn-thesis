@@ -227,31 +227,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 | Innatera | Netherlands (commercial) | Always-on audio sensing | Pulsar chip, 400microW audio classification |
 | SpiNNcloud | Dresden | SpiNNaker2 applications | Including audio potential |
 
-**Key Datasets:**
-- **SHD/SSC** (Spiking Heidelberg Digits / Spiking Speech Commands) -- the de facto standard
-- **Google Speech Commands** -- for keyword spotting
-- **ESC-10/ESC-50** -- environmental sound (our domain, ZERO prior SNN work on full ESC-50)
-- **UrbanSound8K** -- urban environmental audio
-
-**Community Gaps (our opportunities):**
-1. **No SNN on full ESC-50** -- we are first
-2. **No systematic 7-encoding comparison on audio** -- Larroza only tested 3 methods on ESC-10
-3. **No PANNs+SNN transfer learning for audio** -- entirely novel
-4. **No adversarial robustness study for SNN audio** -- entirely novel
-5. **Very few actual hardware deployments for audio SNNs** -- Dominguez-Morales 2016 (pure tones only) is the closest
-
----
-
-## 8. WHAT WOULD MAKE A PAPER "GO VIRAL" IN THE NEUROMORPHIC COMMUNITY
-
-Based on analysis of high-impact recent papers and community discourse:
-
-### Formula for Maximum Impact
-
-1. **Real hardware + real numbers**: The community is TIRED of theoretical energy estimates. Papers with actual hardware deployment (Loihi, SpiNNaker, FPGA) get 3-5x more attention. Our SpiNNaker deployment is genuine gold.
-
-2. **Address the AI energy narrative**: The PNAS 2025 paper on AI energy crisis + neuromorphic solutions hit mainstream news. Any paper that credibly contributes data to the "can neuromorphic computing save AI from its energy problem?" narrative gets amplified.
-
-3. **Honest about limitations**: The community has developed allergy to overclaiming. Papers that honestly report where SNNs fall short (like our 47.15% vs 63.85% gap) while explaining WHY are more trusted than papers claiming SNN superiority.
-
-4. **Bridge SNN and mainstream ML**: Papers connecting SNNs to transformers, LLMs, or pretrained models generate excitement because they lower the barrier for mainstream ML researchers to engage with neuromorphic.

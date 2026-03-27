@@ -40,20 +40,20 @@ The [0,1] normalisation is critical for spike encoding -- rate coding generates 
 
 All 2000 spectrograms precomputed and cached in memory (precompute=True) to avoid I/O overhead during training.
 
+---
 
-## 3.3 Model Architecture
+## 3.3 model architecture
 
 ### 3.3.1 SpikingCNN
 
 ```
-Input: (T, B, 1, 64, 216) — T=25 timesteps, B=batch, 1 channel, 64×216 mel spectrogram
+Input: (T, B, 1, 64, 216) -- T=25 timesteps, B=batch
 
-Block 1:  Conv2d(1→32, k=3, p=1) → BatchNorm2d(32) → MaxPool2d(2) → LIF₁
+Block 1:  Conv2d(1->32, k=3, p=1) -> BN(32) -> MaxPool(2) -> LIF1
           Output: (T, B, 32, 32, 108)
 
-Block 2:  Conv2d(32→64, k=3, p=1) → BatchNorm2d(64) → MaxPool2d(2) → LIF₂
+Block 2:  Conv2d(32->64, k=3, p=1) -> BN(64) -> MaxPool(2) -> LIF2
           Output: (T, B, 64, 16, 54)
-
 Pooling:  AvgPool2d(kernel=(4,6))           [MPS-compatible substitute for AdaptiveAvgPool]
           Output: (T, B, 64, 4, 9) → flatten → (T, B, 2304)
 

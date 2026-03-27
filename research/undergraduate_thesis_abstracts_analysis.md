@@ -312,31 +312,3 @@ The most frequently used phrasings for stating objectives fall into these catego
 | "We reviewed the field and built a demo" | 1 | Thesis 13 |
 | "We proposed/introduced a novel method" | 1 | Thesis 10 |
 
-The overwhelming pattern is **implementation + evaluation** rather than **discovery**. Students build something and test it. The contribution is the working system and the empirical results, not a theoretical advance.
-
-### 3.3 How Do They Frame Their Work?
-
-**Framework 1: "We built X and evaluated it" (Most Common)**
-This is the dominant pattern. The thesis implements a system or algorithm and tests it on a benchmark or hardware platform.
-- "We implement X on the Spikey neuromorphic chip and demonstrate classification of MNIST"
-- "We implement binaural sound localization on neuromorphic hardware using the Jeffress model"
-- "A deep convolutional neural network is built in MATLAB and trained on..."
-
-**Framework 2: "We compared A vs B"**
-The thesis systematically compares approaches, architectures, or configurations.
-- "Compare spiking neural network performance against conventional artificial networks on classification problems"
-- "The team sought to obtain a better understanding of SNNs by comparing their performance... against traditional fully-connected artificial neural networks"
-
-**Framework 3: "We investigated/explored whether X"**
-The thesis asks a question and seeks evidence.
-- "Investigate whether a usable relation exists between object features and barcode location"
-- "Exploring" whether SNNs can be applied to molecular property prediction
-
-**Framework 4: "We discovered/found Y" (Rare)**
-Very few undergraduate theses frame their contribution as a discovery. The closest examples:
-- "Identifying and investigating a previously unknown interaction between input signals that impaired ITD detection" (Thesis 3, but this was a secondary finding, not the primary aim)
-- "Three distinct firing modes were characterized" (Thesis 4, a characterization study)
-
-### 3.4 Typical Research Question Structure
-
-Research questions in these theses, when stated explicitly, follow predictable patterns:

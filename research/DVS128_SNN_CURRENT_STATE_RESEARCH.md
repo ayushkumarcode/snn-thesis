@@ -390,3 +390,31 @@ nobody has done this controlled comparison. clean, reproducible code would be ge
 
 research question: what's the Pareto frontier between accuracy and computational cost?
 
+experiments: vary depth (3/5/7 layers), width (32/64/128 channels), timesteps (4/8/16/32/64), neuron model (IF/LIF/PLIF), pruning levels. compare SynOps across all configs.
+
+### option C: "event representation matters: impact of preprocessing on SNN gesture recognition"
+
+research question: how sensitive are SNN results to event-to-frame conversion choices?
+
+experiments: fixed-count binning (T=8/16/32), fixed-time binning (1ms/5ms/10ms/50ms), voxel grid, raw events (point-based), with/without denoising, spatial downsampling (128/64/32).
+
+this is a genuine gap -- preprocessing is rarely ablated despite being critical.
+
+---
+
+## 12. quick-start if starting today
+
+1. **framework:** SpikingJelly (activation-based API, latest from GitHub)
+2. **dataset:** download DVS128 from IBM Box manually
+3. **first milestone:** reproduce 96.18% baseline in classify_dvsg tutorial
+4. **second milestone:** implement comparison experiments
+5. **GPU:** any NVIDIA with 12GB+, or Apple M-series (MPS, no CuPy though)
+6. **compute estimate:** 20-50 GPU-hours for a full comparison study
+
+### essential reading
+1. SpikingJelly classify_dvsg tutorial
+2. PLIF paper (Fang et al., ICCV 2021) -- learnable neuron params
+3. SpikePoint paper (2024) -- point-based approach
+4. TA-SNN paper (2021) -- temporal attention, good comparison tables
+5. TENNs-PLEIADES paper (2024) -- current SOTA
+6. SpikingJelly Science Advances paper (2023) -- framework design

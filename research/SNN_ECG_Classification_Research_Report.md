@@ -278,3 +278,19 @@ Could combine angles 1 + 4 for something like: "Energy-Efficient ECG Classificat
 4. Neuromorphic Arrhythmia Detection (2025): https://www.nature.com/articles/s41598-025-23248-9
 5. SNN + Attention for ECG (2022): https://www.mdpi.com/2079-9292/11/12/1889
 6. sCCfC On-device Edge Learning (2024): https://pubs.aip.org/aip/aml/article/2/2/026109/3282738
+7. Spike Encoding Evaluation (2024): https://arxiv.org/html/2407.09260v1
+
+### Background
+8. SNN for Biomedical Signals (2024): https://pmc.ncbi.nlm.nih.gov/articles/PMC11362400/
+9. SNN Potential in Biomedical Applications (2024): https://pmc.ncbi.nlm.nih.gov/articles/PMC11362408/
+10. Energy Efficient ECG with SNN (2020): https://www.sciencedirect.com/science/article/abs/pii/S1746809420303098
+
+### Tools
+11. snnTorch: https://snntorch.readthedocs.io/en/latest/
+12. SpikingJelly: https://github.com/fangwei123456/spikingjelly
+13. Norse: https://github.com/norse/norse
+
+### Datasets
+14. MIT-BIH: https://physionet.org/content/mitdb/1.0.0/
+15. PTB-XL: https://physionet.org/content/ptb-xl/1.0.3/
+16. CPSC 2018: http://2018.icbeb.org/Challenge.html

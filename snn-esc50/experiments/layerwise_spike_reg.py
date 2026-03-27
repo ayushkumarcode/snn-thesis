@@ -222,3 +222,31 @@ def run_fold(fold, device, lambda_conv, lambda_fc, num_steps=NUM_STEPS):
             print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | "
                   f"Test: {test_acc:.4f} | {rates_str} | "
                   f"overall={overall_rate:.4f}")
+
+        if patience_counter >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+    print(f"  Fold {fold}: {best_acc:.4f} (ep{best_epoch}) "
+          f"rates={best_rates} overall={best_overall:.4f}")
+
+    return {
+        "fold": fold, "best_acc": best_acc, "best_epoch": best_epoch,
+        "lambda_conv": lambda_conv, "lambda_fc": lambda_fc,
+        "spike_rates": best_rates, "overall_spike_rate": best_overall,
+        "time_seconds": elapsed, "param_count": param_count,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--lambda-conv", type=float, default=None,
+                        help="If set, run single config. Otherwise sweep.")
+    parser.add_argument("--lambda-fc", type=float, default=None)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()

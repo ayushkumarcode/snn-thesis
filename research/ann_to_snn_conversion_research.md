@@ -195,31 +195,3 @@ The accuracy gap follows a clear trend: **more timesteps = lower accuracy loss, 
 | QCFS + TPP | VGG-16 | 16 | 73.98% | ~0% |
 | QCFS + TPP | ResNet-34 | 16 | 72.03% | ~1% |
 | Spiking Transformer (2025) | ViT/DeiT | 4 | 88.60% | ~1% |
-
-### 4.3 Rules of Thumb for Accuracy Loss
-
-| Timesteps | Typical Accuracy Loss (CIFAR-10) | Typical Loss (ImageNet) |
-|-----------|--------------------------------|------------------------|
-| T = 1 | 0-1% (with modern methods) | 2-5% |
-| T = 2-4 | 0-0.5% | 0-2% |
-| T = 8-16 | Near-lossless | 0-1% |
-| T = 32-64 | Lossless | Near-lossless |
-| T = 128-256 | Lossless | Lossless |
-| T >= 500 | Lossless (classical methods) | Lossless (classical methods) |
-
-**Bottom line:** With modern methods (QCFS, calibration, group neurons), you can achieve less than 1% accuracy loss at T=4-16 on CIFAR-10/100. ImageNet requires slightly more timesteps but is feasible at T=4-16 with the latest methods.
-
----
-
-## 5. Which Architectures Convert Best
-
-### 5.1 Architecture Conversion Difficulty Ranking
-
-| Architecture | Conversion Difficulty | Key Challenges | Status (2025) |
-|-------------|---------------------|----------------|---------------|
-| **VGG-16** | EASY | Pure Conv+ReLU+Pool, no skip connections | Fully solved, many papers |
-| **ResNet-18/20/34** | MODERATE | Skip connections cause "deviation error" at residual merges | Well-studied, good results with calibration |
-| **PreActResNet** | MODERATE | Pre-activation variant, slightly different conversion dynamics | Supported in several papers |
-| **MobileNet v1/v2** | MODERATE-HARD | Depthwise separable convolutions, squeeze-excite blocks | Limited published work, gap opportunity |
-| **EfficientNet** | HARD | Compound scaling, Swish/SiLU activation (not ReLU), SE blocks | Very few published results, significant gap |
-| **DenseNet** | MODERATE-HARD | Dense connections, high memory, feature concatenation | Minimal published results |

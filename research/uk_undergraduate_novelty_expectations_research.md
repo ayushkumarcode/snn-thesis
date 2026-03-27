@@ -222,3 +222,31 @@ this is where you actually need:
 ## 5. consolidated evidence table
 
 | University | Level | Grade Band | What they say about originality |
+|-----------|-------|------------|-------------------------------|
+| Cambridge | UG (Part II) | Highest band (36-45/45) | "Genuine contribution" is "strong evidence" but "not a requirement" |
+| Edinburgh (Informatics) | UG/MSc | General | "Not expected that the dissertation will report notable or original contributions to knowledge" |
+| Edinburgh (Informatics) | UG | A2 (80-89) | "Significant personal insight/creativity/originality" |
+| Edinburgh (Informatics) | UG | A3 (70-79) | "Elements of personal insight/creativity/originality" |
+| Edinburgh (Informatics) | UG | B (60-69) | No originality -- "competent thinking" |
+| Sussex | UG | 90-100 | "Evidence of original thought"; "publishable quality" |
+| Sussex | UG | 80-89 | "Evidence of original thought" |
+| Sussex | UG | 70-79 | No originality requirement |
+| Manchester (EEE) | UG | 90-100 | "Significant originality"; "push the boundaries" |
+| Manchester (EEE) | UG | 80-89 | "Intellectual originality and imagination" |
+| Manchester | UG | First (general) | "Originality of argument; clarity and originality of thought" |
+| SOAS | UG | 80+ | "Evidence of original thinking" |
+| SOAS | UG | 70-79 | No explicit originality |
+| KCL | UG | First | Work "which may show some originality" (note: "may") |
+| Edinburgh (SPS) | UG | A1 (90-100) | "Flair and originality"; "potentially publishable" |
+| Edinburgh (SPS) | UG | A3 (70-79) | "Creatively arrive at independent conclusions" |
+| QAA FHEQ | Level 6 | National standard | "Self-direction and originality in tackling and solving problems" (application, not creation) |
+| QAA FHEQ | Level 7 | National standard | "Originality in the application of knowledge" |
+| QAA FHEQ | Level 8 | National standard | "Creation of new knowledge through original research" |
+
+---
+
+## 6. what this means for my project
+
+the bottom line:
+
+1. **i don't need to invent something new.** i need to show i can independently plan, execute, and evaluate a substantial technical project.

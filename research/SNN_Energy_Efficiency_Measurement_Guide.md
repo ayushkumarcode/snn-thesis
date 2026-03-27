@@ -358,31 +358,3 @@ Used by: Most CVPR/ICLR/NeurIPS SNN papers (Spike-driven Transformer, DIET-SNN, 
 E_SNN = sum_layers(spike_count[l] * fan_out[l]) * E_AC * T
 E_ANN = sum_layers(FLOPs[l]) * E_MAC
 Report: "Our SNN achieves Xx energy reduction compared to ANN"
-```
-
-Constants: E_MAC = 4.6 pJ, E_AC = 0.9 pJ (Horowitz 2014, 45nm)
-
-**Source for this pattern:** [Spike-driven Transformer V2](https://arxiv.org/html/2404.03663v1), [Spike-Thrift (WACV 2021)](https://openaccess.thecvf.com/content/WACV2021/papers/Kundu_Spike-Thrift_Towards_Energy-Efficient_Deep_Spiking_Neural_Networks_by_Limiting_Spiking_WACV_2021_paper.pdf)
-
-### Pattern 2: Per-Layer Firing Rate Analysis
-
-Used by: More thorough papers
-
-```
-For each layer l:
-    E_l = FLOPs_l * E_AC * firing_rate_l * T
-E_SNN = sum(E_l for all layers)
-```
-
-This is more accurate because firing rates vary significantly across layers (early layers often have higher firing rates).
-
-### Pattern 3: Lemaire Analytical Model (Most Comprehensive Software-Only Approach)
-
-Used by: Papers that want to account for memory access overhead
-
-```
-E_total = E_synaptic + E_memory + E_addressing
-
-E_synaptic = num_AC_ops * E_AC
-E_memory   = (2 * reads + 1 * write) * E_SRAM_access * num_spikes
-E_addressing = addressing_overhead

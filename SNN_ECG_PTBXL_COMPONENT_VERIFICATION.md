@@ -98,31 +98,3 @@ X = load_raw_data(Y, sampling_rate, path)
 | **VERIFIED HOW** | scipy docs, neurokit2 docs, published research |
 | **POTENTIAL BLOCKER** | NO |
 
-**Standard preprocessing for PTB-XL:**
-
-1. **Bandpass filter:** 0.5--40 Hz (removes baseline wander below 0.5 Hz and high-frequency noise above 40 Hz)
-2. **Normalization:** Z-score normalization per lead (zero mean, unit variance)
-3. **Important finding:** Research shows that for deep learning on PTB-XL, preprocessing makes minimal difference. The Strodthoff benchmark uses minimal/no preprocessing.
-
-**Exact scipy code for bandpass filtering:**
-
-```python
-from scipy.signal import butter, sosfiltfilt
-import numpy as np
-
-def bandpass_filter(signal, lowcut=0.5, highcut=40.0, fs=100, order=4):
-    sos = butter(order, [lowcut, highcut], btype='band', fs=fs, output='sos')
-    filtered = sosfiltfilt(sos, signal, axis=0)
-    return filtered
-
-# Apply per-record: filtered_ecg = bandpass_filter(X[i], fs=100)
-```
-
-**NeuroKit2 alternative:**
-
-```python
-import neurokit2 as nk
-
-# pip install neurokit2  (latest version, actively maintained)
-cleaned = nk.ecg_clean(ecg_signal, sampling_rate=100, method='neurokit')
-```

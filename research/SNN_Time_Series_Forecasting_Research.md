@@ -206,31 +206,3 @@ The CPG-PE paper demonstrated that the commonly used sinusoidal positional encod
 
 ### 6.1 SNN Time-Series Forecasting Specific
 
-| Repository | Paper/Venue | Framework | URL | Stars | Key Features |
-|-----------|-------------|-----------|-----|-------|-------------|
-| SeqSNN (Microsoft) | ICML 2024 + NeurIPS 2024 | PyTorch | https://github.com/microsoft/SeqSNN | -- | iSpikformer, Spike-TCN, Spike-GRU; YAML config-driven |
-| TS-LIF | ICLR 2025 | PyTorch (builds on SeqSNN) | https://github.com/kkking-kk/TS-LIF | -- | Dual-compartment TS-LIF neuron model |
-| Lvchangze/SeqSNN | ICML 2024 + NeurIPS 2024 | PyTorch | https://github.com/Lvchangze/SeqSNN | -- | Author's version with additional features |
-
-### 6.2 General SNN Frameworks (for Building Custom Models)
-
-| Framework | Language | Backend | Key Strengths | URL |
-|-----------|----------|---------|---------------|-----|
-| **snnTorch** | Python | PyTorch | Regression tutorials, beginner-friendly, extensive docs | https://github.com/jeshraghian/snntorch |
-| **SpikingJelly** | Python | PyTorch + CuPy | Fastest (0.26s forward+backward), full-stack including neuromorphic chip deployment | https://github.com/fangwei123456/spikingjelly |
-| **Norse** | Python | PyTorch | Bio-inspired primitives, flexible custom neuron models, torch.compile support | https://github.com/norse/norse |
-| **Lava** (Intel) | Python | Custom | Loihi 2 deployment, SLAYER learning rule, neuromorphic hardware | https://github.com/lava-nc/lava |
-
-### 6.3 Recommended Starting Points
-
-**For an undergraduate thesis, the recommended path is**:
-
-1. **Start with snnTorch** -- it has the most beginner-friendly tutorials:
-   - Tutorial 1: Spike Encoding (https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
-   - Tutorial 5: Training SNNs (https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html)
-   - Tutorial Regression Part I: Membrane potential trajectory training (https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_regression_1.html)
-   - Tutorial Regression Part II: Recurrent feedback for regression (https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_regression_2.html)
-
-2. **Then examine SeqSNN** for reference implementations of time-series specific architectures:
-   ```
-   conda create -n SeqSNN python=3.10

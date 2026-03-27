@@ -251,19 +251,19 @@ SNN is still more expensive even on neuromorphic hardware. Follows from Dampfhof
 
 The Pareto-optimal deployment: **PANNs embeddings + SpiNNaker FC2**: CNN14 extracts on CPU/NPU once, first two SNN layers in software, only 256->50 FC2 on SpiNNaker (~86 nJ). 92.50% accuracy with hardware-compatible neuromorphic inference for the classification step.
 
-**On neuromorphic hardware (SpiNNaker/Loihi):** The cost relationship inverts. Each SNN AC (binary × weight) costs ~0.9 pJ on neuromorphic hardware vs ~4.6 pJ for ANN MACs. If the SpiNNaker hardware achieves AC-only compute for the classification layer (fold 4 example calculation; 5-fold means: SNN 968 ± 37 nJ, ANN 454 ± 11 nJ):
-$$\text{SNN hardware energy} = 1,084,732 \times 0.9 \text{ pJ} = 976 \text{ nJ (fold 4)}$$
-$$\text{ANN hardware energy} = 100,561 \times 4.6 \text{ pJ} = 463 \text{ nJ (fold 4)}$$
+---
 
-On neuromorphic hardware, the SNN still has more total operations (1.08M vs 101K). The question is whether the neuromorphic AC is cheap enough to compensate:
-$$\text{Break-even requires: SNN ACs} \times 0.9 < \text{ANN MACs} \times 4.6$$
-$$1,084,732 \times 0.9 = 976,259 \text{ pJ vs } 100,561 \times 4.6 = 462,581 \text{ pJ (fold 4)}$$
+## 5.5 SpiNNaker Option A: hardware-aware retraining
 
-The SNN remains more expensive even on neuromorphic hardware in this analysis. This follows from Dampfhoffer et al. (2023): SNNs need a spike rate below 6.4% to beat quantized ANNs on CPU. Our 74.16% sparsity (25.84% spike rate) is well above this threshold.
+Option A addresses FC1 cancellation by replacing AvgPool with MaxPool and retraining. Key insight: MaxPool on binary values produces binary outputs (max of {0,1} = {0,1}), guaranteeing FC1 gets truly binary inputs.
 
-**The energy story for this thesis:** The direct encoding SNN uses 2.1× more energy than the ANN in software simulation. However, there is a compelling energy-accuracy trade-off: the SNN achieves 47.15% accuracy with temporal, binary computation, enabling deployment to AC-only neuromorphic hardware. The PANNs + SNN head (92.50% accuracy, §4.6) represents a more energy-efficient pathway than full ANN inference: the expensive feature extraction runs once (on-device ANN or NPU), and the energy-cheap SNN handles classification.
+### 5.5.1 architecture change
 
-### 5.4.4 Energy-Accuracy Pareto Frontier
+**Original (incompatible):**
+```
+LIF2 spikes (binary) -> AvgPool2d(4,6) -> fractional [0,0.5] -> FC1
+```
+
 
 | Model | Accuracy | Energy/sample | Hardware-compatible? |
 |-------|----------|---------------|---------------------|

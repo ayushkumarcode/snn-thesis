@@ -54,3 +54,31 @@ confirmed: no Masters or PhD thesis has deployed an SNN on ESC-50 (or any enviro
 ## SpiNNaker Applications Beyond Bio Simulation
 
 ### classification/deep learning
+- **MNIST** (Stromatias, 2015-16): 95%, 0.3W
+- **N-MNIST LSM** (Seville, 2022): Liquid State Machine
+- **Keyword Spotting** (Dresden, 2022): 91.12% Google Speech Commands on SpiNNaker 2
+- **Radar Gesture** (Dresden, 2022): 35ms latency, 3.29 uJ/frame on SpiNNaker 2
+- **DVS Gesture** (2025): first benchmark on SpiNNaker 2
+- **Audio (pure tones)** (Dominguez-Morales, 2016): >85% for tones 130-1397 Hz
+
+### robotics
+- **iCub neurorobotics** (IIT Italy): event-driven vision + SpiNNaker, 16ms saliency
+- **hippocampal navigation** (2023): spike-based place cells for robot SLAM
+
+### other
+- constraint satisfaction, edge detection, cerebellar simulation (SpinnCer), basal ganglia RL
+
+---
+
+## Scope Comparison: Our Project vs PhD/Masters
+
+| Dimension | Our Project | Typical SpiNNaker PhD | Typical SNN Masters |
+|-----------|-------------|----------------------|---------------------|
+| Dataset | ESC-50 (50 classes) | N/A or MNIST | MNIST or ESC-10 |
+| Encodings | 7 | 1-2 | 1-3 |
+| Hardware deployment | SpiNNaker (FC2 hybrid + 5-fold) | SpiNNaker (core focus) | Usually none |
+| Transfer learning | PANNs+SNN (92.5%) | Not done | Rare |
+| Adversarial robustness | FGSM + PGD at 7 epsilon values | Not done | Not done |
+| Energy analysis | NeuroBench, AC/MAC | Sometimes | Rarely |
+| Surrogate ablation | 8 surrogates | Not done | Not done |
+| Continual learning | 5-task sequential + BWT | Not done | Not done |

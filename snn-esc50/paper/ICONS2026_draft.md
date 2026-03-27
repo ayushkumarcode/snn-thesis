@@ -194,20 +194,20 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 
 ---
 
-
-## 8. Conclusions
-
-We present the first convolutional SNN evaluation on ESC-50, revealing a 16.7 pp accuracy gap versus matched ANNs (47.15% vs 63.85%) in scratch training, which collapses to <1 pp with AudioSet pre-training (92.50% vs 93.45%). SNNs demonstrate 14.9× greater adversarial robustness under FGSM attacks. We deploy the SNN on SpiNNaker using a validated FC2-only hybrid approach; 400-sample validation (Run 6) achieves **43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap, 64.5% agreement)** — the first neuromorphic deployment for environmental sound classification. NeuroBench analysis (5-fold validated) quantifies energy: 968 ± 37 nJ/sample (SNN, 1.08M ACs) vs 454 ± 11 nJ/sample (ANN, 101K MACs) in simulation; on dedicated AC-only hardware, ACs cost 5.1× less per operation than MACs. Our systematic encoding comparison across 7 methods establishes direct encoding as the clear winner for audio spectrograms. Future work: SpiNNaker2 for full-network deployment, STDP pre-training, FSD50K/UrbanSound8K generalisation.
-
----
-
-## Key Numbers Summary (for writing)
+## key numbers (for my reference, don't include in submission)
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| ANN 5-fold acc | 63.85% ± 3.07% | results/ann/none/summary.json |
-| SNN direct 5-fold | 47.15% ± 4.50% | results/snn/direct/summary.json (CSF3) |
-| SNN rate | 24.00% ± 1.90% | results/snn/rate/summary.json |
+| ANN 5-fold | 63.85% +/- 3.07% | results/ann/none/summary.json |
+| SNN direct 5-fold | 47.15% +/- 4.50% | results/snn/direct/summary.json |
+| SNN rate | 24.00% +/- 1.90% | results/snn/rate/summary.json |
+| SNN latency | 16.30% +/- 1.62% | results/snn/latency/summary.json |
+| SNN delta | 7.25% +/- 0.94% | results/snn/delta/summary.json |
+| SNN burst | 6.50% +/- 1.54% | results/snn/burst/ |
+| SNN phase | 24.15% +/- 1.66% | results/snn/phase/summary.json |
+| SNN population | 19.15% +/- 2.79% | results/snn/population/summary.json |
+| PANNs+SNN | 92.50% +/- 1.30% | results/panns/ |
+| PANNs+ANN | 93.45% +/- 1.54% | same |
 | SNN latency | 16.30% ± 1.62% | results/snn/latency/summary.json |
 | SNN delta | 7.25% ± 0.94% | results/snn/delta/summary.json |
 | SNN burst | 6.50% ± 1.54% | results/snn/burst/ (all folds) |

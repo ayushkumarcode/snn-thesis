@@ -146,31 +146,3 @@ NIR (Neuromorphic Intermediate Representation) is a standardized graph-based for
 import snntorch as snn
 import torch
 
-net = torch.nn.Sequential(
-    torch.nn.Flatten(),
-    torch.nn.Linear(784, 500),
-    snn.Leaky(beta=0.9, init_hidden=True),
-    torch.nn.Linear(500, 10),
-    snn.Leaky(beta=0.9, init_hidden=True, output=True)
-)
-# ... train with surrogate gradients ...
-
-# Step 2: Export to NIR
-from snntorch.export_nir import export_to_nir
-sample_data = torch.randn(1, 784)
-nir_graph = export_to_nir(net, sample_data)
-
-# Step 3: Save NIR file
-import nir
-nir.write("my_model.nir", nir_graph)
-
-# Step 4: Import into SpiNNaker2 via py-spinnaker2
-# (requires py-spinnaker2 library and SpiNNaker2 hardware access)
-```
-
-### What NIR Captures
-
-Each layer becomes a graph node:
-- Convolution layers: weights, stride, padding
-- Linear layers: weight matrices
-- LIF neurons: time constants (tau), membrane resistance, voltage leak, thresholds

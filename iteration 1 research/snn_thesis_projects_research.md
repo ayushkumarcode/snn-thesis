@@ -390,3 +390,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Framework**: snnTorch, Python
 - **Dataset**: Bank Account Fraud (BAF) Dataset from NeurIPS 2022
 - **Results**: Published at EPIA 2024 conference
+- **Stars**: 3
+
+---
+
+## curated lists and resource collections
+
+these are useful to bookmark:
+
+| List | URL | What it is |
+|------|-----|------------|
+| awesome-snn | https://github.com/coderonion/awesome-snn | Collection of public SNN projects including frameworks, tools, and applications |
+| Awesome-Spiking-Neural-Networks | https://github.com/yfguo91/Awesome-Spiking-Neural-Networks | Survey with papers organized by topic |
+| Awesome-SNN-Conference-Paper | https://github.com/AXYZdong/awesome-snn-conference-paper | Papers from top-tier conferences with code links |
+| Awesome-SNN-Paper-Collection | https://github.com/Ruichen0424/Awesome-SNN-Paper-Collection | Papers organized by topic including spike cameras |
+| Open Neuromorphic | https://github.com/open-neuromorphic/open-neuromorphic (https://open-neuromorphic.org/) | Global community with workshops, student talks, and project peer review |
+| Event-Based Vision Resources | https://github.com/uzh-rpg/event-based_vision_resources | Resource list for event-based vision technology |
+
+---
+
+## framework ecosystem
+
+| Framework | URL | Best For | Student-Friendly? |
+|-----------|-----|----------|-------------------|
+| **snnTorch** | https://github.com/jeshraghian/snntorch | PyTorch-based training, gradient descent, tutorials | YES - excellent tutorials |
+| **SpikingJelly** | https://github.com/fangwei123456/spikingjelly | Full-stack SNN development, PyTorch-based | MODERATE - Chinese docs |
+| **Brian2** | https://github.com/brian-team/brian2 | Biological neuroscience simulation | YES - great documentation |
+| **BindsNET** | https://github.com/BindsNET/bindsnet | STDP learning, PyTorch integration | YES - good examples |
+| **Norse** | https://github.com/norse/norse | Deep learning + SNNs in PyTorch | MODERATE |

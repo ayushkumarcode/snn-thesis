@@ -54,3 +54,31 @@ still early though. performance lags behind ANN LLMs and nobody's tried scaling 
 this is a new and exciting intersection. P-SpikeSSM (ICLR 2025) is basically the only major paper so far. SSMs give you linear-time sequence modeling and combining that with event-driven spiking efficiency makes a lot of sense. uses probabilistic spike generation, SpikeSampler layers, SpikeMixer blocks.
 
 very few papers exist here -- tons of room for novel work.
+
+### 4. spiking graph neural networks
+
+growing subfield, now has its own benchmark (SGNNBench). graphs show up everywhere in real data and making them spike-driven means energy-efficient processing. uses synaptic delay for relation encoding and spiking graph contrastive learning.
+
+performance still lags behind standard GNNs on lots of benchmarks though.
+
+### 5. time-series and temporal processing
+
+this was kind of a breakthrough year for SNN time-series work, with multiple top-venue papers. arguably the most natural application domain for SNNs since they're inherently temporal. key techniques include temporal segment neurons, derivative spike encoding, dual-compartment architectures.
+
+limited application to real-world time-series so far (finance, weather, IoT sensor data).
+
+### 6. continual/online learning
+
+natural fit for SNNs because of biological plausibility. edge devices need to learn continuously without catastrophic forgetting, and SNNs can potentially do this well. uses Hebbian learning, sleep-enhanced latent replay, energy-aware spike budgeting.
+
+standardized benchmarks for SNN continual learning are still lacking.
+
+### 7. ANN-to-SNN conversion
+
+this is mature but still actively researched. the focus is shifting to converting transformers specifically. key idea is you can leverage pre-trained ANN models and deploy them on neuromorphic hardware. training-free conversion and precision spiking neurons are the main techniques.
+
+nobody's tried converting Mamba/SSM models or mixture-of-experts architectures yet.
+
+### 8. object detection and dense prediction
+
+growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO variants, event-camera fusion, spiking U-Net for segmentation. but SNN performance on COCO-level benchmarks is still way below ANN counterparts.

@@ -54,3 +54,31 @@ class FlyBrainClassifier(nn.Module):
         # FIXED random sparse projection (not trained!)
         # Each Kenyon cell receives input from ~10% of projection neurons
         random_weights = torch.zeros(self.expansion_dim, input_dim)
+        for i in range(self.expansion_dim):
+            # Random sparse connections
+            n_connections = max(1, int(input_dim * connection_prob))
+            indices = torch.randperm(input_dim)[:n_connections]
+            random_weights[i, indices] = torch.randn(n_connections)
+        self.register_buffer('random_proj', random_weights)
+
+        # Only the readout is trained
+        self.readout = nn.Linear(self.expansion_dim, NUM_CLASSES)
+
+        # Batch norm on projected features
+        self.bn = nn.BatchNorm1d(self.expansion_dim)
+
+    def forward(self, x):
+        # x: (batch, 1, 64, 216) mel spectrogram
+        # Global average pool over time dimension
+        features = x.squeeze(1).mean(dim=-1)  # (batch, 64)
+
+        # Random projection (FIXED, no gradients)
+        projected = F.linear(features, self.random_proj)  # (batch, expansion_dim)
+        projected = self.bn(projected)
+        projected = F.relu(projected)
+
+        # Winner-take-all: keep only top-k activations
+        topk_vals, topk_idx = projected.topk(self.wta_k, dim=1)
+        sparse = torch.zeros_like(projected)
+        sparse.scatter_(1, topk_idx, topk_vals)
+

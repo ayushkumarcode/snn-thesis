@@ -138,3 +138,31 @@ for an undergrad thesis balancing novelty, feasibility, and natural SNN advantag
 | NeuCube for environmental data | Various | General evolving SNN architecture |
 
 no GitHub repos found for SNN + environmental monitoring specifically.
+
+**why SNNs make sense:** environmental sensors generate continuous temporal streams. edge deployment in remote sensors needs ultra-low power (strong SNN case). event-driven processing suits anomaly detection (pollution spikes, fire events). wildlife acoustic monitoring involves temporal audio patterns.
+
+**feasibility:** HIGH. public datasets: EPA air quality, UCI Air Quality, Kaggle environmental datasets, UCI Forest Fires, FIRMS satellite data. NeuCube framework exists. well-scoped: predict air quality index from sensor readings. clear practical motivation.
+
+**novelty:** HIGH. very few papers. wildlife acoustic monitoring with SNN: essentially unexplored. pollution prediction with modern frameworks (snnTorch): unexplored.
+
+**verdict: excellent thesis candidate**
+
+---
+
+### 7. SNN for Wearable Sensor Data (Accelerometer, Gyroscope)
+
+**papers: about 10-20**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Evaluating SNN for HAR | 2023 | Systematic evaluation of encoding for IMU data (ACM ISWC) |
+| SNNs for Ubiquitous Computing (Survey) | 2025 | Survey including wearable applications |
+| Efficient HAR with Spatio-temporal SNNs | 2023 | Activity recognition |
+| SNN for EMG Gesture on Loihi | 2023 | Low-power gesture recognition on neuromorphic chip |
+| Spiking-IMU Dataset and SNN | 2023 | Benchmark dataset and direct-trained SNN |
+
+**why SNNs make sense:** VERY HIGH advantage here. wearable sensors generate continuous temporal data. ultra-low power is critical for battery-powered devices. event-driven: only process data when movement occurs. neuromorphic chips (Loihi, Xylo) specifically target wearable edge. real-time latency requirements. multi-threshold delta encoding naturally converts sensor data to spikes.
+
+**feasibility:** HIGH. public datasets: UCI HAR, WISDM, PAMAP2, Spiking-IMU. well-scoped: classify 6-10 activities from accelerometer data. clear energy efficiency narrative. easy CNN/LSTM baselines.
+
+**novelty:** MODERATE. growing but many unexplored angles: specific activities (fall detection, sports), multi-sensor fusion, on-device continual learning.

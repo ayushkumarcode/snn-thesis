@@ -194,3 +194,31 @@ def main():
 
     folds = [args.fold] if args.fold else list(range(1, 6))
 
+    # Define all models to benchmark
+    models_to_test = [
+        ("ANN baseline", "ann/none", "ann"),
+        ("SNN baseline (direct)", "snn/direct", "snn"),
+    ]
+
+    # Add energy-optimized models if they exist
+    energy_dirs = RESULTS_DIR / "energy"
+    if energy_dirs.exists():
+        for subdir in sorted(energy_dirs.iterdir()):
+            if subdir.is_dir():
+                for fold_file in subdir.glob("best_fold*.pt"):
+                    fold_num = int(fold_file.stem.replace("best_fold", ""))
+                    models_to_test.append(
+                        (f"Energy: {subdir.name}", str(subdir.relative_to(RESULTS_DIR)), "snn"))
+                    break
+
+    all_results = []
+    for fold in folds:
+        print(f"\n{'='*60}")
+        print(f"  Energy Benchmark — Fold {fold}")
+        print(f"{'='*60}")
+
+        for name, rel_path, model_class in models_to_test:
+            model_path = RESULTS_DIR / rel_path / f"best_fold{fold}.pt"
+            if not model_path.exists():
+                continue
+

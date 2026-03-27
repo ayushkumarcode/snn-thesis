@@ -181,31 +181,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 ### 1.13 Gabriel Fonseca Guerra -- Stochastic Processes for Neuromorphic Hardware (2020)
 
 | Field | Details |
-|-------|---------|
-| **Title** | Stochastic Processes For Neuromorphic Hardware |
-| **Author** | Gabriel Fonseca Guerra |
-| **Year** | February 2020 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
-| **Abstract** | Stochastic processes in neuronal dynamics on both SpiNNaker and Loihi chips. Constraint satisfaction problems. Modelled intrinsic ion-channel currents and realistic postsynaptic potentials. Bridging neuromorphic technology with neurophysiology. |
-| **Keywords** | Voltage gated ion channel currents, Postsynaptic Potentials, Constraint Satisfaction, SpiNNaker, Loihi |
-| **PDF** | Available (22.5 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/stochastic-processes-for-neuromorphic-hardware |
-
-### 1.14 Mantas Mikaitis -- Arithmetic Accelerators for a Digital Neuromorphic Processor (2020)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Arithmetic Accelerators for a Digital Neuromorphic Processor |
-| **Author** | Mantas Mikaitis |
-| **Year** | February 2020 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | David Lester (main), Steve Furber (co-supervisor) |
-| **Abstract** | Programmable accelerator for exponential and logarithm functions in SNN models for SpiNNaker2 chip. Stochastic rounding techniques for numerical accuracy. |
-| **Keywords** | Neuromorphic engineering, Hardware accelerators, Stochastic rounding, Exponential function, Numerical accuracy |
-| **PDF** | Available (2.8 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor |
-
-### 1.15 Luca Peres -- Parallelisation of Neural Processing on Neuromorphic Hardware (2022)
-
-| Field | Details |

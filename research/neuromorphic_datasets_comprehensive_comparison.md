@@ -82,3 +82,31 @@ for an undergrad thesis, the best balance of difficulty, tooling, narrative stre
 ### 4. CIFAR10-DVS
 
 | Property | Details |
+|---|---|
+| Domain | Visual / object classification |
+| Classes | 10 (CIFAR-10 categories) |
+| Samples | 10,000 |
+| Resolution | 128 x 128 |
+| Year | 2017 |
+| Download | [Figshare](https://figshare.com/articles/dataset/CIFAR10-DVS_New/4724671) |
+
+**preprocessing:** AEDAT to events, frame integration (commonly T=10, 128x128), two-polarity channels. data augmentation matters (random crop, flip, EventDrop). no official train/test split.
+
+**SOTA SNN:** 92.5% (with transfer learning from synthetic events, 2025). more typical SNN SOTA is ~81-84%.
+
+**difficulty:** MODERATE-HARD. harder than DVS128 (lower-res CIFAR images), ~78% is perfectly respectable for an undergrad.
+
+**thesis narrative:** MODERATE. works if framed as "can SNNs match ANNs on event-converted data while using fewer operations?"
+
+---
+
+### 5. SHD (Spiking Heidelberg Digits)
+
+| Property | Details |
+|---|---|
+| Domain | Audio / spoken digit classification |
+| Sensor | Artificial cochlea model (software spike generation) |
+| Classes | 20 (digits 0-9 in English and German) |
+| Samples | ~10,420 (8,332 train / 2,088 test) |
+| Speakers | 12 (2 only in test) |
+| Input channels | 700 (cochlear frequency channels) |

@@ -70,31 +70,3 @@ Eight neuromorphic datasets were investigated in depth, along with three newer d
 | **Classes** | 10 (digits 0-9) |
 | **Total samples** | 70,000 (60,000 train / 10,000 test) |
 | **Data format** | Binary event files (x, y, timestamp, polarity) |
-| **Spatial resolution** | 34 x 34 pixels |
-| **Creation method** | ATIS sensor mounted on motorized pan-tilt unit viewing MNIST on LCD |
-| **Year introduced** | 2015 (Orchard et al., Frontiers in Neuroscience) |
-
-**Preprocessing required:**
-- Read binary event files into (x, y, t, p) arrays
-- Apply temporal binning (ToFrame transformation) to create dense frame representations
-- Optional denoising (remove isolated one-off events)
-- Temporal collapsing to static images is possible but defeats the purpose
-- Standard approach: bin events into T=10-30 time steps
-
-**Framework support:**
-- SpikingJelly: Native support
-- snnTorch: Via Tonic (previously via deprecated spikevision)
-- Tonic: Full support as `tonic.datasets.NMNIST`
-- Norse: Compatible via Tonic
-
-**State-of-the-art accuracy (SNN methods):**
-
-| Method | Year | Accuracy | Notes |
-|---|---|---|---|
-| Sa-SNN (Spiking Attention) | 2024 | 99.63% | Current SOTA |
-| ANN on collapsed frames | 2021 | 99.23% | Frame-based approach |
-| Typical SNN baseline | -- | ~99.0-99.3% | Very easy to achieve |
-
-**Critical caveat:** A seminal 2021 paper ("Is Neuromorphic MNIST Neuromorphic?") demonstrated that N-MNIST can be classified with 99%+ accuracy by simply collapsing time information into a static image and using a standard CNN. The temporal dynamics add almost no discriminative value. This means the dataset does NOT actually test whether your SNN leverages temporal spike patterns -- it is essentially just MNIST with extra steps.
-
-**Difficulty assessment:** TOO EASY. The dataset is essentially solved. Even basic SNNs reach >99% accuracy. There is virtually no room for meaningful contribution or interesting analysis.

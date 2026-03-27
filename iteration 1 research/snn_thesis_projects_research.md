@@ -306,3 +306,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - good focused project using real neuromorphic data. single Jupyter notebook. research group project.
 
 ### 3.6 ANN vs SNN Comparison (Course Project)
+- **URL**: https://github.com/NicolaCST/ANN-vs-SNN
+- **Description**: Comparing performances and power consumption between ANNs and SNNs
+- **Framework**: Python, Jupyter Notebook
+- **Dataset**: Not specified
+- **Report**: YES - VCS_doc.pdf included
+- **Complexity**: MODERATE
+- **Stars**: 0 | **Commits**: 3
+- simple course project with PDF report. good starting point for understanding SNN vs ANN tradeoffs.
+
+### 3.7 RL-SNN-Quadrupeds (UC Berkeley EECS206B Final Project)
+- **URL**: https://github.com/tganamur/RL-SNN-Quadrupeds
+- **Description**: Teaching quadruped robots to walk using SNNs and RL
+- **Framework**: MuJoCo, Stable-baselines3, PPO
+- **Results**: MLP learned ape-like gait; SNN achieved standing but not walking. First SNN-based RL on physical quadruped.
+- **Complexity**: HIGH
+- **Stars**: 13
+- ambitious but only partially successful. real hardware deployment (PuppyPi robot). shows the sim-to-real challenges well.
+
+### 3.8 Convolutional SNN for Speech Recognition
+- **URL**: https://github.com/verrannt/snn_speechrec
+- **Description**: Unsupervised convolutional SNN for speech recognition using STDP
+- **Framework**: Python, PyTorch, scikit-learn (SVM classifier)
+- **Dataset**: TIDIGITS
+- **Results**: Achieved 92% accuracy (vs 97.5% in reference paper)
+- **Report**: YES - Report.pdf with analysis of implementation differences
+- **Complexity**: MODERATE-HIGH
+- **Stars**: 9 | **Commits**: 140
+

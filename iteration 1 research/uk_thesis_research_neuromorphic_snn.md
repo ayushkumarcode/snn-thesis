@@ -195,31 +195,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 
 | Title | Author | Year | Key Contribution |
 |-------|--------|------|-----------------|
-| Deep spiking neural networks with applications to human gesture recognition | Yannan Xing | 2020 | SCRNN for gesture recognition, speech emotion recognition |
-
-**URL:** https://stax.strath.ac.uk/concern/theses/x059c7885
-
-### University of Glasgow
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|
-| Hardware-software co-design of FPGA-based neural network accelerators for edge inference | Jude Haris | 2025 | SECDA methodology, 84x speedup on TConv |
-
-**URL:** https://theses.gla.ac.uk/85185/
-
-### University of Sheffield
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|
-| Reconstruction, identification and implementation methods for spiking neural circuits | Dorian Florescu | 2016 | Integrate-and-fire circuit reconstruction |
-| Improving scalability of large-scale distributed SNN simulations on HPC | Carlos Fernandez Musoles | 2020 | HyperPRAW partitioning algorithm |
-
-**URLs:**
-- https://etheses.whiterose.ac.uk/12625/
-- https://etheses.whiterose.ac.uk/id/eprint/29007/
-
----
-
-## WHITE ROSE eTheses (Leeds/Sheffield/York) -- FULL LISTING
-
-13 theses found matching "neuromorphic spiking neural network":

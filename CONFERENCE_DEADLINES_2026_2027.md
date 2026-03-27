@@ -250,3 +250,31 @@ deadline passed (~December 2025). monitor for future events.
 | **Conference Dates** | 21-26 June 2026 |
 | **Location** | MECC, Maastricht, Netherlands |
 | **Page Limit** | 6 pages (up to 8 with extra charges at 100 EUR/page) |
+| **Proceedings** | IEEE Xplore |
+| **Acceptance Rate** | ~50-60% for IJCNN historically |
+| **Registration** | Early bird: student member 550 EUR, student non-member 700 EUR. All include 21% Dutch VAT. |
+
+IJCNN is the main venue for neural network research. SNN topics, neuromorphic hardware, and sound classification all in scope. relevant special sessions: SS40 "Design Challenges in Sustainable Neuromorphic Hardware" and NeuroSNN "Recent advances in spiking neural networks and neuromorphic computing."
+
+the late-breaking deadline was only 5 days away when i researched this. tight.
+
+Sources: [WCCI 2026](https://attend.ieee.org/wcci-2026/)
+
+---
+
+### 5.2 ISCAS 2026 [DEADLINE PASSED]
+
+deadline passed (19 October 2025).
+
+---
+
+### 5.3 BioCAS 2026
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **~May-June 2026** (not yet announced) |
+| **Conference Dates** | 8-10 October 2026, Incheon, Korea |
+
+marginal fit. BioCAS focuses on biomedical applications. environmental sound classification isn't core scope unless framed as hearing-aid or assistive technology.
+
+---

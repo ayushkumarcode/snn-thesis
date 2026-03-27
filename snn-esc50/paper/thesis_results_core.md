@@ -138,19 +138,19 @@ The fundamental insight: **information preservation** (not biological plausibili
 | 30 | 36.6% | 24.7% | 27.5% |
 | 40 | 47.6% | 29.2% | 36.7% |
 | 50 | 67.0% | 44.8% | **44.75%** |
-| 30 | 36.6% | 24.7% | 27.5% |
-| 40 | 47.6% | 29.2% | 36.7% |
-| 50 | 67.0% | 44.8% | **44.75%** |
 
-FastSigmoid completed at epoch 50 with best checkpoint 44.75% (final epoch was the best, indicating the model was still improving at termination). This exceeds the direct encoding fold 1 baseline of 40.5%. ATan completed at epoch 49 with best 35.75% — **9.0 pp below fast_sigmoid**. Both use slope=25 but differ in functional form (sigmoid-like vs arctan), demonstrating that shape matters for this task.
+FastSigmoid finishes at 44.75% (epoch 50), still improving at termination -- exceeds fold 1 baseline of 40.5%. ATan gets 35.75% at epoch 49 -- 9.0 pp below fast_sigmoid despite same slope. Shows shape matters for this task.
 
-**SpikeRateEscape achieves the highest accuracy of all tested surrogates: 46.00% at epoch 50** — surpassing fast_sigmoid by 1.25 pp. SpikeRateEscape uses a stochastic escape rate model (spikes with probability $\exp(\beta(U - \theta))$ when below threshold), which provides larger effective gradients for high-intensity inputs than sigmoid-based surrogates. Both fast_sigmoid and spike_rate_escape were still improving at epoch 50 (no plateau), suggesting longer training could potentially improve both.
+**SpikeRateEscape gets the best: 46.00% at epoch 50** -- beats fast_sigmoid by 1.25 pp. Uses stochastic escape rate model providing larger effective gradients for high-intensity inputs. Both still improving at ep 50, longer training could help.
 
-**Failure modes — sigmoid, STE, and triangular all near-chance:**
+**Failure modes:**
+- **Sigmoid (2.00%, early stop ep11):** never learns. Peak derivative sigma'(0)*slope = 6.25, but saturates faster than fast_sigmoid. Gradient dies quickly away from threshold. Contradicts Zenke & Vogels' claim that shape matters less -- most surprising result here.
+- **STE (10.25%, early stop ep11):** piecewise-constant gradient (1 if |U-theta|<0.5, else 0), no smooth signal through threshold. Converges to near-chance local minimum.
+- **Triangular (2.75%, early stop ep23):** near-chance, confirming literature prediction (narrowest effective bandwidth). check this citation
 
-- **Sigmoid (2.00%, early stop ep11):** The model never learns. The sigmoid surrogate `surrogate.sigmoid(slope=25)` produces a peak derivative of σ'(0)×slope = 0.25×25 = 6.25 at threshold, but saturates faster than fast_sigmoid (1/(slope|x|+1)² has a longer algebraic tail). In practice, the gradient dies away from threshold quickly, potentially explaining the learning failure. This contradicts Zenke & Vogels (2021)'s claim that surrogate shape matters less than slope, and is the most surprising result in this ablation.
-- **STE (10.25%, early stop ep11):** Piecewise-constant gradient (1 if |U−θ|<0.5, else 0) provides no smoothly-varying signal through the threshold. Converges rapidly to a near-chance local minimum with no escaping gradient.
-- **Triangular (2.75%, early stop ep23):** Near-chance, confirming the literature prediction (Zenke & Vogels 2021: triangular has the narrowest effective bandwidth). Highest total training epochs (23) before early stopping — the model makes marginal improvement but never learns.
+**Bimodal pattern:**
+- **Learning group** (3): spike_rate_escape (46.00%), fast_sigmoid (44.75%), atan (35.75%)
+- **Failure group** (4): STE (10.25%), sigmoid (2.00%), SFS (2.00%), triangular (2.75%)
 
 **Bimodal pattern (confirmed across all 7 testable surrogates):** The results reveal a clear bimodal outcome distribution: either the surrogate supports learning (~35–46%) or it completely fails (~2–10%). Of 7 testable surrogates (LSO crashed due to snnTorch 0.9.4 + Python 3.14 incompatibility):
 - **Learning group** (3 surrogates): spike_rate_escape (**46.00%**, best), fast_sigmoid (44.75%), atan (35.75%)

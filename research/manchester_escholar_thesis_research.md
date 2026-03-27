@@ -82,3 +82,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 ### Real Time Spaun on SpiNNaker
 - **Andrew Mundy**, 2016, PhD, Computer Science
 - Supervised by James Garside (main), Steve Furber (co)
+- https://research.manchester.ac.uk/en/studentTheses/real-time-spaun-on-spinnaker-functional-brain-simulation-on-a-mas
+- Achieved real-time execution of Spaun (2.5M neuron functional brain model) on SpiNNaker. 9000x speed-up over previous results. Only needed 5% of the cores previously required. Also did novel routing table optimization.
+- That's a wild speedup
+- 4.77 MB PDF
+
+### Biologically Inspired Neural Computation
+- **Adam Perrett**, 2022, PhD, Computer Science
+- Supervised by Steve Furber (main), Oliver Rhodes (co)
+- https://research.manchester.ac.uk/en/studentTheses/biologically-inspired-neural-computation
+- Three things: (1) biologically-inspired visual attention on SpiNNaker; (2) e-prop learning algorithm implementation; (3) gradient-descent-free architecture using dendritic abstractions with neurogenesis, getting comparable performance to Adam optimizer.
+- Uses iCub robot platform
+- 20 MB PDF
+
+### Scalability and Robustness of Artificial Neural Networks
+- **Evangelos Stromatias**, 2016, PhD, Computer Science
+- Supervised by Steve Furber (main), James Garside (co)
+- https://research.manchester.ac.uk/en/studentTheses/scalability-and-robustness-of-artificial-neural-networks
+- Examines power consumption and communication latencies on SpiNNaker running large-scale SNNs. Develops power estimation model. Characterizes impact of hardware bit precision, noise, and weight variation on spiking DBNs for handwritten digit recognition. Shows spiking DBNs work on limited-precision hardware without drastic performance loss.
+- 25.4 MB PDF
+
+### Plasticity in Large-Scale Neuromorphic Models of the Neocortex
+- **James Knight**, 2016, PhD, Computer Science
+- Supervised by Steve Furber (main), David Lester (co)
+- https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex
+- Created the largest plastic neural network ever simulated on neuromorphic hardware: 20,000 neurons and 51 million plastic synapses. Developed neocortically-inspired temporal sequence learning model.
+- World-record simulation
+- 8.37 MB PDF
+

@@ -41,31 +41,3 @@ ICONS is a small-to-medium, specialist, peer-reviewed ACM conference focused exc
 
 ## 2. Acceptance Rate
 
-### Confirmed Data
-
-| Year | Proceedings Papers | Submissions | Acceptance Rate | Source |
-|------|-------------------|-------------|-----------------|--------|
-| 2023 | 13 | 22 | **59%** | ACM DL metadata (searched) |
-| 2022 | ~15 | Unknown | Unknown | DBLP count |
-| 2021 | ~15 | 29 submitted | ~52% (estimated) | ORNL news article |
-| 2020 | 15 | 28 published | Unknown | ORNL news article |
-| 2019 | 15 | Unknown | Unknown | DBLP count |
-
-**Key context:** These acceptance rates are for **proceedings papers only**. ICONS also accepts many additional presentations as lightning talks and posters that are NOT in the formal proceedings. The total presentation count is much higher:
-- ICONS 2023 (ORNL): 15 full talks + 28 lightning talks + 44 posters = **87 total presentations**
-- ICONS 2024 (GMU): 3 award talks + 8 full talks + 42 lightning talks + 32+ posters = **85+ total presentations**
-- ICONS 2025 (Bellevue): 13 full talks + 12 lightning talks + poster session = **26+ presentations**
-
-### Interpretation
-The ~59% acceptance rate for proceedings papers is moderate. This is not a highly selective venue by CS standards. For comparison:
-- IJCNN: 52-59% historically (tightening to ~40% in 2025)
-- NeurIPS: ~25%
-- ICML: ~28%
-- CVPR: ~25%
-
-The proceedings acceptance rate for ICONS is comparable to or slightly more selective than historical IJCNN rates.
-
----
-
-## 3. Timeline After Submission
-

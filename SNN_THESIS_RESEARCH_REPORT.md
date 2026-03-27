@@ -334,3 +334,31 @@ this is the most current paper (Sept 2024) and the most relevant for understandi
 
 Kai Malcolm, Josue Casco-Rodriguez. arXiv:2303.10780, March 2023. literature review covering interpretation, optimization, efficiency, and best practices for SNNs. designed to be accessible to newcomers.
 
+note: couldn't get the HTML version on arXiv (only PDF, which wouldn't text-extract via web fetch). the analysis below is reconstructed from the abstract, metadata, citations, and cross-referencing with papers that cite it.
+
+### paper structure (reconstructed)
+
+based on the title structure and cross-references, it covers four main pillars:
+
+**Pillar 1 -- Interpretation:**
+- how SNNs process information differently from ANNs
+- biological plausibility of spike-based computation
+- spike encoding schemes: rate coding, temporal coding, population coding
+- neuron models: LIF (primary focus), Izhikevich, AdEx, Hodgkin-Huxley
+
+**Pillar 2 -- Optimization:**
+- two mainstream pathways to deep SNNs:
+  1. ANN-to-SNN conversion (rate-based equivalence between ReLU and IF neuron firing rate)
+  2. direct training via surrogate gradient methods
+- STDP as unsupervised Hebbian learning
+- emphasizes that surrogate gradient-trained SNNs closely approximate ANN accuracy (within 1-2%), with faster convergence by the 20th epoch
+
+**Pillar 3 -- Efficiency:**
+- energy efficiency evaluation methods
+- low-power deployment considerations
+- mobile and hardware-constrained settings
+- comparison of energy consumption between SNN and ANN inference
+
+**Pillar 4 -- Best Practices:**
+- implementation guidelines for practitioners
+- starting from first principles for accessibility

@@ -71,31 +71,3 @@ The Tonic library (the PyTorch Vision equivalent for neuromorphic data) provides
 | **DVSLip** | Event vision | Lip reading | Only 1-2 papers (CVPR 2024 workshop). |
 | **N-CALTECH101** | Event vision | Object recognition (101 classes) | Some results exist but far fewer than N-MNIST or CIFAR10-DVS. |
 | **NTIDIGITS** | Event audio | Spoken digits | Rarely benchmarked with modern SNN architectures (snnTorch, SpikingJelly). |
-| **DSEC** | Event vision | Depth estimation | No SNN-specific benchmarks; only ANN-based event processing. |
-| **ThreeET_Eyetracking** | Event vision | Eye gaze tracking | Extremely new; no SNN benchmark results. |
-| **EBSSA** | Event vision | Space situational awareness | No SNN benchmark results. |
-
-### 2.2 Standard ML Datasets Never Tested with SNNs
-
-| Dataset | Domain | Size | Why It Would Work | Existing SNN Work |
-|---------|--------|------|------------------|-------------------|
-| **Fashion-MNIST** | Image classification | 70K, 10 classes | Direct drop-in for any MNIST SNN pipeline | Some results exist but not systematic |
-| **EMNIST** | Character recognition | 814K, 62 classes | Extension of MNIST to full alphabet | One student project (sofi12321) |
-| **SVHN** | Street view house numbers | 600K+ | Real-world digit recognition | Almost no SNN work |
-| **Food-101** | Food recognition | 101K, 101 classes | Standard classification | Zero SNN papers |
-| **Flowers-102** | Fine-grained classification | 8K, 102 classes | Small dataset, easy to train | Zero SNN papers |
-| **Stanford Cars** | Fine-grained classification | 16K, 196 classes | Fine-grained recognition challenge | Zero SNN papers |
-| **UCF-101** | Video action recognition | 13K clips, 101 classes | Temporal data suits SNNs | Near-zero SNN papers |
-| **ESC-50** | Environmental sound | 2K, 50 classes | Audio classification, natural for temporal SNNs | Near-zero SNN papers |
-| **UrbanSound8K** | Urban sound | 8.7K, 10 classes | Audio classification | Zero SNN papers |
-| **GTZAN** | Music genre | 1K, 10 genres | Audio temporal patterns | Zero SNN papers |
-| **MIT-BIH Arrhythmia** | ECG signals | 48 recordings | Time series, perfect for SNNs | 2-3 papers, not with snnTorch |
-| **PTB-XL** | 12-lead ECG | 21K, multi-label | Large ECG dataset | Zero SNN papers |
-| **HAR (UCI)** | Human activity recognition | 10K, 6 classes | Sensor time series | Very few SNN papers |
-| **CWRU Bearing** | Vibration fault diagnosis | Variable | Industrial time series | 2-3 SNN papers |
-| **AG News** | Text classification | 120K, 4 classes | NLP benchmark | Zero SNN papers (with snnTorch) |
-| **IMDB Reviews** | Sentiment analysis | 50K, 2 classes | NLP benchmark | 1-2 papers, not with standard frameworks |
-
-### 2.3 Heidelberg Spiking Datasets (SHD/SSC) -- Framework Coverage Gaps
-
-The SHD (Spiking Heidelberg Digits) and SSC (Spiking Speech Commands) are the premier audio neuromorphic benchmarks. Current state of art on SHD is 96.41% (SpikCommander). However:

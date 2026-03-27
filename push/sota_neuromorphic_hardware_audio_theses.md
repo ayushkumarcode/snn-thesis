@@ -82,3 +82,31 @@ no published ESC-50 or ESC-10 results though. primarily keyword spotting and aco
 ### 1.5 SynSense Xylo Audio
 
 most extensively benchmarked neuromorphic chip for audio inference. all-digital, 28nm CMOS, up to 1000 LIF neurons, 16 input channels, 8 output. ultra-low power: 219 uW idle, 93 uW dynamic inference.
+
+| Paper | Year | Task | Dataset | Accuracy | Power | Energy/Inf |
+|-------|------|------|---------|----------|-------|------------|
+| Bauer et al. (Rockpool + Xylo) | 2022/2023 | Ambient audio classification | Custom | 98% | <100 uW dynamic | N/A |
+| Xylo Audio 2 KWS benchmark | 2024 | Keyword spotting | Aloha KWS | 95.31% | 291 uW dynamic | 6.6 uJ/Inf |
+| NeuroBench DCASE on Xylo Audio 2 | 2024 | Acoustic scene classification | DCASE 2020 (TAU) | Reported in paper | Sub-mW | Reported in paper |
+
+#### Cross-Platform Energy Comparison (Aloha KWS Benchmark)
+
+this is probably the best published cross-platform comparison for audio tasks:
+
+| Device | Idle Power | Active Power | Dynamic Power | Dynamic Energy/Inf | Active Energy/Inf |
+|--------|-----------|--------------|---------------|-------------------|-------------------|
+| **Xylo Audio** | 216 uW | 507 uW | 291 uW | 6.6 uJ | 11 uJ |
+| **Loihi** (Blouw) | 29 uW | 110 uW | 81 uW | 0.27 uJ | 0.37 uJ |
+| **Loihi** (Yan) | 29 uW | 40 uW | 11 uW | 0.037 uJ | 0.13 uJ |
+| **SpiNNaker2** | -- | -- | 7.1 uW | 7.1 nJ | Not reported |
+| **GPU** | 14.97 mW | 37.83 mW | 22.86 mW | 29.67 uJ | 49.1 uJ |
+| **CPU** | 17.01 mW | 28.48 mW | 11.47 mW | 6.32 uJ | 15.7 uJ |
+
+things to note:
+- Loihi has the lowest per-inference energy (0.037-0.27 uJ)
+- Xylo Audio has lowest total power consumption
+- SpiNNaker2 shows very low dynamic power (7.1 uW) but total active power is higher
+- all neuromorphic platforms are orders of magnitude more efficient than GPU/CPU
+- our SpiNNaker 1 energy measurement (976 nJ/sample = 0.976 uJ) is actually in the same ballpark as Loihi's per-inference energy, but for a much harder task
+
+---

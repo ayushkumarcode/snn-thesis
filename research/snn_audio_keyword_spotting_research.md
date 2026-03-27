@@ -130,31 +130,3 @@ Spiking Neural Networks (SNNs) for audio keyword spotting and speech command rec
 
 | Repository | Accessibility | Framework | Accuracy | LOC (core) | Dataset |
 |-----------|-------------|-----------|----------|------------|---------|
-| **SpikingJelly speechcommands.py** | Good | SpikingJelly/PyTorch | Competitive | ~494 | GSC V1 (12-class) |
-| **sparch** | Good | PyTorch | SOTA | ~500-800 | SHD, SSC, GSC |
-| **GoogleSpeechCommandsRNN** | Moderate | TensorFlow 2 | 91.2% (SNN) | ~1000+ | GSC V1 (12-class) |
-| **SCommander** | Moderate | SpikingJelly | 96.9% | ~800+ | SHD, SSC, GSC |
-| **RSNN** | Difficult | TensorFlow 1.2 | -- | ~500 | Custom |
-
-### 3.2 Recommended Path for an Undergraduate
-
-**Phase 1: Learning (Weeks 1-4)**
-1. Complete snnTorch tutorials 1-5 (neuron models, feedforward SNNs, training)
-2. Complete snnTorch tutorial 7 (neuromorphic datasets with Tonic)
-3. Load and explore the SHD dataset using Tonic
-
-**Phase 2: Baseline Implementation (Weeks 5-8)**
-4. Implement a basic LIF-based SNN on SHD using snnTorch (~200-300 lines)
-5. Implement the same architecture using SpikingJelly for comparison
-6. Train and evaluate, achieving ~90% on SHD as a baseline
-
-**Phase 3: Speech Commands (Weeks 9-14)**
-7. Adapt to Google Speech Commands V2 (12-class first, then 35-class)
-8. Implement Mel-spectrogram preprocessing pipeline
-9. Build convolutional SNN architecture
-10. Compare with an equivalent ANN baseline
-
-**Phase 4: Analysis & Writing (Weeks 15-20)**
-11. Energy consumption estimation (synaptic operations counting)
-12. Accuracy vs. energy tradeoff analysis
-13. Parameter sensitivity study

@@ -166,3 +166,31 @@ spike_data = spikegen.delta(ecg_tensor, threshold=0.1, off_spike=True)
 
 **The delta function is explicitly designed for time-series data.** The documentation states it "accepts a time-series tensor as input and takes the difference between each subsequent feature across all time steps." This is exactly what ECG needs.
 
+**Threshold selection:** Smaller threshold = more spikes (better resolution, more computation). Larger threshold = fewer spikes (sparser, faster). This is a hyperparameter to tune.
+
+**Other available encoding methods:** rate(), latency(), latency_code(), rate_conv() -- delta is the best fit for ECG because it captures signal changes (morphology), which is clinically meaningful.
+
+**Source:** [snntorch.spikegen documentation](https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html), [Tutorial 1 - Spike Encoding](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
+
+---
+
+### 5. 1D Convolutional SNN (CRITICAL COMPONENT)
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES (with caveats) |
+| **VERIFIED HOW** | Source code analysis, documentation, PyTorch Forums |
+| **POTENTIAL BLOCKER** | LOW RISK -- requires manual adaptation |
+
+**Can snnTorch do Conv1d-based SNNs?**
+
+**YES, but there are no official Conv1d examples.** Here is the evidence chain:
+
+1. **Official documentation states:** "Each layer of spiking neurons are therefore agnostic to fully-connected layers, convolutional layers, residual connections, etc."
+
+2. **Source code confirms:** The Leaky neuron's forward() method uses `torch.zeros_like(input_)` to initialize membrane potential, meaning it dynamically matches ANY input tensor shape -- 2D (Linear), 3D (Conv1d), or 4D (Conv2d).
+
+3. **Conv2d is proven to work** in Tutorial 6 with 4D tensors (batch x channels x height x width) feeding directly into snn.Leaky(). Conv1d produces 3D tensors (batch x channels x length), which follow the same pattern.
+
+4. **BatchNormTT1d exists** in snnTorch specifically for 1D temporal batch normalization, confirming 1D data is a supported use case.
+

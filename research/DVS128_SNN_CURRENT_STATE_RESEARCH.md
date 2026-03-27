@@ -250,3 +250,31 @@ you'd need ALL of:
 - fair comparison: same parameter budget when comparing architectures
 
 **3. multi-dimensional evaluation** -- go beyond accuracy:
+- test accuracy (mean +/- std over multiple runs)
+- number of parameters
+- training time (wall clock, per epoch, total)
+- estimated energy (SynOps)
+- inference latency
+- confusion matrices, per-class accuracy
+
+**4. ANN baseline** -- same architecture with ReLU instead of LIF on frame-converted DVS data. answers: does the SNN actually bring any advantage?
+
+**5. visualization and analysis**
+- spike raster plots
+- membrane potential traces
+- t-SNE/UMAP of learned representations
+- failure case analysis: which gestures get confused and why?
+- visualization of learned PLIF time constants
+
+**6. reproducibility** -- clean public repo, requirements.txt, clear instructions, saved checkpoints and logs.
+
+---
+
+## 7. comparison studies between architectures
+
+### the gap in the literature
+
+several papers include comparison tables, but a dedicated fair benchmark is **largely missing**. most papers compare against prior SOTA but use different preprocessing, augmentation, timesteps, hardware, and random seeds.
+
+**nobody has published a single paper implementing 5+ architectures in the same framework with the same preprocessing, reporting accuracy, parameters, training time, and energy for all of them.** that's a genuine gap.
+

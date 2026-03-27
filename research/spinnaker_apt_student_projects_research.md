@@ -54,3 +54,31 @@ Found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 - PhD, supervised by Steve Furber (main), David Lester (co)
 - New SpiNNaker synaptic plasticity implementation. Neocortically-inspired model with 20K neurons and 51M plastic synapses -- largest plastic neural network ever simulated on neuromorphic hardware at that time.
 - PDF: 8.37 MB at https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex
+
+### Andrew Mundy -- Real time Spaun on SpiNNaker (2016)
+- PhD, supervised by James Garside (main), Steve Furber (co)
+- Three optimization techniques for simulating Spaun (2.5M neuron model): (1) reducing NEF memory/compute (only 1/20th the cores needed); (2) additional cores to minimize network traffic; (3) novel logic minimization for routing tables. 9000x speed-up over prior results.
+- PDF: 4.77 MB at https://research.manchester.ac.uk/en/studentTheses/real-time-spaun-on-spinnaker-functional-brain-simulation-on-a-mas
+
+### Qian Liu -- Deep Spiking Neural Networks (2018)
+- PhD, supervised by Steve Furber (main), David Lester (co)
+- Bridging the SNN-ANN performance gap. Proposed "Noisy Softplus" activation function. 99.07% on MNIST with spiking convnets. Spike-based rate multiplication for online training.
+- PDF: 15.1 MB at https://research.manchester.ac.uk/en/studentTheses/deep-spiking-neural-networks
+
+### Petrut Bogdan -- Structural Plasticity on SpiNNaker (2019)
+- PhD, supervised by Steve Furber (main), David Lester (co)
+- Structural synaptic plasticity on SpiNNaker, combined with STDP. Handwritten digit classification and motion detection. Simulations running 5+ hours with responses resembling Visual Cortex and Superior Colliculus.
+- PDF: 47.6 MB at https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker
+
+### Gabriel Fonseca Guerra -- Stochastic Processes for Neuromorphic Hardware (2020)
+- PhD, supervised by Steve Furber (main), David Lester (co)
+- Stochastic processes on both SpiNNaker and Loihi chips. Constraint satisfaction problems. Modelled intrinsic ion-channel currents and realistic postsynaptic potentials.
+- PDF: 22.5 MB at https://research.manchester.ac.uk/en/studentTheses/stochastic-processes-for-neuromorphic-hardware
+
+### Mantas Mikaitis -- Arithmetic Accelerators for a Digital Neuromorphic Processor (2020)
+- PhD, supervised by David Lester (main), Steve Furber (co)
+- Programmable accelerator for exp/log functions in SNN models for SpiNNaker2. Stochastic rounding techniques for numerical accuracy.
+- PDF: 2.8 MB at https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor
+
+### Luca Peres -- Parallelisation of Neural Processing on Neuromorphic Hardware (2022)
+- PhD, supervised by Steve Furber (main), Oliver Rhodes (co)

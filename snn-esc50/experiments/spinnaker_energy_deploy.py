@@ -222,3 +222,31 @@ def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
                 "pred": predicted, "correct": is_correct,
                 "method": method, "spikes": int(spike_counts.sum()),
             })
+            tag = "OK" if is_correct else "WRONG"
+            print(f"  [{idx+1}/{num_samples}] pred={predicted} "
+                  f"true={true_label} {tag} ({method})")
+        except Exception as e:
+            print(f"  [{idx+1}] ERROR: {e}")
+            try:
+                sim.end()
+            except Exception:
+                pass
+            results.append({"sample": idx, "error": str(e)})
+
+    elapsed = time.time() - start_time
+    accuracy = correct / num_samples if num_samples > 0 else 0
+    snn_acc = float((snn_preds[:num_samples] == labels[:num_samples]).mean())
+
+    print(f"\n{'='*60}")
+    print(f"  SpiNNaker: {accuracy:.4f} ({correct}/{num_samples})")
+    print(f"  snnTorch:  {snn_acc:.4f}")
+    print(f"  Gap: {snn_acc - accuracy:.4f}")
+    print(f"  Time: {elapsed:.1f}s")
+    print(f"{'='*60}")
+
+    summary = {
+        "fold": fold, "n": num_samples, "scale": weight_scale,
+        "spinnaker_acc": accuracy, "snn_acc": snn_acc,
+        "gap": snn_acc - accuracy, "seconds": elapsed,
+        "results": results,
+    }

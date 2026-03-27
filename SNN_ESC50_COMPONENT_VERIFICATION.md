@@ -698,3 +698,31 @@ The pipeline you need to build can be constructed by combining:
 - They used FC layers, not convolutional (opportunity for you to improve)
 - They used ESC-10 (10 classes), not ESC-50 (50 classes)
 - They did not report energy metrics
+- No code was released
+
+**This gap is actually beneficial for a thesis** -- it means your convolutional SNN approach with energy comparison on full ESC-50 would be genuinely novel.
+
+**Verification method:** Thorough search of snnTorch tutorials index, NeuroBench documentation, arXiv, GitHub, and Google Scholar. The arxiv paper was confirmed to be the closest existing work.
+
+---
+
+## COMPONENT 12: ESC-50 ANN BASELINES
+
+### EXISTS: YES
+### POTENTIAL BLOCKER: NO
+
+### Published baselines from ESC-50 README leaderboard:
+
+**From scratch (no pretraining):**
+
+| Method | Year | Accuracy | Notes |
+|--------|------|----------|-------|
+| Piczak CNN | 2015 | 64.5% | Original baseline, simple ConvNet |
+| Human performance | 2015 | 81.3% | Crowdsourced evaluation |
+| SB-CNN | 2016 | 73.1% | Shallow CNN with data augmentation |
+| EnvNet-v2 | 2017 | 84.9% | Strong augmentation |
+| CNN + PSO optimization | 2022 | 93.7% | Architecture search |
+
+**With pretraining / transfer learning:**
+
+| Method | Year | Accuracy |

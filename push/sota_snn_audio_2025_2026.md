@@ -306,3 +306,31 @@ we should cite Wang et al. (2025) and acknowledge that FGSM/PGD attacks may unde
 ---
 
 ## 11. Continual Learning with Audio SNNs
+
+also nobody. our experiment (SNN forgetting: 74.4% vs ANN forgetting: 81.3%, SNN forgets 6.9pp less on ESC-50 super-categories) is novel.
+
+---
+
+## 12. Where Our Work Fits
+
+### what's novel about our work
+
+1. **first SNN on full ESC-50 (50 classes)** -- confirmed, nothing else exists
+2. **most extensive encoding comparison** -- 7 encodings on same architecture. Larroza compared only 3 on ESC-10
+3. **first PANNs+SNN hybrid for audio** -- no prior work
+4. **first SNN adversarial robustness study for audio** -- prior work all vision
+5. **first continual learning study for audio SNNs** -- no prior work
+6. **SpiNNaker deployment for ESC-50** -- first environmental sound SNN on neuromorphic hardware beyond trivial pure tones
+7. **surrogate gradient ablation for audio SNNs** -- no prior comparison of 8 surrogates for audio SNN training
+
+### complexity spectrum
+
+```
+                    AUDIO SNN COMPLEXITY SPECTRUM
+
+Simple                                              Complex
+|----|----|----|----|----|----|----|----|----|----|
+Pure     Digits    KWS      ESC-10   ESC-50   Full
+tones                                         AudioSet
+
+Dominguez  Wu/Dong  SpikeSCR Larroza  [US]     [None]

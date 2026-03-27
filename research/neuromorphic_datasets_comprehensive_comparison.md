@@ -250,3 +250,31 @@ training times assume single consumer GPU (RTX 3060-3090 tier), ~100-200 epochs.
 **SHD -- "biologically plausible speech processing"**
 - unique angle: audio SNNs are rare in undergrad work
 - strong biological motivation: cochlear model mimics inner ear
+- applications: voice assistants, hearing aids, edge audio
+- dataset specifically designed to require temporal processing (unlike N-MNIST)
+- fast iteration = thorough experimentation
+
+### tier 2: acceptable
+
+**CIFAR10-DVS** -- well-known classes, good for SNN vs ANN comparison, but artificial creation weakens "real neuromorphic" claim
+
+**N-Caltech101** -- 101 classes provides complexity, but class imbalance and artificial creation
+
+### tier 3: not recommended
+
+**N-MNIST** -- too easy, weak narrative
+**SSC** -- too large/hard for undergrad
+**DVS-Lip** -- fascinating but impractical difficulty
+
+---
+
+## my recommended strategy
+
+### option A: DVS128 Gesture (safest)
+
+achievable baseline 95-97%. contribution angles: architecture comparison (LIF vs PLIF), timestep ablation, SNN vs ANN energy analysis, robustness across illumination, latency-accuracy tradeoff. low risk, well-documented.
+
+### option B: SHD (strongest novel narrative)
+
+achievable baseline 88-92%. contribution angles: feedforward vs recurrent SNN comparison, temporal resolution study, SNN vs RNN comparison, speaker generalization, delay learning. low-medium risk, dataset is clean and fast but recurrent SNNs are trickier to train.
+

@@ -211,31 +211,3 @@ These are areas where only ONE substantial paper exists. Publishing a second stu
 | **SNN for music pattern recognition** | mrahtz BEng thesis (2016, Brian2) | Redo with modern snnTorch. Use proper music datasets (GTZAN, MagnaTagATune). | LOW-MEDIUM |
 | **SNN for driver distraction detection** | Spiking-DD (2024) | Test on different driving datasets or compare architectures. | MEDIUM |
 | **SNN for lip reading** | SpikGRU2+ on DVSLip (CVPR 2024 workshop) | Different architecture on same dataset. Or same approach on new lip dataset. | MEDIUM |
-| **SNN for glacier segmentation** | snn-glacier-segmentation (GitHub, 0 stars) | Any formal study would be the first peer-reviewed contribution. | LOW-MEDIUM |
-| **SNN for sign language (event-based)** | DVS_Sign dataset with basic SNN | Apply modern architectures (CSNN, transformer-based). | MEDIUM |
-| **SNN for 3D scene rendering (NeRF)** | SpiNeRF (Li et al., 2025) -- first SNN for NeRF | Any follow-up or comparison is novel. | HIGH |
-
----
-
-<a name="6-cross-domain"></a>
-## 6. Cross-Domain Application Opportunities
-
-### 6.1 Vision Methods Applied to Audio
-
-| Transfer | Specific Idea | Effort |
-|----------|--------------|--------|
-| CSNN architectures from image classification to audio spectrograms | Take a proven CSNN from CIFAR-10 work, apply to ESC-50 or UrbanSound8K spectrograms | LOW |
-| Data augmentation from vision to audio events | NDA (Neuromorphic Data Augmentation) tested only on vision; apply to SHD/SSC | LOW-MEDIUM |
-| Spiking ResNet from ImageNet to SHD | Transfer architecture, not weights | MEDIUM |
-
-### 6.2 Classification Methods Applied to Regression
-
-| Transfer | Specific Idea | Effort |
-|----------|--------------|--------|
-| snnTorch classification pipeline to regression | snnTorch has regression tutorials since 2024. Apply to energy forecasting, stock prediction, or sensor regression | LOW-MEDIUM |
-| Surrogate gradient training for continuous output prediction | Most regression SNN work uses rate-coded output. Try membrane potential decoding for regression | MEDIUM |
-
-### 6.3 Vision Methods Applied to Medical/Biomedical
-
-| Transfer | Specific Idea | Effort |
-|----------|--------------|--------|

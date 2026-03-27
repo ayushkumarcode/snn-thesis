@@ -250,3 +250,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 ## student course projects / research group projects
 
 ### 3.1 Simple SNN with STDP (University of Osnabruck Course Project)
+- **URL**: https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP
+- **Description**: From-scratch SNN with STDP trained on MNIST
+- **Framework**: Python, TensorFlow/Keras (for MNIST loading only)
+- **Dataset**: MNIST (partial)
+- **Results**: Reasonable accuracy after 1 epoch, plateaued quickly. Dense NNs outperformed significantly.
+- **Report**: YES - Paper.pdf included
+- **Complexity**: MODERATE (no hidden layers, single-layer architecture)
+- **Stars**: 47 | **Forks**: 9 | **Commits**: 73
+- great model for a course project. four students, from-scratch implementation, honest about limitations. very achievable scope for a group undergrad project.
+
+### 3.2 SNN Image Classification - SNN vs CNN Comparison
+- **URL**: https://github.com/sofi12321/SNN_image_classification
+- **Description**: Comparing SNN and CNN for image classification across multiple datasets
+- **Framework**: snnTorch, PyTorch
+- **Dataset**: SOCOFing (fingerprints), EMNIST, Fashion-MNIST
+- **Results**: SOCOFing: SNN 98% vs CNN 83%; EMNIST: both 99%; Fashion-MNIST: both 86%. SNN training ~1.5x slower.
+- **Report**: No separate report; comprehensive README
+- **Complexity**: MODERATE
+- **Stars**: 9 | **Forks**: 2 | **Commits**: 21
+- this is a great model for an undergrad project. three datasets, clear comparison, achievable scope. uses snnTorch which has good documentation. single Jupyter notebook format.
+
+### 3.3 SNN Image Classification (AI3610 Homework)
+- **URL**: https://github.com/HaoyiZhu/SNN_Image_Classification
+- **Description**: Convolutional SNN with 12C5-MP2-64C5-MP2-1024FC10 architecture
+- **Framework**: snnTorch, PyTorch, Hydra config
+- **Dataset**: Static images and spike-based neuromorphic inputs
+- **Results**: Static: 99.12% accuracy; Spike data: 97.05% accuracy (20 epochs, RTX 3090)
+- **Complexity**: MODERATE

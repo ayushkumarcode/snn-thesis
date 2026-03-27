@@ -334,3 +334,31 @@ Key highlights:
 - Autonomous driving with SNNs (NeurIPS 2024)
 
 Strong practical motivation. Hardware deployment demonstrated. Good thesis potential, especially for robotics labs.
+
+### 6H. SNN + natural language processing
+**Paper count: 5-10 | Maturity: MEDIUM**
+
+| Paper | Year | Key Result |
+|-------|------|------------|
+| SpikeGPT | 2023 | First spiking language model; 46M params; 33.2x energy reduction |
+| SpikeBERT | 2023 | Comparable to BERT on text classification |
+| SpikingBERT (AAAI) | 2024 | Knowledge distillation from BERT |
+| SpikingMiniLM | 2024 | Energy-efficient NLU |
+| SNNLP | 2024 | SNN for NLP framework |
+
+Emerging field. SpikeGPT is notable but very small (46M params vs billions for GPT-3/4). Practical NLP with SNNs remains far behind ANNs. Thesis opportunity in niche tasks (sentiment analysis, intent detection for edge devices).
+
+### 6I. Other creative applications
+
+**SNN + Point Cloud / 3D Processing:**
+- S3DNet: 92.34% on ModelNet40, first SNN point cloud segmentation (85.0% ShapeNetPart)
+- Spiking Point Transformer (AAAI 2025)
+
+**SNN + Image Super-Resolution:**
+- SpikeSR for remote sensing super-resolution
+- MLFIN for general image super-resolution
+- ESDNet for image deraining (IJCAI 2024)
+
+**SNN + Optical Flow / Depth Estimation:**
+- Natural pairing with event cameras
+- StereoSpike for depth estimation on MVSEC

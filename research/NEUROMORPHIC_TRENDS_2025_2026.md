@@ -362,3 +362,31 @@ Key quote from Nature Communications (2025): "After several false starts, advanc
 - Don't claim energy advantage without qualifying software vs hardware
 - Don't overstate SpiNNaker accuracy (33.1% with 12.8pp gap)
 
+### Competitive landscape
+
+| Work | Dataset | Methods | Hardware | My Advantage |
+|------|---------|---------|----------|---------------|
+| Larroza et al. 2025 | ESC-10 only | 3 encodings, FC only | None | Full ESC-50, 7 encodings, CNN, SpiNNaker |
+| Dominguez-Morales 2016 | Pure tones | 1 method | SpiNNaker 1 | Complex audio, multiple methods, modern training |
+| Yarga et al. 2024 | GSC (speech) | PDM mic + SNN | Simulation | Different domain (env. sound vs speech) |
+| Wu & Chua 2018 | RWCP/TIMIT | Robust SNN | None | Modern methods, hardware, more thorough |
+
+---
+
+## Research gaps and follow-up ideas
+
+1. **Loihi 2 deployment**: comparing SpiNNaker vs Loihi would be a separate high-impact paper.
+
+2. **Neuromorphic audio challenge**: proposing an ESC-50 SNN benchmark through Open Neuromorphic or NeuroBench could establish community leadership.
+
+3. **Event-driven audio encoding**: moving from frame-based spectrograms to true event-driven audio (like Hilbert Transform encoding).
+
+4. **Innatera Pulsar evaluation**: getting my model onto Innatera's platform -- the power numbers would be compelling for always-on audio.
+
+5. **SpiNNaker 2 deployment**: SpiNNaker 2 at Sandia/SpiNNcloud would be the obvious hardware upgrade.
+
+---
+
+## Confidence assessment
+
+| Finding | Confidence | Basis |

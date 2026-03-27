@@ -138,20 +138,20 @@ FGSM [11] and PGD [12] (torchattacks, fold 4, 400 samples), 7 epsilon values. Fi
 |-----|----------|----------|---------|---------|
 | 0.00 | 53.75% | 68.75% | 53.75% | 68.75% |
 | 0.01 | 37.50% | 22.50% | 23.50% | 14.75% |
-
-| ε | FGSM SNN | FGSM ANN | PGD SNN | PGD ANN |
-|---|---------|---------|---------|---------|
-| 0.00 (clean) | 53.75% | 68.75% | 53.75% | 68.75% |
-| 0.01 | 37.50% | 22.50% | 23.50% | 14.75% |
 | 0.02 | 32.00% | 8.75% | 20.50% | 2.00% |
 | 0.05 | 29.00% | 2.50% | 19.25% | 0.00% |
 | 0.10 | **26.00%** | **1.75%** | 6.25% | 0.00% |
 | 0.20 | 21.50% | 1.25% | 1.25% | 0.00% |
 | 0.30 | 20.75% | 0.75% | 1.25% | 0.00% |
 
-Under FGSM at ε=0.1, SNN retains 26.00% accuracy versus 1.75% for ANN (14.9× more robust). Binary spike thresholding acts as a natural gradient masking mechanism: adversarial perturbations that shift floating-point activations by small amounts have no effect until they cross the LIF threshold. **This is the first adversarial robustness analysis of SNNs on audio spectrograms.** Note: SA-PGD (Stable Adaptive PGD) [21] should be used for stronger reliability guarantees in future work; standard PGD may underestimate robustness for high-ε SNN attacks.
+At eps=0.1 FGSM: SNN keeps 26.00% vs ANN's 1.75% (14.9x more robust). Binary spike thresholding = natural gradient masking. Note: SA-PGD [21] recommended for future work as standard PGD may underestimate SNN vulnerability.
 
 ---
+
+## 6. SpiNNaker deployment
+
+### 6.1 FC1 cancellation problem
+
 
 ## 6. SpiNNaker Neuromorphic Deployment
 

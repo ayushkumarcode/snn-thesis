@@ -138,3 +138,31 @@ The key challenge: SNNs produce discrete binary spike events (0 or 1), but speec
 ### Analysis
 
 Speech enhancement is the strongest SNN speech application beyond classification.
+
+**Spiking-FullSubNet** is the standout:
+- Uses full-band and sub-band fused approach (inspired by human auditory system)
+- Novel spiking neuron model with dynamic input integration and forgetting
+- Won the Intel Neuromorphic Deep Noise Suppression (N-DNS) Challenge
+- Outperforms SOTA methods with large margins
+- Directly applicable to hearing aids, conferencing, edge devices
+
+**DPSNN** addresses real-time requirements:
+- Phase 1: Spiking CNNs capture global context
+- Phase 2: Spiking RNNs focus on frequency features
+- Achieves ~5ms latency (critical for hearing aids)
+- Good SNR, perceptual quality, and energy efficiency
+
+**Voice conversion with SNNs:** 0 papers found. Complete gap.
+
+**Speech translation with SNNs:** 0 papers found. Complete gap.
+
+**Speech separation (cocktail party) with SNNs:** Very early stage (1-2 papers from 2007-era using basic spiking models). Modern deep SNN approaches haven't been applied yet.
+
+### Feasibility: HIGH (speech enhancement), VERY HIGH novelty (voice conversion)
+- Speech enhancement: well-defined problem, existing SNN baselines, clear metrics (PESQ, STOI, SI-SDR)
+- Voice conversion: zero SNN papers -- extremely novel but risky
+- Could use snnTorch/SpikingJelly to build SNN-based denoising autoencoders
+- Intel N-DNS Challenge dataset is publicly available
+- VoiceBank+DEMAND dataset commonly used
+
+### Gaps

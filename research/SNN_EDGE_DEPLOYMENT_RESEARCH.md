@@ -351,31 +351,3 @@ An interesting thesis angle is using a Raspberry Pi as the host controller conne
 | 2025 | "ModNEF: Open Source Modular Neuromorphic Emulator for FPGA" (ACM TACO) | Open-source FPGA SNN framework evaluated on MNIST/N-MNIST |
 | 2025 | "A Robust, Open-Source Framework for SNNs on Low-End FPGAs" | Low-cost Artix-7 FPGA, 0.52 ms/image MNIST |
 | 2024 | "Spiker+: Framework for SNN FPGA Accelerators at the Edge" | Auto-generate VHDL, 180 mW, 7612 logic cells |
-| 2024 | "Neuromorphic Intermediate Representation" (Nature Communications) | NIR standard connecting 7 simulators to 4 hardware platforms |
-| 2024 | "Energy-Aware FPGA Implementation of SNN with LIF Neurons" | Focus on energy measurement methodology for FPGA SNNs |
-| 2024 | "Enabling Efficient On-Edge SNN Acceleration with Flexible FPGA Architectures" | Ultra-low area and power SNN on FPGA |
-| 2024 | "SpikeExplorer: Hardware-Oriented Design Space Exploration for SNNs on FPGA" | Automated architecture search for FPGA-optimized SNNs |
-| 2024 | "Energy efficient and low-latency SNNs on embedded microcontrollers" (Neural Computing and Applications) | eLSNN on STM32F4, spiking activity tuning |
-| 2024 | ISFPGA 2024 Workshop: "Deploying SNNs to FPGAs via HLS" | Complete snnTorch-to-KV260 pipeline with code |
-| 2023 | "An FPGA implementation of Bayesian inference with SNNs" (Frontiers) | Bayesian SNN on FPGA with uncertainty estimation |
-
-### 8.2 Key GitHub Repositories
-
-| Repository | Stars | Focus |
-|------------|-------|-------|
-| open-neuromorphic/fpga-snntorch | -- | ISFPGA 2024 workshop: snnTorch to FPGA deployment |
-| smilies-polito/Spiker | -- | Python-to-VHDL SNN accelerator generation |
-| neuromorphs/NIR | -- | Neuromorphic Intermediate Representation |
-| eejlny/S2NN-HLS | -- | SNN on Zynq via Vivado HLS (Izhikevich model) |
-| OpenHEC/SNN-simulator-on-PYNQcluster | -- | SNN simulation on PYNQ clusters |
-| im-afan/snn-fpga | -- | SNN on low-end Basys3/Cmod FPGAs |
-| RishabhMalviya/SNN_Arduino | -- | LIF neurons on Arduino for robotics |
-| NicolaCST/ANN-vs-SNN | -- | Performance/power comparison benchmark |
-| jeshraghian/snntorch | 3k+ | Primary SNN training framework |
-| fangwei123456/spikingjelly | 3k+ | SpikingJelly SNN framework |
-
----
-
-## 9. Concrete Hardware Cost Breakdown
-
-### 9.1 Budget Tier: Under $50

@@ -614,3 +614,31 @@ Based on all verification results, the recommended approach for an undergraduate
 **Spatial-Temporal Hybrid Architecture:**
 
 1. **Spatial feature extraction (Conv1d, standard PyTorch -- no time loop):**
+   - Input: (batch, 12, 1000)
+   - 3 blocks of Conv1d -> BatchNorm1d -> ReLU -> MaxPool1d
+   - Output: (batch, 128, compressed_length)
+
+2. **Spike encoding (delta modulation on compressed features):**
+   - Apply spikegen.delta to compressed features
+   - Generates sparse spike trains
+
+3. **SNN classification (short time loop, manageable memory):**
+   - 1-2 spiking FC layers with snn.Leaky
+   - 25-50 timesteps only
+   - Output: rate-coded class predictions
+
+This avoids the 1000-timestep memory problem while still demonstrating SNN advantages in the classification stage.
+
+---
+
+## sources
+
+- [PTB-XL v1.0.3 on PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/)
+- [PTB-XL Paper (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7248071/)
+- [PTB-XL Paper (Nature Scientific Data)](https://www.nature.com/articles/s41597-020-0495-6)
+- [WFDB Python on PyPI](https://pypi.org/project/wfdb/)
+- [WFDB Python GitHub](https://github.com/MIT-LCP/wfdb-python)
+- [WFDB Documentation](https://wfdb.readthedocs.io/)
+- [snnTorch on PyPI](https://pypi.org/project/snntorch/)
+- [snnTorch GitHub](https://github.com/jeshraghian/snntorch)
+- [snnTorch Documentation](https://snntorch.readthedocs.io/en/latest/)

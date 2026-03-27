@@ -306,3 +306,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 | Can't reproduce paper results | MEDIUM | Start with repos that claim reproducibility (QCFS has fixed seeds) |
 | Accuracy loss too high | LOW | This is itself a finding worth reporting |
 | Not enough novelty | LOW | Systematic comparison IS the contribution |
+
+---
+
+## Confidence
+
+| Finding | Confidence |
+|---------|-----------|
+| Conversion well-supported by tools | HIGH |
+| CIFAR-10 VGG-16 gets >93% at T<=16 | HIGH -- reproduced in many papers |
+| ImageNet feasible at T<=32 | HIGH |
+| MobileNet/EfficientNet conversion underexplored | HIGH |
+| Medical imaging conversion underexplored | HIGH |
+| Working pipeline in 1-2 weeks | MEDIUM-HIGH |
+| Undergrad can produce meaningful thesis | HIGH |
+
+---
+
+## Sources
+
+### Key Papers
+
+1. [QCFS (ICLR 2022)](https://arxiv.org/abs/2303.04347)
+2. [SNN Calibration (ICML 2021)](https://proceedings.mlr.press/v202/jiang23a/jiang23a.pdf)
+3. [SignGD Beyond ReLU (ICML 2024)](https://arxiv.org/abs/2407.01645)
+4. [Differential Coding (ICML 2025)](https://openreview.net/forum?id=OxBWTFSGcv)
+5. [Inference-Scale Complexity (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/html/Bu_Inference-Scale_Complexity_in_ANN-SNN_Conversion_for_High-Performance_and_Low-Power_Applications_CVPR_2025_paper.html)
+6. [Spiking Transformers (ICLR 2025)](https://arxiv.org/abs/2502.21193)
+7. [SpikeYOLO (ECCV 2024)](https://github.com/BICLab/SpikeYOLO)

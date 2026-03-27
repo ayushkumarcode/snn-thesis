@@ -54,3 +54,31 @@ So an SNN audio paper with actual SpiNNaker deployment would be genuinely novel 
 | NeurIPS | 2024 | ~15 | Baseline |
 
 ### What's hot
+
+1. **Spiking Transformers** (HOTTEST): SpikFormer, Spike-driven Transformer V2, Binary Event-Driven Spiking Transformer. ImageNet SOTA for SNNs now at 83.73% (SGLFormer). This is basically the "transformer moment" for SNNs.
+
+2. **SNN-LLM intersection** (EMERGING): SpikeGPT, SpikeLLM (ICLR 2025), neuromorphic LLM (National Science Review 2025), MatMul-free LLM on Loihi 2. The field is racing to apply neuromorphic principles to language models.
+
+3. **Knowledge Distillation / Self-Distillation** (NeurIPS 2025): "SNNs are Inherently Self-Distillers," Enhanced Self-Distillation Framework. ANN-to-SNN knowledge transfer is a major research direction.
+
+4. **Adversarial Robustness** (Nature Communications 2025): formal proof of SNN adversarial advantage. SNNs achieve 2x ANN robustness on CIFAR-10. BUT: Wang et al. (2025) warns robustness may be overestimated due to vanishing gradients in spike activations.
+
+5. **ANN-to-SNN Conversion** (CVPR 2025, IJCAI 2025): training-free conversion for transformers, negative spike methods. Gap closing to <0.04% in some settings.
+
+6. **Temporal Processing** (NeurIPS 2025): "SNNs Need High-Frequency Information," temporal shift modules, spiking NeRF. Exploiting temporal dynamics is a key differentiator.
+
+7. **Multimodal SNNs** (2025): Audio-visual spiking transformers, cross-modal residual learning.
+
+8. **State Space Models + SNNs** (EMERGING): SpikySpace (first fully spiking SSM), delays via state variables, Mamba-inspired spiking architectures.
+
+9. **Federated Learning + SNNs** (2025): Privacy-preserving properties of spike-based communication.
+
+10. **Neural Architecture Search for SNNs** (arXiv survey 2025): Hardware-aware NAS without training.
+
+---
+
+## 3. Hardware landscape: what the big players are doing
+
+### Intel Loihi 2
+- **Hala Point** system: 1.15 billion neurons, 1,152 Loihi 2 processors
+- 75x lower latency, 1000x higher energy efficiency vs Jetson Orin Nano on SSM workloads

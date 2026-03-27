@@ -110,3 +110,31 @@ the 7-day window is short -- worth preparing template responses in advance. sinc
 - day 1: keynote + award talks + lightning talks + poster session
 - day 2: full talks + lightning talks
 - day 3: full talks + lightning talks + closing
+
+### publication details
+- publisher: ACM (2018-2023 purely ACM; 2024 IEEE/ACM co-publication; 2026 ACM)
+- open access: all 2026 ACM publications will be fully open access
+- APC costs: if UoM participates in JISC/ACM Open agreement: FREE (APCs covered by institution). if not: $250 (ACM member) or $350 (non-member) with 2026 temporary 65% subsidy. JISC has signed an ACM Open deal covering 70+ UK institutions. UoM is very likely covered but needs verification.
+- template: ACM Conference Proceedings Template (available on Overleaf)
+- ORCID: required for all authors of accepted papers
+
+---
+
+## what happens if rejected?
+
+the ICONS 2026 CFP explicitly states:
+
+> "If accepted, full papers will be included in the conference proceedings and considered for full talks (20 minutes). Non-accepted papers will be considered for poster presentations."
+
+> "If accepted, short papers will be included in the conference proceedings and considered for short talks (10 minutes). Non-accepted papers will be considered for poster presentations."
+
+so rejected proceedings papers can still be presented as posters (but posters are NOT in the proceedings). this is a nice soft landing -- even worst case, the work could still be presented at the conference if it's relevant and technically sound.
+
+---
+
+## best paper awards
+
+ICONS gives best paper awards annually.
+
+| Year | Paper | Authors | Affiliation |
+|------|-------|---------|-------------|

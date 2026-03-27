@@ -166,3 +166,31 @@ this is the obvious concern. here's why i think it's fine:
 
 **IEEE TNNLS** -- IF ~10.4. good but very competitive. reach target for expanded version.
 
+---
+
+## Part 5: Strengths and Weaknesses for ICONS
+
+### strengths
+
+| Contribution | Strength | Comparable at ICONS? |
+|---|---|---|
+| First SNN on full ESC-50 | Very strong -- novelty watertight | No prior ESC-50 SNN paper exists anywhere |
+| 7-encoding comparison | Very strong -- most comprehensive for SNN audio | Yarga (ICONS 2022) did 4 on speech; we do 7 on ESC-50 |
+| SpiNNaker deployment | Strong -- ICONS values hardware | SpiNNaker papers appear regularly |
+| PANNs+SNN (92.5%) | Strong -- shows SNN can match ANN | Novel transfer learning for neuromorphic audio |
+| Adversarial robustness | Strong -- dramatic result | SNN adversarial papers appear at ICONS |
+| Continual learning | Moderate -- adds breadth | CL SNN paper at ICONS 2025 |
+| NeuroBench energy | Strong -- standardized benchmarking | NeuroBench is the community standard |
+| Surrogate gradient ablation | Moderate -- useful reference | Surrogate work at IJCAI 2023, ICLR 2024 |
+
+### weaknesses to address
+
+| Concern | Mitigation |
+|---|---|
+| 47.15% looks low | Frame as first-ever + gap analysis is the contribution + PANNs gets 92.5% |
+| SpiNNaker 33.1% looks low | Hardware gap analysis contribution, FC2-only hybrid, explicit gap quantification |
+| Only 1,600 training samples | Acknowledge as limitation; PANNs overcomes it |
+| 8-page limit | Prioritize encoding + PANNs + SpiNNaker + adversarial; supplementary for rest |
+
+### paper structure for 8 pages
+

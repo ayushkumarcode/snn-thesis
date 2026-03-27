@@ -418,3 +418,31 @@ Emerging field. SpikeGPT is notable but very small (46M params vs billions for G
 
 ### 4: SNN audio-visual multimodal fusion
 **Why:** 3-5 papers exist with top venue publications, SNNs' event-driven nature pairs well with multimodal streams, and combines speech + vision which is topical.
+**Approach:** Build on MISNet or SMMT architecture, test on audio-visual datasets (VGGSound, AVE), compare with ANN multimodal models.
+**Novelty angle:** Apply to a new task like audio-visual speech recognition or audio-visual event detection.
+
+### 5: SNN diffusion model for audio spectrograms
+**Why:** Spiking diffusion exists for images; applying to audio spectrograms would be genuinely new. Bridges SNN generative models and audio processing.
+**Approach:** Adapt SDDPM or Spiking-Diffusion to generate mel-spectrograms instead of images. Use a vocoder (possibly Spiking Vocos) to convert to audio.
+**Novelty angle:** First SNN diffusion model for audio generation. Very high risk, very high reward.
+
+---
+
+## 9. Research gaps summary
+
+### Completely unexplored (0 papers)
+- SNN-based voice conversion
+- SNN-based speech-to-speech translation
+- SNN-based music generation (modern deep learning approach)
+- SNN-based recommendation systems
+- SNN-based audio super-resolution
+- SNN for low-resource language ASR
+- SNN diffusion model for audio
+
+### Barely explored (1-3 papers)
+- SNN-based TTS (only SpikeVoice)
+- SNN-based vocoder (only Spiking Vocos)
+- SNN-based speech separation/cocktail party
+- SNN for audio compression
+- SNN for sound effect synthesis
+

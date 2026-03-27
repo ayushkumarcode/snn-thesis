@@ -1,17 +1,17 @@
-# Chapter 2: Background and Related Work
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 2: background and related work
+
+notes for the lit review chapter. need to cover ESC-50, SNN basics, encoding methods, prior audio SNN work, SpiNNaker, energy, adversarial, PANNs, continual learning. its a lot of ground to cover.
 
 ---
 
-## 2.1 Environmental Sound Classification
+## 2.1 environmental sound classification
 
-Environmental sound classification (ESC) is a core task in computational auditory scene analysis, with applications in smart cities (noise monitoring), wildlife conservation, assistive technology, and robotics (situational awareness). Unlike speech recognition, ESC must classify the full diversity of real-world acoustic events without the structured phonological patterns of speech.
+ESC is a core task in computational auditory scene analysis -- applications in smart cities (noise monitoring), wildlife conservation, assistive tech, robotics. Unlike speech recognition, ESC has to deal with the full diversity of real-world acoustic events without structured phonological patterns.
 
-**ESC-50** (Piczak, 2015) is the de facto standard benchmark: 2,000 recordings, 50 classes, 5-fold predefined cross-validation, and established human performance (81.3%). ANN state-of-the-art is 98.25%, primarily through CNN architectures trained on AudioSet-pretrained features (Gong et al. 2021, AST; Kong et al. 2020, PANNs).
+**ESC-50** (Piczak, 2015) is the de facto standard benchmark: 2000 recordings, 50 classes, 5-fold predefined CV, human performance 81.3%. ANN SOTA is 98.25%, mostly through CNN architectures on AudioSet-pretrained features (Gong et al. 2021 AST; Kong et al. 2020 PANNs).
 
-The standard input representation is the **log-mel spectrogram**: audio waveforms are converted to time-frequency matrices via the Short-Time Fourier Transform, frequency bins are grouped into mel-scale filterbanks (mimicking human cochlear filter spacing), and amplitudes are converted to decibels. This representation has proven highly effective across CNN, Transformer, and recurrent architectures for audio classification.
+Standard input representation is the log-mel spectrogram: audio -> STFT -> mel filterbanks (mimics cochlear spacing) -> dB scale. This works well across CNN, Transformer, and recurrent architectures.
 
----
 
 ## 2.2 Spiking Neural Networks
 

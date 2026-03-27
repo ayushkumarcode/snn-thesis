@@ -54,3 +54,31 @@ Edinburgh does it differently, more qualitative than percentage-based, with thre
 
 Source: [Edinburgh DISS Project Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
 
+### 1.4 Imperial -- three equal pillars
+
+Imperial assesses across three equally weighted dimensions:
+
+1. **Technical Achievement** (design, correctness, completeness, elegance, significance)
+2. **Background Research** (awareness of prior work, specification development)
+3. **Quality of Dissertation** (material selection, organisation, prose clarity, diagrams)
+
+Important rule from Imperial: a project can't receive a Pass/Merit/Distinction if the report itself isn't at that level. Technical excellence can't compensate for poor writing.
+
+Source: [Imperial Projects Guide](https://www.doc.ic.ac.uk/lab/mac-mcs-projects/ProjectsGuide.html)
+
+### 1.5 Cardiff -- four equal dimensions
+
+Cardiff marks on four equally weighted dimensions (25% each):
+1. **Project Approach** -- professional methods and tools
+2. **Argument** -- structure, justification of conclusions
+3. **Products** -- appropriateness, contribution to knowledge
+4. **Reflection** -- insight and understanding developed
+
+Source: [Cardiff Dissertation Guide](https://pats.cs.cf.ac.uk/wiki/doku.php?id=masters_dissertation_guide)
+
+### 1.6 What a "typical" breakdown looks like
+
+Cross-referencing all the schemes, here's roughly where marks fall for a UK CS undergrad project:
+
+| Assessment Dimension | Typical Weight | Range Across Universities |
+|---|---|---|

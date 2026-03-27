@@ -152,20 +152,20 @@ snnTorch leads all five categories at n=400. Urban has smallest gap (5.0 pp). Na
 | snnTorch right, SpiNNaker wrong | 60 | 15.0% |
 | Both wrong | 168 | 42.0% |
 
+Both wrong on 42% -- the dominant error source is the task difficulty itself (256 hidden neurons isn't enough), not hardware noise.
 
-**Error analysis (n=400 final):**
+### 5.3.4 towards 5-fold cross-validation
 
-| Category | Count | % |
-|----------|-------|---|
-| Both correct | 145 | 36.2% |
-| SpiNNaker correct, snnTorch wrong | 27 | 6.8% |
-| snnTorch correct, SpiNNaker wrong | 60 | 15.0% |
-| Both wrong | 168 | 42.0% |
+Run 6 is single-fold (fold 4). For full comparability with snnTorch baseline (47.15% +/- 4.50%), we prepared all five folds.
 
-snnTorch corrects more of SpiNNaker's errors (60 samples, 15.0%) than SpiNNaker corrects snnTorch's (27 samples, 6.8%). Both systems fail on 42.0% of samples — confirming that the dominant error source is the difficulty of the classification task itself (insufficient discriminability from 256 hidden neurons), not hardware noise. The agreement rate of 64.5% is lower than the mid-run peak (~81%), indicating that the final samples were systematically harder for SpiNNaker.
+**Model integrity issue:** the augmented training job accidentally saved to same directory as canonical CSF3 models, overwriting all 5 checkpoints. Caught it because fold 3 returned 26.75% snnTorch accuracy (expected ~48%). Restored all from `csf3_results/snn/direct/` backup. that was scary
 
-### 5.3.4 Towards 5-Fold SpiNNaker Cross-Validation
+**snnTorch reference from extraction (canonical models):**
 
+| Fold | snnTorch (extraction) | CSF3 best_acc | Diff |
+|------|----------------------|---------------|------|
+| 1 | 39.5% | 40.5% | -1.0 pp |
+| 2 | 48.2% | 48.5% | -0.3 pp |
 Run 6 establishes a single-fold SpiNNaker result (43.0% on fold 4). To achieve full comparability with the 5-fold snnTorch baseline (47.15% ± 4.50%), we prepared all five folds for SpiNNaker inference. This required addressing a critical model integrity issue discovered during preparation.
 
 **Model integrity audit.** The augmented training job (§4.4) saved models to the same directory as the canonical CSF3 baselines, overwriting all five checkpoints. Detection: feature extraction for fold 3 returned 26.75% snnTorch accuracy (expected ~48.25%), and fold 5 returned 21.25% (expected ~44.5%). The augmented models ran for 81–100 epochs while the canonical CSF3 models ran for exactly 50 epochs. All five folds were restored from `csf3_results/snn/direct/` backup.

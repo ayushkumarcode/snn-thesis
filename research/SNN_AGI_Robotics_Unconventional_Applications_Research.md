@@ -194,3 +194,31 @@ Key papers:
 - [PC-SNN: Supervised Learning with Predictive Coding in SNNs](https://www.researchgate.net/publication/365821328)
 - [Energy optimization induces predictive-coding properties in multi-compartment SNN, PLOS Comp Bio](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1013112)
 
+**Feasibility for ~4 weeks: LOW**
+- Predictive coding requires multi-layer hierarchical architectures with top-down feedback
+- Not supported by snnTorch's standard tutorials
+- Theoretical background is substantial (Bayesian brain hypothesis, free energy principle)
+- Implementation from scratch is a research-level challenge
+
+**Verdict: not recommended. Intellectually fascinating but too theoretical and complex for the timeline.**
+
+---
+
+### 1.7 Part 1 summary
+
+| AGI Concept | Papers | Feasible in ~4 weeks? | macOS? | snnTorch? | Novel? | Recommendation |
+|---|---|---|---|---|---|---|
+| Continual Learning | 20+ | **YES** (moderate) | Yes | Yes | Moderate | **Recommended** |
+| Meta-Learning | 5-10 | No | Yes | No native support | High | Too complex |
+| Cognitive Architectures | 5-10 systems | No | Nengo yes | No (use Nengo) | N/A (replication) | PhD-scale |
+| Predictive Coding | 10-15 | No | Yes | No native support | Moderate | Too theoretical |
+| Self-Supervised Learning | 5-10 | Possibly | Yes | Partially | High | Risky |
+| World Models | <5 | No | Yes | No | Very High | Too early-stage |
+
+---
+
+## Part 2: Robotics SNN applications (beyond reflexes)
+
+---
+
+### 2.1 SNN for robotic grasping / manipulation

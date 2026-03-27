@@ -110,3 +110,18 @@ primary rejection risk: reviewers feel 8-page full paper is too compressed for e
 
 ---
 
+## What to Emphasize vs De-emphasize
+
+### emphasize
+1. SpiNNaker deployment: FC1 cancellation root cause, FC2-only validated at 5-fold, Option A path forward
+2. 7-encoding comparison with mechanistic explanations
+3. adversarial robustness: 14.9x with Wang et al. caveat acknowledged
+4. PANNs gap collapse: 16.7pp -> 0.95pp
+5. NeuroBench energy: honest reporting
+6. surrogate bimodal split
+
+### de-emphasize or remove
+- absolute accuracy comparisons to ESC-50 SOTA -- not relevant for ICONS audience
+- continual learning -- modest effect, limited depth possible at 8 pages
+- data augmentation negative result -- thesis only
+- over-claiming on energy -- don't say "SNNs are more efficient" without hardware qualifier

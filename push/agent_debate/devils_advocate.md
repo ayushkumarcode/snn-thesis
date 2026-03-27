@@ -58,31 +58,3 @@ The paper claims the 16.7 pp SNN-ANN gap is "statistically significant (paired t
 
 ### Novelty Risk: MEDIUM RISK
 
-The 7-encoding comparison is genuinely the largest such comparison in SNN audio literature, and this fact is well-supported by the literature review. The risk is not rejection of the claim but downgrading — a reviewer may accept that it is "the most encodings compared so far" while questioning whether it is "the most informative comparison." This is survivable with good rebuttal.
-
----
-
-## C3: First SNN on SpiNNaker for Environmental Sound
-
-### The Strongest Challenge
-
-This is the most problematic novelty claim from a technical perspective, and it faces the most severe combined challenges of both novelty and results quality.
-
-**Problem 1: The SpiNNaker deployment is not a full network deployment.**
-
-The paper deploys only FC2 (256→50) on SpiNNaker. The convolutional layers (Conv1, Conv2), the pooling layers, and FC1 all run in software on a CPU. The paper then argues this is a "hybrid approach" and a "novel co-design insight." A reviewer with SpiNNaker expertise will be unimpressed: deploying a single 256→50 linear layer with 50 output neurons on SpiNNaker is trivial — it is well within the capability of undergraduate student SpiNNaker tutorials. The Dominguez-Morales et al. (2016) work, which the paper cites as the only prior SpiNNaker audio work, deployed a full multilayer SNN. The paper under review actually deploys less of the network on hardware.
-
-**Problem 2: The hardware accuracy gap (12.8 ± 4.1 pp across 5 folds) suggests the deployment is not properly validated.**
-
-SpiNNaker=33.1% vs snnTorch=46.0%. This is a 12.8 pp gap with 4.1 pp standard deviation. The paper explains this as weight quantization and timing issues. However, a gap this large with this much variance suggests the SpiNNaker deployment is not a reliable implementation — it is a demonstration that the approach approximately works some of the time. The agreement rate of 64.5% (Run 6, fold 4) means 35.5% of samples are classified differently by hardware vs software. A reviewer evaluating deployment quality will ask: is this deployment scientifically useful or merely demonstrative? Per-fold variation (F1=29.0%, F2=32.0%, F3=36.5%, F4=43.0%, F5=25.2%) is enormous — a 17.8 pp range across folds. This suggests the hardware behaviour is not stable.
-
-**Problem 3: Dominguez-Morales et al. (2016) already establishes the precedent more cleanly.**
-
-The paper claims "first SNN on SpiNNaker for environmental sound classification." Dominguez-Morales et al. classified audio samples on SpiNNaker. The paper distinguishes itself on the grounds that pure tones are not "environmental sounds." This distinction will not survive determined reviewer scrutiny: pure tone classification IS a form of acoustic/sound classification on hardware. The word "environmental" is doing a lot of work in the novelty claim, and a reviewer could reasonably classify it as an attempt to make a narrow, potentially semantic distinction carry the weight of a major novelty claim.
-
-**Problem 4: The energy numbers for SpiNNaker are not measured.**
-
-The paper claims "86 nJ/sample" for SpiNNaker (mentioned in the SOTA document) but the actual paper abstract presents NeuroBench simulation energy (976 nJ SNN, 463 nJ ANN) based on software operation counting, not real SpiNNaker measurement. Wall-clock energy per sample on SpiNNaker is explicitly stated as "left for future measurement." The energy argument that motivates SpiNNaker deployment is therefore not validated by actual hardware measurement.
-
-**Problem 5: SpiNNaker 1 is an antiquated platform by 2026 standards.**
-

@@ -110,20 +110,20 @@ The energy argument is nuanced and depends on the execution platform.
 ---
 
 ## 2.7 adversarial robustness in SNNs
-Adversarial examples (Goodfellow et al. 2015) are inputs crafted to maximise model loss: $x' = x + \epsilon \cdot \text{sign}(\nabla_x \mathcal{L})$ (FGSM). For SNNs, adversarial robustness is complex:
 
-**Sharmin et al. (ECCV 2020, arXiv:2003.10399)** showed that SNNs with Poisson encoding exhibit higher adversarial accuracy in black-box scenarios, attributing this to the stochasticity of rate coding.
+Adversarial examples (Goodfellow et al. 2015): inputs crafted to maximise loss: x' = x + eps*sign(grad_x L) (FGSM). For SNNs its complex:
 
-**Gradient masking in SNNs**: The spike threshold creates a hard non-linearity. Small perturbations to the input may not cross the threshold, leaving the spike pattern unchanged. This creates gradient masking — the gradient ∂S/∂x through the spike function is zero almost everywhere, making gradient-based attacks weaker.
+**Sharmin et al. (ECCV 2020)** showed SNNs with Poisson encoding have higher adversarial accuracy in black-box scenarios, attributed to rate coding stochasticity.
 
-**Important caveat (Wang et al. 2025, arXiv:2512.22522)**: Standard PGD (Projected Gradient Descent) underestimates SNN robustness because vanishing surrogate gradients make the attack weaker than it should be. Stable Adaptive PGD (SA-PGD) should be used for reliable evaluation. This work uses standard PGD (40 steps) with the caveat that SNN robustness numbers may be slightly inflated.
+**Gradient masking in SNNs**: the spike threshold is a hard non-linearity. Small perturbations may not cross it, leaving spike pattern unchanged. Creates gradient masking -- dS/dx is zero almost everywhere, weakening gradient-based attacks.
+
+**Important caveat (Wang et al. 2025, arXiv:2512.22522)**: standard PGD underestimates SNN robustness because vanishing surrogate gradients make the attack weaker than it should be. SA-PGD should be used for reliable evaluation. We use standard PGD (40 steps) with the caveat that SNN numbers may be slightly inflated. need to be careful about how i present this in the thesis
 
 ---
 
-## 2.8 Transfer Learning for Audio (PANNs)
+## 2.8 transfer learning for audio (PANNs)
 
-**PANNs** (Pretrained Audio Neural Networks, Kong et al. 2020, IEEE TASLP) are large CNN models pretrained on AudioSet (Google, 1.8M 10s clips, 527 class tags). CNN14 achieves 43.1% mAP on AudioSet and provides 2048-dimensional embeddings that transfer extremely well to downstream tasks: ESC-50 accuracy of 94.7% with CNN14 fine-tuning.
-
+**PANNs** (Kong et al. 2020, IEEE TASLP) -- large CNNs pretrained on AudioSet (1.8M 10s clips, 527 tags). CNN14 gets 43.1% mAP on AudioSet and provides 2048-d embeddings that transfer extremely well: ESC-50 94.7% with CNN14 fine-tuning.
 This work uses CNN14 embeddings as fixed features and trains only a lightweight SNN classification head, demonstrating that the SNN-ANN accuracy gap closes from 16.7 pp to <1 pp when rich pretrained features are available. This is the first combination of PANNs with an SNN classifier.
 
 ---

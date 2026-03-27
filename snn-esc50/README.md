@@ -96,20 +96,20 @@ snn-esc50/
 ├── src/
 │   ├── config.py          # hyperparameters and paths
 │   ├── dataset.py         # ESC-50 loader + mel spectrograms
-
-## Project Structure
-
-```
-snn-esc50/
-├── src/
-│   ├── config.py          # All hyperparameters and paths
-│   ├── dataset.py         # ESC-50 loader + mel-spectrogram pipeline
-│   ├── encoding.py        # Spike encoding (rate, delta, latency, direct)
-│   ├── train.py           # Training loop (SNN + ANN, 5-fold CV)
-│   ├── evaluate.py        # Metrics, confusion matrices, per-class analysis
-│   ├── energy.py          # SynOps/MAC energy comparison
+│   ├── encoding.py        # spike encodings (rate, delta, latency, direct)
+│   ├── train.py           # training loop, 5-fold CV
+│   ├── evaluate.py        # metrics, confusion matrices
+│   ├── energy.py          # synops/MAC energy stuff
 │   └── models/
-│       ├── snn_model.py   # Convolutional SNN (snnTorch)
+│       ├── snn_model.py   # convolutional SNN (snnTorch)
+│       └── ann_model.py   # convolutional ANN baseline
+├── spinnaker/
+│   ├── convert_weights.py
+│   ├── extract_features.py
+│   └── run_on_spinnaker.py
+├── experiments/           # all the advanced experiment scripts
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
 │       └── ann_model.py   # Convolutional ANN baseline
 ├── spinnaker/
 │   ├── convert_weights.py     # snnTorch → sPyNNaker weight conversion

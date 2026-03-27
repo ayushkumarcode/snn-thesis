@@ -192,31 +192,3 @@ Fourth, path to full deployment. The Option A experiment (MaxPool SNN achieving 
 
 The bimodal result is more significant than it initially appears, for three reasons.
 
-First, it challenges an established consensus. Zenke and Vogels (2021) — a highly-cited paper (1,000+ citations) — claim surrogate gradient learning is robust to shape. The ICONS 2022 paper by Yarga explicitly cited this robustness as justification for not comparing surrogates. The thesis provides the first evidence that this robustness breaks down for audio classification: sigmoid and STE, both commonly used and recommended in tutorials, fail completely (2% and 10% respectively). Triangular also fails, which Zenke specifically listed as a working alternative. This is not a minor technical footnote — it is an empirical challenge to a widely-propagated claim, with direct implications for how practitioners should approach SNN audio implementation.
-
-Second, the split is mechanistically interpretable. The three successful surrogates (spike_rate_escape, fast_sigmoid, atan) share broader effective gradient support near the threshold. The four failing surrogates are narrower or have qualitatively different gradient behaviour (STE is piecewise constant, sigmoid vanishes further from threshold). This pattern is consistent with Lian et al.'s width-matching theory (IJCAI 2023): the audio classification task produces a membrane potential distribution that requires broader surrogate support than MNIST or XOR, where narrower surrogates succeed. The theoretical grounding of spike_rate_escape in escape noise theory (Gygax and Zenke 2025) further explains why it performs best — it is the closest approximation to the true gradient of the stochastic LIF neuron.
-
-Third, it has practical value disproportionate to its length in the paper. A practitioner who reads a single table (2 rows of the surrogate ablation) and learns "don't use sigmoid or STE for audio SNN classification" has received immediately actionable information that could save weeks of failed experiments. The bimodal pattern converts a general warning ("surrogate choice matters") into a specific, binary, verifiable guideline.
-
----
-
-## Honest Assessment: What Is Genuinely Strong vs. What Needs Careful Framing
-
-### Genuinely Strong (No Qualification Needed)
-
-- The novelty claim on C1 (first ESC-50 SNN) is watertight. No reviewer can find a counter-example.
-- The encoding comparison breadth (C2) is the most comprehensive in audio SNN literature. This is factual.
-- The adversarial robustness magnitude (C4) — 14.9x ratio, ANN at essentially chance — is a striking result. Even sceptical reviewers will find this interesting.
-- The gap collapse mechanism (C5) is scientifically important and clearly communicated. The 17.6x gap reduction is a concrete, verifiable number.
-- The hardware deployment feasibility (C3) is the first of its kind for environmental audio.
-
-### Needs Careful Framing (Not Weak, But Requires Context)
-
-- 47.15% accuracy: Always contextualise relative to random (2%), human (81.3%), and the ANN baseline (63.85%). Frame as "first reference point" not as "good performance."
-- 33.1% SpiNNaker accuracy: Frame as hardware characterisation and feasibility demonstration, not as a deployment result claiming practical utility. The gap analysis IS the contribution.
-- Surrogate ablation: A 1-seed, 1-fold ablation needs the CSF3 3-seed results to make variance claims. If those are unavailable, explicitly label the result as preliminary and note the consistent directional finding.
-- Energy analysis: Do not claim SNN is more energy-efficient than ANN in software. It is not (976 nJ vs 463 nJ). Claim the correct thing: ACs cost 5.1x less than MACs on neuromorphic hardware; the deployment pathway via SpiNNaker realises this advantage. Cite Dampfhoffer et al. (2023) honestly.
-- Continual learning: The 6.9pp forgetting reduction (SNN 74.4% vs ANN 81.3%) is real but modest. It is a supporting result, not a headline contribution. It adds breadth to the paper without being the primary claim.
-
-### What Should Be the Title and Frame of the Paper
-

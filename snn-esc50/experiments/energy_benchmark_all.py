@@ -138,3 +138,31 @@ def measure_ann_energy(model, loader, device):
     model.eval()
     correct = 0
     total = 0
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        logits = model(data)
+        correct += (logits.argmax(1) == targets).sum().item()
+        total += targets.size(0)
+
+    # Analytical MAC count
+    # Conv1: 1*32*3*3*32*108 = 2,985,984
+    # Conv2: 32*64*3*3*16*54 = 15,925,248
+    # FC1: 2304*256 = 589,824
+    # FC2: 256*50 = 12,800
+    total_macs = 2_985_984 + 15_925_248 + 589_824 + 12_800
+    energy_nj = total_macs * ENERGY_PER_MAC_PJ / 1000
+
+    return {
+        "accuracy": correct / total,
+        "total_macs": total_macs,
+        "energy_nj": energy_nj,
+    }
+
+
+def benchmark_model(name, model_path, fold, device, model_class="snn",
+                    args_builder=None):
+    """Benchmark a single model."""
+    _, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+
+    if model_class == "snn":

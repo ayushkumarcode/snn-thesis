@@ -379,31 +379,3 @@ An interesting thesis angle is using a Raspberry Pi as the host controller conne
 ## 9. Concrete Hardware Cost Breakdown
 
 ### 9.1 Budget Tier: Under $50
-
-| Hardware | Approximate Cost | SNN Deployment Path |
-|----------|-----------------|-------------------|
-| STM32F4 Discovery Board | $15-25 | C runtime for small SNNs, eLSNN |
-| ESP32 DevKit | $5-10 | WiFi-enabled SNN sensor node |
-| Arduino Nano 33 BLE | $20-25 | TinyML SNN with BLE connectivity |
-| Raspberry Pi 4 (4GB) | $35 (if available) | Python/C SNN inference |
-
-### 9.2 Mid-Range Tier: $50-200
-
-| Hardware | Approximate Cost | SNN Deployment Path |
-|----------|-----------------|-------------------|
-| Raspberry Pi 5 (8GB) | $80 | Best CPU-based SNN inference |
-| Arduino Portenta H7 | $80 | Proven C SNN runtime, N-MNIST |
-| PYNQ-Z2 (Xilinx Zynq) | $120-180 | FPGA SNN with Python interface |
-| Basys3 (Xilinx Artix-7) | $150-180 | Low-cost FPGA SNN |
-
-### 9.3 Higher Tier: $200+
-
-| Hardware | Approximate Cost | SNN Deployment Path |
-|----------|-----------------|-------------------|
-| AMD Kria KV260 | $199 | Official snnTorch-to-FPGA pipeline |
-| BrainChip Akida Dev Kit | Contact vendor | True neuromorphic SoC |
-| SynSense Xylo/Speck Kit | Contact vendor | Ultra-low-power neuromorphic |
-
-### 9.4 Free/Cloud Options
-
-| Platform | Cost | Access |

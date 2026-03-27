@@ -166,3 +166,31 @@ ICONS feels approachable for well-executed student work:
 2. moderate acceptance rate (~59% for proceedings)
 3. many presentations are from PhD students and early-career researchers
 4. dedicated student programs
+5. explicitly welcomes preliminary results via short papers
+6. lightning talks and poster sessions provide additional presentation opportunities
+
+our SNN-ESC50 paper's fit:
+- first SNN work on full ESC-50 (strong novelty for this venue)
+- SpiNNaker hardware deployment (directly relevant)
+- energy analysis with NeuroBench (aligns with conference interest)
+- encoding comparison across 7 schemes
+- adversarial robustness finding (novel angle)
+
+---
+
+## competitiveness vs other conferences
+
+| Conference | Focus | Acceptance Rate | Proceedings Size | Community Size | Prestige |
+|-----------|-------|-----------------|-----------------|---------------|----------|
+| **ICONS** | Neuromorphic systems | ~59% | 15-16 proceedings papers + 70+ presentations | ~200-300 | Niche, respected in neuromorphic community |
+| **IJCNN** | Neural networks (broad) | 52-59% (historical), ~40% (2025) | 500-800 papers | 1000+ | Established but seen as less selective |
+| **NICE** | Neuro-inspired computing | Unknown | ~15-30 papers | ~200-250 | Workshop feel, no formal proceedings until recently |
+| **ICNCE** | Neuromorphic computing and engineering | Unknown | Small | ~100-200 | Newer, growing |
+| **NeurIPS** | ML/AI (broad) | ~25% | 2000+ papers | 15000+ | Top-tier |
+
+ICONS sits in a sweet spot: selective enough to be meaningful (~59%) but approachable enough that strong student work gets accepted. it's the most appropriate venue for our paper because neuromorphic systems is its core focus, SpiNNaker deployment is directly relevant, and the community values energy analysis and encoding studies.
+
+---
+
+## conference size and growth
+

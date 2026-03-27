@@ -254,31 +254,3 @@ Three architectures analyzed: classical (GPU/TPU), neuromorphic dataflow (event-
 
 **Relevance to thesis:** The thesis uses the same NeuroBench framework (v2.2.0) with SynapticOperations metric. The NeuroBench motor prediction result (SNN = ANN in accuracy with 14x fewer operations) is the strongest evidence that SNNs can match ANNs when tasks align with spike-based processing. The Xylo audio result (66x energy reduction) validates the thesis's energy narrative for neuromorphic hardware.
 
-### 2.4 Horowitz Energy Model (ISSCC 2014) --- The Foundational Reference
-
-**Citation:** M. Horowitz. "Computing's Energy Problem (and what we can do about it)." ISSCC 2014, pp. 10--14. DOI:10.1109/ISSCC.2014.6757323.
-
-Standard reference for operation energy in 45nm CMOS technology:
-
-| Operation | Energy (pJ) | Notes |
-|-----------|-------------|-------|
-| 32-bit FP MUL | 3.7 | |
-| 32-bit FP ADD | 0.9 | |
-| 32-bit INT MUL | 3.1 | |
-| 32-bit INT ADD | 0.1 | |
-| 8-bit INT ADD | 0.03 | |
-| 8-bit INT MUL | 0.2 | |
-| SRAM read (32b) | 5.0 | |
-| DRAM read (32b) | 640 | ~128x more than compute |
-
-The commonly cited values in SNN literature:
-- **MAC (multiply-accumulate) at 32-bit: ~4.6 pJ** (multiply 3.7 + add 0.9)
-- **AC (accumulate only) at 32-bit: ~0.9 pJ**
-- **Ratio: MAC/AC ~ 5.1x**
-
-**Relevance to thesis:** The thesis uses AC=0.9 pJ, MAC=4.6 pJ---these are the standard 32-bit FP values from Horowitz. The 5.1x per-operation advantage is the theoretical maximum for SNNs on neuromorphic hardware (where spikes eliminate multiplications).
-
-### 2.5 SNN vs ANN Energy on Audio Tasks
-
-#### Intel Loihi 2 Audio Results
-

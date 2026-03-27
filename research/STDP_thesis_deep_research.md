@@ -390,3 +390,31 @@ formal three-factor rule: Delta_w = M * F(pre, post), where M is a neuromodulato
 ### 8.2 The Scaling Problem -- Being Honest
 
 the numbers tell a pretty clear story: **STDP scales poorly to complex datasets as the sole learning mechanism.** the gap between STDP and surrogate-gradient approaches widens dramatically:
+- MNIST: gap ~0.6 pp (negligible)
+- Fashion-MNIST: gap ~4-5 pp (noticeable)
+- CIFAR-10: gap ~16-29 pp (significant)
+- CIFAR-100: gap ~25-42 pp (very large)
+
+### 8.3 Why the Gap Exists
+
+1. **No global error signal:** STDP only sees local spike timing; can't propagate errors backwards
+2. **Feature hierarchy problem:** deep hierarchical features need coordinated learning across layers, which pure STDP can't do
+3. **Curse of unsupervised learning:** without labels, STDP learns visually salient features, not necessarily discriminative ones
+4. **Convergence instability:** can cause weight explosion or death in deep networks without careful homeostatic mechanisms
+
+### 8.4 How to Frame This in a Thesis
+
+do NOT frame it as "STDP vs backprop" -- STDP will lose on accuracy. instead:
+- **"What can local, biologically plausible learning achieve?"** -- legitimate scientific question
+- **"STDP as an efficient feature extractor"** -- compare STDP features to other unsupervised methods, not supervised ones
+- **"Energy-accuracy trade-off"** -- STDP may get lower accuracy but with orders of magnitude less energy. quantify it.
+- **"Biological plausibility"** -- rate the bio-plausibility of different approaches. STDP wins here.
+- **"Hybrid approaches"** -- show that combining STDP features + simple classifier bridges much of the gap
+
+---
+
+## 9. Key Research Groups
+
+| Person/Group | Affiliation | Contribution | Key Papers |
+|---|---|---|---|
+| **Peter Diehl & Matthew Cook** | ETH Zurich / INI | Foundational STDP-MNIST paper (2015) | Unsupervised learning of digit recognition using STDP |

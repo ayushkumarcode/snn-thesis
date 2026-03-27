@@ -307,31 +307,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 
 4. **Heidelberg is the exception** -- their department archives everything publicly, making it the gold standard for finding bachelor's thesis scope examples.
 
-### Scope calibration for a UK undergraduate SNN thesis:
-
-Based on the evidence found:
-- **Ferrari (Manchester BSc):** Single SNN for shape detection -- one model, one task
-- **mrahtz (BEng):** First layer of a multi-layer SNN for music -- partial implementation, honest about limitations
-- **Fabio Deo (Imperial):** Mathematical investigation of time-stepping methods -- theoretical/computational
-- **Heidelberg bachelors:** Typically one focused hardware experiment or software tool, 40-60 pages
-- **Levy (thesis-level):** SNN vs ANN comparison across 3 tasks using snntorch -- achievable scope
-
-A reasonable UK undergraduate SNN project would involve:
-- Implementing 1-2 SNN architectures using snntorch/Norse/Brian2
-- Testing on 1-2 standard datasets (MNIST, DVS Gesture, SHD)
-- Comparing with conventional ANN baseline
-- Analyzing energy/spike efficiency metrics
-- 40-80 pages including background literature review
-
----
-
-## CONFIDENCE ASSESSMENT
-
-| Finding | Confidence |
-|---------|-----------|
-| Ferrari BSc thesis exists and is on SNN shape detection | HIGH |
-| mrahtz BEng project exists and uses Brian2 | HIGH |
-| Fabio Deo Imperial final year project on SNN time-stepping | HIGH |
-| Heidelberg has 100+ bachelor/master theses on neuromorphic hardware | VERY HIGH |
-| Manchester has 8+ PhD theses on SpiNNaker/SNN | VERY HIGH |
-| UK universities do not publicly archive undergraduate dissertations | HIGH |

@@ -222,3 +222,31 @@ accuracy = clf.score(test_features, test_labels)
 
 ---
 
+## 5. Is STDP a Good Thesis Topic or Is It Old News?
+
+### 5.1 it's alive and well
+
+**evidence that STDP is NOT old news:**
+
+| Signal | Evidence | Year |
+|---|---|---|
+| **Top venue publication** | NCG with Supervised STDP accepted at **NeurIPS 2024** | 2024 |
+| **Top venue publication** | Dendritic Localized Learning (STDP-adjacent) at **ICML 2025** | 2025 |
+| **Major review** | Three-factor learning in SNNs review in **Patterns (Cell Press)** | Nov 2025 |
+| **Major review** | Modulated STDP review in **Neurocomputing** | Feb 2025 |
+| **Nature publication** | Unsupervised post-training learning with triplet STDP in **Scientific Reports** | May 2025 |
+| **Nature publication** | TEXEL neuromorphic chip with on-chip STDP in **Nature Communications** | 2025 |
+| **Hardware integration** | Intel Loihi 2 natively supports STDP and three-factor rules | Ongoing |
+| **Active GitHub repos** | SpikeNN (NCG code), ngc-learn v3, BindsNET all maintained | 2024-2025 |
+| **New frameworks** | Inferno (Sept 2024) -- new SNN framework with extensible plasticity | 2024 |
+
+### 5.2 Why STDP Has Renewed Relevance
+
+1. **Energy crisis in AI:** training GPT-4-class models costs millions in electricity. STDP on neuromorphic hardware is 3-5 orders of magnitude less energy per synaptic operation (20-50 pJ vs microjoules on GPUs).
+
+2. **On-device / edge learning:** backprop requires storing full computation graphs and backward passes -- impossible on tiny edge devices. STDP is purely local: each synapse only needs info from its two connected neurons.
+
+3. **Privacy-preserving AI:** STDP enables on-device learning without sending data to the cloud, which matters increasingly under GDPR.
+
+4. **Neuromorphic hardware maturation:** Loihi 2, SpiNNaker2, BrainScaleS-2, memristive chips all implement STDP natively. hardware exists, now researchers need algorithms.
+

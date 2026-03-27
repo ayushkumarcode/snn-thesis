@@ -362,3 +362,31 @@ don't need to advance these, but should know about them:
 1. **small dataset reliance** -- most SNN papers rely on DVS128, CIFAR10-DVS, NMNIST. cross-dataset evaluation is rare.
 2. **reproducibility** -- few papers report standard deviations. run-to-run variance not well characterized.
 3. **preprocessing sensitivity** -- results are highly sensitive to event-to-frame conversion choices but this is rarely ablated.
+4. **scalability** -- SNNs are hard to scale up due to training instability, making DVS128's small size convenient but not representative.
+5. **ANN vs SNN fairness** -- many comparisons aren't controlled (different architectures, preprocessing, etc.).
+6. **energy claims without hardware** -- most papers estimate energy without actual neuromorphic deployment.
+
+---
+
+## 11. suggested thesis structures
+
+### option A: "comparative study of SNN architectures for event-based gesture recognition"
+
+research question: how do different architectures compare when controlling for preprocessing, parameter budget, and training procedure?
+
+experiments:
+1. Baseline CSNN (5-layer, LIF) -- reproduce SpikingJelly tutorial
+2. CSNN with PLIF -- swap neuron model
+3. CSNN with attention (channel/temporal)
+4. Spiking Transformer (Spikformer-style)
+5. ANN baseline (same conv architecture, ReLU)
+6. Vary T = {4, 8, 16, 32} for each
+
+metrics per experiment: accuracy (mean +/- std, 5 runs), parameters, SynOps, training time, per-class accuracy.
+
+nobody has done this controlled comparison. clean, reproducible code would be genuinely useful.
+
+### option B: "efficiency-accuracy tradeoffs in SNNs for neuromorphic gesture recognition"
+
+research question: what's the Pareto frontier between accuracy and computational cost?
+

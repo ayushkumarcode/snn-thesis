@@ -329,31 +329,3 @@ This explores rate coding vs. temporal coding vs. the cochlea-based encoding of 
 ### 7.2 Research Question Selection Criteria
 
 For a 3rd-year thesis, the research question should be:
-- **Answerable** with available tools and data
-- **Bounded** (1-2 datasets, not 5)
-- **Novel at the undergraduate level** (not reproducing exactly what a paper already showed)
-- **Measurable** (quantitative metrics: accuracy, SynOps, training time)
-- **Interesting** to a thesis examiner who may not be an SNN expert
-
-**Option A is the strongest** because the delay-vs-recurrence question is currently debated in the literature, the tools exist to answer it, and the results have clear implications for neuromorphic hardware deployment (feedforward networks are much easier to implement in hardware than recurrent ones).
-
----
-
-## 8. Key Papers to Read
-
-### Essential (Read These First)
-
-1. **Cramer et al. (2020)** -- "The Heidelberg Spiking Data Sets for the Systematic Evaluation of Spiking Neural Networks" -- [arXiv:1910.07407](https://arxiv.org/abs/1910.07407)
-   *The dataset paper. Defines SHD and SSC.*
-
-2. **Bittar & Garner (2022)** -- "A Surrogate Gradient Spiking Baseline for Speech Command Recognition" -- [Frontiers in Neuroscience](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.865897/full)
-   *Establishes the baseline SNN results on SHD/SSC. Introduces adLIF and RadLIF. The sparch toolkit comes from this paper.*
-
-3. **Hammouamri, Khalfaoui-Hassani & Masquelier (2024)** -- "Learning Delays in Spiking Neural Networks using Dilated Convolutions with Learnable Spacings" -- [ICLR 2024](https://openreview.net/forum?id=4r2ybzJnmN)
-   *The DCLS-Delays breakthrough. Shows feedforward SNNs with delays beat recurrent SNNs. Clean code available.*
-
-### Important (Read for Depth)
-
-4. **Ding et al. (2024)** -- "Advancing Spatio-Temporal Processing in Spiking Neural Networks through Adaptation" -- [arXiv:2408.07517](https://arxiv.org/html/2408.07517)
-   *The SE-adLIF paper. Improved neuron discretization.*
-

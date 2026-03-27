@@ -1,15 +1,15 @@
-# Creative Research: Unconventional Energy Reduction Ideas for SNN Audio Classification
+# creative energy reduction ideas -- brainstorming notes
 
-**Date:** 2026-03-26
-**Context:** ~622K param SNN for ESC-50 (50-class environmental sound, 5s clips), deployed on SpiNNaker neuromorphic hardware. Current energy: ~968 nJ/sample (SNN), ~454 nJ/sample (ANN). Sparsity: 73.6%. T=25 timesteps. Direct encoding.
+date: 26 march 2026
+context: ~622K param SNN for ESC-50, deployed on SpiNNaker. current energy: ~968 nJ/sample (SNN), ~454 nJ/sample (ANN). sparsity: 73.6%. T=25 timesteps. direct encoding.
 
----
+these are 25 unconventional ideas for dramatically reducing inference energy. some are practical, some are pretty out there. wrote most of these down after reading a ton of papers late at night so some might not make total sense in the morning.
 
-## EXECUTIVE SUMMARY
-
-This document presents 25 unconventional ideas for dramatically reducing inference energy in our audio classification SNN. Ideas span 11 domains from biological circuits to thermodynamic limits. The most promising "reviewer-surprising" ideas are:
-
-1. **Weightless Neural Networks (DWNs)** -- replace the entire SNN with interconnected lookup tables. 56 nJ per sample demonstrated. 5 ns inference. Up to 926,000x energy savings over deep learning.
+the ones i'm most excited about:
+1. weightless neural networks (DWNs) -- replace the SNN with lookup tables. 56 nJ per sample demonstrated. 5 ns inference. up to 926,000x savings over deep learning.
+2. logic gate networks -- learned NAND/OR/XOR gates. 24 ns inference on FPGA. NeurIPS 2024 oral.
+3. single-timestep multi-level SNN (T=1) -- collapse 25 timesteps to 1 using multi-level neurons. 66% energy reduction demonstrated.
+4. fly olfactory circuit -- random projection + winner-take-all. biologically proven for classification.
 
 2. **Logic Gate Networks** -- replace neural computation with learned combinations of NAND/OR/XOR gates. 24 ns inference on FPGA. NeurIPS 2024 oral paper.
 

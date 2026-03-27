@@ -110,3 +110,31 @@ So an SNN audio paper with actual SpiNNaker deployment would be genuinely novel 
 - Audio classification at ~400 microW (!), 500x lower than traditional MCUs
 - Demos at CES 2026: smart home, industrial IoT, wearables, healthcare
 - First mass-produced neuromorphic processor (Computex 2025)
+- Sub-millisecond keyword spotting, audio scene recognition
+
+The hardware landscape is maturing fast. Papers that show actual deployment on real neuromorphic hardware (like my SpiNNaker work) have outsized credibility. Innatera's audio focus validates the audio domain choice.
+
+---
+
+## 4. Most impactful SNN papers 2024-2025
+
+### Award winners
+1. **"Training Spiking Neural Networks Using Lessons From Deep Learning"** (Eshraghian et al., 2023) -- 2024 Proceedings of the IEEE Best Paper Award. The foundational tutorial paper for modern SNN training. My project uses snnTorch (the companion software).
+
+2. **"NeuroBench: A Framework for Benchmarking Neuromorphic Computing"** (Yik et al., 2025) -- Nature Communications. My project uses NeuroBench metrics.
+
+### High-impact publications
+
+| Paper | Venue | Significance |
+|-------|-------|-------------|
+| Neuromorphic Computing at Scale | Nature (Jan 2025) | First Nature review calling the field at a "pivotal moment" |
+| Road to Commercial Success | Nature Communications (Apr 2025) | Commercial viability assessment |
+| Neuromorphic computing enhances robustness through SNNs | Nature Communications (Nov 2025) | Formal proof of SNN adversarial advantage |
+| Can neuromorphic computing reduce AI's energy cost? | PNAS (2025) | AI energy crisis + neuromorphic solutions |
+| SpiNNaker2: Large-Scale Neuromorphic System | arXiv (Jan 2024) | SpiNNaker2 architecture paper |
+| Spike-driven Transformer V2 | ICLR 2024 | Next-gen spiking transformers |
+| SpikeLLM | ICLR 2025 | First large-scale spiking language model |
+
+### Key surveys
+- "Toward Large-scale Spiking Neural Networks" (2024)
+- "SNN Architecture Search: A Survey" (Oct 2025)

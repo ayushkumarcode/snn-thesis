@@ -138,3 +138,31 @@ Found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 ### Yexin Yan -- SpiNNaker2 Algorithms (TU Dresden, 2022)
 - PhD thesis
 - Hardware-software co-design for low-power neuromorphic applications on SpiNNaker2
+
+---
+
+## Undergraduate / 3rd Year Projects at Manchester
+
+### Status: can't see them
+
+The Manchester CS 3rd year project system (`studentnet.cs.manchester.ac.uk/ugt/year3/project/`) requires university authentication (CAS login). Project listings for 2024/25 and 2025/26 exist but can't be accessed from outside.
+
+What i do know:
+- The APT group (Oliver Rhodes, Michael Hopkins) likely supervises 3rd year and MSc projects on SpiNNaker topics
+- There's a `UoM CS 3rd Year Projects` GitHub org (https://github.com/uom-cs-projects) with 14 repos, but none are SpiNNaker-related
+- Project coordinator is Tim Morris
+
+Undergrad projects on SpiNNaker almost certainly exist given:
+- The group has an MSc and PhD pipeline (Galluppi started with MSc before PhD)
+- Oliver Rhodes and Michael Hopkins are active supervisors
+- EBRAINS provides free SpiNNaker access for research projects
+- SpiNNaker workshops include hands-on tutorials accessible to students
+
+---
+
+## Key Supervisors and Group Members
+
+| Name | Role | Notes |
+|------|------|-------|
+| **Steve Furber** | Emeritus Professor (ICL Chair of Computer Engineering) | Main/co-supervisor on 12+ PhD theses; co-supervised MSc (Buttigieg) |
+| **James Garside** | Senior researcher | Co-supervised: Heathcote, Sharp, Mundy, Ward, Rast |

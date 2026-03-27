@@ -307,31 +307,3 @@ On CIFAR-10, increasing timesteps from T=2 to T=6 only improves accuracy by 0.34
 #### Option B: Converting a Domain-Specific Model Nobody Has Converted
 **Thesis title:** "Evaluating ANN-to-SNN Conversion for [Medical Image Classification / Audio Keyword Spotting / Satellite Imagery]"
 
-Potential under-explored domains:
-1. **Medical image classification**: Convert a pretrained model (e.g., ResNet-18 trained on skin lesion classification, diabetic retinopathy grading, or chest X-ray) to SNN. Medical imaging is extremely well-studied for ANNs but almost entirely unexplored for ANN-to-SNN conversion.
-2. **Audio keyword spotting**: Convert a small ANN keyword spotter to SNN. Some work exists but this is still underexplored, especially with modern conversion methods.
-3. **Satellite/remote sensing imagery**: Virtually no published ANN-to-SNN conversion work for satellite image classification.
-4. **DVS128 gesture recognition + conversion comparison**: Convert an ANN trained on frame-binned DVS data to SNN, then compare with a directly-trained SNN (you already have the DVS128 pipeline from your other research direction).
-
-- **Why this contributes:** Demonstrates practical applicability to a real domain beyond CIFAR/ImageNet benchmarks.
-- **Time estimate:** 4-6 weeks for core experiments (pretrained ANN likely available on HuggingFace or torchvision)
-
-#### Option C: Architecture Comparison -- Which Architectures Survive Conversion?
-**Thesis title:** "Beyond VGG: Evaluating ANN-to-SNN Conversion Across Modern Architectures"
-
-- Convert VGG-16, ResNet-18, MobileNetV2, EfficientNet-B0, DenseNet-121 using the same conversion method
-- Systematically document: which layers cause problems, what accuracy loss occurs, how many timesteps needed
-- **MobileNet and EfficientNet conversion is severely underexplored** -- depthwise separable convolutions and Swish activation create known difficulties
-- **Why this contributes:** Most conversion papers test only VGG + ResNet. A systematic evaluation of modern efficient architectures is genuinely missing from the literature.
-- **Time estimate:** 6-10 weeks (some architectures may require debugging)
-
-### 7.2 Tier 2: Moderate Feasibility, Stronger Contribution
-
-#### Option D: Conversion + Neuromorphic Energy Analysis
-**Thesis title:** "Energy-Accuracy Tradeoffs in ANN-to-SNN Conversion: From Theory to Practice"
-
-- Convert models, measure spike counts and sparsity at different timesteps
-- Use syops library to estimate energy on neuromorphic hardware
-- Compare theoretical energy savings vs. actual GPU energy measurements
-- Reference the critical paper "Are SNNs Really More Energy-Efficient than ANNs?" which shows energy savings depend critically on spike sparsity and hardware
-- **Why this contributes:** Energy claims in SNN papers are often theoretical. A rigorous undergraduate analysis with actual measurements would be valuable.

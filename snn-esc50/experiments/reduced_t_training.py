@@ -110,3 +110,31 @@ def train_epoch(model, loader, optimizer, device, num_steps):
         spk_input = encode_direct(data, num_steps=num_steps).to(device)
         optimizer.zero_grad(set_to_none=True)
 
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            spk_out, mem_out, _ = model(spk_input)
+            T, B, C = mem_out.shape
+            loss = F.cross_entropy(
+                mem_out.reshape(T * B, C),
+                targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            )
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device, num_steps):
+    model.eval()
+    correct = 0
+    total = 0
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)

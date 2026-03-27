@@ -362,3 +362,31 @@ Sources: [Frontiers Research Topic](https://www.frontiersin.org/research-topics/
 
 ## priority ranking
 
+### tier 1: immediate action needed (deadlines within 30 days)
+| # | Conference | Deadline | Days Left | Fit |
+|---|-----------|----------|-----------|-----|
+| 1 | WCCI/IJCNN Late-Breaking | 10 Mar 2026 | 5 | Excellent |
+| 2 | ICANN 2026 | 16 Mar 2026 | 11 | Strong |
+| 3 | AICAS 2026 | 22 Mar 2026 | 17 | Strong |
+| 4 | **ICONS 2026** | **1 Apr 2026** | **27** | **Perfect** |
+| 5 | ICNCE 2026 | 3 Apr 2026 | 29 | Good (abstract only) |
+
+### tier 2: upcoming (1-3 months)
+| # | Conference | Deadline | Fit |
+|---|-----------|----------|-----|
+| 6 | IEEE SiPS 2026 | 12 Apr 2026 | Good |
+| 7 | NeurIPS 2026 | ~May 2026 | Hard (top-tier) |
+| 8 | Frontiers Special Issue | 17 May / 4 Sep 2026 | Good (journal) |
+| 9 | INTERSPEECH Show&Tell | 7 May 2026 | Marginal |
+
+### tier 3: later (3+ months)
+| # | Conference | Deadline | Fit |
+|---|-----------|----------|-----|
+| 10 | DCASE 2026 | ~Jul 2026 | Excellent fit for topic |
+| 11 | ICASSP 2027 | ~Sep 2026 | Strong |
+| 12 | ICLR 2027 | ~Sep 2026 | Hard (top-tier) |
+| 13 | BioCAS 2026 | ~May-Jun 2026 | Marginal |
+| 14 | EMBC 2026 | Nov 2026 | Marginal |
+
+---
+

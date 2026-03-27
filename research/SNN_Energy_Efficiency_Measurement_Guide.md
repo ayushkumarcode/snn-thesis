@@ -110,3 +110,31 @@ Source: [Spike-driven Transformer V2, ICLR 2024](https://arxiv.org/html/2404.036
 
 NeuroBench is the first community-wide attempt at standardizing benchmarks. published in Nature Communications (2025). provides standardized metrics (Eff_MACs, Eff_ACs, Activation Sparsity), open-source Python framework, and multiple benchmark tasks.
 
+Source: [NeuroBench, Nature Communications 2025](https://www.nature.com/articles/s41467-025-56739-4)
+
+### known limitations and criticisms
+
+several papers argue the standard approach is too optimistic:
+
+1. **ignores memory access costs:** "Most SNN works only consider counting of additions to evaluate energy consumption, neglecting other overheads such as memory accesses and data movement." -- [Shen et al., 2024](https://arxiv.org/html/2409.08290v1)
+
+2. **assumes ideal sparse hardware:** the 0.9 pJ/AC cost assumes neuromorphic hardware that skips zero-activation synapses. on GPUs/CPUs, SNNs are often slower and more energy-hungry than ANNs.
+
+3. **ignores timestep overhead:** T timesteps means T forward passes, each with memory reads/writes.
+
+4. **critical sparsity thresholds:** for VGG16 with T=6, sparsity must exceed 93%. with T>16, must exceed 97%. ([Source](https://arxiv.org/html/2409.08290v1))
+
+### what i'd recommend for a thesis
+
+report both the standard SOP-based estimate AND acknowledge limitations. this shows critical thinking. good approach:
+1. report standard E_SNN = SOP * E_AC (tier 1)
+2. maybe add Lemaire-style estimate with memory costs (tier 2)
+3. include discussion noting these are theoretical estimates assuming ideal neuromorphic hardware
+4. note that on conventional hardware, the SNN would likely be slower
+
+---
+
+## 4. tools and libraries for energy estimation
+
+### NeuroBench (highest recommendation)
+

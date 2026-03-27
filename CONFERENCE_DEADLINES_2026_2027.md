@@ -508,31 +508,3 @@ Sources: [NeurIPS](https://neurips.cc/)
 ## 8. JOURNAL SPECIAL ISSUES (BONUS)
 
 ### 8.1 Frontiers in Neuroscience -- Neuromorphic Systems Research Topic
-
-| Field | Details |
-|-------|---------|
-| **Title** | "Advances in Neuromorphic Systems and Hardware: Circuits, Architectures, and Brain-Inspired Computation" |
-| **Abstract Deadline** | **17 May 2026** |
-| **Manuscript Deadline** | **4 September 2026** |
-| **Journal** | Frontiers in Neuroscience (Neuromorphic Engineering section) |
-| **Format** | Standard Frontiers journal article |
-| **APC** | ~$2,950 (Frontiers standard; check for institutional agreements) |
-| **Realistic for UG?** | YES for content. APC is expensive but many institutions cover it. |
-
-Sources: [Frontiers Research Topic](https://www.frontiersin.org/research-topics/77146/advances-in-neuromorphic-systems-and-hardware-circuits-architectures-and-brain-inspired-computation)
-
----
-
-## 9. OTHER RELEVANT EVENTS (NOT PAPER VENUES)
-
-### 9.1 Bernstein Conference 2026
-- **Dates:** 28 September -- 1 October 2026
-- **Location:** Frankfurt am Main, Germany
-- **Focus:** Computational neuroscience
-- **Abstract deadline:** TBD (~June 2026)
-- Abstract/poster only, not a proceedings venue.
-
-### 9.2 CapoCaccia 2026 -- Cognitive Neuromorphic Engineering Workshop
-- Intensive 2-week interdisciplinary workshop on neuromorphic engineering
-- Not a paper venue; focused on hands-on collaboration
-

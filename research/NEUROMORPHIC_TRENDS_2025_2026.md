@@ -306,3 +306,31 @@ The consensus has settled into a mature, nuanced position:
 2. **Accuracy gap is narrowing but not closed**:
    - Best SNN on ImageNet: 83.73% (SGLFormer, 2025) vs best ANN: 90%+
    - Gap is smallest when: pretrained features are used, the task is temporal, or the data is event-driven
+   - My PANNs finding (gap collapses from 17pp to 1pp) perfectly illustrates this
+
+3. **The killer app is edge, not cloud**:
+   - Always-on sensing (audio, vibration, vision)
+   - Battery-powered devices (wearables, IoT, implants)
+   - Real-time control (robotics, drones)
+   - Privacy-preserving on-device processing
+
+4. **Hybrid architectures are the pragmatic path**:
+   - ANN feature extraction + SNN classification (exactly the PANNs approach)
+   - ANN training + SNN inference
+   - Heterogeneous systems with both conventional and neuromorphic processors
+
+5. **The "biological plausibility" argument has weakened**:
+   - Community increasingly values practical performance over bio-plausibility
+   - Surrogate gradients (not biologically plausible) are accepted as standard
+   - "Brain-inspired" is a design philosophy, not a constraint
+
+Key quote from Nature Communications (2025): "After several false starts, advances now promise widespread commercial adoption."
+
+---
+
+## How my project aligns with these trends
+
+| Trend | My Coverage | Alignment |
+|-------|-------------|-----------|
+| Hardware deployment | SpiNNaker FC2-only hybrid | STRONG -- real hardware, honest about challenges |
+| Energy analysis | NeuroBench metrics, AC/MAC comparison | STRONG -- uses accepted framework |

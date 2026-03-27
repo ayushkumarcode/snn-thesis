@@ -222,3 +222,31 @@ def run_fold(fold, device):
             torch.save(model.state_dict(),
                        save_dir / f"best_fold{fold}.pt")
         else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | "
+                  f"Test: {test_acc:.4f} | Best: {best_acc:.4f}")
+
+        if patience_counter >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+    print(f"  Fold {fold}: {best_acc:.4f} (ep{best_epoch})")
+
+    return {
+        "fold": fold, "best_acc": best_acc, "best_epoch": best_epoch,
+        "time_seconds": elapsed,
+        "weight_type": "ternary",
+        "energy_note": "Each synapse is add/subtract, no multiply",
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()

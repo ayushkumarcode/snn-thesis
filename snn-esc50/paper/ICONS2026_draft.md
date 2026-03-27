@@ -82,8 +82,9 @@ Linear(2304->256) -> LIF3 -> Linear(256->50) -> LIF4
 
 ### 4.1 Encoding comparison
 
-|----------|--------------|-------|---------------|
-| **ANN baseline** | **63.85%** | 3.07% | — |
+| Encoding | Mean Acc | Std | SNN/ANN ratio |
+|----------|----------|-----|---------------|
+| **ANN baseline** | **63.85%** | 3.07% | -- |
 | Direct | **47.15%** | 4.50% | 73.8% |
 | Phase | 24.15% | 1.66% | 37.8% |
 | Rate | 24.00% | 1.90% | 37.6% |
@@ -92,10 +93,9 @@ Linear(2304->256) -> LIF3 -> Linear(256->50) -> LIF4
 | Delta | 7.25% | 0.94% | 11.4% |
 | Burst | 6.50% | 1.54% | 10.2% |
 
-Burst: all 5 folds complete (5.00%, 5.25%, 9.25%, 6.00%, 7.00%), mean=6.50% ± 1.54%.
-Phase: all 5 folds complete (22.50%, 22.25%, 25.00%, 24.25%, 26.75%), mean=24.15% ± 1.66%. KEY RESULT: Phase is essentially tied with rate coding (24.00%, within 0.15 pp), despite using only 1 spike/neuron vs ~7 spikes/neuron for rate.
-Population: all 5 folds complete (22.75%, 18.50%, 15.75%, 22.00%, 16.75%), mean=19.15% ± 2.79%. Underperforms rate/phase — MSE count loss is harder to optimise than CE rate loss (training accuracy plateaus at ~18-24% vs rate's ~50%).
+All 7 complete. Direct consistently best. The 16.7 pp gap is significant (paired t: p=0.001; Wilcoxon: p=0.0625, minimum with n=5).
 
+**Key finding: phase (24.15%) ties with rate (24.00%).** Phase = exactly 1 spike/neuron deterministically; rate = ~7 spikes/neuron stochastically. Same accuracy with 6-7x fewer spikes. Confirms the **information preservation principle** -- temporal window coverage matters more than spike count.
 Direct encoding consistently outperforms all spike-converted alternatives. The 16.7 pp SNN-ANN gap is statistically significant (paired t-test: p = 0.001; Wilcoxon: p = 0.0625, the minimum achievable with n=5 folds). With direct encoding, the SNN receives continuous spectrogram values at each timestep, allowing LIF neurons to integrate information across the full simulation window.
 
 **The key finding in the encoding comparison is the near-equality of rate (24.00%) and phase (24.15%) coding.** Phase provides exactly 1 spike per neuron (high intensity → early spike), while rate provides ~T×p ≈ 6–7 spikes per neuron on average. Despite using 6–7× fewer spikes, phase achieves the same accuracy. This confirms the **information preservation principle**: it is the coverage of the temporal window (uniform in both cases) rather than the spike count that determines accuracy. Phase coding is more energy-efficient at inference time (fewer spikes → fewer AC operations) while achieving rate-equivalent accuracy.

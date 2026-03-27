@@ -54,3 +54,10 @@ their fix is SA-PGD -- adjusts step sizes and dynamically changes the surrogate 
 
 ## Summary for Paper
 
+| Claim | Holds up? | Framing fix needed |
+|---|---|---|
+| First adversarial analysis on audio SNN | Yes -- watertight | None |
+| 14.9x robustness ratio | Inflated | Present absolute numbers, not ratio. Cite Wang et al. |
+| Direction of SNN robustness advantage | Yes | "Upper bounds pending SA-PGD" |
+| SNN CL on ESC-50 novel | Yes | "First on environmental sound" |
+| 6.9pp CL advantage | Directionally real | "Naive baseline result; dedicated methods would improve both" |

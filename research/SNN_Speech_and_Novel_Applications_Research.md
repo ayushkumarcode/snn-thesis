@@ -185,31 +185,3 @@ The key challenge SpikeVoice solved: SNNs produce discrete spike outputs, but sp
 ## 4. SNN FOR GENERATIVE AUDIO TASKS
 
 ### Paper Count: **3-5 papers**
-
-### Key Papers
-
-| Paper | Year | Task | Key Result |
-|-------|------|------|------------|
-| Music Neurotechnology for Sound Synthesis (Miranda) | 2009 | Sound synthesis | Neurogranular Sampler using Izhikevich spiking network |
-| Spiking Music: Audio Compression with Event-Based Autoencoders | 2024 | Audio Compression | Binary autoencoders perform well on neural audio compression; event-based coding emerges |
-| When Audio Denoising Meets SNN | 2024 | Audio Denoising | SNN-based audio denoising framework |
-| SNN-based Audio Fidelity Evaluation (SAFE) | 2024 | Audio Quality Assessment | SNN for evaluating audio quality |
-
-### Detailed Analysis
-
-**Music Generation with SNNs:** Essentially non-existent in the modern deep learning sense. The Neurogranular Sampler (2009) is a creative art/music project using Izhikevich neurons to trigger audio grains, not a trainable generative model. No papers apply modern SNN architectures (Spikformer, surrogate gradient training) to music generation.
-
-**Audio Compression with SNNs:** "Spiking Music" (2024) is a notable paper showing that:
-- Simple binary autoencoders achieve surprisingly good results on neural audio compression benchmarks
-- Event-based coding emerges naturally, synchronized with musical events (piano keystrokes)
-- Demonstrates computational advantages of sparsity in audio compression
-- Opens a new benchmark where event-based models can leverage advantages
-
-**Audio Denoising:** Covered in Section 3 above.
-
-### Feasibility for Undergraduate Thesis: **MEDIUM (audio compression), LOW (music generation)**
-- Audio compression: "Spiking Music" provides a framework; could extend to different audio types
-- Music generation: would be extremely novel but lacks any foundation to build on
-- Audio quality assessment (SAFE): interesting but narrow scope for thesis
-
-### Specific Gaps

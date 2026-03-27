@@ -54,3 +54,31 @@ quick reference for where we can submit and when.
 | Conference | Deadline | Notes |
 |---|---|---|
 | ICML 2026 | 28 Jan 2026 | top-tier ML |
+| IJCAI-ECAI 2026 | 19 Jan 2026 | AI |
+| WCCI/IJCNN regular | 31 Jan 2026 | neural networks |
+| EUSIPCO 2026 regular | 13 Feb 2026 | signal processing |
+| INTERSPEECH 2026 | 25 Feb 2026 | speech |
+| ICLR 2026 | 24 Sep 2025 | deep learning |
+| ICASSP 2026 | 17 Sep 2025 | audio/speech |
+| ISCAS 2026 | 19 Oct 2025 | circuits |
+| ESANN 2026 | 19 Nov 2025 | neural networks |
+| NICE 2026 | 24 Nov 2025 | neuromorphic |
+
+---
+
+## Conference Quick Guide
+
+for reference since some of these aren't obvious:
+
+| Conference | Full Name | What It's About | Realistic for Us? |
+|---|---|---|---|
+| **NeurIPS** | Neural Information Processing Systems | Broad ML/AI, top-tier | No (too competitive) |
+| **ICML** | Int'l Conf on Machine Learning | ML theory/methods, top-tier | No |
+| **ICLR** | Int'l Conf on Learning Representations | Deep learning, top-tier | No |
+| **ICASSP** | IEEE Conf on Acoustics, Speech, Signal Processing | Audio/speech processing | Maybe (good for audio angle) |
+| **EUSIPCO** | European Signal Processing Conference | Signal processing | Yes (good fit) |
+| **IJCNN** | Int'l Joint Conf on Neural Networks | Neural networks broadly | Yes (good fit) |
+| **ICONS** | Int'l Conf on Neuromorphic Systems | Neuromorphic computing specifically | **Yes -- perfect fit** |
+| **ICANN** | Int'l Conf on Artificial Neural Networks | Neural networks, European | Yes (has SNN special session) |
+| **DCASE** | Detection and Classification of Acoustic Scenes/Events | Environmental sound specifically | **Yes -- perfect topic match** |
+| **AICAS** | IEEE Int'l Conf on AI Circuits and Systems | AI on hardware | Yes (hardware angle) |

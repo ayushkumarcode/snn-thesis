@@ -306,3 +306,31 @@ The neuromorphic theses are basically all clustered around:
 - 2018: 2
 - 2019: 2
 - 2020: 6 (peak overall)
+- 2022: 3
+- 2023: 3
+- 2024: 2
+- 2025: 1
+
+### What this means for undergrad scope
+
+These PhD theses are obviously way beyond undergrad scope. A typical PhD thesis here represents 3-4 years of full-time research, multiple novel contributions (often 3+ papers worth), world-first achievements, deep hardware expertise.
+
+The closest to undergrad/masters scope:
+- The MPhil theses (Nair 2015, Li 2023) -- roughly 1-2 years, more focused
+- The MSc by Research (Bonta 2022) -- ~1 year, single well-scoped contribution (one classifier, two datasets, clear metrics)
+
+For an undergrad final-year project, realistic scope would be about 1/4 to 1/6 of these PhD theses -- e.g., implementing one existing SNN model on SpiNNaker and benchmarking it, or training one classifier on one dataset.
+
+### Interesting gaps -- things nobody has done as a thesis
+- No EEG classification with SNNs (seems like a natural combination?)
+- No gesture recognition with neuromorphic hardware
+- No event cameras / DVS as student theses (publications exist but no theses)
+- No TinyML / embedded ML on microcontrollers (the "edge" work is all FPGA/mobile SoC level)
+- No neuromorphic + BCI integration
+- No SpiNNaker with real-world sensory data beyond vision models
+- Very few SpiNNaker2 theses (only Ward 2024 and Mikaitis 2020 touch on it)
+
+---
+
+## Where else to look
+

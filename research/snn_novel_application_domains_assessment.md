@@ -471,31 +471,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 | Brian2 | Python | Neuroscience simulation, STDP | Beginner-friendly |
 | Norse | Python/PyTorch | Bio-inspired SNNs | Intermediate |
 | NEST | Python/C++ | Large-scale simulation | Advanced |
-| Lava (Intel) | Python | Loihi deployment | Advanced |
-
-**Recommended for undergraduate:** snnTorch (best tutorials, PyTorch-based, active community)
-
----
-
-## Key Datasets by Domain
-
-| Domain | Dataset | Size | Access |
-|--------|---------|------|--------|
-| Music | JSB Chorales | 382 chorales | Public |
-| Music | POP909 | 909 pop songs | Public |
-| Music | Lakh MIDI | 176k MIDI files | Public |
-| IoT Anomaly | CWRU Bearing | ~480k samples | Public |
-| IoT Anomaly | SMD (Server Machine) | 28 machines | Public |
-| Fraud | Kaggle Credit Card | 284k transactions | Public |
-| Fraud | BAF (Bank Account Fraud) | 1M+ transactions | Public |
-| NLP | SST-2 | 67k sentences | Public |
-| NLP | IMDB Reviews | 50k reviews | Public |
-| RL | Gymnasium (CartPole) | Simulated | Public |
-| Environmental | UCI Air Quality | 9358 instances | Public |
-| Environmental | EPA AQS Data | Millions of records | Public |
-| Wearable | UCI HAR | 10,299 samples | Public |
-| Wearable | WISDM | 1M+ samples | Public |
-| Wearable | Spiking-IMU | Custom | GitHub |
-| Radar | UCI Sonar | 208 samples | Public |
-| Astronomy | LOFAR RFI data | Large | Public |
-

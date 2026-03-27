@@ -929,31 +929,3 @@ print(f"Sample shape: {train_set[0][0].shape}")  # [16, 2, 128, 128]
 **Step 5: Evaluate and Compute Energy Metrics** (see Section 7.1)
 
 ### 8.3 Third-Party Implementation
-
-**GitHub repository:** https://github.com/DerrickL25/SNN_Gesture_Classification
-- Uses snnTorch with DVS128 Gesture dataset
-- Data dimensions: [num_steps, 2, 128, 128]
-- Complete implementation from data loading to evaluation
-
----
-
-## 9. ANN Comparison and Frame Integration
-
-### 9.1 Why Compare SNN with ANN?
-
-A thesis on SNN-based gesture recognition should demonstrate:
-1. SNNs can achieve competitive accuracy to ANNs
-2. SNNs are more energy-efficient (fewer operations per inference)
-3. The trade-offs between accuracy, latency, and energy
-
-### 9.2 Frame Integration for ANN Baseline
-
-To train a standard CNN on DVS128 data, you must first convert events to frames:
-
-```python
-import tonic
-import tonic.transforms as transforms
-import torch
-from torch.utils.data import DataLoader
-
-sensor_size = tonic.datasets.DVSGesture.sensor_size

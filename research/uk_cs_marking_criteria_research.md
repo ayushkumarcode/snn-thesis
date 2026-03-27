@@ -166,3 +166,31 @@ Bristol has a revealing indicator about student independence:
 - **70+**: Greater autonomy implied, with students driving their own decisions
 
 Source: [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.github.io/qanda/)
+
+### 2.4 What actually separates the grades
+
+Based on all the universities i looked at, here's what distinguishes each band:
+
+| Dimension | 2:1 (60-69) | First (70-79) | High First (80+) |
+|---|---|---|---|
+| **Literature Review** | Covers relevant work, may miss some key papers, adequate synthesis | Good coverage, solid synthesis, identifies gap clearly | Scholarly treatment, identifies subtle connections between works, positions project expertly |
+| **Implementation** | Works, may have minor issues, achieves primary objectives | Works well, clean design, achieves all objectives, some technical sophistication | Elegant, well-engineered, potentially novel techniques, exceeds objectives |
+| **Evaluation** | Some testing done, basic analysis of results | Appropriate metrics, honest discussion of limitations | Rigorous methodology, statistical confidence, comparison with baselines, publishable quality |
+| **Critical Analysis** | Acknowledges some limitations | Honest, nuanced discussion of what worked and what didn't | Deep self-awareness, identifies exactly why things failed and what would fix them |
+| **Writing** | Clear enough, some structural issues, adequate referencing | Well-structured, clear prose, good figures, proper referencing | Professional quality, reads like a technical report or conference paper |
+| **Independence** | Significant supervisor guidance needed | Self-directed with supervisor as advisor | Student drives the project, supervisor learns from the student |
+| **Originality** | Follows existing approaches | Shows some personal creativity in approach | Genuine novel contribution, new technique or insight |
+
+### 2.5 The biggest differentiator: evaluation quality
+
+This came up again and again across every marking scheme. The evaluation chapter is what separates grades. Cambridge says explicitly that assessors look for "a nuanced discussion of the successes and failures" and that "a graph that does not indicate confidence intervals or has poorly chosen axes will generally leave a professional scientist with a negative impression."
+
+The pattern is pretty clear:
+- A 2:1 student builds something that works and describes what they built.
+- A first-class student builds something that works, critically evaluates WHY it works (or doesn't), compares it against alternatives, and reflects honestly on the limitations.
+
+---
+
+## 3. Are publishable results expected from undergrads?
+
+No. Not at all.

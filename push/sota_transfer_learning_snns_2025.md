@@ -306,3 +306,31 @@ based on all this reading, i think the field breaks down into four paradigms:
 - train ANN normally, convert weights to SNN
 - requires threshold balancing and calibration
 - mature for vision (Bu et al. CVPR 2025, STA ICLR 2024)
+- barely exists for audio (Abuhajar et al. 2025 for speech enhancement)
+
+### Paradigm 2: Knowledge Distillation (Behavior Transfer)
+- train SNN to mimic ANN's intermediate features and/or logits
+- addresses continuous-vs-sparse distribution mismatch
+- very active: BKDSNN (ECCV 2024), SAKD (Neural Networks 2024), 6+ methods in 2025
+- audio: Spiking Vocos (2025)
+
+### Paradigm 3: Frozen ANN Features + SNN Head (What We Do)
+- use pretrained ANN as frozen feature extractor
+- train small SNN classifier on extracted features
+- **least explored paradigm overall**
+- **completely unexplored for environmental sound classification**
+- only known instances: SAFE (2025, audio fidelity), our thesis (2026, ESC-50)
+
+### Paradigm 4: Hybrid ANN-SNN Co-execution
+- ANN and SNN run simultaneously on different hardware
+- ANN provides initialization/features; SNN provides efficient inference
+- Aydin et al. (CVPRW 2024), Keugle et al. (2024)
+- audio: DPSNN (2024, ANN encoder + SNN separator)
+
+**we uniquely combine Paradigm 3 (frozen PANNs features + SNN head) with Paradigm 4 (SpiNNaker deployment of the SNN head). haven't found anyone else doing this.**
+
+---
+
+## 10. Summary Tables
+
+### ANN-to-SNN Knowledge Distillation Methods (2023-2025)

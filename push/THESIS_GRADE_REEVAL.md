@@ -50,31 +50,3 @@ The methodology reviewer graded findings on PEER REVIEW standards (would a revie
 ### Revised Assessment for THESIS (not paper)
 
 | Finding | Paper Grade | Thesis Grade | Why Different |
-|---------|------------|-------------|---------------|
-| 7 encodings | B | **A-** | Systematic, comprehensive, novel for ESC-50 |
-| PANNs gap collapse | C+ | **A-** | Experimental design excellence, clear insight |
-| Adversarial 5-fold | C | **B+** | Properly validated, honest about SA-PGD limitation |
-| SpiNNaker deployment | C- | **A-** | Hardware deployment is RARE for UG. Root-cause analysis of failure is excellent evaluation |
-| Temporal ablation | C+ | **B+** | 5-fold validated, directly actionable |
-| Encoding transfer | B- | **A** | Novel finding, 5-fold validated, nobody has this |
-| Self-correction of pruning/SR | N/A | **A** | This IS evaluation quality — correcting your own findings |
-| Full SpiNNaker attempt (failed) | D | **B+** | The failure analysis is a contribution. Documented 4 strategies, found the root cause |
-| 14 experiment scripts | N/A | **A-** | Scope and ambition, systematic approach |
-| ICONS paper draft | N/A | **A** | Attempting publication is 80+ territory |
-
-## Overall Thesis Grade Estimate
-
-Based on Manchester COMP30040 criteria:
-- **Report:** 75-80% (content is 80+, but needs LaTeX conversion + polish)
-- **Achievements:** 80-85% (hardware deployment + novelty + scope)
-- **Screencast:** TBD (not yet created)
-
-**Weighted estimate: 78-82%** (High First)
-
-The project is solidly in First territory with potential for 80+ if the report and screencast are polished. The publishable-quality work (ICONS paper) puts it in "exceptional" territory per Edinburgh/Sussex criteria.
-
-## What Would Push It to 85+
-1. Get the thesis report into polished LaTeX
-2. Create a strong 8-minute screencast
-3. Successfully submit to ICONS (even if not accepted, the attempt matters)
-4. Clean up code (tests, documentation, README)

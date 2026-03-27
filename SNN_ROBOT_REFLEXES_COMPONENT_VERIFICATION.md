@@ -396,31 +396,3 @@ python -c "import gymnasium as gym; env = gym.make('Ant-v5'); print('Ant-v5 load
 
 ### 13. PyBullet Alternative
 
-| Field | Value |
-|-------|-------|
-| **EXISTS** | YES |
-| **URL** | https://pypi.org/project/pybullet/ |
-| **Latest Version** | 3.2.7 (Jan 2025) |
-| **macOS Support** | PROBLEMATIC on Apple Silicon |
-| **Locomotion Environments** | YES (via pybullet-gym) |
-| **POTENTIAL BLOCKER** | **YES (MEDIUM)** -- Apple Silicon issues |
-
-**PyBullet vs MuJoCo for this project:**
-
-| Factor | PyBullet | MuJoCo |
-|--------|----------|--------|
-| macOS Apple Silicon | Problematic (x86 binary issues) | Native ARM64 support |
-| Installation | May need Rosetta 2 workaround | `pip install` just works |
-| Performance | Good | Better (optimized C) |
-| Gymnasium integration | Via third-party `pybullet-gym` | Official Gymnasium support |
-| Community/documentation | Good but aging | Excellent, actively maintained |
-| Active maintenance | Slow | Monthly releases by Google DeepMind |
-
-**Verdict: Use MuJoCo, not PyBullet.** MuJoCo is superior in every category for this project, especially on macOS Apple Silicon.
-
-**Source:** [PyBullet PyPI](https://pypi.org/project/pybullet/) | [PyBullet ARM64 issues](https://pybullet.org/Bullet/phpBB3/viewtopic.php?t=13433)
-
----
-
-### 14. Known Issues and Gotchas
-

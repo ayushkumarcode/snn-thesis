@@ -326,31 +326,3 @@ Given the 8-page limit, prioritize contributions by novelty and impact:
 3. Methodology: architecture, dataset, 7 encodings, training (1.5 pages)
 4. Results: encoding comparison + analysis (1.5 pages)
 5. PANNs+SNN transfer learning result (0.5 pages)
-6. SpiNNaker hardware deployment + gap analysis (0.75 pages)
-7. Adversarial robustness (SNN vs ANN) (0.5 pages)
-8. NeuroBench energy benchmarking (0.5 pages)
-9. Conclusion + future work (0.5 pages)
-10. References (0.75 pages)
-
-**Include if space permits:**
-- Surrogate gradient ablation (can be condensed to a single table)
-- Continual learning result (one paragraph + table)
-
-**Move to supplementary / extended version:**
-- Per-fold detailed results tables
-- Confusion matrices
-- t-SNE visualizations
-- SpiNNaker calibration details
-
----
-
-## Part 6: Comparable Papers at Recent Venues
-
-### Papers with Modest Accuracy but Strong Methodology
-
-These demonstrate that accuracy alone does not determine acceptance:
-
-1. **ICONS 2025 Best Paper** -- "Custom and Standard Neuron Model Random Walks on Ornstein-Uhlenbeck Equation" -- This is a theoretical/computational neuroscience paper about turbulence, not a classification task at all. No accuracy metric. Won best paper based on novelty and rigor.
-
-2. **ICONS 2024** -- "Stochastic Spiking Neural Networks with First-to-Spike Coding" (Sengupta group) -- Methodology-focused paper on a novel SNN coding scheme, valued for the approach not the absolute numbers.
-

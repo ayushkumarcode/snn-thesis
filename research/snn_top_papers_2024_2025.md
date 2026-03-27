@@ -194,3 +194,31 @@ growing fast -- CVPR 2025 had papers on SNN object detection. spiking-YOLO varia
 |---------|------|-----------|------|-------------|
 | **DailyDVS-200** | ECCV 2024 | Event-based action recognition. 200 action categories, 47 participants, 22,000+ event sequences, 14 attributes per sequence. | Large | Action recognition |
 | **SGNNBench** | 2025 | Benchmark for spiking GNNs on large-scale graphs. 9 SGNN baselines vs 4 classic GNNs. | Multiple graph datasets | Graph learning |
+| **eTraM** | 2024 | Event camera traffic dataset. 10+ hours of event data, 2M+ bounding boxes, varied weather/lighting. | Large | Object detection |
+| **EvDET200K** | 2024 | Large-scale event-based detection dataset. | 200K+ annotations | Object detection |
+| **NYC-Event-VPR** | 2024 | Event-based visual place recognition in urban environments. | Large | Place recognition |
+
+### new benchmarks/evaluation frameworks
+
+| Benchmark | Year | What it tests | Key finding |
+|-----------|------|--------------|-------------|
+| **Multimodal SNN Framework Benchmark** | 2025 | Evaluates SpikingJelly, BrainCog, Sinabs, SNNGrow, Lava across image, text, and neuromorphic data | SpikingJelly leads in energy efficiency; BrainCog strong on complex tasks |
+| **Long Range Arena for SNNs** | 2024-2025 | Tests SNN long-range dependency handling | SSM-based SNNs (P-SpikeSSM) now SOTA for SNNs |
+| **SNN Framework Benchmark** (Open Neuromorphic) | 2024 | Performance comparison of SNN libraries | SpikingJelly fastest; snnTorch most accessible |
+
+---
+
+## "low-hanging fruit" research directions
+
+i went through the future work sections of a bunch of these papers and here's what seems doable, roughly sorted by difficulty.
+
+### easy -- can be done with existing frameworks, clear methodology
+
+1. **apply spiking transformers to new domains** -- QKFormer and Spike-Driven Transformer V2 are built for image classification. adapting them to medical imaging, satellite imagery, or agricultural data hasn't been done. just fine-tuning on domain-specific datasets could be publishable. (from QKFormer and SpikingResformer future work sections)
+
+2. **SNN time-series forecasting on new application domains** -- TS-LIF and the ICML 2024 time-series paper use standard forecasting benchmarks. applying to IoT sensor data, financial markets, or energy grid prediction with real-world data is an open gap. (from TS-LIF ICLR 2025 and ICML 2024 time-series paper)
+
+3. **benchmark SNN frameworks on event-camera datasets** -- DailyDVS-200 (ECCV 2024) is new. running existing SNN models on it and comparing performance is straightforward. (from DailyDVS-200 paper, SGNNBench paper)
+
+4. **SNN continual learning with new replay strategies** -- SESLR paper shows binary spike features reduce memory for continual learning. testing different replay buffer strategies (reservoir sampling, surprise-based selection) is a fairly easy extension. (from SESLR 2025, continual learning survey)
+

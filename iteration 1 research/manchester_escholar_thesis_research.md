@@ -502,3 +502,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | 10 | Real Time Spaun on SpiNNaker | Andrew Mundy | 2016 | PhD | CS | SpiNNaker/Brain Model |
 | 11 | Biologically Inspired Neural Computation | Adam Perrett | 2022 | PhD | CS | SpiNNaker/Bio-inspired |
 | 12 | Scalability and Robustness of ANNs | Evangelos Stromatias | 2016 | PhD | CS | SpiNNaker/Power |
+| 13 | Plasticity in Large-Scale Neuromorphic Models | James Knight | 2016 | PhD | CS | SpiNNaker/Plasticity |
+| 14 | Memristive Crossbar Arrays for ML | Manu V. Nair | 2015 | **MPhil** | EEE | Memristors/ML |
+| 15 | Efficient Execution of CNNs on Low Power | Crefeda Rodrigues | 2020 | PhD | CS | Edge AI/Energy |
+| 16 | Modular FPGA Systems | Anuj Vaishnav | 2020 | PhD | CS | FPGA |
+| 17 | FPGA Virtualisation | Khoa Pham | 2020 | PhD | CS | FPGA |
+| 18 | Reconfigurable HW for Heterogeneous Systems | Konstantinos Iordanou | 2023 | PhD | CS | FPGA/ML |
+| 19 | Dynamic CPU ISA through FPGA Interlays | Jose Garcia Ordaz | 2018 | PhD | CS | FPGA/CPU |
+| 20 | Unsupervised Image Feature Learning for CNNs | Richard Hankins | 2019 | PhD | EEE | Deep Learning/Vision |
+| 21 | DL for Semantic Feature Extraction in Aerial Imagery | Ananya Gupta | 2020 | PhD | EEE | Deep Learning/Remote Sensing |
+| 22 | Bayesian DL for Pulsar Classification | Alexandra Bonta | 2022 | **MSc Res** | Physics | Bayesian DL |
+| 23 | Object Detection: Few-Shot, Vision-Language, ViT | Mengyuan Ma | 2025 | PhD | EEE | Computer Vision |
+| 24 | Bayesian Mechanisms in Spatial Cognition | Tamas Madl | 2016 | PhD | CS | Computational Neuroscience |
+| 25 | ML for Auditory Electrophysiological Data | Vicki Kennedy | 2024 | ClinSciD | Psychology | ML/Biosignal |
+| 26 | Sensing and Image Processing for IoT | Yu Li | 2023 | **MPhil** | EEE | IoT/Image Processing |
+| 27 | Simulation for RL in Robotics | Diego Ferigo | 2023 | PhD | CS | RL/Robotics |
+
+---
+
+## what i took away from all this
+
+### degree level breakdown
+- PhD theses: 24 out of 27 (89%)
+- MPhil: 2 (Memristive Crossbar Arrays; Sensing for IoT)
+- MSc by Research: 1 (Bayesian DL for Pulsar Classification)
+- BSc / Undergrad: 0 found
+- Clinical Doctorate: 1 (ML for Auditory Data)
+
+so yeah, manchester research explorer just doesn't host undergrad dissertations at all. the library guide confirms it's for "postgraduate research theses" only.

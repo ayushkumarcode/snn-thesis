@@ -26,3 +26,31 @@ overall: yes, the pipeline is buildable end-to-end, but need to be careful about
 |---|---|
 | **EXISTS** | YES |
 | **VERIFIED HOW** | PhysioNet official page: https://physionet.org/content/ptb-xl/1.0.3/ |
+| **POTENTIAL BLOCKER** | NO |
+
+**Details:**
+- **Host:** PhysioNet, version 1.0.3 (latest)
+- **Format:** WFDB (WaveForm DataBase) with 16-bit precision at 1 uV/LSB resolution
+- **Size:** 3.0 GB uncompressed, 1.7 GB ZIP download
+- **Records:** 21,799 clinical 12-lead ECGs from 18,869 patients, each 10 seconds long
+- **Sampling rates:** 500 Hz (records500/) and 100 Hz downsampled (records100/)
+- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0) -- fully open access
+- **Data Use Agreement:** NONE required. Open access -- "Anyone can access the files, as long as they conform to the terms of the specified license."
+- **No credentialed access needed** (unlike MIMIC-III which requires training)
+
+**Source:** [PTB-XL v1.0.3 on PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/)
+
+---
+
+### 2. WFDB Python Library
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | PyPI: https://pypi.org/project/wfdb/ , Docs: https://wfdb.readthedocs.io/ |
+| **POTENTIAL BLOCKER** | NO |
+
+**Details:**
+- **Install:** `pip install wfdb`
+- **Latest version:** 4.3.1 (released February 2026)
+- **Python requirement:** >= 3.9

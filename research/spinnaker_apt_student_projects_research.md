@@ -166,3 +166,31 @@ Undergrad projects on SpiNNaker almost certainly exist given:
 |------|------|-------|
 | **Steve Furber** | Emeritus Professor (ICL Chair of Computer Engineering) | Main/co-supervisor on 12+ PhD theses; co-supervised MSc (Buttigieg) |
 | **James Garside** | Senior researcher | Co-supervised: Heathcote, Sharp, Mundy, Ward, Rast |
+| **David Lester** | Researcher (deceased?) | Co-supervised: Knight, Bogdan, Fonseca Guerra, Mikaitis, Liu |
+| **Oliver Rhodes** | Lecturer in Bio-Inspired Computing | Co-supervised: Peres, Ward; supervised MSc (Buttigieg), MSNE intern |
+| **Michael Hopkins** | Head of Research into SNNs | Likely supervises student projects; research on SNN applications |
+| **Ke Chen** | Academic | Supervises PhD on Biologically-Plausible Continual Learning using SpiNNaker |
+
+---
+
+## Current/Recent Postgrad Research Projects
+
+### Biologically-Plausible Continual Learning
+- Supervisor: Ke Chen
+- Focus: catastrophic forgetting, continual learning, SNN on SpiNNaker
+- https://www.cs.manchester.ac.uk/study/postgraduate-research/research-projects/description/?projectid=22461
+- Competition funded, open to worldwide students
+
+---
+
+## SpiNNaker Resources
+
+### Software Stack
+- **sPyNNaker**: PyNN implementation for SpiNNaker -- https://github.com/SpiNNakerManchester/sPyNNaker
+- **SpiNNTools**: execution engine -- maps parallel applications, executes, extracts results
+- **SpiNNakerManchester GitHub**: https://github.com/SpiNNakerManchester (60+ repos)
+- **Documentation**: https://spinnakermanchester.readthedocs.io/
+
+### Access
+- Free test access via EBRAINS account (online via web browser)
+- Local SpiNNaker boards available (SpiNN-3, SpiNN-5 boards loaned to ~100 labs)

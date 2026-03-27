@@ -405,31 +405,3 @@ The Manchester CS 3rd year project system (`studentnet.cs.manchester.ac.uk/ugt/y
 2. **Old APT website lost**: The original `apt.cs.manchester.ac.uk/publications/thesis.php` page has been redirected, losing the comprehensive historical thesis listing. The Wayback Machine was not accessible from this tool.
 
 3. **MSc dissertations are under-documented**: Only one MSc dissertation (Buttigieg 2019) was confirmed with public access. The Manchester Research Explorer focuses primarily on PhD theses.
-
-4. **Francesco Galluppi's MSc thesis (2009) details are lost**: We know he did an MSc with SpiNNaker but cannot find the thesis title or text.
-
-5. **Steve Furber's profile lists 22 supervised theses**, but the full list could not be extracted from the Research Explorer page (403 error on the supervisedBy filter).
-
----
-
-## 9. Confidence Assessment
-
-| Finding | Confidence |
-|---------|------------|
-| PhD thesis list (16 entries) | HIGH -- verified via Research Explorer with PDFs |
-| Buttigieg MSc (2019) | HIGH -- code, thesis text, and supervisors confirmed |
-| Galluppi MSc (2009) | MEDIUM -- confirmed he did MSc but details unavailable |
-| External student projects (TUM, etc.) | HIGH -- verified via GitHub repos |
-| UG projects exist at Manchester | MEDIUM -- inferred but not confirmed |
-| Supervisors (Furber, Rhodes, Hopkins, Garside) | HIGH -- verified from thesis records |
-
----
-
-## 10. Recommended Follow-ups
-
-1. **Contact Oliver Rhodes or Michael Hopkins** directly to ask about current/past 3rd year and MSc project offerings
-2. **Ask on the SpiNNaker Users Google Group** (https://groups.google.com/g/spinnakerusers) about student project examples
-3. **Check EBRAINS** for any student project reports or tutorials that include project-level work
-4. **Try Wayback Machine** for the old APT thesis page (http://apt.cs.manchester.ac.uk/publications/thesis.php) to recover the full historical listing
-5. **Search Manchester eScholar** (https://www.escholar.manchester.ac.uk/) with keyword searches for additional MSc theses
-6. **Request access** to the Manchester StudentNet project listings if you have a Manchester contact

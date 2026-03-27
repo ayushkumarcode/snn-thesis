@@ -143,31 +143,3 @@ From Bian et al. (2024), on IMU-based activity recognition:
 
 ### 3.3 Latency Impact
 
-From Guo et al. (2021), processing latency in milliseconds:
-
-| Encoding | Training Latency (ms) | Inference Latency (ms) |
-|----------|----------------------|----------------------|
-| Rate Coding | 320 | 150 |
-| TTFS Coding | 80 | 20 |
-| Phase Coding | 90 | 30 |
-| Burst Coding | 60 | 30 |
-
-TTFS coding requires **4x lower training latency and 7.5x lower inference latency** compared to rate coding.
-
-### 3.4 Synaptic Operations (Energy Proxy)
-
-From Guo et al. (2021), SOPs x 10^8:
-
-| Encoding | Training SOPs | Inference SOPs |
-|----------|-------------|---------------|
-| Rate Coding | 130.785 | 9.932 |
-| TTFS Coding | 37.300 | 1.506 |
-| Phase Coding | 690.072 | 57.798 |
-| Burst Coding | 104.947 | 5.679 |
-
-TTFS achieves **3.5x fewer SOPs in training and 6.5x fewer in inference** compared to rate coding. Phase coding is the worst performer at ~5x more SOPs than rate coding.
-
-### 3.5 Noise Resilience
-
-| Encoding | Input Noise Resilience | Synaptic Noise Tolerance |
-|----------|----------------------|------------------------|

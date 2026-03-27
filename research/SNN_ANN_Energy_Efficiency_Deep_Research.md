@@ -138,3 +138,31 @@ NeuroBench gives you the building blocks:
 - Energy_SNN = Eff_ACs x E_AC (where E_AC ~ 0.9 pJ at 45nm)
 - Energy_ANN = Eff_MACs x E_MAC (where E_MAC ~ 4.6 pJ at 45nm)
 
+This is the simplified hardware-agnostic approach. The hardware-aware approach adds memory access, data movement, and control overhead.
+
+---
+
+## 3. Neuromorphic hardware: measured energy numbers
+
+### 3.1 Hardware comparison
+
+| Platform | Process | Neurons | Synapses | Power | Energy/Syn. Op | Year |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Intel Loihi 1** | 14nm | 131K | 130M | ~0.5W active | ~23.6 pJ/SynOp | 2018 |
+| **Intel Loihi 2** | Intel 4 | 1M | 120M | ~1W | Improved over Loihi 1 | 2021 |
+| **IBM TrueNorth** | 28nm | 1M | 256M | 65-275 mW | ~26 pJ/SynEvent | 2014 |
+| **IBM NorthPole** | 12nm | N/A (DNN) | N/A | N/A | N/A | 2023 |
+| **SpiNNaker 1** | 130nm | 18 ARM cores/chip | Software-defined | ~1W/chip | ~5.8 uJ/syn event | 2014 |
+| **SpiNNaker 2** | 22nm FDSOI | 153 ARM cores/chip | Hardware-defined | 10x vs S1 | Improved | 2021+ |
+| **BrainScaleS-2** | 65nm | 512 | 131K | ~1W | Analog (low pJ range) | 2022 |
+| **DarwinWafer** | N/A | 0.15B (wafer) | 6.4B (wafer) | ~100W | **4.9 pJ/SOP** | 2025 |
+| **Innatera T1** | 28nm | SNN-based | Analog SNN | <10 mW total | <200 fJ/spike event | 2024 |
+
+### 3.2 Detailed platform data
+
+**Intel Loihi 1 (Davies et al., IEEE Micro 2018):**
+- 128 neuromorphic cores, 14nm. ~131K neurons, up to 130M synapses.
+- ~23.6 pJ per synaptic operation (measured). Idle power: 30 mW.
+- Keyword spotting benchmark: 5.3x to 109.1x improvement in energy cost per inference vs conventional hardware. Advantage improves for larger networks.
+
+**Intel Loihi 2 (2021):**

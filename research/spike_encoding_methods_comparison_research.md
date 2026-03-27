@@ -138,3 +138,31 @@ from Guo et al. (2021), SOPs x 10^8:
 | Rate | 130.785 | 9.932 |
 | TTFS | 37.300 | 1.506 |
 | Phase | 690.072 | 57.798 |
+| Burst | 104.947 | 5.679 |
+
+TTFS gets **3.5x fewer SOPs in training and 6.5x fewer in inference** vs rate. phase coding is the worst at ~5x MORE SOPs than rate. interesting trade-off.
+
+### Noise Resilience
+
+| Encoding | Input Noise Resilience | Synaptic Noise Tolerance |
+|----------|----------------------|------------------------|
+| Rate | Moderate | Poor (worst at training) |
+| TTFS | Poor (worst) | Moderate |
+| Phase | **Best** | Good |
+| Burst | Poor | **Best** (at 20% fault rate) |
+
+### Hardware Cost (NAND gates per module)
+
+| Encoding | Hardware Cost |
+|----------|-------------|
+| Rate | 316N |
+| TTFS | 340N + 1,703 (shared overhead) |
+| Phase | 76N (simplest -- just muxes and 8-bit registers) |
+| Burst | 544N (most expensive) |
+
+### Bottom Line: No Single Best Encoding
+
+each encoding creates different trade-offs:
+- **TTFS**: best efficiency (latency + SOPs), worst noise resilience
+- **Phase**: best noise resilience, simplest hardware, worst SOPs
+- **Burst**: best fault tolerance and compression, most expensive hardware

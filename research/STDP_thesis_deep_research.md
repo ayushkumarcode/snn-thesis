@@ -12,31 +12,3 @@ STDP remains a vibrant and publishable research area in 2026, far from "old news
 The practical reality is nuanced. Pure STDP on MNIST achieves approximately 95% accuracy (Diehl and Cook, 2015), while the state-of-the-art hybrid approach (unsupervised STDP feature extraction + supervised STDP classifier with NCG) reaches 98.92% on MNIST, 88.72% on Fashion-MNIST, and 66.41% on CIFAR-10 using a STDP-trained convolutional feature extractor (NeurIPS 2024). These numbers are respectable but lag behind surrogate-gradient-trained SNNs by 5-15 percentage points on complex datasets. However, the thesis angle should not be "beat backpropagation" -- it should be "what can local, biologically plausible learning achieve, and where does it have fundamental advantages?"
 
 For an undergraduate thesis, the hybrid approach (STDP unsupervised feature extraction + simple supervised classifier) is the sweet spot: it is implementable in one semester using BindsNET or SpykeTorch, produces visually interpretable learned features, and offers multiple dimensions for experimental investigation. The strongest novel angles for 2026 would be: (a) STDP on event-camera/DVS data where the temporal coding matches the learning rule naturally, (b) three-factor learning rules (reward-modulated STDP) for reinforcement learning tasks, or (c) STDP for continual/lifelong learning where its local nature provides natural resistance to catastrophic forgetting.
-
----
-
-## 1. What Can STDP Actually Learn? What Tasks Is It Good At?
-
-### 1.1 Core Mechanism
-
-STDP is a biologically observed synaptic plasticity rule that adjusts synaptic weights based on the relative timing of pre- and post-synaptic spikes:
-- **Pre fires before post (causal):** synapse is strengthened (Long-Term Potentiation, LTP)
-- **Post fires before pre (anti-causal):** synapse is weakened (Long-Term Depression, LTD)
-
-This creates an unsupervised, Hebbian-like learning rule that extracts temporal correlations in input spike patterns without any labels or global error signal.
-
-### 1.2 What STDP Learns Well
-
-| Task Domain | What STDP Extracts | Quality | Evidence |
-|---|---|---|---|
-| **Edge/Gabor-like filters** | Oriented edge detectors from natural images | Excellent | Masquelier & Thorpe (2007), Kheradpisheh et al. (2018) |
-| **Digit prototypes** | Template-like representations of handwritten digits | Very Good | Diehl & Cook (2015) -- 95% MNIST |
-| **Object parts/prototypes** | Intermediate visual features in deep CSNN | Good | Kheradpisheh et al. (2018) -- 99.1% Caltech face/motorbike |
-| **Temporal patterns** | Repeating spike sequences, coincidence detection | Excellent | Foundational STDP property |
-| **Audio/speech features** | Spectrotemporal patterns in audio | Good | 93.3% Spoken-MNIST (2024) |
-| **Event-camera features** | Motion-sensitive filters from DVS data | Good | Paredes-Valles et al., cuSNN |
-| **Spatial navigation** | Place/grid cell representations | Good | SpiNNaker implementations |
-
-### 1.3 What STDP Struggles With
-
-- **Fine-grained classification on complex datasets:** CIFAR-10 accuracy caps around 66% with pure STDP pipelines vs. 95%+ for surrogate gradient methods

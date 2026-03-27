@@ -278,20 +278,12 @@ encoding comparisons:
 hardware:
 - SpiNNaker2: https://arxiv.org/abs/2401.04491
 - Neuromorphic LLM on Loihi 2: https://arxiv.org/html/2503.18002v2
-- **Relevance to you:** HIGHEST. Your "first SNN on ESC-50" claim is exactly this pattern.
+- SpikeFit: https://arxiv.org/html/2510.15542
 
----
-
-## 7. GAP ANALYSIS AND SPECIFIC RECOMMENDATIONS
-
-### What You Have vs. What Top Papers Have
-
-| Dimension | Top Papers | Your Paper | Gap |
-|-----------|-----------|------------|-----|
-| Novelty of domain | "First X on Y" | First SNN on ESC-50 | **No gap -- you have this** |
-| Hardware deployment | Full pipeline on Loihi/SpiNNaker | FC2-only hybrid on SpiNNaker | Moderate gap (honest about it) |
-| Wow number | 85.65% ImageNet, 109x energy | 6x robustness, 16.7pp to 0.95pp gap collapse | **No gap -- your numbers are dramatic** |
-| Statistical rigor | Varies (many papers lack it) | 5-fold CV, p-values, Cohen's d | **You exceed most papers** |
+robustness and energy:
+- SNN adversarial local learning 2025: https://arxiv.org/html/2504.08897v2
+- Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
+- Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
 | Depth of analysis | Usually 1-2 analyses | 7 encodings + adversarial + transfer + temporal + CL + noise + surrogate + energy | **You exceed most papers** |
 | Clarity of thesis | One clear message | Multiple findings, unclear which is central | **This is your gap** |
 

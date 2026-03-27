@@ -363,31 +363,3 @@ Potential under-explored domains:
 |-----------|-------|-------|----------|------|-----------------|
 | [putshua/ANN_SNN_QCFS](https://github.com/putshua/ANN_SNN_QCFS) | QCFS Optimal Conversion | ICLR 2022 | PyTorch | HIGH | CIFAR-10/100, ImageNet |
 | [yhhhli/SNN_Calibration](https://github.com/yhhhli/SNN_Calibration) | SNN Calibration | ICML 2021 | PyTorch | HIGH | CIFAR-10/100, ImageNet |
-| [snuhcs/snn_signgd](https://github.com/snuhcs/snn_signgd) | SignGD Beyond ReLU | ICML 2024 | PyTorch | MEDIUM | CIFAR-10/100, ImageNet |
-| [Lyu6PosHao/ANN2SNN_GN](https://github.com/Lyu6PosHao/ANN2SNN_GN) | Group Neurons | ICASSP 2024 | PyTorch | MEDIUM | CIFAR-10/100, ImageNet |
-| [IGITUGraz/RobustSNNConversion](https://github.com/IGITUGraz/RobustSNNConversion) | Adversarial Robustness | TMLR 2024 | PyTorch | MEDIUM | CIFAR-10/100 |
-| [h-z-h-cell/ANN-to-SNN-DCGS](https://github.com/h-z-h-cell/ANN-to-SNN-DCGS) | Differential Coding | ICML 2025 | PyTorch | MEDIUM | CNNs + Transformers |
-| [BICLab/SpikeYOLO](https://github.com/BICLab/SpikeYOLO) | SpikeYOLO | ECCV 2024 | PyTorch | MEDIUM | COCO, Gen1 |
-| [putshua/SNN_conversion_QCFS](https://github.com/putshua/SNN_conversion_QCFS) | QCFS (older version) | -- | PyTorch | HIGH | CIFAR-10/100 |
-| [nitin-rathi/hybrid-snn-conversion](https://github.com/nitin-rathi/hybrid-snn-conversion) | Hybrid SNN Conversion | -- | PyTorch | MEDIUM | CIFAR-10/100, ImageNet |
-| [NeuroCompLab-psu/SNN-Conversion](https://github.com/NeuroCompLab-psu/SNN-Conversion) | General Conversion | -- | PyTorch | MEDIUM | CIFAR |
-| [Saad-data/ANN-to-SNN-Conversion-with-snnTorch](https://github.com/Saad-data/ANN-to-SNN-Conversion-with-snnTorch) | snnTorch Demo | -- | PyTorch | VERY HIGH | MNIST |
-
-### 8.2 Recommended Starting Points
-
-**For absolute beginners:** Start with `Saad-data/ANN-to-SNN-Conversion-with-snnTorch` (MNIST, simple FC network, very short code)
-
-**For the actual thesis work:** Start with `putshua/ANN_SNN_QCFS` or `yhhhli/SNN_Calibration` -- both have:
-- Clear README with exact commands
-- Fixed random seeds for reproducibility
-- Support for VGG-16 and ResNet on CIFAR-10/100
-- Reasonable GPU requirements
-
-**For cutting-edge results:** Use `snuhcs/snn_signgd` which converts ConvNeXt and MLP-Mixer (ICML 2024)
-
-### 8.3 Curated Paper Lists
-
-For finding more papers and code:
-- [Awesome-Spiking-Neural-Networks](https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks) -- comprehensive paper list organized by year and method
-- [awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper) -- top-conference papers with code
-- [SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv) -- daily arxiv updates on SNN papers

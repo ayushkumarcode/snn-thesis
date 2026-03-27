@@ -219,31 +219,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 |-------|------|-------|------------------|
 | Air Pollution Prediction with Clustering-based Ensemble of Evolving SNNs | 2019 | Environmental Modelling & Software | CEeSNN for air pollution prediction in London |
 | Evolving SNN for PM2.5 Prediction (Staging-eSNN) | 2021 | Aerosol and Air Quality Research | Seasonal PM2.5 prediction in Beijing/Shanghai |
-| Forest Fire Detection Using SNNs | 2018 | ACM Computing Frontiers | SNN for sensor-based fire detection |
-| NeuCube for environmental data | Various | Various | General SNN architecture applied to environmental data |
-
-**No GitHub repositories found specifically for SNN + environmental monitoring**
-
-**Natural SNN Advantage: MODERATE-HIGH**
-- Environmental sensor data is continuous temporal streams -- good for evolving SNNs
-- Edge deployment in remote sensors requires ultra-low power (strong SNN advantage)
-- Event-driven nature suits anomaly/threshold detection (pollution spikes, fire events)
-- Wildlife acoustic monitoring involves temporal audio patterns
-- Real-time alerting naturally maps to spike-based threshold crossing
-
-**Undergraduate Feasibility: HIGH**
-- Public datasets: EPA air quality data, UCI Air Quality, Kaggle environmental datasets
-- Forest fire datasets: UCI Forest Fires, FIRMS satellite data
-- NeuCube framework exists for evolving SNN approaches
-- Well-scoped: predict air quality index from sensor readings using SNN
-- Clear practical motivation and societal impact
-
-**Novelty Assessment: HIGH**
-- Very few papers (4-7) specifically on SNN + environmental monitoring
-- Wildlife acoustic monitoring with SNN: essentially unexplored
-- Pollution prediction with modern SNN frameworks (snnTorch): unexplored
-- Combining IoT edge deployment narrative with environmental monitoring is novel
-
-**Verdict: EXCELLENT thesis candidate -- high novelty, practical impact, good feasibility**
-
----

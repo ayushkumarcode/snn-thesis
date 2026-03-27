@@ -250,3 +250,31 @@ Based on looking at high-impact recent papers and community discussion:
 5. **Novel domain + rigorous methodology**: Audio is underexplored. Seven encoding methods is thorough. The combination works well.
 
 6. **Reproducible with code**: Open Neuromorphic's peer review program specifically rewards reproducibility. Publishing code is now table stakes.
+
+7. **Clear narrative / insight**: The most cited papers tell a story. My story -- "the SNN-ANN gap is a feature-learning problem, not a spiking computation problem" -- is the kind of insight that gets remembered and cited.
+
+### What NOT to do:
+- Don't claim SNNs are "better" than ANNs without qualification
+- Don't ignore the energy break-even threshold literature
+- Don't present simulation-only results as "neuromorphic deployment"
+- Don't compare unfairly (different parameter counts, training budgets)
+
+---
+
+## 9. New benchmarks, challenges, and competitions
+
+### NeuroBench (active, growing)
+- Published in Nature Communications (February 2025)
+- 100+ researchers from 50+ institutions
+- Algorithm Track v1.0: few-shot continual learning, object detection (event cameras), sensorimotor decoding, predictive modeling
+- System Track: deployed execution time, throughput, efficiency
+- My project already uses NeuroBench metrics
+
+### Open Neuromorphic Research (ONR)
+- Community-driven peer review for open, reproducible neuromorphic research
+- Badges for recognized projects
+- Launched 2025, actively accepting submissions
+
+### Conference workshops (2025-2026)
+- CVPR 2025: Fifth International Workshop on Event-based Vision
+- ICCV 2025: 2nd Workshop on Neuromorphic Vision (NeVi)

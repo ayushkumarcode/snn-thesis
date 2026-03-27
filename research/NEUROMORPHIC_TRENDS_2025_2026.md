@@ -255,31 +255,3 @@ Based on analysis of high-impact recent papers and community discourse:
 3. **Honest about limitations**: The community has developed allergy to overclaiming. Papers that honestly report where SNNs fall short (like our 47.15% vs 63.85% gap) while explaining WHY are more trusted than papers claiming SNN superiority.
 
 4. **Bridge SNN and mainstream ML**: Papers connecting SNNs to transformers, LLMs, or pretrained models generate excitement because they lower the barrier for mainstream ML researchers to engage with neuromorphic.
-
-5. **Novel domain + systematic methodology**: Audio is underexplored. Seven encoding methods is thorough. The combination of systematic rigor with a novel application domain is exactly what reviewers want.
-
-6. **Reproducible with code**: Open Neuromorphic's new peer review program specifically rewards reproducibility. Publishing code is now table stakes.
-
-7. **Clear narrative / insight**: The most cited papers tell a story. Our story -- "the SNN-ANN gap is a feature-learning problem, not a spiking computation problem" -- is exactly the kind of insight that gets remembered and cited.
-
-### What NOT to do:
-- Don't claim SNNs are "better" than ANNs without qualification
-- Don't ignore the energy break-even threshold literature
-- Don't present simulation-only results as "neuromorphic deployment"
-- Don't compare unfairly (different parameter counts, training budgets)
-
----
-
-## 9. NEW BENCHMARKS, CHALLENGES, AND COMPETITIONS
-
-### NeuroBench (Active, Growing)
-- Published in Nature Communications (February 2025)
-- 100+ researchers from 50+ institutions
-- **Algorithm Track v1.0**: Few-shot continual learning, object detection (event cameras), sensorimotor decoding, predictive modeling
-- **System Track**: Deployed execution time, throughput, efficiency
-- Our project already uses NeuroBench metrics (Effective_ACs, Effective_MACs, Dense, ActivationSparsity)
-
-### Open Neuromorphic Research (ONR)
-- Community-driven peer review for open, reproducible neuromorphic research
-- Badges for recognized projects
-- Launched 2025, actively accepting submissions

@@ -194,3 +194,31 @@ ICONS sits in a sweet spot: selective enough to be meaningful (~59%) but approac
 
 ## conference size and growth
 
+| Year | Location | Attendance | Proceedings Papers | Total Presentations |
+|------|----------|-----------|-------------------|---------------------|
+| 2018 | Knoxville, TN | Unknown | ~15 | Unknown |
+| 2019 | Knoxville, TN | ~134 | 15 | Unknown |
+| 2020 | Oak Ridge, TN (virtual) | 234 | 15 | Unknown |
+| 2021 | Knoxville, TN (virtual) | 175 | ~15 | Unknown |
+| 2022 | Knoxville, TN (hybrid) | Unknown | ~15 | Unknown |
+| 2023 | Santa Fe, NM | Unknown | 13 (of 22) | 87 |
+| 2024 | Arlington, VA (GMU) | Unknown | ~16 | 85+ |
+| 2025 | Bellevue, WA | Unknown | Unknown | 26+ |
+| 2026 | Chicago, IL | TBD | TBD | TBD |
+
+ICONS has evolved from a small ORNL-hosted workshop to a substantial conference with 85+ presentations. the shift to rotating venues and IEEE co-sponsorship in 2024 signal growing maturity.
+
+---
+
+## things i'm not sure about
+
+1. exact number of reviewers per paper -- estimated 2-3 based on ACM norms
+2. blind review type -- estimated single-blind
+3. ICONS 2024/2025 acceptance rates -- not published
+4. exact proceedings paper counts for 2024-2025
+5. whether UoM participates in JISC/ACM Open -- JISC has signed with ACM covering 70+ UK institutions, but UoM-specific confirmation not found
+6. detailed review scoring rubric -- not publicly available for ICONS
+
+---
+
+## things to do

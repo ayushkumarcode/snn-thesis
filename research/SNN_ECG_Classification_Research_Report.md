@@ -199,31 +199,3 @@ The natural fit between ECG signals (temporal, quasi-periodic, spike-like QRS co
 | Framework | GitHub | PyTorch-based | Documentation | ECG Support | Best For |
 |---|---|---|---|---|---|
 | **snnTorch** | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) | Yes | Excellent (9 tutorials) | Built-in delta encoding | **Recommended for thesis** |
-| **SpikingJelly** | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) | Yes | Good (Chinese + English) | Via publications | Large-scale SNN research |
-| **Norse** | [norse/norse](https://github.com/norse/norse) | Yes | Good | Not direct | Bio-plausible models |
-| **BindsNET** | [BindsNET/bindsnet](https://github.com/BindsNET/bindsnet) | Yes | Good | Not direct | STDP/unsupervised learning |
-
-### Why snnTorch is Recommended for an Undergraduate Thesis
-1. Best-in-class tutorials (9 comprehensive tutorials covering encoding, training, deployment)
-2. PyTorch integration means familiar development workflow
-3. Built-in `snntorch.delta` for ECG-to-spike encoding
-4. Active community and recent updates
-5. Surrogate gradient training out of the box
-6. Regression tutorials applicable to time-series tasks
-
-### Sources
-- [snnTorch Documentation](https://snntorch.readthedocs.io/en/latest/)
-- [SpikingJelly Publications](https://github.com/fangwei123456/spikingjelly/blob/master/publications.md)
-- [Efficient Spiking Networks Repository](https://github.com/byin-cwi/Efficient-spiking-networks)
-
----
-
-## 7. Feasibility for an Undergraduate Thesis
-
-### Assessment: HIGHLY FEASIBLE -- this is an excellent undergraduate thesis topic.
-
-#### Why This Works for Undergrad Level
-
-**Strengths:**
-1. **Well-defined problem**: ECG classification is a standard, well-benchmarked task
-2. **Accessible datasets**: MIT-BIH is small (~100 MB), well-documented, freely available, and pre-processed versions exist on Kaggle

@@ -426,31 +426,3 @@ This is the central technical challenge for SNN-NLP. Four main approaches exist:
 
 ### Recommended Scope for Undergraduate Thesis
 
-**Title suggestion:** "Energy-Efficient Sentiment Analysis Using Spiking Neural Networks: A Conversion-Based Approach"
-
-**Minimum Viable Project:**
-1. Train a TextCNN on IMDB (binary sentiment) -- standard ANN baseline
-2. Convert to Spiking CNN using the conversion pipeline from Lvchangze/snn
-3. Fine-tune with surrogate gradients
-4. Compare accuracy vs. ANN baseline
-5. Measure/estimate energy consumption
-6. Report on 2 datasets (IMDB + SST-2)
-
-**Stretch goals (if time permits):**
-- Test different encoding schemes (Poisson vs. latency coding)
-- Try spam detection as a second task
-- Vary number of timesteps and analyze accuracy-energy tradeoff
-- Test adversarial robustness (SNNs are reportedly more robust)
-- Deploy on SpiNNaker (if Manchester access is available)
-
-**Expected deliverables:**
-- Jupyter notebooks with reproducible experiments
-- Accuracy comparison table (SNN vs. ANN)
-- Energy efficiency analysis
-- 40-60 page thesis report
-
----
-
-## Part 9: Confidence Assessment
-
-| Finding | Confidence | Source Quality |

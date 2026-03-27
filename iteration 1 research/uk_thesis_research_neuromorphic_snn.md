@@ -362,3 +362,5 @@ so a reasonable UK undergrad SNN project would probably involve:
 - Xing (2020): https://stax.strath.ac.uk/concern/theses/x059c7885
 - Berg (2022): https://era.ed.ac.uk/handle/1842/43087
 - Bacho (2024): https://kar.kent.ac.uk/104801/
+- Bi (2020): https://discovery.ucl.ac.uk/id/eprint/10109453/
+- Kozdon (2022): https://discovery.ucl.ac.uk/id/eprint/10142370/

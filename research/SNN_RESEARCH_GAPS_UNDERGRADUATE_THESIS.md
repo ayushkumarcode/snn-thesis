@@ -222,3 +222,31 @@ these are areas where only ONE substantial paper exists. a second study -- even 
 
 these are mostly "running experiments" rather than "inventing methods." each fills a documented gap.
 
+#### 1A. framework shootout: snnTorch vs SpikingJelly on SHD + DVS128 Gesture
+- **what:** same CSNN, same hyperparameters, both frameworks. report accuracy, training time, GPU memory, energy estimates.
+- **why novel:** no such comparison exists. Open Neuromorphic benchmark (2024) only tested synthetic data. multimodal benchmark (2025) excluded snnTorch.
+- **datasets:** SHD (audio), DVS128 Gesture (vision). both available via Tonic.
+- **effort:** LOW. both frameworks have tutorials for these exact datasets.
+- **risk:** LOW.
+
+#### 1B. SNN on ESC-50 or UrbanSound8K
+- **what:** standard CSNN or recurrent SNN on ESC-50 or UrbanSound8K. compare with CNN baseline.
+- **why novel:** zero SNN papers on environmental sound classification. the "SNN and Sound" review (2024) explicitly calls this out.
+- **datasets:** ESC-50 (50 classes, 2000 clips) or UrbanSound8K (10 classes, 8732 clips).
+- **effort:** LOW. convert audio to mel-spectrograms, rate-encode to spikes.
+- **risk:** LOW. even if SNN underperforms CNN, the result is novel.
+
+#### 1C. SNN for plant disease classification
+- **what:** SNN on PlantVillage dataset (54K images, 38 classes of healthy/diseased leaves).
+- **why novel:** zero SNN papers on agricultural image classification. entire field uses CNNs.
+- **effort:** LOW. standard image classification pipeline with snnTorch CSNN.
+- **risk:** LOW.
+
+#### 1D. SNN regression benchmark study
+- **what:** since SNN regression is brand new (first paper May 2024), test snnTorch's regression on 3-4 standard datasets (Boston/California Housing, energy efficiency, etc.).
+- **why novel:** snnTorch added regression tutorials in late 2024 but nobody's published a benchmark.
+- **effort:** LOW. tutorials provide starter code.
+- **risk:** LOW-MEDIUM. regression with SNNs is tricky but partial results are fine.
+
+### tier 2: moderate effort, strong novelty
+

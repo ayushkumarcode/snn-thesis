@@ -334,3 +334,31 @@ cost: $150-200. timeline: 14-18 weeks.
 3. deploy on STM32F4 or Arduino Portenta H7
 4. measure inference time, memory, power
 5. compare against TF Lite Micro CNN on same hardware
+6. demo keyword spotting or gesture classification
+
+cost: $15-80. timeline: 8-12 weeks.
+
+### critical success factors
+
+1. start with software simulation. get the SNN trained before touching hardware.
+2. use snnTorch -- best FPGA deployment pipeline.
+3. choose quantization-aware training from the start. 8-bit deploys way easier than 32-bit.
+4. measure power properly (USB power meter).
+5. don't oversell SNN efficiency. the comparison is nuanced. an honest analysis is a stronger thesis.
+6. use N-MNIST or DVS128 Gesture as benchmark -- standard with known baselines.
+
+### risks
+
+| Risk | Likelihood | Mitigation |
+|------|-----------|------------|
+| FPGA toolchain issues | Medium | Use Spiker+ auto-gen or pre-built bitstreams |
+| SNN accuracy < ANN | Expected | That's a finding, not a failure |
+| Hardware procurement delays | Medium | Start with software; have microcontroller backup |
+| Learning curve too steep | Low-Medium | Follow ISFPGA 2024 workshop tutorials |
+| Power measurement difficulty | Medium | USB power meters; document methodology |
+
+---
+
+## sources
+
+### frameworks and tools

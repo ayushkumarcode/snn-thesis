@@ -475,31 +475,3 @@ Our work tackles the most complex audio classification task ever attempted with 
 3. Basu et al. (2025) arXiv:2502.15056 -- fundamental survey on neuromorphic audio
 4. Dominguez-Morales et al. (2016) ICANN -- SpiNNaker audio predecessor
 5. Wu et al. (2018) Frontiers -- SOM-SNN framework
-6. Wang et al. (2025) arXiv:2512.22522 -- adversarial robustness evaluation warning
-
-**Should-cite papers (contextual):**
-7. SpikeSCR (Wang et al. 2024) -- SOTA speech command SNN
-8. Spiking-FullSubNet (Hao et al. 2024) -- SNN competition winner
-9. Zhang et al. (NeurIPS 2024) -- RF-PLC sound localization
-10. Guo et al. (2024) IEEE TCDS -- multimodal audio SNN
-11. Meunier et al. (2025) IEEE AICAS -- cochlear encoding comparison
-12. Haghighatshoar & Muir (2025) Comm. Eng. -- SNN audio localization
-13. Speech2Spikes (2023) NICE -- audio encoding pipeline
-14. Spiking-LEAF (ICASSP 2024) -- learnable auditory frontend
-
----
-
-## 14. Confidence Assessment
-
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
-| No prior SNN work on full ESC-50 | **Very High (95%+)** | Multiple surveys confirm; explicit claims by Larroza et al. |
-| No prior PANNs+SNN for audio | **High (90%)** | Exhaustive search found nothing; niche intersection |
-| No prior adversarial robustness for audio SNNs | **High (90%)** | All adversarial SNN papers are vision-domain |
-| No prior continual learning for audio SNNs | **High (90%)** | Exhaustive search found nothing |
-| SpikCommander is current SOTA on SHD/SSC/GSC | **High (85%)** | arXiv Jan 2026, most recent comprehensive comparison |
-| Larroza et al. best ESC-10 result is 69.0% | **Very High (95%)** | Directly extracted from paper HTML |
-| Our 47.15% is competitive given ESC-50 difficulty | **Very High (95%)** | 50 classes vs 10 classes, with CNN arch vs FC-only |
-
----
-

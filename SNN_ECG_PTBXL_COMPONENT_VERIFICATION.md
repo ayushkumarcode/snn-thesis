@@ -138,3 +138,31 @@ cleaned = nk.ecg_clean(ecg_signal, sampling_rate=100, method='neurokit')
 |---|---|
 | **EXISTS** | YES |
 | **VERIFIED HOW** | Official docs: https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html |
+| **POTENTIAL BLOCKER** | NO |
+
+**Exact function signature:**
+
+```python
+snntorch.spikegen.delta(
+    data,           # torch.Tensor, shape [num_steps x batch x input_size]
+    threshold=0.1,  # float: change magnitude to trigger spike
+    padding=False,  # bool: how first timestep is handled
+    off_spike=False  # bool: enable negative spikes for decreases
+)
+# Returns: torch.Tensor of spike values (0, 1, or -1 if off_spike=True)
+```
+
+**ECG-specific usage:**
+
+```python
+import snntorch.spikegen as spikegen
+import torch
+
+# ECG data shape: [1000, batch_size, 12]  (timesteps x batch x leads)
+ecg_tensor = torch.tensor(ecg_data).permute(1, 0, 2)  # from (batch, time, leads)
+spike_data = spikegen.delta(ecg_tensor, threshold=0.1, off_spike=True)
+# off_spike=True recommended for ECG: captures both rising and falling edges
+```
+
+**The delta function is explicitly designed for time-series data.** The documentation states it "accepts a time-series tensor as input and takes the difference between each subsequent feature across all time steps." This is exactly what ECG needs.
+

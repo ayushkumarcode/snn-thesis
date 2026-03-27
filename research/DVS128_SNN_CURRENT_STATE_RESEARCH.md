@@ -465,31 +465,3 @@ Based on survey papers and recent analysis:
 
 ## 11. Recommended Thesis Project Structures
 
-### Option A: "Comparative Study of SNN Architectures for Event-Based Gesture Recognition"
-
-**Research question:** How do different SNN architectures compare on DVS128 Gesture when controlling for preprocessing, parameter budget, and training procedure?
-
-**Experiments:**
-1. Baseline CSNN (5-layer, LIF) -- reproduce SpikingJelly tutorial
-2. CSNN with PLIF neurons -- swap neuron model
-3. CSNN with attention (add channel/temporal attention)
-4. Spiking Transformer (implement Spikformer-style)
-5. ANN baseline (same conv architecture, ReLU, standard frames)
-6. Vary timesteps T = {4, 8, 16, 32} for each architecture
-
-**Metrics per experiment:** accuracy (mean +/- std, 5 runs), parameters, SynOps, training time, per-class accuracy.
-
-**Differentiator:** No existing paper does this controlled comparison. Clean, reproducible code.
-
-### Option B: "Efficiency-Accuracy Tradeoffs in SNNs for Neuromorphic Gesture Recognition"
-
-**Research question:** What is the Pareto frontier between accuracy and computational cost for SNNs on DVS128 Gesture?
-
-**Experiments:**
-1. Vary network depth (3, 5, 7 layers)
-2. Vary network width (32, 64, 128 channels)
-3. Vary timesteps (4, 8, 16, 32, 64)
-4. Vary neuron model (IF, LIF, PLIF)
-5. Apply pruning at various sparsity levels
-6. Compare estimated energy (SynOps) across all configurations
-

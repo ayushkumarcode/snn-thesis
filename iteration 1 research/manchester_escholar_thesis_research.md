@@ -418,3 +418,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Author** | Tamas Madl |
 | **Year** | 2016 |
 | **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Ke Chen (main), Daniela Montaldi (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/bayesian-mechanisms-in-spatial-cognition-towards-real-world-capab |
+| **Abstract** | Develops cognitively plausible spatial memory models. Bayesian localization and error correction. Neural recording evidence from rats. Extends LIDA cognitive architecture with probabilistic models. Robotic simulations. |
+| **What They Built** | Extended LIDA cognitive architecture; Bayesian spatial models; robotic validation |
+| **Tools/Frameworks** | LIDA cognitive architecture |
+| **Datasets** | Rat neural recordings, human behavior data, VR environments |
+| **Scope** | Very high -- interdisciplinary neuroscience + robotics |
+
+---
+
+## ML for electrophysiology / biosignal processing
+
+### 5.1 Use of Machine Learning to Analyse Auditory Evoked Electrophysiological Data
+| Field | Detail |
+|-------|--------|
+| **Author** | Vicki Kennedy |
+| **Year** | 2024 |
+| **Degree** | Clinical Science Doctorate (ClinSciD) |
+| **Department** | Psychology Communication and Human Neuroscience |
+| **Supervisors** | Chris Plack (main) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/use-of-machine-learning-to-analyse-auditory-evoked-electrophysiol |
+| **Abstract** | ML for auditory brainstem response (ABR) analysis. Wave V latency estimation (R2 = 0.8925), tinnitus classification (80% sensitivity, 81.82% specificity), noise exposure prediction (poor). |
+| **What They Built** | ML classifiers for ABR analysis; tinnitus detection system |
+| **Tools/Frameworks** | SVM, Gaussian process regression, ANNs, wavelet feature extraction |
+| **Datasets** | ABR waveforms from tinnitus/non-tinnitus subjects |
+| **Scope** | Moderate -- applied ML to clinical data |
+

@@ -26,20 +26,20 @@ Six original contributions:
 
 **RQ1: Can conv SNNs classify environmental sounds competitively with matched ANNs?**
 
+Partially. From-scratch: 47.15% vs 63.85% -- 16.70 pp gap, p=0.001. SNN learns meaningful audio structure way above chance (2%) but can't match ANN on small data. **With PANNs pretrained features, gap collapses to 0.95 pp (92.50% vs 93.45%).** Answer: not competitively from scratch, but competitively with pretrained features.
 
-## 8.2 Answers to Research Questions
+**RQ2: Which encoding performs best, and why?**
 
-**RQ1: Can convolutional SNNs classify environmental sounds competitively with matched ANNs?**
+Direct at 47.15%. Ordering: direct > rate ~ phase > population > latency >> delta ~ burst. Winner determined by information preservation -- how much spectrogram magnitude structure reaches the conv layers in a usable form. Direct preserves everything; rate adds Bernoulli noise; phase uses deterministic single-spike timing across full window (= rate accuracy); population limited by MSE loss; latency clusters spikes early; delta and burst discard most info. The general principle -- information preservation predicts performance -- is the novel theoretical contribution.
 
-Partially. The from-scratch SNN achieves 47.15% vs the ANN's 63.85% — a 16.70 pp gap that is statistically significant (p=0.001). The SNN is competitive in the sense that it learns meaningful audio structure far above chance (2% for 50 classes), but it cannot match the ANN on small-data training. **When rich pre-trained features are provided (PANNs), the gap collapses to 0.95 pp and both classifiers achieve 92-93%.** The answer to RQ1 is: "Not competitively from scratch, but competitively with pre-trained features."
+**RQ3: Can a trained SNN be deployed on SpiNNaker, what's the cost?**
 
-**RQ2: Which spike encoding method performs best for environmental sound classification, and why?**
+Yes, with limitations. Full SpikingCNN can't deploy natively due to AvgPool-FC1 cancellation. Hybrid: software features + SpiNNaker FC2 = 40% pilot, 43.0% full validation (8.25 pp gap, 64.5% agreement). 5-fold: 33.1% +/- 6.9%. Gap fluctuates (n=208: 0.0 pp; n=400: 8.25 pp) due to sample variability. Full native deployment needs Option A retraining (MaxPool), which is theoretically unblocked (fold 4 validated).
 
-Direct (continuous) encoding performs best at 47.15%. The ordering is: **direct > rate ≈ phase > population > latency >> delta ≈ burst**. The winner is determined by information preservation: how much of the original spectrogram magnitude structure reaches the convolutional layers in a form that supports discrimination. Direct encoding preserves all information continuously; rate encoding introduces Bernoulli noise but uses the full window; phase encoding uses deterministic single-spike timing uniformly distributed across the full window — achieving the same accuracy as rate (24.15% vs 24.00%); population coding (19.15%) adds output redundancy but is limited by MSE loss optimisation difficulty; latency encoding clusters spikes into early timesteps; delta and burst encoding discard most information. The general principle — information preservation predicts SNN performance — is the novel theoretical contribution of this comparison.
+**RQ4: Do SNNs exhibit natural adversarial robustness?**
 
-**RQ3: Can a trained SNN be deployed on SpiNNaker neuromorphic hardware, and what is the accuracy cost?**
+Dramatically yes. eps=0.1 FGSM: SNN 26.00% vs ANN 1.75%. eps=0.05 PGD: ANN = 0%, SNN = 19.25%. Spike threshold provides natural filtering by requiring perturbations to cross a hard nonlinearity. First confirmation for environmental sound classification.
 
-Yes, with limitations. The full SpikingCNN cannot be deployed natively on SpiNNaker due to the AvgPool-FC1 cancellation problem (§5.1). A validated hybrid approach (software feature extraction + SpiNNaker FC₂ classification) achieves 40% on the 20-sample pilot (Run 5); Run 6 (400-sample, complete) achieves **43.0% SpiNNaker vs 51.25% snnTorch** — a hardware gap of **8.25 pp** (agreement rate 64.5%). The gap fluctuates across the run (n=208: 0.0 pp; n=400: 8.25 pp) due to sample-batch variability — later samples were harder for SpiNNaker's IF_curr_exp dynamics. Full native deployment requires SpiNNaker-aware training with MaxPool replacing AvgPool and higher LIF thresholds to reduce FC₁ spike density (Option A, §5.5), which is left for future work.
 
 **RQ4: Do SNNs exhibit natural adversarial robustness compared to matched ANNs on audio inputs?**
 

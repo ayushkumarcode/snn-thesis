@@ -166,3 +166,31 @@ URLs:
 | Spiking neural network model construction, inference, analysis and applications | William Peer Berg | 2022 | Modular PyTorch framework for SNN optimization |
 
 URL: https://era.ed.ac.uk/handle/1842/43087
+
+### University of Southampton
+
+| Title | Author | Year | Pages | Key Contribution |
+|-------|--------|------|-------|-----------------|
+| Memristor-based Spiking Neural Networks | Jinqi Huang | 2022 | 168 | FPGA interface, NeuroPack simulator, ANN-to-SNN conversion |
+| Non-neural computing on the SpiNNaker | Kier Dugan | 2016 | -- | Non-neural applications on neuromorphic hardware |
+| Neural spike classification acceleration with RRAM | Patrick Foster | 2023 | -- | RRAM for neural spike classification |
+
+URLs:
+- https://eprints.soton.ac.uk/471765/
+- https://eprints.soton.ac.uk/400083/
+
+### University of Strathclyde
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Deep spiking neural networks with applications to human gesture recognition | Yannan Xing | 2020 | SCRNN for gesture recognition, speech emotion recognition |
+
+URL: https://stax.strath.ac.uk/concern/theses/x059c7885
+
+### University of Glasgow
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Hardware-software co-design of FPGA-based neural network accelerators for edge inference | Jude Haris | 2025 | SECDA methodology, 84x speedup on TConv |
+
+URL: https://theses.gla.ac.uk/85185/

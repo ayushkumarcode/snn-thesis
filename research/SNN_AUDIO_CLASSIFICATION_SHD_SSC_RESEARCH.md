@@ -166,3 +166,31 @@ been thinking about why SNNs do so well here specifically:
 | Project | Level | University | Tools | Results |
 |---------|-------|-----------|-------|---------|
 | Musical Pattern Recognition in SNNs | BEng | Unknown (~2016) | Brian 2, STDP | First layer of multi-layer SNN for music patterns. Author notes "only a small portion of what was originally intended was achieved" -- realistic and honest. [GitHub](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks) |
+| Audio Classification with SNN (SpiNNaker) | Research | Seville | PyNN, SpiNNaker | 3-layer SNN for 8 pure tones. [GitHub](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker) |
+| Biologically Inspired Audio Classification | MSc | U. Calgary (2021) | Custom | Compared spike encoding schemes for audio. Developed bio-plausible learning rule. [Thesis](https://ucalgary.scholaris.ca/items/d4288028-91ef-436a-ae12-62f07e5ac43b) |
+| Hardware Implementation of SNN for Speech | MSc | U. Padova | FPGA | Hardware SNN for SHD. [Thesis](https://thesis.unipd.it/retrieve/b7626846-af0e-4988-8610-90698072a72d/Toffano_Marco.pdf) |
+| Energy-efficient SNNs at the Edge | PhD | U. Grenoble Alpes (2023) | Custom | Models and algorithms for energy-efficient SNNs on neuromorphic hardware. [Thesis](https://theses.hal.science/tel-04331152/file/DAMPFHOFFER_2023_archivage.pdf) |
+| Randomised Time-Stepping for SNN | BSc | Imperial College (2021) | Python | Mathematical investigation. [GitHub](https://github.com/Fabio752/Randomised-time-stepping-methods-for-SNN-simulations) |
+
+### 4.2 what this means
+
+i couldn't find any undergrad projects specifically doing SNN audio classification on SHD/SSC. that's interesting because:
+- it would be a **novel undergraduate contribution** (good for thesis originality)
+- the MSc thesis from Calgary (2021) and the BEng music project are the closest things out there
+- SHD didn't even exist before 2020, and surrogate gradient training only became accessible to students around 2022-2023
+
+---
+
+## 5. Frameworks and Tools
+
+### 5.1 Framework Comparison for SHD/SSC Work
+
+| Framework | Language | SHD Support | Difficulty | Speed | Best For |
+|-----------|----------|-------------|------------|-------|----------|
+| **snnTorch** | PyTorch | Built-in loader + tutorial | Beginner-friendly | Moderate | Learning SNNs, modular design, great tutorials |
+| **SpikingJelly** | PyTorch | Via Tonic | Intermediate | Fast (CuPy backend) | Performance, built-in models, Science Advances paper |
+| **sparch** | PyTorch | Built-in, automatic | Beginner-friendly | Moderate | Specifically designed for SHD/SSC speech tasks |
+| **Spyx** | JAX | Built-in tutorial | Intermediate | **Fastest** (JIT) | Speed, GPU/TPU optimization, research iteration |
+| **Norse** | PyTorch | Built-in dataset class | Intermediate | Moderate | Bio-inspired components |
+| **Rockpool** | PyTorch/JAX | Built-in tutorial | Intermediate | Moderate | Neuromorphic hardware deployment (Xylo) |
+| **SNN-delays** | PyTorch | Built-in, automatic | Intermediate | Moderate | Reproducing ICLR 2024 delay learning results |

@@ -278,3 +278,31 @@ if you want to ensure you finish:
 ## Key Risks
 
 | Risk | Probability | Impact | Mitigation |
+|------|------------|--------|-----------|
+| Thesis perceived as too generic | HIGH if no differentiator | HIGH | Add at least 2 angles from section 4 |
+| SNN fails to converge on CIFAR-10 | MODERATE | MODERATE | Use proven architectures from papers; start with conversion then try direct training |
+| Compute budget insufficient | MODERATE | HIGH | Request university GPU; budget Colab Pro; reduce grid |
+| Results just replicate known findings | MODERATE | MODERATE | Frame as reproducibility study with added dimensions |
+| Takes longer than expected | HIGH | MODERATE | Have scoped-down version ready; prioritize experiments by impact |
+
+---
+
+## How to Frame It
+
+do NOT frame as: "I compared SNNs and ANNs on image classification" (sounds like a tutorial exercise)
+
+DO frame as one of:
+
+**Efficiency focus**: "Evaluating the accuracy-efficiency tradeoff of spiking neural networks: A controlled multi-dataset study using NeuroBench metrics"
+
+**Multi-dimensional**: "Beyond accuracy: A systematic comparison of spiking and artificial neural networks across accuracy, energy, and robustness dimensions"
+
+**Encoding study**: "Impact of spike encoding schemes on SNN classification performance: A comprehensive empirical study across datasets and architectures"
+
+**Hyperparameter study**: "Sensitivity analysis of spiking neuron parameters for image classification: Practical guidelines for SNN practitioners"
+
+each frames the work as answering a specific question rather than just "comparing things."
+
+---
+
+## Confidence

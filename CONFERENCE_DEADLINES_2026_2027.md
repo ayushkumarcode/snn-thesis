@@ -200,31 +200,3 @@ Sources: [SiPS 2026](https://sips2026.org/), [IEEE CASS](https://ieee-cas.org/ev
 | **Full Name** | Workshop on Detection and Classification of Acoustic Scenes and Events |
 | **Paper Deadline** | **~July 2026** (not yet announced; based on 2025: July 4-11) |
 | **Conference Dates** | ~September-November 2026 (autumn, exact TBD) |
-| **Location** | TBD (workshop organizers still being selected) |
-| **Page Limit** | 4 pages + references (based on previous years) |
-| **Format** | DCASE workshop template |
-| **Proceedings** | DCASE community proceedings |
-| **Realistic for UG?** | **EXCELLENT FIT for topic.** ESC-50 environmental sound classification is exactly what DCASE covers. SNN angle would be novel. |
-| **Focus** | Acoustic scene classification, sound event detection, environmental audio |
-
-**Note:** DCASE 2026 workshop details not yet finalized. Monitor https://dcase.community/ for announcements.
-
-Sources: [DCASE Community](https://dcase.community/), [DCASE 2026 Challenge](https://dcase.community/challenge2026/)
-
----
-
-## 3. MACHINE LEARNING (GENERAL) CONFERENCES
-
-### 3.1 ICML 2026 -- International Conference on Machine Learning [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 43rd International Conference on Machine Learning |
-| **Abstract Deadline** | 23 January 2026 (PASSED) |
-| **Paper Deadline** | 28 January 2026 (PASSED) |
-| **Notification** | 30 April 2026 |
-| **Conference Dates** | 6-11 July 2026 |
-| **Location** | COEX Convention Center, Seoul, South Korea |
-| **Page Limit** | 8 pages main + unlimited refs/appendices |
-| **Format** | ICML LaTeX template |
-| **Acceptance Rate** | ~24-28% (avg 27.9%, last 5yr ~23.3%). 2026: 24,371 submissions. |

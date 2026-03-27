@@ -194,3 +194,31 @@ the intersection of SNNs and IDS is not novel in itself -- there's 20+ papers no
 - encrypted traffic classification with SNN (Rouxelin et al., 2023)
 - STDP-based unsupervised IDS (2025)
 
+### what hasn't been done -- actual gaps
+
+**gap 1: encoding scheme comparison.** nobody has compared rate, temporal, latency, delta, and phase coding on the same IDS datasets with the same SNN architecture. clean, achievable, publishable.
+
+**gap 2: newer datasets.** most SNN papers use NSL-KDD (outdated) or CSE-CIC-IDS2018. applying SNNs to newer datasets with modern attack patterns would be a contribution.
+
+**gap 3: interpretability.** nobody's explored what the spiking patterns actually mean -- can you visualize which spike patterns correspond to which attacks? connects to the broader XAI movement.
+
+**gap 4: actual edge deployment.** papers claim edge suitability but very few have deployed an SNN-IDS on real edge hardware (Raspberry Pi, Jetson Nano, neuromorphic chip). a working demo would be highly valued.
+
+**gap 5: specific emerging threats.** applying SNNs to underexplored attack categories: encrypted traffic attacks, DNS tunneling, supply chain attacks.
+
+**gap 6: hybrid SNN + traditional ML pipeline.** using SNN as a fast first-stage filter (normal/anomalous) followed by traditional classifier for attack-type classification. mirrors Mia et al. (2025) but simpler and more practical.
+
+**gap 7: transfer learning across datasets.** does an SNN trained on one dataset generalize to another without retraining? important for real deployment.
+
+### suggested thesis angle
+
+something like: "evaluating spike encoding strategies for energy-efficient network intrusion detection using spiking neural networks"
+
+scope:
+1. implement baseline SNN-IDS using snnTorch on UNSW-NB15 and NSL-KDD
+2. compare 3-4 different spike encoding methods (rate, temporal, latency, delta)
+3. benchmark against standard ML baselines (RF, SVM, CNN, LSTM)
+4. measure not just accuracy but also energy proxies (spike count, synaptic operations)
+5. analyze which encoding best captures temporal features of network traffic
+
+why this works:

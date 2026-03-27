@@ -166,3 +166,31 @@ def train_epoch(model, loader, optimizer, device):
         predicted = mem_out.sum(dim=0).argmax(dim=1)
         correct += (predicted == targets).sum().item()
         total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_model(model, loader, device):
+    model.eval()
+    correct = 0
+    total = 0
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            _, mem_out = model(spk_input)
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return correct / total
+
+
+def run_fold(fold, device):
+    print(f"\n  Fold {fold}")
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)

@@ -58,31 +58,3 @@ Only 3 confirmed undergraduate SNN projects were found publicly:
 ## Part 2: Masters Thesis Projects (Closer Scope Reference)
 
 Masters projects are more ambitious than undergrad but give a useful upper bound.
-
-### Most Relevant Masters Projects:
-
-| Project | Tools | Results | Thesis PDF? |
-|---------|-------|---------|-------------|
-| Spiking Grid Cells on SpiNNaker (Manchester MSc, Buttigieg 2019) | SpiNNaker, sPyNNaker, Python 2.7 | Grid cell spatial navigation model | Yes (Google Drive) |
-| Event-Based Robot Control (TUM, 59 stars) | TensorFlow, V-REP, ROS, NEST, DVS | Lane-following with DRL+SNN | Yes |
-| Deep Spiking Q-Networks (TUM, 11 stars) | SpyTorch, NEST, OpenAI Gym | CartPole + RL with SNNs | Yes |
-| Brain-Machine Interface (SpiNNaker) | SpiNNaker 4 chips, STDP | 73.4% EEG classification | Yes |
-| SNN-RL Actor-Critic (21 stars) | NEST 3, Docker, MongoDB | R-STDP for line-following | Yes |
-| SNN for Hand Kinematics from sEMG | Brian2, C++/Cython | EMG-to-hand-movement decoding | No |
-| SNN Formation Control | Norse, PyTorch | Multi-agent formation control | No |
-
----
-
-## Part 3: Course/Research Projects (Best Scope Calibration)
-
-These are the most realistic comparisons for what a 3rd-year project looks like:
-
-### Tier 1 -- Achievable (Good Grade)
-
-| Project | Framework | Datasets | Key Result |
-|---------|-----------|----------|------------|
-| SNN vs CNN Comparison (sofi12321) | snnTorch | SOCOFing, EMNIST, Fashion-MNIST | SNN 98% vs CNN 83% on fingerprints |
-| SNN Image Classification (HaoyiZhu) | snnTorch | Static + spike data | 99.12% static, 97.05% spike |
-| Simple SNN with STDP (4 students, Osnabruck) | Python from scratch | MNIST | Plateaued quickly, honest about limits |
-| ANN vs SNN Comparison (NicolaCST) | Python | Various | Power consumption analysis |
-

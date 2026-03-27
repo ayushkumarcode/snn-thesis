@@ -538,31 +538,3 @@ The SpiNNaker2 RL paper reported: **SpiNNaker2 consumed 0.006J vs GPU's 0.19J fo
 | SpiNNaker Users Group | [Google Groups](https://groups.google.com/g/spinnakerusers) | Community support |
 | NIR Documentation | [neuroir.org/docs](https://neuroir.org/docs/) | Cross-platform conversion |
 | snnTorch export_nir | [snntorch.readthedocs.io/en/latest/snntorch.export_nir.html](https://snntorch.readthedocs.io/en/latest/snntorch.export_nir.html) | snnTorch-specific NIR export |
-
-### Documentation Quality Assessment
-
-- **Strengths:** Well-structured API docs, active GitHub, research papers provide depth, community Google Group for questions
-- **Weaknesses:** Some documentation is for older versions (4.0.0, 5.0.0), limited "cookbook" style tutorials for common tasks, EBRAINS portal documentation can be confusing, py-spinnaker2 docs are sparse
-
-### Quickstart Path
-
-1. Register for EBRAINS account
-2. Read the [Lab Manual PDF](https://spinnakermanchester.github.io/spynnaker/4.0.0/RunningPyNNSimulationsonSpiNNaker-LabManual.pdf)
-3. Run the synfire chain example (code shown in Question 1 above)
-4. Explore [PyNNExamples](https://github.com/SpiNNakerManchester/PyNNExamples) repository
-5. Study the [Models & Limitations page](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html)
-
----
-
-## Recommended Strategy for Your Thesis
-
-### Tier 1: Core Project (No SpiNNaker Required)
-
-- Train SNNs in snnTorch for your chosen application(s)
-- Use NeuroBench for simulated energy estimates
-- Compare SNN vs ANN accuracy and efficiency
-- This alone makes a complete, publishable thesis
-
-### Tier 2: SpiNNaker1 via EBRAINS (2-3 weeks extra)
-
-- Register for EBRAINS account early (do this NOW)

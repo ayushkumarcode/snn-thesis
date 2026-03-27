@@ -250,3 +250,31 @@ our central claim -- that the SNN-ANN gap is a *feature learning* problem, not a
 we're still the first and only work reporting SNN accuracy on the full 50-class ESC-50 dataset.
 
 ### SNN on UrbanSound8K
+
+| Paper | Year | SNN Accuracy | Notes |
+|-------|------|-------------|-------|
+| Larroza et al. | 2025 | 56.4% (SF encoding) | Spike encoding benchmark |
+| SATRN (Gao & Deng) | 2025 | "Comparable to CNNs" | Spiking attention mechanism |
+| ESC-NAS | 2024 | 81.25% (ANN, not SNN) | Hardware-aware NAS for edge |
+
+### SNN Audio Review Paper
+
+Kim et al. (2024), "SNN and Sound: A Comprehensive Review" (Biomedical Engineering Letters, Vol. 14, No. 5, pp. 981-991):
+- SNNs for sound are in early stages
+- key challenges: effective training algorithms, spike encoding methods, hardware integration
+- promising areas: real-time processing, low-power edge deployment
+- **does not cite any SNN work on full ESC-50**
+
+---
+
+## 7. PhD/MSc Theses on SNN Transfer Learning
+
+found a few but nothing audio-specific:
+
+**1. "Deep Spiking Neural Networks" -- University of Manchester**
+- proposes Noisy Softplus (NSP) activation to model spiking neurons
+- develops generalized off-line training using Parametric Activation Functions (PAF)
+- maps ANN values to SNN physical units
+- relevant since it's Manchester and addresses ANN-to-SNN weight transfer, and our SpiNNaker work is on Manchester hardware
+
+**2. Christian Steennis -- Leiden University (LIACS), August 2025**

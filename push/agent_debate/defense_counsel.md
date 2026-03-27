@@ -54,3 +54,31 @@ edge audio sensing is a security-sensitive application. always-on microphones co
 
 ---
 
+## C5: PANNs+SNN Gap Collapse
+
+the 17.6x gap reduction (16.7pp -> 0.95pp) is the most scientifically significant single finding. it disambiguates three possible explanations for the SNN-ANN gap:
+1. spiking computation is fundamentally limited -- RULED OUT (0.95pp gap with equal features)
+2. surrogate gradients are insufficient for feature learning -- partially ruled out for classification
+3. SNN can't learn from small datasets -- THIS is the bottleneck
+
+approximately 94% of the gap is about what the network learns, not how it computes.
+
+this reframes the research agenda. instead of "how to make spiking better," the productive question becomes "how to give SNNs better features." pre-training, data augmentation, transfer learning are the correct remedies.
+
+the 0.95pp gap at 92.5%/93.45% is more meaningful than the 16.7pp gap at 47.15%/63.85% -- at high accuracy, model capacity is the binding constraint, and near-equality is genuine evidence of computational equivalence at the classification stage.
+
+also practically significant: CNN14 extracts embeddings once, SNN head classifies on neuromorphic hardware. viable architecture for edge audio sensing.
+
+---
+
+## C6: Surrogate Bimodal Split
+
+challenges Zenke & Vogels 2021 (~1000+ citations) which claims surrogate shape doesn't matter. we find sigmoid (2%), STE (10.25%), SFS (2%), and triangular (2.75%) all fail on audio while spike_rate_escape (46.00%), fast_sigmoid (44.75%), and atan (35.75%) succeed. this is the first evidence the robustness claim breaks down for harder tasks.
+
+the practical value is disproportionate to its length: a practitioner who reads one table and learns "don't use sigmoid or STE for audio SNN" saves weeks of failed experiments.
+
+spike_rate_escape winning is consistent with Gygax & Zenke (2025) escape noise theory -- the most theoretically grounded surrogate performs best.
+
+---
+
+## The 47.15% Question

@@ -327,31 +327,3 @@ This is very manageable for a semester-long thesis project.
 **Cause:** The slope parameter of the surrogate gradient is inappropriately scaled. Research shows that while shape does not matter much, scale has a major impact on learning performance.
 
 **Solution:**
-- Start with default slope values (25 for fast_sigmoid, 2.0 for atan)
-- If learning stalls, try reducing slope (wider gradient, more neurons receive signal)
-- If learning is noisy/unstable, try increasing slope (narrower, more precise gradient)
-
-### Pitfall 4: Memory Overflow from BPTT
-
-**Problem:** Out-of-memory errors, especially with many time steps or large batch sizes.
-
-**Cause:** BPTT must store activations for all T time steps, multiplying memory requirements by T compared to a feedforward ANN.
-
-**Solution:**
-- Reduce batch size
-- Reduce number of time steps
-- Use `torch.cuda.amp` for mixed-precision training
-- For very long sequences, consider truncated BPTT or online learning variants
-
-### Pitfall 5: Loss of Sparsity
-
-**Problem:** The trained SNN fires at very high rates, defeating the purpose of energy-efficient spiking computation.
-
-**Cause:** Without explicit regularization, the surrogate gradient method can push the network toward high-firing-rate solutions that resemble continuous-valued ANNs.
-
-**Solution:**
-- Add spike rate regularization to the loss function
-- Monitor average firing rates and penalize rates above a target (e.g., 10-20% of maximum)
-- Use the homeostatic regularization approach from Zenke and Vogels (2021)
-- Example in snnTorch: add `l1_rate = torch.mean(torch.abs(spk_rec))` to loss
-

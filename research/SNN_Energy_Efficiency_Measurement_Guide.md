@@ -222,3 +222,31 @@ this is maybe the most important part. a fair comparison requires:
 | Accuracy | Yes (within ~1-2%) | Energy at comparable accuracy |
 | Data type | Yes | Same input resolution, encoding |
 | Training protocol | Document fully | Epochs, LR, augmentation |
+
+### step by step
+
+1. train ANN baseline. record accuracy, FLOPs, param count.
+2. train SNN with same architecture (replace ReLU with LIF). record accuracy, spike counts per layer per timestep.
+3. ensure comparable accuracy (within 1-2%). if SNN is much lower, the comparison isn't fair.
+4. compute energy:
+   ```
+   E_ANN = FLOPs * E_MAC  (4.6 pJ at 45nm)
+   E_SNN = SOP * E_AC     (0.9 pJ at 45nm)
+   ```
+5. report in a table:
+
+| Model | Accuracy | FLOPs/SOPs | Energy (mJ) | Ratio |
+|-------|----------|-----------|-------------|-------|
+| ANN (VGG-9) | 93.2% | 606M FLOPs | 2.79 | 1.0x |
+| SNN (VGG-9, T=4) | 92.8% | 148M SOPs | 0.13 | 21.2x |
+| SNN (VGG-9, T=8) | 93.1% | 312M SOPs | 0.28 | 10.0x |
+
+6. include sparsity analysis: average firing rate per layer, energy vs timesteps, energy-accuracy tradeoff plot.
+
+### things to watch out for
+
+- **don't compare against a non-optimized ANN.** use a well-trained, reasonable baseline.
+- **quantized ANNs change the picture.** 8-bit INT MACs cost ~0.2 pJ vs 4.6 pJ for FP32. Shen et al. (CVPR 2024) showed SNNs with T timesteps are equivalent to quantized ANNs with ceil(log2(T+1)) bits.
+- **report firing rate honestly.** above ~50%, the energy advantage disappears. need average_spikes_per_neuron < 1 over inference for benefits.
+- **state assumptions clearly:** "Energy estimates assume ideal neuromorphic hardware. On conventional GPU/CPU, the SNN would not achieve these savings."
+

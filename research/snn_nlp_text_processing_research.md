@@ -334,3 +334,21 @@ key findings:
 - [Spiking CNNs for Text (ICLR 2023)](https://arxiv.org/abs/2406.19230)
 - [Neuromorphic Sentiment Analysis (PMC 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10536645/)
 - [SNNLP (2024)](https://arxiv.org/abs/2401.17911)
+- [SpikeZIP-TF (ICML 2024)](https://arxiv.org/abs/2406.03470)
+- [SpikingMiniLM (2024)](https://link.springer.com/article/10.1007/s11432-024-4101-6)
+- [SNN Topic Modeling (2024)](https://www.sciencedirect.com/science/article/pii/S0893608024004180)
+- [Word2Spike (2025)](https://arxiv.org/html/2509.07361)
+
+### code
+- [SpikeGPT](https://github.com/ridgerchu/SpikeGPT)
+- [SpikingBERT](https://github.com/NeuroCompLab-psu/SpikingBERT)
+- [SpikeLM](https://github.com/Xingrun-Xing/SpikeLM)
+- [SpikeLLM](https://github.com/Xingrun-Xing2/SpikeLLM)
+- [Spiking CNN for Text](https://github.com/Lvchangze/snn)
+- [snnTorch](https://github.com/jeshraghian/snntorch)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [Awesome SNNs](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
+
+### tutorials
+- [snnTorch Tutorials](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
+- [SpikeGPT UCSC News](https://news.ucsc.edu/2023/03/eshraghian-spikegpt/)

@@ -222,3 +222,31 @@ DVS128 is **not solved in absolute terms** but it's **saturated as a pure accura
 - reproducing SpikingJelly's tutorial and calling it a thesis
 - getting 97% with a standard model
 - "using SNNs for gesture recognition" without a specific research question
+
+---
+
+## 6. what makes a good undergrad project here
+
+### minimum viable thesis (gets a pass)
+- reproduce SpikingJelly DVS128 example
+- report accuracy, plot training curves
+- brief lit review
+- minimal analysis
+
+### good thesis (gets a distinction)
+
+you'd need ALL of:
+
+**1. a clear research question** -- not "can SNNs classify DVS128 gestures?" (obviously yes) but rather:
+- "how does neuron model choice affect accuracy-efficiency tradeoffs?"
+- "what's the minimum timesteps needed for 95%+ accuracy?"
+- "how do different event representations affect SNN performance?"
+
+**2. controlled experimental design**
+- same random seeds across experiments
+- same preprocessing and splits
+- statistical significance: run each experiment 3-5 times, report mean +/- std
+- ablation studies isolating single variables
+- fair comparison: same parameter budget when comparing architectures
+
+**3. multi-dimensional evaluation** -- go beyond accuracy:

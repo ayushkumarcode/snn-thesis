@@ -394,31 +394,3 @@ For stronger comparison, use a published ESC-50 CNN architecture:
 | Property | Value |
 |----------|-------|
 | Package | `neurobench` |
-| Version | 2.2.0 |
-| Install | `pip install neurobench` |
-| Python | >=3.10, <4.0 |
-| snnTorch integration | YES -- `SNNTorchModel` wrapper provided |
-| Documentation | https://neurobench.readthedocs.io/en/latest/ |
-
-NeuroBench provides three SynOps metrics:
-- **Dense**: Total synops counting all connections (zero and nonzero)
-- **Effective_MACs**: Non-zero multiply-accumulate operations (non-binary activations)
-- **Effective_ACs**: Non-zero accumulate operations (binary/spike activations) -- **this is the one relevant for SNNs**
-
-```python
-from neurobench.models import SNNTorchModel
-from neurobench.benchmarks import Benchmark
-from neurobench.metrics.workload import (
-    ClassificationAccuracy, ActivationSparsity, SynapticOperations
-)
-from neurobench.metrics.static import Footprint, ConnectionSparsity
-
-model = SNNTorchModel(net)
-static_metrics = [Footprint, ConnectionSparsity]
-workload_metrics = [ClassificationAccuracy, ActivationSparsity, SynapticOperations]
-
-benchmark = Benchmark(model, test_loader, preprocessors, postprocessors,
-                      [static_metrics, workload_metrics])
-results = benchmark.run()
-# results['SynapticOperations']['Effective_ACs'] = actual energy proxy
-```

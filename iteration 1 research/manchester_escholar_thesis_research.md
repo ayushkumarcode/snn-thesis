@@ -362,3 +362,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | Field | Detail |
 |-------|--------|
 | **Author** | Ananya Gupta |
+| **Year** | 2020 |
+| **Degree** | PhD |
+| **Department** | Electrical & Electronic Engineering |
+| **Supervisors** | Hujun Yin (main), Simon Watson (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/deep-learning-for-semantic-feature-extraction-in-aerial-imagery/ |
+| **Abstract** | Semantic segmentation of aerial images, road mapping in disaster areas, multitemporal image registration, tree identification in LiDAR point clouds (~90% accuracy). |
+| **What They Built** | Multiple DL pipelines for aerial/satellite imagery analysis |
+| **Tools/Frameworks** | PointNet++, 3D CNNs, voxel networks, ImageNet |
+| **Datasets** | Palu Indonesia disaster dataset, ISPRS benchmark |
+| **Scope** | High -- multi-modal remote sensing |
+
+---
+
+### 3.3 Bayesian Deep Learning for Pulsar Classification
+| Field | Detail |
+|-------|--------|
+| **Author** | Alexandra Bonta |
+| **Year** | 2022 |
+| **Degree** | **MSc by Research** |
+| **Department** | Physics & Astronomy |
+| **Supervisors** | Anna Scaife (main), Albert Zijlstra (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/bayesian-deep-learning-for-pulsar-classification |
+| **Abstract** | Develops "BonNet" classifier for automated pulsar classification with uncertainty quantification. 99% accuracy on HTRU1, 97% on HTRU2. |
+| **What They Built** | BonNet neural network classifier with Bayesian uncertainty |
+| **Tools/Frameworks** | Neural networks with dropout (Bayesian approximation) |
+| **Datasets** | HTRU1, HTRU2 (High Time Resolution Universe survey) |
+| **Scope** | Moderate (MSc level) -- single classifier with clear benchmarks |
+| **NOTE** | one of only 2 non-PhD theses found -- MSc by Research level. probably the most relevant for calibrating masters-level scope |

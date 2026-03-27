@@ -651,31 +651,3 @@ ANN-to-SNN conversion is viable as a thesis topic but **not recommended as a pri
 | Environment setup | 1 | Install frameworks, run tutorials |
 | Tutorial completion | 2-3 | snnTorch tutorials 1-7 |
 | Baseline implementation | 2-3 | Get basic model working |
-| Experiments | 3-4 | Run variations, collect results |
-| Analysis | 2 | Compare results, create visualizations |
-| Writing | 3-4 | Draft and revise thesis |
-| **Total** | **15-20 weeks** | |
-
----
-
-<a name="low-barrier"></a>
-## LOW-BARRIER SNN APPLICATIONS
-
-### Ranked by Accessibility (Easiest First)
-
-**1. MNIST/Fashion-MNIST Classification with SNN (Easiest)**
-- snnTorch Tutorial 5-6 gets you 95%+ accuracy
-- Direct comparison with a standard ANN
-- Estimated energy savings calculation
-- Good for: Understanding SNN training mechanics
-
-**2. Neuromorphic Digit Classification (N-MNIST)**
-- Uses actual event-camera data
-- Built-in dataset loaders in snnTorch and SpikingJelly
-- snnTorch Tutorial 7 covers this directly
-- 98%+ accuracy achievable
-- Good for: Demonstrating SNNs on native neuromorphic data
-
-**3. DVS128 Gesture Recognition**
-- 11 gesture classes from event camera
-- SpikingJelly tutorial provides step-by-step code

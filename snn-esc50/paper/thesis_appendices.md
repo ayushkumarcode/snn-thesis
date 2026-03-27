@@ -110,20 +110,20 @@ Source: `results/spinnaker_results/run6_analysis.json`.
 | **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
 | **Std** | **6.9%** | | **4.1 pp** |
 
-| **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
-| **Std** | **6.9%** | | **4.1 pp** |
+Source: `results/spinnaker_results/5fold_summary.json`. 400 samples/fold, weight_scale=5.0, IF_curr_exp, tau_m=20ms, v_thresh=1.0, tau_syn=5.0ms.
 
-*Source: `results/spinnaker_results/fc2_results_fold{1,2,3,4,5}.json` and `results/spinnaker_results/5fold_summary.json`. 400 samples per fold (2,000 total inferences). weight_scale=5.0, IF\_curr\_exp, tau\_m=20ms, v\_thresh=1.0, tau\_syn=5.0ms.*
+### A.7 continual learning -- accuracy matrices (5-fold validated, fold 4 shown)
 
-### A.7 Continual Learning — Full Accuracy Matrices (5-Fold Validated, Pretrained, 20ep/task; Fold 4 Shown)
+**SNN (direct):**
 
-**SNN (direct encoding):**
-
-| | After Task 0 | After Task 1 | After Task 2 | After Task 3 | After Task 4 |
+| | After T0 | After T1 | After T2 | After T3 | After T4 |
 |---|---|---|---|---|---|
 | Task 0 (Animals) | 78.75% | 8.75% | 2.50% | 11.25% | 0.00% |
-| Task 1 (Nature) | — | 87.50% | 20.00% | 8.75% | 0.00% |
-| Task 2 (Human) | — | — | 75.00% | 0.00% | 0.00% |
+| Task 1 (Nature) | -- | 87.50% | 20.00% | 8.75% | 0.00% |
+| Task 2 (Human) | -- | -- | 75.00% | 0.00% | 0.00% |
+| Task 3 (Domestic) | -- | -- | -- | 68.75% | 12.50% |
+| Task 4 (Urban) | -- | -- | -- | -- | 78.75% |
+
 | Task 3 (Domestic) | — | — | — | 68.75% | 12.50% |
 | Task 4 (Urban) | — | — | — | — | 78.75% |
 

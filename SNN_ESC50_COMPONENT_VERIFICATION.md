@@ -842,31 +842,3 @@ pip install --upgrade pip
 # Step 1: Install PyTorch ecosystem FIRST
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1
 
-# Step 2: Pin numpy to avoid NeuroBench conflicts
-pip install "numpy>=1.24.3,<2.0"
-
-# Step 3: Install snnTorch
-pip install snntorch==0.9.4
-
-# Step 4: Install NeuroBench LAST (has most dependency constraints)
-pip install neurobench
-
-# Step 5: Audio processing and utilities
-pip install librosa==0.11.0
-pip install matplotlib scikit-learn jupyter
-
-# Step 6: Verify installation
-python -c "import torch; import snntorch; import neurobench; print(f'PyTorch {torch.__version__}, snnTorch {snntorch.__version__}')"
-```
-
-### If NeuroBench installation fails:
-
-```bash
-# Option A: Skip NeuroBench entirely -- use manual SynOps counting instead
-# (This is a perfectly valid approach for a thesis)
-
-# Option B: Try installing NeuroBench in a separate venv just for benchmarking
-python3.11 -m venv ~/neurobench_env
-source ~/neurobench_env/bin/activate
-pip install neurobench
-# Export model, load in this env, run benchmark, export results

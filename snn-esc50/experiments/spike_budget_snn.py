@@ -138,3 +138,31 @@ class SpikeBudgetSNN(nn.Module):
             cur3 = self.fc1(flat)
             spk3, s3 = self.n3(cur3, s3, step)
             layer_rates["fc1"] += spk3.mean().item()
+            spk3 = self.dropout(spk3)
+            cur4 = self.fc2(spk3)
+            spk4, s4 = self.n4(cur4, s4, step)
+            layer_rates["out"] += spk4.mean().item()
+            spk_rec.append(spk4)
+            mem_rec.append(s4["mem"])
+        for k in layer_rates:
+            layer_rates[k] /= self.num_steps
+        return torch.stack(spk_rec), torch.stack(mem_rec), layer_rates
+
+
+def train_epoch(model, loader, optimizer, device):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    use_amp = device.type == 'cuda'
+    all_rates = {"conv1": 0, "conv2": 0, "fc1": 0, "out": 0}
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+        optimizer.zero_grad(set_to_none=True)
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            _, mem_out, rates = model(spk_input)
+            T, B, C = mem_out.shape
+            loss = F.cross_entropy(
+                mem_out.reshape(T * B, C),
+                targets.unsqueeze(0).expand(T, -1).reshape(-1),

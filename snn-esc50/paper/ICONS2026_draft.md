@@ -152,20 +152,20 @@ At eps=0.1 FGSM: SNN keeps 26.00% vs ANN's 1.75% (14.9x more robust). Binary spi
 
 ### 6.1 FC1 cancellation problem
 
+AvgPool between LIF2 and FC1 produces fractional outputs, breaking SpiNNaker's binary spike requirement. Weight re-centering (Option C) failed: 53.75% -> 8.50% because compensation assumes binary inputs.
 
-## 6. SpiNNaker Neuromorphic Deployment
+### 6.2 FC2-only hybrid
 
-### 6.1 Architecture Challenge: FC1 Cancellation
+Conv + FC1 + LIF3 in software -> binary hidden spikes (256-d, 21.7% active). Only FC2 (256->50) runs on SpiNNaker.
 
-Full SNN deployment on SpiNNaker requires binary spike inputs throughout. The AvgPool layer between LIF₂ and FC₁ produces fractional outputs (not binary), preventing direct FC₁ deployment on SpiNNaker. Post-hoc weight re-centering (Option C) failed: accuracy dropped from 53.75% to 8.50%, as the bias compensation assumes binary inputs (sum=n_inputs) but actual sums are much smaller.
+**Hardware:** SpiNN-5, IF_curr_exp, tau_syn=5ms, v_thresh=1.0, tau_m=20ms, weight_scale=1.0.
+**Pilot (Run 5, n=20):** 40%.
+**Full validation (Run 6, n=400):** SpiNNaker 43.0% vs snnTorch 51.25% (8.25 pp gap, 64.5% agreement).
+**5-fold (2000 inferences):** SpiNNaker 33.1% +/- 6.9% vs snnTorch 46.0% (gap 12.8 +/- 4.1 pp). Per fold: F1=29.0%, F2=32.0%, F3=36.5%, F4=43.0%, F5=25.2%. Confirms hybrid approach generalises across all 5 folds.
 
-### 6.2 FC2-Only Hybrid Deployment
+### 6.3 Energy analysis (NeuroBench [7])
 
-We adopt a validated hybrid approach: conv layers + FC₁ + LIF₃ run in software (snnTorch on CPU), producing binary hidden spikes (256-d, 21.7% active per step on average). Only FC₂ (256→50) + LIF₄ run on SpiNNaker.
-
-**Hardware:** SpiNNaker (SpiNN-5 board) at `spinnaker.cs.man.ac.uk`
-**Parameters:** IF_curr_exp, tau_syn=5.0ms, v_thresh=1.0, v_rest=0.0, tau_m=20ms, weight_scale=1.0 (calibrated via 9-point scale sweep)
-**Results (20-sample pilot, Run 5):** 8/20 = 40% accuracy
+| Model | Ops/sample | Energy/sample | Type |
 **Full 400-sample validation (Run 6, fold 4):** SpiNNaker 43.0% vs snnTorch 51.25% (8.25 pp gap, agreement 64.5%). **Five-fold cross-validation (2,000 inferences):** **SpiNNaker 33.1% ± 6.9%** vs snnTorch 46.0% (hardware gap 12.8 ± 4.1 pp). Per-fold: F1=29.0%; F2=32.0%; F3=36.5%; F4=43.0%; F5=25.2%. The hardware gap is variable across folds (std=4.1 pp), confirming the FC2-only hybrid approach generalises across the full 5-fold ESC-50 evaluation protocol.
 
 ### 6.3 Energy Analysis (NeuroBench [7])

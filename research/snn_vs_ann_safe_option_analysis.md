@@ -222,3 +222,31 @@ red flags: only MNIST, one encoding, default hyperparams, no statistics, no ener
 - statistical rigor (multiple seeds, CIs, significance tests)
 - clear conclusions with practical recommendations
 - reproducible codebase
+
+strong because: multi-dimensional analysis, tests actual claimed SNN advantages, controlled methodology, addresses open questions, far exceeds tutorials, potentially submittable to a workshop.
+
+---
+
+## 7. Timeline
+
+### 12-Week Plan for Strong Version
+
+| Week | Activity | Deliverable |
+|------|----------|-------------|
+| 1 | Setup, snnTorch + NeuroBench, run tutorials | Working environment |
+| 2 | ANN baselines: FC + CNN on all 3 datasets | Baseline numbers with error bars |
+| 3 | SNN equivalents with matched architectures | SNN numbers, initial comparison |
+| 4 | Encoding comparison: rate, latency, delta, direct | Encoding comparison tables/plots |
+| 5 | Hyperparameter sensitivity: grid search over tau, threshold, T, surrogate function | Sensitivity plots, key params identified |
+| 6 | NeuroBench: SynOps, spike counts, sparsity | Energy proxy metrics |
+| 7 | Time steps sweep T=1 to T=32: Pareto curves | Three-way tradeoff plots |
+| 8 | Adversarial robustness: FGSM, PGD at multiple epsilon | Robustness comparison |
+| 9 | Neuromorphic dataset (if time) | Extended results |
+| 10 | Analysis, statistical testing, plots | Complete results section |
+| 11-12 | Writing, polishing, documentation | Final report |
+
+### Is This Realistic?
+
+**yes, with caveats:**
+
+in favor:

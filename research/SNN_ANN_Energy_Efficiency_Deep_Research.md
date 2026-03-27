@@ -185,31 +185,3 @@ This is the simplified hardware-agnostic approach. The hardware-aware approach a
 
 | Platform | Process | Neurons | Synapses | Power | Energy/Syn. Op | Key Metric | Year |
 |:---|:---:|:---:|:---:|:---:|:---:|:---|:---:|
-| **Intel Loihi 1** | 14nm | 131K | 130M | ~0.5W active | ~23.6 pJ/SynOp | 30 mW idle | 2018 |
-| **Intel Loihi 2** | Intel 4 | 1M | 120M | ~1W | Improved over Loihi 1 | 10x faster spike processing | 2021 |
-| **IBM TrueNorth** | 28nm | 1M | 256M | 65-275 mW | ~26 pJ/SynEvent | 46 GSOPS/W | 2014 |
-| **IBM NorthPole** | 12nm | N/A (DNN) | N/A | N/A | N/A | 5x more efficient than H100 | 2023 |
-| **SpiNNaker 1** | 130nm | 18 ARM968 cores/chip | Software-defined | ~1W/chip | ~5.8 uJ/syn event | 100 kW full machine | 2014 |
-| **SpiNNaker 2** | 22nm FDSOI | 153 ARM cores/chip | Hardware-defined | 10x efficiency vs S1 | Improved | 18x more efficient than GPUs (claimed) | 2021+ |
-| **BrainScaleS-2** | 65nm | 512 | 131K | ~1W | Analog (low pJ range) | 1000x acceleration vs bio | 2022 |
-| **DarwinWafer** | N/A | 0.15B (wafer) | 6.4B (wafer) | ~100W (wafer) | **4.9 pJ/SOP** | 0.64 TSOPS/W | 2025 |
-| **Innatera T1** | 28nm | SNN-based | Analog SNN | <10 mW total | <200 fJ/spike event | <0.5 mJ keyword spotting | 2024 |
-
-### 3.2 Detailed Platform Data
-
-#### Intel Loihi 1 (Davies et al., IEEE Micro 2018)
-- 128 neuromorphic cores, 14nm Intel process
-- ~131,072 neurons, up to 130M synapses
-- **~23.6 pJ per synaptic operation** (measured)
-- Idle power: 30 mW
-- Active power: dependent on network activity
-
-**Keyword Spotting Benchmark (Blouw et al., 2019):**
-- Loihi outperforms CPU, GPU, Jetson TX1, and Movidius NCS on energy per inference
-- 5.3x to 109.1x improvement in energy cost per inference vs conventional hardware
-- Loihi advantage improves for larger networks
-
-#### Intel Loihi 2 (2021)
-- Intel 4 process, 1M neurons, 120M synapses
-- 128 fully asynchronous neuron cores + 6 Lakemont x86 cores
-- ~1W power consumption

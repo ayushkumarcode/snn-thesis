@@ -265,19 +265,19 @@ Stats: paired t-test p=0.0010 (significant), Wilcoxon p=0.0625 (limited by n=5).
 
 ### 6.5.3 interpretation
 
-**Classes where SNN outperforms ANN (6/50):**
-1. coughing: SNN 68% vs ANN 60% (+8%)
-2. crying_baby: SNN 80% vs ANN 73% (+7%)
-3. door_wood_knock: SNN 80% vs ANN 73% (+7%)
-4. pouring_water: SNN 75% vs ANN 70% (+5%)
-5. crackling_fire: SNN 68% vs ANN 65% (+3%)
-6. footsteps: SNN 55% vs ANN 53% (+2%)
+Unexpected pattern here. **SNN wins on high-energy, spectrally distinctive sounds** (crying_baby, door_wood_knock, coughing), NOT on sustained tonal sounds as i initially expected. The mechanism: LIF neurons with threshold=1.0 and beta=0.95 need consistent strong input current to fire reliably. High-energy sounds (crying baby = broad bandwidth, high amplitude) drive many neurons above threshold in every sample. Rate-code classification averages over T=25, accumulating strong evidence.
 
-**Updated statistical significance (with corrected fold 1 = 40.5%):**
-- Paired t-test: p = 0.0010 (highly significant, t = 8.64)
-- Wilcoxon signed-rank: p = 0.0625 (limited by n=5 minimum achievable p-value)
-- SNN outperforms ANN on 6/50 classes
+**SNN fails on low-energy, subtle sounds:** engine (8%), door creaks (10%), clock_tick (23%), water_drops (15%). Narrow frequency bands at low amplitude. LIF threshold acts as a high-pass filter on input energy -- quiet sounds only push a few neurons above threshold, producing sparse noisy spikes the network can't interpret. ANN's ReLU doesn't have this threshold effect: every non-zero activation contributes.
 
+**clock_tick gap (SNN 23%, ANN 68%) is the strongest evidence.** Clock_tick is a quiet periodic click -- narrow spectrogram line at low amplitude, repeated. ANN learns the spectral signature reliably. SNN's threshold may not fire on the quiet pixels, making it indistinguishable from silence. this is a really nice mechanistic explanation i think
+
+### 6.5.4 comparison with human performance
+
+Human ESC-50 accuracy is 81.3%. Classes where humans struggle (<70%): insects vs frogs (confusable calls), domestic mechanical sounds, urban machinery. SNN may show different confusion patterns -- discriminating sounds that confuse humans via spectral patterns while failing on sounds humans identify easily via semantic/contextual cues absent from an isolated 5-second clip.
+
+need to think about whether to expand this section or just reference it briefly
+
+---
 ### 6.5.3 Interpretation of Class Patterns
 
 The per-class results reveal a clear and unexpected pattern. **The SNN wins on high-energy, spectrally distinctive sounds** (crying_baby, door_wood_knock, coughing) not on sustained tonal sounds as initially hypothesized. The mechanism: LIF neurons with threshold=1.0 and β=0.95 integration require consistent, strong input current to fire across multiple timesteps. High-energy sounds (crying baby has a broad-bandwidth, high-amplitude spectrogram) drive many neurons above threshold reliably in every sample. The SNN's rate-code classification averages over T=25 timesteps, accumulating strong evidence for these classes.

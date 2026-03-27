@@ -437,31 +437,3 @@ Hybrid Step-wise Distillation (HSD) combines ANN-SNN conversion with knowledge d
 SpiNNaker2 deployment achieves 94.13% on-chip accuracy. CUTIE accelerator achieves 7 microJ/inference at 0.9ms latency. This is the direction where DVS128 can still provide genuine value -- as a benchmark for hardware efficiency.
 
 ### DVS-Gesture-Chain (Temporal Order Task)
-A new variant of DVS128 Gesture that tests temporal order perception rather than just gesture identity. This tests whether SNNs truly leverage temporal information or just spatial patterns.
-
-**Source:** [SpikMamba Paper](https://arxiv.org/abs/2410.16746), [STAA-SNN (CVPR 2025)](https://arxiv.org/abs/2503.02689), [SpiNNaker2 Deployment](https://arxiv.org/abs/2504.06748), [DVS-Gesture-Chain](https://github.com/VicenteAlex/DVS-Gesture-Chain)
-
----
-
-## 10. Known Research Gaps and Open Problems
-
-Based on survey papers and recent analysis:
-
-1. **Small dataset reliance:** Most SNN papers rely on DVS128 Gesture, CIFAR10-DVS, and NMNIST. Cross-dataset evaluation is rare.
-
-2. **Reproducibility concerns:** Few papers report standard deviations across multiple runs. Run-to-run variance is not well characterized.
-
-3. **Preprocessing sensitivity:** Results are highly sensitive to event-to-frame conversion choices (time window, number of bins, denoising), but this is rarely ablated.
-
-4. **Scalability:** SNNs are difficult to scale up due to training instability, making DVS128's small size convenient but not representative of real-world challenges.
-
-5. **ANN vs. SNN fairness:** Many comparisons between ANN and SNN are not controlled (different architectures, preprocessing, etc.).
-
-6. **Energy claims without hardware:** Most papers estimate energy without deploying on actual neuromorphic hardware.
-
-**Source:** [SNN in Imaging Review (MDPI Sensors)](https://www.mdpi.com/1424-8220/25/21/6747), [Event-Based SNN Object Detection Review](https://arxiv.org/html/2411.17006v1), [Event Cameras in 2025 Blog](https://lenzgregor.com/posts/event-cameras-2025-part2/)
-
----
-
-## 11. Recommended Thesis Project Structures
-

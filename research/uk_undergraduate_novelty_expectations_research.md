@@ -108,31 +108,3 @@ Sussex provides one of the most detailed publicly available marking rubrics for 
 
 Source: [Sussex Informatics Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
 
-### 2.4 University of Manchester
-
-**University-wide standard marking descriptors for First Class:**
-
-> "Exceptional work of the highest quality [...] exceptional in respects including: accuracy and depth of knowledge and understanding; cogency, **originality** and logical development of argument; structural clarity and integrity; sophistication of methodology or theoretical framework; **clarity and originality of thought**; perceptiveness of insight."
-
-Note: "originality" here refers to originality of *argument* and *thought*, not novel contribution to the field.
-
-**Manchester EEE Third Year Project marking descriptors:**
-- **90-100% (Exceptional First):** "Exceptional work [...] displaying **significant originality** and/or deep insight. A deliverable marked in this range will in addition **push the boundaries of existing knowledge** and suggest major revisions to our understanding of the topic studied."
-- **80-89% (Outstanding First):** "Outstanding work [...] demonstrating comprehensive knowledge, excellent critical analysis **and/or originality** [...] intellectual originality and imagination, and include highly innovative analysis."
-- **70-79% (First Class):** Focus on comprehensive knowledge and competent analysis -- not on originality
-
-**Key insight:** Only at 80+ does Manchester mention "originality" for project work. At 90+, "pushing the boundaries of existing knowledge" is mentioned -- but this is the very top of the scale, not the requirement for a good project.
-
-Sources:
-- [Manchester Standard Marking System](http://www.tlso.manchester.ac.uk/media/services/tlso/content/files/assessmentmarking/)
-- [Manchester EEE UG Mark Descriptors](https://personalpages.manchester.ac.uk/staff/fumie.costen/pastwork/DATA/markingscheme/EEEUGMarksScaleDescriptors.pdf)
-
-### 2.5 SOAS, University of London
-
-SOAS provides particularly clear differentiation:
-
-- **80+ (High First):** "provides evidence of original thinking"
-- **70-79 (First):** "shows some sophistication of argument" and "intelligent use of source materials" -- **no explicit originality requirement**
-- **60-69 (2:1):** "competent" analysis
-- **50-59 (2:2):** "adequate" understanding
-

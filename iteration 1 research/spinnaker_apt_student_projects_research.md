@@ -306,3 +306,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | Field | Details |
 |-------|---------|
 | **Title** | Implementation of Bioinspired Algorithms on the Neuromorphic VLSI System SpiNNaker 2 |
+| **Author** | Yexin Yan |
+| **Institution** | TU Dresden |
+| **Year** | 2022 |
+| **Degree** | PhD |
+| **Abstract** | Hardware-software co-design for low-power neuromorphic applications on SpiNNaker2. |
+
+---
+
+## 4. undergraduate / 3rd year projects at Manchester
+
+### not publicly accessible unfortunately
+
+the Manchester CS 3rd year project system (`studentnet.cs.manchester.ac.uk/ugt/year3/project/`) requires university authentication (CAS login). project listings for 2024/25 and 2025/26 exist but can't be accessed externally.
+
+what i do know:
+- the APT group (including Oliver Rhodes, Michael Hopkins) likely supervises 3rd year and MSc projects on SpiNNaker topics
+- there is a `UoM CS 3rd Year Projects` GitHub organisation (https://github.com/uom-cs-projects) with 14 repos, but none are SpiNNaker-related
+- project coordinator is Tim Morris
+
+i'm pretty confident undergrad projects on SpiNNaker exist given:
+- the group has an MSc and PhD pipeline (Galluppi started with MSc before PhD)
+- Oliver Rhodes and Michael Hopkins are active supervisors
+- EBRAINS provides free access to SpiNNaker for research projects
+- SpiNNaker workshops include hands-on tutorials accessible to students
+
+---
+
+## 5. key supervisors and group members

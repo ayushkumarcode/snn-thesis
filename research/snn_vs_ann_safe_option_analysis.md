@@ -54,3 +54,31 @@ gap is effectively closed on MNIST. surrogate-gradient SNNs match ANNs. solved p
 | SNN (Sa-SNN, attention) | 94.13% | **~0-1%** | Best SNN result |
 | SNN (surrogate gradient) | ~90-92% | 2-4% | Typical implementation |
 | SNN (STDP-based) | ~87-89% | 5-8% | Unsupervised methods |
+| SNN (Forward-Forward) | 90.27% | ~3-5% | Recent but limited |
+
+meaningful gap exists (2-5% for typical implementations). narrows with fancy architectures like attention-based SNNs. more informative than MNIST.
+
+### CIFAR-10
+
+| Method | SNN Accuracy | ANN Equiv. | Gap | Time Steps |
+|--------|-------------|-----------|-----|-----------|
+| VGG16 (ANN-SNN conversion) | 95.91% | ~96.5% | **~0.6%** | T=many |
+| ResNet20 (conversion) | 96.64% | ~97% | **~0.4%** | T=varies |
+| STAA-SNN (direct, CVPR 2025) | **97.14%** | ~97.5% | **~0.4%** | T=4 |
+| ResNet19 (surrogate gradient) | 95.44% | ~96% | **~0.6%** | T~3 |
+| VGG (direct, few steps) | 83-93% | ~93-94% | **1-10%** | T=1-4 |
+| Simple SNN (snnTorch tutorial-level) | ~85-90% | ~93% | **3-8%** | T=varies |
+
+this is where the comparison gets genuinely interesting. gap ranges from nearly zero (SOTA methods, big architectures) to 3-10% (simpler stuff an undergrad would actually build). heavily dependent on architecture choice, time steps, training method, and encoding.
+
+### Summary
+
+| Dataset | Typical Undergrad SNN Gap | Best Known SNN Gap | Status |
+|---------|-------------------|-------------------|--------|
+| MNIST | 0-1% | ~0% | Solved -- not interesting alone |
+| Fashion-MNIST | 2-5% | ~0-1% | Moderate interest |
+| CIFAR-10 | 3-8% | ~0.4% | Most interesting |
+
+---
+
+## 3. What Would Make This More Than Running Tutorials

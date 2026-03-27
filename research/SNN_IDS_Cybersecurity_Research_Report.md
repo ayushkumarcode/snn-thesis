@@ -283,31 +283,3 @@ For an achievable yet novel undergraduate thesis, I recommend:
 
 8. **"Analyzing darknet traffic through ML and NeuCube spiking neural networks"** -- Intelligent and Converged Networks, 2024. NeuCube SNN for darknet; 84.31% accuracy.
 
-9. **"Resource efficient Internet-of-Things intrusion detection with spiking neural networks"** -- Zivadinovic et al., FedCSIS 2024, November 2024. F1=0.957.
-
-10. **"Applications of spiking neural P systems in cybersecurity"** -- Journal of Membrane Computing, 2024. Cyber-SN P systems for malware/phishing.
-
-### 2025
-
-11. **"Neuromorphic Cybersecurity with Semi-supervised Lifelong Learning"** -- Mia et al., ACM ICONS 2025, August 2025. *Significant paper*. Two-stage SNN with Ad-STDP, GWR plasticity. Intel Lava. UNSW-NB15. 85.3% with continual learning.
-
-12. **"Event-Driven Intrusion Detection Systems using Spiking Neural Networks for Edge and IoT Security"** -- IEEE Conference, 2025. STDP-based unsupervised SNN-IDC framework.
-
-13. **"Feature-Optimized Intrusion Detection Based on a Hybrid Spiking Neural Network for the Internet of Things"** -- Vishwanath et al., JAIT 6:52-63, 2025. LOA-BHLESNN. 99.96% on ToN-IoT.
-
-14. **"Hybrid recurrent with spiking neural network model (HRSNN) for enhanced anomaly prediction in IoT networks security"** -- PMC/Scientific Reports, 2025. RNN+SNN hybrid; 99.60% accuracy.
-
-15. **"Efficacy of Spiking Neural Networks for Intrusion Detection Systems"** -- IEEE Conference, 2025.
-
-16. **"Towards the neuromorphic Cyber-Twin: architecture for cognitive defense in digital twin ecosystems"** -- Frontiers in Big Data, 2025.
-
-### 2026
-
-17. **"Energy-efficient intrusion detection with a protocol-aware transformer-spiking hybrid model (TASNN)"** -- Scientific Reports, February 2026. Transformer+SNN. Macro-F1=0.93 on NSL-KDD. Cross-dataset generalization.
-
----
-
-## 9. NETWORK / RELATIONSHIP MAP
-
-```
-                    NEUROMORPHIC CYBERSECURITY ECOSYSTEM

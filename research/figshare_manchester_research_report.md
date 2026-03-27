@@ -301,31 +301,3 @@ If you need to find Manchester undergraduate neuromorphic/ML thesis projects, co
 7. **GitHub search** -- Search for Manchester student repositories related to neuromorphic topics
 8. **Check the IEEE Xplore and conference proceedings** -- Some undergraduate projects get published as conference papers
 
----
-
-## SUMMARY TABLE OF ALL RELEVANT/ADJACENT ITEMS FOUND
-
-| # | Title | Authors | Year | Type | Relevance | Undergrad? |
-|---|-------|---------|------|------|-----------|------------|
-| 1 | BitBrain algorithm in C | Fil, Hopkins, Furber, Jones | 2022 | Software | DIRECT neuromorphic | No (Research) |
-| 2 | Deep autoencoder EEG artifact removal | Xing, Casson | 2023 | Software | HIGH (BCI/Neural Eng) | No (Research) |
-| 3 | LSTM Warehouse Robot Navigation | Zhou | 2024 | Software | MEDIUM (ML/Robotics) | Possibly |
-| 4 | ECG/EEG/IMU motion artefact data | Beach, Li, Balaban, Casson | 2021 | Dataset | MEDIUM (Biosignal) | No (Research) |
-| 5 | Low Power Computer Vision landmine | Fletcher et al. | 2025 | Dataset | LOW-MED (Edge CV) | No (Research) |
-| 6 | Closed Loop Sound Stimulation Sleep | Casson | 2022 | Software | MEDIUM (Real-time EEG) | No (Research) |
-| 7 | 3D-printed EEG electrodes | Xing | 2022 | Online resource | LOW-MED (EEG hw) | No (Research) |
-| 8 | hBET2 EEG Alpha analysis code | Casson, Halpin, Xing | 2024 | Software | LOW-MED (EEG) | No (Research) |
-| 9 | Radiation Autonomous Exploration | West | 2022 | Dataset | LOW (Autonomous robot) | No (Research) |
-| 10 | Gaussian mixture neural network | Price, Menary | 2021 | Dataset | LOW (NN in physics) | No (Research) |
-| 11 | Turbulent Flow PyTorch tensors | Sardar, Skillen | 2025 | Dataset | LOW (ML for CFD) | No (Research) |
-| 12 | ML ATR-FTIR Spectroscopy | Pal chowdhury et al. | 2022 | Dataset | LOW (ML archaeology) | No (PhD thesis) |
-| 13 | Hyperspectral images | Foster et al. | 2022 | Dataset | LOW (Vision dataset) | No (Research) |
-| 14 | Power network training data | Noebels et al. | 2021 | Dataset | LOW (ML for power) | No (Research) |
-| 15 | ECG-X AI for ECG | Hughes-Noehrer, Jay | 2024 | Online resource | LOW (AI in healthcare) | No (Research) |
-
----
-
-*Report generated: 2026-02-24*
-*Total items in repository reviewed: 833*
-*Search terms used: 100+*
-*Manchester Figshare groups enumerated: 17*

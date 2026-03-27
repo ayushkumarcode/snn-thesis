@@ -367,31 +367,3 @@ The consensus has settled into a **mature, nuanced position:**
 
 **Key narratives to emphasize:**
 1. **First SNN work on ESC-50** -- novelty claim is watertight
-2. **7-encoding comparison reveals hierarchy** -- practical guidance for researchers
-3. **PANNs+SNN insight** -- the gap is feature-learning, not spiking-computation
-4. **Actual SpiNNaker deployment** -- not simulation, real hardware
-5. **Adversarial robustness** -- aligns with Nature Communications 2025 finding
-6. **Honest energy analysis** -- software simulation shows ANN cheaper; neuromorphic hardware flips the result
-
-**What NOT to claim:**
-- Don't claim our SNN beats ANN accuracy (it doesn't, and that's the point)
-- Don't claim energy advantage without qualifying software vs hardware
-- Don't overstate SpiNNaker accuracy (33.1% with 12.8pp gap from snnTorch)
-
-### Competitive Landscape for ICONS 2026
-
-Our closest competitors in the audio SNN space:
-
-| Work | Dataset | Methods | Hardware | Our Advantage |
-|------|---------|---------|----------|---------------|
-| Larroza et al. 2025 | ESC-10 only | 3 encodings, FC only | None | Full ESC-50, 7 encodings, CNN, SpiNNaker |
-| Dominguez-Morales 2016 | Pure tones | 1 method | SpiNNaker 1 | Complex audio, multiple methods, modern training |
-| Yarga et al. 2024 | GSC (speech) | PDM mic + SNN | Simulation | Different domain (env. sound vs speech) |
-| Wu & Chua 2018 | RWCP/TIMIT | Robust SNN | None | Modern methods, hardware, comprehensive |
-
----
-
-## RESEARCH GAPS AND RECOMMENDED FOLLOW-UPS
-
-1. **Loihi 2 deployment**: If we could also deploy on Loihi 2, comparing SpiNNaker vs Loihi would be a separate high-impact paper.
-

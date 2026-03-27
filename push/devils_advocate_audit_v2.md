@@ -26,3 +26,13 @@ can't defend a thesis contribution with n=1.
 
 ### 6. No figures included in LaTeX
 **fixed.**
+
+### 7. Zero unit tests, stale README, incomplete requirements.txt
+lower priority but needed before submission.
+
+## Statistical Tests Now Complete
+- core SNN vs ANN: p=0.0028 (significant)
+- all encoding comparisons: p<0.002 (all significant except rate~phase p=0.93)
+- adversarial at eps=0.1: p=0.0073 (significant)
+- noise robustness: NOT significant
+- T=20 vs T=25: NOT significant

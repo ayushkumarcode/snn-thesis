@@ -54,3 +54,31 @@ For my project specifically: my measured 74.16% activation sparsity (NeuroBench)
 - Conventional SNN implementations sacrifice efficiency gains by tolerating high spiking activity to maintain accuracy.
 
 #### Hardware-Aware vs Hardware-Agnostic (2025) -- arXiv:2508.19654
+- SNNs have ~50-60% efficiency advantage over CNNs with hardware-agnostic methodology, but hardware-aware results show SNNs do NOT surpass CNNs on classical computing architectures.
+- SNNs require neuromorphic hardware for competitive energy efficiency.
+
+#### Li et al. (2023) -- "Are SNNs Truly Energy-efficient? A Hardware Perspective" (arXiv:2309.03388)
+- Hardware bottlenecks: repeated computations over timesteps, neuronal module overhead, crossbar non-idealities.
+- Actual energy improvements differ significantly from estimated values.
+
+### 1.2 Additional energy papers
+
+**Spike-Thrift (Kundu et al., WACV 2021):** Attention-guided compression, up to 33.4x compression with no significant accuracy drop. Compressed SNNs: up to 12.2x better compute energy-efficiency vs ANNs.
+
+**All In One Timestep (Castagnetti et al., 2025):** Multi-level spiking neurons reduce energy 2-3x vs binary SNNs. Reduces network activity by >20%. Achieves inference in 1 timestep (10x compression factor).
+
+### 1.3 Summary of energy threshold literature
+
+| Paper | Year | Venue | Spike Rate Threshold | Notes |
+|:---|:---:|:---|:---:|:---|
+| Dampfhoffer et al. | 2023 | IEEE TECI | 0.15-1.38 spikes/synapse/inference | Hardware-aware, includes memory |
+| Yan et al. | 2024 | arXiv | <7-8% at T=6 | Includes data movement |
+| Shen et al. | 2024 | CVPR | <10-15% | Bit budget framework |
+| Li et al. | 2023 | arXiv | Varies by hardware | Hardware bottleneck analysis |
+| HW-aware vs agnostic | 2025 | arXiv | N/A | 50-60% gap between methods |
+
+**Consensus:** SNNs need spike rates below ~6-10% (sparsity >90-94%) to beat optimized quantized ANNs on digital hardware. On neuromorphic hardware, the threshold is more relaxed due to native AC support.
+
+---
+
+## 2. NeuroBench benchmark

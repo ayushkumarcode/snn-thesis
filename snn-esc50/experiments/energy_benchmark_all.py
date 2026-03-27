@@ -26,3 +26,31 @@ from src.config import (
 )
 from src.dataset import download_esc50, get_fold_dataloaders
 from src.encoding import encode_direct
+from src.models.snn_model import SpikingCNN
+from src.models.ann_model import ConvANN
+
+ENERGY_PER_AC_PJ = 0.9   # pJ per accumulate (neuromorphic)
+ENERGY_PER_MAC_PJ = 4.6  # pJ per multiply-accumulate (CMOS)
+
+
+@torch.no_grad()
+def measure_snn_energy(model, loader, device, num_steps=NUM_STEPS,
+                       encode_fn=None):
+    """Measure SNN energy by counting actual spike-driven operations."""
+    model.eval()
+    if encode_fn is None:
+        encode_fn = encode_direct
+
+    total_acs = 0
+    total_samples = 0
+    total_spikes_per_layer = {}
+    correct = 0
+
+    # Operation counts per layer (fan-out)
+    fan_out = {
+        "conv1": 32 * 9,   # 32 output channels * 3x3 kernel
+        "conv2": 64 * 9,   # 64 output channels * 3x3 kernel
+        "fc1": 256,         # 256 output neurons
+        "fc2": NUM_CLASSES, # 50 output neurons
+    }
+

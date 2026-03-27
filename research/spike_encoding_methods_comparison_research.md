@@ -815,31 +815,3 @@ Runs all encoding methods on a given dataset and collects metrics.
 import torch
 import snntorch as snn
 from snntorch import spikegen, surrogate, functional
-import time
-
-# ---- Encoding Functions ----
-
-def encode_rate(data, num_steps):
-    return spikegen.rate(data, num_steps=num_steps)
-
-def encode_latency(data, num_steps):
-    return spikegen.latency(data, num_steps=num_steps, tau=5,
-                            threshold=0.01, normalize=True, linear=True)
-
-def encode_delta(data, num_steps):
-    # Repeat static image across timesteps, then apply delta
-    repeated = data.unsqueeze(0).repeat(num_steps, 1, 1)
-    return spikegen.delta(repeated, threshold=0.1, off_spike=True)
-
-# Phase, Burst, GRF, Direct: use custom implementations from Section 6.2
-
-# ---- Metrics Collection ----
-
-def evaluate_encoding(encode_fn, data_loader, model, num_steps, device):
-    """Evaluate a model with a specific encoding on a dataset."""
-    correct = 0
-    total = 0
-    total_spikes = 0
-    total_time = 0.0
-
-    model.eval()

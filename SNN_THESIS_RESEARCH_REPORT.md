@@ -287,31 +287,3 @@ Critical observation: Time steps have dropped from 350 to just 3, representing m
 
 SpikingMiniLM tested on GLUE benchmark with accuracy, F1, and correlation metrics.
 
-### 2.4 Beyond Image Classification
-
-**Vision Tasks:**
-- Object detection (Spike-driven Transformer V2)
-- Semantic segmentation (Spike-driven Transformer V2)
-- Zero-shot classification (SpikeCLIP)
-- Image generation (SDiT -- Spiking Diffusion Transformer)
-- Video understanding (TIM)
-
-**Other Domains:**
-- Audio-visual classification (Spiking Multi-Modal Transformer)
-- Remote photoplethysmography (Spiking-PhysFormer)
-- EEG seizure detection (Spiking Conformer)
-- Human pose tracking (Spiking Spatiotemporal Transformer)
-
-### 2.5 All Datasets Referenced
-- CIFAR-10 / CIFAR-100 (most explored for SNNs)
-- ImageNet-1k (1.2M training, 50K validation, 1K classes, 224x224)
-- DVS CIFAR-10 (event-stream version of CIFAR-10)
-- DVS128 Gesture (11 hand gestures, 29 subjects, 3 lighting conditions)
-- N-Caltech101, N-CARS (event camera recordings)
-- HAR-DVS, PokerEvents (event-based action/game recognition)
-- MMHPSD, SynEventHPD, DHP19 (human pose from events)
-- ImageNet-200 zero-shot variants
-- GLUE benchmark (NLP)
-
-### 2.6 Challenges and Limitations
-

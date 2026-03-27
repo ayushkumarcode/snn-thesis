@@ -552,31 +552,3 @@ This means:
 | 26 | Sensing and Image Processing for IoT | Yu Li | 2023 | **MPhil** | EEE | IoT/Image Processing |
 | 27 | Simulation for RL in Robotics | Diego Ferigo | 2023 | PhD | CS | RL/Robotics |
 
----
-
-## KEY OBSERVATIONS AND ANALYSIS
-
-### 1. Degree Level Distribution
-- **PhD theses:** 24 out of 27 (89%)
-- **MPhil theses:** 2 (Memristive Crossbar Arrays; Sensing for IoT)
-- **MSc by Research:** 1 (Bayesian DL for Pulsar Classification)
-- **BSc / Undergraduate:** 0 found
-- **Clinical Doctorate:** 1 (ML for Auditory Data)
-
-**Manchester Research Explorer does NOT host undergraduate dissertations.** This is confirmed by the library guide which states the system is for "postgraduate research theses."
-
-### 2. Supervisor Clustering
-The neuromorphic theses are heavily concentrated around:
-- **Steve Furber** (main or co-supervisor on 10+ theses) -- creator of SpiNNaker, former ICL/ARM architect
-- **James Garside** (co-supervisor on many) -- SpiNNaker team
-- **David Lester** (co-supervisor on several) -- SpiNNaker team
-- **Oliver Rhodes** (newer supervisor, 2020s theses) -- SpiNNaker team
-- **Dirk Koch** (FPGA theses) -- reconfigurable computing
-- **Piotr Dudek** (vision/EEE theses) -- pixel processor arrays
-- **Hujun Yin** (DL/vision theses) -- pattern recognition
-
-### 3. Technology Stack Patterns
-- **SpiNNaker** is the dominant platform across neuromorphic theses (appears in 13/13 core neuromorphic theses)
-- **Intel Loihi** appears in 1 thesis (Fonseca Guerra 2020) as a comparison platform
-- **MNIST** is the most common benchmark dataset
-- **Python/PyNN/sPyNNaker** implied but rarely explicitly named (these are the standard SpiNNaker software tools)

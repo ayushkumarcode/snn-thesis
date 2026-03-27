@@ -250,20 +250,20 @@ SNN conference paper lists:
 ICONS:
 - ICONS 2026 CFP: https://iconsneuromorphic.cc/calls-2026/
 - ICONS 2026 EasyChair: https://easychair.org/cfp/ACM-ICONS-2026
-- QKFormer, Spikformer v2, SpikingResformer all at top venues
-- Race to close the SNN-ANN gap on ImageNet
-- **Relevance to you:** Medium. Your gap-collapse finding relates to this narrative.
+- ICONS 2024 schedule: https://iconsneuromorphic.cc/icons-2024/schedule/
+- ICONS 2024 IEEE: https://www.computer.org/csdl/proceedings/icons/2024/22lE6EOwpkA
+- ICONS 2023 ACM: https://dl.acm.org/doi/proceedings/10.1145/3589737
+- ICONS 2022 ACM: https://dl.acm.org/doi/proceedings/10.1145/3546790
 
-### 4. Neuromorphic Robustness
-- Nature Communications 2025 paper on SNN robustness via temporal processing
-- Growing interest in adversarial + noise robustness of SNNs
-- **Relevance to you:** HIGH. Your 6x adversarial robustness finding is directly relevant.
+key SNN papers:
+- Eshraghian et al. 2023: https://arxiv.org/abs/2109.12894
+- QKFormer: https://arxiv.org/abs/2403.16552
+- SpikeLLM: https://arxiv.org/abs/2407.04752
+- NeuroBench: https://www.nature.com/articles/s41467-025-56739-4
+- Nature Comms robustness: https://www.nature.com/articles/s41467-025-65197-x
+- Sharmin et al. 2020 adversarial: https://arxiv.org/abs/2003.10399
 
-### 5. Hardware-Software Co-Design
-- SpiNNaker2 deployment at Sandia National Labs (June 2025)
-- SpikeFit (EurIPS 2025) on optimal SNN deployment
-- Software-to-hardware gap quantification
-- **Relevance to you:** HIGH. Your SpiNNaker deployment with documented failure modes is a case study in co-design challenges.
+SNN + audio:
 
 ### 6. Standardized Benchmarking (NeuroBench)
 - NeuroBench in Nature Communications 2025

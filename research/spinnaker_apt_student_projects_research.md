@@ -110,3 +110,31 @@ Found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 
 ---
 
+## External Student Projects Using SpiNNaker (not from Manchester)
+
+### Brain-Machine Interface with SpiNNaker (TUM, ~2017)
+- Master's thesis by GitHub user "solversa"
+- Decoded imaginary 3D reach/grasp movements from EEG using SNNs on SpiNNaker (4 chips, 64 cores). Architecture inspired by insect olfactory system. 73.4% accuracy with STDP.
+- GitHub: https://github.com/solversa/Master-Thesis-Brain-Machine-Interface
+- Full thesis, code, and data all on GitHub
+
+### Spiking Stereo Matching (Bachelor Thesis, 2016-2017)
+- Gadi Dikov
+- SNN for real-time event-based stereo matching with DVS + SpiNNaker. 2ms latency.
+- Published as conference paper (Biomimetic and Biohybrid Systems, 2017)
+- GitHub: https://github.com/gdikov/SpikingStereoMatching
+
+### SpiNNaker ROS Integration (TUM Bachelor Thesis)
+- By reiths (GitHub username), TU Munich, Chair of Neuroscientific System Theory
+- Bridges ROS with SpiNNaker. Converts ROS messages to neural spikes for injection into SpiNNaker, and converts spike activity back to ROS data streams.
+- GitHub: https://github.com/reiths/ros_spinnaker_interface
+
+### Short-term Plasticity on SpiNNaker (MSNE Research Internship, 2018)
+- MSNE (Master of Science in Neuroengineering) student from TU Munich
+- Interned at APT group Manchester, Spring 2018
+- Supervised by Oliver Rhodes
+- Implemented and tested a short-term plasticity model on SpiNNaker during a 6-8 week internship
+
+### Yexin Yan -- SpiNNaker2 Algorithms (TU Dresden, 2022)
+- PhD thesis
+- Hardware-software co-design for low-power neuromorphic applications on SpiNNaker2

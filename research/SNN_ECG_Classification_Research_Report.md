@@ -250,3 +250,31 @@ First application of SNNs to PTB-XL with multi-label classification. Almost all 
 Analyze what the SNN "sees" by visualizing spike patterns for different arrhythmia classes. Map spike timing to clinical ECG features. Almost completely unexplored. Moderate feasibility -- requires creative visualization.
 
 **4. Energy-Accuracy Pareto Analysis**
+Map the energy-accuracy trade-off curve across multiple SNN architectures with different encodings. Most papers report a single point. No Pareto frontier analysis exists. High feasibility.
+
+**5. Continual Learning SNN for ECG (ambitious)**
+Train an SNN that learns new arrhythmia classes over time without forgetting, leveraging STDP's natural online learning. Zero papers found combining these. Moderate feasibility -- more research-heavy.
+
+Could combine angles 1 + 4 for something like: "Energy-Efficient ECG Classification with Spiking Neural Networks: A Study of Encoding Methods and Architecture Trade-offs" -- clear methodology, multiple experiments, practical conclusions, fills a gap.
+
+---
+
+## Things i couldn't find
+
+1. Exact code for SparrowSNN -- no public GitHub repo apparently
+2. Direct head-to-head SNN vs Transformer comparisons on ECG -- doesn't seem to exist yet
+3. Recent 2026 SNN-ECG papers on arXiv
+4. Neuromorphic hardware benchmark suites specifically for ECG
+5. Patient-specific SNN adaptation studies
+
+---
+
+## Key References
+
+### Must-read papers
+1. Review on SNN-based ECG classification (2024): https://link.springer.com/article/10.1007/s13534-024-00391-2
+2. SparrowSNN (2024): https://arxiv.org/html/2406.06543
+3. Systematic Review of ECG Arrhythmia Classification (2025): https://arxiv.org/abs/2503.07276
+4. Neuromorphic Arrhythmia Detection (2025): https://www.nature.com/articles/s41598-025-23248-9
+5. SNN + Attention for ECG (2022): https://www.mdpi.com/2079-9292/11/12/1889
+6. sCCfC On-device Edge Learning (2024): https://pubs.aip.org/aip/aml/article/2/2/026109/3282738

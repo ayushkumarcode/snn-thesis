@@ -33,31 +33,3 @@ Their fix is SA-PGD (Stable Adaptive PGD) — adjusts step sizes and dynamically
 
 ## Continual Learning
 
-### Our results in context
-- SNN forgetting 74.4%, ANN forgetting 81.3% — 6.9pp less forgetting for SNN
-- This is a **naive baseline** (no continual learning method applied) — expected regime
-- State-of-the-art SNN CL methods (HLOP-SNN, ICLR 2024) achieve near-zero forgetting — but those are dedicated algorithms, not vanilla SNNs
-- The 6.9pp advantage is directionally consistent with theory: LIF leak and temporal sparsity provide natural resistance to overwriting old weights
-
-### What holds up
-- SNN CL on ESC-50 environmental sound is novel — prior audio CL work is all spoken digits (SHD, TIDigits)
-- Result should be framed as: "vanilla SNN shows inherent CL advantage without any dedicated method"
-- Not a strong standalone contribution — one paragraph in results, not a full section
-
-### Literature state
-- STDP and surrogate gradient both active for CL
-- Surrogate gradient scales better to deep networks
-- Emerging trend: combining both (biologically grounded + gradient-based)
-- Three audio SNN CL papers exist — all speech/digits, none on environmental sound
-
----
-
-## Summary for Paper
-
-| Claim | Holds up? | Framing fix needed |
-|---|---|---|
-| First adversarial analysis on audio SNN | Yes — watertight | None |
-| 14.9x robustness ratio | Inflated | Present absolute numbers, not ratio. Cite Wang et al. |
-| Direction of SNN robustness advantage | Yes | "Upper bounds pending SA-PGD" |
-| SNN CL on ESC-50 novel | Yes | "First on environmental sound" |
-| 6.9pp CL advantage | Directionally real | "Naive baseline result; dedicated methods would improve both" |

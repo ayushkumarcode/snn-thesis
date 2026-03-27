@@ -54,20 +54,20 @@ Consistent with Sharmin et al. (2020 ECCV) who showed similar effects with Poiss
 **Limitation:** standard PGD may underestimate vulnerability. SA-PGD (Wang et al. 2025) would give more reliable numbers. todo for future work
 
 ### 6.1.5 implications for edge audio security
-This finding has practical implications for edge audio intelligence:
-- An SNN deployed on a smart building sensor is substantially harder to fool with adversarial audio perturbations than an equivalent ANN
-- At ε = 0.1 (a perturbation below the JND — just-noticeable difference — for human hearing in many contexts), the ANN is essentially non-functional (1.75%) while the SNN retains 26% accuracy
-- The natural adversarial robustness of SNNs, combined with energy efficiency, makes them particularly attractive for adversarial-robust edge deployment
+
+Practical implications:
+- SNN on a smart building sensor is substantially harder to fool with adversarial audio
+- At eps=0.1 (perturbation likely below JND for human hearing), ANN is non-functional (1.75%) while SNN keeps 26%
+- Natural robustness + energy efficiency makes SNNs attractive for adversarial-robust edge deployment
 
 ---
 
-## 6.2 Continual Learning
+## 6.2 continual learning
 
-### 6.2.1 Setup
+### 6.2.1 setup
 
-Sequential training across 5 ESC-50 super-categories (10 classes each):
-- **Task 1:** Animals (classes 0–9): dog, rooster, pig, cow, frog, cat, hen, insects, sheep, crow
-- **Task 2:** Nature (10–19): rain, sea waves, crackling fire, crickets, chirping birds, water drops, wind, pouring water, toilet flush, thunderstorm
+Sequential training on 5 ESC-50 super-categories (10 classes each):
+- Task 1: Animals (0-9): dog, rooster, pig, cow, frog, cat, hen, insects, sheep, crow
 - **Task 3:** Human (20–29): crying baby, sneezing, clapping, breathing, coughing, footsteps, laughing, brushing teeth, snoring, drinking/sipping
 - **Task 4:** Domestic (30–39): door knock, mouse click, keyboard typing, door/wood creaks, can opening, washing machine, vacuum cleaner, clock alarm, clock tick, glass breaking
 - **Task 5:** Urban (40–49): helicopter, chainsaw, siren, car horn, engine, train, church bells, airplane, fireworks, hand saw

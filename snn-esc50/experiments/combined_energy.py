@@ -26,3 +26,31 @@ import snntorch as snn
 from snntorch import surrogate
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from src.config import (
+    NUM_CLASSES, NUM_STEPS, BETA, RESULTS_DIR, BATCH_SIZE,
+    LEARNING_RATE, WEIGHT_DECAY, PATIENCE, NUM_EPOCHS, get_device,
+)
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+from experiments.combo_experiment import RhythmLIF
+
+
+class CombinedEnergySNN(nn.Module):
+    """SNN optimized for energy: spike reg + silence gating support."""
+
+    def __init__(self, num_steps=NUM_STEPS, silence_threshold=0.01):
+        super().__init__()
+        self.num_steps = num_steps
+        self.silence_threshold = silence_threshold
+        sg = surrogate.spike_rate_escape(beta=1, slope=25)
+
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+        self.fc1 = nn.Linear(64 * 4 * 9, 256)

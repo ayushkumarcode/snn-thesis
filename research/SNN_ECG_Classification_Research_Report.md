@@ -82,3 +82,31 @@ All major datasets are freely available through PhysioNet (https://physionet.org
 | SNN (ANN-to-SNN) | Converted 14-layer CNN | 84.41% | -- | Low |
 | SNN (Neuromorphic 2025) | Lightweight SNN | 94.4% | >88% | 1.28M FLOPs |
 
+### What this tells us
+
+1. **Accuracy gap is narrowing**: best SNNs (98.29%) are within 1% of best CNNs (99.5%) on MIT-BIH
+2. **Energy advantage is massive**: SNNs are 100x to 10,000x more efficient
+   - SparrowSNN: 31.39 nJ vs CNN on CPU: ~450 uJ (factor of ~14,000x)
+   - SNN on Loihi: ~30 mW vs LSTM on GPU: ~15W (factor of 500x)
+3. **F1 score gap exists**: SNN F1 scores (89-97%) trail CNNs (95-98%), especially on minority classes (S, F)
+4. **Model size advantage**: SNNs typically 2-10 MB vs 50-200+ MB for CNN/Transformers
+5. **Latency advantage**: SNN inference in <8ms enables true real-time classification
+6. **The trade-off**: SNNs sacrifice 1-5% accuracy for 100-10,000x energy savings
+
+SNNs win for edge/wearable deployment, real-time continuous monitoring, battery-powered devices, always-on cardiac monitoring. CNNs/Transformers win for server-side batch processing, when max accuracy is the only priority, and 12-lead analysis (SNNs haven't been validated there yet).
+
+---
+
+## Why ECG and SNNs are a Natural Match
+
+This is actually one of the strongest arguments for this research direction.
+
+1. **Temporal/Event-Driven Nature**
+   - ECG signals are inherently temporal and quasi-periodic
+   - QRS complexes are sharp, spike-like events that naturally map to SNN spikes
+   - The R-peak is the dominant "event" in each heartbeat cycle
+   - P-waves, T-waves are secondary events with precise timing
+   - SNNs process information through precisely timed spikes -- direct analogy
+
+2. **Sparse Representation**
+   - Most of the ECG signal is baseline (isoelectric segments)

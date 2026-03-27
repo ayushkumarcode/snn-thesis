@@ -306,3 +306,31 @@ for related work and discussion chapters:
 3. Knight, J.C. et al. (2025). "A Complete Pipeline for deploying SNNs with Synaptic Delays on Loihi 2." arXiv: 2510.13757
 4. Yan, Y. et al. (2025). "Eventprop training for efficient neuromorphic applications." arXiv: 2503.04341
 5. Rostami, A. et al. (2022). "E-prop on SpiNNaker 2: Exploring online learning in spiking RNNs on neuromorphic hardware." Front. Neurosci. 16:1018006
+6. Mayr, C. et al. (2024). "SpiNNaker2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning." arXiv: 2401.04491
+7. Vogginger, B. et al. (2024). "Event-based backpropagation on the neuromorphic platform SpiNNaker2." NeurIPS 2024. arXiv: 2412.15021
+8. Dominguez-Morales, J.P. et al. (2016). "Multilayer SNN for Audio Samples Classification Using SpiNNaker." ICANN 2016, LNCS 9886, pp.45-53
+9. Bauer, F. et al. (2022). "Sub-mW Neuromorphic SNN audio processing applications with Rockpool and Xylo." arXiv: 2208.12991
+10. Micro-power spoken keyword spotting on Xylo Audio 2 (2024). arXiv: 2406.15112
+11. NeuroBench DCASE 2020 benchmark on XyloAudio 2 (2024). arXiv: 2410.23776
+12. Shrestha, S.B. et al. (2022). "Efficient Neuromorphic Signal Processing with Loihi 2." Journal of Signal Processing Systems
+13. Timcheck, J. et al. (2023). "The Intel Neuromorphic DNS Challenge." arXiv: 2303.09503
+14. "A Diagonal Structured State Space Model on Loihi 2." (2024). arXiv: 2409.15022
+15. Meunier, V. et al. (2025). "Comparison of Hardware-friendly, Audio-to-spikes Cochlear Encoding for Neuromorphic Processing." IEEE AICAS 2025
+16. SpikeFit (2025). "Towards Optimal Deployment of Spiking Networks on Neuromorphic Hardware." EurIPS 2025. arXiv: 2510.15542
+
+### Surveys and Reviews
+
+17. Basu, A. et al. (2025). "Fundamental Survey on Neuromorphic Based Audio Classification." arXiv: 2502.15056
+18. Kim, D. et al. (2024). "SNN and Sound: A Comprehensive Review of Spiking Neural Networks in Sound." Biomedical Engineering Letters
+19. Larroza, A. et al. (2025). "Spike Encoding for Environmental Sound: A Comparative Benchmark." arXiv: 2503.11206
+20. Yik, J. et al. (2025). "NeuroBench." Nature Communications 16:1589
+
+### Theses
+
+21. Dampfhoffer, M. (2023). "Models and algorithms for implementing energy-efficient spiking neural networks on neuromorphic hardware at the edge." PhD thesis, Universite Grenoble Alpes
+22. Dominguez-Morales, J.P. (2018). "Neuromorphic audio processing through real-time embedded spiking neural networks." PhD thesis, Universidad de Sevilla
+23. Peres, L. (2022). "Parallelisation of Neural Processing on Neuromorphic Hardware." PhD thesis, University of Manchester
+24. Wall, J. "Spikes from sound: A model of the human auditory periphery on SpiNNaker." PhD thesis, University of Manchester
+25. Jin, X. "Deep Spiking Neural Networks." PhD thesis, University of Manchester
+26. Davies, S. "Learning in Spiking Neural Networks." PhD thesis, University of Manchester
+

@@ -110,3 +110,31 @@ if the thesis emphasizes biological plausibility over ML performance:
 ### 3.1 Benchmarks
 
 | Method | Architecture | MNIST Acc. | Year | Learning Type | Reference |
+|---|---|---|---|---|---|
+| **Diehl & Cook** | 2-layer FC, lateral inhibition | 95.0% | 2015 | Unsupervised STDP + label assignment | Frontiers in Comp. Neuro. |
+| **STDP-CSNN + SVM** | Conv STDP + SVM classifier | ~97.2% | 2018 | Unsupervised STDP features + supervised SVM | Kheradpisheh et al. |
+| **SSTDP** | FC layers | 98.1% | 2021 | Supervised STDP (hybrid with backprop info) | Frontiers in Neuroscience |
+| **S2-STDP** | STDP-CSNN + FC | ~97.7% | 2024 | Unsupervised STDP features + supervised S2-STDP classifier | Goupy et al. |
+| **S2-STDP + NCG** | STDP-CSNN + NCG FC | **98.92%** | 2024 | Unsupervised STDP features + supervised S2-STDP + NCG | NeurIPS 2024 |
+| **S2-STDP + NCG (SoftHebb)** | SoftHebb-CNN + NCG FC | **99.17%** | 2024 | Unsupervised Hebbian features + supervised S2-STDP + NCG | NeurIPS 2024 |
+| **Deep STDP pre-train + fine-tune** | Deep Conv SNN | ~98.0% | 2018 | STDP pre-training + gradient fine-tuning | Frontiers in Neuroscience |
+
+### 3.2 What I Notice
+
+- **Pure unsupervised STDP** (zero labels during training) peaks at ~95% on MNIST with 6400 excitatory neurons
+- **STDP features + supervised classifier** pushes to 97-99%, competitive with many ANN baselines
+- **NCG paper (NeurIPS 2024) is the current SOTA** for STDP-based classification at 98.92% (STDP-CSNN features) or 99.17% (SoftHebb-CNN features)
+- for comparison, surrogate-gradient SNNs get ~99.5% on MNIST, standard CNNs get ~99.7%
+
+### 3.3 What 95% Actually Means
+
+Diehl & Cook's 95% with pure unsupervised STDP is actually kind of amazing when you think about it because:
+1. no labels used during training at all
+2. the network self-organizes to represent different digit classes
+3. labels are assigned post-hoc by seeing which neuron fires most for which digit
+4. each excitatory neuron's weight pattern visually resembles a digit template
+5. directly comparable to k-means clustering (~96%) or unsupervised autoencoders
+
+---
+
+## 4. Hybrid Approach: STDP Features + Supervised Classifier

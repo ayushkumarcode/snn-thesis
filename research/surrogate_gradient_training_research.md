@@ -390,3 +390,31 @@ pretty straightforward honestly:
 - **API:** neuron models (snn.Leaky etc.) drop in between standard nn.Linear/nn.Conv2d layers
 - **Docs:** excellent. 7+ interactive tutorials, all Colab-ready. created by Jason Eshraghian at UCSC specifically for teaching
 - **Community:** 1.9k GitHub stars, active issues/discussions
+- **Undergrad adoption:** used in UCSC "Brain-Inspired Deep Learning" course
+- **Limitation:** less performant than SpikingJelly with CuPy for large-scale stuff, but negligible at thesis scale
+
+---
+
+## Comparative Studies
+
+### Zenke and Vogels (2021) -- "The Remarkable Robustness"
+
+systematic variation of surrogate shape and scale. key results: performance largely insensitive to shape, scale significantly impacts performance, activity regularization enables sparse robust function, works across feedforward and recurrent architectures.
+
+### Fine-Tuning Study (2024)
+
+compared fast sigmoid and atan on SVHN. fast sigmoid yields lower firing rate with similar accuracy, 1.72x improvement in accelerator efficiency (FPS/W). optimal: beta=0.5, threshold=1.5. 48% reduction in hardware latency with only 2.88% accuracy loss.
+
+### Deng et al. (2023) -- Surrogate Module Learning (ICML 2023)
+
+analyzed gradient error accumulation in deep SNNs. vanilla SNN accuracy peaks at much shallower depth (L=5) vs ANN (L=13). vanilla SNN degrades dramatically past 13 layers. proposed approach gets 85.23% on CIFAR10-DVS (SOTA at the time).
+
+### Learnable Surrogate Gradient (IJCAI 2023)
+
+made the surrogate width learnable. fixed-width causes gradient vanishing in deep layers. learnable width modulation based on membrane potential distribution fixes this. competitive on CIFAR-10, CIFAR-100, DVS-CIFAR10.
+
+### Summary
+
+| Surrogate | Accuracy Impact | Sparsity | Compute Cost | Best For |
+|-----------|----------------|----------|--------------|---------|
+| Fast Sigmoid | Best overall | Highest | Lowest | Production, thesis default |

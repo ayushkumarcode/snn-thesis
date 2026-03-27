@@ -110,3 +110,31 @@ def train_epoch(model, loader, optimizer, device, lambda_conv, lambda_fc):
     total_loss = 0.0
     correct = 0
     total = 0
+    total_rates = {"conv1": 0, "conv2": 0, "fc1": 0, "out": 0}
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+        optimizer.zero_grad(set_to_none=True)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            spk_out, mem_out, layer_spikes = model(spk_input)
+
+            T, B, C = mem_out.shape
+            ce_loss = F.cross_entropy(
+                mem_out.reshape(T * B, C),
+                targets.unsqueeze(0).expand(T, -1).reshape(-1),
+            )
+
+            # Layerwise spike regularization
+            spike_loss = (lambda_conv * (layer_spikes["conv1"] +
+                                          layer_spikes["conv2"]) +
+                          lambda_fc * layer_spikes["fc1"])
+
+            loss = ce_loss + spike_loss
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()

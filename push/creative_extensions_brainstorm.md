@@ -56,31 +56,3 @@ PCA/UMAP of membrane potential dynamics → "neural trajectory" plots. Gorgeous 
 Combine top 3-4 encodings via voting. More interesting: error complementarity analysis (do different encodings make different mistakes?).
 
 #### 15. LIF Beta/Threshold Landscape (3-4 days)
-2D sweep of LIF parameters → accuracy heatmap. Is the SNN robust or fragile to biophysical parameters?
-
-#### 16. Sound Event Detection (2-3 days)
-Use SNN temporal dynamics for frame-level event detection, not just clip-level classification.
-
-#### 17. Cross-Domain Transfer to Speech Commands (3-4 days)
-Test SNN on Google Speech Commands v2 (35 classes). Do SNN audio features transfer?
-
-#### 18. Real-Time Microphone Demo (2-3 days)
-Live audio → mel → SNN → classification with spike visualization. Great for thesis defense, not for paper.
-
----
-
-## Recommended 1-Week Sprint
-
-| Day | Task | Expected Output |
-|-----|------|----------------|
-| 1 | Encoding Transfer Matrix (#1) | 7×7 heatmap figure |
-| 1 | Temporal Ablation (#2) | Accuracy-vs-timesteps curve |
-| 2-3 | Noise Robustness (#3) | SNR degradation curves (SNN vs ANN) |
-| 2-3 | Few-Shot Learning Curves (#4) on CSF3 | Data efficiency curves |
-| 4 | Neuron Ablation (#5) | Fault tolerance comparison |
-| 5 | Analysis, figures, writing | Publication-ready results |
-
-## Recommended Week 2 Add-ons
-- Spike Efficiency Frontier (#6)
-- Stochastic Resonance (#9) — high risk, extraordinary payoff
-- SNN Saliency Maps (#7)

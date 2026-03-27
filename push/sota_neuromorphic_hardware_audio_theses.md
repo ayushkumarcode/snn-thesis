@@ -98,31 +98,3 @@ BrainScaleS-2 is an accelerated mixed-signal neuromorphic platform from Heidelbe
 ### 1.4 BrainChip Akida
 
 Akida is the first commercially available neuromorphic processor.
-
-| Feature | Specification |
-|---------|--------------|
-| Architecture | Event-based, digital |
-| Generation | Akida 1.0 (2021), Akida 2.0/Pico (2024) |
-| Key audio application | Keyword spotting, acoustic anomaly detection |
-| Power | <2 mW (Akida), <1 mW (Akida Pico) |
-| Edge learning | Few-shot on-chip learning for new keywords |
-| Model support | DS-CNN, TENNs (Temporal Event-based Neural Networks) |
-
-**Audio-specific results:**
-- Keyword spotting with DS-CNN: supports 32 different keywords
-- Akida Pico achieves 4--5% more accuracy than historical methods using raw audio data with TENNs
-- TENNs eliminate pre-processing steps (no mel spectrogram needed), operating directly on raw audio
-- Always-on voice activity detection at <1 mW
-
-**Limitations:** No published ESC-50 or ESC-10 results. Primarily focused on keyword spotting and acoustic anomaly detection rather than comprehensive environmental sound classification.
-
----
-
-### 1.5 SynSense Xylo Audio
-
-Xylo is the most extensively benchmarked neuromorphic chip for audio inference tasks.
-
-**Hardware specifications:**
-- All-digital, 28nm CMOS, 6.5 mm^2 die
-- Up to 1000 LIF neurons
-- 16 input channels, 8 output channels

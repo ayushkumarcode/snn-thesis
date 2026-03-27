@@ -521,31 +521,3 @@ Based on survey papers and recent analysis:
 4. **Second milestone:** Implement your comparison experiments
 5. **GPU:** Any NVIDIA GPU with 12GB+ VRAM, or Apple M-series (MPS backend, no CuPy acceleration)
 6. **Estimated compute:** 20-50 GPU-hours for a full comparison study
-
-### Essential Reading List
-
-1. SpikingJelly classify_dvsg tutorial (framework documentation)
-2. PLIF paper (Fang et al., ICCV 2021) -- learnable neuron parameters
-3. SpikePoint paper (2024) -- point-based approach
-4. TA-SNN paper (2021) -- temporal attention, good comparison tables
-5. TENNs-PLEIADES paper (2024) -- current SOTA, understand what top performance looks like
-6. SpikingJelly Science Advances paper (2023) -- framework design rationale
-
----
-
-## Sources
-
-- [Papers with Code - DVS128 Gesture Benchmark](https://paperswithcode.com/sota/gesture-recognition-on-dvs128-gesture)
-- [CatalyzeX - DVS128 Gesture Dataset](https://www.catalyzex.com/s/Dvs128%20Gesture%20Dataset)
-- [SpikingJelly GitHub Repository](https://github.com/fangwei123456/spikingjelly)
-- [SpikingJelly classify_dvsg Tutorial](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.6/clock_driven_en/14_classify_dvsg.html)
-- [snnTorch Tutorial 7 - Neuromorphic Datasets with Tonic](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
-- [snnTorch DVS Gesture Documentation](https://snntorch.readthedocs.io/en/latest/examples/examples_svision/example_sv_dvsgesture.html)
-- [Tonic DVSGesture Documentation](https://tonic.readthedocs.io/en/latest/generated/tonic.datasets.DVSGesture.html)
-- [Open Neuromorphic SNN Library Benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
-- [SNN Library Benchmarks LinkedIn Post](https://www.linkedin.com/posts/gregorlenz_spiking-neural-network-snn-library-benchmarks-activity-7122537733142519809-2BVW)
-- [PLIF Paper (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/papers/Fang_Incorporating_Learnable_Membrane_Time_Constant_To_Enhance_Learning_of_Spiking_ICCV_2021_paper.pdf)
-- [PLIF GitHub Repository](https://github.com/fangwei123456/Parametric-Leaky-Integrate-and-Fire-Spiking-Neuron)
-- [SpikePoint Paper (arXiv)](https://arxiv.org/html/2310.07189v2)
-- [TA-SNN Paper (arXiv)](https://arxiv.org/pdf/2107.11711)
-- [TENNs-PLEIADES Paper (arXiv)](https://arxiv.org/abs/2405.12179)

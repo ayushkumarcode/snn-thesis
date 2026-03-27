@@ -422,31 +422,3 @@ benchmark = Benchmark(model, test_loader, preprocessors, postprocessors,
 results = benchmark.run()
 # results['SynapticOperations']['Effective_ACs'] = actual energy proxy
 ```
-
-**NeuroBench tutorial confirms working snnTorch integration** using Google Speech Commands task with an SNN achieving 85.6% accuracy and measuring SynapticOperations automatically.
-
-### Option B: Manual spike counting (simpler, always works)
-
-```python
-def count_synops(model, spike_recordings):
-    """Manual synaptic operations counter.
-    SynOps = sum of spikes per layer * fanout of that layer"""
-    total_synops = 0
-    for layer_name, spk_tensor in spike_recordings.items():
-        num_spikes = spk_tensor.sum().item()
-        # fanout = number of output connections per neuron
-        if isinstance(model.layers[layer_name], nn.Linear):
-            fanout = model.layers[layer_name].out_features
-        elif isinstance(model.layers[layer_name], nn.Conv2d):
-            fanout = (model.layers[layer_name].out_channels *
-                     model.layers[layer_name].kernel_size[0] *
-                     model.layers[layer_name].kernel_size[1])
-        total_synops += num_spikes * fanout
-    return total_synops
-```
-
-### Option C: Simple spike count ratio (minimal viable metric)
-
-```python
-# During forward pass, record total spikes per layer
-total_spikes_layer1 = spk1_rec.sum().item()

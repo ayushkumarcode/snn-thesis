@@ -82,3 +82,31 @@ Sources: [PLIF Paper (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021
 
 ### head-to-head
 
+| Feature | SpikingJelly | snnTorch |
+|---------|-------------|---------|
+| **DVS128 Loader** | Built-in, works well. Auto-downloads AEDAT, converts to npz/frames. | DEPRECATED (spikevision broken). Must use Tonic. |
+| **DVS128 Tutorial** | Complete end-to-end classification with code | Partial (Tutorial 7 uses NMNIST, not DVS128 directly) |
+| **Pre-built DVS Model** | Yes: classify_dvsg example, full training script | No |
+| **Training Speed** | ~18s/epoch (CUDA) to ~28s/epoch (PyTorch) on RTX 2080 Ti | Slower. No custom CUDA kernels. torch.compile doesn't help much. |
+| **CUDA Acceleration** | CuPy backend: 0.26s fwd+bwd for 16K neuron benchmark. Up to 11x speedup at T=32. | No custom CUDA. Standard PyTorch only. |
+| **Neuron Models** | LIF, PLIF, IF, QIF, EIF, Izhikevich | Leaky, Synaptic, Alpha, Recurrent LIF, LSTM-based |
+| **Docs** | Good but partly in Chinese. English docs available. | Excellent. Very tutorial-driven, beginner-friendly. |
+| **Stars** | ~3.3K | ~2.5K |
+| **Publication** | Science Advances (2023) | NeurIPS Workshop |
+| **Multi-step Processing** | Native. SeqToANNContainer for parallel timestep processing. | Sequential only (loop over timesteps). |
+| **Surrogate Gradients** | ATan, Sigmoid, many others | ATan, Fast Sigmoid, Straight-Through, Triangular |
+
+### framework benchmark (Open Neuromorphic, 2024)
+
+for a 16K neuron forward+backward pass:
+
+| Framework | Time (seconds) | Notes |
+|-----------|---------------|-------|
+| SpikingJelly (CuPy) | 0.26 | Fastest by a lot |
+| Lava DL (SLAYER) | ~0.4-0.5 | Custom CUDA |
+| Sinabs EXODUS | ~0.4-0.5 | Custom CUDA |
+| Norse (torch.compile) | ~0.5-0.7 | |
+| snnTorch | ~1.0+ | No significant torch.compile speedup |
+| Spyx (JAX) | ~0.3-0.4 | Different ecosystem |
+
+### my take

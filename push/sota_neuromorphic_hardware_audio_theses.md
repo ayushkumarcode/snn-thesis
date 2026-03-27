@@ -194,3 +194,31 @@ the hybrid deployment model (heavy ANN feature extraction on conventional hardwa
 "Neuromorphic audio processing through real-time embedded spiking neural networks" -- PhD in Computer Engineering. developed speech recognition and audio processing systems based on a spiking artificial cochlea. implemented multilayer SNN on 48-chip SpiNNaker for audio classification. created NAVIS and pyNAVIS tools.
 
 key results: pure tone classification on SpiNNaker 99.8% (8 classes, clean), 95% at SNR=3dB.
+
+vs our work: they used simple pure tones (8 classes), we use 50-class ESC-50 environmental sounds. both on SpiNNaker. our task is substantially more complex. they focused on cochlear models, we use learned SNN features with surrogate gradients.
+
+#### Dampfhoffer (2023) -- Universite Grenoble Alpes
+
+"Models and algorithms for implementing energy-efficient spiking neural networks on neuromorphic hardware at the edge" -- PhD. addressed the lack of general models for estimating SNN energy consumption. the key contribution is the Dampfhoffer et al. (2023) IEEE TECI paper showing SNNs need <6.4% spike rate to beat quantized ANNs.
+
+we cite this extensively. our SNN activation sparsity is 74.16%, meaning spike rates are below the 6.4% threshold, supporting the case for neuromorphic hardware advantage. their work is theoretical/modeling; ours includes actual hardware deployment.
+
+#### Wall -- University of Manchester
+
+"Spikes from sound: A model of the human auditory periphery on SpiNNaker" -- PhD. biologically-inspired model of human auditory periphery on SpiNNaker. focused on converting sound into spiking neural action potentials. both use SpiNNaker at Manchester but Wall focused on biological modeling, we focus on ML classification.
+
+---
+
+### SNN-Related Theses at University of Manchester (SpiNNaker Group)
+
+| Title | Author | Year | Focus | Relevance |
+|-------|--------|------|-------|-----------|
+| "Deep Spiking Neural Networks" | (Jin) | ~2022 | Noisy Softplus activation, PAF training method | Training methodology for deep SNNs |
+| "Learning in Spiking Neural Networks" | (Davies) | ~2022 | STDP-based learning, SpiNNaker spike injection | Learning rules + SpiNNaker implementation |
+| "Ensemble Learning for Spiking Neural Networks" | -- | ~2022 | Ensemble methods for SNN performance | Shows class probability > firing rate for predictions |
+| "Parallelisation of Neural Processing on Neuromorphic Hardware" | L. Peres | June 2022 | Cortical Microcircuit real-time simulation on SpiNNaker | 20x improvement over previous |
+| "Parallel Simulation of Neural Networks on SpiNNaker" | X. Jin | ~2010 | SpiNNaker simulation methodology | Foundational SpiNNaker work |
+| "Modelling Neural Dynamics on Neuromorphic Hardware" | -- | -- | Neural dynamics on SpiNNaker | Biological modeling |
+| "Neural Encoding by Bursts of Spikes" | -- | -- | Burst coding neuroscience | Encoding schemes |
+
+Manchester has a strong tradition of SpiNNaker PhD theses but they all focus on biological neural simulation and learning algorithms, NOT audio classification. our thesis fills a pretty clear gap in the Manchester SpiNNaker portfolio by applying the platform to a practical ML task.

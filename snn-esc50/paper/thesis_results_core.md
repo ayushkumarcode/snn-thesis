@@ -12,20 +12,20 @@ This sets the ceiling for a lightweight ~622K param CNN from scratch on ESC-50 w
 
 Training dynamics: all 5 folds converge in 30-45 epochs (early stopping patience=10). ReduceLROnPlateau kicks in around epoch 20-25, dropping lr from 1e-3 to 5e-4. No fold fails to learn.
 
+---
 
-## 4.2 Spike Encoding Comparison
+## 4.2 spike encoding comparison
 
-### 4.2.1 Results Summary
-
-Five-fold cross-validation results for all spike encoding methods:
+### 4.2.1 results summary
 
 | Encoding | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std | Gap vs ANN |
 |----------|--------|--------|--------|--------|--------|------|-----|-----------|
-| **ANN (baseline)** | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | **63.85%** | 3.07% | — |
-| Direct | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | **47.15%** | 4.50% | −16.70 pp |
-| Phase | 22.50% | 22.25% | 25.00% | 24.25% | 26.75% | **24.15%** | 1.66% | −39.70 pp |
-| Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | **24.00%** | 1.90% | −39.85 pp |
-| Population | 22.75% | 18.50% | 15.75% | 22.00% | 16.75% | **19.15%** | 2.79% | −44.70 pp |
+| **ANN (baseline)** | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | **63.85%** | 3.07% | -- |
+| Direct | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | **47.15%** | 4.50% | -16.70 pp |
+| Phase | 22.50% | 22.25% | 25.00% | 24.25% | 26.75% | **24.15%** | 1.66% | -39.70 pp |
+| Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | **24.00%** | 1.90% | -39.85 pp |
+| Population | 22.75% | 18.50% | 15.75% | 22.00% | 16.75% | **19.15%** | 2.79% | -44.70 pp |
+| Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | **16.30%** | 1.62% | -47.55 pp |
 | Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | **16.30%** | 1.62% | −47.55 pp |
 | Delta | 8.25% | 7.75% | 7.25% | 7.50% | 5.50% | **7.25%** | 0.94% | −56.60 pp |
 | Burst | 5.00% | 5.25% | 9.25% | 6.00% | 7.00% | **6.50%** | 1.54% | −57.35 pp |

@@ -250,3 +250,31 @@ A March 2025 peer-reviewed paper (arxiv 2503.11206) explicitly states: *"No stat
 ### 10.2 DVS128 Gesture -- confirmed saturated
 - SOTA: 99.59% (TENNs-PLEIADES, not even an SNN)
 - SNN-only SOTA: ~99.3% (SG-SNN)
+- 14+ papers with code on leaderboard
+- DVS128 is basically the "MNIST of event-based vision" now -- useful for validation but not a thesis contribution
+- Better alternatives: DailyDVS-200 (ECCV 2024, 200 classes) or EgoEvGesture (March 2025, first-person, SOTA only 62.7%)
+
+### 10.3 Novel application gaps -- updated Feb 2026
+| Domain | SNN Papers | Status | Verdict |
+|--------|-----------|--------|---------|
+| **Wildlife Camera Trap** | **0** | Zero papers, excellent datasets (Snapshot Serengeti 3.2M images) | **TOP PICK** |
+| **Food Recognition (Food-101)** | **0** | Zero papers, clean benchmark | **STRONG** |
+| Plant Disease (PlantVillage) | 1-3 | Only 1 hybrid paper (2021), pure SNN untried | **STRONG** |
+| Music Generation (MIDI) | 4-10 | **GAP CLOSED** -- MuSpike benchmark (Aug 2025) tested 5 architectures | AVOID |
+| SVHN | 4-10 | Already a standard SNN benchmark | AVOID |
+| Wearable HAR | 10+ | Saturated, 2025 survey exists | AVOID |
+
+### 10.35 Framework comparison -- confirmed genuine gap
+- No three-way snnTorch vs SpikingJelly vs Norse comparison on real neuromorphic data exists
+- The closest work (2025 multimodal benchmark) deliberately EXCLUDES snnTorch and Norse
+- Open Neuromorphic benchmark: synthetic data only, appears dormant
+- Spyx paper: speed only, explicitly ignores accuracy
+- The question "same architecture, same hyperparams, three frameworks -- same accuracy?" has never been answered
+- This is a tractable, useful, potentially publication-worthy gap
+
+### 10.4 SHD Audio -- approaching saturation
+- SOTA: 96.41% (SpikCommander, 2025)
+- SHD is still useful as a secondary validation benchmark but not as a primary thesis contribution
+- SSC (35 classes, SOTA ~82%) has more room for improvement
+
+### 10.5 Revised top recommendation

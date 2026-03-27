@@ -251,19 +251,19 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 
 14. **Gong, Y., Chung, Y.A., & Glass, J. (2021).** AST: Audio Spectrogram Transformer. Interspeech 2021, 571-575.
 
-11. **Goodfellow, I.J., Shlens, J., & Szegedy, C. (2015).** Explaining and Harnessing Adversarial Examples. *ICLR 2015*. arXiv:1412.6572.
+15. **Davies, M., Srinivasa, N., Lin, T.H., ..., & Taba, B. (2018).** Loihi: A Neuromorphic Manycore Processor. IEEE Micro, 38(1), 82-99.
 
-12. **Madry, A., Makelov, A., Schmidt, L., Tsipras, D., & Vladu, A. (2018).** Towards Deep Learning Models Resistant to Adversarial Attacks. *ICLR 2018*. arXiv:1706.06083.
+16. **Golden, R., Delanois, J.E., Sanda, P., & Bhatt, D.L. (2022).** Sleep Prevents Catastrophic Forgetting in Spiking Neural Networks. PLoS Comp Bio, 18(11), e1010628.
 
-13. **Deng, S., & Gu, S. (2020).** Rethinking the Performance Comparison Between SNNS and ANNS. *Neural Networks*, 121, 294–307.
+17. **Yousefzadeh, A., Stromatias, E., Soto, M., Serrano-Gotarredona, T., & Linares-Barranco, B. (2019).** On Practical Issues for Stochastic STDP Hardware. Front. Neurosci., 13, 760.
 
-14. **Gong, Y., Chung, Y.A., & Glass, J. (2021).** AST: Audio Spectrogram Transformer. *Interspeech 2021*, 571–575.
+18. **Hoppner, S., Yan, Y., Garbers, C., ..., & Furber, S. (2024).** SpiNNaker 2: A Large-Scale Neuromorphic System. arXiv:2401.04491.
 
-15. **Davies, M., Srinivasa, N., Lin, T.H., ..., & Taba, B. (2018).** Loihi: A Neuromorphic Manycore Processor with On-Chip Learning. *IEEE Micro*, 38(1), 82–99.
+19. **Park, D.S., Chan, W., Zhang, Y., Chiu, C.C., Zoph, B., Cubuk, E.D., & Le, Q.V. (2019).** SpecAugment. Interspeech 2019, 2613-2617.
 
-16. **Golden, R., Delanois, J.E., Sanda, P., & Bhatt, D.L. (2022).** Sleep Prevents Catastrophic Forgetting in Spiking Neural Networks by Forming a Joint Synaptic Weight Representation. *PLoS Computational Biology*, 18(11), e1010628.
+20. **Dominguez-Morales, J.P., et al. (2016).** Multilayer Spiking Neural Network for Audio Samples Classification Using SpiNNaker. ICANN 2016, LNCS 9886, pp. 45-53.
 
-17. **Yousefzadeh, A., Stromatias, E., Soto, M., Serrano-Gotarredona, T., & Linares-Barranco, B. (2019).** On Practical Issues for Stochastic STDP Hardware With 1-bit Synaptic Weights. *Frontiers in Neuroscience*, 13, 760.
+21. **Wang, J., Zhao, D., Chen, R., Zhang, Q., & Zeng, Y. (2025).** Towards Reliable Evaluation of Adversarial Robustness for Spiking Neural Networks. arXiv:2512.22522.
 
 18. **Hoppner, S., Yan, Y., Garbers, C., ..., & Furber, S. (2024).** SpiNNaker 2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning. *arXiv:2401.04491*.
 

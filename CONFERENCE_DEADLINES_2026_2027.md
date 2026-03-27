@@ -116,31 +116,3 @@ Sources: [EUSIPCO 2026](https://eusipco2026.org/), [Submissions](https://eusipco
 | Field | Details |
 |-------|---------|
 | **Full Name** | 51st IEEE International Conference on Acoustics, Speech and Signal Processing |
-| **Paper Deadline** | 17 September 2025 (PASSED) |
-| **Camera-Ready** | 13 February 2026 |
-| **Conference Dates** | 4-8 May 2026 |
-| **Location** | CCIB, Barcelona, Spain |
-| **Page Limit** | 4 pages + 1 optional references-only page |
-| **Format** | IEEE conference template |
-| **Acceptance Rate** | ~45-49% (2024: 48.5%, 2025: 45.3%) |
-| **Registration** | Author: $900 (IEEE SPS member) to $1,240 (non-member). Student non-author advance: $250-$395. 21% VAT on top. |
-| **Realistic for UG?** | Competitive but achievable. Audio signal processing is in scope. |
-| **Focus** | Acoustics, speech, audio, signal processing, ML for audio |
-
-Sources: [ICASSP 2026](https://2026.ieeeicassp.org/), [Call for Papers](https://2026.ieeeicassp.org/call-for-papers/), [Registration](https://2026.ieeeicassp.org/registration-rates-and-options/)
-
----
-
-### 2.3 ICASSP 2027 -- IEEE International Conference on Acoustics, Speech and Signal Processing
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | IEEE International Conference on Acoustics, Speech and Signal Processing |
-| **Paper Deadline** | **~September 2026** (not yet announced) |
-| **Conference Dates** | 16-21 May 2027 |
-| **Location** | Toronto, Canada |
-| **Page Limit** | 4 pages + 1 references page (expected) |
-| **Format** | IEEE conference template |
-| **Acceptance Rate** | ~45-49% |
-| **Registration** | ~$900-1,200 (expected similar to 2026) |
-| **Realistic for UG?** | **YES -- good target.** Audio classification is core ICASSP topic. SNN angle adds novelty. |

@@ -306,3 +306,31 @@ based on everything i found:
 
 so a reasonable UK undergrad SNN project would probably involve:
 - implementing 1-2 SNN architectures using snntorch/Norse/Brian2
+- testing on 1-2 standard datasets (MNIST, DVS Gesture, SHD)
+- comparing with conventional ANN baseline
+- analyzing energy/spike efficiency metrics
+- 40-80 pages including background literature review
+
+---
+
+## things to follow up on
+
+1. **Contact Manchester APT group directly** -- ask if they have a list of past undergraduate projects on SpiNNaker/SNN topics.
+
+2. **Contact Imperial Computing department** -- their final year project listings may not be public but could be shared on request.
+
+3. **Download and read the Heidelberg bachelor's theses** -- they're freely available and provide the best scope calibration. start with:
+   - Ebert (2021): "Real-time Image Classification on Analog Neuromorphic Hardware"
+   - Straub (2023): "Multi-Single-Chip Training of SNNs with BrainScaleS-2"
+   - Fischer (2017): "Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware"
+
+4. **Search the EBRAINS platform** -- student projects using SpiNNaker/BrainScaleS via EBRAINS may be documented.
+
+5. **Check conference proceedings** -- some undergrad projects get published at workshops (e.g., NICE Conference, ICONS).
+
+6. **Contact the UK Multidisciplinary Centre for Neuromorphic Computing** at Aston University -- newly funded EPSRC centre that may have student project opportunities/archives.
+
+---
+
+## sources
+

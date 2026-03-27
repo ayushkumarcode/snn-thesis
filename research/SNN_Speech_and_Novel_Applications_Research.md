@@ -437,31 +437,3 @@ Key highlights:
 
 ### Recommendation 5: SNN Diffusion Model for Audio Spectrograms
 **Why:** Spiking diffusion exists for images; applying to audio spectrograms would be genuinely new. Bridges SNN generative models and audio processing.
-**Approach:** Adapt SDDPM or Spiking-Diffusion to generate mel-spectrograms instead of images. Use a vocoder (possibly Spiking Vocos) to convert to audio.
-**Novelty angle:** First SNN diffusion model for audio generation. Very high risk, very high reward.
-
----
-
-## 9. RESEARCH GAPS SUMMARY
-
-### Completely Unexplored (0 papers)
-- SNN-based voice conversion
-- SNN-based speech-to-speech translation
-- SNN-based music generation (modern deep learning approach)
-- SNN-based recommendation systems
-- SNN-based audio super-resolution
-- SNN for low-resource language ASR
-- SNN diffusion model for audio
-
-### Barely Explored (1-3 papers)
-- SNN-based TTS (only SpikeVoice)
-- SNN-based vocoder (only Spiking Vocos)
-- SNN-based speech separation/cocktail party
-- SNN for audio compression
-- SNN for sound effect synthesis
-
-### Emerging but Growing (5-10 papers)
-- SNN speech enhancement/denoising
-- SNN anomaly detection
-- SNN generative models (diffusion/GAN/VAE)
-- SNN multimodal audio-visual

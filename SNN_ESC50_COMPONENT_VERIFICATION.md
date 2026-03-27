@@ -30,31 +30,3 @@ The most significant finding is a March 2025 arXiv paper that directly addresses
 ### EXISTS: YES
 ### POTENTIAL BLOCKER: NO
 
-**Official Repository:** https://github.com/karolpiczak/ESC-50
-
-| Property | Value |
-|----------|-------|
-| Direct download URL | https://github.com/karoldvl/ESC-50/archive/master.zip |
-| Registration required | NO -- freely downloadable, no account needed |
-| File format | WAV (5 seconds, 44.1 kHz, mono) |
-| Total size | ~600 MB (WAV zip) or ~200 MB (OGG alternative) |
-| Total files | 2,000 audio recordings |
-| Classes | 50 semantic classes, 40 examples per class |
-| Major categories | 5 (Animals, Natural soundscapes, Human non-speech, Interior/domestic, Exterior/urban) |
-| License | Creative Commons Attribution-NonCommercial |
-| Paper | Piczak, 2015, ACM Multimedia |
-| Also available on | HuggingFace (`ashraq/esc50`), Kaggle |
-
-**File naming convention:** `{FOLD}-{CLIP_ID}-{TAKE}-{TARGET}.wav`
-- `{FOLD}`: Cross-validation fold index (1-5)
-- `{CLIP_ID}`: Original Freesound clip ID
-- `{TAKE}`: Letter disambiguating fragments from same source
-- `{TARGET}`: Numeric class label [0-49]
-
-**Metadata file:** `meta/esc50.csv` with columns: `filename, fold, target, category, esc10, src_file, take`
-
-**Verification method:** Fetched and confirmed from official GitHub README. Repository is actively maintained with 3.3k+ stars.
-
----
-
-## COMPONENT 2: AUDIO LOADING

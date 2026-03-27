@@ -391,31 +391,3 @@ Source: [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.gi
 4. Demonstrating critical reflection on outcomes
 
 Source: [Warwick CS310](https://warwick.ac.uk/fac/sci/dcs/teaching/modules/cs310/)
-
-### 5.7 University of Sussex (Informatics)
-
-**Provides the most detailed publicly available grade descriptors for CS projects:**
-
-For **Final Reports** specifically:
-- 90-100%: "Truly outstanding project" with publishable-quality outcomes and original thinking
-- 80-89%: "Essentially faultless outcomes" with full objective achievement and originality
-- 70-79%: Complete understanding, demanding objectives fully achieved, thorough evaluation
-- 60-69%: Competent work with substantially achieved primary objectives
-- 50-59%: Competent in most respects, reasonably achieved objectives
-- 40-49%: Basic methodology understanding, fair progress
-
-Source: [Sussex Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
-
----
-
-## 6. HOW IMPORTANT IS WRITING QUALITY?
-
-Writing quality is not a minor factor -- it is consistently identified as a make-or-break element across all universities studied.
-
-### 6.1 Direct Statements from Universities
-
-**Cambridge:** "Better grades will arise from clarity and ease of reading, good pictures, clear explanations, minimal jargon and appropriate use of equations." Students should allocate "at least four to six weeks" for writing.
-
-**Imperial:** A project CANNOT receive a Pass/Merit/Distinction if the report is not independently at that standard. This is the strongest statement found: writing quality is a hard ceiling on your grade.
-
-**Bristol:** "It doesn't matter how much work you've done, if you don't write it up well, you will fail."

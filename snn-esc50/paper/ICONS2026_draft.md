@@ -40,20 +40,20 @@ Key finding: **the SNN-ANN accuracy gap isn't fundamental** -- it collapses from
 ESC-50 [1]: 2000 five-second recordings, 50 classes, 5-fold CV. Human 81.3%, ANN SOTA 98.25% [14]. We use log-mel spectrograms (64 bins, n_fft=1024, hop=512, sr=22050), normalised to [0,1], giving 64x216 inputs.
 
 ### 2.2 Spiking neural networks
-Leaky Integrate-and-Fire (LIF) neurons accumulate weighted input currents, emit binary spikes when membrane potential exceeds threshold, and reset. Gradients through the spike function are approximated by surrogate gradients [4]; we use fast sigmoid (slope=25) throughout. Training follows snnTorch [3] with cross-entropy on summed membrane potentials over T=25 timesteps.
 
-### 2.3 Spike Encoding Methods
+LIF neurons accumulate weighted input, emit binary spikes at threshold, reset. Surrogate gradients [4] approximate the spike derivative for backprop; we use fast sigmoid (slope=25). Training via snnTorch [3], CE on summed membrane over T=25 timesteps.
+
+### 2.3 Encoding methods
 
 | Encoding | Description | Key property |
 |----------|-------------|--------------|
-| Rate | Spike prob. ∝ intensity (Poisson) | Stochastic, information-rich |
-| Latency | High intensity → earlier spike | Temporal precision |
-| Delta | Spikes on positive intensity changes | Sparse, change-sensitive |
-| Direct | Continuous values repeated T times | No conversion; LIF learns |
-| Burst | n_spikes ∝ intensity, at window start | Dense, early temporal |
-| Phase | Spike time within oscillation cycle | Deterministic, 1 spike/neuron |
-| Population | 10 output neurons per class (500 total), MSE count loss | Multi-neuron class vote |
-
+| Rate | spike prob proportional to intensity | stochastic |
+| Latency | high intensity = earlier spike | temporal precision |
+| Delta | spikes on intensity changes | sparse, change-sensitive |
+| Direct | continuous values repeated T times | no conversion |
+| Burst | n_spikes proportional to intensity, front-loaded | dense early |
+| Phase | spike time within oscillation cycle | deterministic, 1 spike/neuron |
+| Population | 10 output neurons/class (500 total) | multi-neuron vote |
 ### 2.4 SpiNNaker Hardware
 
 SpiNNaker [2] is a massively-parallel neuromorphic platform implementing IF_curr_exp neurons. Weights are integers; communication is spike-driven (AC only). We calibrate: tau_syn=5ms, v_thresh=1.0, tau_m=20ms via a 9-point scale sweep on held-out samples.

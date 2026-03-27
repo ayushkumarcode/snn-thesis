@@ -222,3 +222,31 @@ deadline passed (19 January 2026). acceptance rate ~15-20%.
 | **Paper Deadline** | **22 March 2026** |
 | **Notification** | 18 June 2026 |
 | **Conference Dates** | 16-18 September 2026 |
+| **Location** | Ha Long Bay, Vietnam |
+| **Page Limit** | 5 pages (4 technical + 1 references-only) |
+| **Format** | IEEE conference template, anonymous, 10pt |
+| **Proceedings** | IEEE Xplore. Selected papers recommended for IEEE TCAS-AI or IEEE TVLSI. |
+
+strong fit. AICAS explicitly lists "neuromorphic and bioinspired circuits, processors, systems and their applications" as a primary topic. the SpiNNaker hardware deployment angle is directly what this conference wants.
+
+Sources: [AICAS 2026](https://2026.ieee-aicas.org/)
+
+---
+
+### 4.2 Edge AI / tinyML Summit 2026 [DEADLINE PASSED]
+
+deadline passed (~December 2025). monitor for future events.
+
+---
+
+## 5. IEEE conferences
+
+### 5.1 WCCI/IJCNN 2026 [URGENT: LATE-BREAKING]
+
+| Field | Details |
+|-------|---------|
+| **Regular Paper Deadline** | 31 January 2026 (PASSED) |
+| **Late-Breaking Deadline** | **10 March 2026** (5 days from this writing) |
+| **Conference Dates** | 21-26 June 2026 |
+| **Location** | MECC, Maastricht, Netherlands |
+| **Page Limit** | 6 pages (up to 8 with extra charges at 100 EUR/page) |

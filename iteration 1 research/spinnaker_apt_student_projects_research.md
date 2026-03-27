@@ -250,3 +250,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 
 ---
 
+## 3. external student projects using SpiNNaker (non-Manchester)
+
+### 3.1 Master's Thesis: Brain-Machine Interface with SpiNNaker (TUM, ~2017)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Decoding of 3D Reach and Grasp Movements from Non-invasive EEG Signals using SpiNNaker Neuromorphic Hardware |
+| **Author** | GitHub user "solversa" |
+| **Institution** | Not explicitly stated, likely TU Munich |
+| **Year** | ~2017 |
+| **Degree** | Master's thesis |
+| **Abstract** | Neuromorphic information processing for BCI. Decoded imaginary movements from EEG using SNNs on SpiNNaker (4 chips, 64 cores). Architecture inspired by insect olfactory system. Achieved 73.4% classification accuracy with STDP. |
+| **Tools** | SpiNNaker, Python, Jupyter, STDP, homeostasis |
+| **GitHub** | https://github.com/solversa/Master-Thesis-Brain-Machine-Interface |
+
+### 3.2 Bachelor Thesis: Spiking Stereo Matching (2016-2017)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Spiking Stereo Matching |
+| **Author** | Gadi Dikov |
+| **Year** | 2016-2017 |
+| **Degree** | Bachelor thesis |
+| **Abstract** | SNN for real-time event-based stereo matching using dynamic vision sensors and SpiNNaker hardware. Achieved cooperative stereo matching at 2ms latency. |
+| **Tools** | SpiNNaker, sPyNNaker, PyNN, Dynamic Vision Sensors, HBP Platform |
+| **GitHub** | https://github.com/gdikov/SpikingStereoMatching |
+| **Note** | also got a published conference paper out of it |
+

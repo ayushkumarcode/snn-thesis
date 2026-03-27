@@ -880,31 +880,3 @@ Based on cross-referencing with all existing research files in `/Users/kumar/Doc
 |---|---|---|---|---|
 | 1 | **SNN for Continual Learning (Split-MNIST)** | Moderate-High | Moderate-High | Moderate (needs novel angle) |
 | 2 | **SNN for Image Denoising** | Very High | Moderate-High | Moderate (architecture complexity) |
-| 3 | **SNN for Robotic Arm Control (MuJoCo)** | Moderate | Moderate | Moderate (RL instability) |
-| 4 | **SNN for Privacy/Federated Learning** | Very High | Low-Moderate | High (complexity) |
-| 5 | **SNN for Obstacle Avoidance RL** | Low-Moderate | Moderate-High | Moderate (well-trodden) |
-
----
-
-### Detailed Feasibility Breakdown: Top 3 New Candidates
-
-#### Candidate A: SNN for Continual Learning
-
-**Week-by-week plan:**
-- Week 1: snnTorch MNIST baseline (Tutorial 5), implement Split-MNIST data loader
-- Week 2: Measure baseline catastrophic forgetting, implement EWC for SNN
-- Week 3: Implement experience replay for SNN, run experiments
-- Week 4: ANN comparison, energy analysis, write-up
-
-**Novel angle options:**
-1. "EWC adapted specifically for spiking neuron dynamics" (Fisher Information over membrane potentials)
-2. "Comparing spike-timing-based vs rate-based encoding for continual learning"
-3. "Threshold modulation as a biologically-inspired continual learning mechanism"
-
-**Biggest risk:** The 2023 paper "Investigating Continuous Learning in SNNs" already covers Split-MNIST with SNNs. Must differentiate clearly.
-
-**snnTorch compatibility:** FULL -- standard classification pipeline with multiple training phases.
-
-#### Candidate B: SNN for Image Denoising
-
-**Week-by-week plan:**

@@ -220,31 +220,3 @@ CODE COMPLEXITY: ~300-500 lines of Python (using snnTorch/SpikingJelly)
 
 ### Sensor Fusion Papers
 
-11. **Lopez-Osorio et al. (2024)** - "A Neuromorphic Vision and Feedback Sensor Fusion Based on SNN for Real-Time Robot Adaption" - Advanced Intelligent Systems. [Link](https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202300646)
-
-12. **Loihi-2 Sensor Fusion (Aug 2024)** - "Accelerating Sensor Fusion in Neuromorphic Computing: A Case Study on Loihi-2" - arXiv. [Link](https://arxiv.org/abs/2408.16096)
-
-13. **Spiking Kalman Fusion (Jan 2026)** - "Spiking Neural-Invariant Kalman Fusion for Accurate Localization Using Low-Cost IMUs" - arXiv. [Link](https://arxiv.org/abs/2601.08248)
-
-### Survey Papers
-
-14. **SNN Multimodal Neuroimaging Review (2025)** - Frontiers in Neuroscience. [Link](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1623497/full)
-
-15. **SNN Frameworks Benchmark (2025)** - "A Practical Tutorial on Spiking Neural Networks" - MDPI. [Link](https://www.mdpi.com/2673-4117/6/11/304)
-
-16. **SNN Sound Review (2024)** - "SNN and Sound: A Comprehensive Review" - PMC. [Link](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
-
----
-
-## 7. Could a Simplified Version Work as an Undergrad Project?
-
-### Short Answer: YES -- and a specific blueprint exists.
-
-### The Blueprint: Multimodal Digit Recognition SNN
-
-The Bjorndahl et al. (2024) paper provides an almost exact template:
-
-**Objective**: Classify digits (0-9) using both visual (spiked handwritten digits) and auditory (spiked spoken digits) inputs simultaneously.
-
-**Datasets**:
-- **N-MNIST** (visual): 60K training / 10K testing, 34x34 pixels, already in spike format via Tonic library

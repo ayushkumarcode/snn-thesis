@@ -334,3 +334,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Complexity**: MODERATE-HIGH
 - **Stars**: 9 | **Commits**: 140
 
+### 3.9 Backpropagation for Amplitude Classification using SNNs
+- **URL**: https://github.com/aravsi77/spiking_neural_network_thesis
+- **Description**: SNN for 4QAM modulation classification
+- **Framework**: BindsNet
+- **Dataset**: 4QAM signal data at 18dB SNR
+- **Complexity**: MODERATE
+- **Stars**: 1 | **Commits**: 34
+
+---
+
+## notable non-student projects (useful for scope comparison)
+
+### 4.1 Pure Python SNN (IIT Guwahati)
+- **URL**: https://github.com/Shikhargupta/Spiking-Neural-Network
+- **Description**: Hardware-efficient SNN with STDP and WTA lateral inhibition
+- **Framework**: Pure Python
+- **Dataset**: MNIST
+- **Results**: Successful binary and multi-class classification; clear neuron specialization
+- **Stars**: 1,200+ | **Forks**: 294
+- most popular SNN educational implementation on github. shows learned digit patterns via weight reconstruction. great reference for understanding SNNs from scratch.
+
+### 4.2 SNN++ (C++ High-Performance)
+- **URL**: https://github.com/ianmkim/snnpp
+- **Description**: C++ SNN implementation with SIMD optimization, 2000% faster than reference Python
+- **Framework**: C++, OpenCV, CMake, Intel SSE
+- **Dataset**: MNIST
+- **Results**: ~50 seconds vs ~18 minutes for reference implementation
+- **Stars**: 13 | **Commits**: 30

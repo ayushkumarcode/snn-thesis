@@ -42,31 +42,3 @@ This is the core question. Here is a consolidated view of where things stand as 
 | Method | Accuracy | Gap vs ANN | Notes |
 |--------|----------|-----------|-------|
 | ANN baseline (same arch) | 98.23% | -- | Simple FC network |
-| SNN (surrogate gradient, LIF) | 98.1-98.7% | **0.0-0.5%** | Nearly closed |
-| SNN (STDP unsupervised) | ~95-97% | 1-3% | Bio-plausible but weaker |
-| SNN (Forward-Forward) | 98.69% | **~0%** | Very recent (2025) |
-
-**Verdict**: The gap on MNIST is effectively closed. Surrogate-gradient-trained SNNs match ANNs. This is a solved problem -- including it is fine for completeness but it alone proves nothing.
-
-Sources: [Forward-Forward SNN](https://arxiv.org/html/2502.20411v1), [Sigma-delta neuron benchmarks](https://arxiv.org/pdf/2501.15547)
-
-### Fashion-MNIST
-
-| Method | Accuracy | Gap vs ANN | Notes |
-|--------|----------|-----------|-------|
-| CNN baseline | ~93-95% | -- | Standard CNN |
-| SNN (Sa-SNN, attention) | 94.13% | **~0-1%** | Best SNN result |
-| SNN (surrogate gradient) | ~90-92% | 2-4% | Typical implementation |
-| SNN (STDP-based) | ~87-89% | 5-8% | Unsupervised methods |
-| SNN (Forward-Forward) | 90.27% | ~3-5% | Recent but limited |
-
-**Verdict**: A meaningful gap exists (2-5% for typical implementations). The gap narrows with sophisticated architectures like attention-based SNNs. This dataset is more informative than MNIST for a comparison study.
-
-Sources: [Sa-SNN](https://peerj.com/articles/cs-2549.pdf), [GLSNN](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2020.576841/full)
-
-### CIFAR-10
-
-| Method | SNN Accuracy | ANN Equiv. | Gap | Time Steps |
-|--------|-------------|-----------|-----|-----------|
-| VGG16 (ANN-SNN conversion) | 95.91% | ~96.5% | **~0.6%** | T=many |
-| ResNet20 (conversion) | 96.64% | ~97% | **~0.4%** | T=varies |

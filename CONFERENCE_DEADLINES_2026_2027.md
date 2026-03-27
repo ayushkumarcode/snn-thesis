@@ -88,31 +88,3 @@ Sources: [NICE 2026](https://niceworkshop.org/nice-2026/), [EasyChair CFP](https
 ## 2. SIGNAL PROCESSING CONFERENCES
 
 ### 2.1 EUSIPCO 2026 -- European Signal Processing Conference [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 34th European Signal Processing Conference |
-| **Paper Deadline** | 13 February 2026 (PASSED) |
-| **Journal Paper Deadline** | **30 April 2026** (for presenting already-published journal papers) |
-| **Notification** | 12 May 2026 |
-| **Conference Dates** | 31 August -- 4 September 2026 |
-| **Location** | Bruges, Belgium (KU Leuven) |
-| **Page Limit** | 5 pages (10pt font), including figures/references/appendices |
-| **Format** | IEEE conference template (LaTeX preferred) |
-| **Proceedings** | IEEE Xplore + EURASIP open access |
-| **Acceptance Rate** | ~50-55% historically |
-| **Registration** | TBD (not yet published). One full registration covers up to 3 papers. |
-| **Realistic for UG?** | Good fit for signal processing angle. Moderate competitiveness. |
-| **Focus** | All areas of signal processing including acoustic, speech, music signal processing |
-
-**Note:** Regular paper deadline has passed. The Journal-to-Conference track (April 30) requires an already-published journal paper.
-
-Sources: [EUSIPCO 2026](https://eusipco2026.org/), [Submissions](https://eusipco2026.org/submissions/), [Timeline](https://eusipco2026.org/timeline/)
-
----
-
-### 2.2 ICASSP 2026 -- IEEE International Conference on Acoustics, Speech and Signal Processing [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 51st IEEE International Conference on Acoustics, Speech and Signal Processing |

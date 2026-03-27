@@ -54,3 +54,31 @@ SpiNNaker 1 has barely any published work on audio classification. Dominguez-Mor
 | Rostami et al., "E-prop on SpiNNaker 2" | 2022 | Frontiers Neurosci. | Speech classification | Google Speech Commands (12-class) | 91.12% | On-chip e-prop learning. 12x more energy efficient than V100 GPU. 682KB memory. Gap vs TF baseline: 0.08 pp. |
 | Mayr et al., "Language Modeling on SpiNNaker2" | 2023 | arXiv (2312.09084) | Language modeling | N/A | N/A | First LM on neuromorphic hardware (EGRU). Not audio classification. |
 | Vogginger et al., "Event-based backpropagation on SpiNNaker2" | 2024 | NeurIPS | On-chip training | Yin-Yang | Proof of concept | EventProp on SpiNNaker2. Not audio-specific. |
+
+SpiNNaker2 specs: 153 ARM cores, 19MB on-chip SRAM, 2GB DRAM, 22nm FDSOI with adaptive body biasing, near-threshold operation down to 0.5V, 10x improvement in neural simulation capacity per watt over SpiNNaker1, average power below 0.34W for inference.
+
+important context: SpiNNaker2 got 91.12% on 12-class Google Speech Commands with essentially zero hardware gap (0.08pp), but that's a much simpler task than 50-class ESC-50. our 12.8pp gap should be interpreted accordingly -- way harder task + older platform + binary input constraints.
+
+---
+
+### 1.3 BrainScaleS-2
+
+accelerated mixed-signal neuromorphic platform from Heidelberg. 512 adaptive integrate-and-fire neurons, 131K plastic synapses, 1000x speedup (analog acceleration).
+
+audio classification work: basically none. no published environmental sound classification results. the SHD and SSC datasets were actually *created* by the Heidelberg group, but BrainScaleS-2 deployment results for these audio benchmarks aren't prominently published. the platform is primarily used for neuroscience research.
+
+---
+
+### 1.4 BrainChip Akida
+
+first commercially available neuromorphic processor. event-based digital architecture. Akida 1.0 (2021), Akida 2.0/Pico (2024). <2mW (Akida), <1mW (Akida Pico).
+
+audio applications: keyword spotting with DS-CNN (32 different keywords), TENNs (Temporal Event-based Neural Networks) that eliminate pre-processing steps -- no mel spectrogram needed, operates directly on raw audio. always-on voice activity detection at <1mW.
+
+no published ESC-50 or ESC-10 results though. primarily keyword spotting and acoustic anomaly detection.
+
+---
+
+### 1.5 SynSense Xylo Audio
+
+most extensively benchmarked neuromorphic chip for audio inference. all-digital, 28nm CMOS, up to 1000 LIF neurons, 16 input channels, 8 output. ultra-low power: 219 uW idle, 93 uW dynamic inference.

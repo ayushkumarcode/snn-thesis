@@ -194,3 +194,31 @@ estimated time: 3-4 weeks.
 - report: "SNNs got 98%, ANNs got 99%, so ANNs are slightly better"
 - no energy analysis, no controlled variables, no encoding comparison, default hyperparams
 
+this is weak because a high school student already published it. no experimental design beyond "run and report." easily dismissed as tutorial replication.
+
+red flags: only MNIST, one encoding, default hyperparams, no statistics, no energy analysis.
+
+### MODERATE (solid 2:1)
+
+- all three datasets
+- two+ architectures (FC and conv)
+- fair comparison (matched params)
+- at least two encoding schemes
+- some hyperparameter sensitivity
+- spike count / SynOps reported
+- multiple trials with error bars
+- structured analysis of accuracy gap
+
+### STRONG (first-class potential, publishable)
+
+- title like: "A Systematic Multi-Dimensional Comparison of Spiking and Artificial Neural Networks: Accuracy, Efficiency, and Robustness Trade-offs"
+- three datasets plus neuromorphic dataset (CIFAR10-DVS or DVS128 Gesture)
+- three+ architectures with matched params
+- systematic encoding comparison
+- hyperparameter sensitivity with Pareto frontiers
+- NeuroBench energy estimation
+- adversarial robustness comparison (FGSM, PGD at multiple epsilon)
+- time steps vs accuracy vs efficiency curves
+- statistical rigor (multiple seeds, CIs, significance tests)
+- clear conclusions with practical recommendations
+- reproducible codebase

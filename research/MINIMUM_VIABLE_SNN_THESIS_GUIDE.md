@@ -110,3 +110,31 @@ MNIST is universally accepted as the baseline benchmark for SNN research. Diehl 
 
 Adding N-MNIST or DVS128 Gesture as a third dataset shows you understand neuromorphic data and puts SNNs in their natural domain. This is where the SNN advantage over ANNs actually appears.
 
+### Datasets to avoid:
+- Custom/obscure datasets (examiners can't verify your claims)
+- Datasets requiring significant preprocessing work (time sink)
+- Very large datasets (ImageNet, COCO) -- training time makes iteration impossible
+
+---
+
+## 4. Realistic time estimates
+
+### Total coding time: 30-50 hours for 2:1, 50-80 hours for first
+
+| Phase | Hours | What you're doing |
+|-------|-------|--------------------|
+| **Environment setup** | 2-3 | Install PyTorch, snnTorch, Tonic. Set up Jupyter/Colab. |
+| **Work through snnTorch tutorials** | 6-10 | Tutorials 1, 3, 5, 6. This IS your learning AND your code base. |
+| **ANN baseline implementation** | 3-5 | Standard PyTorch CNN on MNIST. Hundreds of examples exist online. |
+| **Adapt SNN from tutorials** | 5-8 | Modify tutorial code for your specific architecture/parameters. |
+| **Second dataset integration** | 2-4 | Fashion-MNIST: change one line. N-MNIST: follow Tutorial 7. |
+| **Run experiments** | 4-8 | Training runs. Most take 5-30 mins each on GPU (use Google Colab). |
+| **Generate plots and tables** | 3-5 | matplotlib/seaborn for figures. Pandas for tables. |
+| **Debugging and iteration** | 5-10 | Things will break. Budget for this. |
+| **TOTAL (2:1 path)** | **30-50** | |
+| **Additional for first** | **+15-30** | Encoding comparison, N-MNIST, energy analysis, hyperparameter sweep |
+
+### Time-saving strategies:
+
+1. **Use Google Colab** for GPU access. Free tier is enough for MNIST-scale stuff. No local setup needed.
+

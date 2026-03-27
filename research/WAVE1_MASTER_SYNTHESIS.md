@@ -222,3 +222,31 @@ Given a "just get it done" mindset, here's what makes sense:
 - ~200 lines for baseline; 2-4 weeks to working results
 
 **Option 3: SNN ECG Classification** -- best real-world narrative
+- snnTorch has built-in delta encoding for ECG
+- MIT-BIH is small and clean
+- PTB-XL 12-lead is virtually untouched = strong novelty
+- Clinical relevance makes a compelling motivation section
+- ~300-500 lines of code; 4-6 weeks to working results
+
+### Report strategy (worth 55% of the mark):
+1. Strong motivation section grounded in real-world context
+2. 3-4 numbered objectives with explicit success criteria
+3. Thorough background chapter (~20% of word count)
+4. Multi-axis evaluation (accuracy + energy + at least one more dimension)
+5. Honest critical appraisal with lessons learned
+6. Future work section showing awareness of what's next
+
+---
+
+## 10. Web research updates (Feb 2026)
+
+### 10.1 ESC-50 / Environmental Sound -- confirmed zero SNN papers
+A March 2025 peer-reviewed paper (arxiv 2503.11206) explicitly states: *"No state-of-the-art solution has yet encoded environmental sound datasets using spike-based methods and performed classification with a spiking neural network."*
+- That paper only benchmarked encoding methods on ESC-10 (10-class subset), getting ~69% accuracy with a basic 4-layer LIF network
+- No published SNN paper reports results on the full ESC-50 dataset (50 classes)
+- One paper (SATRN) achieves 95.5% on UrbanSound8K but not ESC-50
+- This is the single strongest novelty opportunity i found
+
+### 10.2 DVS128 Gesture -- confirmed saturated
+- SOTA: 99.59% (TENNs-PLEIADES, not even an SNN)
+- SNN-only SOTA: ~99.3% (SG-SNN)

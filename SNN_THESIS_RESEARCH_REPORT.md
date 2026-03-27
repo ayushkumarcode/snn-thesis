@@ -530,3 +530,31 @@ start with MNIST (rate-encoded) to verify the pipeline works. then move to N-MNI
 - companion paper: "Training Spiking Neural Networks Using Lessons From Deep Learning" (Eshraghian et al., 2023)
 - GitHub: github.com/jeshraghian/snntorch (MIT license, actively maintained)
 
+---
+
+<a name="conversion"></a>
+## ANN-to-SNN conversion tools
+
+### tool maturity
+
+| Tool | Input Formats | Backends | Maturity | Active? |
+|------|--------------|----------|----------|---------|
+| snn_toolbox | Keras, PyTorch, Lasagne, Caffe | pyNN, Brian2, SpiNNaker, Loihi | Moderate | Low activity |
+| SpikingJelly ann2snn | PyTorch | SpikingJelly | Good | Active |
+| NengoDL Converter | Keras/TF | Nengo, Loihi | Mature | Active |
+| MATLAB SNN Toolbox | MATLAB networks | Simulink | Moderate | Active |
+
+### what actually works and what doesn't
+
+**what works:**
+- converting simple CNNs (VGG, ResNet) to SNNs preserves reasonable accuracy (above 80%)
+- SpikingJelly's ann2snn module is the most stable and scalable as of 2024
+- NengoDL provides clean Keras-to-SNN pipeline with good documentation
+- snn_toolbox offers the broadest input format support
+
+**what doesn't work well:**
+- NOT a "one-click solution" -- accuracy loss and significant adjustments often required
+- most conversion methods are based on rate encoding and historically needed T >= 128 time steps
+- recent methods have reduced this to T = 3-4, but at some accuracy cost
+- complex architectures (transformers, attention) do not convert cleanly
+- batch normalization, dropout, and certain activation functions need special handling

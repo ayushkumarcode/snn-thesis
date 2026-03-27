@@ -278,3 +278,31 @@ why this works:
 ---
 
 ## research ecosystem map
+
+```
+                NEUROMORPHIC CYBERSECURITY ECOSYSTEM
+
+    HARDWARE                    FRAMEWORKS                  APPLICATIONS
+    --------                    ----------                  ------------
+    Intel Loihi 2  --------->  Intel Lava  ------------>  Lifelong NIDS
+    IBM TrueNorth                                          (Mia 2025)
+    BrainChip Akida -------->  Cyber-Neuro RT --------->  HPC-scale IDS
+    SpiNNaker                                              (Penn State)
+                               snnTorch  -----+
+                               SpikingJelly ---+--------->  ConvSNN-IDS
+                               BindsNET  ------+            (Wang 2024)
+                               Norse  ---------+
+                                               |
+    DATASETS                                   v
+    --------                           SNN-IDS RESEARCH
+    NSL-KDD  ----+
+    CICIDS-2017 -+---> Benchmarks ---> Encoding: rate, temporal, latency
+    UNSW-NB15 ---+                     Learning: STDP, surrogate gradient,
+    ToN-IoT -----+                               backprop-through-time
+    BoT-IoT -----+                     Architecture: ConvSNN, HRSNN, TASNN
+    AWID --------+                     Deployment: edge, IoT, federated
+
+    KEY RESEARCH GROUPS
+    -------------------
+    - Penn State (Sengupta group) -- neuromorphic cybersecurity, lifelong learning
+    - UTM Malaysia (Wang, Ghaleb, Zainal) -- ConvSNN efficiency

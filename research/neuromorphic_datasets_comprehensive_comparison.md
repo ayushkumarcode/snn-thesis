@@ -154,31 +154,3 @@ Eight neuromorphic datasets were investigated in depth, along with three newer d
 | **Sensor** | DVS (Dynamic Vision Sensor, 128x128) |
 | **Classes** | 10 (same as CIFAR-10: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck) |
 | **Total samples** | 10,000 (1,000 per class) |
-| **Standard split** | No official split; commonly 9,000 train / 1,000 test or 8,000 / 2,000 |
-| **Data format** | AEDAT (address-event representation) |
-| **Spatial resolution** | 128 x 128 pixels |
-| **Creation method** | DVS camera viewing CIFAR-10 images on LCD with closed-loop smooth movement |
-| **Download source** | Figshare (https://figshare.com/articles/dataset/CIFAR10-DVS_New/4724671) |
-| **Year introduced** | 2017 (Li et al., Frontiers in Neuroscience) |
-
-**Preprocessing required:**
-- Convert AEDAT format to event arrays
-- Integrate events into frames (commonly T=10 time bins with spatial resolution 128x128)
-- Two-polarity representation (positive/negative events as separate channels)
-- Time surface representation possible (accumulate events weighted by recency)
-- Voxel grid encoding for more advanced representations
-- Data augmentation important (random crop, flip, EventDrop)
-
-**Framework support:**
-- SpikingJelly: Native support (built-in dataset loader with frame integration)
-- Tonic: Full support as `tonic.datasets.CIFAR10DVS`
-- snnTorch: Via Tonic
-- Norse: Compatible via Tonic
-
-**State-of-the-art accuracy (SNN methods):**
-
-| Method | Year | Accuracy | Notes |
-|---|---|---|---|
-| I2E-ImageNet pretrain + finetune | 2025 | 92.5% | Transfer learning from synthetic events |
-| ICLR 2024 paper | 2024 | 84.9% | Sparse connectivity (6.8%) |
-| VGG-11 SNN | 2024 | 81.23% | Standard architecture |

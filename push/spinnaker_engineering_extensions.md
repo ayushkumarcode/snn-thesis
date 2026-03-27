@@ -26,3 +26,31 @@ add inhibitory connections between 50 output neurons. forces single winner, shar
 deploy FC2 with STDP enabled, fine-tune on-chip using teacher signals. sPyNNaker supports SpikePairRule, Vogels2011Rule, etc. would be the first on-chip learning for audio on SpiNNaker.
 
 ## Priority 6: Liquid State Machine on SpiNNaker (5-7 days) -- most novel
+
+500-1000 LIF reservoir with random recurrent connections, only readout trained. runs entirely on SpiNNaker. no LSM for ESC-50 exists. avoids cancellation problem (random weights, chosen distribution).
+
+---
+
+## Other Ideas (Lower Priority)
+
+| # | Idea | Time | Novelty |
+|---|------|------|---------|
+| 7 | Poisson noise robustness (SpikeSourcePoisson background) | 1-2d | Medium |
+| 8 | SpiNNaker 2 readiness via NIR export + 8-bit quantization | 2-3d | Medium |
+| 9 | Izhikevich resonator neurons as neuromorphic filterbank | 3-5d | High |
+| 10 | Structural plasticity (grow/prune connections on-chip) | 4-5d | High |
+| 11 | Loihi comparison via NIR + Lava simulator | 3-5d | Medium-High |
+| 12 | Real-time audio streaming via SpynnakerLiveSpikesConnection | 3-4d | Medium |
+| 13 | Sub-millisecond timestep precision | 2-3d | Medium |
+| 14 | Multi-chip ensemble (parallel classifiers, majority vote) | 2-3d | Medium-High |
+
+---
+
+## Technical Details
+
+### IF_cond_exp Parameters
+```python
+lif_params_cond = {
+    "cm": 1.0, "tau_m": 20.0, "tau_refrac": 0.1,
+    "v_reset": -65.0, "v_rest": -65.0, "v_thresh": -50.0,
+    "tau_syn_E": 5.0, "tau_syn_I": 5.0,

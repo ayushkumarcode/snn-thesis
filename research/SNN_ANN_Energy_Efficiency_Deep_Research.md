@@ -26,3 +26,31 @@ For my project specifically: my measured 74.16% activation sparsity (NeuroBench)
 - Establishes a fair baseline by mapping rate-encoded SNNs with T timesteps to functionally equivalent QNNs with ceil(log2(T+1)) bits.
 - Sparsity thresholds by time window:
 
+| Time Window (T) | Required Sparsity (Classical) | Required Sparsity (Spatial-Dataflow) |
+|:---:|:---:|:---:|
+| 6 | >92% | >93% |
+| >16 | >97% | >97%+ |
+
+- Experimental validation using VGG16 on CIFAR-10 with their sparsity regularization:
+  - Achieved 94.19% sparsity at T=6
+  - Energy: 0.85x (classical) and 0.78x (spatial-dataflow) relative to ANNs
+  - Accuracy: 92.76%
+- Energy model parameters used:
+
+| Operation | Energy Cost |
+|:---|:---:|
+| 8-bit ADD | 0.03 pJ |
+| 8-bit MUL | 0.2 pJ |
+| SRAM (per bit) | 20 pJ |
+| DRAM (per bit) | 2 nJ |
+| NOC per hop | 10 pJ/bit |
+
+- Without accounting for memory access and data movement overhead, SNNs appear efficient even at 0% sparsity. Realistic hardware analysis completely changes the picture.
+
+#### Shen et al. (2024) -- "Are Conventional SNNs Really Efficient?" (CVPR 2024)
+- Introduces the "Bit Budget" concept -- total computational work = bit-width x operations performed.
+- SNNs only become more efficient than quantized ANNs when maintaining spike rates below ~10-15%.
+- Reported actual spike rates: typical 20-40% on ImageNet-scale tasks -- above the crossover point.
+- Conventional SNN implementations sacrifice efficiency gains by tolerating high spiking activity to maintain accuracy.
+
+#### Hardware-Aware vs Hardware-Agnostic (2025) -- arXiv:2508.19654

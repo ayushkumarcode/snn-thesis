@@ -166,3 +166,31 @@ def eval_model(model, loader, device):
             spk_out, mem_out, layer_spikes = model(spk_input)
 
         predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        for k in total_rates:
+            total_rates[k] += layer_spikes[k].item()
+
+    n_batches = len(loader)
+    avg_rates = {k: v / n_batches for k, v in total_rates.items()}
+    overall_rate = sum(avg_rates.values()) / len(avg_rates)
+    return correct / total, avg_rates, overall_rate
+
+
+def run_fold(fold, device, lambda_conv, lambda_fc, num_steps=NUM_STEPS):
+    print(f"\n  Fold {fold}: lambda_conv={lambda_conv}, lambda_fc={lambda_fc}")
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+
+    model = SpikeRegSNN(num_steps=num_steps).to(device)
+    param_count = sum(p.numel() for p in model.parameters())
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE,
+                                 weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode="min", factor=0.5, patience=5)
+
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+

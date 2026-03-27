@@ -1,15 +1,15 @@
-# SNN Energy Reduction Strategies: 10-100x Target
+# energy reduction strategies -- notes toward 10-100x target
 
-## Research Date: 26 March 2026
-## Context: ESC-50 SNN (622K params, T=25, 968 nJ/sample, 1.08M ACs, spike rate 26.4%, accuracy 47.15%)
+research date: 26 march 2026
+context: our SNN is 622K params, T=25, 968 nJ/sample, 1.08M ACs, spike rate 26.4%, accuracy 47.15%
 
 ---
 
-## EXECUTIVE SUMMARY
+the big picture is that our spike rate of 26.4% is 4x above the break-even threshold of ~6.4% (Dampfhoffer 2023, Yang et al. 2024). until we get below ~7%, our SNN isn't actually more efficient than a quantized ANN on digital hardware. so that's the thing we need to fix first.
 
-After exhaustive research across SNN literature, neuromorphic hardware papers, signal processing, and cross-domain inspiration, I have identified **8 concrete strategy tiers** that can be combined for multiplicative energy reduction. The critical insight from the literature is:
+rough estimates for what combining techniques could get us:
 
-**Our SNN's spike rate of 26.4% is 4x above the break-even threshold of ~6.4%.** Until spike rate drops below ~7%, our SNN is NOT more energy-efficient than a quantized ANN on digital hardware (Dampfhoffer 2023, Yang et al. 2024). The strategies below directly target this.
+| strategy | reduction | acc impact | how hard |
 
 ### Projected Combined Energy Reduction
 

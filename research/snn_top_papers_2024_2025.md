@@ -132,31 +132,3 @@ Key papers:
 1. QKFormer: Hierarchical Spiking Transformer using Q-K Attention **(Spotlight)**
 2. Latent Diffusion for Neural Spiking Data
 3. Autonomous Driving with Spiking Neural Networks
-4. Spiking Graph Neural Network on Riemannian Manifolds
-5. SpikeReveal: Unlocking Temporal Sequences from Real Blurry Inputs with Spike Streams
-6. Advancing Spiking Neural Networks for Sequential Modeling through Central Pattern Generators
-7. Take A Shortcut Back: Mitigating the Gradient Vanishing for Training SNNs
-8. FEEL-SNN: Robust SNNs with Frequency Encoding and Evolutionary Leak Factor
-9. Spiking Neural Network as Adaptive Event Stream Slicer
-10. Spiking Token Mixer
-
-### ICLR 2024 (~10 SNN papers)
-Key papers:
-1. Spike-driven Transformer V2: Meta Spiking Neural Network Architecture
-2. SpikeGCL: A Graph is Worth 1-bit Spikes
-3. SpikePoint: Efficient Point-based SNN for Event Cameras Action Recognition
-4. LMUFormer: Low Complexity Spiking Model With Legendre Memory Units
-5. Online Stabilization of Spiking Neural Networks
-6. Towards Energy Efficient SNNs: An Unstructured Pruning Framework
-7. Can we get the best of both Binary Neural Networks and SNNs?
-8. Spatio-Temporal Approximation: Training-Free SNN Conversion for Transformers
-9. Hebbian Learning based Orthogonal Projection for Continual Learning of SNNs
-10. Adaptive deep SNN with global-local learning via balanced excitatory/inhibitory mechanism
-
-### ICLR 2025 (11+ SNN papers)
-Key papers:
-1. SpikeLLM: Scaling up SNN to Large Language Models via Saliency-based Spiking
-2. P-SpikeSSM: Probabilistic Spiking State Space Models for Long-Range Tasks
-3. Quantized Spike-driven Transformer
-4. TS-LIF: Temporal Segment Spiking Neuron Network for Time Series Forecasting
-5. Spiking Vision Transformer with Saccadic Attention

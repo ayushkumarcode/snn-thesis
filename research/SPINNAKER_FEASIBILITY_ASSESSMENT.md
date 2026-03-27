@@ -278,3 +278,31 @@ Two key papers document this end-to-end:
 | Precedent | YES -- audio classification on SpiNNaker exists | Limited precedent |
 
 Audio on SpiNNaker has been demonstrated. Dominguez-Morales et al. built a [multilayer SNN for audio classification on SpiNNaker](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker) using LIF neurons and rate-based training. They got >85% accuracy on tone classification with noise robustness.
+
+For ESC-50 specifically, i'd likely need to:
+1. Train convolutional SNN in snnTorch as planned
+2. For SpiNNaker1: possibly simplify to FC architecture (easier to port)
+3. For SpiNNaker2: full conv architecture could transfer via NIR
+
+### ECG PTB-XL (1D time series)
+
+No direct 1D conv support in sPyNNaker -- would need to flatten to 2D or use FC layers. No ECG-specific SpiNNaker papers found. Feasible but no precedent.
+
+### Robot reflexes (RL policy inference)
+
+This is the BEST fit for SpiNNaker deployment. The Spiking Q-Network paper demonstrated CartPole and Acrobot environments, snnTorch training -> SpiNNaker2 deployment, 0.006 J per inference (CartPole), and 24-32x energy reduction vs GTX 1650.
+
+Source: [Hardware-Aware Fine-Tuning of Spiking Q-Networks on SpiNNaker2](https://arxiv.org/html/2507.23562v1)
+
+---
+
+## 7. SpiNNaker2 vs SpiNNaker1
+
+| Feature | SpiNNaker1 | SpiNNaker2 |
+|---------|-----------|-----------|
+| Process node | 130nm CMOS | 22nm FDSOI |
+| Cores per chip | 18 ARM968 | 153 ARM Cortex-M4F |
+| On-chip memory | 128KB DTCM + 32KB ITCM per core | 128KB per PE + shared SRAM |
+| External memory | 128MB SDRAM per chip | 2GB LPDDR4 per chip |
+| Total SRAM | ~2.3MB per chip | 19MB per chip |
+| ML accelerators | None | MAC array, exp/log, RNG |

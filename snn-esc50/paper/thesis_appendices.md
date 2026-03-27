@@ -152,20 +152,20 @@ Most misclassifications are within super-categories (animal classes confused wit
 
 ### B.2 ANN -- fold 4 (400 samples)
 
+![ANN confusion matrix fold 4](../results/analysis/confusion_ann_fold4.png)
 
-### B.2 ANN — Fold 4 (400 Samples)
-
-![ANN confusion matrix (fold 4, ConvANN, 400 test samples). Tighter diagonal concentration than SNN (63.85% vs 47.15% accuracy). ANN shows stronger discrimination within super-categories, particularly for Animals and Urban classes.](../results/analysis/confusion_ann_fold4.png)
-
-*Source: `results/analysis/confusion_ann_fold4.png`.*
+Tighter diagonal than SNN (63.85% vs 47.15%). Better discrimination within super-categories, especially Animals and Urban.
 
 ---
 
-## Appendix C: SpiNNaker Parameter Tables
+## appendix C: SpiNNaker parameter tables
 
-### C.1 Neuron Model Parameters (IF_curr_exp)
+### C.1 neuron model params (IF_curr_exp)
 
-| Parameter | Value | Justification |
+| Param | Value | Why |
+|-------|-------|-----|
+| Neuron model | IF_curr_exp | sPyNNaker default, compatible with snnTorch LIF |
+| v_thresh | 1.0 mV | matches snnTorch threshold=1.0 |
 |-----------|-------|---------------|
 | Neuron model | IF_curr_exp | sPyNNaker default; compatible with snnTorch LIF semantics |
 | v_thresh | 1.0 (mV) | Matches snnTorch `threshold=1.0` |

@@ -222,3 +222,24 @@ def main():
         all_results.extend(results)
 
     # Summary
+    save_dir = RESULTS_DIR / "energy" / "extreme_pruning"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+
+    if len(folds) == 5:
+        print(f"\n{'='*60}")
+        print(f"  5-Fold Extreme Pruning Summary")
+        print(f"{'='*60}")
+        for level in [0.0] + sparsity_levels:
+            fold_accs = [r["accuracy"] for r in all_results
+                         if abs(r["target_sparsity"] - level) < 0.01]
+            if len(fold_accs) == 5:
+                print(f"  {level*100:5.1f}% pruning: "
+                      f"{np.mean(fold_accs):.4f}±{np.std(fold_accs):.4f}")
+
+    print(f"\nSaved to {save_dir / 'all_results.json'}")
+
+
+if __name__ == "__main__":
+    main()

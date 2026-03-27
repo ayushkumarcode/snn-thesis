@@ -250,20 +250,20 @@ All 2000 embeddings precomputed and cached. Three classifiers compared: SNN head
 **SNN-ANN gap collapses from 16.70 pp to 0.95 pp with pretrained features.** This is the most important finding in the thesis.
 
 The accuracy gap is almost entirely explained by feature quality, not spiking computation. When both classifiers get identical, high-quality 2048-d AudioSet features, they achieve statistically indistinguishable accuracy (92.50% vs 93.45%).
-**5-fold cross-validation on frozen CNN14 embeddings:**
 
-| Classifier | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std |
-|-----------|--------|--------|--------|--------|--------|------|-----|
-| SNN head (ours) | 92.00% | 94.50% | 91.00% | 93.50% | 91.50% | **92.50%** | 1.30% |
-| ANN head | 93.00% | 95.00% | 92.00% | 95.50% | 91.75% | **93.45%** | 1.54% |
-| Linear classifier | 94.25% | 95.75% | 92.50% | 95.25% | 91.25% | **93.80%** | 1.69% |
+**What this means for the gap in 4.2:** the 16.70 pp gap isn't a fundamental limitation of spiking computation. It reflects the difficulty of learning audio features from scratch with ~622K params on 1600 clips. With equivalent features, SNN ~ ANN.
 
-### 4.6.3 Interpretation
+**What this means for deployment:** SNN on PANNs embeddings = 92.50%, surpasses human performance (81.3%), approaches SOTA. Practical pathway: run ANN feature extractor once (CPU/NPU), classify with SNN on neuromorphic hardware (energy-efficient final step).
 
-**The SNN-ANN gap collapses from 16.70 pp to 0.95 pp with pre-trained features.** This is the most important finding in this thesis.
+**Novelty:** first PANNs + SNN combination in published literature afaik.
 
-The headline interpretation: the accuracy gap between SNNs and ANNs is almost entirely explained by feature quality, not by the spiking computation mechanism. When both classifiers receive identical, high-quality 2048-d AudioSet features, they achieve statistically indistinguishable accuracy (92.50% vs 93.45%).
+---
 
+## 4.7 population coding
+
+Output expanded to 500 neurons (50 x 10). All 10 neurons per class contribute via summed spike count. Loss: SF.mse_count_loss(population_code=True, num_classes=50). Input: rate coding.
+
+| Fold | Best Acc | Best Epoch | Total Epochs |
 **What this means for the accuracy gap (§4.2):** The 16.70 pp gap seen in §4.2 is not a fundamental limitation of spiking computation. It reflects the difficulty of learning rich audio features from scratch with a ~622K parameter network trained on 1,600 clips. An ANN with the same capacity would achieve a similar gap against SNN if both were constrained to the same small-data regime.
 
 **What this means for neuromorphic deployment:** An SNN trained on top of pre-computed PANNs embeddings achieves 92.50% accuracy on ESC-50 — surpassing the human performance benchmark (81.3%) and approaching ANN state-of-the-art from scratch. This opens a practical deployment pathway: run the ANN feature extractor once (on a CPU or NPU), then classify with the SNN on neuromorphic hardware (energy-efficient for the final classification step).

@@ -180,20 +180,20 @@ Mean timestep of first correct-class spike, averaged over fold 4 test samples. S
 
 **Latest firing:**
 
-| door_wood_knock | 0.75 |
-| mouse_click | 0.75 |
-| rooster | 0.88 |
-| crow | 0.88 |
-| siren | 0.88 |
-
-**Latest-firing classes:**
-
-| Class | Mean first-spike (step out of 25) |
-|-------|----------------------------------|
+| Class | Mean first-spike |
+|-------|-----------------|
 | pig | 3.00 |
 | snoring | 3.25 |
 | door_wood_creaks | 2.75 |
 | vacuum_cleaner | 2.63 |
+| brushing_teeth | 2.63 |
+| insects | 2.63 |
+
+Mean first-spike latency is very short (0.12-3.25 out of 25) -- SNN with direct encoding fires output spikes early. Consistent with constant current driving rapid LIF charge accumulation. First-spike readout underperforms because the first spike is noisy (other classes may fire first by chance), not because the correct class fires late.
+
+---
+
+## 6.4 representation analysis (t-SNE)
 | brushing_teeth | 2.63 |
 | insects | 2.63 |
 

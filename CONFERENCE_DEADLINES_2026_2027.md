@@ -256,31 +256,3 @@ Sources: [ICML 2026 Dates](https://icml.cc/Conferences/2026/Dates), [ICML 2026 C
 
 Sources: [NeurIPS](https://neurips.cc/), [NeurIPS 2026 OpenReview](https://openreview.net/group?id=NeurIPS.cc/2026/Conference)
 
----
-
-### 3.3 ICLR 2026 -- International Conference on Learning Representations [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | International Conference on Learning Representations |
-| **Abstract Deadline** | 19 September 2025 (PASSED) |
-| **Paper Deadline** | 24 September 2025 (PASSED) |
-| **Conference Dates** | 23-27 April 2026 |
-| **Location** | Riocentro, Rio de Janeiro, Brazil |
-| **Page Limit** | 9 pages main + 1 extra during discussion + unlimited refs |
-| **Format** | ICLR LaTeX template (OpenReview) |
-| **Acceptance Rate** | ~28-32% (2025: 32.1%). 2026: 19,797 submissions. |
-| **Registration** | Dynamic pricing (early pricing ended March 15, 2026) |
-| **Realistic for UG?** | **VERY HARD.** Same concerns as ICML/NeurIPS. |
-| **Focus** | Representation learning, deep learning |
-
-Sources: [ICLR 2026](https://iclr.cc), [ICLR 2026 Dates](https://iclr.cc/Conferences/2026/Dates)
-
----
-
-### 3.4 ICLR 2027 -- International Conference on Learning Representations
-
-| Field | Details |
-|-------|---------|
-| **Paper Deadline** | **~September 2026** (estimated; not yet announced) |
-| **Conference Dates** | ~April-May 2027 (TBD) |

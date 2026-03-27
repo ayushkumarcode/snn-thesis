@@ -166,3 +166,31 @@ so yeah, we're first. **first work to use PANNs (or any AudioSet-pretrained mode
 - keyword spotting and speaker identification
 - outperforms conventional mel spectrograms for SNN processing
 - but it's a front-end (encoding), not a pretrained feature extractor -- different from what we do
+
+**SATRN: Spiking Audio Tagging Robust Network (Gao & Deng, Electronics 2025)**
+- spiking architecture with temporal-spatial attention + membrane potential residual connections
+- UrbanSound8K and FSD50K
+- "comparable performance to traditional CNNs"
+- trained from scratch though, not using pretrained features
+
+**SpikSLC-Net (OpenReview 2025)**
+- joint sound source localization and classification
+- spiking hybrid attention fusion mechanism
+- training-inference-decoupled layer normalization
+
+**Spiking-FullSubNet (Hao et al., IEEE TNNLS 2025)**
+- winner of Intel N-DNS Challenge (Algorithmic Track)
+- full-band and sub-band fusion for speech enhancement
+- novel spiking neuron with dynamic input integration/forgetting
+- highly relevant because it shows well-designed SNN audio systems can beat ANN SOTA
+
+### Multimodal Audio-Visual SNN Space
+
+some interesting work here but not directly related to us:
+- **MISNet (ACM TOMM 2024-2025)**: multimodal LIF neuron coordinates audiovisual spikes
+- **SMMT: Spiking Multimodal Transformer (IEEE TCDS 2024)**: spiking cross-attention for multimodal fusion
+- **S-CMRL (arXiv 2025)**: semantic-alignment cross-modal residual learning
+
+---
+
+## 5. SNN-ANN Accuracy Gap: What Does the Literature Say?

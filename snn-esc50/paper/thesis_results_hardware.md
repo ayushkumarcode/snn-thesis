@@ -68,20 +68,20 @@ Hardware (SpiNNaker, IF_curr_exp):
 Software portion produces binary spikes with 21.7% active neurons/timestep (55.6 of 256 firing), satisfying SpiNNaker's binary requirement for FC2.
 
 ### 5.2.2 SpiNNaker configuration
-**Hardware:** SpiNN-5 board at `spinnaker.cs.man.ac.uk`, accessed via sPyNNaker 1.0.0.
 
-**Calibrated parameters** (determined by 9-point scale sweep + LIF parameter sweep):
+**Hardware:** SpiNN-5 at spinnaker.cs.man.ac.uk, sPyNNaker 1.0.0.
+
+**Calibrated params** (9-point scale sweep + LIF param sweep):
 ```
 Population: IF_curr_exp, 50 neurons (one per class)
-Input: SpikeSourceArray, 256 neurons × 25ms
-Neuron parameters:
-  cm = 1.0 nF              # membrane capacitance
-  tau_m = 20.0 ms          # membrane time constant
-  tau_refrac = 0.1 ms      # refractory period
-  tau_syn_E = 5.0 ms       # excitatory synaptic time constant
-  v_thresh = 1.0 mV        # spike threshold
-  v_rest = v_reset = 0.0 mV
-Weight scale = 1.0         # FC₂ weights mapped to integer format
+Input: SpikeSourceArray, 256 neurons x 25ms
+cm = 1.0 nF
+tau_m = 20.0 ms
+tau_refrac = 0.1 ms
+tau_syn_E = 5.0 ms
+v_thresh = 1.0 mV
+v_rest = v_reset = 0.0 mV
+weight_scale = 1.0
 ```
 
 ### 5.2.3 Software Feature Extraction

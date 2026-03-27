@@ -446,3 +446,31 @@ Wang et al. (2025): parametric surrogate gradient strategy that iteratively find
 
 ### SOTA Benchmarks
 
+| Dataset | Architecture | Accuracy | Time Steps | Method |
+|---------|-------------|----------|------------|--------|
+| MNIST | ConvSNN | 98.1% | 2 | Sigma-delta neurons |
+| CIFAR-10 | ResNet-19 | 96.43% | 4 | Direct training |
+| CIFAR-100 | ResNet-19 | 81.86% | 4 | Direct training |
+| ImageNet-1k | SGLFormer | 83.73% | 4 | Spiking Transformer |
+| ImageNet-1k | QKFormer | >85% | 4 | Spiking Transformer |
+| CIFAR10-DVS | VGG-SNN | 82.95% | - | LNM |
+| DVS128 Gesture | Various | 96-97% | - | Direct training |
+
+### Trends
+
+1. learnable/adaptive surrogates replacing fixed ones in cutting-edge work
+2. spiking transformers reaching competitive performance with ANN transformers
+3. theoretical foundations finally being established (Gygax & Zenke 2025)
+4. fewer time steps needed (T=2-4 getting strong results)
+5. normalization techniques (BNTT, tdBN, MP-Init) crucial for depth
+6. SNN-ANN accuracy gap rapidly closing, especially on ImageNet
+
+---
+
+## Practical Recommendations
+
+### Default Configuration
+
+```python
+spike_grad = surrogate.fast_sigmoid(slope=25)
+beta = 0.5           # Membrane decay

@@ -54,3 +54,31 @@ Sources: [ICONS 2026 Calls](https://iconsneuromorphic.cc/calls-2026/), [EasyChai
 | **Registration** | Master/bachelor students receive sponsored participation |
 
 abstract-only, so low barrier. student sponsorship is nice. but it doesn't produce a citable proceedings paper.
+
+Sources: [ICNCE 2026](https://icnce-2026.de/), [NeuroPAC listing](https://www.neuropac.info/event/icnce-2026-international-conference-on-neuromorphic-computing-and-engineering/)
+
+---
+
+### 1.3 NICE 2026 -- Neuro-Inspired Computational Elements Conference [DEADLINE PASSED]
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | 24 November 2025 (PASSED) |
+| **Late-Breaking** | 1 February 2026 (PASSED) |
+| **Conference Dates** | 24-26 March 2026 |
+
+Sources: [NICE 2026](https://niceworkshop.org/nice-2026/)
+
+---
+
+## 2. signal processing conferences
+
+### 2.1 EUSIPCO 2026 [DEADLINE PASSED for regular papers]
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | 13 February 2026 (PASSED) |
+| **Journal Paper Deadline** | **30 April 2026** (for presenting already-published journal papers) |
+| **Conference Dates** | 31 August -- 4 September 2026 |
+| **Location** | Bruges, Belgium (KU Leuven) |
+| **Page Limit** | 5 pages (10pt font), everything included |

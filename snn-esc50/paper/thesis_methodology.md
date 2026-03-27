@@ -222,3 +222,4 @@ Negative BWT = forgetting.
 
 All code at [GitHub -- TBD]. Fixed seeds (torch.manual_seed(42), numpy.random.seed(42)) for local experiments. CSF3 jobs use seed=fold_number. ESC-50 auto-downloads from official repo.
 
+**Environment:** Python 3.13 (CSF3) / 3.14 (local), PyTorch 2.10, snnTorch 0.9.4, torchattacks, neurobench 2.2.0, panns-inference, librosa 0.10.x.

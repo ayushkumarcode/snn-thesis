@@ -294,31 +294,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 
 ### Week-by-Week Breakdown for the STRONG Version
 
-| Week | Activity | Deliverable |
-|------|----------|-------------|
-| 1 | Environment setup, snnTorch + NeuroBench installation, run tutorials end-to-end | Working dev environment, familiarity with framework |
-| 2 | Implement ANN baselines: FC and CNN on all 3 datasets | Baseline accuracy numbers with error bars |
-| 3 | Implement SNN equivalents with matched architectures | SNN accuracy numbers, initial comparison |
-| 4 | Encoding scheme comparison: implement rate, latency, delta, direct input | Encoding comparison tables and plots |
-| 5 | Hyperparameter sensitivity: grid search over tau, threshold, time steps, surrogate function | Sensitivity analysis plots, identify key parameters |
-| 6 | NeuroBench integration: measure SynOps, spike counts, sparsity | Energy proxy metrics for all models |
-| 7 | Time steps sweep (T=1 to T=32): accuracy/efficiency Pareto curves | Three-way tradeoff plots |
-| 8 | Adversarial robustness experiments: FGSM and PGD at multiple epsilon | Robustness comparison tables |
-| 9 | Neuromorphic dataset experiments (CIFAR10-DVS if time permits) | Extended results |
-| 10 | Analysis, statistical testing, plot generation | Complete results section |
-| 11-12 | Writing, polishing, documentation | Final report |
-
-### Feasibility Assessment
-
-**Is this realistic in 2-3 months?** YES, with caveats:
-
-**Factors in favor**:
-- snnTorch is well-documented with extensive tutorials and Colab notebooks
-- MNIST/Fashion-MNIST train quickly (minutes on GPU)
-- CIFAR-10 is manageable on a single GPU (hours, not days)
-- NeuroBench is built on top of snnTorch -- integration is straightforward
-- No custom hardware needed
-- No novel algorithm development required
-- All tools are open-source and free
-
-**Factors that could slow you down**:

@@ -223,19 +223,19 @@ SNN-ANN gap is 16.70 pp. Significance via paired tests on 5 fold accuracies:
 | Paired t-test (two-sided) | t = 8.64 | p = 0.0010 | yes (p < 0.01) |
 | Wilcoxon signed-rank | W = 0.0 | p = 0.0625 | no (p > 0.05) |
 
+Wilcoxon is constrained by minimum achievable p with n=5 (p=0.0625). Paired t-test has more power for small samples when normality approx holds, gives p=0.001. SNN-ANN gap is significant.
+
+SNN underperforms ANN on all 5 folds -- consistent directional finding regardless of test choice.
+
 ---
 
-## 4.5 Statistical Significance
+## 4.6 transfer learning: PANNs + SNN head
 
-The accuracy gap between the best SNN (direct, 47.15%) and the ANN baseline (63.85%) is **16.70 percentage points**. Statistical significance is assessed using paired tests on the 5 fold accuracies:
+### 4.6.1 setup
 
-| Test | Statistic | p-value | Significant? |
-|------|-----------|---------|--------------|
-| Paired t-test (two-sided) | t = 8.64 | p = 0.0010 | ✅ p < 0.01 |
-| Wilcoxon signed-rank | W = 0.0 | p = 0.0625 | ❌ p > 0.05 |
+CNN14 (Kong et al. 2020), AudioSet-pretrained (1.8M clips, 527 tags), extracts 2048-d embeddings. 3-layer SNN head (2048->512->256->50, LIF beta=0.9, rate encoding, T=25) trained on frozen embeddings for 50 epochs.
 
-The Wilcoxon test is constrained by the minimum achievable p-value with n=5 samples (p=0.0625). The paired t-test, which has higher power for small samples when the normality assumption approximately holds, returns p=0.001. We conclude the SNN-ANN accuracy gap is statistically significant.
-
+All 2000 embeddings precomputed and cached. Three classifiers compared: SNN head, ANN head (identical with ReLU), linear (logistic regression on 2048-d).
 **Per-fold analysis:** The SNN underperforms the ANN on all 5 folds (no fold where SNN wins), providing a consistent directional finding independent of statistical test choice.
 
 ---

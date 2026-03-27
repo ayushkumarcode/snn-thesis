@@ -54,3 +54,12 @@
 - UrbanSound8K cross-dataset (needs dataset download)
 - SNN saliency maps (can run locally)
 
+## What These Results Add to the Thesis
+
+three new angles:
+
+1. **hardware resilience**: SNN is more pruning-resilient (93.2% at 90%) AND more fault-tolerant AND more noise-resilient. triple evidence for neuromorphic deployment.
+
+2. **encoding specificity**: transfer ratio 0.27 proves SNNs learn encoding-coupled circuits. practical implication: encoding choice is load-bearing, not interchangeable.
+
+3. **biological plausibility**: stochastic resonance detected -- first evidence of this biological phenomenon in a trained audio SNN. connects to computational neuroscience.

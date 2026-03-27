@@ -250,3 +250,15 @@ def main():
             fold_results = [r for r in all_results if r["model_name"] == name]
             if len(fold_results) == 5:
                 energies = [r.get("energy_nj", 0) for r in fold_results]
+                accs = [r["accuracy"] for r in fold_results]
+                mean_e = np.mean(energies)
+                mean_a = np.mean(accs)
+                if "ANN" in name:
+                    ann_energy = mean_e
+                ratio = f"{mean_e/ann_energy:.1f}x ANN" if ann_energy else ""
+                print(f"  {name:35s}: {mean_a:.4f}±{np.std(accs):.4f}, "
+                      f"{mean_e:.1f}±{np.std(energies):.1f} nJ {ratio}")
+
+
+if __name__ == "__main__":
+    main()

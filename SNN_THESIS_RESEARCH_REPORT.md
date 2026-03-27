@@ -278,3 +278,31 @@ spatio-temporal enhancements:
 - **SpikingMiniLM**: lightweight BERT-based architecture
 - **SpikeLLM**: 70 billion parameters via spike-driven quantization (largest SNN to date)
 
+### beyond image classification
+- object detection (Spike-driven Transformer V2)
+- semantic segmentation (Spike-driven Transformer V2)
+- zero-shot classification (SpikeCLIP)
+- image generation (SDiT -- Spiking Diffusion Transformer)
+- video understanding (TIM)
+- audio-visual classification (Spiking Multi-Modal Transformer)
+- remote photoplethysmography (Spiking-PhysFormer)
+- EEG seizure detection (Spiking Conformer)
+- human pose tracking (Spiking Spatiotemporal Transformer)
+
+### all datasets referenced
+- CIFAR-10 / CIFAR-100 (most explored for SNNs)
+- ImageNet-1k (1.2M training, 50K validation, 1K classes, 224x224)
+- DVS CIFAR-10 (event-stream version of CIFAR-10)
+- DVS128 Gesture (11 hand gestures, 29 subjects, 3 lighting conditions)
+- N-Caltech101, N-CARS (event camera recordings)
+- HAR-DVS, PokerEvents (event-based action/game recognition)
+- MMHPSD, SynEventHPD, DHP19 (human pose from events)
+- ImageNet-200 zero-shot variants
+- GLUE benchmark (NLP)
+
+### challenges and limitations
+
+training challenges:
+- information loss due to spike reset, gradient vanishing in deep layers
+- surrogate gradient mismatch vs. true gradient distributions
+- binary signal constraints: discrete spikes limit information vs. continuous ANNs

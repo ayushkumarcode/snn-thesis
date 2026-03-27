@@ -250,3 +250,31 @@ Trained weights (.pt)    Spike output + energy data
 
 SpiNNaker is primarily used for inference, not training. Training happens on conventional hardware.
 
+Exceptions: STDP (unsupervised, native on SpiNNaker1), E-prop (demonstrated on both SpiNNaker1 and 2), and Deep Rewiring (demonstrated on SpiNNaker2 prototype).
+
+For my thesis, the workflow would be:
+1. Train in snnTorch on laptop/GPU
+2. Export weights (via NIR or manual extraction)
+3. Load weights into SpiNNaker
+4. Run inference
+5. Measure real energy and latency
+6. Compare with simulated NeuroBench estimates
+
+Two key papers document this end-to-end:
+1. [DVS Gesture on SpiNNaker2 (2025)](https://arxiv.org/html/2504.06748v1)
+2. [Spiking Q-Networks on SpiNNaker2 (2025)](https://arxiv.org/html/2507.23562v1)
+
+---
+
+## 6. Project-specific compatibility
+
+### ESC-50 (audio classification)
+
+| Aspect | SpiNNaker1 | SpiNNaker2 |
+|--------|-----------|-----------|
+| Conv layers for mel-spectrogram | Possible via KernelConnector but non-trivial | YES (via NIR, Conv2D supported) |
+| Mel-spectrogram as input | Convert to spike trains first | Convert to spike trains first |
+| Fully-connected alternative | YES (easier) | YES |
+| Precedent | YES -- audio classification on SpiNNaker exists | Limited precedent |
+
+Audio on SpiNNaker has been demonstrated. Dominguez-Morales et al. built a [multilayer SNN for audio classification on SpiNNaker](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker) using LIF neurons and rate-based training. They got >85% accuracy on tone classification with noise robustness.

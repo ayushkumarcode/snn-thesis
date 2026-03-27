@@ -418,3 +418,31 @@ for epoch in range(num_epochs):
     # Evaluation
     net.eval()
     test_acc = 0
+    test_samples = 0
+    with torch.no_grad():
+        for data, targets in testloader:
+            data = data.to(device).float()
+            targets = targets.to(device)
+            spk_rec = forward_pass(net, data)
+            test_acc += SF.accuracy_rate(spk_rec, targets) * targets.size(0)
+            test_samples += targets.size(0)
+
+    print(f"Epoch {epoch}: Train Loss={train_loss/len(trainloader):.4f}, "
+          f"Train Acc={train_acc/train_samples:.4f}, "
+          f"Test Acc={test_acc/test_samples:.4f}")
+```
+
+---
+
+## DVS128 Data Pipeline
+
+### Dataset Overview
+
+| Property | Value |
+|---|---|
+| Sensor | DVS128 (Dynamic Vision Sensor) |
+| Resolution | 128 x 128 pixels |
+| Channels | 2 (ON polarity, OFF polarity) |
+| Classes | 11 hand/arm gestures |
+| Training samples | 1,176 |
+| Test samples | 288 |

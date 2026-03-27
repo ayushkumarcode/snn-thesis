@@ -222,3 +222,31 @@ SNNs communicate through discrete binary spike events (0 or 1 at each timestep).
 - snnTorch docs explicitly support this: "using membrane potential output from the final layer for image reconstruction"
 
 **Mechanism 2: Rate coding / population coding for output**
+- A population of output neurons encodes a continuous value through their collective firing rates
+- Higher firing rate = higher output value
+- Population coding: each neuron has a different tuning curve; the population superposition encodes vectors
+- snnTorch has a tutorial on population coding
+- Can encode arbitrary continuous values with sufficient population size
+
+**Mechanism 3: Spike frequency / inter-spike interval decoding**
+- Continuous values decoded from the frequency of output spikes
+- Time-to-first-spike can also encode continuous values (latency coding)
+- Used in some regression tasks and control applications
+
+**Mechanism 4: Two-stage pipeline (SNN predictor + ANN decoder)**
+- The SpikeVoice approach: SNN generates spectrograms, conventional vocoder converts to waveform
+- Hybrid approach that leverages SNN efficiency for the heavy computation while using a small ANN for final conversion
+- Pragmatic and effective -- used in most successful SNN generative systems
+
+**Mechanism 5: Fourier-based spike construction**
+- Theoretical framework where each spiking neuron represents a complex exponential (frequency component)
+- N spiking neurons assigned integer multiples of fundamental frequency
+- Reconstructs arbitrary time-series signals using Fourier Series principles
+- More theoretical than practical right now
+
+### The takeaway
+SNNs CAN generate continuous signals. The field has moved past the theoretical question. The practical answer is mostly: use membrane potential as output (Mechanism 1) or use a two-stage pipeline (Mechanism 4). These are well-established techniques with multiple successful implementations.
+
+---
+
+## 6. Novel SNN applications beyond classification

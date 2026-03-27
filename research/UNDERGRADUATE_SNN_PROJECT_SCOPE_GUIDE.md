@@ -170,31 +170,3 @@ Based on analysing 40+ projects:
 
 ### Don't:
 1. Try to build from scratch in C++ (unless that IS the project)
-2. Attempt multiple complex novel contributions (that's PhD territory)
-3. Expect to match ANN accuracy (the gap is a known open problem)
-4. Use obscure datasets without good reason
-
-### Typical Deliverables:
-- 1-3 Jupyter notebooks or 1-5 Python files
-- 40-80 page report including literature review
-- Clear experimental results with tables/graphs
-- Energy efficiency analysis (even estimated)
-
----
-
-## Part 7: Framework and Dataset Recommendations
-
-### Frameworks (ranked by student-friendliness):
-
-| Framework | Best For | Tutorials? | Recommendation |
-|-----------|----------|-----------|----------------|
-| **snnTorch** | PyTorch users, gradient-based training | Excellent (18 Colab notebooks) | **Start here** |
-| **Brian2** | Neuroscience-oriented simulation | Good documentation | Good for biological realism |
-| **Norse** | Deep learning + SNNs in PyTorch | Moderate | Good alternative to snnTorch |
-| **BindsNET** | STDP learning, PyTorch integration | Good examples | Good for unsupervised learning |
-| **SpikingJelly** | Full-stack SNN, high performance | Moderate (some Chinese docs) | Best pre-built DVS models |
-
-### Datasets (ranked by suitability):
-
-| Dataset | Type | Difficulty | Notes |
-|---------|------|-----------|-------|

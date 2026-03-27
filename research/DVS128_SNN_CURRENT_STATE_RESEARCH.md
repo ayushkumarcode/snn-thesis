@@ -278,3 +278,31 @@ several papers include comparison tables, but a dedicated fair benchmark is **la
 
 **nobody has published a single paper implementing 5+ architectures in the same framework with the same preprocessing, reporting accuracy, parameters, training time, and energy for all of them.** that's a genuine gap.
 
+### compiled results from published papers
+
+| Method | Type | Accuracy (%) | Timesteps | Year |
+|--------|------|-------------|-----------|------|
+| IBM EEDN (TrueNorth) | Hardware SNN | 94.59 | - | 2017 |
+| DECOLLE | Online BPTT | 95.54 | 500 | 2020 |
+| PLIF (SpikingJelly) | CSNN + Learnable LIF | 97.57 | 20 | 2021 |
+| TA-SNN | CSNN + Temporal Attention | 98.61 | 60 | 2021 |
+| SEW-ResNet | Residual SNN | 97.92 | 16 | 2022 |
+| Spikformer | Spiking Transformer | 98.3 | 16 | 2023 |
+| Sparse SCNN | Sparse Conv SNN | 93.40 | - | 2022 |
+| SpikePoint | Point-based SNN | 98.74 | 16 | 2024 |
+| Spikeformer (v2) | Spiking Transformer | 98.96 | 16 | 2024 |
+| Spike-HAR++ | Spiking Transformer | 98.26 | - | 2024 |
+| MSVIT | Multi-Scale ViT | 98.80 | 16 | 2025 |
+| SG-SNN | Self-Organizing | 99.30 | - | 2025 |
+| TENNs-PLEIADES | Temporal Kernel | 99.59 | Variable | 2024 |
+| STREAM | Temporal Kernel | 100.0 | - | 2024 |
+| SpikMamba | SNN + Mamba | ~99% | - | 2024 |
+| STAA-SNN (CVPR 2025) | Attention Aggregator | ~98.5 (est.) | Low | 2025 |
+| SpiNNaker2 deployment | Hardware SNN | 94.13 | - | 2025 |
+| Embedded TCN | Ternarized CNN | 97.7 | - | 2023 |
+
+---
+
+## 8. training time estimates
+
+### SpikingJelly baseline (5-layer CSNN, LIF)

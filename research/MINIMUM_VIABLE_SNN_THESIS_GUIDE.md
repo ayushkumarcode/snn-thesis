@@ -177,31 +177,3 @@ The report writing (separate from coding) typically takes another 40-60 hours fo
 
 | Tutorial | What it gives you | Direct thesis use |
 |----------|------------------|-------------------|
-| [Tutorial 1 - Spike Encoding](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html) | Rate coding, latency coding, delta modulation | Understand and implement encoding schemes |
-| [Tutorial 3 - Feedforward SNN](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_3.html) | LIF neuron model, building SNN layers | Your SNN architecture foundation |
-| [Tutorial 5 - Training SNNs](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html) | FC-SNN on MNIST with backprop through time | **YOUR CORE EXPERIMENT CODE** |
-| [Tutorial 6 - Convolutional SNN](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html) | CSNN on MNIST with surrogate gradients | Your convolutional SNN experiment |
-| [Tutorial 7 - Neuromorphic Datasets](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html) | Loading N-MNIST with Tonic library | Your neuromorphic dataset experiment |
-| [Quickstart](https://snntorch.readthedocs.io/en/latest/quickstart.html) | Complete end-to-end minimal example | Quick reference / sanity check |
-
-All tutorials are available as **interactive Google Colab notebooks**. You can run them immediately, modify parameters, and see results without any local setup.
-
-### GitHub repositories to reference/adapt:
-
-| Repository | What it provides | Stars | Link |
-|-----------|-----------------|-------|------|
-| **snnTorch** (official) | Complete framework + 18 tutorials | 1800+ | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) |
-| **Simple SNN STDP** | From-scratch STDP on MNIST (for understanding) | -- | [cowolff/Simple-Spiking-Neural-Network-STDP](https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP) |
-| **SNN-MNIST Pure Python** | Unsupervised MNIST classification with STDP | -- | [sujay-pandit/spiking-neural-networks-mnist-classification](https://github.com/sujay-pandit/spiking-neural-networks-mnist-classification) |
-| **stdp-mnist** (Diehl & Cook) | Reference implementation of seminal 2015 paper | -- | [peter-u-diehl/stdp-mnist](https://github.com/peter-u-diehl/stdp-mnist) |
-| **Norse MNIST** | Alternative framework comparison point | -- | [norse/norse](https://github.com/norse/norse) |
-| **Shape Detector SNN** | Manchester BSc example (Ferrari, supervised by Furber) | -- | [filippoferrari/shape_detector_snn](https://github.com/filippoferrari/shape_detector_snn) |
-
-### ANN baseline code (takes 20 minutes to set up):
-
-A standard PyTorch CNN for MNIST is available in every deep learning tutorial online. The PyTorch official examples include one. Key point: use the SAME architecture dimensions as your SNN for a fair comparison.
-
-### Tools you need:
-
-| Tool | Purpose | Install |
-|------|---------|---------|

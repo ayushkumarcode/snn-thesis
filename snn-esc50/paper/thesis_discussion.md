@@ -26,20 +26,20 @@ Ordering: **direct > rate ~ phase > population > latency >> delta ~ burst** (all
 
 **Latency underperforms further** because log mapping concentrates spikes into first ~5 timesteps for high-intensity pixels. Effectively reduces T=25 to T~5.
 
-- *Delta:* Static spectrograms have no temporal variation → no spikes generated → network cannot learn
-- *Burst:* All information in first 5 of 25 timesteps → severe train/test distribution mismatch (network trains on the first-5-timestep-rich pattern but the remaining 20 timesteps contribute noise to test-time decisions). The result (6.50% ± 1.54% mean accuracy across 5 folds, with per-fold range 5.00%–9.25%, and train accuracy reaching 45–62%) demonstrates that the LIF integration window T=25 is not matched to the burst window N_max=5.
+**Delta and burst near chance** for different reasons:
+- Delta: static spectrograms = no temporal variation = no spikes = can't learn
+- Burst: all info in first 5/25 steps = train/test distribution mismatch. LIF integration window doesn't match burst window. 6.50% +/- 1.54%, train acc 45-62% but test 5-9%.
 
-**What would make burst work?** Either (a) reducing T to match N_max (T≈5, sacrificing temporal resolution), (b) using a different network architecture that explicitly reads out only the first N_max timesteps, or (c) using an attention mechanism over timesteps. None of these are explored in this work — burst is documented as a negative result with full mechanistic explanation.
+What would fix burst? T=5 (sacrificing temporal resolution), readout from first N_max steps only, or timestep attention. None explored -- documented as negative result.
 
-**Phase encoding achieves 24.15% ± 1.66%**, essentially tied with rate coding (24.00% ± 1.90%). Phase fires exactly once per neuron but distributes spike times uniformly over the full T=25 window (unlike latency's τ-parameterised clustering into early timesteps). The near-equality with rate coding is the most surprising result in the encoding comparison. Despite using only 1 spike per neuron vs rate's ~T×p ≈ 6–7 spikes, phase achieves identical accuracy. The explanation is information efficiency: phase deterministically maps intensity to spike time without stochastic noise, preserving the full magnitude ordering in the timing domain. Rate coding spreads information redundantly across multiple noisy spikes. At T=25, the information content of deterministic single-spike timing exactly matches stochastic multi-spike counting for this task. This finding has implications for energy efficiency: if 1 spike per neuron (phase) achieves the same accuracy as ~7 spikes per neuron (rate), phase is dramatically more energy-efficient at test time while achieving identical classification accuracy.
+**Phase at 24.15% ties with rate at 24.00%.** Most surprising result. Despite 1 spike/neuron vs ~7, identical accuracy. Phase deterministically maps intensity to time without stochastic noise, preserving full magnitude ordering. Rate spreads info redundantly across noisy spikes. At T=25 these representations have equivalent discriminative content. Implication: phase is dramatically more energy-efficient at test time for the same accuracy.
 
-**Population coding achieves 19.15% ± 2.79%**, falling between phase (24.15%) and latency (16.30%). Population coding expands the output layer to 500 neurons (10 per class) and uses MSE count loss. The hypothesis was that a multi-neuron class representation would reduce sensitivity to individual neuron noise. This hypothesis is rejected: population coding underperforms rate coding despite 10× more output neurons. The explanation is training, not capacity. MSE count loss produces shallower gradients than cross-entropy rate loss — training accuracy at termination reaches only 18–24% vs rate coding's ~50% at comparable epoch count. The 500-neuron output layer adds parameters but the bottleneck is the 256-dimensional FC1 representation, not the output layer width. The higher variance (std=2.79% vs 1.90% for rate) confirms that the MSE loss landscape has multiple local minima with variable quality. Population coding as implemented here is not recommended for audio SNN classification.
+**Population at 19.15%** falls between phase and latency. 500 output neurons (10/class), MSE count loss. Hypothesis that multi-neuron class representation would help is rejected. MSE produces shallower gradients -- training acc only 18-24% vs rate's ~50%. Bottleneck is 256-d FC1, not output width. Higher variance (std=2.79%) confirms MSE landscape has multiple local minima.
 
 ---
 
-## 7.3 SpiNNaker Deployment: Hardware-Software Co-Design Insights
+## 7.3 SpiNNaker deployment: co-design insights
 
-The SpiNNaker deployment produced the most technically instructive failures of this thesis. The root cause of the FC1 cancellation problem (§5.1) reveals a fundamental tension between common SNN training practices and neuromorphic hardware requirements:
 
 **The AvgPool problem:** Modern spiking CNNs routinely use pooling between convolutional layers to reduce spatial dimensions. For ANNs and software SNNs, AvgPool is a straightforward spatial aggregation. For neuromorphic deployment, AvgPool applied to binary spike tensors produces fractional outputs in [0, 1], violating the spike-only communication model of hardware like SpiNNaker. This violation propagates to the subsequent FC layer, where near-zero-mean weights cannot distinguish the fractional inputs from the training distribution (binary), producing systematic under-activation.
 

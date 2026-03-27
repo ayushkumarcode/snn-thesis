@@ -285,31 +285,3 @@ for epoch in range(epochs):
           f'test_acc={test_acc:.4f}, max_test_acc={max_test_acc:.4f}')
 ```
 
----
-
-## 3. snnTorch Framework
-
-### 3.1 Version Requirements
-
-| Dependency | Version |
-|---|---|
-| Python | >= 3.9 |
-| PyTorch | Any modern version (no explicit pin; tested with 1.x and 2.x) |
-| numpy | Required |
-| pandas | Required |
-| matplotlib | Optional (for visualization) |
-| nir / nirtorch | Optional (for NIR exchange format) |
-
-**Source:** https://github.com/jeshraghian/snntorch/blob/master/setup.py
-
-### 3.2 Installation
-
-```bash
-pip install snntorch
-
-# For neuromorphic dataset support with Tonic
-pip install tonic
-
-# Full install with all optional dependencies
-pip install snntorch[full]
-```

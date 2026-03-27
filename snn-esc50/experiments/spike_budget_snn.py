@@ -194,3 +194,31 @@ def eval_model(model, loader, device):
         total += targets.size(0)
         for k in all_rates:
             all_rates[k] += rates[k]
+    n = len(loader)
+    return correct / total, {k: v/n for k, v in all_rates.items()}
+
+
+def run_fold(fold, device, target_rate, kp):
+    print(f"\n  Fold {fold}: target_rate={target_rate}, kp={kp}")
+    train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
+    model = SpikeBudgetSNN(target_rate=target_rate, kp=kp).to(device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=5)
+    best_acc = 0.0
+    best_epoch = 0
+    patience_counter = 0
+    save_dir = RESULTS_DIR / "energy" / f"spike_budget_{target_rate}"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    start = time.time()
+    for epoch in range(1, NUM_EPOCHS + 1):
+        train_loss, train_acc, train_rates = train_epoch(model, train_loader, optimizer, device)
+        test_acc, test_rates = eval_model(model, test_loader, device)
+        scheduler.step(train_loss)
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            torch.save(model.state_dict(), save_dir / f"best_fold{fold}.pt")
+            best_rates = test_rates.copy()
+        else:
+            patience_counter += 1

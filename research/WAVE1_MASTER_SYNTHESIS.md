@@ -127,31 +127,3 @@ Every high-quality paper followed this introduction structure:
 1. **Audio SHD/SSC** -- Easiest path, pre-encoded spikes, SNNs beat ANNs
 2. **ECG/Heartbeat** -- Nearly as easy, great clinical narrative, snnTorch delta encoding
 3. **Audio Keyword Spotting (GSC)** -- Extends SHD to raw audio
-4. **Network Intrusion Detection** -- Tabular data, good narrative
-5. **EEG/BCI** -- Feasible but more preprocessing complexity
-6. **Time-Series Forecasting** -- High novelty but finicky training
-7. **NLP/Text** -- Highest novelty (9/10) but highest risk
-
-### Technical Stack Decisions (from technical research):
-- **Training:** Surrogate gradient (recommended) > ANN-to-SNN conversion > STDP
-- **Framework:** snnTorch (learning/general) or SpikingJelly (DVS128/performance)
-- **Neuron model:** LIF (standard) or PLIF (1-2% better, learnable decay)
-- **Encoding:** Rate coding (baseline) > Direct coding (best accuracy) > TTFS (best energy)
-- **Energy measurement:** NeuroBench or manual SynOps counting (no hardware needed)
-
-### Previously Identified Project Directions:
-1. Framework Shootout (snnTorch vs SpikingJelly on SHD + DVS128)
-2. SNN on ESC-50/UrbanSound8K (zero prior papers)
-3. SNN for Music Generation (MIDI)
-4. SNN for Plant Disease (PlantVillage)
-5. Multi-dimensional SNN vs ANN comparison
-
----
-
-## 7. Synthesis: What the Papers Tell Us About How to Frame Our Project
-
-### The Proven Thesis Formula
-Based on all 21 papers, the formula that works at Manchester BSc level:
-
-```
-1. Pick a well-defined task/domain

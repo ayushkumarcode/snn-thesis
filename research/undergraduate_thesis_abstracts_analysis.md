@@ -26,3 +26,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 ### Thesis 2: Spiking Neural Networks: A Biologically Informed Approach to Classification
 - **Author:** Unknown (supervised by Erik Meijering)
 - **Type:** Bachelor Honours Thesis
+- **Institution:** UNSW, Australia
+- **Year:** August 2022
+- **Source:** [Publication page](https://imagescience.org/meijering/publications/1233/)
+
+**Objectives (explicitly stated):**
+1. "Compare spiking neural network performance against conventional artificial networks on classification problems"
+2. "Explore new mechanisms for structural plasticity in artificial spiking networks inspired by the biological process of neurogenesis"
+3. "Evaluate implications for understanding biological signal processing and AI's future direction"
+
+**Contribution:** empirical benchmarking data comparing perceptrons vs LIF spiking neurons, plus introduction of "an artificial neurogenesis mechanism."
+
+**Framing:** "we compared A vs B" combined with "we explored new mechanism X." one of the more ambitious undergrad theses, combining benchmarking with a novel architectural contribution. implied research question: how do spiking networks perform vs traditional perceptrons, and can artificial neurogenesis help?
+
+---
+
+### Thesis 3: Binaural Sound Localization on Neuromorphic Hardware
+- **Author:** Laura Kriener
+- **Type:** Bachelorarbeit
+- **Institution:** University of Heidelberg, KIP
+- **Year:** 2014
+- **Source:** [KIP](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3106)
+
+**Objectives:** "demonstrating that a multi-frequency Jeffress model could operate effectively on neuromorphic hardware after addressing physical constraints of the chip and unexpected signal interactions."
+
+**Contribution:**
+- compensation methods for hardware inhomogeneities and limited signal bandwidth
+- identifying "a previously unknown interaction between input signals that impaired ITD detection"
+- modifying architecture to reduce signal interactions

@@ -26,3 +26,31 @@ Cambridge gives the most transparent breakdown of what markers actually look at 
 |---|---|---|
 | **Introduction and Preparation** | 30 | Problem statement, lit review, project planning, background research, understanding of related work |
 | **Implementation and Contribution** | 45 | Technical work, design decisions, code quality, system architecture, the actual "doing" |
+| **Evaluation and Conclusions** | 25 | Testing, benchmarking, critical analysis of results, reflection, future work |
+
+Source: [Cambridge CST Assessment](https://www.cst.cam.ac.uk/teaching/part-ii/projects/assessment)
+
+### 1.3 Edinburgh -- tiered criteria
+
+Edinburgh does it differently, more qualitative than percentage-based, with three tiers:
+
+**Basic criteria** (must be satisfied to pass):
+- Understanding of the problem
+- Completion of the work
+- Quality of the work
+- Quality of the dissertation
+
+**Additional criteria** (needed for good marks, 60+):
+- Knowledge of the literature
+- Critical evaluation of previous work
+- Critical evaluation of own work
+- Justification of design decisions
+- Solution of conceptual problems
+- Amount of work
+
+**Exceptional criteria** (needed for 80+):
+- Evidence of outstanding merit, e.g. originality
+- Inclusion of material worthy of publication
+
+Source: [Edinburgh DISS Project Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
+

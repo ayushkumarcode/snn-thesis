@@ -166,3 +166,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 ---
 
 ### Thesis 10: Learning in Biologically Plausible Neural Networks
+- **Author:** Draco (Yunlong) Xu
+- **Type:** Undergraduate Honours Thesis
+- **Institution:** University of Rochester, Dept of Mathematics
+- **Year:** 2023
+- **Source:** [PDF](https://www.sas.rochester.edu/mth/undergraduate/honorspaperspdfs/d_xu23.pdf)
+
+**Objectives:** "presents a thorough review of learning processes in biologically plausible neural networks" and "introduces a novel learning method for RSNNs" plus "proposes an innovative approach to compare SNNs and CDNNs."
+
+**Contribution:**
+- review of biologically plausible learning
+- implementation and training of CDNNs
+- novel learning method for RSNNs
+- new comparison methodology between SNNs and CDNNs
+
+**Framing:** "we reviewed X, implemented Y, and proposed novel method Z." one of the more ambitious undergrad theses -- uses stronger language ("novel," "innovative") than most.
+
+---
+
+### Thesis 11: Evaluation of CNN Performance Using Synthetic Data
+- **Author:** Jeonghyun Son
+- **Type:** Bachelor Thesis
+- **Institution:** HAW Hamburg
+- **Year:** October 2019
+- **Source:** [PDF](https://reposit.haw-hamburg.de/bitstream/20.500.12738/9168/1/Bachelorthesis_JeonghyunSon.pdf)
+
+**Objectives:** "One of the limitations of supervised learning in deep learning algorithm is to gather and label a large set of data. In this document, the approach to solve this limitation is presented by using synthetic data."
+
+**Contribution:**

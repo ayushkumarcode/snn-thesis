@@ -110,3 +110,31 @@ def extract_features(fold, model_type, num_samples):
             w = float(fc2_weight[post, pre])
             if abs(w) > 0.01:
                 connections.append([pre, post, w, 1.0])
+    connections = np.array(connections)
+
+    save_dir = RESULTS_DIR / "spinnaker_weights" / f"energy_fold{fold}"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    np.save(save_dir / "hidden_spike_features.npy", hidden_features)
+    np.save(save_dir / "hidden_labels.npy", labels)
+    np.save(save_dir / "snn_predictions.npy", predictions)
+    np.save(save_dir / "fc2_connections.npy", connections)
+
+    snn_acc = (predictions == labels).mean()
+    print(f"[{ts()}] Saved {num_samples} samples to {save_dir}")
+    print(f"  snnTorch acc: {snn_acc:.4f}, features: {hidden_features.shape}")
+    print(f"  FC2 connections: {len(connections)}")
+
+
+def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
+    """Run FC2 inference on SpiNNaker hardware."""
+    import pyNN.spiNNaker as sim
+
+    weights_dir = RESULTS_DIR / "spinnaker_weights" / f"energy_fold{fold}"
+    results_dir = RESULTS_DIR / "spinnaker_results" / f"energy_fold{fold}"
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    features = np.load(weights_dir / "hidden_spike_features.npy")
+    labels = np.load(weights_dir / "hidden_labels.npy")
+    snn_preds = np.load(weights_dir / "snn_predictions.npy")
+    fc2_conns = np.load(weights_dir / "fc2_connections.npy")
+

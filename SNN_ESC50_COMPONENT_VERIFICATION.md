@@ -590,31 +590,3 @@ If local training is too slow, Google Colab provides free GPU access (T4, ~16GB 
 ```
 install_requires = ['numpy', 'pandas']
 extras_require = {
-    'full': ['torch', 'matplotlib', 'nir', 'nirtorch']
-}
-python_requires = '>=3.9'
-```
-
-**Key finding:** snnTorch does NOT pin a specific PyTorch version. It requires `torch` but does not specify `torch>=X.Y.Z` or `torch<X.Y.Z`. This means it should work with any reasonably recent PyTorch version, but also means edge-case incompatibilities are possible.
-
-### Recommended safe installation:
-
-```bash
-# Create clean environment
-python3.11 -m venv snn_env
-source snn_env/bin/activate
-
-# Install PyTorch first (for macOS)
-pip install torch torchvision torchaudio
-
-# Then snnTorch
-pip install snntorch
-
-# Then NeuroBench for energy measurement
-pip install neurobench
-
-# Audio processing
-pip install librosa
-```
-
-### Known deprecation issues:

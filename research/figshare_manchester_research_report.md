@@ -82,3 +82,31 @@ The only match for "neuromorphic" was a research-level publication (not undergra
 - Research publication, tangentially related (low power + computer vision)
 
 #### Autonomous Robotics for Nuclear Environments
+- Andrew West, 2022
+- https://figshare.manchester.ac.uk/articles/dataset/Radiation_Exposure_Reduction_During_Autonomous_Exploration/18782165
+- Autonomous exploration sessions in simulated environment with gamma radiation sources. Uses frontier exploration with radiation avoidance. ROS, Gazebo, UGV.
+- Part of the RAIN (Robotics and AI for Nuclear) project at Manchester
+
+#### Turbulent Flow Data as PyTorch Tensors for ML
+- Mohammed Sardar, Alex Skillen, 2025
+- https://figshare.manchester.ac.uk/articles/dataset/Turbulent_Flow_data_as_PyTorch_tensors_for_ML_Kolmogorov_Flow_at_Re_222_and_Kelvin-Helmholtz_instability/29329565
+- PyTorch tensor datasets of turbulent flow simulations for ML training
+
+#### ML for Archaeological Bone Analysis
+- Manasij Pal chowdhury et al., 2022
+- https://figshare.manchester.ac.uk/articles/dataset/Machine_Learning_ATR-FTIR_Spectroscopy_Data_for_the_Screening_of_Collagen_for_ZooMS_Analysis_and_mtDNA_in_Archaeological_Bone/20298801
+- PhD thesis supplement using Random Forest classifier for spectroscopy screening
+
+#### Gaussian Mixture Models / NN Model Files
+- Darren Price, Stephen Menary, 2021
+- https://figshare.manchester.ac.uk/articles/dataset/Expressive_Gaussian_mixture_models_for_high-dimensional_statistical_modelling_simulated_data_and_neural_network_model_files/17136839
+- Neural network model files for learning-based GMMs for particle physics
+
+#### Closed Loop Sound Stimulation During Sleep
+- Alex Casson, 2022
+- https://figshare.manchester.ac.uk/articles/software/Closed_Loop_Sound_Stimulation_During_Sleep_In_Matlab/19606930
+- Matlab App for real-time EEG streaming, slow oscillation detection, and audio-tone playback
+
+#### 3D-Printed Conductive EEG Electrodes
+- Le Xing, 2022
+- https://figshare.manchester.ac.uk/articles/online_resource/3d-printed_directly_conductive_EEG_electrode_models/19148987

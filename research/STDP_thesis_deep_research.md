@@ -418,3 +418,31 @@ do NOT frame it as "STDP vs backprop" -- STDP will lose on accuracy. instead:
 | Person/Group | Affiliation | Contribution | Key Papers |
 |---|---|---|---|
 | **Peter Diehl & Matthew Cook** | ETH Zurich / INI | Foundational STDP-MNIST paper (2015) | Unsupervised learning of digit recognition using STDP |
+| **Saeed Reza Kheradpisheh** | University of Tehran | Deep CSNN with STDP for object recognition | STDP-based spiking deep CNNs (2018) |
+| **Milad Mozafari** | University of Tehran | SpykeTorch framework, R-STDP | SpykeTorch (2019), First-spike categorization (2018) |
+| **Gaspard Goupy et al.** | University of Lille / Fox team | S2-STDP, PCN, NCG architecture | NeurIPS 2024 NCG paper |
+| **Timothee Masquelier** | CNRS CerCo, Toulouse | Unsupervised visual feature learning with STDP | PLOS Comp Bio (2007) |
+| **Wulfram Gerstner** | EPFL | Three-factor learning theory, neuromodulated STDP | Fremaux & Gerstner (2016) review |
+| **Alexander Ororbia** | RIT | ngc-learn framework | ngc-learn docs + papers |
+| **Hananel Hazan & Daniel Saunders** | UMass Amherst / BINDS Lab | BindsNET framework | BindsNET paper (2018) |
+| **Mike Davies** | Intel Labs | Loihi processor with on-chip STDP | Loihi papers |
+
+---
+
+## 10. Thesis Structure (if i went with this)
+
+for a thesis framed as "biologically plausible feature learning with STDP":
+
+```
+Chapter 1: Introduction
+  - Motivation: energy crisis in AI, biological inspiration
+  - Research question: "How effective is the brain's STDP learning rule
+    for unsupervised feature extraction in visual recognition tasks?"
+  - Contributions
+
+Chapter 2: Background
+  - Spiking neural networks (LIF neurons, spike coding)
+  - STDP: biological evidence and computational models
+  - Comparison with ANN learning rules
+  - Neuromorphic hardware context
+

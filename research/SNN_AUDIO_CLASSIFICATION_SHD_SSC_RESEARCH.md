@@ -26,3 +26,31 @@ SHD encodes spoken digit recordings into spike trains using "Lauscher," an artif
 ### 1.2 Spiking Speech Commands (SSC)
 
 | Property | Value |
+|----------|-------|
+| Task | Speech command classification |
+| Classes | 35 |
+| Total samples | ~100,000 |
+| Base dataset | Google Speech Commands v0.2 |
+| Input channels | 700 (same cochlea model) |
+| Data format | Spike trains with timestamps |
+| Created by | Same group (Cramer et al.) |
+
+SSC is the bigger, harder sibling of SHD. 35 speech command classes, lots of speakers, same cochlea encoding.
+
+### 1.3 Dataset Access
+
+both datasets are available through multiple loaders:
+- **Tonic** library: `pip install tonic` then `tonic.datasets.SHD('./data', train=True)` or `tonic.datasets.SSC('./data', split='train')`
+- **snnTorch**: built-in `snntorch.spikevision.spikedata.SHD()`
+- **Norse**: `norse.dataset.spiking_heidelberg`
+- **sparch toolkit**: auto download via config
+- **SNN-delays repo**: auto download and preprocessing
+- **Direct download**: [Zenke Lab resources page](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
+
+---
+
+## 2. State-of-the-Art Results
+
+### 2.1 SHD Leaderboard (as of February 2026)
+
+| Rank | Model | Accuracy | Params | Time Steps | Recurrent | Year | Code Available |

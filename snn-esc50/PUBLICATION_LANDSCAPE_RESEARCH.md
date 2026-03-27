@@ -166,20 +166,20 @@ ranked by how excited reviewers seem to be about them:
 
 7. continual/online learning - survey in IEEE Access 2025, explicit ICONS topic. our result is preliminary but present. MEDIUM.
 
-**No prior paper has:**
-1. Used convolutional SNNs on ESC-50 (50 classes) -- only ESC-10 (10 classes) exists
-2. Compared more than 4 encodings for audio SNNs
-3. Deployed any SNN for environmental sound on neuromorphic hardware
-4. Analyzed adversarial robustness of SNNs on audio spectrograms
-5. Quantified encoding specificity via cross-encoding transfer analysis
-6. Demonstrated the gap-collapse phenomenon on audio (pretrained features)
-
-Your closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-only architecture, 3 encodings, no hardware. You are strictly superior on every axis.
+8. new application domains - SNNs applied to speech, EEG, medical imaging. "first SNN on [domain]" papers consistently publishable. HIGHEST relevance for us.
 
 ---
 
-## 5. COMMON WINNING FORMULAS IN SNN PUBLICATIONS
+## gap analysis and framing recommendations
 
+what we have vs what top papers have:
+
+| dimension | top papers | ours | gap |
+|-----------|-----------|------|-----|
+| novelty | "first X on Y" | first SNN on ESC-50 | no gap |
+| hardware | full pipeline on Loihi/SpiNNaker | FC2-only hybrid | moderate (honest about it) |
+| wow number | 85.65% ImageNet, 109x energy | 6x robustness, 16.7pp to 0.95pp | no gap |
+| statistical rigor | varies (many papers lack it) | 5-fold, p-values, Cohen's d | we exceed most |
 ### Formula 1: "First X on Y"
 **Examples:**
 - QKFormer: "First directly-trained SNN exceeding 85% on ImageNet"

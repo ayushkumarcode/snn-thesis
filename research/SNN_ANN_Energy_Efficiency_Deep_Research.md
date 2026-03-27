@@ -82,3 +82,31 @@ For my project specifically: my measured 74.16% activation sparsity (NeuroBench)
 ---
 
 ## 2. NeuroBench benchmark
+
+### 2.1 Overview
+- Yik et al., "The NeuroBench Framework for Benchmarking Neuromorphic Computing," Nature Communications 16:1589, February 2025
+- 60+ institutions across industry and academia
+- Current version: NeuroBench 2.2.0
+- Website: neurobench.ai
+
+### 2.2 Metric definitions
+
+**Correctness:** Accuracy, mAP, MSE, R-squared, sMAPE (task-dependent)
+
+**Complexity:**
+- **Footprint:** Memory required for model representation (weights, parameters, buffers)
+- **Connection Sparsity:** Ratio of zero weights to total (0=fully connected, 1=fully sparse)
+- **Activation Sparsity:** Average proportion of zero activations across all neurons, timesteps, and samples
+- **Synaptic Operations:**
+  - Dense: all operations regardless of zeros
+  - Eff_MACs: multiply-accumulates excluding zero activations/connections (non-binary)
+  - Eff_ACs: accumulates with binary activations (spike-based)
+- **Model Execution Rate:** Forward pass frequency in Hz
+
+Key distinction: operations with non-binary activation are MACs; those with binary activation (spikes) are ACs.
+
+### 2.3 Algorithm track benchmarks
+
+1. **Keyword Few-Shot Class-Incremental Learning (FSCIL):** Audio keyword classification with continual learning (MSWC dataset)
+2. **Event Camera Object Detection:** Prophesee 1MP dataset, COCO mAP
+3. **Non-human Primate Motor Prediction:** Fingertip velocity prediction from cortical recordings

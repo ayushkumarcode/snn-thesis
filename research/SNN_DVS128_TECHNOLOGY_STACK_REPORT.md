@@ -810,3 +810,31 @@ tonic.utils.plot_event_grid(events)
 
 SpikingJelly's training script logs to TensorBoard:
 ```python
+from torch.utils.tensorboard import SummaryWriter
+writer = SummaryWriter(out_dir)
+writer.add_scalar('train_loss', train_loss, epoch)
+writer.add_scalar('train_acc', train_acc, epoch)
+writer.add_scalar('test_loss', test_loss, epoch)
+writer.add_scalar('test_acc', test_acc, epoch)
+```
+
+View with:
+```bash
+tensorboard --logdir=./logs
+```
+
+---
+
+## End-to-End Examples
+
+### SpikingJelly Built-in Example (fastest way to a baseline)
+
+```bash
+# Download DVS128 Gesture dataset first (manual download from IBM)
+# Place in ./data/DVS128Gesture/
+
+# Run the built-in training script
+python -m spikingjelly.activation_based.examples.classify_dvsg \
+    -T 16 \
+    -device cuda:0 \
+    -b 16 \

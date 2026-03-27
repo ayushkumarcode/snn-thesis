@@ -502,3 +502,31 @@ loss = backprop.TBPTT(net, train_loader, optimizer=optimizer,
 | Feng et al. | PhysioNet 2017 | Custom | 14-layer converted CNN | 84.4% on 4 classes |
 | Buettner et al. | MIT-BIH | Intel Loihi | Converted CNN | 97.8% on 5 classes |
 
+**Critical finding: ZERO papers/repos implement SNN on PTB-XL.**
+
+All prior SNN-ECG work uses MIT-BIH Arrhythmia Database (much simpler: single-lead, beat-level classification) or smaller datasets. PTB-XL (12-lead, record-level, multi-label) is significantly more complex.
+
+**This is actually GOOD for a thesis** -- you would be producing genuinely novel work.
+
+**Closest usable reference code:** The [ecg_ptbxl_benchmarking](https://github.com/helme/ecg_ptbxl_benchmarking) repo provides the ANN pipeline (data loading, evaluation, splits) that you can reuse, replacing only the model with an SNN.
+
+**Sources:** [SNN-ECG Review Paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362428/), [SpikingJelly publications](https://github.com/fangwei123456/spikingjelly/blob/master/publications.md)
+
+---
+
+### 13. Known Issues and Gotchas
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES (several documented) |
+| **VERIFIED HOW** | GitHub issues, PyTorch forums, user reports |
+| **POTENTIAL BLOCKER** | LOW if you know about them |
+
+**WFDB Loading Gotchas:**
+1. **ast.literal_eval is mandatory:** The scp_codes column in ptbxl_database.csv stores Python dicts as strings. You MUST use `ast.literal_eval()` to parse them.
+2. **Path handling:** `wfdb.rdsamp()` expects the path WITHOUT the .hea/.dat extension. If your path ends with `.hea`, it will fail.
+3. **Version mismatch:** Code written for PTB-XL v1.0.1 may need minor path adjustments for v1.0.3.
+4. **Memory:** Loading all 21,799 records at 500 Hz into RAM at once requires ~5 GB. Load at 100 Hz to reduce to ~1 GB, or load lazily.
+
+**snnTorch Gotchas:**
+1. **No Conv1d examples exist in official tutorials.** You must adapt the Conv2d pattern yourself.

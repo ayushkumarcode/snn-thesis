@@ -194,3 +194,31 @@ these are areas where only ONE substantial paper exists. a second study -- even 
 | spiking ResNet from ImageNet to SHD | transfer architecture, not weights | MEDIUM |
 
 ### classification to regression
+
+| Transfer | Idea | Effort |
+|----------|------|--------|
+| snnTorch classification pipeline to regression | snnTorch has regression tutorials since 2024. apply to energy forecasting, stock prediction, sensor regression | LOW-MEDIUM |
+| surrogate gradient for continuous output prediction | most SNN regression uses rate-coded output. try membrane potential decoding | MEDIUM |
+
+### vision to medical/biomedical
+
+| Transfer | Idea | Effort |
+|----------|------|--------|
+| CSNN from CIFAR-10 to chest X-ray classification | CheXpert or ChestX-ray14. zero SNN studies. | LOW-MEDIUM |
+| SNN from DVS128 Gesture to EMG-based gesture | different sensor, similar temporal classification | MEDIUM |
+
+### audio to vibration/industrial
+
+| Transfer | Idea | Effort |
+|----------|------|--------|
+| SHD/SSC architectures to bearing fault diagnosis | both are 1D temporal signals; architecture transfers directly | LOW-MEDIUM |
+| speech command SNN to ECG classification | both are short temporal signals with few classes | LOW-MEDIUM |
+
+---
+
+## 7. ranked thesis ideas by effort/novelty ratio
+
+### tier 1: lowest effort, genuine novelty (what i'd recommend)
+
+these are mostly "running experiments" rather than "inventing methods." each fills a documented gap.
+

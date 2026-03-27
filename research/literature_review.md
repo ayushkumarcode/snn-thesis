@@ -26,3 +26,31 @@ Reading this mostly to understand what people are actually building with SNNs --
 | **Izhikevich** | 2 equations that can reproduce 20+ biological firing patterns | Good balance of realism and speed |
 | **AdEx (Adaptive Exponential)** | LIF + exponential spike initiation + adaptation current | Better spike pattern fidelity |
 | **Hodgkin-Huxley** | Full ion-channel dynamics (Na+, K+) | Most realistic, most expensive to simulate |
+
+So basically LIF is the go-to for most practical stuff. Izhikevich if you need more biological realism without the cost of Hodgkin-Huxley.
+
+### How to Encode Data as Spikes
+
+- **Rate coding:** Higher spike frequency = stronger signal. Simple but requires many timesteps.
+- **Temporal coding:** Information in precise spike timing. More efficient (fewer spikes) but harder to work with.
+
+### Training Methods
+
+| Method | Type | How it works | Pros / Cons |
+|--------|------|-------------|-------------|
+| **STDP** | Unsupervised | Strengthen synapse if pre fires before post, weaken if after | Biologically plausible, no labels needed / limited scalability |
+| **Reward-modulated STDP** | Reinforcement | STDP + dopamine-like reward signal | Can learn from sparse rewards / slow convergence |
+| **SpikeProp / SuperSpike** | Supervised | Gradient descent adapted for spikes | Can train deeper networks / needs surrogate gradients |
+| **SLAYER** | Supervised | Temporal credit assignment via backprop | Good for temporal tasks / memory intensive |
+| **ANN-to-SNN Conversion** | Transfer | Train a normal ANN, then convert weights to SNN | Leverages existing ANN tools / may need many timesteps |
+
+### Applications Covered
+
+#### Computer Vision
+- Image classification: DCSNN achieved 97.2% on MNIST using STDP + reward learning
+- Object detection: Spiking YOLO -- energy-efficient detection with channel-wise normalization
+- Object tracking: SiamSNN -- 50 FPS on IBM TrueNorth with extremely low energy
+- Segmentation: UNet-based SNN deployed on Intel Loihi
+- Optical flow: Spike-FlowNet for event-camera processing
+- Medical imaging: STDP-based melanoma detection at 87.7% accuracy
+

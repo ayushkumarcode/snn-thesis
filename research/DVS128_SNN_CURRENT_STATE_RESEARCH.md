@@ -418,3 +418,30 @@ this is a genuine gap -- preprocessing is rarely ablated despite being critical.
 4. TA-SNN paper (2021) -- temporal attention, good comparison tables
 5. TENNs-PLEIADES paper (2024) -- current SOTA
 6. SpikingJelly Science Advances paper (2023) -- framework design
+
+---
+
+## sources
+
+- [Papers with Code - DVS128 Benchmark](https://paperswithcode.com/sota/gesture-recognition-on-dvs128-gesture)
+- [CatalyzeX - DVS128](https://www.catalyzex.com/s/Dvs128%20Gesture%20Dataset)
+- [SpikingJelly GitHub](https://github.com/fangwei123456/spikingjelly)
+- [SpikingJelly classify_dvsg Tutorial](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.6/clock_driven_en/14_classify_dvsg.html)
+- [snnTorch Tutorial 7](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
+- [snnTorch DVS Gesture Docs](https://snntorch.readthedocs.io/en/latest/examples/examples_svision/example_sv_dvsgesture.html)
+- [Tonic DVSGesture](https://tonic.readthedocs.io/en/latest/generated/tonic.datasets.DVSGesture.html)
+- [Open Neuromorphic Benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
+- [PLIF Paper (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/papers/Fang_Incorporating_Learnable_Membrane_Time_Constant_To_Enhance_Learning_of_Spiking_ICCV_2021_paper.pdf)
+- [SpikePoint](https://arxiv.org/html/2310.07189v2)
+- [TA-SNN](https://arxiv.org/pdf/2107.11711)
+- [TENNs-PLEIADES](https://arxiv.org/abs/2405.12179)
+- [SG-SNN](https://link.springer.com/article/10.1007/s11571-024-10199-6)
+- [SpikMamba](https://arxiv.org/abs/2410.16746)
+- [STAA-SNN (CVPR 2025)](https://arxiv.org/abs/2503.02689)
+- [SpiNNaker2 DVS Deployment](https://arxiv.org/abs/2504.06748)
+- [DVS-Gesture-Chain](https://github.com/VicenteAlex/DVS-Gesture-Chain)
+- [snnTorch Issue #285](https://github.com/jeshraghian/snntorch/issues/285)
+- [SpikingJelly Science Advances](https://www.science.org/doi/10.1126/sciadv.adi1480)
+- [SNN for Event-Based Action Recognition Survey](https://www.sciencedirect.com/science/article/pii/S0925231224014280)
+- [SNN in Imaging Review (MDPI)](https://www.mdpi.com/1424-8220/25/21/6747)
+- [NeuroBench (Nature Communications)](https://www.nature.com/articles/s41467-025-56739-4)

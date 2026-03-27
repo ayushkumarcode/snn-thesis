@@ -222,3 +222,31 @@ important: these ratios only capture compute energy. memory access (SRAM: 5 pJ, 
 
 ### Sparsity-Energy Relationship
 
+Shafique et al. (arXiv:2408.14437, 2024) -- two types of sparsity:
+1. **static:** fixed zero weights (pruning), allows predetermined compression
+2. **dynamic:** temporal event-based activations, requires flexible hardware
+
+hardware accelerators exploiting sparsity (2024): MISS framework (36% energy improvement, 23% speedup), ESSA (253.1 GSOP/s at 75% weight sparsity on FPGA), SATA (exploits spike/gradient/membrane potential sparsity).
+
+our SNN has 74.16% activation sparsity. on hardware that skips zero-spike computations, energy cost drops proportionally. the 5.1x per-op advantage * sparsity exploitation could yield big savings on neuromorphic hardware, even though software shows 2.1x disadvantage.
+
+### Energy Summary
+
+| Metric | Our SNN | Our ANN | Literature Context |
+|--------|---------|---------|-------------------|
+| Energy/sample (software) | 976 nJ | 463 nJ | SNN 2.1x MORE expensive -- consistent with Dampfhoffer/Yang |
+| Effective ACs | 1.08M | 0 | Binary spike operations |
+| Effective MACs | 0 | 101K | Multiply-accumulate operations |
+| Activation sparsity | 74.16% | 59% | Below 93% threshold (Yang 2024) |
+| Implied spike rate | ~25.8% | N/A | Above 6.4% threshold (Yang 2024) |
+| Per-op cost (32b) | 0.9 pJ/AC | 4.6 pJ/MAC | 5.1x per-op advantage (Horowitz) |
+| Hypothetical neuromorphic | ~190 nJ | 463 nJ | 2.4x cheaper IF hardware exploits sparsity |
+
+---
+
+## Part 3: Surrogate Gradients
+
+### Zenke & Vogels (Neural Computation, 2021)
+
+foundational paper. key claim: surrogate gradient learning is **robust to the shape** of the surrogate derivative, but **scale (steepness) substantially affects performance.** tested SuperSpike (fast sigmoid), standard sigmoid, and piecewise linear -- all worked comparably when scale was tuned.
+

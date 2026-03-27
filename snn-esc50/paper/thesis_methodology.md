@@ -124,20 +124,20 @@ High intensity = early spike; exactly 1 spike per active neuron. Zero-intensity 
 
 ### population coding
 Output-side: each of 50 classes represented by 10 neurons (500 total output). Input uses rate coding. Loss: MSE count loss:
-where $y_{\text{pop}} \in \{0, 1\}^{500}$ is the population target vector. Classification: argmax of total spike count summed over grouped neuron pools. Implemented via `snntorch.functional.mse_count_loss(population_code=True, num_classes=50)`.
+$$\mathcal{L} = \text{MSE}\left(\frac{1}{T}\sum_t \text{spk}_{out,t}, y_{\text{pop}}\right)$$
+where y_pop is a {0,1}^500 target vector. Classification: argmax of total spike count summed over grouped pools. Via `snntorch.functional.mse_count_loss(population_code=True, num_classes=50)`.
 
 ---
 
-## 3.5 Training Protocol
+## 3.5 training protocol
 
-**Optimiser:** Adam (lr=1e-3, weight decay=1e-4)
-**Learning rate schedule:** ReduceLROnPlateau (factor=0.5, patience=5 epochs, monitor: validation loss)
-**Early stopping:** Patience=10 (stop if no validation accuracy improvement for 10 consecutive epochs)
-**Maximum epochs:** 50
+**Optimiser:** Adam (lr=1e-3, wd=1e-4)
+**LR schedule:** ReduceLROnPlateau (factor=0.5, patience=5, monitor val loss)
+**Early stopping:** patience=10
+**Max epochs:** 50
 **Batch size:** 32
-**Loss function (SNN):** Per-timestep cross-entropy on membrane potentials, summed over T:
+**Loss (SNN):** per-timestep CE on membrane potentials, summed over T:
 $$\mathcal{L} = \sum_{t=1}^{T} \text{CE}(\text{mem}_t, y)$$
-This follows snnTorch Tutorial 5 and provides gradient flow through all timesteps simultaneously.
 **Loss function (ANN):** Standard cross-entropy on logits.
 **Inference (SNN):** Predicted class = $\arg\max \sum_t \text{mem}_t$ (summed membrane potential vote).
 

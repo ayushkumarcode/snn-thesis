@@ -845,31 +845,3 @@ writer.add_scalar('train_acc', train_acc, epoch)
 writer.add_scalar('test_loss', test_loss, epoch)
 writer.add_scalar('test_acc', test_acc, epoch)
 ```
-
-View with:
-```bash
-tensorboard --logdir=./logs
-```
-
----
-
-## 8. End-to-End Examples
-
-### 8.1 SpikingJelly Built-in Example (Recommended Starting Point)
-
-The fastest way to get a working baseline:
-
-```bash
-# Download DVS128 Gesture dataset first (manual download from IBM)
-# Place in ./data/DVS128Gesture/
-
-# Run the built-in training script
-python -m spikingjelly.activation_based.examples.classify_dvsg \
-    -T 16 \
-    -device cuda:0 \
-    -b 16 \
-    -epochs 64 \
-    -data-dir ./data/DVS128Gesture \
-    -out-dir ./logs \
-    -amp \
-    -opt adam \

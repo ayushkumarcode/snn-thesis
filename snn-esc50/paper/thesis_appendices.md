@@ -26,19 +26,19 @@ Direct fold 1 = 40.50% (CSF3 canonical; local MPS retrain was 45.50% -- Decision
 
 ### A.2 PANNs transfer learning -- all folds
 
-All models use frozen CNN14 embeddings (2048-d, AudioSet-pretrained). SNN head = 3-layer SNN classifier. ANN head = 3-layer ANN classifier. Linear = single linear layer. 50 epochs training, same Adam/scheduler config.
+Frozen CNN14 embeddings (2048-d, AudioSet). SNN head = 3-layer SNN. ANN head = same with ReLU. Linear = logistic regression. 50 epochs, same Adam/scheduler.
 
-| Model | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | **Mean** | **Std** |
-|-------|--------|--------|--------|--------|--------|----------|---------|
-| PANNs + SNN head | 92.00% | 94.50% | 91.00% | 93.50% | 91.50% | **92.50%** | 1.30% |
-| PANNs + ANN head | 93.00% | 95.00% | 92.00% | 95.50% | 91.75% | **93.45%** | 1.54% |
-| PANNs + Linear | 94.25% | 95.75% | 92.50% | 95.25% | 91.25% | **93.80%** | 1.69% |
+| Model | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std |
+|-------|--------|--------|--------|--------|--------|------|-----|
+| PANNs + SNN | 92.00% | 94.50% | 91.00% | 93.50% | 91.50% | 92.50% | 1.30% |
+| PANNs + ANN | 93.00% | 95.00% | 92.00% | 95.50% | 91.75% | 93.45% | 1.54% |
+| PANNs + Linear | 94.25% | 95.75% | 92.50% | 95.25% | 91.25% | 93.80% | 1.69% |
 
-*Source: `results/panns/panns_snn_head_all_folds_50ep.json`.*
+Source: `results/panns/panns_snn_head_all_folds_50ep.json`.
 
-### A.3 Surrogate Gradient Ablation (Fold 1, Seed 42)
+### A.3 surrogate gradient ablation (fold 1, seed 42)
 
-Direct encoding SNN, fold 1, single seed (seed=42). Best validation accuracy reported (best checkpoint across all epochs).
+Direct encoding, fold 1, single seed. Best validation accuracy reported.
 
 | Surrogate Function | Best Acc. | Best Epoch | Status |
 |-------------------|-----------|------------|--------|

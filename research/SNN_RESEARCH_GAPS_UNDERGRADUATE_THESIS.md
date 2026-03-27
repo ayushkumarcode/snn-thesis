@@ -351,31 +351,3 @@ If the goal is to minimize effort while maximizing the "novelty" claim, here is 
 ### Option A: "First SNN Results on [Dataset X]"
 Pick a dataset with zero SNN papers. Run a standard snnTorch CSNN. Report results.
 
-**Best candidates (in order of ease):**
-1. **ESC-50 or UrbanSound8K** -- Environmental sound. Convert to mel-spectrogram, rate-encode, classify.
-2. **PlantVillage** -- Plant disease images. Standard image classification.
-3. **GTZAN** -- Music genre. Mel-spectrograms + SNN.
-4. **SVHN** -- Street View House Numbers. Slightly harder MNIST variant, zero SNN work.
-5. **Food-101 or Flowers-102** -- Fine-grained image classification, zero SNN work.
-6. **PTB-XL** -- ECG. Time series, zero SNN work.
-
-### Option B: "Same Architecture, Different Frameworks"
-Run an identical CSNN on snnTorch and SpikingJelly on the same dataset. Report accuracy, speed, memory, energy.
-
-**Best candidates:**
-1. **SHD** (audio) -- both frameworks support it but no head-to-head comparison.
-2. **DVS128 Gesture** -- flagship neuromorphic dataset, no framework comparison.
-3. **CIFAR10-DVS** -- popular but no framework comparison.
-4. **Fashion-MNIST** -- simple but no systematic framework comparison.
-
-### Option C: "Systematic Hyperparameter Study"
-Vary one key SNN parameter across multiple settings and multiple datasets. Report results.
-
-**Best candidates:**
-1. **Number of timesteps (T)** -- varies wildly across papers (T=4 to T=100), no guidance exists.
-2. **Membrane decay constant (beta)** -- critical parameter, no systematic study.
-3. **Spike encoding method** -- rate vs temporal vs learnable, especially on audio data.
-
----
-
-<a name="8-sources"></a>

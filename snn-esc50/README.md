@@ -26,20 +26,20 @@ energy: SNN uses 1,358M pJ vs ANN 314M pJ per sample in software sim (4.3x more)
 cd snn-esc50
 python -m venv .venv
 source .venv/bin/activate
-cd snn-esc50
-python -m venv .venv
-source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## usage
 
-### Download ESC-50
-
+download ESC-50:
 ```python
 from src.dataset import download_esc50
 download_esc50()
 ```
+
+train ANN baseline:
+```bash
+python -m src.train --model ann
 
 ### Train ANN Baseline
 

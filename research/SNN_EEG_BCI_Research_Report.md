@@ -278,3 +278,31 @@ Evaluation:          scikit-learn metrics, MOABB benchmarks
 | Hyperparameter tuning | Medium | Use published papers' configs as starting points |
 | Neuroscience terminology | Medium | Keep a glossary; you only need ~20 terms |
 | Debugging temporal SNN dynamics | Medium | snnTorch visualization tools for membrane potentials |
+
+### scoping it
+
+**minimum viable project (safe scope):**
+- reproduce combra-lab/snn-eeg results on PhysioNet EEGMMIDB
+- compare SNN vs EEGNet (standard CNN baseline) on same dataset
+- report accuracy, parameter count, estimated energy consumption
+- timeline: ~3-4 months
+
+**ambitious but achievable:**
+- implement SNN for motor imagery using snnTorch on BCI Competition IV-2a
+- compare multiple spike encodings (rate vs temporal)
+- benchmark against 2-3 CNN baselines (EEGNet, ShallowConvNet, DeepConvNet)
+- energy analysis using theoretical MAC operation counts
+- timeline: ~4-6 months
+
+**stretch goals (if time permits):**
+- cross-subject transfer learning with SNNs
+- hybrid CNN-SNN architecture
+- deployment on neuromorphic hardware simulator
+- real-time inference demo
+
+### crash course reading list (1-2 weeks)
+
+1. "An Introduction to EEG" -- any intro neuroscience textbook chapter
+2. BCI Competition IV website documentation
+3. snnTorch Tutorial Series (Tutorials 1-5)
+4. "Spiking neural networks for EEG signal analysis: From theory to practice" (ScienceDirect, 2025)

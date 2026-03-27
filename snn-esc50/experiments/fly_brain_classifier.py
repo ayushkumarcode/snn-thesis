@@ -110,3 +110,31 @@ class FlyBrainSNN(nn.Module):
             indices = torch.randperm(input_dim)[:n_connections]
             random_weights[i, indices] = torch.randn(n_connections)
         self.register_buffer('random_proj', random_weights)
+
+        # LIF neuron for Kenyon cells
+        sg = surrogate.fast_sigmoid(slope=25)
+        self.lif = snn.Leaky(beta=0.95, spike_grad=sg)
+
+        # Trained readout
+        self.readout = nn.Linear(self.expansion_dim, NUM_CLASSES)
+        self.lif_out = snn.Leaky(beta=0.95, spike_grad=sg)
+
+    def forward(self, x):
+        # x: (T, batch, 1, 64, 216) direct encoded spectrogram
+        device = x.device
+        mem1 = self.lif.init_leaky()
+        mem2 = self.lif_out.init_leaky()
+
+        spk_rec, mem_rec = [], []
+
+        for step in range(self.num_steps):
+            x_t = x[step]  # (batch, 1, 64, 216)
+            features = x_t.squeeze(1).mean(dim=-1)  # (batch, 64)
+
+            # Random projection
+            projected = F.linear(features, self.random_proj)
+
+            # LIF neuron (spikes = WTA naturally via threshold)
+            spk1, mem1 = self.lif(projected, mem1)
+
+            # WTA: keep only top-k spikes

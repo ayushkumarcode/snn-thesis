@@ -110,3 +110,31 @@ the literature converges on several explanations:
 | Scheme | Year | Key Innovation | Reference |
 |--------|------|----------------|-----------|
 | Multiplexed Rate+TTFS (RTF) | 2024 | Hardware neuron combining rate and temporal coding | Nature Communications 15:3808 |
+| At-Most-Two-Spike (AEC) | 2024 | Primary + compensating spike reduces quantization error | Neural Networks (ScienceDirect) |
+| Stochastic First-to-Spike | 2024 | Stochastic LIF with temporal coding | arXiv:2404.17719, ICCAD 2024 |
+| Input-aware Multi-Level Spike (IMLS) | 2025 | Multi-timestep firing in single timestep | IML-Spikeformer |
+| Sigma-Delta Network Conversion | 2025 | Sigma-delta neurons exploit temporal redundancy | arXiv:2505.06417 (Loihi 2) |
+| Hilbert Transform Encoding | 2025 | Phase-based event encoding from analytic signal | Nature Comms Eng |
+| TAE | 2025 | Dynamically adjusting thresholds for environmental sounds | arXiv:2503.11206 |
+| HD Computing Decoding | 2025 | HD computing + SNN for robust low-latency decoding | arXiv:2511.08558 |
+
+also worth noting: Stanojevic et al. from IBM (Nature Comms 2024) demonstrate TTFS-based SNNs achieving exact ANN-equivalent accuracy on MNIST through PLACES365 with only 0.3 spikes per neuron. temporal coding can match ANN accuracy with extreme sparsity when properly trained.
+
+### Encoding Summary
+
+our 7-encoding ESC-50 benchmark is unique in the literature:
+
+| Rank | Our Encoding | Acc (%) | Literature Consensus | Consistent? |
+|------|-------------|---------|---------------------|-------------|
+| 1 | Direct | 47.15 | Best at low timesteps (Kim 2022, Tutorial 2025) | yes |
+| 2 | Rate | 24.00 | Good accuracy but needs many timesteps | yes (gap expected) |
+| 3 | Phase | 24.15 | Noise-robust (Guo 2021), efficient | yes |
+| 4 | Population | 19.15 | Higher neuron count, harder optimization | yes |
+| 5 | Latency | 16.30 | Low firing rate but fragile to noise (Bian 2024: -37%) | yes |
+| 6 | Delta | 7.25 | Multi-threshold variants work (Bian 2024: 89.8%), simple threshold fails | partially |
+| 7 | Burst | 6.50 | Good for compression/HW robustness (Guo 2021) but architecture-dependent | novel negative result |
+
+---
+
+## Part 2: Energy Efficiency
+

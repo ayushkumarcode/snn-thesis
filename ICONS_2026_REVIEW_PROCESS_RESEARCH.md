@@ -69,31 +69,3 @@ The proceedings acceptance rate for ICONS is comparable to or slightly more sele
 
 ## 3. Timeline After Submission
 
-### ICONS 2026 Exact Timeline
-
-| Date | Event |
-|------|-------|
-| April 1, 2026 | **Submission deadline** (AoE, no extension) |
-| April 1 - May 13 | Review period (~6 weeks) |
-| May 13, 2026 | **Reviews due** |
-| May 18, 2026 | **Reviews sent to authors** (5 days after reviews due) |
-| May 18 - May 25 | Authors prepare rebuttal (~1 week) |
-| May 25, 2026 | **Rebuttal submission** to program co-chairs |
-| May 25 - June 5 | PC deliberation (~11 days) |
-| June 5, 2026 | **Final acceptance decision** |
-| June 5 - June 24 | Camera-ready preparation (~19 days) |
-| June 24, 2026 | **Camera-ready deadline** |
-| August 4-6, 2026 | **Conference** |
-
-**Total timeline: submission to decision = 65 days (~9.3 weeks)**
-**Total timeline: submission to conference = 126 days (~18 weeks)**
-
-### Historical Comparison
-
-| Year | Submission | Notification | Conference |
-|------|-----------|--------------|------------|
-| 2026 | April 1 | June 5 | Aug 4-6 |
-| 2025 | April 1 | June 5 | Aug 4-6 |
-| 2024 | April 30/May 3 | June 10 | Jul 30-Aug 2 |
-| 2023 | April 30 | June 6 | Aug 1-3 |
-| 2022 | April 30 | June 10 | Jul 27-29 |

@@ -390,3 +390,31 @@ Risks: SNN+RL training instability. MuJoCo compatibility quirks. Hyperparameter 
 | SLAM | 5-10 | YES | YES (Nengo) | LOW-MODERATE | Nengo (not snnTorch) |
 | Drone Control | 10-15 | Partially | Difficult | LOW | Complex sim setup |
 | Grasping/Manipulation | 5-10 | Partially | YES | LOW | MuJoCo + custom env |
+| Swarm Robotics | 5-10 | YES | YES | LOW | Multi-agent complexity |
+
+---
+
+## Part 3: Unconventional SNN applications
+
+---
+
+### 3.1 SNN for game AI (Atari, board games)
+
+**Literature: 10-15 papers**
+
+Key finding: DSQN represents Q-values via membrane voltage of non-spiking output neurons, outperforming standard DQN on most Atari games while being more robust to input noise.
+
+**Feasibility: MODERATE** -- CartPole/LunarLander scope is feasible. Full Atari is too ambitious. Overlaps heavily with the obstacle avoidance RL direction.
+
+Novel angle: most papers use custom SNN frameworks. Implementing spiking DQN in snnTorch specifically, with energy analysis, could be novel.
+
+---
+
+### 3.2 SNN for cybersecurity / intrusion detection
+
+**Literature: 10-20 papers, actively growing**
+
+Key works:
+- [Efficient intrusion detection based on convolutional SNN (Nature Scientific Reports 2024)](https://www.nature.com/articles/s41598-024-57691-x)
+- [Energy-aware protocol-aware transformer-spiking hybrid (Nature Scientific Reports 2026)](https://www.nature.com/articles/s41598-026-37367-4)
+- [Intrusion Detection for 5G SDN with binarized deep spiking capsule network (MDPI 2024)](https://www.mdpi.com/1999-5903/16/10/359)

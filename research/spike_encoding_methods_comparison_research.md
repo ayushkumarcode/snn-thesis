@@ -54,3 +54,31 @@ input encoded in spike patterns whose phases correlate with internal oscillation
 
 information through rapid successive bursts within short time windows.
 
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Burst Coding** | Number of spikes in burst proportional to input strength. More reliable synaptic communication than single spikes. | Best fault tolerance; best compression; higher spike count than TTFS |
+
+### Population Coding with Gaussian Receptive Fields (GRF)
+
+each scalar input projected onto a population of neurons with different Gaussian receptive field centres. neuron closest to input fires earliest/most.
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **GRF Population Coding** | N neurons cover input range with overlapping Gaussians. Activation determines spike timing. | High info capacity; requires multiple neurons per input feature |
+
+### Direct / Learned Encoding
+
+trainable layer converts raw input into spike trains. encoding learned jointly with network during training.
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Direct Coding** | Trainable linear layer converts pixels to float values at each timestep; thresholding produces spikes. | Best accuracy with few timesteps; requires multi-bit first layer; less robust to adversarial attacks |
+| **H-Direct (Homeostatic)** | Improved direct coding with homeostasis to prevent encoding collapse. | Addresses training efficiency limitations |
+
+### Signal-Reconstruction-Oriented (for FPGA/hardware)
+
+focused on accurate reconstruction from spike train, important for signal processing and hardware.
+
+| Method | Description | Key Property |
+|--------|-------------|--------------|
+| **Step Forward (SF)** | Adjusts baseline threshold when signal crosses it. | Fastest encoding speed; lowest energy; unstable with abrupt transitions |

@@ -26,3 +26,31 @@ def compute_energy_model():
     # ============================================================
     # Per-inference energy (from NeuroBench measurements)
     # ============================================================
+    per_inference = {
+        "SNN_baseline": {
+            "energy_nj": 968,
+            "accuracy": 0.4715,
+            "description": "Baseline SNN (T=25, 26.4% spike rate)",
+        },
+        "SNN_rhythm": {
+            "energy_nj": 968,  # Similar architecture
+            "accuracy": 0.6110,
+            "description": "Rhythm SNN (T=25, our best accuracy)",
+        },
+        "SNN_optimized_10x": {
+            "energy_nj": 97,   # Target: 10x reduction
+            "accuracy": 0.55,  # Estimated
+            "description": "Optimized SNN (spike reg + early exit)",
+        },
+        "SNN_optimized_20x": {
+            "energy_nj": 48,   # Target: 20x reduction
+            "accuracy": 0.50,  # Estimated
+            "description": "Aggressively optimized SNN",
+        },
+        "ANN_baseline": {
+            "energy_nj": 454,
+            "accuracy": 0.6385,
+            "description": "ANN baseline (single forward pass)",
+        },
+        "ANN_int8": {
+            "energy_nj": 227,   # ~2x reduction from quantization

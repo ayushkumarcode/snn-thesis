@@ -250,3 +250,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 | Phase | snn_toolbox | SpikingJelly | QCFS Code |
 |-------|-----------|-------------|-----------|
 | Setup | 1-2 days | 0.5-1 day | 0.5-1 day |
+| Understanding | 2-3 days | 1-2 days | 1-2 days |
+| First MNIST | 1 day | 1 day | N/A |
+| First CIFAR-10 | 2-3 days | 1-2 days | 0.5 day |
+| Tuning | 3-5 days | 2-3 days | 1-2 days |
+| **Total** | **~2 weeks** | **~1 week** | **~3-5 days** |
+
+### Hardware
+
+- minimum: 6GB VRAM GPU for CIFAR
+- recommended: 8-12GB for CIFAR + small ImageNet
+- full ImageNet: 16GB+ or university cluster
+- CPU-only: possible for MNIST but painful (10-100x slower)
+
+### Tips
+
+1. use QCFS code as baseline: `python main_train.py --epochs=300 -dev=0 -L=4 -data=cifar10`, then test: `python main_test.py -id=vgg16_wd[0.0005] -data=cifar10 -T=8 -dev=0`
+2. use pretrained weights when available (most repos provide them)
+3. start with VGG-16 on CIFAR-10 -- easiest conversion target, verifies your pipeline
+4. then ResNet-18/20 to see how skip connections affect things
+5. use CIFAR-100 to stress-test -- accuracy gaps show up more on harder datasets
+
+---
+
+## Research Gaps
+
+### Suitable for Undergrad
+
+| Gap | Difficulty | Publication Potential |

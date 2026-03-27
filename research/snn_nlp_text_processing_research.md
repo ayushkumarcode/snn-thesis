@@ -174,31 +174,3 @@ Several groups have successfully applied SNNs to sentiment analysis:
 |---------|-----------------|-------------|---------------|
 | MR (movie reviews) | 77.41% | 75.45% | -1.96% |
 | SST-2 (binary sentiment) | 83.25% | 80.91% | -2.34% |
-| Subj (subjectivity) | 94.00% | 90.60% | -3.40% |
-| SST-5 (5-class) | 45.48% | 41.63% | -3.85% |
-| ChnSenti (Chinese) | 86.74% | 85.02% | -1.72% |
-| Waimai (Chinese food) | 88.49% | 86.66% | -1.83% |
-
-- **Average accuracy drop:** 2.51% across all datasets
-- **Energy:** >10x reduction compared to TextCNN
-- **Adversarial robustness:** +13.55% robust accuracy under adversarial attacks
-- **Timesteps:** 50 (fine-tuned SNNs at 50 steps outperform converted SNNs at 80 steps)
-- **Code:** https://github.com/Lvchangze/snn (public, Python)
-- **Paper:** https://arxiv.org/abs/2406.19230
-
-#### SNNLP (Jan 2024)
-- **Task:** Sentiment analysis with novel text-to-spike encoding
-- **Key result:** New encoding method outperforms Poisson rate-coding by ~13%
-- **Energy:** 32x more efficient during inference, 60x during training vs DNNs
-- **Paper:** https://arxiv.org/abs/2401.17911
-
-#### SNN Topic Modeling (2024)
-- **Task:** Document topic modeling using STDP learning
-- **Method:** Transform text into spike sequences, each neuron represents a topic, STDP modifies synaptic weights
-- **Paper:** https://www.sciencedirect.com/science/article/pii/S0893608024004180
-
----
-
-## Part 3: How to Encode Text as Spikes
-
-This is the central technical challenge for SNN-NLP. Four main approaches exist:

@@ -222,3 +222,31 @@ def run_fold(fold, device, target_rate, kp):
             best_rates = test_rates.copy()
         else:
             patience_counter += 1
+        if epoch % 5 == 0 or epoch == 1:
+            rates_str = " ".join(f"{k}={v:.4f}" for k, v in test_rates.items())
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | Test: {test_acc:.4f} | {rates_str}")
+        if patience_counter >= PATIENCE:
+            break
+    elapsed = time.time() - start
+    overall = sum(best_rates.values()) / len(best_rates)
+    return {"fold": fold, "target_rate": target_rate, "kp": kp, "best_acc": best_acc, "best_epoch": best_epoch, "spike_rates": best_rates, "overall_rate": overall, "time_seconds": elapsed}
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--target-rate", type=float, default=None)
+    parser.add_argument("--kp", type=float, default=0.1)
+    args = parser.parse_args()
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+    targets = [args.target_rate] if args.target_rate else [0.03, 0.05, 0.06, 0.08, 0.10, 0.15]
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    all_results = []
+    for target in targets:
+        print(f"\n{'='*60}\n  Spike Budget: target_rate={target}\n{'='*60}")
+        fold_results = []
+        for fold in folds:
+            result = run_fold(fold, device, target, args.kp)
+            fold_results.append(result)

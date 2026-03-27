@@ -167,31 +167,3 @@ Source: [Sussex Report Marking Criteria](https://www.sussex.ac.uk/ei/internal/fo
 
 ### 2.3 Bristol Level 6 Marking (From Bristol FAQ -- Supervisor Autonomy Indicator)
 
-Bristol provides a revealing indicator about student independence:
-- **60-69%**: "Some self directed work with significant supervisor input"
-- **70+**: Greater autonomy implied, with students driving their own decisions
-
-Source: [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.github.io/qanda/)
-
-### 2.4 Cross-University Synthesis: The Key Differentiators
-
-Based on all universities examined, here are the specific factors that separate a First from a 2:1:
-
-| Dimension | 2:1 (60-69) | First (70-79) | High First (80+) |
-|---|---|---|---|
-| **Literature Review** | Covers relevant work, may miss some key papers, adequate synthesis | Comprehensive coverage, good synthesis, identifies gap clearly | Scholarly treatment, identifies subtle connections between works, positions project expertly |
-| **Implementation** | Works, may have minor issues, achieves primary objectives | Works well, clean design, achieves all objectives, some technical sophistication | Elegant, well-engineered, potentially novel techniques, exceeds objectives |
-| **Evaluation** | Some testing done, basic analysis of results | Systematic evaluation, appropriate metrics, honest discussion of limitations | Rigorous methodology, statistical confidence, comparison with baselines, publishable quality |
-| **Critical Analysis** | Acknowledges some limitations | Honest, nuanced discussion of what worked and what did not | Deep self-awareness, identifies exactly why things failed and what would fix them |
-| **Writing** | Clear enough, some structural issues, adequate referencing | Well-structured, clear prose, good figures, proper referencing | Professional quality, reads like a technical report from industry or a conference paper |
-| **Independence** | Significant supervisor guidance needed | Self-directed with supervisor as advisor | Student drives the project, supervisor learns from the student |
-| **Originality** | Follows existing approaches | Shows some personal creativity in approach | Genuine novel contribution, new technique or insight |
-
-### 2.5 The Single Biggest Differentiator: Evaluation Quality
-
-Across every marking scheme examined, the evaluation chapter is consistently identified as what separates grades. Cambridge states explicitly that assessors are looking for "a nuanced discussion of the successes and failures" and that "a graph that does not indicate confidence intervals or has poorly chosen axes will generally leave a professional scientist with a negative impression."
-
-The pattern is clear:
-- **A 2:1 student** builds something that works and describes what they built.
-- **A First student** builds something that works, critically evaluates WHY it works (or doesn't), compares it against alternatives, and reflects honestly on the limitations.
-

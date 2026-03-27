@@ -209,31 +209,3 @@ For your SNN-ESC50 paper: even in the worst case of proceedings rejection, you w
 
 ### Confirmed Best Paper Awards
 
-| Year | Paper | Authors | Affiliation |
-|------|-------|---------|-------------|
-| 2025 | "A Comparison of Custom and Standard Neuron Model Random Walks on the Ornstein-Uhlenbeck Equation for Simplified Turbulence" | Brady Taylor, J. Darby Smith, Felix Wang, Hemanth Kolla, Michael J. Schmidt | Sandia National Labs |
-| 2024 | Award talks included "Scalable Event-by-event Processing of Neuromorphic Sensory Signals With Deep State-Space Models" (Mark Schone et al.) and "IM-SNN: Memory-Efficient Spiking Neural Network" and "Programmable Synapses and Dendritic Circuits for Superconducting Optoelectronic Neuromorphic Computing" | Various | TU Dresden, NIST, various |
-| 2023 | "Dendritic Learning in Superconducting Optoelectronic Networks" | Ryan O'Loughlin, Bryce Primavera, Jeffrey Shainline | NIST |
-
-### Observations
-- Best paper winners come from national labs (Sandia, NIST) and research universities
-- The awards cover a range of topics: hardware, algorithms, and applications
-- There appear to be multiple "award talks" (possibly best paper + runner-up or categorical awards)
-
----
-
-## 9. Quality Bar and Typical Authors
-
-### Who Publishes at ICONS?
-
-**Affiliations of committee members and authors (2023-2025):**
-
-**Steering Committee:**
-- Oak Ridge National Laboratory (Thomas Potok -- conference founder)
-- Duke University (Yiran Chen)
-- U.S. Department of Energy (Robinson Pino)
-- ETH Zurich / University of Zurich (Melika Payvand)
-- Sandia National Laboratories (Brad Aimone)
-- University of Tennessee, Knoxville (Catherine Schuman)
-
-**Typical author affiliations from proceedings:**

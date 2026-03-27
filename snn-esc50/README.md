@@ -1,17 +1,17 @@
-# SNN for Environmental Sound Classification (ESC-50)
+# snn-esc50
 
-Spiking Neural Network applied to the ESC-50 environmental sound dataset.
-First SNN implementation on ESC-50 (no prior peer-reviewed SNN work exists for this dataset, confirmed arXiv 2503.11206).
+spiking neural network for environmental sound classification on ESC-50.
+this is (as far as i can tell) the first SNN implementation on the full ESC-50 dataset -- no prior peer-reviewed SNN work exists for it (confirmed via arXiv 2503.11206).
 
-**COMP30040 Undergraduate Thesis, University of Manchester.**
-**Author:** Ayush Kumar | **Date:** March 2026
+COMP30040 undergrad thesis, university of manchester. ayush kumar, march 2026.
 
-## Key Results
+## results
 
-| Model | Encoding | Mean Accuracy | Std |
-|-------|----------|---------------|-----|
-| ANN (baseline) | - | 63.85% | ±3.07% |
-| SNN | Direct | **47.15%** | ±4.50% |
+| model | encoding | mean acc | std |
+|-------|----------|----------|-----|
+| ANN (baseline) | - | 63.85% | 3.07% |
+| SNN | direct | **47.15%** | 4.50% |
+| SNN | rate | 24.00% | 1.90% |
 | SNN | Rate | 24.00% | ±1.90% |
 | SNN | Latency | 16.30% | ±1.62% |
 | SNN | Delta | 7.25% | ±0.94% |

@@ -303,31 +303,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 | Sparse SNNs for Radar Signal Processing | 2024 | TU Munich thesis | Sparse radar processing |
 | Radar-Based Hand Gesture Recognition Using SNNs | 2021 | Electronics (MDPI) | Gesture recognition via radar + SNN |
 | SNN with delay-lines for sonar echo classification | Various | Various | 93.5% accuracy on sonar pattern recognition |
-
-**Natural SNN Advantage: VERY HIGH**
-- Radar/sonar signals are inherently temporal and oscillatory
-- Resonate-and-fire neuron models naturally match radar frequency analysis
-- Extreme low power requirements for embedded radar systems (automotive, IoT)
-- Real-time processing with minimal latency is critical
-- Imec's chip demonstrates 100x power reduction -- compelling industrial case
-- Spiking neural resonators outperform FFT-based approaches on efficiency
-
-**Undergraduate Feasibility: LOW-MODERATE**
-- Radar/sonar datasets are harder to obtain (often restricted/military)
-- Signal processing knowledge required (FFT, Doppler analysis, beamforming)
-- More specialized domain knowledge needed
-- Some synthetic radar data could be generated
-- Public sonar dataset: UCI Sonar (Mines vs. Rocks) is simple but classic
-- Micro-Doppler gesture recognition is more accessible
-
-**Novelty Assessment: MODERATE**
-- Active research area, especially automotive radar
-- Sonar classification with SNNs is genuinely sparse
-- Novel angles: specific radar applications (weather, drone detection)
-
-**Verdict: MODERATE thesis candidate -- strong SNN advantage but high domain barrier**
-
----
-
-### 9. SNN for Astronomy Data (Transient Detection)
-

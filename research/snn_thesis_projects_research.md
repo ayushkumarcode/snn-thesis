@@ -418,3 +418,14 @@ Based on analyzing all of these, here's what i think:
 | EEG datasets (various) | Low | Time series | Hard |
 | Custom datasets | Variable | Various | Variable |
 
+---
+
+## Gaps and things i couldn't find
+
+1. Very few explicitly labeled "3rd year" projects -- most say "BSc" or "final year" without specifying year
+2. Limited thesis PDFs for undergrad work -- masters students are more likely to include them
+3. Energy consumption benchmarks -- few student projects actually measure or estimate energy savings
+4. Deployment on edge devices -- very few deploy on actual neuromorphic hardware (those that do usually have SpiNNaker access through Manchester)
+5. NLP/text applications with SNNs -- almost nothing from students in this domain
+
+Some searches were unproductive because "third year project" isn't a universal term, many student repos have no README, some stuff is in private repos or institutional GitLab instances, and neuromorphic hardware projects require lab access most students don't have.

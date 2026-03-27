@@ -54,3 +54,31 @@ cambridge assesses the Part II dissertation across three categories totalling 11
 
 even at cambridge, even for the HIGHEST band, a genuine contribution is explicitly stated as NOT REQUIRED. it's just "strong evidence" for a high mark.
 
+Source: [Cambridge Part II Assessment](https://www.cst.cam.ac.uk/teaching/part-ii/projects/assessment)
+
+### edinburgh -- school of informatics
+
+their common marking scheme is really clear:
+
+- **A1 (90-100%):** "evidences a clear understanding of the limits of state of knowledge"
+- **A2 (80-89%):** "significant personal insight/creativity/originality", "actively extending their knowledge...making new connections independently"
+- **A3 (70-79%):** "elements of personal insight/creativity/originality" and "deep thinking"
+- **B (60-69%):** "ability to think clearly, critically evaluate ideas, to bring different ideas together" -- no originality requirement
+- **C (50-59%):** "sound but limited" -- no originality
+- **D (40-49%):** "limited or lacking" -- no originality
+
+and from their MSc dissertation guidelines (which also tells you about undergrad expectations):
+
+> "Since the time and resources available to the candidate are relatively restricted **it is not expected that the dissertation will report notable or original contributions to knowledge.**"
+
+if edinburgh doesn't expect original contributions from *master's* students, the bar is even lower for undergrads.
+
+they also clarify that dissertations are "primarily teaching, learning and examining media, not media for the presentation of research of original work outcomes to public or peers."
+
+Sources: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme), [Edinburgh Dissertation Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
+
+### sussex -- informatics final year projects
+
+one of the most detailed publicly available marking rubrics i found:
+
+- **90-100%:** "evidence of original thought", "publishable quality in a peer-reviewed national conference"

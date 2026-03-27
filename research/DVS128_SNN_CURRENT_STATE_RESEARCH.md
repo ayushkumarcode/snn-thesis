@@ -54,3 +54,31 @@ Sources: [Papers with Code DVS128 Benchmark](https://paperswithcode.com/sota/ges
 | **Lightweight/Pruned SNN** | Focus on parameter efficiency. | NSPDI-SNN (<7K params), LightSNN | 94-97% |
 
 ### the standard starting point: CSNN
+
+the convolutional SNN with LIF or PLIF neurons is by far the most common. typical pattern from SpikingJelly's tutorial:
+
+```
+{Conv2d-BatchNorm-LIF-MaxPool}*N -> Flatten -> FC-LIF -> FC-LIF -> Output
+```
+
+usually 5 conv blocks with 128 channels, 3x3 kernels, then 2 FC layers (512, then 11 classes).
+
+### neuron models
+
+| Neuron | What it is | Impact on DVS128 |
+|--------|-----------|-----------------|
+| **LIF** | Leaky Integrate-and-Fire. Fixed decay constant. Standard. | Baseline ~96% |
+| **PLIF** | Parametric LIF. Learnable decay per layer. ICCV 2021. | ~1-2% improvement over LIF |
+| **IF** | Integrate-and-Fire. No leak. Simpler but less expressive. | Lower accuracy |
+| **ALIF** | Adaptive LIF. Learnable threshold adaptation. | Better temporal modeling |
+
+PLIF (learnable membrane time constant) consistently beats fixed-parameter LIF and is less sensitive to hyperparameter initialization. backed by the SpikingJelly authors' ICCV 2021 paper.
+
+Sources: [PLIF Paper (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/papers/Fang_Incorporating_Learnable_Membrane_Time_Constant_To_Enhance_Learning_of_Spiking_ICCV_2021_paper.pdf), [Parametric-LIF GitHub](https://github.com/fangwei123456/Parametric-Leaky-Integrate-and-Fire-Spiking-Neuron)
+
+---
+
+## 3. framework comparison: SpikingJelly vs snnTorch
+
+### head-to-head
+

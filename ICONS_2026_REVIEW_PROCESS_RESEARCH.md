@@ -26,3 +26,31 @@ also not explicitly stated. ACM standard practice for conferences is typically 2
 |------|-------------------|-------------|-----------------|--------|
 | 2023 | 13 | 22 | **59%** | ACM DL metadata |
 | 2022 | ~15 | Unknown | Unknown | DBLP count |
+| 2021 | ~15 | 29 submitted | ~52% (estimated) | ORNL news article |
+| 2020 | 15 | 28 published | Unknown | ORNL news article |
+| 2019 | 15 | Unknown | Unknown | DBLP count |
+
+important context: these rates are for proceedings papers only. ICONS also accepts many more presentations as lightning talks and posters that aren't in the formal proceedings. total presentation counts are much higher:
+- ICONS 2023 (ORNL): 15 full talks + 28 lightning talks + 44 posters = 87 total presentations
+- ICONS 2024 (GMU): 3 award talks + 8 full talks + 42 lightning talks + 32+ posters = 85+ total
+- ICONS 2025 (Bellevue): 13 full talks + 12 lightning talks + poster session = 26+ presentations
+
+the ~59% acceptance rate for proceedings papers is moderate. for comparison: IJCNN is 52-59% historically, NeurIPS ~25%, ICML ~28%, CVPR ~25%.
+
+---
+
+## timeline after submission
+
+### ICONS 2026 exact timeline
+
+| Date | Event |
+|------|-------|
+| April 1, 2026 | Submission deadline (AoE, no extension) |
+| April 1 - May 13 | Review period (~6 weeks) |
+| May 13, 2026 | Reviews due |
+| May 18, 2026 | Reviews sent to authors (5 days after reviews due) |
+| May 18 - May 25 | Authors prepare rebuttal (~1 week) |
+| May 25, 2026 | Rebuttal submission to program co-chairs |
+| May 25 - June 5 | PC deliberation (~11 days) |
+| June 5, 2026 | Final acceptance decision |
+| June 5 - June 24 | Camera-ready preparation (~19 days) |

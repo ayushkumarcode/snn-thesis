@@ -278,3 +278,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Year** | 2020 |
 | **Degree** | PhD |
 | **Department** | Computer Science |
+| **Supervisors** | Dirk Koch (main), James Garside (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/modular-fpga-systems-with-support-for-dynamic-workloads-and-virtu/ |
+| **Abstract** | Demonstrates modular FPGA systems with dynamic resource adjustment. Contributions: modular dev flow for FPGA OS, OpenCL scheduling across CPU/FPGA, resource elasticity concept, live migration across FPGA clusters. |
+| **What They Built** | FPGA operating system framework; OpenCL scheduler; live migration system |
+| **Tools/Frameworks** | OpenCL, FPGAs |
+| **Datasets** | N/A |
+| **Scope** | Very high -- systems-level FPGA research |
+
+---
+
+### 2.4 FPGA Virtualisation on Heterogeneous Computing Systems
+| Field | Detail |
+|-------|--------|
+| **Author** | Khoa Pham |
+| **Year** | 2020 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Dirk Koch (main), James Garside (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/fpga-virtualisation-on-heterogeneous-computing-systems-model-tool/ |
+| **Abstract** | Proposes fully FPGA-virtualised computing model for heterogeneous CPU+FPGA systems. Advances partial reconfiguration techniques for embedded, edge, and cloud computing. |
+| **What They Built** | FPGA virtualisation model; partial reconfiguration methodology |
+| **Tools/Frameworks** | FPGAs, partial reconfiguration |
+| **Datasets** | N/A |
+| **Scope** | High -- novel computing model |
+
+---
+
+### 2.5 Harnessing Reconfigurable Hardware to Design Heterogeneous Systems

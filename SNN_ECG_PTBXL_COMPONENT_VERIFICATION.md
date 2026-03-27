@@ -266,31 +266,3 @@ nn.Conv1d(in_channels=12, out_channels=32, kernel_size=7)
 
 ### 7. Label Structure
 
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES |
-| **VERIFIED HOW** | PTB-XL paper (Wagner et al. 2020), PhysioNet, official loading code |
-| **POTENTIAL BLOCKER** | NO |
-
-**Hierarchical label structure:**
-- **71 individual SCP-ECG statements** (raw annotations)
-- **Diagnostic superclass (5 classes):** NORM, MI, STTC, CD, HYP -- **this is the standard benchmark task**
-- **Diagnostic subclass (23-24 classes):** finer-grained diagnoses
-- **Form statements:** morphological patterns
-- **Rhythm statements:** rhythm-related findings
-
-**5 Superclass distribution (approximate counts, multi-label so sum > 21,799):**
-
-| Superclass | Full Name | Approx. Count |
-|---|---|---|
-| NORM | Normal ECG | ~9,528 |
-| MI | Myocardial Infarction | ~5,486 |
-| STTC | ST/T Changes | ~5,250 |
-| CD | Conduction Disturbance | ~4,907 |
-| HYP | Hypertrophy | ~2,655 |
-
-**Standard task for benchmarking:** 5-superclass multi-label classification
-**Label format:** Multi-label (one ECG can have multiple labels, e.g., MI + STTC)
-**This is a multi-label, NOT multi-class problem.** Use BCEWithLogitsLoss, not CrossEntropyLoss.
-
-**Label loading code:**

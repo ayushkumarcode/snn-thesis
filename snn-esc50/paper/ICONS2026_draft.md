@@ -26,20 +26,20 @@ Contributions:
 2. Systematic comparison of 7 spike encoding methods
 3. First SpiNNaker deployment for environmental sound, with documented root-cause analysis of FC1 cancellation
 4. First FGSM/PGD adversarial analysis of SNNs on audio spectrograms
-6. **NeuroBench-compliant energy analysis** [7]
+5. PANNs + SNN head showing gap narrows to <1% with pretraining
+6. NeuroBench-compliant energy analysis [7]
 
-Our key finding is that **the SNN-ANN accuracy gap is not fundamental**: it collapses from 16.7 pp to <1 pp with pre-trained features, suggesting the bottleneck is representation learning, not the spiking formalism. Meanwhile, SNNs exhibit natural properties — adversarial robustness, energy-efficient hardware deployment — that make them compelling for edge audio sensing.
+Key finding: **the SNN-ANN accuracy gap isn't fundamental** -- it collapses from 16.7 pp to <1 pp with pretrained features, suggesting the bottleneck is representation learning not the spiking formalism. Meanwhile SNNs exhibit natural properties (adversarial robustness, hardware compatibility) that make them compelling for edge audio.
 
 ---
 
 ## 2. Background
 
-### 2.1 ESC-50 Dataset
+### 2.1 ESC-50
 
-ESC-50 [1] contains 2,000 five-second environmental sound recordings across 50 classes (40 clips/class), organised into 5 predefined folds for cross-validation. Human performance is 81.3%; current ANN SOTA is 98.25% [14]. We use log-mel spectrograms (64 bins, n_fft=1024, hop=512, sr=22050 Hz), normalised to [0,1] per sample, yielding 64×216 input tensors.
+ESC-50 [1]: 2000 five-second recordings, 50 classes, 5-fold CV. Human 81.3%, ANN SOTA 98.25% [14]. We use log-mel spectrograms (64 bins, n_fft=1024, hop=512, sr=22050), normalised to [0,1], giving 64x216 inputs.
 
-### 2.2 Spiking Neural Networks
-
+### 2.2 Spiking neural networks
 Leaky Integrate-and-Fire (LIF) neurons accumulate weighted input currents, emit binary spikes when membrane potential exceeds threshold, and reset. Gradients through the spike function are approximated by surrogate gradients [4]; we use fast sigmoid (slope=25) throughout. Training follows snnTorch [3] with cross-entropy on summed membrane potentials over T=25 timesteps.
 
 ### 2.3 Spike Encoding Methods

@@ -111,19 +111,19 @@ The 10 pp gap reflects:
 
 **Final: SpiNNaker 43.0% vs snnTorch 51.25% -- 8.25 pp gap, 64.5% agreement.**
 
-Progression of accuracy across run checkpoints:
+Progression across the run:
 
-| Samples | SpiNNaker Acc | snnTorch Ref | Hardware Gap | Agreement |
-|---------|---------------|--------------|--------------|-----------|
+| Samples | SpiNNaker | snnTorch | Gap | Agreement |
+|---------|-----------|----------|-----|-----------|
 | 37/400 | 43.2% | 51.4% | 8.2 pp | ~77% |
 | 65/400 | 47.7% | 50.8% | 3.1 pp | 75.4% |
-| 78/400 | 44.9% | 47.4% | 2.6 pp | 75.6% |
 | 108/400 | 49.1% | 50.9% | 1.9 pp | 76.9% |
-| 149/400 | 52.3% | 53.7% | 1.3 pp | 79.2% |
 | 189/400 | 50.8% | 51.3% | 0.5 pp | 81.5% |
 | 208/400 | 50.5% | 50.5% | 0.0 pp | 79.3% |
-| 216/400 | 48.6% | 51.4% | 2.8 pp | 76.4% |
 | 244/400 | 45.5% | 51.2% | 5.7 pp | 70.9% |
+| **400/400** | **43.0%** | **51.25%** | **8.25 pp** | **64.5%** |
+
+Hardware gap fluctuates a lot -- not monotonically converging. Ranges from 0.0 pp (n=208) to 8.25 pp (final). Later samples included harder classes for SpiNNaker (insects, helicopter, engine all 0%). Agreement dropped from ~81% mid-run to 64.5% final.
 | **400/400** | **43.0%** | **51.25%** | **8.25 pp** | **64.5%** |
 
 The hardware gap fluctuates substantially across the run — it is not monotonically converging. The gap ranges from 0.0 pp (at n=208) to 8.25 pp (final). The fluctuation reflects sample-batch variability: samples processed later in the run included more challenging classes for SpiNNaker (e.g., insects, helicopter, engine — all 0% SpiNNaker accuracy). The agreement rate dropped from a mid-run peak of ~81% (at n=189) to 64.5% at n=400, indicating that the final samples were disproportionately harder for SpiNNaker than snnTorch. The large gap seen in Run 5 (n=20, 10 pp) was partly a warning signal rather than noise — at n=400, SpiNNaker finishes with a substantial 8.25 pp deficit.

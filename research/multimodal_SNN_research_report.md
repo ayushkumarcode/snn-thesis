@@ -110,3 +110,31 @@ the Loihi-2 result is pretty wild: **100x energy efficiency over CPU and ~30x ov
 
 3. **Modality imbalance**: when vision is way stronger than audio, the network just ignores audio. TAAF (2025) addresses this but it's still open
 
+4. **Temporal alignment**: synchronizing spike trains from modalities at different temporal scales -- not solved in general
+
+5. **Scalability beyond classification**: extending to detection, segmentation, generation is mostly unexplored
+
+6. **Bio-plausibility**: most current approaches use surrogate gradients (not bio-plausible). combining multimodal fusion with STDP is barely explored
+
+7. **Missing modality robustness**: what if one modality is absent or corrupted? barely studied for SNNs
+
+### Research Questions That Could Work for an Undergrad
+
+- how does fusion strategy (early/mid/late) affect robustness to noise in one modality?
+- can STDP-based learning do competitive multimodal fusion?
+- what's the minimum network size for effective multimodal SNN fusion?
+- how does temporal resolution mismatch between modalities affect things?
+- can knowledge distillation from ANN multimodal models help SNN ones?
+
+### Sources
+- [SNN Imaging Survey - MDPI Sensors](https://www.mdpi.com/1424-8220/25/21/6747)
+- [SNN Multimodal Neuroimaging Review - Frontiers](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1623497/full)
+- [SNN Ubiquitous Computing Survey - arXiv](https://arxiv.org/html/2506.01737v1)
+
+---
+
+## 5. How Complex Would a Simplified Version Be?
+
+### Minimum Viable Multimodal SNN (Late Fusion, Digit Classification)
+
+based on Bjorndahl et al. (2024):

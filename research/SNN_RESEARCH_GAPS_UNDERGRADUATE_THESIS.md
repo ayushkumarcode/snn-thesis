@@ -127,31 +127,3 @@ The Open Neuromorphic benchmark (Feb 2024) tested 11 SNN frameworks but ONLY on 
 |-------------------|---------|--------|
 | **Surrogate gradient vs ANN-to-SNN conversion on the same dataset/architecture** | Papers compare within their method but rarely against each other on identical setups. Especially missing for audio datasets (SHD, SSC). | MEDIUM |
 | **Rate coding vs temporal coding vs delta modulation** | No systematic study comparing encoding methods across multiple datasets with the same architecture. | LOW-MEDIUM |
-| **LIF vs Adaptive LIF vs Izhikevich neuron models** | Most papers use basic LIF. No systematic study on how neuron model choice affects accuracy/efficiency across datasets. | MEDIUM |
-| **STDP vs surrogate gradient on the same task** | Very few direct comparisons. STDP papers compare to other STDP; gradient papers compare to other gradient methods. | MEDIUM |
-| **Effect of number of timesteps** | How does varying T=4, 8, 16, 32, 64 affect accuracy/energy across datasets? Sparse data exists but no systematic study. | LOW |
-
-### 3.3 SNN vs ANN Fair Comparisons
-
-| Missing Comparison | Details | Effort |
-|-------------------|---------|--------|
-| **SNN vs ANN at equivalent parameter count on audio** | Most comparisons are on vision. Audio (SHD, ESC-50, UrbanSound8K) comparisons are nearly absent. | MEDIUM |
-| **SNN vs ANN on time-series regression** | SNN regression is brand new (first paper: Royal Society Open Science, May 2024). No comparison study exists. | MEDIUM |
-| **SNN vs ANN on tabular data** | Virtually unexplored. Can an SNN compete with XGBoost on tabular classification? | MEDIUM |
-| **Energy estimation methodology comparison** | Papers use wildly different energy estimation methods. Some count MACs, some count spikes, some use synaptic operations. No paper standardizes and compares these methods. | LOW-MEDIUM |
-
----
-
-<a name="4-future-work-leads"></a>
-## 4. Future Work Suggestions from Recent SNN Papers
-
-### 4.1 From Survey Papers (2024-2025)
-
-**"The Promise of Spiking Neural Networks for Ubiquitous Computing" (arXiv, June 2025):**
-- SNNs remain underexplored within the ubiquitous computing community.
-- Suggested: Apply SNNs to wearable sensor data, smart home IoT, and mobile applications.
-- Specific gap: No systematic evaluation of SNNs on standard HAR (Human Activity Recognition) benchmarks.
-
-**"Spiking Neural Networks in Imaging: A Review and Case Study" (MDPI Sensors, 2025):**
-- Current progress constrained by "reliance on small or custom datasets" and "narrow focus on classification tasks."
-- Suggested: Move beyond classification to detection, segmentation, and regression.

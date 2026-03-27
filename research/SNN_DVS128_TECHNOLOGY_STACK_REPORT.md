@@ -145,31 +145,3 @@ train_set = DVS128Gesture(
 )
 # Returns variable-length tensors (different T per sample)
 ```
-
-**Handling variable-length sequences:**
-```python
-from spikingjelly.datasets.utils import pad_sequence_collate
-
-# When using duration-based splitting, samples have different T
-# Use pad_sequence_collate to handle this
-train_loader = torch.utils.data.DataLoader(
-    train_set,
-    batch_size=16,
-    collate_fn=pad_sequence_collate,
-    shuffle=True
-)
-# Returns (frames, labels, mask) where mask indicates valid timesteps
-```
-
-### 2.6 Pre-built DVSGestureNet Architecture
-
-SpikingJelly provides a pre-built model specifically for DVS128 Gesture:
-
-```python
-from spikingjelly.activation_based.model import parametric_lif_net
-from spikingjelly.activation_based import neuron, surrogate, functional
-
-# Architecture: {Conv128-BN-LIF-MaxPool}x5 -> Dropout -> FC512 -> LIF -> Dropout -> FC11 -> LIF -> AvgPool
-net = parametric_lif_net.DVSGestureNet(
-    channels=128,                        # Number of channels in conv layers
-    spiking_neuron=neuron.LIFNode,       # Can also use ParametricLIFNode

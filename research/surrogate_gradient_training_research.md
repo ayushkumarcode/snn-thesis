@@ -418,3 +418,31 @@ made the surrogate width learnable. fixed-width causes gradient vanishing in dee
 | Surrogate | Accuracy Impact | Sparsity | Compute Cost | Best For |
 |-----------|----------------|----------|--------------|---------|
 | Fast Sigmoid | Best overall | Highest | Lowest | Production, thesis default |
+| Arctangent | Very good | Moderate | Low | Wider gradient coverage |
+| Sigmoid | Good | Moderate | Medium | Familiarity |
+| Triangular | Poor | Variable | Lowest | Avoid for classification |
+| STE | Baseline | Low | Lowest | Simple baselines only |
+| Learnable | Best (deep nets) | Adaptive | High | Research on deep SNNs |
+
+---
+
+## Recent Advances (2024-2025)
+
+### Theoretical Understanding (2025)
+
+Gygax and Zenke (2025) published in Neural Computation -- surrogate gradients equal true gradients of expected output for single neurons under stochastic interpretation, but this breaks in deep networks. surrogate derivative linked to "escape noise function" of stochastic neuron models. first rigorous theoretical framework for why surrogates work.
+
+### Exact Gradient Methods (2025)
+
+Klos and Memmesheimer (2025) in Physical Review Letters -- exact (not surrogate) gradient computation using "pseudospikes" for continuous gradient flow. potential future alternative but currently more complex.
+
+### Stabilizing Deep SNN Training (2025)
+
+MP-Init and TrSG (2025): membrane potential initialization and threshold-robust surrogate gradients for temporal covariate shift. specifically targets instability in deeper architectures.
+
+### Parametric Surrogates (2024-2025)
+
+Wang et al. (2025): parametric surrogate gradient strategy that iteratively finds optimal surrogate per layer. removes manual parameter selection. also adaptive gradient learning (IJCAI 2025) that auto-calibrates sharpness based on membrane potential distribution.
+
+### SOTA Benchmarks
+

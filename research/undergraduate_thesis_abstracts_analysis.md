@@ -340,31 +340,3 @@ Very few undergraduate theses frame their contribution as a discovery. The close
 ### 3.4 Typical Research Question Structure
 
 Research questions in these theses, when stated explicitly, follow predictable patterns:
-
-1. **Can X achieve Y?**
-   - "Can a multi-frequency Jeffress model operate effectively on neuromorphic hardware?"
-   - "Can SNNs be applied to molecular property prediction?"
-
-2. **How does X compare to Y on task Z?**
-   - "How do spiking networks perform relative to traditional perceptron-based networks?"
-   - "How do these factors [neural models, encoding methods] affect the SNN model accuracy?"
-
-3. **What happens when we do X?**
-   - "What are the firing patterns in current-based LIF networks under different configurations?"
-
-4. **Can we solve problem X using approach Y?**
-   - "Can we solve the limited training data problem by using synthetic data?"
-
-Most research questions are **closed** (yes/no answerable) rather than open-ended. They ask "can we?" or "does it work?" rather than "why?" or "how does the underlying mechanism function?"
-
----
-
-## 4. Heidelberg KIP Bachelor's Theses: A Special Case
-
-The Heidelberg KIP theses deserve separate analysis because they represent a specific and prolific tradition of undergraduate research on neuromorphic hardware. From the complete listing (2010-2025), there are 70+ bachelor's theses, almost all focused on the BrainScaleS/Spikey neuromorphic hardware platforms.
-
-**Common title patterns from KIP theses:**
-- "Towards X on BrainScaleS" (signals progress, not completion)
-- "Characterization of X on neuromorphic hardware" (systematic measurement)
-- "Calibration of X on Y" (getting hardware to work correctly)
-- "Implementation of X for neuromorphic hardware" (building software/hardware)

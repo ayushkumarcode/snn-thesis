@@ -496,31 +496,3 @@ This means:
 | **Datasets** | Camera images, thermocouple data, accelerometer data |
 | **Scope** | Moderate (MPhil) -- applied image processing and ML |
 | **PDF Size** | 4.79 MB |
-| **NOTE** | **MPhil level -- somewhat closer to masters scope** |
-
----
-
-## SECTION 7: REINFORCEMENT LEARNING / ROBOTICS (Adjacent)
-
-### 7.1 Simulation Architectures for Reinforcement Learning applied to Robotics
-| Field | Detail |
-|-------|--------|
-| **Author** | Diego Ferigo |
-| **Year** | 2023 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | Angelo Cangelosi (main), Daniele Pucci (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/simulation-architectures-for-reinforcement-learning-applied-to-ro |
-| **Abstract** | Software architecture for RL environments in robotics. Physics engine optimized for GPUs/TPUs using JAX. Push-recovery controller for iCub humanoid robot. |
-| **What They Built** | RL simulation framework; JAX-based physics engine; iCub push-recovery controller |
-| **Tools/Frameworks** | Gazebo Sim, JAX, iCub platform |
-| **Datasets** | N/A (simulation) |
-| **Scope** | High |
-| **PDF Size** | 3.36 MB |
-
----
-
-## SUMMARY TABLE: ALL THESES FOUND
-
-| # | Title (abbreviated) | Author | Year | Degree | Department | Core Topic |
-|---|---------------------|--------|------|--------|------------|------------|

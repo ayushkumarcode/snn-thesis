@@ -474,3 +474,31 @@ Chapter 6: Conclusion and Future Work
 ## 11. Gaps and Confidence
 
 ### 11.1 Info Gaps
+
+| Gap | Why | Impact |
+|---|---|---|
+| Exact S2-STDP + PCN accuracy per dataset | Tables in Frontiers paper not fully extractable | Low -- NCG paper has SOTA numbers |
+| BindsNET exact release date/version | Didn't deep dive GitHub releases | Low -- framework works regardless |
+| Brian2 vs BindsNET performance benchmarks | No direct comparison paper found | Medium -- would help framework selection |
+| STDP on ImageNet | Doesn't seem to exist -- probably too expensive | Low -- not relevant for undergrad thesis |
+
+### 11.2 Confidence
+
+| Finding | Confidence | Basis |
+|---|---|---|
+| STDP gets ~95% on MNIST (Diehl & Cook) | VERY HIGH | Original paper, 1000+ citations, replicated many times |
+| NCG gets 98.92% on MNIST with STDP features | HIGH | NeurIPS 2024, code available |
+| STDP scales poorly to CIFAR-10 (66% with STDP-CSNN) | HIGH | Multiple sources, NCG paper confirms |
+| BindsNET is the best framework for ML STDP | HIGH | Multiple comparison sources |
+| STDP is still active research in 2025-2026 | VERY HIGH | NeurIPS 2024, ICML 2025, multiple 2025 reviews |
+| Three-factor learning is the most promising STDP extension | HIGH | 2025 Cell Press review, growing publications |
+| STDP on DVS data is underexplored | MEDIUM-HIGH | Limited STDP-specific DVS papers, most DVS work uses surrogate gradients |
+
+---
+
+## 12. References
+
+### Foundational
+- [Diehl & Cook (2015) -- Unsupervised learning of digit recognition using STDP](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2015.00099/full)
+- [Masquelier & Thorpe (2007) -- Unsupervised learning of visual features through STDP](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030031)
+- [Kheradpisheh et al. (2018) -- STDP-based spiking deep CNNs](https://www.sciencedirect.com/science/article/abs/pii/S0893608017302903)

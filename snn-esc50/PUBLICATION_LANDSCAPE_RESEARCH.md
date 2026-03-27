@@ -124,19 +124,19 @@ our closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-o
 
 formula 1: "first X on Y"
 - QKFormer: first directly-trained SNN exceeding 85% on ImageNet
-8. Energy-efficient edge AI
-9. Biomedical applications
-10. **Neuromorphic benchmarks and datasets**
-11. **Domain-specific implementations**
-12. Simulation techniques, programming frameworks, compilers
+- SpikeLLM: first spiking LLM
+- ours: "first convolutional SNN evaluated on ESC-50" + "first neuromorphic hardware deployment for environmental sound"
+- legitimate and verified. strong.
 
-**Your paper maps to: #3 (spike-based systems), #5 (supervised learning), #8 (energy-efficient edge AI), #10 (neuromorphic benchmarks), #11 (domain-specific: environmental sound)**
+formula 2: "X orders of magnitude improvement"
+- Speech2Spikes: 109x energy reduction
+- ours: "6.0x adversarial robustness advantage" + "gap collapses from 16.7pp to 0.95pp" (17.6x reduction in the gap)
+- the 17.6x gap reduction framing is novel and dramatic. worth using.
 
-**Special emphasis 2026:** "ICONS is welcoming work at the intersection of neuromorphic computing and energy-efficient AI, including ultra-low-power spike-based machine learning and processing, event-driven computation... and other approaches that achieve significant improvements in computational efficiency for edge deployment."
-
-Your temporal truncation result (90% accuracy at T=7 = 72% energy saving) directly addresses this emphasis.
-
----
+formula 3: "novel analysis revealing Z"
+- Zenke & Vogels 2021: surrogate shape matters less than slope
+- ours: "the SNN-ANN gap is a feature-learning problem, not a spiking limitation" + "encoding specificity: transfer ratio 0.255"
+- gap-collapse insight is genuinely novel for audio. encoding specificity has never been quantified before.
 
 ## 4. SNN + AUDIO: COMPLETE LANDSCAPE (2016-2025)
 

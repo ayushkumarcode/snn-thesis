@@ -82,3 +82,31 @@ Sources: [NICE 2026](https://niceworkshop.org/nice-2026/)
 | **Conference Dates** | 31 August -- 4 September 2026 |
 | **Location** | Bruges, Belgium (KU Leuven) |
 | **Page Limit** | 5 pages (10pt font), everything included |
+| **Format** | IEEE conference template |
+| **Proceedings** | IEEE Xplore + EURASIP open access |
+| **Acceptance Rate** | ~50-55% historically |
+
+regular paper deadline passed. the Journal-to-Conference track (April 30) requires an already-published journal paper, so that's not useful either.
+
+Sources: [EUSIPCO 2026](https://eusipco2026.org/)
+
+---
+
+### 2.2 ICASSP 2026 [DEADLINE PASSED]
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | 17 September 2025 (PASSED) |
+| **Conference Dates** | 4-8 May 2026, Barcelona, Spain |
+| **Page Limit** | 4 pages + 1 optional references-only page |
+| **Acceptance Rate** | ~45-49% (2024: 48.5%, 2025: 45.3%) |
+| **Registration** | Author: $900-$1,240. Student non-author advance: $250-$395. Plus 21% VAT. |
+
+Sources: [ICASSP 2026](https://2026.ieeeicassp.org/)
+
+---
+
+### 2.3 ICASSP 2027
+
+| Field | Details |
+|-------|---------|

@@ -194,3 +194,31 @@ NOT required:
 - publishing a paper
 - discovering something nobody found before
 
+### level 7 (MSc/MEng) -- master's
+
+"originality in the application of knowledge" (QAA). going somewhat beyond standard coursework-level application, using research methods with some creative thinking.
+
+examples:
+- modifying an existing algorithm for a specific application
+- designing a new experimental protocol
+- combining methods from different subfields in a non-obvious way
+- novel application of established techniques to a new domain
+
+edinburgh explicitly says:
+> "Novelty is not an absolute requirement of an MSc dissertation. However, the work undertaken should engage with recent developments in computer science."
+
+### level 8 (PhD) -- doctoral
+
+"creation and interpretation of new knowledge through original research, of a quality to satisfy peer review, extend the forefront of the discipline, and merit publication" (QAA).
+
+this is where you actually need:
+- a genuine, original contribution to knowledge
+- work that extends the state of the art
+- publishable quality results
+- something not known before your research
+
+---
+
+## 5. consolidated evidence table
+
+| University | Level | Grade Band | What they say about originality |

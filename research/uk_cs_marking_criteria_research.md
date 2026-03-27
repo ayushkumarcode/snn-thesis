@@ -307,31 +307,3 @@ The word "hypothesis" is notable -- it suggests Manchester values projects that 
 **Key Manchester Insight:** The assessment criteria document (project_assessment.pdf) is available on Canvas but was not publicly accessible for this research. You should download and study this document carefully as it will contain the detailed grade descriptors specific to COMP30040.
 
 **Manchester Generic Grade Descriptors (University-wide):**
-- 70-85%: "Designed and developed a substantial, well-rounded product of good quality in all aspects, with all its parts working and overall showing a high degree of creativity"
-
-### 5.2 University of Cambridge (Part II)
-
-**Assessment:** 100% dissertation (no separate implementation mark)
-
-**Breakdown:**
-- Introduction and Preparation: 30/100
-- Implementation and Contribution: 45/100
-- Evaluation and Conclusions: 25/100
-
-**Key Requirements:**
-- Max 12,000 words / 40 pages for main body
-- Strict chapter structure required (Introduction, Preparation, Implementation, Evaluation, Conclusions)
-- Write for reader with general CS knowledge but no specialist knowledge in your area
-- Must demonstrate ethical and professional approaches
-- Must include repository overview section in implementation chapter
-
-**What Makes a First at Cambridge:**
-- Professional approach to design and implementation
-- Systematic evaluation with confidence metrics
-- Clear, literate writing
-- Structured design planning and design-for-test considerations
-- Honest, nuanced discussion of successes and failures
-
-Source: [Cambridge Part II Projects](https://www.cst.cam.ac.uk/teaching/part-ii/projects)
-
-### 5.3 University of Edinburgh (Informatics)

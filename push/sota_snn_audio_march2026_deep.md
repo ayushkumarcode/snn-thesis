@@ -86,31 +86,3 @@
 
 ## 5. Transfer Learning + SNN (Our PANNs+SNN Approach)
 
-**Our approach appears novel.** No paper found that specifically:
-1. Uses frozen pre-trained audio model (PANNs/CNN14) to extract embeddings
-2. Trains a separate SNN head on those embeddings
-3. Reports the gap between SNN head and ANN head
-
-Closest:
-- Three-stage hybrid SNN (2025): ANN→conversion→SNN fine-tuning (different paradigm)
-- Knowledge distillation approaches: Transfer during training, not frozen features
-- SAFE (ICLR 2025): CNN+SNN for fake audio detection (different task)
-
-**Our gap-collapse finding (17pp → 1pp) appears to be genuinely novel.**
-
----
-
-## 6. Encoding Comparisons in Literature
-
-| Paper | Year | Encodings | Dataset |
-|-------|------|-----------|---------|
-| Larroza et al. | 2025 | TAE, SF, MW (3) | ESC-10 |
-| Yarga et al. | 2022 (ICONS) | Send-on-Delta, TTFS, LIF, BSA (4) | Speech digits |
-| Spike encoding for IoT | 2022 | Rate, binary, temporal, delta, MT-delta (5) | IoT signals |
-| **Our work** | 2026 | **direct, rate, phase, population, latency, delta, burst (7)** | **ESC-50** |
-
-**We have the most comprehensive encoding comparison for audio SNNs.** Nobody else has compared 7 encodings on the same audio dataset.
-
----
-
-## 7. ESC-50 Overall SOTA (Any Model)

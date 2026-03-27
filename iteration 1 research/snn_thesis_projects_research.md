@@ -474,3 +474,31 @@ based on analyzing 40+ projects, here's what i think is realistic:
 - Novel architecture or training method
 - Hardware deployment (FPGA, SpiNNaker if available)
 - Robotics integration
+- Published results
+- Example: filippoferrari/shape_detector_snn, mrahtz/musical-pattern-recognition-in-spiking-neural-networks
+
+### what distinguishes good projects
+1. clear research question (not just "implement an SNN")
+2. meaningful comparison (SNN vs ANN on same task)
+3. multiple evaluation metrics (accuracy, training time, energy estimates)
+4. good documentation (README, code comments, report)
+5. honest about limitations (convergence issues, accuracy gaps)
+
+---
+
+## projects with thesis PDFs available
+
+| Project | Level | PDF Location |
+|---------|-------|--------------|
+| Musical Pattern Recognition | BEng | http://amid.fish/beng_project_report.pdf |
+| Jegp/thesis (Volr DSL) | Masters | report/report.pdf in repo |
+| Deep Spiking Q-Networks | Masters | In repository |
+| Spiking Grid Cell Models | MSc | Linked in repo |
+| Brain-Machine Interface | Masters | In repository |
+| Spiking Deep Belief Network | Masters | MazdakFatahi(Ms Thesis).pdf |
+| SNN-RL | Masters | Thesis.pdf in repository |
+| Event-Based Robot Control | Masters | In repository |
+| Master thesis Astoeckel 2015 | Masters | GitHub releases v1.2 |
+| Simple SNN STDP | Course | Paper.pdf in repo |
+| SNN Speech Recognition | Research | Report.pdf in repo |
+| ANN vs SNN | Course | VCS_doc.pdf in repo |

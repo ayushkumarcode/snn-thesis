@@ -290,31 +290,3 @@ The CPG-PE paper demonstrated that the commonly used sinusoidal positional encod
 
 ### 7.3 Why Now?
 
-Several factors make this the right time:
-1. **Framework maturity**: snnTorch, SpikingJelly, and Norse are now production-quality
-2. **Reference implementations**: Microsoft's SeqSNN provides a starting point
-3. **Surrogate gradient methods**: Now well-understood and documented
-4. **Hardware support**: Intel Loihi 2, IBM TrueNorth provide real deployment targets
-5. **Academic interest**: Top venues (ICML, NeurIPS, ICLR) are actively accepting SNN time-series papers
-6. **Energy crisis motivation**: Growing demand for energy-efficient AI
-
----
-
-## 8. Feasibility for an Undergraduate Thesis
-
-### 8.1 Positive Indicators
-
-1. **Established frameworks** with tutorials (snnTorch has step-by-step guides for regression)
-2. **Reference code** exists (SeqSNN, TS-LIF are open-source)
-3. **Standard datasets** are freely available and well-documented
-4. **Prior undergraduate/collaborative work** exists (the eNeuro massively collaborative SNN project included thesis-level contributions)
-5. **The field is small enough** that a systematic comparison paper would be genuinely valuable
-6. **PyTorch-based** -- if you know PyTorch, the learning curve for SNN frameworks is manageable
-
-### 8.2 Challenges to Be Aware Of
-
-1. **Training instability**: Surrogate gradient methods can be finicky; expect significant hyperparameter tuning
-2. **Encoding choice matters**: Converting continuous time-series to spikes is non-trivial; this itself could be a research question
-3. **Debugging complexity**: Spike-based computation is harder to visualise and debug than standard neural networks
-4. **Limited community**: Fewer Stack Overflow answers and tutorials compared to LSTMs/Transformers
-5. **Metrics mismatch**: SNN papers use RSE/R-squared while Transformer papers use MSE/MAE -- you would need to implement both for fair comparison

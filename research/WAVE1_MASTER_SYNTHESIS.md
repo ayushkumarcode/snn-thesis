@@ -155,31 +155,3 @@ Based on all 21 papers, the formula that works at Manchester BSc level:
 
 ```
 1. Pick a well-defined task/domain
-2. Apply existing SNN methods to it (or extend modestly)
-3. Compare against a baseline (ANN or alternative SNN config)
-4. Evaluate along multiple axes (accuracy + efficiency + at least one more)
-5. Analyse honestly (including failures and limitations)
-6. Frame as "comparative study" or "investigation of X" rather than "I invented Y"
-```
-
-### The Three Viable Framings for Our SNN Project
-
-**Framing A: "SNN for Domain X" (Novel Application)**
-> "Can Spiking Neural Networks achieve competitive performance on [domain] classification while offering energy efficiency advantages?"
-- Pick a domain with zero or few SNN papers
-- The novelty is automatic (first SNN results on this data)
-- Examples: Environmental sound, plant disease, ECG on PTB-XL
-
-**Framing B: "Systematic SNN Comparison" (Framework/Method Study)**
-> "A systematic comparison of [X] across [Y conditions] for spiking neural network classification"
-- Pick 2-3 things to vary (frameworks, encoding methods, neuron models, architectures)
-- The novelty is in the breadth and rigour of comparison
-- Examples: snnTorch vs SpikingJelly on SHD + DVS128, encoding method comparison on audio
-
-**Framing C: "SNN Extension" (Modify Existing Approach)**
-> "Extending [existing SNN method] with [modification] for [task]"
-- Take a published SNN architecture and add something (new encoding, new regularisation, new evaluation metric)
-- The novelty is in the specific modification
-- Examples: STDP + Bayesian Optimisation (like Ezinwoke), adding NeuroBench energy metrics to existing benchmarks
-
-**All three framings have worked at Manchester. Choose based on personal interest and available time.**

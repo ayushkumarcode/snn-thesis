@@ -315,31 +315,3 @@ SpikingMiniLM tested on GLUE benchmark with accuracy, F1, and correlation metric
 
 ### 2.6 Challenges and Limitations
 
-**Training Challenges:**
-- Information loss due to spike reset, gradient vanishing in deep layers
-- Surrogate gradient mismatch vs. true gradient distributions
-- Binary signal constraints: discrete spikes limit information vs. continuous ANNs
-- Temporal complexity: recurrent nature requires BPTT across many timesteps
-
-**Architectural Constraints:**
-- Spiking attention removes softmax (non-linear), reducing expressiveness
-- Real-valued shortcuts and max-pooling conflict with event-driven principles
-- Batch normalization adaptation across time dimensions adds overhead
-
-**Scalability Issues:**
-- SNNs typically employ millions of parameters vs. billions in ANNs
-- Knowledge distillation and conversion require pre-trained ANN teachers
-- Energy benefits diminish with longer required inference latencies
-
-### 2.7 Future Research Directions
-
-**Learning Rules:**
-- Leveraging temporal gradient information in recurrent structure
-- Non-backpropagation approaches: equilibrium propagation, Forward-Forward algorithm
-- Advanced biologically-plausible local plasticity
-
-**Large-Scale Models:**
-- Novel architectures for billion-parameter SNNs
-- Hardware co-design with neuromorphic platforms
-- Multi-modal integration (images, video, audio, text, sensors)
-- Alternative attention mechanisms preserving spike properties

@@ -733,31 +733,3 @@ net = parametric_lif_net.DVSGestureNet(
 )
 
 # Compute SynOps with a data sample
-ops, params = get_model_complexity_info(
-    net,
-    (2, 128, 128),         # Input shape (C, H, W)
-    dataloader,             # Provide actual data for spike rate estimation
-    as_strings=True,
-    print_per_layer_stat=True,
-    verbose=True
-)
-# Outputs: ACs, MACs, parameter count, and estimated energy consumption
-```
-
-#### Manual SynOps Calculation
-
-For a convolutional layer with:
-- N input channels, M output channels
-- Input size I x I, kernel size k x k, output size O x O
-- Spiking Activity (SA) = average fraction of neurons that fire
-
-```
-SynOps_SNN = SA * N * M * k^2 * O^2  (per timestep, per layer)
-FLOPs_ANN  = N * M * k^2 * O^2       (per layer)
-```
-
-Total energy estimation:
-```
-Energy_SNN = sum(SynOps_layer * E_AC) + sum(non_spike_ops * E_MAC)
-Energy_ANN = sum(FLOPs_layer * E_MAC)
-```

@@ -28,31 +28,3 @@ Randomly silence 10-50% of neurons at inference. Compare SNN vs ANN graceful deg
 Add L1 spike regularization at varying strengths → map full accuracy-vs-spike-count Pareto curve. Converts energy analysis from single point to design space. Hardware designers love this.
 
 #### 7. SNN Saliency Maps / Spike Grad-CAM (3-4 days, medium risk)
-Adapt Grad-CAM for surrogate gradients → spectrogram heatmaps showing what the SNN "looks at." Compare SNN vs ANN saliency. If SNN highlights transients while ANN highlights sustained textures → proof of different computational strategies.
-
-#### 8. Pruning Resilience (2 days, low risk)
-Magnitude pruning at 30-90% sparsity, compare SNN vs ANN. Key question: do weight sparsity + activation sparsity compound? If SNN tolerates 70% weight pruning → "92% total sparsity" is a powerful hardware number.
-
-#### 9. Stochastic Resonance (1-2 days, medium-high risk but HUGE if positive)
-Add controlled noise to membrane potentials at inference. Does noise IMPROVE classification? Stochastic resonance is well-known in biology but barely tested in trained SNNs. A positive result would be the most biologically interesting finding in the thesis.
-
----
-
-### Tier 3: INTERESTING BUT LESS ICONS-CRITICAL
-
-#### 10. Biological Firing Pattern Analysis (2-3 days)
-Do hidden neurons develop temporal specialization (onset detectors vs sustained-pattern detectors)? Cluster neurons by firing profiles. Connection to auditory neuroscience.
-
-#### 11. SpiNNaker Latency Benchmarking (1-2 days)
-Actual wall-clock inference time on SpiNNaker vs GPU vs CPU. Real measurements > theoretical estimates. ICONS reviewers love hardware numbers.
-
-#### 12. Weight Distribution Analysis (1 day)
-Compare SNN vs ANN weight distributions (kurtosis, sparsity, spectral properties). Quick post-hoc analysis.
-
-#### 13. Membrane Potential Trajectories (2 days)
-PCA/UMAP of membrane potential dynamics → "neural trajectory" plots. Gorgeous figures. Do different sound classes create distinct dynamical attractors?
-
-#### 14. Ensemble of Encodings (1-2 days)
-Combine top 3-4 encodings via voting. More interesting: error complementarity analysis (do different encodings make different mistakes?).
-
-#### 15. LIF Beta/Threshold Landscape (3-4 days)

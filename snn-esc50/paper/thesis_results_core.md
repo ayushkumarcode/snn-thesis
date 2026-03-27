@@ -1,17 +1,17 @@
-# Chapter 4: Core Results — Encoding Comparison
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 4: core results -- encoding comparison
+
+this is the big results chapter. covers the ANN baseline, all 7 encodings, surrogate ablation, augmentation (negative result), stats, and PANNs. lots of tables and data here.
 
 ---
 
-## 4.1 ANN Baseline
+## 4.1 ANN baseline
 
-The ConvANN baseline achieves **63.85% ± 3.07%** (mean ± std over 5 folds) on ESC-50 without data augmentation, with individual fold accuracies of 63.25%, 59.50%, 65.25%, 68.75%, and 62.50% (folds 1–5 respectively).
+ConvANN baseline gets **63.85% +/- 3.07%** (mean +/- std, 5 folds) on ESC-50 without augmentation. Per fold: 63.25%, 59.50%, 65.25%, 68.75%, 62.50%.
 
-This establishes the performance ceiling for a lightweight (~622K parameter) CNN trained from scratch on ESC-50 without external pretraining. For reference, the ANN state-of-the-art (AST with AudioSet pretraining, Gong et al. 2021) achieves 98.25%, and human performance is 81.3% (Piczak 2015). The gap between our baseline and SOTA is explained by external pretraining: ANN SOTA models use tens of millions of clips from AudioSet, whereas this work trains exclusively on the 1,600 ESC-50 samples per fold available for training.
+This sets the ceiling for a lightweight ~622K param CNN from scratch on ESC-50 with no external pretraining. For reference, AST with AudioSet pretraining (Gong et al. 2021) gets 98.25%, human is 81.3% (Piczak 2015). The gap vs SOTA is explained by pretraining -- SOTA models use tens of millions of AudioSet clips.
 
-**ANN training dynamics:** All 5 folds converge within 30–45 epochs (early stopping patience=10). The ReduceLROnPlateau schedule triggers consistently around epoch 20–25, providing a learning rate reduction from 1e-3 to 5e-4. No fold diverges or fails to learn.
+Training dynamics: all 5 folds converge in 30-45 epochs (early stopping patience=10). ReduceLROnPlateau kicks in around epoch 20-25, dropping lr from 1e-3 to 5e-4. No fold fails to learn.
 
----
 
 ## 4.2 Spike Encoding Comparison
 

@@ -278,3 +278,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Dataset**: Static images and spike-based neuromorphic inputs
 - **Results**: Static: 99.12% accuracy; Spike data: 97.05% accuracy (20 epochs, RTX 3090)
 - **Complexity**: MODERATE
+- **Stars**: 7 | **Commits**: 7
+- clean implementation. shows what a course assignment looks like -- focused, achievable, good results.
+
+### 3.4 Deep Learning with Biologically Plausible Neural Networks
+- **URL**: https://github.com/chiralevy/Deep-Learning-with-Biologically-Plausible-Neural-Networks
+- **Description**: Performance comparison between SNNs and conventional NNs on three tasks
+- **Framework**: snnTorch
+- **Dataset**: MNIST, CIFAR-10, Google Speech Commands
+- **Results**:
+  - MNIST: CSNN 98.06% vs CNN 98.39%
+  - CIFAR-10: CSNN 70.60% vs CNN 68.00%
+  - Speech Commands: LSNN 91.20% vs LSTM 94.40% vs CNN 87.60%
+- **Report**: No PDF; comprehensive README with results tables
+- **Complexity**: MODERATE-HIGH (three different domains: vision, vision, audio)
+- **Stars**: 4
+- excellent scope for a thesis project i think. three tasks, clear comparisons, multiple architectures. the CIFAR-10 and Speech Commands results show meaningful contribution beyond just MNIST.
+
+### 3.5 SNN Gesture Classification with DVS128
+- **URL**: https://github.com/DerrickL25/SNN_Gesture_Classification
+- **Description**: Neuromorphic gesture classification from DVS128 event camera data
+- **Framework**: snnTorch, PyTorch
+- **Dataset**: DVSGesture from IBM (1,077 samples, 11 gesture classes, 29 subjects)
+- **Results**: Not explicitly stated
+- **Complexity**: MODERATE
+- **Stars**: 5
+- good focused project using real neuromorphic data. single Jupyter notebook. research group project.
+
+### 3.6 ANN vs SNN Comparison (Course Project)

@@ -194,3 +194,31 @@ this is the obvious concern. here's why i think it's fine:
 
 ### paper structure for 8 pages
 
+must include:
+1. Introduction + motivation (0.75 pages)
+2. Related work (0.75 pages)
+3. Methodology: architecture, dataset, 7 encodings, training (1.5 pages)
+4. Results: encoding comparison + analysis (1.5 pages)
+5. PANNs+SNN transfer learning (0.5 pages)
+6. SpiNNaker deployment + gap analysis (0.75 pages)
+7. Adversarial robustness (0.5 pages)
+8. NeuroBench energy (0.5 pages)
+9. Conclusion + future work (0.5 pages)
+10. References (0.75 pages)
+
+include if space: surrogate gradient ablation (condensed to one table), continual learning (one paragraph + table).
+
+move to supplementary: per-fold tables, confusion matrices, t-SNE, SpiNNaker calibration details.
+
+---
+
+## Part 6: Final Recommendations
+
+### submit to ICONS 2026
+
+**deadline: April 1, 2026**
+
+reasons:
+1. perfect topical fit
+2. clear novelty -- first SNN on full ESC-50
+3. multi-contribution paper matches what ICONS publishes

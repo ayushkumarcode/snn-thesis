@@ -199,31 +199,3 @@ This multi-dimensional trade-off space is precisely what makes a systematic comp
 
 ## 4. Existing Systematic Comparison Studies
 
-### 4.1 Paper-by-Paper Analysis of Existing Comparisons
-
-This section catalogues every significant comparison study found, identifying what each covers and, critically, what each leaves out.
-
----
-
-**Study 1: Guo, Fouda, Eltawil, Salama (2021)**
-"Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems"
-*Frontiers in Neuroscience, Vol. 15*
-
-- **Encodings compared:** Rate, TTFS, Phase, Burst
-- **Network:** 2-layer SNN with STDP (unsupervised)
-- **Datasets:** MNIST, Fashion-MNIST
-- **Metrics:** Accuracy, latency, SOPs, hardware cost, compression, noise resilience, fault tolerance
-- **Strengths:** Most comprehensive multi-metric comparison found; includes hardware analysis
-- **Limitations:** Only MNIST/Fashion-MNIST (image only); only STDP training (no surrogate gradient); no delta/direct/population encoding; only 2-layer shallow network
-- **Source:** https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full
-
----
-
-**Study 2: Kim, Park, Moitra, Bhattacharjee, Venkatesha, Panda (2022)**
-"Rate Coding or Direct Coding: Which One is Better for Accurate, Robust, and Energy-efficient Spiking Neural Networks?"
-*ICASSP 2022*
-
-- **Encodings compared:** Rate (Poisson) vs. Direct (trainable layer)
-- **Networks:** MLP, VGG5, VGG9
-- **Datasets:** MNIST, CIFAR-10, CIFAR-100
-- **Metrics:** Accuracy, adversarial robustness (FGSM, PGD), energy consumption

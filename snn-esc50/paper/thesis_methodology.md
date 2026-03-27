@@ -194,20 +194,20 @@ weight_scale = 1.0
 ### 3.7.1 adversarial robustness
 
 FGSM and PGD (torchattacks) at 7 eps values {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}, fold 4 test set (400 samples). SNN wrapped in SNNWrapper computing sum_t mem_t as differentiable logits. PGD: 40 steps per Wang et al. 2025 recommendation.
-CNN14 (Kong et al. 2020), pretrained on AudioSet (2M clips, 527 tags), extracts 2048-d embeddings. A 3-layer SNN classification head (2048→512→256→50, LIF neurons, rate encoding) is trained on frozen PANNs embeddings for 50 epochs. All 2,000 ESC-50 embeddings are precomputed and cached.
 
-### 3.7.3 NeuroBench Energy Analysis
+### 3.7.2 transfer learning (PANNs + SNN head)
 
-NeuroBench v2.2.0 (Yik et al. 2025, Nature Comms) wraps the model in SNNTorchModel and measures:
-- **Effective_ACs**: accumulate-only operations (non-zero × binary activations)
-- **Effective_MACs**: multiply-accumulate operations (non-zero × non-binary activations)
-- Energy constants: AC = 0.9 pJ, MAC = 4.6 pJ (45nm CMOS, Yik et al.)
+CNN14 (Kong et al. 2020), AudioSet-pretrained, extracts 2048-d embeddings. 3-layer SNN head (2048->512->256->50, LIF, rate encoding, T=25) trained on frozen embeddings for 50 epochs. All 2000 embeddings precomputed and cached.
 
-### 3.7.4 Continual Learning
+### 3.7.3 NeuroBench energy
 
-Sequential training across 5 ESC-50 super-categories (Animals, Nature, Human, Domestic, Urban; 10 classes each). After training on each task, backward transfer (BWT) is measured as the average change in accuracy on previously seen tasks: BWT = $\frac{1}{T-1}\sum_{i<T}(R_{T,i} - R_{i,i})$ where $R_{k,i}$ is accuracy on task $i$ after training on task $k$. Negative BWT indicates catastrophic forgetting.
+NeuroBench v2.2.0 wraps model in SNNTorchModel:
+- Effective_ACs: accumulate-only ops (non-zero binary activations)
+- Effective_MACs: multiply-accumulate (non-zero non-binary activations)
+- Energy: AC = 0.9 pJ, MAC = 4.6 pJ (45nm CMOS, Yik et al.)
 
-### 3.7.5 Population Coding
+### 3.7.4 continual learning
+
 
 Output population code: each of 50 classes is represented by 10 output neurons (500 total). Loss: SF.mse_count_loss(correct_rate=1.0, incorrect_rate=0.0, population_code=True, num_classes=50). Classification: argmax of total spike count over grouped neuron pools.
 

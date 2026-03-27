@@ -758,31 +758,3 @@ The pipeline you need to build can be constructed by combining:
 ## MASTER VERIFICATION TABLE
 
 | # | Component | EXISTS | VERIFIED VIA | BLOCKER | RISK | 2026-03-03 UPDATE |
-|---|-----------|--------|-------------|---------|------|-------------------|
-| 1 | ESC-50 Dataset | YES | GitHub repo, direct download URL confirmed | NO | NONE | No change -- stable |
-| 2 | Audio Loading (librosa/torchaudio) | YES | Official docs, macOS ARM64 builds | NO | NONE | torchaudio maintenance mode confirmed; our APIs preserved |
-| 3 | Mel-spectrogram Conversion | YES | librosa + torchaudio docs, params from literature | NO | NONE | No change |
-| 4 | Spike Encoding (spikegen) | YES | snnTorch 0.9.4 API docs, 15+ functions confirmed | NO | NONE | Full API signatures verified |
-| 5 | Convolutional SNN | YES | Tutorial 6 code, 9 neuron models available | NO | **MODERATE** | **Reset mechanism bug #401 affects neuron dynamics** |
-| 6 | ANN Baseline | YES | Tutorial 5, GitHub ANN-to-SNN repo confirms approach | NO | NONE | No change |
-| 7 | Energy/SynOps Measurement | YES | NeuroBench 2.2.0 pyproject.toml confirmed | NO | **MODERATE** | **NeuroBench has numpy dependency conflicts (GH #238)** |
-| 8 | 5-Fold Cross-validation | YES | Built into ESC-50 design, CSV structure confirmed | NO | NONE | No change |
-| 9 | GPU/macOS Compatibility | WORKABLE | MPS partial, CPU feasible, Colab backup | NO | LOW-MODERATE | GPU memory leak #328 confirmed; CPU route is safer |
-| 10 | snnTorch+PyTorch Compat | YES | PyPI, setup.py, no version pin issues | NO | **MODERATE** | **48 open issues, slow release cadence, reset bug unfixed** |
-| 11 | Audio SNN Tutorials | PARTIAL | No direct tutorial; all pieces exist; 2025 paper validates | NO | LOW | No change |
-| 12 | ESC-50 ANN Baselines | YES | GitHub README leaderboard, PapersWithCode | NO | NONE | Updated with top scores: HTSAT-22 98.25%, BEATs 98.10% |
-
----
-
-## RISK ASSESSMENT
-
-### No Hard Blockers
-
-Every component exists and is accessible. The project is technically feasible.
-
-### Moderate-Risk Items (require attention and workarounds):
-
-1. **snnTorch reset mechanism bug (#401, OPEN since Oct 2025):** The `reset_mechanism` parameter in `snn.Leaky()` may produce incorrect neuron dynamics. The "subtract" and "zero" modes may be switched, and the soft reset is missing a beta coefficient.
-   - **Impact:** Could silently produce wrong results if you rely on specific reset behavior.
-   - **Mitigation:** (a) Use the default `reset_mechanism="subtract"` which is the most tested path, (b) visually validate membrane potential traces before running full experiments, (c) document which reset mechanism you use and note the known bug in your thesis.
-   - **Severity for this project:** MODERATE -- the default behavior works for most use cases and Tutorial 6 uses defaults.

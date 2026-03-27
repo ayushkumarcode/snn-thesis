@@ -250,3 +250,31 @@ Pi as host controller (data loading, preprocessing, display) connected to FPGA (
 
 | Repo | Focus |
 |------|-------|
+| open-neuromorphic/fpga-snntorch | ISFPGA 2024: snnTorch to FPGA |
+| smilies-polito/Spiker | Python-to-VHDL SNN accelerator |
+| neuromorphs/NIR | Neuromorphic Intermediate Representation |
+| eejlny/S2NN-HLS | SNN on Zynq via Vivado HLS |
+| im-afan/snn-fpga | SNN on low-end Basys3/Cmod FPGAs |
+| RishabhMalviya/SNN_Arduino | LIF neurons on Arduino |
+
+---
+
+## 8. hardware costs
+
+### under $50
+
+| Hardware | Cost | Path |
+|----------|------|------|
+| STM32F4 Discovery | $15-25 | C runtime for small SNNs |
+| ESP32 DevKit | $5-10 | WiFi SNN sensor node |
+| Arduino Nano 33 BLE | $20-25 | TinyML SNN with BLE |
+| Raspberry Pi 4 (4GB) | $35 (if available) | Python/C SNN inference |
+
+### $50-200
+
+| Hardware | Cost | Path |
+|----------|------|------|
+| Raspberry Pi 5 (8GB) | $80 | best CPU-based SNN inference |
+| Arduino Portenta H7 | $80 | proven C SNN runtime |
+| PYNQ-Z2 | $120-180 | FPGA SNN with Python |
+| Basys3 | $150-180 | low-cost FPGA SNN |

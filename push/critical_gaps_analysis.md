@@ -26,3 +26,14 @@ reviewer could say: "nobody did this because it doesn't work well."
 
 ## Code Verification
 - 12/14 scripts PASS
+- 2 FAIL: stochastic_resonance (MPS generator -- FIXED), spinnaker_latency_energy (wrong file path -- FIXED)
+
+## Quick Wins Remaining
+- [ ] run 5-fold adversarial (CSF3) -- SUBMITTED
+- [x] temporal ablation -- DONE (90% at T=7, 72% energy saving)
+- [x] encoding transfer matrix -- DONE (ratio=0.27, encoding-specific)
+- [x] pruning resilience -- DONE (SNN: 93.2% at 90% pruning, ANN: 36.8%)
+- [x] weight distribution -- DONE (ANN sparser: 38.8% vs 21.0%)
+- [ ] SpiNNaker latency (needs SpiNNaker access)
+- [ ] Wilcoxon test on PANNs results
+- [ ] noise robustness (CSF3)

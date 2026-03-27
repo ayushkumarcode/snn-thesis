@@ -26,3 +26,31 @@ turns out it's a real and rapidly growing area since 2023. there are multiple wo
 three dominant approaches:
 1. **Early fusion**: combining raw spike trains before feature extraction
 2. **Late fusion (concatenation)**: separate unimodal branches merging at the decision layer -- simplest to implement
+3. **Cross-modal attention**: spiking attention that lets modalities guide each other
+
+the Bjorndahl paper is really relevant here -- they found that **late fusion (concatenation)** gets nearly identical results to more complex fusion strategies, and fusion depth barely matters. so the simplest approach works. nice.
+
+### Sources
+- [SMMT - IEEE Xplore](https://ieeexplore.ieee.org/iel7/7274989/10552653/10293172.pdf)
+- [MISNet - ACM TOMM](https://dl.acm.org/doi/10.1145/3721981)
+- [Bjorndahl et al. - arXiv 2409.00552](https://arxiv.org/abs/2409.00552)
+- [S-CMRL - arXiv 2502.12488](https://arxiv.org/html/2502.12488)
+- [S-CMRL Code - GitHub](https://github.com/Brain-Cog-Lab/S-CMRL)
+- [TAAF - arXiv 2505.14535](https://arxiv.org/abs/2505.14535)
+- [Oikonomou et al. - arXiv 2411.14147](https://arxiv.org/abs/2411.14147)
+
+---
+
+## 2. Event Camera + Conventional Camera Fusion
+
+**one of the most active areas in neuromorphic computing right now (2024-2025).**
+
+### Key Papers
+
+| Paper/System | Year | Task | Key Contribution |
+|---|---|---|---|
+| **SFDNet** | 2025 | Object Detection | Fully spiking RGB-event fusion detector with LIMF neuron; SOTA on PKU-DAVIS-SOD |
+| **SSTFormer** | 2023-2025 | Frame-Event Recognition | Hybrid SNN-ANN with Memory Support Transformer for RGB + spiking event encoding |
+| **DSF-Net** | 2025 | High-Speed Detection | Dynamic sparse fusion of event-RGB via spike-triggered attention |
+| **SpikeFET** | 2025 | Object Tracking | First fully spiking frame-event tracker |
+| **SNNPTrack** | 2025 | RGBE Tracking | SNN-based prompt learning for RGB-Event tracking (ICASSP 2025) |

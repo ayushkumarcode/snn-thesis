@@ -530,3 +530,19 @@ based on analyzing 40+ projects, here's what i think is realistic:
 3. energy consumption benchmarks -- few student projects actually measure or estimate energy savings
 4. deployment on edge devices -- very few projects deploy SNNs on actual neuromorphic hardware (those that do are typically at Manchester with SpiNNaker access)
 5. NLP/text applications with SNNs -- almost nothing in this domain
+
+why some searches didn't work well:
+- "third year project" isn't a universal term (varies by country)
+- many student repos lack proper README documentation
+- some projects are in private repos or institutional GitLab instances
+- neuromorphic hardware projects require lab access not available to most students
+
+---
+
+## things to follow up on
+
+1. search institutional repositories (e.g., ETH Zurich Research Collection, Manchester e-scholar) for thesis PDFs not hosted on GitHub
+2. check Open Neuromorphic student talks (https://open-neuromorphic.org/) for recent student work
+3. browse snnTorch discussion forum (GitHub Discussions) for student project questions
+4. review NICE (Neuro-Inspired Computational Elements) workshop proceedings for student presentations
+5. search arXiv for papers from student authors at universities (often link to GitHub repos)

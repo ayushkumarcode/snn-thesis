@@ -334,3 +334,9 @@ def main():
 
     save_dir = RESULTS_DIR / "energy" / "fly_brain"
     save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+
+
+if __name__ == "__main__":
+    main()

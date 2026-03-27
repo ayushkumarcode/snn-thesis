@@ -166,3 +166,31 @@ Minimal working SNN for SHD can be done in about 200-300 lines of Python with sn
 ## Datasets
 
 | Dataset | Classes | Samples | Format | Pre-spiked | Size | Availability |
+|---------|---------|---------|--------|------------|------|-------------|
+| **SHD** | 20 (digits 0-9, EN+DE) | ~10,420 | Spike trains | Yes | ~700 MB | Free (Zenke Lab) |
+| **SSC** | 35 (speech commands) | ~105,829 | Spike trains | Yes | ~6 GB | Free (Zenke Lab) |
+| **GSC V2** | 35 (or 12 subset) | ~105,829 | Raw audio (16kHz) | No | ~2.3 GB | Free (TensorFlow) |
+| **TIDIGITS** | 11 (digits 0-9 + "oh") | ~25,104 | Raw audio | No | ~500 MB | Licensed (LDC) |
+
+**Recommendation: start with SHD.** Already in spike format (no encoding pipeline needed), small enough for rapid iteration (~10K samples), well-established benchmarks, 20 classes is enough complexity, built-in loaders in snnTorch and Tonic.
+
+**Then move to GSC V2 12-class** -- industry standard benchmark, requires audio-to-spike encoding (adds thesis content), large community with many baselines.
+
+TIDIGITS requires a license (may cost money or need institutional access), and SSC alone is very large (6GB, long training times) -- better as a stretch goal after SHD.
+
+Strategy:
+1. Start with SHD -- validate approach quickly
+2. Move to GSC V2 12-class -- show generalization to raw audio
+3. Optional stretch: GSC V2 35-class or SSC if time permits
+
+---
+
+## Energy Efficiency Argument
+
+### How SNNs save energy
+
+Three mechanisms:
+1. **Event-driven computation:** neurons only compute when they receive or emit a spike (sparse activity)
+2. **Addition-only operations:** SNN inference uses accumulate (AC) operations instead of multiply-accumulate (MAC). AC costs ~0.9 pJ vs ~4.6 pJ for MAC in 45nm CMOS.
+3. **Temporal sparsity:** audio signals are naturally sparse -- silence and low-activity periods need no computation
+

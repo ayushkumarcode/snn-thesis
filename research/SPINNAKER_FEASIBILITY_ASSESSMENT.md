@@ -398,31 +398,3 @@ This is exactly what recent papers demonstrate. There is no common alternative w
 ### Key Differences from SpiNNaker1
 
 | Feature | SpiNNaker1 | SpiNNaker2 |
-|---------|-----------|-----------|
-| Process node | 130nm CMOS | 22nm FDSOI |
-| Cores per chip | 18 ARM968 | 153 ARM Cortex-M4F |
-| On-chip memory | 128KB DTCM + 32KB ITCM per core | 128KB per PE + shared SRAM |
-| External memory | 128MB SDRAM per chip | 2GB LPDDR4 per chip |
-| DRAM | SDRAM | LPDDR4 |
-| Total SRAM | ~2.3MB per chip | 19MB per chip |
-| ML accelerators | None | MAC array, exp/log, RNG |
-| Floating point | No | Yes (Cortex-M4F) |
-| DVFS | No | Yes (down to 0.5V) |
-| Power efficiency | Baseline | 10x improvement per watt |
-| Software | sPyNNaker (mature, stable) | py-spinnaker2 (early, restricted) |
-| PyNN support | Full (sPyNNaker) | PyNN-like API (less stable) |
-| NIR support | NO | YES |
-| Public access | YES (EBRAINS) | NO (restricted) |
-
-### Is SpiNNaker2 Available to Students?
-
-**Not generally.** Current status:
-- Single-chip development boards exist
-- Remote access can potentially be arranged by contacting TU Dresden
-- The `py-spinnaker2` library has private dependencies
-- Server boards (48 chips) are in commissioning
-- sPyNNaker does NOT run on SpiNNaker2
-
-**For your thesis: Plan for SpiNNaker1 via EBRAINS. If Oliver Rhodes can arrange SpiNNaker2 access, that would be a bonus.**
-
----

@@ -278,3 +278,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 - Clinical Doctorate: 1 (ML for Auditory Data)
 
 So yeah, **no undergrad stuff here at all**.
+
+### Supervisor clustering
+
+The neuromorphic theses are basically all clustered around:
+- **Steve Furber** (main or co-supervisor on 10+ theses) -- creator of SpiNNaker
+- **James Garside** (co-supervisor on many) -- SpiNNaker team
+- **David Lester** (co-supervisor on several) -- SpiNNaker team
+- **Oliver Rhodes** (newer supervisor, 2020s theses) -- SpiNNaker team
+- **Dirk Koch** (FPGA theses) -- reconfigurable computing
+- **Piotr Dudek** (vision/EEE theses) -- pixel processor arrays
+- **Hujun Yin** (DL/vision theses) -- pattern recognition
+
+### Tech stack patterns
+- SpiNNaker is the dominant platform (appears in all 13 core neuromorphic theses)
+- Intel Loihi only appears once (Fonseca Guerra 2020) as comparison
+- MNIST is the most common benchmark
+- Python/PyNN/sPyNNaker implied but rarely explicitly named
+- NEURON simulator used as reference for biological accuracy
+- No TensorFlow/PyTorch in the neuromorphic theses -- they use SpiNNaker-specific toolchains
+
+### Timeline
+- 2010: 1 thesis (early SpiNNaker work)
+- 2012: 1
+- 2015: 1
+- 2016: 4 (peak for first-generation SpiNNaker theses)
+- 2018: 2
+- 2019: 2
+- 2020: 6 (peak overall)

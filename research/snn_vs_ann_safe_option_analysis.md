@@ -250,3 +250,31 @@ strong because: multi-dimensional analysis, tests actual claimed SNN advantages,
 **yes, with caveats:**
 
 in favor:
+- snnTorch is well-documented with tutorials and Colab notebooks
+- MNIST/Fashion-MNIST train in minutes
+- CIFAR-10 manageable on single GPU (hours)
+- NeuroBench integrates with snnTorch
+- no custom hardware or novel algorithms needed
+
+could slow things down:
+- CIFAR-10 SNN training is slow (sequential time steps multiply everything)
+- hyperparameter sweeps multiply experiment count
+- debugging SNN training issues (gradient problems, spike vanishing)
+- "it works on MNIST" to "it works on CIFAR-10" is non-trivial
+- writing up takes longer than you think
+
+critical dependency: GPU access. SNN training on CIFAR-10 with multiple time steps and seeds needs serious GPU time. free Colab might not cut it. Colab Pro or university cluster recommended.
+
+### Scoped-Down "Guaranteed Completion" (8 weeks)
+
+if you want to ensure you finish:
+1. drop adversarial robustness (future work)
+2. drop neuromorphic dataset (future work)
+3. focus on: 3 datasets x 2 architectures x 3 encodings x hyperparam sweep + NeuroBench energy
+4. still produces a strong thesis, just narrower
+
+---
+
+## Key Risks
+
+| Risk | Probability | Impact | Mitigation |

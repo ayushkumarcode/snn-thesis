@@ -31,31 +31,3 @@ The natural fit between ECG signals (temporal, quasi-periodic, spike-like QRS co
 | LIF-based ANN-Inspired SNN | 2024 | MIT-BIH | 5 | ~93.8% | -- | LIF neurons within ANN-inspired framework |
 | Neuromorphic Arrhythmia Detection (Kolhar) | 2025 | MIT-BIH | Multiple | 94.4% overall | <8ms inference, 1.28M FLOPs, 2.59 MB model | Lightweight for real-time wearable deployment |
 | AF Detection on Wearable Edge | 2024 | PhysioNet AF | 2 (AF/Normal) | High (>95%) | Minimal | Feed-forward SNN with custom encoder |
-
-#### Key Observations
-- **Accuracy range for SNNs on MIT-BIH**: 84% to 98.29%, depending on architecture and training method
-- **Best performing**: SparrowSNN (98.29%) and SNN+Attention (98.26%) are near-SOTA
-- **Training approaches**: Three main paradigms -- (1) ANN-to-SNN conversion, (2) surrogate gradient backpropagation, (3) unsupervised STDP
-- **ANN-to-SNN conversion** suffers ~1-15% accuracy drop vs. original ANN
-- **Surrogate gradient training** (direct SNN training) yields the best results
-
-### Sources
-- [SparrowSNN (arXiv 2024)](https://arxiv.org/html/2406.06543)
-- [SNN + Attention (MDPI Electronics 2022)](https://www.mdpi.com/2079-9292/11/12/1889)
-- [sCCfC On-device Edge Learning (APL Machine Learning 2024)](https://pubs.aip.org/aip/aml/article/2/2/026109/3282738/On-device-edge-learning-for-cardiac-abnormality)
-- [Review on SNN-based ECG Classification (Biomedical Engineering Letters 2024)](https://link.springer.com/article/10.1007/s13534-024-00391-2)
-- [Neuromorphic Arrhythmia Detection (Scientific Reports 2025)](https://www.nature.com/articles/s41598-025-23248-9)
-- [LIF-based SNN Framework (Sensors 2024)](https://www.mdpi.com/1424-8220/24/11/3426)
-
----
-
-## 3. Available Datasets
-
-### Tier 1: Primary Benchmark Datasets (Most Used in SNN-ECG Research)
-
-| Dataset | Records | Leads | Sampling Rate | Classes | Size | Access |
-|---|---|---|---|---|---|---|
-| **MIT-BIH Arrhythmia Database** | 48 recordings (47 subjects) | 2-lead | 360 Hz | 5 AAMI classes (N,S,V,F,Q) | ~100 MB | Free on PhysioNet |
-| **PTB-XL** | 21,799 ECGs (18,869 patients) | 12-lead | 500 Hz (+ 100 Hz) | 71 SCP-ECG statements, 5 super-classes | ~7.7 GB | Free on PhysioNet |
-| **CPSC 2018 (ICBEB)** | 6,877 training + 2,954 test | 12-lead | 500 Hz | 9 classes (1 normal + 8 abnormal) | ~1 GB | Free on PhysioNet |
-

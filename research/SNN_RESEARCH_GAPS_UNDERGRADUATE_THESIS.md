@@ -306,3 +306,31 @@ best candidates (easiest first):
 1. **ESC-50 or UrbanSound8K** -- environmental sound. mel-spectrogram, rate-encode, classify.
 2. **PlantVillage** -- plant disease images. standard classification.
 3. **GTZAN** -- music genre. mel-spectrograms + SNN.
+4. **SVHN** -- street view house numbers. slightly harder MNIST, zero SNN work.
+5. **Food-101 or Flowers-102** -- fine-grained image classification, zero SNN work.
+6. **PTB-XL** -- ECG. time series, zero SNN work.
+
+### option B: "same architecture, different frameworks"
+identical CSNN on snnTorch and SpikingJelly on the same dataset. report accuracy, speed, memory, energy.
+
+best candidates:
+1. **SHD** -- both frameworks support it, no head-to-head comparison exists
+2. **DVS128 Gesture** -- flagship neuromorphic dataset, no framework comparison
+3. **CIFAR10-DVS** -- popular but no framework comparison
+4. **Fashion-MNIST** -- simple but no framework comparison either
+
+### option C: "systematic hyperparameter study"
+vary one key SNN parameter across settings and datasets.
+
+best candidates:
+1. **number of timesteps (T)** -- varies wildly across papers (T=4 to T=100), no guidance
+2. **membrane decay constant (beta)** -- critical parameter, no study
+3. **spike encoding method** -- rate vs temporal vs learnable, especially on audio
+
+---
+
+## sources
+
+### survey papers identifying gaps
+- [SNNs for Ubiquitous Computing (arXiv, June 2025)](https://arxiv.org/html/2506.01737v1)
+- [SNN and Sound Review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)

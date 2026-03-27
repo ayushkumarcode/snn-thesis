@@ -110,3 +110,31 @@ class SpikeBudgetSNN(nn.Module):
         self.pool2 = nn.MaxPool2d(2)
         self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
         self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.fc2 = nn.Linear(256, NUM_CLASSES)
+        self.dropout = nn.Dropout(0.3)
+        self.n1 = AdaptiveLIF(32, target_rate, kp)
+        self.n2 = AdaptiveLIF(64, target_rate, kp)
+        self.n3 = AdaptiveLIF(256, target_rate, kp)
+        self.n4 = AdaptiveLIF(NUM_CLASSES, target_rate, kp)
+
+    def forward(self, x):
+        device = x.device
+        s1 = self.n1.init_state(device)
+        s2 = self.n2.init_state(device)
+        s3 = self.n3.init_state(device)
+        s4 = self.n4.init_state(device)
+        spk_rec, mem_rec = [], []
+        layer_rates = {"conv1": 0, "conv2": 0, "fc1": 0, "out": 0}
+        for step in range(self.num_steps):
+            x_t = x[step]
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, s1 = self.n1(cur1, s1, step)
+            layer_rates["conv1"] += spk1.mean().item()
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, s2 = self.n2(cur2, s2, step)
+            layer_rates["conv2"] += spk2.mean().item()
+            pooled = self.avg_pool(spk2)
+            flat = pooled.view(pooled.size(0), -1)
+            cur3 = self.fc1(flat)
+            spk3, s3 = self.n3(cur3, s3, step)
+            layer_rates["fc1"] += spk3.mean().item()

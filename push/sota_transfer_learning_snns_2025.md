@@ -138,3 +138,31 @@ most architecturally sophisticated hybrid approach i found:
 Keugle et al. (2024) -- "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware":
 - deploys ANN on Jetson Nano, SNN on Intel Loihi
 - also tested ANN on Coral Edge TPU, SNN on Loihi
+- uses Lava framework for SNN, PyTorch for ANN
+- **hybrid outperforms both pure ANN and pure SNN** in accuracy, latency, and energy
+
+this is basically what we're doing with PANNs+SNN: CNN14 on GPU/CPU, SNN head on SpiNNaker. our 86 nJ SNN energy figure is competitive with their Loihi numbers.
+
+---
+
+## 4. Audio Pretrained Models + SNNs
+
+### The Gap: Nobody Has Done This Before
+
+i searched everywhere and **found zero papers** combining any of these with SNN classifier heads:
+- PANNs (Kong et al., 2020) + SNN
+- VGGish + SNN
+- wav2vec 2.0 / HuBERT / Whisper + SNN
+- CLAP / AudioMAE / BEATs + SNN
+- AST (Audio Spectrogram Transformer) + SNN
+
+so yeah, we're first. **first work to use PANNs (or any AudioSet-pretrained model) as a frozen feature extractor with an SNN classifier head for environmental sound classification.**
+
+### Closest Work in Audio SNNs
+
+**Spiking-LEAF (Song et al., ICASSP 2024)**
+- learnable auditory front-end for SNNs
+- combines learnable filter bank with IHC-LIF neuron model
+- keyword spotting and speaker identification
+- outperforms conventional mel spectrograms for SNN processing
+- but it's a front-end (encoding), not a pretrained feature extractor -- different from what we do

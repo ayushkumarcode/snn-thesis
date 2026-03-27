@@ -712,31 +712,3 @@ Key works:
 ### 3.8 SNN for NLP / Text Classification
 
 **Literature: 15-25 papers**
-
-Key works:
-- [SpikeGPT: 216M parameter SNN language model (arxiv 2023)](https://arxiv.org/html/2302.13939v5)
-- [SNNLP: Energy-Efficient NLP with SNNs (arxiv 2024)](https://arxiv.org/abs/2401.17911)
-- [Spiking ConvNNs for Text Classification (arxiv 2024)](https://arxiv.org/html/2406.19230v1)
-- [Neuromorphic Sentiment Analysis (PMC 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10536645/)
-
-**Assessment:**
-- Papers: 15-25 (growing)
-- Simulation-only: YES
-- macOS: YES
-- 28-day feasibility: **MODERATE**
-
-**NOTE:** Already covered in snn_nlp_text_processing_research.md.
-
-**VERDICT: Already researched. See existing report.**
-
----
-
-### 3.9 SNN for Image Denoising / Restoration (NEW -- NOT PREVIOUSLY COVERED)
-
-**Literature: 3-5 papers (VERY SPARSE)**
-
-Key works:
-- [SPIDEN: Deep SNN for efficient image denoising (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1224457/full)
-- [Neural information coding for efficient spike-based image denoising (arxiv 2023)](https://arxiv.org/abs/2305.11898)
-- [SNNSIR: Simple SNN for Stereo Image Restoration (arxiv 2025)](https://arxiv.org/pdf/2508.12271)
-

@@ -278,20 +278,18 @@ Human ESC-50 accuracy is 81.3%. Classes where humans struggle (<70%): insects vs
 need to think about whether to expand this section or just reference it briefly
 
 ---
-### 6.5.3 Interpretation of Class Patterns
 
-The per-class results reveal a clear and unexpected pattern. **The SNN wins on high-energy, spectrally distinctive sounds** (crying_baby, door_wood_knock, coughing) not on sustained tonal sounds as initially hypothesized. The mechanism: LIF neurons with threshold=1.0 and β=0.95 integration require consistent, strong input current to fire across multiple timesteps. High-energy sounds (crying baby has a broad-bandwidth, high-amplitude spectrogram) drive many neurons above threshold reliably in every sample. The SNN's rate-code classification averages over T=25 timesteps, accumulating strong evidence for these classes.
+## 6.6 chapter summary
 
-**The SNN fails on low-energy, subtle sounds:** engine hum (7%), door creaks (10%), clock_tick (23%), water_drops (15%). These sounds have spectrograms concentrated in narrow frequency bands at low amplitudes. The LIF threshold acts as a high-pass filter on input energy — quiet sounds may push only a few neurons above threshold, producing sparse, noisy spike patterns that the network cannot consistently interpret. The ANN's ReLU does not have this threshold effect: every non-zero activation contributes to the classification decision.
+1. **Adversarial robustness (C4):** SNN retains 26% at eps=0.1 FGSM vs ANN's 1.75%. Spike threshold provides natural filtering. First such analysis for audio SNNs.
 
-**The clock_tick gap (SNN 23%, ANN 68%) is the strongest evidence for this mechanism.** Clock_tick is a quiet, periodic click at regular intervals — a narrow spectrogram line at low amplitude, repeated. The ANN learns the narrow spectral signature reliably. The SNN's threshold may not fire on the quiet pixels, making the clock_tick indistinguishable from silence.
+2. **Continual learning:** SNN forgetting 69.9% +/- 4.3%, ANN 74.7% +/- 2.4% -- SNN forgets 4.7 pp less (5-fold validated). Spike threshold sparsity limits gradient interference. Both converge to last task only.
 
-### 6.5.4 Comparison with Human Performance
+3. **Temporal analysis:** rate readout (51.50%) >> first-spike (25.75%). This SNN is a rate-coded classifier. Temporal structure not exploited by training objective.
 
-Human ESC-50 accuracy is 81.3% (Piczak 2015). Classes where humans struggle (< 70% human accuracy) are: insects vs frogs (confusable calls), domestic mechanical sounds (clock tick vs keyboard), and urban machinery (train vs airplane). The SNN may show different confusion patterns — discriminating sounds that confuse humans (via spectral pattern recognition) while failing on sounds that humans identify easily (via semantic/contextual cues absent from a 5-second isolated clip).
+4. **Representation (t-SNE):** ANN clusters tighter (consistent with higher accuracy), SNN shows emergent super-category structure despite weaker within-category discrimination.
 
----
-
+5. **Per-class:** SNN beats ANN on 6/50 classes. Unexpectedly, SNN wins on high-energy impulsive sounds (crying_baby +7pp, coughing +8pp) not sustained tones. Fails on low-energy sounds (engine 8%, clock_tick 23%) where LIF threshold isn't consistently crossed.
 ## 6.6 Chapter Summary
 
 1. **Adversarial robustness (§6.1, C4):** SNN retains 26% accuracy at ε=0.1 FGSM vs ANN's 1.75%. The spike threshold provides natural adversarial filtering, making SNNs substantially more robust to gradient-based attacks on audio spectrograms. This is the first such analysis for SNN on environmental sound data.

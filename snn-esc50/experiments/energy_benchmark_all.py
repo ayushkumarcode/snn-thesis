@@ -166,3 +166,31 @@ def benchmark_model(name, model_path, fold, device, model_class="snn",
     _, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
 
     if model_class == "snn":
+        model = SpikingCNN().to(device)
+        model.load_state_dict(
+            torch.load(model_path, map_location=device, weights_only=True))
+        result = measure_snn_energy(model, test_loader, device)
+    elif model_class == "ann":
+        model = ConvANN().to(device)
+        model.load_state_dict(
+            torch.load(model_path, map_location=device, weights_only=True))
+        result = measure_ann_energy(model, test_loader, device)
+    else:
+        return None
+
+    result["model_name"] = name
+    result["fold"] = fold
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+

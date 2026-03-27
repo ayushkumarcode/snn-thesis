@@ -110,3 +110,31 @@ The report must contain:
 - Lessons learnt and evaluation of outcome
 - Description of any research hypothesis
 
+---
+
+## 2. What separates a first (70+) from a 2:1 (60-69)
+
+This is the question that actually matters. The evidence across universities is pretty consistent.
+
+### 2.1 Edinburgh's detailed scheme
+
+**A3 band (70-79, First Class):**
+- Covers up-to-date material in a scholarly/professional way
+- Good command of the subject and current theory
+- Deep thinking, logical rigour
+- Some personal creativity
+- Fully explored assigned tasks
+- Sensible, well-justified software/experimental design
+- Code compiles without errors, strong testing
+
+**B band (60-69, Upper Second):**
+- Firm grasp of the subject but there may be gaps
+- Shows initiative and clear critical evaluation
+- Sound conclusions but with minor weaknesses
+- Design is adequate but may not be fully justified
+- Generally correct behaviour with minor bugs possible
+
+Source: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme)
+
+### 2.2 Sussex
+

@@ -530,3 +530,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 - Clinical Doctorate: 1 (ML for Auditory Data)
 
 so yeah, manchester research explorer just doesn't host undergrad dissertations at all. the library guide confirms it's for "postgraduate research theses" only.
+
+### supervisor clusters
+the neuromorphic theses are really concentrated around a few people:
+- **Steve Furber** -- main or co-supervisor on 10+ theses, creator of SpiNNaker, former ICL/ARM architect
+- **James Garside** -- co-supervisor on many, SpiNNaker team
+- **David Lester** -- co-supervisor on several, SpiNNaker team
+- **Oliver Rhodes** -- newer supervisor showing up in 2020s theses, SpiNNaker team
+- **Dirk Koch** -- the FPGA theses
+- **Piotr Dudek** -- vision/EEE, pixel processor arrays
+- **Hujun Yin** -- DL/vision, pattern recognition
+
+### tech stack patterns
+- SpiNNaker dominates -- shows up in all 13 core neuromorphic theses
+- Intel Loihi only appears in 1 (Fonseca Guerra 2020) as a comparison
+- MNIST is the most common benchmark
+- Python/PyNN/sPyNNaker implied but rarely explicitly named (they're the standard SpiNNaker tools)
+- NEURON simulator used as the reference for biological accuracy
+- no TensorFlow/PyTorch in the neuromorphic theses -- they all use SpiNNaker-specific toolchains
+
+### timeline
+- 2010: 1 thesis (early SpiNNaker work)
+- 2012: 1
+- 2015: 1
+- 2016: 4 (peak year for first-gen SpiNNaker theses)
+- 2018: 2
+- 2019: 2
+- 2020: 6 (peak overall year)
+- 2022: 3

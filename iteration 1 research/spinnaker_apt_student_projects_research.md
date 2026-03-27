@@ -334,3 +334,31 @@ i'm pretty confident undergrad projects on SpiNNaker exist given:
 ---
 
 ## 5. key supervisors and group members
+
+| Name | Role | Supervision Notes |
+|------|------|-------------------|
+| **Steve Furber** | Emeritus Professor (ICL Chair of Computer Engineering) | Main/co-supervisor on 12+ PhD theses; co-supervised MSc (Buttigieg) |
+| **James Garside** | Senior researcher | Co-supervised: Heathcote, Sharp, Mundy, Ward, Rast |
+| **David Lester** | Researcher (deceased?) | Co-supervised: Knight, Bogdan, Fonseca Guerra, Mikaitis, Liu |
+| **Oliver Rhodes** | Lecturer in Bio-Inspired Computing | Co-supervised: Peres, Ward; supervised MSc (Buttigieg), MSNE intern |
+| **Michael Hopkins** | Head of Research into SNNs | Likely supervises student projects; research on SNN applications |
+| **Ke Chen** | Academic | Supervises PhD on Biologically-Plausible Continual Learning using SpiNNaker |
+
+---
+
+## 6. current/recent postgraduate research projects
+
+### 6.1 Biologically-Plausible Continual Learning
+
+| Field | Details |
+|-------|---------|
+| **Supervisor** | Ke Chen |
+| **Focus** | Catastrophic forgetting, continual learning, SNN on SpiNNaker |
+| **URL** | https://www.cs.manchester.ac.uk/study/postgraduate-research/research-projects/description/?projectid=22461 |
+| **Status** | Competition funded (open to worldwide students) |
+
+---
+
+## 7. related resources and platforms
+
+### SpiNNaker software stack

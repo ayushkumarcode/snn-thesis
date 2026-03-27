@@ -138,3 +138,31 @@ Parameter efficiency is interesting too: SpikCommander gets 96.71% with only 1.1
 
 | Component | Estimated Lines | Difficulty |
 |-----------|----------------|------------|
+| Data loading + preprocessing | 50-100 | Easy |
+| SNN model definition | 50-100 | Moderate |
+| Training loop | 80-150 | Moderate |
+| Evaluation + metrics | 50-80 | Easy |
+| Visualization + analysis | 50-100 | Easy |
+| **Total core implementation** | **280-530** | -- |
+| ANN baseline for comparison | 100-200 | Easy |
+| Full project with utilities | 500-1000 | -- |
+
+Minimal working SNN for SHD can be done in about 200-300 lines of Python with snnTorch. Full thesis-quality implementation with preprocessing, training, evaluation, comparison, and visualization would be 500-1000 lines.
+
+### Key technical challenges
+
+| Challenge | Difficulty | How to deal with it |
+|-----------|-----------|---------------------|
+| Understanding LIF neuron dynamics | Medium | snnTorch tutorials 1-3 |
+| Surrogate gradient training | Medium | snnTorch tutorial 5 |
+| Audio-to-spike encoding | Medium | Use SHD (pre-encoded) or Mel-spectrograms |
+| Hyperparameter tuning | Medium | Start from published configs (sparch) |
+| GPU memory management | Low-Medium | Small batch sizes, SHD is small |
+| Reproducing published results | Medium | Use sparch or SpikingJelly examples |
+| Energy estimation | Low | Count synaptic operations (MAC vs AC) |
+
+---
+
+## Datasets
+
+| Dataset | Classes | Samples | Format | Pre-spiked | Size | Availability |

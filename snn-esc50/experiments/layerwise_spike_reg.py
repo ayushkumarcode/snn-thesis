@@ -138,3 +138,31 @@ def train_epoch(model, loader, optimizer, device, lambda_conv, lambda_fc):
         optimizer.step()
 
         total_loss += loss.item()
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+        for k in total_rates:
+            total_rates[k] += layer_spikes[k].item()
+
+    n_batches = len(loader)
+    avg_rates = {k: v / n_batches for k, v in total_rates.items()}
+    return total_loss / n_batches, correct / total, avg_rates
+
+
+@torch.no_grad()
+def eval_model(model, loader, device):
+    model.eval()
+    correct = 0
+    total = 0
+    total_rates = {"conv1": 0, "conv2": 0, "fc1": 0, "out": 0}
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data).to(device)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            spk_out, mem_out, layer_spikes = model(spk_input)
+
+        predicted = mem_out.sum(dim=0).argmax(dim=1)

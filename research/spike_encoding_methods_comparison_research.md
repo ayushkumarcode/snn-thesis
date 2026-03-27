@@ -171,31 +171,3 @@ TTFS achieves **3.5x fewer SOPs in training and 6.5x fewer in inference** compar
 
 | Encoding | Input Noise Resilience | Synaptic Noise Tolerance |
 |----------|----------------------|------------------------|
-| Rate Coding | Moderate | Poor (worst at training) |
-| TTFS Coding | Poor (worst) | Moderate |
-| Phase Coding | **Best** (highest resilience) | Good |
-| Burst Coding | Poor | **Best** (at 20% fault rate) |
-
-### 3.6 Hardware Implementation Cost (NAND gates per module)
-
-| Encoding | Hardware Cost |
-|----------|-------------|
-| Rate Coding | 316N |
-| TTFS Coding | 340N + 1,703 (shared overhead) |
-| Phase Coding | 76N (simplest -- just multiplexers and 8-bit registers) |
-| Burst Coding | 544N (most expensive) |
-
-### 3.7 Summary: No Single Best Encoding
-
-Each encoding creates distinct trade-offs:
-- **TTFS**: Best computational efficiency (latency + SOPs), worst noise resilience
-- **Phase**: Best noise resilience, simplest hardware, worst SOPs
-- **Burst**: Best fault tolerance and compression, most expensive hardware
-- **Rate**: Robust baseline, best adversarial robustness, highest latency/SOPs
-
-This multi-dimensional trade-off space is precisely what makes a systematic comparison thesis valuable.
-
----
-
-## 4. Existing Systematic Comparison Studies
-

@@ -172,31 +172,3 @@ env.close()
 | **EXISTS** | YES -- pre-built in Gymnasium |
 | **Pre-built?** | **YES -- fully implemented** |
 | **Customization needed?** | NO (for standard locomotion) |
-| **POTENTIAL BLOCKER** | **NO** |
-
-**Standard reward functions are already implemented in Gymnasium MuJoCo environments:**
-
-**Ant-v5 (recommended starting environment):**
-```
-reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
-```
-- `healthy_reward`: +1.0 per timestep the ant is upright (z in [0.2, 1.0])
-- `forward_reward`: proportional to forward velocity (x-direction)
-- `ctrl_cost`: penalty for large joint torques
-- `contact_cost`: penalty for external contact forces
-
-**Humanoid-v5:**
-```
-reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
-```
-- `healthy_reward`: +5.0 per timestep (higher than Ant because harder to balance)
-
-**Termination (implicit balance enforcement):**
-- Episode ends if the torso height leaves the healthy range (e.g., the robot falls over)
-- This naturally forces the agent to learn balance as a prerequisite for locomotion
-
-**No custom reward engineering needed for an undergraduate thesis.** The built-in rewards are the standard benchmark used by all RL papers.
-
-**Source:** [Gymnasium Ant docs](https://gymnasium.farama.org/environments/mujoco/ant/) | [Gymnasium Humanoid docs](https://gymnasium.farama.org/environments/mujoco/humanoid/)
-
----

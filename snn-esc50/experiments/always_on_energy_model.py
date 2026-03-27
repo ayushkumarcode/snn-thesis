@@ -110,3 +110,31 @@ def compute_energy_model():
 
         scenario = {
             "duty_cycle": duty,
+            "active_hours": duty * 24,
+            "n_inferences_per_day": n_inferences,
+            "comparisons": {},
+        }
+
+        # SNN on neuromorphic hardware (event-driven)
+        # During silence: ZERO computation (truly event-driven)
+        for model_name, model_info in per_inference.items():
+            if not model_name.startswith("SNN"):
+                continue
+
+            # SpiNNaker 2 (best neuromorphic option)
+            snn_active_j = (model_info["energy_nj"] * 1e-9 *
+                            n_inferences)
+            snn_idle_j = 0  # True event-driven: zero during silence
+            snn_total_j = snn_active_j + snn_idle_j
+
+            scenario["comparisons"][f"{model_name}_SpiNNaker2"] = {
+                "active_energy_j": snn_active_j,
+                "idle_energy_j": snn_idle_j,
+                "total_energy_j": snn_total_j,
+                "total_energy_mj": snn_total_j * 1000,
+            }
+
+            # Xylo Audio 2
+            xylo_active_j = 6.6e-6 * n_inferences  # 6.6 µJ/inf
+            xylo_idle_j = 0.217e-3 * idle_seconds   # 217 µW idle
+            xylo_total_j = xylo_active_j + xylo_idle_j

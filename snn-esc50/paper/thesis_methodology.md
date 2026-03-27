@@ -82,20 +82,20 @@ AvgPool(4x6) -> flatten
 Linear(2304->256) -> ReLU -> Linear(256->50)
 Output: logits (B, 50)
 ```
+
 ---
 
-## 3.4 Spike Encoding Methods
+## 3.4 spike encoding methods
 
-Seven encoding methods are evaluated. All transform a static mel spectrogram (B, 1, 64, 216) into a T-timestep spike tensor (T, B, 1, 64, 216), except direct encoding which produces continuous values.
+Seven methods evaluated. All transform (B, 1, 64, 216) into (T, B, 1, 64, 216), except direct which produces continuous values.
 
-### Rate Coding
-Each pixel generates a spike at each timestep with probability equal to its intensity.
+### rate coding
+Each pixel spikes at each timestep with probability = its intensity.
 $$\text{spk}[t, i] \sim \text{Bernoulli}(x_i), \quad t = 1, \ldots, T$$
-Implemented via `snntorch.spikegen.rate()`. Information content: $O(T)$ bits per neuron.
+Via `snntorch.spikegen.rate()`. Info content: O(T) bits/neuron.
 
-### Latency Coding
-Higher intensity → earlier spike time. Each neuron fires exactly once.
-$$t_{\text{fire}}(x_i) = -\tau \ln\left(\frac{x_i}{x_i - \theta}\right) \quad \text{(linearised)}$$
+### latency coding
+Higher intensity = earlier spike. One spike per neuron.
 Implemented via `snntorch.spikegen.latency()` with τ=5.0, θ=0.01, linear=True. Information content: O(log T) bits per neuron.
 
 ### Delta Coding

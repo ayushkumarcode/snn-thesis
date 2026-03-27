@@ -138,3 +138,31 @@ the Loihi-2 result is pretty wild: **100x energy efficiency over CPU and ~30x ov
 ### Minimum Viable Multimodal SNN (Late Fusion, Digit Classification)
 
 based on Bjorndahl et al. (2024):
+
+```
+Visual Branch (N-MNIST):
+  - Input: 34x34x2 spike trains (300 timesteps)
+  - 2-3 spiking conv layers with LIF neurons
+  - Output: 128-dim feature vector
+
+Auditory Branch (SHD):
+  - Input: 700 channels spike trains
+  - 2-3 spiking FC layers with LIF neurons
+  - Output: 128-dim feature vector
+
+Fusion:
+  - Concatenation: 256-dim combined vector
+  - Classification head: 1-2 FC layers -> 10 classes
+
+ESTIMATED PARAMETERS: ~100K-500K (tiny by modern standards)
+TRAINING TIME: Hours on a single GPU (even laptop)
+CODE COMPLEXITY: ~300-500 lines Python (snnTorch/SpikingJelly)
+```
+
+### Comparison to Other Project Types
+
+| Project Type | Approx Params | Training Time | Code Lines | Difficulty |
+|---|---|---|---|---|
+| Single-modality SNN (MNIST) | 50K-200K | <1 hour | 150-250 | Beginner |
+| **Multimodal SNN (digit fusion)** | **100K-500K** | **2-6 hours** | **300-500** | **Intermediate** |
+| Audio-visual SNN (CREMA-D) | 1M-5M | 1-2 days | 800-1500 | Advanced |

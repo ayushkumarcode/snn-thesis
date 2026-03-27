@@ -26,3 +26,31 @@ the strongest thesis angle would be combining tier 1 and 2: train SNN for gestur
 **FPGAs:**
 - PYNQ-Z2 (Xilinx Zynq XC7Z020): multiple student projects, ~28 LUTs per neuron
 - AMD Kria KV260 (Zynq UltraScale+): official snnTorch-to-FPGA workshop pipeline
+- Basys3/Cmod (Xilinx 7-Series): low-cost deployment demonstrated
+- Xilinx Artix-7: MNIST recognition in 0.52 ms/image
+
+**neuromorphic chips:**
+- Intel Loihi 2: DVS gesture at 89.64%, 37 cores
+- SpiNNaker2: DVS gesture at 94.13%, 459 mJ per gesture
+- SynSense Speck: 320K neurons at milliwatt power
+- SynSense Xylo: audio processing at microwatt budget
+- BrainChip Akida AKD1500: sub-1W edge AI co-processor
+
+### the spike sparsity constraint
+
+the practical advantage depends heavily on spike sparsity:
+- below 0.44 spikes/synapse (VGG16) or 0.42 (AlexNet), SNNs are more energy-efficient than ANNs
+- at 0.1 spike sparsity, SNNs are 3.6x more efficient
+- above 0.5 spikes/synapse, SNNs can't compete with ANNs on digital hardware
+
+so the task, encoding scheme, and architecture directly determine whether edge deployment actually offers advantages.
+
+---
+
+## 2. frameworks that support edge deployment
+
+### training frameworks (GPU, then export)
+
+| Framework | Hardware targets | Export path | Key feature |
+|-----------|----------------|-------------|-------------|
+| snnTorch | FPGA (HLS), Loihi 2, SpiNNaker2 | NIR export, HLS C++ | Best tutorials, ISFPGA 2024 FPGA workshop |

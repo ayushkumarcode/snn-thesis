@@ -558,3 +558,31 @@ start with MNIST (rate-encoded) to verify the pipeline works. then move to N-MNI
 - recent methods have reduced this to T = 3-4, but at some accuracy cost
 - complex architectures (transformers, attention) do not convert cleanly
 - batch normalization, dropout, and certain activation functions need special handling
+
+**time steps required (historical progression):**
+- 2021: 350 time steps for 73.77% on ImageNet (Spiking ResNet)
+- 2022: 32 time steps for 95.54% on CIFAR-10 (clip-floor-shift)
+- 2023: 3 time steps for 95.42% on CIFAR-10 (Fast-SNN)
+- 2024: 4 time steps for 94.75% on CIFAR-10 (Parameter Calibration)
+
+### my take
+ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as a primary project for an undergrad. the tools work but require deep understanding of both ANNs and SNNs. better to use direct training with surrogate gradients via snnTorch, which has better tooling and docs.
+
+---
+
+<a name="thesis-scopes"></a>
+## realistic undergraduate thesis scopes
+
+### what's achievable in one semester (4-6 months)
+
+**Tier 1 -- highly achievable (recommended):**
+- train a convolutional SNN on MNIST/Fashion-MNIST/CIFAR-10 using surrogate gradient descent
+- compare SNN vs ANN accuracy and estimated energy consumption on the same task
+- classify DVS128 gestures using a pre-built SNN architecture
+- audio digit classification on SHD using snnTorch
+- reproduce a published result from a recent paper using snnTorch or SpikingJelly
+
+**Tier 2 -- achievable with effort:**
+- ANN-to-SNN conversion comparison: convert a pre-trained CNN and compare with directly-trained SNN
+- event-based gesture recognition with architecture modifications (adding attention, changing neuron models)
+- multi-dataset benchmarking: compare SNN performance across N-MNIST, CIFAR10-DVS, and SHD

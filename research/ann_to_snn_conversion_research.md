@@ -278,3 +278,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 ### Suitable for Undergrad
 
 | Gap | Difficulty | Publication Potential |
+|-----|-----------|---------------------|
+| No systematic tool comparison | LOW | Workshop paper |
+| MobileNet/EfficientNet barely studied | MODERATE | Workshop/conference |
+| Medical imaging almost unstudied for conversion | LOW-MODERATE | Domain-specific venue |
+| Audio/keyword spotting with modern methods | MODERATE | Workshop paper |
+| Accuracy-vs-energy with actual measurements | MODERATE | Good thesis chapter |
+| Converting Swish/GELU/SiLU architectures | MODERATE-HARD | Conference paper |
+| DenseNet conversion not published | MODERATE | Short paper |
+
+### PhD-Level
+
+- novel neuron models for single-timestep conversion
+- theoretical conversion error bounds for new architectures
+- hardware co-design for specific neuromorphic chips
+- scaling to billion-parameter models
+
+---
+
+## Risks
+
+| Risk | Likelihood | Mitigation |
+|------|-----------|-----------|
+| Tool dependency/compatibility issues | HIGH | Use QCFS standalone; SpikingJelly as backup |
+| Architecture fails to convert | MEDIUM | VGG-16/ResNet-18 as fallback; failure is a result |
+| Not enough GPU for ImageNet | MEDIUM | Focus on CIFAR; ImageNet is optional |
+| Can't reproduce paper results | MEDIUM | Start with repos that claim reproducibility (QCFS has fixed seeds) |
+| Accuracy loss too high | LOW | This is itself a finding worth reporting |
+| Not enough novelty | LOW | Systematic comparison IS the contribution |

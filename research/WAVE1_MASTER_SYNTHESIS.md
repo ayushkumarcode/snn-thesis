@@ -194,3 +194,31 @@ All three framings have worked at Manchester. Choose based on personal interest 
 | DVS128 Gesture Recognition | MEDIUM | Low-Mod | LOW | First (75+) | VERY HIGH (native events) |
 | Framework Comparison | LOW-MED | Genuine gap | LOW | First (75+) | N/A (meta-study) |
 | Plant Disease (PlantVillage) | LOW | VERY HIGH | LOW-MED | First (78+) | LOW (static images) |
+| Music Generation (MIDI) | MED | VERY HIGH | MEDIUM | First (80+) | HIGH (event-like) |
+| Multi-dim SNN vs ANN | MEDIUM | Moderate | LOW | First (72-78) | N/A (meta-study) |
+| NLP Sentiment Analysis | HIGH | EXTREME | HIGH | First (82+) if done | LOW (text) |
+| Time-Series Forecasting | HIGH | High | MEDIUM-HIGH | First (80+) if done | HIGH (temporal) |
+
+---
+
+## 9. The pragmatic recommendation
+
+Given a "just get it done" mindset, here's what makes sense:
+
+### Pick ONE from the top 3, commit, start coding:
+
+**Option 1: SNN on Environmental Sound (ESC-50)** -- best novelty-to-effort ratio
+- Zero prior SNN papers = automatic novelty
+- Mel-spectrograms -> rate encoding -> snnTorch convolutional SNN
+- ANN baseline (same architecture with ReLU) for comparison
+- Energy comparison via NeuroBench
+- ~200-400 lines of code; 4-6 weeks to working results
+
+**Option 2: SNN on SHD Audio** -- lowest effort, strongest tooling
+- Data is pre-encoded as spikes (no encoding pipeline needed)
+- snnTorch or SpikingJelly have built-in loaders
+- SNNs actually beat ANNs here (rare!) -- great narrative
+- Add value with: encoding comparison, neuron model comparison, or timestep analysis
+- ~200 lines for baseline; 2-4 weeks to working results
+
+**Option 3: SNN ECG Classification** -- best real-world narrative

@@ -474,3 +474,31 @@ loss = backprop.TBPTT(net, train_loader, optimizer=optimizer,
 - Google Colab free (T4, 15 GB): Very comfortable
 
 **RECOMMENDATION:** Use the spatial-first approach:
+1. Conv1d layers process raw ECG spatially (no time loop, standard PyTorch)
+2. Delta-encode the Conv1d features (compressed representation)
+3. Run SNN time loop only on compressed features for 25-50 steps
+4. This fits comfortably on any modern laptop GPU
+
+**Sources:** [snnTorch GPU Memory Discussion](https://github.com/jeshraghian/snntorch/discussions/63), [snnTorch TBPTT docs](https://snntorch.readthedocs.io/en/latest/snntorch.backprop.html)
+
+---
+
+### 12. Existing SNN-ECG Code
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | PARTIAL -- no PTB-XL SNN code exists |
+| **VERIFIED HOW** | Thorough search of GitHub, literature reviews |
+| **POTENTIAL BLOCKER** | LOW -- novelty is good for thesis |
+
+**What exists:**
+
+| Repository / Paper | Dataset | Framework | Architecture | Notes |
+|---|---|---|---|---|
+| [Efficient-spiking-networks](https://github.com/byin-cwi/Efficient-spiking-networks) | QTDB (PhysioNet) | Custom PyTorch | Adaptive spiking recurrent | ECG is one of many tasks |
+| [HDL-SpikingNet-ECG](https://github.com/alirezaamir/HDL-SpikingNet-ECG) | Unspecified | Verilog (FPGA) | STDP-based | Hardware only, no training code |
+| Amirshahi et al. 2019 | MIT-BIH | Custom | 3-layer STDP | 97.9% on 4 classes |
+| Banerjee et al. | MIT-BIH | Custom | STDP 1-layer | 94.3% on 4 classes |
+| Feng et al. | PhysioNet 2017 | Custom | 14-layer converted CNN | 84.4% on 4 classes |
+| Buettner et al. | MIT-BIH | Intel Loihi | Converted CNN | 97.8% on 5 classes |
+

@@ -54,3 +54,31 @@ Tonic is the PyTorch Vision equivalent for neuromorphic data. it provides these 
 
 ### standard ML datasets never tested with SNNs
 
+| Dataset | Domain | Size | Why it'd work | Existing SNN work |
+|---------|--------|------|--------------|-------------------|
+| **Fashion-MNIST** | Image | 70K, 10 classes | direct drop-in for any MNIST SNN pipeline | some results but not a proper study |
+| **EMNIST** | Character recognition | 814K, 62 classes | extension of MNIST to full alphabet | one student project (sofi12321) |
+| **SVHN** | Street view house numbers | 600K+ | real-world digit recognition | almost nothing |
+| **Food-101** | Food recognition | 101K, 101 classes | standard classification | zero |
+| **Flowers-102** | Fine-grained | 8K, 102 classes | small dataset, easy to train | zero |
+| **Stanford Cars** | Fine-grained | 16K, 196 classes | fine-grained challenge | zero |
+| **UCF-101** | Video action recognition | 13K clips, 101 classes | temporal data suits SNNs | near-zero |
+| **ESC-50** | Environmental sound | 2K, 50 classes | audio classification, natural for temporal SNNs | near-zero |
+| **UrbanSound8K** | Urban sound | 8.7K, 10 classes | audio classification | zero |
+| **GTZAN** | Music genre | 1K, 10 genres | audio temporal patterns | zero |
+| **MIT-BIH Arrhythmia** | ECG | 48 recordings | time series, perfect for SNNs | 2-3 papers, not with snnTorch |
+| **PTB-XL** | 12-lead ECG | 21K, multi-label | large ECG dataset | zero |
+| **HAR (UCI)** | Human activity recognition | 10K, 6 classes | sensor time series | very few |
+| **CWRU Bearing** | Vibration fault diagnosis | Variable | industrial time series | 2-3 papers |
+| **AG News** | Text classification | 120K, 4 classes | NLP benchmark | zero (with snnTorch) |
+| **IMDB Reviews** | Sentiment analysis | 50K, 2 classes | NLP benchmark | 1-2 papers, not standard frameworks |
+
+### Heidelberg spiking datasets (SHD/SSC) -- gaps in framework coverage
+
+SHD and SSC are the premier audio neuromorphic benchmarks. current SOTA on SHD is 96.41% (SpikCommander). but:
+
+- nobody's compared snnTorch, SpikingJelly, Norse, and BindsNET on SHD with identical architectures
+- no study on different spike encoding methods on SHD (rate vs temporal vs delta)
+- SSC (the harder 35-class version) has way fewer results than SHD
+
+---

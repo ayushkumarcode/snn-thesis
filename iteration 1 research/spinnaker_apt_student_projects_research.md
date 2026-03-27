@@ -390,3 +390,15 @@ i'm pretty confident undergrad projects on SpiNNaker exist given:
 
 4. **Galluppi's MSc thesis (2009) details are lost**: we know he did an MSc with SpiNNaker but can't find the thesis title or text.
 
+5. **Furber's profile lists 22 supervised theses**, but the full list couldn't be extracted from the Research Explorer page (403 error on the supervisedBy filter).
+
+---
+
+## 9. things to follow up on
+
+1. **contact Oliver Rhodes or Michael Hopkins** directly to ask about current/past 3rd year and MSc project offerings
+2. **ask on the SpiNNaker Users Google Group** (https://groups.google.com/g/spinnakerusers) about student project examples
+3. **check EBRAINS** for any student project reports or tutorials that include project-level work
+4. **try Wayback Machine** for the old APT thesis page to recover the full historical listing
+5. **search Manchester eScholar** (https://www.escholar.manchester.ac.uk/) with keyword searches for additional MSc theses
+6. **request access** to the Manchester StudentNet project listings if possible through a Manchester contact

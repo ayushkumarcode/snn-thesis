@@ -210,31 +210,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 
 5. **Multiple Kaggle/GitHub repos**: Numerous repositories with basic SNN MNIST implementations using snnTorch, SpikingJelly, or Norse.
 
-### Assessment of Saturation
-
-**The basic "SNN vs ANN accuracy on MNIST" comparison is HIGHLY saturated.** It has been done by:
-- High school students (published)
-- Undergraduate course projects (multiple)
-- Graduate course projects (multiple)
-- Academic papers (dozens)
-
-**The "SNN vs ANN on CIFAR-10 with systematic analysis" is LESS saturated** but still has significant academic coverage.
-
-**Risk of being too generic**: HIGH if you only compare accuracy. MODERATE if you add one analytical dimension (energy, robustness, encoding comparison). LOW if you add two or more analytical dimensions with controlled experimental methodology.
-
----
-
-## 6. Strong Version vs Weak Version of This Project
-
-### WEAK Version (Grade: Pass/Low 2:1 -- risky)
-
-**What it looks like**:
-- Run snnTorch tutorials 5 and 6 on MNIST
-- Train a simple CNN on MNIST
-- Compare accuracy numbers
-- Maybe also run on Fashion-MNIST
-- Report: "SNNs achieved 98% and ANNs achieved 99%, therefore ANNs are slightly better"
-- No energy analysis, no controlled variables, no encoding comparison
-- Uses default hyperparameters throughout
-
-**Why it is weak**:

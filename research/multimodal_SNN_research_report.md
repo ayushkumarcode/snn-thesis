@@ -222,3 +222,31 @@ CODE COMPLEXITY: ~300-500 lines Python (snnTorch/SpikingJelly)
 
 ## 7. Could This Work as an Undergrad Project?
 
+### yes -- and there's basically a blueprint
+
+the Bjorndahl paper provides an almost exact template:
+
+**Goal**: classify digits 0-9 using both visual (spiked handwritten digits) and auditory (spiked spoken digits) simultaneously.
+
+**Datasets**:
+- **N-MNIST** (visual): 60K train / 10K test, 34x34 pixels, already spike format via Tonic
+- **SHD** (auditory): 8,156 train / 2,264 test, 700 channels, digits 0-9 in English/German, already spikes
+
+both freely available, small enough for a laptop GPU, natively supported by snnTorch and Tonic.
+
+### What I'd Actually Do
+
+**Phase 1 (weeks 1-3):** get single-modality SNNs working for N-MNIST and SHD separately. establish baselines.
+
+**Phase 2 (weeks 4-6):** implement late fusion (concatenation) of visual and auditory branches. train end-to-end with surrogate gradients. compare multimodal vs unimodal accuracy.
+
+**Phase 3 (weeks 7-10):** experiments -- compare early/middle/late fusion. noise robustness (add noise to one modality). missing modality experiments. energy analysis via SynOps counting.
+
+**Phase 4 (weeks 11-14):** pick ONE novel angle:
+- (a) STDP-based fusion instead of surrogate gradients (bio-plausible angle)
+- (b) confidence-weighted fusion (weight modalities by reliability)
+- (c) add a third modality (e.g. tactile data)
+- (d) deploy on SpiNNaker or compare energy vs ANN
+- (e) visualization: what does the network learn? spike patterns, fusion representations
+
+### Why It's Achievable

@@ -166,20 +166,20 @@ Run 6 is single-fold (fold 4). For full comparability with snnTorch baseline (47
 |------|----------------------|---------------|------|
 | 1 | 39.5% | 40.5% | -1.0 pp |
 | 2 | 48.2% | 48.5% | -0.3 pp |
-Run 6 establishes a single-fold SpiNNaker result (43.0% on fold 4). To achieve full comparability with the 5-fold snnTorch baseline (47.15% ± 4.50%), we prepared all five folds for SpiNNaker inference. This required addressing a critical model integrity issue discovered during preparation.
+| 3 | 47.7% | 48.25% | -0.55 pp |
+| 4 | 51.2% | 54.0% | -2.8 pp |
+| 5 | 43.2% | 44.5% | -1.3 pp |
+| **Mean** | **46.0%** | **47.15%** | **-1.15 pp** |
 
-**Model integrity audit.** The augmented training job (§4.4) saved models to the same directory as the canonical CSF3 baselines, overwriting all five checkpoints. Detection: feature extraction for fold 3 returned 26.75% snnTorch accuracy (expected ~48.25%), and fold 5 returned 21.25% (expected ~44.5%). The augmented models ran for 81–100 epochs while the canonical CSF3 models ran for exactly 50 epochs. All five folds were restored from `csf3_results/snn/direct/` backup.
+Small diffs from extraction vs training-time measurement. Mean 46.0% within 1.2 pp of canonical 47.15%, confirming integrity.
 
-**Preparation pipeline** (all five folds):
-1. Restore CSF3 canonical checkpoints → `results/snn/direct/best_fold{1..5}.pt`
-2. Extract 400-sample hidden features for each fold → `results/spinnaker_weights/fold{N}/hidden_spike_features.npy`
-3. Export fold-specific FC2 connection lists → `results/spinnaker_weights/fold{N}/fc2_connections.npy`
-4. Automate 5-fold SpiNNaker inference → `spinnaker/run_5fold_spinnaker.sh`
+**Sparsity:** consistent across folds (79.9%, 72.6%, 76.1%, 78.3%, 75.8%). FC2-only approach valid across all folds.
 
-**snnTorch reference accuracies from feature extraction** (400 samples, CSF3 canonical models):
+**5-fold SpiNNaker results (completed 05 March 2026):**
 
-| Fold | snnTorch acc (extraction) | CSF3 training best_acc | Difference |
-|------|---------------------------|------------------------|------------|
+| Fold | SpiNNaker | snnTorch ref | Hardware gap |
+|------|-----------|-------------|-------------|
+| 1 | 29.0% | 39.5% | +10.5 pp |
 | 1 | 39.5% | 40.5% | −1.0 pp |
 | 2 | 48.2% | 48.5% | −0.3 pp |
 | 3 | 47.7% | 48.25% | −0.55 pp |

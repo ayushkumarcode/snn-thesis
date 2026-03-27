@@ -236,20 +236,20 @@ Per-class accuracy for both SNN (direct) and ANN across all 5 folds (n=40 test s
 | can_opening | 73% | 78% | -5% |
 | hand_saw | 73% | 83% | -10% |
 | crackling_fire | 68% | 65% | **+3%** |
+| coughing | 68% | 60% | **+8%** |
 
-| Class | SNN Accuracy | ANN Accuracy | SNN−ANN |
-|-------|-------------|-------------|---------|
-| toilet_flush | **83%** | 85% | −2% |
-| crying_baby | **80%** | 73% | **+7%** |
-| door_wood_knock | **80%** | 73% | **+7%** |
-| rooster | 78% | 88% | −10% |
-| pouring_water | **75%** | 70% | **+5%** |
-| thunderstorm | 75% | 95% | −20% |
-| can_opening | 73% | 78% | −5% |
-| hand_saw | 73% | 83% | −10% |
-| crackling_fire | **68%** | 65% | **+3%** |
-| coughing | **68%** | 60% | **+8%** |
+**Bottom 10 SNN classes:**
 
+| Class | SNN | ANN | SNN-ANN |
+|-------|-----|-----|---------|
+| engine | 8% | 43% | -35% |
+| door_wood_creaks | 10% | 25% | -15% |
+| helicopter | 10% | 33% | -23% |
+| pig | 13% | 35% | -22% |
+| laughing | 13% | 53% | -40% |
+| water_drops | 15% | 43% | -28% |
+| drinking_sipping | 20% | 45% | -25% |
+| clock_tick | 23% | 68% | -45% |
 **Bottom 10 classes by SNN accuracy:**
 
 | Class | SNN Accuracy | ANN Accuracy | SNN−ANN |

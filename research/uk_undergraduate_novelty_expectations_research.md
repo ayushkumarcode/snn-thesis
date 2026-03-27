@@ -110,3 +110,31 @@ Sources: [Manchester Standard Marking System](http://www.tlso.manchester.ac.uk/m
 - **80+ (High First):** "provides evidence of original thinking"
 - **70-79 (First):** "shows some sophistication of argument" and "intelligent use of source materials" -- no explicit originality
 - **60-69 (2:1):** "competent" analysis
+- **50-59 (2:2):** "adequate" understanding
+
+"original thinking" only explicitly required at 80+.
+
+Source: [SOAS Marking Criteria](https://www.soas.ac.uk/sites/default/files/2022-07/marking-criteria-policy.pdf)
+
+### king's college london
+
+first class work described as having "a well-defined focus of research enquiry and excellent application of strategies to address a defined problem, **which may show some originality**"
+
+the word "may" is key. it's a possibility, not a requirement.
+
+Source: [KCL Marking Framework](https://www.kcl.ac.uk/assets/policyzone/assessment/college-marking-framework.pdf)
+
+---
+
+## 3. what examiners actually look for
+
+based on published guidance from Cambridge, Swansea/Nottingham (Bob Laramee's guidelines), and Student Room discussions with markers:
+
+### what gets you a first (70+):
+1. clear problem definition and well-motivated objectives
+2. thorough literature review showing awareness of related work
+3. sound methodology with justified design decisions
+4. working implementation that meets stated objectives
+5. rigorous evaluation using appropriate metrics
+6. critical reflection on what worked, what didn't, and why
+7. professional presentation -- clear writing, good diagrams, well-structured report

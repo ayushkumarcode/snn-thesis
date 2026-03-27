@@ -138,3 +138,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 - **Year:** ~2022
 - **Source:** [GitHub](https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP)
 
+**Objectives:** "obtain a better understanding of SNNs" by comparing performance against traditional ANNs on MNIST.
+
+**Contribution:**
+- SNNs got "pretty good classification performance after only one epoch"
+- performance plateaued quickly after that
+- classical ANNs "substantially outperformed SNNs within a few epochs"
+- SNNs showed diminishing returns with increased neuron counts
+
+**Framing:** "we compared A vs B to understand X." primary contribution is the empirical comparison and understanding, not the implementation itself.
+
+---
+
+### Thesis 9: Spiking Neural Networks for Image Classification
+- **Authors:** Osaze Shears, Ahmad Hossein Yazdani
+- **Type:** Advanced ML Course Project (grad course, but useful pattern)
+- **Institution:** Virginia Tech
+- **Year:** November 2020
+- **Source:** [Project website](https://oshears.github.io/adv-ml-2020-snn-project/)
+
+**Objectives:** "reimplements tests in the BindsNET framework using different neural models, encoding methods, and training techniques to study how these factors affect SNN model accuracy."
+
+**Contribution:** empirical analysis of multiple SNN configurations.
+
+**Framing:** "we reimplemented and evaluated X to study factors Y and Z."
+
+---
+
+### Thesis 10: Learning in Biologically Plausible Neural Networks

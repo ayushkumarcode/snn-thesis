@@ -110,3 +110,31 @@ Key distinction: operations with non-binary activation are MACs; those with bina
 1. **Keyword Few-Shot Class-Incremental Learning (FSCIL):** Audio keyword classification with continual learning (MSWC dataset)
 2. **Event Camera Object Detection:** Prophesee 1MP dataset, COCO mAP
 3. **Non-human Primate Motor Prediction:** Fingertip velocity prediction from cortical recordings
+4. **Chaotic Function Prediction:** Mackey-Glass time series, sMAPE
+
+### 2.4 Baseline results (from the Nature Comms paper)
+
+#### Keyword FSCIL
+
+| Model | Accuracy (Base/Avg) | Footprint | Activation Sparsity | Dense SynOps | Eff_MACs | Eff_ACs |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| M5 ANN | 97.09%/89.27% | 6.03e6 | 0.783 | 2.59e7 | 7.85e6 | 0 |
+| SNN | 93.48%/75.27% | 1.36e7 | 0.916 | 3.39e6 | 0 | 3.65e5 |
+
+SNN computes each sample over 200 passes, using an order of magnitude fewer effective AC operations than the ANN's MACs.
+
+#### NHP Motor Prediction
+
+| Model | R-squared | Footprint | Activation Sparsity | Eff_MACs | Eff_ACs |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| ANN | 0.593 | 20,824 | 0.683 | 3,836 | 0 |
+| SNN | 0.593 | 19,648 | 0.997 | 0 | 276 |
+
+SNN achieves identical R-squared (0.593) with 0.997 activation sparsity, translating to only 276 ACs vs 3,836 MACs. That's a 13.9x operation count reduction BEFORE accounting for AC vs MAC energy difference. Pretty cool.
+
+### 2.5 Energy estimation using NeuroBench metrics
+
+NeuroBench gives you the building blocks:
+- Energy_SNN = Eff_ACs x E_AC (where E_AC ~ 0.9 pJ at 45nm)
+- Energy_ANN = Eff_MACs x E_MAC (where E_MAC ~ 4.6 pJ at 45nm)
+

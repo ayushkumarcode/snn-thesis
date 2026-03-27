@@ -246,31 +246,3 @@ def estimate_energy(spike_counts, layer_fan_outs, flops_ann,
     energy_ratio = E_ANN / E_SNN
 
     return {
-        'total_sops': total_sops,
-        'E_SNN_joules': E_SNN,
-        'E_ANN_joules': E_ANN,
-        'energy_ratio': energy_ratio,
-        'snn_more_efficient_by': f"{energy_ratio:.1f}x"
-    }
-```
-
-#### 3. SpikingJelly (Alternative Framework with Good Metrics Support)
-
-- **What:** Full-stack SNN framework from Peking University
-- **Install:** `pip install spikingjelly`
-- **Advantage:** Optimised CUDA kernels for spiking operations, good documentation
-- **GitHub:** https://github.com/fangwei123456/spikingjelly
-- **Paper:** Published in Science Advances (2023)
-
-### Advanced Tools (For Reference / Future Work)
-
-#### 4. SANA-FE (Hardware Architecture Simulator)
-
-- **What:** Simulates neuromorphic chip architectures to estimate energy and latency
-- **GitHub:** https://github.com/SLAM-Lab/SANA-FE
-- **Language:** C++ with Python interface
-- **Difficulty:** MEDIUM-HIGH -- requires understanding neuromorphic architecture concepts
-- **Best for:** If you want to claim energy estimates for a specific neuromorphic chip design
-- **Published:** IEEE TCAD 2025
-
-#### 5. SpikeSim (Compute-in-Memory Hardware Simulator)

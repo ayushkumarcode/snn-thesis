@@ -138,3 +138,31 @@ KDCL reduces timesteps by 60%, energy by 54.8% (0.0314mJ to 0.0142mJ on SSC). us
 
 ---
 
+## 3. Best Reported SNN Accuracies on Environmental Sound Benchmarks
+
+### ESC-50 (50 classes)
+
+| Method | Architecture | Accuracy | Year | Reference |
+|--------|-------------|----------|------|-----------|
+| **our thesis** | **Conv SNN (LIF, surrogate gradients)** | **47.15% +/- 4.50%** | **2026** | **this thesis** |
+| **our thesis + PANNs** | **PANNs CNN14 + SNN head** | **92.50% +/- 1.30%** | **2026** | **this thesis** |
+| No other SNN work exists | -- | -- | -- | -- |
+
+we are literally the first and only work on full ESC-50 with an SNN. confirmed by:
+1. Larroza et al. (2025) explicitly stating "no state-of-the-art solution has yet encoded environmental sound datasets using spike-based methods"
+2. Basu et al. (2025) survey finding no ESC-50 SNN results
+3. Baek & Lee (2024) review finding no ESC-50 SNN results
+
+### ESC-10 (10 classes)
+
+| Method | Architecture | Accuracy/F1 | Year |
+|--------|-------------|-------------|------|
+| Larroza et al. (TAE) | 4-layer FC SNN, 128 LIF | 69.0% | 2025 |
+| Larroza et al. (MW) | Same | 62.0% | 2025 |
+| Larroza et al. (SF) | Same | 59.8% | 2025 |
+| Non-spiking baseline | -- | 72.7% | 2025 |
+
+### UrbanSound8K
+
+| Method | Architecture | Accuracy | Notes | Year |
+|--------|-------------|----------|-------|------|

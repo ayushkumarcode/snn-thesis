@@ -332,31 +332,3 @@ Optional:      SpiNNaker access (if available at university, for deployment)
 
 ```bash
 pip install snntorch
-pip install tonic
-pip install torch torchvision
-pip install spikingjelly  # optional, for comparison
-pip install braincog      # optional, for S-CMRL reproduction
-```
-
-### Dataset Access
-
-```python
-# N-MNIST (visual digits)
-import tonic
-nmnist_train = tonic.datasets.NMNIST(save_to='./data', train=True)
-nmnist_test = tonic.datasets.NMNIST(save_to='./data', train=False)
-
-# SHD (spoken digits)
-from snntorch.spikevision import spikedata
-shd_train = spikedata.SHD("data/shd", train=True)
-shd_test = spikedata.SHD("data/shd", train=False)
-```
-
-### Sources
-- [snnTorch - GitHub](https://github.com/jeshraghian/snntorch)
-- [snnTorch Tutorials](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
-- [snnTorch SHD Example](https://snntorch.readthedocs.io/en/latest/examples/examples_svision/example_sv_shd.html)
-- [SpikingJelly - GitHub](https://github.com/fangwei123456/spikingjelly)
-- [Tonic - GitHub](https://github.com/neuromorphs/tonic)
-- [BrainCog - GitHub](https://github.com/BrainCog-X/Brain-Cog)
-- [SNN Frameworks Overview - Open Neuromorphic](https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/)

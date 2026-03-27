@@ -82,3 +82,23 @@ spike_rate_escape winning is consistent with Gygax & Zenke (2025) escape noise t
 ---
 
 ## The 47.15% Question
+
+47.15% is entirely acceptable at ICONS with context. random baseline is 2% (50 classes). the ICONS community's reference is other SNN papers, not ANN leaderboards. there's no prior bar to beat. the ICONS 2025 best paper had no accuracy metric at all. Larroza reports F1=0.661 on 10 classes -- our 47.15% on 50 classes is arguably more impressive relatively.
+
+frame as "first reference point" not "good performance." the PANNs result (92.5%) is the decisive rehabilitation.
+
+---
+
+## Bottom Line
+
+this paper has:
+- one confirmed "first" that can't be disputed (ESC-50 SNN)
+- one confirmed "first" in audio SNN hardware (SpiNNaker)
+- one confirmed "first" in audio SNN adversarial analysis
+- one confirmed "first" in audio SNN transfer learning (PANNs+SNN)
+- the most comprehensive encoding comparison in audio SNN literature
+- a mechanistically interesting surrogate failure pattern
+
+not every contribution is equally strong. the hardware deployment at 33.1% is feasibility, not production. the surrogate ablation is preliminary. but the combination of C1+C2+C4+C5 alone -- first benchmark, comprehensive encoding comparison, adversarial robustness, gap collapse -- would be sufficient for ICONS based on 2022-2025 precedent. the hardware deployment adds the neuromorphic-systems angle ICONS specifically values.
+
+the paper should be submitted. lead with the gap-collapse finding, frame SpiNNaker as characterization, acknowledge the Wang et al. adversarial caveat, and don't apologize for 47.15%.

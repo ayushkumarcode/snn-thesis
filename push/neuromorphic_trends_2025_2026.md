@@ -82,3 +82,11 @@ nobody has done: full ESC-50 with SNNs, 7-encoding comparison for audio, PANNs+S
 5. address the AI energy narrative (topical, relevant to sustainability)
 
 ---
+
+## Sources
+- ICONS 2025 schedule analysis
+- ICLR 2026 / NeurIPS 2025 / ICML 2025 proceedings
+- Nature Communications (Nov 2025) SNN adversarial robustness
+- Nature (Jan 2025) "Neuromorphic computing at a pivotal moment"
+- Innatera product specs
+- Open Neuromorphic community

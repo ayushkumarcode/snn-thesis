@@ -110,20 +110,20 @@ Spikes on positive temporal changes above threshold.
 Normalised spectrogram repeated unchanged across all T timesteps. LIF neurons get continuous current and generate their own timing through integration.
 $$\text{input}[t, :] = x, \quad \forall t$$
 No spike conversion. Network does implicit rate coding through LIF dynamics. **Best encoding at 47.15%**.
-### Burst Coding
-Spike count ∝ intensity, concentrated at the beginning of the simulation window:
+
+### burst coding
+Spike count proportional to intensity, concentrated at the start:
 $$n_{\text{spikes}}(x_i) = \text{round}(x_i \times N_{\max}), \quad N_{\max} = 5$$
 $$\text{spk}[t, i] = \mathbf{1}[t < n_{\text{spikes}}(x_i)]$$
-Biologically motivated by burst-firing neurons in auditory cortex. Maximum spike density = 5/25 = 20%.
+Bio motivation: burst-firing neurons in auditory cortex. Max density = 5/25 = 20%.
 
-### Phase Coding
-Intensity mapped to spike timing within a single oscillation cycle:
+### phase coding
+Intensity mapped to timing within a single oscillation cycle:
 $$t_{\text{fire}}(x_i) = \lfloor (1 - x_i) \times (T-1) \rfloor, \quad x_i > 0$$
-High intensity → early spike; exactly one spike per active neuron per window. Zero-intensity neurons are silent. Biologically motivated by theta-phase precession (O'Keefe & Recce, 1993) and auditory cortex phase-of-firing codes.
+High intensity = early spike; exactly 1 spike per active neuron. Zero-intensity = silent. Bio motivation: theta-phase precession.
 
-### Population Coding
-Output-side population representation: each of 50 classes is represented by 10 output neurons (500 total output neurons). Input encoding uses rate coding. Loss: MSE count loss targeting correct class neurons at count=1.0 and incorrect class neurons at count=0.0:
-$$\mathcal{L} = \text{MSE}\left(\frac{1}{T}\sum_t \text{spk}_{out,t}, y_{\text{pop}}\right)$$
+### population coding
+Output-side: each of 50 classes represented by 10 neurons (500 total output). Input uses rate coding. Loss: MSE count loss:
 where $y_{\text{pop}} \in \{0, 1\}^{500}$ is the population target vector. Classification: argmax of total spike count summed over grouped neuron pools. Implemented via `snntorch.functional.mse_count_loss(population_code=True, num_classes=50)`.
 
 ---

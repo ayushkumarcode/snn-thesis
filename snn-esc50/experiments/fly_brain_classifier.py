@@ -306,3 +306,31 @@ def main():
     parser.add_argument("--device", default=None)
     parser.add_argument("--expansion", type=int, default=40)
     parser.add_argument("--wta-ratio", type=float, default=0.05)
+    parser.add_argument("--mode", default="both",
+                        choices=["ann", "snn", "both"])
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    modes = ["ann", "snn"] if args.mode == "both" else [args.mode]
+
+    all_results = []
+    for mode in modes:
+        print(f"\n{'='*60}")
+        print(f"  Fly Brain Classifier ({mode.upper()})")
+        print(f"{'='*60}")
+        for fold in folds:
+            result = run_fold(fold, device, args.expansion,
+                              args.wta_ratio, mode)
+            all_results.append(result)
+
+        fold_accs = [r["best_acc"] for r in all_results
+                     if r["mode"] == mode]
+        if len(fold_accs) == 5:
+            print(f"\n  {mode} 5-Fold: {np.mean(fold_accs):.4f}"
+                  f"±{np.std(fold_accs):.4f}")
+
+    save_dir = RESULTS_DIR / "energy" / "fly_brain"
+    save_dir.mkdir(parents=True, exist_ok=True)

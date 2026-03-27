@@ -460,31 +460,3 @@ Key works:
 
 **Simulation-only possible?** YES. MuJoCo is a pure simulation environment.
 
-**macOS compatible?** YES. MuJoCo 2.1+ works on macOS natively. Gymnasium provides Reacher-v4 environment.
-
-**Feasibility for 28 days: MODERATE**
-
-**What the thesis would look like:**
-```
-Title: "Energy-Efficient Robotic Arm Control Using Spiking Neural Networks
-        in Simulated Environments"
-
-Components:
-1. MuJoCo Reacher-v2/v4 environment setup (Gymnasium)
-2. ANN-based policy network (PPO or DQN) as baseline
-3. Replace policy network with SNN (LIF neurons, snnTorch)
-4. Train both, compare:
-   - Task performance (distance to target, success rate)
-   - Training efficiency (episodes to convergence)
-   - Energy proxy (spike count, synaptic operations)
-5. Analysis of SNN temporal dynamics in control
-
-Framework: snnTorch + Gymnasium + MuJoCo
-Hardware: macOS CPU (MuJoCo is CPU-efficient)
-```
-
-**Risks:**
-- SNN + RL training instability
-- MuJoCo environment setup can have compatibility quirks
-- Hyperparameter tuning for spiking RL is time-consuming
-- The 2025 MDPI paper already does something very similar

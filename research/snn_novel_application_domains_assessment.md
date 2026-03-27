@@ -390,3 +390,12 @@ these specific combinations have essentially zero papers:
 - [Neuromorphic Astronomy Pipeline (2025)](https://arxiv.org/html/2511.16060)
 - [UWA PhD Project](https://researchdegrees.uwa.edu.au/projects/172184/spiking-neural-networks-for-fast-and-efficient-transient-event-detection-in-astronomy)
 
+### Drug Discovery
+- [P450 Screening with SNNs (2025)](https://link.springer.com/chapter/10.1007/978-3-031-90714-2_20)
+- [Spiking GNN Survey](https://arxiv.org/abs/2205.02767)
+
+### Frameworks
+- [snnTorch](https://snntorch.readthedocs.io/)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [Brian2](https://brian2.readthedocs.io/)
+- [Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)

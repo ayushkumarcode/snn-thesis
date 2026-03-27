@@ -502,3 +502,31 @@ Based on all verification, here is the concrete architecture that WILL work:
 
 ---
 
+## risk assessment
+
+| Risk | Level | Impact | Likelihood | Mitigation |
+|------|-------|--------|-----------|-----------|
+| SNN policy fails to learn locomotion | HIGH | Project needs rescoping | 30-40% | Start with CartPole/InvertedPendulum first |
+| Training instability with SNN+PPO | HIGH | Wasted development time | 50-60% | Use membrane potential readout, conservative hyperparams |
+| macOS performance too slow | LOW | Need to use cloud | 20% | Colab/Kaggle free tiers are sufficient |
+| Environment setup fails | LOW | Delays project start | 10% | MuJoCo+Gymnasium is very reliable on macOS |
+| No reproducible results | MEDIUM | Weak thesis | 25% | 5+ seeds, fix random state, careful logging |
+
+**overall: FEASIBLE but CHALLENGING.** the main risk isn't infrastructure (which is solid on macOS) but the SNN+RL integration, which is an active research problem. which is actually kind of ideal for a thesis -- the challenge IS the contribution.
+
+---
+
+## Summary Table
+
+| # | Component | Exists? | Verified | macOS? | Blocker? |
+|---|-----------|---------|----------|--------|----------|
+| 1 | SpikeGym | YES (barely) | [GitLab](https://gitlab.com/ecs-lab/spikegym) | Partial | MEDIUM -- treat as reference only |
+| 2 | Isaac Gym | YES (deprecated) | [NVIDIA](https://developer.nvidia.com/isaac-gym) | **NO** | **HARD BLOCKER** -- do not use |
+| 3 | MuJoCo | YES | [GitHub](https://github.com/google-deepmind/mujoco) v3.5.0 | **YES** | NO |
+| 4 | SNN+RL integration | NO library | Research papers only | N/A | MEDIUM -- build yourself |
+| 5 | SNN policy (continuous) | YES (research) | Multiple papers verified | N/A | MEDIUM -- implement membrane readout |
+| 6 | Reward function | YES (pre-built) | [Gymnasium docs](https://gymnasium.farama.org/environments/mujoco/ant/) | YES | NO |
+| 7 | Training stability | Known unstable | Multiple papers | N/A | **HIGH** -- core challenge |
+| 8 | Evaluation metrics | YES (standard) | Literature consensus | N/A | NO |
+| 9 | GPU requirements | CPU works | Verified | YES (MPS) | NO |
+| 10 | macOS full pipeline | YES | All components verified | **YES** | NO |

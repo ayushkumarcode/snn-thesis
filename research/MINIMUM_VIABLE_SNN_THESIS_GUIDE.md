@@ -457,31 +457,3 @@ import torchvision
 # 1. Data loading (identical for ANN and SNN)
 train_loader = torch.utils.data.DataLoader(
     torchvision.datasets.MNIST('./data', train=True, download=True,
-        transform=torchvision.transforms.ToTensor()),
-    batch_size=128, shuffle=True)
-
-# 2. ANN model (~15 lines)
-class ANN(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.fc1 = nn.Linear(784, 500)
-        self.fc2 = nn.Linear(500, 10)
-    def forward(self, x):
-        x = torch.relu(self.fc1(x.view(-1, 784)))
-        return self.fc2(x)
-
-# 3. SNN model (~20 lines, adapted from snnTorch Tutorial 5)
-class SNN(nn.Module):
-    def __init__(self, num_steps=25, beta=0.95):
-        super().__init__()
-        self.num_steps = num_steps
-        self.fc1 = nn.Linear(784, 500)
-        self.lif1 = snn.Leaky(beta=beta)
-        self.fc2 = nn.Linear(500, 10)
-        self.lif2 = snn.Leaky(beta=beta)
-    def forward(self, x):
-        mem1 = self.lif1.init_leaky()
-        mem2 = self.lif2.init_leaky()
-        spk_rec = []
-        for step in range(self.num_steps):
-            cur1 = self.fc1(x.view(-1, 784))

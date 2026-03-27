@@ -87,31 +87,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 ## 3. HARDWARE LANDSCAPE: WHAT THE BIG PLAYERS ARE DOING
 
 ### Intel Loihi 2
-- **Hala Point** system: 1.15 billion neurons, 1,152 Loihi 2 processors
-- **Performance**: 75x lower latency, 1000x higher energy efficiency vs NVIDIA Jetson Orin Nano on SSM workloads
-- **New direction**: First LLM on neuromorphic hardware (March 2025, arXiv:2503.18002)
-- **Key demo**: Continual learning on-chip (CLP-SNN, November 2025)
-- **Software**: Lava framework (open-source but still maturing)
-
-### IBM NorthPole
-- **Architecture**: 256 cores, 224MB on-chip SRAM, 12nm process
-- **Performance**: 25x more energy efficient than GPU on ResNet-50; 46.9x faster, 72.7x more energy efficient on 3B-parameter LLM inference
-- **Roadmap**: Future 4nm versions planned for higher density
-- **Key insight**: Not truly spiking -- uses on-chip memory architecture inspired by brain, runs conventional neural networks efficiently
-- **Status**: Inference-only chip, not training
-
-### SpiNNaker 2
-- **Scale**: Targeting 10 million ARM cores (10x SpiNNaker 1)
-- **Deployment**: Sandia National Laboratories deployed SpiNNaker2 system (June 2025) for AI and national security
-- **New capability**: Now supports both SNNs AND conventional DNNs (event-based deep learning)
-- **Commercial entity**: SpiNNcloud marketing 5-million-core systems
-- **Relevance**: Our project uses SpiNNaker 1 -- SpiNNaker 2 deployment would be a natural extension
-
-### BrainChip Akida
-- **AKD1500**: 800 GOPS at <300mW, samples available now, volume production Q3 2026
-- **Funding**: $25M raised (December 2025) for Akida 2 and Akida GenAI
-- **AkidaTag**: Wearable reference platform with Nordic nRF5340, evaluation May 2026
-- **Cloud**: Akida Developer Cloud launched August 2025
-- **Key differentiator**: Only commercially shipping neuromorphic IP for edge AI
-
-### Innatera Pulsar (NEW, SIGNIFICANT)

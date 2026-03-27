@@ -166,3 +166,31 @@ traditional IDS faces a trilemma: be accurate, be real-time, and deploy on resou
 | Tool | Purpose | Link |
 |------|---------|------|
 | CICFlowMeter | Extract flow-based features from pcap files | UNB CIC GitHub |
+| Awesome-SNN | Curated paper list with codes | [TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) |
+| SNN-Daily-Arxiv | Daily new SNN papers tracking | [SpikingChen/SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv) |
+
+### what i'd use for a thesis
+
+- **primary framework**: snnTorch (best tutorials, easiest learning curve, PyTorch)
+- **alternative**: SpikingJelly (more features, CuPy acceleration for large datasets)
+- **for STDP/unsupervised**: BindsNET
+- **data loading**: scikit-learn + pandas for CSV datasets; CICFlowMeter for raw pcap
+
+---
+
+## how novel would this be as an undergrad thesis?
+
+### honest answer
+
+the intersection of SNNs and IDS is not novel in itself -- there's 20+ papers now. but that doesn't mean it's not a viable thesis topic. the field is young enough that meaningful gaps exist.
+
+### what's been done
+
+- pure SNN classification on NSL-KDD (well-explored)
+- ConvSNN for IDS (Wang et al., 2024)
+- Transformer+SNN hybrid (TASNN, 2026)
+- federated SNN-IDS (SURFS, 2024)
+- lifelong/continual learning SNN-IDS (Mia et al., 2025)
+- encrypted traffic classification with SNN (Rouxelin et al., 2023)
+- STDP-based unsupervised IDS (2025)
+

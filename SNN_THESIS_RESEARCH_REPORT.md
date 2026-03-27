@@ -250,3 +250,31 @@ key innovations:
 
 #### Spiking Transformer Architectures (big focus of this paper)
 
+evolution of spiking self-attention:
+1. vanilla self-attention: hybrid ANN-SNN approaches, limited event-driven benefits
+2. Spikformer (2022): replaced softmax with spike-form matrix operations
+3. Spike-Driven Self-Attention (SDSA): Q-K attention with spike-driven computation
+4. Dual Spike Self-Attention
+
+spatio-temporal enhancements:
+- Spatial-Temporal Self-Attention (STSA) with relative position bias
+- Temporal Interaction Module (TIM) via 1D convolution
+- Frequency-Aware Token Mixer (FATM) in Spiking Wavelet Transformer
+
+**ImageNet Spiking Transformer leaderboard (SOTA):**
+| Model | Year | Accuracy | Parameters | Time Steps | Method |
+|-------|------|----------|------------|------------|--------|
+| ECMT | 2024 | 88.60% | 1,074M | 4 | Conversion |
+| QKFormer | 2024 | 84.22% | 64.96M | 4 | Direct |
+| SpikeZIP-TF | 2024 | 83.82% | 304.33M | 64 | Conversion |
+| SGLFormer | 2024 | 83.73% | 64.02M | 4 | Direct |
+| Spikformer V2 | 2024 | 80.38% | 51.55M | 4 | Direct |
+| Spike-driven Trans. V2 | 2024 | 79.7% | 55.4M | 4 | Direct |
+| Spikformer | 2022 | 74.81% | - | 4 | Direct |
+
+### NLP applications of SNNs
+- **SpikingGPT**: RWKV-based language generation
+- **SpikeBERT / Spike-BERT**: BERT-adapted variants with knowledge distillation
+- **SpikingMiniLM**: lightweight BERT-based architecture
+- **SpikeLLM**: 70 billion parameters via spike-driven quantization (largest SNN to date)
+

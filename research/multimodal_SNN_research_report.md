@@ -306,3 +306,31 @@ pip install braincog      # optional, for S-CMRL reproduction
 ### Dataset Access
 
 ```python
+# N-MNIST (visual digits)
+import tonic
+nmnist_train = tonic.datasets.NMNIST(save_to='./data', train=True)
+
+# SHD (spoken digits)
+from snntorch.spikevision import spikedata
+shd_train = spikedata.SHD("data/shd", train=True)
+```
+
+### Sources
+- [snnTorch](https://github.com/jeshraghian/snntorch)
+- [snnTorch Tutorials](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [Tonic](https://github.com/neuromorphs/tonic)
+- [BrainCog](https://github.com/BrainCog-X/Brain-Cog)
+- [Open Neuromorphic framework guide](https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/)
+- [Lava](https://lava-nc.org/)
+
+---
+
+## Difficulty: Undergrad vs PhD
+
+### What makes it undergrad-achievable:
+
+1. digit classification is basically "hello world" of ML -- problem itself is trivial
+2. both datasets are small and already spike-encoded
+3. late fusion is just tensor concatenation
+4. surrogate gradient training is well-documented

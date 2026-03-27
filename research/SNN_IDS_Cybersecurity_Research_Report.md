@@ -199,31 +199,3 @@ The thesis narrative writes itself:
 
 ## 7. NOVELTY ASSESSMENT: HOW NOVEL WOULD THIS BE AS AN UNDERGRADUATE THESIS?
 
-### 7.1 Honest Assessment
-
-**The intersection of SNNs and IDS is NOT novel in itself** -- there are now 20+ papers in this space. However, this does NOT diminish its viability as a thesis topic. The field is young enough that meaningful gaps exist.
-
-### 7.2 What HAS Been Done
-
-- Pure SNN classification on NSL-KDD (well-explored)
-- ConvSNN for IDS (Wang et al., 2024)
-- Transformer+SNN hybrid for IDS (TASNN, 2026)
-- Federated SNN-IDS (SURFS, 2024)
-- Lifelong/continual learning SNN-IDS (Mia et al., 2025)
-- Encrypted traffic classification with SNN (Rouxelin et al., 2023)
-- STDP-based unsupervised IDS (Event-driven SNN, 2025)
-
-### 7.3 What HAS NOT Been Done (Novel Thesis Angles)
-
-The following represent genuine research gaps an undergraduate could address:
-
-**Gap 1: Systematic encoding scheme comparison for IDS.**
-No paper has systematically compared rate coding, temporal coding, latency coding, delta coding, and phase coding on the same IDS datasets with the same SNN architecture. This is a clean, achievable, and publishable contribution.
-
-**Gap 2: SNN-IDS on the latest CICIDS datasets (CIC-IDS2024 if available).**
-Most SNN papers use NSL-KDD (outdated) or CSE-CIC-IDS2018. Applying SNNs to newer datasets with modern attack patterns would be a contribution.
-
-**Gap 3: Interpretability/explainability of SNN-IDS decisions.**
-No work has explored what the spiking patterns mean -- i.e., can we visualize or explain which spike patterns correspond to which attack types? This connects to the broader XAI (Explainable AI) movement.
-
-**Gap 4: Practical edge deployment demonstration.**

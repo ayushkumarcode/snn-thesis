@@ -236,20 +236,20 @@ snn-esc50/
     evaluate.py     -- evaluation utils
   experiments/
     adversarial_robustness.py
-│   ├── dataset.py      # ESC-50 data loading with librosa pipeline
-│   ├── train.py        # Training entry point (5-fold CV)
-│   └── evaluate.py     # Evaluation utilities
-├── experiments/
-│   ├── adversarial_robustness.py
-│   ├── neurobench_analysis.py
-│   ├── temporal_analysis.py
-│   ├── continual_learning.py
-│   ├── panns_snn_head.py
-│   ├── analysis_suite.py
-│   └── surrogate_gradient_ablation.py
-├── spinnaker/
-│   ├── run_fc2_spinnaker.py
-│   └── extract_hidden_features.py
+    neurobench_analysis.py
+    temporal_analysis.py
+    continual_learning.py
+    panns_snn_head.py
+    analysis_suite.py
+    surrogate_gradient_ablation.py
+  spinnaker/
+    run_fc2_spinnaker.py
+    extract_hidden_features.py
+  results/          -- JSON results (checkpoints excluded for size)
+  paper/            -- thesis md files
+```
+
+### D.2 random seeds
 ├── results/            # All result JSON files (model checkpoints excluded for size)
 └── paper/              # This thesis (all .md files)
 ```

@@ -138,3 +138,31 @@ key biological constants:
 
 **Motor Control:**
 - Loihi drone control (2020): root-mean-square error of 0.005 g in thrust setpoint with 99.8% spike sequence matching
+- event-based PID controller improved Loihi performance by reducing saturation issues
+
+**Navigation and SLAM:**
+- Spiking RatSLAM (2012): place and grid cells on SpiNNaker for landmark detection
+- Gridbot (2018): robot with 1,321 spiking neurons for autonomous environment mapping
+- SLAM SNN (2019): 100x less energy than GMapping with comparable accuracy
+- SDDPG (2020): spiking actor with deep critic network for energy-efficient mapless navigation
+
+### software frameworks identified
+
+| Framework | Training Methods | Focus Area |
+|-----------|-----------------|------------|
+| Brian2 | STDP | General-purpose simulator |
+| NEST | STDP/R-STDP | Biological/medical applications |
+| Nengo | STDP/PES | Large-scale neural models |
+| NengoDL | ANN conversion | TensorFlow integration |
+| SpykeTorch | STDP/R-STDP | PyTorch-based, rank-order encoding |
+| BindsNet | STDP/R-STDP/conversion | Machine learning focus |
+| SLAYER PyTorch | Backpropagation | Temporal credit assignment |
+| Norse | BPTT | Sparse event-driven hardware |
+| snn_toolbox | ANN conversion | Multi-framework compatibility |
+| GeNN | General | NVIDIA GPU acceleration |
+| CARLsim | STDP/STP | Multi-GPU/CPU large-scale simulation |
+
+### key challenges
+1. training complexity: non-differentiable spike operations cause gradient vanishing/explosion
+2. large-scale performance: only ANN-to-SNN conversion + residual architectures match ANNs on ImageNet
+3. computational overhead: many timesteps required, creating latency-accuracy tradeoffs

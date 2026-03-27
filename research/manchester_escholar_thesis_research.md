@@ -54,3 +54,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 - https://research.manchester.ac.uk/en/studentTheses/parallel-simulation-of-neural-networks-on-spinnaker-universal-neu/
 - Addresses computational speed challenges in ANN simulation. Proposes parallel processing on SpiNNaker for SNNs with STDP and parallel distributed processing with backprop. Shows linear scalability.
 - Early foundational SpiNNaker thesis
+- 6.57 MB PDF
+
+### Arithmetic Accelerators for a Digital Neuromorphic Processor
+- **Mantas Mikaitis**, 2020, PhD, Computer Science
+- Supervised by David Lester (main), Steve Furber (co)
+- https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor/
+- Investigates programmable accelerator for exponential and logarithm functions in SNN models within SpiNNaker2. Explores numerical accuracy of ODE solvers for Izhikevich neuron model. Looks into stochastic rounding methods.
+- Chip-level hardware accelerator design stuff
+- 2.8 MB PDF
+
+### Building and Operating Large-Scale SpiNNaker Machines
+- **Jonathan Heathcote**, 2016, PhD, Computer Science
+- Supervised by James Garside (main), Steve Furber (co)
+- https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines
+- Scaling SpiNNaker to simulate up to 1 billion neurons. Physical layout scheme for hexagonal torus topologies, improved routing algorithms, placement and routing algorithms that tolerate network faults. Demonstrated on half-million core prototype.
+- Supercomputer-scale engineering
+- 8.54 MB PDF
+
+### Structural Plasticity on SpiNNaker
+- **Petrut Bogdan**, 2019, PhD, Computer Science
+- Supervised by Steve Furber (main), David Lester (co)
+- https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker
+- Implements structural plasticity model on SpiNNaker that runs real-time alongside STDP. Applications in topographic map generation, unsupervised handwritten digit classification, and motion detection.
+- 47.6 MB PDF
+
+### Real Time Spaun on SpiNNaker
+- **Andrew Mundy**, 2016, PhD, Computer Science
+- Supervised by James Garside (main), Steve Furber (co)

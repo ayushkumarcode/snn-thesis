@@ -250,3 +250,31 @@ spike_data_latency = spikegen.latency(
 | Spiking LSTM | `snn.SLSTM` | Spiking long short-term memory |
 | Spiking Conv2d LSTM | `snn.SConv2dLSTM` | Spiking convolutional LSTM |
 
+Documentation: https://snntorch.readthedocs.io/en/latest/snntorch.html
+
+### Convolutional SNN architecture for spectrogram input (adapted from Tutorial 6):
+
+```python
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+
+beta = 0.9
+spike_grad = surrogate.fast_sigmoid()
+
+class SpectrogramCSNN(nn.Module):
+    def __init__(self, num_classes=50):
+        super().__init__()
+        # Input: [batch, 1, 128, T] mel-spectrogram
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=5, padding=2)
+        self.lif1 = snn.Leaky(beta=beta, spike_grad=spike_grad)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=5, padding=2)
+        self.lif2 = snn.Leaky(beta=beta, spike_grad=spike_grad)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.fc1 = nn.Linear(32 * 32 * (T//4), 256)  # Adjust for spectrogram dims
+        self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad)
+
+        self.fc2 = nn.Linear(256, num_classes)

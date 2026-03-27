@@ -54,3 +54,31 @@ for an undergrad thesis balancing novelty, feasibility, and natural SNN advantag
 **feasibility:** MODERATE-HIGH. public datasets exist (CWRU Bearing, NASA Bearing, SMD, SMAP). encoding continuous sensor data into spikes takes some thought. well-scoped: single-sensor anomaly detection (e.g., bearing vibration).
 
 **novelty:** MODERATE. active but not saturated. novel angles: specific industrial domains (CNC machining, HVAC), combining online learning with anomaly detection.
+
+**verdict: strong thesis candidate**
+
+---
+
+### 3. SNN for Financial Fraud Detection
+
+**papers: about 3-6**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Reinforcement-Guided SNN for Fraud | 2025 | 90.8% recall at 5% FPR on BAF dataset |
+| SNN for Financial Time Series | 2014 | Foundational work |
+| High-Frequency Trading with SNNs | 2021 | SNN for HFT prediction |
+| ICS-SNN | 2025 | Optimized SNN for financial forecasting |
+
+**why SNNs might work:** financial transactions are event-driven (discrete events in time). temporal patterns in fraud match SNN dynamics. however, energy efficiency is less critical here (server-side processing), and tabular data (not temporal sequences) reduces the advantage for many fraud tasks.
+
+**feasibility:** MODERATE. public datasets exist (Kaggle Credit Card Fraud, BAF). but class imbalance is extreme (~0.17% fraud), encoding tabular features into spikes is non-trivial, and comparing with XGBoost/Random Forest may be unfavorable.
+
+**novelty:** MODERATE-HIGH. very few SNN papers specifically on fraud detection. most financial SNN work is time series prediction, not classification.
+
+**verdict: moderate -- novel but the encoding challenge is real**
+
+---
+
+### 4. SNN for NLP/Sentiment
+

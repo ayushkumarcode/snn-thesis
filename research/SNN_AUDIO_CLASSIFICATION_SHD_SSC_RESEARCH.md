@@ -273,31 +273,3 @@ These are for a 128-neuron feedforward SNN achieving ~70-75% accuracy. State-of-
 | 2. Baseline Implementation | 2-3 weeks | Implement ANN baselines (LSTM, GRU) on SHD. Implement basic LIF SNN using sparch or snnTorch. Achieve ~85-90% on SHD. |
 | 3. Core Experiments | 3-4 weeks | Compare neuron models (LIF vs adLIF vs RadLIF). Add learnable delays (DCLS approach). Systematic hyperparameter search. Target: 92-95% on SHD. |
 | 4. Analysis | 2-3 weeks | Energy efficiency analysis (SynOps vs FLOPs). Spike activity visualization. Ablation studies. Error analysis. |
-| 5. Writing & Polish | 2-3 weeks | Write thesis. Create figures. Run final experiments. |
-
-### 6.4 Minimum Viable Project (Guaranteed Passing)
-
-- Implement 1 SNN (LIF or adLIF) on SHD using snnTorch or sparch
-- Implement 1 ANN baseline (GRU or LSTM) on SHD
-- Compare accuracy, training time, and estimated energy
-- Write up with clear methodology and analysis
-- Expected accuracy: SNN 85-92%, ANN 88-92%
-- Time required: 4-6 weeks of focused work
-
-### 6.5 Ambitious Version (First-class potential)
-
-- Compare 3-4 neuron models (LIF, RLIF, adLIF, RadLIF) on both SHD and SSC
-- Implement delay learning (reproduce DCLS-Delays ICLR 2024 paper)
-- Systematic comparison with GRU, LSTM, and small Transformer
-- Detailed energy efficiency analysis with SynOps
-- Spike train visualization and interpretability analysis
-- Ablation study on key hyperparameters (number of layers, neurons, time steps)
-- Expected accuracy: 93-95% on SHD
-- Time required: Full semester of consistent work
-
----
-
-## 7. Suggested Research Questions
-
-### 7.1 Primary Research Question Options
-

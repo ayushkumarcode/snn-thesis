@@ -493,31 +493,3 @@ Your NeuroBench results (SNN 976 nJ vs ANN 463 nJ) are actually STRONGER as an h
 8. Blouw et al. 2019 -- Loihi keyword spotting benchmark
 9. Li et al. 2023 (arXiv:2309.03388) -- Hardware perspective on SNN efficiency
 
----
-
-## 8. Research Gaps and Confidence Assessment
-
-### 8.1 What I Could Not Find
-
-1. **Exact Horowitz table at modern nodes (7nm, 5nm):** No official update to the 2014 paper exists. The community continues to use the 45nm values as a reference point, with node-scaling approximations.
-2. **Detailed BrainScaleS-2 energy per synaptic operation in pJ:** The mixed-signal nature makes this hard to quantify. Heidelberg papers emphasize acceleration rather than per-operation energy.
-3. **Loihi 2 absolute energy numbers (in joules):** Intel reports ratios (1000x better, 75x better) but not absolute values in most public papers. The Blouw 2019 benchmark was for Loihi 1.
-4. **SpiNNaker 2 energy per inference for specific tasks:** The Sandia deployment is new (March 2025) and detailed benchmarks are not yet public.
-5. **Complete head-to-head comparison table across all platforms on the same task:** This does not exist. Each platform is benchmarked on different tasks with different methods.
-
-### 8.2 Confidence Levels
-
-| Finding | Confidence |
-|:---|:---:|
-| Horowitz 0.9 pJ/AC, 4.6 pJ/MAC at 45nm | VERY HIGH -- universally cited, original source verified |
-| SNNs need >92% sparsity to beat QNNs on digital HW | HIGH -- confirmed by multiple independent groups (Dampfhoffer, Yan, Shen) |
-| Loihi 1: ~23.6 pJ/synaptic op | HIGH -- from original Davies 2018 paper |
-| TrueNorth: ~26 pJ/synaptic event | HIGH -- from original Merolla 2014 paper |
-| SpiNNaker 1: ~1W per chip, ~5.8 uJ/synaptic event | MEDIUM-HIGH -- from power analysis papers |
-| Loihi 2: 1000x/75x improvements over Jetson | MEDIUM -- ratio claims from Intel, absolute numbers not public |
-| BrainScaleS-2: orders of magnitude more efficient | MEDIUM -- qualitative claims, few absolute numbers |
-| DarwinWafer: 4.9 pJ/SOP | MEDIUM -- single source (2025 arXiv), not yet independently verified |
-| Innatera: <200 fJ/spike | MEDIUM -- company claims, not independently verified |
-| BrainChip: 500x improvement claims | LOW-MEDIUM -- marketing claims, limited independent verification |
-
----

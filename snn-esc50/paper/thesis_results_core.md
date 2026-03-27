@@ -26,20 +26,20 @@ Training dynamics: all 5 folds converge in 30-45 epochs (early stopping patience
 | Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | **24.00%** | 1.90% | -39.85 pp |
 | Population | 22.75% | 18.50% | 15.75% | 22.00% | 16.75% | **19.15%** | 2.79% | -44.70 pp |
 | Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | **16.30%** | 1.62% | -47.55 pp |
-| Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | **16.30%** | 1.62% | −47.55 pp |
-| Delta | 8.25% | 7.75% | 7.25% | 7.50% | 5.50% | **7.25%** | 0.94% | −56.60 pp |
-| Burst | 5.00% | 5.25% | 9.25% | 6.00% | 7.00% | **6.50%** | 1.54% | −57.35 pp |
+| Delta | 8.25% | 7.75% | 7.25% | 7.50% | 5.50% | **7.25%** | 0.94% | -56.60 pp |
+| Burst | 5.00% | 5.25% | 9.25% | 6.00% | 7.00% | **6.50%** | 1.54% | -57.35 pp |
 
-*All 7 encoding methods complete. Phase (24.15% ± 1.66%) is essentially tied with Rate (24.00% ± 1.90%), within 0.15 pp — suggesting deterministic single-spike timing provides equivalent information to stochastic multi-spike rate coding at T=25 timesteps. Population coding (19.15% ± 2.79%) underperforms both, with higher variance — MSE count loss is harder to optimise than cross-entropy rate loss.*
+All 7 complete. Phase (24.15%) is essentially tied with rate (24.00%), within 0.15 pp -- deterministic single-spike timing provides equivalent info to stochastic multi-spike rate coding at T=25. Population (19.15%) underperforms both with higher variance -- MSE count loss harder to optimise than CE rate loss.
 
-### 4.2.2 Direct Encoding: Best-Performing SNN
+### 4.2.2 direct encoding: best-performing SNN
 
-Direct (continuous) encoding achieves 47.15% ± 4.50%, the highest accuracy among all SNN configurations. In this scheme, the normalised mel spectrogram is repeated unchanged across all T=25 timesteps; each LIF neuron receives continuous-valued membrane current and generates its own spike timing through integration dynamics.
+Direct gets 47.15% +/- 4.50%, highest of all SNN configs. Normalised spectrogram repeated across all T=25 timesteps; LIF neurons get continuous current and generate their own spike timing through integration.
 
-**Why direct wins:** Direct encoding preserves the full magnitude information of each spectrogram pixel across all timesteps. The LIF neurons effectively perform implicit rate coding based on the continuous input — high-valued pixels drive neurons above threshold on every timestep, while low-valued pixels may never fire. This preserves the continuous spatial structure of the mel spectrogram that CNNs are designed to exploit, while the binary outputs of LIF neurons provide the temporal sparsity characteristic of SNNs.
+**Why direct wins:** preserves full magnitude info across all timesteps. LIF neurons do implicit rate coding -- high pixels drive neurons above threshold every step, low pixels may never fire. Preserves the continuous spatial structure that CNNs exploit, while binary LIF outputs provide temporal sparsity.
 
-**Activation sparsity with direct encoding:** 74.16% of activations are zero across all layers (NeuroBench measurement, §4.4), compared to 59% for the ANN. The high sparsity is achieved despite non-sparse inputs — the LIF threshold filters continuous inputs into sparse spikes.
+**Sparsity:** 74.16% activations are zero (NeuroBench, see 4.4), vs 59% for ANN. High sparsity despite non-sparse inputs -- LIF threshold filters continuous input into sparse spikes.
 
+### 4.2.3 rate coding: stochasticity limits accuracy
 ### 4.2.3 Rate Coding: Stochasticity Limits Accuracy
 
 Rate coding achieves 24.00% ± 1.90%. In rate coding, each spectrogram pixel fires at each timestep with probability equal to its normalised intensity. This stochastic encoding introduces noise: two identical spectrograms produce different spike patterns on each forward pass, increasing the effective training noise.

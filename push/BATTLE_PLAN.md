@@ -54,3 +54,31 @@ surrogate ablation, continual learning, augmentation, t-SNE, temporal analysis, 
 
 ### paper production (parallel with experiments)
 
+| Task | Time |
+|------|------|
+| Set up Overleaf with ACM template | 0.5 day |
+| Convert ICONS draft to LaTeX | 1-2 days |
+| Create Figure 1: architecture diagram | 1 day |
+| Create Figure 2: SpiNNaker pipeline | 1 day |
+| Create Figure 3: encoding bar chart | 0.5 day |
+| Rewrite abstract (150-200 words) | 0.5 day |
+| Final polish + supervisor review | 2-3 days |
+| Submit on EasyChair | 0.5 day |
+
+### title (recommended)
+> **Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment**
+
+---
+
+## PHASE 2: THESIS EXTENSIONS (run on CSF3 in parallel)
+
+these go in the thesis, not the ICONS paper.
+
+### tier 1: zero-risk, guaranteed novel
+
+| # | Experiment | Days | Value |
+|---|-----------|------|-------|
+| 1 | Encoding transfer matrix (7x7) | 1 | HIGH -- novel figure |
+| 2 | Temporal ablation (timestep truncation) | 0.5 | HIGH -- deployment finding |
+| 3 | Neuron ablation / fault tolerance | 1 | MED-HIGH |
+| 4 | Weight distribution analysis | 0.5 | MEDIUM |

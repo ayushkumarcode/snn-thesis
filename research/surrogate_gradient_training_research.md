@@ -530,3 +530,15 @@ very feasible within a semester.
 - snnTorch Tutorial 6: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html
 - snnTorch Tutorial 7: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html
 - snnTorch Surrogate API: https://snntorch.readthedocs.io/en/latest/snntorch.surrogate.html
+- SpyTorch: https://github.com/fzenke/spytorch
+- R Gaurav blog (2024): https://r-gaurav.github.io/2024/01/04/Building-And-Training-Spiking-Neural-Networks-From-Scratch.html
+- snnTorch GitHub: https://github.com/jeshraghian/snntorch
+- Practical Tutorial (MDPI, 2025): https://www.mdpi.com/2673-4117/6/11/304
+
+### Framework Comparison
+- SNN Framework Benchmarks: https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/
+- SpikingJelly: https://github.com/fangwei123456/spikingjelly
+
+### Normalization
+- tdBN: https://cdn.aaai.org/ojs/17320/17320-13-20814-1-2-20210518.pdf
+- Batch Norm for Low-Latency SNNs: https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.773954/full

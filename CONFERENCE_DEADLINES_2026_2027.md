@@ -312,31 +312,3 @@ Sources: [IJCAI 2026](https://2026.ijcai.org/), [Important Dates](https://2026.i
 ### 4.1 IEEE AICAS 2026 -- AI Circuits and Systems
 
 | Field | Details |
-|-------|---------|
-| **Full Name** | 8th IEEE International Conference on Artificial Intelligence Circuits and Systems |
-| **Paper Deadline** | **22 March 2026** |
-| **Notification** | 18 June 2026 |
-| **Camera-Ready** | 10 July 2026 |
-| **Conference Dates** | 16-18 September 2026 |
-| **Location** | Ha Long Bay, Vietnam |
-| **Page Limit** | 5 pages (4 technical + 1 references-only) |
-| **Format** | IEEE conference template, anonymous, 10pt |
-| **Proceedings** | IEEE Xplore. Selected papers recommended for IEEE TCAS-AI or IEEE TVLSI. |
-| **Registration** | TBD |
-| **Acceptance Rate** | Not widely reported |
-| **Realistic for UG?** | **YES -- STRONG FIT.** Neuromorphic circuits and AI hardware implementation is a primary topic. SpiNNaker deployment directly relevant. |
-| **Focus** | AI circuits and systems, neuromorphic and bioinspired circuits, hardware/software co-design, emerging AI applications |
-
-**Why this is a strong fit:** AICAS explicitly lists "neuromorphic and bioinspired circuits, processors, systems and their applications" as a primary topic. The SpiNNaker hardware deployment angle is directly what this conference wants.
-
-Sources: [AICAS 2026](https://2026.ieee-aicas.org/), [IEEE CASS CFP](https://ieee-cas.org/post/announcement/aicas-2026-call-papers)
-
----
-
-### 4.2 Edge AI Foundation / tinyML Summit 2026 [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | Edge AI Research Symposium 2026 (formerly tinyML Research Symposium) |
-| **Paper Deadline** | ~December 2025 (PASSED) |
-| **Conference** | Edge AI San Diego, 24-26 March 2026 |

@@ -294,31 +294,3 @@ nn.Conv1d(in_channels=12, out_channels=32, kernel_size=7)
 **This is a multi-label, NOT multi-class problem.** Use BCEWithLogitsLoss, not CrossEntropyLoss.
 
 **Label loading code:**
-
-```python
-agg_df = pd.read_csv(path + 'scp_statements.csv', index_col=0)
-agg_df = agg_df[agg_df.diagnostic == 1]
-
-def aggregate_diagnostic(y_dic):
-    tmp = []
-    for key in y_dic.keys():
-        if key in agg_df.index:
-            tmp.append(agg_df.loc[key].diagnostic_class)
-    return list(set(tmp))
-
-Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)
-```
-
-**Source:** [PTB-XL Paper (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7248071/), [PhysioNet example code](https://www.physionet.org/content/ptb-xl/1.0.2/example_physionet.py)
-
----
-
-### 8. ANN Baseline
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES |
-| **VERIFIED HOW** | Published benchmark paper + reproducible GitHub code |
-| **POTENTIAL BLOCKER** | NO |
-
-**The definitive ANN baseline:**

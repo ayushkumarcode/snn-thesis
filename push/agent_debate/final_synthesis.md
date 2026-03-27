@@ -26,3 +26,31 @@ after going back and forth on all the arguments for and against, here's where i'
 
 ### Claim 7: Surrogate gradient ablation
 **weak-to-moderate.** useful practical result (don't use sigmoid or STE for audio SNNs), but surrogate comparisons exist in vision. the bimodal failure pattern IS interesting and challenges Zenke 2021's "shape doesn't matter" claim. but single-seed single-fold limits confidence.
+
+### Claim 8: Continual learning
+**weak.** novel domain (first for audio SNNs), but 6.9pp difference in catastrophic forgetting is modest. no CL baselines (EWC, PackNet). descriptive result, not mechanistic. supporting finding at best, not headline.
+
+---
+
+## What's NOT Novel or Risky
+
+- **47.15% absolute accuracy** -- doesn't advance SOTA. the contribution is the comparative analysis, not the number.
+- **architecture** -- completely standard Conv2d-BN-MaxPool-LIF. no architectural innovation.
+- **SpiNNaker accuracy gap may be questioned** -- FC2-only is honest but some reviewers will argue it's not real deployment.
+- **adversarial robustness caveat** -- gradient masking means exact numbers are uncertain.
+- **continual learning lacks baselines** -- no EWC, PackNet, replay comparison.
+- **augmented training negative result** -- honest but doesn't add novelty.
+- **PANNs+SNN at 92.5% is driven by CNN14** -- the scientific contribution is the gap analysis, not the headline number.
+
+---
+
+## The Scientific Story
+
+### the single most important finding
+
+**the SNN-ANN accuracy gap on audio classification is a feature-learning problem, not a spiking computation problem.**
+
+scratch SNN: 47.15%. scratch ANN: 63.85%. gap: 16.7pp. identical architectures except LIF vs ReLU.
+
+PANNs+SNN head: 92.50%. PANNs+ANN head: 93.45%. gap: 0.95pp. same architecture, same features, only activation differs.
+

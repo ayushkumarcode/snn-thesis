@@ -166,3 +166,31 @@ key biological constants:
 1. training complexity: non-differentiable spike operations cause gradient vanishing/explosion
 2. large-scale performance: only ANN-to-SNN conversion + residual architectures match ANNs on ImageNet
 3. computational overhead: many timesteps required, creating latency-accuracy tradeoffs
+4. architecture design: limited theoretical guidance; need for neural architecture search
+
+### future directions from the paper
+- direct SNN training using online gradient algorithms (RTRL)
+- architectural innovations through meta-learning and NAS
+- extension to large-scale datasets using residual connections
+
+### my take
+this paper is the most useful for understanding the foundations. clearest explanation of neuron models, encoding schemes, and learning rules. the robotics applications section is uniquely detailed compared to the other two papers.
+
+---
+
+<a name="paper-2"></a>
+## Paper 2: "Toward Large-scale Spiking Neural Networks"
+
+Cheng Han, et al. arXiv:2409.02111, September 2024. focuses on methods for developing deep SNNs, with emphasis on Spiking Transformers as pathways toward energy-efficient large-scale models.
+
+### learning rules for deep SNNs
+
+#### ANN-to-SNN Conversion
+the fundamental principle: ReLU activation is functionally equivalent to the integrate-and-fire neuron through rate-coding approximation over time steps.
+
+key techniques:
+- weight normalization and threshold balancing (addressing over/under-activation)
+- reset-by-subtraction replacing reset-by-zero
+- layer-wise calibration and potential initialization
+- quantization-aware conversion methods
+

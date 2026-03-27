@@ -54,3 +54,31 @@ the Bjorndahl paper is really relevant here -- they found that **late fusion (co
 | **DSF-Net** | 2025 | High-Speed Detection | Dynamic sparse fusion of event-RGB via spike-triggered attention |
 | **SpikeFET** | 2025 | Object Tracking | First fully spiking frame-event tracker |
 | **SNNPTrack** | 2025 | RGBE Tracking | SNN-based prompt learning for RGB-Event tracking (ICASSP 2025) |
+| **RGB-Event Collision Prediction** | 2025 | Collision Prediction | Self-attention fusion for UAV collision prediction (IJCNN 2025) |
+
+### Standard Pattern
+
+- **RGB branch**: processes conventional camera frames (sometimes ANN layers)
+- **Event branch**: processes DVS event streams with spiking neurons (LIF/PLIF)
+- **Fusion module**: combines features via attention, concatenation, or cross-modal mechanisms
+
+SSTFormer is worth noting -- it has a **publicly available codebase** (https://github.com/Event-AHU/SSTFormer) and a custom PokerEvent dataset with 114 classes and 27,102 frame-event pairs.
+
+### Sources
+- [SFDNet - MDPI Electronics](https://www.mdpi.com/2079-9292/14/6/1105)
+- [SSTFormer - arXiv](https://arxiv.org/abs/2308.04369)
+- [SSTFormer Code - GitHub](https://github.com/Event-AHU/SSTFormer)
+- [DSF-Net - ACM MM 2025](https://dl.acm.org/doi/10.1145/3746027.3755846)
+- [SpikeFET - arXiv](https://arxiv.org/pdf/2505.20834)
+- [RGB-Event Collision - IJCNN 2025](https://arxiv.org/html/2505.04258v2)
+
+---
+
+## 3. Sensor Fusion with SNNs (IMU + Camera etc)
+
+**emerging area, especially for robotics and navigation.**
+
+### Key Research
+
+| Paper/System | Year | Sensors | Platform | Key Finding |
+|---|---|---|---|---|

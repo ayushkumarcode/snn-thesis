@@ -306,3 +306,31 @@ training challenges:
 - information loss due to spike reset, gradient vanishing in deep layers
 - surrogate gradient mismatch vs. true gradient distributions
 - binary signal constraints: discrete spikes limit information vs. continuous ANNs
+- temporal complexity: recurrent nature requires BPTT across many timesteps
+
+architectural constraints:
+- spiking attention removes softmax (non-linear), reducing expressiveness
+- real-valued shortcuts and max-pooling conflict with event-driven principles
+- batch normalization adaptation across time dimensions adds overhead
+
+scalability:
+- SNNs typically employ millions of parameters vs. billions in ANNs
+- knowledge distillation and conversion require pre-trained ANN teachers
+- energy benefits diminish with longer required inference latencies
+
+### energy efficiency claims
+- human brain: ~20 Watts
+- GPT-3 training: 1,287 MWh
+- ChatGPT inference: ~564 MWh/day
+- SNN advantage: MAC operations reduced to accumulate-only (AC) operations, event-driven sparsity
+
+### my take
+this is the most current paper (Sept 2024) and the most relevant for understanding the state of the art. the Spiking Transformer section is incredibly useful. the NLP section shows SNNs expanding beyond vision. the benchmark tables give the clearest picture of where SNN accuracy stands relative to ANNs.
+
+---
+
+<a name="paper-3"></a>
+## Paper 3: "A Comprehensive Review of Spiking Neural Networks"
+
+Kai Malcolm, Josue Casco-Rodriguez. arXiv:2303.10780, March 2023. literature review covering interpretation, optimization, efficiency, and best practices for SNNs. designed to be accessible to newcomers.
+

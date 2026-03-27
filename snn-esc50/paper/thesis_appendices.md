@@ -194,20 +194,20 @@ Source: `results/spinnaker_results/scale_sweep_run5.json`.
 MaxPool replaces AvgPool. fc1_binary_fraction = fraction of FC1 inputs guaranteed binary (= 1.000 for MaxPool at all thresholds).
 
 | Threshold | Test Acc | FC1 active/step | Active % | Sparse % | Binary frac |
-Retraining with MaxPool replacing AvgPool. `fc1_binary_fraction` = fraction of FC1 input steps where input is guaranteed binary (= 1.000 for MaxPool model at all thresholds, since MaxPool preserves binary spikes through the conv layers).
-
-| LIF threshold | Test Acc. | FC1 active/step | FC1 active% | FC1 sparse% | fc1_binary_fraction |
-|--------------|-----------|----------------|-------------|-------------|---------------------|
+|-----------|---------|----------------|----------|----------|-------------|
 | 1.0 | 9.25% | 1662.4/2304 | 72.2% | 27.8% | 1.000 |
 | 1.5 | 27.0% | 1409.7/2304 | 61.2% | 38.8% | 1.000 |
 | 2.0 | 34.25% | 1253.1/2304 | 54.4% | 45.6% | 1.000 |
-| 3.0 | **43.75%** | **956.1/2304** | **41.5%** | **58.5%** | **1.000** |
+| 3.0 | 43.75% | 956.1/2304 | 41.5% | 58.5% | 1.000 |
 
-*Source: `results/snn/maxpool/threshold_sweep_fold4.json`.*
-*All thresholds: fc1_binary_fraction = 1.000. Full SpiNNaker FC1+FC2 deployment is theoretically enabled at all thresholds; threshold=3.0 recommended for best sparsity (58.5%) without accuracy loss.*
+Source: `results/snn/maxpool/threshold_sweep_fold4.json`. threshold=3.0 recommended for best sparsity without too much accuracy loss.
 
-### C.4 SpiNNaker Board Configuration
+### C.4 SpiNNaker board config
 
+| Property | Value |
+|----------|-------|
+| Board | SpiNN-5 (48 chips) |
+| Access | spinnaker.cs.man.ac.uk via sPyNNaker |
 | Property | Value |
 |----------|-------|
 | Board type | SpiNN-5 (48 chips) |

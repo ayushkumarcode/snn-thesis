@@ -68,19 +68,19 @@ Static mel spectrograms need converting to temporal spike trains. Seven encoding
 SpiNNaker has binary spikes, fixed-point arithmetic, no native conv compute. These constraints create significant engineering challenges: a float-trained network must map to fundamentally different hardware. This thesis documents the complete deployment -- including the failures, their root causes, and the hybrid approach that ultimately worked. The hardware-software co-design insights are a primary contribution.
 
 **RQ4: Do SNNs exhibit natural adversarial robustness vs matched ANNs on audio?**
+Prior work on image SNNs (Sharmin et al. 2020) suggests binary thresholding may filter adversarial perturbations. This thesis tests whether that holds for audio spectrograms using FGSM and PGD across a range of perturbation magnitudes. Practical implications for edge audio security.
 
-## 1.3 Contributions
+---
 
-This thesis makes six original contributions:
+## 1.3 contributions
+
+Six original contributions:
 
 **C1: First convolutional SNN benchmark on ESC-50.**
-A convolutional SpikingCNN (2 conv blocks + 2 FC layers, ~622K parameters) achieves **47.15% ± 4.50%** on ESC-50 (50 classes, 5-fold CV) with direct encoding — the first published convolutional SNN result on this benchmark. This provides a reference baseline for all future SNN audio research. The 16.70 pp gap below the matched ANN (63.85% ± 3.07%) is characterised mechanistically and contextualised through the PANNs transfer learning experiment (C5).
+SpikingCNN (2 conv blocks + 2 FC, ~622K params) achieves 47.15% +/- 4.50% on ESC-50 (50 classes, 5-fold CV) with direct encoding -- first published conv SNN result on this benchmark. The 16.70 pp gap below the ANN (63.85% +/- 3.07%) is characterised mechanistically and contextualised via PANNs (C5).
 
 **C2: Most comprehensive spike encoding comparison for audio.**
-Seven encoding methods are evaluated under identical conditions (same architecture, same folds, same training protocol). The ordering — **direct (47.15%) >> rate (24.00%) ≈ phase (24.15%) > population (19.15%) > latency (16.30%) >> delta (7.25%) ≈ burst (6.50%)** — is explained by an information preservation principle: encodings that retain spectrogram magnitude and temporal structure achieve higher accuracy. Notable findings include: (i) phase coding (1 spike per neuron) matches rate coding (~7 spikes per neuron) at identical accuracy — a result with direct energy efficiency implications; (ii) burst coding fails near-catastrophically due to temporal window mismatch; (iii) population coding underperforms despite 10× more output neurons, because MSE count loss is harder to optimise than cross-entropy rate loss.
-
-**C3: First SNN deployment on SpiNNaker for environmental sound classification.**
-A trained SpikingCNN is deployed on a SpiNN-5 SpiNNaker board (University of Manchester hardware) using a validated FC2-only hybrid approach. A 20-sample pilot (Run 5) achieves 40%; the 400-sample validation (Run 6) achieves **43.0% SpiNNaker vs 51.25% snnTorch — 8.25 pp hardware gap, 64.5% agreement**. The AvgPool-FC1 cancellation failure mode is documented and resolved: standard spiking CNNs with AvgPool between LIF layers are not natively deployable on SpiNNaker, because AvgPool produces fractional outputs that violate the spike-only communication model. This is a previously undocumented constraint for neuromorphic deployment of spiking CNNs.
+Seven methods evaluated under identical conditions. Ordering: direct (47.15%) >> rate (24.00%) ~ phase (24.15%) > population (19.15%) > latency (16.30%) >> delta (7.25%) ~ burst (6.50%). Explained by information preservation. Notable: phase (1 spike/neuron) matches rate (~7 spikes/neuron) -- direct energy implications. Burst fails catastrophically due to temporal window mismatch. Population underperforms despite 10x more output neurons because MSE loss is harder to optimise.
 
 **C4: First adversarial robustness analysis of SNNs on audio spectrograms.**
 FGSM and PGD attacks are applied across 7 perturbation magnitudes (ε ∈ {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}) to both SNN and ANN classifiers. At ε=0.1 (FGSM), the SNN retains **26.00%** accuracy while the ANN collapses to **1.75%** — a 14.9× robustness ratio. This is the largest reported adversarial robustness advantage for SNNs in any audio domain, and the first analysis of this kind for environmental sound classification.

@@ -530,3 +530,7 @@ Based on all verification, here is the concrete architecture that WILL work:
 | 8 | Evaluation metrics | YES (standard) | Literature consensus | N/A | NO |
 | 9 | GPU requirements | CPU works | Verified | YES (MPS) | NO |
 | 10 | macOS full pipeline | YES | All components verified | **YES** | NO |
+| 11 | Existing code | Partial | 3 repos found | Varies | MEDIUM -- reference only |
+| 12 | Setup complexity | ~3-5 weeks | Literature + docs | N/A | NO |
+| 13 | PyBullet | YES | [PyPI](https://pypi.org/project/pybullet/) | Problematic | MEDIUM -- prefer MuJoCo |
+| 14 | Known issues | Multiple | Literature | N/A | HIGH -- see Section 14 |

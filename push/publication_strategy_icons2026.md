@@ -214,31 +214,3 @@ This is a critical question. Here is why 47.15% is publishable at ICONS:
 
 ## Part 4: Alternative Publication Venues
 
-### Venues Where Deadlines Have Passed
-
-| Venue | Deadline | Status | Notes |
-|-------|----------|--------|-------|
-| EUSIPCO 2026 | Feb 13, 2026 | **PASSED** | Larroza et al. submitted their SNN-ESC10 paper to EUSIPCO 2025 |
-| ICASSP 2026 | Sep 17, 2025 | **PASSED** | Premiere IEEE audio/speech venue, Barcelona May 2026 |
-| ISCAS 2026 | Oct 26, 2025 | **PASSED** | IEEE Circuits & Systems, Shanghai May 2026 |
-| NICE 2026 | ~Jan 2026 | **PASSED** | ACM Neuro-Inspired Computational Elements, March 24-26, 2026 |
-
-### Venues Still Open
-
-#### ICONS 2026 -- PRIMARY TARGET
-- **Deadline:** April 1, 2026
-- **Fit:** PERFECT -- neuromorphic systems, SNN, hardware deployment, benchmarking
-- **Format:** 8-page ACM full paper
-- **Recommendation:** SUBMIT HERE
-
-#### AICAS 2026 (IEEE AI Circuits and Systems)
-- **Deadline:** March 22, 2026 (VERY SOON -- likely passed or imminent)
-- **Location:** Ha Long Bay, Vietnam, September 16-18, 2026
-- **Fit:** Good -- AI circuits and systems, energy-efficient computing
-- **Format:** IEEE conference paper
-- **Challenge:** Deadline may have already passed by the time you read this. Also requires IEEE formatting rather than ACM.
-
-#### ICNCE 2026 (International Conference on Neuromorphic Computing and Engineering)
-- **Deadline:** April 3, 2026 (abstracts only -- one-page PDF)
-- **Location:** Aachen, Germany, June 29 -- July 2, 2026
-- **Fit:** Good -- neuromorphic computing, hardware, algorithms

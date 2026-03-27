@@ -572,31 +572,3 @@ Components:
 
 Framework: snnTorch + PyTorch + scikit-learn (preprocessing)
 Datasets: NSL-KDD (available on Kaggle), CICIDS2017
-Hardware: CPU on macOS (tabular data, small models)
-```
-
-**Key advantages:**
-- Tabular data is straightforward to preprocess
-- Datasets are public and well-documented
-- Clear "energy efficiency for edge deployment" narrative
-- Well-established baselines for comparison
-- **Already assessed in your research as "SNN for IDS Cybersecurity" -- this overlaps with existing research file**
-
-**VERDICT: STRONG candidate. But check your existing SNN_IDS_Cybersecurity_Research_Report.md -- this may already be fully covered.**
-
----
-
-### 3.3 SNN for Financial Trading
-
-**Literature: 10-15 papers**
-
-Key works:
-- [SNN for predictive modelling of financial time series + online news (Nature Scientific Reports 2023)](https://www.nature.com/articles/s41598-023-42605-0)
-- [Financial Time Series Prediction Using SNNs (PLOS ONE 2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0103656)
-- [High-Frequency Trading with SNNs (Imperial College 2021)](https://www.doc.ic.ac.uk/~wl/papers/21/wilm21kg.pdf)
-- [ICS-SNN for Financial Time Series Forecasting (MDPI 2025)](https://www.mdpi.com/1999-4893/18/5/262)
-
-**Assessment:**
-- Papers: 10-15
-- Simulation-only: YES (historical data)
-- macOS: YES

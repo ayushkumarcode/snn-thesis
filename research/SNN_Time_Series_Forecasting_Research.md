@@ -82,3 +82,31 @@ on Electricity dataset, 96-step prediction:
 | TS-former (proposed) | 0.977 | 0.261 |
 | iSpikformer | 0.963 | 0.348 |
 | Spike-GRU | 0.959 | 0.317 |
+| TS-GRU (proposed) | 0.976 | 0.240 |
+
+TS-former got best average ranking (3.3), beating iTransformer (4.4) and iSpikformer (4.6).
+
+### SpikySpace (January 2026)
+
+| Comparison | Energy Reduction | Accuracy |
+|-----------|-----------------|----------|
+| vs iTransformer | 98.73% (78.9x reduction) | Competitive; beat on Electricity (R^2 0.994 vs 0.983) |
+| vs iSpikformer | 96.24% (26.6x reduction) | Up to 3.0% better than previous best SNN |
+| Parameters | 53-55% of baseline | -- |
+
+consumed only **0.17 mJ** on Electricity dataset with T=3. that's impressively low.
+
+### Summary
+
+| Metric | SNNs vs LSTMs/RNNs | SNNs vs Transformers |
+|--------|--------------------|--------------------|
+| Accuracy (short horizon) | Comparable to slightly better | Comparable (within 0.1-1%) |
+| Accuracy (long horizon) | Gap exists for very long sequences | Significant gap on 2400+ timestep tasks |
+| Energy | 60-75% less | 66-99% less |
+| Parameters | 45-55% fewer (SpikySpace) | 45-55% fewer |
+| Training difficulty | Harder (surrogate gradients) | Harder |
+
+### Being Honest About Limitations
+
+from the survey "Spiking Neural Networks for Temporal Processing: Status Quo and Future Prospects" (arXiv, Feb 2025):
+- on Binary Adding task with T=2400: LSTM/SSM/Transformer get ~100%, while advanced SNNs **degrade substantially** and some "fail to learn any meaningful temporal information"

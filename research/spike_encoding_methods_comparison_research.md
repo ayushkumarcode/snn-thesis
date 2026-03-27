@@ -558,3 +558,31 @@ Thesis Experiment Runner: Spike Encoding Comparison
 import torch
 import snntorch as snn
 from snntorch import spikegen, surrogate, functional
+import time
+
+# ---- Encoding Functions ----
+
+def encode_rate(data, num_steps):
+    return spikegen.rate(data, num_steps=num_steps)
+
+def encode_latency(data, num_steps):
+    return spikegen.latency(data, num_steps=num_steps, tau=5,
+                            threshold=0.01, normalize=True, linear=True)
+
+def encode_delta(data, num_steps):
+    repeated = data.unsqueeze(0).repeat(num_steps, 1, 1)
+    return spikegen.delta(repeated, threshold=0.1, off_spike=True)
+
+# Phase, Burst, GRF, Direct: use custom implementations above
+
+# ---- Metrics ----
+
+def evaluate_encoding(encode_fn, data_loader, model, num_steps, device):
+    correct = 0
+    total = 0
+    total_spikes = 0
+    total_time = 0.0
+    model.eval()
+    with torch.no_grad():
+        for data, targets in data_loader:
+            data, targets = data.to(device), targets.to(device)

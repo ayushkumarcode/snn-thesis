@@ -138,3 +138,31 @@ Results are actually really good:
 - 70B parameter SpikeLLM demonstrating scalability is possible
 - Very early stage but shows the direction
 
+### State-of-the-Art Results (ImageNet)
+
+| Method | Type | Architecture | Accuracy | Timesteps | Params |
+|--------|------|-------------|----------|-----------|--------|
+| ECMT | Conversion | EVA | 88.60% | 4 | 1,074M |
+| QKFormer | Direct | Spiking Transformer | 84.22% | 4 | 65M |
+| SGLFormer | Direct | Spiking Transformer | 83.73% | 4 | 64M |
+| Spikformer V2 | Direct | Spiking Transformer | 80.38% | 4 | 52M |
+
+### The Honest Performance Gap
+
+- SNNs at 4 timesteps are roughly equivalent to 2-bit quantized ANNs in terms of representational capacity
+- Single-timestep inference is significantly worse than ANNs
+- Binary spike representation is fundamentally limited -- this is an open research problem
+
+### Hardware Platforms
+
+| Platform | Maker | Notes |
+|----------|-------|-------|
+| **Loihi / Loihi 2** | Intel | Most accessible for research, good software support (Lava) |
+| **TrueNorth** | IBM | 1 million neurons, very low power, but limited programmability |
+| **SpiNNaker** | University of Manchester | Designed for large-scale brain simulation |
+| **Darwin** | Chinese Academy of Sciences | Emerging platform |
+
+### Open Problems (potential thesis topics)
+
+1. Information loss in deep SNNs -- binary spikes lose information as networks get deeper
+2. Surrogate gradient mismatch -- the smooth approximation doesn't perfectly match real spike dynamics

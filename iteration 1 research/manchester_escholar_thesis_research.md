@@ -104,31 +104,3 @@ This means:
 | **URL** | https://research.manchester.ac.uk/en/studentTheses/stochastic-processes-for-neuromorphic-hardware |
 | **Abstract** | Two contributions: (1) Solving constraint satisfaction problems using SNNs on SpiNNaker AND Loihi chips, achieving comparable performance to state-of-the-art; (2) Implementing ion-channel current models and realistic postsynaptic potentials on SpiNNaker. |
 | **What They Built** | Constraint satisfaction solver on neuromorphic hardware; ion-channel current models on SpiNNaker |
-| **Tools/Frameworks** | SpiNNaker, Intel Loihi |
-| **Datasets** | Constraint satisfaction benchmarks |
-| **Scope** | Very high -- cross-platform (SpiNNaker + Loihi) neuromorphic implementations |
-| **PDF Size** | 22.5 MB |
-
----
-
-### 1.6 Parallel Simulation of Neural Networks on SpiNNaker Universal Neuromorphic Hardware
-| Field | Detail |
-|-------|--------|
-| **Author** | Xin Jin |
-| **Year** | 2010 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/parallel-simulation-of-neural-networks-on-spinnaker-universal-neu/ |
-| **Abstract** | Addresses computational speed challenges in ANN simulation. Proposes parallel processing on SpiNNaker for SNNs with STDP and parallel distributed processing with backpropagation. Demonstrates linear scalability. |
-| **What They Built** | Parallel simulation framework for SNNs and MLPs on SpiNNaker |
-| **Tools/Frameworks** | SpiNNaker, Izhikevich model, ARM processors |
-| **Datasets** | Not specified |
-| **Scope** | Very high -- foundational early SpiNNaker thesis |
-| **PDF Size** | 6.57 MB |
-
----
-
-### 1.7 Arithmetic Accelerators for a Digital Neuromorphic Processor
-| Field | Detail |
-|-------|--------|
-| **Author** | Mantas Mikaitis |

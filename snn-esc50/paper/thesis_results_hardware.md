@@ -12,20 +12,20 @@ Deploying a trained SpikingCNN to SpiNNaker requires satisfying hard constraints
 
 **Constraint 2: fixed-point arithmetic.** All weights and membrane potentials in fixed-point on ARM cores. Limits precision but enables efficient compute.
 
+**Constraint 3: IF_curr_exp neuron model.** sPyNNaker supports IF with exponential synaptic current, which approximates but doesn't exactly match snnTorch's LIF.
 
-**Constraint 4: No native convolutional support.** SpiNNaker's native execution model is a point-neuron population connected by synaptic matrices. Convolutional layers must be unrolled into explicit weight matrices.
+**Constraint 4: no native conv support.** SpiNNaker's execution model is point-neuron populations connected by synaptic matrices. Conv layers would need unrolling into explicit weight matrices.
 
-### 5.1.1 The FC1 Cancellation Problem
+### 5.1.1 the FC1 cancellation problem
 
-The SpikingCNN architecture contains an AvgPool2d layer between LIF₂ and FC₁. This layer averages binary spike outputs from LIF₂ into fractional values in [0, 0.5]. When these fractional values drive FC₁ (Linear 2304→256), the weight matrix (initialised near zero-mean by default) causes near-zero or negative total input current for most FC₁ output neurons — producing zero hidden spikes and, consequently, zero FC₂ spikes.
+This was the big blocker. The SpikingCNN has AvgPool2d between LIF2 and FC1. AvgPool averages binary spike outputs into fractional values in [0, 0.5]. When these drive FC1 (2304->256), the weight matrix (near zero-mean by default) causes near-zero or negative total input for most FC1 neurons = zero hidden spikes = zero output spikes.
 
-**Quantitative analysis:**
-- FC₁ weight matrix mean: −0.0034 (near zero)
-- Active inputs per FC₁ neuron (from AvgPool output): 1,398 of 2,304 neurons active at any timestep
-- Expected input current: 1,398 × (−0.0034) = −4.75 (net negative → no FC₁ spikes)
-- Observed hidden spike rate with binary inputs: 0/step (Runs 1–4 on SpiNNaker)
+Quantitative:
+- FC1 weight mean: -0.0034 (near zero)
+- Active inputs per FC1 neuron: 1398 of 2304
+- Expected current: 1398 x (-0.0034) = -4.75 (net negative, no spikes)
+- Observed hidden spike rate: 0/step (Runs 1-4)
 
-This FC1 cancellation is the root cause of Runs 1–4 failing to produce any output classification (all samples predicted class 0 or random).
 
 ### 5.1.2 Option C: Weight Re-Centring (Attempted, Failed)
 

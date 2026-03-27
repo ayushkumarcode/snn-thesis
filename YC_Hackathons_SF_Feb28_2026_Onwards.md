@@ -194,3 +194,31 @@ Based on the data collected, the following patterns are clear:
 5. **Check GarysGuide SF events** -- https://www.garysguide.com/events?region=sf
 6. **Register for the Browser Use hackathon NOW** if interested -- it's in 4 days
 
+---
+
+## sources used
+
+- https://events.ycombinator.com/browser-use-hackathon
+- https://browser-use.com/hackathon
+- https://events.ycombinator.com/agenticpaymentshackathon
+- https://events.ycombinator.com/manufact-hackathon26
+- https://events.ycombinator.com/fullstackhackathon
+- https://events.ycombinator.com/HacktheStackathon
+- https://events.ycombinator.com/metorial-yc25
+- https://events.ycombinator.com/treehacks-yc-afterparty-26
+- https://luma.com/pz27h0xy ($65K YC Agents Hackathon)
+- https://luma.com/hzwlapu0 (AI Coding Agents)
+- https://luma.com/yiephkxp (Better Hack)
+- https://luma.com/3edtvrqx (Uncanny Valley Fest)
+- https://luma.com/t4zeld9m (World's Biggest MCP Hackathon)
+- https://luma.com/hackathon_collections
+- https://biggest-mcp-hackathon.devpost.com/
+- https://treehacks-2026.devpost.com/
+- https://www.better-hack.com/
+- https://cerebralvalley.ai/e/gemini-3-superhack
+- https://x.com/gregpr07/status/2021355079652212825
+- https://x.com/browser_use/status/2023552004724060317
+- https://x.com/aaron_epstein/status/1985796186780156303
+- https://x.com/CoinbaseDev/status/1985792129692811533
+- https://x.com/xuster/status/2020923920745103791
+- https://x.com/amiklas/status/1981420551752319477

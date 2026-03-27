@@ -362,3 +362,31 @@ these specific combinations have essentially zero papers:
 - [VMD-SNNs (2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11873965/)
 
 ### NLP/Sentiment
+- [SpikeGPT (2023)](https://arxiv.org/abs/2302.13939)
+- [SNNLP (2024)](https://arxiv.org/abs/2401.17911)
+- [SNN-BERT (2024)](https://dl.acm.org/doi/10.1016/j.neunet.2024.106630)
+
+### Game Playing / RL
+- [DSQN (2022)](https://arxiv.org/abs/2201.09754)
+- [PopSAN (2021)](https://proceedings.mlr.press/v155/tang21a.html)
+- [SNNs for Deep RL in Robotics (2024)](https://www.nature.com/articles/s41598-024-77779-8)
+
+### Environmental
+- [Air Pollution with Evolving SNNs (2019)](https://www.sciencedirect.com/science/article/abs/pii/S1364815218307448)
+- [PM2.5 with Staging-eSNN (2021)](https://aaqr.org/articles/aaqr-20-05-oa-0247)
+
+### Wearable
+- [SNN for HAR (2023)](https://dl.acm.org/doi/10.1145/3594738.3611369)
+- [SNNs for Ubiquitous Computing (2025)](https://arxiv.org/html/2506.01737v1)
+- [Spiking-IMU](https://github.com/zhaxidele/HAR)
+
+### Radar/Sonar
+- [Imec SNN Chip](https://www.imec-int.com/en/articles/imec-builds-world-s-first-spiking-neural-network-based-chip-for-radar-signal-processing)
+- [Spiking Neural Resonators (2025)](https://arxiv.org/abs/2503.00898)
+- [Automotive Radar (2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.851774/full)
+
+### Astronomy
+- [SNN for RFI Detection (2024)](https://arxiv.org/abs/2412.06124)
+- [Neuromorphic Astronomy Pipeline (2025)](https://arxiv.org/html/2511.16060)
+- [UWA PhD Project](https://researchdegrees.uwa.edu.au/projects/172184/spiking-neural-networks-for-fast-and-efficient-transient-event-detection-in-astronomy)
+

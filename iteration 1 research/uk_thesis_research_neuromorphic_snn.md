@@ -194,3 +194,31 @@ URL: https://stax.strath.ac.uk/concern/theses/x059c7885
 | Hardware-software co-design of FPGA-based neural network accelerators for edge inference | Jude Haris | 2025 | SECDA methodology, 84x speedup on TConv |
 
 URL: https://theses.gla.ac.uk/85185/
+
+### University of Sheffield
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Reconstruction, identification and implementation methods for spiking neural circuits | Dorian Florescu | 2016 | Integrate-and-fire circuit reconstruction |
+| Improving scalability of large-scale distributed SNN simulations on HPC | Carlos Fernandez Musoles | 2020 | HyperPRAW partitioning algorithm |
+
+URLs:
+- https://etheses.whiterose.ac.uk/12625/
+- https://etheses.whiterose.ac.uk/id/eprint/29007/
+
+---
+
+## White Rose eTheses (Leeds/Sheffield/York)
+
+13 theses found matching "neuromorphic spiking neural network":
+
+| Title | Author | Year | Degree | University |
+|-------|--------|------|--------|------------|
+| Bio-inspired reinforcement learning | Zhile Yang | 2025 | PhD | Leeds |
+| Energy-efficient Tracking of Mobile Audio Sources | Dimitrios Pappas | 2025 | PhD | Sheffield |
+| Qubit chains' emergent behaviour from biologically-inspired dynamics | Xavier Laurent | 2025 | MSc by research | York |
+| System Analysis and Design of Physical Delay-Feedback Reservoir Computing | Alexander McDonnell | 2024 | PhD | York |
+| Scaling up ESNs with Heterogeneous Reservoirs | Chester Wringe | 2024 | PhD | York |
+| Replicating cognitive self-sufficiency for AGI models | Ivan Kyambadde | 2023 | PhD | York |
+| Breaking Implicit Assumptions of Physical Delay-Feedback Reservoir Computing | Tian Gan | 2023 | PhD | York |
+| Embodying a Computational Model of Hippocampal Replay for Robotic RL | Matthew Whelan | 2020 | MPhil | Sheffield |

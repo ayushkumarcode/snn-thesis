@@ -171,31 +171,3 @@ The thesis narrative writes itself:
 
 ### 6.2 SNN Frameworks (for building your own IDS)
 
-| Framework | Repository | PyTorch | Key Strengths | Stars |
-|-----------|-----------|---------|---------------|-------|
-| **snnTorch** | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) | Yes | Excellent tutorials, surrogate gradient training, Colab notebooks | 1.5K+ |
-| **SpikingJelly** | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) | Yes | Full-stack toolkit, CuPy acceleration, published in Science Advances | 2K+ |
-| **Norse** | [norse/norse](https://github.com/norse/norse) | Yes | Bio-plausible models, PyTorch native | 700+ |
-| **BindsNET** | [BindsNET/bindsnet](https://github.com/BindsNET/bindsnet) | Yes | STDP learning, used in neuromorphic cybersecurity paper (Mia 2025) | 1.3K+ |
-| **Brian2** | [brian-team/brian2](https://github.com/brian-team/brian2) | No (standalone) | Equation-based modeling, gold standard for neuroscience | 900+ |
-| **Intel Lava** | [lava-nc/lava](https://github.com/lava-nc/lava) | No (standalone) | Official Intel framework for Loihi deployment | 500+ |
-
-### 6.3 IDS/Dataset Tools
-
-| Tool | Purpose | Link |
-|------|---------|------|
-| CICFlowMeter | Extract flow-based features from pcap files | UNB CIC GitHub |
-| Awesome-SNN | Curated paper list with codes | [TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) |
-| SNN-Daily-Arxiv | Daily tracking of new SNN papers | [SpikingChen/SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv) |
-
-### 6.4 Recommended Stack for Thesis
-
-**Primary framework**: snnTorch (best tutorials, easiest learning curve, PyTorch-based)
-**Alternative**: SpikingJelly (more features, CuPy acceleration for large datasets)
-**For STDP/unsupervised**: BindsNET
-**Dataset loading**: scikit-learn + pandas for CSV datasets; CICFlowMeter for raw pcap
-
----
-
-## 7. NOVELTY ASSESSMENT: HOW NOVEL WOULD THIS BE AS AN UNDERGRADUATE THESIS?
-

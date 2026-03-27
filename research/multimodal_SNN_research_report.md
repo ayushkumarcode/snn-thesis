@@ -194,3 +194,31 @@ CODE COMPLEXITY: ~300-500 lines Python (snnTorch/SpikingJelly)
 
 6. **S-CMRL (Feb 2025)** - "Enhancing Audio-Visual Spiking Neural Networks through Semantic-Alignment and Cross-Modal Residual Learning." [Link](https://arxiv.org/abs/2502.12488)
 
+7. **TAAF (May 2025)** - "Spiking Neural Networks with Temporal Attention-Guided Adaptive Fusion for imbalanced Multi-modal Learning" - ACM MM 2025. [Link](https://arxiv.org/abs/2505.14535)
+
+### Event Camera + RGB
+
+8. **SFDNet (2025)** - Spiking RGB-event fusion for object detection. [Link](https://www.mdpi.com/2079-9292/14/6/1105)
+
+9. **DSF-Net (2025)** - Dynamic sparse event-RGB fusion. [Link](https://dl.acm.org/doi/10.1145/3746027.3755846)
+
+10. **SpikeFET (2025)** - Fully spiking frame-event tracker. [Link](https://arxiv.org/pdf/2505.20834)
+
+### Sensor Fusion
+
+11. **Lopez-Osorio et al. (2024)** - SNN sensor fusion on SpiNNaker. [Link](https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202300646)
+
+12. **Loihi-2 Sensor Fusion (2024)** - 100x efficiency over CPU. [Link](https://arxiv.org/abs/2408.16096)
+
+13. **Spiking Kalman (2026)** - SNN + Kalman for IMU localization. [Link](https://arxiv.org/abs/2601.08248)
+
+### Surveys
+
+14. [SNN Multimodal Neuroimaging Review (2025)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1623497/full)
+15. [SNN Frameworks Benchmark (2025)](https://www.mdpi.com/2673-4117/6/11/304)
+16. [SNN and Sound Review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
+
+---
+
+## 7. Could This Work as an Undergrad Project?
+

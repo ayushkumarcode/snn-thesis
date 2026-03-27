@@ -110,3 +110,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 
 **Framing:** "we implemented algorithm X on platform Y." the "Towards" in the title signals progress toward a goal rather than a completed system -- common and honest framing for bachelor's work.
 
+---
+
+### Thesis 7: Neuromorphic Network-on-Chip Architecture for SNNs
+- **Authors:** Team project
+- **Type:** 4YP
+- **Institution:** University of Peradeniya, Sri Lanka
+- **Year:** ~2022-2023
+- **Source:** [Project page](https://cepdnaclk.github.io/e17-4yp-Neuromorphic-NoC-Architecture-for-SNNs/)
+
+**Objectives:** "design and implement a Network-on-Chip architecture based on RISC-V ISA which allows for hardware-level processing of spiking neural networks, and implement it on an FPGA."
+
+**Contribution:**
+- customized RISC-V processing nodes with network interfaces
+- 2D mesh NoC with routing framework
+- specialized neuron bank hardware
+- event-driven messaging for spike simulation
+
+**Framing:** "we designed and built X." pure engineering project. the contribution is the artifact itself and showing RISC-V can be augmented for SNN simulation.
+
+---
+
+### Thesis 8: Simple Spiking Neural Network with STDP (Osnabruck)
+- **Author:** C. Wolff et al.
+- **Type:** University lecture term project
+- **Institution:** University of Osnabruck
+- **Year:** ~2022
+- **Source:** [GitHub](https://github.com/cowolff/Simple-Spiking-Neural-Network-STDP)
+

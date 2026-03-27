@@ -474,3 +474,16 @@ class SNN(nn.Module):
     def forward(self, x):
         mem1 = self.lif1.init_leaky()
         mem2 = self.lif2.init_leaky()
+        spk_rec = []
+        for step in range(self.num_steps):
+            cur1 = self.fc1(x.view(-1, 784))
+            spk1, mem1 = self.lif1(cur1, mem1)
+            cur2 = self.fc2(spk1)
+            spk2, mem2 = self.lif2(cur2, mem2)
+            spk_rec.append(spk2)
+        return torch.stack(spk_rec)
+
+# 4. Training loop (~30 lines, standard PyTorch)
+# 5. Evaluation + metrics logging (~20 lines)
+# 6. Plotting (~30 lines, matplotlib)
+```

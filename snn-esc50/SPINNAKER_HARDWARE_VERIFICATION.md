@@ -110,20 +110,20 @@ file naming: `emergency_iobuf_X_Y_P.txt` (chip coordinates X,Y and processor P).
 |-------|-------------|---------|---------|
 | SC&MP version | hardcoded `3.4.2` | `4.0.0` from real chip | real |
 | transceiver type | `Virtual5Transceiver` | `Spalloc Old` (real) | real |
-| Board power | Skipped | "Waiting for board power commands" | Real |
-| Setup time | Milliseconds | 27-37 seconds (network RTT) | Real |
-| Chip count | Always perfect 48 | 47 or 48 (faulty chip) | Real |
-| IOBUF files | None | Real ARM968 firmware logs | Real |
+| board power | skipped | "Waiting for board power commands" | real |
+| setup time | milliseconds | 27-37 seconds (network RTT) | real |
+| chip count | always perfect 48 | 47 or 48 (faulty chip) | real |
+| IOBUF files | none | real ARM968 firmware logs | real |
 
-## Evidence 8: Timing Characteristics
+## evidence 8: timing characteristics
 
-From provenance timing data:
-- **Mapping stage:** 28,124 ms -- placing neurons onto physical chip topology
-- **Loading stage:** 25,589 ms -- transferring data over Ethernet to board
-- **Running stage:** 1,521 ms -- 25 ms biological time on hardware
-- **Simulation on-chip:** 25 ms (25 timesteps at 1 ms each)
+from provenance timing data:
+- mapping stage: 28,124 ms -- placing neurons onto physical chip topology
+- loading stage: 25,589 ms -- transferring data over Ethernet to board
+- running stage: 1,521 ms -- 25 ms biological time on hardware
+- simulation on-chip: 25 ms (25 timesteps at 1 ms each)
 
-The 25+ second loading time is consistent with real Ethernet data transfer to remote hardware.
+the 25+ second loading time is consistent with real Ethernet data transfer to remote hardware.
 
 ## Evidence 9: Software Stack
 

@@ -194,3 +194,31 @@ this is the most practical approach for a thesis:
 
 **Phase 4: Analysis**
 - visualize what STDP neurons learned (weight matrices as images)
+- analyze selectivity of individual neurons to specific classes
+- compare STDP feature quality to unsupervised ANN methods (PCA, autoencoders, k-means)
+- measure energy efficiency (spike counts, synaptic operations)
+
+### 4.4 Implementation Notes
+
+using BindsNET, feature extraction looks roughly like:
+
+```python
+# After training the Diehl & Cook network with STDP:
+# 1. Set network to inference mode (disable learning)
+network.learning = False
+
+# 2. Present each image and record spikes
+for image in dataset:
+    network.run(inputs={"X": image}, time=350)  # 350ms per image
+    spikes = network.monitors["Ae"].get("s")  # excitatory layer spikes
+    feature_vector = spikes.sum(dim=0)  # firing rate encoding
+    features.append(feature_vector)
+
+# 3. Train SVM on extracted features
+from sklearn.svm import SVC
+clf = SVC().fit(train_features, train_labels)
+accuracy = clf.score(test_features, test_labels)
+```
+
+---
+

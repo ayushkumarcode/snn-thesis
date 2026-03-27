@@ -138,3 +138,31 @@ environmental sound is a distinctly different domain from speech/digits. our eva
 ---
 
 ## PART 3: WHAT THIS MEANS FOR THE THESIS
+
+### adversarial robustness narrative
+1. SNNs have genuine inherent adversarial robustness -- confirmed across 20+ papers
+2. the magnitude is debated: 2-8x typical on vision at standard epsilon
+3. our 14.9x is consistent but likely inflated by ANN near-complete failure + gradient masking
+4. standard PGD evaluation is now known to be unreliable (Wang et al. 2025) -- threat to validity
+5. we're the FIRST to evaluate on audio
+6. mechanisms: spike thresholding (noise filtering), temporal integration, gradient sparsity, input discretization
+
+### continual learning narrative
+1. our 6.9pp gap is directionally consistent with theory
+2. SOTA SNN CL methods get near-zero forgetting -- our naive baseline is expected to be bad
+3. the interesting finding is the SNN-ANN gap itself, not absolute forgetting
+4. SNN CL on environmental sound is novel
+5. STDP and surrogate gradient both active; combining them is the trend
+
+### citations needed
+
+**must-cite:**
+1. Wang et al. (2512.22522) SA-PGD -- threat to validity
+2. Sharmin et al. (ECCV 2020) -- foundational robustness paper
+3. FEEL-SNN (NeurIPS 2024) -- SOTA defense
+4. RSC-SNN (ACM MM 2024) -- Poisson = randomized smoothing
+5. RandHet-SNN (iScience 2025) -- heterogeneity mechanism
+6. TGO (ICLR 2026) -- threshold-neighboring neurons
+7. Nature Comms SNN robustness (2025)
+8. HLOP-SNN (ICLR 2024) -- SOTA CL
+9. DSD-SNN (IJCAI 2023) -- architecture expansion CL

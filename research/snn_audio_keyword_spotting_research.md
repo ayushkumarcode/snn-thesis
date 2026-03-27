@@ -18,31 +18,3 @@ Spiking Neural Networks (SNNs) for audio keyword spotting and speech command rec
 |-------|------|----------------|----------|------------|------|----------------|
 | **SpikCommander** | SNN (Spiking Transformer) | GSC V2 (35-class) | **96.92%** | 2.13M | 2025 | Yes |
 | **SpikCommander** | SNN (Spiking Transformer) | GSC V2 (35-class) | **97.08%** (T=200) | 2.13M | 2025 | Yes |
-| **SpikeSCR** | SNN (Hybrid Attention) | GSC V2 (35-class) | **95.60%** | ~3.3M | 2024 | Pending |
-| **SIDC-KWS** | SNN (Conformer) | GSC V2 (12-class) | **96.8%** | -- | 2025 | -- |
-| **Spiking LMUFormer** | SNN | GSC V2 (35-class) | **96.12%** | -- | 2024 | -- |
-| **RadLIF (sparch)** | SNN (Recurrent) | GSC V2 (35-class) | **96.60%** | ~1M | 2022 | Yes |
-| **adLIF (sparch)** | SNN (Non-recurrent) | GSC V2 (35-class) | **95.50%** | ~1M | 2022 | Yes |
-| **LSNN** | SNN (Spiking RNN) | GSC V1 (12-class) | **91.2%** | -- | 2020 | Yes |
-| **ED-sKWS** | SNN (Early Decision) | GSC V2 (35-class) | **93.04%** | 27.6K | 2024 | No |
-| LMUFormer | ANN | GSC V2 (35-class) | 96.53% | -- | 2024 | -- |
-| Attention-RNN | ANN | GSC V2 (20-class) | 94.5% | 202K | 2019 | -- |
-| LSTM | ANN (Baseline) | GSC V1 (12-class) | 94.4% | -- | 2020 | Yes |
-| CNN (Baseline) | ANN | GSC V1 (12-class) | 87.6% | -- | 2020 | Yes |
-
-### 1.2 Key Accuracy Takeaways
-
-- **The gap is nearly closed.** In 2020, the best SNN (LSNN at 91.2%) trailed the best ANN (LSTM at 94.4%) by ~3.2 percentage points on GSC 12-class. By 2025, SpikCommander achieves 96.92% (35-class), which surpasses many ANN baselines.
-- **12-class task (simpler):** SNNs now routinely achieve 95-97% accuracy, matching or exceeding ANN baselines.
-- **35-class task (harder):** Best SNNs achieve ~96.9%, within 1-2 points of the ANN ceiling.
-- **Parameter efficiency:** SpikCommander achieves 96.71% with only 1.12M parameters. ED-sKWS achieves 93% with only 27.6K parameters -- orders of magnitude fewer than typical ANNs.
-
-### 1.3 SHD (Spiking Heidelberg Digits) Benchmark
-
-| Model | Type | SHD Accuracy | Parameters | Year |
-|-------|------|-------------|------------|------|
-| **SpikCommander** | SNN | **96.41%** | 0.19M | 2025 |
-| **SpikeSCR** | SNN | **95.70%** | -- | 2024 |
-| **SE-adLIF** | SNN | **95.81%** | 0.45M | 2024 |
-| **RadLIF (sparch)** | SNN | **97.60%** | ~1M | 2022 |
-| **adLIF (sparch)** | SNN | **97.40%** | ~1M | 2022 |

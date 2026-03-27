@@ -370,31 +370,3 @@ Yes. Two key papers document it end-to-end:
 
 **Source:** [Hardware-Aware Fine-Tuning of Spiking Q-Networks on SpiNNaker2](https://arxiv.org/html/2507.23562v1)
 
----
-
-## Question 7: Hybrid Workflow
-
-### The Standard Approach (Confirmed)
-
-The standard approach IS:
-1. **Develop and train** in snnTorch/PyTorch on a regular computer
-2. **Export** trained weights (via NIR or manual extraction)
-3. **Deploy** on SpiNNaker for inference demonstration
-4. **Measure** real hardware metrics (energy, latency)
-5. **Compare** with software-simulated estimates
-
-This is exactly what recent papers demonstrate. There is no common alternative workflow for classification/RL tasks.
-
-### Alternative Approaches (Less Common)
-
-- **Train directly on SpiNNaker with STDP:** Possible but limited to unsupervised learning
-- **Co-simulation:** Run part on SpiNNaker, part on conventional hardware (exists for robotics)
-- **ANN-to-SNN conversion then deploy:** Train ANN, convert to SNN (SNN Toolbox), then deploy
-
----
-
-## Question 8: SpiNNaker2
-
-### Key Differences from SpiNNaker1
-
-| Feature | SpiNNaker1 | SpiNNaker2 |

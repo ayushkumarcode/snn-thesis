@@ -509,31 +509,3 @@ uint32_t eventValid
 
 **Each event (8 bytes):**
 ```
-uint32_t data       # Contains x, y, polarity packed
-uint32_t timestamp  # Microsecond timestamp
-```
-
-**Extracting x, y, polarity from data field:**
-```python
-x = (data >> 17) & 0x00001FFF
-y = (data >> 2) & 0x00001FFF
-polarity = (data >> 1) & 0x00000001
-```
-
-### 4.4 Event-to-Frame Conversion Methods
-
-Events must be binned into dense frame tensors for batch training. Three strategies:
-
-**Method 1: Fixed number of frames (most common)**
-- Divide all events in a sample into N equal-sized groups
-- Accumulate events in each group into a frame
-- Result: [N, 2, 128, 128] tensor with consistent shape across samples
-- SpikingJelly: `split_by='number', frames_number=16`
-
-**Method 2: Fixed time duration**
-- Divide events into windows of fixed duration (e.g., 1 second)
-- Variable number of frames per sample
-- Requires padding for batching
-- SpikingJelly: `split_by='time', duration=1000000`
-
-**Method 3: Fixed event count per frame**

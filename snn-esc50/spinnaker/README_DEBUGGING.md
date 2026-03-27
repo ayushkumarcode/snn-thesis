@@ -1,9 +1,9 @@
-# SpiNNaker Debugging Guide
+# SpiNNaker debugging notes
 
-This document explains how to diagnose and fix the zero-spike problem when running
-the ESC-50 SNN on SpiNNaker hardware.
+notes i wrote so i don't forget how to debug the zero-spike problem next time.
+i kept getting 0 spikes so here's what i tried and what each test checks.
 
-## Background: Why Spikes Die
+## background: why spikes die
 
 snnTorch `snn.Leaky` and sPyNNaker `IF_curr_exp` differ in one critical way:
 
@@ -14,71 +14,71 @@ snnTorch `snn.Leaky` and sPyNNaker `IF_curr_exp` differ in one critical way:
 | Current delivered | 100% of weight per spike | `(1 - exp(-dt/tau_syn))` fraction per spike |
 | With tau_syn=1, dt=1 | 100% | 63.2% (36.8% lost per step) |
 
-With `tau_syn_E=1.0` ms and `dt=1.0` ms, 36.8% of each spike's current is lost
-to synaptic decay before reaching the membrane. Trained weights were optimised
-assuming 100% delivery. This mismatch is the primary suspect.
+so with `tau_syn_E=1.0` ms and `dt=1.0` ms, 36.8% of each spike's current gets
+lost to synaptic decay before it even reaches the membrane. the trained weights
+were optimised assuming 100% delivery. this mismatch is the primary suspect.
 
-A secondary issue is that with 2304 input neurons across 25 timesteps, up to
-several hundred simultaneous spike packets can overflow the UDP buffer on the
-SpiNNaker link (OSError: No buffer space available, errno 55).
+there's also a secondary issue -- with 2304 input neurons across 25 timesteps,
+you can get several hundred simultaneous spike packets that overflow the UDP
+buffer on the SpiNNaker link (OSError: No buffer space available, errno 55).
 
 ---
 
-## Debug Scripts: What Each One Tests
+## debug scripts: what each one tests
 
 ### debug_01_can_fire.py
-**Question:** Can IF_curr_exp fire at all with our LIF parameters?
+**question:** can IF_curr_exp fire at all with our LIF parameters?
 
-Tests one input neuron firing every timestep into one output neuron, at three
+tests one input neuron firing every timestep into one output neuron, at three
 weight values: 5.0 (very generous), 1.0 (our scale), 0.1 (small).
 
-Prints the full voltage trace (all 25 values) and PASS/FAIL for each weight.
+prints the full voltage trace (all 25 values) and PASS/FAIL for each weight.
 
-**Use this first.** If weight=5.0 does not fire, the board or neuron model
-is broken. Nothing else will work until this passes.
+**run this first.** if weight=5.0 doesn't fire, the board or neuron model
+is broken. nothing else will work until this passes.
 
 ### debug_02_tau_syn.py
-**Question:** Does reducing tau_syn_E (faster current injection) allow firing?
+**question:** does reducing tau_syn_E (faster current injection) let it fire?
 
-Tests the same 1-neuron setup at weight=1.0 with tau_syn_E in
-{0.1, 0.5, 1.0, 5.0} ms. Prints full voltage trace for each.
+tests the same 1-neuron setup at weight=1.0 with tau_syn_E in
+{0.1, 0.5, 1.0, 5.0} ms. prints full voltage trace for each.
 
-A result where 0.1 passes but 1.0 fails confirms that synaptic current
-decay is the primary cause of the zero-spike problem.
+if 0.1 passes but 1.0 fails, that confirms synaptic current decay is
+the main cause of the zero-spike problem.
 
 ### debug_03_two_layer.py
-**Question:** If layer 1 fires, does layer 2 fire?
+**question:** if layer 1 fires, does layer 2 fire?
 
 10 inputs -> 5 hidden -> 3 output, all-to-all, weight=2.0 excitatory.
-Records and prints per-timestep spike counts for all three layers.
+records and prints per-timestep spike counts for all three layers.
 
-Shows whether the hidden-to-output pathway propagates correctly,
+shows whether the hidden-to-output pathway propagates correctly,
 independent of weight magnitude issues.
 
 ### debug_04_real_weights.py
-**Question:** With our actual trained weights, does any voltage accumulate?
+**question:** with our actual trained weights, does any voltage accumulate?
 
-Uses the real fc1_connections.npy but only for the first 20 hidden neurons
-(to avoid UDP overflow). Prints per-neuron spike counts, max voltages, and
+uses the real fc1_connections.npy but only for the first 20 hidden neurons
+(to avoid UDP overflow). prints per-neuron spike counts, max voltages, and
 connection weight statistics.
 
-If any of the 20 neurons fire: weights are sufficient, the problem is scale.
-If none fire but voltage > 0: we can see the scale factor needed directly.
-If voltage = 0: current is not reaching the membrane at all (tau_syn issue).
+if any of the 20 neurons fire: weights are sufficient, problem is scale.
+if none fire but voltage > 0: you can see the scale factor needed directly.
+if voltage = 0: current isn't reaching the membrane at all (tau_syn issue).
 
 ### debug_05_weight_scale.py
-**Question:** What multiplier makes our weights work?
+**question:** what multiplier makes our weights work?
 
-Same 20-neuron setup as debug_04, sweeps `weight_scale` in {1, 2, 5, 10, 20, 50}.
-Prints spike count and firing neurons for each scale. Reports `FIRST WORKING SCALE`.
+same 20-neuron setup as debug_04, sweeps `weight_scale` in {1, 2, 5, 10, 20, 50}.
+prints spike count and firing neurons for each scale. reports `FIRST WORKING SCALE`.
 
-The output directly tells you what `--weight-scale` to pass to run_on_spinnaker.py.
+the output directly tells you what `--weight-scale` to pass to run_on_spinnaker.py.
 
 ---
 
-## How to Run Them in Order
+## how to run them in order
 
-All scripts must be run from the project root (snn-esc50 directory).
+all scripts need to be run from the project root (snn-esc50 directory).
 
 ```bash
 cd /path/to/snn-esc50
@@ -100,59 +100,59 @@ python spinnaker/debug_04_real_weights.py
 python spinnaker/debug_05_weight_scale.py
 ```
 
-Each script is self-contained. You do not need to run them all if an earlier
-one gives a conclusive answer.
+each script is self-contained. you don't need to run them all if an earlier
+one gives you a conclusive answer.
 
 ---
 
-## Decision Tree: Interpreting Results
+## decision tree: interpreting results
 
 ```
 debug_01: weight=5.0 fires?
-│
-├── NO  --> Hardware or config broken.
-│           Check VPN to Manchester, ping spinnaker.cs.man.ac.uk
-│           Check ~/.spynnaker.cfg has correct server address
-│           Try rebooting the spalloc job: salloc --machine SpiNNaker1...
-│
-└── YES --> debug_01: weight=1.0 fires?
-            │
-            ├── YES --> Weights at our scale are sufficient.
-            │           Go to debug_04 to confirm with real weights.
-            │           If debug_04 fails: apply mild scaling (debug_05).
-            │
-            └── NO  --> debug_02: which tau_syn fires with weight=1.0?
-                        │
-                        ├── tau=0.1 fires, tau=1.0 does not:
-                        │   tau_syn IS the problem.
-                        │   Fix: run_on_spinnaker.py --tau-syn 0.1
-                        │   Better: run_on_spinnaker.py --neuron-model IF_curr_delta
-                        │
-                        ├── None fire at any tau_syn with weight=1.0:
-                        │   Weight too small AND tau_syn may compound.
-                        │   Run debug_05 to find scaling factor.
-                        │   Also try --neuron-model IF_curr_delta.
-                        │
-                        └── debug_03: two-layer propagation?
-                            │
-                            ├── Both layers fire (weight=2.0): architecture OK.
-                            │   Problem is specifically weight magnitude.
-                            │   Use debug_05 calibration.
-                            │
-                            └── Layer 1 fires, layer 2 does not:
-                                Hidden-to-output pathway broken.
+|
++-- NO  --> something's broken at the hardware/config level.
+|           check VPN to Manchester, ping spinnaker.cs.man.ac.uk
+|           check ~/.spynnaker.cfg has the right server address
+|           try rebooting the spalloc job: salloc --machine SpiNNaker1...
+|
++-- YES --> debug_01: weight=1.0 fires?
+            |
+            +-- YES --> weights at our scale are fine.
+            |           go to debug_04 to confirm with real weights.
+            |           if debug_04 fails: try mild scaling (debug_05).
+            |
+            +-- NO  --> debug_02: which tau_syn fires with weight=1.0?
+                        |
+                        +-- tau=0.1 fires, tau=1.0 doesn't:
+                        |   tau_syn IS the problem.
+                        |   fix: run_on_spinnaker.py --tau-syn 0.1
+                        |   better: run_on_spinnaker.py --neuron-model IF_curr_delta
+                        |
+                        +-- none fire at any tau_syn with weight=1.0:
+                        |   weight's too small AND tau_syn may be compounding it.
+                        |   run debug_05 to find the scaling factor.
+                        |   also try --neuron-model IF_curr_delta.
+                        |
+                        +-- debug_03: two-layer propagation?
+                            |
+                            +-- both layers fire (weight=2.0): architecture's OK.
+                            |   problem is specifically weight magnitude.
+                            |   use debug_05 calibration.
+                            |
+                            +-- layer 1 fires, layer 2 doesn't:
+                                hidden-to-output pathway is broken.
                                 FC2 weights also need scaling.
-                                Run debug_05 then check FC2 weights separately.
+                                run debug_05 then check FC2 weights separatley.
 ```
 
 ---
 
-## New Flags in run_on_spinnaker.py
+## new flags in run_on_spinnaker.py
 
 ### --weight-scale FLOAT (default: 1.0)
 
-Multiplies all FC1 and FC2 weights by this factor before building connection lists.
-Use the value found by debug_05_weight_scale.py.
+multiplies all FC1 and FC2 weights by this factor before building connection lists.
+use whatever value debug_05_weight_scale.py finds.
 
 ```bash
 # Apply 10x scaling (found by debug_05 to be the minimum that fires)
@@ -164,7 +164,7 @@ python spinnaker/run_on_spinnaker.py --weight-scale 5 --max-hidden 20 --num-samp
 
 ### --tau-syn FLOAT (default: 1.0)
 
-Sets tau_syn_E and tau_syn_I for IF_curr_exp. Lower values inject current faster,
+sets tau_syn_E and tau_syn_I for IF_curr_exp. lower values inject current faster,
 closer to snnTorch's instantaneous delivery.
 
 ```bash
@@ -175,12 +175,12 @@ python spinnaker/run_on_spinnaker.py --tau-syn 0.1
 python spinnaker/run_on_spinnaker.py --tau-syn 0.1 --weight-scale 3
 ```
 
-Only applies to `IF_curr_exp`. Has no effect with `--neuron-model IF_curr_delta`.
+only applies to `IF_curr_exp`. has no effect with `--neuron-model IF_curr_delta`.
 
 ### --neuron-model {IF_curr_exp,IF_curr_delta} (default: IF_curr_exp)
 
-`IF_curr_delta` has no synaptic current decay. Each presynaptic spike is
-delivered as a direct voltage step: `V += weight`. This is the closest
+`IF_curr_delta` has no synaptic current decay. each presynaptic spike gets
+delivered as a direct voltage step: `V += weight`. this is the closest
 sPyNNaker approximation to snnTorch's `snn.Leaky` neuron.
 
 ```bash
@@ -193,7 +193,7 @@ python spinnaker/run_on_spinnaker.py --neuron-model IF_curr_delta --weight-scale
 
 ### --max-hidden INT (default: 256)
 
-Restricts inference to only the first N hidden neurons (out of 256). This
+restricts inference to only the first N hidden neurons (out of 256). this
 dramatically reduces the number of connections transferred over UDP, which
 fixes the `OSError: No buffer space available` error from Run 3.
 
@@ -205,13 +205,13 @@ python spinnaker/run_on_spinnaker.py --max-hidden 20
 python spinnaker/run_on_spinnaker.py --max-hidden 64
 ```
 
-Note that accuracy will be degraded when using fewer hidden neurons, since
-the network was trained with all 256.
+accuracy will obviously be worse with fewer hidden neurons since the
+network was trained with all 256.
 
 ### --prune-threshold FLOAT (default: 0.05)
 
-Remove connections with |weight| below this value before sending to SpiNNaker.
-Higher values reduce connection count (and UDP load) at the cost of accuracy.
+removes connections with |weight| below this value before sending to SpiNNaker.
+higher values reduce connection count (and UDP load) but hurt accuracy.
 
 ```bash
 # Aggressive pruning: keep only connections with |w| > 0.2
@@ -223,9 +223,9 @@ python spinnaker/run_on_spinnaker.py --prune-threshold 0.1 --max-hidden 64
 
 ---
 
-## Combining Flags: Recommended Debugging Sequence
+## combining flags: recommended debugging sequence
 
-Start minimal and expand:
+start minimal and expand:
 
 ```bash
 # Stage 1: Minimum viable network (safest, should always work if hardware is up)
@@ -246,7 +246,7 @@ python spinnaker/run_on_spinnaker.py \
 
 ---
 
-## Querying the Provenance SQLite3 Database
+## querying the provenance SQLite3 database
 
 sPyNNaker records internal diagnostics in a SQLite3 database after each run.
 run_on_spinnaker.py prints the location at the end of the run.
@@ -279,45 +279,45 @@ sqlite3 "/path/to/provenance_data/run.sqlite3" \
      WHERE description LIKE '%memory%' OR description LIKE '%overflow%';"
 ```
 
-The provenance database is typically saved to:
+the provenance database usually ends up in:
 - `~/spynnaker_output/<timestamp>/provenance_data/run.sqlite3`
-- Or a subdirectory of your current working directory named `spynnaker_output/`
+- or a subdirectory of your current working directory named `spynnaker_output/`
 
-If the database is not found, verify that `SPYNNAKER_DISABLE_PROVENANCE=0` is
+if the database isn't there, check that `SPYNNAKER_DISABLE_PROVENANCE=0` is
 set in the environment (run_on_spinnaker.py sets this automatically via `os.environ`).
 
 ---
 
-## Common Errors and Solutions
+## common errors and what to do
 
 ### OSError: [Errno 55] No buffer space available
 
-Too many connections being transferred at once over UDP to SpiNNaker.
+too many connections being transferred at once over UDP to SpiNNaker.
 
-Solutions (in order of preference):
+if this doesn't work, try these (in order):
 1. `--max-hidden 20` (reduces to 46K connections)
 2. `--prune-threshold 0.1` or `--prune-threshold 0.2`
-3. Both combined: `--max-hidden 64 --prune-threshold 0.1`
+3. both combined: `--max-hidden 64 --prune-threshold 0.1`
 
 ### WARNING: Danger of SpikeSourceArray sending too many spikes at the same time
 
-The input layer is sending hundreds of spikes in the same timestep.
-This is expected given our input encoding (up to ~1400 simultaneous spikes).
-It is a warning, not an error. The simulation will still run, but may have
-timing inaccuracies if the router is saturated.
+the input layer is sending hundreds of spikes in the same timestep.
+this is expected given our input encoding (up to ~1400 simultaneous spikes).
+it's a warning, not an error. the simulation will still run, but you might get
+timing inaccuracies if the router gets saturated.
 
-Mitigation: This is inherent to our rate-coded input representation.
-If accuracy suffers, consider spreading spikes across more timesteps in
-extract_features.py using a sparser encoding.
+this is inherent to our rate-coded input representation. if accuracy suffers,
+you could try spreading spikes across more timesteps in extract_features.py
+using a sparser encoding, but honestly i haven't needed to do that yet.
 
 ### SpinnmanTimeoutException / board not responding
 
-1. Verify VPN connection to Manchester university network
+1. check your VPN connection to Manchester uni network
 2. `ping spinnaker.cs.man.ac.uk`
-3. Wait a few minutes and retry (the board may be in use by another job)
-4. Check the spalloc job queue
+3. wait a few minutes and retry (the board might be in use by someone else)
+4. check the spalloc job queue
 
-### 0 hidden spikes despite input spikes present
+### 0 hidden spikes despite input spikes being present
 
-Run the debug scripts in order: debug_01 -> debug_02 -> debug_04 -> debug_05.
-The decision tree above covers all cases.
+run the debug scripts in order: debug_01 -> debug_02 -> debug_04 -> debug_05.
+the decision tree above covers all the cases i've run into.

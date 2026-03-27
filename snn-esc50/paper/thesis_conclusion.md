@@ -1,100 +1,95 @@
-# Chapter 8: Conclusion and Future Work
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 8: conclusion and future work
+
+wrapping it all up. need to restate contributions clearly, answer each RQ directly, and give future directions.
 
 ---
 
-## 8.1 Summary of Contributions
+## 8.1 contributions
 
-This thesis has made six original contributions to the literature on spiking neural networks for audio classification:
+Six original contributions:
 
-**C1: First convolutional SNN evaluation on ESC-50.**
-A convolutional SNN (SpikingCNN: 2 conv blocks + 2 FC layers, 622K parameters) achieves 47.15% ± 4.50% on the ESC-50 benchmark (50-class, 5-fold cross-validation). This is the first published result for a convolutional SNN on the full ESC-50 benchmark. Prior work (Larroza et al. 2025) used fully-connected networks on 10 of 50 classes only.
+**C1: First conv SNN evaluation on ESC-50.** SpikingCNN (2 conv + 2 FC, 622K params) gets 47.15% +/- 4.50% on ESC-50 (50 classes, 5-fold). First published conv SNN result on the full benchmark. Prior work (Larroza et al. 2025) used FC-only on 10/50 classes.
 
-**C2: Systematic spike encoding comparison for audio.**
-Seven encoding methods are evaluated under identical experimental conditions: direct (47.15%), rate (24.00%), phase (24.15% ± 1.66%), population (19.15% ± 2.79%), latency (16.30%), delta (7.25%), and burst (6.50% ± 1.54%, near-chance). The ordering **direct > rate ≈ phase > population > latency >> delta ≈ burst** is explained by the information preservation principle: encodings that better retain spectrogram magnitude and temporal structure achieve higher accuracy. The near-equality of rate and phase coding (0.15 pp difference) is a novel finding: deterministic single-spike timing achieves equivalent information content to stochastic multi-spike counting at T=25 timesteps. Population coding (19.15%) underperforms rate/phase despite 10× more output neurons — the MSE count loss formulation is harder to optimise than cross-entropy rate loss. This is the most comprehensive encoding comparison for any audio SNN benchmark in the published literature.
+**C2: Systematic encoding comparison for audio.** Seven methods under identical conditions: direct (47.15%), rate (24.00%), phase (24.15%), population (19.15%), latency (16.30%), delta (7.25%), burst (6.50%). Ordering explained by information preservation. Rate/phase near-equality (0.15 pp) is novel: deterministic 1-spike timing ~ stochastic ~7-spike counting at T=25. Population underperforms despite 10x output neurons due to MSE loss difficulty. Most comprehensive audio SNN encoding comparison in published literature.
 
-**C3: First SNN deployment on SpiNNaker for environmental sound.**
-A trained SpikingCNN is partially deployed on a SpiNN-5 SpiNNaker board using a validated FC2-only hybrid approach. The deployment achieves 40% accuracy (20-sample pilot, Run 5); 400-sample validation (Run 6, fold 4) achieves **43.0% SpiNNaker accuracy vs 51.25% snnTorch (8.25 pp gap)**. Five-fold cross-validation (2,000 total inferences) yields **33.1% ± 6.9% SpiNNaker mean accuracy** vs 46.0% snnTorch reference (hardware gap: 12.8 ± 4.1 pp) — the first published deployment of any SNN trained on environmental sound recordings to neuromorphic hardware, and the first 5-fold cross-validated SpiNNaker result for any audio classification task. The FC1 cancellation problem (AvgPool producing fractional outputs that break SpiNNaker's spike-only compute model) is documented as a new and practically important failure mode for neuromorphic deployment of spiking CNNs.
+**C3: First SNN deployment on SpiNNaker for environmental sound.** FC2-only hybrid on SpiNN-5. 40% pilot (Run 5, n=20); 400-sample: 43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap). 5-fold: 33.1% +/- 6.9% vs 46.0% (gap 12.8 +/- 4.1 pp) -- first 5-fold cross-validated SpiNNaker result for any audio task. FC1 cancellation (AvgPool producing fractional outputs) documented as new failure mode.
 
-**C4: First adversarial robustness analysis of SNNs on audio spectrograms.**
-FGSM and PGD attacks are applied across 7 perturbation magnitudes (ε ∈ {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}) to both SNN and ANN classifiers. At ε=0.1 (FGSM), the SNN retains 26.00% accuracy while the ANN collapses to 1.75%. This is the largest reported adversarial robustness advantage for SNNs in any audio domain, and the first such analysis for environmental sound classification.
+**C4: First adversarial robustness analysis of SNNs on audio.** FGSM and PGD across 7 eps values. At eps=0.1 FGSM: SNN 26.00% vs ANN 1.75%. Largest reported SNN adversarial advantage in any audio domain.
 
-**C5: First combination of PANNs embeddings with SNN classification.**
-A 3-layer SNN head trained on frozen CNN14 (AudioSet-pretrained) embeddings achieves 92.50% ± 1.30% on ESC-50 — surpassing human performance (81.3%) and reducing the SNN-ANN gap from 16.70 pp to 0.95 pp. This is the first published combination of PANNs with an SNN classifier, and establishes that the SNN-ANN accuracy gap is a feature-learning problem, not a spiking computation problem.
+**C5: First PANNs + SNN combination.** SNN head on frozen CNN14 embeddings: 92.50% +/- 1.30%, exceeding human (81.3%), gap collapses from 16.70 pp to 0.95 pp. Gap is feature-learning, not spiking computation.
 
-**C6: NeuroBench-compliant energy analysis.**
-Using NeuroBench v2.2.0 (Yik et al. 2025), SynapticOperations metrics are reported for all SNN configurations and the ANN baseline (5-fold validated): direct SNN uses 968 ± 37 nJ/sample (1.08M ACs), ANN uses 454 ± 11 nJ/sample (101K MACs). On neuromorphic hardware (AC-only), SNNs reduce per-operation cost by 5.1× (AC vs MAC). In software simulation, the SNN is 2.1× more expensive due to the T=25 timestep overhead. PANNs + SpiNNaker FC₂ is the Pareto-optimal deployment: 92.50% accuracy with ~86 nJ for the SpiNNaker classification step (FC₂ 256→50 layer only).
+**C6: NeuroBench energy analysis.** 5-fold validated: SNN 968 +/- 37 nJ/sample (1.08M ACs), ANN 454 +/- 11 nJ (101K MACs). SNN 2.1x more expensive in software due to T=25. On neuromorphic hardware ACs cost 5.1x less than MACs. PANNs + SpiNNaker FC2 is Pareto-optimal: 92.50%, ~86 nJ for classification.
 
 ---
 
-## 8.2 Answers to Research Questions
+## 8.2 answers to research questions
 
-**RQ1: Can convolutional SNNs classify environmental sounds competitively with matched ANNs?**
+**RQ1: Can conv SNNs classify environmental sounds competitively with matched ANNs?**
 
-Partially. The from-scratch SNN achieves 47.15% vs the ANN's 63.85% — a 16.70 pp gap that is statistically significant (p=0.001). The SNN is competitive in the sense that it learns meaningful audio structure far above chance (2% for 50 classes), but it cannot match the ANN on small-data training. **When rich pre-trained features are provided (PANNs), the gap collapses to 0.95 pp and both classifiers achieve 92-93%.** The answer to RQ1 is: "Not competitively from scratch, but competitively with pre-trained features."
+Partially. From-scratch: 47.15% vs 63.85% -- 16.70 pp gap, p=0.001. SNN learns meaningful audio structure way above chance (2%) but can't match ANN on small data. **With PANNs pretrained features, gap collapses to 0.95 pp (92.50% vs 93.45%).** Answer: not competitively from scratch, but competitively with pretrained features.
 
-**RQ2: Which spike encoding method performs best for environmental sound classification, and why?**
+**RQ2: Which encoding performs best, and why?**
 
-Direct (continuous) encoding performs best at 47.15%. The ordering is: **direct > rate ≈ phase > population > latency >> delta ≈ burst**. The winner is determined by information preservation: how much of the original spectrogram magnitude structure reaches the convolutional layers in a form that supports discrimination. Direct encoding preserves all information continuously; rate encoding introduces Bernoulli noise but uses the full window; phase encoding uses deterministic single-spike timing uniformly distributed across the full window — achieving the same accuracy as rate (24.15% vs 24.00%); population coding (19.15%) adds output redundancy but is limited by MSE loss optimisation difficulty; latency encoding clusters spikes into early timesteps; delta and burst encoding discard most information. The general principle — information preservation predicts SNN performance — is the novel theoretical contribution of this comparison.
+Direct at 47.15%. Ordering: direct > rate ~ phase > population > latency >> delta ~ burst. Winner determined by information preservation -- how much spectrogram magnitude structure reaches the conv layers in a usable form. Direct preserves everything; rate adds Bernoulli noise; phase uses deterministic single-spike timing across full window (= rate accuracy); population limited by MSE loss; latency clusters spikes early; delta and burst discard most info. The general principle -- information preservation predicts performance -- is the novel theoretical contribution.
 
-**RQ3: Can a trained SNN be deployed on SpiNNaker neuromorphic hardware, and what is the accuracy cost?**
+**RQ3: Can a trained SNN be deployed on SpiNNaker, what's the cost?**
 
-Yes, with limitations. The full SpikingCNN cannot be deployed natively on SpiNNaker due to the AvgPool-FC1 cancellation problem (§5.1). A validated hybrid approach (software feature extraction + SpiNNaker FC₂ classification) achieves 40% on the 20-sample pilot (Run 5); Run 6 (400-sample, complete) achieves **43.0% SpiNNaker vs 51.25% snnTorch** — a hardware gap of **8.25 pp** (agreement rate 64.5%). The gap fluctuates across the run (n=208: 0.0 pp; n=400: 8.25 pp) due to sample-batch variability — later samples were harder for SpiNNaker's IF_curr_exp dynamics. Full native deployment requires SpiNNaker-aware training with MaxPool replacing AvgPool and higher LIF thresholds to reduce FC₁ spike density (Option A, §5.5), which is left for future work.
+Yes, with limitations. Full SpikingCNN can't deploy natively due to AvgPool-FC1 cancellation. Hybrid: software features + SpiNNaker FC2 = 40% pilot, 43.0% full validation (8.25 pp gap, 64.5% agreement). 5-fold: 33.1% +/- 6.9%. Gap fluctuates (n=208: 0.0 pp; n=400: 8.25 pp) due to sample variability. Full native deployment needs Option A retraining (MaxPool), which is theoretically unblocked (fold 4 validated).
 
-**RQ4: Do SNNs exhibit natural adversarial robustness compared to matched ANNs on audio inputs?**
+**RQ4: Do SNNs exhibit natural adversarial robustness?**
 
-Dramatically yes. At ε=0.1 (FGSM), the SNN retains 26.00% accuracy while the ANN collapses to 1.75%. At ε=0.05 (PGD), the ANN reaches 0% while the SNN maintains 19.25%. The spike threshold provides natural adversarial filtering by requiring perturbations to cross a hard non-linearity to affect the output. This is the first confirmation of this effect for environmental sound classification.
-
----
-
-## 8.3 Limitations and Reflections
-
-This work has three principal limitations:
-
-1. **Small training set:** 1,600 samples per fold is insufficient for from-scratch deep learning. The SNN accuracy (47.15%) reflects this data limitation as much as any property of spiking computation. Future work with larger datasets (FSD50k, UrbanSound8K) would give a clearer picture.
-
-2. **Partial neuromorphic deployment:** The FC2-only hybrid delivers only the final classification layer on SpiNNaker. True energy efficiency on neuromorphic hardware requires the full forward pass to be executed on-chip. Option A retraining (MaxPool SNN, fold 4 threshold sweep) confirms the architectural fix: fc1_binary_fraction=1.000 for all thresholds, and threshold=3.0 achieves 43.75% accuracy with 956 FC1 active inputs/step. The full FC1+FC2 SpiNNaker deployment with Option A weights is theoretically unblocked; hardware testing is the remaining step.
-
-3. **Single-seed surrogate gradient ablation:** Surrogate gradient ablation (7 testable surrogates, fold 1) is complete with 1 seed (seed=42); results are fully documented in §4.3. LSO crashed due to a Python 3.14/snnTorch 0.9.4 incompatibility. A 3-seed CSF3 run is pending retrieval and would provide tighter variance estimates, but the bimodal learning vs. failure split is already clear from the single seed.
+Dramatically yes. eps=0.1 FGSM: SNN 26.00% vs ANN 1.75%. eps=0.05 PGD: ANN = 0%, SNN = 19.25%. Spike threshold provides natural filtering by requiring perturbations to cross a hard nonlinearity. First confirmation for environmental sound classification.
 
 ---
 
-## 8.4 Future Work
+## 8.3 limitations and reflections
 
-**Immediate extensions (within the scope of this project):**
+Three main limitations:
 
-1. **SpiNNaker-aware retraining (Option A) — partially completed:** A fold 4 threshold sweep with MaxPool SNN confirms fc1_binary_fraction=1.000 for all thresholds (1.0–3.0). Threshold=3.0 achieves 43.75% test accuracy with 956 FC1 active inputs/step (sparsity 58.5%). Full 5-fold retraining and SpiNNaker hardware testing with the threshold=3.0 model would complete this contribution.
+1. **Small training set.** 1600 samples/fold isn't enough for deep learning from scratch. SNN accuracy reflects this data limitation as much as any spiking property. Larger datasets (FSD50k, UrbanSound8K) would clarify.
 
-2. **CSF3 results retrieval:** Augmented training (100 epochs, SpecAugment) and surrogate gradient ablation results are pending on CSF3. Retrieving these would complete §4.3 and §4.4.
+2. **Partial neuromorphic deployment.** FC2-only hybrid delivers only the final layer on SpiNNaker. True energy efficiency needs full forward pass on-chip. Option A retraining confirms the fix (fc1_binary_fraction=1.000, threshold=3.0 gets 43.75% with 956 active/step). Full FC1+FC2 SpiNNaker deployment is the remaining step.
 
-**Longer-term research directions:**
-
-3. **SpiNNaker2** (Hoppner et al. 2024): The successor platform features 22nm FDSOI process, 10× better energy than SpiNNaker, and native convolutional support. Deployment on SpiNNaker2 would resolve the AvgPool barrier and provide meaningful energy comparisons.
-
-4. **STDP unsupervised pre-training:** Spike-timing-dependent plasticity pre-training on unlabelled audio could provide richer initialisation for the convolutional layers, reducing the data-limitation gap without requiring external pretrained models.
-
-5. **Temporal coding losses:** Training with a first-spike loss (target: correct class fires earliest) rather than the rate loss used here could create SNNs that exploit temporal coding, potentially achieving competitive accuracy with fewer timesteps (T=5 instead of T=25, further reducing energy).
-
-6. **Learnable LIF parameters:** Making β (decay rate) a learnable per-neuron parameter (`nn.Parameter`) allows the network to adapt its temporal integration window to the task. This is supported by snnTorch and could improve accuracy without architectural changes.
-
-7. **Spiking transformers (SpikFormer):** Emerging spiking attention mechanisms (Zhou et al. 2023, NeurIPS) have achieved near-ANN performance on image tasks. Extension to audio with mel spectrograms is a natural next step.
-
-8. **Online streaming audio:** Converting the classification pipeline to process 16ms audio frames in real time, feeding live event streams to SpiNNaker via UDP, would demonstrate the practical utility of the deployment in a realistic scenario.
-
-9. **SA-PGD adversarial evaluation:** Applying Stable Adaptive PGD (Wang et al. 2025) would provide rigorous adversarial robustness numbers, replacing the conservative upper bounds reported in §6.1.
-
-10. **Generalisation to larger benchmarks:** FSD50k (51,000 clips, Fonseca et al. 2022) and UrbanSound8K (8,732 clips, Salamon et al. 2014) would test whether the encoding hierarchy (direct > rate ≈ phase > latency >> delta ≈ burst) generalises beyond ESC-50.
+3. **Single-seed surrogate ablation.** 7 testable surrogates, fold 1, 1 seed. LSO crashed (Python 3.14 thing). 3-seed CSF3 run pending. Bimodal learning/failure split is clear from single seed though.
 
 ---
 
-## 8.5 Final Statement
+## 8.4 future work
 
-Spiking neural networks for environmental sound classification are not yet competitive with ANNs when trained from scratch on small datasets. This thesis establishes the baseline numbers, documents the encoding methods that work and those that do not, deploys the first SNN for environmental sound on neuromorphic hardware, and — perhaps most importantly — shows that the SNN-ANN gap collapses when good features are available.
+**Near-term:**
 
-The energy argument for SNNs remains nuanced: SNNs are cheaper per operation on neuromorphic hardware, but require more total operations than equivalent ANNs in current implementations. The adversarial robustness of SNNs is not nuanced: it is dramatic, reproducible, and potentially decisive for secure edge audio applications.
+1. **Option A full deployment:** fold 4 validated, threshold=3.0, fc1_binary=1.000. Need 5-fold retraining and SpiNNaker hardware test.
 
-This work provides the first complete picture of SNN capability on a standard audio benchmark, from feature encoding to neuromorphic hardware deployment. Future work building on these results has clear directions: better features, hardware-native architectures, and temporal coding objectives that exploit the temporal nature of spiking computation that current rate-coded approaches leave untapped.
+2. **CSF3 results retrieval:** augmented training and surrogate ablation 3-seed results still on CSF3.
+
+**Longer-term:**
+
+3. **SpiNNaker2** (Hoppner et al. 2024): 22nm FDSOI, 10x better energy, native conv support. Would resolve AvgPool barrier.
+
+4. **STDP unsupervised pre-training** on unlabelled audio for richer conv initialisation without external pretrained models.
+
+5. **Temporal coding losses:** first-spike loss (correct class fires earliest) instead of rate loss. Could get competitive accuracy with fewer timesteps (T=5 instead of 25, major energy saving).
+
+6. **Learnable LIF params:** make beta a learnable per-neuron parameter. Supported by snnTorch, could improve accuracy without arch changes.
+
+7. **Spiking transformers (SpikFormer):** emerging spiking attention (Zhou et al. 2023, NeurIPS) near-ANN on images. Natural extension to audio.
+
+8. **Online streaming audio:** 16ms frames in real time, live event streams to SpiNNaker via UDP. Would demonstrate practical deployment.
+
+9. **SA-PGD adversarial evaluation** (Wang et al. 2025) for rigorous robustness numbers replacing our upper bounds.
+
+10. **Larger benchmarks:** FSD50k (51k clips), UrbanSound8K (8.7k clips) to test whether encoding hierarchy generalises beyond ESC-50.
 
 ---
 
-*Appendices follow: A (Full results tables), B (Confusion matrices), C (SpiNNaker parameter tables), D (Reproducibility statement and GitHub link)*
+## 8.5 final statement
+
+SNNs for environmental sound classification aren't yet competitive with ANNs from scratch on small datasets. This thesis establishes the baseline numbers, documents which encodings work and which dont, deploys the first SNN for environmental sound on neuromorphic hardware, and -- maybe most importantly -- shows the SNN-ANN gap collapses when good features are available.
+
+The energy argument remains nuanced: SNNs are cheaper per op on neuromorphic hardware but need more total ops in current implementations. The adversarial robustness argument is not nuanced at all: its dramatic, reproducible, and potentially decisive for secure edge audio.
+
+This provides the first complete picture of SNN capability on a standard audio benchmark, from encoding to hardware deployment. Future work has clear directions: better features, hardware-native architectures, and temporal coding objectives that exploit the temporal nature of spiking computation that current rate-coded approaches leave on the table.
+
+---
+
+Appendices follow: A (full results tables), B (confusion matrices), C (SpiNNaker params), D (reproducibility)

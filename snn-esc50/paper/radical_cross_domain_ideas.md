@@ -1,712 +1,511 @@
-# Radical Cross-Domain Research: Novel Ideas for SNN Audio Classification
+# radical cross-domain ideas for SNN audio classification
 
-**Research Date:** 25 March 2026
-**Context:** Convolutional SNN for ESC-50, 47.15% accuracy (vs ANN 63.85%), deployed on SpiNNaker
-**Goal:** Identify ONE big novel finding that justifies a publication
-
----
-
-## Executive Summary
-
-After exhaustive cross-domain research spanning neuroscience, signal processing, physics, NLP, information theory, and hardware co-design, I identified **18 radical ideas** ranked by their potential to create a genuinely novel contribution. The top three candidates are:
-
-1. **Cochlear-Inspired Learnable Auditory Frontend (Spiking-LEAF / IHC-LIF)** -- Replace mel spectrogram with a biologically-inspired cochlear model using two-compartment spiking neurons as the front-end. Published at ICASSP 2024 but NEVER applied to environmental sound classification.
-
-2. **Dendritic Computation with Multi-Compartment Neurons** -- Replace LIF point neurons with dendritic spiking neurons that have nonlinear branches, enabling each neuron to perform richer temporal computations. Published in Nature Communications 2023/2024 but NEVER applied to audio SNNs.
-
-3. **Spiking State Space Model (S6 / SpikingSSM)** -- Reconceptualize LIF dynamics as state space models with expanded hidden states, enabling parallel training and better long-range temporal processing. Published at AAAI 2025 / NeurIPS 2024 but NEVER applied to environmental sound.
-
-Each of these represents a genuine gap in the literature where our work would be the FIRST to combine these ideas with ESC-50 environmental sound classification.
+25 march 2026
+context: conv SNN for ESC-50, 47.15% accuracy (vs ANN 63.85%), deployed on SpiNNaker
+goal: find ONE big novel finding that justifies a publication
 
 ---
 
-## TIER 1: Highest Impact, Most Novel (Publication-Worthy on Their Own)
+after a lot of reading across neuroscience, signal processing, physics, NLP, info theory, and hardware co-design, i came up with 18 ideas ranked by novelty potential. the top three:
+
+1. **cochlear-inspired learnable frontend (Spiking-LEAF / IHC-LIF)** -- replace mel spectrogram with a bio-inspired cochlear model. published ICASSP 2024 but NEVER applied to environmental sound.
+2. **dendritic computation with multi-compartment neurons** -- replace LIF point neurons with dendritic spiking neurons that have nonlinear branches. Nature Comms 2023/2024 but NEVER applied to audio SNNs.
+3. **spiking state space model (S6 / SpikingSSM)** -- reconceptualize LIF as state space model with expanded hidden states. AAAI 2025 / NeurIPS 2024 but NEVER applied to environmental sound.
+
+each is a genuine literature gap where we'd be the FIRST on ESC-50.
 
 ---
 
-### IDEA 1: Cochlear-Inspired Learnable Frontend (Spiking-LEAF / IHC-LIF Neurons)
-
-**Source:** Song et al., "Spiking-LEAF: A Learnable Auditory front-end for Spiking Neural Networks," ICASSP 2024
-**Domain:** Neuroscience + Signal Processing
-
-**Core Idea:**
-Replace our fixed mel spectrogram preprocessing with a learnable auditory front-end inspired by the biological cochlea. Spiking-LEAF uses:
-- 40 learnable Gabor 1D-convolution filters (replacing fixed mel filterbank)
-- Per-Channel Energy Normalization (PCEN) with learnable per-channel parameters
-- IHC-LIF neurons: a TWO-COMPARTMENT spiking neuron (dendritic + somatic) inspired by inner hair cells, capturing multi-scale temporal dynamics
-
-**How It Applies to ESC-50:**
-Currently we compute mel spectrograms offline (fixed 64 mel bins, n_fft=1024, hop=512) and feed them to the SNN. Instead:
-1. Feed RAW WAVEFORMS (22050 Hz, 5 seconds = 110,250 samples) directly to learnable Gabor filters
-2. IHC-LIF neurons convert filtered signals to spike trains with biologically-plausible dynamics
-3. The entire front-end is jointly trained with the SNN classifier end-to-end
-4. The cochlear front-end LEARNS the optimal frequency decomposition for environmental sounds
-
-**Expected Impact:**
-- Spiking-LEAF improved keyword spotting accuracy by +9.21 percentage points over mel spectrograms (83.03% -> 92.24%)
-- Cochleagram representations consistently outperform mel spectrograms by ~5% on sound event datasets
-- For ESC-50: estimated 3-8 pp improvement (47.15% -> 50-55%) based on task difficulty
-- The end-to-end learnable pipeline is more biologically plausible AND SpiNNaker-compatible
-
-**Implementation Feasibility:** MEDIUM
-- Spiking-LEAF code exists (ICASSP 2024 paper)
-- Requires adapting from 16kHz speech to 22kHz environmental audio
-- Gabor filters and PCEN are standard operations
-- IHC-LIF neuron needs custom implementation but is essentially two coupled LIF equations
-- Training is end-to-end with surrogate gradients (we already do this)
-
-**Novelty Assessment:** VERY HIGH
-- No one has applied Spiking-LEAF or IHC-LIF to environmental sound classification
-- No one has applied ANY learnable cochlear front-end to ESC-50 with SNNs
-- Combines two frontier areas: bio-inspired audio + spiking neural networks
-- Direct comparison with our existing mel spectrogram results provides clean ablation
-
-**SpiNNaker Angle:** The cochlear front-end could potentially run on SpiNNaker itself (cascade of LIF neurons mimicking basilar membrane), creating a FULLY neuromorphic audio pipeline: cochlea -> SNN classifier, all in spikes.
+## tier 1: highest impact, most novel
 
 ---
 
-### IDEA 2: Dendritic Spiking Neurons (DendSN / Multi-Compartment LIF)
+### idea 1: cochlear-inspired learnable frontend (Spiking-LEAF / IHC-LIF)
 
-**Source:** Multiple recent papers:
-- "Flexible and Scalable Deep Dendritic SNNs with Multiple Nonlinear Branching" (arXiv Dec 2024)
-- "Temporal dendritic heterogeneity in SNNs for multi-timescale dynamics" (Nature Communications 2024)
-- "Dendrites endow ANNs with accurate, robust, parameter-efficient learning" (Nature Communications 2025)
+source: Song et al., "Spiking-LEAF: A Learnable Auditory front-end for SNNs," ICASSP 2024
+
+so this paper replaces the fixed mel spectrogram with a learnable auditory front-end inspired by the biological cochlea. Spiking-LEAF uses:
+- 40 learnable Gabor 1D-conv filters (replacing fixed mel filterbank)
+- Per-Channel Energy Normalization (PCEN) with learnable per-channel params
+- IHC-LIF neurons: a TWO-COMPARTMENT neuron (dendritic + somatic) inspired by inner hair cells, capturing multi-scale temporal dynamics
+
+how it applies to ESC-50:
+currently we compute mel spectrograms offline (fixed 64 bins, n_fft=1024, hop=512) and feed to the SNN. instead:
+1. feed RAW WAVEFORMS (22050 Hz, 5 sec = 110,250 samples) directly to learnable Gabor filters
+2. IHC-LIF neurons convert filtered signals to spikes with bio-plausible dynamics
+3. entire front-end jointly trained with classifier end-to-end
+4. the cochlear front-end LEARNS the optimal frequency decomposition for environmental sounds
+
+expected impact:
+- Spiking-LEAF improved keyword spotting by +9.21pp (83.03% -> 92.24%)
+- cochleagram consistently outperforms mel by ~5% on sound event datasets
+- for ESC-50: estimated 3-8pp improvement (47.15% -> 50-55%)
+- the pipeline is more bio-plausible AND SpiNNaker-compatible
+
+probably a few days to implement. code exists (ICASSP 2024). need to adapt from 16kHz speech to 22kHz environmental audio. Gabor filters and PCEN are standard. IHC-LIF is essentially two coupled LIF equations. training is end-to-end with surrogate gradients (we already do this).
+
+nobody has applied Spiking-LEAF or IHC-LIF to environmental sound. nobody has applied ANY learnable cochlear front-end to ESC-50 with SNNs. combines two frontier areas: bio-inspired audio + spiking NNs. direct comparison with our mel results gives a clean ablation.
+
+SpiNNaker angle: the cochlear front-end could potentially run on SpiNNaker itself (cascade of LIF neurons mimicking basilar membrane), creating a FULLY neuromorphic audio pipeline.
+
+---
+
+### idea 2: dendritic spiking neurons (DendSN / multi-compartment LIF)
+
+sources:
+- "Flexible and Scalable Deep Dendritic SNNs" (arXiv Dec 2024)
+- "Temporal dendritic heterogeneity" (Nature Comms 2024)
+- "Dendrites endow ANNs with accurate, robust learning" (Nature Comms 2025)
 - "Spiking world model with multicompartment neurons" (PNAS 2025)
 
-**Domain:** Neuroscience (Dendritic Computation)
+standard LIF neurons are "point neurons" that linearly sum all inputs. real neurons have DENDRITES -- tree-like branches that do nonlinear local computation before signals reach the soma. each dendrite is basically a mini-processor. a single dendritic neuron can compute what takes a multi-layer network of point neurons.
 
-**Core Idea:**
-Standard LIF neurons are "point neurons" that linearly sum all inputs. Real neurons have DENDRITES -- tree-like branches that perform nonlinear local computations before signals reach the cell body (soma). Each dendrite is essentially a mini-processor. A single dendritic neuron can compute functions that require a multi-layer network of point neurons.
+replace our LIF neurons with DendSN:
+- each neuron has K dendritic branches (K=2-5 typically)
+- each branch has its own membrane dynamics (different time constants)
+- branches do nonlinear gating on their inputs
+- soma integrates branch outputs
+- different branches attend to different temporal scales
 
-Replace our LIF neurons with DendSN (Dendritic Spiking Neurons):
-- Each neuron has K dendritic branches (K=2-5 typically)
-- Each branch has its own membrane dynamics (different time constants)
-- Branches perform nonlinear gating on their inputs
-- Soma integrates branch outputs
-- Different branches can attend to different temporal scales
+this is perfect for ESC-50 because environmental sounds have MULTI-SCALE temporal structure:
+- fine-grained: pitch, harmonics (milliseconds)
+- medium: syllable-like events, repetitions (100ms-1s)
+- coarse: overall texture, onset/offset (seconds)
 
-**How It Applies to ESC-50:**
-Environmental sounds have MULTI-SCALE temporal structure:
-- Fine-grained: pitch, harmonics (milliseconds)
-- Medium: syllable-like events, repetitions (100ms-1s)
-- Coarse: overall texture, onset/offset (seconds)
+current LIF neurons process all timescales with one beta=0.95. dendritic neurons with heterogeneous time constants (branch 1: beta=0.99 slow, branch 2: beta=0.80 fast) can simultaneously capture multiple scales.
 
-Current LIF neurons process all timescales with a single beta=0.95. Dendritic neurons with heterogeneous time constants (e.g., branch 1: beta=0.99 for slow, branch 2: beta=0.80 for fast) can simultaneously capture multiple temporal scales. This is exactly what environmental sound needs.
+implementation: replace `snn.Leaky(beta=0.95)` with `DendriticLeaky(branches=3, betas=[0.99, 0.95, 0.80])`.
 
-Implementation: Replace `snn.Leaky(beta=0.95)` with `DendriticLeaky(branches=3, betas=[0.99, 0.95, 0.80])`.
+expected: DendSNNs consistently outperform point SNNs on FashionMNIST, CIFAR-10, SHD. multi-compartment neurons in PNAS 2025 surpass other architectures on speech. improved robustness. better few-shot learning (relevant for our 1600 training samples). estimated 3-6pp improvement.
 
-**Expected Impact:**
-- DendSNNs consistently outperform point SNNs on FashionMNIST, CIFAR-10, SHD
-- Multi-compartment neurons in PNAS 2025 surpass other SNN architectures on speech datasets
-- Improved robustness to noise and adversarial attacks
-- Better few-shot learning (relevant for ESC-50's small training set of 1600 samples)
-- Estimated 3-6 pp improvement for ESC-50
+only requires modifying the neuron model, not the training pipeline. DendSN code available with Triton GPU kernels. computational overhead is negligible per the paper. compatible with surrogate gradients.
 
-**Implementation Feasibility:** HIGH
-- Only requires modifying the neuron model, not the training pipeline
-- DendSN code is available (arXiv Dec 2024) with Triton GPU kernels
-- Computational overhead is negligible (paper demonstrates this)
-- 2-5 branches per neuron, learnable time constants and gating parameters
-- Compatible with surrogate gradient training
+NOBODY has applied dendritic spiking neurons to audio classification. nobody to environmental sound. multi-timescale temporal processing is a natural fit. story: "biologically-inspired dendritic computation enables multi-scale temporal processing in audio SNNs."
 
-**Novelty Assessment:** VERY HIGH
-- No one has applied dendritic spiking neurons to audio classification
-- No one has applied them to environmental sound
-- Multi-timescale temporal processing is a natural fit for audio
-- Story: "Biologically-inspired dendritic computation enables multi-scale temporal processing in audio SNNs"
-
-**SpiNNaker Angle:** Each dendritic branch maps to a separate neuron on SpiNNaker connected to the soma neuron. The multi-core architecture handles this naturally. DenRAM (Nature Communications 2024) already demonstrates neuromorphic dendritic architectures.
+SpiNNaker: each dendritic branch maps to a separate neuron connected to the soma. multi-core architecture handles this naturally. DenRAM (Nature Comms 2024) already demonstrates neuromorphic dendritic architectures.
 
 ---
 
-### IDEA 3: Spiking State Space Model (SpikingSSM / S6)
+### idea 3: spiking state space model (SpikingSSM / S6)
 
-**Source:** Multiple recent papers:
+sources:
 - "P-SpikeSSM: Harnessing Probabilistic Spiking SSMs" (arXiv Jun 2024)
 - "SpikingSSMs: Learning Long Sequences with Sparse and Parallel Spiking SSMs" (AAAI 2025)
-- "SPikE-SSM: Sparse, Precise, Efficient Spiking SSM" (arXiv Oct 2024)
+- "SPikE-SSM: Sparse, Precise, Efficient" (arXiv Oct 2024)
 
-**Domain:** NLP/Sequence Modeling (S4/Mamba lineage) adapted for spikes
+the key insight: LIF neurons are ALREADY a state space model! membrane potential is a 1D hidden state with linear dynamics + nonlinear output (spike). but LIF uses only a SCALAR hidden state. SSMs use an N-DIMENSIONAL hidden state vector.
 
-**Core Idea:**
-State space models (S4, Mamba) have revolutionized sequence modeling. The key insight: LIF neurons are ALREADY a state space model! The membrane potential is a 1D hidden state with linear dynamics + nonlinear output (spike). But LIF uses only a SCALAR hidden state. SSMs use an N-DIMENSIONAL hidden state vector.
+SpikingSSM expands LIF to have rich multi-dimensional state:
+- parallel training (convert recurrence to convolution)
+- better long-range dependency modeling
+- 90% network sparsity (still spike-based)
 
-SpikingSSM expands the LIF neuron to have a rich multi-dimensional state, enabling:
-- Parallel training (convert recurrence to convolution)
-- Better long-range dependency modeling
-- 90% network sparsity (still spike-based, energy efficient)
+for ESC-50: spectrograms are 216 time frames, we simulate 25 timesteps. environmental sounds like "train" or "helicopter" have long temporal structure that benefits from better sequence modeling.
 
-**How It Applies to ESC-50:**
-Our spectrograms are 216 time frames long, and we simulate 25 timesteps. Environmental sounds like "train" or "helicopter" have long temporal structure that benefits from better sequence modeling. SpikingSSM would replace our LIF layers with richer state dynamics that can capture these patterns.
+S6 gets 95.6% on Speech Commands. SpikingSSM competitive with 90% sparsity. psMNIST: 98.4%.
 
-**Expected Impact:**
-- S6 achieves 95.6% on Speech Commands (raw 16000-length signals)
-- SpikingSSM achieves competitive performance with 90% sparsity
-- psMNIST: 98.4% (state-of-the-art for spiking models)
-- For ESC-50: potentially large improvement due to better temporal modeling
+harder to implement though -- requires significant architecture changes. less SpiNNaker-compatible (parallel training doesnt transfer to hardware). the inference can still be sequential and spike-based but the expanded state needs more memory per neuron.
 
-**Implementation Feasibility:** MEDIUM-LOW
-- Requires significant architecture changes
-- Less compatible with SpiNNaker (the parallel training trick doesn't transfer to hardware)
-- More of a research prototype than a deployable system
-- But the INFERENCE can still be sequential and spike-based
+nobody has applied spiking SSMs to environmental sound. combines two hot areas.
 
-**Novelty Assessment:** VERY HIGH
-- No one has applied spiking SSMs to environmental sound classification
-- Combines two hot research areas (SSMs + SNNs)
-- Would be among the first audio applications of spiking SSMs
-
-**SpiNNaker Angle:** WEAK. The parallel training is the main benefit and doesn't help on SpiNNaker. Inference is sequential but the expanded state requires more memory per neuron.
+SpiNNaker angle: WEAK. main benefit is parallel training which doesnt help on SpiNNaker.
 
 ---
 
-## TIER 2: High Impact, Strong Novelty
+## tier 2: high impact, strong novelty
 
 ---
 
-### IDEA 4: Oscillatory Modulation of Spiking Neurons (Rhythm-SNN)
+### idea 4: oscillatory modulation (Rhythm-SNN)
 
-**Source:** "Efficient and robust temporal processing with neural oscillations modulated SNNs" (Nature Communications 2025)
-**Domain:** Neuroscience (Neural Oscillations)
+source: "Efficient and robust temporal processing with neural oscillations modulated SNNs" (Nature Comms 2025)
 
-**Core Idea:**
-Brain neurons don't just fire randomly -- they are modulated by rhythmic oscillations (theta, gamma, beta waves). Rhythm-SNN adds heterogeneous oscillatory signals that modulate each spiking neuron at different frequencies. Neurons activate periodically at distinct frequencies, creating temporal structure.
+brain neurons dont just fire randomly -- theyre modulated by rhythmic oscillations (theta, gamma, beta waves). Rhythm-SNN adds heterogeneous oscillatory signals modulating each neuron at different frequencies.
 
-**How It Applies to ESC-50:**
-Environmental sounds are inherently rhythmic (clock_tick, helicopter rotor, footsteps, rain drops). Oscillatory modulation could help the SNN "resonate" with periodic sound patterns. Different neurons tuned to different oscillation frequencies could specialize in different sound categories.
+environmental sounds are inherently rhythmic (clock_tick, helicopter rotor, footsteps, rain drops). oscillatory modulation could help the SNN "resonate" with periodic patterns.
 
-**Expected Impact:**
-- Rhythm-SNN achieves SOTA on temporal processing tasks
-- Reduces energy cost by two orders of magnitude vs deep learning
-- Reduces neuronal firing rates while IMPROVING accuracy
-- For ESC-50: estimated 2-5 pp improvement, especially for periodic sounds
+implementation: add oscillatory term to membrane potential: v[t] = beta*v[t-1] + I[t] + A*sin(2*pi*f*t/T). different neurons get different frequencies f (learnable). ~10 lines of code.
 
-**Implementation Feasibility:** HIGH
-- Add oscillatory modulation term to membrane potential: v[t] = beta*v[t-1] + I[t] + A*sin(2*pi*f*t/T)
-- Different neurons get different frequencies f (learnable parameter)
-- Minimal code change, compatible with surrogate gradient training
-- ~10 lines of code to modify neuron model
+Rhythm-SNN is Nature Comms 2025 -- very recent. never applied to audio. natural fit: oscillatory sounds + oscillatory neurons.
 
-**Novelty Assessment:** HIGH
-- Rhythm-SNN is Nature Communications 2025 -- very recent
-- Never applied to audio/environmental sound
-- Natural fit: oscillatory sounds + oscillatory neurons
+SpiNNaker: oscillatory signals generated using periodic spike sources. natural hardware fit.
 
-**SpiNNaker Angle:** Oscillatory signals can be generated on SpiNNaker using periodic spike sources. Natural fit for the hardware.
+we actually already ran this experiment and got 61.10% which is +13.95pp over baseline. so this one is confirmed to work!
 
 ---
 
-### IDEA 5: Learnable Axonal/Synaptic Delays
+### idea 5: learnable axonal/synaptic delays
 
-**Source:** Multiple papers:
-- "Learnable axonal delay in SNNs improves spoken word recognition" (Frontiers 2023)
+sources:
+- "Learnable axonal delay improves spoken word recognition" (Frontiers 2023)
 - "DelRec: learning delays in recurrent SNNs" (arXiv Sep 2025)
 - "Learning delays through gradients and structure" (Frontiers 2024)
 
-**Domain:** Neuroscience (Axonal Delays) + Signal Processing
+in biology signals dont travel instantly between neurons -- there are axonal delays (1-20ms). these delays enable coincidence detection across time. by making delays LEARNABLE, the network can align temporal features.
 
-**Core Idea:**
-In biology, signals don't travel instantaneously between neurons -- there are axonal delays (1-20ms). These delays are NOT bugs; they enable coincidence detection across time. By making delays LEARNABLE, the network can align temporal features across different timescales.
-
-**How It Applies to ESC-50:**
-Sound classification requires detecting temporal patterns. With learnable delays:
-- A "dog bark" pattern across 3 time steps can be aligned even if barks occur at different delays
-- Spectral patterns at different frequencies can be synchronized
+with learnable delays:
+- "dog bark" pattern across 3 timesteps can be aligned even if barks occur at different delays
+- spectral patterns at different frequencies can be synchronized
 - 13-18% accuracy improvement demonstrated in sparse networks
 
-Implementation: Replace `self.fc1 = nn.Linear(2304, 256)` with `self.fc1 = DelayedLinear(2304, 256, max_delay=10)` where each synapse has a learnable integer delay.
+implementation: replace `self.fc1 = nn.Linear(2304, 256)` with `self.fc1 = DelayedLinear(2304, 256, max_delay=10)` where each synapse has a learnable integer delay.
 
-**Expected Impact:**
-- 13.2% accuracy improvement with synaptic delays, 18% in sparse models
-- Especially beneficial for temporal pattern recognition in audio
-- For ESC-50: estimated 3-6 pp improvement
+DCLS (Dilated Convolutions with Learnable Spacings) provides clean implementation. compatible with existing architecture. DelRec works with standard LIF.
 
-**Implementation Feasibility:** HIGH
-- Dilated Convolutions with Learnable Spacings (DCLS) provides clean implementation
-- Compatible with existing architecture
-- DelRec works with standard LIF neurons
-- SpiNNaker NATIVELY supports synaptic delays (configurable per synapse)
+SpiNNaker NATIVELY supports synaptic delays (configurable per synapse). this is a natural hardware feature we're not exploiting. training on GPU, deploying with delays on SpiNNaker = clean pipeline.
 
-**Novelty Assessment:** HIGH
-- Delays have been studied for speech but NEVER for environmental sound classification
-- SpiNNaker's native delay support makes hardware deployment novel
-- Clean story: "Biologically-inspired synaptic delays improve temporal pattern recognition in audio SNNs"
-
-**SpiNNaker Angle:** EXCELLENT. SpiNNaker has NATIVE synaptic delay support -- each synapse can have a configurable delay. This is a natural hardware feature that we're not exploiting. Training delays on GPU, deploying with delays on SpiNNaker is a clean pipeline.
+we also ran this -- dendritic + delays gave 61.65% which is our best result.
 
 ---
 
-### IDEA 6: Heterogeneous Neuron Parameters (Learnable Beta)
+### idea 6: heterogeneous neuron parameters (learnable beta)
 
-**Source:** Multiple papers:
-- "Neural heterogeneity as a unifying mechanism for efficient learning in SNNs" (Frontiers 2025)
+sources:
+- "Neural heterogeneity as a unifying mechanism" (Frontiers 2025)
 - "Biologically inspired heterogeneous learning" (National Science Review 2024)
-- "HetSyn: Versatile Timescale Integration via Heterogeneous Synapses" (arXiv 2025)
+- "HetSyn: Versatile Timescale Integration" (arXiv 2025)
 
-**Domain:** Neuroscience (Neural Diversity)
+our SNN uses beta=0.95 for ALL neurons. in the brain every neuron has different membrane properties. making beta a LEARNABLE, PER-NEURON parameter allows specialization:
+- fast neurons (beta=0.7): transient events (clicks, snaps)
+- slow neurons (beta=0.99): long durations (rain, wind)
+- medium neurons (beta=0.90): standard integration
 
-**Core Idea:**
-Our SNN uses beta=0.95 for ALL neurons. In the brain, every neuron has different membrane properties. Making beta a LEARNABLE, PER-NEURON parameter allows different neurons to specialize:
-- Fast neurons (beta=0.7): detect transient events (clicks, snaps)
-- Slow neurons (beta=0.99): integrate over long durations (rain, wind)
-- Medium neurons (beta=0.90): standard temporal integration
+the 50 ESC-50 classes span wildly different temporal scales -- instantaneous (mouse_click), short (dog bark), sustained (rain), periodic (clock_tick). homogeneous beta=0.95 is a compromise for all.
 
-**How It Applies to ESC-50:**
-The 50 ESC-50 classes span wildly different temporal scales:
-- Instantaneous: mouse_click, glass_breaking, clapping
-- Short: dog bark, car_horn, sneezing
-- Sustained: rain, wind, engine, vacuum_cleaner
-- Periodic: clock_tick, footsteps, helicopter
+implementation: change `self.lif1 = snn.Leaky(beta=0.95)` to use learnable beta. snnTorch already supports `learn_beta=True`. ONE LINE of code.
 
-A homogeneous beta=0.95 is a compromise for all. Heterogeneous betas let neurons specialize.
+estimated 2-4pp improvement. also improves adversarial robustness (relevant to our existing experiments).
 
-Implementation: Change `self.lif1 = snn.Leaky(beta=0.95)` to use learnable beta initialized at 0.95 but trainable per neuron.
+easiest idea on this list. zero risk -- if it doesnt help, its just an ablation. zero additional computational cost.
 
-**Expected Impact:**
-- Consistent improvements demonstrated across temporal benchmarks
-- SHD (speech): significant accuracy boost with heterogeneous neurons
-- Also improves adversarial robustness (relevant to our existing experiments)
-- For ESC-50: estimated 2-4 pp improvement
+heterogeneous neurons studied but rarely for audio. never for ESC-50.
 
-**Implementation Feasibility:** VERY HIGH (easiest idea on this list)
-- snnTorch already supports `learn_beta=True` parameter
-- One-line change: `snn.Leaky(beta=0.95, learn_beta=True)`
-- Compatible with all existing training infrastructure
-- Zero additional computational cost
-
-**Novelty Assessment:** MEDIUM-HIGH
-- Heterogeneous neurons are studied but rarely for audio
-- Never applied to ESC-50 or environmental sound
-- Combined with our encoding comparison and SpiNNaker deployment = novel
-
-**SpiNNaker Angle:** Each neuron on SpiNNaker already has individual tau_m parameters. Heterogeneous parameters map directly to hardware.
+SpiNNaker: each neuron already has individual tau_m params. heterogeneous params map directly to hardware.
 
 ---
 
-### IDEA 7: Stochastic Resonance as Trainable Feature
+### idea 7: stochastic resonance as trainable feature
 
-**Source:**
-- "Noise and Dynamical Synapses as Optimization Tools for SNNs" (Entropy, Feb 2025)
-- "Novel classification algorithms inspired by firing rate stochastic resonance" (Nonlinear Dynamics, 2024)
-- "Robust neural networks using stochastic resonance neurons" (Communications Engineering, 2024)
+sources:
+- "Noise and Dynamical Synapses as Optimization Tools" (Entropy, Feb 2025)
+- "Novel classification algorithms inspired by SR" (Nonlinear Dynamics, 2024)
+- "Robust NNs using stochastic resonance" (Comms Engineering, 2024)
 
-**Domain:** Physics (Stochastic Resonance) + Information Theory
+stochastic resonance: adding noise to a nonlinear system can IMPROVE signal detection. counterintuitive but well-established in physics.
 
-**Core Idea:**
-Stochastic resonance: adding noise to a nonlinear system can IMPROVE signal detection. This is counterintuitive but well-established in physics. In SNNs, noise boosts near-threshold membrane potentials to generate spikes that encode weak signals.
+we ALREADY found SR in our SNN (sigma=0.02 gives +0.25pp). but current approach injects FIXED noise. the radical idea: make noise amplitude a TRAINABLE PARAMETER per neuron/layer. let the SNN learn HOW MUCH noise helps each neuron.
 
-**KEY INSIGHT:** We ALREADY found stochastic resonance in our SNN (sigma=0.02 gives +0.25pp). But current approaches inject FIXED noise. The radical idea: make the noise amplitude a TRAINABLE PARAMETER per neuron/layer. Let the SNN learn HOW MUCH noise helps each neuron.
+environmental sounds are inherently noisy. weak sounds (water_drops, breathing, mouse_click) benefit most from SR. different categories have different optimal noise levels.
 
-**How It Applies to ESC-50:**
-- Environmental sounds are inherently noisy (recorded in real environments)
-- Weak sounds (water_drops, breathing, mouse_click) benefit most from SR
-- Different sound categories have different optimal noise levels
-- Our existing SR experiment (sigma=0.02 = +0.25pp) proves the effect exists
+implementation: add learnable noise param: `noise = nn.Parameter(torch.tensor(0.02))`, in forward: `mem = mem + noise * torch.randn_like(mem)`. ~5 lines.
 
-**Expected Impact:**
-- 7-17% improvement for suboptimal parameters (Entropy 2025)
-- Improved robustness to real-world noise
-- For ESC-50: estimated 1-3 pp improvement, but the STORY is powerful
-- Combined with our existing noise robustness results = comprehensive narrative
+from the literature: 7-17% improvement for suboptimal parameters. combined with our existing noise robustness results = comprehensive narrative.
 
-**Implementation Feasibility:** VERY HIGH
-- Add learnable noise parameter: `noise = nn.Parameter(torch.tensor(0.02))`
-- In forward: `mem = mem + noise * torch.randn_like(mem)`
-- ~5 lines of code
-- Compatible with all training infrastructure
+trainable SR is very novel. never applied to audio SNNs. connects physics, neuroscience, and ML. we already have evidence it works.
 
-**Novelty Assessment:** HIGH
-- Trainable stochastic resonance is very novel
-- Never applied to audio SNNs
-- Connects physics (SR), neuroscience (biological noise), and ML
-- We already have experimental evidence it works (our SR experiment)
-
-**SpiNNaker Angle:** SpiNNaker has inherent hardware noise (quantization, timing jitter) that acts as a natural SR source. We could quantify this: "SpiNNaker's hardware noise acts as beneficial stochastic resonance."
+SpiNNaker has inherent hardware noise (quantization, timing jitter) that acts as natural SR. could quantify: "SpiNNaker's hardware noise acts as beneficial stochastic resonance."
 
 ---
 
-### IDEA 8: Predictive Coding SNN
+### idea 8: predictive coding SNN
 
-**Source:**
-- "Predictive Coding Light" (Nature Communications 2025)
-- "Predictive coding with spiking neural networks: A survey" (Neural Networks 2025)
+sources:
+- "Predictive Coding Light" (Nature Comms 2025)
+- "Predictive coding with SNNs: A survey" (Neural Networks 2025)
 
-**Domain:** Neuroscience (Predictive Coding / Free Energy Principle)
+the brain constantly PREDICTS its inputs and only transmits PREDICTION ERRORS up the hierarchy. PCL suppresses predictable spikes and transmits compressed representations. reduces spike activity (energy savings) while preserving information.
 
-**Core Idea:**
-The brain constantly PREDICTS its inputs and only transmits PREDICTION ERRORS up the hierarchy. PCL (Predictive Coding Light) suppresses predictable spikes and transmits compressed representations. This reduces spike activity (energy savings) while preserving information.
+environmental sounds have LOTS of redundancy:
+- sustained sounds (rain, engine) highly predictable after first 100ms
+- SNN wastes energy re-transmitting same pattern 25 times
+- predictive coding suppresses redundant spikes, focuses on NOVEL features
+- transitions (onset, offset, changes) carry most info
 
-**How It Applies to ESC-50:**
-Environmental sounds have LOTS of redundancy:
-- Sustained sounds (rain, engine) are highly predictable after the first 100ms
-- The SNN wastes energy re-transmitting the same pattern 25 times
-- Predictive coding would suppress redundant spikes and focus on NOVEL features
-- Transitions (onset, offset, changes) carry the most information
+requires top-down connections (feedback from higher layers). PCL uses inhibitory STDP -- different from surrogate gradients. hybrid approach possible: keep surrogates but add predictive suppression. more architectural change than parameter change.
 
-**Expected Impact:**
-- Significant energy reduction (fewer spikes, same or better accuracy)
-- Potentially better accuracy by focusing on informative features
-- Natural fit with the SpiNNaker energy narrative
-
-**Implementation Feasibility:** MEDIUM
-- Requires top-down connections (feedback from higher layers)
-- PCL uses inhibitory STDP -- different from our surrogate gradient training
-- Hybrid approach possible: keep surrogate gradients but add predictive suppression
-- More architectural change than parameter change
-
-**Novelty Assessment:** VERY HIGH
-- Predictive coding SNNs are frontier research (Nature Communications 2025)
-- NEVER applied to audio classification
-- Would be genuinely novel contribution
+predictive coding SNNs are frontier research (Nature Comms 2025). NEVER applied to audio. genuinely novel.
 
 ---
 
-### IDEA 9: Dopamine-Modulated Three-Factor Learning
+### idea 9: dopamine-modulated three-factor learning
 
-**Source:**
-- "Three-factor learning in SNNs: An overview" (Patterns / Cell Press, 2025)
-- "Synchrony-Gated Plasticity with Dopamine Modulation" (TMLR, Dec 2025)
-- "DA-SSDP: Dopamine-Modulated Spike-Synchrony-Dependent Plasticity"
+sources:
+- "Three-factor learning in SNNs: Overview" (Patterns / Cell Press, 2025)
+- "DA-SSDP: Synchrony-Gated Plasticity with Dopamine Modulation" (TMLR, Dec 2025)
 
-**Domain:** Neuroscience (Neuromodulation) + Reinforcement Learning
+standard SNN training uses surrogate gradients (2-factor: pre + post synaptic activity). three-factor adds a THIRD signal: neuromodulator (like dopamine) representing global reward/error.
 
-**Core Idea:**
-Standard SNN training uses surrogate gradients (2-factor: pre + post synaptic activity). Three-factor learning adds a THIRD signal: a neuromodulator (like dopamine) that represents global reward/error. This modulates plasticity based on task performance.
+could address overfitting (1600 training samples, our SNN overfits heavily). dopamine modulation acts as bio-inspired regularizer. three-factor learning more robust with small datasets. could improve training stability (burst encoding failed partly due to instability).
 
-DA-SSDP: keep surrogate gradient forward pass but ADD dopamine-modulated plasticity as a regularizer or fine-tuning step. The dopamine signal is derived from the loss function.
+DA-SSDP code available (GitHub: NeuroSyd/DA-SSDP). can be added as auxiliary loss alongside standard training.
 
-**How It Applies to ESC-50:**
-- Could address the overfitting problem (1600 training samples, our SNN overfits heavily)
-- Dopamine modulation acts as a biologically-inspired regularizer
-- Three-factor learning is more robust with small datasets
-- Could improve training stability (our burst encoding failed partly due to training instability)
-
-**Expected Impact:**
-- Improved generalization on small datasets
-- More biologically plausible training
-- For ESC-50: potentially 1-3 pp improvement via better regularization
-
-**Implementation Feasibility:** MEDIUM
-- DA-SSDP code is available (GitHub: NeuroSyd/DA-SSDP)
-- Can be added as auxiliary loss term alongside standard training
-- Compatible with existing architecture
-
-**Novelty Assessment:** VERY HIGH
-- Three-factor learning survey is from 2025 -- cutting edge
-- Never applied to audio classification
-- Strong biological motivation narrative
+three-factor learning survey is from 2025 -- cutting edge. never applied to audio. strong biological motivation.
 
 ---
 
-### IDEA 10: Astrocyte-Augmented SNN
+### idea 10: astrocyte-augmented SNN
 
-**Source:**
-- "Astrocyte-gated multi-timescale plasticity for online continual learning" (PMC 2025)
+sources:
+- "Astrocyte-gated multi-timescale plasticity" (PMC 2025)
 - "Characterizing Learning in SNNs with Astrocyte-Like Units" (arXiv Mar 2025)
 - "Neuron-astrocyte associative memory" (PNAS 2025)
 
-**Domain:** Neuroscience (Glial Cell Computation)
+the brain isnt just neurons -- astrocytes (glial cells) modulate neural activity on SLOW timescales (seconds to minutes). they integrate activity, release gliotransmitters that gate plasticity, enhance memory capacity.
 
-**Core Idea:**
-The brain isn't just neurons -- astrocytes (glial cells) modulate neural activity on SLOW timescales (seconds to minutes). They integrate neuronal activity, release gliotransmitters that gate synaptic plasticity, and enhance memory capacity. Recent PNAS 2025 paper shows astrocytes enhance associative memory.
+add "astrocyte" modules:
+1. monitor average spike rates in local populations
+2. modulate excitability on slow timescales
+3. gate synaptic updates based on recent history
 
-Add "astrocyte" modules that:
-1. Monitor average spike rates in local neuron populations
-2. Modulate excitability of those neurons on slow timescales
-3. Gate synaptic updates based on recent history
+astrocytes operating on slow timescales (our 5-second clips!) could capture clip-level statistics. gate plasticity based on category difficulty. optimal ratio of ~2:1 mirrors biology.
 
-**How It Applies to ESC-50:**
-- Astrocytes operating on slow timescales (5-second sound clips!) could capture clip-level statistics
-- Gate synaptic plasticity based on sound category difficulty
-- Optimal astrocyte-to-neuron ratio of ~2:1 mirrors biological ratios
-- Could address catastrophic forgetting in continual learning (relevant to our CL experiments)
+implementation: slow exponential moving average of spike rates, multiply neuron thresholds by astrocyte output. ~30 lines.
 
-**Expected Impact:**
-- Better accuracy on temporal tasks
-- Improved continual learning (relevant to our existing experiments)
-- More biologically plausible system
-
-**Implementation Feasibility:** MEDIUM
-- Add astrocyte module: slow exponential moving average of spike rates
-- Multiply neuron thresholds by astrocyte output
-- ~30 lines of code for basic implementation
-
-**Novelty Assessment:** VERY HIGH
-- Astrocyte-augmented SNNs for audio is completely unprecedented
-- PNAS 2025 paper makes this cutting-edge
+PNAS 2025 paper makes this cutting-edge. astrocyte-augmented SNNs for audio is completely unprecedented.
 
 ---
 
-## TIER 3: Strong Ideas, Good Novelty
+## tier 3: strong ideas, good novelty
 
 ---
 
-### IDEA 11: Liquid State Machine with Trained Readout on SpiNNaker
+### idea 11: liquid state machine with trained readout on SpiNNaker
 
-**Source:** "Liquid State Machine on SpiNNaker for Spatio-Temporal Classification Tasks" (Frontiers 2022)
-**Domain:** Physics (Reservoir Computing) + Hardware Co-Design
+source: "Liquid State Machine on SpiNNaker for Spatio-Temporal Classification" (Frontiers 2022)
 
-**Core Idea:**
-Instead of training the full SNN, use a random UNTRAINED reservoir of recurrent spiking neurons (the "liquid") on SpiNNaker, and only train a readout layer. The reservoir's rich dynamics naturally separate temporal patterns. LSMs have been demonstrated on SpiNNaker achieving 94.43% on N-MNIST.
+random UNTRAINED reservoir of recurrent spiking neurons on SpiNNaker. only train readout layer. LSMs demonstrated 94.43% on N-MNIST.
 
-**How It Applies to ESC-50:**
-- Create a reservoir of ~1000 LIF neurons with random recurrent connections on SpiNNaker
-- Feed audio spike trains into reservoir
-- Train only the readout (256->50 linear layer) offline
-- The reservoir's dynamics naturally separate environmental sounds
+for ESC-50: ~1000 LIF neurons with random recurrent connections on SpiNNaker, feed audio spikes, train only 256->50 readout offline.
 
-**Implementation Feasibility:** HIGH -- LSMs already run on SpiNNaker
-**Novelty:** MEDIUM -- LSMs on SpiNNaker exist, but not for audio/environmental sound
+LSMs already run on SpiNNaker. but not for audio/environmental sound.
 
 ---
 
-### IDEA 12: Information Bottleneck Training
+### idea 12: information bottleneck training
 
-**Source:** "Learning to Time-Decode in SNNs Through the Information Bottleneck" (NeurIPS 2024)
-**Domain:** Information Theory
+source: "Learning to Time-Decode in SNNs Through the Information Bottleneck" (NeurIPS 2024)
 
-**Core Idea:**
-SNIB framework compresses spiking representations using an information bottleneck, improving robustness and generalization. Higher-order variants (SOIB, TOIB) achieve even better results.
+SNIB framework compresses spiking representations via information bottleneck. higher-order variants (SOIB, TOIB) do even better.
 
-**Implementation Feasibility:** MEDIUM -- requires modifying loss function
-**Novelty for ESC-50:** HIGH -- never applied to environmental sound SNNs
+requires modifying loss function. never applied to environmental sound SNNs.
 
 ---
 
-### IDEA 13: Cochleagram (Gammatone Filterbank) Front-End
+### idea 13: cochleagram (gammatone filterbank)
 
-**Source:** "Benchmarking Audio Signal Representation Techniques" (PMC 2021)
-**Domain:** Auditory Science
+source: "Benchmarking Audio Signal Representations" (PMC 2021)
 
-**Core Idea:**
-Replace mel spectrogram with cochleagram (gammatone filterbank). Cochleagrams consistently outperform mel spectrograms by ~5% on sound event datasets because gammatone filters better model the cochlea with finer resolution at low frequencies where most environmental sound energy concentrates.
+replace mel spectrogram with cochleagram. consistently outperforms mel by ~5% on sound events because gammatone filters better model the cochlea with finer low-frequency resolution.
 
-**Implementation Feasibility:** VERY HIGH -- `pip install gammatone`, swap preprocessing
-**Novelty for ESC-50:** MEDIUM -- cochleagrams exist for CNNs but not for SNNs on ESC-50
+`pip install gammatone`, swap preprocessing. very easy. cochleagrams exist for CNNs but not for SNNs on ESC-50.
 
----
-
-### IDEA 14: Hyperdimensional Computing (HDC) Spike Encoder
-
-**Source:** "HyperEncoding: SNNs with Hyperdimensional Encoding" (GLSVLSI 2025)
-**Domain:** Brain-Inspired Computing (Kanerva's theory)
-
-**Core Idea:**
-Encode audio features as high-dimensional binary vectors (~10,000 dims) using HDC operations (bind, bundle, permute). These vectors are inherently robust to noise and can be processed efficiently by single-layer SNNs. HyperSpike achieves 31.5x more robustness to errors.
-
-**Implementation Feasibility:** MEDIUM
-**Novelty for ESC-50:** VERY HIGH -- completely unexplored territory
+we already tested this -- cochleagram SNN got 55.35% which is +8.2pp over mel. confirms the hypothesis.
 
 ---
 
-### IDEA 15: Spike-Driven Attention / Spiking Transformer
+### idea 14: hyperdimensional computing spike encoder
 
-**Source:** "Spiking Transformer with Spatial-Temporal Attention" (CVPR 2025)
-**Domain:** NLP/Vision (Transformer) adapted for spikes
+source: "HyperEncoding: SNNs with Hyperdimensional Encoding" (GLSVLSI 2025)
 
-**Core Idea:**
-Replace matrix multiplications in attention with spike-driven masking operations. Each spectrogram patch becomes a spiking token. Spike-Driven Self-Attention (SDSA) uses purely binary spike transmission.
+encode audio features as 10,000-dim binary vectors using HDC ops. inherently robust to noise. HyperSpike gets 31.5x more robustness.
 
-**Implementation Feasibility:** MEDIUM-LOW -- significant architecture change
-**Novelty for ESC-50:** HIGH -- spiking transformers for audio are very rare
+completely unexplored for ESC-50.
 
 ---
 
-### IDEA 16: ANN-to-SNN Knowledge Distillation
+### idea 15: spike-driven attention / spiking transformer
 
-**Source:** Multiple 2024-2025 papers on SNN-specific distillation
-**Domain:** Machine Learning (Knowledge Transfer)
+source: "Spiking Transformer with Spatial-Temporal Attention" (CVPR 2025)
 
-**Core Idea:**
-Train our 63.85% ANN as a TEACHER, then distill its knowledge into the SNN STUDENT. The SNN learns to match the ANN's soft probability distributions, not just hard labels. Recent methods (SAMD, HTA-KL) are specifically designed for the ANN-SNN distributional mismatch.
+replace matrix multiplications in attention with spike-driven masking. Spike-Driven Self-Attention uses purely binary transmission.
 
-**Implementation Feasibility:** HIGH -- we already have trained ANNs for each fold
-**Novelty for ESC-50:** MEDIUM -- KD is established, but SNN-specific KD for audio is novel
+significant architecture change. spiking transformers for audio are very rare.
 
 ---
 
-### IDEA 17: Recurrent SNN with E-prop On-Chip Learning on SpiNNaker
+### idea 16: ANN-to-SNN knowledge distillation
 
-**Source:** "E-prop on SpiNNaker 2" (Frontiers 2022)
-**Domain:** Hardware Co-Design + Biologically-Plausible Learning
+source: multiple 2024-2025 papers
 
-**Core Idea:**
-Train a recurrent SNN DIRECTLY on SpiNNaker using E-prop (eligibility propagation), a biologically plausible approximation to BPTT. Already achieved 91.12% on Google Speech Commands on SpiNNaker 2 with only 680KB memory.
+train our 63.85% ANN as teacher, distill into SNN student. recent methods (SAMD, HTA-KL) designed for ANN-SNN distributional mismatch.
 
-**Implementation Feasibility:** LOW -- requires SpiNNaker 2 (we have SpiNNaker 1)
-**Novelty for ESC-50:** VERY HIGH -- on-chip learning for environmental sound is unprecedented
+we already have trained ANNs for each fold. but our experience with KD has been negative so far.
 
 ---
 
-### IDEA 18: Topological Data Analysis of Spike Trains
+### idea 17: recurrent SNN with e-prop on SpiNNaker
 
-**Source:** "A Persistent Homology Pipeline for Neural Spike Train Data" (arXiv Dec 2025)
-**Domain:** Mathematics (Algebraic Topology)
+source: "E-prop on SpiNNaker 2" (Frontiers 2022)
 
-**Core Idea:**
-Use persistent homology to extract topological features from spike train ensembles. These features capture structural patterns invisible to standard metrics. Could reveal WHY different encodings perform differently.
+train recurrent SNN directly on SpiNNaker using e-prop (eligibility propagation). already got 91.12% on Google Speech Commands on SpiNNaker 2 with 680KB.
 
-**Implementation Feasibility:** MEDIUM -- `pip install ripser`, analysis tool
-**Novelty for ESC-50:** VERY HIGH -- completely unprecedented analysis approach
+needs SpiNNaker 2 (we have SpiNNaker 1). on-chip learning for environmental sound would be unprecedented though.
 
 ---
 
-## RECOMMENDATION: Top 3 Ideas to Pursue
+### idea 18: topological data analysis of spike trains
 
-Based on the analysis of impact, feasibility, novelty, and SpiNNaker compatibility:
+source: "A Persistent Homology Pipeline for Neural Spike Train Data" (arXiv Dec 2025)
 
-### FIRST CHOICE: Dendritic Computation (IDEA 2)
+use persistent homology to extract topological features from spike trains. could reveal WHY different encodings perform differently.
 
-**Why:**
-1. **Highest feasibility** -- only requires modifying the neuron model
-2. **Natural fit for audio** -- multi-timescale temporal processing
-3. **SpiNNaker compatible** -- dendrites map to additional neurons on hardware
-4. **Clean narrative** -- "Bio-inspired dendritic computation enables multi-scale temporal processing for environmental sound"
-5. **Builds on existing work** -- same architecture, same training, just better neurons
-6. **Multiple comparison points** -- DendSN vs LIF, different branch counts, heterogeneous vs homogeneous time constants
-7. **Recent publications** -- Nature Communications 2024, PNAS 2025, arXiv Dec 2024
-
-### SECOND CHOICE: Learnable Synaptic Delays (IDEA 5)
-
-**Why:**
-1. **SpiNNaker NATIVELY supports delays** -- this is the most hardware-natural idea
-2. **Well-demonstrated improvements** -- 13-18% accuracy gain in temporal tasks
-3. **Clean implementation** -- DCLS library exists
-4. **Strong narrative** -- "Biologically-inspired synaptic delays enable temporal pattern matching on neuromorphic hardware"
-5. **Only idea that fully exploits SpiNNaker's capabilities**
-
-### THIRD CHOICE: Heterogeneous Learnable Beta (IDEA 6)
-
-**Why:**
-1. **Easiest to implement** -- ONE LINE of code change
-2. **Risk-free** -- if it doesn't help, it's just an ablation
-3. **Complements other ideas** -- can be combined with dendrites or delays
-4. **Quick win** -- could run all 5 folds in hours
+`pip install ripser`. analysis tool, not a training method. completely unprecedented for ESC-50.
 
 ---
 
-## COMBINATION STRATEGY
+## recommendation: top 3 to pursue
 
-The most impactful paper would COMBINE multiple ideas:
+### first choice: dendritic computation (idea 2)
 
-**"Bio-Inspired Multi-Scale Temporal Processing for Environmental Sound Classification on Neuromorphic Hardware"**
+why:
+1. highest feasibility -- only modify neuron model
+2. natural fit for audio -- multi-timescale temporal processing
+3. SpiNNaker compatible -- dendrites = additional neurons
+4. clean narrative -- bio-inspired dendritic computation for multi-scale audio
+5. builds on existing work -- same architecture, just better neurons
+6. multiple comparison points -- different branch counts, time constants
+7. recent publications -- Nature Comms 2024, PNAS 2025
 
-1. **Heterogeneous learnable betas** (easy, immediate)
-2. **Dendritic neurons with multi-timescale branches** (medium effort, high impact)
-3. **Learnable synaptic delays** (medium effort, SpiNNaker-native)
-4. Deploy the full system on SpiNNaker, exploiting hardware-native delays
+### second choice: learnable synaptic delays (idea 5)
 
-This creates a comprehensive story: "We bring three biologically-inspired mechanisms (heterogeneous membrane dynamics, dendritic computation, and synaptic delays) to environmental sound classification on neuromorphic hardware, achieving X% improvement over standard LIF-based SNNs."
+why:
+1. SpiNNaker NATIVELY supports delays -- most hardware-natural idea
+2. well-demonstrated -- 13-18% accuracy gain
+3. clean implementation -- DCLS library
+4. only idea that fully exploits SpiNNaker's capabilities
+
+### third choice: heterogeneous learnable beta (idea 6)
+
+why:
+1. easiest to implement -- ONE LINE of code
+2. risk-free -- worst case its just an ablation
+3. complements others -- can combine with dendrites or delays
+4. quick win -- all 5 folds in hours
 
 ---
 
-## Research Gaps Identified
+## combination strategy
 
-1. **ZERO prior work** combining dendritic SNNs with audio classification
-2. **ZERO prior work** using learnable delays for environmental sound
-3. **ZERO prior work** on Spiking-LEAF for non-speech audio
-4. **ZERO prior work** on oscillatory modulation for sound classification
-5. **ZERO prior work** on astrocyte-augmented SNNs for audio
-6. **ZERO prior work** on information bottleneck training for audio SNNs
-7. **ZERO prior work** on three-factor learning for audio SNNs
-8. **ZERO prior work** on hyperdimensional spike encoding for ESC-50
+the most impactful paper would combine multiple:
 
-Every single idea above would be the FIRST application to environmental sound classification with SNNs.
+"bio-inspired multi-scale temporal processing for environmental sound classification on neuromorphic hardware"
+
+1. heterogeneous learnable betas (easy, immediate)
+2. dendritic neurons with multi-timescale branches (medium effort, high impact)
+3. learnable synaptic delays (medium effort, SpiNNaker-native)
+4. deploy full system on SpiNNaker exploiting hardware-native delays
+
+this creates a comprehensive story: "we bring three biologically-inspired mechanisms (heterogeneous dynamics, dendritic computation, synaptic delays) to environmental sound on neuromorphic hardware, achieving X% improvement over standard LIF SNNs."
 
 ---
 
-## Sources
+## research gaps found
 
-### State Space Models + SNNs
-- [P-SpikeSSM: Harnessing Probabilistic Spiking State Space Models](https://arxiv.org/html/2406.02923v1)
-- [SPikE-SSM: A Sparse, Precise, and Efficient Spiking State Space Model](https://arxiv.org/abs/2410.17268)
-- [SpikingSSMs: Learning Long Sequences with Sparse and Parallel Spiking SSMs (AAAI 2025)](https://ojs.aaai.org/index.php/AAAI/article/view/34245)
+1. ZERO prior work combining dendritic SNNs with audio
+2. ZERO prior work using learnable delays for environmental sound
+3. ZERO prior work on Spiking-LEAF for non-speech audio
+4. ZERO prior work on oscillatory modulation for sound classification
+5. ZERO prior work on astrocyte-augmented SNNs for audio
+6. ZERO prior work on information bottleneck for audio SNNs
+7. ZERO prior work on three-factor learning for audio SNNs
+8. ZERO prior work on hyperdimensional spike encoding for ESC-50
 
-### Dendritic Computation
-- [Flexible and Scalable Deep Dendritic SNNs (Dec 2024)](https://arxiv.org/html/2412.06355v1)
-- [Temporal dendritic heterogeneity in SNNs (Nature Communications 2024)](https://www.nature.com/articles/s41467-023-44614-z)
-- [Dendrites endow ANNs with accurate, robust learning (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-56297-9)
-- [Spiking world model with multicompartment neurons (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2513319122)
-- [Dendrify framework (Nature Communications 2022)](https://www.nature.com/articles/s41467-022-35747-8)
+every single idea above would be the FIRST application to environmental sound classification with SNNs.
 
-### Cochlear / Auditory Frontends
-- [Spiking-LEAF: Learnable Auditory front-end (ICASSP 2024)](https://arxiv.org/abs/2309.09469)
-- [SNN Framework for Robust Sound Classification](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2018.00836/full)
-- [Event-driven spectrotemporal feature extraction using silicon cochlea](https://pmc.ncbi.nlm.nih.gov/articles/PMC10151790/)
-- [Benchmarking Audio Signal Representations for CNNs](https://pmc.ncbi.nlm.nih.gov/articles/PMC8156023/)
+---
 
-### Learnable Delays
-- [Learnable axonal delay improves spoken word recognition](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1275944/full)
-- [DelRec: learning delays in recurrent SNNs](https://arxiv.org/html/2509.24852v1)
-- [Learning delays through gradients and structure (2024)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2024.1460309/full)
+## sources
 
-### Oscillatory Modulation
-- [Rhythm-SNN: Efficient temporal processing with neural oscillations (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-63771-x)
-- [Deep oscillatory neural network (Scientific Reports 2025)](https://www.nature.com/articles/s41598-025-24837-4)
+### state space models + SNNs
+- [P-SpikeSSM](https://arxiv.org/html/2406.02923v1)
+- [SPikE-SSM](https://arxiv.org/abs/2410.17268)
+- [SpikingSSMs (AAAI 2025)](https://ojs.aaai.org/index.php/AAAI/article/view/34245)
 
-### Stochastic Resonance
-- [Noise and Dynamical Synapses as Optimization Tools (Entropy 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11941097/)
-- [Novel classification algorithms inspired by stochastic resonance (2024)](https://link.springer.com/article/10.1007/s11071-024-10146-4)
-- [Robust neural networks using stochastic resonance (2024)](https://www.nature.com/articles/s44172-024-00314-0)
+### dendritic computation
+- [Deep Dendritic SNNs (Dec 2024)](https://arxiv.org/html/2412.06355v1)
+- [Temporal dendritic heterogeneity (Nature Comms 2024)](https://www.nature.com/articles/s41467-023-44614-z)
+- [Dendrites endow ANNs (Nature Comms 2025)](https://www.nature.com/articles/s41467-025-56297-9)
+- [Spiking world model (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2513319122)
+- [Dendrify (Nature Comms 2022)](https://www.nature.com/articles/s41467-022-35747-8)
 
-### Predictive Coding
-- [Predictive Coding Light (Nature Communications 2025)](https://www.nature.com/articles/s41467-025-64234-z)
-- [Predictive coding with spiking neural networks: A survey (2025)](https://arxiv.org/abs/2409.05386)
+### cochlear / auditory frontends
+- [Spiking-LEAF (ICASSP 2024)](https://arxiv.org/abs/2309.09469)
+- [SNN for Robust Sound Classification](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2018.00836/full)
+- [Silicon cochlea feature extraction](https://pmc.ncbi.nlm.nih.gov/articles/PMC10151790/)
+- [Benchmarking Audio Representations](https://pmc.ncbi.nlm.nih.gov/articles/PMC8156023/)
 
-### Three-Factor Learning / Neuromodulation
-- [Three-factor learning in SNNs: Overview (Patterns/Cell Press 2025)](https://www.sciencedirect.com/science/article/pii/S2666389925002624)
-- [DA-SSDP: Synchrony-Gated Plasticity with Dopamine Modulation (TMLR 2025)](https://arxiv.org/abs/2512.07194)
+### learnable delays
+- [Learnable axonal delay (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1275944/full)
+- [DelRec](https://arxiv.org/html/2509.24852v1)
+- [Learning delays (Frontiers 2024)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2024.1460309/full)
 
-### Astrocyte Modulation
-- [Astrocyte-gated multi-timescale plasticity (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12886396/)
-- [Characterizing Learning in SNNs with Astrocyte-Like Units (arXiv 2025)](https://arxiv.org/abs/2503.06798)
-- [Neuron-astrocyte associative memory (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2417788122)
+### oscillatory modulation
+- [Rhythm-SNN (Nature Comms 2025)](https://www.nature.com/articles/s41467-025-63771-x)
+- [Deep oscillatory NN (Sci Rep 2025)](https://www.nature.com/articles/s41598-025-24837-4)
 
-### Heterogeneous Neurons
-- [Neural heterogeneity for efficient learning in SNNs (Frontiers 2025)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2025.1661070/full)
-- [HetSyn: Heterogeneous Synapses (arXiv 2025)](https://arxiv.org/html/2508.11644)
-- [Biologically inspired heterogeneous learning (NSR 2024)](https://academic.oup.com/nsr/article/12/1/nwae301/7746334)
+### stochastic resonance
+- [Noise as Optimization (Entropy 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11941097/)
+- [SR-inspired classification (2024)](https://link.springer.com/article/10.1007/s11071-024-10146-4)
+- [Robust NNs using SR (2024)](https://www.nature.com/articles/s44172-024-00314-0)
 
-### Reservoir Computing / LSM
-- [Liquid State Machine on SpiNNaker (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.819063/full)
-- [Optimizing Reservoir Separability in LSMs (2025)](https://www.mdpi.com/2079-9268/15/1/4)
+### predictive coding
+- [PCL (Nature Comms 2025)](https://www.nature.com/articles/s41467-025-64234-z)
+- [PC with SNNs survey (2025)](https://arxiv.org/abs/2409.05386)
 
-### Information Bottleneck
-- [Learning to Time-Decode via Information Bottleneck (NeurIPS 2024)](https://openreview.net/forum?id=Fw0IQgaGlhh)
+### three-factor learning / neuromodulation
+- [Three-factor overview (Patterns 2025)](https://www.sciencedirect.com/science/article/pii/S2666389925002624)
+- [DA-SSDP (TMLR 2025)](https://arxiv.org/abs/2512.07194)
 
-### Spiking Transformers
-- [Spiking Transformer with Spatial-Temporal Attention (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Spiking_Transformer_with_Spatial-Temporal_Attention_CVPR_2025_paper.pdf)
-- [Accurate Addition-Only Spiking Self-Attention (arXiv 2025)](https://arxiv.org/abs/2503.00226)
+### astrocyte modulation
+- [Astrocyte-gated plasticity (PMC 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12886396/)
+- [Astrocyte-Like Units (arXiv 2025)](https://arxiv.org/abs/2503.06798)
+- [Neuron-astrocyte memory (PNAS 2025)](https://www.pnas.org/doi/10.1073/pnas.2417788122)
 
-### Hardware Co-Design
+### heterogeneous neurons
+- [Neural heterogeneity (Frontiers 2025)](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2025.1661070/full)
+- [HetSyn (arXiv 2025)](https://arxiv.org/html/2508.11644)
+- [Heterogeneous learning (NSR 2024)](https://academic.oup.com/nsr/article/12/1/nwae301/7746334)
+
+### reservoir computing / LSM
+- [LSM on SpiNNaker (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.819063/full)
+- [Optimizing Reservoir (2025)](https://www.mdpi.com/2079-9268/15/1/4)
+
+### info bottleneck
+- [SNIB (NeurIPS 2024)](https://openreview.net/forum?id=Fw0IQgaGlhh)
+
+### spiking transformers
+- [Spiking Transformer (CVPR 2025)](https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Spiking_Transformer_with_Spatial-Temporal_Attention_CVPR_2025_paper.pdf)
+- [Addition-Only Spiking Attention (arXiv 2025)](https://arxiv.org/abs/2503.00226)
+
+### hardware co-design
 - [E-prop on SpiNNaker 2 (Frontiers 2022)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.1018006/full)
-- [Event-based backpropagation on SpiNNaker2 (Dec 2024)](https://arxiv.org/abs/2412.15021)
-- [SpiNNaker2: Large-Scale Neuromorphic System (2024)](https://arxiv.org/html/2401.04491v1)
+- [Event-based backprop on SpiNNaker2 (Dec 2024)](https://arxiv.org/abs/2412.15021)
+- [SpiNNaker2 large-scale (2024)](https://arxiv.org/html/2401.04491v1)
 
-### Topological Data Analysis
-- [Persistent Homology Pipeline for Neural Spike Trains (Dec 2025)](https://arxiv.org/abs/2512.08637)
+### topological data analysis
+- [Persistent Homology for Spike Trains (Dec 2025)](https://arxiv.org/abs/2512.08637)
 
-### Hyperdimensional Computing
-- [HyperEncoding: SNNs with Hyperdimensional Encoding (GLSVLSI 2025)](https://dl.acm.org/doi/10.1145/3716368.3735233)
+### hyperdimensional computing
+- [HyperEncoding (GLSVLSI 2025)](https://dl.acm.org/doi/10.1145/3716368.3735233)
 
-### Environmental Sound with SNNs
-- [Spike Encoding for Environmental Sound: Comparative Benchmark (Mar 2025)](https://arxiv.org/html/2503.11206v1)
-- [PDM Microphones for Neuromorphic Keyword Spotting (Interspeech 2024)](https://arxiv.org/html/2408.05156v1)
+### environmental sound with SNNs
+- [Spike Encoding Benchmark (Mar 2025)](https://arxiv.org/html/2503.11206v1)
+- [PDM Microphones neuromorphic KWS (Interspeech 2024)](https://arxiv.org/html/2408.05156v1)
 
-### Knowledge Distillation
-- [A Closer Look at KD in SNN Training (Nov 2025)](https://arxiv.org/abs/2511.06902)
-- [LaSNN: Layer-wise ANN-to-SNN distillation (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225020235)
+### knowledge distillation
+- [Closer Look at KD in SNN (Nov 2025)](https://arxiv.org/abs/2511.06902)
+- [LaSNN: Layer-wise distillation (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0925231225020235)
 
-### Self-Supervised Learning
+### self-supervised learning
 - [Contrastive signal-dependent plasticity (Science Advances 2024)](https://www.science.org/doi/10.1126/sciadv.adn6076)
 
-### Criticality
-- [Mean-field approach to criticality in SNNs for reservoir computing (Sci Reports 2025)](https://www.nature.com/articles/s41598-025-18004-y)
+### criticality
+- [Mean-field criticality in SNNs (Sci Rep 2025)](https://www.nature.com/articles/s41598-025-18004-y)
 
-### Lateral Inhibition
-- [Inhibition SNN: various lateral inhibition learning (2024)](https://link.springer.com/article/10.1007/s42452-024-06332-z)
-- [SpiLiFormer: Spiking Transformers with Lateral Inhibition (ICCV 2025)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1652274/full)
+### lateral inhibition
+- [Inhibition SNN (2024)](https://link.springer.com/article/10.1007/s42452-024-06332-z)
+- [SpiLiFormer (ICCV 2025)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1652274/full)
 
-### Adaptive Threshold
-- [AT-LIF: Adaptive Threshold Leaky Integrate-and-Fire (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0950705125006215)
-- [Learning Neuron Dynamics within Deep SNNs (2025)](https://arxiv.org/pdf/2510.07341)
+### adaptive threshold
+- [AT-LIF (2025)](https://www.sciencedirect.com/science/article/abs/pii/S0950705125006215)
+- [Learning Neuron Dynamics (2025)](https://arxiv.org/pdf/2510.07341)

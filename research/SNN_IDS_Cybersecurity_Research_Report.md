@@ -227,31 +227,3 @@ Most SNN papers use NSL-KDD (outdated) or CSE-CIC-IDS2018. Applying SNNs to newe
 No work has explored what the spiking patterns mean -- i.e., can we visualize or explain which spike patterns correspond to which attack types? This connects to the broader XAI (Explainable AI) movement.
 
 **Gap 4: Practical edge deployment demonstration.**
-While papers claim edge suitability, very few have actually deployed an SNN-IDS on actual edge hardware (e.g., Raspberry Pi, Jetson Nano, or a real neuromorphic chip). A working demonstration would be highly valued.
-
-**Gap 5: SNN-IDS for specific emerging threats.**
-Applying SNNs to specific attack categories that are underexplored: encrypted traffic attacks, DNS tunneling, or supply chain attacks.
-
-**Gap 6: Hybrid SNN + traditional ML pipeline.**
-Using SNN as a fast first-stage filter (binary: normal/anomalous) followed by a traditional classifier for attack-type classification. This mirrors the two-stage approach in Mia et al. (2025) but with a simpler, more practical design.
-
-**Gap 7: Transfer learning across IDS datasets with SNNs.**
-Testing whether an SNN trained on one dataset generalizes to another without retraining -- important for real-world deployment.
-
-### 7.4 Recommended Thesis Angle
-
-For an achievable yet novel undergraduate thesis, I recommend:
-
-**Title concept**: "Evaluating Spike Encoding Strategies for Energy-Efficient Network Intrusion Detection Using Spiking Neural Networks"
-
-**Scope**:
-1. Implement a baseline SNN-IDS using snnTorch on UNSW-NB15 and NSL-KDD
-2. Compare 3-4 different spike encoding methods (rate, temporal, latency, delta)
-3. Benchmark against standard ML baselines (RF, SVM, CNN, LSTM)
-4. Measure not just accuracy but also energy proxy metrics (spike count, synaptic operations)
-5. Analyze which encoding best captures the temporal features of network traffic
-
-**Why this works**:
-- Achievable in one semester with existing frameworks
-- Provides a systematic contribution the field lacks
-- Natural comparison structure makes for a clean thesis

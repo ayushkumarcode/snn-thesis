@@ -418,3 +418,25 @@ some things that haven't been done yet that could be interesting:
 - [Pfa-SNN 2025](https://www.sciencedirect.com/science/article/abs/pii/S0893608025000334)
 - [MCRE 2025](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5534158)
 
+### Reviews
+- [Baek & Lee 2024 - SNN and Sound review](https://link.springer.com/article/10.1007/s13534-024-00406-y)
+- [Li et al. 2025 - SNN Temporal Processing review](https://arxiv.org/html/2502.09449v1)
+- [SNN energy efficiency study](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf)
+
+### Frameworks and Code
+- [snnTorch](https://github.com/jeshraghian/snntorch) + [SHD tutorial](https://snntorch.readthedocs.io/en/latest/examples/examples_svision/example_sv_shd.html)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [sparch toolkit](https://github.com/idiap/sparch)
+- [SNN-delays (ICLR 2024)](https://github.com/Thvnvtos/SNN-delays)
+- [Spyx (JAX)](https://github.com/kmheckel/spyx) + [SHD tutorial](https://spyx.readthedocs.io/en/latest/examples/surrogate_gradient/SurrogateGradientTutorial/)
+- [Norse](https://github.com/norse/norse)
+- [Rockpool + SHD tutorial](https://rockpool.ai/tutorials/rockpool-shd.html)
+- [Tonic dataset loader](https://github.com/neuromorphs/tonic)
+- [SE-adLIF code](https://github.com/IGITUGraz/SE-adlif)
+- [Open Neuromorphic framework guide](https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/)
+
+### Student Projects
+- [Musical Pattern Recognition BEng](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks)
+- [SNN Audio on SpiNNaker](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker)
+- [U. Calgary MSc Thesis](https://ucalgary.scholaris.ca/items/d4288028-91ef-436a-ae12-62f07e5ac43b)
+- [U. Padova MSc Thesis (hardware)](https://thesis.unipd.it/retrieve/b7626846-af0e-4988-8610-90698072a72d/Toffano_Marco.pdf)

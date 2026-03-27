@@ -209,19 +209,19 @@ Qualitative observations from the t-SNE plots:
 
 **Super-category clustering:** both models show emergent super-category structure (Animals cluster, Urban cluster) even though super-category labels aren't used in training. Spectral features sufficiently distinctive at that level.
 
-![t-SNE 2D projection of FC₁ representations (256-d → 2D, perplexity=30, 1000 iterations) for all 400 fold-4 test samples, coloured by ESC-50 class (50 classes). Left: SNN direct encoding — diffuse clusters with substantial inter-class overlap. Right: ANN — tighter, more separated class clusters, consistent with higher accuracy (63.85% vs 47.15%).](../results/analysis/tsne_snn_fold4.png)
+**Hardest SNN classes:** those with high within-cluster overlap. Preliminary analysis suggests transient impulsive sounds (glass breaking, sneezing) are harder for SNN than continuous harmonic sounds (insects, water). Consistent with temporal integration accumulating over 25 steps -- impulsive events at single timestep may not trigger sufficient integration.
 
-*SNN (left): `results/analysis/tsne_snn_fold4.png`; ANN (right): `results/analysis/tsne_ann_fold4.png`*
+todo: might want to add quantitative clustering metrics here, not just visual
 
-**Qualitative observations:**
+---
 
-The t-SNE projections reveal a clear qualitative difference in representational geometry between SNN and ANN hidden spaces:
+## 6.5 per-class difficulty analysis
 
-- **ANN representations** show tighter, more separated class clusters. Within-class variance is lower and between-class distances are larger, reflecting the ANN's higher accuracy (63.85%).
+### 6.5.1 setup
 
-- **SNN representations** show more diffuse clusters with greater overlap. Several ESC-50 super-categories (Animals, Nature) form loose macro-clusters even if individual classes are not well-separated, suggesting that the SNN learns coarse categorical structure but fails to discriminate within categories.
+Per-class accuracy for both SNN (direct) and ANN across all 5 folds (n=40 test samples per class total, since 8 per class per fold x 5 folds). From `results/snn/direct/evaluation.json` and `results/ann/none/evaluation.json`.
 
-**Super-category clustering:** Both models exhibit emergent super-category structure (Animals cluster together, Urban sounds cluster together) even though super-category labels are not used during training. This suggests that spectral features are sufficiently distinctive at the super-category level for both models.
+### 6.5.2 results
 
 **Hardest classes (SNN):** Classes with high within-cluster overlap are the hardest for the SNN. Preliminary analysis suggests transient, impulsive sounds (glass breaking, sneezing, gunshots) are harder for the SNN than continuous, harmonic sounds (insects, water). This is consistent with the SNN's temporal integration accumulating evidence over 25 timesteps — impulsive events at a single timestep may not trigger sufficient integration.
 

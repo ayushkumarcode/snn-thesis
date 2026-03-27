@@ -302,31 +302,3 @@ This is the most methodologically important section. A fair comparison requires:
 | **Task** | YES | Same dataset, same classification problem |
 | **Architecture** | YES (or justified) | Same number of layers, kernel sizes, channels |
 | **Accuracy** | YES (within ~1-2%) | Report energy at comparable accuracy levels |
-| **Data type** | YES | Same input resolution, encoding |
-| **Training protocol** | Document fully | Epochs, learning rate, augmentation |
-
-### Step-by-Step Fair Comparison Protocol
-
-1. **Train your ANN baseline** on the chosen task (e.g., CIFAR-10 with VGG-9)
-   - Record: accuracy, FLOPs per inference, parameter count
-
-2. **Train your SNN** with the **same architecture** (replace ReLU with LIF neurons)
-   - Record: accuracy, spike counts per layer per timestep, parameter count
-
-3. **Ensure comparable accuracy** (within 1-2% of ANN)
-   - If SNN accuracy is much lower, the comparison is unfair
-   - If needed, tune hyperparameters (threshold, time constants, timesteps)
-
-4. **Compute energy estimates for both:**
-   ```
-   E_ANN = FLOPs * E_MAC           (where E_MAC = 4.6 pJ at 45nm)
-   E_SNN = SOP * E_AC              (where E_AC = 0.9 pJ at 45nm)
-   ```
-
-5. **Report in a table like this:**
-
-| Model | Accuracy | FLOPs/SOPs | Energy (mJ) | Ratio |
-|-------|----------|-----------|-------------|-------|
-| ANN (VGG-9) | 93.2% | 606M FLOPs | 2.79 | 1.0x |
-| SNN (VGG-9, T=4) | 92.8% | 148M SOPs | 0.13 | 21.2x |
-| SNN (VGG-9, T=8) | 93.1% | 312M SOPs | 0.28 | 10.0x |

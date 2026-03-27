@@ -418,3 +418,4 @@ Discuss: Limitations, hardware assumptions, critical sparsity thresholds
 | **SpikeSim** | CIM evaluator | MEDIUM-HIGH | [Intelligent-Computing-Lab-Panda/SpikeSim](https://github.com/Intelligent-Computing-Lab-Panda/SpikeSim) |
 | **Lava** | Intel framework | MEDIUM | [lava-nc/lava](https://github.com/lava-nc/lava) |
 | **Nengo** | Neural engineering | MEDIUM | [nengo/nengo](https://github.com/nengo/nengo) |
+| **BindsNET** | SNN simulation | LOW-MEDIUM | [BindsNET/bindsnet](https://github.com/BindsNET/bindsnet) |

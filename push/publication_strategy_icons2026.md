@@ -382,31 +382,3 @@ Our SNN adversarial result (SNN 26% vs ANN 1.75% at FGSM eps=0.1) is strong:
 **Deadline: April 1, 2026 (27 days from now)**
 
 **Reasons:**
-1. Perfect topical fit -- neuromorphic systems, SNN, hardware, benchmarking
-2. Novelty is clear -- first SNN on full ESC-50
-3. Multi-contribution paper aligns with what ICONS publishes
-4. Hardware deployment (SpiNNaker) is a first-class contribution at ICONS
-5. Moderate acceptance rate (historically ~59%, likely slightly lower now) -- very achievable
-6. ACM proceedings, properly indexed, open access via UoM institutional agreement (zero APC)
-7. Rebuttal process allows addressing reviewer concerns
-8. Conference is in Chicago, August 2026
-
-### Secondary Recommendations
-
-| Priority | Venue | Timeline | Action |
-|----------|-------|----------|--------|
-| 1st | **ICONS 2026** | Submit by April 1, 2026 | 8-page ACM paper |
-| 2nd | **ICNCE 2026 abstract** | Submit by April 3, 2026 | 1-page abstract for poster/talk (non-proceedings) |
-| 3rd | **NeurIPS 2026 MLNCP Workshop** | Submit ~Oct 2026 | 4-page workshop paper if ICONS succeeds |
-| 4th | **Frontiers in Neuroscience** | Anytime | Expanded journal version (~15 pages) |
-| 5th | **ICASSP 2027** | ~Sep 2026 | Condensed audio-focused version |
-
-### Formatting Checklist for ICONS 2026 Submission
-
-- [ ] Use ACM Conference Proceedings Template from Overleaf
-- [ ] Ensure all authors have ORCID IDs
-- [ ] 8 pages maximum (including references)
-- [ ] Submit via EasyChair: https://easychair.org/conferences?conf=icons26
-- [ ] Follow ACM Publications Policies
-- [ ] Title should emphasize neuromorphic/SNN angle, not just "sound classification"
-

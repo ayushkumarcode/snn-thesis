@@ -138,20 +138,20 @@ spalloc            1!7.4.1
 PyNN               0.12.4
 ```
 
-Published by [SpiNNakerManchester](https://github.com/SpiNNakerManchester) on GitHub/PyPI.
+published by SpiNNakerManchester on GitHub/PyPI.
 
 ---
 
-## Summary Table
+## summary
 
-| Evidence | Finding | Confidence |
+| evidence | finding | confidence |
 |----------|---------|------------|
-| DNS/WHOIS | `130.88.193.57` registered to UoM, Kilburn Building | Definitive |
-| Official docs | `spinnaker.cs.man.ac.uk` is the documented server | Definitive |
-| SC&MP firmware | Version `4.0.0` read via SCP from real chip | Definitive |
-| Hardware specs | 47-48 chips, 836-855 cores, 118 MB SDRAM match SpiNN-5 | Definitive |
-| Spalloc jobs | Multiple board IPs allocated across runs | Strong |
-| IOBUF firmware | ARM968 C logs from individual chip coordinates | Strong |
+| DNS/WHOIS | `130.88.193.57` registered to UoM, Kilburn Building | definitive |
+| official docs | `spinnaker.cs.man.ac.uk` is the documented server | definitive |
+| SC&MP firmware | version `4.0.0` read via SCP from real chip | definitive |
+| hardware specs | 47-48 chips, 836-855 cores, 118 MB SDRAM match SpiNN-5 | definitive |
+| spalloc jobs | multiple board IPs across runs | strong |
+| IOBUF firmware | ARM968 C logs from individual chip coordinates | strong |
 | Timing | 27-37s setup, 25s data loading = real network transfer | Strong |
 | Imperfect hardware | 47/48 chips (faulty chip) impossible in simulation | Strong |
 

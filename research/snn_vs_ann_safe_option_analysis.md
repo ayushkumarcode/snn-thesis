@@ -182,31 +182,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 
 **Why it adds value**: Most naive comparisons are unfair -- different architectures, different training regimes, different hyperparameter budgets. A rigorously controlled comparison is more scientifically valuable than a casual one.
 
-**Key insight from literature**: "On ANN-oriented workloads, SNNs fail to beat their ANN counterparts; while on SNN-oriented workloads, SNNs can fully perform better." Testing this claim with controlled experiments would be valuable.
-
-**Estimated time**: 3-4 weeks
-
-### Angle F: Time Steps vs Accuracy vs Sparsity Pareto Analysis (High Value, Moderate Feasibility)
-
-**What it is**: Systematically vary time steps from T=1 to T=32+ and plot the three-way tradeoff between accuracy, inference latency, and spike sparsity, referencing the framework from ["Exploring Tradeoffs in Spiking Neural Networks"](https://direct.mit.edu/neco/article/35/10/1627/117019/Exploring-Trade-Offs-in-Spiking-Neural-Networks).
-
-**Why it adds value**: This directly addresses the key practical question: "How many time steps do I actually need?" The answer varies by dataset, architecture, and encoding scheme.
-
-**Estimated time**: 3-4 weeks
-
----
-
-## 5. How Many Existing Projects Have Done Exactly This?
-
-### Direct Matches Found (SNN vs ANN comparison on standard benchmarks)
-
-1. **High School Student Paper (2024)**: Published in [NHSJS](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/) -- compared SNN, CNN, and ANN on MNIST, CIFAR-10, N-MNIST. Found SNN matched accuracy but consumed 142% more power and 128% more memory on commercial hardware.
-
-2. **Virginia Tech Class Project (2020)**: [GitHub repo](https://github.com/oshears/adv-ml-2020-snn-project) -- compared 784-100 ANN to 784-100 SNN on MNIST. Graduate course project.
-
-3. **UNSW Bachelor Honours Thesis (2022)**: Investigated biologically-inspired ANNs with spiking neurons, benchmarking against traditional networks on classification tasks.
-
-4. **King's College London BSc (2018)**: [GitHub repo](https://github.com/LucaMozzo/SpikingNeuralNetwork) -- SNN for MNIST digit recognition in C++ from scratch. More implementation-focused than comparison-focused.
-
-5. **Multiple Kaggle/GitHub repos**: Numerous repositories with basic SNN MNIST implementations using snnTorch, SpikingJelly, or Norse.
-

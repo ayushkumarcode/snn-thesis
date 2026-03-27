@@ -138,3 +138,31 @@ def run_fold(fold, device, sparsity_levels):
 
     train_loader, test_loader = get_fold_dataloaders(fold, BATCH_SIZE)
 
+    # Load trained rhythm model
+    model_path = (RESULTS_DIR / "experiments" /
+                  "combo_rhythm_lbeta_drop_sre" / f"best_fold{fold}.pt")
+    if not model_path.exists():
+        print(f"  WARNING: {model_path} not found")
+        return []
+
+    args = build_args(rhythm=True)
+    model = ComboSpikingCNN(args).to(device)
+    model.load_state_dict(
+        torch.load(model_path, map_location=device, weights_only=True))
+
+    # Baseline accuracy
+    base_acc = eval_model(model, test_loader, device)
+    print(f"  Baseline (0% pruning): {base_acc:.4f}")
+
+    results = [{
+        "fold": fold, "target_sparsity": 0.0, "actual_sparsity": 0.0,
+        "accuracy": base_acc, "retention": 1.0,
+    }]
+
+    # Iterative pruning: prune in steps, fine-tune between
+    prev_sparsity = 0.0
+    for target in sparsity_levels:
+        # Reload fresh model for each target (prune from scratch)
+        model = ComboSpikingCNN(args).to(device)
+        model.load_state_dict(
+            torch.load(model_path, map_location=device, weights_only=True))

@@ -138,20 +138,20 @@ Fold 4 forgetting = 74.4%, BWT = -0.744. 5-fold mean: 69.9% +/- 4.3%.
 
 Fold 4 forgetting = 81.3%, BWT = -0.813. 5-fold mean: 74.7% +/- 2.4%.
 
-
-Mean forgetting (fold 4) = 81.3%. Mean BWT = −0.813. 5-fold validated mean: **74.7% ± 2.4%**.
-
-*Source: `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json` (5-fold validated). Accuracy matrices above show fold 4 as representative example.*
+Source: `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json`.
 
 ---
 
-## Appendix B: Confusion Matrices
+## appendix B: confusion matrices
 
-### B.1 SNN Direct Encoding — Fold 4 (400 Samples)
+### B.1 SNN direct -- fold 4 (400 samples)
 
-![SNN confusion matrix (fold 4, direct encoding, 400 test samples). Rows = true class, columns = predicted class. 50×50 matrix, diagonal = correct. Most misclassifications are within super-categories (e.g., Animal classes confuse with other Animal classes). Darkest off-diagonal blocks correspond to within-super-category confusion.](../results/analysis/confusion_snn_fold4.png)
+![SNN confusion matrix fold 4](../results/analysis/confusion_snn_fold4.png)
 
-*Source: `results/analysis/confusion_snn_fold4.png`.*
+Most misclassifications are within super-categories (animal classes confused with other animals etc). Darkest off-diagonal blocks = within-super-category confusion.
+
+### B.2 ANN -- fold 4 (400 samples)
+
 
 ### B.2 ANN — Fold 4 (400 Samples)
 

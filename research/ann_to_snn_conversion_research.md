@@ -503,31 +503,3 @@ A strong thesis framed around ANN-to-SNN conversion should follow this structure
 |--------|------|-------|------|---|--------------|
 | Sengupta et al. | 2019 | Front. Neuro. | VGG-16 | 2500 | 69.96 |
 | SNN Calibration | 2021 | ICML | ResNet-34 | 32 | 71.78 |
-| QCFS | 2022 | ICLR | ResNet-34 | 32 | ~72.5 |
-| QCFS + TPP | 2024 | -- | VGG-16 | 16 | 73.98 |
-| Group Neurons | 2024 | ICASSP | ResNet-34 | 2 | 73.61 |
-| Spiking Transformer | 2025 | ICLR | ViT/DeiT | 4 | 88.60 |
-
----
-
-## 12. Research Gaps and Open Problems
-
-### 12.1 Gaps Suitable for Undergraduate Contribution
-
-| Gap | Why It Matters | Difficulty | Publication Potential |
-|-----|---------------|------------|---------------------|
-| **No systematic tool comparison** (snn_toolbox vs SpikingJelly vs QCFS) | Practitioners do not know which tool to use | LOW | Workshop paper |
-| **MobileNet/EfficientNet conversion** barely studied | Most relevant for edge deployment | MODERATE | Workshop/conference paper |
-| **Medical imaging domain** almost unstudied for conversion | Huge practical impact | LOW-MODERATE | Domain-specific venue |
-| **Audio/keyword spotting** with modern conversion methods | Relevant for IoT/always-on devices | MODERATE | Workshop paper |
-| **Accuracy-vs-energy** with actual measurements (not just theory) | Energy claims are often unverified | MODERATE | Good thesis chapter |
-| **Converting models with Swish/GELU/SiLU** activations systematically | Modern architectures all use these | MODERATE-HARD | Conference paper |
-| **DenseNet conversion** not published | Dense connections create unique challenges | MODERATE | Short paper |
-| **Conversion for video classification** at scale | Temporal data is natural for SNNs | HARD | Conference paper |
-
-### 12.2 Gaps Requiring More Expertise (PhD-Level)
-
-- Novel neuron models for better single-timestep conversion
-- Theoretical analysis of conversion error bounds for new architectures
-- Hardware co-design of converted SNNs for specific neuromorphic chips
-- Scaling conversion to billion-parameter models

@@ -40,20 +40,20 @@ where mu_i is mean of row i, n = 2304.
 **Result:** accuracy dropped 53.75% -> 8.50%. Option C is dead. Root cause is architectural -- AvgPool between binary spike layers introduces non-binary values violating the math assumptions.
 
 Documented in `results/spinnaker_optionC/option_c_fold4.json`.
+
 ---
 
-## 5.2 FC2-Only Hybrid Approach
+## 5.2 FC2-only hybrid approach
 
-### 5.2.1 Architecture
+### 5.2.1 architecture
 
-Given the constraints documented in §5.1, a validated hybrid deployment strategy was adopted:
+Given the constraints above, went with a validated hybrid:
 
 ```
 Software (snnTorch, CPU):
   Input mel spectrogram (1, 64, 216)
-  → Conv1 + BN + MaxPool + LIF₁
-  → Conv2 + BN + MaxPool + LIF₂
-  → AvgPool → flatten
+  -> Conv1 + BN + MaxPool + LIF1
+  -> Conv2 + BN + MaxPool + LIF2
   → FC₁ (2304→256) + LIF₃
   → Binary hidden spike tensor: (T=25, N, 256)
 

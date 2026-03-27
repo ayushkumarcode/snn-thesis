@@ -1,17 +1,17 @@
-# Publication Landscape Research: SNN & Neuromorphic Computing
-## What Makes Papers Impactful and What Your Project Should Emphasize
+# publication landscape notes -- SNN & neuromorphic computing
 
-**Research Date:** 25 March 2026
-**Purpose:** Understand the competitive landscape and identify the strongest publication angle for ICONS 2026.
+research date: 25 march 2026
+purpose: figure out the competitive landscape and what angle to push for ICONS 2026
 
 ---
 
-## 1. EXECUTIVE SUMMARY
+## where we stand
 
-Your paper is already stronger than you think. After exhaustive research across 80+ papers, conference proceedings, and the neuromorphic computing landscape, here is the core assessment:
-
-**Your paper already has multiple genuine "firsts":**
-- First convolutional SNN on ESC-50 (confirmed: no prior work exists)
+our paper already has multiple genuine "firsts":
+- first convolutional SNN on ESC-50 (confirmed, no prior work exists)
+- first neuromorphic hardware deployment for environmental sound classification
+- first adversarial robustness analysis of SNNs on audio
+- first 7-encoding systematic comparison on a 50-class audio task
 - First neuromorphic hardware deployment for environmental sound classification
 - First adversarial robustness analysis of SNNs on audio
 - First 7-encoding systematic comparison on a 50-class audio task

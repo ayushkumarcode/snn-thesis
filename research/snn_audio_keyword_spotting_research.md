@@ -158,31 +158,3 @@ Spiking Neural Networks (SNNs) for audio keyword spotting and speech command rec
 11. Energy consumption estimation (synaptic operations counting)
 12. Accuracy vs. energy tradeoff analysis
 13. Parameter sensitivity study
-14. Thesis writing
-
-### 3.3 Estimated Code Complexity
-
-| Component | Estimated Lines | Difficulty |
-|-----------|----------------|------------|
-| Data loading + preprocessing | 50-100 | Easy |
-| SNN model definition | 50-100 | Moderate |
-| Training loop | 80-150 | Moderate |
-| Evaluation + metrics | 50-80 | Easy |
-| Visualization + analysis | 50-100 | Easy |
-| **Total core implementation** | **280-530** | -- |
-| ANN baseline for comparison | 100-200 | Easy |
-| Full project with utilities | 500-1000 | -- |
-
-A minimal working SNN for SHD classification can be achieved in approximately **200-300 lines** of Python using snnTorch. A full thesis-quality implementation with preprocessing, training, evaluation, comparison baselines, and visualization would typically be **500-1000 lines**.
-
----
-
-## 4. Dataset Comparison and Recommendations
-
-### 4.1 Dataset Overview
-
-| Dataset | Classes | Samples | Format | Pre-spiked | Size | Task | Availability |
-|---------|---------|---------|--------|------------|------|------|-------------|
-| **SHD** | 20 (digits 0-9, EN+DE) | ~10,420 | Spike trains | Yes | ~700 MB | Digit recognition | Free (Zenke Lab) |
-| **SSC** | 35 (speech commands) | ~105,829 | Spike trains | Yes | ~6 GB | Command recognition | Free (Zenke Lab) |
-| **GSC V2** | 35 (or 12 subset) | ~105,829 | Raw audio (16kHz) | No | ~2.3 GB | Command recognition | Free (TensorFlow) |

@@ -138,3 +138,31 @@ class FlyBrainSNN(nn.Module):
             spk1, mem1 = self.lif(projected, mem1)
 
             # WTA: keep only top-k spikes
+            topk_vals, topk_idx = spk1.topk(self.wta_k, dim=1)
+            sparse_spk = torch.zeros_like(spk1)
+            sparse_spk.scatter_(1, topk_idx, topk_vals)
+
+            # Readout
+            cur2 = self.readout(sparse_spk)
+            spk2, mem2 = self.lif_out(cur2, mem2)
+
+            spk_rec.append(spk2)
+            mem_rec.append(mem2)
+
+        return torch.stack(spk_rec), torch.stack(mem_rec)
+
+
+def train_epoch_ann(model, loader, optimizer, device):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        optimizer.zero_grad(set_to_none=True)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            logits = model(data)
+            loss = F.cross_entropy(logits, targets)

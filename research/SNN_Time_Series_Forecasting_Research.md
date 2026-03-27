@@ -362,3 +362,21 @@ this would be a valid contribution because **no systematic MSE/MAE comparison on
 | Finding | Confidence |
 |---------|-----------|
 | SNNs achieve comparable accuracy on standard benchmarks | **HIGH** -- ICML 2024, ICLR 2025 with code |
+| 60-99% energy savings | **HIGH** -- consistent but mostly theoretical |
+| Long-range dependencies remain hard | **HIGH** -- confirmed by critical survey |
+| Financial/weather are under-explored | **HIGH** -- verified by thorough search |
+| Field is emerging and timely | **HIGH** -- first top-venue paper was Feb 2024 |
+| Undergrad thesis feasible | **MEDIUM-HIGH** -- depends on PyTorch experience |
+| Encoding strategy matters | **MEDIUM** -- suggested but not rigorously compared |
+| Real hardware savings match theoretical | **LOW** -- almost no real deployment reported |
+
+---
+
+## What to Do Next
+
+1. read SeqSNN (ICML 2024) in full -- most complete reference
+2. clone and run SeqSNN repo
+3. do snnTorch tutorials 1, 5, and regression tutorials
+4. download ETTh1/ETTh2 and Weather from https://github.com/zhouhaoyi/ETDataset
+5. check OpenReview for ICLR 2025 TS-LIF reviews
+6. look at TS-LIF poster: https://iclr.cc/virtual/2025/poster/28210

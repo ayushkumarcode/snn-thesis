@@ -138,3 +138,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 
 ### FPGA Virtualisation on Heterogeneous Computing Systems
 - **Khoa Pham**, 2020, PhD, Computer Science
+- Supervised by Dirk Koch (main), James Garside (co)
+- https://research.manchester.ac.uk/en/studentTheses/fpga-virtualisation-on-heterogeneous-computing-systems-model-tool/
+- Fully FPGA-virtualised computing model for heterogeneous CPU+FPGA systems. Partial reconfiguration techniques for embedded, edge, and cloud computing.
+- 16.1 MB PDF
+
+### Harnessing Reconfigurable Hardware for Heterogeneous Systems
+- **Konstantinos Iordanou**, 2023, PhD, Computer Science
+- Supervised by Mikel Lujan (main), Christos-Efthymios Kotselidis (co)
+- https://research.manchester.ac.uk/en/studentTheses/harnessing-reconfigurable-hardware-to-design-heterogeneous-system
+- AutoTiC (Auto Tiny Classifiers): evolutionary algorithms to generate prediction circuits for tabular data. 10-75x less area/power in ASIC, 3-11x fewer FPGA resources vs ML baselines. Also did a microarchitectural SoC simulation framework.
+- 16.9 MB PDF
+
+### Dynamic CPU ISA Customizations through FPGA Interlays
+- **Jose Garcia Ordaz**, 2018, PhD, Computer Science
+- Supervised by Dirk Koch (main), James Garside (co)
+- https://research.manchester.ac.uk/en/studentTheses/dynamic-cpu-isa-customizations-through-fpga-interlays
+- Embedding reconfigurable FPGA fabric ("Interlay") into CPUs for dynamic instruction set customization at runtime.
+- 7.59 MB PDF
+
+---
+
+## Deep Learning / Computer Vision Theses (for scope calibration)
+
+### Unsupervised Image Feature Learning for CNNs
+- **Richard Hankins**, 2019, PhD, EEE
+- Supervised by Hujun Yin (main), Piotr Dudek (co)
+- https://research.manchester.ac.uk/en/studentTheses/unsupervised-image-feature-learning-for-convolutional-neural-netw/
+- Uses self-organising maps (SOM) for unsupervised feature learning in CNNs. Develops SOMNet architecture, novel feature aggregation methods, and SOM-based pre-training.

@@ -148,31 +148,3 @@ At ICONS, 33.1% on SpiNNaker for 50-class environmental sound classification —
 **Primary message:** "We establish the first SNN baseline on ESC-50 (50-class), deploy it on SpiNNaker hardware, and demonstrate that the SNN-ANN accuracy gap is a feature-learning problem, not a spiking computation problem."
 
 **Secondary messages (in order of ICONS impact):**
-1. SpiNNaker deployment: FC1 cancellation root cause, FC2-only hybrid validated at 5-fold, path to full deployment via Option A
-2. 7-encoding systematic comparison: direct >> rate/phase >> population > latency >> delta/burst, with mechanistic explanations for each failure mode
-3. Adversarial robustness: 14.9x advantage under FGSM eps=0.1, binary thresholding as natural gradient masking
-4. PANNs+SNN gap collapse: 16.7 pp → 0.95 pp, feature-learning bottleneck confirmed
-5. NeuroBench energy: honest reporting (SNN 2.1x worse in simulation, but AC-only hardware advantage)
-6. Surrogate bimodal split: spike_rate_escape/fast_sigmoid/atan succeed; STE/sigmoid/sfs/triangular fail
-
-### De-emphasise or remove:
-
-- Absolute accuracy comparisons to ESC-50 SOTA (98.25% or OmniVec2 99.1%) — these are not the relevant comparison class for an ICONS audience
-- Continual learning result (74.4% vs 81.3% forgetting) — modest effect, one fold, limited depth possible at 8 pages; reduce to one sentence
-- Data augmentation negative result (40.75% ± 16.03%) — useful for thesis but takes space in a conference paper; move to appendix or mention in one sentence
-- Over-claiming on energy efficiency — do not say "SNNs are more energy efficient" without the hardware qualifier
-
-### Structural note for 8 pages:
-
-Given what ICONS values, the hardware section (SpiNNaker) and the encoding comparison should get the most space. The adversarial result and PANNs result should each get a compact table + 2-3 paragraphs. Surrogate ablation: one table, one paragraph. Continual learning: one sentence in conclusion or omit from main paper. Energy: one table, honest interpretation.
-
----
-
-## 8. Is This Paper Publishable at ICONS As-Is, With Revisions, or Likely Rejected?
-
-**Assessment: Publishable with moderate revisions. Most likely outcome: acceptance with minor-to-moderate revisions. Not likely to be rejected outright.**
-
-**Rationale:**
-
-The paper has two things that ICONS cannot ignore: (1) a genuine first — first SNN on full ESC-50, first SpiNNaker deployment for environmental sound classification — and (2) depth — 7 encodings, hardware deployment, adversarial, PANNs, NeuroBench, surrogate ablation. No other paper in the 2022-2025 ICONS proceedings has this breadth of contribution on a single task.
-

@@ -54,3 +54,31 @@ the one match for "neuromorphic" is a research-level publication from Steve Furb
 - **URL:** https://figshare.manchester.ac.uk/articles/dataset/Evaluation_of_a_Low_Power_Computer_Vision_Based_Positioning_System_for_a_Handheld_Landmine_Detector_using_AprilTag_Markers_-_Supporting_Data/30030226
 - **Type:** Dataset
 - research publication, tangentially related through low power + computer vision.
+
+### Autonomous Robotics for Nuclear Environments
+- **Author:** Andrew West (2022)
+- **URL:** https://figshare.manchester.ac.uk/articles/dataset/Radiation_Exposure_Reduction_During_Autonomous_Exploration/18782165
+- **Type:** Dataset
+- related to the RAIN (Robotics and Artificial Intelligence for Nuclear) project at Manchester.
+
+### Turbulent Flow Data as PyTorch Tensors for ML
+- **Authors:** Mohammed Sardar, Alex Skillen (2025)
+- **URL:** https://figshare.manchester.ac.uk/articles/dataset/Turbulent_Flow_data_as_PyTorch_tensors_for_ML_Kolmogorov_Flow_at_Re_222_and_Kelvin-Helmholtz_instability/29329565
+- PyTorch tensor datasets of turbulent flow simulations. ML applied to physics, not really relevant.
+
+### Other items found
+- Machine Learning ATR-FTIR Spectroscopy Data (2022) -- Random Forest for archaeology, PhD thesis supplement
+- Gaussian Mixture Models / Neural Network Model Files (2021) -- particle physics, research-level
+- Closed Loop Sound Stimulation During Sleep (2022) -- real-time EEG processing, Casson's lab
+- 3D-Printed Conductive EEG Electrodes (2022) -- EEG hardware design, research-level
+
+---
+
+## why i found nothing useful
+
+### why no undergrad theses exist here
+
+1. **Manchester Figshare is not used for undergrad theses.** it's a research data repository for supplementary data/code for published papers, research datasets, conference presentations, PhD thesis supplementary data, and architectural model photos.
+
+2. **Manchester undergrad theses are stored elsewhere** -- probably the university library thesis archive, Blackboard/Turnitin submission system, department-specific repos, Manchester eScholar (mostly PhD/research theses), or student GitHub repos (not centrally indexed).
+

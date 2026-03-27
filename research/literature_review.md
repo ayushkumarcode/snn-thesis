@@ -63,31 +63,3 @@
 
 | Framework | Best for | Notes |
 |-----------|---------|-------|
-| **snnTorch** | PyTorch users | Easy to learn, active community |
-| **Norse** | PyTorch users | Good for research, flexible neuron models |
-| **Brian2** | Neuroscience-style simulation | Equation-based, very flexible |
-| **Nengo** | Neural engineering | Good for robotics applications |
-| **SpykeTorch** | Convolutional SNNs with STDP | PyTorch-based |
-| **snn_toolbox** | ANN-to-SNN conversion | Multi-framework support |
-| **Lava** | Intel Loihi deployment | Official Intel framework |
-
-### Datasets / Benchmarks
-
-- **Static images:** MNIST, CIFAR-10, CIFAR-100, ImageNet
-- **Neuromorphic (event-based):** N-MNIST, N-Caltech101, DVS128 Gesture, DVS-CIFAR10
-- **3D / LiDAR:** KITTI
-- **Medical:** ISIC 2018 (melanoma)
-- **EEG/Brain:** DEAP, SEED (emotion recognition)
-
----
-
-## Paper 2: Toward Large-scale Spiking Neural Networks: A Comprehensive Survey and Future Directions
-
-**Source:** Han et al., arXiv, 2024
-**Link:** https://arxiv.org/html/2409.02111v1
-**Purpose for us:** What's working *right now*, state-of-the-art results, and what the open problems are (thesis gold).
-
-### The Energy Argument
-
-- Human brain: ~20 watts for complex cognition
-- Training GPT-3: 1,287 MWh

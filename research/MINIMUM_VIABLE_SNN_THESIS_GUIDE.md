@@ -418,3 +418,31 @@ This analysis, even as an estimate, really strengthens the thesis by connecting 
 ### Week-by-week execution plan (~12 weeks to submission):
 
 | Week | Focus | Output |
+|------|-------|--------|
+| 1-2 | snnTorch tutorials 1-6 | Working SNN code, understanding of framework |
+| 3 | ANN baseline + first SNN experiment on MNIST | Initial accuracy numbers |
+| 4 | Second dataset (Fashion-MNIST) + time step experiments | Additional results |
+| 5 | Energy analysis + encoding comparison (if going for first) | Complete experimental results |
+| 6 | Generate all figures and tables | Results chapter draft |
+| 7-8 | Write Introduction + Lit Review + Methodology | Report chapters 1-3 |
+| 9 | Write Implementation + Results | Report chapters 4-5 |
+| 10 | Write Discussion + Conclusion | Report chapters 6-7 |
+| 11 | Supervisor review, revisions, screencast recording | Near-final report |
+| 12 | Final polish, submission | Submitted report + screencast |
+
+---
+
+## Appendix A: quick-start code skeleton
+
+This shows the approximate structure of the project code. Not complete code -- it's a skeleton showing that the actual implementation is small when building on snnTorch:
+
+```python
+# experiment_snn_vs_ann.py -- Approximate structure
+# Total: ~200-300 lines for the core comparison
+
+import torch
+import torch.nn as nn
+import snntorch as snn
+from snntorch import surrogate
+import torchvision
+

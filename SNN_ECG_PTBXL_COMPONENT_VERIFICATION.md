@@ -70,31 +70,3 @@ def load_raw_data(df, sampling_rate, path):
         data = [wfdb.rdsamp(path + f) for f in df.filename_lr]
     else:
         data = [wfdb.rdsamp(path + f) for f in df.filename_hr]
-    data = np.array([signal for signal, meta in data])
-    return data
-
-path = '/path/to/ptb-xl/'
-sampling_rate = 100
-
-# Load and convert annotation data
-Y = pd.read_csv(path + 'ptbxl_database.csv', index_col='ecg_id')
-Y.scp_codes = Y.scp_codes.apply(lambda x: ast.literal_eval(x))
-
-# Load raw signal data
-X = load_raw_data(Y, sampling_rate, path)
-# X shape at 100 Hz: (21799, 1000, 12)  -- records x samples x leads
-# X shape at 500 Hz: (21799, 5000, 12)  -- records x samples x leads
-```
-
-**Source:** [PhysioNet example_physionet.py](https://www.physionet.org/content/ptb-xl/1.0.2/example_physionet.py), [WFDB Python GitHub](https://github.com/MIT-LCP/wfdb-python)
-
----
-
-### 3. Signal Preprocessing
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES |
-| **VERIFIED HOW** | scipy docs, neurokit2 docs, published research |
-| **POTENTIAL BLOCKER** | NO |
-

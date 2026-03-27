@@ -362,3 +362,31 @@ My NeuroBench results (SNN 976 nJ vs ANN 463 nJ) are actually stronger as an hon
 ---
 
 ## 8. What i couldn't find and confidence levels
+
+### 8.1 Gaps in the research
+
+1. Exact Horowitz table at modern nodes (7nm, 5nm) -- no official update exists. Community keeps using 45nm as reference.
+2. Detailed BrainScaleS-2 energy per synaptic operation in pJ -- mixed-signal nature makes it hard to quantify.
+3. Loihi 2 absolute energy numbers (in joules) -- Intel reports ratios but not absolute values in most public papers.
+4. SpiNNaker 2 energy per inference for specific tasks -- Sandia deployment is new, benchmarks not yet public.
+5. Complete head-to-head comparison across all platforms on the same task -- doesn't exist.
+
+### 8.2 Confidence levels
+
+| Finding | Confidence |
+|:---|:---:|
+| Horowitz 0.9 pJ/AC, 4.6 pJ/MAC at 45nm | VERY HIGH -- universally cited, original source verified |
+| SNNs need >92% sparsity to beat QNNs on digital HW | HIGH -- confirmed by multiple independent groups |
+| Loihi 1: ~23.6 pJ/synaptic op | HIGH -- from original Davies 2018 paper |
+| TrueNorth: ~26 pJ/synaptic event | HIGH -- from original Merolla 2014 paper |
+| SpiNNaker 1: ~1W per chip, ~5.8 uJ/synaptic event | MEDIUM-HIGH |
+| Loihi 2: 1000x/75x improvements over Jetson | MEDIUM -- ratio claims from Intel |
+| BrainScaleS-2: orders of magnitude more efficient | MEDIUM -- qualitative claims, few absolute numbers |
+| DarwinWafer: 4.9 pJ/SOP | MEDIUM -- single source (2025 arXiv) |
+| Innatera: <200 fJ/spike | MEDIUM -- company claims |
+| BrainChip: 500x improvement claims | LOW-MEDIUM -- marketing claims |
+
+---
+
+## Sources
+

@@ -306,3 +306,31 @@ a MAC (4.6 pJ) costs ~5.1x more than an AC (0.9 pJ) at FP32. but SRAM access (10
 
 ## suggested thesis structure for energy analysis section
 
+```
+4. Energy Efficiency Analysis
+
+4.1 Methodology
+    - Describe operation-counting approach
+    - Cite Horowitz 2014, Lemaire et al. 2022
+    - State assumptions (45nm, ideal sparse hardware, etc.)
+
+4.2 Experimental Setup
+    - Same architecture for ANN and SNN
+    - Same dataset and preprocessing
+    - Accuracy comparison table
+    - Note: using NeuroBench framework
+
+4.3 Results
+    - Table: Model | Accuracy | FLOPs/SOPs | Energy Est. | Ratio
+    - Per-layer firing rate bar chart
+    - Energy vs timestep line plot
+    - Energy vs accuracy Pareto plot
+
+4.4 Discussion
+    - Compare with published results
+    - Acknowledge limitations of software estimation
+    - Note: assumes neuromorphic hardware
+    - On conventional hardware, SNN overhead exists
+    - Reference critical papers (Kundu 2023, Shen 2024)
+    - Where does your SNN's sparsity fall vs critical thresholds?
+

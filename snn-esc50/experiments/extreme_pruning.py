@@ -194,3 +194,31 @@ def run_fold(fold, device, sparsity_levels):
             "accuracy": acc, "retention": retention,
             "energy_reduction_x": 1.0 / (1.0 - actual_sparsity + 1e-10),
         })
+
+        # Save pruned model
+        save_dir = RESULTS_DIR / "energy" / f"pruned_{int(target*100)}"
+        save_dir.mkdir(parents=True, exist_ok=True)
+        torch.save(model.state_dict(),
+                   save_dir / f"best_fold{fold}.pt")
+
+    return results
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    sparsity_levels = [0.5, 0.7, 0.9, 0.95, 0.97, 0.99]
+    folds = [args.fold] if args.fold else list(range(1, 6))
+
+    all_results = []
+    for fold in folds:
+        results = run_fold(fold, device, sparsity_levels)
+        all_results.extend(results)
+
+    # Summary

@@ -278,3 +278,31 @@ this might explain our bimodal failure pattern -- surrogates with appropriate ef
 |----------|-----------|-------------------|---------------|
 | **Spike Rate Escape** | **46.00% (BEST)** | Theoretically justified via escape noise | Gygax & Zenke 2025 |
 | **Fast Sigmoid** | **44.75%** | SuperSpike original; widely used | Zenke & Ganguli 2018 |
+| **Arctan (atan)** | **35.75%** | Generally preferred in recent work | 2024 consensus |
+| STE (Straight-Through) | 10.25% (failed) | Known to struggle with deeper networks | standard observation |
+| Sigmoid | 2.00% (failed) | Vanishing gradient problems | Lian et al. 2023 |
+| SFS | 2.00% (failed) | Less commonly used | limited literature |
+| Triangular | 2.75% (failed) | Piecewise linear; Zenke 2021 said it works | **contradicts Zenke 2021** |
+| LSO (Stochastic) | Crashed | Python 3.14 incompatibility | implementation issue |
+
+### Explaining the Bimodal Pattern
+
+our bimodal result (3 learn, 4 fail) is pretty significant i think. possible explanations:
+
+1. **effective gradient width:** Lian et al. (2023) show membrane potential distribution determines optimal SG width. audio classification may produce distributions incompatible with narrow surrogates (sigmoid, STE, triangular). the three working ones (SRE, fast_sigmoid, atan) all have broader effective domains.
+
+2. **gradient magnitude at threshold:** SRE and fast_sigmoid have larger gradients near threshold vs sigmoid. 50-class task may need stronger gradients near threshold.
+
+3. **task complexity:** Zenke 2021 showed robustness on simple tasks (XOR, MNIST). ESC-50 with mel spectrograms may be complex enough that shape DOES matter -- challenging "shape doesn't matter" for harder tasks.
+
+4. **training dynamics:** failed surrogates collapsed to chance within first 10-15 epochs, suggesting gradient vanishing rather than slow convergence.
+
+5. **escape noise theory:** Gygax & Zenke (2025) show SRE is theoretically grounded for stochastic neurons. others are heuristic approximations.
+
+---
+
+## Part 4: Cross-Cutting Themes
+
+### The Encoding-Energy-Accuracy Trilemma
+
+the literature consistently shows a three-way tradeoff:

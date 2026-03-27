@@ -82,3 +82,31 @@ Available in `spikingjelly.activation_based.surrogate`:
 - `Erf` - Gaussian error function
 - `NonzeroSignLogAbs` - Log-abs surrogate
 - `PiecewiseLeakyReLU` - Piecewise leaky ReLU
+
+### DVS128 Gesture Dataset Loader
+
+SpikingJelly has a built-in loader at `spikingjelly.datasets.dvs128_gesture.DVS128Gesture`.
+
+Loading raw events:
+```python
+from spikingjelly.datasets.dvs128_gesture import DVS128Gesture
+
+# Load raw events
+event_set = DVS128Gesture(root='./data/DVS128Gesture', train=True, data_type='event')
+event, label = event_set[0]
+# event is a dict with keys: 't', 'x', 'y', 'p'
+# label is an integer 0-10
+```
+
+Loading as frames (fixed number):
+```python
+# Split events into T=16 frames, each with roughly equal number of events
+train_set = DVS128Gesture(
+    root='./data/DVS128Gesture',
+    train=True,
+    data_type='frame',
+    frames_number=16,       # Number of frames per sample
+    split_by='number'        # Split events equally by count
+)
+# Returns tensors of shape [T, C, H, W] = [16, 2, 128, 128]
+```

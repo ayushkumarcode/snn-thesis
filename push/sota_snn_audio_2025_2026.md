@@ -363,31 +363,3 @@ UCL has an active neuromorphic technologies group, and several of the institutio
 ## 9. Comprehensive Results Table: SNN Audio Benchmarks
 
 ### 9.1 Speech Command Datasets
-
-| Method | SHD | SSC | GSC v2 | Params | Timesteps | Year |
-|--------|-----|-----|--------|--------|-----------|------|
-| SpikCommander | **96.41%** | **83.26%** | **96.71%** | 0.19-1.12M | 100 | 2026 |
-| SpikeSCR | 95.70% | 82.79% | 95.60% | 1.63M | 100 | 2024 |
-| DCLS-Delays | 95.07% | 80.69% | 95.35% | 2.50M | 100 | 2024 |
-| SpikeSCR+KDCL | 93.60% | 80.25% | 95.01% | 1.63M | **40** | 2024 |
-| SIDC-KWS | -- | -- | 96.8% (12-class) | -- | -- | 2025 |
-| Speech2Spikes+SNN | -- | -- | 88.5% | -- | -- | 2023 |
-| E-prop (SpiNNaker2) | -- | -- | 91.12% | 25K weights | online | 2022 |
-
-### 9.2 Environmental Sound Datasets
-
-| Method | Dataset | Classes | Accuracy | Architecture | Year |
-|--------|---------|---------|----------|-------------|------|
-| **Our thesis** | **ESC-50** | **50** | **47.15%** | **Conv SNN (LIF)** | **2026** |
-| **Our thesis + PANNs** | **ESC-50** | **50** | **92.50%** | **PANNs+SNN head** | **2026** |
-| Larroza (TAE) | ESC-10 | 10 | 69.0% | FC-only SNN | 2025 |
-| Larroza (TAE) | UrbanSound8K | 10 | 53.5% | FC-only SNN | 2025 |
-| Larroza (SF) | UrbanSound8K | 10 | 56.4% | FC-only SNN | 2025 |
-| S-CMRL | US8K-AV | 10 | 98.13% | Transformer SNN (multimodal) | 2025 |
-| SMMT (Guo) | US8K-AV | 10 | 96.85% | Transformer SNN (multimodal) | 2024 |
-
-### 9.3 Sound Classification (Non-Environmental)
-
-| Method | Dataset | Accuracy | Architecture | Year |
-|--------|---------|----------|-------------|------|
-| Wu et al. (SOM-SNN) | RWCP | 99.60% | SOM+SNN | 2018 |

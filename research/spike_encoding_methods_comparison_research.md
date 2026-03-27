@@ -31,31 +31,3 @@ The encoding choice demonstrably matters -- accuracy differences of 3-5% between
 
 **Verdict: "Systematic Evaluation of Spike Encoding Methods for Spiking Neural Networks" is a strong, feasible undergraduate thesis topic** with clear novelty potential if scoped correctly (more data modalities, more encoding methods, unified framework, consistent metrics).
 
----
-
-## 2. Complete Taxonomy of Spike Encoding Methods
-
-Based on the comprehensive survey by Auge, Hille, Mueller, and Knoll (2021) in Neural Processing Letters, and supplemented by multiple other sources, here is the complete taxonomy.
-
-### 2.1 Rate-Based Encoding
-
-Information is embedded in the firing frequency of neurons. Robust against noise, simple to implement, but requires many timesteps and many spikes (energy-expensive).
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Poisson Rate Coding** | Each input value is treated as the probability of a spike at each timestep (Bernoulli process). Higher values = more spikes on average. | Most common baseline; stochastic; high spike count |
-| **Regular Rate Coding** | Deterministic variant where spikes are evenly spaced with frequency proportional to input value. | Lower variance than Poisson; easier to analyse |
-| **Population Rate Coding** | A group of neurons collectively encodes a value through their combined firing rate. | Higher information capacity; uses more neurons |
-
-### 2.2 Temporal/Latency-Based Encoding
-
-Information is in the precise timing of spikes. A single spike carries much more meaning than in rate codes. Much fewer spikes needed, but more susceptible to noise.
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Time-to-First-Spike (TTFS)** | Each neuron fires exactly once. Stronger inputs fire earlier, weaker inputs fire later. Based on LIF neuron RC model. | Very low spike count; fast inference; ~4x lower latency than rate coding |
-| **Rank-Order Coding** | Only the relative ordering of spike times matters, not absolute times. | Robust to time distortions; loses amplitude info |
-| **Inter-Spike Interval (ISI)** | Information encoded in the time gap between consecutive spikes from the same neuron. | Compact encoding; good for periodic signals |
-
-### 2.3 Delta Modulation / Temporal Contrast
-

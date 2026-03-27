@@ -213,31 +213,3 @@ train_ds = tonic.datasets.DVSGesture(save_to='./data', train=True, transform=tra
 from tonic import DiskCachedDataset
 cached_train = DiskCachedDataset(train_ds, cache_path='./cache/dvsg/train')
 train_dl = DataLoader(cached_train, batch_size=16,
-                      collate_fn=tonic.collation.PadTensors(batch_first=True))
-```
-
-**Complexity assessment:** The Tonic route requires understanding event transforms, caching strategies, and custom collation functions. It is more complex than SpikingJelly's integrated approach, but more flexible.
-
-### Summary: Data Pipeline Complexity Rating
-
-| Aspect | Difficulty (1-5) | Notes |
-|--------|------------------|-------|
-| Dataset download | 2/5 | Manual download from IBM Box, one-time |
-| Initial preprocessing | 1/5 | Automatic in SpikingJelly, 10-30 min wait |
-| Understanding event representation | 4/5 | Events vs. frames is conceptually challenging |
-| Frame conversion config | 3/5 | Choosing time bins, number of frames, bin strategy |
-| Batching variable-length data | 3/5 | Padding, collation functions needed |
-| Overall pipeline (SpikingJelly) | **2/5** | Mostly handled by framework |
-| Overall pipeline (snnTorch+Tonic) | **3/5** | More manual setup required |
-
-**Source:** [SpikingJelly DVS128 Dataset Code](https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/datasets/dvs128_gesture.py), [Tonic DVSGesture Docs](https://tonic.readthedocs.io/en/latest/generated/tonic.datasets.DVSGesture.html), [SpikingJelly Neuromorphic Datasets Tutorial](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.4/clock_driven_en/13_neuromorphic_datasets.html)
-
----
-
-## 5. Is There Anything Novel Left to Do?
-
-### The Hard Truth
-
-DVS128 Gesture is **not solved in the absolute sense**, but it is **saturated as a pure accuracy benchmark**. When multiple methods achieve 99%+ accuracy on a 288-sample test set, the differences are statistically meaningless. The dataset is:
-- Too small (1,464 total samples)
-- Too constrained (controlled lab conditions)

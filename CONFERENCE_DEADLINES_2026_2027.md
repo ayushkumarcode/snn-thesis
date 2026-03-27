@@ -32,31 +32,3 @@ Additional targets with later deadlines: IEEE SiPS (April 12), NeurIPS 2026 (~Ma
 | **Conference Dates** | 4-6 August 2026 |
 | **Location** | Chicago Marriott Naperville, Chicago, Illinois, USA |
 | **Page Limit** | Full papers: 8 pages; Short papers: 4 pages |
-| **Format** | ACM Conference Proceedings Template |
-| **Proceedings** | ACM Digital Library (indexed) |
-| **Acceptance Rate** | Not publicly reported; community-sized conference (~100-150 attendees) |
-| **Registration/APC** | ACM Open Access model. APC: $250 (ACM member) / $350 (non-member) if institution not in ACM Open. Registration TBD. |
-| **Realistic for UG?** | **YES -- IDEAL FIT.** This is THE conference for this work. Neuromorphic systems focus, SpiNNaker deployment is core audience interest. Community-sized = less competitive than top-tier ML. |
-| **Focus** | Neuromorphic computing, brain-inspired computing, systems architectures, training algorithms, applications, software tools for neuromorphic systems |
-| **Submission via** | EasyChair |
-
-**Why this is #1:** ICONS is specifically for neuromorphic systems. SpiNNaker deployment, encoding comparison on hardware, energy analysis -- all directly in scope. The 8-page ACM format is what the existing ICONS2026_draft.md is written for.
-
-Sources: [ICONS 2026 Calls](https://iconsneuromorphic.cc/calls-2026/), [EasyChair CFP](https://easychair.org/cfp/ACM-ICONS-2026)
-
----
-
-### 1.2 ICNCE 2026 -- International Conference on Neuromorphic Computing and Engineering
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | International Conference on Neuromorphic Computing and Engineering |
-| **Abstract Deadline** | **3 April 2026 (AoE)** |
-| **Notification** | 30 April 2026 |
-| **Conference Dates** | 29 June -- 2 July 2026 |
-| **Location** | Eurogress Aachen, Germany |
-| **Page Limit** | 1-page abstract (DIN A4), one optional figure/table |
-| **Format** | 12pt Times New Roman, 2cm margins, PDF only |
-| **Proceedings** | Abstract-only (no full paper in proceedings) |
-| **Registration** | Master/bachelor students receive sponsored participation |
-| **Acceptance Rate** | Not reported |

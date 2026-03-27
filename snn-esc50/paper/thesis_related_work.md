@@ -138,3 +138,5 @@ Catastrophic forgetting (McCloskey & Cohen 1989) -- networks forget old tasks wh
 **Zhang et al. (2023, Science Advances)** introduced NACA for online SNN continual learning.
 
 We evaluate forgetting in the simplest setting: sequential fine-tuning on 5 ESC-50 super-categories, no replay, no regularisation. SNN compared directly to ANN under identical protocol.
+
+todo: might want to expand this section with more recent CL work. check if theres anything from 2025 thats relevant.

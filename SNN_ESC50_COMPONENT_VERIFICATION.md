@@ -86,31 +86,3 @@ audio, sr = librosa.load('1-100032-A-0.wav', sr=44100, mono=True)
 # WARNING: librosa defaults to sr=22050 if you omit sr parameter
 # Always specify sr=44100 or sr=None to preserve original rate
 ```
-
-### torchaudio (recommended for GPU pipeline integration)
-
-| Property | Value |
-|----------|-------|
-| Current version | 2.10.0 (matches PyTorch version) |
-| Install | `pip install torchaudio` |
-| macOS Apple Silicon | YES (arm64 wheels available) |
-| WAV support | Native via FFmpeg or sox backends |
-| Documentation | https://docs.pytorch.org/audio/stable/generated/torchaudio.load.html |
-
-```python
-import torchaudio
-
-waveform, sample_rate = torchaudio.load('1-100032-A-0.wav')
-# waveform shape: torch.Size([1, 220500])  -- [channels, samples]
-# sample_rate: 44100
-```
-
-**NOTE:** torchaudio entered maintenance phase as of v2.8 (Aug 2025). Deprecation warnings appeared in v2.8, APIs were removed in v2.9, and v2.10 (Jan 2026) completed the transition. However, the following APIs we need are **explicitly preserved and still work:**
-- `torchaudio.load()` / `torchaudio.save()` -- now backed by TorchCodec internally
-- `torchaudio.transforms.MelSpectrogram` -- preserved in the transforms module
-- All transforms, functional, and compliance.kaldi APIs remain
-- See GitHub issue pytorch/audio#3902 for the full migration plan
-
-**For this project, all needed functionality remains available.** If you encounter deprecation warnings with torchaudio >= 2.8, they can be safely ignored for load() and MelSpectrogram().
-
-**Verification method:** Confirmed via official documentation for both libraries. Both have native WAV support and macOS ARM64 builds.

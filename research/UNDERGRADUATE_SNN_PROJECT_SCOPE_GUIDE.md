@@ -110,3 +110,31 @@ Selected bachelor's theses:
 | 2017 | Accelerated Classification in Hierarchical Neural Networks | Classification on neuromorphic hardware |
 | 2018 | Solving Map Coloring Problems on Analog Neuromorphic Hardware | Constraint satisfaction on hardware |
 | 2019 | Structural Plasticity for Feature Selection in Auditory Stimuli | Plasticity algorithms for audio |
+| 2015 | Boltzmann Sampling with Neuromorphic Hardware | Probabilistic computing |
+| 2014 | Binaural Sound Localization on Neuromorphic Hardware | Audio processing |
+| 2011 | Analysis of the Liquid Computing Paradigm on a Neuromorphic System | Reservoir computing |
+
+The pattern: typically ONE focused task -- characterising a component, implementing an algorithm, building a tool, or running an experiment. Usually 40-60 pages.
+
+---
+
+## Manchester PhD Theses (context only, NOT undergrad scope)
+
+These aren't representative of undergrad scope at all, but show what the SpiNNaker group works on. All PDFs freely downloadable.
+
+| Author | Year | Title | Key Achievement |
+|--------|------|-------|-----------------|
+| Mollie Ward | 2024 | Modelling Neural Dynamics on Neuromorphic Hardware | HH models on SpiNNaker/SpiNNaker2 |
+| Luca Peres | 2022 | Parallelisation of Neural Processing | World's first real-time Cortical Microcircuit |
+| Qian Liu | 2018 | Deep Spiking Neural Networks | 99.07% MNIST, Noisy Softplus activation |
+| Petrut Bogdan | 2019 | Structural Plasticity on SpiNNaker | STDP + structural plasticity for digit classification |
+| Andrew Mundy | 2016 | Real Time Spaun on SpiNNaker | 9000x speedup of 2.5M neuron brain model |
+| Gabriel Fonseca Guerra | 2020 | Stochastic Processes for Neuromorphic HW | Cross-platform: SpiNNaker + Loihi |
+| Sergio Davies | 2012 | Learning in Spiking Neural Networks | Novel STDP learning rule |
+| James Knight | 2016 | Plasticity in Large-Scale Models | Largest plastic SNN on neuromorphic HW |
+
+All 16 PhD theses: https://research.manchester.ac.uk/en/studentTheses/ (search "SpiNNaker" or "spiking")
+
+### Other UK PhD Theses:
+
+| Author | Year | University | Topic |

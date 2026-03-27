@@ -54,3 +54,31 @@ The only match for "neuromorphic" was a research-level publication (not undergra
 ---
 
 ### Adjacent ML/AI/Neural Engineering Stuff (closest things to relevant)
+
+#### Deep Autoencoder for Real-Time EEG Artifact Removal
+- Le Xing, Alex Casson, 2023
+- https://figshare.manchester.ac.uk/articles/software/Deep_autoencoder_for_real-time_EEG_artifact_removal_and_its_Android_smartphone_implementation/23093759
+- A Deep Convolutional Autoencoder for single-channel EEG artifact removal in real-time, implemented as an Android App for mobile EEG and portable BCI applications.
+- Research publication from Alex Casson's Non-Invasive Bioelectronics Lab, not undergrad.
+- Uses Python, TensorFlow Lite, Android Studio, EEG data
+
+#### LSTM Robot Navigation in Warehouse Environments
+- Jieru Zhou, 2024
+- https://figshare.manchester.ac.uk/articles/software/Optimizing_Warehouse_Robot_Navigation_with_LSTM_Networks_and_Adaptive_Greedy_Weight_Techniques/26870128
+- Combines LSTM networks with adaptive greedy weight strategies for path planning in dynamic warehouses. LSTM predicts future robot paths from historical data, then adaptive greedy weight balances exploration/exploitation. Includes LSTM model, training code, and two pathfinding algorithms.
+- Single author, School of Engineering. Only 9 kB of code. **Possibly a student project** based on single authorship and scope but can't confirm if undergrad.
+- Has a video demo: Robot Path Planning Using LSTM+Adaptive Greedy Weight and A*+Adaptive Greedy Weight Strategies (ID: 26869981)
+
+#### ECG, EEG and IMU Data for Motion Artefact Removal
+- Christopher Beach, Mingjie Li, Ertan Balaban, Alex Casson, 2021
+- https://figshare.manchester.ac.uk/articles/dataset/ECG_EEG_and_IMU_data_for_local_motion_artefact_removal/13626395
+- ECG and EEG data with IMUs on each electrode for motion artefact removal
+- Research dataset from Alex Casson's lab
+
+#### Low Power Computer Vision for Landmine Detection
+- Adam Fletcher, John Davidson, Edward Cheadle, Daniel Conniffe, Anthony Peyton, Frank Podd, 2025
+- https://figshare.manchester.ac.uk/articles/dataset/Evaluation_of_a_Low_Power_Computer_Vision_Based_Positioning_System_for_a_Handheld_Landmine_Detector_using_AprilTag_Markers_-_Supporting_Data/30030226
+- Positioning system using AprilTags, designed for low-power battery-powered real-time applications
+- Research publication, tangentially related (low power + computer vision)
+
+#### Autonomous Robotics for Nuclear Environments

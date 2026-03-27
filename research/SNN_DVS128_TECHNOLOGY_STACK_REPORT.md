@@ -425,31 +425,3 @@ for epoch in range(num_epochs):
 
     for data, targets in trainloader:
         data = data.to(device).float()
-        targets = targets.to(device)
-
-        spk_rec = forward_pass(net, data)
-        loss_val = loss_fn(spk_rec, targets)
-
-        optimizer.zero_grad()
-        loss_val.backward()
-        optimizer.step()
-
-        train_loss += loss_val.item()
-        train_acc += SF.accuracy_rate(spk_rec, targets) * targets.size(0)
-        train_samples += targets.size(0)
-
-    # Evaluation
-    net.eval()
-    test_acc = 0
-    test_samples = 0
-    with torch.no_grad():
-        for data, targets in testloader:
-            data = data.to(device).float()
-            targets = targets.to(device)
-            spk_rec = forward_pass(net, data)
-            test_acc += SF.accuracy_rate(spk_rec, targets) * targets.size(0)
-            test_samples += targets.size(0)
-
-    print(f"Epoch {epoch}: Train Loss={train_loss/len(trainloader):.4f}, "
-          f"Train Acc={train_acc/train_samples:.4f}, "
-          f"Test Acc={test_acc/test_samples:.4f}")

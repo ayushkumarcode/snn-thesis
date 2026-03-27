@@ -82,3 +82,31 @@ evidence from 2024-2026:
 
 ---
 
+## PART 2: CONTINUAL LEARNING
+
+### best SNN CL results (2024-2026)
+
+**task-incremental learning (TIL) -- Split CIFAR-100:**
+
+| Paper | Venue | Method | Accuracy | Steps | Notes |
+|-------|-------|--------|----------|-------|-------|
+| DSD-SNN | IJCAI 2023 | Dynamic growth + pruning | 81.17% | 20-step | 37.48% parameter usage |
+| HLOP-SNN | ICLR 2024 | Hebbian orthogonal projection | ~85%+ | 10-step | near-zero forgetting |
+| SCA-SNN | Neural Networks 2024 | Context-aware similarity reuse | **86.45%** | 20-step | beats DNN methods |
+| PS-SNN | Scientific Reports 2026 | Pattern separation + expandable | N/A | 10-step | surpasses DNN methods |
+| LT-Gate | arXiv 2025 | Local timescale gates | retained ~95% of Task A | 2 tasks | minimal forgetting |
+
+**class-incremental learning (CIL) -- much harder:**
+
+| Paper | Method | CIFAR-100 CIL | Steps |
+|-------|--------|---------------|-------|
+| DSD-SNN | Dynamic structure | ~50-55% | 10-step |
+| SCA-SNN | Context-aware | **57.06%** | 10-step |
+| PS-SNN | Pattern separation | **76.42%** | 10-step |
+
+### typical forgetting rates
+
+| Method | Forgetting | Notes |
+|--------|-----------|-------|
+| Naive sequential (no CL method) | 70-90%+ | catastrophic forgetting baseline |
+| HLOP-SNN | Near-zero | orthogonal projection |

@@ -152,20 +152,20 @@ Two augmentations on training data only:
 
 note: augmentation turned out to be a negative result -- see chapter 4
 
+---
 
-### 3.6.1 Architecture Constraint
+## 3.6 SpiNNaker deployment
 
-The SpikingCNN architecture contains an AvgPool layer between LIF₂ and FC₁. This pool averages binary spikes into fractional values ∈ [0, 0.5], breaking the binary spike assumption required for SpiNNaker's spike-driven computation. Consequently, direct deployment of the full network (conv → FC₁ → FC₂) on SpiNNaker is not possible without architectural changes.
+### 3.6.1 architecture constraint
 
-**Weight re-centering (Option C, failed):** Zero-centering each FC₁ weight row ($w_i \leftarrow w_i - \mu_i$) with bias compensation ($b_i \leftarrow b_i + \mu_i n$) was tested as a post-hoc fix. This reparameterisation is mathematically equivalent only for binary inputs (where the sum equals n). With fractional inputs, the compensation over-corrects by a factor of $n / \sum x_j$, destroying FC₁ selectivity. Accuracy dropped from 53.75% to 8.50% (−45.25 pp), confirming the incompatibility.
+The AvgPool between LIF2 and FC1 averages binary spikes into fractional values in [0, 0.5], breaking SpiNNaker's binary spike assumption. So direct deployment of full network on SpiNNaker isn't possible without architectural changes.
 
-### 3.6.2 FC2-Only Hybrid Approach
+**Weight re-centering (Option C, failed):** tried zero-centering each FC1 weight row with bias compensation. Mathematically equivalent only for binary inputs. With fractional inputs the compensation over-corrects by n/sum(x_j), destroying FC1 selectivity. Accuracy went from 53.75% to 8.50%. Confirms the incompatibility.
 
-Adopted a validated hybrid deployment: the feature extraction pipeline (conv blocks + FC₁ + LIF₃) runs in software (snnTorch on CPU), producing binary hidden spike tensors of shape (T, N, 256). Only the final classification layer (FC₂ + LIF₄: 256 → 50) is deployed on SpiNNaker hardware.
+### 3.6.2 FC2-only hybrid approach
 
-**SpiNNaker hardware:** SpiNN-5 board at `spinnaker.cs.man.ac.uk`, accessed via sPyNNaker 1.0.0.
+Validated hybrid: conv + FC1 + LIF3 in software (snnTorch CPU), produces binary hidden spike tensors (T, N, 256). Only FC2 + LIF4 (256->50) deployed on SpiNNaker.
 
-**Neuron model:** IF_curr_exp (integrate-and-fire with exponential synaptic current)
 
 **Calibrated parameters** (9-point scale sweep + LIF parameter calibration):
 ```

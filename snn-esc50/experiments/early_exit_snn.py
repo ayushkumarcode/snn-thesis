@@ -166,3 +166,31 @@ def load_model(model_type, fold, device):
     exp_map = {
         "rhythm": "combo_rhythm_lbeta_drop_sre",
         "dendritic_delays": "combo_dendritic_delays_drop_sre",
+        "rhythm_l1": "combo_rhythm_lbeta_drop_sre_l1_1e-05",
+    }
+    exp_name = exp_map.get(model_type, model_type)
+    path = RESULTS_DIR / "experiments" / exp_name / f"best_fold{fold}.pt"
+
+    if not path.exists():
+        print(f"  WARNING: {path} not found, skipping")
+        return None
+
+    # Build args for ComboSpikingCNN
+    class Args:
+        pass
+    args = Args()
+    args.rhythm = "rhythm" in model_type
+    args.dendritic = "dendritic" in model_type
+    args.delays = "delays" in model_type
+    args.learn_beta = True
+    args.learn_threshold = False
+    args.dropout = True
+    args.sre = True
+    args.kd = False
+    args.hybrid_init = False
+    args.tet = False
+    args.cochleagram = False
+    args.l1_reg = 0.0
+    args.branches = 3
+    args.max_delay = 5
+

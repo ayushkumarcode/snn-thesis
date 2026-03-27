@@ -278,3 +278,31 @@ our 12.8pp gap is within the expected range considering:
 |-----|--------|
 | ESC-50 on neuromorphic hardware | **we fill this** |
 | Spike encoding comparison for environmental sounds | **we fill this** |
+| SpiNNaker audio classification beyond pure tones | **we fill this** |
+| Hybrid ANN-SNN audio deployment | **we partially fill** (software demo, not hardware for CNN14) |
+| BrainScaleS-2 audio classification | open gap |
+| Cross-platform audio benchmark (same task on multiple chips) | open gap |
+| ESC-50 on Loihi 2 | open gap -- would be interesting future work |
+
+### what to cite
+
+for related work and discussion chapters:
+1. Speech2Spikes (Stewart et al., 2023) -- Loihi audio benchmark comparison
+2. Efficient Video and Audio Processing with Loihi 2 (Shrestha et al., ICASSP 2024) -- hardware-software gap context
+3. E-prop on SpiNNaker 2 (Rostami et al., 2022) -- SpiNNaker2 speech results
+4. Xylo Audio 2 KWS benchmark (2024) -- cross-platform energy comparison
+5. Basu et al. (Feb 2025) -- most recent survey
+6. Larroza et al. (2025) -- already cited, closest SNN-ESC work
+7. Dampfhoffer thesis (2023) -- already cited for energy thresholds
+
+---
+
+## Full Bibliography
+
+### Neuromorphic Hardware Papers
+
+1. Stewart, K.M. et al. (2023). "Speech2Spikes: Efficient Audio Encoding Pipeline for Real-time Neuromorphic Systems." NICE 2023. DOI: 10.1145/3584954.3584995
+2. Shrestha, S.B. et al. (2024). "Efficient Video and Audio Processing with Loihi 2." ICASSP 2024. IEEE. arXiv: 2310.03251
+3. Knight, J.C. et al. (2025). "A Complete Pipeline for deploying SNNs with Synaptic Delays on Loihi 2." arXiv: 2510.13757
+4. Yan, Y. et al. (2025). "Eventprop training for efficient neuromorphic applications." arXiv: 2503.04341
+5. Rostami, A. et al. (2022). "E-prop on SpiNNaker 2: Exploring online learning in spiking RNNs on neuromorphic hardware." Front. Neurosci. 16:1018006

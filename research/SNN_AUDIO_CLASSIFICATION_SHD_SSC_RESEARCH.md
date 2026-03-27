@@ -306,3 +306,31 @@ i like this one because:
 - measurable outcomes (accuracy, energy)
 - builds on DCLS-Delays (ICLR 2024) which showed feedforward SNNs with delays can match recurrent ones
 - achievable -- the SNN-delays codebase can be directly used
+- contributes to an open question about whether temporal processing needs recurrence or can be done through delays
+
+**Option B (comparative focus):**
+> "How do spiking neural networks compare to traditional recurrent architectures (LSTM, GRU) in accuracy, computational cost, and energy efficiency for audio classification on neuromorphic speech benchmarks?"
+
+broader and more survey-like. good for showing breadth but risks becoming just a benchmark-running exercise without deep insight.
+
+**Option C (neuron model focus):**
+> "What is the effect of adaptive neuron dynamics on temporal audio classification in spiking neural networks, and how does neuron model complexity trade off against accuracy and energy consumption?"
+
+focuses on comparing LIF, adLIF, RadLIF, and potentially SE-adLIF. sparch toolkit is designed for exactly this.
+
+**Option D (encoding focus):**
+> "How do different spike encoding strategies affect the accuracy and efficiency of spiking neural networks for audio classification?"
+
+explores rate coding vs temporal coding vs the cochlea-based encoding of SHD. more neuroscience-flavored. could include custom encoding of raw audio.
+
+### 7.2 What Makes a Good Research Question Here
+
+for a 3rd year thesis, the question should be:
+- **Answerable** with available tools and data
+- **Bounded** (1-2 datasets, not 5)
+- **Novel at the undergraduate level** (not just reproducing a paper)
+- **Measurable** (quantitative metrics: accuracy, SynOps, training time)
+- **Interesting** to a thesis examiner who might not be an SNN expert
+
+option A seems strongest because the delay-vs-recurrence question is currently debated in the literature, the tools exist to answer it, and the results have clear implications for neuromorphic hardware deployment (feedforward networks are way easier to put on hardware than recurrent ones).
+

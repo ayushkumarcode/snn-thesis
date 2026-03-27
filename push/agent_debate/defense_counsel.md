@@ -164,31 +164,3 @@ The crucial context is the precedent set by the field. The ICONS 2025 best paper
 
 What matters at ICONS is: (a) is the contribution scientifically valid? Yes — 5-fold CV, matched architecture, reproducible protocol. (b) Is it genuinely novel? Yes — confirmed by exhaustive literature review. (c) Does it advance the field's understanding? Yes — the encoding comparison, gap collapse, and hardware analysis all do. Absolute accuracy is not the primary review criterion for this type of paper at this conference.
 
-The one framing risk to avoid: do not present 47.15% as an achievement in itself, because it will invite unfair comparison to ANN SOTA. Present it as the reference point in a scientific study of SNN behaviour on audio. The scientific contribution is the comparative analysis, not the number.
-
-### What Is the Actual Scientific Contribution of the Gap Collapse Finding?
-
-The gap collapse (47.15% → 92.50%, reducing the SNN-ANN difference from 16.7pp to 0.95pp) is the most scientifically significant single finding in the paper, and it should be the conceptual centrepiece of the ICONS submission.
-
-Its significance lies in what it disambiguates. A 16.7pp gap between SNN and ANN in scratch training could have three explanations: (1) the spiking computation mechanism is fundamentally limited relative to continuous activations; (2) surrogate gradient training is insufficient for learning audio features; (3) the SNN cannot learn useful representations from a small dataset (1,600 training samples). The PANNs+SNN experiment isolates explanation (3): given representations already learned from 2 million AudioSet clips, the SNN head performs within 0.95pp of the ANN head. Explanation (1) is ruled out. Explanation (2) is partially ruled out for classification (though surrogate gradients may still limit convolutional feature learning in scratch training). The remaining bottleneck is small-dataset feature learning, which is a problem that scales with data and pre-training rather than being fundamental to the spiking formalism.
-
-This is a genuinely important claim for the neuromorphic computing community. It says: do not give up on SNN audio because of gap numbers from scratch training on small datasets. The path forward is not a fundamentally different spiking architecture — it is better feature representations (pre-training, larger datasets, or ANN-to-SNN knowledge transfer). The community needs this finding to correctly prioritise its research agenda.
-
-The 0.95pp gap at high accuracy (92.50% vs 93.45%) is also more meaningful than the 16.7pp gap at lower accuracy (47.15% vs 63.85%). At high accuracy, model capacity is the binding constraint, and both a 3-layer SNN and a 3-layer ANN have similar capacity given the same pretrained features. The near-equality is genuine evidence of computational equivalence at the classification stage, not a trivial result.
-
-### Why Is the Hardware Deployment Valuable Even at 33.1%?
-
-The hardware deployment is valuable for four distinct reasons, none of which depend on the absolute accuracy number.
-
-First, feasibility demonstration. Before this work, no one had attempted SpiNNaker deployment for environmental sound classification. The 33.1% hardware accuracy demonstrates it is physically possible, that the weight mapping is correct, that the spike timing is correct, and that the output decoding is correct. A hardware feasibility demonstration at any accuracy above chance is scientifically valuable.
-
-Second, gap quantification. The 12.8 ± 4.1 pp hardware gap across 5 folds is itself a scientific measurement. Researchers designing SNN-to-SpiNNaker pipelines need to know what translation loss to expect. This paper provides the first such measurement for audio classification on SpiNNaker1. The per-fold variability (25.2% to 43.0%) reveals that fold-specific factors — likely the distribution of hidden spike activity patterns and the SpiNNaker's weight quantisation interaction — systematically affect translation fidelity. This variability is not noise; it is information about the hardware-software gap.
-
-Third, constraint discovery. The FC1 cancellation finding — that AvgPool → FC is incompatible with SpiNNaker's requirement for binary spike inputs, and that post-hoc weight re-centring fails because it mismodels the actual input distribution — is a novel hardware-software co-design insight. Other researchers building SNN → SpiNNaker pipelines will encounter this exact constraint. Documenting it with root cause analysis is a concrete contribution to the community regardless of what accuracy it produces.
-
-Fourth, path to full deployment. The Option A experiment (MaxPool SNN achieving fc1_binary_fraction=1.000 at all tested thresholds, 43.75% accuracy) shows the architectural fix that enables full FC1+FC2 deployment. The paper therefore documents not just the current state but the roadmap to improving it. This is a complete scientific story: problem identified, root cause diagnosed, fix validated, future path clear.
-
-### What Is the Significance of the Bimodal Surrogate Result?
-
-The bimodal result is more significant than it initially appears, for three reasons.
-

@@ -222,3 +222,31 @@ neurons never fire (or fire every step). both prevent learning. cause: membrane 
 
 gradients go tiny or huge during BPTT through many steps. worse in SNNs than ANNs because of tanh-like surrogate behavior. narrow surrogate (high slope) = vanishing; wide (low slope) = noisy. fix: fewer time steps (25-50 usually fine for images), gradient clipping, moderate slope values, consider SNN-adapted batch norm (tdBN or BNTT).
 
+### Surrogate Gradient Scale Mismatch
+
+learning stalls or oscillates despite gradients flowing. cause: slope parameter scaled wrong. fix: start with defaults (25 for fast_sigmoid, 2.0 for atan). if stalling, reduce slope. if unstable, increase slope.
+
+### Memory Overflow from BPTT
+
+OOM errors with many time steps or large batches. BPTT stores activations for all T steps, multiplying memory by T. fix: smaller batch, fewer steps, mixed precision (`torch.cuda.amp`).
+
+### Loss of Sparsity
+
+trained SNN fires at very high rates, defeating the purpose. without regularization, surrogate gradients can push toward high-firing-rate solutions that resemble ANNs. fix: add spike rate regularization, monitor firing rates, target 10-20% max.
+
+### Forgetting to Reset States
+
+erratic training, accuracy fluctuates. cause: membrane potentials from previous sample leak in. fix: always call `utils.reset(net)` before each new input.
+
+### Wrong Number of Time Steps
+
+very poor accuracy despite correct architecture. too few = not enough time for meaningful spike patterns. too many = temporal dilution. fix: 25-50 for static images, match data temporal structure for neuromorphic data. accuracy often peaks at moderate T (4-8 for some tasks).
+
+### Debugging Checklist
+
+```
+[ ] Are neurons firing? Check avg spike rates per layer
+[ ] Is loss decreasing? Plot loss curve
+[ ] Are gradients flowing? Check gradient norms per layer
+[ ] States being reset? Verify utils.reset()
+[ ] Slope reasonable? Try defaults first

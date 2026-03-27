@@ -567,31 +567,3 @@ Test: Single FC + LIF layer, batch=16, 500 time steps, n neurons:
 3. Tutorial 7 (neuromorphic datasets, ~2 hours)
 4. Then branch to your specific project direction
 
-### Additional Resources
-- **Video lectures** by Jason Eshraghian on YouTube
-- **Paper:** "Training Spiking Neural Networks Using Lessons From Deep Learning" (Eshraghian et al., 2023) -- companion paper to snnTorch
-- **GitHub:** github.com/jeshraghian/snntorch (MIT license, actively maintained)
-
----
-
-<a name="conversion"></a>
-## ANN-to-SNN CONVERSION TOOLS ASSESSMENT
-
-### Tool Maturity Summary
-
-| Tool | Input Formats | Backends | Maturity | Active? |
-|------|--------------|----------|----------|---------|
-| snn_toolbox | Keras, PyTorch, Lasagne, Caffe | pyNN, Brian2, SpiNNaker, Loihi | Moderate | Low activity |
-| SpikingJelly ann2snn | PyTorch | SpikingJelly | Good | Active |
-| NengoDL Converter | Keras/TF | Nengo, Loihi | Mature | Active |
-| MATLAB SNN Toolbox | MATLAB networks | Simulink | Moderate | Active |
-
-### Current State of ANN-to-SNN Conversion
-
-**What Works:**
-- Converting simple CNNs (VGG, ResNet) to SNNs preserves reasonable accuracy (above 80%)
-- SpikingJelly's ann2snn module is the most stable and scalable approach as of 2024
-- NengoDL provides clean Keras-to-SNN pipeline with good documentation
-- snn_toolbox offers the broadest input format support
-
-**What Does Not Work Well:**

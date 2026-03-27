@@ -82,3 +82,31 @@ So an SNN audio paper with actual SpiNNaker deployment would be genuinely novel 
 ### Intel Loihi 2
 - **Hala Point** system: 1.15 billion neurons, 1,152 Loihi 2 processors
 - 75x lower latency, 1000x higher energy efficiency vs Jetson Orin Nano on SSM workloads
+- First LLM on neuromorphic hardware (March 2025, arXiv:2503.18002)
+- Continual learning on-chip (CLP-SNN, November 2025)
+- Software: Lava framework (open-source but still maturing)
+
+### IBM NorthPole
+- 256 cores, 224MB on-chip SRAM, 12nm
+- 25x more energy efficient than GPU on ResNet-50; 46.9x faster, 72.7x more efficient on 3B-parameter LLM inference
+- Not truly spiking -- uses on-chip memory architecture inspired by brain
+- Inference-only chip, not training
+
+### SpiNNaker 2
+- Targeting 10 million ARM cores (10x SpiNNaker 1)
+- Deployed at Sandia National Laboratories (June 2025) for AI and national security
+- Now supports both SNNs AND conventional DNNs
+- Commercial entity: SpiNNcloud marketing 5-million-core systems
+- My project uses SpiNNaker 1 -- SpiNNaker 2 would be a natural extension
+
+### BrainChip Akida
+- AKD1500: 800 GOPS at <300mW, volume production Q3 2026
+- $25M raised (December 2025) for Akida 2 and GenAI
+- Cloud: Akida Developer Cloud launched August 2025
+- Only commercially shipping neuromorphic IP for edge AI
+
+### Innatera Pulsar (new, significant)
+- Hybrid SNN + RISC-V CPU + CNN/DSP accelerators
+- Audio classification at ~400 microW (!), 500x lower than traditional MCUs
+- Demos at CES 2026: smart home, industrial IoT, wearables, healthcare
+- First mass-produced neuromorphic processor (Computex 2025)

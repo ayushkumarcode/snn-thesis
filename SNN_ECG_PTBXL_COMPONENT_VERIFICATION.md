@@ -210,31 +210,3 @@ class ECG_SNN(nn.Module):
         self.conv1 = nn.Conv1d(12, 32, kernel_size=7, padding=3)
         self.lif1 = snn.Leaky(beta=beta, init_hidden=True)
         self.pool1 = nn.MaxPool1d(2)
-
-        self.conv2 = nn.Conv1d(32, 64, kernel_size=5, padding=2)
-        self.lif2 = snn.Leaky(beta=beta, init_hidden=True)
-        self.pool2 = nn.MaxPool1d(2)
-
-        self.conv3 = nn.Conv1d(64, 128, kernel_size=3, padding=1)
-        self.lif3 = snn.Leaky(beta=beta, init_hidden=True)
-        self.pool3 = nn.AdaptiveAvgPool1d(1)
-
-        self.fc = nn.Linear(128, 5)  # 5 superclasses
-        self.lif_out = snn.Leaky(beta=beta, init_hidden=True, output=True)
-
-    def forward(self, x):
-        # x shape: (batch, 12, 1000)
-        x = self.pool1(self.lif1(self.conv1(x)))
-        x = self.pool2(self.lif2(self.conv2(x)))
-        x = self.pool3(self.lif3(self.conv3(x)))
-        x = x.flatten(1)
-        spk, mem = self.lif_out(self.fc(x))
-        return spk, mem
-```
-
-**WARNING:** This architecture processes each ECG as a single spatial input, NOT as a temporal SNN sequence. For temporal SNN processing (delta-encoded spikes over time), you wrap this in a time loop -- see Component 11 for memory implications.
-
-**Source:** [snnTorch Leaky source code](https://snntorch.readthedocs.io/en/latest/_modules/snntorch/_neurons/leaky.html), [Tutorial 6](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html), [snnTorch neurons docs](https://snntorch.readthedocs.io/en/latest/snntorch.html)
-
----
-

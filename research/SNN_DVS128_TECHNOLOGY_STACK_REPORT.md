@@ -369,31 +369,3 @@ frame_transform = transforms.Compose([
 trainset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=True)
 testset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=False)
 
-# Cache to disk for faster loading on subsequent runs
-cached_trainset = DiskCachedDataset(trainset,
-    transform=tonic.transforms.Compose([torch.from_numpy,
-                                        torchvision.transforms.RandomRotation([-10, 10])]),
-    cache_path='./cache/dvs_gesture/train')
-cached_testset = DiskCachedDataset(testset,
-    transform=torch.from_numpy,
-    cache_path='./cache/dvs_gesture/test')
-
-trainloader = DataLoader(cached_trainset, batch_size=16, shuffle=True,
-                         collate_fn=tonic.collation.PadTensors(batch_first=False))
-testloader = DataLoader(cached_testset, batch_size=16,
-                        collate_fn=tonic.collation.PadTensors(batch_first=False))
-
-# === Network Architecture ===
-spike_grad = surrogate.atan()
-beta = 0.5
-
-# Input: [T, N, 2, 128, 128]
-# After downsampling in transforms or via adaptive pooling
-net = nn.Sequential(
-    nn.Conv2d(2, 12, 5),
-    nn.MaxPool2d(2),
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
-    nn.Conv2d(12, 32, 5),
-    nn.MaxPool2d(2),
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
-    nn.Flatten(),

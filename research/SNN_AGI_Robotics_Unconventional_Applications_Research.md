@@ -222,3 +222,31 @@ Key papers:
 ---
 
 ### 2.1 SNN for robotic grasping / manipulation
+
+**Literature: 5-10 papers**
+
+Key works:
+- [Towards Grasping with SNNs for Anthropomorphic Robot Hands (ResearchGate 2017)](https://www.researchgate.net/publication/320580642)
+- [Touch and slippage detection with SNNs (ScienceDirect 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0952197624011114)
+- SNN classification of sEMG signals triggers finger reflexes on robotic hand
+
+Simulation-only possible? Partially. MuJoCo can simulate grasping, but encoding tactile feedback into spikes requires custom work.
+
+**Feasibility: LOW** -- too many moving parts. Grasping needs 3D physics + contact dynamics. No existing open-source SNN-grasping pipeline.
+
+---
+
+### 2.2 SNN for SLAM
+
+**Literature: 5-10 papers**
+
+Key works:
+- [SNN on neuromorphic hardware for energy-efficient SLAM (IEEE 2019)](https://ieeexplore.ieee.org/document/8967864/)
+- [Semantic Spiking Neural SLAM using Nengo (GitHub 2023)](https://github.com/nsdumont/Semantic-Spiking-Neural-SLAM-2023)
+- [Exploiting semantic information in spiking neural SLAM (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1190515/full)
+
+Key finding: SNN SLAM on Loihi consumes 100x less energy than GMapping on CPU with comparable accuracy.
+
+**Feasibility: LOW-MODERATE** -- SLAM itself is complex, and the existing implementation uses Nengo not snnTorch. Framework mismatch is a deal-breaker.
+
+---

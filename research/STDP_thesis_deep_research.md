@@ -166,3 +166,31 @@ this is the most practical approach for a thesis:
 2. STDP-trained conv SNN (STDP-CSNN) extracts features unsupervised
 3. features converted to first-spike times via temporal coding
 4. supervised S2-STDP trains a FC classification SNN
+5. NCG adds intra-class competition for diversity
+6. results: 98.92% MNIST, 88.72% Fashion-MNIST, 66.41% CIFAR-10
+
+**Architecture C: STDP Pre-training + Gradient Fine-tuning (Lee et al., 2018)**
+1. deep spiking CNN with multiple conv layers
+2. phase 1: layer-wise unsupervised STDP pre-training
+3. phase 2: end-to-end supervised fine-tuning with spike-based gradient descent
+4. ~2.5x faster convergence vs random initialization
+5. ~98% MNIST
+
+### 4.3 What i'd Actually Do for a Thesis
+
+**Phase 1: Unsupervised Feature Learning**
+- train a single conv STDP layer (or Diehl & Cook FC network) on training set without labels
+- visualize learned weight filters (should look like meaningful features)
+- ~1-2 hours to train on MNIST
+
+**Phase 2: Feature Extraction**
+- pass training and test images through the trained STDP network
+- record spike responses of excitatory neurons as feature vectors
+- each image becomes a vector of firing rates or first-spike times
+
+**Phase 3: Supervised Classification**
+- train a simple classifier (SVM, logistic regression, even k-NN) on the extracted features
+- compare against: (a) raw pixel features, (b) random SNN features, (c) ANN-learned features
+
+**Phase 4: Analysis**
+- visualize what STDP neurons learned (weight matrices as images)

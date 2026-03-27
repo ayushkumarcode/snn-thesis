@@ -298,31 +298,3 @@ SNNs achieve energy efficiency through three mechanisms:
 |----------|------|-----------------|-------|----------|
 | **Intel Loihi** | KWS | ~110 mJ | 23 mW dynamic | **1x (baseline)** |
 | **Intel Loihi 2** | Audio | -- | -- | **200x less than Jetson Orin Nano** |
-| NVIDIA Jetson TX1 | KWS | ~1.7 J (est.) | -- | ~15x more |
-| CPU (Cortex-M7) | KWS | ~1.65 J (est.) | -- | ~15x more |
-| GPU (general) | KWS | -- | -- | ~109x more |
-| NVIDIA Jetson Orin Nano | Audio | -- | -- | 200x more (vs Loihi 2) |
-
-### 6.3 SNN-Specific Energy Measurements (from SpikCommander, 2025)
-
-| Model | Energy (mJ) | SOPs (G) | Accuracy (GSC) |
-|-------|-------------|---------|----------------|
-| SpikCommander 1L | **0.028** | 0.008 | 96.71% |
-| SpikCommander 2L | **0.042** | 0.020 | 96.92% |
-| Spiking LMUFormer | 0.059 | 0.031 | 96.12% |
-| SpikeSCR 2L | ~0.093 | -- | 95.60% |
-
-Note: These energy numbers are estimated from synaptic operation counts (SOPs), not measured on neuromorphic hardware.
-
-### 6.4 Energy Efficiency Caveats
-
-- **Hardware dependency:** True energy gains require neuromorphic hardware (Loihi, SpiNNaker). On standard GPUs, SNNs may actually be SLOWER and less efficient than ANNs due to the timestep loop.
-- **Sparsity requirement:** For SNNs to be more efficient than ANNs, the spike count per synapse must be below ~0.42-0.44 (verified empirically for VGG16/AlexNet topologies).
-- **Estimation vs measurement:** Most papers estimate energy using synaptic operation counts and assumed hardware energy costs. True measurements require actual neuromorphic hardware deployment.
-- **Thesis angle:** An undergraduate thesis can credibly argue the energy efficiency case using SOP counting methodology, which is standard practice in the field.
-
-### 6.5 Energy Argument for the Thesis
-
-The strongest thesis narrative is:
-
-> "Keyword spotting must run continuously on edge devices with strict power budgets (smartwatches, hearing aids, IoT sensors). SNNs offer a path to sub-milliwatt keyword spotting by exploiting temporal sparsity in audio and event-driven computation. This thesis demonstrates that SNNs can achieve competitive accuracy (>95%) while requiring 5-55x fewer synaptic operations than equivalent ANNs, projecting significant energy savings on neuromorphic hardware."

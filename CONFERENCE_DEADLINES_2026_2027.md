@@ -284,31 +284,3 @@ Sources: [ICLR 2026](https://iclr.cc), [ICLR 2026 Dates](https://iclr.cc/Confere
 |-------|---------|
 | **Paper Deadline** | **~September 2026** (estimated; not yet announced) |
 | **Conference Dates** | ~April-May 2027 (TBD) |
-| **Location** | TBD |
-| **Realistic for UG?** | **VERY HARD.** Same as above. |
-
----
-
-### 3.5 IJCAI-ECAI 2026 -- International Joint Conference on Artificial Intelligence [DEADLINE PASSED]
-
-| Field | Details |
-|-------|---------|
-| **Full Name** | 35th International Joint Conference on Artificial Intelligence |
-| **Abstract Deadline** | 12 January 2026 (PASSED) |
-| **Paper Deadline** | 19 January 2026 (PASSED) |
-| **Conference Dates** | 15-21 August 2026 |
-| **Location** | Bremen, Germany |
-| **Page Limit** | 7 pages + 1 references page |
-| **Format** | IJCAI LaTeX template |
-| **Acceptance Rate** | ~15-20% |
-| **Realistic for UG?** | HARD. Top-tier AI venue. |
-
-Sources: [IJCAI 2026](https://2026.ijcai.org/), [Important Dates](https://2026.ijcai.org/important-dates/)
-
----
-
-## 4. EMBEDDED / EDGE AI
-
-### 4.1 IEEE AICAS 2026 -- AI Circuits and Systems
-
-| Field | Details |

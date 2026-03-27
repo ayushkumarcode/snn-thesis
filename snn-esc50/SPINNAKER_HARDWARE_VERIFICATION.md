@@ -55,19 +55,19 @@ this version is obtained via SCP (SpiNNaker Command Protocol) -- a real hardware
 
 ## evidence 4: machine specs match real SpiNNaker 1
 
-From our provenance database (`reports/.../global_provenance.sqlite3`):
+from our provenance database:
 ```
 Detected Machine on 10.11.219.113 with 47 Chips, 836 cores and 114.0 links.
 Chips have sdram of 123469792 bytes, router table of size 1023,
 between 17 and 18 cores and between 3 and 6 links.
 ```
 
-| Spec | Detected | SpiNN-5 Board Spec | Match? |
+| spec | detected | SpiNN-5 board spec | match? |
 |------|----------|--------------------|--------|
-| Chips per board | 47 (one faulty) | 48 | Yes (faults normal) |
-| Cores per chip | 17-18 | 18 ARM968E-S (1 monitor) | Yes |
-| Total cores | 836 | ~864 max | Yes |
-| SDRAM per chip | 123,469,792 bytes (~118 MB) | 128 MB (minus overhead) | Yes |
+| chips per board | 47 (one faulty) | 48 | yes (faults are normal) |
+| cores per chip | 17-18 | 18 ARM968E-S (1 monitor) | yes |
+| total cores | 836 | ~864 max | yes |
+| SDRAM per chip | 123,469,792 bytes (~118 MB) | 128 MB (minus overhead) | yes |
 | Router table | 1,023 entries | 1,024 (1 reserved) | Yes |
 | Links per chip | 3-6 | Up to 6 (fewer at edges) | Yes |
 

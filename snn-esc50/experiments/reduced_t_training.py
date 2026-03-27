@@ -82,3 +82,31 @@ class ReducedTSNN(nn.Module):
             pooled = self.avg_pool(spk2)
             flat = pooled.view(pooled.size(0), -1)
 
+            cur3 = self.fc1(flat)
+            spk3, m3 = self.n3(cur3, m3, step)
+            spk3 = self.dropout(spk3)
+
+            cur4 = self.fc2(spk3)
+            spk4, m4 = self.n4(cur4, m4, step)
+
+            spk_rec.append(spk4)
+            mem_rec.append(m4)
+            total_spikes = total_spikes + spk4.sum()
+
+        return (torch.stack(spk_rec), torch.stack(mem_rec),
+                total_spikes.item() if isinstance(total_spikes, torch.Tensor)
+                else total_spikes)
+
+
+def train_epoch(model, loader, optimizer, device, num_steps):
+    model.train()
+    total_loss = 0.0
+    correct = 0
+    total = 0
+    use_amp = device.type == 'cuda'
+
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        spk_input = encode_direct(data, num_steps=num_steps).to(device)
+        optimizer.zero_grad(set_to_none=True)
+

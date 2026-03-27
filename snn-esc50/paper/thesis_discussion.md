@@ -68,20 +68,20 @@ The adversarial results are honestly the most striking finding. At eps=0.1 FGSM,
 
 Consistent with Sharmin et al. (2020) who reported similar effects with rate encoding in black-box settings. We extend to white-box attacks on audio, confirming robustness generalises beyond images to audio and beyond rate to direct encoding.
 
+---
 
-## 7.5 PANNs + SNN: What it Reveals About Feature Learning
+## 7.5 PANNs + SNN: what it reveals about feature learning
 
-The collapse of the SNN-ANN gap from 16.70 pp to 0.95 pp with pre-trained features (§4.6) is the most practically actionable finding in this thesis. It establishes that:
+The gap collapse from 16.70 pp to 0.95 pp with pretrained features is the most practically actionable finding.
 
-1. **SNN computation is not the bottleneck.** A 3-layer SNN trained on 2048-d CNN14 embeddings achieves 92.50% — approaching human performance (81.3%) and significantly above the from-scratch SNN (47.15%) and ANN (63.85%).
+1. **SNN computation isn't the bottleneck.** 3-layer SNN on CNN14 embeddings = 92.50%, approaching human (81.3%) and well above from-scratch SNN (47.15%) and ANN (63.85%).
 
-2. **The bottleneck is the feature learning regime.** A ~622K parameter network trained on 1,600 samples cannot learn the rich spectro-temporal features that distinguish 50 sound classes. The CNN convolutional layers are simply too small and too data-limited for from-scratch feature extraction.
+2. **Bottleneck is feature learning.** ~622K params on 1600 samples can't learn rich spectro-temporal features for 50 classes. Conv layers too small and too data-limited.
 
-3. **Linear classifier (93.80%) barely outperforms SNN head (92.50%).** This implies that the CNN14 embeddings are already near-linearly separable for ESC-50 classes. The SNN head's additional non-linearity provides minimal benefit over a linear probe, suggesting that the main task at the classification stage is already trivial with good features.
+3. **Linear (93.80%) barely beats SNN head (92.50%).** CNN14 embeddings are already nearly linearly separable for ESC-50. The SNN head's extra nonlinearity provides minimal benefit -- classification is basically trivial with good features.
 
-**Practical deployment pathway:** A realistic neuromorphic audio intelligence system would:
-1. Extract features using a frozen pretrained ANN (CNN14 or similar) — this runs once, efficiently, on a general CPU or edge NPU
-2. Classify using an SNN trained on the embeddings — this runs on SpiNNaker or Loihi, consuming ~86 nJ/sample (FC2 layer, estimated)
+**Practical deployment:**
+1. Frozen pretrained ANN (CNN14 or similar) extracts features -- runs once on CPU/NPU
 3. The overall pipeline achieves 92.50% accuracy with hardware-compatible SNN inference
 
 This is a more promising direction for near-term deployment than end-to-end spiking computation.

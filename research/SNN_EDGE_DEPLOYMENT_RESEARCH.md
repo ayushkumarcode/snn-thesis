@@ -194,3 +194,31 @@ honestly, the most valuable thesis contribution would be measuring both SNN and 
 | Fixed-point quantization | 1 week | snnTorch quantization tutorial |
 | PYNQ Python overlay | 1 week | PYNQ docs |
 | End-to-end integration | 2-3 weeks | fpga-snntorch repo |
+
+total: 8-12 weeks, fits within a thesis timeline.
+
+---
+
+## 6. Raspberry Pi and other accessible hardware
+
+### Raspberry Pi as SNN platform
+
+it works, but with caveats:
+
+- Python inference is slow (~2.4s per sample for N-MNIST on desktop, worse on Pi)
+- converting to optimized C gets 21x speedup, making real-time plausible
+- the Pi AI Kit ($70, Hailo-8L, 13 TOPS) is for conventional ANNs, not SNNs
+- no event-driven efficiency advantages on the Pi's ARM CPU
+
+recommended approach: train on GPU (Colab), export weights, implement lightweight C runtime on Pi, compare vs ANN (TF Lite Micro), measure power with USB power meter.
+
+### other accessible options
+
+| Hardware | Cost | SNN deployment path |
+|----------|------|-------------------|
+| **Arduino Portenta H7** | ~$80 | Cortex-M7, proven for N-MNIST SNN inference, ~250 KB memory |
+| **STM32 Discovery** | ~$15-30 | Cortex-M4, demonstrated for eLSNN with 54% speedup |
+| **ESP32** | ~$5-10 | WiFi/BT for IoT demo, tight memory but feasible for small SNNs |
+| **BrainChip Akida Dev Kit** | Contact vendor | Actual neuromorphic SoC, sub-1W, Edge Impulse integration |
+| **SynSense Xylo/Speck Kits** | Contact vendor | True neuromorphic, microwatt/milliwatt operation, Rockpool library |
+

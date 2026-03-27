@@ -587,31 +587,3 @@ A strong thesis framed around ANN-to-SNN conversion should follow this structure
 ### Tool and Framework Sources
 
 19. [snn_toolbox GitHub Repository](https://github.com/NeuromorphicProcessorProject/snn_toolbox)
-20. [snn_toolbox Documentation](https://snntoolbox.readthedocs.io/en/latest/guide/intro.html)
-21. [SpikingJelly GitHub Repository](https://github.com/fangwei123456/spikingjelly)
-22. [SpikingJelly ann2snn Documentation](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.12/clock_driven_en/5_ann2snn.html)
-23. [SpikingJelly ResNet18 CIFAR-10 Example](https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/activation_based/ann2snn/examples/resnet18_cifar10.py)
-24. [snnTorch Documentation](https://snntorch.readthedocs.io/)
-25. [snnTorch GitHub Repository](https://github.com/jeshraghian/snntorch)
-26. [ANN-to-SNN-Conversion-with-snnTorch Demo](https://github.com/Saad-data/ANN-to-SNN-Conversion-with-snnTorch)
-27. [QCFS Code Repository](https://github.com/putshua/ANN_SNN_QCFS)
-28. [SNN_Calibration Code Repository](https://github.com/yhhhli/SNN_Calibration)
-29. [SignGD Code Repository](https://github.com/snuhcs/snn_signgd)
-30. [Differential Coding Code Repository](https://github.com/h-z-h-cell/ANN-to-SNN-DCGS)
-31. [Open Neuromorphic - SpikingJelly Overview](https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/spikingjelly/)
-32. [SNN Library Benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
-
-### Curated Lists
-
-33. [Awesome-Spiking-Neural-Networks (TheBrainLab)](https://github.com/zhouchenlin2096/Awesome-Spiking-Neural-Networks)
-34. [awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)
-35. [SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv)
-36. [ann-to-snn-conversion GitHub Topic](https://github.com/topics/ann-to-snn-conversion)
-37. [awesome-snn Collection](https://github.com/coderonion/awesome-snn)
-
-### Survey Papers
-
-38. [Toward Large-scale Spiking Neural Networks: A Comprehensive Survey (2024)](https://arxiv.org/pdf/2409.02111)
-39. [SpikingJelly: An open-source machine learning infrastructure platform (Science Advances 2023)](https://www.science.org/doi/10.1126/sciadv.adi1480)
-40. [Exploring the potential of SNNs in biomedical applications (PMC 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362408/)
-41. [A Practical Tutorial on Spiking Neural Networks (MDPI 2024)](https://www.mdpi.com/2673-4117/6/11/304)

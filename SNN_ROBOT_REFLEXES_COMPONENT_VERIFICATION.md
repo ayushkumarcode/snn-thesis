@@ -418,3 +418,31 @@ python -c "import gymnasium as gym; env = gym.make('Ant-v5'); print('Ant-v5 load
 
 **Source:** [PyBullet PyPI](https://pypi.org/project/pybullet/) | [PyBullet ARM64 issues](https://pybullet.org/Bullet/phpBB3/viewtopic.php?t=13433)
 
+---
+
+### 14. Known Issues and Gotchas
+
+| Issue | Severity | Mitigation |
+|-------|----------|-----------|
+| **SNN gradients are non-differentiable** | HIGH | Use surrogate gradient (built into snnTorch) |
+| **SNN+RL training is unstable** | HIGH | Use PPO (not SAC/TD3), multiple seeds, start simple |
+| **No off-the-shelf SNN+RL library** | MEDIUM | Build custom integration (~200-500 lines) |
+| **SNN temporal dimension adds complexity** | MEDIUM | Each RL step requires T SNN timesteps; manage spike history |
+| **Membrane potential can diverge** | MEDIUM | Use beta decay < 1.0 in LIF neurons, clip membrane potential |
+| **SNN policies are slower to train than MLP** | LOW | Use cloud GPU for long runs; develop/debug locally |
+| **Rate-coded output needs many timesteps** | LOW | Use membrane potential readout instead (faster, simpler) |
+| **Reproducibility across seeds varies** | MEDIUM | Run 5+ seeds, report mean +/- std dev |
+| **PyTorch MPS limitations** | LOW | Some ops may fall back to CPU; usually transparent |
+
+**Most critical gotcha:** The temporal dimension. In standard RL, the policy takes observation -> action. With an SNN policy, you must run the SNN for T timesteps (e.g., T=25) for EACH RL step. This means:
+1. Convert observation to spike train (or just repeat it T times)
+2. Forward through SNN for T steps
+3. Read membrane potential at final timestep as action
+4. This multiplies compute by factor T
+
+---
+
+## Cloud Options for Training
+
+If macOS training is too slow for the full experiment:
+

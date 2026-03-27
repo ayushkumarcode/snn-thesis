@@ -370,31 +370,3 @@ This is the central technical challenge for SNN-NLP. Four main approaches exist:
 
 ### Directly Relevant Repositories
 
-| Repository | What | Stars | Quality | Usability |
-|-----------|------|-------|---------|-----------|
-| [Lvchangze/snn](https://github.com/Lvchangze/snn) | Spiking CNN text classification | ~Low | HIGH | Best starting point |
-| [ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT) | SpikeGPT implementation | ~High | MEDIUM | Complex to run |
-| [NeuroCompLab-psu/SpikingBERT](https://github.com/NeuroCompLab-psu/SpikingBERT) | SpikingBERT distillation | ~Low | MEDIUM | Needs multi-GPU |
-| [Xingrun-Xing/SpikeLM](https://github.com/Xingrun-Xing/SpikeLM) | SpikeLM ICML 2024 | ~Low | MEDIUM | Needs 8xA800 GPUs |
-| [Xingrun-Xing2/SpikeLLM](https://github.com/Xingrun-Xing2/SpikeLLM) | SpikeLLM ICLR 2025 | ~43 | LOW | Sparse docs |
-
-### SNN Frameworks (General Purpose)
-
-| Framework | Docs | NLP Support | Best For |
-|-----------|------|-------------|----------|
-| [snnTorch](https://github.com/jeshraghian/snntorch) | Excellent (14+ tutorials) | No NLP tutorials | Building custom SNN models |
-| [SpikingJelly](https://github.com/fangwei123456/spikingjelly) | Good | Limited | PyTorch-native SNN ops |
-| [Norse](https://github.com/norse/norse) | Good | None | Research-oriented |
-| [BindsNET](https://github.com/BindsNET/bindsnet) | Fair | None | Biologically plausible learning |
-
-### Curated Paper Lists
-
-| Resource | URL |
-|----------|-----|
-| Awesome Spiking Neural Networks (TheBrainLab) | https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks |
-| Awesome SNNs (yfguo91) | https://github.com/yfguo91/Awesome-Spiking-Neural-Networks |
-| SNN Daily ArXiv | https://github.com/SpikingChen/SNN-Daily-Arxiv |
-| SpikingJelly publications | https://github.com/fangwei123456/spikingjelly/blob/master/publications.md |
-
----
-

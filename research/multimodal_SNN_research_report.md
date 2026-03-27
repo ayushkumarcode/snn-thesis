@@ -304,31 +304,3 @@ Choose ONE of these for novelty:
 
 ### Primary Recommendation: snnTorch
 
-| Feature | snnTorch | SpikingJelly | BrainCog | Norse | Lava (Intel) |
-|---|---|---|---|---|---|
-| PyTorch-based | Yes | Yes | Yes | Yes | No (standalone) |
-| N-MNIST support | Yes (via Tonic) | Yes (native) | Yes | Via Tonic | Via Lava-DL |
-| SHD support | Yes (native) | Via custom | Yes | Via Tonic | Via custom |
-| Tutorials | Excellent (8+) | Good | Moderate | Basic | Moderate |
-| Documentation | Excellent | Good (some Chinese) | Moderate | Good | Good |
-| Community | Large | Large | Medium | Medium | Small |
-| Ease of learning | Easiest | Moderate | Moderate | Moderate | Hardest |
-| GPU acceleration | PyTorch CUDA | CuPy backend (fastest) | PyTorch CUDA | PyTorch CUDA | Loihi hardware |
-| Multimodal examples | SHD + N-MNIST separate | Publications list | S-CMRL built on it | No | Sensor fusion |
-
-### Recommended Stack for Undergraduate Project
-
-```
-Framework:     snnTorch 0.9.x (easiest to learn, best tutorials)
-Dataset lib:   Tonic 1.x (neuromorphic dataset loader, PyTorch compatible)
-Deep learning: PyTorch 2.x
-Visualization: matplotlib, seaborn
-Hardware:      Single GPU (even laptop GPU is sufficient)
-Optional:      SpikingJelly (for speed comparison)
-Optional:      SpiNNaker access (if available at university, for deployment)
-```
-
-### Key Libraries and Installation
-
-```bash
-pip install snntorch

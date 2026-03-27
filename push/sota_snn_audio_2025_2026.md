@@ -334,3 +334,31 @@ Pure     Digits    KWS      ESC-10   ESC-50   Full
 tones                                         AudioSet
 
 Dominguez  Wu/Dong  SpikeSCR Larroza  [US]     [None]
+-Morales   2018     2024     2025
+2016                         (FC-only)
+
+                             69.0%    47.15%
+                                      92.50%
+                                      (PANNs)
+```
+
+we tackle the most complex audio classification task ever attempted with an SNN and get competitive results with pretrained features.
+
+---
+
+## 13. Gaps and Limitations of This Search
+
+things i couldn't fully resolve:
+1. exact audio-only accuracy from Guo et al. (2024) -- they don't report it separately from multimodal
+2. full details from Basu et al. (2025) survey -- couldn't extract full text
+3. some institutional thesis repositories were limited to web-accessible metadata
+4. Chinese-language SNN audio papers may exist but aren't indexed in English
+5. can't search upcoming ICONS 2026 submissions obviously
+
+---
+
+## 14. Citations
+
+### must-cite (directly relevant)
+1. Larroza et al. (2025) arXiv:2503.11206 -- closest competitor, ESC-10 only
+2. Baek & Lee (2024) Biomedical Eng. Letters -- SNN+sound review

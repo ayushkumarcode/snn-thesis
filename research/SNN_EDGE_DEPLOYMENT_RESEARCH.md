@@ -267,31 +267,3 @@ Option C -- Use ModNEF (Most flexible):
 | Fixed-point quantization | 1 week | snnTorch quantization tutorial |
 | PYNQ Python overlay | 1 week | PYNQ documentation |
 | End-to-end integration | 2-3 weeks | fpga-snntorch repository |
-
-Total estimated learning curve: 8-12 weeks, which fits within a thesis timeline.
-
----
-
-## 7. Raspberry Pi and Accessible Hardware
-
-### 7.1 Raspberry Pi as SNN Platform
-
-The Raspberry Pi is a viable SNN deployment target, but with important caveats:
-
-**Software SNN inference (Python/C):**
-- Run snnTorch or SpikingJelly models directly in Python on Raspberry Pi 4/5
-- Python inference will be slow (~2.4 seconds per sample for N-MNIST on desktop, much slower on Pi)
-- Converting to optimized C achieves 21x speedup, making real-time inference plausible
-- PyTorch on Raspberry Pi 5 can achieve ~40 FPS for standard neural networks (relevant baseline)
-
-**Hardware acceleration on Pi:**
-- Raspberry Pi AI Kit ($70) features Hailo-8L with 13 TOPS, but this is designed for conventional ANNs, not SNNs
-- No native SNN support on the Hailo-8L accelerator
-- The Pi's ARM CPU can run SNN inference in C, but without the event-driven efficiency advantages
-
-**Recommended Raspberry Pi approach:**
-1. Train SNN using snnTorch on GPU (Google Colab)
-2. Export model weights
-3. Implement lightweight C SNN runtime on Raspberry Pi
-4. Compare inference speed/power vs. equivalent ANN (TensorFlow Lite Micro or similar)
-5. Measure actual power consumption using a USB power meter

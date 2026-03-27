@@ -138,3 +138,31 @@ report both the standard SOP-based estimate AND acknowledge limitations. this sh
 
 ### NeuroBench (highest recommendation)
 
+- pip install neurobench
+- computes Eff_MACs, Eff_ACs, Activation Sparsity, Connection Sparsity, Footprint
+- published in Nature Communications, community standard, works with snnTorch
+- difficulty: LOW
+
+```python
+from neurobench.models import SNNTorchModel
+from neurobench.metrics.workload import (
+    ActivationSparsity, SynapticOperations, ClassificationAccuracy
+)
+from neurobench.metrics.static import Footprint, ConnectionSparsity
+from neurobench.benchmarks import Benchmark
+
+model = SNNTorchModel(your_trained_net)
+static_metrics = [Footprint, ConnectionSparsity]
+workload_metrics = [ClassificationAccuracy, ActivationSparsity, SynapticOperations]
+benchmark = Benchmark(model, test_loader, preprocessors, postprocessors,
+                      [static_metrics, workload_metrics])
+results = benchmark.run()
+# Output includes: Effective_MACs, Effective_ACs, Dense, ActivationSparsity, etc.
+```
+
+### manual spike counting with snnTorch (simple, full control)
+
+if you're already using snnTorch, you can count spikes during inference:
+
+```python
+import snntorch as snn

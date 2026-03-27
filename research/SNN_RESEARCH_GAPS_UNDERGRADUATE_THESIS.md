@@ -99,31 +99,3 @@ The Tonic library (the PyTorch Vision equivalent for neuromorphic data) provides
 ### 2.3 Heidelberg Spiking Datasets (SHD/SSC) -- Framework Coverage Gaps
 
 The SHD (Spiking Heidelberg Digits) and SSC (Spiking Speech Commands) are the premier audio neuromorphic benchmarks. Current state of art on SHD is 96.41% (SpikCommander). However:
-
-- **Gap:** No systematic study comparing snnTorch, SpikingJelly, Norse, and BindsNET on SHD with identical architectures.
-- **Gap:** No study on the effect of different spike encoding methods on SHD (rate vs temporal vs delta modulation).
-- **Gap:** SSC (the harder 35-class version) has far fewer benchmark results than SHD.
-
----
-
-<a name="3-missing-comparisons"></a>
-## 3. Missing Framework/Method Comparison Studies
-
-### 3.1 Framework vs Framework on Real Datasets
-
-The Open Neuromorphic benchmark (Feb 2024) tested 11 SNN frameworks but ONLY on a synthetic single-layer fully-connected setup (not real datasets). The 2025 multimodal benchmark covered 5 frameworks but excluded snnTorch, Norse, and BindsNET. No study exists that does the following:
-
-| Missing Comparison | What Would Be Needed | Effort | Impact |
-|-------------------|---------------------|--------|--------|
-| **snnTorch vs SpikingJelly vs Norse on SHD** | Same CSNN architecture, same hyperparameters, same hardware. Report accuracy, training time, memory, energy estimate. | LOW | HIGH -- directly useful to every SNN researcher choosing a framework. |
-| **snnTorch vs SpikingJelly on DVS128 Gesture** | Same ConvSNN architecture. Both frameworks support DVS128 natively. | LOW-MEDIUM | HIGH |
-| **snnTorch vs SpikingJelly on CIFAR10-DVS** | Same architecture. Both claim support. | LOW-MEDIUM | HIGH |
-| **All 4 frameworks on Fashion-MNIST** | snnTorch, SpikingJelly, Norse, BindsNET with identical LIF-based architecture. | LOW | MEDIUM |
-| **Framework comparison on N-CALTECH101** | No systematic comparison exists. | MEDIUM | MEDIUM |
-
-### 3.2 Method vs Method Comparisons
-
-| Missing Comparison | Details | Effort |
-|-------------------|---------|--------|
-| **Surrogate gradient vs ANN-to-SNN conversion on the same dataset/architecture** | Papers compare within their method but rarely against each other on identical setups. Especially missing for audio datasets (SHD, SSC). | MEDIUM |
-| **Rate coding vs temporal coding vs delta modulation** | No systematic study comparing encoding methods across multiple datasets with the same architecture. | LOW-MEDIUM |

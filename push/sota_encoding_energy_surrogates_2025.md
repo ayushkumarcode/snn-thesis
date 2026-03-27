@@ -86,31 +86,3 @@ Compares 4 encoding families with multiple variants on the RecGym IMU dataset, w
 **Relevance to thesis:** This multi-dimensional tradeoff mirrors the thesis finding. The delta modulation result (best robustness) is interesting given the thesis's delta encoding performed poorly (7.25%)---likely because the thesis uses a simple threshold-based delta encoder rather than multi-threshold adaptive delta modulation. The TTFS fragility (37.3% accuracy drop under noise) is consistent with the thesis's latency encoding weakness (16.30%).
 
 #### (E) Petro et al., "Spike Encoding Techniques for IoT Time-Varying Signals" (Frontiers in Neuroscience, 2022)
-
-**Citation:** B. Petro et al. "Spike encoding techniques for IoT time-varying signals benchmarked on a neuromorphic classification task." Frontiers in Neuroscience 16:999029, 2022.
-
-Benchmarks rate-based and temporal coding methods on Free Spoken Digit Dataset (FSD) and WISDM sensor dataset using a cochlea-inspired preprocessing pipeline. Uses transfer learning from equivalent ANN.
-
-**Relevance to thesis:** Establishes that encoding choice for audio/temporal signals depends heavily on the preprocessing pipeline and target application. The cochlea-inspired front-end is analogous to the mel-spectrogram extraction in the thesis.
-
-### 1.3 Encoding for Audio/Temporal Signals Specifically
-
-#### (F) Larroza et al., "Spike Encoding for Environmental Sound" (arXiv:2503.11206, March 2025)
-
-**Citation:** A. Larroza, J. Naranjo-Alcazar, V. Ortiz Castello, P. Zuccarello. "Comparative Study of Spike Encoding Methods for Environmental Sound Classification." arXiv:2503.11206, 2025.
-
-**THE closest paper to the thesis work.** Compares 3 spike encoding methods on **ESC-10** (not ESC-50):
-
-| Encoding | F1 Score | Precision | Recall |
-|----------|----------|-----------|--------|
-| TAE (Threshold Adaptive) | **0.661** | 0.671 | 0.665 |
-| Step Forward | 0.409 | 0.528 | 0.423 |
-| Moving Window | 0.354 | 0.415 | 0.388 |
-
-Architecture: 3-layer FC SNN (128 neurons each), LIF neurons, trained 100 epochs.
-
-**Critical limitations vs. thesis:**
-- ESC-10 only (10 classes), not ESC-50 (50 classes)
-- FC architecture only, no convolutions
-- Only 3 encoding schemes (all temporal/change-based), no direct/rate/phase/population/burst
-- Best result (F1=0.661) substantially below thesis direct encoding (47.15% on full ESC-50)

@@ -76,31 +76,3 @@ One honest caveat: the gap-collapse finding is consistent with a pattern already
 **The claim.** This thesis tests 8 surrogate gradient functions (spike_rate_escape, fast_sigmoid, atan, STE, sigmoid, sfs, triangular, LSO) on fold 1 of ESC-50. Key finding: bimodal split — 3 learning surrogates (sre=46%, fast_sigmoid=44.75%, atan=35.75%) vs 4 failing surrogates (STE=10.25%, sigmoid=2%, sfs=2%, triangular=2.75%). Sigmoid failure is surprising given Zenke (2021) claims shape matters less than slope.
 
 **Why this is notable.** The bimodal failure pattern is unexpected and the sigmoid failure specifically contradicts prior theoretical predictions. No prior paper has done this comparison for audio SNNs. However, surrogate gradient comparisons for vision SNNs do exist (e.g., Li et al. IJCAI 2023), so the methodological approach is not novel — the application to audio is the novelty. The finding is useful to future audio SNN practitioners.
-
-**Novelty strength: Weak-to-Moderate.** Useful result, but surrogate gradient ablation is established methodology and the audio-domain application does not change the interpretation substantially.
-
----
-
-### Claim 8: Continual learning forgetting analysis for audio SNNs
-
-**The claim.** SNN forgetting across 5 ESC-50 super-categories: 74.4%. ANN forgetting: 81.3%. SNN forgets 6.9 pp less. No prior work studies continual learning for audio SNNs.
-
-**Why this is notable.** The result is positive for SNNs and the domain is genuinely unexplored. However, a 6.9 pp difference in catastrophic forgetting on a small dataset is not a dramatic finding by continual learning standards, and the experimental setup (5 sequential tasks, 10 classes each, fold 4 only, 20 epochs per task) is modest. The absence of standard continual learning baselines (EWC, PackNet, replay) means the 6.9 pp advantage cannot be attributed to any specific mechanism. It is a descriptive result, not a mechanistic one.
-
-**Novelty strength: Weak.** Domain is novel (first for audio SNNs), but the result is not striking enough to stand alone, and the methodology lacks baselines that would allow attribution.
-
----
-
-## Part 2: What Is NOT Novel or Is Risky
-
-### 2.1 The 47.15% absolute accuracy number
-
-This will be the first thing adversarial reviewers look at. ESC-50 ANN SOTA is 99.1% (OmniVec2, CVPR 2024). Human performance is 81.3%. The matched ANN baseline is 63.85%. The scratch SNN achieves 47.15%. None of these numbers advance the state of the art for ESC-50. The paper does not claim they do, but reviewers from outside the neuromorphic community may apply the wrong evaluation frame. This is not a novelty problem — the novelty is the encoding comparison and analysis, not the absolute number — but it is a framing risk. The paper must be submitted to a venue (ICONS) that evaluates methodology and hardware, not accuracy rank tables.
-
-### 2.2 The architecture itself is not novel
-
-Conv2d → BN → MaxPool → LIF, repeated twice, then FC layers is a standard SNN architecture pattern from the snnTorch tutorial literature. There is no architectural innovation here. The contribution is the systematic evaluation and analysis, not the design of a new network. This is acceptable for ICONS but would be a rejection criterion at ICLR or NeurIPS.
-
-### 2.3 The SpiNNaker accuracy gap may be questioned
-
-33.1% SpiNNaker vs 47.15% software (12.8 pp gap) will prompt questions about whether the FC2-only hybrid approach is a fair evaluation of "SpiNNaker deployment." Technically, the SNN is not fully deployed on SpiNNaker — FC1 and LIF layers 1-3 run in software. The paper documents this honestly, but a reviewer could argue this is not a real hardware result. The counter-argument — that the hybrid approach is itself the novel contribution, documenting what can and cannot run on SpiNNaker and why — is correct, but requires clear framing in the paper.

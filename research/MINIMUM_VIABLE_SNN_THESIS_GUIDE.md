@@ -194,3 +194,31 @@ All tutorials are available as interactive Google Colab notebooks. You can run t
 A standard PyTorch CNN for MNIST is in every deep learning tutorial online. The official PyTorch examples include one. Key point: use the SAME architecture dimensions as your SNN for a fair comparison.
 
 ### Tools you need:
+
+| Tool | Purpose | Install |
+|------|---------|---------|
+| Python 3.8+ | Language | Already installed |
+| PyTorch | Deep learning framework | `pip install torch torchvision` |
+| snnTorch | SNN framework | `pip install snntorch` |
+| Tonic | Neuromorphic data loading | `pip install tonic` (only if using N-MNIST) |
+| matplotlib | Plotting | `pip install matplotlib` |
+| Google Colab | Free GPU | browser-based, no install |
+
+---
+
+## 6. Literature review scope
+
+### For a 2:1: 20-25 references
+
+### For a first: 25-35 references
+
+Manchester's report guidance says you need "an in-depth investigation of the context and literature." The general consensus for UK dissertations is roughly 30-40 references for a 10,000-word report. For a CS project where implementation is a large component, 20-30 well-chosen references is fine.
+
+### Core papers you MUST cite (the essential 12):
+
+**Foundational SNN papers:**
+1. Maass, W. (1997). "Networks of spiking neurons: The third generation of neural network models." -- Defines SNNs as the "third generation"
+2. Gerstner, W. & Kistler, W. (2002). "Spiking Neuron Models" (textbook) -- LIF model reference
+3. Hodgkin, A.L. & Huxley, A.F. (1952). "A quantitative description of membrane current..." -- The biological foundation
+
+**SNN training methods:**

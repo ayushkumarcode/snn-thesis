@@ -306,3 +306,31 @@ our bimodal result (3 learn, 4 fail) is pretty significant i think. possible exp
 ### The Encoding-Energy-Accuracy Trilemma
 
 the literature consistently shows a three-way tradeoff:
+- **direct:** highest accuracy, highest firing rate (expensive)
+- **temporal (TTFS/latency):** lowest firing rate (efficient), lowest accuracy, fragile
+- **rate:** moderate accuracy, moderate energy, best robustness
+
+our results perfectly illustrate this: direct (47.15%, high energy) vs rate (24.00%, moderate) vs latency (16.30%, low energy).
+
+### The Simulation-vs-Hardware Paradox
+
+our SNN being 2.1x more expensive than ANN in software is consistent with Yang 2024 and Dampfhoffer 2023. but on neuromorphic hardware (Loihi 2, Xylo, SpiNNaker 2), 10x-200x energy advantages are measured. the discrepancy: software simulation doesn't benefit from event-driven processing -- it iterates through all timesteps sequentially. real savings need hardware that skips zero-spike operations.
+
+### The Feature Learning Bottleneck
+
+our most important finding (PANNs+SNN=92.5% vs scratch SNN=47.15%) is consistent with:
+- NeuroBench motor prediction: SNN matches ANN when features are naturally spike-compatible
+- Stanojevic et al. 2024: 0.3 spikes/neuron achieves ANN accuracy when converting from pretrained ANN
+- the bottleneck is feature learning, not spiking computation
+
+---
+
+## Research Gaps
+
+things that don't exist in the literature:
+1. nobody benchmarks 7+ encoding schemes on a single audio dataset -- we're unique
+2. no energy measurements for ESC-50 specifically on neuromorphic hardware
+3. nobody explains the bimodal surrogate gradient pattern -- our result is novel
+4. limited data on population encoding performance -- most work focuses on rate/temporal/direct
+
+---

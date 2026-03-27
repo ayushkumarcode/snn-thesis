@@ -180,20 +180,20 @@ Small diffs from extraction vs training-time measurement. Mean 46.0% within 1.2 
 | Fold | SpiNNaker | snnTorch ref | Hardware gap |
 |------|-----------|-------------|-------------|
 | 1 | 29.0% | 39.5% | +10.5 pp |
-| 1 | 39.5% | 40.5% | −1.0 pp |
-| 2 | 48.2% | 48.5% | −0.3 pp |
-| 3 | 47.7% | 48.25% | −0.55 pp |
-| 4 | 51.2% | 54.0% | −2.8 pp |
-| 5 | 43.2% | 44.5% | −1.3 pp |
-| **Mean** | **46.0%** | **47.15%** | **−1.15 pp** |
+| 2 | 32.0% | 48.2% | +16.2 pp |
+| 3 | 36.5% | 47.8% | +11.2 pp |
+| 4 | 43.0% | 51.2% | +8.2 pp |
+| 5 | 25.2% | 43.2% | +18.0 pp |
+| **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
+| **Std** | **6.9%** | | **4.1 pp** |
 
-The small differences between extraction-time and training-time accuracy arise because: (a) training-time best_acc is measured at the best validation epoch, (b) feature extraction evaluates the full test set in a single forward pass without epoch selection. The mean of 46.0% is within 1.2 pp of the canonical 47.15%, confirming model integrity.
+SpiNNaker 5-fold: 33.1% +/- 6.9% vs snnTorch 46.0%, mean hardware gap 12.8 +/- 4.1 pp. Fold-to-fold variability shows gap is somewhat fold-dependent, suggesting class composition matters for SpiNNaker performance.
 
-**Sparsity consistency.** The hidden spike sparsity is consistent across folds (fold 1: 79.9%, fold 2: 72.6%, fold 3: 76.1%, fold 4: 78.3%, fold 5: 75.8%), confirming that the FC2-only hybrid approach is valid across the full 5-fold dataset. The calibrated weight_scale=5.0 from Run 6 will be used directly for all five folds.
+---
 
-**Actual hardware results** (SpiNNaker FC2-only hybrid, 400 samples per fold, completed 05 March 2026):
+## 5.4 NeuroBench energy analysis
 
-| Fold | SpiNNaker | snnTorch ref | Hardware gap |
+### 5.4.1 methodology
 |------|-----------|-------------|-------------|
 | 1 | 29.0% | 39.5% | +10.5 pp |
 | 2 | 32.0% | 48.2% | +16.2 pp |

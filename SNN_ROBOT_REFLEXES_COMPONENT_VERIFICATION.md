@@ -194,3 +194,31 @@ reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
 - This naturally forces the agent to learn balance as a prerequisite for locomotion
 
 **No custom reward engineering needed for an undergraduate thesis.** The built-in rewards are the standard benchmark used by all RL papers.
+
+**Source:** [Gymnasium Ant docs](https://gymnasium.farama.org/environments/mujoco/ant/) | [Gymnasium Humanoid docs](https://gymnasium.farama.org/environments/mujoco/humanoid/)
+
+---
+
+### 7. Training Stability
+
+| Field | Value |
+|-------|-------|
+| **EXISTS** | YES -- documented extensively in literature |
+| **Stable?** | **NO -- SNN+RL training is known to be unstable** |
+| **Known issues** | Multiple critical issues documented |
+| **Typical runs needed** | 5+ seeds minimum, report mean +/- std |
+| **POTENTIAL BLOCKER** | **YES (HIGH)** -- this is the hardest part of the project |
+
+**Documented stability issues with SNN + RL:**
+
+1. **Non-differentiable spike function:** The derivative does not exist at the spike threshold. Surrogate gradients approximate this but introduce bias. Training can oscillate or fail to converge.
+
+2. **Membrane potential oscillation:** The last membrane voltage can cause nonperiodic oscillatory behavior, making learning unstable and hard to converge.
+
+3. **Discrete-continuous mismatch:** Discrete SNN outputs conflict with continuous target network soft updates in off-policy RL, causing "abrupt output shifts," oscillatory updates, and high sensitivity to random seed initialization.
+
+4. **Temporal encoding challenges:** If input signals arrive after the first output neuron spikes, they cannot effectively participate in training.
+
+5. **Gradient vanishing/explosion:** Due to non-differentiable spiking signals; restricts effective SNN depth to shallow architectures in some cases.
+
+**Mitigation strategies:**

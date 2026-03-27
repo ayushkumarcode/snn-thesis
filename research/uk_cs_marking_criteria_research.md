@@ -222,3 +222,31 @@ For 80+, markers start looking for:
 - Particularly elegant or ambitious implementation
 - Evaluation methodology that goes beyond the obvious
 
+### 3.3 What this means for my project
+
+For an SNN / neuromorphic computing project at Manchester, i don't need to produce a publishable paper. What i need is:
+- A well-framed problem with clear objectives
+- Evidence that i understand the existing literature (SNN architectures, neuromorphic hardware, DVS sensors, etc.)
+- A working implementation that achieves the stated objectives
+- A rigorous evaluation comparing my approach against relevant baselines
+- Honest critical analysis of what works, what doesn't, and why
+
+If i happen to achieve results competitive with published work, that would push into high-first territory, but it's not the threshold for a first.
+
+---
+
+## 4. Research question vs implementation quality
+
+### 4.1 The weight of evidence
+
+Looking at Cambridge's breakdown:
+- Introduction and Preparation (which includes the research question): **30 marks**
+- Implementation and Contribution: **45 marks**
+
+So implementation carries about 1.5x the raw marks of the research framing.
+
+At Manchester, the "Report" (55%) covers both the research question AND the write-up, while "Achievements" (30%) is purely the practical output. So the implementation component is separately assessed and worth nearly a third of the total mark.
+
+### 4.2 Why the research question still matters a lot
+
+Despite implementation carrying more raw marks, the research question might actually be more important in practice because:

@@ -110,3 +110,31 @@ for an undergrad thesis, the best balance of difficulty, tooling, narrative stre
 | Samples | ~10,420 (8,332 train / 2,088 test) |
 | Speakers | 12 (2 only in test) |
 | Input channels | 700 (cochlear frequency channels) |
+| Format | HDF5 |
+| Year | 2019 (Cramer et al., IEEE TNNLS) |
+
+**preprocessing:** load HDF5, bin 700 channels to 140 (5:1 spatial binning), discretize time into ~100 steps at 10ms each. no spatial preprocessing needed (1D audio). clean pipeline.
+
+**framework support:** SpikingJelly, Tonic, snnTorch (via Tonic), sparch toolkit, Rockpool.
+
+**SOTA SNN:** 96.41% (SpikCommander 2025). typical achievable: ~85-92% with basic recurrent SNN.
+
+**difficulty:** MODERATE. small (fast to train), clean splits with held-out speakers, 20-class problem is interesting. the main thing is that temporal dynamics GENUINELY MATTER here unlike N-MNIST. true test of SNN temporal processing.
+
+**thesis narrative:** STRONG. "mimicking how the brain processes speech using spike-based computation." cochlear model input makes the bio-plausibility argument strong. applications: voice commands, hearing aids, smart speakers. the ONLY widely-used neuromorphic audio benchmark, so it has novelty value. few undergrads tackle audio SNNs.
+
+---
+
+### 6. SSC (Spiking Speech Commands)
+
+| Property | Details |
+|---|---|
+| Classes | 35 speech commands |
+| Samples | ~105,829 |
+| Input channels | 700 |
+| Year | 2019 |
+
+same pipeline as SHD but 10x larger and 35 classes. SOTA only ~86%. training takes much longer.
+
+**difficulty:** HARD. results can look mediocre even with good methods.
+

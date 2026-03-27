@@ -278,3 +278,31 @@ for epoch in range(epochs):
 | matplotlib | Optional (for visualization) |
 | nir / nirtorch | Optional (for NIR exchange format) |
 
+Source: https://github.com/jeshraghian/snntorch/blob/master/setup.py
+
+### Installation
+
+```bash
+pip install snntorch
+
+# For neuromorphic dataset support with Tonic
+pip install tonic
+
+# Full install with all optional dependencies
+pip install snntorch[full]
+```
+
+### Neuron Models
+
+Available in `snntorch`:
+
+| Neuron Model | Description |
+|---|---|
+| `snn.Leaky` | 1st-order LIF. The main one. |
+| `snn.RLeaky` | Recurrent LIF with output spike feedback connections |
+| `snn.Synaptic` | 2nd-order LIF with synaptic conductance (alpha + beta decay) |
+| `snn.RSynaptic` | Recurrent 2nd-order LIF |
+| `snn.Lapicque` | Lapicque's RC circuit model (equivalent to Leaky, parameterized differently) |
+| `snn.Alpha` | Alpha membrane model (recursive Spike Response Model) |
+| `snn.LeakyParallel` | Parallelized 1st-order LIF (faster for long sequences) |
+| `snn.SLSTM` | Spiking LSTM with state-thresholding |

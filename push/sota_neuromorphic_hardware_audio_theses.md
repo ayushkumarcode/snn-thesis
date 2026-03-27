@@ -462,31 +462,3 @@ For the Related Work (Chapter 2) and Discussion (Chapter 7), consider adding:
 18. Kim, D. et al. (2024). "SNN and Sound: A Comprehensive Review of Spiking Neural Networks in Sound." Biomedical Engineering Letters
 19. Larroza, A. et al. (2025). "Spike Encoding for Environmental Sound: A Comparative Benchmark." arXiv: 2503.11206
 20. Yik, J. et al. (2025). "NeuroBench." Nature Communications 16:1589
-
-### Theses
-
-21. Dampfhoffer, M. (2023). "Models and algorithms for implementing energy-efficient spiking neural networks on neuromorphic hardware at the edge." PhD thesis, Universite Grenoble Alpes
-22. Dominguez-Morales, J.P. (2018). "Neuromorphic audio processing through real-time embedded spiking neural networks." PhD thesis, Universidad de Sevilla
-23. Peres, L. (2022). "Parallelisation of Neural Processing on Neuromorphic Hardware." PhD thesis, University of Manchester
-24. Wall, J. "Spikes from sound: A model of the human auditory periphery on SpiNNaker." PhD thesis, University of Manchester
-25. Jin, X. "Deep Spiking Neural Networks." PhD thesis, University of Manchester
-26. Davies, S. "Learning in Spiking Neural Networks." PhD thesis, University of Manchester
-
----
-
-## Appendix B: Confidence Assessment
-
-| Finding | Confidence | Basis |
-|---------|------------|-------|
-| No prior ESC-50 on neuromorphic hardware | **Very High** | Exhaustive search across all major platforms and databases |
-| Loihi 2 achieves near-zero hardware gap on SHD/SSC | **High** | Multiple corroborating papers with specific numbers |
-| SpiNNaker2 achieves 91.12% on GSC-12 | **High** | Published in Frontiers in Neuroscience, specific numbers confirmed |
-| Xylo Audio 2 achieves 95% on Aloha KWS | **High** | Published benchmark with specific measurements |
-| Our 12.8pp gap is within expected range | **High** | DYNAP-SE 7.1pp on easier task; no QAT in our pipeline |
-| BrainScaleS-2 has no audio classification results | **Medium** | Searched extensively but cannot confirm exhaustive coverage of all Heidelberg publications |
-| No award-winning undergraduate SNN thesis found | **Medium** | Undergraduate theses are poorly indexed; absence of evidence is not evidence of absence |
-| Dampfhoffer thesis is most relevant energy modeling work | **High** | Directly cited in our thesis; only systematic energy modeling for SNN neuromorphic hardware |
-
----
-
-*Report compiled through systematic web research covering academic databases, conference proceedings, institutional repositories (Manchester eScholar, HAL, IDUS Seville), arXiv, IEEE Xplore, ACM Digital Library, and open neuromorphic community resources.*

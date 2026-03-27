@@ -82,3 +82,31 @@ def measure_snn_energy(model, loader, device, num_steps=NUM_STEPS,
             flat = pooled.view(B, -1)
 
             cur3 = model.fc1(flat)
+            spk3, mem3 = model.lif3(cur3, mem3)
+            batch_spikes["fc1"] += spk3.sum().item()
+
+            cur4 = model.fc2(spk3)
+            spk4, mem4 = model.lif4(cur4, mem4)
+            batch_spikes["fc2"] += spk4.sum().item()
+            mem_out_list.append(mem4)
+
+        mem_out = torch.stack(mem_out_list)
+        predicted = mem_out.sum(dim=0).argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+
+        # Compute ACs: spikes * fan-out for each layer
+        for layer in batch_spikes:
+            acs = batch_spikes[layer] * fan_out[layer]
+            total_acs += acs
+            total_spikes_per_layer[layer] = (
+                total_spikes_per_layer.get(layer, 0) +
+                batch_spikes[layer])
+
+        total_samples += B
+
+    avg_acs = total_acs / total_samples
+    avg_energy_nj = avg_acs * ENERGY_PER_AC_PJ / 1000  # pJ -> nJ
+
+    # Spike rates per layer
+    spike_rates = {}
+    total_neurons = {"conv1": 32*32*108, "conv2": 64*16*54,

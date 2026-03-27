@@ -138,3 +138,31 @@ Sources: [SNN Benchmarks - Open Neuromorphic](https://open-neuromorphic.org/blog
 | Download source | IBM Box (manual, needs login) |
 | Event format | (x, y, timestamp, polarity) per event |
 
+### SpikingJelly pipeline
+
+**step 1: download (manual)** -- from IBM Box: https://ibm.ent.box.com/s/3hiq58ww1pbbjrinh367ykfdf60xsfm8. login required, can't automate. annoying but one-time.
+
+**step 2: extract and convert (automatic, first run only)**
+```python
+from spikingjelly.datasets.dvs128_gesture import DVS128Gesture
+dataset = DVS128Gesture(root='./data/DVS128Gesture', data_type='frame',
+                         frames_number=16, split_by='number')
+```
+SpikingJelly handles checksum verification, AEDAT extraction, binary parsing, gesture splitting, and npz saving. takes 10-30 minutes on first run.
+
+**step 3: event-to-frame conversion** -- events need to be binned into frames for batch training. three strategies:
+
+| Method | Description | Param |
+|--------|-------------|-------|
+| `split_by='number'` | Fixed number of frames (e.g., T=16). Roughly equal events per frame. | `frames_number=16` |
+| `split_by='time'` | Fixed time window. Variable frame count. | `duration=time_ms` |
+| Custom transforms | Via Tonic: ToFrame, Denoise, Downsample | Various |
+
+output shape: `[T, 2, 128, 128]` -- T time bins, 2 polarity channels (ON/OFF).
+
+**step 4: batching** -- each sample has different temporal length. use `frames_number=16` for uniform tensors (simpler) or `pad_sequence_collate` for variable length (more faithful but slower).
+
+### snnTorch + Tonic pipeline
+
+```python
+import tonic

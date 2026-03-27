@@ -170,31 +170,3 @@ The literature converges on several explanations:
 
 **High-Performance Deep SNNs with 0.3 Spikes per Neuron (Nature Communications, 2024):**
 Stanojevic et al. from IBM Research demonstrate TTFS-based SNNs achieving exact ANN-equivalent accuracy on MNIST, Fashion-MNIST, CIFAR-10, CIFAR-100, and PLACES365 with only 0.3 spikes per neuron. This establishes that temporal coding can match ANN accuracy with extreme sparsity when properly trained.
-
-### 1.6 Summary: Encoding Landscape
-
-The thesis benchmark of 7 encodings on ESC-50 is **unique in the literature**:
-
-| Rank | Thesis Encoding | Acc (%) | Literature Consensus | Literature Consistency |
-|------|----------------|---------|---------------------|----------------------|
-| 1 | Direct | 47.15 | Best at low timesteps (Kim 2022, Tutorial 2025) | Fully consistent |
-| 2 | Rate | 24.00 | Good accuracy but needs many timesteps | Consistent (gap expected) |
-| 3 | Phase | 24.15 | Noise-robust (Guo 2021), efficient | Consistent |
-| 4 | Population | 19.15 | Higher neuron count, harder optimization | Consistent |
-| 5 | Latency | 16.30 | Low firing rate but fragile to noise (Bian 2024: -37% under noise) | Consistent |
-| 6 | Delta | 7.25 | Multi-threshold variants work (Bian 2024: 89.8%), simple threshold fails | Partially consistent |
-| 7 | Burst | 6.50 | Good for compression/HW robustness (Guo 2021), but architecture-dependent | Novel negative result |
-
----
-
-## Part 2: Energy Efficiency
-
-### 2.1 Dampfhoffer et al. (IEEE TECI, 2023) --- The Critical Reassessment
-
-**Citation:** M. Dampfhoffer, T. Mesquida, P. Valentian, L. Anghel. "Are SNNs Really More Energy-Efficient Than ANNs? An In-Depth Hardware-Aware Study." IEEE Trans. Emerging Topics in Computational Intelligence, vol. 7, no. 3, pp. 731--741, June 2023. DOI:10.1109/TECI.2022.9927729.
-
-**Key findings:**
-- The IF model is more energy-efficient than LIF and temporal continuous synapse models
-- SNNs with IF model can compete with efficient ANN implementations when spike sparsity is **0.15--1.38 spikes per synapse per inference** (depending on ANN implementation)
-- Previous studies overlooked memory access costs (which dominate energy in practice)
-- Hybrid ANN-SNN architectures leveraging SNN in high-sparsity layers and ANN in dense layers are the most promising path

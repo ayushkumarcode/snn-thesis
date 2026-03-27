@@ -204,31 +204,3 @@ The Option A result already exists: threshold=3.0 achieves 43.75% accuracy on fo
 **If there is time to run Option A on SpiNNaker hardware before April 1:** Do it. A result showing FC1+FC2 running on SpiNNaker — even if the accuracy degrades slightly from 43.75% — would transform the hardware contribution from "FC2-only hybrid" to "first full convolutional SNN deployed on SpiNNaker for environmental sound." This single addition would likely move the paper from the lightning-talk tier to the full-talk tier.
 
 **If there is no time to run Option A on hardware:** Add a dedicated subsection (0.5 pages) in the SpiNNaker section explaining: (a) why FC1-only was not feasible (AvgPool constraint), (b) what Option A found (binary fraction=1.0 at threshold≥1.0, 43.75% accuracy), and (c) what the FC1+FC2 deployment would look like in practice. Frame this as "the path to full deployment is validated in simulation; hardware execution is immediate future work." This strengthens the paper without requiring new experiments.
-
-**Secondary priority additions (if space permits):**
-1. Complete the 3-seed CSF3 surrogate ablation — replace "fold 1, 1 seed" with "fold 1, 3 seeds" for tighter variance estimates
-2. Add one sentence on SA-PGD (Wang et al. 2025) to acknowledge that standard PGD may underestimate SNN robustness at high eps — shows reviewer-level awareness
-3. Update ESC-50 SOTA reference from 98.25% to OmniVec2 99.1% (CVPR 2024)
-
----
-
-## 10. What "Advancing State of the Art or Novel/Original Approaches" Means at ICONS
-
-This is the key framing question for positioning the paper.
-
-**At ICONS, "advancing state of the art" does not mean "higher accuracy than the previous best."** That is the ICLR/NeurIPS definition. At ICONS, it means:
-
-1. **Advancing the set of tasks where neuromorphic systems have been benchmarked.** ESC-50 was previously uncharted territory for SNNs. Establishing the first benchmark results on this task advances the state of the art in the sense that the community's knowledge of what neuromorphic systems can do has been extended.
-
-2. **Advancing understanding of design trade-offs.** Establishing that direct encoding dominates for audio spectrograms (and explaining why: continuous integration allows the LIF membrane to perform its own rate computation) advances what the community knows about encoding choice. Establishing the surrogate bimodal split (3 surrogates learn, 4 fail) advances what the community knows about surrogate gradient selection.
-
-3. **Advancing hardware deployment methodology.** The FC1 cancellation analysis — showing why AvgPool breaks SpiNNaker's binary input assumption, and how MaxPool replacement restores binary compatibility — advances the community's understanding of hardware-software co-design constraints for convolutional SNNs.
-
-**Is 47.15% advancing SoTA?** Yes, trivially — it is the first result on this task. There is no prior SoTA for SNN on ESC-50 to compare against. The relevant prior SoTA is "undefined" (no prior work), and 47.15% > undefined. The paper should state this explicitly.
-
-**Is the deployment novel enough?** Yes. The deployment is novel on three levels: (1) first SpiNNaker deployment for environmental sound classification, (2) first neuromorphic hardware deployment for any 50-class audio task, and (3) first published analysis of FC1 cancellation due to AvgPool in convolutional SNNs on SpiNNaker. Each of these would be a novel contribution on its own; having all three together makes the novelty robust even if one point is contested.
-
-**The critical distinction for ICONS:** The conference is not asking "does your SNN beat the ANN?" It is asking "does your paper advance the community's ability to build and understand neuromorphic systems?" The answer here is clearly yes — on encoding, on hardware deployment, on robustness properties, and on transfer learning.
-
----
-

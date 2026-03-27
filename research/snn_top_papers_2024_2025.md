@@ -222,3 +222,31 @@ i went through the future work sections of a bunch of these papers and here's wh
 
 4. **SNN continual learning with new replay strategies** -- SESLR paper shows binary spike features reduce memory for continual learning. testing different replay buffer strategies (reservoir sampling, surprise-based selection) is a fairly easy extension. (from SESLR 2025, continual learning survey)
 
+5. **compare snnTorch vs SpikingJelly vs Norse on identical tasks** -- the 2025 multimodal benchmark compared 5 frameworks but didn't deeply analyze training curves, hyperparameter sensitivity, or user experience. a focused comparison study is doable. (from SNN Framework Benchmarks 2024-2025)
+
+### moderate -- needs some novel implementation but builds on existing code
+
+6. **spiking neural architecture search (NAS)** -- a recent survey (arXiv:2510.14235) maps the SNN NAS landscape but identifies many untried search spaces. adapting existing ANN NAS methods (DARTS, etc.) for SNNs is tractable.
+
+7. **SNN for audio/speech with event-driven encoding** -- Spiking-LEAF proposes a learnable auditory front-end. combining with recent architectures (e.g., P-SpikeSSM) for speech command recognition is a clear next step.
+
+8. **ANN-to-SNN conversion for modern architectures** -- converting Mamba/SSM models or mixture-of-experts architectures to SNNs is completely unexplored. even a negative result showing what fails would be publishable.
+
+9. **pruning and compression of spiking transformers** -- pruning has been studied for CNN-based SNNs, but pruning the new spiking transformers (QKFormer, SpikingResformer) hasn't been tried. (from QP-SNN ICLR 2025, various pruning papers)
+
+10. **SNN + reinforcement learning for simple robotics tasks** -- recent papers show SNN-based RL for locomotion and navigation. applying to simulated robotic manipulation (OpenAI Gym or MuJoCo) with SNNs is feasible with snnTorch. (from Zanatta et al. 2024, Kumar et al. 2025)
+
+### advanced -- novel research contributions, but feasible for a strong undergrad
+
+11. **spiking state space models for new sequence tasks** -- P-SpikeSSM opened this area. applying spiking SSMs to genomics, protein sequences, or music generation would be novel.
+
+12. **multi-modal spiking fusion (event camera + RGB)** -- most SNN papers use either event data or RGB frames. fusing both in a spiking architecture is an active gap. (from SFOD CVPR 2024, neuromorphic vision surveys)
+
+13. **energy-aware training/inference for edge deployment** -- measuring actual energy consumption of SNN models on real neuromorphic hardware (Intel Loihi 2 via Lava) versus GPU simulation is valuable empirical work.
+
+14. **spiking diffusion models** -- the NeurIPS 2024 paper on "Latent Diffusion for Neural Spiking Data" opens a new direction. adapting diffusion models to operate with spiking dynamics for image generation is largely unexplored.
+
+---
+
+## confidence notes
+

@@ -278,20 +278,20 @@ Additional LIF threshold sweep ({1.0, 1.5, 2.0, 3.0}) to reduce FC1 input densit
 **Status:** fold 4 complete. From `results/snn/maxpool/threshold_sweep_fold4.json`.
 
 | Threshold | Test Acc | FC1 Active/step | Binary Frac | SpiNNaker-ready? |
+|-----------|---------|-----------------|-------------|------------------|
+| 1.0 | 9.25% | 1662.4/2304 (72.2%) | 1.000 | theoretically yes; dense though |
+| 1.5 | 27.0% | 1409.7/2304 (61.2%) | 1.000 | theoretically yes |
+| 2.0 | 34.25% | 1253.1/2304 (54.4%) | 1.000 | theoretically yes |
+| **3.0** | **43.75%** | **956.1/2304 (41.5%)** | **1.000** | **best candidate** |
+
+MaxPool guarantees binary fraction = 1.000 at all thresholds. Eliminates the fundamental AvgPool-FC1 incompatibility. threshold=3.0 gets best accuracy (43.75%) with 956/2304 active (58.5% sparsity). The <500/step target wasn't met -- higher thresholds could reduce further but would hurt accuracy more.
+
+Original SNN direct fold 4: 54.0%. MaxPool at threshold=3.0: 43.75% -- 10.25 pp below, reflecting info lost by MaxPool vs AvgPool.
+
+**Recommendation:** threshold=3.0 Option A is the best candidate for full FC1+FC2 SpiNNaker deployment. Binary fraction guaranteed. Need hardware testing to confirm router handles 956 simultaneous spikes/step.
+
 ---
 
-## 5.5 SpiNNaker Option A: Hardware-Aware Retraining
-
-Option A addresses the FC1 cancellation by replacing AvgPool2d with MaxPool2d and retraining the model. The key insight is that MaxPool on binary spike values produces binary outputs (max of {0, 1} = {0, 1}), guaranteeing that FC₁ receives truly binary inputs that SpiNNaker can process natively.
-
-### 5.5.1 Architecture Change
-
-**Original (SpiNNaker-incompatible):**
-```
-LIF₂ spikes (binary 0/1) → AvgPool2d(4,6) → fractional values ∈ [0,0.5] → FC₁
-```
-
-**Option A (SpiNNaker-compatible):**
 ```
 LIF₂ spikes (binary 0/1) → MaxPool2d(4,6) → binary values {0,1} → FC₁
 ```

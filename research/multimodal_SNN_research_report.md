@@ -334,3 +334,31 @@ shd_train = spikedata.SHD("data/shd", train=True)
 2. both datasets are small and already spike-encoded
 3. late fusion is just tensor concatenation
 4. surrogate gradient training is well-documented
+5. snnTorch tutorials cover both datasets step by step
+6. a directly comparable paper exists (Bjorndahl) to validate against
+7. training takes hours not days
+8. no special hardware needed
+
+### What would push it to PhD level:
+
+1. designing novel neuron models (like MLIF in MISNet)
+2. developing new attention mechanisms
+3. complex datasets (CREMA-D, real-world video)
+4. object detection/segmentation instead of classification
+5. neuromorphic hardware deployment with custom optimization
+6. theoretical analysis of multimodal spike dynamics
+7. large-scale sensor fusion (LIDAR + camera + IMU + radar)
+
+### Confidence
+
+| Claim | Confidence |
+|---|---|
+| Multimodal SNN digit classification is doable in one semester | HIGH (95%) |
+| snnTorch is the best starting framework | HIGH (90%) |
+| Late concatenation fusion will work well | HIGH (95%) -- Bjorndahl confirmed this |
+| Novel contribution is possible within scope | MEDIUM-HIGH (80%) |
+| Can be done on laptop GPU | HIGH (90%) |
+| Topic will impress examiners | HIGH (85%) -- it's cutting-edge |
+
+---
+

@@ -306,3 +306,31 @@ the field is about **2 years old** at the top-venue level. first major conferenc
 
 ### Minimum Viable Project
 
+at minimum, a successful thesis could:
+1. implement a basic LIF-based recurrent SNN using snnTorch
+2. apply to 2-3 standard forecasting datasets
+3. compare against LSTM and simple Transformer
+4. report MSE, MAE, and estimated energy
+5. discuss encoding strategy and its impact
+
+this would be a valid contribution because **no systematic MSE/MAE comparison on ETTh/Weather exists for SNNs**.
+
+---
+
+## Key Papers
+
+### Must-Read
+
+1. **Lv et al. (ICML 2024)** -- SeqSNN. the foundational paper. [arXiv](https://arxiv.org/abs/2402.01533), [Code](https://github.com/microsoft/SeqSNN)
+2. **Lv et al. (NeurIPS 2024)** -- CPG-PE. [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/2f55a8b7b1c2c6312eb86557bb9a2bd5-Paper-Conference.pdf)
+3. **Feng et al. (ICLR 2025)** -- TS-LIF. [arXiv](https://arxiv.org/abs/2503.05108), [Code](https://github.com/kkking-kk/TS-LIF)
+4. **Tang et al. (Jan 2026)** -- SpikySpace. [arXiv](https://arxiv.org/abs/2601.02411)
+5. **Li et al. (Feb 2025)** -- critical survey on SNN temporal processing. [arXiv](https://arxiv.org/html/2502.09449v1)
+
+### Important Supporting
+
+6. **SpikeSTAG** -- GNN-SNN collaboration. [arXiv](https://arxiv.org/abs/2508.02069)
+7. **Kasabov et al. (2023)** -- NeuCube for financial + news. [Nature](https://www.nature.com/articles/s41598-023-42605-0)
+8. **Manna et al. (2024)** -- derivative spike encoding. [MDPI](https://www.mdpi.com/2073-431X/13/8/202)
+9. **Univariate methodology (2024)** -- general SNN forecasting approach. [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608024000959)
+10. **ICS-SNN (2025)** -- financial forecasting with meta-heuristic. [MDPI](https://www.mdpi.com/1999-4893/18/5/262)

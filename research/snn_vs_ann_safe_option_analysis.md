@@ -306,3 +306,31 @@ each frames the work as answering a specific question rather than just "comparin
 ---
 
 ## Confidence
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| MNIST gap is closed (~0%) | VERY HIGH | Multiple papers, reproducible |
+| Fashion-MNIST gap is 2-5% typically | HIGH | Multiple sources |
+| CIFAR-10 gap is 0.4-8% depending on method | HIGH | Extensive literature |
+| Basic comparison done many times already | VERY HIGH | Found multiple student projects |
+| Energy analysis adds significant value | HIGH | NeuroBench documented, papers confirm conditional efficiency |
+| Robustness angle adds significant value | HIGH | Published evidence of SNN robustness advantage |
+| 2-3 month timeline feasible for strong version | MODERATE-HIGH | Depends on GPU access and CIFAR-10 training speed |
+| Weak version risks being dismissed | HIGH | High school student already published equivalent |
+
+---
+
+## References
+
+1. Deng & Gu (2020). ["Rethinking the performance comparison between SNNs and ANNs"](https://web.ece.ucsb.edu/~lip/publications/SNN-vs-ANN-NeuralNetworks2020.pdf) -- essential for fair comparison methodology
+2. Lemaire et al. (2022). ["Are SNNs Really More Energy-Efficient Than ANNs?"](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf) -- critical for energy claims
+3. Park et al. (2021). ["Neural Coding in SNNs: A Comparative Study"](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full) -- encoding comparison methodology
+4. Sharmin et al. (2020). ["Inherent Adversarial Robustness of Deep SNNs"](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123740392.pdf) -- robustness analysis
+5. Patino-Saucedo et al. (2023). ["Exploring Trade-Offs in SNNs"](https://direct.mit.edu/neco/article/35/10/1627/117019/Exploring-Trade-Offs-in-Spiking-Neural-Networks) -- Pareto analysis framework
+6. NeuroBench (2025). ["The NeuroBench Framework"](https://www.nature.com/articles/s41467-025-56739-4) -- standardized benchmarking
+7. STAA-SNN (CVPR 2025). ["Spatial-Temporal Attention Aggregator"](https://arxiv.org/pdf/2503.02689) -- current CIFAR-10 SNN SOTA (97.14%)
+8. Luo (2024). ["Comparing Spiking, Convolutional, and ANNs"](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/) -- the high school paper you need to differentiate from
+
+---
+
+## Bottom Line

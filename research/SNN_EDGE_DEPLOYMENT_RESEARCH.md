@@ -155,31 +155,3 @@ Workshop presented at ISFPGA 2024 by Jason Eshraghian (UC Santa Cruz) and Fabriz
 | General estimate | ANN | Various | ~200 mJ per inference | -- |
 | FPGA Artix XC7A200T | CNN | ImageNet-class | 1,775 mW at 100 MHz | -- |
 
-### 4.2 The Nuanced Reality
-
-The headline claim "SNNs are 10-100x more efficient" requires significant caveats:
-
-**When SNNs win:**
-- On neuromorphic hardware (Loihi, SpiNNaker, Speck) where the hardware is designed for event-driven computation
-- When spike sparsity is low (<0.44 spikes/synapse)
-- For always-on, event-driven sensing tasks (e.g., DVS camera input)
-- On FPGAs with spike-aware optimizations exploiting sparsity
-
-**When SNNs lose:**
-- On standard digital FPGAs without sparsity exploitation, SNNs are "clearly less energy efficient than their equivalent CNNs in the general case" (Efficiency analysis study, 2022)
-- When membrane potentials must be stored in memory (unlike CNNs where neurons are computed sequentially)
-- When spike sparsity exceeds 0.5 spikes/synapse
-
-**Key insight for the thesis:** The most honest and valuable contribution would be to measure both SNN and ANN on the same edge hardware and present the real tradeoffs rather than claiming unconditional SNN superiority. This makes for a stronger thesis than cherry-picking favorable comparisons.
-
----
-
-## 5. Student Projects That Have Done This
-
-### 5.1 Purdue Polytechnic Capstone: FPGA SNN Lane-Following Robot
-
-- **Level:** Undergraduate capstone (Senior project)
-- **Task:** SNN controller for autonomous lane-following vehicle with obstacle avoidance
-- **Hardware:** FPGA (unspecified Xilinx board)
-- **Architecture:** 4 input neurons (12-bit to 8-bit scaling via CORDIC) -> 16 synapses -> 4 hidden neurons -> 8 synapses -> 2 output neurons
-- **Outcome:** Functional lane-following with SNN replacing binary logic controller

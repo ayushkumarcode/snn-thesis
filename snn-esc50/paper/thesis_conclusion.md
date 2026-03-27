@@ -54,20 +54,20 @@ Three main limitations:
 
 ---
 
+## 8.4 future work
 
-3. **Single-seed surrogate gradient ablation:** Surrogate gradient ablation (7 testable surrogates, fold 1) is complete with 1 seed (seed=42); results are fully documented in §4.3. LSO crashed due to a Python 3.14/snnTorch 0.9.4 incompatibility. A 3-seed CSF3 run is pending retrieval and would provide tighter variance estimates, but the bimodal learning vs. failure split is already clear from the single seed.
+**Near-term:**
 
----
+1. **Option A full deployment:** fold 4 validated, threshold=3.0, fc1_binary=1.000. Need 5-fold retraining and SpiNNaker hardware test.
 
-## 8.4 Future Work
+2. **CSF3 results retrieval:** augmented training and surrogate ablation 3-seed results still on CSF3.
 
-**Immediate extensions (within the scope of this project):**
+**Longer-term:**
 
-1. **SpiNNaker-aware retraining (Option A) — partially completed:** A fold 4 threshold sweep with MaxPool SNN confirms fc1_binary_fraction=1.000 for all thresholds (1.0–3.0). Threshold=3.0 achieves 43.75% test accuracy with 956 FC1 active inputs/step (sparsity 58.5%). Full 5-fold retraining and SpiNNaker hardware testing with the threshold=3.0 model would complete this contribution.
+3. **SpiNNaker2** (Hoppner et al. 2024): 22nm FDSOI, 10x better energy, native conv support. Would resolve AvgPool barrier.
 
-2. **CSF3 results retrieval:** Augmented training (100 epochs, SpecAugment) and surrogate gradient ablation results are pending on CSF3. Retrieving these would complete §4.3 and §4.4.
+4. **STDP unsupervised pre-training** on unlabelled audio for richer conv initialisation without external pretrained models.
 
-**Longer-term research directions:**
 
 3. **SpiNNaker2** (Hoppner et al. 2024): The successor platform features 22nm FDSOI process, 10× better energy than SpiNNaker, and native convolutional support. Deployment on SpiNNaker2 would resolve the AvgPool barrier and provide meaningful energy comparisons.
 

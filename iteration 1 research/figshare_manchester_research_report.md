@@ -82,3 +82,31 @@ the one match for "neuromorphic" is a research-level publication from Steve Furb
 
 2. **Manchester undergrad theses are stored elsewhere** -- probably the university library thesis archive, Blackboard/Turnitin submission system, department-specific repos, Manchester eScholar (mostly PhD/research theses), or student GitHub repos (not centrally indexed).
 
+3. **the entire repository only has 833 articles** across all departments and groups. for a university Manchester's size, that's tiny, confirming it's used selectively for research data, not broadly for student work.
+
+4. **no items are tagged as "undergraduate" or "student project."** the "thesis" tag only appears in relation to PhD theses.
+
+### why limited ML/AI/neuromorphic content
+
+despite Manchester being a major centre for neuromorphic computing (SpiNNaker, Furber's group), Figshare has minimal AI/ML content because:
+- Manchester's AI/ML researchers probably use GitHub, Zenodo, arXiv instead
+- the BitBrain entry from Furber's group is the only neuromorphic item
+- Alex Casson's EEG/BCI work is most of the neural engineering content
+- the repository seems to be a relatively recent adoption (most items from 2021-2025)
+
+---
+
+## Manchester Figshare group IDs
+
+| Group ID | Description | Article Count |
+|----------|-------------|---------------|
+| 29325 | Faculty of Science and Engineering (parent) | 36 |
+| 29331 | School of Engineering | 149 |
+| 29337 | Sub-group (Engineering) | 1 |
+| 29340 | Sub-group (Engineering) | 1 |
+| 29343 | Sub-group (Robotics/Nuclear) | 3 |
+| 29349 | School of Natural Sciences | 424 |
+| 29355 | Sub-group | 5 |
+| 29358 | Sub-group | 20 |
+| 29361 | Sub-group | 1 |
+| 29364 | Sub-group (Chemistry) | 31 |

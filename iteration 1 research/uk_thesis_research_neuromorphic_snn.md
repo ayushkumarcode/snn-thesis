@@ -335,31 +335,3 @@ A reasonable UK undergraduate SNN project would involve:
 | Heidelberg has 100+ bachelor/master theses on neuromorphic hardware | VERY HIGH |
 | Manchester has 8+ PhD theses on SpiNNaker/SNN | VERY HIGH |
 | UK universities do not publicly archive undergraduate dissertations | HIGH |
-| More undergraduate SNN projects exist but are not publicly discoverable | HIGH |
-| SpiNNaker group supervises undergraduate projects | MEDIUM-HIGH (inferred) |
-
----
-
-## RECOMMENDED FOLLOW-UPS
-
-1. **Contact Manchester APT group directly** -- Ask if they have a list of past undergraduate projects on SpiNNaker/SNN topics.
-
-2. **Contact Imperial Computing department** -- Their final year project listings may not be public but could be shared on request.
-
-3. **Download and read the Heidelberg bachelor's theses** -- These are freely available and provide the best scope calibration for neuromorphic undergraduate work. Start with:
-   - Ebert (2021): "Real-time Image Classification on Analog Neuromorphic Hardware"
-   - Straub (2023): "Multi-Single-Chip Training of SNNs with BrainScaleS-2"
-   - Fischer (2017): "Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware"
-
-4. **Search the EBRAINS platform** -- Student projects using SpiNNaker/BrainScaleS via EBRAINS may be documented.
-
-5. **Check conference proceedings** -- Some undergraduate projects get published at workshops (e.g., NICE Conference, ICONS).
-
-6. **Contact the UK Multidisciplinary Centre for Neuromorphic Computing** at Aston University -- newly funded EPSRC centre that may have student project opportunities/archives.
-
----
-
-## SOURCES
-
-### University Repositories
-- Imperial College Spiral: https://spiral.imperial.ac.uk/

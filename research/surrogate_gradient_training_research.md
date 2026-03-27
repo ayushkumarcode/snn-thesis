@@ -502,3 +502,31 @@ loss_fn = SF.ce_rate_loss()
 
 very feasible within a semester.
 
+---
+
+## Sources
+
+### Foundational
+- Neftci et al. (2019). Surrogate Gradient Learning. https://arxiv.org/abs/1901.09948
+- Zenke & Vogels (2021). Remarkable Robustness. https://direct.mit.edu/neco/article/33/4/899/97482
+- Eshraghian et al. (2023). Training SNNs Using Lessons From Deep Learning. https://arxiv.org/abs/2109.12894
+
+### Recent (2024-2025)
+- Gygax & Zenke (2025). Theoretical Underpinnings. https://direct.mit.edu/neco/article/37/5/886/128506
+- Klos & Memmesheimer (2025). Exact Gradient Descent. https://doi.org/10.1103/PhysRevLett.134.027301
+- MP-Init and TrSG (2025). https://arxiv.org/abs/2511.08708
+- Wang et al. (2025). Parametric Surrogate Gradient. https://www.sciencedirect.com/science/article/abs/pii/S092523122401960X
+- Fine-Tuning Surrogate Gradient Learning (2024). https://arxiv.org/abs/2402.06211
+- Zhou et al. (2024). Direct Training Review. https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2024.1383844/full
+- Adaptive Gradient Learning (IJCAI 2025). https://www.ijcai.org/proceedings/2025/0464.pdf
+
+### Comparative Studies
+- Lian et al. (2023). Learnable Surrogate Gradient. IJCAI. https://www.ijcai.org/proceedings/2023/335
+- Deng et al. (2023). Surrogate Module Learning. ICML. https://proceedings.mlr.press/v202/deng23d
+- KLIF Neuron (2024). Neural Computation. https://direct.mit.edu/neco/article/36/12/2636/124535
+
+### Tutorials and Code
+- snnTorch Tutorial 5: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html
+- snnTorch Tutorial 6: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html
+- snnTorch Tutorial 7: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html
+- snnTorch Surrogate API: https://snntorch.readthedocs.io/en/latest/snntorch.surrogate.html

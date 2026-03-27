@@ -12,20 +12,20 @@ Evaluated on fold 4 (400 samples) using:
 - **FGSM** (Goodfellow et al. 2015): single-step, x' = x + eps * sign(grad_x L)
 - **PGD** (Madry et al. 2018): 40 iterations, step size alpha = eps/10
 
+Both applied to normalised mel spectrogram input (not raw audio), eps in {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}.
 
-**SNN wrapping:** The SNN is wrapped in an `SNNWrapper` module that applies direct encoding (repeat spectrogram T times) and returns `mem_out.sum(dim=0)` as differentiable logits for gradient computation. The ANN returns standard logits. Both are evaluated with `torchattacks` v3.x.
+**SNN wrapping:** SNNWrapper applies direct encoding (repeat T times) and returns mem_out.sum(dim=0) as differentiable logits. ANN returns standard logits. Both via torchattacks v3.x.
 
-**Important caveat (Wang et al. 2025, arXiv:2512.22522):** Standard PGD may underestimate SNN vulnerability because vanishing surrogate gradients (surrogate derivative → 0 far from threshold) cause the PGD gradient update to under-estimate the true adversarial gradient. Our reported SNN PGD robustness numbers should be interpreted as upper bounds.
+**Caveat (Wang et al. 2025):** standard PGD may underestimate SNN vulnerability because vanishing surrogate gradients cause PGD gradient update to under-estimate true adversarial gradient. SNN PGD numbers should be interpreted as upper bounds. need to be careful how i frame this
 
-### 6.1.2 Results
+### 6.1.2 results
 
-| ε | FGSM SNN | FGSM ANN | PGD SNN | PGD ANN |
-|---|----------|----------|---------|---------|
-| 0.000 (clean) | **53.75%** | **68.75%** | 53.75% | 68.75% |
+| eps | FGSM SNN | FGSM ANN | PGD SNN | PGD ANN |
+|-----|----------|----------|---------|---------|
+| 0.000 (clean) | 53.75% | 68.75% | 53.75% | 68.75% |
 | 0.010 | 37.50% | 22.50% | 23.50% | 14.75% |
 | 0.020 | 32.00% | 8.75% | 20.50% | 2.00% |
 | 0.050 | 29.00% | 2.50% | 19.25% | 0.00% |
-| 0.100 | **26.00%** | **1.75%** | 6.25% | 0.00% |
 | 0.200 | 21.50% | 1.25% | 1.25% | 0.00% |
 | 0.300 | 20.75% | 0.75% | 1.25% | 0.00% |
 

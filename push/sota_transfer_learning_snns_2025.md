@@ -110,3 +110,31 @@ typical accuracy recovery:
 
 ---
 
+## 3. Hybrid ANN-SNN Architectures
+
+### "ANN Feature Extractor + SNN Classifier" -- Our Paradigm
+
+this is exactly what we do (PANNs CNN14 + SNN head). the literature shows it's emerging but under-explored:
+
+| Paper | Year | ANN Backbone | SNN Head | Task | Result |
+|-------|------|-------------|----------|------|--------|
+| **our thesis** | **2026** | **PANNs CNN14 (frozen)** | **3-layer SNN** | **ESC-50** | **92.50% (SNN) vs 93.45% (ANN), 0.95pp gap** |
+| SAFE | 2025 | CNN (maxpool layers) | 3 spiking layers | Fake audio detection | Comparable to ANN SOTA |
+| Aydin et al. | CVPRW 2024 | ANN (low-rate dense) | SNN (high-rate sparse) | Visual pose estimation | 74% lower error than pure SNN |
+| Keugle et al. | 2024 | ANN on Jetson Nano | SNN on Loihi | DVS classification | Surpasses both pure ANN and pure SNN |
+| Abuhajar et al. | 2025 | ANN Wave-U-Net | SNN (converted) | Speech enhancement | Near-ANN quality after fine-tuning |
+| Spiking Vocos | 2025 | ANN Vocos (teacher) | Spiking Vocos (student) | Neural vocoder | 14.7% energy of ANN |
+
+### Aydin et al. (CVPR 2024 Workshop) -- Slow-Fast Hybrid
+
+most architecturally sophisticated hybrid approach i found:
+- ANN provides "slow" dense state initialization; SNN provides "fast" spike-based predictions
+- key insight: pure SNNs suffer from long state convergence transients; ANN initialization solves this
+- 74% lower error than pure SNN
+- code: https://github.com/uzh-rpg/hybrid_ann_snn
+
+### Hardware Deployment of Hybrid Systems
+
+Keugle et al. (2024) -- "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware":
+- deploys ANN on Jetson Nano, SNN on Intel Loihi
+- also tested ANN on Coral Edge TPU, SNN on Loihi

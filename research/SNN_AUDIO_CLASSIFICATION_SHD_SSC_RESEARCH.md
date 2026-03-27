@@ -222,3 +222,31 @@ i couldn't find any undergrad projects specifically doing SNN audio classificati
 | snnTorch (uncompiled) | 4543s (~76 min) | 2313s (~39 min) | 1212s (~20 min) |
 | snnTorch (compiled) | 196s (~3.3 min) | 103s (~1.7 min) | 59s (~1 min) |
 | mlGeNN | 216s (~3.6 min) | 161s (~2.7 min) | 124s (~2 min) |
+| **Spyx** | **69s (~1.2 min)** | **46s (~0.8 min)** | **36s (~0.6 min)** |
+
+these are for a 128-neuron feedforward SNN getting ~70-75% accuracy. SOTA models (256-1024 neurons, multiple layers) take longer but still stay in the minutes-to-low-hours range on a single GPU. SHD is a small dataset so training is fast no matter what.
+
+### 5.4 Energy Analysis Tools
+
+- **syops** library: computes Synaptic Operations (SynOps) and estimates energy based on 45nm technology
+- **Manual SynOps counting**: count spike-triggered MAC operations
+- **Comparison approach**: run equivalent ANN, count FLOPs with `torchprofile` or `thop`, compare with SNN SynOps
+
+---
+
+## 6. Feasibility for a 3rd-Year Thesis
+
+### 6.1 Why This is Doable
+
+| Factor | Assessment |
+|--------|------------|
+| Dataset size | Small (8K training, 2K test). Fits in RAM. Fast to iterate. |
+| Training time | Minutes per experiment on a single GPU (even a laptop GPU) |
+| Available code | Multiple open-source baselines: sparch, SNN-delays, snnTorch tutorials |
+| Framework maturity | snnTorch has 8 tutorials, extensive docs, active community |
+| Prior undergraduate work | Musical pattern recognition BEng project provides scope calibration |
+| Novelty potential | No known undergraduate SHD/SSC project. Novel at this level. |
+| Apple M-series support | PyTorch MPS backend works for snnTorch/SpikingJelly. No CUDA needed. |
+| Results achievable | A 2-layer SNN should reach 90%+ on SHD with surrogate gradients |
+| ANN comparison | Easy to implement LSTM/GRU baseline in PyTorch for comparison |
+| Energy analysis | Feasible via SynOps counting, no neuromorphic hardware needed |

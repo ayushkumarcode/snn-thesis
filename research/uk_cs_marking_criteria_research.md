@@ -419,31 +419,3 @@ Writing quality is not a minor factor -- it is consistently identified as a make
 **Imperial:** A project CANNOT receive a Pass/Merit/Distinction if the report is not independently at that standard. This is the strongest statement found: writing quality is a hard ceiling on your grade.
 
 **Bristol:** "It doesn't matter how much work you've done, if you don't write it up well, you will fail."
-
-**Manchester (your COMP30040):** Report is 55% of your total mark. Formal writing style recommended: third person, passive voice, past tense. LaTeX is recommended. Spelling and grammar errors "might make it harder for the examiners to understand what you're attempting to communicate."
-
-### 6.2 Expert Advice
-
-The widely-cited Laramee guidelines for BSc CS dissertations (used at Swansea, Nottingham, and referenced across UK CS departments) emphasise that "a longer dissertation won't mean a better dissertation" and that markers value accuracy and methodological thoroughness over code quality or engineering practices unrelated to project objectives.
-
-A student who achieved 90% and the Distinguished Dissertation Prize (Dominik Rys) emphasises: be aware of the "curse of knowledge" -- do not assume readers understand your specialised concepts. Write for clarity, not to impress.
-
-### 6.3 Practical Implication
-
-Using LaTeX (as Manchester recommends) immediately signals professionalism. Good figures, clear tables, proper referencing, and logical chapter structure are not optional extras -- they are fundamental to achieving a First.
-
----
-
-## 7. SUMMARY TABLE: WHAT TO PRIORITISE
-
-Based on all evidence gathered, here is a prioritised action guide for targeting a First at Manchester COMP30040:
-
-| Priority | Action | Impact on Mark | Why |
-|---|---|---|---|
-| 1 | Write an excellent, well-structured report | Very High (55% of total) | The report IS the project in the eyes of markers |
-| 2 | Deliver working, well-evaluated implementation | Very High (30% of total) | Achievements are directly assessed; Q&A informs this |
-| 3 | Conduct rigorous evaluation with clear metrics | High (embedded in report + achievements) | The single biggest differentiator between 2:1 and First |
-| 4 | Frame a clear, testable research question/hypothesis | High (shapes entire report quality) | Without this, you cannot write a good evaluation |
-| 5 | Thorough, well-synthesised literature review | Moderate-High (part of report mark) | Must identify gap/motivation clearly |
-| 6 | Produce a professional, clear screencast | Moderate (15% of total) | Easy marks if done well; hard to recover if done poorly |
-| 7 | Show independence and self-direction | Moderate (implicit in all marks) | Distinguishes First from 2:1 |

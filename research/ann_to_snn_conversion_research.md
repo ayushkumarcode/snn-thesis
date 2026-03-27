@@ -194,3 +194,31 @@ interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0
 
 ---
 
+## Contribution Opportunities
+
+### Tier 1: High Feasibility (Recommended)
+
+**A: Head-to-Head Tool Comparison**
+- convert same pretrained models using 3+ different tools
+- compare accuracy, timesteps needed, conversion time, ease of use, docs
+- datasets: CIFAR-10, CIFAR-100 (maybe ImageNet)
+- include energy estimation
+- **no published paper does this.** tool comparison papers get cited a lot.
+- ~6-8 weeks
+
+**B: Convert a Domain Nobody Has Converted**
+- medical image classification (ResNet-18 on skin lesions, chest X-rays -- huge practical impact, almost unstudied for conversion)
+- audio keyword spotting
+- satellite/remote sensing imagery
+- DVS128 gesture recognition (convert ANN on frame-binned DVS, compare with direct-trained SNN)
+- ~4-6 weeks (pretrained ANNs likely on HuggingFace)
+
+**C: Architecture Comparison**
+- convert VGG-16, ResNet-18, MobileNetV2, EfficientNet-B0, DenseNet-121 using same method
+- document which layers cause problems, accuracy loss, timesteps needed
+- **MobileNet and EfficientNet conversion is severely underexplored** -- depthwise separable convolutions and Swish create known difficulties
+- most conversion papers only test VGG + ResNet
+- ~6-10 weeks
+
+### Tier 2: Stronger Contribution
+

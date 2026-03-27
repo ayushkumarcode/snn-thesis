@@ -278,3 +278,31 @@ most common phrasings fall into these buckets:
 | "We compared/evaluated A vs B and report results" | 4 | Theses 2, 8, 9, 11 |
 | "We investigated/explored whether X can do Y" | 3 | Theses 12, 14, 4 |
 | "We reviewed the field and built a demo" | 1 | Thesis 13 |
+| "We proposed a novel method" | 1 | Thesis 10 |
+
+overwhelmingly **implementation + evaluation** rather than **discovery**. students build something and test it. the contribution is the working system and results, not a theoretical advance.
+
+### Framing Patterns
+
+**Framework 1: "We built X and evaluated it" (most common)**
+- "we implement X on the Spikey chip and demonstrate MNIST classification"
+- "a CNN is built in MATLAB and trained on..."
+
+**Framework 2: "We compared A vs B"**
+- "compare SNN performance against conventional ANNs on classification problems"
+
+**Framework 3: "We investigated/explored whether X"**
+- "investigate whether a usable relation exists between object features and barcode location"
+
+**Framework 4: "We discovered/found Y" (very rare)**
+- only secondary findings, never the primary aim. e.g. "identifying a previously unknown interaction" (thesis 3, but that was an accidental bonus finding)
+
+### Research Question Structure
+
+when stated explicitly, they follow predictable patterns:
+
+1. **Can X achieve Y?** -- "can a Jeffress model work on neuromorphic hardware?"
+2. **How does X compare to Y?** -- "how do spiking networks perform vs traditional perceptrons?"
+3. **What happens when we do X?** -- "what are the firing patterns under different configurations?"
+4. **Can we solve X using Y?** -- "can synthetic data solve the limited training data problem?"
+

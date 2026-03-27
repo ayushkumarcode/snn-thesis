@@ -87,31 +87,3 @@ The natural fit between ECG signals (temporal, quasi-periodic, spike-like QRS co
 
 ## 4. SNN Performance vs. Conventional Deep Learning
 
-### Accuracy Comparison (MIT-BIH, 5-class AAMI)
-
-| Method | Architecture | Accuracy | F1 Score | Energy per Inference |
-|---|---|---|---|---|
-| **CNN (conventional)** | 1D-CNN | 97.4-99.5% | 95-98% | ~450 uJ (CPU) |
-| **CNN-LSTM hybrid** | CNN + BiLSTM + Attention | 99.2% | 98.3% | High (GPU) |
-| **CNN-LSTM-SE** | CNN + LSTM + Squeeze-Excite | 98.5% | >97% | High (GPU) |
-| **SNN (SparrowSNN)** | Co-designed SNN + ASIC | 98.29% | ~97% | **31.39 nJ** |
-| **SNN + Attention** | SNN + Channel-wise Attention | 98.26% | 89.09% | 346.33 uJ |
-| **SNN (STDP)** | Unsupervised STDP | 97.9% | -- | 1.78 uJ |
-| **SNN (ANN-to-SNN)** | Converted 14-layer CNN | 84.41% | -- | Low |
-| **SNN (Neuromorphic 2025)** | Lightweight SNN | 94.4% | >88% | 1.28M FLOPs |
-
-### Key Takeaways
-
-1. **Accuracy gap is narrowing**: Best SNNs (98.29%) are within 1% of best CNNs (99.5%) on MIT-BIH
-2. **Energy advantage is massive**: SNNs are 100x to 10,000x more energy efficient
-   - SparrowSNN: 31.39 nJ vs. CNN on CPU: ~450 uJ (a factor of ~14,000x)
-   - SNN on Loihi: ~30 mW vs. LSTM on GPU: ~15W (a factor of 500x)
-3. **F1 score gap exists**: SNN F1 scores (89-97%) trail CNNs (95-98%), especially on minority classes (S, F)
-4. **Model size advantage**: SNN models are typically 2-10 MB vs. 50-200+ MB for CNN/Transformers
-5. **Latency advantage**: SNN inference in <8ms enables true real-time classification
-6. **The trade-off is clear**: SNNs sacrifice 1-5% accuracy for 100-10,000x energy savings
-
-### When SNNs Win
-- Edge/wearable deployment where power is constrained
-- Real-time continuous monitoring (latency matters)
-- Battery-powered devices (smartwatches, patches)

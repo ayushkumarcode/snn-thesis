@@ -110,3 +110,31 @@ def early_exit_inference(model, loader, device, thresholds,
             newly_exiting = can_exit & (exit_steps == T)
             exit_steps[newly_exiting] = t + 1
             predictions[newly_exiting] = pred_t[newly_exiting]
+
+        # Samples that never exited: use full T prediction
+        never_exited = (exit_steps == T)
+        final_cum = all_mems.sum(dim=0)
+        predictions[never_exited] = final_cum[never_exited].argmax(dim=1)
+
+        correct = (predictions == all_targets.cpu()).sum().item()
+        accuracy = correct / N
+
+        avg_steps = exit_steps.float().mean().item()
+        median_steps = exit_steps.float().median().item()
+        energy_ratio = avg_steps / T  # fraction of full energy used
+
+        # Per-class exit statistics
+        per_class_steps = {}
+        for c in range(NUM_CLASSES):
+            mask = (all_targets.cpu() == c)
+            if mask.sum() > 0:
+                per_class_steps[c] = exit_steps[mask].float().mean().item()
+
+        results[thresh] = {
+            "threshold": thresh,
+            "accuracy": accuracy,
+            "avg_timesteps": avg_steps,
+            "median_timesteps": median_steps,
+            "energy_ratio": energy_ratio,
+            "energy_reduction_x": T / avg_steps,
+            "exit_distribution": {

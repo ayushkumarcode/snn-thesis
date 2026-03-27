@@ -339,31 +339,3 @@ A strong thesis could combine angles 1 + 4:
 
 ## 9. Research Gaps and Limitations
 
-### What I Could Not Find
-1. **Exact code for SparrowSNN** -- the paper does not appear to have a public GitHub repository
-2. **Direct head-to-head SNN vs. Transformer comparisons** on ECG -- this comparison does not appear to exist yet
-3. **SNN-ECG papers on arXiv from 2026** -- the field may have new publications I could not access
-4. **Neuromorphic hardware benchmark suites** specifically for ECG (Loihi/TrueNorth results are scattered)
-5. **Patient-specific SNN adaptation** studies -- adapting a trained SNN to individual patient ECG morphology
-
-### Information Confidence Levels
-- **HIGH confidence**: Dataset accessibility, SNN-ECG paper existence, accuracy numbers from published papers
-- **MODERATE confidence**: Energy consumption comparisons (different measurement methodologies across papers)
-- **LOW confidence**: Exact count of all SNN-ECG papers (some may exist in non-indexed venues)
-
----
-
-## 10. Recommended Follow-Up Actions
-
-1. **Read the 2024 review paper** in full: "Review on spiking neural network-based ECG classification methods for low-power environments" (Biomedical Engineering Letters, 2024) -- this is the most comprehensive existing survey
-2. **Read the 2025 systematic review**: arXiv:2503.07276 for the latest benchmarking standards
-3. **Install snnTorch** and work through tutorials 1-5 (spike encoding, LIF neurons, training)
-4. **Download MIT-BIH from Kaggle** (CSV format) for quick prototyping
-5. **Replicate federicohyo/ecgheartbeat** to understand ECG-to-spike conversion
-6. **Replicate byin-cwi/Efficient-spiking-networks** ECG folder for a working SNN baseline
-7. **Read the SparrowSNN paper** (arXiv:2406.06543) for the current SOTA architecture details
-8. **Discuss with supervisor**: Which novelty angle aligns with thesis requirements and timeline
-
----
-
-## 11. Key References (Organized by Relevance)

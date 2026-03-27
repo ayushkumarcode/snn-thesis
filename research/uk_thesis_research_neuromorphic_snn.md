@@ -278,3 +278,12 @@ A reasonable scope:
 
 ### Key PhD Thesis URLs
 - Ward (2024): https://research.manchester.ac.uk/en/studentTheses/modelling-neural-dynamics-on-neuromorphic-hardware/
+- Liu (2018): https://research.manchester.ac.uk/en/studentTheses/deep-spiking-neural-networks
+- Peres (2022): https://research.manchester.ac.uk/en/studentTheses/parallelisation-of-neural-processing-on-neuromorphic-hardware
+- Perez (2023): https://spiral.imperial.ac.uk/entities/publication/0bfc1732-2dac-4589-b50e-7eec99f8efdf
+- Huang (2022): https://eprints.soton.ac.uk/471765/
+- Xing (2020): https://stax.strath.ac.uk/concern/theses/x059c7885
+- Berg (2022): https://era.ed.ac.uk/handle/1842/43087
+- Bacho (2024): https://kar.kent.ac.uk/104801/
+- Bi (2020): https://discovery.ucl.ac.uk/id/eprint/10109453/
+- Kozdon (2022): https://discovery.ucl.ac.uk/id/eprint/10142370/

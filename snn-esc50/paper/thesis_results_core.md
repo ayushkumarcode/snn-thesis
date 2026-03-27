@@ -278,20 +278,19 @@ Output expanded to 500 neurons (50 x 10). All 10 neurons per class contribute vi
 
 **Variance:** highest fold-to-fold variance of non-chance encodings (2.79%). Folds 3 and 5 near-chance (15.75%, 16.75%) while folds 1 and 4 approach rate-level (22.75%, 22.00%). MSE loss landscape has multiple local minima.
 
-| Fold | Best Acc | Best Epoch | Total Epochs |
-|------|----------|------------|--------------|
-| 1 | 22.75% | 32 | 42 |
-| 2 | 18.50% | 21 | 31 |
-| 3 | 15.75% | 18 | 28 |
-| 4 | 22.00% | 44 | 50 |
-| 5 | 16.75% | 21 | 31 |
-| **Mean ± Std** | **19.15% ± 2.79%** | — | — |
+---
 
-**Hypothesis rejected:** Population coding achieves 19.15% ± 2.79% — lower than rate coding (24.00% ± 1.90%) and with higher variance (std=2.79 vs 1.90). The expanded output representation did not improve accuracy.
+## 4.8 chapter summary
 
-**Why population coding underperforms rate coding:**
-Two mechanisms explain the failure. First, the MSE count loss formulation (`SF.mse_count_loss`) is harder to optimise than cross-entropy rate loss: training accuracy at termination reaches only 18–24% across folds, compared to ~50% for rate coding at equivalent epoch count. The MSE loss produces shallower gradients and slower convergence. Second, the 10× increase in output neurons (500 vs 50) adds parameters to the output layer without a corresponding increase in the expressivity of the preceding feature extractor — the bottleneck is the 256-dimensional FC1 representation, not the output layer width.
+1. **ANN baseline:** 63.85% +/- 3.07% -- reasonable from-scratch baseline for lightweight CNN on ESC-50.
 
+2. **Best SNN (direct):** 47.15% +/- 4.50% -- first conv SNN result on ESC-50 (C1).
+
+3. **Encoding ordering: direct > rate ~ phase > population > latency >> delta ~ burst.** Explained by information preservation. Rate/phase near-equality notable -- 1 spike matches ~7 spikes at T=25. Population underperforms despite 10x neurons because MSE loss is harder. Delta and burst fail for distinct mechanistic reasons. (C2)
+
+4. **PANNs finding:** gap collapses 16.70 pp to 0.95 pp with pretrained features. Its a feature-learning problem, not a spiking-computation problem. (C5)
+
+5. **Statistical significance:** SNN-ANN gap significant at p=0.001 (paired t-test).
 **Comparison to standard rate coding:** Rate coding with CE loss achieves 24.00% ± 1.90% at lower computational cost (50 output neurons, 3× fewer parameters in output layer). Population coding does not compensate for its training disadvantage.
 
 **Note on variance:** Population coding exhibits the highest fold-to-fold variance of all non-random-chance encodings (std=2.79%). Folds 3 and 5 perform near-chance (15.75%, 16.75%), while folds 1 and 4 approach rate coding performance (22.75%, 22.00%). This inconsistency suggests the MSE loss landscape has multiple local minima that may or may not be escaped depending on initialisation.

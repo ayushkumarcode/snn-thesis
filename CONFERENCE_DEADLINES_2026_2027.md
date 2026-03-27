@@ -194,3 +194,31 @@ very competitive. a workshop submission would be more realistic than main confer
 Sources: [NeurIPS](https://neurips.cc/)
 
 ---
+
+### 3.3 ICLR 2026 [DEADLINE PASSED]
+
+deadline passed (24 September 2025). acceptance rate ~28-32%.
+
+---
+
+### 3.4 ICLR 2027
+
+paper deadline ~September 2026 (estimated). same competitiveness concerns.
+
+---
+
+### 3.5 IJCAI-ECAI 2026 [DEADLINE PASSED]
+
+deadline passed (19 January 2026). acceptance rate ~15-20%.
+
+---
+
+## 4. embedded / edge AI
+
+### 4.1 IEEE AICAS 2026 -- AI Circuits and Systems
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **22 March 2026** |
+| **Notification** | 18 June 2026 |
+| **Conference Dates** | 16-18 September 2026 |

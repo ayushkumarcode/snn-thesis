@@ -446,3 +446,31 @@ start with snnTorch for learning and prototyping (best documentation). move to S
 
 #### vision -- neuromorphic (event camera / DVS)
 
+| Dataset | Classes | Samples | Source | Access | Difficulty |
+|---------|---------|---------|--------|--------|------------|
+| N-MNIST | 10 digits | 70K | DVS camera | garrickorchard.com; snnTorch/SpikingJelly built-in | easy |
+| CIFAR10-DVS | 10 objects | 10K | DVS on LCD | figshare; SpikingJelly built-in | moderate |
+| DVS128 Gesture | 11 gestures | 1,464 | DVS128 camera | IBM Box; SpikingJelly built-in | moderate |
+| N-Caltech101 | 101 categories | 8,709 | DVS camera | garrickorchard.com | moderate |
+| N-CARS | 2 (car/bg) | 24,029 | ATIS camera | Prophesee | moderate |
+| ASL-DVS | ASL letters | - | DVS camera | GitHub | moderate |
+| ES-ImageNet | 1000 objects | - | simulated | Frontiers paper | hard |
+
+#### audio -- neuromorphic
+
+| Dataset | Classes | Samples | Source | Access | Difficulty |
+|---------|---------|---------|--------|--------|------------|
+| Spiking Heidelberg Digits (SHD) | 20 (0-9 in EN+DE) | ~10K | artificial cochlea | zenkelab.org | easy-moderate |
+| Spiking Speech Commands (SSC) | 35 keywords | ~100K | artificial cochlea | zenkelab.org | moderate |
+
+#### other
+
+| Dataset | Type | Access |
+|---------|------|--------|
+| DVS_barrel | character recognition | garrickorchard.com |
+| DVS Planes | airplane detection | greg-cohen.com |
+| KITTI | 3D point cloud driving | kitti.ai |
+| ISBI 2D EM | biomedical segmentation | isbi.org |
+| SEED | EEG emotion | BCMI lab |
+| ISIC 2018 | skin lesion (melanoma) | isic-archive.com |
+

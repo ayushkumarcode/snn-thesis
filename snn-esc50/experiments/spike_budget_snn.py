@@ -54,3 +54,31 @@ class AdaptiveLIF(nn.Module):
         self.frequency = nn.Parameter(torch.empty(size).uniform_(0.5, 5.0))
         self.phase = nn.Parameter(torch.zeros(size))
 
+    def init_state(self, device=None):
+        if device is None:
+            device = self.beta_raw.device
+        return {
+            "mem": torch.zeros(1, device=device),
+            "running_rate": torch.full((self.size,), self.target_rate, device=device),
+            "adaptive_thresh": self.base_threshold.data.clone(),
+        }
+
+    def forward(self, x, state, step):
+        mem = state["mem"]
+        if mem.device != x.device:
+            mem = mem.to(x.device)
+            state["running_rate"] = state["running_rate"].to(x.device)
+            state["adaptive_thresh"] = state["adaptive_thresh"].to(x.device)
+        beta = torch.sigmoid(self.beta_raw)
+        shape = [1] * (x.dim() - 1) + [-1]
+        if x.dim() == 4:
+            shape = [1, -1, 1, 1]
+        elif x.dim() == 2:
+            shape = [1, -1]
+        b = beta.view(shape)
+        osc = (self.amplitude * torch.sin(
+            2 * math.pi * self.frequency * step / NUM_STEPS + self.phase
+        )).view(shape)
+        thresh = state["adaptive_thresh"].view(shape)
+        mem = b * mem + x + osc
+        spk = self.spike_grad((mem - thresh) / thresh.abs().clamp(min=0.1))

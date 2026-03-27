@@ -334,3 +334,31 @@ Simulation-only: yes, using public EMG datasets. No physical prosthetic needed.
 ---
 
 ### 2.8 SNN for optical flow estimation (event camera)
+
+**Literature: 10-15 papers**
+
+Key finding: SNNs achieve 48.3x parameter reduction and 10.2x energy reduction vs ANNs with ~10% lower error for optical flow from event cameras.
+
+Simulation-only: yes, using public event camera datasets (MVSEC, DSEC-Flow).
+
+**Feasibility: MODERATE** -- public datasets and GitHub code exist, but event camera data processing has a learning curve. snnTorch may not directly support required architectures (U-Net with skip connections).
+
+**Verdict: interesting but risky for the timeline.**
+
+---
+
+### 2.9 SNN for robotic arm control (RL in MuJoCo)
+
+**Literature: 5-10 papers, growing rapidly in 2024**
+
+Key finding: a 3-DoF robotic arm target-reaching task was implemented using SNN + SpyTorch + MuJoCo Reacher-v4, extended from 2D to 3D.
+
+Simulation-only: YES. MuJoCo is pure simulation.
+macOS: YES. MuJoCo 2.1+ works on macOS natively.
+
+**Feasibility: MODERATE**
+
+```
+Title: "Energy-Efficient Robotic Arm Control Using Spiking Neural Networks
+        in Simulated Environments"
+

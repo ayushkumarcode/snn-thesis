@@ -418,3 +418,30 @@ Strengths: well-structured API docs, active GitHub, research papers provide dept
 
 ---
 
+## My recommended strategy
+
+### Tier 1: Core project (no SpiNNaker required)
+- Train SNNs in snnTorch for chosen application(s)
+- Use NeuroBench for simulated energy estimates
+- Compare SNN vs ANN accuracy and efficiency
+- This alone makes a complete thesis
+
+### Tier 2: SpiNNaker1 via EBRAINS (2-3 weeks extra)
+- Register for EBRAINS account early
+- Build a simplified FC version of the best model
+- Port trained weights manually to sPyNNaker
+- Run inference on SpiNNaker1
+- Report real energy/latency measurements
+- Compare with NeuroBench estimates
+
+### Tier 3: SpiNNaker2 via Oliver Rhodes (1-2 weeks if access works)
+- Ask Oliver Rhodes about SpiNNaker2 access
+- Use NIR export from snnTorch
+- Deploy via py-spinnaker2
+- Report energy measurements (potentially 24-32x vs GPU)
+- Strongest possible thesis addition
+
+### Go/no-go decision points
+
+- **Go for SpiNNaker** if: EBRAINS account works, tutorial examples run, weight conversion succeeds in initial tests
+- **No-go** if: EBRAINS queue times are excessive, weight conversion causes >10% accuracy drop, or time is running short

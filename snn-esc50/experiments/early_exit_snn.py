@@ -54,3 +54,31 @@ def early_exit_inference(model, loader, device, thresholds,
     model.eval()
     use_amp = device.type == 'cuda'
 
+    # Collect all samples first
+    all_data, all_targets = [], []
+    for data, targets in loader:
+        all_data.append(data)
+        all_targets.append(targets)
+    all_data = torch.cat(all_data, dim=0).to(device)
+    all_targets = torch.cat(all_targets, dim=0).to(device)
+    N = all_data.shape[0]
+
+    # Full forward pass collecting per-timestep membrane potentials
+    # Process in batches to avoid OOM
+    all_mems = []  # will be (T, N, C)
+    bs = BATCH_SIZE
+    for start in range(0, N, bs):
+        end = min(start + bs, N)
+        batch = all_data[start:end]
+        spk_input = encode_direct(batch).to(device)
+
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
+            if model_type == "baseline":
+                _, mem_out = model(spk_input)
+            else:
+                _, mem_out, _ = model(spk_input)
+
+        all_mems.append(mem_out.cpu())
+
+    # Concatenate: (T, N, C)
+    all_mems = torch.cat(all_mems, dim=1).float()

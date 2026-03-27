@@ -190,31 +190,3 @@ workload_metrics = [ClassificationAccuracy, ActivationSparsity, SynapticOperatio
 benchmark = Benchmark(model, test_loader, preprocessors, postprocessors,
                       [static_metrics, workload_metrics])
 results = benchmark.run()
-print(results)
-# Output includes: Effective_MACs, Effective_ACs, Dense, ActivationSparsity, etc.
-```
-
-#### 2. Manual Spike Counting with snnTorch (Simple, Full Control)
-
-If you are already using snnTorch, you can count spikes yourself during inference:
-
-```python
-import snntorch as snn
-import torch
-
-def count_spikes_per_layer(model, data_loader, num_steps):
-    """Count total spikes per layer during inference."""
-    spike_counts = {}
-
-    with torch.no_grad():
-        for data, targets in data_loader:
-            # Reset hidden states
-            snn.functional.reset(model)
-
-            # Run through timesteps
-            for step in range(num_steps):
-                spk_out, mem_out = model(data)
-
-                # Count spikes from each spiking layer
-                for name, module in model.named_modules():
-                    if isinstance(module, (snn.Leaky, snn.Synaptic)):

@@ -1,15 +1,15 @@
-# Experiment Log: SNN for Environmental Sound Classification on ESC-50
+# experiment log
 
-**Project:** COMP30040 Undergraduate Thesis, University of Manchester
-**Author:** Ayush Kumar
-**Started:** March 2026
+COMP30040 thesis, university of manchester. ayush kumar. started march 2026.
 
 ---
 
-## Table of Contents
+## overview
 
-1. [Project Overview](#project-overview)
-2. [Dataset](#dataset)
+research question: how do different spike encoding methods affect SNN performance on environmental sound classification?
+
+main contribution: first application of spiking neural networks to the ESC-50 dataset. no prior peer-reviewed SNN work exists for ESC-50 (confirmed by arXiv 2503.11206, march 2025).
+
 3. [Architecture](#architecture)
 4. [Training Infrastructure](#training-infrastructure)
 5. [Experiment Results](#experiment-results)

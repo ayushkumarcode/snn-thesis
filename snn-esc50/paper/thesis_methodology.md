@@ -12,20 +12,20 @@ Specifically:
 - Both use identical conv feature extraction (Conv2d, BN, MaxPool)
 - Both have identical FC layers (2304 -> 256 -> 50)
 - Both trained with same optimiser (Adam), same LR schedule (ReduceLROnPlateau), same early stopping (patience=10), same augmentation
-- All reported accuracy values are the best validation accuracy per fold (not the final epoch)
+- Both evaluated using 5-fold CV on ESC-50's predefined folds, held-out fold = test
+- All reported accuracies are best validation accuracy per fold (not final epoch)
 
-The matched architecture design follows the recommendation of Deng & Gu (Neural Networks 2020) for fair SNN-ANN comparison. Parameter counts are deliberately kept small (~622K) to avoid overfitting on the 1,600 training samples available per fold.
+Follows Deng & Gu (Neural Networks 2020) recommendation for fair SNN-ANN comparison. Parameter count deliberately kept small (~622K) to avoid overfitting on 1600 training samples per fold.
 
 ---
 
-## 3.2 Dataset
+## 3.2 dataset
 
-**ESC-50** (Piczak, 2015) contains 2,000 five-second environmental sound recordings across 50 classes (40 clips per class), drawn from Freesound.org. Classes span five broad categories: animals (classes 0–9), natural soundscapes (10–19), human sounds (20–29), domestic sounds (30–39), and urban sounds (40–49). The dataset provides 5 predefined folds that balance class distribution across folds, enabling standardised cross-validation.
+**ESC-50** (Piczak, 2015): 2000 five-second environmental sound recordings, 50 classes (40 clips/class), from Freesound.org. Five broad categories: animals (0-9), natural soundscapes (10-19), human sounds (20-29), domestic (30-39), urban (40-49). Predefined 5-fold splits balance class distribution.
 
-Human accuracy on ESC-50 is 81.3%; current ANN state-of-the-art is 98.25%.
+Human accuracy: 81.3%. ANN SOTA: 98.25%.
 
-**Pre-processing pipeline** (all parameters fixed; no tuning):
-```
+**Preprocessing pipeline** (all fixed, no tuning):
 1. Load WAV at sr = 22,050 Hz, duration = 5.0 s
 2. Zero-pad if shorter than 110,250 samples
 3. Compute mel spectrogram: n_mels=64, n_fft=1024, hop_length=512, f_min=0, f_max=None

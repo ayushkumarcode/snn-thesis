@@ -82,3 +82,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 ### Thesis 5: Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware
 - **Author:** Carola Fischer
 - **Type:** Bachelorarbeit
+- **Institution:** University of Heidelberg, KIP
+- **Year:** 2017
+- **Source:** [KIP](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3533)
+
+**Objectives:** "implement two interconnected layers of a feedforward network on the Spikey neuromorphic chip for classifying MNIST digits."
+
+**Contribution:**
+- "characterized synaptic connections between on-chip neurons"
+- "systematically evaluated all neurons across both chip halves"
+- "successfully demonstrated classification of an MNIST subset on-chip"
+
+**Framing:** "we implemented X on hardware Y and demonstrated classification of Z." classic engineering thesis: take existing algorithm (Boltzmann machines), put on specific hardware (Spikey chip), solve the practical problems, demo it works.
+
+---
+
+### Thesis 6: Towards Spike-based Expectation Maximization on BrainScaleS
+- **Author:** Felix Schneider
+- **Type:** Bachelorarbeit
+- **Institution:** University of Heidelberg, KIP
+- **Year:** June 2018
+- **Source:** [KIP](https://www.kip.uni-heidelberg.de/Veroeffentlichungen/download.php/6229/temp/3814.pdf)
+
+**Objectives:** implementing SEM (Spike-based Expectation Maximization) -- "where a population of neurons tries to find the hidden cause of spike patterns" -- in a closed-loop setup on BrainScaleS.
+
+**Contribution:** implementation of the SEM algorithm on BrainScaleS in a closed-loop configuration.
+
+**Framing:** "we implemented algorithm X on platform Y." the "Towards" in the title signals progress toward a goal rather than a completed system -- common and honest framing for bachelor's work.
+

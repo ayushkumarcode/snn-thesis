@@ -110,3 +110,31 @@ consumed only **0.17 mJ** on Electricity dataset with T=3. that's impressively l
 
 from the survey "Spiking Neural Networks for Temporal Processing: Status Quo and Future Prospects" (arXiv, Feb 2025):
 - on Binary Adding task with T=2400: LSTM/SSM/Transformer get ~100%, while advanced SNNs **degrade substantially** and some "fail to learn any meaningful temporal information"
+- **significant gap still exists for long-range dependencies**
+- many SNN benchmarks (CIFAR10-DVS, N-MNIST) lack genuine temporal dependencies and mask limitations
+- SNNs get 5-45x better energy despite lower accuracy on demanding temporal tasks
+
+---
+
+## Why SNNs Might Be Good for Temporal Data (Theory)
+
+### Inherent Temporal Processing
+
+unlike ANNs where neurons are constant regardless of time, SNN neurons change over time. when membrane potential hits threshold, the neuron fires. this means:
+- process temporal info **natively** without special mechanisms (unlike LSTMs needing gating)
+- encode information in spike timing, not just amplitude
+- operate as **inherently stateful** with rich neuronal dynamics
+
+### Temporal Coding Efficiency
+
+a single spiking neuron with temporal coding can theoretically replace hundreds of hidden units in a conventional NN. fewer spikes = fewer computations, and data arrives over time / spikes process over time -- natural alignment.
+
+### Event-Driven Computation
+
+binary sparse outputs, asynchronous. reduces communication, lowers energy up to **1000x** on neuromorphic processors, naturally aligns with streaming/real-time data.
+
+### CPG Analogy (NeurIPS 2024)
+
+the CPG-PE paper showed that sinusoidal positional encoding is mathematically a specific solution to membrane potential dynamics of a particular Central Pattern Generator. direct theoretical link between biological rhythm generation and sequence model positional encoding. cool.
+
+### Counterarguments

@@ -278,3 +278,31 @@ these are mostly "running experiments" rather than "inventing methods." each fil
 ### tier 3: higher effort, very strong novelty
 
 #### 3A. SNN for sentiment analysis / text classification
+- SNN on IMDB Reviews or AG News. key challenge: spike encoding for text.
+- why: NLP is explicitly "underexplored" in multiple surveys.
+- effort: HIGH. text-to-spike encoding is non-trivial.
+- even modest accuracy results would be publishable due to novelty.
+
+#### 3B. SNN for music genre classification (GTZAN)
+- SNN on GTZAN (10 genres, 1000 clips). compare with CNN on mel-spectrograms.
+- why: only SNN music paper is from 2016 (undergrad thesis, pattern recognition not genre). GTZAN has never been tested.
+- effort: MEDIUM-HIGH.
+
+#### 3C. multi-modal SNN: vision + audio fusion
+- combine visual and audio in SNN for audiovisual classification.
+- why: 4-5 papers on multimodal SNNs, all very recent. text modality completely absent.
+- effort: HIGH. need to design fusion architecture.
+
+---
+
+## 8. the absolute easiest path to a genuine contribution
+
+if the goal is minimum effort, maximum novelty claim:
+
+### option A: "first SNN results on [dataset X]"
+pick a dataset with zero SNN papers. run a standard snnTorch CSNN. report results.
+
+best candidates (easiest first):
+1. **ESC-50 or UrbanSound8K** -- environmental sound. mel-spectrogram, rate-encode, classify.
+2. **PlantVillage** -- plant disease images. standard classification.
+3. **GTZAN** -- music genre. mel-spectrograms + SNN.

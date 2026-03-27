@@ -279,31 +279,3 @@ Our thesis is the ONLY work to systematically compare 7 encoding methods on the 
 ## 5. Neuromorphic Hardware for Audio SNNs
 
 ### 5.1 Hardware Deployment Summary
-
-| Hardware | Audio Task | Accuracy | Energy | Reference |
-|----------|-----------|----------|--------|-----------|
-| **SpiNNaker 1** | Pure tone classification (8 classes) | >85% (SNR>3dB) | -- | Dominguez-Morales et al. 2016 |
-| **SpiNNaker 1** | ESC-50 FC2-only (our thesis) | 33.1% +/- 6.9% | 86 nJ/sample | This thesis |
-| **SpiNNaker 2** | Keyword spotting (GSC) | 91.12% | 12x < V100 GPU | Yan et al. 2022 |
-| **SpiNNaker 2** | Gesture recognition | -- | -- | Kalmbach et al. 2022 |
-| **Intel Loihi** | Keyword spotting (GSC) | ~88.5% | 109x < GPU, 23x < CPU | Speech2Spikes 2023 |
-| **Intel Loihi 2** | Keyword spotting | ~comparable | 200x < embedded GPU, 10x faster | 2024 demos |
-| **Intel Loihi 2** | Audio+video processing | -- | -- | ICASSP 2024 demo |
-| **Synsense Xylo** | Sound source localization | MAE 0.25-0.65 deg | Ultra-low-power | Haghighatshoar 2025 |
-| **FPGA (Cyclone V)** | CARFAC cochlea | -- | 18% ALM utilization | Various |
-| **FPGA** | Event-graph audio classification | SOTA for FPGA | Low latency, low power | 2025 |
-
-### 5.2 Our SpiNNaker Deployment in Context
-
-Our thesis is one of very few works to deploy an SNN for ENVIRONMENTAL SOUND (not just speech) on neuromorphic hardware. The only prior work is Dominguez-Morales et al. (2016), which classified 8 pure tones (130-1397 Hz) on SpiNNaker -- a trivially simple task compared to 50-class ESC-50. Our work represents a massive step up in complexity for SpiNNaker audio deployment.
-
----
-
-## 6. PANNs / Pretrained Audio Features with SNNs
-
-### 6.1 Literature Search Results
-
-**No prior work combines PANNs (or any pretrained audio features) with an SNN classifier head for environmental sound classification.**
-
-Our thesis result -- PANNs CNN14 frozen embeddings + 3-layer SNN head achieving 92.50% on ESC-50 -- is NOVEL. The key insight that the SNN-ANN gap collapses from 16.7pp (scratch) to 0.95pp (PANNs features) is an original contribution.
-

@@ -530,3 +530,31 @@ Why this is interesting:
 Risks: U-Net architectures with skip connections may be tricky in snnTorch. Image denoising isn't a "natural" SNN task (images aren't temporal). SPIDEN uses custom architecture, not directly snnTorch.
 
 **Verdict: excellent novel candidate. 3-5 papers means genuine contribution potential.**
+
+---
+
+### 3.10 SNN for EEG / brain-computer interface
+
+**Literature: 15-20 papers**
+
+Already covered in existing EEG research report.
+
+---
+
+### 3.11 SNN for privacy / federated learning (new finding)
+
+**Literature: 3-5 papers (very sparse, all 2023-2025)**
+
+Key works:
+- [Privacy in Federated Learning with SNNs (arxiv 2025)](https://arxiv.org/abs/2511.21181)
+- [Sensitivity of Firing Rate-Based Federated SNNs to Differential Privacy (arxiv 2026)](https://arxiv.org/abs/2602.12009v1)
+- [Privacy-Preserving Federated Neuromorphic Learning via Spiking Neuron Models (MDPI 2023)](https://www.mdpi.com/2079-9292/12/18/3984)
+
+Interesting idea: SNNs' discrete spike events and surrogate gradient approximations may provide inherent privacy advantages -- the "noise" from surrogate gradients could naturally obscure gradient information, making gradient inversion attacks harder.
+
+Very novel (the arxiv 2026 paper is literally weeks old). But federated learning frameworks add significant complexity, and need to understand gradient inversion attacks (non-trivial).
+
+**Verdict: fascinating but risky for the timeline. If interested in security/privacy, this is bleeding-edge. Would need to simplify significantly.**
+
+---
+

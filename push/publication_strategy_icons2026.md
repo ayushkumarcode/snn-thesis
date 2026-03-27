@@ -130,31 +130,3 @@ ICONS 2025 (Bellevue/Seattle, July 29--31, 2025) accepted the following:
 6. "EEvAct: Early Event-Based Action Recognition with Two-Stream SNNs" -- Neumeier et al.
 7. "Quantitative evaluation of brain-inspired vision sensors" -- Wang et al.
 8. "Quantizing Small-Scale State-Space Models for Edge AI" -- Zhao et al.
-9. "Neuromorphic Deployment of SNNs for Cognitive Load Classification in Air Traffic Control" -- An et al.
-10. "How to Train an Oscillator Ising Machine using Equilibrium Propagation" -- Gower
-11. "Uncertainty-Aware Spiking Neural Networks for Regression" -- Sun & Bohte
-
-**Lightning Talks (15+ papers):**
-12. "GRASP: Dynamic and Priority-Aware Gradient Sparsification" -- Swaminathan & Sampson
-13. "Do Spikes Protect Privacy? Black-Box Model Inversion Attacks in SNNs" -- Poursiami et al.
-14. "Model-Free Multiplexed Gradient Descent: Neuromorphic Learning" -- O'Loughlin et al.
-15. "Vibe2Spike: Wireless, Batteryless Vibration Sensing with Event Cameras and SNNs" -- Scott et al.
-16. "Constant Depth Threshold Circuits For Exhaustive Epistasis Detection" -- Ribeiro et al.
-17. "Synaptic Sampling Networks with True Random Number Generation" -- Aimone et al.
-18. "How Activity Regularization Harms Pruned SNNs" -- Krausse et al.
-19. "An Empirical Study on Input Distribution Impact on Reservoir Computer Performance" -- Thelen & Ravindra
-20. **"Hardware-Aware Fine-Tuning of Spiking Q-Networks on the SpiNNaker2 Neuromorphic Platform"** -- Arfa et al. *[SPINNAKER-RELATED]*
-21. "Exploring Dendrites in Large-Scale Neuromorphic Architectures" -- Boyle et al.
-22. "A Complete Pipeline for deploying SNNs with Synaptic Delays on Loihi 2" -- Meszaros et al.
-23. "Propeller-Based Drone Tracking with a Moving Neuromorphic Camera" -- Murray & Nowzari
-24. "NAP: Neuromorphic Artificial Pancreas" -- Rizzo et al.
-25. "DESTformer: Energy-Efficient Monocular Depth Estimation with Spiking Transformer" -- Tumpa et al.
-26. **"Unsupervised continual learning of complex sequences in spiking neuronal networks"** -- Bouhadjar et al. *[CONTINUAL LEARNING]*
-27. **"Spiking Neural Networks for Low-Power Vibration-Based Predictive Maintenance"** -- Vasilache et al. *[APPLICATION BENCHMARK]*
-28. "SpikeRL: Scalable and Energy-efficient Deep Spiking Reinforcement Learning" -- Tahmid et al.
-29. "Energy-Efficient Adiabatic Circuits for Neuromorphic Tactile Sensing with E-Prop Learning" -- Muller-Cleve et al.
-30. "VRISP: A Vectorized Open-Source Simulator for Neuromorphic Computing" -- Mowry & Plank
-31. "Neuromorphic Cybersecurity with Semi-supervised Lifelong Learning" -- Mia et al.
-
-**Key observations for our paper's positioning:**
-- Paper #20: SpiNNaker2 paper accepted at ICONS 2025 -- hardware deployment papers welcome

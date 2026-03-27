@@ -97,31 +97,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 ### 1.7 Francesco Galluppi -- Information Representation on a Universal Neural Chip (2013)
 
 | Field | Details |
-|-------|---------|
-| **Title** | Information Representation on a Universal Neural Chip |
-| **Author** | Francesco Galluppi |
-| **Year** | 2013 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (likely) |
-| **Abstract** | Modelling biologically plausible neural networks on SpiNNaker. Understanding mechanisms the brain uses to represent and elaborate information. Also developed hierarchical configuration systems. |
-| **Note** | Galluppi first joined SpiNNaker in January 2009 for his MSc thesis, then returned April 2010 for PhD. |
-
-### 1.8 Jonathan Heathcote -- Building and Operating Large-Scale SpiNNaker Machines (2016)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Building and Operating Large-Scale SpiNNaker Machines |
-| **Author** | Jonathan Heathcote |
-| **Year** | October 2016 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |
-| **Abstract** | Physical layout scheme for hexagonal torus topologies minimizing cable length. Improved routing algorithms. Placement and routing algorithms minimizing congestion and tolerating network faults. Demonstrated on half-million core prototype. |
-| **Keywords** | Fault tolerance, Graphs, Simulated annealing, Place and Route, Hexagonal Torus Topology, SpiNNaker |
-| **Tools** | SpiNNaker hardware, Python (Rig library) |
-| **PDF** | Available (8.54 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines |
-| **GitHub** | https://github.com/mossblaser/phd_thesis_experiments |
-
-### 1.9 James Knight -- Plasticity in Large-scale Neuromorphic Models of the Neocortex (2016)
-
-| Field | Details |

@@ -385,31 +385,3 @@ For a 3rd-year thesis, the research question should be:
 
 5. **Encoding comparison**: Comparing the cochlea-based SHD encoding against simpler encodings (rate coding of Mel spectrograms, delta encoding) has not been done systematically for SNN audio classification.
 
----
-
-## 10. Confidence Assessment
-
-| Finding | Confidence | Source Quality |
-|---------|------------|---------------|
-| SHD SOTA is ~96.4% | HIGH | Multiple recent papers agree |
-| SSC SOTA is ~85.98% | HIGH | SpikCommander paper with detailed tables |
-| ANN baselines (GRU 90.4%, CNN 92.4% on SHD) | HIGH | Original dataset paper + sparch paper |
-| SNNs surpass ANNs on SHD/SSC | HIGH | Consistent across multiple papers since 2024 |
-| SHD trainable in minutes on single GPU | HIGH | Spyx benchmarks + multiple framework docs |
-| snnTorch is most beginner-friendly | HIGH | Tutorial quality, documentation, community |
-| No undergraduate SHD project exists publicly | MEDIUM-HIGH | Exhaustive GitHub search, but private projects may exist |
-| Energy efficiency claims (5-100x) | MEDIUM | Varies hugely by hardware platform and methodology |
-| Feasibility for 3rd-year thesis | HIGH | Small dataset, available tools, multiple baselines |
-
----
-
-## 11. Sources
-
-### Datasets
-- [Zenke Lab SHD/SSC page](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
-- [IEEE DataPort](https://ieee-dataport.org/open-access/heidelberg-spiking-datasets)
-- [Papers with Code SHD Benchmark](https://paperswithcode.com/sota/audio-classification-on-shd)
-
-### Key Papers
-- [Cramer et al. 2020 (SHD/SSC dataset)](https://arxiv.org/abs/1910.07407)
-- [Bittar & Garner 2022 (sparch baseline)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.865897/full)

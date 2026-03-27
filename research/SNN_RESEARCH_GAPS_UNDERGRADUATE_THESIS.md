@@ -334,3 +334,31 @@ best candidates:
 ### survey papers identifying gaps
 - [SNNs for Ubiquitous Computing (arXiv, June 2025)](https://arxiv.org/html/2506.01737v1)
 - [SNN and Sound Review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
+- [SNNs in Imaging (MDPI Sensors, 2025)](https://www.mdpi.com/1424-8220/25/21/6747)
+- [Toward Large-scale SNNs (arXiv, Sept 2024)](https://arxiv.org/html/2409.02111v1)
+- [SNN Architecture Search Survey (arXiv, Oct 2025)](https://arxiv.org/html/2510.14235v1)
+- [Reconsidering SNN Energy Efficiency (arXiv, Sept 2024)](https://arxiv.org/abs/2409.08290)
+- [SNNs in Biomedical Applications (PMC, 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362408/)
+- [Direct Training High-Performance Deep SNNs (PMC, 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11322636/)
+- [SNNs for Detection and Segmentation (2025)](https://www.oejournal.org/ioe/article/doi/10.29026/ioe.2025.250007)
+- [Multimodal SNN Framework Benchmark (ScienceDirect, July 2025)](https://www.sciencedirect.com/science/article/abs/pii/S0952197625015453)
+- [SNN for Physiological/Speech Signals (PMC, 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362433/)
+
+### framework benchmarks
+- [Open Neuromorphic SNN Benchmarks (Feb 2024)](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
+- [SpikingJelly Science Advances (2023)](https://www.science.org/doi/10.1126/sciadv.adi1480)
+- [Practical SNN Tutorial (MDPI, Nov 2025)](https://www.mdpi.com/2673-4117/6/11/304)
+
+### individual papers with future work
+- [SNN for Nonlinear Regression (Royal Society, May 2024)](https://royalsocietypublishing.org/rsos/article/11/5/231606/92889/Spiking-neural-networks-for-nonlinear)
+- [Neuromorphic Data Augmentation (ECCV 2022)](https://arxiv.org/abs/2203.06145)
+- [MuSpike Music Benchmark (arXiv, May 2025)](https://arxiv.org/html/2508.19251)
+- [SNNLP (arXiv, Jan 2024)](https://arxiv.org/abs/2401.17911)
+- [Spiking-DD Driver Distraction (2024)](https://www.researchgate.net/publication/382691405_Spiking-DD_Neuromorphic_Event_Camera_based_Driver_Distraction_Detection_with_Spiking_Neural_Network)
+- [SNN for Vibration Predictive Maintenance (arXiv, June 2025)](https://arxiv.org/abs/2506.13416)
+- [SpiNeRF (PMC, 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12326478/)
+- [Spiking Diffusion Models (arXiv, Aug 2024)](https://arxiv.org/abs/2408.16467)
+
+### datasets and tools
+- [Tonic Neuromorphic Data Library](https://tonic.readthedocs.io/)
+- [snnTorch Regression Tutorials](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_regression_1.html)

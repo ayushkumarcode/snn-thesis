@@ -116,31 +116,3 @@ env.close()
 | **EXISTS** | YES -- but NO off-the-shelf library |
 | **Pre-built library?** | **NO.** No library combines snnTorch + standard RL algorithms out of the box |
 | **Must build from scratch?** | **PARTIALLY YES** |
-| **Complexity** | HIGH -- this is the core research contribution |
-| **POTENTIAL BLOCKER** | **YES (MEDIUM)** |
-
-**The integration does NOT exist as a pip-installable package.** Here is what actually exists:
-
-1. **SpikeGym** (3 commits on GitLab) -- modifies `skrl` for SNN support, research-quality code only
-2. **PopSAN** (https://github.com/combra-lab/pop-spiking-deep-rl) -- 64 stars, last commit Oct 2020, custom SNN implementation (NOT snnTorch), supports PPO/DDPG/TD3/SAC with MuJoCo. Outdated dependencies (Python 3.5, MuJoCo 2.0)
-3. **RL-SNN-Quadrupeds** (https://github.com/tganamur/RL-SNN-Quadrupeds) -- 13 stars, 4 commits, UC Berkeley course project, uses Stable-Baselines3 + MuJoCo. SNN approach only achieved "steady standing" (did not walk successfully)
-
-**What you actually need to do:**
-- Use Stable-Baselines3 with its custom policy network API
-- Replace the MLP policy with an snnTorch-based SNN policy
-- SB3 allows custom `features_extractor` and custom network architectures via `policy_kwargs`
-- This is a non-trivial integration requiring ~200-500 lines of custom code
-
-**Source:** [SB3 custom policy docs](https://stable-baselines3.readthedocs.io/en/master/guide/custom_policy.html) | [PopSAN repo](https://github.com/combra-lab/pop-spiking-deep-rl) | [RL-SNN-Quadrupeds](https://github.com/tganamur/RL-SNN-Quadrupeds)
-
----
-
-### 5. SNN Policy Network (Continuous Action Output)
-
-| Field | Value |
-|-------|-------|
-| **EXISTS** | YES -- proven in research |
-| **Off-the-shelf?** | NO |
-| **Mechanism verified?** | YES -- three known approaches |
-| **POTENTIAL BLOCKER** | **YES (MEDIUM)** -- requires careful implementation |
-

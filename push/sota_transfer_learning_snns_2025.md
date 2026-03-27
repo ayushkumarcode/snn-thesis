@@ -470,31 +470,3 @@ Based on this research, the field can be organized into four paradigms:
 6. **Cite Spikformer V2 (2024)** as the vision-domain evidence that self-supervised pretraining (improving feature quality) narrows the SNN-ANN gap.
 
 7. **Cite Spiking-FullSubNet (TNNLS 2025)** as the most successful SNN audio system, demonstrating that SNNs can exceed ANN SOTA in audio when properly designed.
-
-8. **Cite Larroza et al. (2025)** as the closest ESC work, noting the thesis extends from ESC-10 to full ESC-50 with dramatically different methodology.
-
-9. **Position the thesis in Paradigm 3** (frozen features + SNN head) and note it is the least explored paradigm, making it a clear contribution.
-
-10. **The 17.6x gap collapse ratio** should be highlighted as exceeding the typical 7x ratio observed in vision, suggesting audio may benefit even more from pretrained features due to the acoustic feature learning challenge with limited data.
-
----
-
-## 14. Recommended Citations for Thesis
-
-### Must-Cite (Directly Relevant)
-
-1. Bu, T., Li, M., & Yu, Z. (2025). "Inference-Scale Complexity in ANN-SNN Conversion." CVPR 2025.
-2. Abuhajar, R., et al. (2025). "Three-stage hybrid spiking neural networks fine-tuning for speech enhancement." Frontiers in Neuroscience.
-3. Chen, Y., et al. (2025). "Spiking Vocos: An Energy-Efficient Neural Vocoder." arXiv:2509.13049.
-4. Xu, Z., et al. (2024). "BKDSNN: Enhancing the Performance of Learning-based SNN Training with BKD." ECCV 2024.
-5. Qiu, H., et al. (2024). "Self-architectural knowledge distillation for spiking neural networks." Neural Networks 178.
-6. Song, Z., et al. (2024). "Spiking-LEAF: A Learnable Auditory front-end for SNNs." ICASSP 2024.
-7. Hao, X., et al. (2025). "Toward Ultra-Low-Power Neuromorphic Speech Enhancement with Spiking-FullSubNet." IEEE TNNLS.
-8. Kim, T., et al. (2024). "SNN and Sound: A Comprehensive Review." Biomedical Engineering Letters 14(5).
-9. Zhou, Z., et al. (2024). "Spikformer V2: Join the High Accuracy Club on ImageNet." arXiv:2401.02020.
-10. Larroza, A., et al. (2025). "Spike Encoding for Environmental Sound: A Comparative Benchmark." arXiv:2503.11206.
-
-### Should-Cite (Supporting Context)
-
-11. STA: Spatio-Temporal Approximation, ICLR 2024 (CLIP-to-SNN conversion).
-12. Xu, Q., et al. (2023). "Constructing Deep SNNs from ANNs with KD." CVPR 2023.

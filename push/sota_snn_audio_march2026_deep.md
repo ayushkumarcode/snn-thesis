@@ -58,31 +58,3 @@
 
 ### SpiNNaker
 | System | Year | Task | Result |
-|--------|------|------|--------|
-| Dominguez-Morales | 2016 | Pure tone classification | >85%, 4-chip SpiNNaker |
-| Sound source localization | 2023 | SSL | Comparable to traditional |
-| **Our work** | 2026 | **ESC-50 classification** | **FIRST on SpiNNaker** |
-
-### Intel Loihi / Loihi 2
-| System | Year | Task | Result |
-|--------|------|------|--------|
-| Blouw et al. | 2019 | Single-phrase KWS | Best energy vs CPU/GPU/Jetson |
-| Speech2Spikes | 2023 | GSC 35-class KWS | 88.5%, 109x lower energy than GPU |
-| Efficient Audio | 2024 (ICASSP) | Denoising + KWS on Loihi 2 | Orders of magnitude EDP improvement |
-| EventProp | 2025 | SHD/SSC on Loihi 2 | 18x faster, 200-250x less energy than Jetson |
-
-### SynSense Xylo Audio 2 (Commercial!)
-- **95% accuracy, 291 μW dynamic power, 6.6 μJ/inference** for "Aloha" KWS
-- TSMC 40nm, integrated audio front-end
-- This is a real commercial product
-
-### BrainChip Akida
-- KWS demos at CES 2024, edge learning with few-shot
-
-### FPGA
-- NEUROSEC (2024): Adversarial audio security, 94% detection, FGSM/PGD resilient
-
----
-
-## 5. Transfer Learning + SNN (Our PANNs+SNN Approach)
-

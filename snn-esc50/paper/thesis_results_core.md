@@ -68,20 +68,20 @@ Delta is fundamentally inappropriate for static spectrograms. It's designed for 
 | 3 | 9.25% | 26 | 36 |
 | 4 | 6.00% | 10 | 20 |
 | 5 | 7.00% | 10 | 20 |
-| 3 | 9.25% | 26 | 36 |
-| 4 | 6.00% | 10 | 20 |
-| 5 | 7.00% | 10 | 20 |
-| **Mean ± Std** | **6.50% ± 1.54%** | — | — |
+| **Mean** | **6.50% +/- 1.54%** | | |
 
-Burst encoding performs near-chance (~2% chance for 50 classes). This is a **negative result**, in contrast to the pre-experiment expectation. The failure is mechanistically explained:
+Near-chance. This is a **negative result** -- i expected burst to do better honestly.
 
-**Root cause — temporal window mismatch:** Burst encoding concentrates all N_max=5 spikes in the first 5 of 25 timesteps. After timestep 5, all neurons are silent regardless of input intensity. The LIF neurons (β=0.95) continue integrating for 20 more timesteps — receiving no new information, only decaying membrane state. The network sees signal for 20% of its integration window and noise for 80%.
+**Root cause: temporal window mismatch.** Burst concentrates all N_max=5 spikes in the first 5 of 25 timesteps. After step 5, all neurons are silent. LIF neurons (beta=0.95) keep integrating for 20 more steps -- no new info, just decaying membrane. Network sees signal for 20% of integration window and noise for 80%.
 
-**Overfitting signature:** Training accuracy reaches 45–62% (genuine feature learning occurs), while test accuracy stays at 5–9%. The model memorises training sequences but fails to generalise — the 20% signal window contains enough discriminative information to memorise, but not enough to generalise across folds.
+**Overfitting:** train accuracy hits 45-62% (genuine learning happens) while test stays 5-9%. Model memorises training sequences but can't generalise. The 20% signal window has enough discriminative info to memorise but not to generalise.
 
-**Contrast with delta encoding:** Delta fails because there is *no signal at all* (static spectrograms have no temporal contrast). Burst fails because *signal exists but is temporally mismatched*. Both produce ~5–9% test accuracy, but via distinct failure mechanisms.
+**Contrast with delta:** delta fails because theres *no signal* (static spectrograms have no temporal contrast). Burst fails because *signal exists but is temporally mismatched*. Both get ~5-9% but via completely different failure mechanisms.
 
-**What would fix burst:** Matching the simulation window to the burst window (T=5, sacrificing temporal richness) or using an architecture that reads out only the first N_max timesteps. Neither is explored — burst is documented as a negative result with full mechanistic explanation.
+**What would fix it:** T=5 to match burst window, or architecture that reads only first N_max timesteps. Neither explored -- burst documented as negative result.
+
+### 4.2.7 phase coding
+
 
 ### 4.2.7 Phase Coding
 

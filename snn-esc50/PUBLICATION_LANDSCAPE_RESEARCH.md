@@ -96,20 +96,20 @@ our temporal truncation result (90% accuracy at T=7 = 72% energy saving) directl
 ## SNN + audio: complete landscape (2016-2025)
 
 every known SNN audio/sound paper i could find:
-**Best Paper:** "Dendritic Learning in Superconducting Optoelectronic Networks" (O'Loughlin, Primavera, Shainline)
 
-**Published in:** ACM proceedings (https://dl.acm.org/doi/proceedings/10.1145/3589737)
-
-Papers included continual learning for robots, prosthetic vision with event-based sensors, dictionary learning with accumulator neurons. Acceptance rate: 59% (13/22 in 2018 data).
-
-### ICONS 2022 (Knoxville, TN, Jul 27-29, 2022)
-
-Notable paper directly relevant to you:
-- **"Evaluating Encoding and Decoding Approaches for Spiking Neuromorphic Systems"** (published at ICONS 2022)
-- This is the Yarga et al. paper you already cite. They compared 4 encodings on speech digits.
-
-**What this means for you:** Your 7-encoding comparison on ESC-50 is a direct and significant extension of an ICONS 2022 paper. ICONS reviewers will recognize this lineage and see your work as building on their own community's research. This is a STRONG positioning strategy.
-
+| year | authors | dataset | accuracy | hardware | notes |
+|------|---------|---------|----------|----------|-------|
+| 2016 | Dominguez-Morales et al. | 8 pure tones | >85% at SNR>3dB | SpiNNaker | first SNN audio on SpiNNaker |
+| 2018 | Wu et al. | SHD, TIMIT | 97.5% TIDIGITS | none | SOM + SNN |
+| 2018 | Dong et al. | TIDIGITS | 97.5% / 93.8% | none | unsupervised STDP |
+| 2021 | Amin | TIDIGITS, RWCP | 97.64% / 99.50% | none | adaptive threshold |
+| 2021 | Bensimon et al. | RWCP | 98.73% | none | spiking continuous time neuron |
+| 2022 | Yarga et al. | speech digits | variable | none | 4-encoding comparison at ICONS |
+| 2022 | Blouw & Choo | speech commands | ~95% | Loihi | real-time |
+| 2023 | Speech2Spikes (Intel) | Google Speech Cmds | SOTA | Loihi | 109x energy |
+| 2023 | Xiang et al. | TIDIGITS | 93.75% | photonic | photonic neuromorphic |
+| 2024 | Yang & Chang | TIMIT | PER 22.6% | hw accelerator (71.2 uW) | low-power accelerator |
+| 2024 | NeurIPS paper | sound sources | SOTA localization | none | resonate-and-fire |
 ### ICONS 2026 Call for Papers (Your Target)
 
 **Location:** Chicago, IL, August 4-6, 2026

@@ -110,3 +110,31 @@ The pattern for Heidelberg bachelor's theses: typically ONE focused task on Brai
 | Spikes from Sound: Auditory Periphery on SpiNNaker | Robert James | 2019 | Garside, Koch | Cochlear model on SpiNNaker |
 | Learning in SNNs | Sergio Davies | 2012 | Furber | STDP learning rule, SpiNNaker routing |
 | Parallel Simulation of NNs on SpiNNaker | Andrew Rowley | ~2012 | Furber | STDP with plasticity |
+| Parallelisation on Neuromorphic HW | Luca Peres | 2022 | Furber, Rhodes | 20x performance improvement |
+| Modelling Neural Dynamics on Neuromorphic HW | Mollie Ward | 2024 | Rhodes, Garside | HH on SpiNNaker/SpiNNaker2 |
+
+URL pattern: https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
+
+### Imperial College London
+- N. Perez, 2023 -- "Robust and efficient training on deep spiking neural networks" -- sparse backward pass (150x speedup), weight initialization for SNNs
+- https://spiral.imperial.ac.uk/entities/publication/0bfc1732-2dac-4589-b50e-7eec99f8efdf
+
+### University of Kent
+- Florian Bacho, 2024 -- "Towards Neuromorphic Gradient Descent" -- exact gradients for temporally-coded SNNs, local online learning
+- Jakub Fil, 2022 -- "Towards Modelling of Autonomous Neuromorphic Learning"
+- https://kar.kent.ac.uk/104801/ and https://kar.kent.ac.uk/95778/
+
+### UCL
+- Katarzyna Kozdon, 2022 -- "Bio-mimetic SNNs for unsupervised clustering" -- STDP, structural plasticity, evolutionary learning
+- Yin Bi, 2020 -- "Graph-based Feature Learning for Neuromorphic Vision" -- graph NNs for event cameras, ASL-DVS dataset
+- "Classification of Finger Movements from ECoG using SNN" -- first SNN-based ECoG decoder
+- https://discovery.ucl.ac.uk/id/eprint/10142370/ and https://discovery.ucl.ac.uk/id/eprint/10109453/
+
+### University of Edinburgh
+- William Peer Berg, 2022 -- "Spiking neural network model construction, inference, analysis and applications" -- modular PyTorch framework for SNN optimization
+- https://era.ed.ac.uk/handle/1842/43087
+
+### University of Southampton
+- Jinqi Huang, 2022 (168 pages) -- "Memristor-based Spiking Neural Networks" -- FPGA interface, NeuroPack simulator, ANN-to-SNN conversion
+- Kier Dugan, 2016 -- "Non-neural computing on the SpiNNaker" -- non-neural apps on neuromorphic hardware
+- Patrick Foster, 2023 -- "Neural spike classification acceleration with RRAM"

@@ -84,17 +84,17 @@ v_rest = v_reset = 0.0 mV
 weight_scale = 1.0
 ```
 
-### 5.2.3 Software Feature Extraction
+### 5.2.3 software feature extraction
 
-400 mel spectrograms (fold 4 test set) are processed through the snnTorch SpikingCNN (conv + FC₁ + LIF₃) using the **correct preprocessing pipeline** (librosa, sr=22050, n_mels=64, n_fft=1024, hop_length=512, min-max normalisation to [0,1]). The critical bug from Runs 1–4 was using torchaudio with no normalisation, producing features mismatched to the training distribution.
+400 spectrograms (fold 4 test set) processed through snnTorch SpikingCNN (conv + FC1 + LIF3) using the correct preprocessing (librosa, sr=22050, n_mels=64, etc). The critical bug from Runs 1-4 was using torchaudio with no normalisation -- features mismatched to training distribution. took ages to figure this out
 
-Hidden spike tensors are cached as `results/spinnaker_weights/hidden_spike_features.npy` (shape: 400 × 25 × 256). snnTorch reference accuracy on these 400 samples: **51.25%** (vs 53.75% on full fold 4 — expected small difference due to fold subsampling).
+Hidden spikes cached as `results/spinnaker_weights/hidden_spike_features.npy` (400 x 25 x 256). snnTorch reference accuracy on these 400: 51.25% (vs 53.75% on full fold 4 -- expected small diff from subsampling).
 
 ---
 
-## 5.3 SpiNNaker Inference Results
+## 5.3 SpiNNaker inference results
 
-### 5.3.1 Validation Run (Run 5)
+### 5.3.1 validation run (Run 5)
 
 **Setup:** 20 samples from fold 4 (≥10 distinct classes), weight_scale=1.0.
 **Result:** 8/20 = **40.0%** accuracy on SpiNNaker vs 10/20 = 50.0% snnTorch reference on the same 20 samples.

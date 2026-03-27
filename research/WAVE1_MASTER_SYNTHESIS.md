@@ -306,3 +306,31 @@ The single strongest thesis option as of February 2026:
 
 **Revised final top 5 (February 2026, web-research verified):**
 
+| Rank | Direction | Novelty | Effort | Risk | Why |
+|------|-----------|---------|--------|------|-----|
+| **1** | **SNN on ESC-50 (Environmental Sound)** | VERY HIGH (zero papers, peer-review confirmed) | LOW | LOW | Best novelty-to-effort ratio of all options |
+| **2** | **SNN ECG on PTB-XL** | HIGH (no benchmark) | LOW-MED | LOW | Compelling clinical narrative; 30-1000x energy savings |
+| **3** | **SNN Wildlife Camera Trap** | VERY HIGH (zero papers) | LOW-MED | LOW-MED | Outstanding real-world motivation; large datasets |
+| **4** | **Framework Shootout (snnTorch vs SpikingJelly vs Norse)** | GENUINE (confirmed gap) | LOW-MED | LOW | Immediately useful to SNN community |
+| **5** | **SNN Food Recognition (Food-101)** | VERY HIGH (zero papers) | LOW | LOW | Clean benchmark but weaker real-world narrative |
+
+**Directions i removed from previous lists:**
+- ~~Music Generation (MIDI)~~ -- MuSpike benchmark (Aug 2025) closed this gap
+- ~~DVS128 Gesture~~ -- Saturated at 99.59%; the "MNIST of event-based vision"
+- ~~SHD as primary~~ -- Approaching saturation at 96.4%; use as secondary validation only
+- ~~SVHN~~ -- Already a standard SNN benchmark
+- ~~Wearable HAR~~ -- Saturated with 10+ papers and a 2025 survey
+
+**Why ESC-50 is the #1 pick:**
+1. Zero prior work = automatic novelty (no risk of being scooped by something that already exists)
+2. The gap is peer-review confirmed and citable in the lit review
+3. ESC-50 is a well-known, respected benchmark in the sound community
+4. Implementation effort is low (mel-spectrograms -> spike encoding -> convolutional SNN)
+5. Natural SNN advantage narrative (temporal patterns in environmental sounds)
+6. Multiple encoding methods to compare = rich evaluation section
+7. ANN baselines readily available for comparison (~97% accuracy)
+8. A March 2025 paper only got ~69% on ESC-10 with basic encoding -- massive room for improvement
+
+---
+
+## 11. Wave 3 updates: alternative directions (Feb 2026)

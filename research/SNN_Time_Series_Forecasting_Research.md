@@ -262,31 +262,3 @@ The CPG-PE paper demonstrated that the commonly used sinusoidal positional encod
 | 2022 | Online spiking reservoir for time series (Neurocomputing) |
 | 2023 | NeuCube for multimodal financial time series (Scientific Reports) |
 | **2024** | **SeqSNN: First top-venue paper (ICML) -- the breakthrough year** |
-| **2024** | **CPG-PE for sequential SNN modelling (NeurIPS)** |
-| **2024** | **Derivative spike encoding for forecasting (MDPI)** |
-| **2024** | **Univariate time-series methodology (Neural Networks journal)** |
-| **2025** | **TS-LIF: Dual-compartment SNN for forecasting (ICLR)** |
-| **2025** | **ICS-SNN: Financial forecasting with meta-heuristic optimisation (MDPI)** |
-| **2025** | **SpikeSTAG: GNN-SNN collaboration for spatial-temporal (arXiv)** |
-| **2026** | **SpikySpace: First full spiking state-space model (arXiv, Jan 2026)** |
-
-### 7.2 Novelty Assessment
-
-**Overall field maturity**: EMERGING -- The first major conference paper on SNN time-series forecasting appeared only in February 2024 (ICML). This is a field that is approximately **2 years old** at the top-venue level.
-
-**Under-explored sub-areas** (potential thesis directions):
-
-| Sub-area | Current State | Novelty Level |
-|----------|--------------|---------------|
-| SNNs on ETTh/ETTm/Weather benchmarks | Not systematically done | **HIGH** |
-| SNNs for financial time series (modern architectures) | Only hybrid/legacy approaches | **HIGH** |
-| SNNs for weather forecasting | 2 papers, neither using modern SNN architectures | **VERY HIGH** |
-| SNNs for IoT sensor forecasting | Mostly classification, not forecasting | **HIGH** |
-| SNN vs Transformer on long-horizon prediction | Limited comparison | **HIGH** |
-| Encoding strategy comparison for time series | Fragmented across papers | **MEDIUM-HIGH** |
-| Energy efficiency benchmarking on real hardware | Mostly theoretical calculations | **HIGH** |
-| SNN for anomaly detection in time series | Early stage (2-3 papers) | **HIGH** |
-| Explainability of SNN temporal predictions | Only NeuCube approach | **VERY HIGH** |
-
-### 7.3 Why Now?
-

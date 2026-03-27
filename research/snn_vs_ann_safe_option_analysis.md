@@ -82,3 +82,31 @@ this is where the comparison gets genuinely interesting. gap ranges from nearly 
 ---
 
 ## 3. What Would Make This More Than Running Tutorials
+
+this is the critical question. being honest here.
+
+### What snnTorch tutorials already cover (the baseline risk)
+
+snnTorch provides 8+ tutorials demonstrating:
+- spike encoding (rate, latency, delta) -- [Tutorial 1](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
+- training FC SNN on MNIST -- [Tutorial 5](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_5.html)
+- training conv SNN on MNIST -- [Tutorial 6](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html)
+- neuromorphic datasets with Tonic -- [Tutorial 7](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_7.html)
+- rate vs latency coded loss functions
+
+**if the thesis is just "i ran tutorials 5 and 6, trained a CNN on the same data, compared accuracies" -- that's NOT a thesis, it's a lab exercise.** a high school student already published this exact comparison in the [National High School Journal of Science](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/), comparing SNNs, CNNs, and ANNs on MNIST, CIFAR-10, and N-MNIST.
+
+### What Elevates It
+
+to cross from "lab exercise" to "thesis," you need at least ONE of:
+
+1. **Systematic study with controlled variables** -- not just "does it work" but "how do specific factors affect the accuracy-efficiency tradeoff"
+2. **Original experimental design** -- testing a hypothesis not already answered
+3. **Novel combination** -- known techniques in new context, or techniques not previously combined
+4. **Quantitative analysis dimension** that tutorials don't cover (energy estimation, robustness, Pareto analysis)
+
+---
+
+## 4. Angles That Could Add Value
+
+### Angle A: Encoding Scheme Comparison (moderate value, high feasibility)

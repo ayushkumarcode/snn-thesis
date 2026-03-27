@@ -110,3 +110,12 @@ honestly looking at this table, our project is at Masters+ scope, approaching ea
 | ML accelerator | None | 64 MAC units |
 | Target scale | 1M cores | 10M cores |
 
+---
+
+## Sources
+- Manchester Research Explorer (thesis repository)
+- [Dominguez-Morales audio](https://link.springer.com/chapter/10.1007/978-3-319-44778-0_6)
+- [E-prop keyword spotting SpiNNaker2](https://www.frontiersin.org/articles/10.3389/fnins.2022.1018006)
+- [SpiNNaker2 at Sandia](https://www.hpcwire.com/off-the-wire/sandia-deploys-spinnaker2-neuromorphic-system-from-spinncloud/)
+- [SpiNNaker overheating](https://www.theregister.com/2025/05/06/spinnaker_overheat/)
+- [Larroza et al. 2025](https://arxiv.org/abs/2503.11206)

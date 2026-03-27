@@ -278,3 +278,31 @@ class SpectrogramCSNN(nn.Module):
         self.lif3 = snn.Leaky(beta=beta, spike_grad=spike_grad)
 
         self.fc2 = nn.Linear(256, num_classes)
+        self.lif4 = snn.Leaky(beta=beta, spike_grad=spike_grad, output=True)
+
+    def forward(self, x):
+        mem1 = self.lif1.init_leaky()
+        mem2 = self.lif2.init_leaky()
+        mem3 = self.lif3.init_leaky()
+        mem4 = self.lif4.init_leaky()
+
+        spk_rec = []
+        mem_rec = []
+
+        for step in range(num_steps):
+            cur1 = self.pool1(self.conv1(x[step]))
+            spk1, mem1 = self.lif1(cur1, mem1)
+
+            cur2 = self.pool2(self.conv2(spk1))
+            spk2, mem2 = self.lif2(cur2, mem2)
+
+            cur3 = self.fc1(spk2.flatten(1))
+            spk3, mem3 = self.lif3(cur3, mem3)
+
+            cur4 = self.fc2(spk3)
+            spk4, mem4 = self.lif4(cur4, mem4)
+
+            spk_rec.append(spk4)
+            mem_rec.append(mem4)
+
+        return torch.stack(spk_rec), torch.stack(mem_rec)

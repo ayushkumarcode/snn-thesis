@@ -54,3 +54,31 @@ so the task, encoding scheme, and architecture directly determine whether edge d
 | Framework | Hardware targets | Export path | Key feature |
 |-----------|----------------|-------------|-------------|
 | snnTorch | FPGA (HLS), Loihi 2, SpiNNaker2 | NIR export, HLS C++ | Best tutorials, ISFPGA 2024 FPGA workshop |
+| SpikingJelly | CPU/GPU simulation | Python/C conversion | Best DVS128 support |
+| Norse | CPU/GPU, via NIR | NIR export | PyTorch-native, good for small networks |
+| Lava / Lava-DL | Intel Loihi 1/2 | Native Loihi compiler | Official Intel framework, cloud only |
+| Rockpool / Sinabs | SynSense Xylo/Speck | Native SynSense compiler | Direct hardware deployment |
+| Nengo | SpiNNaker, Loihi | NengoDL, NengoFPGA | Functional brain modeling approach |
+
+### deployment/compilation frameworks
+
+**NIR (Neuromorphic Intermediate Representation):**
+- published in Nature Communications (2024)
+- connects 7 simulators (snnTorch, Norse, Lava, Nengo, Rockpool, Sinabs, Spyx) to 4 hardware platforms (Loihi 2, Speck, SpiNNaker2, Xylo)
+- the "ONNX of neuromorphic computing" -- train once, deploy anywhere
+- https://github.com/neuromorphs/NIR
+
+**Spiker+ (FPGA auto-generation):**
+- Python-to-VHDL automatic generation
+- 6 neuron models, 2 network architectures
+- only needs 7,612 logic cells and 18 BRAMs
+- 180 mW power per inference
+- video tutorials included
+- https://github.com/smilies-polito/Spiker
+
+**TENNLab Embedder:** translates SNNs to portable, dependency-free C code libraries. targets microcontrollers and embedded processors. from UT Knoxville.
+
+**ModNEF:** modular neuromorphic FPGA architecture. users control power/memory/precision tradeoffs. evaluated on Zynq XC7Z020 with MNIST and N-MNIST. published in ACM TACO.
+
+**S2NN-HLS:** SNN for Zynq via Vivado HLS. Izhikevich neuron model. DDR energy reduction up to 77%, PL energy reduction up to 76%. https://github.com/eejlny/S2NN-HLS
+

@@ -684,31 +684,3 @@ Key work:
 
 **VERDICT: NOT RECOMMENDED. Minimal SNN precedent, high domain knowledge barrier. Graph Neural Networks dominate this space, and for good reason -- molecular structures are naturally graphs, not temporal sequences.**
 
----
-
-### 3.7 SNN for ECG / Medical Signal Classification
-
-**Literature: 15-20 papers**
-
-Key works:
-- [Accurate ECG Classification Based on SNN and Attentional Mechanism (MDPI 2022)](https://www.mdpi.com/2079-9292/11/12/1889)
-- [ECG Classification with LIF Neurons (Sensors 2024)](https://www.mdpi.com/1424-8220/24/11/3426)
-- [Neuromorphic implementation of ECG anomaly detection (arxiv 2022)](https://arxiv.org/pdf/2209.01266)
-- [Review on SNN-based ECG classification for low-power environments (PMC 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362428/)
-
-**Assessment:**
-- Papers: 15-20 (established subfield)
-- Simulation-only: YES (MIT-BIH dataset)
-- macOS: YES
-- 28-day feasibility: **HIGH**
-- Components: snnTorch + MIT-BIH Arrhythmia Database + 1D Conv SNN
-
-**NOTE:** You already have SNN_ECG_Classification_Research_Report.md in your research directory. This is already covered.
-
-**VERDICT: Already researched. See existing report.**
-
----
-
-### 3.8 SNN for NLP / Text Classification
-
-**Literature: 15-25 papers**

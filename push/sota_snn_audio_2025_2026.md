@@ -110,3 +110,31 @@ KDCL reduces timesteps by 60%, energy by 54.8% (0.0314mJ to 0.0142mJ on SSC). us
 - SOTA accuracy in SSL tasks, strong noise robustness
 - first SNN at NeurIPS for audio processing
 
+#### Hilbert Transform SNN Localization (Haghighatshoar & Muir, 2025)
+- Communications Engineering (Nature), 2025
+- Hilbert transform avoids dense band-pass filters; event-based encoding captures analytic signal phase
+- MAE: 0.25-0.65 degrees (1.6-2.6 kHz)
+- deployed on SynSense Xylo
+- GitHub: https://github.com/synsense/HaghighatshoarMuir2024
+
+### Audio Fidelity / Fake Audio Detection
+
+#### SAFE (2024, Withdrawn)
+- "Spiking Neural Network-based Audio Fidelity Evaluation"
+- submitted to ICLR 2025, withdrawn
+- first attempt at using SNNs for deepfake audio detection
+
+### Other Audio SNN Work
+
+**SOM-Associated-SNN (2025):** Neurocomputing, May 2025. 3-layer SNN with SOM clustering + STDP + associative learning on Spoken-MNIST and SHD. no backpropagation needed -- unsupervised/biologically plausible.
+
+**Ternary Spike System (2024/2025):** arXiv:2407.05310, Neural Networks 2025. TAE encoding produces ternary spikes {-1, 0, 1}; QT-SNN quantizes membrane potentials and weights. 94% memory reduction, 7.5x energy savings. speech recognition and EEG.
+
+**Cochlear Encoding Comparison (Meunier et al., 2025):** IEEE AICAS 2025. hardware-friendly cochlear encoders can outperform bio-mimetic ones in accuracy and energy. tested on Heidelberg Digits and Google Speech Commands.
+
+**Spiking-LEAF (ICASSP 2024):** learnable filter bank + IHC-LIF neuron model inspired by inner hair cells. keyword spotting, speaker ID. outperforms SOTA spike encodings and conventional fbank features.
+
+**Spike Time Difference Encoders (2025):** arXiv:2503.15402. TDE feedforward (89%) vs CuBa-LIF feedforward (71%) vs recurrent CuBa-LIF (91%) on TIdigits. TDE achieves 92% fewer synaptic operations than recurrent.
+
+---
+

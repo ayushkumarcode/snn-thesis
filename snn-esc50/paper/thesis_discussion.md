@@ -96,20 +96,20 @@ CL experiment (section 6.2) confirms the expected -- both suffer severe forgetti
 **Why:** same mechanism as adversarial robustness. Spike threshold = computational gate. During backward pass, only weights connected to neurons that fired get updates. With 74.16% sparsity, ~74% of weights get zero gradient per pass. Fine-tuning on new task modifies fewer weights, preserving earlier representation. ANN's dense activations = non-zero gradients for all weights = more complete overwriting.
 
 **Why both forget aggressively:** extreme setting -- no replay, no regularisation, 320 samples/task out of 1600. 69.9% and 74.7% significantly exceeds the 30-50% typical with regularisation. This is baseline forgetting, not regularised.
-**Relationship to the adversarial robustness finding (§6.1):** Both findings point to the same underlying property of SNNs: the binary spike threshold creates selective information flow. For adversarial robustness, this makes the SNN harder to fool by small perturbations. For continual learning, this makes the SNN harder to fully overwrite by new task gradients. The spike threshold is not just a training approximation — it is a computational primitive that shapes information processing at inference and training time.
 
-**Implications for future work:** The baseline forgetting rate (69.9% ± 4.3% for SNN, 5-fold validated) quantifies the improvement achievable by SNN-specific consolidation mechanisms. Golden et al. (2022, PLoS Comp Bio) demonstrated sleep-based consolidation reducing forgetting by >50% in simpler spike-rate networks. Applied to this architecture, that would project to ~35% forgetting with consolidation, approaching the 30–40% ANN forgetting with EWC regularisation (Kirkpatrick et al. 2017).
+**Relationship to adversarial finding:** both point to same underlying property. Binary spike threshold creates selective information flow. For adversarial: harder to fool. For CL: harder to fully overwrite. The threshold isn't just a training approximation -- its a computational primitive shaping information processing.
 
-**Validation:** The experiment is now 5-fold validated (20 epochs per task, no hyperparameter tuning specific to the continual setting, lr=5e-4 chosen to be smaller than training lr=1e-3 to reduce catastrophic overwriting). The 4.7 pp SNN advantage is consistent across folds.
+**Future:** baseline 69.9% quantifies improvement achievable by SNN consolidation. Golden et al. (2022) showed >50% reduction with sleep-based consolidation. Applied here, that'd project ~35% forgetting, approaching ANN forgetting with EWC.
 
 ---
 
-## 7.7 Threats to Validity
+## 7.7 threats to validity
 
-**Internal validity:**
-- **Model selection bias:** Reporting best validation accuracy per fold (not final epoch) means results represent optimistic performance. The chosen model may not generalise to new data beyond the fold. Standard practice in the field justifies this.
-- **Fold sample size:** Each fold test set contains 400 samples (8 per class). Per-class analyses are statistically limited (n=8 per class per fold). Confidence intervals for class-level effects are wide.
-- **Adversarial attack reliability:** Standard PGD may underestimate SNN vulnerability. SNN robustness numbers are upper bounds.
+**Internal:**
+- Model selection bias: reporting best val acc per fold = optimistic. Standard practice though.
+- Fold sample size: 400 samples (8/class), per-class analyses statistically limited. Wide CIs at class level.
+- Adversarial attack reliability: standard PGD may underestimate vulnerability. SNN numbers are upper bounds.
+
 
 **External validity:**
 - **Dataset generalisability:** ESC-50 is a standard benchmark but contains only 5-second isolated clips. Real audio is continuous, overlapping, and variable-length. Performance may differ substantially in streaming deployment.

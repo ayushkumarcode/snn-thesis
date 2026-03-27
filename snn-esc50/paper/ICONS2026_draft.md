@@ -13,19 +13,19 @@ Environmental sound classification (ESC) is a challenging audio task with applic
 
 todo: abstract is too long for 8-page format. need to cut ~30%
 
+---
+
 ## 1. Introduction
 
-The proliferation of always-on audio sensing in edge devices — from smart speakers to environmental monitors — demands both high accuracy and energy efficiency. Convolutional neural networks (CNNs) achieve near-human accuracy on environmental sound benchmarks [1] (human 81.3%, SOTA 98.25%), but their energy cost during inference prohibits deployment on battery-constrained neuromorphic devices. Spiking neural networks (SNNs), which communicate via binary spike events rather than continuous activations, offer an alternative: on dedicated neuromorphic hardware such as Intel Loihi [15] or the SpiNNaker platform [2], SNNs execute as accumulate-only operations (ACs) rather than multiply-accumulate operations (MACs), yielding 5–10× energy reductions when spike rates are sufficiently low [8].
+The proliferation of always-on audio sensing at the edge demands both accuracy and efficiency. CNNs achieve near-human accuracy on environmental sound benchmarks [1] (human 81.3%, SOTA 98.25%), but their energy cost prohibits deployment on battery-constrained neuromorphic devices. SNNs communicate via binary spikes rather than continuous activations; on dedicated hardware like Loihi [15] or SpiNNaker [2], SNNs execute as accumulate-only (AC) ops rather than MACs, yielding 5-10x energy reductions when spike rates are low enough [8].
 
-Despite extensive SNN research on image classification [3], **no prior work has evaluated convolutional SNNs on the ESC-50 environmental sound classification benchmark**. The closest prior work [9] uses ESC-10 (a 10-class subset) with fully-connected layers only, achieving ~60% with direct encoding (10 classes vs our 50). Dominguez-Morales et al. [20] deploy SNNs on SpiNNaker for audio, but evaluate only pure tones, not complex soundscapes.
+Despite extensive SNN research on images [3], **no prior work has evaluated conv SNNs on the full ESC-50 benchmark**. Closest is [9] which uses ESC-10 (10 classes) with FC layers only, getting ~60% with direct encoding. Dominguez-Morales et al. [20] put SNNs on SpiNNaker for audio but only evaluated pure tones.
 
-This paper makes the following contributions:
-
-1. **First convolutional SNN evaluation on ESC-50** (50 classes, 2000 recordings, 5-fold CV)
-2. **Systematic comparison of 7 spike encoding methods**: rate, delta, latency, direct, burst, phase, population
-3. **First SNN deployment on SpiNNaker for environmental sound classification**, using a validated FC2-only hybrid approach with documented root-cause analysis of FC1 cancellation
-4. **Adversarial robustness analysis**: first FGSM/PGD evaluation of SNNs on audio spectrograms, revealing dramatic natural robustness from binary thresholding
-5. **Transfer learning (PANNs + SNN head)**: demonstrates the gap narrows to <1% with AudioSet pre-training
+Contributions:
+1. First conv SNN evaluation on ESC-50 (50 classes, 2000 recordings, 5-fold)
+2. Systematic comparison of 7 spike encoding methods
+3. First SpiNNaker deployment for environmental sound, with documented root-cause analysis of FC1 cancellation
+4. First FGSM/PGD adversarial analysis of SNNs on audio spectrograms
 6. **NeuroBench-compliant energy analysis** [7]
 
 Our key finding is that **the SNN-ANN accuracy gap is not fundamental**: it collapses from 16.7 pp to <1 pp with pre-trained features, suggesting the bottleneck is representation learning, not the spiking formalism. Meanwhile, SNNs exhibit natural properties — adversarial robustness, energy-efficient hardware deployment — that make them compelling for edge audio sensing.

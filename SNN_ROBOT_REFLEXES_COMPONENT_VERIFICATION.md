@@ -32,31 +32,3 @@
 
 ### 1. SpikeGym
 
-| Field | Value |
-|-------|-------|
-| **EXISTS** | YES -- but barely |
-| **URL** | https://gitlab.com/ecs-lab/spikegym |
-| **Stars** | Not displayed (GitLab); only 3 commits, 1 branch, 0 tags |
-| **Last commit** | Created May 2024; only 3 commits total |
-| **Maintained?** | BARELY -- 3 commits is extremely low activity |
-| **What it is** | Modifications to the `skrl` RL library to support SNN policy networks with PPO |
-| **Environments** | Cartpole and Ant (via Isaac Gym and MuJoCo) |
-| **Paper** | "Exploring spiking neural networks for deep reinforcement learning in robotic tasks" -- Scientific Reports, Dec 2024 |
-| **POTENTIAL BLOCKER** | **YES (MEDIUM-HIGH)** |
-
-**Why it is a blocker:** SpikeGym has only 3 commits. It is a research artifact from a paper, not a maintained library. It was built on top of Isaac Gym (Linux/NVIDIA only) primarily, with MuJoCo as secondary. Using it on macOS would require significant adaptation. You should NOT depend on this as a core tool -- instead, treat it as reference code and build your own integration.
-
-**Source:** [Scientific Reports paper](https://www.nature.com/articles/s41598-024-77779-8) | [GitLab repo](https://gitlab.com/ecs-lab/spikegym)
-
----
-
-### 2. Isaac Gym
-
-| Field | Value |
-|-------|-------|
-| **EXISTS** | YES -- but DEPRECATED |
-| **URL** | https://developer.nvidia.com/isaac-gym |
-| **Free?** | Yes, after accepting NVIDIA license |
-| **NVIDIA GPU Required?** | **YES -- ABSOLUTELY REQUIRED** |
-| **CUDA Version** | Requires NVIDIA driver 470+ (implies CUDA 11.x+) |
-| **macOS Support** | **NO. Linux only (Ubuntu 18.04/20.04).** |

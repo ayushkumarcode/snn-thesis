@@ -70,31 +70,3 @@ Sources: [Sa-SNN](https://peerj.com/articles/cs-2549.pdf), [GLSNN](https://www.f
 |--------|-------------|-----------|-----|-----------|
 | VGG16 (ANN-SNN conversion) | 95.91% | ~96.5% | **~0.6%** | T=many |
 | ResNet20 (conversion) | 96.64% | ~97% | **~0.4%** | T=varies |
-| STAA-SNN (direct, CVPR 2025) | **97.14%** | ~97.5% | **~0.4%** | T=4 |
-| ResNet19 (surrogate gradient) | 95.44% | ~96% | **~0.6%** | T~3 |
-| VGG (direct, few steps) | 83-93% | ~93-94% | **1-10%** | T=1-4 |
-| Simple SNN (snnTorch tutorial-level) | ~85-90% | ~93% | **3-8%** | T=varies |
-
-**Verdict**: This is where the comparison becomes genuinely interesting. The gap ranges from nearly zero (with state-of-the-art methods on large architectures) to 3-10% (with simpler implementations an undergraduate would actually build). The accuracy gap is heavily dependent on:
-1. Architecture choice (VGG vs ResNet vs simple CNN)
-2. Number of time steps
-3. Training method (conversion vs direct training)
-4. Encoding scheme
-
-Sources: [STAA-SNN CVPR 2025](https://arxiv.org/pdf/2503.02689), [ANN-SNN Conversion](https://proceedings.mlr.press/v202/jiang23a/jiang23a.pdf), [Training by Differentiation on Spike](https://openaccess.thecvf.com/content/CVPR2022/papers/Meng_Training_High-Performance_Low-Latency_Spiking_Neural_Networks_by_Differentiation_on_Spike_CVPR_2022_paper.pdf)
-
-### Summary Accuracy Gap Table
-
-| Dataset | Typical UG SNN Gap | Best Known SNN Gap | Status |
-|---------|-------------------|-------------------|--------|
-| MNIST | 0-1% | ~0% | Solved -- not interesting alone |
-| Fashion-MNIST | 2-5% | ~0-1% | Moderate interest |
-| CIFAR-10 | 3-8% | ~0.4% | Most interesting for study |
-
----
-
-## 3. What Would Make This More Than "Running snnTorch Tutorials"
-
-This is the critical question. Here is an honest assessment.
-
-### What the snnTorch tutorials already cover (your baseline risk)

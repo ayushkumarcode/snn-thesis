@@ -216,31 +216,3 @@ This means:
 | **Scope** | Very high -- three distinct research contributions |
 | **PDF Size** | 20 MB |
 
----
-
-### 1.12 Scalability and Robustness of Artificial Neural Networks
-| Field | Detail |
-|-------|--------|
-| **Author** | Evangelos Stromatias |
-| **Year** | 2016 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | Steve Furber (main), James Garside (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/scalability-and-robustness-of-artificial-neural-networks |
-| **Abstract** | Examines power consumption and communication latencies on SpiNNaker running large-scale SNNs. Develops power estimation model. Characterizes impact of hardware bit precision, noise, and weight variation on spiking DBNs for handwritten digit recognition. Shows spiking DBNs work on limited-precision hardware without drastic performance loss. |
-| **What They Built** | Power estimation model for SpiNNaker; spiking DBN robustness analysis |
-| **Tools/Frameworks** | SpiNNaker, Deep Belief Networks |
-| **Datasets** | Handwritten digits (likely MNIST) |
-| **Scope** | High -- power modeling + robustness characterization |
-| **PDF Size** | 25.4 MB |
-
----
-
-### 1.13 Plasticity in Large-Scale Neuromorphic Models of the Neocortex
-| Field | Detail |
-|-------|--------|
-| **Author** | James Knight |
-| **Year** | 2016 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co) |

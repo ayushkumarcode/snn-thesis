@@ -245,31 +245,3 @@ These are for a 128-neuron feedforward SNN achieving ~70-75% accuracy. State-of-
 |--------|------------|
 | Dataset size | Small (8K training, 2K test). Fits in RAM. Fast to iterate. |
 | Training time | Minutes per experiment on a single GPU (even a laptop GPU) |
-| Available code | Multiple open-source baselines: sparch, SNN-delays, snnTorch tutorials |
-| Framework maturity | snnTorch has 8 tutorials, extensive docs, active community |
-| Prior undergraduate work | Musical pattern recognition BEng project provides scope calibration |
-| Novelty potential | No known undergraduate SHD/SSC project. Novel at this level. |
-| Apple M-series support | PyTorch MPS backend works for snnTorch/SpikingJelly. No CUDA needed. |
-| Results achievable | A 2-layer SNN should reach 90%+ on SHD with surrogate gradients |
-| ANN comparison | Easy to implement LSTM/GRU baseline in PyTorch for comparison |
-| Energy analysis | Feasible via SynOps counting, no neuromorphic hardware needed |
-
-### 6.2 Risk Assessment
-
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| Cannot reproduce SOTA results | Low-Medium | Start with sparch baseline (RadLIF, 94.62%). Use provided code and configs. |
-| Training instability | Low | SHD is well-behaved. Surrogate gradients are stable. Use proven hyperparameters from papers. |
-| Dataset download issues | Low | Multiple mirrors. Tonic handles caching. |
-| Understanding surrogate gradients | Medium | snnTorch tutorials 5-6 cover this thoroughly. Start there. |
-| Running out of time | Low | The minimum viable project (1 SNN + 1 ANN baseline on SHD) can be done in 2-3 weeks of focused work. |
-| Scope creep | Medium | Stick to SHD initially. SSC is a stretch goal. |
-
-### 6.3 Suggested Project Timeline (Semester-length)
-
-| Phase | Duration | Activities |
-|-------|----------|------------|
-| 1. Foundation | 2-3 weeks | Complete snnTorch tutorials 1-7. Understand LIF neurons, surrogate gradients, spike encoding. Load SHD with Tonic. |
-| 2. Baseline Implementation | 2-3 weeks | Implement ANN baselines (LSTM, GRU) on SHD. Implement basic LIF SNN using sparch or snnTorch. Achieve ~85-90% on SHD. |
-| 3. Core Experiments | 3-4 weeks | Compare neuron models (LIF vs adLIF vs RadLIF). Add learnable delays (DCLS approach). Systematic hyperparameter search. Target: 92-95% on SHD. |
-| 4. Analysis | 2-3 weeks | Energy efficiency analysis (SynOps vs FLOPs). Spike activity visualization. Ablation studies. Error analysis. |

@@ -278,3 +278,31 @@ no GitHub repos found for SNN + environmental monitoring specifically.
 
 **4. Industrial IoT Anomaly Detection**
 - practical impact, good SNN fit, available datasets
+- scope: SNN bearing fault detection on CWRU, compare with autoencoder baseline
+- key refs: MRA-SNN (2024), Vacuum Spiker (2025)
+- risk: low-moderate
+
+### Tier 3: Doable With Caveats
+
+**5. Financial Fraud** -- novel but encoding tabular data into spikes is a challenge
+
+**6. Game Playing / RL** -- good learning experience but less novel
+
+---
+
+## Zero-Paper Combinations (Maximum Novelty)
+
+these specific combinations have essentially zero papers:
+
+1. SNN + wildlife acoustic monitoring (bird call classification)
+2. SNN + water quality prediction from IoT sensors
+3. spiking GNN + molecular property prediction
+4. SNN + gravitational wave detection from LIGO
+5. SNN + fast radio burst classification
+6. SNN + speech emotion recognition (audio sentiment)
+7. SNN + soil moisture prediction for agriculture
+8. SNN + sports activity recognition from wearable IMUs
+9. SNN + music emotion recognition (mood classification)
+10. SNN + drone/UAV radar detection with FMCW
+
+---

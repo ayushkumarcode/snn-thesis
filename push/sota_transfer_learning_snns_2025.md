@@ -278,3 +278,31 @@ found a few but nothing audio-specific:
 - relevant since it's Manchester and addresses ANN-to-SNN weight transfer, and our SpiNNaker work is on Manchester hardware
 
 **2. Christian Steennis -- Leiden University (LIACS), August 2025**
+- MSc thesis on neural network quantization and ANN-to-SNN conversion
+- explores quantization (spatial dimension) and SNN conversion (temporal dimension)
+
+**3. Peng Kang -- Northwestern University, 2024**
+- technical report on event-based processing with SNNs
+- single-timestep and multi-timestep Spiking UNets, vision focused
+
+**4. Cameron Eric Johnson -- Missouri S&T**
+- PhD dissertation: "Spiking Neural Networks and Their Applications"
+
+**no PhD or MSc theses found on SNN transfer learning for audio specifically.** that's another novelty point for us.
+
+---
+
+## 8. PANNs Extensions with Neuromorphic Components
+
+searched for "PANNs spiking neural network", "pretrained audio neural networks neuromorphic", "CNN14 SNN", "AudioSet pretrained spiking" -- **zero results.** nobody has combined PANNs or any AudioSet-pretrained model with neuromorphic/SNN components before.
+
+---
+
+## 9. The SNN Transfer Learning Landscape: A Taxonomy
+
+based on all this reading, i think the field breaks down into four paradigms:
+
+### Paradigm 1: ANN-to-SNN Conversion (Weight Transfer)
+- train ANN normally, convert weights to SNN
+- requires threshold balancing and calibration
+- mature for vision (Bu et al. CVPR 2025, STA ICLR 2024)

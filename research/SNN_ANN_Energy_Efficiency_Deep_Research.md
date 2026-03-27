@@ -157,31 +157,3 @@ For your thesis, your measured 74.16% activation sparsity (NeuroBench) translate
 **Key insight:** SNN achieves identical R-squared (0.593) with 0.997 activation sparsity, translating to only 276 effective ACs vs 3,836 MACs. This is a 13.9x operation count reduction BEFORE accounting for the AC vs MAC energy difference.
 
 #### Table 5: Chaotic Function Prediction (Mackey-Glass)
-
-| Model | sMAPE | Footprint | Connection Sparsity | Activation Sparsity | Eff_MACs | Eff_ACs |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| ESN | 14.79 | 2.81e5 | 0.876 | 0.0 | 4.37e3 | 0 |
-| LSTM | 13.37 | 4.90e5 | 0.0 | 0.530 | 6.03e4 | 0 |
-
-### 2.5 System Track
-
-Two v1.0 system benchmarks:
-1. **Acoustic Scene Classification (edge-scale):** DCASE dataset, 41,360/16,240 train/test samples, 4 classes. Measures average power during inference and inference latency.
-2. **Optimization tasks (datacenter-scale)**
-
-### 2.6 Energy Estimation Using NeuroBench Metrics
-
-NeuroBench provides the building blocks for energy estimation:
-- **Energy_SNN = Eff_ACs x E_AC** (where E_AC ~ 0.9 pJ at 45nm)
-- **Energy_ANN = Eff_MACs x E_MAC** (where E_MAC ~ 4.6 pJ at 45nm)
-
-This is the simplified hardware-agnostic approach. The hardware-aware approach adds memory access, data movement, and control overhead.
-
----
-
-## 3. Neuromorphic Hardware: Measured Energy Numbers
-
-### 3.1 Comprehensive Hardware Comparison Table
-
-| Platform | Process | Neurons | Synapses | Power | Energy/Syn. Op | Key Metric | Year |
-|:---|:---:|:---:|:---:|:---:|:---:|:---|:---:|

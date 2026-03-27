@@ -446,3 +446,31 @@ Key advantages: tabular data is straightforward to preprocess, datasets are publ
 
 ### 3.3 SNN for financial trading
 
+**Literature: 10-15 papers**
+
+Not recommended. Brian Ezinwoke already did this at Manchester with the same supervisor. Doing something similar would look derivative.
+
+---
+
+### 3.4 SNN for autonomous driving perception
+
+**Literature: 20+ papers, active field**
+
+Not recommended. Too established (low novelty), too computationally heavy, CARLA doesn't run on macOS. The NeurIPS 2024 paper sets a bar that's impossible for an undergrad to approach.
+
+---
+
+### 3.5 SNN for weather/time series prediction
+
+**Literature: 5-10 papers**
+
+Emerging field. Feasible scope, moderate novelty. Most SNN time series work doesn't use snnTorch, so an snnTorch-based implementation with benchmarking could contribute. But overlaps with existing time series forecasting research.
+
+---
+
+### 3.6 SNN for drug discovery / molecular property prediction
+
+**Literature: 1-2 papers**
+
+Not recommended. Minimal SNN precedent, high domain knowledge barrier (biochemistry). Graph Neural Networks dominate this space for good reason -- molecular structures are naturally graphs, not temporal sequences.
+

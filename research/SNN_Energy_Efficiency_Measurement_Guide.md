@@ -330,31 +330,3 @@ This is the most methodologically important section. A fair comparison requires:
 | ANN (VGG-9) | 93.2% | 606M FLOPs | 2.79 | 1.0x |
 | SNN (VGG-9, T=4) | 92.8% | 148M SOPs | 0.13 | 21.2x |
 | SNN (VGG-9, T=8) | 93.1% | 312M SOPs | 0.28 | 10.0x |
-
-6. **Include a sparsity analysis:**
-   - Report average firing rate per layer
-   - Show how energy changes with different timesteps T
-   - Plot: Energy vs Accuracy tradeoff curve
-
-### Critical Considerations from Recent Literature
-
-- **Do not compare against a non-optimised ANN.** Use a well-trained, reasonable ANN baseline. Papers that compare against a bloated ANN are misleading.
-
-- **Note that quantised ANNs change the picture.** An 8-bit quantised ANN uses INT8 MACs (~0.2 pJ) instead of FP32 MACs (4.6 pJ). This dramatically closes the energy gap. Shen et al. (CVPR 2024) showed that SNNs with T timesteps are functionally equivalent to quantised ANNs with ceil(log2(T+1)) bits. ([Source](https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Are_Conventional_SNNs_Really_Efficient_A_Perspective_from_Network_Quantization_CVPR_2024_paper.pdf))
-
-- **Report the firing rate honestly.** If your SNN has high firing rates (>50%), the energy advantage disappears. The key threshold is approximately: average_spikes_per_neuron < 1 over the inference window for energy benefits. ([Source](https://web.ece.ucsb.edu/~lip/publications/SNN-vs-ANN-NeuralNetworks2020.pdf))
-
-- **State your assumptions clearly:** "Energy estimates assume ideal neuromorphic hardware capable of exploiting spike sparsity (e.g., Loihi, SpiNNaker). On conventional GPU/CPU hardware, the SNN would not achieve these energy savings."
-
----
-
-## 6. What Published Papers Use as Their Energy Comparison Methodology
-
-### Pattern 1: Simple SOP Ratio (Most Common)
-
-Used by: Most CVPR/ICLR/NeurIPS SNN papers (Spike-driven Transformer, DIET-SNN, etc.)
-
-```
-E_SNN = sum_layers(spike_count[l] * fan_out[l]) * E_AC * T
-E_ANN = sum_layers(FLOPs[l]) * E_MAC
-Report: "Our SNN achieves Xx energy reduction compared to ANN"

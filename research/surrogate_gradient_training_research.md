@@ -271,31 +271,3 @@ for data, targets in train_loader:
         spk_out, mem_out = net(data)
         spk_rec.append(spk_out)
     spk_rec = torch.stack(spk_rec)
-    loss = loss_fn(spk_rec, targets)  # Spike-count based loss
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-```
-
-The difference is essentially: (1) a time loop, (2) state reset, and (3) stacking spike outputs. The rest is identical PyTorch.
-
-### Honest Assessment of Difficulty
-
-For someone who has trained a CNN in PyTorch:
-- **Getting a basic SNN running:** 1-2 days following tutorials
-- **Understanding what is happening:** 3-5 days of reading and experimentation
-- **Tuning for good performance:** 1-2 weeks of experimentation
-- **Understanding the theory well enough to write about it:** 1-2 weeks of reading
-
-This is very manageable for a semester-long thesis project.
-
----
-
-## 7. Common Pitfalls and Debugging Challenges
-
-### Pitfall 1: Dead Neurons (Most Common)
-
-**Problem:** Neurons never fire, or fire at every time step. Both prevent learning.
-
-**Cause:** Membrane potential never reaches threshold (too much leak / too high threshold) or always exceeds threshold (too little leak / too low threshold).
-

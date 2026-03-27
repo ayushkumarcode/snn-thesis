@@ -257,31 +257,3 @@ for epoch in range(epochs):
 
         # CRITICAL: Reset neuron states after each batch
         functional.reset_net(net)
-
-    lr_scheduler.step()
-    train_loss /= train_samples
-    train_acc /= train_samples
-
-    # Evaluate
-    net.eval()
-    test_loss = test_acc = test_samples = 0
-    with torch.no_grad():
-        for frame, label in test_loader:
-            frame = frame.to(device).transpose(0, 1)
-            label = label.to(device)
-            label_onehot = F.one_hot(label, 11).float()
-            out_fr = net(frame).mean(0)
-            loss = F.mse_loss(out_fr, label_onehot)
-
-            test_samples += label.numel()
-            test_loss += loss.item() * label.numel()
-            test_acc += (out_fr.argmax(1) == label).float().sum().item()
-            functional.reset_net(net)
-
-    test_acc /= test_samples
-    max_test_acc = max(max_test_acc, test_acc)
-
-    print(f'Epoch {epoch}: train_loss={train_loss:.4f}, train_acc={train_acc:.4f}, '
-          f'test_acc={test_acc:.4f}, max_test_acc={max_test_acc:.4f}')
-```
-

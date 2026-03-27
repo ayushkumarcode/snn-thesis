@@ -82,3 +82,31 @@ checked on 2026-02-27. verdict: feasible on macOS with caveats -- see details be
 | **Apple Silicon** | YES -- "MuJoCo on the M1 Max is lightning fast" (Google DeepMind) |
 | **GPU Acceleration** | MJX (MuJoCo XLA) supports Apple Silicon via JAX |
 | **POTENTIAL BLOCKER** | **NO** |
+
+**This is the correct simulation engine for this project.** MuJoCo is:
+- Free and open source
+- Actively maintained by Google DeepMind (monthly releases)
+- Has native macOS Apple Silicon support
+- Has 10 built-in Gymnasium locomotion environments (Ant, Humanoid, HalfCheetah, Hopper, Walker2d, etc.)
+- Can be installed with a single command: `pip install "gymnasium[mujoco]"`
+
+**Installation test (should work on your Mac):**
+```python
+import gymnasium as gym
+env = gym.make("Ant-v5", render_mode="human")
+obs, info = env.reset()
+for _ in range(1000):
+    action = env.action_space.sample()
+    obs, reward, terminated, truncated, info = env.step(action)
+    if terminated or truncated:
+        obs, info = env.reset()
+env.close()
+```
+
+**Source:** [MuJoCo GitHub](https://github.com/google-deepmind/mujoco) | [Gymnasium MuJoCo docs](https://gymnasium.farama.org/environments/mujoco/) | [Google DeepMind tweet on Apple Silicon](https://x.com/GoogleDeepMind/status/1471535887867592708)
+
+---
+
+### 4. SNN + RL Integration
+
+| Field | Value |

@@ -424,31 +424,3 @@ Many Heidelberg KIP theses use "Towards" in their titles, which is a signal that
 ### 5.4 Acceptable Contribution Types (Ranked by Ambition)
 
 1. **Implementation + Demonstration:** "I implemented X and showed it works" (lowest bar, very common)
-2. **Implementation + Evaluation:** "I implemented X, evaluated it on Y, and report the results" (most common)
-3. **Comparison:** "I compared approaches A, B, C on task X and analyzed trade-offs" (common)
-4. **Adaptation:** "I adapted known technique X to new domain/platform Y" (common in KIP)
-5. **Characterization:** "I systematically characterized behavior X across parameters Y" (KIP-style)
-6. **Novel method + Evaluation:** "I proposed a new approach X and evaluated it" (less common, more ambitious)
-
-### 5.5 Abstract Structure Template (Derived from Analysis)
-
-The typical undergraduate thesis abstract follows this structure:
-
-```
-[1-2 sentences: Context/Motivation]
-  - "Spiking neural networks offer energy-efficient computation but..."
-  - "Neuromorphic hardware enables X but faces challenges Y..."
-
-[1 sentence: Gap/Problem]
-  - "However, limited research has applied X to domain Y"
-  - "It remains unclear whether approach X can achieve Y"
-
-[1-2 sentences: What this thesis does]
-  - "This thesis implements/investigates/compares..."
-  - "In this work, we present/develop/evaluate..."
-
-[1-2 sentences: Method]
-  - "We use framework X to implement Y on platform Z"
-  - "We train a network using STDP on the MNIST dataset"
-
-[1-2 sentences: Key results]

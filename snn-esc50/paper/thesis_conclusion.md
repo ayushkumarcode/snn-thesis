@@ -12,20 +12,20 @@ Six original contributions:
 
 **C2: Systematic encoding comparison for audio.** Seven methods under identical conditions: direct (47.15%), rate (24.00%), phase (24.15%), population (19.15%), latency (16.30%), delta (7.25%), burst (6.50%). Ordering explained by information preservation. Rate/phase near-equality (0.15 pp) is novel: deterministic 1-spike timing ~ stochastic ~7-spike counting at T=25. Population underperforms despite 10x output neurons due to MSE loss difficulty. Most comprehensive audio SNN encoding comparison in published literature.
 
+**C3: First SNN deployment on SpiNNaker for environmental sound.** FC2-only hybrid on SpiNN-5. 40% pilot (Run 5, n=20); 400-sample: 43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap). 5-fold: 33.1% +/- 6.9% vs 46.0% (gap 12.8 +/- 4.1 pp) -- first 5-fold cross-validated SpiNNaker result for any audio task. FC1 cancellation (AvgPool producing fractional outputs) documented as new failure mode.
 
-**C3: First SNN deployment on SpiNNaker for environmental sound.**
-A trained SpikingCNN is partially deployed on a SpiNN-5 SpiNNaker board using a validated FC2-only hybrid approach. The deployment achieves 40% accuracy (20-sample pilot, Run 5); 400-sample validation (Run 6, fold 4) achieves **43.0% SpiNNaker accuracy vs 51.25% snnTorch (8.25 pp gap)**. Five-fold cross-validation (2,000 total inferences) yields **33.1% ± 6.9% SpiNNaker mean accuracy** vs 46.0% snnTorch reference (hardware gap: 12.8 ± 4.1 pp) — the first published deployment of any SNN trained on environmental sound recordings to neuromorphic hardware, and the first 5-fold cross-validated SpiNNaker result for any audio classification task. The FC1 cancellation problem (AvgPool producing fractional outputs that break SpiNNaker's spike-only compute model) is documented as a new and practically important failure mode for neuromorphic deployment of spiking CNNs.
+**C4: First adversarial robustness analysis of SNNs on audio.** FGSM and PGD across 7 eps values. At eps=0.1 FGSM: SNN 26.00% vs ANN 1.75%. Largest reported SNN adversarial advantage in any audio domain.
 
-**C4: First adversarial robustness analysis of SNNs on audio spectrograms.**
-FGSM and PGD attacks are applied across 7 perturbation magnitudes (ε ∈ {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}) to both SNN and ANN classifiers. At ε=0.1 (FGSM), the SNN retains 26.00% accuracy while the ANN collapses to 1.75%. This is the largest reported adversarial robustness advantage for SNNs in any audio domain, and the first such analysis for environmental sound classification.
+**C5: First PANNs + SNN combination.** SNN head on frozen CNN14 embeddings: 92.50% +/- 1.30%, exceeding human (81.3%), gap collapses from 16.70 pp to 0.95 pp. Gap is feature-learning, not spiking computation.
 
-**C5: First combination of PANNs embeddings with SNN classification.**
-A 3-layer SNN head trained on frozen CNN14 (AudioSet-pretrained) embeddings achieves 92.50% ± 1.30% on ESC-50 — surpassing human performance (81.3%) and reducing the SNN-ANN gap from 16.70 pp to 0.95 pp. This is the first published combination of PANNs with an SNN classifier, and establishes that the SNN-ANN accuracy gap is a feature-learning problem, not a spiking computation problem.
-
-**C6: NeuroBench-compliant energy analysis.**
-Using NeuroBench v2.2.0 (Yik et al. 2025), SynapticOperations metrics are reported for all SNN configurations and the ANN baseline (5-fold validated): direct SNN uses 968 ± 37 nJ/sample (1.08M ACs), ANN uses 454 ± 11 nJ/sample (101K MACs). On neuromorphic hardware (AC-only), SNNs reduce per-operation cost by 5.1× (AC vs MAC). In software simulation, the SNN is 2.1× more expensive due to the T=25 timestep overhead. PANNs + SpiNNaker FC₂ is the Pareto-optimal deployment: 92.50% accuracy with ~86 nJ for the SpiNNaker classification step (FC₂ 256→50 layer only).
+**C6: NeuroBench energy analysis.** 5-fold validated: SNN 968 +/- 37 nJ/sample (1.08M ACs), ANN 454 +/- 11 nJ (101K MACs). SNN 2.1x more expensive in software due to T=25. On neuromorphic hardware ACs cost 5.1x less than MACs. PANNs + SpiNNaker FC2 is Pareto-optimal: 92.50%, ~86 nJ for classification.
 
 ---
+
+## 8.2 answers to research questions
+
+**RQ1: Can conv SNNs classify environmental sounds competitively with matched ANNs?**
+
 
 ## 8.2 Answers to Research Questions
 

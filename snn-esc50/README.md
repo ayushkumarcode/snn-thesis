@@ -110,20 +110,20 @@ snn-esc50/
 ├── experiments/           # all the advanced experiment scripts
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
-│       └── ann_model.py   # Convolutional ANN baseline
-├── spinnaker/
-│   ├── convert_weights.py     # snnTorch → sPyNNaker weight conversion
-│   ├── extract_features.py    # Conv feature extraction for hybrid deployment
-│   └── run_on_spinnaker.py    # SpiNNaker inference script
-├── notebooks/
-│   ├── 01_data_exploration.ipynb
 │   ├── 02_encoding_visualisation.ipynb
 │   └── 03_results_analysis.ipynb
-├── results/                   # All saved metrics, plots, models
-├── csf3_results/              # Raw results from CSF3 cluster
-├── EXPERIMENT_LOG.md          # Detailed experiment documentation
+├── results/               # saved metrics, plots, models
+├── csf3_results/          # raw results from CSF3
+├── EXPERIMENT_LOG.md      # what happened (detailed)
+├── DECISIONS.md           # why we did things
 ├── requirements.txt
 └── README.md
+```
+
+## dependencies
+
+- snnTorch 0.9.4 -- spiking neural network framework (on top of PyTorch)
+- PyTorch 2.6+
 ```
 
 ## Tools & Dependencies

@@ -819,31 +819,3 @@ Based on comprehensive analysis of all three survey papers and supplementary res
 | Framework comparison accuracy | HIGH -- cross-referenced multiple sources |
 | Dataset availability information | HIGH -- verified through multiple sources |
 | snnTorch tutorial catalog | HIGH -- verified from official documentation |
-| ANN-to-SNN conversion assessment | HIGH -- multiple sources confirm current state |
-| Thesis scope recommendations | HIGH -- based on published results and tool maturity |
-| Energy efficiency claims | MODERATE -- theoretical numbers vary; practical measurement requires hardware |
-| Benchmark accuracy numbers | HIGH -- extracted from peer-reviewed sources |
-
-## RESEARCH GAPS (What I Could Not Fully Determine)
-
-1. **Paper 3 full content:** The Malcolm & Casco-Rodriguez paper was not available in HTML format on arXiv, and the PDF could not be text-extracted. The full benchmark tables and specific best practices recommendations from this paper are missing from this analysis.
-
-2. **Neuromorphic hardware availability at your university:** Whether your institution has access to Loihi, SpiNNaker, or other neuromorphic hardware would significantly affect project recommendations.
-
-3. **Your specific GPU resources:** The compute requirements vary significantly between MNIST-scale and ImageNet-scale experiments.
-
-4. **Your prior experience with PyTorch:** The learning curve for snnTorch assumes basic PyTorch familiarity.
-
-## RECOMMENDED FOLLOW-UP ACTIONS
-
-1. Download and read the PDF of Malcolm & Casco-Rodriguez (Paper 3) manually -- it is designed for newcomers
-2. Complete snnTorch Tutorials 1-6 (approximately 8-10 hours of work)
-3. Run the SpikingJelly DVS128 Gesture example to verify your environment works
-4. Discuss the recommended project direction with your thesis supervisor
-5. Check if your university has any neuromorphic hardware access (would open additional project possibilities)
-6. Join the Open Neuromorphic community (open-neuromorphic.org) for support
-
----
-
-## SOURCES AND REFERENCES
-

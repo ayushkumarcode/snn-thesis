@@ -54,3 +54,31 @@ key papers:
 | Generation | Approach | Example |
 |---|---|---|
 | Early (pre-2020) | Reservoir/NeuCube + STDP | NeuCube framework |
+| Mid (2020-2022) | Surrogate gradient SNNs | combra-lab SNN-EEG |
+| Recent (2023-2024) | Hybrid CNN-SNN, attention | SCNet, HR-SNN, NiSNN-A |
+| Emerging (2024-2025) | Spiking Transformers | Spikeformer, Spiking Conformer |
+| Frontier (2025+) | Lightweight + edge deployment | LENet, Xylo-based systems |
+
+---
+
+## 2. accuracy comparison: SNNs vs conventional approaches
+
+### motor imagery (BCI Competition IV Dataset 2a, 4-class)
+
+| Method | Type | Accuracy (%) | Year |
+|---|---|---|---|
+| EEGEncoder (Transformer) | ANN | 86.46 | 2024 |
+| CIACNet (Attention CNN) | ANN | 85.15 | 2024 |
+| SNA-MHC (custom SNN+Attn) | SNN | 92.80* | 2024 |
+| RDSNN (Lightweight SNN) | SNN | 81.75 | 2024 |
+| HR-SNN (End-to-End SNN) | SNN | 77.58 | 2024 |
+| CNN1D_MF | ANN | 69.20 | 2023 |
+| DFBRTS | ANN | 78.16 | 2024 |
+
+*SNA-MHC's 92.80% is an outlier -- might use different evaluation protocols. most SNN results cluster around 75-82% on this benchmark.
+
+### motor imagery (PhysioNet EEGMMIDB)
+
+| Method | Type | Accuracy (%) | Year |
+|---|---|---|---|
+| Novel DL approach | ANN | 95.70 | 2025 |

@@ -43,31 +43,3 @@ The single lowest-effort strategy for a genuine contribution is: **take an exist
 | **Music genre classification** | One undergraduate thesis (mrahtz, 2016) on musical pattern recognition. No genre classification. | Audio temporal patterns are a natural fit for SNNs. | LOW-MEDIUM |
 | **Sports action recognition** | No SNN papers on standard sports datasets (UCF-101, HMDB-51). | Temporal dynamics of actions suit SNNs. | MEDIUM |
 
-### 1.2 Barely Explored (1-3 Papers Exist)
-
-| Domain | Existing Work | Gap | Effort |
-|--------|--------------|-----|--------|
-| **Fraud/anomaly detection on tabular data** | One paper: Bayesian Optimization 1D-CSNN for BAF dataset (EPIA 2024). | No comparison with standard ML baselines (XGBoost, Random Forest) on common fraud datasets. No study on credit card fraud (Kaggle dataset). | LOW |
-| **NLP/Text classification** | ~3-4 papers: SNNLP (2024), Spikformer for text, sentence-level sentiment. | No study on common benchmarks like AG News, IMDB Reviews, or SST-2 with standard SNN frameworks (snnTorch/SpikingJelly). Text encoding for SNNs remains largely unsolved. | MEDIUM |
-| **Emotion recognition from facial expressions** | One paper on SNN for facial expression + speech (2020). One lip-reading paper (CVPR 2024 workshop). | No SNN study on FER2013, AffectNet, or RAF-DB facial expression datasets. | LOW-MEDIUM |
-| **Predictive maintenance / fault diagnosis** | ~3-4 papers including vibration-based bearing fault (2020-2025). | Very few studies; no standard comparison across bearing fault benchmarks (CWRU, Paderborn). | LOW-MEDIUM |
-| **Financial time series** | ~3-5 papers including VMD-SNN (2025) and cross-market portfolio. | No study comparing SNN vs LSTM/Transformer on standard stock datasets with proper backtesting. | MEDIUM |
-| **Network intrusion detection** | ~4-5 papers including convolutional SNN on UNSW-NB15 (2024). | No study on newest CICIDS or TON_IoT datasets. No snnTorch implementation. | LOW-MEDIUM |
-| **3D point cloud processing** | Two papers: Spiking PointNet (2023), SPCNNet (2026). | ModelNet40 and ShapeNet benchmarks with SNNs are still rare. | MEDIUM-HIGH |
-
----
-
-<a name="2-unbenchmarked-datasets"></a>
-## 2. Datasets Not Yet Benchmarked with SNNs
-
-### 2.1 Neuromorphic Datasets in Tonic Library That Lack Comprehensive SNN Benchmarks
-
-The Tonic library (the PyTorch Vision equivalent for neuromorphic data) provides these datasets, but many have sparse or no published SNN benchmark results:
-
-| Dataset | Type | Task | SNN Benchmark Status |
-|---------|------|------|---------------------|
-| **ASL-DVS** | Event vision | American Sign Language | Very few SNN results published. Most work uses ANNs on the events. |
-| **POKER-DVS** | Event vision | Card suit recognition | Occasionally used in Norse tutorials but rarely in formal benchmarks. |
-| **DVSLip** | Event vision | Lip reading | Only 1-2 papers (CVPR 2024 workshop). |
-| **N-CALTECH101** | Event vision | Object recognition (101 classes) | Some results exist but far fewer than N-MNIST or CIFAR10-DVS. |
-| **NTIDIGITS** | Event audio | Spoken digits | Rarely benchmarked with modern SNN architectures (snnTorch, SpikingJelly). |

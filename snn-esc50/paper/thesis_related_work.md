@@ -40,20 +40,20 @@ Common surrogates: fast sigmoid (1/(1+|x|)^2, slope=25), ATan, triangular, STE. 
 ---
 
 ## 2.3 spike encoding methods
-Spike encoding converts static inputs (images, spectrograms) into temporal spike patterns. The encoding method is a critical design choice that determines information density, energy cost, and task suitability.
 
-**Rate coding** (de Ruyter van Steveninck et al. 1997): spike probability ∝ intensity. Maximises information per spike but is stochastic and requires many timesteps. Biologically plausible.
+Spike encoding converts static inputs (images, spectrograms) into temporal spike patterns. The encoding method is a critical design choice -- determines information density, energy cost, and task suitability.
 
-**Latency/Time-to-first-spike** (Thorpe et al. 1996): higher intensity → earlier spike. Efficient (1 spike per neuron) but sensitive to noise.
+**Rate coding** (de Ruyter van Steveninck et al. 1997): spike probability proportional to intensity. Maximises info per spike but stochastic, needs many timesteps. Biologically plausible.
 
-**Delta/Temporal contrast** (Lichtsteiner et al. 2008): events (spikes) generated on positive intensity changes. Directly implements the output of a Dynamic Vision Sensor (DVS). Poor for static inputs.
+**Latency/time-to-first-spike** (Thorpe et al. 1996): higher intensity = earlier spike. Efficient (1 spike/neuron) but noise-sensitive.
 
-**Direct/Continuous** (Rathi et al. 2020; Yin et al. 2021): continuous values fed directly to LIF neurons, which perform their own implicit coding. Best accuracy in practice; not truly sparse input but network activation is sparse.
+**Delta/temporal contrast** (Lichtsteiner et al. 2008): spikes on positive intensity changes. Directly implements DVS output. Poor for static inputs -- this is going to be a problem for us.
 
-**Burst coding** (Izhikevich 2004): neurons fire N spikes in rapid succession, where N encodes intensity. Biologically observed in auditory and visual cortex.
+**Direct/continuous** (Rathi et al. 2020; Yin et al. 2021): continuous values fed directly to LIF neurons which do their own implicit coding. Best accuracy in practice; not truly sparse input but network activation is sparse.
 
-**Phase coding** (O'Keefe & Recce 1993; Montemurro et al. 2008): spike timing relative to a global oscillation cycle encodes intensity. Theta-phase precession in hippocampus is the canonical biological example.
+**Burst coding** (Izhikevich 2004): neurons fire N spikes in rapid succession, N encodes intensity. Observed in auditory and visual cortex biologically.
 
+**Phase coding** (O'Keefe & Recce 1993; Montemurro et al. 2008): spike timing relative to a global oscillation cycle encodes intensity. Theta-phase precession in hippocampus is the canonical example.
 **Population coding** (Georgopoulos et al. 1986): each concept (class) is represented by a population of neurons rather than a single neuron. Output-side population codes allow multiple neurons to vote on each class, potentially reducing sensitivity to single-neuron noise. Implemented in snnTorch via `SF.mse_count_loss(population_code=True)`.
 
 No prior work has systematically compared these seven encodings on ESC-50 or other standard audio benchmarks. The closest comparison (Larroza et al. 2025) evaluates 3 methods (rate, latency, direct) on ESC-10 only.

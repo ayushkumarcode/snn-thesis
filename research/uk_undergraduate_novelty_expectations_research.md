@@ -278,3 +278,31 @@ the bottom line:
 - the fundamental UG/MSc/PhD originality distinction
 
 ### medium confidence:
+- Manchester EEE descriptors (from archived staff page, might not be current)
+- KCL marking framework (general university framework, CS-specific might differ)
+- examiner perspectives (from public forums and published guidance, individual markers may vary)
+
+### gaps:
+- Imperial College Computing: specific rubric not publicly accessible
+- UCL COMP0029: behind authentication
+- Manchester COMP30040: on internal student portal
+- Warwick CS310: detailed rubric not publicly available
+- Leeds, Bristol: CS-specific criteria not found in public searches
+
+if i need Manchester's specific COMP30040 rubric, should check the student portal or ask my supervisor. and looking at past first class dissertations from the department would be useful for calibration.
+
+---
+
+## sources
+
+### national framework
+- [QAA FHEQ 2024](https://www.qaa.ac.uk/docs/qaa/quality-code/the-frameworks-for-higher-education-qualifications-of-uk-degree-awarding-bodies-2024.pdf)
+- [QAA Master's Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-masters-degrees)
+- [QAA Doctoral Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-doctoral-degrees)
+
+### university marking criteria
+- [Cambridge Part II CS Assessment](https://www.cst.cam.ac.uk/teaching/part-ii/projects/assessment)
+- [Cambridge Part II Dissertation](https://www.cst.cam.ac.uk/teaching/part-ii/projects/dissertation)
+- [Edinburgh Informatics Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme)
+- [Edinburgh Informatics Dissertation Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
+- [Edinburgh SPS Marking Descriptors](https://www.sps.ed.ac.uk/students/undergraduate/your-studies/assessment-regulations/marking-descriptors)

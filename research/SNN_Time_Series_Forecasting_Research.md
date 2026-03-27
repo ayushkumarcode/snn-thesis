@@ -250,3 +250,31 @@ the field is about **2 years old** at the top-venue level. first major conferenc
 | SNNs for weather forecasting | **VERY HIGH** -- 2 papers, neither modern |
 | SNNs for IoT sensor forecasting | **HIGH** -- mostly classification not forecasting |
 | SNN vs Transformer long-horizon | **HIGH** -- limited comparison |
+| Encoding strategy comparison for time series | **MEDIUM-HIGH** -- fragmented |
+| Real hardware energy benchmarking | **HIGH** -- mostly theoretical |
+| SNN anomaly detection in time series | **HIGH** -- 2-3 papers |
+| Explainability of SNN predictions | **VERY HIGH** -- only NeuCube |
+
+### Why Now?
+
+1. frameworks are mature (snnTorch, SpikingJelly, Norse)
+2. reference implementations exist (Microsoft's SeqSNN)
+3. surrogate gradients are well-understood
+4. hardware exists (Loihi 2, TrueNorth)
+5. top venues accepting SNN time-series papers
+6. energy-efficient AI is a growing priority
+
+---
+
+## Feasibility for Undergrad Thesis
+
+### What's in Your Favor
+
+1. frameworks with tutorials (snnTorch has regression guides)
+2. reference code exists and is open source
+3. standard datasets freely available
+4. field is small enough that a comparison paper would be genuinely valuable
+5. PyTorch-based, so the learning curve is manageable
+
+### Watch Out For
+

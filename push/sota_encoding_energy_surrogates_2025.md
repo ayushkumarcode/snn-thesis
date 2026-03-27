@@ -506,31 +506,3 @@ The thesis's most important finding (PANNs+SNN=92.5% vs scratch SNN=47.15%) is c
 1. Y. Kim et al. "Rate Coding or Direct Coding: Which One is Better for Accurate, Robust, and Energy-efficient Spiking Neural Networks?" ICASSP 2022. [arXiv:2202.03133](https://arxiv.org/abs/2202.03133)
 2. W. Guo et al. "Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems." Frontiers in Neuroscience 15:638474, 2021. [Link](https://www.frontiersin.org/articles/10.3389/fnins.2021.638474/full)
 3. A. Larroza et al. "Comparative Study of Spike Encoding Methods for Environmental Sound Classification." arXiv:2503.11206, 2025. [Link](https://arxiv.org/html/2503.11206v1)
-4. S. Bian et al. "Evaluation of Encoding Schemes on Ubiquitous Sensor Signal for Spiking Neural Network." arXiv:2407.09260, 2024. [Link](https://arxiv.org/abs/2407.09260)
-5. B. Petro et al. "Spike encoding techniques for IoT time-varying signals benchmarked on a neuromorphic classification task." Frontiers in Neuroscience 16:999029, 2022. [Link](https://www.frontiersin.org/articles/10.3389/fnins.2022.999029/full)
-6. "A Practical Tutorial on Spiking Neural Networks." MDPI, 2025. [Link](https://www.mdpi.com/2673-4117/6/11/304)
-7. A. Stanojevic et al. "High-performance deep spiking neural networks with 0.3 spikes per neuron." Nature Communications 15:6793, 2024. [Link](https://www.nature.com/articles/s41467-024-51110-5)
-8. "Stochastic Spiking Neural Networks with First-to-Spike Coding." arXiv:2404.17719, 2024. [Link](https://arxiv.org/abs/2404.17719)
-9. "An artificial visual neuron with multiplexed rate and time-to-first-spike coding." Nature Communications 15:3808, 2024. [Link](https://www.nature.com/articles/s41467-024-48103-9)
-10. "High-performance deep spiking neural networks via at-most-two-spike exponential coding." Neural Networks, 2024. [Link](https://www.sciencedirect.com/science/article/abs/pii/S0893608024002703)
-
-### Energy Efficiency
-
-11. M. Dampfhoffer et al. "Are SNNs Really More Energy-Efficient Than ANNs? An In-Depth Hardware-Aware Study." IEEE TECI 7(3):731--741, 2023. [Link](https://ieeexplore.ieee.org/document/9927729/)
-12. L. Yang et al. "Reconsidering the energy efficiency of spiking neural networks." arXiv:2409.08290, 2024. [Link](https://arxiv.org/abs/2409.08290)
-13. J. Yik et al. "The NeuroBench framework for benchmarking neuromorphic computing algorithms and systems." Nature Communications 16:1589, 2025. [Link](https://www.nature.com/articles/s41467-025-56739-4)
-14. M. Horowitz. "Computing's Energy Problem (and what we can do about it)." ISSCC 2014, pp. 10--14. [Link](https://pages.cs.wisc.edu/~markhill/restricted/isscc2014_horowitz_power_scaling.pdf)
-15. "Sparsity-Aware Hardware-Software Co-Design of Spiking Neural Networks: An Overview." arXiv:2408.14437, 2024. [Link](https://arxiv.org/abs/2408.14437)
-16. "Efficient Video and Audio Processing with Loihi 2." ICASSP 2024. [Link](https://ieeexplore.ieee.org/document/10448003/)
-17. "SpiNNaker2: A Large-Scale Neuromorphic System for Event-Based and Asynchronous Machine Learning." arXiv:2401.04491, 2024. [Link](https://arxiv.org/abs/2401.04491)
-18. S. Haghighatshoar, D. R. Muir. "Low-power SNN audio source localisation using a Hilbert Transform." Comms Engineering (Nature), 2025. [Link](https://www.nature.com/articles/s44172-025-00359-9)
-19. "A comparative review of deep and spiking neural networks for edge AI neuromorphic circuits." Frontiers in Neuroscience, 2025. [Link](https://www.frontiersin.org/articles/10.3389/fnins.2025.1676570/full)
-20. A. Basu et al. "Fundamental Survey on Neuromorphic Based Audio Classification." arXiv:2502.15056, 2025. [Link](https://arxiv.org/abs/2502.15056)
-21. E. Baek, J. Lee. "SNN and sound: a comprehensive review of spiking neural networks in sound." Biomedical Engineering Letters 14:801--834, 2024. [Link](https://link.springer.com/article/10.1007/s13534-024-00406-y)
-
-### Surrogate Gradients
-
-22. F. Zenke, T. P. Vogels. "The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks." Neural Computation 33(4):899--925, 2021. [Link](https://direct.mit.edu/neco/article/33/4/899/97482/)
-23. J. Gygax, F. Zenke. "Elucidating the Theoretical Underpinnings of Surrogate Gradient Learning in Spiking Neural Networks." Neural Computation 37(5):886--925, 2025. [Link](https://direct.mit.edu/neco/article/37/5/886/128506/)
-24. S. Lian et al. "Learnable Surrogate Gradient for Direct Training Spiking Neural Networks." IJCAI-23, 2023. [Link](https://www.ijcai.org/proceedings/2023/335)
-25. "Directly Training Temporal Spiking Neural Network with Sparse Surrogate Gradient." Neural Networks, July 2024. [Link](https://www.sciencedirect.com/science/article/abs/pii/S0893608024004234)

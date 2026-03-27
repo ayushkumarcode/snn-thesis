@@ -226,31 +226,3 @@ spike_data_latency = spikegen.latency(
     threshold=0.01,
     normalize=True
 )
-```
-
-**Key insight:** `spikegen.rate()` works on tensors of arbitrary shape. A 2D mel-spectrogram (128 x T) is treated identically to a 2D image (28 x 28 for MNIST). The function simply treats each value as a firing probability. No special audio handling is needed.
-
-**Verification method:** Confirmed every function signature from official snnTorch 0.9.4 API documentation. The `rate()` function operates on generic tensors, confirmed via Tutorial 1 and Tutorial 5.
-
----
-
-## COMPONENT 5: CONVOLUTIONAL SNN IN snnTorch
-
-### EXISTS: YES
-### POTENTIAL BLOCKER: NO
-
-### Available neuron layers:
-
-| Layer | Class | Description |
-|-------|-------|-------------|
-| LIF (1st order) | `snn.Leaky(beta=0.9)` | Leaky integrate-and-fire, single decay constant |
-| Synaptic (2nd order) | `snn.Synaptic(alpha, beta)` | Includes synaptic current dynamics |
-| Lapicque | `snn.Lapicque(beta)` | RC neuron model |
-| Alpha | `snn.Alpha(alpha, beta)` | Alpha membrane model |
-| Recurrent LIF | `snn.RLeaky(beta, V)` | LIF with recurrent output connections |
-| Recurrent Synaptic | `snn.RSynaptic(alpha, beta, V)` | Synaptic with recurrent connections |
-| Parallel LIF | `snn.LeakyParallel(beta)` | Optimized for parallel data processing |
-| Spiking LSTM | `snn.SLSTM` | Spiking long short-term memory |
-| Spiking Conv2d LSTM | `snn.SConv2dLSTM` | Spiking convolutional LSTM |
-
-Documentation: https://snntorch.readthedocs.io/en/latest/snntorch.html

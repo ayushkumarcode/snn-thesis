@@ -310,31 +310,3 @@ The commonly cited values in SNN literature:
 
 | Source | AC Energy | MAC Energy | Ratio | Technology | Notes |
 |--------|-----------|------------|-------|------------|-------|
-| Horowitz (ISSCC 2014) | 0.9 pJ (32b FP) | 4.6 pJ (32b FP) | 5.1x | 45nm | Standard reference |
-| Horowitz (ISSCC 2014) | 0.03 pJ (8b INT) | 0.2 pJ (8b INT) | 6.7x | 45nm | Quantized operations |
-| Yang et al. (2024) | 0.03 pJ (8b) | 0.2 pJ (8b) | 6.7x | 45nm | Used for SNN energy model |
-| SpiNNaker 2 | 0.292 pJ/SOP | N/A | N/A | 22nm | Measured on hardware |
-| TrueNorth | ~26 pJ/SOP | N/A | N/A | 28nm | Per-neuron tick energy |
-| Loihi 1 | ~23.6 pJ/SOP | N/A | N/A | 14nm | Davies et al. 2018 |
-
-**Important caveat:** These ratios only capture compute energy. Memory access (SRAM: 5 pJ/32b, DRAM: 640 pJ/32b) often dominates total energy. Dampfhoffer et al. and Yang et al. both emphasize this point.
-
-### 2.7 Sparsity-Energy Relationship
-
-**Citation:** Shafique et al. "Sparsity-Aware Hardware-Software Co-Design of Spiking Neural Networks: An Overview." arXiv:2408.14437, August 2024.
-
-Two types of sparsity in SNNs:
-1. **Static sparsity:** Fixed zero-valued weights (pruning). Allows predetermined memory compression.
-2. **Dynamic sparsity:** Temporal event-based activations. Requires flexible hardware for variable, irregular computational loads.
-
-**Key hardware accelerators exploiting sparsity (2024):**
-- MISS framework: 36% energy improvement, 23% speedup via unstructured pruning
-- ESSA accelerator: 253.1 GSOP/s, 32.1 GSOP/W at 75% weight sparsity (Xilinx FPGA)
-- SATA: Training accelerator exploiting spike/gradient/membrane potential sparsity
-
-**Relevance to thesis:** The thesis SNN has 74.16% activation sparsity (NeuroBench). On hardware that can exploit this (skip zero-spike computations), the effective energy cost drops proportionally. The 5.1x per-operation advantage multiplied by sparsity exploitation could yield significant savings on neuromorphic hardware, even though software simulation shows 2.1x disadvantage.
-
-### 2.8 Energy Summary Table
-
-| Metric | Thesis SNN | Thesis ANN | Literature Context |
-|--------|-----------|-----------|-------------------|

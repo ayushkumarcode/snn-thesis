@@ -124,20 +124,20 @@ CL experiment (section 6.2) confirms the expected -- both suffer severe forgetti
 ## 7.8 broader implications
 
 **For SNN community:** first conv SNN results on ESC-50 -- standardised reference. Encoding comparison and negative results (delta, burst) informative: don't assume bio-motivated encodings beat simpler alternatives.
-**For the SNN research community:** This work provides the first convolutional SNN results on ESC-50 — a standardised reference that future SNN audio work can compare against. The systematic encoding comparison and negative results (delta, burst) are informative: the field should not assume that biologically-motivated encodings outperform simpler alternatives.
 
-**For neuromorphic computing:** The AvgPool-FC1 cancellation problem is a previously undocumented failure mode for neuromorphic deployment of standard spiking CNN architectures. The documented failure and hybrid solution provide practical guidance for future SpiNNaker deployments.
+**For neuromorphic computing:** AvgPool-FC1 cancellation is a previously undocumented failure mode. Documented failure and hybrid solution = practical guidance.
 
-**For edge audio intelligence:** The adversarial robustness finding suggests that SNNs have a practical advantage for secure edge audio monitoring beyond their energy efficiency. A sensor that is both energy-efficient and adversarially robust is more deployable than one that is only energy-efficient.
+**For edge audio:** adversarial robustness advantage goes beyond energy efficiency. Sensor that's both energy-efficient and adversarially robust is more deployable than one thats only efficient.
 
-**Per-class pattern and the threshold energy hypothesis:** The per-class analysis reveals an unexpected but mechanistically clear pattern: the SNN outperforms the ANN on 6/50 classes, all of which are high-energy, spectrally distinctive sounds (crying_baby, door_wood_knock, coughing, pouring_water, crackling_fire, footsteps). The SNN fails most severely on low-energy, quiet sounds (engine 8%, door_wood_creaks 10%, clock_tick 23%). This suggests the LIF threshold acts as an energy-gated filter: high-energy sounds reliably cross the membrane threshold, producing consistent spike patterns that train well. Low-energy sounds hover near the threshold, producing stochastic and unreliable spike patterns that resist generalisation. For applications where robustness to quiet sounds is important (e.g., detecting leaks, monitoring breathing), the ANN remains strongly preferred. For detecting loud alarms, impacts, and vocal events, the SNN may achieve competitive or superior accuracy.
+**Per-class pattern:** SNN outperforms ANN on 6/50 classes, all high-energy spectrally distinctive (crying_baby, door_knock, coughing, pouring_water, crackling_fire, footsteps). Fails on low-energy quiet sounds (engine 8%, door_creaks 10%, clock_tick 23%). LIF threshold = energy-gated filter. For apps needing robustness to quiet sounds (leak detection, breathing monitoring), ANN strongly preferred. For loud alarms, impacts, vocal events -- SNN may match or beat ANN.
 
-**For the accuracy debate:** The PANNs result definitively shows that the SNN-ANN accuracy gap is not fundamental. With pre-trained features, SNNs and ANNs achieve near-identical accuracy. The gap is a data and training regime problem, not a computational paradigm problem. This is an optimistic finding for the long-term trajectory of SNN research.
+**For the accuracy debate:** PANNs result shows the gap isn't fundamental. With pretrained features, SNN ~ ANN. Its a data/training regime problem, not a computational paradigm problem. Optimistic for long-term SNN trajectory.
 
 ---
 
-## 7.9 Data Augmentation: When Standard Methods Fail for SNNs
+## 7.9 data augmentation: when standard methods fail for SNNs
 
+The augmentation experiment produced a clear negative result: SpecAugment + TimeShift hurts SNN (-6.40 pp, variance tripled) and marginally hurts ANN (-2.15 pp). Worth discussing because augmentation is a default recommendation in deep learning that doesn't transfer cleanly to SNNs on small datasets.
 The augmentation experiment (§4.4) produced a clear and instructive negative result: SpecAugment + TimeShift harms the SNN (47.15% → 40.75%, −6.40 pp; std 4.50% → 16.03%) and marginally harms the ANN (63.85% → 61.70%, −2.15 pp). This is worth discussing explicitly, because data augmentation is a default recommendation in deep learning that does not transfer cleanly to SNNs on small datasets.
 
 **The mechanism is specific, not general.** Two interacting failure modes explain the SNN degradation:

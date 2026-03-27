@@ -306,3 +306,15 @@ if i need Manchester's specific COMP30040 rubric, should check the student porta
 - [Edinburgh Informatics Common Marking Scheme](https://informatics.ed.ac.uk/taught-students/all-students/your-studies/common-marking-scheme)
 - [Edinburgh Informatics Dissertation Assessment](https://opencourse.inf.ed.ac.uk/diss/project-assessment)
 - [Edinburgh SPS Marking Descriptors](https://www.sps.ed.ac.uk/students/undergraduate/your-studies/assessment-regulations/marking-descriptors)
+- [Sussex Informatics Final Year Project Marking](https://www.sussex.ac.uk/ei/internal/forstudents/informatics/undergraduate/finalyearprojects/reportmarkingcriteria)
+- [Manchester EEE Mark Descriptors](https://personalpages.manchester.ac.uk/staff/fumie.costen/pastwork/DATA/markingscheme/EEEUGMarksScaleDescriptors.pdf)
+- [SOAS Marking Criteria](https://www.soas.ac.uk/sites/default/files/2022-07/marking-criteria-policy.pdf)
+- [KCL Marking Framework](https://www.kcl.ac.uk/assets/policyzone/assessment/college-marking-framework.pdf)
+- [Bristol Level 6 Marking Criteria](https://www.bristol.ac.uk/media-library/sites/academic-quality/documents/taught-code/annexes/university-marking-criteria-level6.pdf)
+
+### guidance and discussions
+- [Bob Laramee -- BSc Project Guidelines (Swansea/Nottingham)](https://people.cs.nott.ac.uk/blaramee/teaching/projects/laramee10projectGuideline.pdf)
+- [Ivory Research -- What is an Undergraduate Dissertation?](https://www.ivoryresearch.com/library/dissertation-articles/bachelor-dissertation-undergraduate-dissertation/)
+- [The Student Room -- Undergraduate Dissertation Discussions](https://www.thestudentroom.co.uk/showthread.php?t=5408798)
+- [Warwick CS310](https://warwick.ac.uk/fac/sci/dcs/teaching/syllabi/cs310/)
+- [Manchester COMP30040 Syllabus](https://studentnet.cs.manchester.ac.uk/ugt/COMP30040/syllabus/)

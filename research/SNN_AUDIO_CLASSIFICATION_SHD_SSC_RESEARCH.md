@@ -189,31 +189,3 @@ There are **no confirmed undergraduate projects specifically doing SNN audio cla
 ### 5.1 Framework Comparison for SHD/SSC Work
 
 | Framework | Language | SHD Support | Difficulty | Speed | Best For |
-|-----------|----------|-------------|------------|-------|----------|
-| **snnTorch** | PyTorch | Built-in loader + tutorial | Beginner-friendly | Moderate | Learning SNNs, modular design, great tutorials |
-| **SpikingJelly** | PyTorch | Via Tonic | Intermediate | Fast (CuPy backend) | Performance, built-in models, Science Advances paper |
-| **sparch** | PyTorch | Built-in, automatic | Beginner-friendly | Moderate | Specifically designed for SHD/SSC speech tasks |
-| **Spyx** | JAX | Built-in tutorial | Intermediate | **Fastest** (JIT) | Speed, GPU/TPU optimization, research iteration |
-| **Norse** | PyTorch | Built-in dataset class | Intermediate | Moderate | Bio-inspired components |
-| **Rockpool** | PyTorch/JAX | Built-in tutorial | Intermediate | Moderate | Neuromorphic hardware deployment (Xylo) |
-| **SNN-delays** | PyTorch | Built-in, automatic | Intermediate | Moderate | Reproducing ICLR 2024 delay learning results |
-| **Tonic** | Python | Dedicated dataset class | Easy (data only) | N/A | Dataset loading and transforms only |
-
-### 5.2 Recommended Stack for Undergraduate Thesis
-
-**Primary recommendation: snnTorch + Tonic**
-- Best tutorial series (8 interactive Jupyter notebooks)
-- Built-in SHD dataset loader
-- Modular neuron models (LIF, Leaky, Synaptic, Alpha)
-- Easy integration with PyTorch
-- Active community and documentation
-- `pip install snntorch tonic`
-
-**Alternative for speed: Spyx (JAX)**
-- Train SHD models in under 60 seconds on a single GPU
-- JIT compilation for maximum GPU utilization
-- Steeper learning curve but dramatically faster iteration
-
-**For reproducing SOTA: SNN-delays or sparch**
-- SNN-delays: Clean ICLR 2024 code, easy to set up, auto-downloads SHD/SSC
-- sparch: Purpose-built for speech command recognition with SNNs, supports LIF/RLIF/adLIF/RadLIF

@@ -132,31 +132,3 @@ CNN14 was trained on 2 million AudioSet clips. The SNN head trained on its froze
 This is the one finding worth remembering from this thesis. Everything else — the 47.15% encoding result, the SpiNNaker deployment, the adversarial robustness — is individually interesting but parochial. The gap-collapse finding has implications beyond this paper and beyond ESC-50.
 
 The argument, spelled out explicitly:
-
-Scratch SNN: 47.15%. Scratch ANN: 63.85%. Gap: 16.7 pp. Both architectures are identical except for LIF vs ReLU.
-
-PANNs+SNN head: 92.50%. PANNs+ANN head: 93.45%. Gap: 0.95 pp. Same architecture, same features, only activation type differs.
-
-The 17.6× collapse in the gap when features are equalised means that 16.7 - 0.95 = 15.75 pp of the scratch gap is attributable to features, and only 0.95 pp is attributable to the spiking formalism itself. In other words, approximately 94% of the gap is about what the network learns, not how it computes.
-
-**Why does this matter to the field?** The dominant narrative in SNN audio research has implicitly attributed the performance gap to the LIF non-linearity, the surrogate gradient approximation, or the binary spike constraint. This finding says: no, on a small dataset with limited expressive power, the bottleneck is the quality of the learned representations, not the spiking mechanism. This reframes the research agenda. Instead of asking "how do we make spiking computation better," the more productive question becomes "how do we give SNNs access to better features." The PANNs result is one answer; ANN-to-SNN conversion from large pretrained models is another; self-supervised pre-training for SNNs is a third.
-
-The vision domain literature (Spikformer V2, ANN-to-SNN conversion papers) shows the same pattern at a 7× collapse ratio. The audio domain shows it at a 17.6× ratio. This suggests audio may be even more feature-starved than vision in the low-data regime — a plausible finding given that acoustic representations are less intuitive and harder to learn from scratch than visual ones.
-
-This is publishable at ICONS regardless of what else is in the paper. The encoding comparison and hardware work add depth, but the gap-collapse finding is the scientific contribution that will age well.
-
----
-
-## Part 4: Does It Meet Dr. Rhodes' Bar?
-
-Dr. Rhodes' specific bar: "results with significance and novelty are required. Consider how results/methods advance state of the art or propose novel/original approaches."
-
-**On novelty:** The paper has multiple confirmed first-in-literature claims. The "first SNN on full ESC-50" claim is backed by two independent 2025 surveys and an explicit statement in the closest competitor paper. The "first PANNs+SNN combination for audio" claim is backed by an exhaustive search finding zero prior work. The "first SpiNNaker deployment for environmental sound" claim is backed by the only prior audio SpiNNaker paper being 2016 pure tone work. These are original approaches by any reasonable definition.
-
-**On advancing state of the art:** This is where the answer is nuanced, and honesty matters.
-
-The paper does NOT advance the accuracy state of the art on ESC-50. The ANN SOTA is 99.1%. The PANNs+SNN result (92.5%) does not set a new SNN record because there was no prior SNN record on this dataset. The scratch SNN result (47.15%) establishes the first baseline, which future work can beat. These are establishing contributions, not surpassing contributions.
-
-What the paper DOES advance:
-
-1. It establishes the first rigorous benchmark for SNN audio classification on a standard dataset, creating a reference point the field lacked.

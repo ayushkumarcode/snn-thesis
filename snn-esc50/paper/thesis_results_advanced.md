@@ -125,19 +125,19 @@ Results in `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json
 
 ---
 
-**Result files:** `results/continual_learning/forgetting_fold{1-5}_pretrained_20ep.json` (5-fold validated)
+## 6.3 temporal spike pattern analysis
 
----
+### 6.3.1 rate vs first-spike decoding
 
-## 6.3 Temporal Spike Pattern Analysis
+**Setup:** fold 4 test (400 samples), direct encoding SNN, two readout methods on same model:
+- **Rate:** argmax of summed membrane potential (standard)
+- **First-spike:** argmin of first output spike time per class
 
-### 6.3.1 Rate vs First-Spike Decoding
+| Readout | Accuracy (fold 4) |
+|---------|-------------------|
+| Rate (membrane sum) | 51.50% |
+| First-spike latency | 25.75% |
 
-**Setup:** Fold 4 test set (400 samples), direct encoding SNN. Two readout methods evaluated on the same model without retraining:
-- **Rate readout:** $\hat{y} = \arg\max \sum_t \text{mem}_t$ (standard snnTorch inference)
-- **First-spike readout:** $\hat{y} = \arg\min_c t_{\text{first}}(c)$ (class that accumulates spike activity earliest)
-
-**Results:**
 
 | Readout Method | Accuracy (fold 4) |
 |----------------|-------------------|

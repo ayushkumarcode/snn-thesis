@@ -389,31 +389,3 @@ This framing allows you to:
 2. **Standardized SNN-EEG benchmarks:** No equivalent of MOABB exists for SNN-based BCI. Different papers use different preprocessing, splits, and metrics, making comparison difficult.
 
 3. **Cross-subject SNN generalization:** Most SNN-EEG papers report within-subject results. Cross-subject transfer learning with SNNs is under-explored.
-
-4. **Real-time SNN-BCI demonstration:** Few papers demonstrate actual real-time decoding with SNNs. Most are offline analyses.
-
-5. **Spike encoding optimization for EEG:** The optimal method to convert EEG signals into spike trains is not settled. Rate coding, temporal coding, delta modulation, and learned encodings all exist but systematic comparisons are rare.
-
-6. **Hybrid SNN-Transformer for EEG:** While Spiking Transformers exist for vision, their application to EEG is just beginning.
-
-### 8.2 Low-Hanging Fruit for Undergraduate Contribution
-
-- Systematic comparison of spike encoding methods on the same EEG dataset
-- Reproducing EESCN or HR-SNN results and extending to a new dataset
-- Energy analysis of SNN vs. CNN for EEG (many papers claim efficiency but few quantify it rigorously)
-- Applying an existing SNN framework (snnTorch) to EEG for the first time with proper documentation
-
----
-
-## 9. Network and Research Community Map
-
-### 9.1 Key Research Groups
-
-| Group | Affiliation | Focus | Notable Work |
-|---|---|---|---|
-| COMBRA Lab | Various | SNN on neuromorphic hardware for EEG | snn-eeg (Loihi deployment) |
-| BCMI Lab (Wei-Long Zheng) | Shanghai Jiao Tong University | SEED dataset, EEG emotion recognition | SEED, SEED-IV, SEED-VII |
-| Nikola Kasabov | AUT, New Zealand | NeuCube framework | Pioneering SNN-EEG work |
-| Jason Eshraghian | UC Santa Cruz | snnTorch framework | Training SNNs tutorial paper (IEEE Proceedings) |
-| SpikingJelly team | Peking University | SpikingJelly framework | Science Advances publication |
-| SyNSense | Zurich | Xylo neuromorphic chip | Real-time seizure detection |

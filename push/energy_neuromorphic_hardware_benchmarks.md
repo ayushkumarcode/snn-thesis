@@ -138,3 +138,14 @@ the only real apples-to-apples comparison:
 
 ---
 
+## Sources
+- [Dampfhoffer et al. 2023](https://ieeexplore.ieee.org/document/9927729/)
+- [Yan et al. 2024](https://arxiv.org/abs/2409.08290)
+- [Shen et al. 2024 CVPR](https://openaccess.thecvf.com/content/CVPR2024/html/Shen_Are_Conventional_SNNs_Really_Efficient)
+- [Horowitz 2014 ISSCC](https://ieeexplore.ieee.org/document/6757323/)
+- [Yik et al. 2025 NeuroBench](https://www.nature.com/articles/s41467-025-56739-4)
+- [Ostrau et al. 2022 Frontiers](https://www.frontiersin.org/articles/10.3389/fnins.2022.873935/)
+- [Blouw et al. 2019 Loihi](https://arxiv.org/abs/1812.01739)
+- [DarwinWafer 2025](https://arxiv.org/abs/2509.16213)
+- [Innatera T1](https://innatera.com/products/spiking-neural-processor-t1)
+- [Hardware-aware vs Agnostic 2025](https://arxiv.org/abs/2508.19654)

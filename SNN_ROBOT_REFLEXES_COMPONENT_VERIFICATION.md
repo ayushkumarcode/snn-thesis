@@ -480,31 +480,3 @@ Based on all verification, here is the concrete architecture that WILL work:
                      +--------+---------+
                               |
                      spike trains (T, batch, obs_dim)
-                              |
-                     +--------v---------+
-                     |  SNN Policy      |
-                     |  snnTorch LIF    |  <-- 2-3 hidden layers of LIF neurons
-                     |  neurons         |  <-- surrogate gradient backprop
-                     +--------+---------+
-                              |
-                     membrane potential at T (output layer, threshold=inf)
-                              |
-                     +--------v---------+
-                     |  Action Output   |
-                     |  tanh scaling    |  <-- scale to action space bounds
-                     +--------+---------+
-                              |
-                     continuous action vector
-                              |
-                     +--------v---------+
-                     |  PPO Algorithm   |
-                     |  (SB3 or custom) |  <-- standard PPO, just with SNN policy
-                     +------------------+
-```
-
----
-
-## Final Risk Assessment
-
-| Risk | Level | Impact | Likelihood | Mitigation |
-|------|-------|--------|-----------|-----------|

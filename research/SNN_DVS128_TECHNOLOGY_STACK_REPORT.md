@@ -649,31 +649,3 @@ loader = DataLoader(
 ## 6. Training Infrastructure
 
 ### 6.1 GPU Requirements
-
-| Configuration | VRAM | Notes |
-|---|---|---|
-| RTX 2080 Ti (12GB) | 12 GB | T=16 timesteps, batch_size=16. Reference GPU used in SpikingJelly benchmarks |
-| RTX 3090 (24GB) | 24 GB | Can use T=20 (original paper setting) with larger batches |
-| RTX 4090 (24GB) | 24 GB | Faster clock; recommended for comfortable training |
-| A100 (40/80GB) | 40-80 GB | Large batch training; multi-run experiments |
-| MacBook M1/M2/M3 | 8-36 GB unified | Works via PyTorch MPS backend. See caveats below. |
-
-### 6.2 Apple M-Series Mac Compatibility
-
-**Yes, training works on Apple Silicon** via PyTorch MPS (Metal Performance Shaders) backend.
-
-**Setup:**
-```python
-device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
-```
-
-**Caveats:**
-- MPS support requires macOS Monterey 12.3+ and PyTorch >= 1.12
-- MPS is marked as **experimental** -- some PyTorch operators are not yet implemented
-- Set `PYTORCH_ENABLE_MPS_FALLBACK=1` environment variable to automatically fall back to CPU for unsupported ops
-- SpikingJelly CuPy and Triton backends are **not available** on Mac (NVIDIA-only). Must use `torch` backend.
-- snnTorch works natively on MPS since it uses standard PyTorch operations
-- For small models and datasets like DVS128 (1464 samples), MPS provides meaningful speedup over CPU
-- For large-scale experiments, an NVIDIA GPU is strongly recommended
-
-**Unified memory advantage:** Apple Silicon's unified memory means no separate GPU VRAM limit -- the GPU shares system RAM. An M3 Pro with 36GB can handle larger batches than a discrete GPU with 12GB VRAM.

@@ -26,3 +26,31 @@ The most interesting insight: SNN generative tasks are no longer just theoretica
 | **IML-Spikeformer** (Input-aware Multi-Level Spiking Transformer) | 2025 | IEEE TNNLS | **LibriSpeech-960, AISHELL-1** | **WER 3.1%/3.4% (dev/test) -- comparable to ANN Transformer; 4.64x energy reduction** |
 
 ### Best results so far
+
+- **Keyword/Command Recognition (GSC v2):** ~95% accuracy (SpikeSCR with knowledge distillation, 2024)
+- **Large Vocabulary Continuous ASR (LibriSpeech-960):** WER 3.1%/3.4% (IML-Spikeformer, 2025) -- this is genuinely competitive with ANN transformers
+- **TIMIT Phone Recognition:** PER ~18.7% (comparable to ANN baseline with same architecture)
+- **Energy Efficiency:** 4-5x reduction vs ANN counterparts; as low as 0.68x total synaptic operations per frame
+
+### How do SNNs compare with conventional models?
+
+| Model | LibriSpeech test-clean WER | Type |
+|-------|---------------------------|------|
+| Whisper Large-v3 | ~2.0% | ANN (Transformer) |
+| Wav2Vec 2.0 Large | ~2.3% | ANN (Self-supervised) |
+| Conformer (Google) | ~2.1% | ANN (Conformer) |
+| **IML-Spikeformer** | **~3.4%** | **SNN (Spiking Transformer)** |
+| Earlier SNN models (2020) | ~10-15% | SNN (RNN-based) |
+
+SNNs are now within 1-1.5% WER of SOTA ANNs on LibriSpeech, which is honestly pretty impressive. But this is with the very latest architectures (2025). Earlier SNN models have a 5-10% gap.
+
+### Datasets used
+- Google Speech Commands v1/v2 (keyword spotting, most common)
+- TIMIT (phone recognition)
+- LibriSpeech (large vocabulary continuous)
+- AISHELL-1 (Mandarin)
+- Spiking Heidelberg Digits (SHD) -- neuromorphic audio dataset
+- Spiking Speech Commands (SSC) -- neuromorphic version of GSC
+- TIDIGITS
+
+### Feasibility for undergrad thesis: HIGH

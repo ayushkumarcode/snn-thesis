@@ -138,3 +138,17 @@ despite Manchester being a major centre for neuromorphic computing (SpiNNaker, F
 | 12 | ML ATR-FTIR Spectroscopy | Pal chowdhury et al. | 2022 | Dataset | LOW (ML archaeology) | No (PhD thesis) |
 | 13 | Hyperspectral images | Foster et al. | 2022 | Dataset | LOW (Vision dataset) | No (Research) |
 | 14 | Power network training data | Noebels et al. | 2021 | Dataset | LOW (ML for power) | No (Research) |
+| 15 | ECG-X AI for ECG | Hughes-Noehrer, Jay | 2024 | Online resource | LOW (AI in healthcare) | No (Research) |
+
+---
+
+## follow-ups if i still need Manchester undergrad thesis projects
+
+1. Manchester eScholar (https://www.research.manchester.ac.uk/) for electronic theses
+2. contact the School of Engineering directly about 3rd-year project repos
+3. contact Furber's APT group for undergrad project records
+4. contact Casson's Non-Invasive Bioelectronics Lab for BCI/EEG undergrad projects
+5. search other UK university Figshare portals (Loughborough, Southampton may use Figshare for student theses)
+6. search the broader Figshare.com -- some students may upload to the general platform
+7. GitHub search for Manchester student repos on neuromorphic topics
+8. check IEEE Xplore and conference proceedings for undergrad papers

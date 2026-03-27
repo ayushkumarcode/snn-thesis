@@ -68,20 +68,20 @@ Output:   spk_out: (T, B, 50)  mem_out: (T, B, 50)
 - Threshold = 1.0
 - Surrogate: fast sigmoid (slope=25), following snnTorch defaults. Systematic ablation of all 8 surrogates in 4.3.
 
+**AdaptiveAvgPool issue:** PyTorch's AdaptiveAvgPool2d doesn't work on Apple MPS. AvgPool2d(kernel=(4,6)) achieves the same reduction from (16,54) -> (4,9) and is MPS-compatible. bit annoying but whatever
 
-**Parameters:** ~622K total (both SNN and ANN use identical weight counts, despite different neuron types).
+**Parameters:** ~622K total (both SNN and ANN same weight count despite different neuron types).
 
-### 3.3.2 ConvANN (Baseline)
+### 3.3.2 ConvANN (baseline)
 
-Architecturally identical to SpikingCNN with LIF neurons replaced by ReLU activations:
+Same architecture with LIF replaced by ReLU:
 ```
-Conv2d(1→32) → BN → MaxPool(2) → ReLU
-Conv2d(32→64) → BN → MaxPool(2) → ReLU
-AvgPool(4×6) → flatten
-Linear(2304→256) → ReLU → Linear(256→50)
+Conv2d(1->32) -> BN -> MaxPool(2) -> ReLU
+Conv2d(32->64) -> BN -> MaxPool(2) -> ReLU
+AvgPool(4x6) -> flatten
+Linear(2304->256) -> ReLU -> Linear(256->50)
 Output: logits (B, 50)
 ```
-
 ---
 
 ## 3.4 Spike Encoding Methods

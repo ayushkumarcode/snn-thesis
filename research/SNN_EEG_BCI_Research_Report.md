@@ -166,3 +166,31 @@ SNNs communicate through discrete spikes, which is what real neurons do. this cr
 - membrane potential and refractory periods naturally capture temporal structure in EEG
 
 this isn't just philosophical -- SNN architectures can leverage neuroscience knowledge about EEG generation to inform network design.
+
+### energy efficiency
+
+this is probably the strongest practical argument:
+
+- combra-lab SNN on Intel Loihi: 95% less energy per inference than DNNs on NVIDIA Jetson TX2
+- Spiking Conformer for seizure detection: 10x fewer operations than non-spiking equivalent
+- SyNSense Xylo: sub-milliwatt real-time epilepsy detection
+- SNNs use additions instead of multiplications (no MACs), and event-driven processing means energy only gets used during spike transmission
+
+this matters for BCI because wearable/implantable devices need to run on batteries for days or weeks. that's the kind of energy budget only neuromorphic computing can deliver. the brain runs on about 20W total -- SNNs on neuromorphic hardware approach this kind of efficiency.
+
+### real-time processing
+
+- SNNs process temporal information natively -- don't need to accumulate a window before processing
+- event-driven computation means asynchronous processing as spikes arrive
+- neuromorphic hardware (Loihi, SpiNNaker, Xylo, TrueNorth) enables parallel event-driven operations with minimal latency
+- critical for BCI where milliseconds matter (e.g., motor intent decoding for prosthetic control)
+
+### temporal dynamics
+
+EEG is inherently temporal, and SNNs handle this naturally:
+- spiking neurons maintain internal state (membrane potential) that integrates temporal info
+- no need for explicit temporal feature engineering or sliding windows
+- recurrent connections can capture long-range temporal dependencies
+- contrast with CNNs that treat EEG as quasi-static images and might miss temporal dynamics
+
+### compact models

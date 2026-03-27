@@ -264,31 +264,3 @@ accuracy = clf.score(test_features, test_labels)
 
 The thesis should NOT simply replicate Diehl & Cook (2015) on MNIST. That is indeed a 10-year-old result. The thesis needs a novel angle (see Section 6).
 
-### 5.4 The Narrative Advantage
-
-"Biologically plausible learning" is an excellent thesis narrative because:
-- It connects to neuroscience (interdisciplinary appeal)
-- It connects to energy-efficient AI (practical relevance)
-- It connects to neuromorphic hardware (cutting-edge technology)
-- It has a clear research question: "How well can the brain's learning rule work for machine learning tasks?"
-- It produces visually compelling results (learned filters look like Gabor filters or digit templates)
-- Examiners find the biological angle intellectually interesting
-
----
-
-## 6. What Would Make an STDP Project Interesting in 2026?
-
-### 6.1 Ranked Project Ideas (Best to Good)
-
-#### Tier 1: Strongest Novel Angles
-
-**Idea A: STDP on Event-Camera (DVS) Data -- "Learning the Way the Brain Sees"**
-- **Why novel:** DVS cameras produce asynchronous spike-like events -- a natural match for STDP's temporal learning rule. Most DVS classification work uses surrogate gradients, not STDP. There is a gap.
-- **What to do:** Train an STDP-based CSNN on N-MNIST or DVS128 Gesture using BindsNET or SpykeTorch. Compare STDP-learned features vs. random features vs. surrogate-gradient features.
-- **Datasets:** N-MNIST (neuromorphic MNIST), DVS128 Gesture (11 gesture classes), CIFAR10-DVS
-- **Expected results:** STDP should achieve 90-95% on N-MNIST, 80-90% on DVS128 Gesture with a good architecture
-- **Why examiners will like it:** Natural fit between data modality and learning rule; tells a coherent biological story
-- **Feasibility:** HIGH -- Tonic library handles data loading; BindsNET/SpykeTorch handle STDP
-
-**Idea B: Three-Factor Learning (Reward-Modulated STDP) for RL Tasks**
-- **Why novel:** Standard STDP is unsupervised. Adding a dopamine-like reward signal creates three-factor learning: pre-synaptic activity x post-synaptic activity x reward. This is how the brain is believed to do reinforcement learning. A 2025 review in Patterns calls this "a crucial extension of traditional STDP."

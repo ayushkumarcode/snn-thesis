@@ -82,12 +82,7 @@ Near-chance. This is a **negative result** -- i expected burst to do better hone
 
 ### 4.2.7 phase coding
 
-
-### 4.2.7 Phase Coding
-
-Phase encoding fires each neuron exactly once at timestep $t = \lfloor(1 - x_i)(T-1)\rfloor$, where $x_i \in [0,1]$ is the pixel intensity. High intensity → early spike (timestep 0); low intensity → late spike (timestep 24); exactly zero → silent. Unlike latency encoding, phase maps intensity linearly and distributes spikes uniformly across the full T=25 window.
-
-**5-fold results:**
+Phase fires each neuron exactly once at t = floor((1-x_i)(T-1)). High intensity = timestep 0, low = timestep 24, zero = silent. Unlike latency, phase maps linearly and distributes spikes uniformly across full T=25.
 
 | Fold | Best Acc | Best Epoch | Total Epochs |
 |------|----------|------------|--------------|
@@ -96,6 +91,11 @@ Phase encoding fires each neuron exactly once at timestep $t = \lfloor(1 - x_i)(
 | 3 | 25.00% | 15 | 25 |
 | 4 | 24.25% | 29 | 39 |
 | 5 | 26.75% | 30 | 40 |
+| **Mean** | **24.15% +/- 1.66%** | | |
+
+**Key finding:** phase (24.15%) tied with rate (24.00%), within 0.15 pp. Most surprising result in the encoding comparison.
+
+**Why phase ~ rate despite different format:** rate provides ~6-7 spikes/neuron (T=25, p~0.25), phase provides exactly 1. Despite 6-7x fewer spikes, same accuracy. Explanation: phase deterministically maps intensity to time, preserving full magnitude ordering without stochastic noise. Rate spreads the same info across multiple noisy spikes. At T=25 these two representations have equivalent discriminative capacity.
 | **Mean ± Std** | **24.15% ± 1.66%** | — | — |
 
 **Key finding:** Phase coding (24.15% ± 1.66%) is essentially tied with rate coding (24.00% ± 1.90%), within 0.15 pp — within the measurement precision of 5-fold CV. This is the most surprising result among the encoding comparisons.

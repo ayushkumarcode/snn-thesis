@@ -334,3 +334,31 @@ for epoch in range(1):
         net.train()
         spk_rec, mem_rec = forward_pass(net, data, num_steps)
         loss = loss_fn(spk_rec, targets)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        if i % 50 == 0:
+            acc = SF.accuracy_rate(spk_rec, targets)
+            print(f"Epoch {epoch}, Iter {i}, Loss: {loss.item():.4f}, Acc: {acc*100:.2f}%")
+```
+
+### Key Design Decisions
+
+**Surrogate selection:**
+```python
+spike_grad = surrogate.fast_sigmoid(slope=25)    # recommended
+spike_grad = surrogate.atan(alpha=2.0)            # default if unspecified
+spike_grad = surrogate.sigmoid(slope=25)          # classic
+spike_grad = surrogate.custom_surrogate(my_fn)    # user-defined
+```
+
+**Loss functions:**
+```python
+loss_fn = SF.ce_rate_loss()       # cross-entropy on spike counts (rate coding)
+loss_fn = SF.mse_count_loss()     # MSE on spike counts
+loss_fn = SF.ce_temporal_loss()   # cross-entropy on first spike time
+```
+
+**Neuron models:**
+```python
+snn.Leaky(beta=0.5, spike_grad=spike_grad)           # LIF (most common)

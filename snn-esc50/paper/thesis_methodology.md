@@ -138,20 +138,20 @@ where y_pop is a {0,1}^500 target vector. Classification: argmax of total spike 
 **Batch size:** 32
 **Loss (SNN):** per-timestep CE on membrane potentials, summed over T:
 $$\mathcal{L} = \sum_{t=1}^{T} \text{CE}(\text{mem}_t, y)$$
-**Loss function (ANN):** Standard cross-entropy on logits.
-**Inference (SNN):** Predicted class = $\arg\max \sum_t \text{mem}_t$ (summed membrane potential vote).
+Follows snnTorch Tutorial 5, gives gradient flow through all timesteps.
+**Loss (ANN):** standard CE on logits.
+**Inference (SNN):** predicted class = argmax of summed membrane potential across T.
 
-**Hardware:** Apple M-series (MPS backend) for local runs; NVIDIA A100 on CSF3 cluster for 5-fold cross-validation.
+**Hardware:** MPS (Apple Silicon) locally; A100 on CSF3 for 5-fold CV.
 
-### Data Augmentation
+### data augmentation
 
-Two augmentations applied stochastically to training data only:
-1. **SpecAugment** (Park et al. 2019): 2 frequency masks (width F=8 mel bins each) + 2 time masks (width T=20 frames each), applied to the 2D mel spectrogram tensor
-2. **TimeShift**: random cyclic shift of ±10% of total time frames (±21 frames at 216 total), applied at the audio level before spectrogram computation
+Two augmentations on training data only:
+1. **SpecAugment** (Park et al. 2019): 2 freq masks (F=8 mel bins) + 2 time masks (T=20 frames), applied to 2D spectrogram
+2. **TimeShift**: random cyclic shift +/-10% of frames (+/-21 frames), applied at audio level before spectrogram
 
----
+note: augmentation turned out to be a negative result -- see chapter 4
 
-## 3.6 SpiNNaker Deployment
 
 ### 3.6.1 Architecture Constraint
 

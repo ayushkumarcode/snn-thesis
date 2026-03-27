@@ -390,3 +390,31 @@ some things that haven't been done yet that could be interesting:
 
 | Finding | Confidence | Source Quality |
 |---------|------------|---------------|
+| SHD SOTA is ~96.4% | HIGH | Multiple recent papers agree |
+| SSC SOTA is ~85.98% | HIGH | SpikCommander paper with detailed tables |
+| ANN baselines (GRU 90.4%, CNN 92.4% on SHD) | HIGH | Original dataset paper + sparch paper |
+| SNNs beat ANNs on SHD/SSC | HIGH | Consistent across multiple papers since 2024 |
+| SHD trainable in minutes on single GPU | HIGH | Spyx benchmarks + multiple framework docs |
+| snnTorch is most beginner-friendly | HIGH | Tutorial quality, documentation, community |
+| No undergrad SHD project exists publicly | MEDIUM-HIGH | Searched GitHub pretty thoroughly, but private projects might exist |
+| Energy efficiency claims (5-100x) | MEDIUM | Varies hugely by hardware platform and methodology |
+| Feasibility for 3rd year thesis | HIGH | Small dataset, available tools, multiple baselines |
+
+---
+
+## 11. Sources
+
+### Datasets
+- [Zenke Lab SHD/SSC page](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
+- [IEEE DataPort](https://ieee-dataport.org/open-access/heidelberg-spiking-datasets)
+- [Papers with Code SHD Benchmark](https://paperswithcode.com/sota/audio-classification-on-shd)
+
+### Key Papers
+- [Cramer et al. 2020 (SHD/SSC dataset)](https://arxiv.org/abs/1910.07407)
+- [Bittar & Garner 2022 (sparch baseline)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.865897/full)
+- [Hammouamri et al. 2024 ICLR (DCLS-Delays)](https://openreview.net/forum?id=4r2ybzJnmN)
+- [SpikCommander 2025](https://arxiv.org/abs/2511.07883)
+- [SE-adLIF 2024](https://arxiv.org/html/2408.07517)
+- [Pfa-SNN 2025](https://www.sciencedirect.com/science/article/abs/pii/S0893608025000334)
+- [MCRE 2025](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5534158)
+

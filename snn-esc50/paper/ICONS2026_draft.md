@@ -180,20 +180,20 @@ todo: should probably add a sentence about how this motivates the energy reducti
 
 **Why direct wins:** feeds continuous values every timestep; LIF does its own rate computation. Rate discards magnitude by Poisson sampling; latency loses temporal richness; delta amplifies noise.
 
+**Gap is feature learning, not SNN limitation.** PANNs confirms: given AudioSet features, SNN ~ ANN (92.50% vs 93.45%). The 16.7 pp scratch gap is from the SNN's difficulty learning discriminative conv filters from 1600 samples. Consistent with Deng & Gu [13].
+
+**FC1 cancellation as co-design insight.** Standard conv SNN architectures (conv -> pool -> FC) aren't directly deployable on spike-only hardware without AvgPool removal. Novel, practically important constraint. Option A (MaxPool retraining) confirms fix: fc1_binary_fraction=1.000, threshold=3.0 gets 43.75% with 956 active/step.
+
+**Adversarial robustness.** The 14.9x advantage at FGSM eps=0.1 suggests binary thresholding provides free robustness. Implications for audio security at the edge.
 
 ---
 
-## 7. Discussion
+## 8. Conclusions
 
-**Why does direct encoding win?** Direct encoding feeds continuous spectrogram values at every timestep; the LIF neurons perform their own internal rate computation via membrane potential dynamics. Rate coding discards magnitude by Poisson sampling; latency discards temporal richness; delta amplifies noise. The SNN learns a richer internal representation when given continuous inputs.
-
-**The accuracy gap is a feature-learning gap, not a SNN limitation.** The PANNs+SNN experiment confirms: given the same AudioSet-pretrained features, SNN and ANN achieve near-identical accuracy (92.50% vs 93.45%). The 16.7 pp gap in scratch training is caused by the SNN's difficulty learning discriminative conv filters from a small dataset (1,600 training samples per fold). This is consistent with Deng & Gu [13], who show SNN-ANN gaps narrow with better feature extraction.
-
-**SpiNNaker FC1 cancellation as a hardware-software co-design insight.** The failure of Option C reveals a fundamental constraint: standard convolutional SNN architectures (conv → pool → FC) are not directly deployable on spike-only hardware without AvgPool removal or architecture redesign. This is a novel, practically-important insight for the SNN deployment community. Validation: replacing AvgPool2d with MaxPool2d and retraining (Option A, fold 4 threshold sweep) confirms fc1_binary_fraction=1.000 for all LIF thresholds tested, with threshold=3.0 achieving 43.75% accuracy and 956 FC1 active inputs/step — theoretically unblocking full SpiNNaker FC1+FC2 deployment.
-
-**Adversarial robustness.** The dramatic robustness difference (14.9× under FGSM ε=0.1) suggests binary thresholding provides free robustness to gradient-based attacks. This has implications for audio security applications where adversarial robustness matters.
+First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collapsing to <1 pp with AudioSet pretraining (92.50% vs 93.45%). SNNs show 14.9x greater adversarial robustness under FGSM. Deployed on SpiNNaker via FC2-only hybrid: 43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp, 64.5% agreement) -- first neuromorphic deployment for environmental sound. NeuroBench: 968 +/- 37 nJ (SNN, 1.08M ACs) vs 454 +/- 11 nJ (ANN, 101K MACs) in simulation. Systematic encoding comparison establishes direct as the winner. Future work: SpiNNaker2, STDP pre-training, larger benchmarks.
 
 ---
+
 
 ## 8. Conclusions
 

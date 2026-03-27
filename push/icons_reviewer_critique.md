@@ -26,3 +26,12 @@ did a mock review of our paper to anticipate what reviewers will say.
 1. **relative robustness ratio** -- ADDED to paper (SNN 30.5% vs ANN 4.4% retained)
 2. **clean accuracy discrepancy** -- CLARIFIED in paper
 3. **full 7x7 transfer matrix** -- exists in results, could add to appendix
+
+## Minor Issues Fixed
+- removed commented-out supervisor placeholder
+- flagged per-class sample size limitation for SpiNNaker analysis
+
+## Issues NOT Fixed (acceptable for ICONS)
+- PGD std dev missing for some epsilons (only fold-4 PGD, not 5-fold)
+- surrogate ablation single-fold (acknowledged in threats)
+- title could be softened (keeping as-is for impact)

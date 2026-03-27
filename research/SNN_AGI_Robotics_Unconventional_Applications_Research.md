@@ -908,31 +908,3 @@ Based on cross-referencing with all existing research files in `/Users/kumar/Doc
 #### Candidate B: SNN for Image Denoising
 
 **Week-by-week plan:**
-- Week 1: Implement DnCNN ANN baseline, prepare Set12/BSD68 data
-- Week 2: Design and implement SNN denoising network in snnTorch
-- Week 3: Train with different noise levels (sigma=15,25,50), evaluate PSNR/SSIM
-- Week 4: Energy analysis, ablation studies, write-up
-
-**Novel angle:** Being one of the first snnTorch-based image denoising implementations. The SPIDEN paper uses custom code, not snnTorch.
-
-**Biggest risk:** The SNN architecture for denoising may require skip connections and multi-scale features that are non-trivial in snnTorch. May need to simplify to a shallower architecture.
-
-**snnTorch compatibility:** MODERATE -- snnTorch supports Conv2d layers but U-Net skip connections need custom work.
-
-#### Candidate C: SNN for Robotic Arm Control in MuJoCo
-
-**Week-by-week plan:**
-- Week 1: Set up MuJoCo Reacher-v4 in Gymnasium, implement ANN-DQN baseline
-- Week 2: Replace policy network with SNN, adapt training loop
-- Week 3: Hyperparameter tuning, convergence analysis
-- Week 4: Energy comparison, analysis, write-up
-
-**Novel angle:** snnTorch-based implementation (most papers use SpyTorch or custom). Could also compare different neuron models (LIF vs Synaptic vs Alpha).
-
-**Biggest risk:** SNN+RL convergence is notoriously difficult. May spend all of Week 3 on hyperparameter tuning without getting good results.
-
-**snnTorch compatibility:** MODERATE -- need to integrate snnTorch neurons into RL training loop (no built-in RL support).
-
----
-
-### What NOT to Pursue (and Why)

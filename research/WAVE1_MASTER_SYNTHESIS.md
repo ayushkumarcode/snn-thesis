@@ -334,3 +334,31 @@ The single strongest thesis option as of February 2026:
 ---
 
 ## 11. Wave 3 updates: alternative directions (Feb 2026)
+
+### 11.1 SNN for math proof verification -- dead end
+- Zero papers combining SNNs with formal proof verification
+- Fundamental mismatch: theorem proving = sequential symbolic generation (LLMs), not temporal pattern recognition (SNNs)
+- Current SOTA uses 671B-parameter transformers (DeepSeek-Prover-V2)
+- No SNN framework interfaces with Lean/Coq/Isabelle
+- Not worth pursuing
+
+### 11.2 SNN for satellite image classification -- viable but mediocre
+- ~15-25 papers exist already (not a virgin domain)
+- SNN4Space codebase (ESA-funded) achieves 95.07% on EuroSAT
+- Real neuromorphic hardware in orbit: Loihi on TechEdSat-13, BrainChip Akida on SpaceX
+- Datasets: EuroSAT (27K images, 10 classes), UC Merced (2.1K, 21 classes)
+- Strong narrative ("edge AI in space") but low natural SNN fit (standard RGB images, no temporal dynamics)
+- Weak Manchester/SpiNNaker connection
+- Functional but ESC-50 beats it on novelty, ECG beats it on narrative
+
+### 11.3 SNN for robot reflexes (simulation-only) -- viable and impressive
+- ~5-10 papers in SNN + legged locomotion (most from 2024-2025)
+- SpikeGym framework exists (SNN + RL for Isaac Gym, ~7 min training)
+- Very high natural SNN fit: biological reflexes literally use spiking neurons; 3.5ms latency
+- Strong Manchester/SpiNNaker connection: SpOmnibot, PushBot projects
+- ICRA 2026 workshop on neuromorphic field robotics; commercial neuromorphic robots shipping 2026
+- Risk: RL training instability + SNN debugging = double complexity; significant setup overhead
+- Most impressive option if you pull it off, but highest effort and risk. Only pursue if genuinely excited about robotics + RL.
+
+### 11.4 Final top 7 (all waves combined, February 2026)
+

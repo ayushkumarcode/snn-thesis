@@ -82,3 +82,31 @@ So basically LIF is the go-to for most practical stuff. Izhikevich if you need m
 
 ---
 
+## Paper 2: Toward Large-scale Spiking Neural Networks
+
+Han et al., arXiv, 2024
+https://arxiv.org/html/2409.02111v1
+
+This one is about what's actually working right now, state-of-the-art results, and what the open problems are. Basically thesis idea gold.
+
+### The Energy Argument
+
+- Human brain: ~20 watts for complex cognition
+- Training GPT-3: 1,287 MWh
+- SNNs promise to close this gap through event-driven, spike-based computation
+- But the promise only holds if we can match ANN accuracy -- otherwise the efficiency gain is meaningless
+
+### Training Methods -- Deep Dive
+
+#### ANN-to-SNN Conversion (probably the easiest entry point)
+1. Train a standard ANN (e.g., ResNet) normally
+2. Replace ReLU activations with integrate-and-fire neurons
+3. Apply weight normalization and threshold balancing
+4. Use reset-by-subtraction (not reset-to-zero) to preserve information
+
+Results are actually really good:
+- Fast-SNN on ImageNet: 95.42% ANN -> 95.51% SNN (actually *improved* which is wild)
+- CIFAR-10: 95.54% with just 4 timesteps
+- This could be a solid thesis approach -- leverage existing ANN training infrastructure
+
+#### Surrogate Gradient Training (direct SNN training)

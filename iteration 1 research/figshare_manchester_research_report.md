@@ -245,31 +245,3 @@ neuromorphic, spiking neural network, SNN, brain-inspired computing, event-drive
 
 ## RESEARCH GAPS AND EXPLANATION
 
-### Why No Undergraduate Theses Were Found:
-
-1. **The Manchester Figshare repository is NOT used for undergraduate theses.** It is a research data repository primarily for:
-   - Supplementary data/code for published journal papers
-   - Research datasets
-   - Conference presentations (mostly teaching/learning conferences)
-   - PhD thesis supplementary data
-   - Architectural model photos
-
-2. **Manchester undergraduate theses are likely stored elsewhere:**
-   - The University of Manchester Library thesis archive
-   - The university's own student project submission system (e.g., Blackboard, Turnitin)
-   - Department-specific repositories
-   - Manchester eScholar (https://www.research.manchester.ac.uk/) -- primarily for PhD/research theses
-   - Student GitHub repositories (not centrally indexed)
-
-3. **The entire repository contains only 833 articles** across all departments and groups. For a university the size of Manchester, this is a very small collection, confirming it is used selectively for research data deposits, not comprehensively for student work.
-
-4. **No items in the repository are tagged or categorized as "undergraduate" or "student project."** The "thesis" tag appears only in relation to PhD theses (e.g., Waters Thesis 2021, Bamber Thesis, Thom's PhD thesis).
-
-### Why Limited ML/AI/Neuromorphic Content:
-
-Despite Manchester being a major centre for neuromorphic computing (SpiNNaker project, Steve Furber's group), the Figshare portal has minimal AI/ML content because:
-
-1. Manchester's AI/ML researchers likely use other repositories (GitHub, Zenodo, arXiv)
-2. The BitBrain entry from Furber's group is the sole neuromorphic item
-3. Alex Casson's EEG/BCI work represents the bulk of neural engineering content
-4. The repository appears to be a relatively recent adoption (most items from 2021-2025)

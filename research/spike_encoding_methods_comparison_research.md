@@ -194,3 +194,31 @@ i went through every significant comparison study i could find and noted what ea
 
 **Study 3: Forno, Fra, Pignari, Urgese (2022)** -- "Spike encoding techniques for IoT time-varying signals" (Frontiers in Neuroscience)
 - Compared: rate-based variants, temporal coding variants
+- Datasets: Free Spoken Digit Dataset (audio), WISDM (IMU sensors)
+- Strengths: multi-modal (audio + sensor), IoT-focused
+- Gaps: limited encoding method coverage
+
+**Study 4: Bian, Donati, Magno (2024)** -- "Evaluation of Encoding Schemes on Ubiquitous Sensor Signal" (arXiv)
+- Compared: Rate variants, TTFS variants, Binary, Multi-threshold Delta
+- Dataset: RecGym (IMU activity recognition)
+- Strengths: most diverse metric set, includes deployment metrics, includes binary
+- Gaps: single dataset (IMU only), no phase/burst/population
+
+**Study 5: Plank et al. (2022)** -- "Evaluating Encoding and Decoding Approaches for Spiking Neuromorphic Systems" (ICONS 2022, ACM)
+- Compared: Rate, Temporal, Population, Spike encoding
+- Also compared decoding approaches (voting, first-to-spike, etc.)
+- Tasks: classification, regression, control
+- Hardware: Caspian neuromorphic processor
+- Strengths: includes decoding (not just encoding), multi-task, actual neuromorphic hardware
+- Gaps: specific to Caspian architecture
+
+**Study 6: Vasilache et al. (2025)** -- "A PyTorch-Compatible Spike Encoding Framework" (arXiv)
+- Compared: LIF, Step Forward, PWM, BSA
+- Test signals: synthetic (vibration, trended, rectangular, sinusoidal)
+- Strengths: open-source PyTorch framework, hardware-oriented
+- Gaps: signal reconstruction only (no classification), synthetic signals only
+
+**Study 7: IEEE Sensors Journal (2023)** -- "Comparison and Selection of Spike Encoding Algorithms for SNN on FPGA"
+- Compared: sliding window, PWM-based, step-forward, BSA
+- Focus: FPGA implementation
+- Strengths: practical FPGA selection criteria

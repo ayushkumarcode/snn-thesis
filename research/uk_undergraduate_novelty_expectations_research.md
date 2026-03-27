@@ -24,31 +24,3 @@ The QAA Framework for Higher Education Qualifications (FHEQ) is the national ref
 
 **Key observation:** There is NO mention of "original contribution to knowledge" at Level 6. The focus is on *understanding*, *deploying existing techniques*, *devising arguments*, and *describing current research*. The closest it gets to originality is requiring graduates to "demonstrate self-direction and originality in tackling and solving problems" -- which means applying existing methods independently, NOT creating new knowledge.
 
-Source: [QAA FHEQ 2024](https://www.qaa.ac.uk/docs/qaa/quality-code/the-frameworks-for-higher-education-qualifications-of-uk-degree-awarding-bodies-2024.pdf)
-
-### Level 7 -- Master's Degree (MSc/MEng)
-
-> "Master's degrees are awarded to students who have demonstrated: a systematic understanding of knowledge, and a critical awareness of current problems and/or new insights, much of which is at, or informed by, the forefront of their academic discipline, field of study or area of professional practice; a comprehensive understanding of techniques applicable to their own research or advanced scholarship; **originality in the application of knowledge**, together with a practical understanding of how established techniques of research and enquiry are used to create and interpret knowledge in the discipline."
-
-**Key observation:** Level 7 introduces "originality in the application of knowledge" -- but this is still *application* of knowledge, not *creation* of new knowledge.
-
-Source: [QAA Characteristics Statement -- Master's Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-masters-degrees)
-
-### Level 8 -- Doctoral Degree (PhD)
-
-> "Doctoral degrees are awarded to students who have demonstrated: **the creation and interpretation of new knowledge, through original research or other advanced scholarship, of a quality to satisfy peer review, extend the forefront of the discipline, and merit publication**; a systematic acquisition and understanding of a substantial body of knowledge which is at the forefront of an academic discipline or area of professional practice; the general ability to conceptualise, design and implement a project for the generation of new knowledge."
-
-**Key observation:** ONLY at Level 8 does the QAA require "creation of new knowledge through original research" that must "extend the forefront of the discipline" and "merit publication." This is the fundamental distinction.
-
-Source: [QAA Characteristics Statement -- Doctoral Degrees](https://www.qaa.ac.uk/the-quality-code/characteristics-statements/characteristics-statement-doctoral-degrees)
-
-### Summary Table: QAA Originality Requirements by Level
-
-| Level | Qualification | Originality Requirement |
-|-------|-------------|------------------------|
-| 6 | Bachelor's (BSc/BEng) | "Self-direction and originality in tackling and solving problems" -- i.e., applying existing methods independently |
-| 7 | Master's (MSc/MEng) | "Originality in the application of knowledge" -- i.e., applying knowledge in original ways |
-| 8 | Doctoral (PhD) | "Creation and interpretation of new knowledge through original research" that "extends the forefront of the discipline" and "merits publication" |
-
----
-

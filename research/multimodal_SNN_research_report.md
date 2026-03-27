@@ -166,3 +166,31 @@ CODE COMPLEXITY: ~300-500 lines Python (snnTorch/SpikingJelly)
 | Single-modality SNN (MNIST) | 50K-200K | <1 hour | 150-250 | Beginner |
 | **Multimodal SNN (digit fusion)** | **100K-500K** | **2-6 hours** | **300-500** | **Intermediate** |
 | Audio-visual SNN (CREMA-D) | 1M-5M | 1-2 days | 800-1500 | Advanced |
+| RGB-Event object detection | 5M-20M | Days-weeks | 2000+ | PhD-level |
+
+### Why It's Manageable
+
+1. **Both datasets are small**: N-MNIST is 28x28, SHD is 700 channels
+2. **Both are pre-spiked**: no custom encoding needed, data is already spikes
+3. **Late concatenation is trivial**: just `torch.cat([visual_features, audio_features], dim=1)`
+4. **Well-established training**: surrogate gradients + cross-entropy loss
+5. **Existing code**: S-CMRL on GitHub, snnTorch tutorials, multiple papers
+
+---
+
+## 6. Bibliography (2023-2026)
+
+### Core Multimodal SNN Papers
+
+1. **Gu et al. (2023)** - "Transformer-Based Spiking Neural Networks for Multimodal Audiovisual Classification" - IEEE TCDS. [Link](https://ieeexplore.ieee.org/iel7/7274989/10552653/10293172.pdf)
+
+2. **Wang et al. (2023-2025)** - "SSTFormer: Bridging Spiking Neural Network and Memory Support Transformer for Frame-Event based Recognition" - IEEE TCDS. [Link](https://arxiv.org/abs/2308.04369)
+
+3. **Bjorndahl et al. (Aug 2024)** - "Digit Recognition using Multimodal Spiking Neural Networks" - Submitted to IEEE ICASSP 2025. [Link](https://arxiv.org/abs/2409.00552) -- **most relevant for undergrad project**
+
+4. **MISNet (2024)** - "Towards Energy-efficient Audio-visual Classification via Multimodal Interactive Spiking Neural Network" - ACM TOMM. [Link](https://dl.acm.org/doi/10.1145/3721981)
+
+5. **Oikonomou et al. (Nov 2024)** - Survey on bio-inspired multimodal perception for robotics. [Link](https://arxiv.org/abs/2411.14147)
+
+6. **S-CMRL (Feb 2025)** - "Enhancing Audio-Visual Spiking Neural Networks through Semantic-Alignment and Cross-Modal Residual Learning." [Link](https://arxiv.org/abs/2502.12488)
+

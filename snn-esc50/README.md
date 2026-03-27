@@ -12,20 +12,20 @@ COMP30040 undergrad thesis, university of manchester. ayush kumar, march 2026.
 | ANN (baseline) | - | 63.85% | 3.07% |
 | SNN | direct | **47.15%** | 4.50% |
 | SNN | rate | 24.00% | 1.90% |
-| SNN | Rate | 24.00% | ±1.90% |
-| SNN | Latency | 16.30% | ±1.62% |
-| SNN | Delta | 7.25% | ±0.94% |
+| SNN | latency | 16.30% | 1.62% |
+| SNN | delta | 7.25% | 0.94% |
 
-All results from 5-fold cross-validation on ESC-50. Random chance = 2%.
-Training performed on NVIDIA A100-SXM4-80GB GPUs (University of Manchester CSF3 cluster).
+all 5-fold cross-validation on ESC-50. random chance = 2%.
+trained on NVIDIA A100-SXM4-80GB (CSF3 cluster).
 
-**Energy Analysis:** SNN uses 1,358M pJ vs ANN 314M pJ per sample in software simulation (4.3x more). Neuromorphic hardware deployment (SpiNNaker) in progress to measure real event-driven efficiency.
+energy: SNN uses 1,358M pJ vs ANN 314M pJ per sample in software sim (4.3x more). SpiNNaker neuromorphic deployment done -- see EXPERIMENT_LOG.md for the whole story.
 
-For detailed experiment documentation, see [EXPERIMENT_LOG.md](EXPERIMENT_LOG.md).
-
-## Setup
+## setup
 
 ```bash
+cd snn-esc50
+python -m venv .venv
+source .venv/bin/activate
 cd snn-esc50
 python -m venv .venv
 source .venv/bin/activate

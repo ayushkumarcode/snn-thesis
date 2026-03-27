@@ -40,20 +40,20 @@ download_esc50()
 train ANN baseline:
 ```bash
 python -m src.train --model ann
-
-### Train ANN Baseline
-
-```bash
-python -m src.train --model ann
 ```
 
-### Train SNN (with encoding)
-
+train SNN with different encodings:
 ```bash
-python -m src.train --model snn --encoding direct   # Best performing
+python -m src.train --model snn --encoding direct   # best one
 python -m src.train --model snn --encoding rate
 python -m src.train --model snn --encoding latency
 python -m src.train --model snn --encoding delta
+```
+
+evaluate:
+```bash
+python -m src.evaluate --model snn --encoding direct
+python -m src.evaluate --model ann
 ```
 
 ### Evaluate

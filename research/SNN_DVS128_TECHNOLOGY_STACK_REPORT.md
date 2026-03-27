@@ -201,31 +201,3 @@ epochs = 64
 lr = 0.1
 device = 'cuda:0'   # or 'mps' for Mac
 channels = 128
-
-# === Model ===
-net = parametric_lif_net.DVSGestureNet(
-    channels=channels,
-    spiking_neuron=neuron.LIFNode,
-    surrogate_function=surrogate.ATan(),
-    detach_reset=True
-)
-functional.set_step_mode(net, 'm')
-net.to(device)
-
-# === Dataset ===
-train_set = DVS128Gesture(root='./data/DVS128Gesture', train=True,
-                          data_type='frame', frames_number=T, split_by='number')
-test_set = DVS128Gesture(root='./data/DVS128Gesture', train=False,
-                         data_type='frame', frames_number=T, split_by='number')
-
-train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size,
-                                           shuffle=True, num_workers=4, pin_memory=True)
-test_loader = torch.utils.data.DataLoader(test_set, batch_size=batch_size,
-                                          shuffle=False, num_workers=4, pin_memory=True)
-
-# === Optimizer ===
-optimizer = torch.optim.Adam(net.parameters(), lr=lr)
-lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
-scaler = amp.GradScaler()  # For mixed precision
-
-# === Training ===

@@ -78,31 +78,3 @@ The field has produced a rich taxonomy of ANN-to-SNN knowledge distillation appr
 
 | Method | Venue | Year | Approach | Key Innovation |
 |--------|-------|------|----------|----------------|
-| Xu et al. (BKD) | CVPR 2023 | 2023 | ANN-SNN joint training with KD | Blurred KD: random blurred SNN features restore ANN features |
-| BKDSNN | ECCV 2024 | 2024 | Feature-level BKD | Outperforms prior SOTA by 4.51% on ImageNet (CNN topology) |
-| SAKD (Qiu et al.) | Neural Networks 178 | 2024 | Self-architectural KD | Bilevel: (1) transfer ANN weights to SNN, (2) mimic ANN behavior |
-| Efficient Logit-based KD | ICML 2025 | 2025 | Temporal-wise logit distillation | Full-range timestep deployment without retraining |
-| SAMD + NLD (Liu et al.) | arXiv 2025 | 2025 | Saliency-scaled activation map + noise-smoothed logits | Addresses continuous-vs-sparse distribution mismatch |
-| HTA-KL | arXiv 2025 | 2025 | Head-tail aware KL divergence | Balances high- and low-probability regions in distillation |
-| Enhanced Self-Distillation | NeurIPS 2025 | 2025 | Rate-based self-distillation | Projects SNN firing rates onto lightweight ANN branches |
-| Cross KD (CKD) | arXiv 2025 | 2025 | Bidirectional ANN-SNN transfer | Semantic similarity + sliding replacement for cross-modality |
-| Temporal Separation + Entropy | arXiv 2025 | 2025 | Temporal entropy regularization | Separates knowledge along temporal dimension |
-| BSD | arXiv 2025 | 2025 | Bidirectional spike-based distillation | Biologically plausible; stimulus-to-concept encoding |
-
-### 2.2 Key Distillation Findings
-
-**Distribution Mismatch Problem:**
-The fundamental challenge identified across multiple 2025 papers is that ANN outputs are continuous while SNN outputs are sparse and discrete. Straightforward alignment of intermediate features and logits neglects this architectural difference (Liu et al., 2025). Solutions include:
-- Gaussian noise smoothing of SNN logits (NLD)
-- Saliency-scaled activation maps (SAMD)
-- Blurred feature restoration (BKD, BKDSNN)
-
-**Self-Architectural Distillation:**
-SAKD (Qiu et al., 2024) and Spiking Vocos (2025) both use the *same architecture* for teacher ANN and student SNN, which avoids the capacity gap problem. This is directly relevant to the thesis: the PANNs+SNN head and PANNs+ANN head have the same 3-layer architecture, differing only in LIF vs ReLU activation. The 0.95pp gap validates that self-architectural transfer is highly effective.
-
-**Typical Accuracy Recovery:**
-- BKDSNN (ECCV 2024): SNN reaches within 0.93-4.51pp of ANN on ImageNet depending on architecture
-- SAKD (2024): SNN achieves comparable performance to ANN teacher using same architecture
-- Efficient Logit KD (ICML 2025): Near-ANN performance across full range of timesteps
-
-### 2.3 Distillation for Audio

@@ -222,3 +222,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - https://github.com/DerrickL25/SNN_Gesture_Classification
 - Neuromorphic gesture classification from DVS128 event camera data
 - snnTorch, PyTorch. DVSGesture from IBM (1,077 samples, 11 gesture classes, 29 subjects).
+- Good focused project using real neuromorphic data. Single Jupyter notebook.
+- 5 stars
+
+### ANN vs SNN Comparison (Course Project)
+- https://github.com/NicolaCST/ANN-vs-SNN
+- Comparing performance and power consumption between ANNs and SNNs
+- Python, Jupyter. **Report: VCS_doc.pdf in repo.**
+- Simple course project. Good starting point for understanding the tradeoffs.
+- 0 stars, 3 commits
+
+### RL-SNN-Quadrupeds (UC Berkeley EECS206B Final Project)
+- https://github.com/tganamur/RL-SNN-Quadrupeds
+- Teaching quadruped robots to walk using SNNs and RL
+- MuJoCo, Stable-baselines3, PPO
+- MLP learned ape-like gait; SNN achieved standing but not walking. First SNN-based RL on physical quadruped.
+- Ambitious but partially successful. Real hardware deployment (PuppyPi robot).
+- 13 stars
+
+### Convolutional SNN for Speech Recognition
+- https://github.com/verrannt/snn_speechrec
+- Unsupervised convolutional SNN for speech recognition using STDP
+- Python, PyTorch, scikit-learn (SVM classifier). TIDIGITS.
+- 92% accuracy (vs 97.5% in reference paper)
+- **Report: Report.pdf with analysis of implementation differences**
+- 9 stars, 140 commits
+
+### Backprop for Amplitude Classification using SNNs
+- https://github.com/aravsi77/spiking_neural_network_thesis

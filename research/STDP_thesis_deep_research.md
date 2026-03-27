@@ -236,31 +236,3 @@ accuracy = clf.score(test_features, test_labels)
 
 **Evidence that STDP is NOT old news:**
 
-| Signal | Evidence | Year |
-|---|---|---|
-| **Top venue publication** | NCG with Supervised STDP accepted at **NeurIPS 2024** | 2024 |
-| **Top venue publication** | Dendritic Localized Learning (STDP-adjacent) at **ICML 2025** | 2025 |
-| **Comprehensive review** | Three-factor learning in SNNs review in **Patterns (Cell Press)** | Nov 2025 |
-| **Comprehensive review** | Modulated STDP review in **Neurocomputing** | Feb 2025 |
-| **Nature publication** | Unsupervised post-training learning with triplet STDP in **Scientific Reports** | May 2025 |
-| **Nature publication** | TEXEL neuromorphic chip with on-chip STDP in **Nature Communications** | 2025 |
-| **Hardware integration** | Intel Loihi 2 natively supports STDP and three-factor rules | Ongoing |
-| **Active GitHub repos** | SpikeNN (NCG code), ngc-learn v3, BindsNET all maintained | 2024-2025 |
-| **New frameworks** | Inferno (Sept 2024) -- new SNN framework with extensible plasticity | 2024 |
-
-### 5.2 Why STDP Has Renewed Relevance in 2026
-
-1. **Energy crisis in AI:** Training GPT-4-class models costs millions of dollars in electricity. STDP-based local learning on neuromorphic hardware consumes 3-5 orders of magnitude less energy per synaptic operation (20-50 pJ vs. microjoules on GPUs).
-
-2. **On-device / edge learning:** Backpropagation requires storing full computation graphs and performing backward passes -- impossible on tiny edge devices. STDP is purely local: each synapse only needs information from its two connected neurons. This enables on-chip, online learning.
-
-3. **Privacy-preserving AI:** STDP enables on-device learning without sending data to the cloud, which is increasingly important under GDPR and similar regulations.
-
-4. **Neuromorphic hardware maturation:** Loihi 2, SpiNNaker2, BrainScaleS-2, and memristive chips all implement STDP natively. The hardware exists; now researchers need algorithms.
-
-5. **Biological understanding:** Neuroscience is discovering increasingly complex STDP variants (dendritic STDP, voltage-dependent plasticity, heterosynaptic plasticity). Computational models of these are needed.
-
-### 5.3 What Would Make It "Old News"
-
-The thesis should NOT simply replicate Diehl & Cook (2015) on MNIST. That is indeed a 10-year-old result. The thesis needs a novel angle (see Section 6).
-

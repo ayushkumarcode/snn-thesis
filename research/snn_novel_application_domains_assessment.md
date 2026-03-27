@@ -194,3 +194,31 @@ no GitHub repos found for SNN + environmental monitoring specifically.
 ---
 
 ### 9. SNN for Astronomy (Transient Detection)
+
+**papers: about 5-8**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| SNN for RFI Detection in Radio Astronomy | 2024 | First from-scratch SNN on real radio astronomy data |
+| Neuromorphic Astronomy Pipeline | 2025 | Full pipeline on SynSense Xylo chips at 100mW |
+| Impact of Neuromorphic on Radio Telescopes | 2025 | Vision paper |
+| SNN for Anomaly Detection at CERN | 2021 | Particle physics anomaly detection |
+| UWA PhD Project: SNNs for Transients | Active | Ongoing PhD project |
+
+**why SNNs make sense:** radio telescope data is temporal (time-domain astronomy). RFI events are transient -- natural for spike-based detection. data volumes are enormous (SKA: ~1 TB/s), so energy efficiency matters. demonstrated 100mW on neuromorphic hardware.
+
+**feasibility:** LOW-MODERATE. requires domain knowledge. LOFAR data is public but complex. RFI detection paper provides a methodology to follow. narrow scope possible: RFI detection on simulated data.
+
+**novelty:** HIGH. only 5-8 papers total. gravitational wave detection with SNNs: zero papers. fast radio burst detection: zero papers.
+
+**verdict: moderate -- very novel but needs astronomy knowledge**
+
+---
+
+### 10. SNN for Drug Discovery / Molecular Property Prediction
+
+**papers: about 2-3**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| P450 Bioactivity Screening with SNNs | 2025 | SNN for enzyme bioactivity from molecular fingerprints |

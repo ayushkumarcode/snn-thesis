@@ -110,20 +110,20 @@ Explained by information preservation:
 | Encoding | Spikes/neuron | Deterministic | Preserves magnitude | Fills window |
 |----------|--------------|---------------|--------------------|----|
 | Direct | T (continuous) | Yes | Full | Yes |
-| Encoding | Spikes/neuron/window | Deterministic | Preserves magnitude | Fills window uniformly |
-|----------|---------------------|---------------|--------------------|-----------------------|
-| Direct | T (continuous) | Yes | Full | Yes |
 | Phase | 1 | Yes | Timing proportional | Uniform |
-| Rate | ~T×p (stochastic) | No | Average | Uniform (noisy) |
-| Population | ~T×p (stochastic, output: 10 neurons/class) | No | Average (rate input) | Uniform (noisy) |
+| Rate | ~Txp (stochastic) | No | Average | Uniform (noisy) |
+| Population | ~Txp (rate input) | No | Average | Uniform (noisy) |
 | Latency | 1 | Yes | Timing proportional | Clustered early |
-| Delta | ~0 (for static) | Yes | Change only | N/A |
-| Burst | 0–5 | Yes | Count proportional | Front-loaded |
+| Delta | ~0 (static) | Yes | Change only | N/A |
+| Burst | 0-5 | Yes | Count proportional | Front-loaded |
 
-The fundamental insight is that **information preservation** (not biological plausibility) predicts SNN performance: encodings that preserve more of the original spectrogram structure achieve higher accuracy. The near-equality of rate (24.00%) and phase (24.15%) is the strongest evidence for this principle: both encodings faithfully represent the full intensity range and distribute signal across the complete temporal window, achieving identical accuracy despite using fundamentally different coding schemes (stochastic multi-spike vs. deterministic single-spike).
+The fundamental insight: **information preservation** (not biological plausibility) predicts SNN performance. The rate/phase near-equality is the strongest evidence -- both faithfully represent full intensity range across the complete window, achieving identical accuracy despite fundamentaly different coding schemes.
 
 ---
 
+## 4.3 surrogate gradient ablation
+
+**Setup:** 8 surrogates from snnTorch 0.9.4, fold 1, direct encoding, seed=42. ATan (alpha=2.0), FastSigmoid (slope=25), Sigmoid (slope=25), STE, Triangular, SpikeRateEscape, LSO (slope=0.1), SFS (slope=25).
 ## 4.3 Surrogate Gradient Ablation
 
 **Setup:** Eight surrogate gradient functions available in snnTorch 0.9.4 are evaluated on fold 1 of the direct encoding experiment (3 seeds per surrogate for CSF3; 1 seed for local preliminary): ATan (α=2.0), FastSigmoid (slope=25), Sigmoid (slope=25), Straight-Through Estimator (STE), Triangular, SpikeRateEscape, LSO (slope=0.1), and SFS (slope=25).

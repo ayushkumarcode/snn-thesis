@@ -222,3 +222,6 @@ Based on the data collected, the following patterns are clear:
 - https://x.com/CoinbaseDev/status/1985792129692811533
 - https://x.com/xuster/status/2020923920745103791
 - https://x.com/amiklas/status/1981420551752319477
+- https://www.garysguide.com/events?region=sf
+- https://www.ycombinator.com/blog/tag/yc-events
+- https://stanforddaily.com/2026/02/15/12th-annual-treehacks/

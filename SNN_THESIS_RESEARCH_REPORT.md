@@ -362,3 +362,31 @@ based on the title structure and cross-references, it covers four main pillars:
 **Pillar 4 -- Best Practices:**
 - implementation guidelines for practitioners
 - starting from first principles for accessibility
+- software tool recommendations
+
+### my take
+this paper would be most useful as an introductory reference -- it was specifically designed for newcomers. if i can get the PDF, it'd serve as a good starting point before diving into the more technical Han et al. paper.
+
+---
+
+<a name="frameworks"></a>
+## SNN frameworks comparison (2024-2025)
+
+### tier 1: recommended for thesis work
+
+#### snnTorch
+- **GitHub Stars:** 1,450+ | **Contributors:** 40 | **License:** MIT
+- **Latest Version:** 0.9.4 (February 16, 2025)
+- **Maintainer:** UCSC Neuromorphic Computing Group (Jason Eshraghian)
+- **Strengths:** best tutorials and documentation in the SNN ecosystem; 18 tutorials with Google Colab notebooks; PyTorch-based; GPU acceleration
+- **Neuron Models:** LIF, Lapicque's RC, Alpha, Synaptic Conductance
+- **Weakness:** limited integration with neuromorphic hardware; slower than SpikingJelly for large models
+- **Best For:** learning, prototyping, thesis projects where documentation matters
+
+#### SpikingJelly
+- **GitHub Stars:** 1,800+ | **License:** Open source
+- **Latest Requirement:** torch >= 2.2.0
+- **Maintainer:** Fangwei123456 (Peking University group)
+- **Strengths:** fastest framework (0.26s forward+backward with CuPy backend); full-stack toolkit; supports neuromorphic datasets, ANN2SNN conversion, surrogate gradients, and biologically plausible learning; up to 11x training speedup; published in Science Advances
+- **Weakness:** documentation primarily in Chinese (English docs available but less thorough); steeper learning curve
+- **Best For:** performance-critical research; deployment on neuromorphic chips; largest model training

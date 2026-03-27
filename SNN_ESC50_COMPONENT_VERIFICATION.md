@@ -142,31 +142,3 @@ S = librosa.feature.melspectrogram(
 )
 
 # Convert to log scale (decibels)
-S_dB = librosa.power_to_db(S, ref=np.max)
-# Shape: (128, ~862) -- 128 mel bands x time frames
-```
-
-Documentation: https://librosa.org/doc/main/generated/librosa.feature.melspectrogram.html
-
-### torchaudio approach (GPU-compatible)
-
-```python
-import torchaudio
-import torchaudio.transforms as T
-
-mel_transform = T.MelSpectrogram(
-    sample_rate=44100,
-    n_fft=1024,
-    hop_length=256,
-    n_mels=128,
-    f_min=20,
-    f_max=20000
-)
-
-waveform, sr = torchaudio.load('audio.wav')
-mel_spec = mel_transform(waveform)
-# Shape: torch.Size([1, 128, time_frames])
-
-# Convert to log scale
-log_mel = T.AmplitudeToDB()(mel_spec)
-```

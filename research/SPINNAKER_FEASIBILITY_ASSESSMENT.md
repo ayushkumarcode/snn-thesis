@@ -194,3 +194,31 @@ The standard approach is: train off-chip (snnTorch/PyTorch) -> load weights -> r
 - Weight precision: 16-bit fixed-point (SpiNNaker1), 8-bit integer (SpiNNaker2 via quantization)
 
 ### Timing
+
+- Delays: 1-144 timesteps (delays > 16 require automatic delay populations)
+- Timestep: configurable (typically 1.0ms)
+- Real-time: simulations run at biological real-time speed
+
+---
+
+## 4. SpiNNaker access at Manchester
+
+### SpiNNaker1 access (EBRAINS -- available now)
+
+This is the accessible option. The full SpiNNaker1 machine (1 million cores) is hosted at Manchester and accessible remotely via EBRAINS.
+
+How to get access:
+1. Register for a free EBRAINS account at [ebrains.eu](https://www.ebrains.eu/)
+2. Email `neuromorphic@humanbrainproject.eu` with your EBRAINS username
+3. They create a Collab for you with test quota and examples -- free of charge
+4. Access via Jupyter notebook at `spinn-20.cs.man.ac.uk` or via the EBRAINS portal
+5. Write PyNN scripts, submit via the job queue, results returned to you
+
+No physical lab access required. Everything is remote.
+
+Source: [EBRAINS Neuromorphic Getting Access](https://wiki.ebrains.eu/bin/view/Collabs/neuromorphic/Getting%20access/)
+
+### SpiNNaker2 access (restricted)
+
+- Single-chip boards exist but access is restricted
+- `py-spinnaker2` dependencies are in private repos

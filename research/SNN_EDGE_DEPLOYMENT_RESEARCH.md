@@ -306,3 +306,31 @@ a "deploy SNN on real hardware" thesis is not only feasible but represents a str
 ### path A: "SNN edge deployment benchmark" (strongest thesis)
 
 train SNN for DVS128 gesture recognition, deploy on multiple platforms, measure and compare.
+
+1. train SNN in snnTorch on DVS128 (GPU/Colab)
+2. deploy as optimized C on STM32 or Raspberry Pi
+3. deploy on FPGA via HLS (PYNQ-Z2 or Kria KV260)
+4. train equivalent CNN for same task
+5. deploy CNN on same platforms via TF Lite Micro
+6. measure accuracy, latency, power, memory for all
+7. analyze when SNNs offer advantages (or not)
+
+cost: $200-400 (PYNQ-Z2 + STM32 + USB power meter). timeline: 12-16 weeks. live demo with power measurements is very compelling.
+
+### path B: "FPGA SNN accelerator for DVS gestures" (more technical)
+
+1. train with quantization-aware training
+2. generate FPGA accelerator via Spiker+ or HLS
+3. deploy on PYNQ-Z2
+4. measure resources (LUTs, BRAMs, DSPs), power, latency
+5. explore design space: precision, neuron count, architecture
+
+cost: $150-200. timeline: 14-18 weeks.
+
+### path C: "SNN on microcontroller for edge AI" (most accessible)
+
+1. train on MNIST or N-MNIST
+2. convert to optimized C runtime
+3. deploy on STM32F4 or Arduino Portenta H7
+4. measure inference time, memory, power
+5. compare against TF Lite Micro CNN on same hardware

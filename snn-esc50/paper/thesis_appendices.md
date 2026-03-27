@@ -223,19 +223,19 @@ Source: `results/snn/maxpool/threshold_sweep_fold4.json`. threshold=3.0 recommen
 
 ### D.1 code repository
 
-## Appendix D: Reproducibility Statement
+All code, architectures, training scripts, analysis at:
 
-### D.1 Code Repository
+**[GitHub -- TBD upon submission]**
 
-All experiment code, model architectures, training scripts, and analysis notebooks are available at:
-
-**[GitHub repository — TBD upon submission]**
-
-The repository is organised as follows:
 ```
 snn-esc50/
-├── src/
-│   ├── models/         # SpikingCNN, ConvANN, SNN encodings
+  src/
+    models/         -- SpikingCNN, ConvANN, encodings
+    dataset.py      -- ESC-50 loading with librosa
+    train.py        -- training entry (5-fold CV)
+    evaluate.py     -- evaluation utils
+  experiments/
+    adversarial_robustness.py
 │   ├── dataset.py      # ESC-50 data loading with librosa pipeline
 │   ├── train.py        # Training entry point (5-fold CV)
 │   └── evaluate.py     # Evaluation utilities

@@ -276,31 +276,3 @@ Source: [The Student Room -- How important are undergrad dissertations in the UK
 | Edinburgh (SPS) | UG | A1 (90-100) | "Flair and originality"; "potentially publishable" |
 | Edinburgh (SPS) | UG | A3 (70-79) | "Creatively arrive at independent conclusions" |
 | QAA FHEQ | Level 6 | National standard | "Self-direction and originality in tackling and solving problems" (i.e., application, not creation) |
-| QAA FHEQ | Level 7 | National standard | "Originality in the application of knowledge" |
-| QAA FHEQ | Level 8 | National standard | "Creation of new knowledge through original research" |
-
----
-
-## 6. What This Means For Your Project
-
-### The Bottom Line
-
-For an undergraduate thesis project in the UK:
-
-1. **You do NOT need to invent something new.** You need to demonstrate that you can independently plan, execute, and evaluate a substantial technical project.
-
-2. **Applying existing methods competently is sufficient for a First Class mark.** If you implement a known SNN architecture on the DVS128 dataset, evaluate it rigorously, and write a clear, well-structured report -- that is a perfectly viable First Class project.
-
-3. **Originality is a bonus, not a requirement.** If your project happens to contain novel elements (e.g., a new way of preprocessing DVS data, or a creative combination of techniques), this will be rewarded -- but it is not expected.
-
-4. **What IS expected is:**
-   - Clear understanding of the problem domain and literature
-   - Sound technical implementation
-   - Rigorous evaluation with appropriate metrics
-   - Critical analysis of results (what worked, what didn't, why)
-   - Good project management and professional presentation
-   - Independent thinking and decision-making throughout
-
-5. **"Originality" at the undergraduate level means:** Thinking for yourself, making your own design decisions (rather than just following a tutorial), and showing that you understand the material deeply enough to apply it sensibly. It does NOT mean inventing a new algorithm or beating the state of the art.
-
----

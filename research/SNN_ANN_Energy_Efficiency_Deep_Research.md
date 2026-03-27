@@ -129,31 +129,3 @@ For your thesis, your measured 74.16% activation sparsity (NeuroBench) translate
 3. **Non-human Primate (NHP) Motor Prediction:** Fingertip velocity prediction from cortical recordings, R-squared metric
 4. **Chaotic Function Prediction:** Mackey-Glass time series, sMAPE metric
 
-### 2.4 Baseline Results (from Nature Communications paper)
-
-#### Table 2: Keyword FSCIL Task
-
-| Model | Accuracy (Base/Avg) | Footprint (bytes) | Activation Sparsity | Dense SynOps | Eff_MACs | Eff_ACs |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| M5 ANN | 97.09%/89.27% | 6.03e6 | 0.783 | 2.59e7 | 7.85e6 | 0 |
-| SNN | 93.48%/75.27% | 1.36e7 | 0.916 | 3.39e6 | 0 | 3.65e5 |
-
-**Key insight:** SNN baseline computes each sample over 200 passes, using an order of magnitude fewer effective AC synaptic operations than the ANN's MACs.
-
-#### Table 3: Event Camera Object Detection
-
-| Model | mAP | Footprint (bytes) | Activation Sparsity | Dense SynOps | Eff_MACs | Eff_ACs |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| RED ANN | 0.429 | 9.13e7 | 0.634 | 2.84e11 | 2.48e11 | 0 |
-| Hybrid | 0.271 | 1.21e7 | 0.613 | 9.85e10 | 3.76e10 | 5.60e8 |
-
-#### Table 4: NHP Motor Prediction (96-channel, Indy)
-
-| Model | R-squared | Footprint | Activation Sparsity | Eff_MACs | Eff_ACs |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| ANN | 0.593 | 20,824 | 0.683 | 3,836 | 0 |
-| SNN | 0.593 | 19,648 | 0.997 | 0 | 276 |
-
-**Key insight:** SNN achieves identical R-squared (0.593) with 0.997 activation sparsity, translating to only 276 effective ACs vs 3,836 MACs. This is a 13.9x operation count reduction BEFORE accounting for the AC vs MAC energy difference.
-
-#### Table 5: Chaotic Function Prediction (Mackey-Glass)

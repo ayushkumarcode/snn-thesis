@@ -110,3 +110,31 @@ evidence from 2024-2026:
 |--------|-----------|-------|
 | Naive sequential (no CL method) | 70-90%+ | catastrophic forgetting baseline |
 | HLOP-SNN | Near-zero | orthogonal projection |
+| LT-Gate | ~2.8pp drop from peak | vs 5.8pp for HLOP, 7.1pp for DSD-SNN |
+| DSD-SNN | ~5-10% | structure growth compensates |
+| NACA | "markedly mitigated" | ~2% improvement + 98% less energy |
+| **ours (SNN, no CL method)** | **74.4%** | naive sequential baseline |
+| **ours (ANN, no CL method)** | **81.3%** | naive sequential baseline |
+
+our 74.4%/81.3% forgetting is the naive sequential baseline -- expected to be high. the interesting finding is the 6.9pp gap between SNN and ANN.
+
+### is the 6.9pp gap consistent with literature?
+
+yes, directionally consistent but quantitative comparisons are scarce. the literature broadly supports mild inherent SNN advantages for CL:
+
+theoretical arguments: spike sparsity = implicit regularization, temporal dynamics encode task-specific info, LIF leak prevents over-commitment to specific weight configs.
+
+our 6.9pp result is valuable because it isolates the SNN vs ANN effect without any CL method confound, uses identical architectures, and demonstrates an inherent advantage. the magnitude (~8.5% relative reduction) is modest but meaningful.
+
+### SNN CL on audio tasks -- very limited
+
+1. **Spiking Compressed CL (Dequino et al.):** CL on Spiking Heidelberg Digits. 92.46% sample-incremental. only 2.2% loss on old classes in progressive learning. **most directly comparable** to us.
+2. **NACA (Science Advances 2023):** TIDigits (speech). neuromodulation-assisted credit assignment.
+3. **AGMP (Frontiers 2025):** SHD (audio-derived). effective CL without replay.
+4. **ours:** ESC-50 environmental sound -- novel domain for SNN CL.
+
+environmental sound is a distinctly different domain from speech/digits. our evaluation on ESC-50 super-categories appears novel -- nobody has done SNN CL on environmental sound before.
+
+---
+
+## PART 3: WHAT THIS MEANS FOR THE THESIS

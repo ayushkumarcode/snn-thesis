@@ -278,3 +278,31 @@ couldn't fully verify:
 3. **explore the Awesome-SNN-Conference-Paper repo** -- [axyzdong.github.io/awesome-snn-conference-paper/](https://axyzdong.github.io/awesome-snn-conference-paper/) has the most up-to-date paper listings by venue.
 
 4. **pick a low-hanging fruit direction** -- items 1-5 from the easy list above are probably most suitable for an undergrad thesis. they're about applying existing methods to new domains/datasets rather than inventing new architectures.
+
+5. **read the key surveys:**
+   - "Training Spiking Neural Networks Using Lessons From Deep Learning" (Eshraghian et al.) -- foundational
+   - "Toward Large-scale Spiking Neural Networks" (2024 survey) -- most recent overview
+   - "Continual Learning with Neuromorphic Computing" (Oct 2024) -- if CL is interesting
+
+---
+
+## references
+
+### primary research papers
+- [QKFormer - NeurIPS 2024](https://arxiv.org/abs/2403.16552)
+- [Spike-Driven Transformer V2 - ICLR 2024](https://openreview.net/forum?id=1SIBN5Xyw7)
+- [SpikeLM - ICML 2024](https://arxiv.org/abs/2406.03287)
+- [SpikeLLM - ICLR 2025](https://arxiv.org/abs/2407.04752)
+- [SpikingResformer - CVPR 2024](https://github.com/xyshi2000/SpikingResformer)
+- [P-SpikeSSM - ICLR 2025](https://arxiv.org/abs/2406.02923)
+- [GRSNN (Graph Reasoning with SNNs) - ICML 2024](https://arxiv.org/abs/2405.16851)
+- [SpikeGCL - ICLR 2024](https://github.com/EdisonLeeeee/SpikeGCL)
+- [TS-LIF - ICLR 2025](https://github.com/kkking-kk/TS-LIF)
+- [DailyDVS-200 - ECCV 2024](https://github.com/QiWang233/DailyDVS-200)
+- [SGNNBench](https://github.com/Zhhuizhe/SGNNBench)
+- [Training SNNs Using Lessons From Deep Learning - Eshraghian et al.](https://arxiv.org/abs/2109.12894)
+
+### curated paper lists and community stuff
+- [Awesome SNN Conference Paper](https://github.com/AXYZdong/awesome-snn-conference-paper)
+- [Awesome Spiking Neural Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
+- [Open Neuromorphic](https://open-neuromorphic.org)

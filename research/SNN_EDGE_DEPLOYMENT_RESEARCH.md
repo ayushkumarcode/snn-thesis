@@ -435,31 +435,3 @@ A "deploy SNN on real hardware" thesis project is not only feasible but represen
 
 **Hardware cost:** $200-400 total (PYNQ-Z2 + STM32 Discovery + USB power meter)
 **Timeline:** 12-16 weeks
-**Novelty:** Honest, measured comparison on real hardware -- addresses the open question "Are SNNs really more efficient?"
-**Demonstrability:** Live demo showing inference on multiple platforms with power measurements
-
-### 10.3 Recommended Project Path B: "FPGA SNN Accelerator for DVS Gestures" (More Technical)
-
-**Concept:** Build a complete pipeline from DVS data to FPGA inference.
-
-**Pipeline:**
-1. Train SNN on DVS128 using snnTorch with quantization-aware training
-2. Use Spiker+ or HLS to generate FPGA accelerator
-3. Deploy on PYNQ-Z2
-4. Measure resource utilization (LUTs, BRAMs, DSPs), power, latency
-5. Explore design space: precision (8-bit vs 16-bit), neuron count, architecture
-6. Compare against published results
-
-**Hardware cost:** $150-200 (PYNQ-Z2 board)
-**Timeline:** 14-18 weeks
-**Novelty:** Complete characterization of SNN FPGA accelerator design space
-**Demonstrability:** PYNQ Jupyter notebook interface showing live FPGA inference
-
-### 10.4 Recommended Project Path C: "SNN on Microcontroller for Edge AI" (Most Accessible)
-
-**Concept:** Demonstrate practical SNN inference on ultra-low-cost hardware.
-
-**Pipeline:**
-1. Train SNN using snnTorch on MNIST or N-MNIST
-2. Convert to optimized C runtime (following the compression paper methodology)
-3. Deploy on STM32F4 Discovery or Arduino Portenta H7

@@ -222,3 +222,31 @@ That alone would be solid given the limited existing implementations.
 
 ---
 
+## Novelty Angles -- What's Under-Explored?
+
+### Gap Analysis
+
+| Research Area | Explored? | Number of Papers | Opportunity |
+|---|---|---|---|
+| SNN + MIT-BIH (5-class, single-lead) | Moderately | ~15-20 | LOW -- well-covered |
+| SNN + PTB-XL (12-lead, multi-label) | Barely | 1-2 | VERY HIGH |
+| Spike encoding comparison for ECG | Partially | ~3-5 | HIGH |
+| SNN + Explainability for ECG | Almost none | ~1-2 | VERY HIGH |
+| SNN + AF-specific detection | Emerging | ~3-4 | MODERATE |
+| SNN + Continual/Online learning for ECG | None found | 0 | VERY HIGH |
+| SNN + Few-shot learning for rare arrhythmias | None found | 0 | VERY HIGH |
+| SNN energy benchmarking across hardware | Limited | ~3-5 | HIGH |
+| SNN + ECG on actual neuromorphic hardware | Very limited | ~2-3 | HIGH (but need hardware) |
+
+### Top 5 novelty angles (ranked by feasibility for undergrad)
+
+**1. Spike Encoding Comparison for ECG (recommended)**
+Compare all major encoding methods (rate, TTFS, delta modulation, peak encoding, Gaussian) on the same SNN architecture and MIT-BIH dataset. No single paper does this specifically for ECG. Would become a reference for anyone doing SNN-ECG work. High feasibility -- just uses existing snnTorch encoding functions.
+
+**2. SNN for 12-Lead ECG (PTB-XL)**
+First application of SNNs to PTB-XL with multi-label classification. Almost all SNN-ECG papers use MIT-BIH. PTB-XL is the modern gold standard but virtually untouched by SNN research. Moderate-high feasibility -- larger dataset and multi-label adds complexity.
+
+**3. SNN Interpretability via Spike Pattern Analysis**
+Analyze what the SNN "sees" by visualizing spike patterns for different arrhythmia classes. Map spike timing to clinical ECG features. Almost completely unexplored. Moderate feasibility -- requires creative visualization.
+
+**4. Energy-Accuracy Pareto Analysis**

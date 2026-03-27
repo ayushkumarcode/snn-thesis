@@ -134,31 +134,3 @@ SAKD (Qiu et al., 2024) and Spiking Vocos (2025) both use the *same architecture
 ## 3. Hybrid ANN-SNN Architectures
 
 ### 3.1 The "ANN Feature Extractor + SNN Classifier" Paradigm
-
-This is the exact paradigm used in the thesis (PANNs CNN14 + SNN head). The literature reveals this is an emerging but under-explored approach:
-
-| Paper | Year | ANN Backbone | SNN Head | Task | Result |
-|-------|------|-------------|----------|------|--------|
-| **Thesis (this work)** | **2026** | **PANNs CNN14 (frozen)** | **3-layer SNN** | **ESC-50** | **92.50% (SNN) vs 93.45% (ANN), 0.95pp gap** |
-| SAFE | 2025 | CNN (maxpool layers) | 3 spiking layers | Fake audio detection | Comparable to ANN SOTA |
-| Aydin et al. | CVPRW 2024 | ANN (low-rate dense) | SNN (high-rate sparse) | Visual pose estimation | 74% lower error than pure SNN |
-| Keugle et al. | 2024 | ANN on Jetson Nano | SNN on Loihi | DVS classification | Surpasses both pure ANN and pure SNN |
-| Abuhajar et al. | 2025 | ANN Wave-U-Net | SNN (converted) | Speech enhancement | Near-ANN quality after fine-tuning |
-| Spiking Vocos | 2025 | ANN Vocos (teacher) | Spiking Vocos (student) | Neural vocoder | 14.7% energy of ANN |
-
-### 3.2 Aydin et al. (CVPR 2024 Workshop) -- Slow-Fast Hybrid Architecture
-
-This is the most architecturally sophisticated hybrid approach:
-- **Concept:** ANN provides "slow" dense state initialization; SNN provides "fast" spike-based predictions
-- **Key insight:** Pure SNNs suffer from long state convergence transients; ANN initialization solves this
-- **Result:** 74% lower error than pure SNN
-- **Hardware target:** Edge deployment for visual perception
-- **Code available:** https://github.com/uzh-rpg/hybrid_ann_snn
-
-### 3.3 Hardware Deployment of Hybrid Systems
-
-Keugle et al. (2024) -- "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware":
-- Deploys ANN on Jetson Nano, SNN on Intel Loihi
-- Also tested: ANN on Coral Edge TPU, SNN on Loihi
-- Uses Lava framework for SNN, PyTorch for ANN
-- Proposes accumulator circuit for spike-to-continuous domain transfer

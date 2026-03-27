@@ -12,19 +12,19 @@ All use SpikingCNN (622K params), ESC-50 5-fold CV (400 test/fold), Adam (lr=1e-
 
 | Encoding | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | Mean | Std | Gap vs ANN |
 |----------|--------|--------|--------|--------|--------|------|-----|-----------|
-| SNN Direct | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | **47.15%** | 4.50% | −16.70 pp |
-| SNN Phase | 22.50% | 22.25% | 25.00% | 24.25% | 26.75% | **24.15%** | 1.66% | −39.70 pp |
-| SNN Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | **24.00%** | 1.90% | −39.85 pp |
-| SNN Population | 22.75% | 18.50% | 15.75% | 22.00% | 16.75% | **19.15%** | 2.79% | −44.70 pp |
-| SNN Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | **16.30%** | 1.62% | −47.55 pp |
-| SNN Delta | 8.25% | 7.75% | 7.25% | 7.50% | 5.50% | **7.25%** | 0.94% | −56.60 pp |
-| SNN Burst | 5.00% | 5.25% | 9.25% | 6.00% | 7.00% | **6.50%** | 1.54% | −57.35 pp |
+| ANN (baseline) | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | 63.85% | 3.07% | -- |
+| SNN Direct | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | 47.15% | 4.50% | -16.70 pp |
+| SNN Phase | 22.50% | 22.25% | 25.00% | 24.25% | 26.75% | 24.15% | 1.66% | -39.70 pp |
+| SNN Rate | 24.50% | 27.25% | 23.00% | 21.50% | 23.75% | 24.00% | 1.90% | -39.85 pp |
+| SNN Population | 22.75% | 18.50% | 15.75% | 22.00% | 16.75% | 19.15% | 2.79% | -44.70 pp |
+| SNN Latency | 14.00% | 15.75% | 17.75% | 15.50% | 18.50% | 16.30% | 1.62% | -47.55 pp |
+| SNN Delta | 8.25% | 7.75% | 7.25% | 7.50% | 5.50% | 7.25% | 0.94% | -56.60 pp |
+| SNN Burst | 5.00% | 5.25% | 9.25% | 6.00% | 7.00% | 6.50% | 1.54% | -57.35 pp |
 
-*Source: `results/snn/{encoding}/summary.json` and `results/ann/none/summary.json`.*
-*Burst per-fold from: fold 1 = `results/snn/burst/fold1/best.pt`, fold 2-5 = corresponding directories.*
-*Direct fold 1 = 40.50% (CSF3 canonical; local MPS retrain = 45.50% — Decision #23 uses CSF3 value).*
+Source: `results/snn/{encoding}/summary.json` and `results/ann/none/summary.json`.
+Direct fold 1 = 40.50% (CSF3 canonical; local MPS retrain was 45.50% -- Decision #23 uses CSF3 value).
 
-### A.2 PANNs Transfer Learning — All Folds
+### A.2 PANNs transfer learning -- all folds
 
 All models use frozen CNN14 embeddings (2048-d, AudioSet-pretrained). SNN head = 3-layer SNN classifier. ANN head = 3-layer ANN classifier. Linear = single linear layer. 50 epochs training, same Adam/scheduler config.
 

@@ -110,3 +110,31 @@ to cross from "lab exercise" to "thesis," you need at least ONE of:
 ## 4. Angles That Could Add Value
 
 ### Angle A: Encoding Scheme Comparison (moderate value, high feasibility)
+
+compare rate, latency, delta, phase, burst coding on same architectures and datasets with controlled variables. the [Frontiers paper by Park et al.](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full) did this for limited encodings. you could extend with more encodings, additional datasets, snnTorch-specific implementations (reproducibility), multi-dimensional comparison (accuracy, spike count, convergence, noise robustness).
+
+risk: partially done. contribution would be breadth and reproducibility, not individual novelty.
+
+estimated time: 4-6 weeks after setup.
+
+### Angle B: Hyperparameter Sensitivity (moderate value, high feasibility)
+
+systematic search over SNN-specific hyperparams: membrane decay (tau), firing threshold, time steps, surrogate gradient function (arctan, sigmoid, fast-sigmoid), and interactions.
+
+this matters because SNN training is really sensitive to these. a firing threshold of 1.0 vs 0.25 can swing accuracy from 96% to 41% ([Bojkovic et al., 2024](https://proceedings.mlr.press/v238/bojkovic24a/bojkovic24a.pdf)). no undergrad-accessible guide to tuning these across datasets exists.
+
+thesis-worthy if you: plot Pareto frontiers of accuracy vs spike count, identify which hyperparams matter most, provide practical guidelines.
+
+estimated time: 3-5 weeks.
+
+### Angle C: Energy/Efficiency via NeuroBench (high value, moderate feasibility)
+
+measure computational cost using proxy metrics: SynOps, spike counts, MAC vs AC operations, memory accesses, using [NeuroBench](https://neurobench.readthedocs.io/en/latest/).
+
+the paper ["Are SNNs Really More Energy-Efficient Than ANNs?"](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf) showed SNN energy advantage is conditional and often overstated. replicating this at undergrad level using NeuroBench would be genuinely valuable. key claim to test: SNNs need >93% spike sparsity with VGG16 at T=6 to be more efficient than ANNs.
+
+this goes beyond accuracy to address the *actual claimed advantage* of SNNs. could produce Pareto curves. challenges a common claim with empirical data.
+
+estimated time: 4-6 weeks.
+
+### Angle D: Adversarial Robustness (high value, moderate feasibility)

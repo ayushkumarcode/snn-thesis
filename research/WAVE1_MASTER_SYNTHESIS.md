@@ -166,3 +166,31 @@ Based on all 21 papers, the formula that works at Manchester BSc level:
 > "Can Spiking Neural Networks achieve competitive performance on [domain] classification while offering energy efficiency advantages?"
 - Pick a domain with zero or few SNN papers
 - The novelty is automatic (first SNN results on this data)
+- Examples: Environmental sound, plant disease, ECG on PTB-XL
+
+**Framing B: "SNN Comparison Study" (Framework/Method Study)**
+> "A comparison of [X] across [Y conditions] for spiking neural network classification"
+- Pick 2-3 things to vary (frameworks, encoding methods, neuron models, architectures)
+- The novelty is in the breadth and rigour of comparison
+- Examples: snnTorch vs SpikingJelly on SHD + DVS128, encoding method comparison on audio
+
+**Framing C: "SNN Extension" (Modify Existing Approach)**
+> "Extending [existing SNN method] with [modification] for [task]"
+- Take a published SNN architecture and add something (new encoding, new regularisation, new evaluation metric)
+- The novelty is in the specific modification
+- Examples: STDP + Bayesian Optimisation (like Ezinwoke), adding NeuroBench energy metrics to existing benchmarks
+
+All three framings have worked at Manchester. Choose based on personal interest and available time.
+
+---
+
+## 8. Decision matrix
+
+| Direction | Effort | Novelty | Risk | Grade Ceiling | Natural SNN Fit |
+|-----------|--------|---------|------|---------------|-----------------|
+| SHD Audio Classification | LOW | Moderate | LOW | First (75+) | HIGH (temporal data) |
+| ECG Heartbeat Detection | LOW-MED | High | LOW | First (78+) | HIGH (spike-like QRS) |
+| Environmental Sound (ESC-50) | LOW | VERY HIGH | LOW | First (80+) | HIGH (temporal) |
+| DVS128 Gesture Recognition | MEDIUM | Low-Mod | LOW | First (75+) | VERY HIGH (native events) |
+| Framework Comparison | LOW-MED | Genuine gap | LOW | First (75+) | N/A (meta-study) |
+| Plant Disease (PlantVillage) | LOW | VERY HIGH | LOW-MED | First (78+) | LOW (static images) |

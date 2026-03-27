@@ -367,31 +367,3 @@ For an achievable yet novel undergraduate thesis, I recommend:
 | SNNs achieve 98-99% on standard benchmarks | High | Multiple independent papers confirm |
 | SNNs offer 70-90% energy savings over CNNs | High | Wang et al. 2024 provides detailed measurements |
 | Edge deployment is feasible | Medium-High | Demonstrated in simulation; limited real hardware results |
-| The topic is suitable for undergraduate thesis | High | Active but young field with clear gaps |
-| A novel contribution is achievable | High | Multiple unexplored angles identified |
-| The existing open-source code is usable | Medium | zbs881314 repo exists but limited documentation; frameworks are well-documented |
-
----
-
-## 12. RECOMMENDED FOLLOW-UPS
-
-1. **Read in full**: Wang et al. 2024 (Scientific Reports) -- the most detailed SNN-IDS paper with reproducibility information
-2. **Read in full**: Mia et al. 2025 (ACM ICONS) -- most sophisticated SNN-IDS architecture
-3. **Try the code**: Clone zbs881314/Intrusion-detection and run on NSL-KDD
-4. **Work through snnTorch tutorials**: https://snntorch.readthedocs.io/ -- 10 tutorial notebooks from basics to advanced
-5. **Download UNSW-NB15**: https://research.unsw.edu.au/projects/unsw-nb15-dataset
-6. **Check with supervisor**: Discuss whether encoding comparison, edge deployment, or hybrid approach best fits the program's expectations
-
----
-
-## 13. SOURCES AND REFERENCES
-
-### Key Papers (Direct Links)
-- [Wang et al. 2024 - ConvSNN IDS (Scientific Reports)](https://www.nature.com/articles/s41598-024-57691-x)
-- [Wang et al. 2024 - PMC Full Text](https://pmc.ncbi.nlm.nih.gov/articles/PMC10963367/)
-- [TASNN 2026 - Transformer-Spiking Hybrid (Scientific Reports)](https://www.nature.com/articles/s41598-026-37367-4)
-- [Mia et al. 2025 - Neuromorphic Cybersecurity Lifelong Learning (arXiv)](https://arxiv.org/abs/2508.04610)
-- [SURFS - Federated SNN IDS (IEEE)](https://ieeexplore.ieee.org/document/10622560/)
-- [Event-Driven SNN-IDS (IEEE)](https://ieeexplore.ieee.org/document/11171294/)
-- [Hybrid HRSNN for IoT (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12546366/)
-- [ConvSNN Robust IDS (Springer)](https://link.springer.com/article/10.1007/s10586-024-04603-3)

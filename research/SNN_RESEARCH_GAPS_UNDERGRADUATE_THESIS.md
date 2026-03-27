@@ -110,3 +110,31 @@ the Open Neuromorphic benchmark (Feb 2024) tested 11 frameworks but only on a sy
 ### SNN vs ANN fair comparisons
 
 | What's missing | Details | Effort |
+|---------------|---------|--------|
+| **SNN vs ANN at equivalent parameter count on audio** | most comparisons are on vision. audio comparisons are nearly absent. | MEDIUM |
+| **SNN vs ANN on time-series regression** | SNN regression is brand new (first paper May 2024). zero comparison studies. | MEDIUM |
+| **SNN vs ANN on tabular data** | virtually unexplored. can an SNN compete with XGBoost? | MEDIUM |
+| **energy estimation methodology comparison** | papers use wildly different methods (MACs vs spikes vs synaptic ops). nobody's standardized this. | LOW-MEDIUM |
+
+---
+
+## 4. future work suggestions from recent papers
+
+### from survey papers (2024-2025)
+
+**"The Promise of Spiking Neural Networks for Ubiquitous Computing" (arXiv, June 2025):**
+- SNNs underexplored in ubiquitous computing
+- suggested: wearable sensor data, smart home IoT, mobile applications
+- specific gap: no evaluation on standard HAR benchmarks
+
+**"SNNs in Imaging: A Review and Case Study" (MDPI Sensors, 2025):**
+- progress constrained by "reliance on small or custom datasets" and "narrow focus on classification"
+- suggested: move beyond classification to detection, segmentation, regression
+
+**"Toward Large-scale SNNs" (arXiv, Sept 2024):**
+- suggested: multi-task learning, continual learning benchmarks, real-world deployment studies
+
+**"SNN and Sound: A Comprehensive Review" (Biomedical Engineering Letters, 2024):**
+- speech enhancement with SNNs is "very recent" with very limited research
+- music generation with SNNs is "significantly underexplored"
+- environmental sound classification with SNNs: near-zero papers

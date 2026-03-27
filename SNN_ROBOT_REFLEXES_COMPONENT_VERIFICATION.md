@@ -222,3 +222,31 @@ reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
 5. **Gradient vanishing/explosion:** Due to non-differentiable spiking signals; restricts effective SNN depth to shallow architectures in some cases.
 
 **Mitigation strategies:**
+- Use PPO (on-policy) rather than SAC/TD3 (off-policy) -- avoids the discrete-continuous mismatch
+- Use membrane potential readout instead of rate coding -- smoother gradients
+- Use surrogate gradient with appropriate steepness parameter
+- Train with 5+ random seeds and report statistics
+- Start with simpler environments (CartPole, InvertedPendulum) before Ant
+
+**Source:** [Spiking Q-learning paper](https://arxiv.org/html/2201.09754v2) | [Temporal coding paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.877701/full) | [Proxy Target paper](https://arxiv.org/html/2505.24161)
+
+---
+
+### 8. Evaluation Metrics
+
+| Field | Value |
+|-------|-------|
+| **EXISTS** | YES -- well-established standards |
+| **Pre-built?** | Partially (reward is automatic; others need manual logging) |
+| **POTENTIAL BLOCKER** | **NO** |
+
+**Standard metrics for robot locomotion RL (all verifiable from literature):**
+
+| Metric | How to Measure | Standard? |
+|--------|---------------|-----------|
+| **Cumulative reward** | Sum of rewards per episode | YES -- primary metric |
+| **Episode length** | Timesteps before termination/truncation | YES -- measures stability |
+| **Forward velocity** | x-velocity from `info` dict | YES |
+| **Distance traveled** | Cumulative x-displacement | YES |
+| **Cost of Transport (CoT)** | Energy / (weight * distance) | YES -- standard efficiency metric |
+| **Torque magnitude** | L2 norm of actions | YES -- energy proxy |

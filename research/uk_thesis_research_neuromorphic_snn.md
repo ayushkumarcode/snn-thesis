@@ -82,3 +82,31 @@ Selected bachelor's theses (most relevant to SNN/neuromorphic):
 | 2020 | Characterization of silicon neurons on HICANN-X v2 | P. Dauer | Hardware characterization |
 | 2019 | Structural Plasticity for Feature Selection in Auditory Stimuli on Neuromorphic Hardware | M. Kreft | Plasticity algorithms |
 | 2019 | Towards Balanced Random Networks on the BrainScaleS I System | Q. Schwarzenboeck | Network dynamics |
+| 2018 | Solving Map Coloring Problems on Analog Neuromorphic Hardware | J. Steidel | Constraint satisfaction |
+| 2018 | Characterization and Calibration of Synaptic Plasticity on Neuromorphic Hardware | J. Weis | STDP characterization |
+| 2018 | Towards Spike-based Expectation Maximization on Neuromorphic Chip | F. Schneider | Probabilistic computing |
+| 2017 | Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware | C. Fischer | Classification |
+| 2016 | Towards Fast Iterative Learning on the BrainScaleS System | L. Pilz | Learning algorithms |
+| 2015 | Boltzmann Sampling with Neuromorphic Hardware | D. Stockel | Sampling |
+| 2015 | Investigating Competitive Dynamics in a Recurrent Neural Network on Neuromorphic Hardware | D. Alevi | Network dynamics |
+| 2014 | Binaural Sound Localization on Neuromorphic Hardware | L. Kriener | Audio processing |
+| 2011 | Analysis of the Liquid Computing Paradigm on a Neuromorphic Hardware System | D. Probst | Reservoir computing |
+
+Total bachelor's theses at Heidelberg (neuromorphic): ~60+ spanning 2003-2025. Master's theses: ~50+.
+
+The pattern for Heidelberg bachelor's theses: typically ONE focused task on BrainScaleS hardware -- characterizing a component, implementing a specific algorithm, building a software tool, or running one specific experiment. Well-scoped, hardware-oriented, typically 40-60 pages.
+
+---
+
+## UK PhD Theses (for scope calibration)
+
+### University of Manchester (SpiNNaker Group) -- most prolific UK source
+
+| Title | Author | Year | Supervisors | Key Contribution |
+|-------|--------|------|-------------|-----------------|
+| Deep Spiking Neural Networks | Qian Liu | 2018 | Furber, Lester | Noisy Softplus activation, 99.07% MNIST |
+| Ensemble Learning for SNNs | Alina Neculae | 2020 | Brown, Furber | Ensemble methods for SNNs |
+| Stochastic Processes For Neuromorphic HW | Gabriel Fonseca Guerra | 2020 | Furber, Lester | Ion channel models on SpiNNaker |
+| Spikes from Sound: Auditory Periphery on SpiNNaker | Robert James | 2019 | Garside, Koch | Cochlear model on SpiNNaker |
+| Learning in SNNs | Sergio Davies | 2012 | Furber | STDP learning rule, SpiNNaker routing |
+| Parallel Simulation of NNs on SpiNNaker | Andrew Rowley | ~2012 | Furber | STDP with plasticity |

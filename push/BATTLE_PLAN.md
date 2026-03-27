@@ -99,31 +99,3 @@ These go in the thesis, not the ICONS paper. Run on CSF3 in parallel with paper 
 
 | # | Experiment | Days | Scientific value |
 |---|-----------|------|-----------------|
-| 11 | Full deploy via IF_cond_exp + MaxPool | 2-3 | VERY HIGH if it works |
-| 12 | Spike drop robustness analysis | 1-2 | HIGH — explains hardware gap |
-| 13 | WTA lateral inhibition on output | 1-2 | MEDIUM — hardware motif |
-| 14 | SpiNNaker energy from provenance | 1-2 | HIGH — real measurements |
-| 15 | SpiNNaker 2 readiness (NIR export) | 2-3 | MEDIUM — forward-looking |
-
-### Tier 4: Ambitious (only if everything else done)
-
-| # | Experiment | Days | Scientific value |
-|---|-----------|------|-----------------|
-| 16 | On-chip STDP learning for FC2 | 5-7 | VERY HIGH — headline result |
-| 17 | LSM reservoir on SpiNNaker | 5-7 | VERY HIGH — novel architecture |
-| 18 | Izhikevich resonator neurons | 3-5 | HIGH — filterbank on hardware |
-| 19 | Cross-domain transfer (Speech Commands) | 3-4 | MED-HIGH |
-| 20 | Real-time microphone demo | 2-3 | LOW (science), HIGH (demo) |
-
----
-
-## PHASE 3: AFTER ICONS SUBMISSION
-
-| Date | Event | Action |
-|------|-------|--------|
-| April 1 | ICONS submitted | Shift to thesis writing |
-| May 18 | Reviews back | Prepare rebuttals (pre-drafted responses ready) |
-| May 25 | Rebuttal due | Submit |
-| June 5 | Decision | Celebrate or plan poster |
-| ~July | DCASE 2026 deadline | Second paper opportunity (perfect topic match) |
-| ~Sep | ICASSP 2027 deadline | Third paper opportunity |

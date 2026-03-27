@@ -418,3 +418,19 @@ typical undergrad thesis abstract follows this:
 - [BrainScaleS Publications](https://brainscales.kip.uni-heidelberg.de/jss/Publications)
 
 ---
+
+## Confidence
+
+**high confidence:**
+- dominant framing is "implemented + evaluated" (based on 14 direct examples)
+- undergrad theses rarely claim scientific discovery
+- "Towards" is an accepted title prefix for incomplete work
+- honest reporting of limited results is normal and accepted
+
+**medium confidence:**
+- research questions tend to be closed-form "can we?" (inferred from abstracts, many theses don't state explicit RQs)
+- UNSW and Rochester represent the ambitious end of undergrad work
+
+**gaps:**
+- couldn't access several full PDFs (amid.fish too large, KIP compressed format, Brno VUT, Radboud)
+- most analysis based on abstracts and project descriptions, not full introductions

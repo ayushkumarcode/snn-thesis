@@ -607,31 +607,3 @@ snn.RLeaky(beta=0.5, spike_grad=spike_grad)
 ### Summary Comparison Table
 
 | Surrogate Function | Accuracy Impact | Sparsity | Compute Cost | Recommended For |
-|-------------------|-----------------|----------|--------------|-----------------|
-| Fast Sigmoid | Best overall | Highest | Lowest | Production, thesis default |
-| Arctangent | Very good | Moderate | Low | When you want wider gradient coverage |
-| Sigmoid | Good | Moderate | Medium | Familiarity with sigmoid |
-| Triangular | Poor | Variable | Lowest | Avoid for classification |
-| STE | Baseline | Low | Lowest | Simple baselines only |
-| Learnable | Best (deep nets) | Adaptive | High | Research on deep SNNs |
-
----
-
-## 10. Recent Advances 2024-2025
-
-### 10.1 Theoretical Understanding (2025)
-
-**Gygax and Zenke (2025)** published "Elucidating the Theoretical Underpinnings of Surrogate Gradient Learning in Spiking Neural Networks" in Neural Computation. Key insight: surrogate gradients are equivalent to true gradients of expected output for single neurons under a stochastic interpretation, but this equivalence breaks in deep networks. The surrogate derivative can be understood as linked to the "escape noise function" of stochastic neuron models. This provides the first rigorous theoretical framework for understanding why surrogate gradients work.
-
-- https://direct.mit.edu/neco/article/37/5/886/128506
-
-### 10.2 Exact Gradient Methods (2025)
-
-**Klos and Memmesheimer (2025)** published "Smooth Exact Gradient Descent Learning in Spiking Neural Networks" in Physical Review Letters, demonstrating exact (not surrogate) gradient computation for SNNs using "pseudospikes" that enable continuous gradient flow. This is a potential future alternative to surrogate gradients but is currently more complex to implement.
-
-- https://doi.org/10.1103/PhysRevLett.134.027301
-
-### 10.3 Stabilizing Deep SNN Training (2025)
-
-**MP-Init and TrSG (2025):** Proposed membrane potential initialization and threshold-robust surrogate gradients to address temporal covariate shift and unstable gradient flow with learnable thresholds. These methods specifically target the instability problems that arise in deeper SNN architectures.
-

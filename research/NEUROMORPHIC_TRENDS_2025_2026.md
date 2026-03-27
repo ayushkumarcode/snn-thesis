@@ -138,3 +138,31 @@ The hardware landscape is maturing fast. Papers that show actual deployment on r
 ### Key surveys
 - "Toward Large-scale Spiking Neural Networks" (2024)
 - "SNN Architecture Search: A Survey" (Oct 2025)
+- "SNNs on FPGA: A Survey" (Neural Networks, 2025)
+- "SNN and Sound: A Comprehensive Review" (Aug 2024)
+- "Continual Learning with Neuromorphic Computing" (Oct 2024)
+
+---
+
+## 5. Trending on arXiv
+
+### cs.NE (Neural and Evolutionary Computing)
+- Spiking transformers dominate submissions
+- Hardware-aware optimization (quantization, pruning, SpikeFit)
+- Theoretical understanding of SNNs (stability, robustness, generalization)
+- SSM-SNN hybrids (state space models meet spiking)
+- Neuromorphic LLMs (MatMul-free inference)
+
+### cs.SD (Sound) + Neuromorphic
+- **Larroza et al. (March 2025)**: "Spike Encoding for Environmental Sound" -- ESC-10 only, FC network only, no hardware. This is my closest competitor and i substantially exceed their scope.
+- Spiking Vocos (2025): energy-efficient neural vocoder
+- Audio-visual multimodal SNNs (Feb 2025): cross-modal spiking transformers
+- Neuromorphic keyword spotting with PDM microphones (Interspeech 2024): 91.54% on GSC
+- Hilbert Transform encoding for audio localization (Nature Comms Eng, 2025)
+- HPCNeuroNet: transformer-enhanced SNN for audio (2023, still being cited)
+
+### Key arXiv trends (last 6 months)
+1. Spike-driven everything (transformers, LLMs, NeRF, graph networks)
+2. Energy-accuracy Pareto analysis becoming mandatory
+3. Neuromorphic + embodied intelligence / robotics
+4. Privacy as an inherent SNN property

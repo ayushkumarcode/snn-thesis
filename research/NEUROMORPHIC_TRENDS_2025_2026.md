@@ -31,31 +31,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 | Energy-efficient edge AI | 3 | Vibration sensing, predictive maintenance, tactile sensing |
 | Continual/online learning | 3 | Unsupervised continual learning, lifelong learning, GRASP |
 | Novel applications | 4 | Turbulence modeling, artificial pancreas, chemical sensors, air traffic control |
-| Architectures & training | 5 | Spiking transformers, oscillator Ising machines, dendrites, reservoir computing |
-| Simulation frameworks | 2 | VRISP simulator, SNN uncertainty estimation |
-| Vision/event-driven | 2 | Event-based action recognition, high-speed perception |
-
-**Critical observation:** ICONS 2025 strongly favored papers with **real hardware deployment** (SpiNNaker2, Loihi 2, embedded systems) and **novel application domains** (turbulence, medical, industrial). Pure algorithm papers without hardware or application context were less prominent.
-
-**Audio/sound papers at ICONS 2025:** ZERO. There were no audio or sound classification papers. This is a wide-open gap.
-
-### ICONS 2024 (Arlington, VA, July 30 - Aug 2, 2024)
-- Focus on RF fingerprinting, cerebellar neuron detection
-- Superconducting optoelectronic neuromorphic computing
-
-**Takeaway for our paper:** An SNN audio paper with actual SpiNNaker deployment would be genuinely novel at ICONS. The conference has never seen this combination.
-
----
-
-## 2. HOTTEST TOPICS AT TOP ML CONFERENCES (2024-2026)
-
-### SNN Paper Counts at Major Conferences
-
-| Conference | Year | SNN Papers | Trend |
-|-----------|------|-----------|-------|
-| ICLR | 2026 | **29** | Strongest showing ever |
-| NeurIPS | 2025 | **23** | Significant presence |
-| ICML | 2025 | **11** | Growing |
-| CVPR | 2025 | **5** | Vision-focused |
-| ICLR | 2025 | 11 | Steady |
-| NeurIPS | 2024 | ~15 | Baseline |

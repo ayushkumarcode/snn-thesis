@@ -110,3 +110,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 | **Degree** | PhD, Department of Computer Science |
 | **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |
 | **Abstract** | Physical layout scheme for hexagonal torus topologies minimizing cable length. Improved routing algorithms. Placement and routing algorithms minimizing congestion and tolerating network faults. Demonstrated on half-million core prototype. |
+| **Keywords** | Fault tolerance, Graphs, Simulated annealing, Place and Route, Hexagonal Torus Topology, SpiNNaker |
+| **Tools** | SpiNNaker hardware, Python (Rig library) |
+| **PDF** | Available (8.54 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/building-and-operating-large-scale-spinnaker-machines |
+| **GitHub** | https://github.com/mossblaser/phd_thesis_experiments |
+
+### 1.9 James Knight -- Plasticity in Large-scale Neuromorphic Models of the Neocortex (2016)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Plasticity in Large-scale Neuromorphic Models of the Neocortex |
+| **Author** | James Knight |
+| **Year** | November 2016 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
+| **Abstract** | New SpiNNaker synaptic plasticity implementation. Neocortically-inspired model with 2x10^4 neurons and 5.1x10^7 plastic synapses -- the largest plastic neural network ever simulated on neuromorphic hardware at that time. |
+| **PDF** | Available (8.37 MB) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex |
+
+### 1.10 Andrew Mundy -- Real time Spaun on SpiNNaker (2016)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Real time Spaun on SpiNNaker -- Functional brain simulation on a massively-parallel computer architecture |
+| **Author** | Andrew Mundy |
+| **Year** | November 2016 |
+| **Degree** | PhD, Department of Computer Science |
+| **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |

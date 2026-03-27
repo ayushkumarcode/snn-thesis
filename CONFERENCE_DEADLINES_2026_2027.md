@@ -166,3 +166,31 @@ Sources: [SiPS 2026](https://sips2026.org/)
 
 this would be an excellent fit for the topic. ESC-50 environmental sound classification is exactly what DCASE covers. the SNN angle would be novel there.
 
+Sources: [DCASE Community](https://dcase.community/)
+
+---
+
+## 3. machine learning (general) conferences
+
+### 3.1 ICML 2026 [DEADLINE PASSED]
+
+deadline passed (28 January 2026). acceptance rate ~24-28%. honestly probably too competitive for this work anyway.
+
+Sources: [ICML 2026](https://icml.cc/Conferences/2026/)
+
+---
+
+### 3.2 NeurIPS 2026
+
+| Field | Details |
+|-------|---------|
+| **Abstract Deadline** | **~May 11, 2026** (estimated) |
+| **Paper Deadline** | **~May 15, 2026** (estimated) |
+| **Conference Dates** | 6-12 December 2026, Sydney, Australia |
+| **Acceptance Rate** | ~24-26% |
+
+very competitive. a workshop submission would be more realistic than main conference. NeurIPS has a Datasets & Benchmarks track and occasionally workshop papers on neuromorphic computing.
+
+Sources: [NeurIPS](https://neurips.cc/)
+
+---

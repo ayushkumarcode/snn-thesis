@@ -166,3 +166,31 @@ VGG converts easiest because: standard Conv2D+ReLU+MaxPool only, no skip connect
 
 ResNets are harder because the skip connection addition after the last ReLU creates "deviation error" -- spike-based approximation of adding two activations introduces systematic bias.
 
+the big recent breakthrough is converting non-ReLU architectures (ConvNeXt with GELU, Transformers with GELU+Softmax+LayerNorm). the SignGD paper (ICML 2024) was first to do this. still a frontier area.
+
+---
+
+## Timestep Requirements
+
+### Progression by Era
+
+| Method Generation | Typical Timesteps | Years |
+|------------------|-------------------|-------|
+| Classical (weight norm) | 500-2500 | 2015-2019 |
+| Improved (calibration) | 32-256 | 2020-2022 |
+| Modern (QCFS) | 4-32 | 2022-2024 |
+| Cutting-edge (one-timestep) | 1-4 | 2024-2026 |
+
+### Practical Advice
+
+for a thesis:
+- **start with T=32-64** using standard method (SNN Calibration or snn_toolbox) -- this will reliably work
+- **then reduce to T=8-16** with QCFS or similar
+- **optionally try T=1-4** if time permits
+
+this progression itself can be a thesis contribution: "how does accuracy degrade as we reduce timesteps?"
+
+interesting note: on CIFAR-10, going from T=2 to T=6 only improves accuracy by 0.34% while tripling latency. diminishing returns curve is a useful result to reproduce.
+
+---
+

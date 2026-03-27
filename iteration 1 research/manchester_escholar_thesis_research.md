@@ -250,3 +250,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Tools/Frameworks** | Memristive crossbar arrays, logistic regression, MLPs, RBMs |
 | **Datasets** | Random data, MNIST |
 | **Scope** | Moderate (MPhil) -- algorithm development + simulation |
+| **NOTE** | one of only 2 non-PhD theses found -- MPhil level |
+
+---
+
+### 2.2 Efficient Execution of CNNs on Low Powered Heterogeneous Systems
+| Field | Detail |
+|-------|--------|
+| **Author** | Crefeda Rodrigues |
+| **Year** | 2020 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Graham Riley (main), Mikel Lujan (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/efficient-execution-of-convolutional-neural-networks-on-low-power |
+| **Abstract** | Presents SyNERGY framework for evaluating DL models on execution time and energy metrics on mobile platforms. Presents NNTaskSim for task-parallel neural network computation exploration. Addresses energy-efficient ML on edge devices. |
+| **What They Built** | SyNERGY framework; NNTaskSim simulator; predictive energy models |
+| **Tools/Frameworks** | SyNERGY, NNTaskSim, Jetson TX1, Snapdragon 820 |
+| **Datasets** | DL benchmark models |
+| **Scope** | High -- two novel tools/frameworks |
+
+---
+
+### 2.3 Modular FPGA Systems with Support for Dynamic Workloads and Virtualisation
+| Field | Detail |
+|-------|--------|
+| **Author** | Anuj Vaishnav |
+| **Year** | 2020 |
+| **Degree** | PhD |
+| **Department** | Computer Science |

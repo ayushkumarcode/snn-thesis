@@ -82,3 +82,31 @@ tools like SANA-FE and SpikeSim simulate actual neuromorphic hardware behavior -
 | **Timesteps (T)** | Simulation steps | Hyperparameter |
 | **Energy Ratio** | E_SNN / E_ANN | Ratio on same task |
 
+### advanced metrics from recent literature
+
+- **EMAC (Equivalent MAC):** normalizes all SNN ops into MAC-equivalents. hardware-agnostic. ([Source](https://arxiv.org/abs/2508.19654))
+- **Bit Budget:** refines SOPs by weight bit-width and spike patterns. Shen et al. CVPR 2024. ([Source](https://openaccess.thecvf.com/content/CVPR2024/papers/Shen_Are_Conventional_SNNs_Really_Efficient_A_Perspective_from_Network_Quantization_CVPR_2024_paper.pdf))
+- **BES / EAS Composite Metrics:** jointly account for normalized accuracy and SOP-based energy proxies.
+
+---
+
+## 3. is there a standard methodology?
+
+### the de facto standard (what most papers do)
+
+```
+1. Train SNN and ANN on same task with same architecture
+2. Count SOPs for SNN (spike counts * fan-out per layer)
+3. Count FLOPs for ANN (standard)
+4. Multiply: E_SNN = SOP * 0.9pJ, E_ANN = FLOPs * 4.6pJ
+5. Report ratio: "X times more efficient"
+```
+
+example from Spike-driven Transformer V2 (ICLR 2024): ANN energy = FLOPs * E_MAC, SNN energy = FLOPs * E_AC * firing_rate per layer.
+
+Source: [Spike-driven Transformer V2, ICLR 2024](https://arxiv.org/html/2404.03663v1)
+
+### the NeuroBench standard (most rigorous)
+
+NeuroBench is the first community-wide attempt at standardizing benchmarks. published in Nature Communications (2025). provides standardized metrics (Eff_MACs, Eff_ACs, Activation Sparsity), open-source Python framework, and multiple benchmark tasks.
+

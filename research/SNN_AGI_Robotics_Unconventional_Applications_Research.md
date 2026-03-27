@@ -796,31 +796,3 @@ Key works:
 
 **VERDICT: Already researched. See existing report.**
 
----
-
-### 3.11 SNN for Privacy / Federated Learning (NEW -- NOT PREVIOUSLY COVERED)
-
-**Literature: 3-5 papers (VERY SPARSE, ALL 2023-2025)**
-
-Key works:
-- [Privacy in Federated Learning with SNNs (arxiv 2025)](https://arxiv.org/abs/2511.21181)
-- [Sensitivity of Firing Rate-Based Federated SNNs to Differential Privacy (arxiv 2026)](https://arxiv.org/abs/2602.12009v1)
-- [Privacy-Preserving Federated Neuromorphic Learning via Spiking Neuron Models (MDPI 2023)](https://www.mdpi.com/2079-9292/12/18/3984)
-
-**Key finding:** SNNs' discrete spike events and surrogate gradient approximations may provide inherent privacy advantages -- the "noise" from surrogate gradients could naturally obscure gradient information, making gradient inversion attacks harder.
-
-**Assessment:**
-- Papers: 3-5 (EXTREMELY novel)
-- Simulation-only: YES
-- macOS: YES
-- 28-day feasibility: **LOW-MODERATE**
-- Components: snnTorch + federated learning framework (Flower/PySyft) + MNIST/CIFAR
-
-**Why this is interesting:**
-- Cutting-edge intersection of two hot fields (federated learning + neuromorphic)
-- The arxiv 2026 paper is literally weeks old
-- Novel question: "Do SNNs naturally resist gradient inversion attacks?"
-- Clear practical motivation (privacy-preserving edge AI)
-
-**Why it's risky:**
-- Federated learning frameworks add significant complexity

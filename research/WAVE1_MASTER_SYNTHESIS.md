@@ -267,31 +267,3 @@ A March 2025 peer-reviewed paper (arxiv 2503.11206) explicitly states: *"No stat
 | Wearable HAR | 10+ | Saturated, 2025 comprehensive survey exists | AVOID |
 
 ### 10.35 Framework Comparison -- CONFIRMED GENUINE GAP
-- No three-way snnTorch vs SpikingJelly vs Norse comparison on real neuromorphic data exists
-- The closest work (2025 multimodal benchmark) deliberately EXCLUDES snnTorch and Norse
-- Open Neuromorphic benchmark: synthetic data only, appears dormant
-- Spyx paper: speed only, explicitly ignores accuracy
-- The question "same architecture, same hyperparams, three frameworks -- same accuracy?" has NEVER been answered
-- This is a tractable, useful, publication-worthy gap
-
-### 10.4 SHD Audio -- APPROACHING SATURATION
-- SOTA: 96.41% (SpikCommander, 2025)
-- SHD is still useful as a **secondary validation benchmark** but not as a primary thesis contribution
-- SSC (35 classes, SOTA ~82%) has more room for improvement
-
-### 10.4 Revised Top Recommendation
-
-**The single strongest thesis option as of February 2026:**
-
-> **"Spiking Neural Networks for Environmental Sound Classification"**
-> - Apply SNNs to ESC-50 (first to do so -- documented, citable gap)
-> - Compare spike encoding methods (rate, delta, latency, direct)
-> - Benchmark against ANN baselines on same dataset
-> - Report energy efficiency via NeuroBench
-> - Use SHD/SSC as secondary validation to show method generalises
-> - Even 70-85% accuracy on ESC-50 is publishable given zero prior work
-
-**Strong alternative: SNN ECG Classification on PTB-XL**
-- Only ~20-30 SNN-ECG papers exist total (small but credible field)
-- PTB-XL (21,799 ECGs, 12-lead) has NO comprehensive SNN benchmark
-- Best SNN on MIT-BIH: 98.3% (SparrowSNN) vs 99.7% DNN

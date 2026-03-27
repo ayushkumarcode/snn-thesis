@@ -125,31 +125,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 ### 1.9 James Knight -- Plasticity in Large-scale Neuromorphic Models of the Neocortex (2016)
 
 | Field | Details |
-|-------|---------|
-| **Title** | Plasticity in Large-scale Neuromorphic Models of the Neocortex |
-| **Author** | James Knight |
-| **Year** | November 2016 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
-| **Abstract** | New SpiNNaker synaptic plasticity implementation. Neocortically-inspired model with 2x10^4 neurons and 5.1x10^7 plastic synapses -- the largest plastic neural network ever simulated on neuromorphic hardware at that time. |
-| **Keywords** | SpiNNaker, Plasticity |
-| **PDF** | Available (8.37 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex |
-
-### 1.10 Andrew Mundy -- Real time Spaun on SpiNNaker (2016)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Real time Spaun on SpiNNaker -- Functional brain simulation on a massively-parallel computer architecture |
-| **Author** | Andrew Mundy |
-| **Year** | November 2016 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | James Garside (main), Steve Furber (co-supervisor) |
-| **Abstract** | Three optimization techniques for simulating Spaun (2.5M neuron model): (1) reducing NEF memory/compute (1/20th cores needed); (2) additional cores to minimize network traffic; (3) novel logic minimization for routing tables. Achieved 9000x speed-up over prior results. |
-| **Keywords** | Logic minimization, Spiking neural networks, SpiNNaker, Neural Engineering Framework |
-| **PDF** | Available (4.77 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/real-time-spaun-on-spinnaker-functional-brain-simulation-on-a-mas |
-
-### 1.11 Qian Liu -- Deep Spiking Neural Networks (2018)
-
-| Field | Details |

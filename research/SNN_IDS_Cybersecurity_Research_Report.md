@@ -334,3 +334,31 @@ why this works:
 | 98-99% on standard benchmarks | High | Multiple independent papers confirm |
 | 70-90% energy savings over CNNs | High | Wang 2024 has detailed measurements |
 | Edge deployment is feasible | Medium-High | Demonstrated in simulation; limited real hardware |
+| Suitable for undergrad thesis | High | Active but young field with clear gaps |
+| Novel contribution is achievable | High | Multiple unexplored angles |
+| Open-source code is usable | Medium | zbs881314 repo exists but limited docs; frameworks are well-documented |
+
+---
+
+## next steps if i were to pursue this
+
+1. read Wang et al. 2024 (Scientific Reports) in full -- most detailed SNN-IDS paper with reproducibility info
+2. read Mia et al. 2025 (ACM ICONS) -- most sophisticated architecture
+3. clone zbs881314/Intrusion-detection and try running it on NSL-KDD
+4. work through snnTorch tutorials: https://snntorch.readthedocs.io/
+5. download UNSW-NB15: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+6. discuss with supervisor whether encoding comparison, edge deployment, or hybrid approach fits best
+
+---
+
+## references
+
+### key papers
+- [Wang et al. 2024 - ConvSNN IDS (Scientific Reports)](https://www.nature.com/articles/s41598-024-57691-x)
+- [Wang et al. 2024 - PMC Full Text](https://pmc.ncbi.nlm.nih.gov/articles/PMC10963367/)
+- [TASNN 2026 - Transformer-Spiking Hybrid (Scientific Reports)](https://www.nature.com/articles/s41598-026-37367-4)
+- [Mia et al. 2025 - Neuromorphic Cybersecurity Lifelong Learning (arXiv)](https://arxiv.org/abs/2508.04610)
+- [SURFS - Federated SNN IDS (IEEE)](https://ieeexplore.ieee.org/document/10622560/)
+- [Event-Driven SNN-IDS (IEEE)](https://ieeexplore.ieee.org/document/11171294/)
+- [Hybrid HRSNN for IoT (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12546366/)
+- [ConvSNN Robust IDS (Springer)](https://link.springer.com/article/10.1007/s10586-024-04603-3)

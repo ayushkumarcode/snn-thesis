@@ -65,31 +65,3 @@ Based on analysis of successful undergraduate SNN projects and Manchester's asse
 
 **Experiment Set B (Variation):**
 3. Vary a key SNN parameter (e.g., number of time steps: 10, 25, 50, 100) and record accuracy vs. time steps
-4. Test on a second dataset (Fashion-MNIST) to show generalisability
-
-**This produces:**
-- Table 1: ANN vs SNN accuracy comparison
-- Table 2: Effect of time steps on SNN accuracy
-- Figure 1: Training loss curves (ANN vs SNN)
-- Figure 2: Accuracy vs. time steps plot
-
-### Recommended for a First: 6-8 experiments producing 3-4 results tables + 4-6 figures
-
-Add to the above:
-5. Compare fully-connected vs convolutional SNN architectures
-6. Compare rate coding vs latency coding input encoding
-7. Measure and compare spike counts / synaptic operations (energy proxy)
-8. Test on N-MNIST (neuromorphic dataset) -- shows SNN advantage on temporal data
-
-**Additional outputs:**
-- Table 3: Architecture comparison (FC-SNN vs CSNN vs FC-ANN vs CNN)
-- Table 4: Encoding scheme comparison
-- Figure 3: Spike raster plots (visualise spiking activity)
-- Figure 4: Confusion matrices
-- Figure 5: Energy estimation comparison (synaptic operations)
-
-### What examiners actually care about (from Manchester assessment docs):
-
-The Manchester marking criteria state the report needs:
-- "An elucidation of the problem and the objectives"
-- "An in-depth investigation of the context and literature"

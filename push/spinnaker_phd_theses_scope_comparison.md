@@ -95,31 +95,3 @@ The SpiNNaker project (Manchester, Steve Furber, since ~2006) has produced at le
 
 ## Steve Furber & SpiNNaker 2
 
-- **Steve Furber**: Retired, now Professor Emeritus. Won 2022 Charles Stark Draper Prize.
-- **SpiNNaker 1**: Operational but suffered cooling failure Easter 2025 (~80% capacity)
-- **SpiNNaker 2**: Major upgrade — 22nm FDSOI, 152 ARM Cortex-M4F cores/chip, 64 MAC accelerators, 2GB DRAM/chip
-- **TU Dresden** leads SpiNNaker 2 development (Christian Mayr)
-- **SpiNNcloud Systems GmbH**: First commercially available neuromorphic supercomputer (May 2024)
-- **Sandia National Labs**: Deployed SpiNNaker2 for AI/national security (June 2025, ~175M neurons)
-- Claims **18x energy efficiency** over GPUs
-
-### SpiNNaker 2 vs SpiNNaker 1
-
-| Feature | SpiNNaker 1 | SpiNNaker 2 |
-|---------|-------------|-------------|
-| Process | 130nm CMOS | 22nm FDSOI |
-| Cores/chip | 18 ARM968 | 152 ARM Cortex-M4F |
-| SRAM/core | 96KB | 128KB + 19MB total |
-| DRAM/chip | 128MB | 2GB |
-| ML accelerator | None | 64 MAC units |
-| Target scale | 1M cores | 10M cores |
-
----
-
-## Key Sources
-- Manchester Research Explorer (thesis repository)
-- [Dominguez-Morales audio](https://link.springer.com/chapter/10.1007/978-3-319-44778-0_6)
-- [E-prop keyword spotting SpiNNaker2](https://www.frontiersin.org/articles/10.3389/fnins.2022.1018006)
-- [SpiNNaker2 at Sandia](https://www.hpcwire.com/off-the-wire/sandia-deploys-spinnaker2-neuromorphic-system-from-spinncloud/)
-- [SpiNNaker overheating](https://www.theregister.com/2025/05/06/spinnaker_overheat/)
-- [Larroza et al. 2025](https://arxiv.org/abs/2503.11206)

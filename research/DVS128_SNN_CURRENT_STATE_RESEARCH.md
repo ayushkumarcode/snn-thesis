@@ -297,31 +297,3 @@ Not "can SNNs classify DVS128 gestures?" (answer: obviously yes) but rather:
 
 **3. Multi-Dimensional Evaluation**
 Go beyond accuracy. Report:
-- Test accuracy (mean +/- std over multiple runs)
-- Number of parameters
-- Training time (wall clock, per epoch, total)
-- Estimated energy consumption (SynOps via syops library)
-- Inference latency
-- Confusion matrices per class
-- Per-class accuracy (some gestures are harder than others)
-
-**4. ANN Baseline Comparison**
-Train an equivalent ANN (same architecture but ReLU instead of LIF) on frame-converted DVS data. This answers: "Does the SNN bring any advantage over a standard ANN for this task?"
-
-**5. Visualization and Analysis**
-- Spike raster plots showing neuron activity
-- Membrane potential traces
-- t-SNE/UMAP of learned representations
-- Analysis of failure cases: which gestures are confused and why?
-- Visualization of learned PLIF time constants across layers
-
-**6. Reproducibility**
-- Clean code in a public repository
-- Environment/dependency files (requirements.txt, conda env)
-- Clear instructions to reproduce all experiments
-- Saved model checkpoints and logs
-
-**Source:** General academic thesis standards, [SpikingJelly classify_dvsg documentation](https://github.com/fangwei123456/spikingjelly/blob/master/docs/source/activation_based_en/classify_dvsg.rst)
-
----
-

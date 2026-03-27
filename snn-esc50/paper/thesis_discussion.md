@@ -12,20 +12,20 @@ This gap isn't a failure of spiking computation -- its a well-understood consequ
 
 **PANNs reframes the narrative.** When feature-learning burden is removed (AudioSet CNN14 embeddings), gap collapses from 16.70 pp to 0.95 pp (92.50% vs 93.45%). Strongest evidence that the gap is a **feature-learning problem, not a spiking computation problem.** With equal-quality features, spiking and non-spiking classifiers achieve statistically indistinguishable accuracy on 50-class audio.
 
+Practical implication: optimal pipeline isn't fully spiking end-to-end, but a **hybrid** -- efficient feature extractor (ANN or bio-inspired) provides representations to lightweight SNN classifier. Exactly what we validate on SpiNNaker.
 
 ---
 
-## 7.2 The Encoding Hierarchy and Its Explanation
+## 7.2 the encoding hierarchy and its explanation
 
-The encoding ordering **direct > rate ≈ phase > population > latency >> delta ≈ burst** (all 7 methods complete) is consistent and instructive. It can be fully explained by the **information preservation principle**:
+Ordering: **direct > rate ~ phase > population > latency >> delta ~ burst** (all 7 complete). Fully explained by information preservation.
 
-**Direct encoding dominates** because it preserves full continuous magnitude information across all 25 timesteps. Every LIF neuron receives the same current at every timestep, allowing the temporal integration to accumulate sufficient evidence for a reliable rate-code decision. The CNN convolutional layers process continuous-valued inputs that exactly match their training distribution (the preprocessing produces values in [0,1] at all timesteps), and the LIF threshold converts these to sparse binary spikes at the first-spike time.
+**Direct dominates** because it preserves full continuous magnitude across all 25 timesteps. CNN layers get inputs matching their training distribution at every step.
 
-**Rate encoding underperforms direct** because Bernoulli stochasticity introduces noise that increases the effective variance of the training signal. At T=25, a pixel with intensity 0.3 fires 7.5 times on average, but with standard deviation $\sqrt{25 \times 0.3 \times 0.7} = 2.29$ — sufficient to cause different fold images of the same sound to generate very different spike patterns. The CNN must learn to be robust to this noise, reducing its effective capacity for discrimination.
+**Rate < direct** because Bernoulli stochasticity introduces noise. At T=25, pixel at 0.3 fires 7.5 times avg but std=2.29 -- enough to make nearby pixels indistinguishable. CNN has to learn robustness to this noise, reducing effective capacity.
 
-**Latency encoding further underperforms** because the logarithmic mapping concentrates spikes in the first few timesteps for high-intensity pixels, reducing the temporal diversity that the LIF integration can exploit. Effectively, latency coding at τ=5.0 collapses much of the T=25 window into T≈5 usable timesteps.
+**Latency underperforms further** because log mapping concentrates spikes into first ~5 timesteps for high-intensity pixels. Effectively reduces T=25 to T~5.
 
-**Delta and burst perform near chance** for fundamentally different reasons:
 - *Delta:* Static spectrograms have no temporal variation → no spikes generated → network cannot learn
 - *Burst:* All information in first 5 of 25 timesteps → severe train/test distribution mismatch (network trains on the first-5-timestep-rich pattern but the remaining 20 timesteps contribute noise to test-time decisions). The result (6.50% ± 1.54% mean accuracy across 5 folds, with per-fold range 5.00%–9.25%, and train accuracy reaching 45–62%) demonstrates that the LIF integration window T=25 is not matched to the burst window N_max=5.
 

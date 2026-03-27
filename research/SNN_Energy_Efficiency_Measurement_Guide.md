@@ -194,3 +194,31 @@ def estimate_energy(spike_counts, layer_fan_outs, flops_ann,
     return {
         'total_sops': total_sops,
         'E_SNN_joules': E_SNN,
+        'E_ANN_joules': E_ANN,
+        'energy_ratio': energy_ratio,
+    }
+```
+
+### advanced tools (for reference)
+
+| Tool | Type | Difficulty | GitHub |
+|------|------|-----------|--------|
+| **SANA-FE** | Neuromorphic arch simulator | MEDIUM-HIGH | [SLAM-Lab/SANA-FE](https://github.com/SLAM-Lab/SANA-FE) |
+| **SpikeSim** | CIM hardware evaluator | MEDIUM-HIGH | [Intelligent-Computing-Lab-Panda/SpikeSim](https://github.com/Intelligent-Computing-Lab-Panda/SpikeSim) |
+| **SNN Toolbox** | ANN-to-SNN converter | MEDIUM | [NeuromorphicProcessorProject/snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox) |
+
+---
+
+## 5. how to make a fair comparison
+
+this is maybe the most important part. a fair comparison requires:
+
+### controlled variables
+
+| Variable | Must be same? | Notes |
+|----------|:-----:|-------|
+| Task | Yes | Same dataset, same problem |
+| Architecture | Yes (or justified) | Same layers, kernels, channels |
+| Accuracy | Yes (within ~1-2%) | Energy at comparable accuracy |
+| Data type | Yes | Same input resolution, encoding |
+| Training protocol | Document fully | Epochs, LR, augmentation |

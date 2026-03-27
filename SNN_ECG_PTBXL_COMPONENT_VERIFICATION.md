@@ -54,3 +54,31 @@ overall: yes, the pipeline is buildable end-to-end, but need to be careful about
 - **Install:** `pip install wfdb`
 - **Latest version:** 4.3.1 (released February 2026)
 - **Python requirement:** >= 3.9
+- **Can load PTB-XL directly:** YES
+
+**Exact loading code (from PhysioNet's official example_physionet.py):**
+
+```python
+import pandas as pd
+import numpy as np
+import wfdb
+import ast
+
+def load_raw_data(df, sampling_rate, path):
+    if sampling_rate == 100:
+        data = [wfdb.rdsamp(path + f) for f in df.filename_lr]
+    else:
+        data = [wfdb.rdsamp(path + f) for f in df.filename_hr]
+    data = np.array([signal for signal, meta in data])
+    return data
+
+path = '/path/to/ptb-xl/'
+sampling_rate = 100
+
+# Load and convert annotation data
+Y = pd.read_csv(path + 'ptbxl_database.csv', index_col='ecg_id')
+Y.scp_codes = Y.scp_codes.apply(lambda x: ast.literal_eval(x))
+
+# Load raw signal data
+X = load_raw_data(Y, sampling_rate, path)
+# X shape at 100 Hz: (21799, 1000, 12)  -- records x samples x leads

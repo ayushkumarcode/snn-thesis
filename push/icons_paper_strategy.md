@@ -54,3 +54,31 @@ target: 5 tables, 3 figures.
 
 ---
 
+## 3 essential figures
+
+1. **architecture diagram** -- SpikingCNN with encoding input, Conv-BN-Pool-LIF blocks, output
+2. **SpiNNaker pipeline** -- hybrid: snnTorch (conv+FC1) -> binary spikes -> SpiNNaker (FC2). show FC1 cancellation as crossed-out path
+3. **encoding bar chart** -- 7 encodings + ANN baseline with error bars
+
+---
+
+## title options
+
+| Option | Title |
+|--------|-------|
+| A (recommended) | Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment |
+| B (short) | First Convolutional SNN on ESC-50: Encoding Comparison and SpiNNaker Deployment |
+| C (finding) | Bridging the SNN-ANN Gap in Environmental Sound Classification |
+| D (hardware-forward) | SpiNNaker Deployment of Spiking Neural Networks for 50-Class Environmental Sound Classification |
+
+---
+
+## reviewer objections -- prepared responses
+
+### "47% accuracy is low"
+frame as baseline datum, not final word. PANNs+SNN (92.5%) proves the architecture works when features are good. the 47% identifies the bottleneck (feature learning from small data).
+
+### "SNN uses MORE energy than ANN"
+three-part honest framing:
+1. quantify: SNN 976 nJ vs ANN 463 nJ due to T=25 timesteps
+2. path to efficiency: spike rate 25.8% vs threshold <6.4%. reducing T and increasing sparsity closes gap

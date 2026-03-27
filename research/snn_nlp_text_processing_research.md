@@ -138,3 +138,31 @@ this is the central technical challenge. four main approaches:
 
 ### 1. Poisson rate coding (most common, recommended)
 
+take pre-trained word embeddings (Word2Vec, GloVe), normalize to [0,1], each component generates a Poisson spike train with firing rate proportional to its value. the Spiking CNN paper details the exact process: calculate mean/std, clip within 3 sigma, normalize, scale, generate Poisson trains.
+
+pros: simple, well-understood, preserves semantic info from pre-trained embeddings, working code exists
+cons: needs many timesteps (50-100), stochastic noise, slow inference
+
+### 2. temporal/latency coding
+
+information encoded in spike *timing* -- higher values produce earlier spikes.
+
+pros: more info per spike, faster inference, lower energy
+cons: more complex, less robust to noise, less explored for text
+
+### 3. direct embedding (SpikeLM approach)
+
+elastic bi-spiking with bi-directional amplitude and frequency encoding. works with T=1.
+
+pros: fewer timesteps, preserves more info
+cons: needs custom neuron models, harder to implement
+
+### 4. Word2Spike (2025)
+
+rate coding with one-to-one mapping from word vectors to spike-based attractor states. preserves semantic structure despite noise.
+
+### 5. integer word index encoding (simplest)
+
+words converted to integer indices, each generates a spike pattern. used in SSA-SpiNNaker.
+
+pros: dead simple

@@ -102,31 +102,3 @@ The following papers were accepted as full or short papers at ICONS 2024 (Arling
 6. "Real-Time Supervised SNN for Cerebellar Purkinje Cells Spike Detection and Classification" -- Raisiardali et al.
 7. "Neuromorphic Wireless Device-Edge Co-Inference via Directed Information Bottleneck" -- Ke et al.
 8. "Neuromorphic Computing for the Masses" -- Matinizadeh et al.
-9. "Solving Minimum Spanning Tree Problem in Spiking Neural Networks" -- Janssen et al.
-10. "Asynchronous Multi-Fidelity Hyperparameter Optimization of SNNs" -- Firmin et al.
-11. "Neuro-Spark: Submicrosecond SNN Architecture for In-Sensor Filtering" -- Miniskar et al.
-12. "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware" -- Seekings et al.
-13. "Temporal and Spatial Reservoir Ensembling for Liquid State Machines" -- Biswas et al.
-14. "Timing Actions in Games Through Bio-Inspired Reinforcement Learning" -- Ambrosini et al.
-15. **"Continuous Learning for Real-Time Auditory Blind Source Separation Applications"** -- Schmitt et al. *[AUDIO-RELATED]*
-16. "TRIP: Trainable Region-of-Interest Prediction for Hardware-Efficient Neuromorphic Processing" -- Arjmand et al.
-17. "Supervised Radio Frequency Interference Detection with SNNs" -- (authors truncated)
-18. "Variation-Aware Non-linear Mapping for Honey-Memristor Based Neuromorphic System" -- Uppaluru et al.
-
-**Key observation:** Paper #15 is an audio-related neuromorphic paper at ICONS 2024. Audio/sound processing IS represented at ICONS, though it is a minority topic.
-
-### ICONS 2025 -- Full Paper List (from schedule)
-
-ICONS 2025 (Bellevue/Seattle, July 29--31, 2025) accepted the following:
-
-**Best Paper Award:** "A Comparison of Custom and Standard Neuron Model Random Walks on the Ornstein-Uhlenbeck Equation for Simplified Turbulence" -- Taylor et al.
-
-**Full Talks (11 papers):**
-1. "Neuromorphic Closed-Loop Control with Spiking Motor Neuron and Muscle Spindle Models" -- Stoll et al.
-2. Best Paper (above)
-3. "Generating Spiking Neural Network Code Libraries for Embedded Systems" -- Gullett et al.
-4. "Optimizing generalized feedback paths for credit assignment" -- Western et al.
-5. "Izhikevich-Inspired Temporal Dynamics for Privacy in SNNs" -- Moshruba et al.
-6. "EEvAct: Early Event-Based Action Recognition with Two-Stream SNNs" -- Neumeier et al.
-7. "Quantitative evaluation of brain-inspired vision sensors" -- Wang et al.
-8. "Quantizing Small-Scale State-Space Models for Edge AI" -- Zhao et al.

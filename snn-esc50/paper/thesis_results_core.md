@@ -291,7 +291,3 @@ Output expanded to 500 neurons (50 x 10). All 10 neurons per class contribute vi
 4. **PANNs finding:** gap collapses 16.70 pp to 0.95 pp with pretrained features. Its a feature-learning problem, not a spiking-computation problem. (C5)
 
 5. **Statistical significance:** SNN-ANN gap significant at p=0.001 (paired t-test).
-
-4. **The PANNs finding:** SNN-ANN gap collapses from 16.70 pp to 0.95 pp with AudioSet-pretrained features, demonstrating that the gap is a feature-learning problem, not a spiking-computation problem (C5).
-
-5. **Statistical significance:** The SNN-ANN gap (direct vs ANN baseline) is significant at p=0.001 (paired t-test).

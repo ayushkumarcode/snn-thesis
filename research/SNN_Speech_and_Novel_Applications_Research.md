@@ -110,3 +110,31 @@ The key challenge: SNNs produce discrete binary spike events (0 or 1), but speec
 - This area has extreme novelty -- even a modest contribution would be publishable
 - Risk: complex architecture, may require significant compute
 - Could focus on the vocoder component (Spiking Vocos) rather than full TTS pipeline
+
+### Gaps (massive opportunities)
+1. Only 2-3 papers exist in total -- almost any direction is novel
+2. No work on SNN-based TTS for specific languages beyond Chinese/English
+3. No work on SNN-based emotional/expressive TTS
+4. No comparison of different SNN neuron models (LIF vs Izhikevich vs ALIF) for TTS quality
+5. No work on SNN-based real-time TTS for edge devices
+6. SNN-based vocoder optimized for neuromorphic hardware deployment
+
+---
+
+## 3. Speech-to-speech with SNNs (enhancement, conversion, translation)
+
+### Paper count: 5-10 papers (growing fast, mostly speech enhancement)
+
+| Paper | Year | Task | Key Result |
+|-------|------|------|------------|
+| **Spiking-FullSubNet** | 2024 | Speech Enhancement | Won Intel N-DNS Challenge; SOTA with large margins |
+| DPSNN: Dual-Path SNN for Streaming Speech Enhancement | 2024 | Speech Enhancement | ~5ms latency; suitable for hearing aids |
+| When Audio Denoising Meets SNN (Hao et al.) | 2024 | Audio Denoising | IEEE CAI 2024 |
+| SNN-Wave-U-Net | 2025 | Speech Enhancement | 4.63J/inference (3.2x reduction vs ANN Wave-U-Net) |
+| SNN-ConvTasNet | 2025 | Speech Enhancement | ~7x energy reduction vs ConvTasNet |
+| Three-Stage Hybrid SNN Fine-Tuning for Speech Enhancement | 2025 | Speech Enhancement | Conversion + fine-tuning approach |
+| End-to-end Neuromorphic Speech Enhancement with PDM Microphones | 2025 | Speech Enhancement | Direct PDM microphone to enhanced speech |
+
+### Analysis
+
+Speech enhancement is the strongest SNN speech application beyond classification.

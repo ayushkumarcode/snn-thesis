@@ -73,31 +73,3 @@ Typical configuration: 5 convolutional blocks with 128 channels, 3x3 kernels, fo
 ### Neuron Models
 
 | Neuron | Description | DVS128 Gesture Impact |
-|--------|-------------|----------------------|
-| **LIF** | Leaky Integrate-and-Fire. Fixed decay constant. Standard choice. | Baseline ~96% |
-| **PLIF** | Parametric LIF. Learnable decay per layer. ICCV 2021. | ~1-2% improvement over LIF |
-| **IF** | Integrate-and-Fire. No leak. Simpler but less expressive. | Lower accuracy |
-| **ALIF** | Adaptive LIF. Learnable threshold adaptation. | Improved temporal modeling |
-
-**Key finding:** PLIF (learnable membrane time constant) consistently outperforms fixed-parameter LIF neurons, and is less sensitive to hyperparameter initialization. This is supported by the SpikingJelly authors' own ICCV 2021 paper.
-
-**Source:** [PLIF Paper (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/papers/Fang_Incorporating_Learnable_Membrane_Time_Constant_To_Enhance_Learning_of_Spiking_ICCV_2021_paper.pdf), [GitHub: Parametric-LIF](https://github.com/fangwei123456/Parametric-Leaky-Integrate-and-Fire-Spiking-Neuron)
-
----
-
-## 3. Framework Comparison: SpikingJelly vs. snnTorch
-
-### Head-to-Head Comparison
-
-| Feature | SpikingJelly | snnTorch |
-|---------|-------------|---------|
-| **DVS128 Loader** | Built-in, works well. Auto-downloads AEDAT, converts to npz/frames. | DEPRECATED (spikevision broken). Must use Tonic library. |
-| **DVS128 Tutorial** | Complete end-to-end classification tutorial with code | Partial (Tutorial 7 uses NMNIST, not DVS128 directly) |
-| **Pre-built DVS Model** | Yes: classify_dvsg example with full training script | No pre-built DVS128 model |
-| **Training Speed** | ~18s/epoch (CUDA backend) to ~28s/epoch (PyTorch backend) on RTX 2080 Ti | Slower. No custom CUDA kernels. torch.compile does not help snnTorch significantly. |
-| **CUDA Acceleration** | CuPy backend: 0.26s fwd+bwd for 16K neuron benchmark. Up to 11x speedup at T=32. | No custom CUDA. Relies on standard PyTorch. |
-| **Neuron Models** | LIF, PLIF, IF, QIF, EIF, Izhikevich | Leaky, Synaptic, Alpha, Recurrent LIF, LSTM-based |
-| **Documentation Quality** | Good but partly in Chinese. English docs available. | Excellent. Very tutorial-driven, beginner-friendly. |
-| **Community/Stars** | ~3.3K GitHub stars | ~2.5K GitHub stars |
-| **Academic Paper** | Science Advances (2023) | NeurIPS Workshop |
-| **Multi-step Processing** | Native support. SeqToANNContainer for parallel timestep processing. | Sequential processing only (loop over timesteps). |

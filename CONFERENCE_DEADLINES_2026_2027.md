@@ -26,3 +26,31 @@ plus some later targets: IEEE SiPS (April 12), NeurIPS 2026 (~May), INTERSPEECH 
 | **Camera-Ready** | 24 June 2026 |
 | **Conference Dates** | 4-6 August 2026 |
 | **Location** | Chicago Marriott Naperville, Chicago, Illinois, USA |
+| **Page Limit** | Full papers: 8 pages; Short papers: 4 pages |
+| **Format** | ACM Conference Proceedings Template |
+| **Proceedings** | ACM Digital Library (indexed) |
+| **Acceptance Rate** | Not publicly reported; community-sized conference (~100-150 attendees) |
+| **Registration/APC** | ACM Open Access model. APC: $250 (ACM member) / $350 (non-member) if institution not in ACM Open. |
+| **Submission via** | EasyChair |
+
+this is THE conference for this work. neuromorphic systems focus, SpiNNaker deployment is core audience interest. community-sized = less competitive than top-tier ML. the existing 8-page draft is already formatted for this.
+
+Sources: [ICONS 2026 Calls](https://iconsneuromorphic.cc/calls-2026/), [EasyChair CFP](https://easychair.org/cfp/ACM-ICONS-2026)
+
+---
+
+### 1.2 ICNCE 2026 -- International Conference on Neuromorphic Computing and Engineering
+
+| Field | Details |
+|-------|---------|
+| **Full Name** | International Conference on Neuromorphic Computing and Engineering |
+| **Abstract Deadline** | **3 April 2026 (AoE)** |
+| **Notification** | 30 April 2026 |
+| **Conference Dates** | 29 June -- 2 July 2026 |
+| **Location** | Eurogress Aachen, Germany |
+| **Page Limit** | 1-page abstract (DIN A4), one optional figure/table |
+| **Format** | 12pt Times New Roman, 2cm margins, PDF only |
+| **Proceedings** | Abstract-only (no full paper in proceedings) |
+| **Registration** | Master/bachelor students receive sponsored participation |
+
+abstract-only, so low barrier. student sponsorship is nice. but it doesn't produce a citable proceedings paper.

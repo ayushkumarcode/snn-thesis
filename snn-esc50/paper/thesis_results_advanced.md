@@ -166,20 +166,20 @@ Mean timestep of first correct-class spike, averaged over fold 4 test samples. S
 
 | Class | Mean first-spike |
 |-------|-----------------|
-### 6.3.4 Per-Class First-Spike Latency
-
-The mean timestep at which the output spike first fires for the correct class output neuron, averaged over fold 4 test samples of that class. Lower values indicate earlier firing (more active output neuron → "easier" for first-spike readout). *Source: `results/temporal_analysis/temporal_analysis_fold4.json`.*
-
-**Earliest-firing classes (first-spike timestep < 1.0):**
-
-| Class | Mean first-spike (step out of 25) |
-|-------|----------------------------------|
 | can_opening | 0.12 |
 | sneezing | 0.38 |
 | water_drops | 0.50 |
 | church_bells | 0.63 |
 | frog | 0.75 |
 | cat | 0.75 |
+| door_wood_knock | 0.75 |
+| mouse_click | 0.75 |
+| rooster | 0.88 |
+| crow | 0.88 |
+| siren | 0.88 |
+
+**Latest firing:**
+
 | door_wood_knock | 0.75 |
 | mouse_click | 0.75 |
 | rooster | 0.88 |

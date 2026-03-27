@@ -320,31 +320,3 @@ Hardware: CPU/MPS on macOS
 ```
 
 **Risks:**
-- SNN+RL training is notoriously finicky (hyperparameter sensitivity)
-- May not converge as well as ANN baseline
-- Limited novelty if just doing CartPole (many papers already)
-
-**VERDICT: FEASIBLE and well-scoped. The CartPole/LunarLander framing keeps scope manageable. Novelty is low unless you add an angle (e.g., specific energy analysis, or a novel encoding scheme).**
-
----
-
-### 2.4 SNN for Drone Control
-
-**Literature: 10-15 papers**
-
-Key works:
-- [SNN-based PID controller for UAV (RSS 2020)](https://www.roboticsproceedings.org/rss16/p074.pdf)
-- [Nature-inspired self-organizing collision avoidance for drone swarm (PMC 2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9676561/)
-- [Parameter optimization in SNN for UAV obstacle avoidance (arxiv 2019)](https://arxiv.org/abs/1910.07960)
-
-**Simulation-only possible?** Yes, but drone simulators (AirSim, Gazebo) are heavyweight.
-
-**macOS compatible?** AirSim is deprecated. Gazebo is Linux-only. PyBullet can simulate basic drone physics on macOS but is complex.
-
-**Feasibility for 28 days: LOW**
-- Drone dynamics are 6-DOF (position + orientation) -- much more complex than CartPole
-- Simulation setup alone could take a week
-- SNN integration adds another layer of complexity
-
-**VERDICT: NOT RECOMMENDED. Too complex for the timeline. If interested in RL+SNN, use CartPole/LunarLander instead.**
-

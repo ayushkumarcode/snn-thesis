@@ -378,31 +378,3 @@ I searched the following repositories and sources:
 | Basu et al., "Fundamental Survey on Neuromorphic Based Audio Classification" | Feb 2025 | Comprehensive review of SNN audio classification | Most comprehensive and recent survey. Covers hardware platforms, encoding methods, learning approaches. arXiv: 2502.15056 |
 | Kim et al., "SNN and Sound: A Comprehensive Review" | 2024 | SNN applications in sound | Published in Biomedical Engineering Letters. Covers speech, environmental sound, music. |
 | Larroza et al., "Spike Encoding for Environmental Sound: A Comparative Benchmark" | March 2025 | Spike encoding comparison for ESC-10 | Closest work to ours. ESC-10 only (not ESC-50), FC only (not convolutional), no hardware deployment. arXiv: 2503.11206 |
-| Meunier et al., "Comparison of Hardware-friendly Audio-to-spikes Cochlear Encoding" | 2025 | Audio encoding for neuromorphic hardware | Presented at IEEE AICAS 2025. Compares bio-mimetic vs hardware-friendly encoding on SHD and GSC. |
-| Yik et al., "NeuroBench" | 2025 | Neuromorphic benchmarking framework | Nature Communications 16:1589. Includes audio benchmarks. |
-
----
-
-## Part 4: Synthesis and Implications for Our Thesis
-
-### 4.1 Positioning Our Work
-
-Our thesis occupies a unique position in the literature:
-
-1. **First ESC-50 deployment on neuromorphic hardware.** No other published work has deployed SNNs on any neuromorphic chip for the full 50-class ESC-50 dataset.
-
-2. **First SpiNNaker audio classification since 2016.** The only prior SpiNNaker audio classification work (Dominguez-Morales 2016) used 8 pure tones. Our work represents a 10-year gap in SpiNNaker audio classification research.
-
-3. **Comprehensive encoding comparison.** Our comparison of 7 spike encoding schemes (direct, rate, phase, population, latency, delta, burst) is the most comprehensive for any environmental sound dataset on SNN.
-
-4. **Hybrid ANN-SNN deployment concept.** Our PANNs+SNN approach (92.5%) demonstrates the viability of hybrid deployment, a strategy now recognized in the literature as practical.
-
-5. **Undergraduate scope.** The breadth of experiments (encoding ablation, surrogate gradient ablation, adversarial robustness, continual learning, PANNs transfer, SpiNNaker deployment, NeuroBench energy analysis) is unusual for an undergraduate thesis.
-
-### 4.2 Our Hardware Gap in Context
-
-Our 12.8 pp hardware-software gap is **within the expected range** for neuromorphic deployment, especially considering:
-
-- DYNAP-SE showed 7.1 pp gap on a much simpler task
-- Loihi 2 achieves near-zero gap but uses quantization-aware training, 8-bit optimized pipeline, and a much newer chip
-- SpiNNaker 1 is a 2012-era design (130nm) vs Loihi 2's Intel 7 process

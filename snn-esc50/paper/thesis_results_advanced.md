@@ -250,20 +250,20 @@ Per-class accuracy for both SNN (direct) and ANN across all 5 folds (n=40 test s
 | water_drops | 15% | 43% | -28% |
 | drinking_sipping | 20% | 45% | -25% |
 | clock_tick | 23% | 68% | -45% |
-**Bottom 10 classes by SNN accuracy:**
+| fireworks | 23% | 43% | -20% |
+| hen | 28% | 43% | -15% |
 
-| Class | SNN Accuracy | ANN Accuracy | SNN−ANN |
-|-------|-------------|-------------|---------|
-| engine | 8% | 43% | −35% |
-| door_wood_creaks | 10% | 25% | −15% |
-| helicopter | 10% | 33% | −23% |
-| pig | 13% | 35% | −22% |
-| laughing | 13% | 53% | −40% |
-| water_drops | 15% | 43% | −28% |
-| drinking_sipping | 20% | 45% | −25% |
-| clock_tick | 23% | 68% | −45% |
-| fireworks | 23% | 43% | −20% |
-| hen | 28% | 43% | −15% |
+**Classes where SNN > ANN (6/50):**
+1. coughing: 68% vs 60% (+8%)
+2. crying_baby: 80% vs 73% (+7%)
+3. door_wood_knock: 80% vs 73% (+7%)
+4. pouring_water: 75% vs 70% (+5%)
+5. crackling_fire: 68% vs 65% (+3%)
+6. footsteps: 55% vs 53% (+2%)
+
+Stats: paired t-test p=0.0010 (significant), Wilcoxon p=0.0625 (limited by n=5).
+
+### 6.5.3 interpretation
 
 **Classes where SNN outperforms ANN (6/50):**
 1. coughing: SNN 68% vs ANN 60% (+8%)

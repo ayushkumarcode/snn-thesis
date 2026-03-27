@@ -530,3 +530,31 @@ Events need to be binned into dense frame tensors for batch training. There's ba
 
 ---
 
+## Tonic Library
+
+### Overview
+
+Tonic is a PyTorch-compatible library for neuromorphic/event-based datasets and transforms. Basically "torchvision for neuromorphic data."
+
+```bash
+pip install tonic
+```
+
+### Key Features
+
+- Downloads and loads 20+ neuromorphic datasets including DVSGesture
+- Event-specific transforms (denoise, spatial jitter, temporal jitter, etc.)
+- Frame conversion transforms (ToFrame, ToVoxelGrid, ToTimesurface)
+- DiskCachedDataset for fast reloading
+- Compatible with PyTorch DataLoader
+- Works with both PyTorch and JAX
+
+### DVSGesture Dataset in Tonic
+
+```python
+import tonic
+
+# Load dataset (downloads automatically on first use)
+dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
+
+# Access sensor size

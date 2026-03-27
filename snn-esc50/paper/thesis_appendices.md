@@ -54,20 +54,20 @@ Direct encoding, fold 1, single seed. Best validation accuracy reported.
 Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`. 1 seed only. Bimodal: {sre, fast_sigmoid, atan} learn vs {STE, sigmoid, SFS, triangular} fail.
 
 ### A.4 adversarial robustness -- full table (fold 4, 400 samples)
-### A.4 Adversarial Robustness — Full Table (Fold 4, 400 Samples)
 
-SNN: direct encoding, fold 4 local model (53.75% clean). ANN: fold 4 local model (68.75% clean). Fold 4 models used for all adversarial experiments (consistent with fold 4 usage for SpiNNaker).
+SNN: direct, fold 4 (53.75% clean). ANN: fold 4 (68.75% clean).
 
-| ε | FGSM SNN | FGSM ANN | PGD SNN (40 steps) | PGD ANN (40 steps) |
-|---|---------|---------|-------------------|-------------------|
-| 0.00 (clean) | 53.75% | 68.75% | 53.75% | 68.75% |
+| eps | FGSM SNN | FGSM ANN | PGD SNN (40 step) | PGD ANN (40 step) |
+|-----|----------|----------|-------------------|-------------------|
+| 0.00 | 53.75% | 68.75% | 53.75% | 68.75% |
 | 0.01 | 37.50% | 22.50% | 23.50% | 14.75% |
 | 0.02 | 32.00% | 8.75% | 20.50% | 2.00% |
 | 0.05 | 29.00% | 2.50% | 19.25% | 0.00% |
-| 0.10 | **26.00%** | **1.75%** | 6.25% | 0.00% |
+| 0.10 | 26.00% | 1.75% | 6.25% | 0.00% |
 | 0.20 | 21.50% | 1.25% | 1.25% | 0.00% |
 | 0.30 | 20.75% | 0.75% | 1.25% | 0.00% |
 
+Source: `results/adversarial/robustness_fold4.json`. PGD may overestimate SNN robustness (Wang et al. 2025 caveat).
 *Source: `results/adversarial/robustness_fold4.json`.*
 *Note: PGD results may overestimate SNN robustness due to vanishing surrogate gradients (Wang et al. 2025). FGSM results are more reliable.*
 

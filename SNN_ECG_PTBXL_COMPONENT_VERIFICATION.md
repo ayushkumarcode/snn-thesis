@@ -334,3 +334,31 @@ Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)
 | lstm_bidir | 0.932 |
 | inception1d | 0.931 |
 | lstm | 0.927 |
+| fcn_wang | 0.925 |
+
+**Standard evaluation protocol:**
+- Folds 1-8: training
+- Fold 9: validation
+- Fold 10: test (highest label quality, cardiologist-validated)
+- The `strat_fold` column in ptbxl_database.csv contains pre-assigned fold numbers
+
+**For your thesis:** Use xresnet1d101 or inception1d as your ANN baseline target. An SNN achieving AUROC > 0.85 on the same task would be a publishable result.
+
+**Sources:** [PTB-XL Benchmarking GitHub](https://github.com/helme/ecg_ptbxl_benchmarking), [Paper on PubMed](https://pubmed.ncbi.nlm.nih.gov/32903191/), [arXiv version](https://arxiv.org/abs/2004.13701)
+
+---
+
+### 9. Medical Evaluation Metrics
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | sklearn documentation, PTB-XL benchmark protocol |
+| **POTENTIAL BLOCKER** | NO |
+
+**PTB-XL standard metric:** Macro-average AUROC (area under ROC curve, averaged across all labels)
+
+**sklearn implementation:**
+
+```python
+from sklearn.metrics import roc_auc_score, f1_score, classification_report

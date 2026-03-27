@@ -194,3 +194,31 @@ standard reference for operation energy in 45nm CMOS:
 
 commonly cited SNN values:
 - MAC (multiply-accumulate) at 32-bit: ~4.6 pJ (3.7 + 0.9)
+- AC (accumulate only) at 32-bit: ~0.9 pJ
+- ratio: MAC/AC ~ 5.1x
+
+we use AC=0.9 pJ, MAC=4.6 pJ -- standard 32-bit FP from Horowitz.
+
+### SNN vs ANN Energy on Audio Tasks
+
+**Loihi 2:** keyword spotting 10x faster, 200x less energy than Jetson Orin Nano. RF neurons process spectral features directly, eliminating FFT preprocessing. sigma-delta neurons: 47x more efficient encoding.
+
+**SpiNNaker 2:** 0.292 pJ/SOP. 10x neural simulation capacity per watt over SpiNNaker1. 22nm, 0.5V operation.
+
+**Xylo (NeuroBench):** acoustic scene classification at 0.028 mJ/sample vs 1.851 mJ (Arduino CPU). **66x energy reduction.**
+
+### AC vs MAC Energy Ratios
+
+| Source | AC Energy | MAC Energy | Ratio | Technology |
+|--------|-----------|------------|-------|------------|
+| Horowitz (ISSCC 2014) | 0.9 pJ (32b FP) | 4.6 pJ (32b FP) | 5.1x | 45nm |
+| Horowitz (ISSCC 2014) | 0.03 pJ (8b INT) | 0.2 pJ (8b INT) | 6.7x | 45nm |
+| Yang et al. (2024) | 0.03 pJ (8b) | 0.2 pJ (8b) | 6.7x | 45nm |
+| SpiNNaker 2 | 0.292 pJ/SOP | N/A | N/A | 22nm |
+| TrueNorth | ~26 pJ/SOP | N/A | N/A | 28nm |
+| Loihi 1 | ~23.6 pJ/SOP | N/A | N/A | 14nm |
+
+important: these ratios only capture compute energy. memory access (SRAM: 5 pJ, DRAM: 640 pJ) often dominates total energy. Dampfhoffer and Yang both emphasize this.
+
+### Sparsity-Energy Relationship
+

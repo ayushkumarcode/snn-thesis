@@ -574,31 +574,3 @@ Step 10: Compare to ANN baseline (xresnet1d: 0.937 AUROC)
 
 **Verified library versions (all current as of Feb 2026):**
 
-| Library | Version | Install |
-|---|---|---|
-| wfdb | 4.3.1 | `pip install wfdb` |
-| snntorch | 0.9.4 | `pip install snntorch` |
-| neurokit2 | 0.2.13 | `pip install neurokit2` |
-| scipy | 1.17.x | `pip install scipy` |
-| scikit-learn | 1.8.x | `pip install scikit-learn` |
-| torch | 2.x | `pip install torch` |
-| pandas | 2.x | `pip install pandas` |
-| numpy | 2.x | `pip install numpy` |
-
----
-
-## RISK ASSESSMENT SUMMARY
-
-| Component | Risk Level | Mitigation |
-|---|---|---|
-| PTB-XL Dataset | NONE | Freely available, open access |
-| WFDB Library | NONE | Stable, well-documented |
-| Preprocessing | NONE | scipy/neurokit2 both work |
-| Delta Encoding | NONE | Documented API, designed for time-series |
-| Conv1d SNN | LOW | Shape-agnostic neurons; no official 1D examples |
-| 12-Lead Handling | NONE | Standard Conv1d channel dimension |
-| Label Structure | NONE | Well-documented, code provided by PhysioNet |
-| ANN Baseline | NONE | Published scores, reproducible code |
-| Evaluation Metrics | NONE | Standard sklearn |
-| Class Imbalance | LOW | Weighted loss easily applied |
-| GPU Memory | MEDIUM | TBPTT mandatory for long sequences |

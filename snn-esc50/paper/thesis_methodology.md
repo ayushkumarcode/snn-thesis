@@ -96,20 +96,20 @@ Via `snntorch.spikegen.rate()`. Info content: O(T) bits/neuron.
 
 ### latency coding
 Higher intensity = earlier spike. One spike per neuron.
-Implemented via `snntorch.spikegen.latency()` with τ=5.0, θ=0.01, linear=True. Information content: O(log T) bits per neuron.
+$$t_{\text{fire}}(x_i) = -\tau \ln\left(\frac{x_i}{x_i - \theta}\right) \quad \text{(linearised)}$$
+Via `snntorch.spikegen.latency()` with tau=5.0, theta=0.01, linear=True. Info: O(log T) bits/neuron.
 
-### Delta Coding
-Spikes generated on positive temporal changes above a threshold.
-- Applied to a time-varying version of the spectrogram (noise-perturbed repetition)
-- Biologically motivated by on-centre cells in auditory cortex
-- Threshold = 0.1 per pixel change
-- **Performs poorly** (7.25%): static spectrograms have no inherent temporal variation
+### delta coding
+Spikes on positive temporal changes above threshold.
+- Applied to a noise-perturbed repetition of the spectrogram (since its static)
+- Bio motivation: on-centre cells in auditory cortex
+- Threshold = 0.1
+- **Performs terribly** (7.25%): static spectrograms have no inherent temporal variation so... yeah
 
-### Direct (Continuous) Coding
-The normalised spectrogram is repeated unchanged across all T timesteps. LIF neurons receive continuous membrane current input and generate their own spike timing through integration.
+### direct (continuous) coding
+Normalised spectrogram repeated unchanged across all T timesteps. LIF neurons get continuous current and generate their own timing through integration.
 $$\text{input}[t, :] = x, \quad \forall t$$
-No spike conversion: the network performs its own implicit rate coding through LIF dynamics. **Best-performing encoding (47.15%)**.
-
+No spike conversion. Network does implicit rate coding through LIF dynamics. **Best encoding at 47.15%**.
 ### Burst Coding
 Spike count ∝ intensity, concentrated at the beginning of the simulation window:
 $$n_{\text{spikes}}(x_i) = \text{round}(x_i \times N_{\max}), \quad N_{\max} = 5$$

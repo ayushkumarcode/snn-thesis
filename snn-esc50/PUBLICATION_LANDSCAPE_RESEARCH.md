@@ -26,20 +26,20 @@ what my supervisor probably means by "one big finding": the paper currently pres
 
 ### tier 1: landmark papers (500+ citations or best paper)
 
+Eshraghian et al. "Training SNNs Using Lessons from Deep Learning" -- Proc. IEEE 2023, 500+ citations, 100K+ snnTorch downloads. bridge paper that made SNNs accessible to DL community.
 
-### Tier 1: Landmark Papers (500+ citations or best paper awards)
+QKFormer -- NeurIPS 2024 Spotlight (top 3%). first directly-trained SNN to exceed 85% on ImageNet (85.65%, +10.84pp over Spikformer). classic "first X to exceed Y" framing.
 
-| Paper | Venue | Key Contribution | "Wow" Number | Framing Strategy |
-|-------|-------|-----------------|--------------|------------------|
-| Eshraghian et al. "Training SNNs Using Lessons from Deep Learning" | Proc. IEEE 2023 | Tutorial bridging deep learning and SNN training | 500+ citations, 100K+ snnTorch downloads | "Bridge" paper -- made SNNs accessible to DL community |
-| QKFormer: Hierarchical Spiking Transformer | NeurIPS 2024 (Spotlight, top 3%) | First directly-trained SNN to exceed 85% on ImageNet | **85.65% top-1 ImageNet** (+10.84pp over Spikformer) | "First X to exceed Y" framing |
-| SpikeLLM: Scaling SNN to LLMs | ICLR 2025 | First spiking LLM (7-70B parameters) | 11% WikiText2 perplexity reduction, 2.55% reasoning improvement | "First X applied to Y" (hot topic: neuromorphic + LLMs) |
-| NeuroBench Framework | Nature Communications 2025 | Standardized benchmarking for neuromorphic computing | 60+ institutions, 4 novel benchmarks | Community-building, standardization |
+SpikeLLM -- ICLR 2025. first spiking LLM (7-70B params). 11% perplexity reduction on WikiText2. "first X applied to Y" on the hottest topic.
 
-### Tier 2: High-Impact Conference Papers (2024-2025)
+NeuroBench -- Nature Communications 2025. standardized benchmarking for neuromorphic computing. 60+ institutions.
 
-| Paper | Venue | Key Contribution | "Wow" Number |
-|-------|-------|-----------------|--------------|
+### tier 2: high-impact conference papers
+
+Spikformer v2 (AAAI 2024) - 81.1% ImageNet with 1 timestep
+SpikingResformer (CVPR 2024) - bridge between ResNet and ViT in SNNs
+SpikedAttention (NeurIPS 2024) - training-free transformer-to-SNN conversion
+Spike-based Sound Source Localization (NeurIPS 2024) - RF neurons, SOTA + robustness
 | Spikformer v2 | AAAI 2024 | Masked image modeling for spiking transformers | 81.1% ImageNet with 1 timestep |
 | SpikingResformer | CVPR 2024 | Bridge between ResNet and ViT in SNNs | Competitive ImageNet accuracy |
 | SpikedAttention | NeurIPS 2024 | Training-free transformer-to-SNN conversion | No retraining needed |

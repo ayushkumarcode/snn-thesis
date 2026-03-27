@@ -59,31 +59,3 @@ The natural fit between ECG signals (temporal, quasi-periodic, spike-like QRS co
 | **PTB-XL** | 21,799 ECGs (18,869 patients) | 12-lead | 500 Hz (+ 100 Hz) | 71 SCP-ECG statements, 5 super-classes | ~7.7 GB | Free on PhysioNet |
 | **CPSC 2018 (ICBEB)** | 6,877 training + 2,954 test | 12-lead | 500 Hz | 9 classes (1 normal + 8 abnormal) | ~1 GB | Free on PhysioNet |
 
-### Tier 2: Supplementary Datasets
-
-| Dataset | Description | Access |
-|---|---|---|
-| **Large Scale 12-Lead ECG for Arrhythmia (Chapman-Shaoxing)** | 45,152 patients, 12-lead, 500 Hz | Free on PhysioNet |
-| **St Petersburg INCART** | 32 Holter records, 12-lead, annotated | Free on PhysioNet |
-| **PhysioNet/CinC Challenge 2020** | Multi-database 12-lead ECG classification | Free on PhysioNet |
-| **QTDB** | QT interval annotations, used in some SNN studies | Free on PhysioNet |
-| **Icentia11k** | 11,000 patients, single-lead, 7 days continuous | Free (large download) |
-| **Kaggle MIT-BIH (CSV format)** | Pre-processed MIT-BIH in accessible CSV format | Free on Kaggle |
-
-### Access Notes
-- **All major datasets are freely available** through PhysioNet (https://physionet.org)
-- MIT-BIH is the de facto standard for SNN-ECG work (used in ~90% of papers)
-- PTB-XL is the gold standard for 12-lead classification but has NOT been used with SNNs (major gap)
-- CPSC 2018 is used by some SNN papers (sCCfC) but under-explored
-- Kaggle versions of MIT-BIH provide ready-to-use CSV/numpy arrays
-
-### Sources
-- [MIT-BIH Arrhythmia Database (PhysioNet)](https://physionet.org/content/mitdb/1.0.0/)
-- [PTB-XL Dataset (PhysioNet)](https://physionet.org/content/ptb-xl/1.0.3/)
-- [CPSC 2018 Challenge](http://2018.icbeb.org/Challenge.html)
-- [PhysioNet Database List](https://physionet.org/about/database/)
-
----
-
-## 4. SNN Performance vs. Conventional Deep Learning
-

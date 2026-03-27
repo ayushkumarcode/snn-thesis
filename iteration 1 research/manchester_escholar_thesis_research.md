@@ -244,31 +244,3 @@ This means:
 | **Degree** | PhD |
 | **Department** | Computer Science |
 | **Supervisors** | Steve Furber (main), David Lester (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/plasticity-in-large-scale-neuromorphic-models-of-the-neocortex |
-| **Abstract** | Created the largest plastic neural network ever simulated on neuromorphic hardware: 20,000 neurons and 51 million plastic synapses. Developed neocortically-inspired temporal sequence learning model. |
-| **What They Built** | Record-breaking plastic SNN on SpiNNaker; temporal sequence learning model |
-| **Tools/Frameworks** | SpiNNaker, ARM processors |
-| **Datasets** | Temporal sequence benchmarks |
-| **Scope** | Very high -- world-record simulation |
-| **PDF Size** | 8.37 MB |
-
----
-
-## SECTION 2: ADJACENT HARDWARE / FPGA THESES
-
-### 2.1 Memristive Crossbar Arrays for Machine Learning Systems
-| Field | Detail |
-|-------|--------|
-| **Author** | Manu Vijayagopalan Nair |
-| **Year** | 2015 |
-| **Degree** | **MPhil (Master of Philosophy)** |
-| **Department** | Electrical & Electronic Engineering |
-| **Supervisors** | Piotr Dudek (main), Hujun Yin (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/memristive-crossbar-arrays-for-machine-learning-systems/ |
-| **Abstract** | Examines specialized computing systems diverging from Von-Neumann architectures. Presents Unregulated Step Descent (USD) algorithm for training memristive crossbar arrays. References TrueNorth, SpiNNaker, Neurogrid. |
-| **What They Built** | Novel training algorithm (USD) for memristive hardware; simulation studies |
-| **Tools/Frameworks** | Memristive crossbar arrays, logistic regression, MLPs, RBMs |
-| **Datasets** | Random data, MNIST |
-| **Scope** | Moderate (MPhil) -- algorithm development + simulation |
-| **PDF Size** | 4.34 MB |
-| **NOTE** | **This is one of only 2 non-PhD theses found -- MPhil level** |

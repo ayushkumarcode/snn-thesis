@@ -362,3 +362,16 @@ pip install wandb
 - Lim et al. (2025). "SIDC-KWS: Efficient Spiking Inception-Dilated Conformer." Interspeech 2025.
 
 ### Tutorials
+- snnTorch Tutorial Series: https://snntorch.readthedocs.io/en/latest/tutorials/
+- snnTorch SHD Example: https://snntorch.readthedocs.io/en/latest/examples/examples_svision/example_sv_shd.html
+- Rockpool WaveSense Tutorial: https://rockpool.ai/tutorials/wavesense_training.html
+- Open Neuromorphic Software Guide: https://open-neuromorphic.org/neuromorphic-computing/software/
+
+---
+
+## Things i couldn't find or verify
+
+- Exact SIDC-KWS parameter counts and full results table (behind Interspeech paywall)
+- SpikeSCR released code (authors said "upon camera-ready" as of Dec 2024)
+- NEAT framework details (referenced on Open Neuromorphic but limited documentation)
+- Specific undergrad theses on SNN audio processing (probably exist but not well indexed)

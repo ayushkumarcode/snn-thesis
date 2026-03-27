@@ -142,31 +142,3 @@ The SNN achieves 92.50% ± 1.30% and the ANN achieves 93.45% ± 1.54%. The diffe
 
 **Problem 3: This is ANN-to-SNN knowledge transfer in frozen embedding form, which is a well-studied approach.**
 
-The ANN-to-SNN conversion literature (Bu et al., CVPR 2025; multiple ICLR submissions) covers scenarios where pretrained ANN representations are used to initialise or guide SNN training. The paper's approach (freeze ANN embeddings, train SNN head) is a specific instance of this general paradigm. The paper frames it as novel but does not adequately distinguish it from transfer learning approaches in the vision domain (Stanojevic et al. 2024: 0.3 spikes/neuron from pretrained ANN conversion). A reviewer familiar with ANN-to-SNN conversion literature will question whether the contribution is truly novel or whether it is a straightforward application of a known approach to audio.
-
-**Problem 4: The PANNs Linear Probe (93.80%) outperforms both the ANN head (93.45%) and the SNN head (92.50%).**
-
-A linear probe on CNN14 embeddings outperforms the SNN head. This could be interpreted as: the 3-layer SNN head is actually slightly worse than a linear classifier on the same features. If the PANNs embeddings are so good that even linear separation works better than the SNN head, the contribution of the SNN is questionable.
-
-### What a Reviewer Would Specifically Say
-
-"The PANNs+SNN experiment demonstrates that a small SNN classification head can match a small ANN classification head when applied to 2048-dimensional embeddings from CNN14. This is not scientifically surprising: any reasonable classifier (including logistic regression, as the linear probe result shows) performs well on such high-quality representations. The claimed insight — that the SNN-ANN gap collapses from 16.7 pp to <1 pp — reflects not a property of the SNN formalism but the overwhelming quality of the CNN14 features. The experiment does not demonstrate that SNNs are capable feature learners; it demonstrates that the CNN14 embeddings are excellent. Additionally, the 0.95 pp gap between SNN and ANN heads is within the range of random variation given n=5 folds and overlapping confidence intervals. The novelty of using PANNs embeddings with an SNN head, while not previously done in exactly this form, is a straightforward combination of existing techniques without architectural innovation."
-
-### Novelty Risk: MEDIUM RISK
-
-The claim survives on the grounds that this specific combination has not been done before, and the "gap collapse" finding does provide a useful scientific framing. However, the paper will need to defend itself against the "trivially expected result" criticism. The stronger framing — "the bottleneck is feature learning, not spiking computation" — is genuinely useful but needs to be argued more carefully, with reference to why this was not obvious a priori.
-
----
-
-## C6: NeuroBench-Compliant Energy Analysis
-
-### The Strongest Challenge
-
-**Problem 1: This is not a novelty contribution — it is a tool application.**
-
-NeuroBench is a published framework (Yik et al., Nature Communications 2025). Using NeuroBench on a new model does not constitute a research contribution; it constitutes using a tool. The paper is not proposing a new energy analysis methodology, not extending NeuroBench, and not discovering anything new about energy modelling. It is running an existing tool on a new model and reporting the numbers. The claim of "NeuroBench-compliant energy analysis" as a novelty contribution (C6) is the weakest of all six claims and should not be listed alongside genuine contributions.
-
-**Problem 2: The energy analysis demonstrates that the SNN is MORE expensive than the ANN.**
-
-The SNN uses 976 nJ vs 463 nJ for the ANN — a 2.1x penalty. The paper then constructs an argument that this would be reversed on neuromorphic hardware (because ACs cost 5.1x less than MACs). However, the 5.1x per-operation advantage comes from 45nm CMOS energy values (Horowitz, ISSCC 2014), not from measured SpiNNaker energy. SpiNNaker 1 uses 130nm CMOS and costs approximately 5.8 μJ/SOP — orders of magnitude more expensive than the theoretical 0.9 pJ/AC at 45nm. The paper is using theoretical hardware numbers to argue for hardware efficiency while the actual hardware used (SpiNNaker 1) is not energy-efficient by any modern measure. The "5.1x per-operation advantage on neuromorphic hardware" claim is not validated by SpiNNaker measurement and would be falsified if applied to SpiNNaker 1's actual energy cost.
-

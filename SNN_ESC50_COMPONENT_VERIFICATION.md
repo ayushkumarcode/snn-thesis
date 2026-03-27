@@ -474,3 +474,31 @@ ESC-50 has **built-in, predefined** 5-fold cross-validation. This is not somethi
 | 4 | 400 clips (8 per class) | Train or test |
 | 5 | 400 clips (8 per class) | Train or test |
 
+**Protocol:** For each fold k=1..5, train on folds != k, test on fold k. Report mean accuracy across all 5 runs.
+
+**Important constraint:** Fragments from the same original Freesound source file are always in the same fold, preventing data leakage.
+
+### Implementation:
+
+```python
+import pandas as pd
+from torch.utils.data import Subset
+
+metadata = pd.read_csv('ESC-50-master/meta/esc50.csv')
+
+for test_fold in range(1, 6):
+    train_indices = metadata[metadata['fold'] != test_fold].index.tolist()
+    test_indices = metadata[metadata['fold'] == test_fold].index.tolist()
+
+    train_dataset = Subset(full_dataset, train_indices)
+    test_dataset = Subset(full_dataset, test_indices)
+    # Train and evaluate...
+```
+
+**Verification method:** Confirmed from ESC-50 README and original paper (Piczak 2015). Fold assignment is encoded in both the filename (first character) and the metadata CSV (`fold` column).
+
+---
+
+## COMPONENT 9: GPU / macOS REQUIREMENTS
+
+### EXISTS: WORKABLE

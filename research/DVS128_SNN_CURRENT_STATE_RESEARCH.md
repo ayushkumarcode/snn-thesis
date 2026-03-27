@@ -194,3 +194,31 @@ this requires understanding event transforms, caching strategies, and custom col
 | Overall pipeline (SpikingJelly) | **2/5** |
 | Overall pipeline (snnTorch+Tonic) | **3/5** |
 
+---
+
+## 5. is there anything novel left?
+
+### the honest answer
+
+DVS128 is **not solved in absolute terms** but it's **saturated as a pure accuracy benchmark**. when multiple methods hit 99%+ on 288 test samples, the differences are statistically meaningless. the dataset is too small (1,464 samples), too constrained (controlled lab conditions), and too well-studied (14+ papers with code on Papers with Code).
+
+### what IS still novel and feasible for a thesis
+
+| Direction | Novelty | Feasibility | Notes |
+|-----------|---------|-------------|-------|
+| **Architecture comparison** | Medium | High | nobody's done a clean controlled comparison of CSNN vs spiking transformer vs recurrent SNN vs point-based SNN in the same framework, same preprocessing, same hyperparameter budget. actually valuable. |
+| **Neuron model ablation** | Medium | High | compare LIF vs PLIF vs IF vs ALIF on same architecture. study/visualize what PLIF learns. |
+| **Event representation study** | Medium | High | compare event frames (fixed-count vs fixed-time), voxel grids, time surfaces on same model. |
+| **Timestep-accuracy-energy tradeoff** | Medium-High | High | vary T from 4 to 64, measure accuracy, time, estimated energy. plot Pareto frontiers. |
+| **Efficiency analysis** | Medium-High | Medium | accuracy per parameter, accuracy per FLOP/SynOp. compare 7K-param model vs 1.5M-param model. |
+| **Framework comparison** | Medium | High | same architecture in SpikingJelly vs snnTorch vs Norse. training speed, accuracy, reproducibility. |
+| **Knowledge distillation ANN-to-SNN** | High | Medium | ANN teacher on frames, SNN student. measure gap and efficiency gain. |
+| **Attention integration** | Medium-High | Medium | add temporal/channel attention to baseline CSNN, measure improvement. |
+| **Robustness/generalization** | High | Medium | how well does a DVS128-trained model handle unseen conditions, noise, temporal perturbation? |
+| **Visualization/interpretability** | Medium | High | spike raster plots, membrane traces, t-SNE, learned features. under-explored and pedagogically valuable. |
+
+### what would NOT be novel
+- just training a CSNN on DVS128 and reporting accuracy
+- reproducing SpikingJelly's tutorial and calling it a thesis
+- getting 97% with a standard model
+- "using SNNs for gesture recognition" without a specific research question

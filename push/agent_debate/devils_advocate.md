@@ -86,31 +86,3 @@ The paper claims "86 nJ/sample" for SpiNNaker (mentioned in the SOTA document) b
 
 **Problem 5: SpiNNaker 1 is an antiquated platform by 2026 standards.**
 
-SpiNNaker 2 (2024) offers 10x better neural simulation capacity per watt, 22nm FDSOI process, 0.292 pJ/SOP. The E-prop on SpiNNaker 2 paper (Yan et al. 2022) achieved 91.12% on speech commands with online learning. SpiNNaker 1 (130nm, ~5.8 μJ/SOP) is comparatively inefficient. A reviewer may argue that demonstrating deployment on an antiquated platform with poor energy efficiency has limited scientific value in 2026.
-
-### What a Reviewer Would Specifically Say
-
-"The SpiNNaker deployment is limited to a single FC layer (256→50) running on hardware, with all convolutional and first FC layers running in software. This is not a meaningful neuromorphic deployment — it is a partial hardware execution with the computationally expensive parts remaining in software. The resulting accuracy gap (12.8 ± 4.1 pp) is too large to attribute entirely to quantization; it suggests the hardware execution is unreliable. Furthermore, Dominguez-Morales et al. (2016) deployed a full multilayer SNN on SpiNNaker for audio, making the 'first SNN on SpiNNaker for environmental sound' claim dependent on a semantic distinction between 'pure tones' and 'environmental sounds' that may not be scientifically meaningful. The SpiNNaker 1 platform's energy characteristics (5.8 μJ/SOP, 130nm process) are not competitive with modern neuromorphic hardware (SpiNNaker 2: 0.292 pJ/SOP). The claimed 5.1x per-operation energy advantage is a theoretical calculation based on 45nm operation costs, not a measured result on the actual hardware used."
-
-### Novelty Risk: HIGH RISK
-
-This is the highest-risk claim in the paper. The combination of: (a) only deploying 1 of 4 layers on hardware, (b) a large and variable accuracy gap, (c) the Dominguez-Morales semantic distinction argument, and (d) no measured hardware energy creates a highly vulnerable claim. A determined reviewer can argue this is not a true neuromorphic deployment. The paper needs either a much stronger rebuttal of the Dominguez-Morales comparison or a frank acknowledgement that this is a partial deployment with significant hardware gap.
-
----
-
-## C4: First Adversarial Robustness Analysis of SNNs on Audio Spectrograms
-
-### The Strongest Challenge
-
-**Problem 1: The dramatic result (14.9x robustness at eps=0.1) may be an artefact of gradient masking rather than genuine adversarial robustness.**
-
-Wang et al. (2025, arXiv:2512.22522) — cited in the paper's own reference list — explicitly warn that standard FGSM and PGD attacks may underestimate SNN vulnerability due to surrogate gradient inaccuracies. The paper under review acknowledges this in the text: "SA-PGD should be used for stronger reliability guarantees." However, the paper then presents the dramatic 14.9x robustness finding as if it is a validated result. If the robustness is primarily gradient masking (the adversarial examples computed against the surrogate gradient approximation are not valid attacks against the true spiking discontinuity), then the reported robustness numbers are not meaningful measures of genuine adversarial robustness — they measure how well the surrogate gradient approximation misleads the attacker. A reviewer who has read Wang et al. (2025) will flag this prominently.
-
-**Problem 2: The result is on only one fold (fold 4, 400 samples).**
-
-The adversarial robustness analysis is conducted on fold 4 only. With 400 samples and 50 classes, this is 8 samples per class on average. The statistical reliability of per-epsilon accuracy numbers from such small per-class sample counts is questionable. The finding that ANN accuracy drops to 1.75% at eps=0.1 (7 correct out of 400) has enormous statistical uncertainty.
-
-**Problem 3: The baseline clean accuracy differential complicates interpretation.**
-
-At eps=0.0, SNN=53.75% and ANN=68.75%. The SNN starts 15 pp lower. If we normalise adversarial accuracy as a fraction of clean accuracy: SNN at eps=0.1 retains 26/53.75 = 48.4% of its clean performance; ANN retains 1.75/68.75 = 2.5% of its clean performance. This relative comparison still favours the SNN dramatically. But a reviewer might argue that the ANN's catastrophic drop is partly because it had more to lose — higher clean accuracy means more information that adversarial perturbations can destroy. The robustness comparison is somewhat confounded by the accuracy differential.
-

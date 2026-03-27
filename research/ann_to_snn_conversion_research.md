@@ -419,31 +419,3 @@ For finding more papers and code:
 
 ### 9.3 Practical Tips for Fast Setup
 
-1. **Use QCFS code as your baseline.** The commands are documented:
-   - Train ANN: `python main_train.py --epochs=300 -dev=0 -L=4 -data=cifar10`
-   - Test as SNN: `python main_test.py -id=vgg16_wd[0.0005] -data=cifar10 -T=8 -dev=0`
-2. **Use pretrained ANN weights** when available (most repos provide them)
-3. **Start with VGG-16 on CIFAR-10** -- this is the easiest conversion target and will verify your pipeline works
-4. **Then move to ResNet-18/20 on CIFAR-10** to see how skip connections affect conversion
-5. **Use CIFAR-100 to stress-test** -- accuracy gaps become more visible on harder datasets
-
----
-
-## 10. Thesis Framing Recommendations
-
-### 10.1 Recommended Thesis Structure
-
-A strong thesis framed around ANN-to-SNN conversion should follow this structure:
-
-**Chapter 1: Introduction**
-- Motivation: energy efficiency of neuromorphic computing, bio-inspiration
-- Problem: how to leverage existing trained ANNs for SNN deployment
-- Thesis contribution: systematic evaluation of conversion in [specific context]
-
-**Chapter 2: Background and Literature Review**
-- SNN fundamentals (IF/LIF neurons, spike coding, membrane potential)
-- ANN-to-SNN conversion theory (rate coding, threshold normalization, error sources)
-- Survey of conversion methods (organized chronologically or by approach)
-- Survey of tools available
-
-**Chapter 3: Methodology**

@@ -530,3 +530,31 @@ each MNIST/Fashion-MNIST run takes ~5-15 min. CIFAR-10 ~30-60 min. SHD ~15-30 mi
 - [Tutorial 1: Spike Encoding](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
 - [spikegen API docs](https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html)
 - [Population Coding Tutorial](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_pop.html)
+- [snnTorch GitHub](https://github.com/jeshraghian/snntorch)
+
+### Datasets
+- [SHD](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)
+- [CIFAR10-DVS](https://www.semanticscholar.org/paper/CIFAR10-DVS:-An-Event-Stream-Dataset-for-Object-Li-Liu/e72b7962133921fa3e84299cd6a4a2aeb60bab19)
+
+### Frameworks
+- [Open Neuromorphic Software Guide](https://open-neuromorphic.org/neuromorphic-computing/software/)
+- [SNN framework benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
+- [BindsNET](https://github.com/BindsNET/bindsnet)
+
+### General SNN Reviews
+- [Comprehensive SNN review (2025)](https://link.springer.com/article/10.1007/s12530-025-09755-0)
+- [SNNs for ubiquitous computing (2025)](https://arxiv.org/html/2506.01737v1)
+- [Non-traditional encoding (Oak Ridge)](https://www.osti.gov/servlets/purl/1607189)
+
+---
+
+## Quick-Start Code Skeleton
+
+```python
+"""
+Thesis Experiment Runner: Spike Encoding Comparison
+"""
+
+import torch
+import snntorch as snn
+from snntorch import spikegen, surrogate, functional

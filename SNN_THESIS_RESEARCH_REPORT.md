@@ -698,3 +698,31 @@ ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as
 <a name="recommendation"></a>
 ## what i think i should do
 
+### overall assessment of the field
+
+1. **SNNs are maturing rapidly.** accuracy gap between SNNs and ANNs on standard benchmarks has narrowed. on CIFAR-10, SNNs achieve 96.47% (vs. ANN ~97%). on ImageNet, the gap is larger but closing (84-88% SNN vs. ~90% ANN).
+
+2. **surrogate gradient training is the dominant paradigm.** direct training via BPTT with surrogate gradients has overtaken ANN-to-SNN conversion. it requires fewer time steps and gives more control.
+
+3. **spiking Transformers are the hottest research area.** the field has moved from convolutional SNNs to transformer-based architectures, with rapid progress in 2023-2024.
+
+4. **tooling has matured a lot.** snnTorch and SpikingJelly provide production-quality frameworks with good docs, tutorials, and community support.
+
+5. **the energy efficiency argument is real but hard to measure.** theoretical advantages of 50-100x are cited, but practical measurement requires neuromorphic hardware access.
+
+### primary recommendation: DVS128 Gesture Recognition with Surrogate Gradient Training
+
+title suggestion: "Energy-Efficient Gesture Recognition Using Spiking Neural Networks: A Comparative Study of Neuron Models and Training Approaches"
+
+why this project:
+- clear, well-defined problem (11-class gesture classification)
+- native neuromorphic dataset (DVS128 Gesture) -- real event camera data, not converted static images
+- established baselines to compare against (96-98% accuracy)
+- built-in dataset loaders in SpikingJelly (1,464 samples: 1,176 train, 288 test)
+- contribution: compare different neuron models (LIF vs. Parametric LIF vs. ALIF) on the same task
+- energy analysis can be done theoretically (spike count, synaptic operations)
+- compelling visual demonstrations (gesture videos + spike rasters)
+
+concrete methodology:
+1. weeks 1-3: literature review + snnTorch Tutorials 1-7
+2. weeks 4-5: set up SpikingJelly, load DVS128 Gesture, run baseline

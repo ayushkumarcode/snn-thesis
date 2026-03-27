@@ -82,3 +82,31 @@ class TernaryLinear(nn.Module):
 class TernarySNN(nn.Module):
     """SNN with ternary quantized weights."""
 
+    def __init__(self, num_steps=NUM_STEPS):
+        super().__init__()
+        self.num_steps = num_steps
+        sg = surrogate.spike_rate_escape(beta=1, slope=25)
+
+        self.conv1 = TernaryConv2d(1, 32, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = TernaryConv2d(32, 64, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
+        self.fc1 = TernaryLinear(64 * 4 * 9, 256)
+        self.fc2 = TernaryLinear(256, NUM_CLASSES)
+        self.dropout = nn.Dropout(0.3)
+
+        self.n1 = RhythmLIF(32, BETA, sg, learn_beta=True)
+        self.n2 = RhythmLIF(64, BETA, sg, learn_beta=True)
+        self.n3 = RhythmLIF(256, BETA, sg, learn_beta=True)
+        self.n4 = RhythmLIF(NUM_CLASSES, BETA, sg, learn_beta=True)
+
+    def forward(self, x):
+        device = x.device
+        m1 = self.n1.init_mem(device)
+        m2 = self.n2.init_mem(device)
+        m3 = self.n3.init_mem(device)

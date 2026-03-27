@@ -243,31 +243,3 @@ All tutorials are interactive Jupyter notebooks that run in Google Colab with fr
 |-----------|-------------|-----------------|
 | **Time dimension** | Must iterate over T time steps per input, unrolling the network temporally | Low-Medium |
 | **State management** | Neurons maintain membrane potential across time steps; must reset between samples | Low (snnTorch handles this) |
-| **Surrogate gradient selection** | Choose and configure surrogate function | Low (use defaults) |
-| **Neuron hyperparameters** | Beta (decay), threshold, reset mechanism | Medium |
-| **Loss function adaptation** | Use spike-count or rate-based loss instead of direct output | Low (snnTorch provides these) |
-| **Memory overhead** | BPTT stores activations for all T time steps | Medium (limits batch size) |
-| **Training time** | Roughly T times slower than equivalent ANN per epoch | Medium |
-| **Debugging** | Cannot directly visualize "activations" -- must monitor spike rates and membrane potentials | Medium |
-
-### Concrete Training Loop Comparison
-
-**Standard ANN:**
-```python
-for data, targets in train_loader:
-    output = model(data)
-    loss = criterion(output, targets)
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-```
-
-**SNN with Surrogate Gradients (snnTorch):**
-```python
-for data, targets in train_loader:
-    utils.reset(net)  # Reset neuron states
-    spk_rec = []
-    for step in range(num_steps):  # Iterate over time
-        spk_out, mem_out = net(data)
-        spk_rec.append(spk_out)
-    spk_rec = torch.stack(spk_rec)

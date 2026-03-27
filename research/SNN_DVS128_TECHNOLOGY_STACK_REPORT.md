@@ -817,31 +817,3 @@ HTML(anim.to_html5_video())
 # Animate DVS frames
 frame_data = train_set[0][0]  # [T, 2, 128, 128]
 summed = frame_data[:, 0] + frame_data[:, 1]  # Sum on/off channels
-
-fig, ax = plt.subplots()
-anim = splt.animator(summed, fig, ax, interval=40, cmap='plasma')
-anim.save("dvs_gesture_input.gif", writer='ffmpeg', fps=25)
-```
-
-### 7.6 Visualization with Tonic
-
-```python
-import tonic
-
-# Plot events as a grid of frames
-dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
-events, label = dataset[0]
-tonic.utils.plot_event_grid(events)
-```
-
-### 7.7 TensorBoard Integration (SpikingJelly)
-
-SpikingJelly's training script logs to TensorBoard automatically:
-```python
-from torch.utils.tensorboard import SummaryWriter
-writer = SummaryWriter(out_dir)
-writer.add_scalar('train_loss', train_loss, epoch)
-writer.add_scalar('train_acc', train_acc, epoch)
-writer.add_scalar('test_loss', test_loss, epoch)
-writer.add_scalar('test_acc', test_acc, epoch)
-```

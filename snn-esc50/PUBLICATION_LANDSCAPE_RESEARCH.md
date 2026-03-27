@@ -110,20 +110,20 @@ every known SNN audio/sound paper i could find:
 | 2023 | Xiang et al. | TIDIGITS | 93.75% | photonic | photonic neuromorphic |
 | 2024 | Yang & Chang | TIMIT | PER 22.6% | hw accelerator (71.2 uW) | low-power accelerator |
 | 2024 | NeurIPS paper | sound sources | SOTA localization | none | resonate-and-fire |
-### ICONS 2026 Call for Papers (Your Target)
+| 2025 | Larroza et al. | ESC-10 (10 classes) | 69% | none | 3 encodings, FC only |
+| 2025 | SATRN (Gao et al.) | UrbanSound8K, FSD50K | mAP 0.455 | none | spiking attention |
+| 2026 | ours | ESC-50 (50 classes) | 47.15% | SpiNNaker | 7 encodings, gap-collapse, adversarial |
 
-**Location:** Chicago, IL, August 4-6, 2026
-**Deadline:** April 1 (or April 8, AoE -- sources differ slightly)
-**Format:** 8-page full papers (20-min talks), 4-page short papers (10-min talks)
+the gap our paper fills: no prior paper has used convolutional SNNs on ESC-50 (50 classes), compared more than 4 encodings for audio, deployed any SNN for environmental sound on neuromorphic hardware, analyzed adversarial robustness of SNNs on audio, quantified encoding specificity via transfer analysis, or shown the gap-collapse phenomenon on audio.
 
-**Explicit topics of interest:**
-1. Neuromorphic circuits, sensors, and devices
-2. Non-von Neumann computing designs
-3. Event or spike-based systems
-4. Novel brain-inspired architectures
-5. Supervised, unsupervised and self-supervised learning methods
-6. Biologically-inspired algorithms
-7. Continual learning systems
+our closest competitor (Larroza et al., arXiv March 2025) only does ESC-10, FC-only, 3 encodings, no hardware. we're strictly superior on every axis.
+
+---
+
+## common winning formulas in SNN publications
+
+formula 1: "first X on Y"
+- QKFormer: first directly-trained SNN exceeding 85% on ImageNet
 8. Energy-efficient edge AI
 9. Biomedical applications
 10. **Neuromorphic benchmarks and datasets**

@@ -250,3 +250,31 @@ both freely available, small enough for a laptop GPU, natively supported by snnT
 - (e) visualization: what does the network learn? spike patterns, fusion representations
 
 ### Why It's Achievable
+
+1. **Template exists**: Bjorndahl got 98.43%, you know the target
+2. **Small datasets**: no massive compute needed
+3. **Framework support**: snnTorch has tutorials for both N-MNIST and SHD
+4. **Open code**: S-CMRL on GitHub for reference
+5. **Clear metrics**: accuracy, energy (SynOps), noise robustness
+6. **Bounded scope**: 10 classes, simple architectures
+
+### Where the Novelty Would Come From
+
+1. Bjorndahl only tested 3 fusion depths -- more thorough comparison possible
+2. nobody has studied noise robustness in simple multimodal SNN digit recognition
+3. STDP-based multimodal fusion is basically unexplored
+4. missing modality handling in multimodal SNNs is open
+5. framework comparison (snnTorch vs SpikingJelly vs BrainCog) for multimodal tasks hasn't been done
+
+---
+
+## 8. Frameworks
+
+### Primary Recommendation: snnTorch
+
+| Feature | snnTorch | SpikingJelly | BrainCog | Norse | Lava (Intel) |
+|---|---|---|---|---|---|
+| PyTorch-based | Yes | Yes | Yes | Yes | No (standalone) |
+| N-MNIST support | Yes (via Tonic) | Yes (native) | Yes | Via Tonic | Via Lava-DL |
+| SHD support | Yes (native) | Via custom | Yes | Via Tonic | Via custom |
+| Tutorials | Excellent (8+) | Good | Moderate | Basic | Moderate |

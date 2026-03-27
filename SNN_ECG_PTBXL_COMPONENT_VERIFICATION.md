@@ -322,31 +322,3 @@ Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)
 | **POTENTIAL BLOCKER** | NO |
 
 **The definitive ANN baseline:**
-- **Paper:** "Deep Learning for ECG Analysis: Benchmarks and Insights from PTB-XL" (Strodthoff, Wagner, Schaeffter, Samek, 2020)
-- **Published in:** IEEE Journal of Biomedical and Health Informatics
-- **GitHub:** https://github.com/helme/ecg_ptbxl_benchmarking
-
-**Benchmark AUROC scores on 5-superclass task (fold 10 test set):**
-
-| Architecture | Macro AUROC |
-|---|---|
-| xresnet1d101 | 0.937 |
-| resnet1d_wang | 0.930 |
-| lstm_bidir | 0.932 |
-| inception1d | 0.931 |
-| lstm | 0.927 |
-| fcn_wang | 0.925 |
-
-**Standard evaluation protocol:**
-- Folds 1-8: training
-- Fold 9: validation
-- Fold 10: test (highest label quality, cardiologist-validated)
-- The `strat_fold` column in ptbxl_database.csv contains pre-assigned fold numbers
-
-**For your thesis:** Use xresnet1d101 or inception1d as your ANN baseline target. An SNN achieving AUROC > 0.85 on the same task would be a publishable result.
-
-**Sources:** [PTB-XL Benchmarking GitHub](https://github.com/helme/ecg_ptbxl_benchmarking), [Paper on PubMed](https://pubmed.ncbi.nlm.nih.gov/32903191/), [arXiv version](https://arxiv.org/abs/2004.13701)
-
----
-
-### 9. Medical Evaluation Metrics

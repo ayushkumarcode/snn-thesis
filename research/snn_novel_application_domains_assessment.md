@@ -110,3 +110,31 @@ for an undergrad thesis balancing novelty, feasibility, and natural SNN advantag
 | Paper | Year | Key Contribution |
 |-------|------|------------------|
 | Deep Spiking Q-learning (DSQN) | 2022 | Outperforms DQN on 17 Atari games |
+| PopSAN | 2021 | 140x energy reduction on Loihi |
+| BrainQN | 2024 | Improved robustness in spiking DRL |
+| Fully Spiking Actor Network | 2024 | Intra-layer connections for RL |
+| SpikeGym Comparison | 2024 | 1-layer SNN-PPO outperforms PopSAN by 4.4x |
+| Exploring SNNs for Deep RL in Robotics | 2024 | Nature Scientific Reports comparison |
+
+**why SNNs might work:** RL is sequential/temporal. energy matters for embedded agents. membrane potential as Q-value is natural. biological plausibility angle with reward-modulated STDP. DSQN showed robustness advantages.
+
+**feasibility:** MODERATE. CartPole, LunarLander, simple Atari are well-defined. DSQN and PopSAN have code. training SNN-RL is still finicky though. well-scoped: SNN-DQN on CartPole with energy comparison.
+
+**novelty:** LOW-MODERATE. reasonably established subfield.
+
+**verdict: moderate -- good learning experience but limited novelty**
+
+---
+
+### 6. SNN for Environmental Monitoring (Pollution, Wildlife)
+
+**papers: about 4-7**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Air Pollution Prediction with Evolving SNNs | 2019 | CEeSNN for London air pollution |
+| Evolving SNN for PM2.5 | 2021 | Seasonal PM2.5 prediction Beijing/Shanghai |
+| Forest Fire Detection | 2018 | Sensor-based fire detection |
+| NeuCube for environmental data | Various | General evolving SNN architecture |
+
+no GitHub repos found for SNN + environmental monitoring specifically.

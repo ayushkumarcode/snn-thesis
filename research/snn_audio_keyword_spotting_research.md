@@ -46,31 +46,3 @@ Spiking Neural Networks (SNNs) for audio keyword spotting and speech command rec
 | **SE-adLIF** | SNN | **95.81%** | 0.45M | 2024 |
 | **RadLIF (sparch)** | SNN | **97.60%** | ~1M | 2022 |
 | **adLIF (sparch)** | SNN | **97.40%** | ~1M | 2022 |
-| Hardware deployment | SNN | **93.4%** | -- | 2024 |
-
-### 1.4 SSC (Spiking Speech Commands) Benchmark
-
-| Model | Type | SSC Accuracy | Parameters | Year |
-|-------|------|-------------|------------|------|
-| **SpikCommander** | SNN | **83.49%** | 2.13M | 2025 |
-| **SpikeSCR** | SNN | **82.79%** | -- | 2024 |
-| **RadLIF (sparch)** | SNN | **93.40%** | ~1M | 2022 |
-| CNN (Cramer et al.) | ANN | 77.7% | -- | 2020 |
-| GRU | ANN | 79.05% | -- | 2020 |
-
----
-
-## 2. Frameworks and Tools Available
-
-### 2.1 Framework Comparison
-
-| Framework | Maintainer | Language | Backend | Audio Support | Tutorials | Difficulty | PyPI |
-|-----------|-----------|----------|---------|--------------|-----------|------------|------|
-| **snnTorch** | UCSC (Eshraghian) | Python | PyTorch | SHD loader built-in | 18 tutorials | Beginner-friendly | Yes |
-| **SpikingJelly** | Peking Univ. | Python | PyTorch | Speech Commands example (594 LOC) | Extensive docs | Intermediate | Yes |
-| **sparch** | Idiap Research | Python | PyTorch | SHD, SSC, GSC, HD | Minimal (research code) | Intermediate | No |
-| **Norse** | Community | Python | PyTorch | No dedicated audio | Intro notebooks | Intermediate | Yes |
-| **Lava** | Intel | Python | Custom | Loihi deployment | Good docs | Advanced | Yes |
-| **BindsNET** | UMass | Python | PyTorch | No dedicated audio | Examples | Intermediate | Yes |
-| **Tonic** | Community | Python | PyTorch | SHD, SSC loaders | Data loading tutorials | Beginner-friendly | Yes |
-| **Rockpool** | SynSense | Python | PyTorch | WaveSense tutorial | Good docs | Intermediate | Yes |

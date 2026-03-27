@@ -68,18 +68,18 @@ between 17 and 18 cores and between 3 and 6 links.
 | cores per chip | 17-18 | 18 ARM968E-S (1 monitor) | yes |
 | total cores | 836 | ~864 max | yes |
 | SDRAM per chip | 123,469,792 bytes (~118 MB) | 128 MB (minus overhead) | yes |
-| Router table | 1,023 entries | 1,024 (1 reserved) | Yes |
-| Links per chip | 3-6 | Up to 6 (fewer at edges) | Yes |
+| router table | 1,023 entries | 1,024 (1 reserved) | yes |
+| links per chip | 3-6 | up to 6 (fewer at edges) | yes |
 
-The imperfect chip count (47 not 48) is actually **stronger** evidence of real hardware -- a simulator always returns perfect numbers.
+the imperfect chip count (47 not 48) is actually stronger evidence of real hardware -- a simulator always returns perfect numbers.
 
-## Evidence 5: Spalloc Job Allocation Lifecycle
+## evidence 5: spalloc job allocation lifecycle
 
 ```
 2026-03-03 13:13:03 INFO: Requesting job with 1 boards
 Created spalloc job 99729
 Job has been queued by the spalloc server.
-Waiting for board power commands to complete.     ← real power relays switching
+Waiting for board power commands to complete.     <- real power relays switching
 2026-03-03 13:14:12 INFO: Creating transceiver for 10.11.219.177
 Attempting to boot machine
 Found board with version [Version: SC&MP 4.0.0 ...]

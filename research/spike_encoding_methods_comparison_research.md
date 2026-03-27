@@ -166,3 +166,31 @@ each encoding creates different trade-offs:
 - **TTFS**: best efficiency (latency + SOPs), worst noise resilience
 - **Phase**: best noise resilience, simplest hardware, worst SOPs
 - **Burst**: best fault tolerance and compression, most expensive hardware
+- **Rate**: robust baseline, best adversarial robustness, highest latency/SOPs
+
+this multi-dimensional trade-off space is exactly what makes a comparison thesis worth doing.
+
+---
+
+## Existing Comparison Studies
+
+i went through every significant comparison study i could find and noted what each covers and what it leaves out.
+
+**Study 1: Guo, Fouda, Eltawil, Salama (2021)** -- "Neural Coding in SNNs: A Comparative Study for Robust Neuromorphic Systems" (Frontiers in Neuroscience)
+- Compared: Rate, TTFS, Phase, Burst
+- Network: 2-layer SNN with STDP
+- Datasets: MNIST, Fashion-MNIST
+- Strengths: most complete multi-metric comparison i found, includes hardware analysis
+- Gaps: only MNIST/Fashion-MNIST (image only), only STDP, no delta/direct/population, shallow network only
+- Source: https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full
+
+**Study 2: Kim, Park, Moitra et al. (2022)** -- "Rate Coding or Direct Coding: Which One is Better?" (ICASSP 2022)
+- Compared: Rate (Poisson) vs Direct (trainable layer)
+- Networks: MLP, VGG5, VGG9
+- Datasets: MNIST, CIFAR-10, CIFAR-100
+- Strengths: larger datasets, deeper architectures, adversarial robustness, code on GitHub
+- Gaps: only 2 encoding methods, no temporal/phase/burst/delta/population
+- Code: https://github.com/Intelligent-Computing-Lab-Panda/Rate-vs-Direct
+
+**Study 3: Forno, Fra, Pignari, Urgese (2022)** -- "Spike encoding techniques for IoT time-varying signals" (Frontiers in Neuroscience)
+- Compared: rate-based variants, temporal coding variants

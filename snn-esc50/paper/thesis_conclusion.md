@@ -68,20 +68,20 @@ Three main limitations:
 
 4. **STDP unsupervised pre-training** on unlabelled audio for richer conv initialisation without external pretrained models.
 
+5. **Temporal coding losses:** first-spike loss (correct class fires earliest) instead of rate loss. Could get competitive accuracy with fewer timesteps (T=5 instead of 25, major energy saving).
 
-3. **SpiNNaker2** (Hoppner et al. 2024): The successor platform features 22nm FDSOI process, 10× better energy than SpiNNaker, and native convolutional support. Deployment on SpiNNaker2 would resolve the AvgPool barrier and provide meaningful energy comparisons.
+6. **Learnable LIF params:** make beta a learnable per-neuron parameter. Supported by snnTorch, could improve accuracy without arch changes.
 
-4. **STDP unsupervised pre-training:** Spike-timing-dependent plasticity pre-training on unlabelled audio could provide richer initialisation for the convolutional layers, reducing the data-limitation gap without requiring external pretrained models.
+7. **Spiking transformers (SpikFormer):** emerging spiking attention (Zhou et al. 2023, NeurIPS) near-ANN on images. Natural extension to audio.
 
-5. **Temporal coding losses:** Training with a first-spike loss (target: correct class fires earliest) rather than the rate loss used here could create SNNs that exploit temporal coding, potentially achieving competitive accuracy with fewer timesteps (T=5 instead of T=25, further reducing energy).
+8. **Online streaming audio:** 16ms frames in real time, live event streams to SpiNNaker via UDP. Would demonstrate practical deployment.
 
-6. **Learnable LIF parameters:** Making β (decay rate) a learnable per-neuron parameter (`nn.Parameter`) allows the network to adapt its temporal integration window to the task. This is supported by snnTorch and could improve accuracy without architectural changes.
+9. **SA-PGD adversarial evaluation** (Wang et al. 2025) for rigorous robustness numbers replacing our upper bounds.
 
-7. **Spiking transformers (SpikFormer):** Emerging spiking attention mechanisms (Zhou et al. 2023, NeurIPS) have achieved near-ANN performance on image tasks. Extension to audio with mel spectrograms is a natural next step.
+10. **Larger benchmarks:** FSD50k (51k clips), UrbanSound8K (8.7k clips) to test whether encoding hierarchy generalises beyond ESC-50.
 
-8. **Online streaming audio:** Converting the classification pipeline to process 16ms audio frames in real time, feeding live event streams to SpiNNaker via UDP, would demonstrate the practical utility of the deployment in a realistic scenario.
+---
 
-9. **SA-PGD adversarial evaluation:** Applying Stable Adaptive PGD (Wang et al. 2025) would provide rigorous adversarial robustness numbers, replacing the conservative upper bounds reported in §6.1.
 
 10. **Generalisation to larger benchmarks:** FSD50k (51,000 clips, Fonseca et al. 2022) and UrbanSound8K (8,732 clips, Salamon et al. 2014) would test whether the encoding hierarchy (direct > rate ≈ phase > latency >> delta ≈ burst) generalises beyond ESC-50.
 

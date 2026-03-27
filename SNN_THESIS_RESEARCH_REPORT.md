@@ -110,3 +110,31 @@ key biological constants:
 | Medical SNN | 2020 | ISIC 2018 (melanoma) | 87.7% | 6,705 images, feature selection |
 | EEG SNN | - | SEED dataset | 96.67% | Emotion recognition from EEG |
 
+**Object Detection:**
+| Method | Year | Dataset | Performance |
+|--------|------|---------|-------------|
+| Spiking YOLO | 2019 | PASCAL VOC | mAP 51.83% |
+| Spiking YOLO | 2019 | MS COCO | mAP 25.66% |
+| Deep SCNN | 2020 | KITTI | 56.24% mean sparsity, 0.247 mJ energy |
+
+**Object Tracking:**
+- SiamSNN (2020): first SNN for tracking, achieving 50 FPS on TrueNorth with low precision loss
+
+**Optical Flow:**
+- Spike-FlowNet (2020): hybrid SNN-ANN architecture for event camera data
+- Hierarchical cuSNN (2019): uses stable STDP on Event Camera Dataset
+
+**Segmentation:**
+| Method | Year | Dataset | Accuracy | Notes |
+|--------|------|---------|----------|-------|
+| UNet-SNN | 2021 | ISBI 2D EM | 92.13% | lower than 94.98% ANN baseline but energy-efficient on Loihi |
+| SpikeSEG | 2021 | Synthetic | 97% accuracy, 74% mIoU | semantic segmentation |
+
+### robotics applications
+
+**Pattern Generation:**
+- NeuroPod (2019): first real-time neuromorphic CPG on SpiNNaker controlling hexapod locomotion
+- Lamprey robot (2014): analog/digital VLSI with ~60 ms periodic bursting and 35 Hz spiking frequency
+
+**Motor Control:**
+- Loihi drone control (2020): root-mean-square error of 0.005 g in thrust setpoint with 99.8% spike sequence matching

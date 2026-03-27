@@ -82,3 +82,31 @@ closest paper to our work. compares 3 spike encodings on **ESC-10** (not ESC-50)
 | TAE (Threshold Adaptive) | **0.661** |
 | Step Forward | 0.409 |
 | Moving Window | 0.354 |
+
+architecture: 3-layer FC SNN, 128 neurons each, LIF. limitations vs us:
+- ESC-10 only (10 classes) not ESC-50 (50)
+- FC only, no convolutions
+- only 3 encodings (all temporal/change-based), no direct/rate/phase/population/burst
+- best result (F1=0.661) substantially below our direct encoding (47.15% on full ESC-50)
+
+confirms we're the FIRST to benchmark multiple spike encodings on full ESC-50.
+
+#### Basu et al. (arXiv:2502.15056, February 2025)
+
+24-page survey of neuromorphic audio classification. notes that no standardized benchmark for audio SNN encoding comparison exists. confirms the gap we fill.
+
+### Why Direct Encoding Outperforms Rate Coding
+
+the literature converges on several explanations:
+
+1. **information preservation:** direct encoding feeds continuous values, preserving full precision in first layer. rate coding discretizes into binary spikes, losing info. (Kim et al. 2022)
+2. **timestep efficiency:** with few timesteps (T <= 10), rate coding can't generate enough spikes to represent input intensities. direct works from T=1. (Kim 2022, Tutorial 2025)
+3. **gradient flow:** direct encoding gives richer gradients since first layer processes continuous values with standard backprop. rate coding introduces stochastic Bernoulli sampling that impedes gradient flow. (Neftci et al. 2019)
+4. **feature learning capacity:** for pre-extracted features like mel-spectrograms, the continuous input already carries rich info that gets degraded by spike quantization. (our finding: direct=47.15% vs rate=24.00%)
+5. **dataset complexity scaling:** the gap between direct and rate increases with dataset complexity. ESC-50 with 50 classes is hard enough that information loss from rate encoding really hurts. (Kim 2022)
+
+### Novel Encoding Schemes (2024-2025)
+
+| Scheme | Year | Key Innovation | Reference |
+|--------|------|----------------|-----------|
+| Multiplexed Rate+TTFS (RTF) | 2024 | Hardware neuron combining rate and temporal coding | Nature Communications 15:3808 |

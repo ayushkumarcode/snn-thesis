@@ -301,31 +301,3 @@ These are for a 128-neuron feedforward SNN achieving ~70-75% accuracy. State-of-
 
 ### 7.1 Primary Research Question Options
 
-**Option A (Recommended -- clearest and most achievable):**
-> "To what extent can feedforward spiking neural networks with learnable synaptic delays match or exceed recurrent networks for spoken digit classification on the SHD benchmark, and what are the energy efficiency implications?"
-
-This question is strong because:
-- It has a clear independent variable (delays vs. recurrence)
-- It has measurable outcomes (accuracy, energy)
-- It builds on the DCLS-Delays paper (ICLR 2024) which showed feedforward SNNs with delays can match recurrent ones
-- It is achievable: the SNN-delays codebase can be directly used
-- It contributes to an open question about whether temporal processing requires recurrence or can be achieved through delays
-
-**Option B (Comparative focus):**
-> "How do spiking neural networks compare to traditional recurrent architectures (LSTM, GRU) in accuracy, computational cost, and energy efficiency for audio classification on neuromorphic speech benchmarks?"
-
-This is broader and more survey-like. Good for demonstrating breadth. The risk is it becomes a benchmark-running exercise without deep insight.
-
-**Option C (Neuron model focus):**
-> "What is the effect of adaptive neuron dynamics on temporal audio classification in spiking neural networks, and how does neuron model complexity trade off against accuracy and energy consumption?"
-
-This focuses on comparing LIF, adLIF, RadLIF, and potentially SE-adLIF neuron models. The sparch toolkit is designed for exactly this comparison.
-
-**Option D (Encoding focus):**
-> "How do different spike encoding strategies affect the accuracy and efficiency of spiking neural networks for audio classification?"
-
-This explores rate coding vs. temporal coding vs. the cochlea-based encoding of SHD. More neuroscience-flavored. Could include custom encoding of raw audio.
-
-### 7.2 Research Question Selection Criteria
-
-For a 3rd-year thesis, the research question should be:

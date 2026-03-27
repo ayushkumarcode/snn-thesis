@@ -26,3 +26,31 @@ Looking into whether SNN-based keyword spotting / speech command recognition cou
 
 The gap is basically closed. In 2020, best SNN (LSNN at 91.2%) trailed best ANN (LSTM at 94.4%) by ~3.2 points on GSC 12-class. By 2025, SpikCommander gets 96.92% (35-class), beating many ANN baselines. On the 12-class task, SNNs routinely hit 95-97%, matching or exceeding ANNs. On the harder 35-class task, best SNNs get ~96.9%, within 1-2 points of ANN ceiling.
 
+Parameter efficiency is interesting too: SpikCommander gets 96.71% with only 1.12M params. ED-sKWS gets 93% with just 27.6K parameters -- orders of magnitude fewer than typical ANNs.
+
+### SHD (Spiking Heidelberg Digits) Benchmark
+
+| Model | Type | SHD Accuracy | Parameters | Year |
+|-------|------|-------------|------------|------|
+| **SpikCommander** | SNN | **96.41%** | 0.19M | 2025 |
+| **SpikeSCR** | SNN | **95.70%** | -- | 2024 |
+| **SE-adLIF** | SNN | **95.81%** | 0.45M | 2024 |
+| **RadLIF (sparch)** | SNN | **97.60%** | ~1M | 2022 |
+| **adLIF (sparch)** | SNN | **97.40%** | ~1M | 2022 |
+| Hardware deployment | SNN | **93.4%** | -- | 2024 |
+
+### SSC (Spiking Speech Commands) Benchmark
+
+| Model | Type | SSC Accuracy | Parameters | Year |
+|-------|------|-------------|------------|------|
+| **SpikCommander** | SNN | **83.49%** | 2.13M | 2025 |
+| **SpikeSCR** | SNN | **82.79%** | -- | 2024 |
+| **RadLIF (sparch)** | SNN | **93.40%** | ~1M | 2022 |
+| CNN (Cramer et al.) | ANN | 77.7% | -- | 2020 |
+| GRU | ANN | 79.05% | -- | 2020 |
+
+---
+
+## Frameworks and Tools
+
+### Framework Comparison

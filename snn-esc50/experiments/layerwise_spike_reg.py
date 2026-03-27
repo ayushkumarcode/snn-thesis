@@ -250,3 +250,31 @@ def main():
 
     device = torch.device(args.device) if args.device else get_device()
     download_esc50()
+
+    if args.lambda_conv is not None and args.lambda_fc is not None:
+        # Single config mode
+        configs = [(args.lambda_conv, args.lambda_fc)]
+    else:
+        # Sweep mode: try multiple lambda combinations
+        configs = [
+            (1e-4, 5e-5),
+            (5e-4, 1e-4),
+            (1e-3, 5e-4),
+            (5e-3, 1e-3),
+            (1e-2, 5e-3),
+            (5e-2, 1e-2),
+        ]
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+
+    all_results = []
+    for lambda_conv, lambda_fc in configs:
+        print(f"\n{'='*60}")
+        print(f"  Spike Reg: lambda_conv={lambda_conv}, lambda_fc={lambda_fc}")
+        print(f"{'='*60}")
+
+        fold_results = []
+        for fold in folds:
+            result = run_fold(fold, device, lambda_conv, lambda_fc)
+            fold_results.append(result)
+

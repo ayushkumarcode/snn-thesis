@@ -306,3 +306,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 ---
 
 ### 2.5 Harnessing Reconfigurable Hardware to Design Heterogeneous Systems
+| Field | Detail |
+|-------|--------|
+| **Author** | Konstantinos Iordanou |
+| **Year** | 2023 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Mikel Lujan (main), Christos-Efthymios Kotselidis (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/harnessing-reconfigurable-hardware-to-design-heterogeneous-system |
+| **Abstract** | Presents AutoTiC (Auto Tiny Classifiers): evolutionary algorithms to generate prediction circuits for tabular data. 10-75x less area/power in ASIC, 3-11x fewer FPGA resources vs ML baselines. Also microarchitectural SoC simulation framework. |
+| **What They Built** | AutoTiC classifier generator; SoC simulation framework |
+| **Tools/Frameworks** | Evolutionary algorithms, RTL simulation, FPGA, ASIC |
+| **Datasets** | Tabular datasets |
+| **Scope** | High -- novel approach to ML on hardware |
+
+---
+
+### 2.6 Dynamic CPU ISA Customizations through FPGA Interlays
+| Field | Detail |
+|-------|--------|
+| **Author** | Jose Garcia Ordaz |
+| **Year** | 2018 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Dirk Koch (main), James Garside (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/dynamic-cpu-isa-customizations-through-fpga-interlays |
+| **Abstract** | Proposes embedding reconfigurable FPGA fabric ("Interlay") into CPUs for dynamic instruction set customization at runtime. |
+| **What They Built** | FPGA-in-CPU architecture concept; ISA customization framework |
+| **Tools/Frameworks** | FPGA, SIMD, soft-processor |

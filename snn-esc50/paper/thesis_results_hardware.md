@@ -96,20 +96,20 @@ Hidden spikes cached as `results/spinnaker_weights/hidden_spike_features.npy` (4
 
 ### 5.3.1 validation run (Run 5)
 
-**Setup:** 20 samples from fold 4 (≥10 distinct classes), weight_scale=1.0.
-**Result:** 8/20 = **40.0%** accuracy on SpiNNaker vs 10/20 = 50.0% snnTorch reference on the same 20 samples.
-**Agreement rate:** 12/20 = 60% (samples where SpiNNaker and snnTorch agree on predicted class).
+**Setup:** 20 samples from fold 4 (10+ distinct classes), weight_scale=1.0.
+**Result:** 8/20 = 40.0% SpiNNaker vs 10/20 = 50.0% snnTorch.
+**Agreement:** 12/20 = 60%.
 
-The 10 pp gap between SpiNNaker and snnTorch on the same 20 samples reflects:
-1. IF_curr_exp ≠ LIF exact dynamics (exponential synaptic current vs instantaneous current)
-2. Fixed-point weight quantisation error
-3. 1ms timestep discretisation vs continuous-time snnTorch simulation
+The 10 pp gap reflects:
+1. IF_curr_exp != LIF exact dynamics (exponential synaptic vs instantaneous current)
+2. Fixed-point quantisation error
+3. 1ms timestep discretisation vs continuous snnTorch
 
-### 5.3.2 Full 400-Sample Inference
+### 5.3.2 full 400-sample inference
 
-**Status: Complete (4 March 2026).** All 400 fold-4 test samples processed via SpiNNaker FC2-only inference (weight_scale=1.0). Source: `results/spinnaker_results/fc2_all_iterations.jsonl`, analysis: `results/spinnaker_results/run6_analysis.json`.
+**Complete (4 March 2026).** All 400 fold-4 samples processed. Source: `results/spinnaker_results/fc2_all_iterations.jsonl`.
 
-**Final result: SpiNNaker 43.0% vs snnTorch 51.25% — hardware gap 8.25 pp, agreement rate 64.5%.**
+**Final: SpiNNaker 43.0% vs snnTorch 51.25% -- 8.25 pp gap, 64.5% agreement.**
 
 Progression of accuracy across run checkpoints:
 

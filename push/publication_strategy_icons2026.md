@@ -110,3 +110,31 @@ broad range of work from theoretical to deeply applied.
 
 | Paper | Year | Venue | Dataset | Classes | Accuracy | Hardware |
 |-------|------|-------|---------|---------|----------|----------|
+| **ours** | **2026** | **ICONS** | **ESC-50** | **50** | **47.15% (direct), 92.5% (PANNs+SNN)** | **SpiNNaker (33.1%)** |
+| Larroza et al. | 2025 | arXiv (EUSIPCO) | ESC-10 | 10 | 69.0% (TAE) | None |
+| Dominguez-Morales et al. | 2016 | ICANN | Pure tones | ~10 | High (trivial task) | SpiNNaker |
+| Yarga et al. | 2022 | ICONS | Speech digits | 10 | Matched CNN baseline | None |
+| Speech2Spikes | 2023 | NICE | GSC | 35 | 88.5% | Intel Loihi |
+| Xylo SNN audio | 2022 | ESSCIRC | Ambient sounds | ~5 | 98% | Xylo (sub-mW) |
+
+### why 47.15% is publishable at ICONS
+
+this is the obvious concern. here's why i think it's fine:
+
+1. **ICONS values methodology over accuracy.** their scope explicitly welcomes "benchmark tasks for neuromorphic computing." the scientific contribution is the comparison, not SOTA.
+
+2. **context matters.** 47.15% on 50 classes (random = 2%) is meaningful. ESC-50 human performance is 81.3%. the gap IS the finding.
+
+3. **PANNs result rehabilitates the SNN.** 92.5% with PANNs+SNN shows the gap is feature learning, not spiking computation. that's a key insight.
+
+4. **comparable precedents.** Larroza reports 69% on 10 classes (simpler task). Yarga at ICONS 2022 focused on encoding quality not absolute accuracy. ICONS 2025 best paper was about turbulence modeling with neuron random walks -- no classification accuracy at all.
+
+5. **hardware deployment is a separate contribution.** SpiNNaker results (33.1%) are about demonstrating feasibility and analyzing the hardware gap.
+
+---
+
+## Part 4: Alternative Venues
+
+### deadlines that have passed
+
+| Venue | Deadline | Notes |

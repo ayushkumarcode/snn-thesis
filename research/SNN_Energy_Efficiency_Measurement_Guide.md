@@ -54,3 +54,31 @@ this is more accurate because memory access often dominates energy over arithmet
 
 Source: [Lemaire et al., ICONIP 2022](https://arxiv.org/abs/2210.13107)
 
+### tier 3: hardware simulation (most accurate, most complex)
+
+tools like SANA-FE and SpikeSim simulate actual neuromorphic hardware behavior -- spike routing, network-on-chip communication, pipeline stages. most realistic but significant setup.
+
+---
+
+## 2. metrics to report
+
+### primary metrics (you should report these)
+
+| Metric | What it is | How to compute |
+|--------|-----------|----------------|
+| **Synaptic Operations (SOPs)** | Total spike-driven ops during inference | Sum: spike_count * fan_out * timesteps per layer |
+| **Effective ACs** | AC ops excluding zero activations | Count only non-zero (spiking) activations |
+| **Effective MACs** | MAC ops for non-spiking layers | Standard FLOP count for non-spiking layers |
+| **Firing Rate / Spike Sparsity** | Avg fraction of neurons spiking per timestep | total_spikes / (total_neurons * timesteps) |
+| **Energy per Inference** | Estimated joules for one forward pass | E = SOP * E_AC + FLOPs_nonspiking * E_MAC |
+
+### secondary metrics (good to include)
+
+| Metric | What it is | How to compute |
+|--------|-----------|----------------|
+| **Activation Sparsity** | Fraction of zero activations | 1 - firing_rate |
+| **Connection Sparsity** | Fraction of zero weights (if pruned) | count_zero / total_weights |
+| **Memory Footprint** | Model size in bytes | sum of parameter sizes |
+| **Timesteps (T)** | Simulation steps | Hyperparameter |
+| **Energy Ratio** | E_SNN / E_ANN | Ratio on same task |
+

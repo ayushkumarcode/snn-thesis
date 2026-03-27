@@ -54,20 +54,20 @@ Spike encoding converts static inputs (images, spectrograms) into temporal spike
 **Burst coding** (Izhikevich 2004): neurons fire N spikes in rapid succession, N encodes intensity. Observed in auditory and visual cortex biologically.
 
 **Phase coding** (O'Keefe & Recce 1993; Montemurro et al. 2008): spike timing relative to a global oscillation cycle encodes intensity. Theta-phase precession in hippocampus is the canonical example.
-**Population coding** (Georgopoulos et al. 1986): each concept (class) is represented by a population of neurons rather than a single neuron. Output-side population codes allow multiple neurons to vote on each class, potentially reducing sensitivity to single-neuron noise. Implemented in snnTorch via `SF.mse_count_loss(population_code=True)`.
 
-No prior work has systematically compared these seven encodings on ESC-50 or other standard audio benchmarks. The closest comparison (Larroza et al. 2025) evaluates 3 methods (rate, latency, direct) on ESC-10 only.
+**Population coding** (Georgopoulos et al. 1986): each class represented by a population of neurons rather than one. Output-side population codes let multiple neurons vote per class, potentially reducing noise sensitivity. Implemented via snnTorch's SF.mse_count_loss(population_code=True).
+
+No prior work has systematically compared these seven on ESC-50 or any standard audio benchmark. Closest is Larroza et al. 2025 who do 3 methods (rate, latency, direct) on ESC-10 only.
 
 ---
 
-## 2.4 SNNs for Audio Classification
+## 2.4 SNNs for audio classification
 
-### 2.4.1 Prior Work Summary
+### 2.4.1 prior work summary
 
 | Paper | Benchmark | Model | Encoding | Accuracy | Hardware |
 |-------|-----------|-------|----------|----------|----------|
 | Larroza et al. 2025 (arXiv:2503.11206) | ESC-10 | FC only | Rate, direct, latency | ~60% | None |
-| Dominguez-Morales et al. 2016 (ICANN) | Pure tones | FC | Rate | ~90% | SpiNNaker |
 | Dong et al. 2018 | TIMIT (speech) | CSNN | Rate | 66% | Simulation |
 
 **Key gap:** No prior work has evaluated convolutional SNNs on the full ESC-50 benchmark (50 classes, 5-fold CV), and no prior work has deployed SNNs for environmental sound classification on SpiNNaker hardware.

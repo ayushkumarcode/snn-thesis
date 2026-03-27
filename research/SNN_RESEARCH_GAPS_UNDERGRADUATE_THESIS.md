@@ -82,3 +82,31 @@ SHD and SSC are the premier audio neuromorphic benchmarks. current SOTA on SHD i
 - SSC (the harder 35-class version) has way fewer results than SHD
 
 ---
+
+## 3. missing comparison studies
+
+### framework vs framework on real datasets
+
+the Open Neuromorphic benchmark (Feb 2024) tested 11 frameworks but only on a synthetic single-layer FC setup (not real datasets). the 2025 multimodal benchmark covered 5 frameworks but excluded snnTorch, Norse, and BindsNET. nobody's done:
+
+| What's missing | What you'd need | Effort | Impact |
+|---------------|----------------|--------|--------|
+| **snnTorch vs SpikingJelly vs Norse on SHD** | same CSNN architecture, same hyperparameters, same hardware. report accuracy, training time, memory, energy. | LOW | HIGH -- directly useful to every SNN researcher picking a framework |
+| **snnTorch vs SpikingJelly on DVS128 Gesture** | same ConvSNN. both frameworks support DVS128 natively. | LOW-MEDIUM | HIGH |
+| **snnTorch vs SpikingJelly on CIFAR10-DVS** | same architecture. both claim support. | LOW-MEDIUM | HIGH |
+| **all 4 frameworks on Fashion-MNIST** | snnTorch, SpikingJelly, Norse, BindsNET with identical LIF architecture. | LOW | MEDIUM |
+| **framework comparison on N-CALTECH101** | no comparison exists at all. | MEDIUM | MEDIUM |
+
+### method vs method comparisons
+
+| What's missing | Details | Effort |
+|---------------|---------|--------|
+| **surrogate gradient vs ANN-to-SNN conversion on same dataset/architecture** | papers compare within their method but rarely against each other on identical setups. especially missing for audio. | MEDIUM |
+| **rate coding vs temporal coding vs delta modulation** | no one's compared encoding methods across multiple datasets with the same architecture. | LOW-MEDIUM |
+| **LIF vs adaptive LIF vs Izhikevich neuron models** | most papers use basic LIF. no study on how neuron model affects accuracy/efficiency. | MEDIUM |
+| **STDP vs surrogate gradient on the same task** | very few direct comparisons. each community mostly compares within itself. | MEDIUM |
+| **effect of number of timesteps** | how does varying T=4,8,16,32,64 affect accuracy/energy? sparse data, no proper study. | LOW |
+
+### SNN vs ANN fair comparisons
+
+| What's missing | Details | Effort |

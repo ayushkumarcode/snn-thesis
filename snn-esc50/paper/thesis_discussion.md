@@ -110,20 +110,20 @@ CL experiment (section 6.2) confirms the expected -- both suffer severe forgetti
 - Fold sample size: 400 samples (8/class), per-class analyses statistically limited. Wide CIs at class level.
 - Adversarial attack reliability: standard PGD may underestimate vulnerability. SNN numbers are upper bounds.
 
+**External:**
+- ESC-50 is isolated 5-second clips. Real audio is continuous, overlapping, variable-length. Performance could differ substantially in streaming.
+- Results specific to SpikingCNN with T=25, beta=0.95, threshold=1.0. Different params = different tradeoffs.
+- SpiNNaker results (SpiNN-5) may not generalise to SpiNNaker2, Loihi 2, TrueNorth.
 
-**External validity:**
-- **Dataset generalisability:** ESC-50 is a standard benchmark but contains only 5-second isolated clips. Real audio is continuous, overlapping, and variable-length. Performance may differ substantially in streaming deployment.
-- **Architecture generalisation:** Results are specific to the SpikingCNN architecture with T=25, β=0.95, threshold=1.0. Different LIF parameters or timestep counts would produce different accuracy/efficiency trade-offs.
-- **Hardware generalisability:** SpiNNaker results (SpiNN-5 board) may not generalise to SpiNNaker2, Loihi 2, or TrueNorth due to different neuron models, precision, and communication latency.
-
-**Construct validity:**
-- **Energy measurement:** NeuroBench SynapticOperations are software-based proxies for energy consumption at 45nm CMOS. Actual chip measurements would be needed for rigorous energy claims. This work treats SynOps as an upper bound / comparative metric.
-- **Neuromorphic deployment accuracy:** FC2-only hybrid with 20-sample validation (Run 5) has high uncertainty. The 40% accuracy estimate has wide confidence intervals (95% CI: 18.5%–61.5% for n=20).
+**Construct:**
+- NeuroBench SynOps are software proxies for energy at 45nm. Actual chip measurements needed for rigorous energy claims.
+- FC2-only hybrid with n=20 validation (Run 5) has wide CIs (95% CI: 18.5-61.5% for n=20). check this CI calculation
 
 ---
 
-## 7.8 Broader Implications
+## 7.8 broader implications
 
+**For SNN community:** first conv SNN results on ESC-50 -- standardised reference. Encoding comparison and negative results (delta, burst) informative: don't assume bio-motivated encodings beat simpler alternatives.
 **For the SNN research community:** This work provides the first convolutional SNN results on ESC-50 — a standardised reference that future SNN audio work can compare against. The systematic encoding comparison and negative results (delta, burst) are informative: the field should not assume that biologically-motivated encodings outperform simpler alternatives.
 
 **For neuromorphic computing:** The AvgPool-FC1 cancellation problem is a previously undocumented failure mode for neuromorphic deployment of standard spiking CNN architectures. The documented failure and hybrid solution provide practical guidance for future SpiNNaker deployments.

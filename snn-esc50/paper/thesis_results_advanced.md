@@ -1,17 +1,17 @@
-# Chapter 6: Advanced Analysis
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 6: advanced analysis
+
+covers adversarial, continual learning, temporal patterns, t-SNE, per-class stuff. some of these are the most interesting findings in the whole thesis honestly.
 
 ---
 
-## 6.1 Adversarial Robustness
+## 6.1 adversarial robustness
 
-### 6.1.1 Setup
+### 6.1.1 setup
 
-Adversarial robustness is evaluated on fold 4 (400 test samples) using:
-- **FGSM** (Fast Gradient Sign Method, Goodfellow et al. 2015): single-step attack, $x' = x + \epsilon \cdot \text{sign}(\nabla_x \mathcal{L})$
-- **PGD** (Projected Gradient Descent, Madry et al. 2018): multi-step attack, 40 iterations, step size α = ε/10
+Evaluated on fold 4 (400 samples) using:
+- **FGSM** (Goodfellow et al. 2015): single-step, x' = x + eps * sign(grad_x L)
+- **PGD** (Madry et al. 2018): 40 iterations, step size alpha = eps/10
 
-Both attacks are applied to the **normalised mel spectrogram** input (not raw audio), with ε values in {0.0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}.
 
 **SNN wrapping:** The SNN is wrapped in an `SNNWrapper` module that applies direct encoding (repeat spectrogram T times) and returns `mem_out.sum(dim=0)` as differentiable logits for gradient computation. The ANN returns standard logits. Both are evaluated with `torchattacks` v3.x.
 

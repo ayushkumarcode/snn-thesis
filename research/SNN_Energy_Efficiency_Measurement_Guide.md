@@ -218,31 +218,3 @@ def count_spikes_per_layer(model, data_loader, num_steps):
                 # Count spikes from each spiking layer
                 for name, module in model.named_modules():
                     if isinstance(module, (snn.Leaky, snn.Synaptic)):
-                        if name not in spike_counts:
-                            spike_counts[name] = 0
-                        # Spikes are binary tensors -- sum gives count
-                        spike_counts[name] += spk_out.sum().item()
-
-    return spike_counts
-
-def estimate_energy(spike_counts, layer_fan_outs, flops_ann,
-                    E_AC=0.9e-12, E_MAC=4.6e-12):
-    """
-    Estimate energy using standard methodology.
-
-    E_AC  = 0.9 pJ  (accumulate, 45nm Horowitz 2014)
-    E_MAC = 4.6 pJ  (multiply-accumulate, 45nm Horowitz 2014)
-    """
-    # SNN energy: spike-driven accumulate operations
-    total_sops = sum(
-        spike_counts[layer] * layer_fan_outs[layer]
-        for layer in spike_counts
-    )
-    E_SNN = total_sops * E_AC
-
-    # ANN energy: all operations are MACs
-    E_ANN = flops_ann * E_MAC
-
-    energy_ratio = E_ANN / E_SNN
-
-    return {

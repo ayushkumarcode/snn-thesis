@@ -26,3 +26,31 @@ PGD eps=0.05: SNN 9.75% vs ANN 0.05% (195x)
 FC2-only hybrid: 33.1%+/-6.9% (5-fold, 2000 inferences)
 FC1+FC2 exc-only: 15.0% (20 samples, pipeline proven)
 - hardware gap 12.8+/-4.1pp is significant
+
+### 5. Temporal Ablation (grade C+, 5-fold)
+92% of full accuracy at T=10 (60% energy saving)
+T=20 vs T=25: NOT significant (p=0.45) -- plateau, not peak
+
+### 6. Encoding Transfer Matrix (grade B-, 5-fold)
+transfer ratio = 0.255+/-0.006 (remarkably consistent across folds)
+encodings are highly specific -- 75% accuracy loss when swapped
+novel finding, validated across all 5 folds
+
+### 7. Noise Robustness (grade C, 5-fold)
+SNN degrades directionally less but NOT statistically significant at any SNR
+at 0dB: SNN=7.05%, ANN=6.95% -- effectively equal
+
+### 8. Statistical Tests (all computed)
+core SNN vs ANN: p=0.0028, d=-2.93
+every encoding pairwise: all p<0.002
+adversarial each epsilon: all p<0.05
+
+## Findings CORRECTED by 5-fold validation
+
+### Pruning Resilience -- CORRECTED
+- single-fold: "SNN retains 93.2%, ANN collapses to 36.8%"
+- **5-fold: SNN=33.0% (61% ret), ANN=35.0% (57% ret) -- similar degradation**
+- SNN slightly more resilient at 90% but both are severely degraded
+
+### Neuron Ablation -- CORRECTED
+- single-fold: "SNN beats ANN at 10-30% ablation"

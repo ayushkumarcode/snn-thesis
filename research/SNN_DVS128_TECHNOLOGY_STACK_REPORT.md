@@ -446,3 +446,31 @@ for epoch in range(num_epochs):
 | Classes | 11 hand/arm gestures |
 | Training samples | 1,176 |
 | Test samples | 288 |
+| Total subjects | 29 |
+| Lighting conditions | 3 (natural, fluorescent, LED) |
+| File format | AEDAT 3.1 |
+
+Original source: IBM Research - https://research.ibm.com/interactive/dvsgesture/
+
+### The 11 Gesture Classes
+
+0. Hand Clapping
+1. Right Hand Wave
+2. Left Hand Wave
+3. Right Arm CW (Clockwise)
+4. Right Arm CCW (Counter-clockwise)
+5. Left Arm CW
+6. Left Arm CCW
+7. Arm Roll
+8. Air Drums
+9. Air Guitar
+10. Other Gestures
+
+### Raw Data Format (AEDAT 3.1)
+
+Each recording is stored as a binary AEDAT 3.1 file with polarity events.
+
+File structure: [header][events][header][events]...
+
+Header (28 bytes):
+```

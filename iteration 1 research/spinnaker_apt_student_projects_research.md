@@ -222,3 +222,31 @@ found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 
 ---
 
+## 2. MSc dissertations from Manchester
+
+### 2.1 Nicholas Buttigieg -- Spiking Grid Cell Models on Neuromorphic Hardware (2019)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Spiking Grid Cell Models on Neuromorphic Hardware |
+| **Author** | Nicholas Buttigieg |
+| **Year** | 2019 |
+| **Degree** | MSc, Faculty of Science and Engineering |
+| **Supervisors** | Prof. Steve Furber, Dr. Oliver Rhodes |
+| **Abstract** | Spiking grid cell models for spatial navigation implemented on SpiNNaker neuromorphic hardware. |
+| **Tools** | SpiNNaker, Python 2.7, sPyNNaker, Brian2 (alternative) |
+| **GitHub** | https://github.com/nickybu/spiking_grid_cell_model |
+| **Full Dissertation** | Available via Google Drive link in repo |
+
+### 2.2 Francesco Galluppi -- MSc Thesis (2009)
+
+| Field | Details |
+|-------|---------|
+| **Title** | Unknown (SpiNNaker-related, ran "Doughnut Hunter" as first neural application on SpiNNaker test chip) |
+| **Author** | Francesco Galluppi |
+| **Year** | 2009 |
+| **Degree** | MSc |
+| **Note** | Galluppi joined SpiNNaker in January 2009 for his MSc before returning for PhD in April 2010. couldn't find the actual thesis title. |
+
+---
+

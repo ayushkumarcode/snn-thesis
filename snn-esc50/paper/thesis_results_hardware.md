@@ -303,23 +303,3 @@ Original SNN direct fold 4: 54.0%. MaxPool at threshold=3.0: 43.75% -- 10.25 pp 
 4. **5-fold SpiNNaker:** 33.1% +/- 6.9% vs 46.0% snnTorch (12.8 pp gap). Models restored from backup after augmented training overwrote them.
 
 5. **Option A (MaxPool):** threshold sweep confirms binary fraction = 1.000 at all thresholds. threshold=3.0 gets 43.75% with 956 active/step. Full SpiNNaker deployment theoretically unblocked pending router test.
-
-**Interpretation:** MaxPool guarantees fc1_binary_fraction = 1.000 for all thresholds (confirmed). This eliminates the fundamental AvgPool-FC1 cancellation incompatibility documented in §5.1. The threshold=3.0 model achieves the best accuracy (43.75%) while reducing FC1 density to 956/2304 (41.5% active). The <500/step target is not met by any threshold in this sweep — thresholds above 3.0 could potentially reduce density further at cost of additional accuracy loss.
-
-**Original SNN direct fold 4 baseline: 54.0%.** The MaxPool model at threshold=3.0 (43.75%) is 10.25 pp below this, reflecting the architectural change (MaxPool discards spatial information that AvgPool retains when inputs are continuous). However, the model was trained from scratch specifically for SpiNNaker compatibility.
-
-**Recommendation:** The threshold=3.0 Option A model is the best candidate for full SpiNNaker FC1+FC2 deployment. FC1 inputs are binary (guaranteed), meeting the fundamental requirement. Hardware testing is needed to confirm the SpiNNaker router can handle 956 simultaneous spikes per FC1 step without overflow. If router capacity is sufficient, this would enable the first full convolutional SNN deployment on neuromorphic hardware for environmental sound classification.
-
----
-
-## 5.6 Chapter Summary
-
-1. **FC1 cancellation** is the fundamental barrier to full SpikingCNN deployment on SpiNNaker. Root cause: AvgPool between LIF layers produces fractional inputs (not binary), violating SpiNNaker's spike-driven compute model. Weight re-centring (Option C) fails because it assumes binary inputs.
-
-2. **FC2-only hybrid** is the validated deployment approach: software feature extraction produces binary hidden spikes (21.7% active), which SpiNNaker classifies using a 256→50 layer. Run 5 (n=20) achieves 40%. **Run 6 (400-sample) final result: 43.0% SpiNNaker vs 51.25% snnTorch — hardware gap 8.25 pp, agreement rate 64.5%.** Checkpoint trajectory: n=108: 1.9 pp → n=189: 0.5 pp → n=208: 0.0 pp → n=244: 5.7 pp → n=400: 8.25 pp. The gap fluctuates significantly, with later samples proving harder for SpiNNaker (insects, helicopter, engine all 0% SpiNNaker). snnTorch leads all five super-categories; SpiNNaker beats snnTorch on airplane (+37.5 pp) and mouse_click (+25 pp).
-
-3. **Energy analysis (NeuroBench, 5-fold validated):** Direct SNN uses 2.1× more energy than ANN in software simulation (968 ± 37 nJ vs 454 ± 11 nJ). PANNs + SNN head (FC2 layer on SpiNNaker only) is Pareto-optimal at 92.50% accuracy and ~86 nJ per classification (FC2 layer: 256×50×25×0.30 active×0.9 pJ).
-
-4. **5-fold SpiNNaker preparation:** All five fold models were restored from CSF3 backup after being overwritten by augmented training. Feature extraction (400 samples each, canonical CSF3 models) yields snnTorch reference accuracies of 39.5%, 48.2%, 47.7%, 51.2%, 43.2% (mean 46.0%, within 1.2 pp of canonical 47.15%). Fold-specific FC2 connection lists generated. Automated 5-fold inference script (`spinnaker/run_5fold_spinnaker.sh`) prepared, using calibrated weight_scale=5.0 from Run 6. Hardware execution complete (05 March 2026): 33.1% ± 6.9% SpiNNaker mean accuracy across 5 folds.
-
-5. **Option A retraining (MaxPool SNN):** The threshold sweep (fold 4) confirms FC1 binary fraction = 1.000 for all thresholds — MaxPool on binary spikes guarantees binary FC1 inputs, removing the theoretical incompatibility. Threshold=3.0 achieves 43.75% accuracy (best of sweep) with 956.1 FC1 active inputs per step (sparsity 58.5%). FC1 mean active/step remains above the 500 target — higher thresholds or L1 spike regularisation could reduce this further. Full SpiNNaker deployment with the threshold=3.0 Option A model requires hardware testing to confirm router capacity for 956 simultaneous inputs, but is no longer theoretically blocked.

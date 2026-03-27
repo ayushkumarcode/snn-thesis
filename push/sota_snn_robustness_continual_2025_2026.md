@@ -137,31 +137,3 @@ Key evidence from 2024-2026 literature:
 | SA-PGD (Wang et al.) | arXiv Dec 2025 | Adaptive surrogate + adaptive step | Robustness overestimated by 5-13 pp |
 | HART (Bu et al.) | ICLR 2024 | Combined rate + temporal attack | Stronger than rate-only attacks |
 | Hybrid Attack (Lin & Sengupta) | arXiv Apr 2025 | Transferability-based | Local-learning robustness largely disappears |
-
-**C. Mechanistic Understanding:**
-
-| Paper | Venue | Key Insight |
-|-------|-------|-------------|
-| RSC-SNN | ACM MM 2024 | Poisson coding is conceptually equivalent to randomized smoothing |
-| TGO (ICLR 2026) | ICLR 2026 | Threshold-neighboring neurons are the weak point; reducing them by 40% improves robustness |
-| Gradient Sparsity (2025) | arXiv | Natural spike-induced gradient sparsity creates inherent (but limited) robustness |
-| Nature Comms (2025) | Nature Comms | Temporal encoding + early-exit decoding = key to SNN robustness advantage |
-
----
-
-### 1.6 Best SNN Adversarial Robustness on Any Audio Task
-
-**No SNN adversarial robustness results exist for any audio task in the literature (as of March 2026).**
-
-Our results (SNN 26% FGSM eps=0.1; SNN 19.25% PGD eps=0.05 on ESC-50) are, to our knowledge, the **first reported SNN adversarial robustness numbers on any audio/sound classification benchmark**.
-
-For context, the best adversarial robustness numbers on **image** tasks are:
-- CIFAR-10 (eps=8/255): ~45% PGD-7 robust accuracy (RandHet-SNN + RAT)
-- CIFAR-100 (eps=8/255): ~26% PGD robust accuracy (RSC-SNN)
-- ImageNet (eps=8/255): ~9% PGD robust accuracy (RSC-SNN)
-
-These are not directly comparable to our audio numbers due to different epsilon scales and data domains, but they establish that SNN adversarial robustness is a genuinely active research area where robust accuracy in the 20-50% range under strong perturbations is typical.
-
----
-
-## PART 2: CONTINUAL LEARNING WITH SNNs

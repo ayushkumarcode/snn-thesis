@@ -138,3 +138,31 @@ ESC-50 is environmental sound, not speech. INTERSPEECH is primarily speech-focus
 Sources: [INTERSPEECH 2026 CFP](https://interspeech2026.org/en-AU/pages/calls/call-for-papers)
 
 ---
+
+### 2.5 IEEE SiPS 2026 -- Workshop on Signal Processing Systems
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **12 April 2026** |
+| **Notification** | 10 July 2026 |
+| **Conference Dates** | 1-4 November 2026 |
+| **Location** | Bordeaux, France |
+| **Page Limit** | TBD (typically 6 pages IEEE) |
+| **Proceedings** | IEEE Xplore |
+
+hardware implementation of signal processing is in scope. SpiNNaker deployment angle fits.
+
+Sources: [SiPS 2026](https://sips2026.org/)
+
+---
+
+### 2.6 DCASE 2026 -- Detection and Classification of Acoustic Scenes and Events
+
+| Field | Details |
+|-------|---------|
+| **Paper Deadline** | **~July 2026** (not announced yet; 2025 was July 4-11) |
+| **Conference Dates** | ~September-November 2026 (TBD) |
+| **Page Limit** | 4 pages + references (based on previous years) |
+
+this would be an excellent fit for the topic. ESC-50 environmental sound classification is exactly what DCASE covers. the SNN angle would be novel there.
+

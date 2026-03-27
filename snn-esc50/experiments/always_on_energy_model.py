@@ -138,3 +138,31 @@ def compute_energy_model():
             xylo_active_j = 6.6e-6 * n_inferences  # 6.6 µJ/inf
             xylo_idle_j = 0.217e-3 * idle_seconds   # 217 µW idle
             xylo_total_j = xylo_active_j + xylo_idle_j
+
+            scenario["comparisons"][f"{model_name}_Xylo"] = {
+                "active_energy_j": xylo_active_j,
+                "idle_energy_j": xylo_idle_j,
+                "total_energy_j": xylo_total_j,
+                "total_energy_mj": xylo_total_j * 1000,
+            }
+
+        # ANN on ARM Cortex-M4
+        for model_name, model_info in per_inference.items():
+            if not model_name.startswith("ANN"):
+                continue
+
+            # ANN must wake up and compute for EVERY potential frame
+            # Even during "silence", MCU typically samples audio
+            ann_active_j = 50e-3 * active_seconds    # 50mW * active_s
+            ann_idle_j = 0.1e-3 * idle_seconds       # 100µW * idle_s
+            # But ANN also has to process during idle (sampling)
+            ann_sampling_j = 5e-3 * idle_seconds     # 5mW sampling
+            ann_total_j = ann_active_j + ann_idle_j + ann_sampling_j
+
+            scenario["comparisons"][f"{model_name}_ARM_M4"] = {
+                "active_energy_j": ann_active_j,
+                "idle_energy_j": ann_idle_j + ann_sampling_j,
+                "total_energy_j": ann_total_j,
+                "total_energy_mj": ann_total_j * 1000,
+            }
+

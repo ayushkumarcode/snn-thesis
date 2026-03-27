@@ -582,31 +582,3 @@ A comprehensive taxonomy of SNN energy metrics classified by four properties:
 | Parameters | Yes | No | No | No |
 | Effective Synaptic Ops | Yes | No | No | Yes |
 | Membrane Updates | Yes | No | No | Yes |
-| Activation Sparsity | Yes | No | Yes | Yes |
-| Memory Footprint | Yes | No | No | No |
-| Connection Sparsity | Yes | No | No | No |
-| Memory Accesses | Yes | No | No | Yes |
-| Training Time | Yes | No | No | Yes |
-| Energy per Inference | No | Yes | No | No |
-| Energy per Learning | No | Yes | No | No |
-| Energy Area FoM | No | Yes | No | No |
-| Peak Energy Consumption | No | Yes | No | No |
-| Power Density | No | Yes | Yes | No |
-
-**Key insight:** There is a gap between accessible metrics (computable in software) and high-fidelity metrics (require hardware measurement). Your thesis will use accessible metrics -- this is standard practice. Acknowledge the gap.
-
-**Source:** [Pereira et al. 2025, "Energy Aware Development of Neuromorphic Implantables: From Metrics to Action"](https://arxiv.org/html/2506.09599v1)
-
----
-
-## Appendix E: Quick Reference Decision Tree
-
-```
-Do you have neuromorphic hardware (Loihi, SpiNNaker, BrainScaleS)?
-  |
-  NO (most likely for undergrad)
-  |
-  v
-Use Tier 1 or Tier 2 analytical estimation
-  |
-  v

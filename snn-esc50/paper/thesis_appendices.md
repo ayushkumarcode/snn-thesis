@@ -96,20 +96,20 @@ Source: `results/neurobench/analysis_fold{1-5}.json`. AC = 0.9 pJ, MAC = 4.6 pJ 
 
 Agreement: 64.5% (258/400). Both correct: 36.2% (145). Both wrong: 42.0% (168). SpiNNaker right only: 6.8% (27). snnTorch right only: 15.0% (60).
 
+Source: `results/spinnaker_results/run6_analysis.json`.
 
-Agreement rate: 64.5% (258/400 same prediction). Both correct: 36.2% (145/400). Both wrong: 42.0% (168/400). SpiNNaker correct, snnTorch wrong: 6.8% (27/400). snnTorch correct, SpiNNaker wrong: 15.0% (60/400).
+### A.6b SpiNNaker 5-fold results
 
-*Source: `results/spinnaker_results/run6_analysis.json`.*
-
-### A.6b SpiNNaker 5-Fold Cross-Validation Results
-
-| Fold | SpiNNaker Acc | snnTorch Ref | Hardware Gap |
-|------|--------------|-------------|-------------|
+| Fold | SpiNNaker | snnTorch | Gap |
+|------|-----------|---------|-----|
 | 1 | 29.0% | 39.5% | +10.5 pp |
 | 2 | 32.0% | 48.2% | +16.2 pp |
 | 3 | 36.5% | 47.8% | +11.2 pp |
 | 4 | 43.0% | 51.2% | +8.2 pp |
 | 5 | 25.2% | 43.2% | +18.0 pp |
+| **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
+| **Std** | **6.9%** | | **4.1 pp** |
+
 | **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
 | **Std** | **6.9%** | | **4.1 pp** |
 

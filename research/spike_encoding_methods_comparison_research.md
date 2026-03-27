@@ -619,31 +619,3 @@ For the thesis, **snnTorch is recommended** as the primary framework due to its 
 |----------------------|----------------------|
 | 2-4 encoding methods per study | 6-8 encoding methods in one unified study |
 | Single data modality per study | Multiple modalities (image + audio + time-series) |
-| MNIST/Fashion-MNIST only | MNIST + CIFAR-10 + SHD (audio) + sensor data |
-| 2-layer STDP networks | Modern deep SNNs with surrogate gradient training |
-| Accuracy only, or accuracy + 1-2 metrics | Comprehensive metrics: accuracy, latency, spike count, energy proxy, noise robustness |
-| Different frameworks per study | Unified snnTorch framework for all experiments |
-| No practitioner guidelines | Decision framework / recommendation guide |
-
-### 7.3 Feasibility for Undergraduate Level
-
-| Aspect | Assessment |
-|--------|-----------|
-| **Technical difficulty** | Moderate. Implementing rate, latency, delta is trivial (snnTorch built-in). Phase, burst, GRF require custom code but are straightforward algorithms. Direct coding requires basic neural network knowledge. |
-| **Computational requirements** | Low-Moderate. MNIST/Fashion-MNIST run on a laptop in minutes. CIFAR-10 needs a GPU but runs in hours. SHD is manageable. No HPC needed. |
-| **Background knowledge** | Requires understanding of: LIF neuron model, surrogate gradients, basic signal processing. All learnable within a few weeks from snnTorch tutorials. |
-| **Risk** | Low. The experiments are well-defined, reproducible, and not dependent on external resources. The worst case is that you confirm existing results (still valid as a replication + extension study). |
-| **Timeline** | Achievable. Core experiments (6 encodings x 3 datasets x 3 metrics) could be completed in 8-12 weeks of coding + running experiments. |
-
-### 7.4 Potential Concerns and Mitigations
-
-| Concern | Mitigation |
-|---------|-----------|
-| "It's just a comparison, not original research" | Framing matters: "systematic evaluation" is a recognised contribution type in CS. You are creating new knowledge about trade-offs that do not exist in one place. Adding a novel recommendation framework or decision tree adds originality. |
-| "Guo et al. already did this" | Guo et al. used only STDP on MNIST with 4 methods. You would use modern training (surrogate gradients), more datasets, and more methods. The overlap is partial, not total. |
-| "The results might be obvious" | Current literature shows they are NOT obvious -- phase coding has best noise resilience but worst SOPs, TTFS has best efficiency but worst noise tolerance. These trade-offs are complex and data-dependent. |
-| "Not enough novelty for a UK undergraduate thesis" | UK undergrad theses require demonstration of research methodology and critical analysis, not necessarily breakthrough discoveries. A well-executed systematic study with clear methodology, reproducible results, and a practical decision framework is strong. |
-
----
-
-## 8. Research Gaps and Novel Contribution Opportunities

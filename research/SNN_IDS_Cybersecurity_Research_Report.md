@@ -362,3 +362,27 @@ why this works:
 - [Event-Driven SNN-IDS (IEEE)](https://ieeexplore.ieee.org/document/11171294/)
 - [Hybrid HRSNN for IoT (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12546366/)
 - [ConvSNN Robust IDS (Springer)](https://link.springer.com/article/10.1007/s10586-024-04603-3)
+- [Feature-Optimized SNN IDS (JAIT)](https://ojs.istp-press.com/jait/article/view/848)
+- [Resource Efficient IoT SNN-IDS (ResearchGate)](https://www.researchgate.net/publication/386152689_Resource_efficient_Internet-of-Things_intrusion_detection_with_spiking_neural_networks)
+- [SNN Darknet Traffic (SciOpen)](https://www.sciopen.com/article/10.23919/ICN.2024.0022)
+- [Cyber-Neuro RT (ScienceDirect)](https://www.sciencedirect.com/science/article/pii/S1877050922017938)
+- [Low-Power Cybersecurity on Neuromorphic Tech (CSIAC)](https://csiac.dtic.mil/articles/low-power-cybersecurity-attack-detection-using-deep-learning-on-neuromorphic-technologies/)
+- [SNN Encrypted Traffic (ScienceDirect)](https://www.sciencedirect.com/science/article/abs/pii/S0925231222007895)
+- [Binarized SNN + Blockchain IDS (ScienceDirect)](https://www.sciencedirect.com/science/article/abs/pii/S156849462301236X)
+- [5G SDN SNN IDS (MDPI)](https://www.mdpi.com/1999-5903/16/10/359)
+- [Cyber-SN P Systems (Springer)](https://link.springer.com/article/10.1007/s41965-024-00166-9)
+
+### GitHub repos
+- [zbs881314/Intrusion-detection](https://github.com/zbs881314/Intrusion-detection)
+- [snnTorch](https://github.com/jeshraghian/snntorch) / [Docs](https://snntorch.readthedocs.io/)
+- [SpikingJelly](https://github.com/fangwei123456/spikingjelly)
+- [Norse](https://github.com/norse/norse)
+- [BindsNET](https://github.com/BindsNET/bindsnet)
+- [Awesome-SNN](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)
+- [SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv)
+
+### datasets
+- [NSL-KDD](https://www.unb.ca/cic/datasets/nsl.html) / [Kaggle](https://www.kaggle.com/datasets/hassan06/nslkdd)
+- [CICIDS-2017](https://www.unb.ca/cic/datasets/ids-2017.html) / [Kaggle](https://www.kaggle.com/datasets/chethuhn/network-intrusion-dataset)
+- [UNSW-NB15](https://research.unsw.edu.au/projects/unsw-nb15-dataset) / [Kaggle](https://www.kaggle.com/datasets/mrwellsdavid/unsw-nb15)
+- [UNSW-NB15 (Papers With Code)](https://paperswithcode.com/dataset/unsw-nb15)

@@ -670,3 +670,31 @@ Biggest risk: SNN+RL convergence is notoriously difficult. May spend all of week
 
 | Finding | Confidence |
 |---|---|
+| Kyambadde thesis is philosophy, not CS/SNN | **HIGH** (confirmed via White Rose repository metadata) |
+| SNN + continual learning is an active, viable field | **VERY HIGH** (20+ papers, including Science Advances and Nature Comms) |
+| SNN + meta-learning is too hard for ~4 weeks | **HIGH** (no snnTorch support, MAML complexity) |
+| SNN + image denoising has very few papers | **HIGH** (found only 3-5 across all databases) |
+| MuJoCo works on macOS | **HIGH** (confirmed in MuJoCo documentation) |
+| snnTorch runs on macOS CPU | **VERY HIGH** (PyTorch-based, no CUDA required) |
+| SNN+RL training is finicky | **VERY HIGH** (multiple papers explicitly note hyperparameter sensitivity) |
+
+---
+
+### Research gaps identified
+
+1. No snnTorch-specific tutorial for continual learning -- a thesis could fill this
+2. No snnTorch implementation of image denoising -- SPIDEN uses custom code
+3. No snnTorch+MuJoCo integration guide -- existing papers use SpyTorch or custom SNN
+4. No comparison of EWC variants in spiking vs non-spiking networks
+5. No Manchester undergrad thesis on continual learning with SNNs -- all existing Manchester SNN theses focus on classification or financial prediction
+
+---
+
+## Sources
+
+### Part 1: AGI-Related
+- [Kyambadde PhD Thesis, White Rose Repository](https://etheses.whiterose.ac.uk/id/eprint/36019/)
+- [NACA Algorithm, Science Advances 2024](https://www.science.org/doi/10.1126/sciadv.adi2947)
+- [CH-HNN, Nature Communications 2025](https://www.nature.com/articles/s41467-025-56405-9)
+- [CLP-SNN on Loihi 2, arxiv 2024](https://arxiv.org/html/2511.01553v1)
+- [Energy-Aware Spike Budgeting, arxiv 2026](https://arxiv.org/html/2602.12236)

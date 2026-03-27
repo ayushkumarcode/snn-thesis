@@ -250,3 +250,31 @@ i think this actually makes our thesis notable -- deploying SNNs on SpiNNaker fo
 | Larroza et al., "Spike Encoding for Environmental Sound: A Comparative Benchmark" | March 2025 | Spike encoding comparison for ESC-10 | Closest work to ours. ESC-10 only, FC only, no hardware. arXiv: 2503.11206 |
 | Meunier et al., "Comparison of Hardware-friendly Audio-to-spikes Cochlear Encoding" | 2025 | Audio encoding for neuromorphic hardware | IEEE AICAS 2025. Bio-mimetic vs hardware-friendly encoding on SHD and GSC. |
 | Yik et al., "NeuroBench" | 2025 | Neuromorphic benchmarking framework | Nature Communications 16:1589. Includes audio benchmarks. |
+
+---
+
+## Part 4: Where Our Thesis Fits
+
+### positioning
+
+1. **first ESC-50 deployment on neuromorphic hardware.** nobody else has done this on any chip.
+2. **first SpiNNaker audio classification since 2016.** only prior SpiNNaker audio work (Dominguez-Morales 2016) used 8 pure tones. that's a 10 year gap.
+3. **most extensive encoding comparison** for environmental sound on SNN (7 schemes).
+4. **hybrid ANN-SNN deployment concept.** PANNs+SNN (92.5%) demonstrates viability.
+5. **unusual scope for undergrad.** the breadth of experiments (encoding ablation, surrogate gradient ablation, adversarial robustness, continual learning, PANNs transfer, SpiNNaker deployment, NeuroBench energy analysis) is... a lot.
+
+### our hardware gap in context
+
+our 12.8pp gap is within the expected range considering:
+- DYNAP-SE showed 7.1pp gap on a much simpler task
+- Loihi 2 achieves near-zero but uses quantization-aware training, 8-bit optimized pipeline, and a much newer chip
+- SpiNNaker 1 is 2012-era design (130nm) vs Loihi 2's Intel 7
+- we didn't use quantization-aware training (post-hoc weight conversion)
+- FC2-only deployment forced by SpiNNaker's binary input constraint
+
+### research gaps
+
+| Gap | Status |
+|-----|--------|
+| ESC-50 on neuromorphic hardware | **we fill this** |
+| Spike encoding comparison for environmental sounds | **we fill this** |

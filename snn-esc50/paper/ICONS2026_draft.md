@@ -54,20 +54,20 @@ LIF neurons accumulate weighted input, emit binary spikes at threshold, reset. S
 | Burst | n_spikes proportional to intensity, front-loaded | dense early |
 | Phase | spike time within oscillation cycle | deterministic, 1 spike/neuron |
 | Population | 10 output neurons/class (500 total) | multi-neuron vote |
-### 2.4 SpiNNaker Hardware
 
-SpiNNaker [2] is a massively-parallel neuromorphic platform implementing IF_curr_exp neurons. Weights are integers; communication is spike-driven (AC only). We calibrate: tau_syn=5ms, v_thresh=1.0, tau_m=20ms via a 9-point scale sweep on held-out samples.
+### 2.4 SpiNNaker
+
+SpiNNaker [2]: massively parallel neuromorphic platform, IF_curr_exp neurons, integer weights, spike-driven (AC only). Calibrated: tau_syn=5ms, v_thresh=1.0, tau_m=20ms.
 
 ---
 
-## 3. Architecture and Training
+## 3. Architecture and training
 
-**Architecture (SpikingCNN):**
+**SpikingCNN:**
 ```
-Conv2d(1→32, k=3) → BN → MaxPool(2) → LIF₁
-Conv2d(32→64, k=3) → BN → MaxPool(2) → LIF₂
-AvgPool(4×6)  [MPS-compatible; replaces AdaptiveAvgPool]
-Linear(2304→256) → LIF₃ → Linear(256→50) → LIF₄
+Conv2d(1->32, k=3) -> BN -> MaxPool(2) -> LIF1
+Conv2d(32->64, k=3) -> BN -> MaxPool(2) -> LIF2
+AvgPool(4x6)
 ```
 ~622K parameters. ANN mirror: identical with ReLU replacing LIF.
 

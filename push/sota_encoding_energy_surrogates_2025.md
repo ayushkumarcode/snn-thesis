@@ -138,3 +138,31 @@ our 7-encoding ESC-50 benchmark is unique in the literature:
 
 ## Part 2: Energy Efficiency
 
+### Dampfhoffer et al. (IEEE TECI, 2023) -- the critical reassessment
+
+"Are SNNs Really More Energy-Efficient Than ANNs? An In-Depth Hardware-Aware Study."
+
+key findings:
+- IF model is more energy-efficient than LIF and temporal continuous synapse models
+- SNNs with IF can compete with efficient ANNs when spike sparsity is **0.15-1.38 spikes/synapse/inference**
+- previous studies overlooked memory access costs (which dominate energy in practice)
+- hybrid ANN-SNN architectures leveraging SNN in high-sparsity layers are most promising
+
+we use LIF neurons (not IF), inherently less efficient per Dampfhoffer. with 74.16% activation sparsity (NeuroBench), our average firing rate is ~25.84%, well above the <6.4% threshold. this explains why our SNN is 2.1x MORE expensive in software simulation.
+
+### Yang et al., "Reconsidering the Energy Efficiency of SNNs" (arXiv:2409.08290, 2024)
+
+critical thresholds:
+- VGG16, T=6: sparsity must exceed **93%** for energy efficiency
+- T > 16: sparsity must exceed **97%**
+- general rule: spike rate must be **below 6.4%** to outperform equivalent quantized ANNs
+- with their sparsity-promoting regularization on CIFAR-10: SNN uses 69% of optimized ANN energy at 94.18% accuracy
+
+energy model components: 8-bit ADD (0.03 pJ), 8-bit MUL (0.2 pJ), SRAM (20 pJ/bit), DRAM (2 nJ/bit), NoC per hop (10 pJ/bit).
+
+our SNN has ~25.84% spike rate, 4x above the 6.4% threshold. confirms SNN is more expensive in software. but on neuromorphic hardware where only ACs are needed (not MACs), the 5.1x per-operation advantage still holds.
+
+### NeuroBench (Nature Communications, 2025)
+
+benchmark tasks (Algorithm Track v1.0):
+

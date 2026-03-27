@@ -483,31 +483,3 @@ Test: Single FC + LIF layer, batch=16, 500 time steps, n neurons:
 | MNIST | 10 digits | 70K | 28x28 | Built into snnTorch/SpikingJelly | Easiest |
 | Fashion-MNIST | 10 clothing | 70K | 28x28 | Built into frameworks | Easy |
 | CIFAR-10 | 10 objects | 60K | 32x32 | Built into frameworks | Moderate |
-| CIFAR-100 | 100 objects | 60K | 32x32 | Built into frameworks | Harder |
-| ImageNet-1K | 1000 objects | 1.2M | 224x224 | Manual download | Hard (compute) |
-
-#### Vision -- Neuromorphic (Event Camera / DVS)
-
-| Dataset | Classes | Samples | Source | Access | Difficulty |
-|---------|---------|---------|--------|--------|------------|
-| N-MNIST | 10 digits | 70K | DVS camera | garrickorchard.com; snnTorch/SpikingJelly built-in | Easy |
-| CIFAR10-DVS | 10 objects | 10K | DVS on LCD | figshare; SpikingJelly built-in | Moderate |
-| DVS128 Gesture | 11 gestures | 1,464 | DVS128 camera | IBM Box; SpikingJelly built-in | Moderate |
-| N-Caltech101 | 101 categories | 8,709 | DVS camera | garrickorchard.com | Moderate |
-| N-CARS | 2 (car/bg) | 24,029 | ATIS camera | Prophesee | Moderate |
-| ASL-DVS | ASL letters | - | DVS camera | GitHub | Moderate |
-| ES-ImageNet | 1000 objects | - | Simulated | Frontiers paper | Hard |
-
-#### Audio -- Neuromorphic
-
-| Dataset | Classes | Samples | Source | Access | Difficulty |
-|---------|---------|---------|--------|--------|------------|
-| Spiking Heidelberg Digits (SHD) | 20 (0-9 in EN+DE) | ~10K | Artificial cochlea | zenkelab.org | Easy-Moderate |
-| Spiking Speech Commands (SSC) | 35 keywords | ~100K | Artificial cochlea | zenkelab.org | Moderate |
-
-#### Other
-
-| Dataset | Type | Access |
-|---------|------|--------|
-| DVS_barrel | Character recognition | garrickorchard.com |
-| DVS Planes | Airplane detection | greg-cohen.com |

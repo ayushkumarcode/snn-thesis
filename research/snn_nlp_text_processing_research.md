@@ -230,31 +230,3 @@ This is the central technical challenge for SNN-NLP. Four main approaches exist:
 
 ### 3.3 Direct Embedding Encoding (SpikeLM approach)
 
-**How it works:** Uses elastic bi-spiking with bi-directional amplitude and frequency encoding. Spikes carry direction and amplitude information in a single timestep, with a controlled firing rate strategy.
-
-**Pros:** Works with fewer timesteps (T=1 possible), preserves more information
-**Cons:** Requires custom neuron models, harder to implement
-
-### 3.4 Word2Spike (2025)
-
-**How it works:** A novel rate coding mechanism that creates a one-to-one mapping from multi-dimensional word vectors to spike-based attractor states using Poisson processes.
-
-**Key finding:** Spike-based embeddings preserve essential semantic and relational structure despite realistic noise.
-
-**Paper:** https://arxiv.org/html/2509.07361
-
-### 3.5 Integer Word Index Encoding (Simplest)
-
-**How it works:** Words are converted to integer indices, then each index generates a corresponding spike pattern. Used in the SSA-SpiNNaker paper.
-
-**Pros:** Very simple to implement
-**Cons:** Loses semantic information, limited vocabulary handling
-
-### Recommended Approach for Undergraduate Project
-
-**Use Poisson Rate Coding with pre-trained embeddings (approach 3.1).** This is:
-- Best documented with working code
-- Used in the highest-quality reproducible paper (Spiking CNN for Text Classification)
-- Compatible with snnTorch/SpikingJelly frameworks
-- Straightforward to explain and implement
-

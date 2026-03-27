@@ -194,3 +194,31 @@ def load_model(model_type, fold, device):
     args.branches = 3
     args.max_delay = 5
 
+    model = ComboSpikingCNN(args).to(device)
+    model.load_state_dict(
+        torch.load(path, map_location=device, weights_only=True))
+    return model
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--fold", type=int, default=None)
+    parser.add_argument("--device", default=None)
+    parser.add_argument("--model-type", default="rhythm",
+                        choices=["baseline", "rhythm", "dendritic_delays",
+                                 "rhythm_l1"])
+    parser.add_argument("--stability-k", type=int, default=2)
+    args = parser.parse_args()
+
+    device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    thresholds = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    model_type = args.model_type
+
+    all_fold_results = {}
+    for fold in folds:
+        print(f"\n=== Early Exit | {model_type} | Fold {fold} ===")
+        model = load_model(model_type, fold, device)
+        if model is None:

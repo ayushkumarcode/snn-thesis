@@ -21,31 +21,3 @@ Spiking Neural Networks (SNNs) for audio classification have reached a mature an
 | Classes | 20 |
 | Training samples | 8,156 |
 | Test samples | 2,264 |
-| Input channels | 700 (artificial cochlea model) |
-| Data format | Spike trains with timestamps |
-| Created by | Cramer et al. (2020), Zenke Lab, Heidelberg |
-| Reference | [arXiv:1910.07407](https://arxiv.org/abs/1910.07407) |
-
-The SHD dataset encodes spoken digit recordings into spike trains using "Lauscher," an artificial cochlea model that mimics the human inner ear and ascending auditory pathway. Each sample consists of spike events across 700 frequency channels with precise temporal information.
-
-### 1.2 Spiking Speech Commands (SSC)
-
-| Property | Value |
-|----------|-------|
-| Task | Speech command classification |
-| Classes | 35 |
-| Total samples | ~100,000 |
-| Base dataset | Google Speech Commands v0.2 |
-| Input channels | 700 (same cochlea model) |
-| Data format | Spike trains with timestamps |
-| Created by | Same group (Cramer et al.) |
-
-SSC is the larger, more challenging counterpart to SHD. It contains 35 speech command classes from a large number of speakers, converted to spike trains using the same cochlea model.
-
-### 1.3 Dataset Access
-
-Both datasets are available through multiple loaders:
-- **Tonic** library: `pip install tonic` then `tonic.datasets.SHD('./data', train=True)` or `tonic.datasets.SSC('./data', split='train')`
-- **snnTorch**: Built-in `snntorch.spikevision.spikedata.SHD()`
-- **Norse**: `norse.dataset.spiking_heidelberg`
-- **sparch toolkit**: Automatic download via config

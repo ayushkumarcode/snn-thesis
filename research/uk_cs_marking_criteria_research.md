@@ -279,31 +279,3 @@ Your COMP30040 report guidance states the report must contain "an elucidation of
 
 The word "hypothesis" is notable -- it suggests Manchester values projects that frame themselves around a testable proposition, not just a building exercise.
 
----
-
-## 5. UNIVERSITY-BY-UNIVERSITY DETAILED FINDINGS
-
-### 5.1 University of Manchester (COMP30040) -- YOUR UNIVERSITY
-
-**Assessment Components:**
-- Report: 55%
-- Achievements: 30%
-- Screencast: 15%
-- Q&A: Not directly assessed (informs achievements mark)
-
-**Double Marking:** Both supervisor and second marker assess independently, then discuss and agree a final mark.
-
-**Report Requirements:**
-- Problem elucidation and project objectives
-- In-depth context and literature investigation
-- Life cycle stages (where appropriate)
-- Verification and validation description
-- Tools used in development
-- Critical appraisal with rationale for decisions
-- Research hypothesis description
-- LaTeX recommended (Overleaf with university account)
-- Formal writing style: third person, passive voice, past tense
-
-**Key Manchester Insight:** The assessment criteria document (project_assessment.pdf) is available on Canvas but was not publicly accessible for this research. You should download and study this document carefully as it will contain the detailed grade descriptors specific to COMP30040.
-
-**Manchester Generic Grade Descriptors (University-wide):**

@@ -166,3 +166,31 @@ environmental sound is a distinctly different domain from speech/digits. our eva
 7. Nature Comms SNN robustness (2025)
 8. HLOP-SNN (ICLR 2024) -- SOTA CL
 9. DSD-SNN (IJCAI 2023) -- architecture expansion CL
+10. SCA-SNN (Neural Networks 2024) -- context-aware CL
+11. PS-SNN (Scientific Reports 2026) -- best SNN CIL
+12. AGMP (Frontiers 2025) -- astrocyte-gated CL on SHD
+
+### research gaps we fill
+1. no SNN adversarial robustness on audio -- we fill this
+2. no SNN CL on environmental sound -- we fill this
+3. very few direct SNN-vs-ANN forgetting comparisons without CL methods -- we provide this
+
+### confidence
+
+| Finding | Confidence | Basis |
+|---------|------------|-------|
+| SNNs have inherent adversarial advantage | HIGH | 20+ papers, 2020-2026 |
+| Standard FGSM/PGD overestimates SNN robustness | HIGH | Wang 2025, Lin & Sengupta 2025 |
+| Our 14.9x is directionally correct but inflated | HIGH | consistent with pattern at high epsilon |
+| SNNs have mild inherent CL advantage | MEDIUM | theoretical support strong, empirical scarce |
+| Our 6.9pp gap is meaningful | MEDIUM | consistent with theory but single experiment |
+| Audio SNN adversarial robustness is novel | HIGH | found zero prior work |
+| Audio SNN CL on ESC-50 is novel | HIGH | no prior work |
+
+---
+
+## Sources
+
+### Adversarial
+- [Wang et al. SA-PGD](https://arxiv.org/abs/2512.22522)
+- [TGO ICLR 2026](https://arxiv.org/abs/2602.20548)

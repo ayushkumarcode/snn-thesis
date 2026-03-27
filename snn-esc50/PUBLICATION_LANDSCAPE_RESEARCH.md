@@ -54,20 +54,20 @@ the key observation about "wow" numbers -- the most impactful papers always have
 - Nature Comms robustness: 2x more robust
 
 our best "wow" numbers:
-| Continual Learning with Neuromorphic Computing | IEEE Access 2025 | Comprehensive survey of neuromorphic continual learning | Survey covering foundations + methods |
-| SpiNNaker2 | arXiv 2024 | Next-gen neuromorphic system (22nm, 153 ARM cores/chip) | 10x capacity per watt over SpiNNaker1 |
-| SpikeLM | 2024 | Spike-driven language modeling with elastic bi-spiking | Novel language modeling architecture |
-| Reconsidering SNN Energy Efficiency | arXiv 2024 | Honest assessment of SNN energy claims | Data movement costs often ignored |
-| SpikeFit | EurIPS 2025 | Optimal SNN deployment on neuromorphic hardware | Bridging simulation-to-hardware gap |
+- gap collapse: 16.7pp to 0.95pp
+- 6.0x adversarial robustness (first audio analysis)
+- 7 encodings (most comprehensive audio comparison)
+- first SNN on ESC-50
 
-### Key Observation About "Wow" Numbers
+---
 
-The most impactful papers have ONE clear number:
-- QKFormer: **85.65%** (first SNN > 85% on ImageNet)
-- Speech2Spikes: **109x** energy reduction
-- Nature Comms robustness: **2x** more robust
-- Spikformer v2: **81.1%** with 1 timestep
+## ICONS specifically (2022-2024)
 
+### ICONS 2024 (Arlington, Virginia)
+
+award-winning papers: "Scalable Event-by-event Processing with Deep State-Space Models" (Schone et al.), "IM-SNN: Memory-Efficient SNNs with Low-Precision Membrane Potentials" (Hassan et al.), "Programmable Synapses and Dendritic Circuits for Superconducting Neuromorphic Computing" (Primavera et al.)
+
+80+ presentations covering algorithms (visualization, dendritic processing), hardware (analog neurons, CMOS, memristors), and applications (gaming, audio processing, materials science, gait analysis, RF fingerprinting, swarm robotics).
 YOUR best "wow" numbers:
 - **Gap collapse: 16.7pp to 0.95pp** (feature learning bottleneck identified)
 - **6.0x adversarial robustness** (first audio analysis)

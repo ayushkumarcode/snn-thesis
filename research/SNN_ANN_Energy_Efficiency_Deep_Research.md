@@ -334,3 +334,31 @@ From the literature:
 ### 7.2 What i should NOT claim
 
 1. Don't claim SNNs are universally more energy-efficient. The literature is clear it depends on sparsity, hardware, and methodology.
+2. Don't use the simple "ACs are 5x cheaper than MACs, therefore SNNs are 5x more efficient" argument. Total operations matter.
+3. Don't ignore the memory access overhead argument -- it's the dominant factor in real systems.
+
+### 7.3 Recommended framing
+
+My NeuroBench results (SNN 976 nJ vs ANN 463 nJ) are actually stronger as an honest negative result:
+- "In software simulation, our SNN consumes 2.1x MORE energy than the ANN, despite per-operation costs being 5.1x lower, because the SNN performs 10.7x more operations."
+- "However, on dedicated neuromorphic hardware, the native AC support and event-driven processing eliminate the multiply overhead entirely, and our 74.16% activation sparsity means only 25.84% of synaptic operations are executed per timestep."
+- "The SNN's energy advantage is therefore hardware-dependent, consistent with recent literature (Dampfhoffer 2023, Yan 2024, Shen 2024)."
+
+### 7.4 Key references for energy claims
+
+**Must-cite:**
+1. Horowitz 2014 (ISSCC) -- AC vs MAC cost
+2. Dampfhoffer et al. 2023 (IEEE TECI) -- Hardware-aware SNN energy analysis
+3. Yan et al. 2024 (arXiv:2409.08290) -- Reconsidering SNN energy efficiency
+4. Yik et al. 2025 (Nature Comms) -- NeuroBench framework
+5. Davies et al. 2018 (IEEE Micro) -- Loihi energy measurements
+
+**Should-cite:**
+6. Shen et al. 2024 (CVPR) -- Bit budget framework
+7. Ostrau et al. 2022 (Frontiers) -- Hardware benchmarking
+8. Blouw et al. 2019 -- Loihi keyword spotting
+9. Li et al. 2023 (arXiv:2309.03388) -- Hardware perspective
+
+---
+
+## 8. What i couldn't find and confidence levels

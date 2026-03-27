@@ -194,3 +194,20 @@ environmental sound is a distinctly different domain from speech/digits. our eva
 ### Adversarial
 - [Wang et al. SA-PGD](https://arxiv.org/abs/2512.22522)
 - [TGO ICLR 2026](https://arxiv.org/abs/2602.20548)
+- [Lin & Sengupta local learning](https://arxiv.org/abs/2504.08897)
+- [FEEL-SNN NeurIPS 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/a73474c359ed523e6cd3174ed29a4d56-Paper-Conference.pdf)
+- [RSC-SNN ACM MM 2024](https://arxiv.org/abs/2407.20099)
+- [RandHet-SNN iScience 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12159496/)
+- [Nature Comms SNN robustness 2025](https://www.nature.com/articles/s41467-025-65197-x)
+- [Gradient Sparsity Trail](https://arxiv.org/abs/2509.23762)
+- [Sharmin ECCV 2020](https://arxiv.org/abs/2003.10399)
+- [HART ICLR 2024](https://openreview.net/forum?id=xv8iGxENyI)
+
+### Continual Learning
+- [HLOP-SNN ICLR 2024](https://arxiv.org/abs/2402.11984)
+- [DSD-SNN IJCAI 2023](https://arxiv.org/abs/2308.04749)
+- [SCA-SNN Neural Networks 2024](https://arxiv.org/abs/2411.05802)
+- [PS-SNN Scientific Reports 2026](https://www.nature.com/articles/s41598-026-42970-6)
+- [AGMP Frontiers 2025](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1768235/full)
+- [LT-Gate](https://arxiv.org/abs/2510.12843)
+- [NACA Science Advances 2023](https://www.science.org/doi/10.1126/sciadv.adi2947)

@@ -530,3 +530,31 @@ This is a **small dataset** by deep learning standards. Training is feasible on 
 ### CPU-only training feasibility:
 
 **snnTorch documentation explicitly states:** "The lean requirements of snnTorch enable small and large networks to be viably trained on CPU, where needed."
+
+With 2,000 samples, a convolutional SNN with 25 time steps, and 100 epochs:
+- Estimated training time on CPU: 30-90 minutes per fold (rough estimate)
+- Total for 5-fold CV: 2.5-7.5 hours
+- This is entirely manageable for a thesis project
+
+### Recommended approach for macOS:
+
+```python
+# Try MPS first, fall back to CPU
+import os
+os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
+
+if torch.backends.mps.is_available():
+    device = torch.device('mps')
+    print("Using Apple Silicon GPU (MPS)")
+else:
+    device = torch.device('cpu')
+    print("Using CPU")
+```
+
+### Google Colab as backup:
+
+If local training is too slow, Google Colab provides free GPU access (T4, ~16GB VRAM). The entire ESC-50 pipeline would run comfortably on Colab.
+
+**Verification method:** MPS status confirmed from snnTorch GitHub issues (#247, #415, #200, #160). CPU feasibility confirmed from official snnTorch documentation. Dataset size analysis computed from ESC-50 specifications.
+
+---

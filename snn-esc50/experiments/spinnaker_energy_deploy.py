@@ -194,3 +194,31 @@ def run_spinnaker_inference(fold, num_samples, weight_scale=1.0):
             spike_counts = np.zeros(NUM_CLASSES)
             for seg in spikes.segments:
                 for st in seg.spiketrains:
+                    nid = st.annotations.get("source_index", 0)
+                    spike_counts[nid] = len(st)
+
+            v_data = output_pop.get_data("v")
+            final_v = np.zeros(NUM_CLASSES)
+            for seg in v_data.segments:
+                for sig in seg.analogsignals:
+                    v_arr = sig.magnitude
+                    for n in range(min(NUM_CLASSES, v_arr.shape[1])):
+                        final_v[n] = v_arr[-1, n]
+
+            sim.end()
+
+            if spike_counts.sum() > 0:
+                predicted = int(spike_counts.argmax())
+                method = "spike_count"
+            else:
+                predicted = int(final_v.argmax())
+                method = "membrane"
+
+            is_correct = (predicted == true_label)
+            if is_correct:
+                correct += 1
+            results.append({
+                "sample": idx, "true": true_label,
+                "pred": predicted, "correct": is_correct,
+                "method": method, "spikes": int(spike_counts.sum()),
+            })

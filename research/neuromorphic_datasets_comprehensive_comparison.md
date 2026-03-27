@@ -194,3 +194,31 @@ object detection, 200K+ bounding boxes. **not suitable.** same reasons as eTraM.
 *92.5% uses transfer learning; typical SNN SOTA is ~81-84%.
 
 training times assume single consumer GPU (RTX 3060-3090 tier), ~100-200 epochs.
+
+---
+
+## framework support matrix
+
+| Dataset | SpikingJelly | Tonic | snnTorch (via Tonic) | Norse (via Tonic) | sparch |
+|---|---|---|---|---|---|
+| DVS128 Gesture | Built-in + model | Yes | Yes | Yes | No |
+| N-MNIST | Built-in | Yes | Yes | Yes | No |
+| N-Caltech101 | Built-in | Yes | Yes | Yes | No |
+| CIFAR10-DVS | Built-in | Yes | Yes | Yes | No |
+| SHD | Built-in | Yes | Yes | Yes | Yes |
+| SSC | Built-in | Yes | Yes | Yes | Yes |
+| DVS-Lip | Listed | Yes | Yes | Yes | No |
+
+---
+
+## preprocessing comparison
+
+### vision datasets
+1. load raw events (x, y, timestamp, polarity)
+2. optional denoising (Tonic provides `Denoise`)
+3. temporal binning: event stream to T frames
+4. output: [T x C x H x W] where C=2 (on/off polarity)
+5. optional augmentation: random crop, flip, EventDrop
+
+### audio datasets
+1. load HDF5 (spike_times and spike_units)

@@ -138,3 +138,31 @@ A 2025 paper demonstrated the complete pipeline:
 2. Quantize weights to 8-bit (PTQ or QAT)
 3. Export to NIR
 4. Deploy on SpiNNaker2 via py-spinnaker2
+5. Result: **94.13% accuracy on-chip** (vs 95.07% on GPU)
+
+Source: [Efficient Deployment of SNNs on SpiNNaker2](https://arxiv.org/html/2504.06748v1)
+
+### The big caveat: SpiNNaker1 vs SpiNNaker2
+
+- **NIR -> SpiNNaker2**: Supported (via py-spinnaker2). But SpiNNaker2 access is restricted -- `py-spinnaker2` dependencies are in private repos.
+- **NIR -> SpiNNaker1**: NOT directly supported. SpiNNaker1 uses sPyNNaker/PyNN, and there's no automated NIR-to-sPyNNaker converter.
+- **Manual conversion to SpiNNaker1**: You'd need to manually translate trained weights into PyNN `FromListConnector` weight matrices. Doable but tedious.
+
+---
+
+## 3. SpiNNaker capabilities
+
+### Supported neuron models
+
+| Model | Type | Description |
+|-------|------|-------------|
+| `IF_curr_exp` | Standard | Current-based LIF, exponential synapses |
+| `IF_cond_exp` | Standard | Conductance-based LIF, exponential synapses |
+| `IF_curr_alpha` | Standard | Current-based LIF, alpha synapses |
+| `IF_curr_delta` | Standard | Current-based LIF, delta synapses |
+| `Izhikevich` | Standard | Current-based Izhikevich model |
+| `Izhikevich_cond` | Extended | Conductance-based Izhikevich |
+| `IFCurrExpCa2Adaptive` | Extended | Calcium-adaptive LIF |
+| `IFCondExpStoc` | Extended | Stochastic threshold conductance-based |
+
+Source: [sPyNNaker Models and Limitations](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html)

@@ -56,18 +56,18 @@ python -m src.evaluate --model snn --encoding direct
 python -m src.evaluate --model ann
 ```
 
-### Evaluate
-
-```bash
-python -m src.evaluate --model snn --encoding direct
-python -m src.evaluate --model ann
-```
-
-### Energy Comparison
-
+energy comparison:
 ```bash
 python -c "from src.energy import save_energy_report; save_energy_report()"
 ```
+
+### SpiNNaker deployment (optional)
+
+needs a separate Python 3.11 venv with sPyNNaker and access to SpiNNaker hardware.
+
+```bash
+python -m venv .venv-spinnaker --python=python3.11
+source .venv-spinnaker/bin/activate
 
 ### SpiNNaker Deployment (Optional)
 

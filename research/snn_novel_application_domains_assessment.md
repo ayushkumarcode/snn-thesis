@@ -222,3 +222,31 @@ no GitHub repos found for SNN + environmental monitoring specifically.
 | Paper | Year | Key Contribution |
 |-------|------|------------------|
 | P450 Bioactivity Screening with SNNs | 2025 | SNN for enzyme bioactivity from molecular fingerprints |
+| Covalent Drug Discovery with SNN | 2024 | SNN for covalent lead compounds |
+| Spiking GNNs (general) | 2022-2025 | Framework exists but not applied to molecules |
+
+**why SNNs DON'T make sense here:** molecular data is structural/graph-based, not temporal. no natural spike encoding for molecular fingerprints. GNNs dominate for good reason. energy efficiency isn't a concern (offline computation). only advantage: potential for novel representations via temporal encoding of molecular dynamics.
+
+**feasibility:** LOW. requires chemistry/bioinformatics knowledge. molecular datasets exist (MoleculeNet, ZINC, QM9) but preprocessing is complex. encoding molecules into spikes is a research challenge in itself. competing with established GNN baselines is extremely hard.
+
+**novelty:** VERY HIGH. but the gap exists for a reason.
+
+**verdict: poor thesis candidate -- very novel but low SNN advantage and high barrier**
+
+---
+
+## Summary Table
+
+| Domain | Papers | SNN Advantage | Feasibility | Novelty | Overall |
+|--------|--------|---------------|-------------|---------|---------|
+| Music Generation | 5-8 | HIGH | HIGH | VERY HIGH | EXCELLENT |
+| Industrial IoT Anomaly | 10-20 | HIGH | MODERATE-HIGH | MODERATE | STRONG |
+| Financial Fraud | 3-6 | MODERATE | MODERATE | MODERATE-HIGH | MODERATE |
+| NLP/Sentiment | 15-25 | LOW-MODERATE | MODERATE | LOW-MODERATE | MODERATE |
+| Game Playing/RL | 10-15 | MODERATE | MODERATE | LOW-MODERATE | MODERATE |
+| Environmental Monitoring | 4-7 | MODERATE-HIGH | HIGH | HIGH | EXCELLENT |
+| Wearable Sensor Data | 10-20 | VERY HIGH | HIGH | MODERATE | STRONG |
+| Radar/Sonar | 10-15 | VERY HIGH | LOW-MODERATE | MODERATE | MODERATE |
+| Astronomy Transients | 5-8 | HIGH | LOW-MODERATE | HIGH | MODERATE |
+| Drug Discovery | 2-3 | LOW | LOW | VERY HIGH | POOR |
+

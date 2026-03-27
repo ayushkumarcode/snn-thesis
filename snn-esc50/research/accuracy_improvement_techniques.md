@@ -1,15 +1,15 @@
-# SNN Accuracy Improvement Techniques: Exhaustive Research Report
+# accuracy improvement techniques -- research notes
 
-**Date:** 2026-03-25
-**Context:** ESC-50 environmental sound classification, Conv SNN (622K params), 47.15% SNN vs 63.85% ANN
-**Objective:** Techniques to close or significantly narrow the 16.7pp SNN-ANN accuracy gap
+date: 2026-03-25
+context: ESC-50 conv SNN (622K params), 47.15% SNN vs 63.85% ANN -- trying to close that 16.7pp gap
 
----
+went through ~40 recent papers (2022-2026). techniques fall into three rough tiers:
 
-## Executive Summary
+tier 1 (likely +5-15pp): ANN-to-SNN conversion, knowledge distillation, hybrid ANN init + SNN fine-tune, TET loss, learnable neuron params (PLIF/GLIF)
 
-This report catalogues every promising technique found across ~40 recent papers (2022-2026) that could improve our SNN's accuracy on ESC-50. The techniques fall into three tiers of expected impact:
+tier 2 (likely +2-5pp): temporal batch normalization, ternary spikes, residual/skip connections, channel/temporal attention, advanced surrogate gradients
 
+tier 3 (uncertain, higher effort): NAS, self-supervised pretraining, Spiking-LEAF auditory front-end, EventMix augmentation, QAT
 **Tier 1 -- High Impact, Moderate Effort (likely +5-15pp):**
 1. ANN-to-SNN Conversion (preserve ~60-63% of ANN's 63.85%)
 2. Knowledge Distillation from ANN teacher (typically +3-11pp)

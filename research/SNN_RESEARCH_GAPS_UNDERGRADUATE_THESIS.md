@@ -26,3 +26,31 @@ the single easiest path to a real contribution is: **take an existing SNN archit
 | Domain | What exists | What's missing | Effort |
 |--------|-----------|---------------|--------|
 | **fraud/anomaly detection on tabular data** | one paper: Bayesian Optimization 1D-CSNN for BAF dataset (EPIA 2024). | no comparison with standard ML baselines (XGBoost, RF) on common fraud datasets. nothing on credit card fraud (Kaggle dataset). | LOW |
+| **NLP/text classification** | ~3-4 papers: SNNLP (2024), Spikformer for text, sentence-level sentiment. | nothing on common benchmarks like AG News, IMDB Reviews, SST-2 with standard SNN frameworks. text encoding for SNNs is still basically unsolved. | MEDIUM |
+| **emotion recognition from facial expressions** | one paper on SNN for facial expression + speech (2020). one lip-reading paper (CVPR 2024 workshop). | nothing on FER2013, AffectNet, or RAF-DB. | LOW-MEDIUM |
+| **predictive maintenance / fault diagnosis** | ~3-4 papers including vibration-based bearing fault (2020-2025). | very few; no standard comparison across bearing fault benchmarks (CWRU, Paderborn). | LOW-MEDIUM |
+| **financial time series** | ~3-5 papers including VMD-SNN (2025) and cross-market portfolio. | nobody's compared SNN vs LSTM/Transformer on standard stock datasets with proper backtesting. | MEDIUM |
+| **network intrusion detection** | ~4-5 papers including convolutional SNN on UNSW-NB15 (2024). | nothing on newest CICIDS or TON_IoT. no snnTorch implementation. | LOW-MEDIUM |
+| **3D point cloud processing** | two papers: Spiking PointNet (2023), SPCNNet (2026). | ModelNet40 and ShapeNet benchmarks with SNNs are still rare. | MEDIUM-HIGH |
+
+---
+
+## 2. datasets that haven't been benchmarked with SNNs
+
+### neuromorphic datasets in Tonic that lack proper SNN benchmarks
+
+Tonic is the PyTorch Vision equivalent for neuromorphic data. it provides these datasets but many have sparse or no published SNN results:
+
+| Dataset | Type | Task | SNN benchmark status |
+|---------|------|------|---------------------|
+| **ASL-DVS** | Event vision | American Sign Language | very few SNN results. most work uses ANNs on the events. |
+| **POKER-DVS** | Event vision | Card suit recognition | occasionally in Norse tutorials but rarely formally benchmarked. |
+| **DVSLip** | Event vision | Lip reading | 1-2 papers (CVPR 2024 workshop). |
+| **N-CALTECH101** | Event vision | Object recognition (101 classes) | some results but way fewer than N-MNIST or CIFAR10-DVS. |
+| **NTIDIGITS** | Event audio | Spoken digits | rarely benchmarked with modern frameworks. |
+| **DSEC** | Event vision | Depth estimation | no SNN-specific benchmarks. |
+| **ThreeET_Eyetracking** | Event vision | Eye gaze tracking | extremely new, zero SNN results. |
+| **EBSSA** | Event vision | Space situational awareness | zero SNN results. |
+
+### standard ML datasets never tested with SNNs
+

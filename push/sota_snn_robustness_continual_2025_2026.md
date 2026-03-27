@@ -221,31 +221,3 @@ The literature broadly supports that SNNs have mild inherent advantages over ANN
 
 2. **NACA (Science Advances, 2023):** Tested on both ANNs and SNNs. NACA mitigated forgetting in both, but the relative advantage of SNN vs ANN was not the focus.
 
-3. **DSD-SNN (IJCAI 2023):** Compares with DNN methods (EWC, GEM, RCL) and shows SNN methods can match or exceed them, but does not isolate the SNN-vs-ANN effect without a CL method.
-
-4. **Theoretical argument:** SNNs have inherent properties that should help with continual learning:
-   - Spike sparsity = implicit regularization (fewer parameters are heavily activated per task)
-   - Temporal dynamics provide additional state that can encode task-specific information
-   - LIF leak acts as a natural forgetting mechanism that prevents over-commitment to specific weight configurations
-
-**Our 6.9pp result** is valuable because:
-- It isolates the SNN vs ANN effect without any CL method confound
-- It uses identical architectures (same conv+FC structure, same parameter count)
-- It demonstrates an inherent advantage, not one conferred by a CL algorithm
-- The magnitude (6.9pp, ~8.5% relative reduction in forgetting) is modest but meaningful
-
-**Recommendation:** Frame this as evidence for an inherent mild SNN advantage in continual learning, consistent with the theoretical arguments in the literature. Note that dedicated CL methods (HLOP, DSD-SNN, etc.) can reduce forgetting much further.
-
-### 2.4 Task-Incremental Learning with SNNs
-
-**The dominant paradigm for SNN continual learning is task-incremental learning (TIL).**
-
-Major approaches (2023-2026):
-
-**A. Architecture-Based (Expansion/Isolation):**
-- **DSD-SNN (IJCAI 2023):** Dynamically grows neurons for new tasks, prunes redundant ones. 81.17% on 20-step CIFAR-100 TIL. Uses 37.48% of parameters.
-- **PS-SNN (Scientific Reports 2026):** Predefined orthogonal class centers + neurogenesis-inspired expansion. 76.42% CIL. State-of-the-art SNN CIL.
-- **SCA-SNN (Neural Networks 2024):** Context-aware neuron reuse. 86.45% TIL on 20-step CIFAR-100. Surpasses DNN methods (DER++, HAT, iCaRL).
-
-**B. Regularization/Projection-Based:**
-- **HLOP-SNN (ICLR 2024):** Hebbian learning-based orthogonal projection. Near-zero forgetting. Compatible with multiple error propagation methods (BPTT, e-prop, etc.). Can combine with memory replay.

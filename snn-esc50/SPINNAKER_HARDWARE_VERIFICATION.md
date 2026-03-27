@@ -102,14 +102,14 @@ emergency IOBUF files in `reports/.../provenance_data/system_provenance_data/` c
 [INFO] (data_specification.c: 111): magic = ad130ad6, version = 1.0
 ```
 
-File naming: `emergency_iobuf_X_Y_P.txt` (chip coordinates X,Y and processor P). Files exist across dozens of chip positions (0_0, 0_1, 1_0, etc.), confirming firmware ran on multiple physical chips.
+file naming: `emergency_iobuf_X_Y_P.txt` (chip coordinates X,Y and processor P). files exist across dozens of chip positions (0_0, 0_1, 1_0, etc.), confirming firmware ran on multiple physical chips.
 
-## Evidence 7: Not Running in Virtual/Simulation Mode
+## evidence 7: not running in virtual/simulation mode
 
-| Check | Virtual Mode | Our Run | Verdict |
+| check | virtual mode | our run | verdict |
 |-------|-------------|---------|---------|
-| SC&MP version | Hardcoded `3.4.2` | `4.0.0` from real chip | Real |
-| Transceiver type | `Virtual5Transceiver` | `Spalloc Old` (real) | Real |
+| SC&MP version | hardcoded `3.4.2` | `4.0.0` from real chip | real |
+| transceiver type | `Virtual5Transceiver` | `Spalloc Old` (real) | real |
 | Board power | Skipped | "Waiting for board power commands" | Real |
 | Setup time | Milliseconds | 27-37 seconds (network RTT) | Real |
 | Chip count | Always perfect 48 | 47 or 48 (faulty chip) | Real |

@@ -54,3 +54,31 @@ pip install git+https://github.com/fangwei123456/spikingjelly.git
 
 ### Neuron Models
 
+SpikingJelly has these in `spikingjelly.activation_based.neuron`:
+
+| Neuron Model | Description |
+|---|---|
+| `IFNode` | Integrate-and-Fire. Simplest: V += X; fire if V > threshold |
+| `LIFNode` | Leaky Integrate-and-Fire. V += (X - (V - V_reset)) / tau. Most commonly used |
+| `ParametricLIFNode` | PLIF: learnable membrane time constant tau per layer, from ICCV 2021 |
+| `QIFNode` | Quadratic Integrate-and-Fire |
+| `EIFNode` | Exponential Integrate-and-Fire |
+| `IzhikevichNode` | Izhikevich neuron model |
+
+All neurons support:
+- Single-step mode (`'s'`): process one timestep at a time
+- Multi-step mode (`'m'`): process all timesteps in parallel (faster)
+- Three backends: `torch` (CPU/GPU), `cupy` (NVIDIA GPU only), `triton` (NVIDIA GPU only, fastest)
+
+### Surrogate Gradient Functions
+
+Available in `spikingjelly.activation_based.surrogate`:
+
+- `ATan` - Arctangent surrogate (most commonly used)
+- `Sigmoid` - Sigmoid surrogate
+- `PiecewiseQuadratic` - Piecewise quadratic
+- `PiecewiseExponential` - Piecewise exponential
+- `SoftSign` - Soft sign function
+- `Erf` - Gaussian error function
+- `NonzeroSignLogAbs` - Log-abs surrogate
+- `PiecewiseLeakyReLU` - Piecewise leaky ReLU

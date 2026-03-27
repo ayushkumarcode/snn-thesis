@@ -82,3 +82,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Description**: Hardware accelerator for SNNs inspired by TrueNorth and Loihi, 3x3 mesh network
 - **Framework**: SystemVerilog (100%), asynchronous hardware design
 - **Dataset**: N/A (hardware design)
+- **Results**: Working 9-router mesh topology with XY routing
+- **Report**: Final report PDF included
+- **Complexity**: HIGH - hardware design, NoC architecture, asynchronous circuits
+- **Stars**: 15 | **Forks**: 4 | **Commits**: 64
+- graduate-level course project (EE552). very hardware-focused. not typical for a software-oriented thesis but interesting to see the hardware side of neuromorphic computing.
+
+### 1.8 Neuromorphic NoC Architecture for SNNs (4th Year Project)
+- **URL**: https://github.com/cepdnaclk/e18-4yp-Neuromorphic-NoC-Architecture-for-SNNs
+- **Description**: Scalable Network-on-Chip architecture based on RISC-V ISA for SNN processing on FPGA
+- **Framework**: Verilog (99.7%), FPGA implementation
+- **Dataset**: N/A (hardware design)
+- **Results**: Working FPGA implementation with custom accelerators
+- **Complexity**: VERY HIGH - custom hardware, ISA extensions, FPGA
+- **Stars**: 7 | **Forks**: 5 | **Commits**: 207 | **Last updated**: June 2024
+- 4th-year engineering project (likely undergrad final year in a 4-year program). team of 3 students. very ambitious hardware project.
+
+---
+
+## confirmed masters thesis projects
+
+### 2.1 Volr DSL - Modelling Learning Systems (Masters)
+- **URL**: https://github.com/Jegp/thesis
+- **Description**: Domain-specific language (Volr) enabling unified modelling of ANNs and SNNs
+- **Framework**: Haskell (DSL), Futhark+OpenCL (ANN backend), NEST+PyNN (SNN backend), BrainScaleS
+- **Dataset**: NAND, XOR, MNIST
+- **Results**: Demonstrated topology-preserving translation between ANN and SNN paradigms
+- **Thesis PDF**: YES - report/report.pdf included
+- **Complexity**: VERY HIGH - multiple frameworks, Haskell DSL, neuromorphic hardware

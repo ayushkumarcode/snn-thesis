@@ -1,17 +1,17 @@
-# Chapter 3: Methodology
-## COMP30040 Thesis — Spiking Neural Networks for Environmental Sound Classification
+# chapter 3: methodology
+
+notes on experimental design, architecture, encodings, training, SpiNNaker deployment. this is probably the most important chapter to get right since everything else depends on it.
 
 ---
 
-## 3.1 Experimental Design Philosophy
+## 3.1 experimental design philosophy
 
-The central design principle throughout this work is **controlled comparison**: every architectural and training decision in the SNN is mirrored in the ANN baseline, ensuring that observed performance differences are attributable to the spiking formalism and encoding method rather than to capacity, regularisation, or training differences.
+The central principle is **controlled comparison**: every architectural and training decision in the SNN is mirrored in the ANN baseline. This way, performance differences are attributable to the spiking formalism and encoding, not capacity or regularisation or training differences.
 
 Specifically:
-- Both SNN and ANN use identical convolutional feature extraction blocks (Conv2d, BatchNorm, MaxPool)
-- Both have identical fully-connected layers (2304 → 256 → 50)
-- Both are trained with the same optimiser (Adam), learning rate schedule (ReduceLROnPlateau), early stopping (patience=10), and data augmentation
-- Both are evaluated using 5-fold cross-validation on ESC-50's predefined folds, using the held-out fold as the test set and the remaining 4 folds as training data
+- Both use identical conv feature extraction (Conv2d, BN, MaxPool)
+- Both have identical FC layers (2304 -> 256 -> 50)
+- Both trained with same optimiser (Adam), same LR schedule (ReduceLROnPlateau), same early stopping (patience=10), same augmentation
 - All reported accuracy values are the best validation accuracy per fold (not the final epoch)
 
 The matched architecture design follows the recommendation of Deng & Gu (Neural Networks 2020) for fair SNN-ANN comparison. Parameter counts are deliberately kept small (~622K) to avoid overfitting on the 1,600 training samples available per fold.

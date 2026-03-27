@@ -278,3 +278,31 @@ A March 2025 peer-reviewed paper (arxiv 2503.11206) explicitly states: *"No stat
 - SSC (35 classes, SOTA ~82%) has more room for improvement
 
 ### 10.5 Revised top recommendation
+
+The single strongest thesis option as of February 2026:
+
+> **"Spiking Neural Networks for Environmental Sound Classification"**
+> - Apply SNNs to ESC-50 (first to do so -- documented, citable gap)
+> - Compare spike encoding methods (rate, delta, latency, direct)
+> - Benchmark against ANN baselines on same dataset
+> - Report energy efficiency via NeuroBench
+> - Use SHD/SSC as secondary validation to show method generalises
+> - Even 70-85% accuracy on ESC-50 is publishable given zero prior work
+
+**Strong alternative: SNN ECG Classification on PTB-XL**
+- Only ~20-30 SNN-ECG papers exist total (small but credible field)
+- PTB-XL (21,799 ECGs, 12-lead) has no SNN benchmark
+- Best SNN on MIT-BIH: 98.3% (SparrowSNN) vs 99.7% DNN
+- No snnTorch/SpikingJelly ECG tutorial exists (contributing one = impact)
+- Compelling energy narrative: SNNs 30-1000x less energy for wearable cardiac monitors
+- Risk: PTB-XL is 12-lead (more complex than single-lead MIT-BIH)
+
+**Surprise contender: Wildlife Camera Trap Classification**
+- Zero SNN papers exist (confirmed Feb 2026)
+- Excellent datasets: Snapshot Serengeti (3.2M images, 48 species), Caltech Camera Traps, iWildCam
+- Killer real-world narrative: camera traps are battery-powered in remote locations = SNNs' low-power advantage is directly relevant
+- CNN baselines: 90-96% depending on dataset
+- Risk: RGB images (not event-based), so less natural SNN fit than audio
+
+**Revised final top 5 (February 2026, web-research verified):**
+

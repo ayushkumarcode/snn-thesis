@@ -82,3 +82,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - Haskell (DSL), Futhark+OpenCL (ANN backend), NEST+PyNN (SNN backend), BrainScaleS
 - NAND, XOR, MNIST. Demonstrated topology-preserving translation between paradigms.
 - **Thesis PDF: report/report.pdf in repo**
+- Very high complexity -- multiple frameworks, Haskell DSL, neuromorphic hardware
+- 4 stars, 99 commits
+
+### Recurrent SNNs for POMDPs
+- https://github.com/Quickblink/rsnn
+- Recurrent SNNs for Partially Observable Markov Decision Processes
+- PyTorch, Docker, multiple neuron architectures (LIF, Adaptive, etc.)
+- Sequential MNIST, encoded MNIST variants. Results not explicitly documented.
+- 3 stars, 185+ commits
+
+### SNNs for RL Tasks (Masters by Research, UTS)
+- https://github.com/andrewrafeUTS/SNNTechnicalAppendix
+- Evolutionary experiments with SNNs for CartPole and LunarLander
+- Python 3.8, custom SNN implementation. Tested multiple decoding methods.
+- 1 star, 5 commits
+
+### Deep Spiking Q-Networks (TUM Masters)
+- https://github.com/vhris/Deep-Spiking-Q-Networks
+- Spiking DQN training using conversion and surrogate gradients for RL
+- SpyTorch, NEST 2.16.0, PyNN, OpenAI Gym
+- CartPole, MountainCar, Breakout. Both conversion and direct training worked on CartPole.
+- **Thesis PDF included in repository**
+- 11 stars, 3 forks
+
+### SNN for Hand Kinematics from sEMG
+- https://github.com/davidkubanek/SNN-hand-kinematics-estimation-from-sEMG-signals
+- Neuromorphic reservoir network for estimating hand movements from muscle signals
+- Brian2, Python, C++/Cython. NinaPro public EMG database.

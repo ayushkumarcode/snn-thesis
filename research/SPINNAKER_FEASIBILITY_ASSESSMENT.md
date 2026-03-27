@@ -118,31 +118,3 @@ voltages = output_pop.get_data('v')
 sim.end()
 ```
 
-### Key Differences Summarized
-
-1. **snnTorch thinks in layers** (Linear, Conv2d, Leaky). **PyNN thinks in populations** (groups of neurons) and **projections** (synaptic connections).
-2. **snnTorch trains via backpropagation** through surrogate gradients. **sPyNNaker typically does NOT train** -- it runs inference or STDP-based learning.
-3. **snnTorch uses PyTorch tensors** on GPU. **sPyNNaker compiles to ARM machine code** on SpiNNaker chips.
-4. **You cannot directly run snnTorch code on SpiNNaker.** They are fundamentally different systems.
-
----
-
-## Question 2: snnTorch to SpiNNaker Conversion
-
-### The NIR Pathway (Neuromorphic Intermediate Representation)
-
-**YES, a conversion pathway exists -- via NIR.** This is the critical finding.
-
-NIR (Neuromorphic Intermediate Representation) is a standardized graph-based format that bridges multiple SNN frameworks and hardware platforms. It currently connects:
-- **Software**: snnTorch, Norse, Lava, Nengo, Rockpool, Sinabs, Spyx
-- **Hardware**: Loihi 2 (via Lava), Speck (via Sinabs), **SpiNNaker2** (via py-spinnaker2), Xylo (via Rockpool)
-
-**Source:** [Nature Communications paper on NIR](https://www.nature.com/articles/s41467-024-52259-9)
-
-### How the Conversion Works
-
-```python
-# Step 1: Train in snnTorch (standard workflow)
-import snntorch as snn
-import torch
-

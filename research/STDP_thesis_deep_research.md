@@ -180,31 +180,3 @@ This is the most practical and well-studied approach for a thesis:
 2. Phase 1: Layer-wise unsupervised STDP pre-training
 3. Phase 2: End-to-end supervised fine-tuning with spike-based gradient descent
 4. Result: ~2.5x faster convergence compared to random initialization
-5. Results: ~98% MNIST with faster convergence
-
-### 4.3 Recommended Thesis Approach
-
-For an undergraduate thesis, **Architecture B (simplified)** is the ideal target:
-
-**Phase 1: Unsupervised Feature Learning**
-- Train a single convolutional STDP layer (or the Diehl & Cook FC network) on the training set without labels
-- Visualize learned weight filters (these should look like meaningful features)
-- This takes ~1-2 hours to train on MNIST
-
-**Phase 2: Feature Extraction**
-- Pass training and test images through the trained STDP network
-- Record the spike responses of the excitatory neurons as feature vectors
-- Each image becomes a vector of firing rates or first-spike times
-
-**Phase 3: Supervised Classification**
-- Train a simple classifier (SVM, logistic regression, or even k-NN) on the extracted features
-- Compare against: (a) raw pixel features, (b) random SNN features, (c) ANN-learned features
-
-**Phase 4: Analysis**
-- Visualize what the STDP neurons learned (weight matrices as images)
-- Analyze selectivity of individual neurons to specific classes
-- Compare STDP feature quality to unsupervised ANN methods (PCA, autoencoders, k-means)
-- Measure energy efficiency (spike counts, synaptic operations)
-
-### 4.4 Practical Implementation Notes
-

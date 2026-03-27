@@ -106,31 +106,3 @@ Tools like SANA-FE and SpikeSim simulate actual neuromorphic hardware behaviour,
 
 ### The De Facto Standard (What Most Papers Do)
 
-The most commonly used approach across CVPR, ICLR, NeurIPS, and ECCV SNN papers:
-
-```
-1. Train SNN and ANN on the same task with the same architecture
-2. Count SOPs for SNN (using spike counts * fan-out per layer)
-3. Count FLOPs for ANN (standard FLOP counting)
-4. Multiply: E_SNN = SOP * 0.9pJ, E_ANN = FLOPs * 4.6pJ
-5. Report ratio: E_ANN / E_SNN = "X times more efficient"
-```
-
-**Example from Spike-driven Transformer V2 (ICLR 2024):**
-- ANN energy: FLOPs * E_MAC (where E_MAC = 4.6 pJ)
-- SNN energy: FLOPs * E_AC * firing_rate (where E_AC = 0.9 pJ)
-- They count firing rate per layer, multiply by per-layer FLOPs and E_AC
-
-**Source:** [Spike-driven Transformer V2, ICLR 2024](https://arxiv.org/html/2404.03663v1)
-
-### The NeuroBench Standard (Most Rigorous)
-
-NeuroBench is the first community-wide attempt at standardising benchmarks. Published in Nature Communications (2025), it provides:
-- Standardised metric definitions (Eff_MACs, Eff_ACs, Activation Sparsity)
-- Open-source Python framework
-- Multiple benchmark tasks
-
-**Source:** [NeuroBench, Nature Communications 2025](https://www.nature.com/articles/s41467-025-56739-4)
-
-### Known Limitations and Criticisms
-

@@ -108,31 +108,3 @@ The finding also raises a scientifically interesting question: since binary thre
 
 ### Core Novelty Claim
 
-The first combination of AudioSet-pretrained features (PANNs/CNN14) with a spiking neural network classifier, demonstrating that the 16.7pp SNN-ANN gap in scratch training collapses to under 1pp when both models receive equivalent pretrained features.
-
-### Why It Is Genuinely Novel
-
-No prior published work has frozen an AudioSet-pretrained model (PANNs, CNN14, or any equivalent) and trained an SNN head on its embeddings. The research agent confirmed this across all available literature. The closest approaches are: (a) knowledge distillation methods, where an ANN teacher guides SNN training but retraining occurs; (b) the three-stage hybrid SNN (2025) which converts a pretrained ANN to SNN with fine-tuning (different paradigm — involves full network retraining); (c) SAFE (ICLR 2025), which combines CNN features with SNN for fake audio detection but does not report the gap-collapse analysis. None of these establish the specific experimental finding: when a small SNN head and a small ANN head receive identical CNN14 embeddings, they achieve virtually the same accuracy (92.50% SNN vs 93.45% ANN, 0.95pp gap).
-
-The per-fold results confirm this is robust: PANNs+SNN folds are [92.0, 94.5, 91.0, 93.5, 91.5]%, PANNs+ANN are [93.0, 95.0, 92.0, 95.5, 91.75]%. The SNN is never more than ~2pp behind the ANN on any fold — compared to the scratch training where the gap reaches 23-24pp on the worst folds.
-
-### Why It Has Scientific Significance Beyond Just "First"
-
-The gap collapse from 16.7pp to 0.95pp — a 17.6x reduction in the SNN-ANN accuracy gap — establishes a mechanistic claim that the literature has not previously demonstrated for audio: the SNN-ANN gap in scratch training is a feature-learning bottleneck, not a fundamental limitation of spiking computation. This reframes the entire conversation about SNN audio performance. The conclusion is not "SNNs cannot match ANNs." The conclusion is "SNNs cannot learn discriminative audio features from 1,600 training samples as efficiently as ANNs using surrogate gradients — but given equal-quality features, they classify comparably." This distinction matters enormously for the field's direction: it points to pre-training, data augmentation, and transfer learning as the correct remedies, rather than architectural innovation alone.
-
-The finding is also practically significant. CNN14 extracts audio embeddings once in software (or could be deployed on an ANN accelerator). The SNN head then classifies on neuromorphic hardware — the actual deployed computation is spiking, energy-efficient, and achieves 92.5% on ESC-50. This is a viable engineering architecture for edge audio sensing: ANN for feature extraction (run occasionally, or pre-computed), SNN for classification (run continuously on hardware). The gap collapse ratio (17.6x) is, to the best of our knowledge, the largest such ratio reported for any SNN-ANN paired comparison in the audio domain.
-
-### Strongest Honest Framing for ICONS Reviewers
-
-"We demonstrate the first SNN+PANNs combination and show a 17.6x reduction in the SNN-ANN accuracy gap (16.7pp scratch → 0.95pp with pretrained features). This establishes that the gap is a feature-learning limitation, not a spiking computation limitation — redirecting the field toward pretraining and transfer learning as the correct remedy for SNN audio performance, rather than solely architectural innovation."
-
----
-
-## C6: Surrogate Gradient Bimodal Ablation
-
-### Core Novelty Claim
-
-The first surrogate gradient ablation on an audio task revealing a bimodal pattern: 3 of 8 tested surrogates learn successfully, 4 fail categorically at chance level, with a clean split that challenges the prevailing "surrogate shape doesn't matter" consensus for complex tasks.
-
-### Why It Is Genuinely Novel
-

@@ -1,15 +1,15 @@
-# Project Decision Log: SNN for ESC-50
+# decisions log
 
-**Purpose:** Every significant decision made during this project — what we chose, what we rejected, and why. This is the canonical record of WHY. See `EXPERIMENT_LOG.md` for the record of WHAT HAPPENED.
-
-**Convention:** Each entry has a date, a chosen option, the rejected alternatives, and the rationale.
+every significant decision made during the project -- what we picked, what we didn't, and why. this is the canonical record of WHY. see EXPERIMENT_LOG.md for what actually happened.
 
 ---
 
-## Table of Contents
+## 1. dataset selection
 
-1. [Dataset Selection](#1-dataset-selection)
-2. [Audio Preprocessing](#2-audio-preprocessing)
+pre-march 2026 (planning phase)
+
+went with ESC-50 (2,000 clips, 50 classes, 5 predefined folds, 5s each).
+
 3. [Architecture](#3-architecture)
 4. [Training Configuration](#4-training-configuration)
 5. [Spike Encoding Methods](#5-spike-encoding-methods)

@@ -166,3 +166,31 @@ the CPG-PE paper showed that sinusoidal positional encoding is mathematically a 
 | Weather | Meteorological | 21 | 10-min | Max Planck Institute, Jena (2020) |
 | Traffic | Highway occupancy | 862 | Hourly | CalTrans PEMS |
 | ILI | Influenza-like illness | 7 | Weekly | CDC data |
+
+**important observation**: most SNN papers use Metr-LA, Pems-Bay, Solar, Electricity. the ETTh/ETTm, Weather, and ILI datasets used by every Transformer forecasting paper have **NOT been benchmarked with SNNs**. that's a clear gap.
+
+### Evaluation Protocol
+
+- split: 6:2:2 for ETT, 7:1:2 for others
+- horizons: {96, 192, 336, 720} most datasets; {24, 36, 48, 60} for ILI
+- metrics: MSE and MAE standard for Transformer papers; RSE and R-squared used in SNN papers (this mismatch is annoying)
+
+### Dataset Sources
+
+- ETT: https://github.com/zhouhaoyi/ETDataset
+- Collection: https://github.com/juyongjiang/TimeSeriesDatasets
+- SeqSNN data: Google Drive via SeqSNN repo
+
+---
+
+## Open-Source Implementations
+
+### SNN Forecasting Specific
+
+| Repo | Paper/Venue | Framework | URL |
+|------|-------------|-----------|-----|
+| SeqSNN (Microsoft) | ICML 2024 + NeurIPS 2024 | PyTorch | https://github.com/microsoft/SeqSNN |
+| TS-LIF | ICLR 2025 | PyTorch (builds on SeqSNN) | https://github.com/kkking-kk/TS-LIF |
+| Lvchangze/SeqSNN | ICML + NeurIPS | PyTorch | https://github.com/Lvchangze/SeqSNN |
+
+### General Frameworks

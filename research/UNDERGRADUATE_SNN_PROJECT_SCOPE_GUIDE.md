@@ -86,31 +86,3 @@ These are the most realistic comparisons for what a 3rd-year project looks like:
 | Simple SNN with STDP (4 students, Osnabruck) | Python from scratch | MNIST | Plateaued quickly, honest about limits |
 | ANN vs SNN Comparison (NicolaCST) | Python | Various | Power consumption analysis |
 
-### Tier 2 -- Ambitious (Very Good Grade)
-
-| Project | Framework | Datasets | Key Result |
-|---------|-----------|----------|------------|
-| Deep Learning with Biologically Plausible NNs (chiralevy) | snnTorch | MNIST, CIFAR-10, Speech Commands | MNIST 98.06%, CIFAR-10 70.60%, Speech 91.20% |
-| SNN Gesture Classification (DerrickL25) | snnTorch | DVS128 Gesture | Neuromorphic event data classification |
-| Convolutional SNN for Speech Recognition | PyTorch, scikit-learn | TIDIGITS | 92% accuracy |
-
-### Tier 3 -- Outstanding (but risky)
-
-| Project | Framework | What Makes It Special |
-|---------|-----------|----------------------|
-| Shape Detector SNN (Ferrari, Manchester) | pyDVS, Python | Supervised by Furber, clean engineering |
-| Musical Pattern Recognition (mrahtz) | Brian 2, STDP | Novel domain, published thesis PDF |
-| RL-SNN-Quadrupeds (UC Berkeley) | MuJoCo, PPO | Real hardware deployment (partially failed) |
-
----
-
-## Part 4: Heidelberg BrainScaleS -- The Gold Standard for Bachelor's Scope
-
-The Kirchhoff Institute for Physics at Heidelberg publicly archives ALL bachelor's and master's theses on neuromorphic hardware. **This is the single best resource for understanding what a bachelor's thesis in this field looks like.**
-
-**Full listing:** http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
-
-### Selected Bachelor's Theses (most relevant):
-
-| Year | Title | What They Did |
-|------|-------|---------------|

@@ -26,3 +26,31 @@ from src.config import (
     NUM_CLASSES, NUM_STEPS, RESULTS_DIR, BATCH_SIZE,
     LEARNING_RATE, WEIGHT_DECAY, get_device,
 )
+from src.dataset import download_esc50, get_fold_dataloaders
+from src.encoding import encode_direct
+from experiments.combo_experiment import ComboSpikingCNN
+
+
+def build_args(rhythm=True):
+    """Build args for ComboSpikingCNN."""
+    class Args:
+        pass
+    a = Args()
+    a.rhythm = rhythm
+    a.dendritic = False
+    a.delays = False
+    a.learn_beta = True
+    a.learn_threshold = False
+    a.dropout = True
+    a.sre = True
+    a.kd = False
+    a.hybrid_init = False
+    a.tet = False
+    a.cochleagram = False
+    a.l1_reg = 0.0
+    a.branches = 3
+    a.max_delay = 5
+    return a
+
+
+def apply_global_pruning(model, target_sparsity):

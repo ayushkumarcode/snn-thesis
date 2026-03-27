@@ -558,3 +558,31 @@ the neuromorphic theses are really concentrated around a few people:
 - 2019: 2
 - 2020: 6 (peak overall year)
 - 2022: 3
+- 2023: 3
+- 2024: 2
+- 2025: 1
+
+### what this means for an undergrad project
+
+these PhD theses are not a good comparison for what i should be aiming for. a typical one here represents 3-4 years of full-time research, multiple novel contributions (often 3+ papers worth), world-first achievements (real-time Cortical Microcircuit, largest plastic SNN, 9000x speedup), deep hardware expertise (chip-level design, FPGA virtualisation).
+
+the closest to undergrad/masters scope would be:
+- the MPhil theses (Nair 2015, Li 2023) -- roughly 1-2 years, more focused
+- the MSc by Research (Bonta 2022) -- about 1 year, single well-scoped contribution (one classifier, two datasets, clear metrics)
+
+for my final year project, a realistic scope would be roughly 1/4 to 1/6 of these PhD theses -- like implementing one existing SNN model on SpiNNaker and benchmarking it, or training one classifier on one dataset.
+
+### research gaps / things that haven't been done
+- no theses on EEG classification with SNNs (despite being a natural fit)
+- no theses on gesture recognition with neuromorphic hardware
+- no theses on event cameras / DVS as student theses (papers exist but no theses)
+- no theses on TinyML / embedded ML on microcontrollers (the "edge" work is all FPGA/mobile SoC level)
+- no theses on neuromorphic + BCI integration
+- no theses combining SpiNNaker with real-world sensory data beyond vision models
+- very few theses on SpiNNaker2 (only Ward 2024 and Mikaitis 2020 touch on it)
+
+---
+
+## things to follow up on
+
+1. manchester undergrad dissertations aren't in Research Explorer. they might be in individual department archives (would need to contact CS department), the internal Blackboard/Canvas system (not public), or supervisor portfolios.

@@ -339,31 +339,3 @@ The consensus has settled into a **mature, nuanced position:**
 
 ### Key Quote from Nature Communications (2025):
 "After several false starts, advances now promise widespread commercial adoption."
-
----
-
-## STRATEGIC POSITIONING FOR OUR ICONS 2026 PAPER
-
-### Our Project's Alignment with Trends
-
-| Trend | Our Coverage | Alignment |
-|-------|-------------|-----------|
-| Hardware deployment | SpiNNaker FC2-only hybrid | STRONG -- real hardware, honest about challenges |
-| Energy analysis | NeuroBench metrics, AC/MAC comparison | STRONG -- uses accepted framework |
-| Encoding comparison | 7 methods (most comprehensive for audio) | UNIQUE -- no one has done this |
-| Transfer learning bridge | PANNs+SNN (gap 17pp -> 1pp) | HOT TOPIC -- directly addresses #1 community question |
-| Adversarial robustness | FGSM+PGD, SNN dramatically more robust | HOT TOPIC -- aligns with Nature Comms 2025 |
-| Novel application domain | ESC-50 (first SNN work on full dataset) | UNIQUE -- fills a clear gap |
-| Honest analysis | Report where SNNs fail, explain why | MATCHES community preference for honesty |
-| Continual learning | 5-task sequential with BWT | RELEVANT -- active area |
-| Surrogate gradient analysis | 8-surrogate ablation | NOVEL -- provides practical guidance |
-
-### Recommended Framing for ICONS 2026
-
-**Title suggestions (emphasizing hardware + systematic comparison):**
-1. "Spiking Neural Networks for Environmental Sound Classification: A Systematic Encoding Comparison with SpiNNaker Deployment"
-2. "From Spectrograms to Spikes: Encoding, Training, and Deploying SNNs for Audio on Neuromorphic Hardware"
-3. "Bridging the Gap: Transfer Learning and Hardware Deployment for Spiking Audio Classification"
-
-**Key narratives to emphasize:**
-1. **First SNN work on ESC-50** -- novelty claim is watertight

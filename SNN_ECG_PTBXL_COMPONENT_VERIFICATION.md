@@ -182,31 +182,3 @@ spike_data = spikegen.delta(ecg_tensor, threshold=0.1, off_spike=True)
 | **EXISTS** | YES (with caveats) |
 | **VERIFIED HOW** | Source code analysis, documentation, PyTorch Forums |
 | **POTENTIAL BLOCKER** | LOW RISK -- requires manual adaptation |
-
-**Can snnTorch do Conv1d-based SNNs?**
-
-**YES, but there are no official Conv1d examples.** Here is the evidence chain:
-
-1. **Official documentation states:** "Each layer of spiking neurons are therefore agnostic to fully-connected layers, convolutional layers, residual connections, etc."
-
-2. **Source code confirms:** The Leaky neuron's forward() method uses `torch.zeros_like(input_)` to initialize membrane potential, meaning it dynamically matches ANY input tensor shape -- 2D (Linear), 3D (Conv1d), or 4D (Conv2d).
-
-3. **Conv2d is proven to work** in Tutorial 6 with 4D tensors (batch x channels x height x width) feeding directly into snn.Leaky(). Conv1d produces 3D tensors (batch x channels x length), which follow the same pattern.
-
-4. **BatchNormTT1d exists** in snnTorch specifically for 1D temporal batch normalization, confirming 1D data is a supported use case.
-
-5. **One PyTorch Forum user attempted Conv1d + snnTorch** (https://discuss.pytorch.org/t/157693) and encountered shape errors, but these were caused by incorrect channel/feature dimensions in their architecture, NOT a fundamental incompatibility.
-
-**Recommended Conv1d SNN architecture for ECG:**
-
-```python
-import torch.nn as nn
-import snntorch as snn
-
-class ECG_SNN(nn.Module):
-    def __init__(self, beta=0.9):
-        super().__init__()
-        # Input: (batch, 12, 1000) -- 12 leads, 1000 timesteps at 100Hz
-        self.conv1 = nn.Conv1d(12, 32, kernel_size=7, padding=3)
-        self.lif1 = snn.Leaky(beta=beta, init_hidden=True)
-        self.pool1 = nn.MaxPool1d(2)

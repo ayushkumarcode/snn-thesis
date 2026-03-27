@@ -94,31 +94,3 @@ Key finding: **iSpikformer achieves the lowest average RSE compared to ALL other
 | TS-GRU (proposed) | 0.976 | 0.240 |
 
 **Overall rankings**: TS-former achieved best average ranking (3.3), outperforming iTransformer (4.4) and iSpikformer (4.6).
-
-### 3.3 SpikySpace (January 2026)
-
-| Comparison | Energy Reduction | Accuracy |
-|-----------|-----------------|----------|
-| SpikySpace vs iTransformer | 98.73% (78.9x reduction) | Competitive; outperformed on Electricity (R-squared 0.994 vs 0.983) |
-| SpikySpace vs iSpikformer | 96.24% (26.6x reduction) | Up to 3.0% better than previous best SNN |
-| Parameter efficiency | 53.1%-55.4% of baseline parameters | -- |
-
-Consumed only **0.17 mJ** on Electricity dataset with T=3 timesteps.
-
-### 3.4 Summary Comparison Table
-
-| Metric | SNNs vs LSTMs/RNNs | SNNs vs Transformers |
-|--------|--------------------|--------------------|
-| Accuracy (short horizon) | Comparable to slightly better | Comparable (within 0.1-1%) |
-| Accuracy (long horizon) | Gap exists for very long sequences | Significant gap on 2400+ timestep tasks |
-| Energy efficiency | 60-75% less energy | 66-99% less energy |
-| Parameter count | 45-55% fewer parameters (SpikySpace) | 45-55% fewer parameters |
-| Training difficulty | Harder (surrogate gradients) | Harder (surrogate gradients) |
-
-### 3.5 Honest Assessment of Limitations
-
-From the survey "Spiking Neural Networks for Temporal Processing: Status Quo and Future Prospects" (arXiv, Feb 2025):
-- On the Binary Adding task with T=2400: LSTM/SSM/Transformer achieve ~100% accuracy, while advanced SNNs (LTC, CELIF, PMSN) **degrade substantially** and some "fail to learn any meaningful temporal information"
-- **A significant gap still exists between SNNs and ANNs in modelling long-range dependencies**
-- Many existing SNN benchmarks (CIFAR10-DVS, N-MNIST) lack genuine temporal dependencies and mask the limitations
-- SNNs achieve 5-45x better energy efficiency despite lower accuracy on demanding temporal tasks

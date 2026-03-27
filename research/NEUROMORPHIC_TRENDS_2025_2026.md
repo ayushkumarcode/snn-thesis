@@ -199,31 +199,3 @@ The neuromorphic computing field is at a **commercial inflection point** in 2025
 
 8. **Continual learning at scale**: On-chip learning demonstrated in small settings (Loihi 2) but not at production scale.
 
-9. **Temporal coding advantages**: Theory says temporal codes should be more efficient, but rate coding still dominates in practice. Why?
-
-10. **Standardized benchmarking**: NeuroBench is helping but adoption is incomplete. No consensus on how to fairly compare SNN and ANN energy.
-
-### Tier 3: Emerging Frontiers
-11. **Neuromorphic + LLMs**: Can spiking principles make transformer inference radically more efficient?
-12. **Photonic neuromorphic computing**: All-optical SNNs for speed-of-light processing
-13. **2D materials for neuromorphic devices**: Sub-100mV switching, femtojoule energy
-14. **Neuromorphic sensing end-to-end**: From event camera/mic directly to SNN inference
-
----
-
-## 7. IS THERE A "NEUROMORPHIC AUDIO" COMMUNITY?
-
-### Assessment: YES, emerging but small and underserved
-
-**Key Research Groups:**
-
-| Group/Researcher | Affiliation | Focus | Key Work |
-|-----------------|-------------|-------|----------|
-| Jimenez-Fernandez et al. | University of Seville | SNN audio on SpiNNaker | Dominguez-Morales et al. 2016 (pure tones on SpiNNaker) |
-| Larroza et al. | IVACE/Spain | Spike encoding for environmental sound | March 2025 ESC-10 benchmark |
-| Zenke Lab | Friedrich Miescher Institute | SHD/SSC datasets | Spiking Heidelberg Digits (the standard audio SNN benchmark) |
-| Wu/Chua | NTU Singapore | Robust sound classification | 2018 Frontiers paper |
-| Yarga et al. | Multiple | Neuromorphic KWS with PDM mics | Interspeech 2024 |
-| Innatera | Netherlands (commercial) | Always-on audio sensing | Pulsar chip, 400microW audio classification |
-| SpiNNcloud | Dresden | SpiNNaker2 applications | Including audio potential |
-

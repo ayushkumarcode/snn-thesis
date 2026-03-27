@@ -278,20 +278,20 @@ tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)  # (1, 64, 216
 ```
 
 ### D.4 dependencies
-mel_norm = (mel_db - mel_db.min()) / (mel_db.max() - mel_db.min() + 1e-8)
-tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)  # (1, 64, 216)
-```
 
-### D.4 Dependencies
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| Python | 3.14 | Runtime |
-| PyTorch | 2.10 | Deep learning framework |
+| Package | Version | What for |
+|---------|---------|----------|
+| Python | 3.14 | runtime |
+| PyTorch | 2.10 | deep learning |
 | snnTorch | 0.9.4 | SNN training |
-| librosa | 0.10.x | Audio preprocessing |
+| librosa | 0.10.x | audio preprocessing |
 | neurobench | 2.2.0 | NeuroBench metrics |
-| panns-inference | latest | PANNs CNN14 embeddings |
+| panns-inference | latest | CNN14 embeddings |
+| torchattacks | latest | FGSM/PGD |
+| sPyNNaker | 1.0.0 | SpiNNaker deployment (Python 3.11 venv) |
+| scikit-learn | latest | t-SNE, stats |
+| scipy | latest | Wilcoxon test |
+
 | torchattacks | latest | FGSM/PGD adversarial attacks |
 | sPyNNaker | 1.0.0 | SpiNNaker deployment (Python 3.11 venv) |
 | scikit-learn | latest | t-SNE, statistical tests |

@@ -284,28 +284,6 @@ robustness and energy:
 - SNN adversarial local learning 2025: https://arxiv.org/html/2504.08897v2
 - Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
 - Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
-
-**RECOMMENDATION: Use Option A.** The gap-collapse finding is more scientifically significant and applies beyond ICONS. Option B is fine but limits the paper to a systems audience.
-
-### Specific Structural Suggestions for the Paper
-
-1. **Lead with the gap-collapse in the abstract** (you already do this -- good)
-2. **Make Section 4.4 (Transfer Learning: Gap Collapse) the FIRST result, not fourth.** Reorder to: Gap-Collapse -> Encoding Comparison -> Encoding Transfer -> SpiNNaker -> Adversarial -> Energy. This puts the thesis front and center.
-3. **Frame encoding comparison as "why the gap exists"** rather than just reporting numbers. The encoding hierarchy (direct >> rate = phase > latency > delta > burst) is evidence that preserving continuous information is what matters -- which supports the gap-collapse thesis.
-4. **Frame SpiNNaker deployment as "implications of the gap-collapse"** -- the hybrid CNN14 (features) + SNN (classification on SpiNNaker) is exactly the architecture implied by the thesis.
-5. **Reduce emphasis on noise robustness and continual learning** -- these are weak results (not statistically significant for noise, preliminary for CL) that dilute the paper's strength. Keep them as one-paragraph mentions or move to supplementary.
-
-### What NOT To Do
-
-1. **Do NOT add more experiments.** You have enough. The risk is breadth without depth, not insufficient data.
-2. **Do NOT chase SOTA accuracy.** 47.15% on ESC-50 is scientifically valid and interesting precisely BECAUSE it reveals the gap.
-3. **Do NOT apologize for the gap.** The gap IS the finding. Frame it as "we identified the bottleneck" not "our SNN is worse."
-4. **Do NOT hide the SpiNNaker failure.** The FC1 cancellation root-cause analysis is genuinely valuable to the community. Papers that document what went wrong are cited more than papers that only report successes.
-
----
-
-## 8. CONFIDENCE ASSESSMENT
-
 | Finding | Confidence | Basis |
 |---------|-----------|-------|
 | No prior SNN work on full ESC-50 | **Very High** | Confirmed by Larroza et al. 2025 arXiv paper, comprehensive literature search, SNN+sound review (PMC 2024) |

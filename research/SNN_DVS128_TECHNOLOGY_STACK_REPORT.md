@@ -866,3 +866,31 @@ pip install spikingjelly
 pip install tonic
 pip install syops
 pip install matplotlib tensorboard
+```
+
+**Step 2: Dataset Download**
+- Visit https://research.ibm.com/interactive/dvsgesture/ (requires IBM account)
+- Alternative: Use Tonic which downloads automatically:
+```python
+import tonic
+dataset = tonic.datasets.DVSGesture(save_to='./data', train=True)
+# Downloads preprocessed version (~5.8 GB) automatically
+```
+
+**Step 3: First-Time Processing**
+```python
+from spikingjelly.datasets.dvs128_gesture import DVS128Gesture
+
+# First call processes AEDAT files into numpy frames (takes 10-30 min)
+# Results are cached to disk for subsequent loads
+train_set = DVS128Gesture(
+    root='./data/DVS128Gesture',
+    train=True,
+    data_type='frame',
+    frames_number=16,
+    split_by='number'
+)
+print(f"Training samples: {len(train_set)}")  # 1176
+print(f"Sample shape: {train_set[0][0].shape}")  # [16, 2, 128, 128]
+```
+

@@ -124,20 +124,20 @@ Source: `results/spinnaker_results/5fold_summary.json`. 400 samples/fold, weight
 | Task 3 (Domestic) | -- | -- | -- | 68.75% | 12.50% |
 | Task 4 (Urban) | -- | -- | -- | -- | 78.75% |
 
-| Task 3 (Domestic) | — | — | — | 68.75% | 12.50% |
-| Task 4 (Urban) | — | — | — | — | 78.75% |
-
-Mean forgetting (fold 4) = 74.4%. Mean BWT = −0.744. 5-fold validated mean: **69.9% ± 4.3%**.
+Fold 4 forgetting = 74.4%, BWT = -0.744. 5-fold mean: 69.9% +/- 4.3%.
 
 **ANN:**
 
-| | After Task 0 | After Task 1 | After Task 2 | After Task 3 | After Task 4 |
+| | After T0 | After T1 | After T2 | After T3 | After T4 |
 |---|---|---|---|---|---|
 | Task 0 (Animals) | 81.25% | 45.00% | 17.50% | 6.25% | 1.25% |
-| Task 1 (Nature) | — | 93.75% | 46.25% | 15.00% | 0.00% |
-| Task 2 (Human) | — | — | 81.25% | 7.50% | 0.00% |
-| Task 3 (Domestic) | — | — | — | 73.75% | 3.75% |
-| Task 4 (Urban) | — | — | — | — | 88.75% |
+| Task 1 (Nature) | -- | 93.75% | 46.25% | 15.00% | 0.00% |
+| Task 2 (Human) | -- | -- | 81.25% | 7.50% | 0.00% |
+| Task 3 (Domestic) | -- | -- | -- | 73.75% | 3.75% |
+| Task 4 (Urban) | -- | -- | -- | -- | 88.75% |
+
+Fold 4 forgetting = 81.3%, BWT = -0.813. 5-fold mean: 74.7% +/- 2.4%.
+
 
 Mean forgetting (fold 4) = 81.3%. Mean BWT = −0.813. 5-fold validated mean: **74.7% ± 2.4%**.
 

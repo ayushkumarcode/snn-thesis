@@ -278,3 +278,31 @@ At 25.84% spike rate, my SNN is well above the ~6-8% threshold needed for softwa
 My energy calculation is honest: SNN 976 nJ (1.08M ACs x 0.9 pJ) vs ANN 463 nJ (101K MACs x 4.6 pJ). The SNN does more total operations despite each being cheaper. This is the correct and honest result.
 
 ### 5.3 Strategies for improving SNN sparsity
+
+From the literature:
+1. **Spike-Thrift (Kundu et al. 2021):** Attention-guided compression, up to 33.4x compression
+2. **Multi-level SNNs (Castagnetti et al. 2025):** 2-3x energy reduction, single timestep
+3. **Sparsity regularization (Yan et al. 2024):** Achieved 94.19% sparsity at T=6, 92.76% accuracy on CIFAR-10
+4. **Quantized SNNs (Shen et al. 2024):** Bit budget optimization
+5. **Hybrid architectures (Dampfhoffer et al. 2023):** SNN for high-sparsity layers, ANN for others
+
+---
+
+## 6. Edge deployment: real-world neuromorphic products
+
+### 6.1 Commercial products
+
+**BrainChip Akida:** AKD1500 neuromorphic processor. In production, shipping in M.2 form factors. Milliwatts range for always-on intelligence. $25M raised (Dec 2025) for Akida 2.
+
+**BrainChip Akida Pulsar (announced 2025):** Claims to be world's first mass-market neuromorphic microcontroller. 500x lower energy, 100x lower latency vs conventional AI cores.
+
+**Innatera T1:** Unveiled CES 2024. 28nm TSMC, analog SNN processing. <200 femtojoules per spike event. <10 mW total. Keyword spotting: <500 spike events per inference.
+
+**Innatera Pulsar (announced May 2025):** First commercially available neuromorphic microcontroller. Up to 100x lower latency, 500x lower energy.
+
+### 6.2 Research platforms in deployment
+
+**Intel Loihi 2 -- Hala Point System:** World's largest neuromorphic system (April 2024). 1,152 Loihi 2 chips, 1.15 billion neurons. BMW deployment: defect detection, inspection time 20 ms -> 2 ms.
+
+**SpiNNaker 2 -- Sandia Labs:** Deployed March 2025. 1,152 SpiNNaker2 chips, 175M neurons. National security and AI research.
+

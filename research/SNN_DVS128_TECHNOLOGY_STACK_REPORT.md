@@ -26,3 +26,31 @@ Training on a single GPU (RTX 2080 Ti, 12GB VRAM) takes about 18-28 seconds per 
 | scipy | Required |
 | tensorboard | Required |
 | einops | Required |
+| tqdm | Required |
+| h5py | Required |
+| matplotlib | Required |
+
+Source: https://github.com/fangwei123456/spikingjelly/blob/master/setup.py
+
+### Installation
+
+```bash
+# Install PyTorch first (visit pytorch.org for your platform)
+pip install torch torchvision torchaudio
+
+# Install SpikingJelly stable release
+pip install spikingjelly
+
+# Or install latest from GitHub
+pip install git+https://github.com/fangwei123456/spikingjelly.git
+
+# Optional: Triton backend (typically comes with PyTorch 2.x)
+# Tested on triton==3.3.1
+
+# Optional: CuPy backend (NVIDIA CUDA only)
+# pip install cupy-cuda12x  # For CUDA 12.x
+# pip install cupy-cuda11x  # For CUDA 11.x
+```
+
+### Neuron Models
+

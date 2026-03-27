@@ -334,3 +334,31 @@ this would be a valid contribution because **no systematic MSE/MAE comparison on
 8. **Manna et al. (2024)** -- derivative spike encoding. [MDPI](https://www.mdpi.com/2073-431X/13/8/202)
 9. **Univariate methodology (2024)** -- general SNN forecasting approach. [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608024000959)
 10. **ICS-SNN (2025)** -- financial forecasting with meta-heuristic. [MDPI](https://www.mdpi.com/1999-4893/18/5/262)
+
+### Background
+
+11. SpikingJelly (Science Advances, 2023): https://www.science.org/doi/10.1126/sciadv.adi1480
+12. SNN framework benchmarks: https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/
+13. Surrogate gradient survey (2019): https://arxiv.org/abs/1901.09948
+14. snnTorch regression tutorials: https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_regression_1.html
+
+---
+
+## Research Gaps
+
+1. **No SNN results on ETTh/ETTm/Weather/ILI**: standard Transformer forecasting benchmarks, no SNN paper reports MSE/MAE on them
+2. **No fair MSE/MAE comparison**: metric mismatch between SNN and Transformer papers
+3. **Encoding strategies not compared**: each paper uses its own encoding, no head-to-head
+4. **Financial time series with modern SNNs**: only legacy/hybrid architectures used
+5. **Weather forecasting**: basically untouched with modern SNNs
+6. **Edge deployment**: energy claims are theoretical, no actual edge hardware demo
+7. **Univariate vs multivariate**: limited investigation of when SNNs help vs hurt
+8. **Explainability**: only NeuCube offers it, spike timing patterns in forecasting are uninterpreted
+
+---
+
+## Confidence
+
+| Finding | Confidence |
+|---------|-----------|
+| SNNs achieve comparable accuracy on standard benchmarks | **HIGH** -- ICML 2024, ICLR 2025 with code |

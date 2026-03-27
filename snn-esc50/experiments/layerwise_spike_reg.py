@@ -54,3 +54,31 @@ class SpikeRegSNN(nn.Module):
         self.fc2 = nn.Linear(256, NUM_CLASSES)
         self.dropout = nn.Dropout(0.3)
 
+        # Rhythm LIF neurons with learnable beta
+        self.n1 = RhythmLIF(32, BETA, sg, learn_beta=True)
+        self.n2 = RhythmLIF(64, BETA, sg, learn_beta=True)
+        self.n3 = RhythmLIF(256, BETA, sg, learn_beta=True)
+        self.n4 = RhythmLIF(NUM_CLASSES, BETA, sg, learn_beta=True)
+
+    def forward(self, x):
+        device = x.device
+        m1 = self.n1.init_mem(device)
+        m2 = self.n2.init_mem(device)
+        m3 = self.n3.init_mem(device)
+        m4 = self.n4.init_mem(device)
+
+        spk_rec, mem_rec = [], []
+        # Per-layer spike accumulators for regularization
+        layer_spikes = {"conv1": 0.0, "conv2": 0.0, "fc1": 0.0, "out": 0.0}
+
+        for step in range(self.num_steps):
+            x_t = x[step]
+
+            cur1 = self.pool1(self.bn1(self.conv1(x_t)))
+            spk1, m1 = self.n1(cur1, m1, step)
+            layer_spikes["conv1"] = layer_spikes["conv1"] + spk1.mean()
+
+            cur2 = self.pool2(self.bn2(self.conv2(spk1)))
+            spk2, m2 = self.n2(cur2, m2, step)
+            layer_spikes["conv2"] = layer_spikes["conv2"] + spk2.mean()
+

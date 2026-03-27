@@ -194,3 +194,31 @@ EEG is inherently temporal, and SNNs handle this naturally:
 - contrast with CNNs that treat EEG as quasi-static images and might miss temporal dynamics
 
 ### compact models
+
+- SNNs tend to have fewer parameters than equivalent ANNs
+- EESCN showed faster speed and less memory than prior methods
+- lightweight architectures like LENet replace FC layers with classification convolution blocks
+- smaller models = easier edge deployment + less training data needed
+
+---
+
+## 5. open-source code on GitHub
+
+### SNN-EEG specific repos
+
+| Repository | What it does | Stars | Paper |
+|---|---|---|---|
+| [combra-lab/snn-eeg](https://github.com/combra-lab/snn-eeg) | PyTorch + Intel Loihi for decoding EEG on neuromorphic hardware. Spatial conv, temporal conv, recurrent layers. Trained on EEGMMIDB. | Active | TMLR 2022 |
+| [SuperBruceJia/EEG-DL](https://github.com/SuperBruceJia/EEG-DL) | Deep Learning library for EEG tasks including SNN-related approaches. TensorFlow. | Popular | -- |
+| [TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) | Curated paper list with codes for SNN research including EEG stuff. | Large | -- |
+| [SpikingChen/SNN-Daily-Arxiv](https://github.com/SpikingChen/SNN-Daily-Arxiv) | Daily updated arXiv SNN papers. Handy for tracking new stuff. | Active | -- |
+
+### general SNN frameworks that work for EEG
+
+| Framework | Repo | Key features | Docs |
+|---|---|---|---|
+| **snnTorch** | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) | PyTorch-based, great tutorials (7 parts), surrogate gradients, GPU-accelerated. Best for beginners. | [snntorch.readthedocs.io](https://snntorch.readthedocs.io/) |
+| **SpikingJelly** | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) | Full-stack SNN toolkit: preprocessing, building, training, neuromorphic deployment. Published in Science Advances. | [spikingjelly.readthedocs.io](https://spikingjelly.readthedocs.io/) |
+| **Norse** | [norse/norse](https://github.com/norse/norse) | PyTorch primitives for bio-inspired neural components. More research-oriented. | [norse.github.io/norse](https://norse.github.io/norse/) |
+
+### EEG processing libraries

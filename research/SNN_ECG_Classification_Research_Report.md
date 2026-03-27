@@ -283,31 +283,3 @@ This alone would be a solid contribution given the limited existing implementati
 ## 8. Novelty Angles -- What Makes This Under-Explored?
 
 ### The Field is Under-Explored in Several Critical Dimensions
-
-#### Gap Analysis
-
-| Research Area | Explored? | Number of Papers | Opportunity Level |
-|---|---|---|---|
-| SNN + MIT-BIH (5-class, single-lead) | Moderately | ~15-20 | LOW -- well-covered |
-| SNN + PTB-XL (12-lead, multi-label) | Barely | 1-2 (sCCfC only) | **VERY HIGH** |
-| Spike encoding method comparison for ECG | Partially | ~3-5 | **HIGH** |
-| SNN + Explainability/Interpretability for ECG | Almost none | ~1-2 | **VERY HIGH** |
-| SNN + AF-specific detection | Emerging | ~3-4 | MODERATE |
-| SNN + Continual/Online learning for ECG | None found | 0 | **VERY HIGH** |
-| SNN + Few-shot learning for rare arrhythmias | None found | 0 | **VERY HIGH** |
-| SNN energy benchmarking across hardware | Limited | ~3-5 | HIGH |
-| SNN + ECG on actual neuromorphic hardware (Loihi) | Very limited | ~2-3 | HIGH (but needs hardware) |
-
-### Top 5 Recommended Novelty Angles (Ranked by Feasibility for Undergrad)
-
-#### 1. RECOMMENDED: Systematic Spike Encoding Comparison for ECG Classification
-**What**: Compare all major encoding methods (rate, TTFS, delta modulation, peak encoding, Gaussian) on the same SNN architecture and MIT-BIH dataset.
-**Why novel**: No single paper systematically compares all encoding methods specifically for ECG. The 2024 paper by arxiv:2407.09260 does a general comparison but not ECG-focused.
-**Feasibility**: HIGH -- uses existing snnTorch encoding functions; clear methodology.
-**Impact**: Would become a reference paper for anyone doing SNN-ECG work.
-
-#### 2. RECOMMENDED: SNN for 12-Lead ECG Classification (PTB-XL)
-**What**: First systematic application of SNNs to the PTB-XL 12-lead dataset with multi-label classification.
-**Why novel**: Almost all SNN-ECG papers use MIT-BIH (single-lead, 5 classes). PTB-XL is the modern gold-standard but is virtually untouched by SNN research.
-**Feasibility**: MODERATE-HIGH -- larger dataset and multi-label adds complexity, but the framework is the same.
-**Impact**: HIGH -- fills a glaring gap in the literature.

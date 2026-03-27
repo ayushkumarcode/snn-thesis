@@ -282,31 +282,3 @@ The commonly cited values in SNN literature:
 
 #### Intel Loihi 2 Audio Results
 
-**Citation:** Intel. "Efficient Video and Audio Processing with Loihi 2." ICASSP 2024.
-
-- Keyword spotting on Loihi 2: **10x faster, 200x less energy** than NVIDIA Jetson Orin Nano
-- Resonate-and-Fire neurons process spectral features directly, eliminating FFT preprocessing
-- Sigma-delta neurons: 47x more efficient spike encoding for spectral components
-
-**Citation:** Loihi 2 Keyword Spotting Benchmark:
-- Single time step: 3.63 ms, 10.4 mJ total energy (0.55 mJ dynamic)
-- Unbottlenecked: 3.2 ms/timestep, 8.86 mJ per inference
-
-#### SpiNNaker 2 Energy
-
-**Citation:** SpiNNaker2 architecture papers (2024). arXiv:2401.04491.
-
-- Energy per synaptic operation: **0.292 pJ/SOP**
-- 10x neural simulation capacity per watt over SpiNNaker1
-- 22nm CMOS, adaptive body biasing, near-threshold operation (0.5V)
-- 152 cores per chip, 152K neurons, 152M synapses
-
-#### Xylo Neuromorphic Chip (NeuroBench System Track)
-
-- Acoustic scene classification: **0.028 mJ/sample** vs 1.851 mJ/sample (Arduino CPU)
-- **66x energy reduction** for audio classification at comparable accuracy
-
-### 2.6 AC vs MAC Energy Ratios in Literature
-
-| Source | AC Energy | MAC Energy | Ratio | Technology | Notes |
-|--------|-----------|------------|-------|------------|-------|

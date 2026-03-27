@@ -362,3 +362,31 @@ based on all this reading, i think the field breaks down into four paradigms:
 | Spiking-LEAF | 2024 | Keyword spotting | Learnable auditory front-end | Outperforms mel spectrograms |
 | SpikSLC-Net | 2025 | Sound localization + classification | Spiking hybrid attention | Joint localization-classification |
 | MISNet | 2025 | Audio-visual classification | Multimodal LIF neuron | First balanced accuracy+efficiency |
+| Larroza et al. | 2025 | Spike encoding benchmark | FC SNN | ESC-10 only (69% TAE) |
+| **our thesis** | **2026** | **ESC-50 classification** | **CNN14 features + SNN head** | **92.50%, 0.95pp gap to ANN** |
+
+### Accuracy Gap Collapse Evidence
+
+| Work | Domain | Scratch Gap | Pretrained Gap | Collapse Ratio | Year |
+|------|--------|------------|----------------|----------------|------|
+| **our thesis** | **Audio (ESC-50)** | **16.70pp** | **0.95pp** | **17.6x** | **2026** |
+| Spikformer V2 | Vision (ImageNet) | 7.42pp | ~1pp (SSL) | 7.4x | 2024 |
+| Bu et al. | Vision (ImageNet) | ~7pp | ~1pp (conversion) | ~7x | 2025 |
+| Spiking Vocos | Audio (vocoder) | N/A | ~0pp (distillation) | N/A | 2025 |
+| SAFE | Audio (fidelity) | N/A | ~0pp (hybrid) | N/A | 2025 |
+
+---
+
+## 11. Research Gaps
+
+things nobody has done yet:
+1. PANNs + SNN head -- we're first
+2. any audio foundation model (wav2vec, HuBERT, Whisper, CLAP, AudioMAE, BEATs) + SNN classifier
+3. full ESC-50 with SNNs (Larroza et al. 2025 only did ESC-10)
+4. explicit "gap collapse" measurement in audio
+5. ANN-to-SNN conversion for environmental sound classification (all conversion work is vision or speech)
+6. any PhD/MSc theses on SNN transfer learning for audio
+7. hybrid ANN-SNN deployment for audio on neuromorphic hardware (only DPSNN and our SpiNNaker work)
+
+---
+

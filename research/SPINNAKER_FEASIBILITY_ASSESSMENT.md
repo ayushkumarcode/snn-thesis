@@ -54,3 +54,31 @@ class SimpleSNN(nn.Module):
 
 net = SimpleSNN()
 optimizer = torch.optim.Adam(net.parameters(), lr=1e-3)
+loss_fn = snn.functional.mse_count_loss()
+```
+
+**sPyNNaker (PyNN): Same network on SpiNNaker**
+
+```python
+import pyNN.spiNNaker as sim
+
+sim.setup(timestep=1.0)
+
+cell_params = {
+    'cm': 0.25, 'tau_m': 20.0, 'tau_refrac': 2.0,
+    'tau_syn_E': 5.0, 'tau_syn_I': 5.0,
+    'v_reset': -70.0, 'v_rest': -65.0, 'v_thresh': -50.0
+}
+
+# Populations (NOT layers -- groups of neurons)
+input_pop = sim.Population(784, sim.SpikeSourceArray(spike_times=[...]))
+hidden_pop = sim.Population(500, sim.IF_curr_exp(**cell_params))
+output_pop = sim.Population(10, sim.IF_curr_exp(**cell_params))
+
+# Projections (connections between populations)
+proj1 = sim.Projection(input_pop, hidden_pop,
+    sim.AllToAllConnector(), sim.StaticSynapse(weight=0.5, delay=1.0))
+proj2 = sim.Projection(hidden_pop, output_pop,
+    sim.AllToAllConnector(), sim.StaticSynapse(weight=0.5, delay=1.0))
+
+output_pop.record(['spikes', 'v'])

@@ -278,3 +278,31 @@ found a few but nothing on environmental sound:
 | **our thesis + PANNs** | **ESC-50** | **50** | **92.50%** | **PANNs+SNN head** | **2026** |
 | Larroza (TAE) | ESC-10 | 10 | 69.0% | FC-only SNN | 2025 |
 | Larroza (TAE) | UrbanSound8K | 10 | 53.5% | FC-only SNN | 2025 |
+| Larroza (SF) | UrbanSound8K | 10 | 56.4% | FC-only SNN | 2025 |
+| S-CMRL | US8K-AV | 10 | 98.13% | Transformer SNN (multimodal) | 2025 |
+| SMMT (Guo) | US8K-AV | 10 | 96.85% | Transformer SNN (multimodal) | 2024 |
+
+### Sound Classification (Non-Environmental)
+
+| Method | Dataset | Accuracy | Architecture | Year |
+|--------|---------|----------|-------------|------|
+| Wu et al. (SOM-SNN) | RWCP | 99.60% | SOM+SNN | 2018 |
+| Wu et al. (SOM-SNN) | TIDIGITS | 97.4% | SOM+SNN | 2018 |
+| Amin (ATM-SNN) | TIDIGITS | 97.64% | Adaptive threshold SNN | 2021 |
+| Dong et al. | TIDIGITS | 97.5% | Conv SNN (STDP) | 2018 |
+| Bensimon et al. | RWCP | 98.73% | SCTN-SNN | 2021 |
+| Yang & Chang | TIMIT | PER 22.6% | RSNN (71.2 uW) | 2024 |
+
+---
+
+## 10. Adversarial Robustness of Audio SNNs
+
+nobody has studied this before us. our finding -- SNN retains 26% accuracy at FGSM eps=0.1 while ANN drops to 1.75% -- is novel in the audio domain.
+
+relevant work from vision: Wang et al. (2025, arXiv:2512.22522) warns that SNN robustness may be overestimated due to gradient estimation issues and proposes Adaptive Sharpness Surrogate Gradient. also FEEL-SNN (NeurIPS 2024) on robust SNNs with sparse connections, and Sharmin et al. (ECCV 2020) as the original study.
+
+we should cite Wang et al. (2025) and acknowledge that FGSM/PGD attacks may underestimate SNN vulnerability due to surrogate gradient inaccuracies. but our qualitative finding of different robustness behavior still holds and is first in audio.
+
+---
+
+## 11. Continual Learning with Audio SNNs

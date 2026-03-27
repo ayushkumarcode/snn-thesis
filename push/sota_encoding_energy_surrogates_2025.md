@@ -362,3 +362,18 @@ things that don't exist in the literature:
 
 ### Energy Efficiency
 8. Dampfhoffer et al. "Are SNNs Really More Energy-Efficient?" IEEE TECI 7(3):731-741, 2023.
+9. Yang et al. "Reconsidering the energy efficiency of SNNs." arXiv:2409.08290, 2024.
+10. Yik et al. "NeuroBench." Nature Communications 16:1589, 2025.
+11. Horowitz. "Computing's Energy Problem." ISSCC 2014.
+12. Shafique et al. "Sparsity-Aware HW-SW Co-Design of SNNs." arXiv:2408.14437, 2024.
+13. Intel. "Efficient Video and Audio Processing with Loihi 2." ICASSP 2024.
+14. "SpiNNaker2." arXiv:2401.04491, 2024.
+
+### Surrogate Gradients
+15. Zenke & Vogels. "Remarkable Robustness of Surrogate Gradient Learning." Neural Computation 33(4), 2021.
+16. Gygax & Zenke. "Elucidating the Theoretical Underpinnings." Neural Computation 37(5), 2025.
+17. Lian et al. "Learnable Surrogate Gradient." IJCAI 2023.
+18. "Sparse Surrogate Gradient." Neural Networks, July 2024.
+19. Klos et al. "Smooth Exact Gradient Descent." Physical Review Letters 134(2), 2025.
+20. Neftci et al. "Surrogate Gradient Learning in SNNs." IEEE SPM 36(6), 2019.
+21. "Efficient Surrogate Gradients." NeurIPS 2025.

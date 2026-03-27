@@ -334,3 +334,31 @@ these specific combinations have essentially zero papers:
 | Fraud | Kaggle Credit Card | 284k transactions | Public |
 | Fraud | BAF | 1M+ transactions | Public |
 | NLP | SST-2 / IMDB | 67k / 50k | Public |
+| RL | Gymnasium | Simulated | Public |
+| Environmental | UCI Air Quality | 9358 instances | Public |
+| Environmental | EPA AQS | Millions of records | Public |
+| Wearable | UCI HAR | 10,299 samples | Public |
+| Wearable | WISDM | 1M+ samples | Public |
+| Radar | UCI Sonar | 208 samples | Public |
+| Astronomy | LOFAR RFI data | Large | Public |
+
+---
+
+## Sources
+
+### Music Generation
+- [Mode-conditioned music (2024)](https://arxiv.org/abs/2411.14773)
+- [MuSpike (2025)](https://arxiv.org/abs/2508.19251)
+- [Stylistic Composition (2021)](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2021.639484/full)
+- [Musical Pattern Recognition GitHub](https://github.com/mrahtz/musical-pattern-recognition-in-spiking-neural-networks)
+
+### Industrial IoT
+- [Vacuum Spiker (2025)](https://arxiv.org/html/2510.06910)
+- [Evolving SNN for Time Series (2022)](https://link.springer.com/article/10.1007/s10994-022-06129-4)
+- [Bearing Fault Diagnosis (2024)](https://arxiv.org/abs/2408.11067)
+
+### Financial Fraud
+- [CSNPC (2025)](https://arxiv.org/abs/2508.16915)
+- [VMD-SNNs (2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11873965/)
+
+### NLP/Sentiment

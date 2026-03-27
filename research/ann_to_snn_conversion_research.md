@@ -139,31 +139,3 @@ ANN-to-SNN conversion has evolved through three major phases:
 
 For an undergraduate thesis aiming at current results, the standalone paper implementations are often the best starting point:
 
-| Repository | Paper | Venue | Ease of Use |
-|-----------|-------|-------|-------------|
-| `putshua/ANN_SNN_QCFS` | QCFS: Optimal conversion | ICLR 2022 | High -- fixed bugs, shared weights, clear commands |
-| `yhhhli/SNN_Calibration` | SNN Calibration | ICML 2021 | High -- clear CLI, supports VGG16/ResNet on CIFAR |
-| `snuhcs/snn_signgd` | SignGD beyond ReLU | ICML 2024 | Medium -- advanced, converts ConvNeXt/MLP-Mixer |
-| `Lyu6PosHao/ANN2SNN_GN` | Group Neurons | ICASSP 2024 | Medium -- recent, good results |
-| `IGITUGraz/RobustSNNConversion` | Adversarial robustness | TMLR 2024 | Medium |
-| `h-z-h-cell/ANN-to-SNN-DCGS` | Differential coding | ICML 2025 | Medium-High -- source available |
-| `BICLab/SpikeYOLO` | SpikeYOLO detection | ECCV 2024 | Medium -- object detection focus |
-
----
-
-## 4. Accuracy Loss During Conversion
-
-### 4.1 General Principles
-
-Accuracy loss in ANN-to-SNN conversion arises from three fundamental error sources:
-
-1. **Quantization error**: Continuous ReLU activations are approximated by discrete spike counts
-2. **Clipping error**: Activation values exceeding the firing threshold are lost
-3. **Residual membrane potential error**: Information stored in membrane potential at the end of simulation is discarded
-
-The accuracy gap follows a clear trend: **more timesteps = lower accuracy loss, but higher latency and energy**.
-
-### 4.2 Concrete Accuracy Numbers
-
-#### CIFAR-10 (Approximate ANN Baseline: VGG16 ~93.5%, ResNet-20 ~92%)
-

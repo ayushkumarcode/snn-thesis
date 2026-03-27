@@ -73,31 +73,3 @@ For your thesis, your measured 74.16% activation sparsity (NeuroBench) translate
 
 ### 1.2 Additional Energy Papers
 
-#### Spike-Thrift (Kundu et al., WACV 2021)
-- Attention-guided compression to limit spiking activity
-- Achieved up to 33.4x compression with no significant accuracy drop
-- Compressed SNN models: up to 12.2x better compute energy-efficiency compared to ANNs with similar parameters
-
-#### All In One Timestep (Castagnetti et al., 2025, arXiv:2510.24637)
-- Multi-level spiking neurons: reduces energy consumption by 2-3x compared to binary SNNs
-- Reduces network activity by >20% compared to previous spiking ResNets
-- Achieves inference in 1 timestep (10x compression factor)
-
-### 1.3 Summary of Energy Threshold Literature
-
-| Paper | Year | Venue | Spike Rate Threshold for SNN Advantage | Notes |
-|:---|:---:|:---|:---:|:---|
-| Dampfhoffer et al. | 2023 | IEEE TECI | 0.15-1.38 spikes/synapse/inference | Hardware-aware, includes memory |
-| Yan et al. | 2024 | arXiv | <7-8% at T=6 | Includes data movement |
-| Shen et al. | 2024 | CVPR | <10-15% | Bit budget framework |
-| Li et al. | 2023 | arXiv | Varies by hardware | Hardware bottleneck analysis |
-| HW-aware vs agnostic | 2025 | arXiv | N/A | 50-60% gap between methods |
-
-**Consensus:** SNNs need spike rates below ~6-10% (sparsity >90-94%) to beat optimized quantized ANNs on digital hardware. On neuromorphic hardware, the threshold is more relaxed due to native AC support.
-
----
-
-## 2. NeuroBench Benchmark
-
-### 2.1 Overview
-- **Citation:** Yik et al., "The NeuroBench Framework for Benchmarking Neuromorphic Computing Algorithms and Systems," Nature Communications 16:1589, February 2025

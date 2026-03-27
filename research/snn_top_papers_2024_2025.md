@@ -250,3 +250,31 @@ i went through the future work sections of a bunch of these papers and here's wh
 
 ## confidence notes
 
+things i'm pretty sure about:
+- QKFormer achieving 85.65% on ImageNet (NeurIPS 2024 Spotlight)
+- all the GitHub repos listed here exist and are accessible
+- the explosion of SNN papers at CVPR (3 in 2024 to 14 in 2025)
+- SpikeLM being the first fully spiking language model at ICML 2024
+- P-SpikeSSM bridging SNNs and SSMs at ICLR 2025
+
+things i'm less certain about:
+- exact citation counts (these change all the time, rankings are approximate)
+- SpikeLLM's exact performance numbers across all benchmarks
+- whether i got every NeurIPS 2024 SNN paper (found 23 but there might be more)
+
+couldn't fully verify:
+- complete list of ICML 2025 SNN papers (might be after submission deadline)
+- whether BrainTransformers-3B has publicly released code
+- exact GitHub star counts (fluctuate daily obviously)
+
+---
+
+## what i should probably do next
+
+1. **start with snnTorch tutorials** -- the interactive Jupyter notebooks at [github.com/snntorch/Spiking-Neural-Networks-Tutorials](https://github.com/snntorch/Spiking-Neural-Networks-Tutorials) are the best entry point. tutorials 1-7 build the foundation.
+
+2. **clone and run QKFormer or SpikingResformer** -- most accessible codebases for image classification. start with CIFAR-10/100 (faster), then scale to ImageNet subsets.
+
+3. **explore the Awesome-SNN-Conference-Paper repo** -- [axyzdong.github.io/awesome-snn-conference-paper/](https://axyzdong.github.io/awesome-snn-conference-paper/) has the most up-to-date paper listings by venue.
+
+4. **pick a low-hanging fruit direction** -- items 1-5 from the easy list above are probably most suitable for an undergrad thesis. they're about applying existing methods to new domains/datasets rather than inventing new architectures.

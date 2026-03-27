@@ -126,31 +126,3 @@ To cross the threshold from "lab exercise" to "thesis," you need at least ONE of
 **What it is**: Compare rate coding, latency (TTFS) coding, delta coding, phase coding, and burst coding on the same architectures and datasets, with controlled variables.
 
 **Why it adds value**: The [Frontiers paper by Park et al.](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.638474/full) did this for a limited set of encodings. You could extend it with:
-- More encoding schemes
-- Additional datasets
-- snnTorch-specific implementations (making results reproducible in a popular framework)
-- Multi-dimensional comparison: accuracy, spike count, convergence speed, robustness to noise
-
-**Risk**: This has been partially done in academic papers. Your contribution would be the breadth and reproducibility angle, not novelty of the individual encodings.
-
-**Estimated time**: 4-6 weeks of development after setup
-
-### Angle B: Hyperparameter Sensitivity Study (Moderate Value, High Feasibility)
-
-**What it is**: Systematic grid/random search over SNN-specific hyperparameters: membrane decay (tau), firing threshold, time steps, surrogate gradient function (arctan, sigmoid, fast-sigmoid), and their interactions.
-
-**Why it adds value**: Research confirms SNN training is highly sensitive to these parameters. A firing threshold of 1.0 vs 0.25 can cause accuracy to swing from 96% to 41% ([Bojkovic et al., 2024](https://proceedings.mlr.press/v238/bojkovic24a/bojkovic24a.pdf)). Yet there is no comprehensive undergraduate-accessible guide to tuning these parameters across datasets.
-
-**What makes it thesis-worthy**:
-- Plot Pareto frontiers of accuracy vs spike count at different parameter combinations
-- Identify which hyperparameters matter most (sensitivity analysis)
-- Provide practical guidelines for practitioners
-
-**Estimated time**: 3-5 weeks of development
-
-### Angle C: Energy/Efficiency Analysis via Proxy Metrics (High Value, Moderate Feasibility)
-
-**What it is**: Measure and compare computational cost using proxy metrics like synaptic operations (SynOps), spike counts, MAC vs AC operations, memory accesses -- using the [NeuroBench framework](https://neurobench.readthedocs.io/en/latest/).
-
-**Why it adds value**: The paper ["Are SNNs Really More Energy-Efficient Than ANNs?"](https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf) showed that SNN energy advantage is conditional and often overstated. Replicating this analysis at an undergraduate level using NeuroBench would be genuinely valuable. Key finding to test: SNNs need >93% spike sparsity with VGG16 at T=6 to be more efficient than ANNs.
-

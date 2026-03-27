@@ -194,3 +194,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **URL** | https://research.manchester.ac.uk/en/studentTheses/biologically-inspired-neural-computation |
 | **Abstract** | Contrasts biological learning with current ML. Three areas: (1) biologically-inspired visual attention on SpiNNaker; (2) e-prop learning algorithm implementation; (3) gradient-descent-free architecture using dendritic abstractions with neurogenesis, achieving comparable performance to Adam optimizer. |
 | **What They Built** | Visual attention model on SpiNNaker, e-prop implementation, neurogenesis-based learning architecture |
+| **Tools/Frameworks** | SpiNNaker, iCub robot platform |
+| **Datasets** | General benchmarks |
+| **Scope** | Very high -- three distinct research contributions |
+
+---
+
+### 1.12 Scalability and Robustness of Artificial Neural Networks
+| Field | Detail |
+|-------|--------|
+| **Author** | Evangelos Stromatias |
+| **Year** | 2016 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | Steve Furber (main), James Garside (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/scalability-and-robustness-of-artificial-neural-networks |
+| **Abstract** | Examines power consumption and communication latencies on SpiNNaker running large-scale SNNs. Develops power estimation model. Characterizes impact of hardware bit precision, noise, and weight variation on spiking DBNs for handwritten digit recognition. Shows spiking DBNs work on limited-precision hardware without drastic performance loss. |
+| **What They Built** | Power estimation model for SpiNNaker; spiking DBN robustness analysis |
+| **Tools/Frameworks** | SpiNNaker, Deep Belief Networks |
+| **Datasets** | Handwritten digits (likely MNIST) |
+| **Scope** | High -- power modeling + robustness characterization |
+
+---
+
+### 1.13 Plasticity in Large-Scale Neuromorphic Models of the Neocortex
+| Field | Detail |
+|-------|--------|
+| **Author** | James Knight |
+| **Year** | 2016 |

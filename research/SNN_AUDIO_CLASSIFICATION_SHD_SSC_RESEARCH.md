@@ -357,31 +357,3 @@ For a 3rd-year thesis, the research question should be:
 4. **Ding et al. (2024)** -- "Advancing Spatio-Temporal Processing in Spiking Neural Networks through Adaptation" -- [arXiv:2408.07517](https://arxiv.org/html/2408.07517)
    *The SE-adLIF paper. Improved neuron discretization.*
 
-5. **Sun & Wu (2025)** -- "Towards Parameter-free Attentional Spiking Neural Networks" -- [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0893608025000334)
-   *Pfa-SNN. Shows attention can be added to SNNs without extra parameters.*
-
-6. **SpikCommander (2025)** -- "A High-performance Spiking Transformer with Multi-view Learning for Efficient Speech Command Recognition" -- [arXiv:2511.07883](https://arxiv.org/abs/2511.07883)
-   *Current SOTA on SSC. Spiking transformer architecture.*
-
-### Review Papers
-
-7. **Baek & Lee (2024)** -- "SNN and Sound: A Comprehensive Review of Spiking Neural Networks in Sound" -- [Biomedical Engineering Letters](https://link.springer.com/article/10.1007/s13534-024-00406-y)
-   *Comprehensive review of all SNN audio applications.*
-
-8. **Li et al. (2025)** -- "Spiking Neural Networks for Temporal Processing: Status Quo and Future Prospects" -- [arXiv:2502.09449](https://arxiv.org/html/2502.09449v1)
-   *Critical assessment. Argues current benchmarks may not adequately test temporal processing.*
-
----
-
-## 9. Open Research Gaps (Opportunities for Contribution)
-
-1. **Benchmark adequacy**: Li et al. (2025) argue that SHD/SSC may not truly test temporal processing because "temporal credit assignment during the backward pass is not necessary for these datasets." An undergraduate could test this claim by comparing SNNs trained with and without temporal backpropagation.
-
-2. **Feedforward vs. recurrent with delays**: The DCLS-Delays paper showed feedforward SNNs with delays can match recurrent ones, but this has not been exhaustively tested across all neuron models.
-
-3. **Energy analysis standardization**: Most papers report accuracy but few report standardized energy metrics. An undergraduate project that systematically measures SynOps and estimates energy across multiple methods would be a genuine contribution.
-
-4. **Undergraduate accessibility**: No tutorial or reproducible notebook exists that walks through a complete SHD experiment from data loading to analysis with modern methods. Creating one would be a contribution to the community.
-
-5. **Encoding comparison**: Comparing the cochlea-based SHD encoding against simpler encodings (rate coding of Mel spectrograms, delta encoding) has not been done systematically for SNN audio classification.
-

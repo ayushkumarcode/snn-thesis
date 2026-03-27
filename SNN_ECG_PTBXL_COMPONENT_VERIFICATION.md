@@ -586,3 +586,31 @@ Step 10: Compare to ANN baseline (xresnet1d: 0.937 AUROC)
 
 ---
 
+## risk assessment summary
+
+| Component | Risk Level | Mitigation |
+|---|---|---|
+| PTB-XL Dataset | NONE | Freely available, open access |
+| WFDB Library | NONE | Stable, well-documented |
+| Preprocessing | NONE | scipy/neurokit2 both work |
+| Delta Encoding | NONE | Documented API, designed for time-series |
+| Conv1d SNN | LOW | Shape-agnostic neurons; no official 1D examples |
+| 12-Lead Handling | NONE | Standard Conv1d channel dimension |
+| Label Structure | NONE | Well-documented, code provided by PhysioNet |
+| ANN Baseline | NONE | Published scores, reproducible code |
+| Evaluation Metrics | NONE | Standard sklearn |
+| Class Imbalance | LOW | Weighted loss easily applied |
+| GPU Memory | MEDIUM | TBPTT mandatory for long sequences |
+| Prior SNN-ECG Code | LOW | None for PTB-XL (novelty opportunity) |
+| Known Issues | LOW | All documented with workarounds |
+| End-to-End Feasibility | NONE | All pieces verified to exist |
+
+---
+
+## recommended architecture decision
+
+Based on all verification results, the recommended approach for an undergraduate thesis:
+
+**Spatial-Temporal Hybrid Architecture:**
+
+1. **Spatial feature extraction (Conv1d, standard PyTorch -- no time loop):**

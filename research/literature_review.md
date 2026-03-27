@@ -166,3 +166,31 @@ Results are actually really good:
 
 1. Information loss in deep SNNs -- binary spikes lose information as networks get deeper
 2. Surrogate gradient mismatch -- the smooth approximation doesn't perfectly match real spike dynamics
+3. Temporal efficiency -- more timesteps = better accuracy but slower inference; how to minimize timesteps?
+4. Spiking attention mechanisms -- current spike-based attention lacks the non-linearity of softmax
+5. Multi-modal SNNs -- combining vision, audio, text in a single spiking architecture
+6. Hardware-software co-design -- algorithms optimized for specific neuromorphic chips
+
+---
+
+## Paper 3: A Comprehensive Review of Spiking Neural Networks: Interpretation, Optimization, Efficiency, and Best Practices
+
+Malcolm & Casco-Rodriguez, arXiv, 2023
+https://arxiv.org/abs/2303.10780
+
+Wanted to read this for practical advice on building and evaluating SNNs properly.
+
+(Full text was access-restricted so i only have summary from abstract and metadata)
+
+### Key Focus Areas
+1. Interpretation -- how to understand what SNNs are doing internally
+2. Optimization -- best training strategies and hyperparameter choices
+3. Energy efficiency -- how to measure and compare power consumption fairly
+4. Best practices -- practical recommendations for SNN development
+
+### Why This Paper Matters
+- Written as an accessible entry point starting from first principles
+- Emphasizes SNNs for low-power, mobile, and hardware-constrained settings
+- Covers evaluation methodology -- important for a thesis that needs rigorous results
+
+---

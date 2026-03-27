@@ -154,31 +154,3 @@ snntorch.spikegen.delta(
 ```
 
 **ECG-specific usage:**
-
-```python
-import snntorch.spikegen as spikegen
-import torch
-
-# ECG data shape: [1000, batch_size, 12]  (timesteps x batch x leads)
-ecg_tensor = torch.tensor(ecg_data).permute(1, 0, 2)  # from (batch, time, leads)
-spike_data = spikegen.delta(ecg_tensor, threshold=0.1, off_spike=True)
-# off_spike=True recommended for ECG: captures both rising and falling edges
-```
-
-**The delta function is explicitly designed for time-series data.** The documentation states it "accepts a time-series tensor as input and takes the difference between each subsequent feature across all time steps." This is exactly what ECG needs.
-
-**Threshold selection:** Smaller threshold = more spikes (better resolution, more computation). Larger threshold = fewer spikes (sparser, faster). This is a hyperparameter to tune.
-
-**Other available encoding methods:** rate(), latency(), latency_code(), rate_conv() -- delta is the best fit for ECG because it captures signal changes (morphology), which is clinically meaningful.
-
-**Source:** [snntorch.spikegen documentation](https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html), [Tutorial 1 - Spike Encoding](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_1.html)
-
----
-
-### 5. 1D Convolutional SNN (CRITICAL COMPONENT)
-
-| Field | Detail |
-|---|---|
-| **EXISTS** | YES (with caveats) |
-| **VERIFIED HOW** | Source code analysis, documentation, PyTorch Forums |
-| **POTENTIAL BLOCKER** | LOW RISK -- requires manual adaptation |

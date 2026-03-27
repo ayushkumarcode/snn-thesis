@@ -160,31 +160,3 @@ The paper does NOT advance the accuracy state of the art on ESC-50. The ANN SOTA
 What the paper DOES advance:
 
 1. It establishes the first rigorous benchmark for SNN audio classification on a standard dataset, creating a reference point the field lacked.
-2. It proposes and validates the "frozen audio features + SNN head" paradigm as a practical architecture for neuromorphic audio deployment, demonstrating that the gap is bridgeable with pre-trained features.
-3. It identifies and characterises the feature-learning bottleneck hypothesis empirically, providing the field with a theoretically significant finding that redirects the research agenda.
-4. It documents, with root-cause analysis, what happens when a convolutional SNN is deployed on SpiNNaker, providing engineering knowledge the field needs for future deployments.
-
-Dr. Rhodes' bar is met. The novelty is genuine and multi-dimensional. The significance of the gap-collapse finding is defensible. The "advance" is not in accuracy terms — it is in establishing groundwork and generating new insight. That is a legitimate form of scientific contribution, and it is explicitly the kind ICONS values.
-
----
-
-## Part 5: Publication Verdict
-
-### Is it publishable at ICONS 2026?
-
-**Yes. With specific conditions.**
-
-ICONS is the correct venue for this paper. The conference's explicit scope — neuromorphic algorithms, hardware deployment, benchmark tasks, energy analysis — matches every major contribution this paper makes. The acceptance rate (historically around 59%, likely lower now but still in the range of 40-50%) is achievable for work with this profile. The ICONS 2025 program includes a SpiNNaker2 hardware paper accepted as a lightning talk (Arfa et al.), a vibration-based application benchmark paper (Vasilache et al.), and a continual learning SNN paper (Bouhadjar et al.) — all of which are less novel than what this thesis contributes. The ICONS 2022 Yarga encoding comparison paper (4 encodings, speech digits) is the direct precursor and this work is substantially more comprehensive. The community will recognise this.
-
-### Strongest framing
-
-The paper should lead with the gap-collapse finding, not the 47.15% number.
-
-The current abstract opens with "our scratch-trained convolutional SNN achieves 47.15%." This is the wrong hook. The paper should open with: "We demonstrate that the SNN-ANN accuracy gap on environmental sound classification collapses 17.6× — from 16.7 pp to under 1 pp — when both networks receive equal-quality pre-trained features, revealing that the bottleneck is feature learning, not spiking computation." Everything else is then presented as supporting evidence for that central claim.
-
-Secondary framing: "Despite lower accuracy than conventional deep learning, scratch-trained SNNs exhibit 14.8× greater adversarial robustness at FGSM ε=0.1, suggesting a natural noise-filtering property with practical implications for edge audio sensing."
-
-The hardware story frames as: "We characterise for the first time what SNN environmental sound classification looks like on real neuromorphic hardware, documenting the root cause of the 12.8 pp hardware-software accuracy gap and providing actionable deployment guidance."
-
-### The 2-3 things that make or break the submission
-

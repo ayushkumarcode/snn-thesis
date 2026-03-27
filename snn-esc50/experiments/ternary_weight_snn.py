@@ -250,3 +250,28 @@ def main():
     args = parser.parse_args()
 
     device = torch.device(args.device) if args.device else get_device()
+    download_esc50()
+
+    folds = [args.fold] if args.fold else list(range(1, 6))
+    all_results = []
+
+    print(f"{'='*60}")
+    print(f"  Ternary Weight SNN Training")
+    print(f"{'='*60}")
+
+    for fold in folds:
+        result = run_fold(fold, device)
+        all_results.append(result)
+
+    if len(all_results) == 5:
+        accs = [r["best_acc"] for r in all_results]
+        print(f"\n  5-Fold: {np.mean(accs):.4f}±{np.std(accs):.4f}")
+
+    save_dir = RESULTS_DIR / "energy" / "ternary_weights"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+
+
+if __name__ == "__main__":
+    main()

@@ -26,20 +26,20 @@ Quantitative:
 - Expected current: 1398 x (-0.0034) = -4.75 (net negative, no spikes)
 - Observed hidden spike rate: 0/step (Runs 1-4)
 
+This is the root cause of Runs 1-4 failing completely -- all samples predicted class 0 or random.
 
-### 5.1.2 Option C: Weight Re-Centring (Attempted, Failed)
+### 5.1.2 Option C: weight re-centering (attempted, failed)
 
-**Approach:** Zero-centre each FC₁ weight row to eliminate cancellation:
+**Approach:** zero-center each FC1 weight row:
 $$w_{i,j} \leftarrow w_{i,j} - \mu_i, \quad b_i \leftarrow b_i + \mu_i \cdot n$$
 
-where $\mu_i = \frac{1}{2304}\sum_j w_{i,j}$ and $n = 2304$.
+where mu_i is mean of row i, n = 2304.
 
-**Expected behaviour:** For binary inputs summing to $n$, bias compensation exactly counteracts the shift. However, AvgPool produces fractional inputs with sum $\sum_j x_j \neq n$. The bias compensation over-corrects by a factor of $n / \sum_j x_j$, destroying FC₁ selectivity.
+**Theory:** for binary inputs summing to n, bias compensation exactly cancels the shift. But AvgPool gives fractional inputs where sum != n. Bias compensation over-corrects by n/sum(x_j), destroying selectivity.
 
-**Result:** Accuracy dropped from 53.75% (snnTorch, fold 4 baseline) to 8.50% after re-centring (+sTorch software test). Option C is not viable. The root cause is architectural: AvgPool between binary spike layers introduces non-binary values that violate the mathematical assumptions of weight re-centring.
+**Result:** accuracy dropped 53.75% -> 8.50%. Option C is dead. Root cause is architectural -- AvgPool between binary spike layers introduces non-binary values violating the math assumptions.
 
-**Documented in:** `results/spinnaker_optionC/option_c_fold4.json`
-
+Documented in `results/spinnaker_optionC/option_c_fold4.json`.
 ---
 
 ## 5.2 FC2-Only Hybrid Approach

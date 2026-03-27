@@ -54,3 +54,31 @@ it's not a top-tier venue like NeurIPS but it's the **premier dedicated venue fo
 strengths of publishing here:
 - ACM proceedings with DOI, properly indexed
 - directly targets the neuromorphic community who will actually appreciate our work
+- hardware deployment papers (SpiNNaker, Loihi) are first-class citizens
+- benchmark and methodology papers are welcome
+- modest accuracy results are normal and accepted
+- community is growing rapidly
+
+limitations:
+- not widely recognized outside neuromorphic community
+- lower citation impact vs ICASSP, NeurIPS, ICLR
+- relatively low h5-index
+
+### topics they explicitly welcome (and how we fit)
+
+1. **Systems and Architecture:** neuromorphic circuits, non-von Neumann -- *our SpiNNaker deployment fits here*
+2. **Algorithms and Training:** supervised/unsupervised learning, continual learning -- *our encoding comparison, surrogate ablation, CL experiment*
+3. **Applications:** energy-efficient edge AI, **benchmark tasks**, domain-specific implementations -- *ESC-50 as SNN audio benchmark is exactly this*
+4. **Software and Tools:** efficient simulation -- *NeuroBench integration fits*
+
+---
+
+## Part 2: What's Been Accepted at ICONS Before
+
+### ICONS 2024 papers
+
+full list from DBLP. key ones:
+
+1. "Scalable Event-by-event Processing with Deep State-Space Models" -- Schone et al. **[BEST PAPER]** (99.2% DVS Gestures)
+2. "Stochastic Spiking Neural Networks with First-to-Spike Coding" -- Sengupta group
+3. "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware" -- Seekings et al.

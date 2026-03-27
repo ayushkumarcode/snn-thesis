@@ -250,20 +250,20 @@ snn-esc50/
 ```
 
 ### D.2 random seeds
-├── results/            # All result JSON files (model checkpoints excluded for size)
-└── paper/              # This thesis (all .md files)
-```
-
-### D.2 Random Seeds
 
 | Experiment | Seed | Notes |
 |-----------|------|-------|
-| All 5-fold training (local) | `torch.manual_seed(42)`, `numpy.random.seed(42)` | Set at start of each fold training |
-| CSF3 training | seed = fold_number (1–5) | Set per-fold in CSF3 job submission |
-| Surrogate ablation | seed=42 | Fixed single seed |
-| t-SNE | random_state=42 | In `sklearn.manifold.TSNE` |
-| PANNs + SNN head | seed=42 | Fixed for all 5 folds |
-| Adversarial attacks | N/A | Deterministic (FGSM, PGD are deterministic given model weights) |
+| All 5-fold training (local) | torch.manual_seed(42), numpy.random.seed(42) | set at start of each fold |
+| CSF3 training | seed = fold_number (1-5) | per-fold in job submission |
+| Surrogate ablation | seed=42 | fixed single seed |
+| t-SNE | random_state=42 | sklearn TSNE |
+| PANNs + SNN head | seed=42 | all 5 folds |
+| Adversarial attacks | N/A | deterministic given model weights |
+| Continual learning | seed=42 | pretrained from fold 4 best |
+
+### D.3 data preprocessing
+
+Exact librosa pipeline (in `src/dataset.py` and `spinnaker/extract_hidden_features.py`):
 | Continual learning | seed=42 | Fixed; pretrained from fold 4 best checkpoint |
 
 ### D.3 Data Preprocessing

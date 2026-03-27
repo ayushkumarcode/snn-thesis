@@ -82,20 +82,20 @@ SpikingCNN (2 conv blocks + 2 FC, ~622K params) achieves 47.15% +/- 4.50% on ESC
 **C2: Most comprehensive spike encoding comparison for audio.**
 Seven methods evaluated under identical conditions. Ordering: direct (47.15%) >> rate (24.00%) ~ phase (24.15%) > population (19.15%) > latency (16.30%) >> delta (7.25%) ~ burst (6.50%). Explained by information preservation. Notable: phase (1 spike/neuron) matches rate (~7 spikes/neuron) -- direct energy implications. Burst fails catastrophically due to temporal window mismatch. Population underperforms despite 10x more output neurons because MSE loss is harder to optimise.
 
+**C3: First SNN deployment on SpiNNaker for environmental sound.**
+Deployed on SpiNN-5 using FC2-only hybrid. 20-sample pilot = 40%; 400-sample validation = 43.0% SpiNNaker vs 51.25% snnTorch (8.25 pp gap, 64.5% agreement). AvgPool-FC1 cancellation failure documented and resolved -- standard spiking CNNs with AvgPool between LIF layers are not natively SpiNNaker-deployable because AvgPool produces fractional outputs violating the spike-only model. Previously undocumented constraint.
+
 **C4: First adversarial robustness analysis of SNNs on audio spectrograms.**
-FGSM and PGD attacks are applied across 7 perturbation magnitudes (ε ∈ {0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3}) to both SNN and ANN classifiers. At ε=0.1 (FGSM), the SNN retains **26.00%** accuracy while the ANN collapses to **1.75%** — a 14.9× robustness ratio. This is the largest reported adversarial robustness advantage for SNNs in any audio domain, and the first analysis of this kind for environmental sound classification.
+FGSM and PGD across 7 epsilon values. At eps=0.1 FGSM, SNN retains 26.00% vs ANN collapses to 1.75% -- 14.9x robustness ratio. Largest reported SNN adversarial advantage in any audio domain.
 
-**C5: First combination of PANNs embeddings with SNN classification.**
-Frozen CNN14 embeddings (AudioSet-pretrained, Kong et al. 2020) are fed to a 3-layer SNN head for the first time. The result — **92.50% ± 1.30%** — exceeds human performance on ESC-50 (81.3%), reduces the SNN-ANN gap from 16.70 pp to 0.95 pp, and demonstrates definitively that the from-scratch SNN accuracy gap is a feature-learning problem, not a spiking computation problem. Given equivalent-quality input representations, the SNN and ANN achieve statistically indistinguishable accuracy.
+**C5: First PANNs + SNN combination.**
+Frozen CNN14 embeddings fed to 3-layer SNN head. Result: 92.50% +/- 1.30%, exceeding human performance (81.3%), reducing SNN-ANN gap from 16.70 pp to 0.95 pp. Demonstrates definitively that the from-scratch gap is a feature-learning problem, not a spiking computation problem.
 
-**C6: NeuroBench-compliant standardised energy analysis.**
-Using NeuroBench v2.2.0 (Yik et al. 2025, Nature Communications), SynapticOperations metrics are computed for all SNN variants and the ANN baseline (5-fold validated): the direct SNN uses 1.08M accumulate-only operations per sample (968 ± 37 nJ estimated), versus 101K multiply-accumulate operations for the ANN (454 ± 11 nJ). In software simulation, the SNN is 2.1× more expensive due to T=25 timestep overhead. On dedicated neuromorphic hardware, each AC costs 5.1× less than a MAC — closing this gap. The PANNs + SpiNNaker FC₂ deployment is the Pareto-optimal operating point: 92.50% accuracy, ~86 nJ for the SpiNNaker classification step.
+**C6: NeuroBench-compliant energy analysis.**
+Using NeuroBench v2.2.0 (Yik et al. 2025), 5-fold validated: direct SNN uses 1.08M ACs/sample (968 +/- 37 nJ), ANN uses 101K MACs (454 +/- 11 nJ). In software SNN is 2.1x more expensive due to T=25 overhead. On neuromorphic hardware each AC costs 5.1x less than a MAC. PANNs + SpiNNaker FC2 is Pareto-optimal: 92.50% accuracy, ~86 nJ for the classification step.
 
 ---
 
-## 1.4 Scope and Limitations
-
-This thesis evaluates SNNs trained with **surrogate gradient descent** — backpropagation-through-time with a smooth surrogate for the spike derivative. This is the current mainstream approach for competitive SNN accuracy. Biologically-inspired learning rules (STDP, Hebbian learning) are not evaluated; they are outside scope and substantially less competitive on structured benchmarks.
 
 The SpiNNaker deployment uses a **hybrid approach**: convolutional feature extraction runs in software (snnTorch on CPU), and only the final classification layer (FC₂, 256→50) runs on SpiNNaker. A fully on-chip pipeline is architecturally constrained by the AvgPool-FC1 incompatibility described above. An Option A re-training strategy (replacing AvgPool with MaxPool) is validated on fold 4 and resolves this constraint theoretically; full 5-fold SpiNNaker deployment with the Option A model is left for future work.
 

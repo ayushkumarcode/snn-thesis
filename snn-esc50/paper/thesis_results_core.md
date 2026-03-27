@@ -264,19 +264,19 @@ The accuracy gap is almost entirely explained by feature quality, not spiking co
 Output expanded to 500 neurons (50 x 10). All 10 neurons per class contribute via summed spike count. Loss: SF.mse_count_loss(population_code=True, num_classes=50). Input: rate coding.
 
 | Fold | Best Acc | Best Epoch | Total Epochs |
-**What this means for the accuracy gap (§4.2):** The 16.70 pp gap seen in §4.2 is not a fundamental limitation of spiking computation. It reflects the difficulty of learning rich audio features from scratch with a ~622K parameter network trained on 1,600 clips. An ANN with the same capacity would achieve a similar gap against SNN if both were constrained to the same small-data regime.
+|------|----------|------------|--------------|
+| 1 | 22.75% | 32 | 42 |
+| 2 | 18.50% | 21 | 31 |
+| 3 | 15.75% | 18 | 28 |
+| 4 | 22.00% | 44 | 50 |
+| 5 | 16.75% | 21 | 31 |
+| **Mean** | **19.15% +/- 2.79%** | | |
 
-**What this means for neuromorphic deployment:** An SNN trained on top of pre-computed PANNs embeddings achieves 92.50% accuracy on ESC-50 — surpassing the human performance benchmark (81.3%) and approaching ANN state-of-the-art from scratch. This opens a practical deployment pathway: run the ANN feature extractor once (on a CPU or NPU), then classify with the SNN on neuromorphic hardware (energy-efficient for the final classification step).
+**Hypothesis rejected.** Population coding gets 19.15% -- lower than rate (24.00%) with higher variance (2.79 vs 1.90).
 
-**Novelty:** This is the first combination of PANNs embeddings with an SNN classifier in the published literature (to the best of our knowledge).
+**Why it underperforms:** two things. First, MSE count loss is harder to optimise -- training accuracy only reaches 18-24% vs ~50% for rate at equivalent epochs. Shallower gradients, slower convergence. Second, 10x more output neurons but the bottleneck is the 256-d FC1 representation, not output width.
 
----
-
-## 4.7 Population Coding
-
-Population coding expands the output layer to 500 neurons (50 classes × 10 neurons per class, `pop_n=10`). All 10 neurons for a class contribute to the class vote via summed spike count. Loss: `SF.mse_count_loss(population_code=True, num_classes=50)`. Accuracy: `SF.accuracy_rate(population_code=True, num_classes=50)`. Input encoding: rate coding (same as §4.2.3).
-
-**Five-fold results:**
+**Variance:** highest fold-to-fold variance of non-chance encodings (2.79%). Folds 3 and 5 near-chance (15.75%, 16.75%) while folds 1 and 4 approach rate-level (22.75%, 22.00%). MSE loss landscape has multiple local minima.
 
 | Fold | Best Acc | Best Epoch | Total Epochs |
 |------|----------|------------|--------------|

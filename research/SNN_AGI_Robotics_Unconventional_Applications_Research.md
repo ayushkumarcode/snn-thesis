@@ -474,3 +474,31 @@ Emerging field. Feasible scope, moderate novelty. Most SNN time series work does
 
 Not recommended. Minimal SNN precedent, high domain knowledge barrier (biochemistry). Graph Neural Networks dominate this space for good reason -- molecular structures are naturally graphs, not temporal sequences.
 
+---
+
+### 3.7 SNN for ECG / medical signal classification
+
+**Literature: 15-20 papers**
+
+Already covered in existing ECG research report.
+
+---
+
+### 3.8 SNN for NLP / text classification
+
+**Literature: 15-25 papers**
+
+Already covered in existing NLP research report.
+
+---
+
+### 3.9 SNN for image denoising / restoration (new finding)
+
+**Literature: 3-5 papers (very sparse)**
+
+Key works:
+- [SPIDEN: Deep SNN for efficient image denoising (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1224457/full)
+- [Neural information coding for efficient spike-based image denoising (arxiv 2023)](https://arxiv.org/abs/2305.11898)
+- [SNNSIR: Simple SNN for Stereo Image Restoration (arxiv 2025)](https://arxiv.org/pdf/2508.12271)
+
+SPIDEN achieves 30.18 dB PSNR on Set12 (only 0.25 dB below equivalent DCNN) with 20% energy reduction. Surprisingly competitive.

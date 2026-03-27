@@ -250,3 +250,31 @@ Evaluation:          scikit-learn metrics, MOABB benchmarks
 
 1. **no wet-lab work** -- all datasets are public and pre-recorded. no recruiting subjects, no ethics approval, no EEG equipment.
 
+2. **good tooling** -- TorchEEG, MNE-Python, and snnTorch abstract away a lot of complexity. TorchEEG loads DEAP/SEED with a few lines of code.
+
+3. **PyTorch foundation** -- if you know PyTorch, snnTorch is a manageable jump. the tutorials assume DL knowledge, not neuroscience.
+
+4. **tutorials exist:**
+   - snnTorch has a 7-part tutorial series from spike encoding fundamentals
+   - combra-lab/snn-eeg has a complete working pipeline
+   - TorchEEG has workflow examples for DEAP and SEED
+
+5. **published reference implementations** -- there are multiple working codebases you can study, reproduce, and extend.
+
+6. **the neuroscience you actually need is learnable in 1-2 weeks:**
+   - what EEG measures (aggregate electrical activity from scalp)
+   - what motor imagery is (imagining movement)
+   - basic frequency bands (alpha, beta, mu rhythms)
+   - what ERD/ERS means (event-related desynchronization/synchronization)
+
+### challenges and how to deal with them
+
+| Challenge | How hard | What to do |
+|---|---|---|
+| EEG preprocessing (filtering, artifact removal) | Medium | MNE-Python tutorials; many datasets come preprocessed |
+| Spike encoding (EEG to spikes) | Medium | snnTorch built-in encoders; follow tutorial 1 |
+| Surrogate gradient training | Medium-Hard | snnTorch/SpikingJelly handle this automatically |
+| Cross-subject variability | Hard | Start with within-subject, attempt cross-subject later |
+| Hyperparameter tuning | Medium | Use published papers' configs as starting points |
+| Neuroscience terminology | Medium | Keep a glossary; you only need ~20 terms |
+| Debugging temporal SNN dynamics | Medium | snnTorch visualization tools for membrane potentials |

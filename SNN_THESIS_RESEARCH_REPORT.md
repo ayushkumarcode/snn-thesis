@@ -502,3 +502,31 @@ start with MNIST (rate-encoded) to verify the pipeline works. then move to N-MNI
 | 7 | Neuromorphic Datasets with Tonic + snnTorch | Loading DVS data with Tonic library | Yes |
 
 **advanced tutorials:**
+
+| Tutorial | Title | Topic |
+|----------|-------|-------|
+| Population Coding | Population Coding Methods | Multi-neuron encoding |
+| Regression I | Membrane Potential Learning with LIF | Regression tasks |
+| Regression II | Regression-based Classification with Recurrent LIF | Recurrent architectures |
+| Binarized SNNs | Binarized Spiking Neural Networks | Binary weight optimization |
+| IPU Acceleration | Accelerating snnTorch on IPUs | Hardware acceleration |
+| Forward-Forward | Forward-Forward Algorithm for SNNs | Alternative to backprop |
+
+**domain-specific tutorials:**
+
+| Tutorial | Title | Domain |
+|----------|-------|--------|
+| Exoplanet Hunter | Finding Planets Using Light Intensity | Astronomy/time series |
+| ST-MNIST | Spiking-Tactile MNIST Dataset | Tactile neuromorphic data |
+
+### learning path i'd recommend
+1. tutorials 1-3 (fundamentals, ~4 hours)
+2. tutorials 5-6 (training, ~4 hours)
+3. tutorial 7 (neuromorphic datasets, ~2 hours)
+4. then branch to whatever project direction makes sense
+
+### additional resources
+- video lectures by Jason Eshraghian on YouTube
+- companion paper: "Training Spiking Neural Networks Using Lessons From Deep Learning" (Eshraghian et al., 2023)
+- GitHub: github.com/jeshraghian/snntorch (MIT license, actively maintained)
+

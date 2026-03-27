@@ -167,31 +167,3 @@ This is the richest single source of undergraduate-level neuromorphic theses fou
 | Classification of Finger Movements from ECoG using SNN | -- | -- | First SNN-based ECoG decoder |
 
 **URLs:**
-- https://discovery.ucl.ac.uk/id/eprint/10142370/
-- https://discovery.ucl.ac.uk/id/eprint/10109453/
-- https://discovery.ucl.ac.uk/id/eprint/10213947/
-
-### University of Edinburgh
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|
-| Spiking neural network model construction, inference, analysis and applications | William Peer Berg | 2022 | Modular PyTorch framework for SNN optimization |
-
-**URL:** https://era.ed.ac.uk/handle/1842/43087
-
-### University of Southampton
-
-| Title | Author | Year | Pages | Key Contribution |
-|-------|--------|------|-------|-----------------|
-| Memristor-based Spiking Neural Networks | Jinqi Huang | 2022 | 168 | FPGA interface, NeuroPack simulator, ANN-to-SNN conversion |
-| Non-neural computing on the SpiNNaker | Kier Dugan | 2016 | -- | Non-neural applications on neuromorphic hardware |
-| Neural spike classification acceleration with RRAM | Patrick Foster | 2023 | -- | RRAM for neural spike classification |
-
-**URLs:**
-- https://eprints.soton.ac.uk/471765/
-- https://eprints.soton.ac.uk/400083/
-
-### University of Strathclyde
-
-| Title | Author | Year | Key Contribution |
-|-------|--------|------|-----------------|

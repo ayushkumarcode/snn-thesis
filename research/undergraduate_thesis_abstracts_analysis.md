@@ -362,3 +362,31 @@ lots of KIP theses use "Towards" in titles -- signals progress toward a larger g
 - "Towards Spike-based Expectation Maximization in a Closed-Loop Setup..."
 - "Towards Balanced Random Networks on the BrainScaleS I System"
 - "Towards Fast Iterative Learning on the BrainScaleS Neuromorphic Hardware System"
+
+### Contribution Types (ranked by ambition)
+
+1. **Implementation + Demonstration:** "I implemented X and showed it works" (lowest bar, very common)
+2. **Implementation + Evaluation:** "I implemented X, evaluated on Y, reporting results" (most common)
+3. **Comparison:** "I compared A, B, C on task X and analyzed trade-offs" (common)
+4. **Adaptation:** "I adapted technique X to new domain/platform Y" (common in KIP)
+5. **Characterization:** "I characterized behavior X across parameters Y" (KIP-style)
+6. **Novel method + Evaluation:** "I proposed approach X and evaluated it" (less common, more ambitious)
+
+### Abstract Structure Template
+
+typical undergrad thesis abstract follows this:
+
+```
+[1-2 sentences: Context/Motivation]
+  - "Spiking neural networks offer energy-efficient computation but..."
+
+[1 sentence: Gap/Problem]
+  - "However, limited research has applied X to domain Y"
+
+[1-2 sentences: What this thesis does]
+  - "This thesis implements/investigates/compares..."
+
+[1-2 sentences: Method]
+  - "We use framework X to implement Y on platform Z"
+
+[1-2 sentences: Key results]

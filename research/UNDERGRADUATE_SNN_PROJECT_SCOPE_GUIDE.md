@@ -198,31 +198,3 @@ Based on analysing 40+ projects:
 
 | Dataset | Type | Difficulty | Notes |
 |---------|------|-----------|-------|
-| MNIST / Fashion-MNIST | Static images | Easy | Standard baseline, everyone uses it |
-| N-MNIST | Neuromorphic events | Medium | Natural fit for SNNs |
-| DVS128 Gesture | Neuromorphic events | Medium | 11 gestures, recommended for your project |
-| SHD (Heidelberg Spiking Dataset) | Audio spikes | Medium | Spoken digits, native spike format |
-| CIFAR-10 | Static images | Medium | Good for ANN comparison |
-| Google Speech Commands | Audio | Medium | Good for temporal SNN capabilities |
-
----
-
-## Part 8: Repositories Where This Research Was Compiled From
-
-### Individual Report Files:
-1. `manchester_escholar_thesis_research.md` -- 27 Manchester theses (all PhD+)
-2. `snn_thesis_projects_research.md` -- 40+ GitHub projects with detailed analysis
-3. `uk_thesis_research_neuromorphic_snn.md` -- Multi-university repository search
-4. `spinnaker_apt_student_projects_research.md` -- SpiNNaker/APT group deep dive
-5. `figshare_manchester_research_report.md` -- Figshare investigation (no theses found)
-
-### Key External Resources:
-- Heidelberg Bachelor's Theses: http://www.kip.uni-heidelberg.de/vision/publications/mscbsc/
-- Manchester Research Explorer: https://research.manchester.ac.uk/en/studentTheses/
-- Open Neuromorphic Community: https://open-neuromorphic.org/
-- snnTorch Tutorials: https://snntorch.readthedocs.io/en/latest/tutorials/index.html
-- awesome-snn: https://github.com/coderonion/awesome-snn
-
----
-
-*Last updated: 2026-02-24*

@@ -138,3 +138,31 @@ based on published guidance from Cambridge, Swansea/Nottingham (Bob Laramee's gu
 5. rigorous evaluation using appropriate metrics
 6. critical reflection on what worked, what didn't, and why
 7. professional presentation -- clear writing, good diagrams, well-structured report
+8. project management demonstrated through progress
+
+### what gets you a high first (80+):
+all of the above plus:
+- independent thought -- going beyond what supervisor suggested
+- evidence of original thinking in approach or analysis
+- ambitious scope with demanding objectives achieved
+- thorough evaluation with statistical rigour
+
+### what gets you 90+ (exceptional):
+all of the above plus:
+- genuine contribution to the field (but still not required everywhere)
+- potentially publishable quality
+- deep insight that surprises even the markers
+
+### what examiners DON'T require:
+- a brand new algorithm or technique
+- something never done before
+- a publication in a peer-reviewed venue
+- extension of the state of the art
+
+### from Ivory Research (widely cited):
+
+> "The undergraduate dissertation is not required to contain the same level of originality as postgraduate work. Students are still expected to complete the work independently and cite all sources, but **they do not need to present any new ideas**. It is sufficient to conduct thorough, sustained research and present a critical discussion of a relatively narrow research topic."
+
+Source: [Ivory Research](https://www.ivoryresearch.com/library/dissertation-articles/bachelor-dissertation-undergraduate-dissertation/)
+
+### from The Student Room (examiner/student discussions):

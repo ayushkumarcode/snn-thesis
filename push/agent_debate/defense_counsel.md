@@ -220,31 +220,3 @@ Third, it has practical value disproportionate to its length in the paper. A pra
 
 ### What Should Be the Title and Frame of the Paper
 
-The paper should be framed as a systematic characterisation study — the first such study for audio SNNs on ESC-50 — with the gap collapse as the key intellectual finding, and the hardware deployment and adversarial robustness as the neuromorphic-systems-specific contributions that distinguish it from a pure ML paper.
-
-A title that works: "From Spike Encoding to Neuromorphic Hardware: Characterising Spiking Neural Networks for Environmental Sound Classification on ESC-50"
-
-This title signals: (a) methodological scope (encoding through hardware), (b) characterisation rather than SOTA-claiming, (c) the specific benchmark (ESC-50), and (d) the system-level nature of the contribution — appropriate for ICONS.
-
----
-
-## Summary Verdict
-
-The supervisor's concern — "results with significance and novelty are required for publication" — is valid as a general principle. Applied to this specific work, the concern underestimates what is here. This paper has:
-
-- One confirmed "first" that cannot be disputed (ESC-50 SNN)
-- One confirmed "first" in audio SNN hardware (SpiNNaker deployment)
-- One confirmed "first" in audio SNN adversarial analysis
-- One confirmed "first" in audio SNN transfer learning (PANNs+SNN)
-- The most comprehensive encoding comparison in audio SNN literature
-- A mechanistically interesting surrogate failure pattern
-
-Not every contribution listed above is equally strong. The hardware deployment at 33.1% is a feasibility demonstration, not a production result. The surrogate ablation is preliminary pending multi-seed validation. But the combination of C1, C2, C4, and C5 alone — first benchmark, comprehensive encoding comparison, adversarial robustness, gap collapse mechanism — would be sufficient for ICONS acceptance based on the precedent set by the 2022, 2024, and 2025 accepted papers. The hardware deployment (C3) is a bonus that directly serves the ICONS community. The surrogate ablation (C6) adds a practically useful finding that happens to challenge established consensus.
-
-The paper should be submitted.
-
----
-
-*Prepared by: Defense Counsel (senior neuromorphic computing researcher)*
-*For: ICONS 2026 submission review — COMP30040 thesis project*
-*Evidence base: ICONS 2022-2025 accepted paper records, literature search results (March 2026 deep research), NeuroBench framework results, SpiNNaker 5-fold hardware results*

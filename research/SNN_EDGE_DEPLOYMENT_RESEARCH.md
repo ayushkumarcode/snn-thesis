@@ -463,31 +463,3 @@ A "deploy SNN on real hardware" thesis project is not only feasible but represen
 1. Train SNN using snnTorch on MNIST or N-MNIST
 2. Convert to optimized C runtime (following the compression paper methodology)
 3. Deploy on STM32F4 Discovery or Arduino Portenta H7
-4. Measure inference time, memory usage, power consumption
-5. Compare against TensorFlow Lite Micro CNN on same hardware
-6. Demonstrate keyword spotting or gesture classification application
-
-**Hardware cost:** $15-80 (STM32 Discovery or Portenta H7)
-**Timeline:** 8-12 weeks
-**Novelty:** Practical SNN-vs-ANN comparison on commodity microcontroller
-**Demonstrability:** Standalone sensor + microcontroller demo
-
-### 10.5 Critical Success Factors
-
-1. **Start with software simulation first.** Get the SNN trained and validated before touching hardware.
-2. **Use snnTorch as the training framework.** It has the best FPGA deployment pipeline and tutorials.
-3. **Choose quantization-aware training from the start.** 8-bit integer models deploy much more easily than 32-bit float.
-4. **Measure power properly.** Use a USB power meter (e.g., Monsoon Power Monitor, or even a simple USB ammeter) for credible results.
-5. **Do not oversell SNN efficiency.** The research shows the comparison is nuanced. An honest analysis makes a stronger thesis than overclaiming.
-6. **Use N-MNIST or DVS128 Gesture as the benchmark.** These are standard neuromorphic datasets with well-known baselines.
-
-### 10.6 Risk Assessment
-
-| Risk | Likelihood | Mitigation |
-|------|------------|------------|
-| FPGA toolchain issues (Vivado) | Medium | Use Spiker+ auto-generation or pre-built bitstreams |
-| SNN accuracy lower than ANN | Expected | This is a finding, not a failure -- document the tradeoff |
-| Hardware procurement delays | Medium | Start with software simulation; have microcontroller as backup |
-| Learning curve too steep | Low-Medium | Follow existing tutorials (ISFPGA 2024 workshop); start with Tier 1 |
-| Power measurement difficulty | Medium | Use USB power meters; document methodology carefully |
-

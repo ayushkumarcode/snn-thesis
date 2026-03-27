@@ -411,31 +411,3 @@ import torch.nn as nn
 import snntorch as snn
 from snntorch import surrogate
 from snntorch import functional as SF
-from snntorch import utils
-import torchvision
-
-# --- Hyperparameters ---
-num_steps = 25        # Number of time steps
-beta = 0.5            # Membrane decay factor
-batch_size = 128
-num_epochs = 1
-lr = 1e-2
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# --- Surrogate gradient ---
-spike_grad = surrogate.fast_sigmoid(slope=25)
-
-# --- Network ---
-net = nn.Sequential(
-    nn.Conv2d(1, 12, 5),
-    nn.MaxPool2d(2),
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
-    nn.Conv2d(12, 64, 5),
-    nn.MaxPool2d(2),
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
-    nn.Flatten(),
-    nn.Linear(64 * 4 * 4, 10),
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True, output=True),
-).to(device)
-
-# --- Data ---

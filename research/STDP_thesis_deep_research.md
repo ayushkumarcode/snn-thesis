@@ -362,3 +362,31 @@ the thesis should NOT just replicate Diehl & Cook (2015) on MNIST. that is indee
 **Three-Factor Learning Rules (2025 Patterns/Cell Press review)**:
 formal three-factor rule: Delta_w = M * F(pre, post), where M is a neuromodulatory signal (reward, error, attention) and F is Hebbian/STDP-like. variants include:
 - **R-max:** maximal for pre-before-post, modulated by reward minus baseline
+- **R-STDP:** bi-phasic coincidence window, modulated by success signal
+- **TD-STDP:** modulated by temporal-difference error (for RL)
+- **e-prop:** eligibility propagation with eligibility traces (biologically plausible gradient approximation)
+
+---
+
+## 8. How Does STDP Scale Beyond MNIST?
+
+### 8.1 Results on Harder Datasets
+
+| Dataset | Best STDP-Based Result | Method | Best SNN (any method) | Gap |
+|---|---|---|---|---|
+| **MNIST** | 98.92% | S2-STDP + NCG (STDP-CSNN) | ~99.5% (surrogate grad) | ~0.6 pp |
+| **Fashion-MNIST** | 88.72% | S2-STDP + NCG (STDP-CSNN) | ~93%+ (surrogate grad) | ~4-5 pp |
+| **CIFAR-10** | 66.41% | S2-STDP + NCG (STDP-CSNN) | ~95%+ (surrogate grad) | ~29 pp |
+| **CIFAR-10** | 79.55% | S2-STDP + NCG (SoftHebb-CNN) | ~95%+ (surrogate grad) | ~16 pp |
+| **CIFAR-100** | 35.90% | S2-STDP + NCG (STDP-CSNN) | ~78%+ (surrogate grad) | ~42 pp |
+| **CIFAR-100** | 53.49% | S2-STDP + NCG (SoftHebb-CNN) | ~78%+ (surrogate grad) | ~25 pp |
+| **N-MNIST** | ~93-95% | STDP-based MLP | ~99.5% (surrogate grad) | ~5-6 pp |
+| **DVS128 Gesture** | ~90-92% | STDP-based methods | ~98.7% (modern SNN) | ~7-8 pp |
+| **Caltech face/motorbike** | 99.1% | STDP-CSNN + SVM | N/A | N/A (binary) |
+| **ETH-80** | 82.8% | STDP-CSNN + SVM | N/A | N/A |
+| **Spoken-MNIST** | 93.3% | SOM-Associated-SNN with STDP | Higher with surrogate grad | TBD |
+| **SHD** | 88.1% | SOM-Associated-SNN with STDP | ~95%+ | ~7 pp |
+
+### 8.2 The Scaling Problem -- Being Honest
+
+the numbers tell a pretty clear story: **STDP scales poorly to complex datasets as the sole learning mechanism.** the gap between STDP and surrogate-gradient approaches widens dramatically:

@@ -166,3 +166,31 @@ estimated time: 3-4 weeks.
 1. **High school student paper (2024)**: published in [NHSJS](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/) -- compared SNN, CNN, ANN on MNIST, CIFAR-10, N-MNIST. found SNN matched accuracy but consumed 142% more power and 128% more memory on commercial hardware.
 
 2. **Virginia Tech class project (2020)**: [GitHub](https://github.com/oshears/adv-ml-2020-snn-project) -- compared 784-100 ANN to 784-100 SNN on MNIST. grad course project.
+
+3. **UNSW Bachelor Honours (2022)**: biologically-inspired ANNs with spiking neurons, benchmarking against traditional networks.
+
+4. **KCL BSc (2018)**: [GitHub](https://github.com/LucaMozzo/SpikingNeuralNetwork) -- SNN for MNIST in C++ from scratch. more implementation than comparison focused.
+
+5. **Multiple Kaggle/GitHub repos**: numerous basic SNN MNIST implementations.
+
+### How Saturated Is This?
+
+**basic "SNN vs ANN accuracy on MNIST"**: HIGHLY saturated. done by high school students, undergrads, grad students, academic papers.
+
+**"SNN vs ANN on CIFAR-10 with systematic analysis"**: less saturated but still significant academic coverage.
+
+**risk of being too generic**: HIGH if you only compare accuracy. MODERATE if you add one analytical dimension (energy, robustness). LOW if you add two or more dimensions with controlled methodology.
+
+---
+
+## 6. Strong vs Weak Version
+
+### WEAK (risky for grade)
+
+- run snnTorch tutorials on MNIST
+- train CNN on MNIST
+- compare accuracy numbers
+- maybe Fashion-MNIST
+- report: "SNNs got 98%, ANNs got 99%, so ANNs are slightly better"
+- no energy analysis, no controlled variables, no encoding comparison, default hyperparams
+

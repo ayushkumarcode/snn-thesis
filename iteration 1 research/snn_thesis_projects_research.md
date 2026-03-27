@@ -553,31 +553,3 @@ Based on analyzing 40+ projects, here is what a realistic 3rd-year undergraduate
 5. **NLP/text applications with SNNs** - Almost no student projects found in this domain
 
 ### Why Some Searches Were Unproductive
-- "Third year project" is not a universal term (varies by country)
-- Many student repos lack proper README documentation
-- Some projects are in private repos or institutional GitLab instances
-- Neuromorphic hardware projects require lab access not available to most students
-
----
-
-## Section 12: Recommended Follow-ups
-
-1. **Search institutional repositories** (e.g., ETH Zurich Research Collection, Manchester e-scholar) for thesis PDFs not hosted on GitHub
-2. **Check Open Neuromorphic student talks** (https://open-neuromorphic.org/) for recent student work
-3. **Browse snnTorch discussion forum** (GitHub Discussions) for student project questions
-4. **Review NICE (Neuro-Inspired Computational Elements) workshop proceedings** for student presentations
-5. **Search arXiv** for papers from student authors at universities (often link to GitHub repos)
-
----
-
-## Confidence Assessment
-
-| Finding | Confidence |
-|---------|------------|
-| Project URLs and basic metadata | HIGH - verified from GitHub |
-| Accuracy numbers and results | HIGH - from README/repos |
-| Student vs research classification | MODERATE - inferred from context |
-| Thesis PDF availability | HIGH - verified in repos |
-| Complexity assessments | MODERATE - based on code inspection |
-| Scope tier recommendations | HIGH - based on pattern analysis across 40+ projects |
-| Framework recommendations | HIGH - based on ecosystem analysis |

@@ -222,20 +222,20 @@ recommendation: use option A. the gap-collapse finding is more scientifically si
 
 ## research gaps (what i couldn't find)
 
-**Examples:**
-- NeuroBench: Standardized framework for all neuromorphic computing
-- Yarga et al. ICONS 2022: 4-encoding comparison for speech digits
-- Neural Coding comparison (Frontiers 2021): 4 coding schemes on MNIST
-
-**YOUR VERSION:** "Most comprehensive SNN encoding comparison for audio: 7 methods, 50 classes, 5-fold validated, with statistical tests and cross-encoding transfer analysis"
-
-**Assessment:** No prior audio SNN paper compares more than 4 encodings. Your 7-encoding comparison with statistical rigor is genuinely the most comprehensive. This alone could be a short paper at ICONS.
+1. ICONS 2024 complete paper list -- behind IEEE paywall, could only see schedule
+2. ICONS acceptance rate since 2018 -- only 2018 data publicly available
+3. direct SNN vs ANN comparison on ESC-50 in any prior work -- doesn't exist, we're creating the baseline
+4. SNN + PANNs in any prior work -- found nothing, our PANNs+SNN experiment appears genuinely novel
+5. detailed ICONS reviewer criteria -- no public rubric
 
 ---
 
-## 6. HOT TOPICS IN NEUROMORPHIC COMPUTING (2025-2026)
+## action items
 
-Ranked by reviewer excitement (based on publication trends, conference emphasis, and community direction):
+1. reframe around gap-collapse thesis (option A) -- highest impact change, editing only
+2. consider reordering results to lead with gap-collapse
+3. tighten to 6-7 strong pages rather than cramming everything into 8. move noise robustness and CL to brief mention -- they dilute
+4. submit as full paper (8 pages) -- work easily justifies 20-min talk
 
 ### 1. Neuromorphic + LLMs (HOTTEST)
 - SpikeLLM at ICLR 2025 was a landmark

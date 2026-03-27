@@ -26,3 +26,31 @@ E_SNN = SOP_SNN * E_AC + FLOPs_non_spiking * E_MAC
 where:
   SOP (Synaptic Operations) = sum over all layers of:
     (spike_count_per_neuron * fan_out_connections) * T_timesteps
+
+  E_MAC = 4.6 pJ   (32-bit float multiply-accumulate at 45nm)
+  E_AC  = 0.9 pJ   (32-bit float accumulate/addition at 45nm)
+```
+
+these energy constants come from Horowitz's 2014 ISSCC keynote "Computing's Energy Problem (and what we can do about it)." most cited source for operation energy costs in the entire neural network efficiency literature.
+
+Source: [Horowitz 2014, ISSCC](https://www.researchgate.net/publication/271463146_11_Computing's_energy_problem_and_what_we_can_do_about_it)
+
+### tier 2: analytical model with memory access costs (more rigorous)
+
+Lemaire et al. (2022) proposed a model accounting for three costs:
+
+1. synaptic operations (AC for SNN, MAC for ANN)
+2. memory accesses (reading weights, reading/writing membrane potentials)
+3. addressing operations (indexing into memory)
+
+each spike leads to: 2 reads (weights + current membrane potential) + 1 write (updated potential).
+
+memory access energy at 45nm (Horowitz 2014):
+- 8KB SRAM: ~10 pJ
+- 1MB SRAM: ~100 pJ
+- DRAM: ~2000 pJ
+
+this is more accurate because memory access often dominates energy over arithmetic. but it needs more assumptions about memory hierarchy.
+
+Source: [Lemaire et al., ICONIP 2022](https://arxiv.org/abs/2210.13107)
+

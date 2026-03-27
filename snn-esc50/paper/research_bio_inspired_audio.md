@@ -1,14 +1,14 @@
-# Bio-Inspired Audio Representations for SNNs: Deep Research Report
+# bio-inspired audio representations for SNNs -- paper reading notes
 
-**Date**: 25 March 2026
-**Objective**: Identify audio representations that could give SNNs a genuine advantage over ANNs for ESC-50 sound classification
-**Current baseline**: SNN 47.15% / ANN 63.85% on log-mel spectrograms (64 bins, 216 time frames)
+25 march 2026
+trying to find audio representations that could give SNNs a genuine advantage over ANNs for ESC-50.
+current baseline: SNN 47.15% / ANN 63.85% on log-mel spectrograms (64 bins, 216 time frames)
 
 ---
 
-## Executive Summary
+## the main hypothesis
 
-The research reveals a critical and well-supported hypothesis: **mel spectrograms are an ANN-native representation that fundamentally disadvantages SNNs**. Multiple independent research lines confirm that bio-inspired cochlear representations (cochleagrams, gammatonegrams) consistently improve SNN performance over mel spectrograms, sometimes dramatically. The most promising finding is from Wall et al. (ICONS 2022): all spike encoding methods yield **higher classification accuracy using significantly fewer spikes** when encoding a cochleagram vs. a traditional STFT spectrogram. On TIDIGITS, SOD encoding with cochleagram achieves 97% accuracy -- matching the unencoded baseline.
+after reading a bunch of papers i'm pretty convinced that **mel spectrograms are an ANN-native representation that fundamentally disadvantages SNNs**. multiple independent research lines confirm that bio-inspired cochlear representations (cochleagrams, gammatonegrams) consistently improve SNN performance over mel spectrograms, sometimes dramatically.
 
 The highest-novelty, highest-impact option is a **CARFAC cochleagram + BAE (Biologically plausible Auditory Encoding) pipeline** feeding an SNN. No one has tried this on ESC-50. The closest work (Larroza et al. 2025, arXiv:2503.11206) only covers ESC-10 with mel spectrograms and simple FC-SNN. Another high-novelty option is **Resonate-and-Fire neurons as input encoders** that perform spectral decomposition and spike encoding simultaneously from raw audio -- entirely eliminating the spectrogram stage.
 

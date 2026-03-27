@@ -40,20 +40,20 @@ Source: `results/panns/panns_snn_head_all_folds_50ep.json`.
 
 Direct encoding, fold 1, single seed. Best validation accuracy reported.
 
-| Surrogate Function | Best Acc. | Best Epoch | Status |
-|-------------------|-----------|------------|--------|
-| spike_rate_escape | **46.00%** | 50 | Complete |
-| fast_sigmoid (slope=25) | 44.75% | 50 | Complete |
-| atan (α=2.0) | 35.75% | 49 | Complete |
-| ste | 10.25% | 1 | Failed (early stop ep11) |
-| sigmoid (slope=25) | 2.00% | 1 | Failed (early stop ep11) |
-| triangular | 2.75% | 13 | Failed (early stop ep23) |
-| sfs (slope=25) | 2.00% | 1 | Failed (early stop ep10) |
-| lso (slope=0.1) | N/A | — | Crashed (Python 3.14/snnTorch 0.9.4 incompatibility) |
+| Surrogate | Best Acc | Best Epoch | Status |
+|-----------|----------|------------|--------|
+| spike_rate_escape | 46.00% | 50 | complete |
+| fast_sigmoid (slope=25) | 44.75% | 50 | complete |
+| atan (alpha=2.0) | 35.75% | 49 | complete |
+| ste | 10.25% | 1 | failed (early stop ep11) |
+| sigmoid (slope=25) | 2.00% | 1 | failed (early stop ep11) |
+| triangular | 2.75% | 13 | failed (early stop ep23) |
+| sfs (slope=25) | 2.00% | 1 | failed (early stop ep10) |
+| lso (slope=0.1) | N/A | -- | crashed (Python 3.14 compat) |
 
-*Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`.*
-*Note: 1-seed result (n=1). Bimodal distribution: learning group {sre, fast_sigmoid, atan} vs failure group {STE, sigmoid, SFS, triangular}.*
+Source: `results/snn/surrogate_ablation/ablation_fold1_seed42.json`. 1 seed only. Bimodal: {sre, fast_sigmoid, atan} learn vs {STE, sigmoid, SFS, triangular} fail.
 
+### A.4 adversarial robustness -- full table (fold 4, 400 samples)
 ### A.4 Adversarial Robustness — Full Table (Fold 4, 400 Samples)
 
 SNN: direct encoding, fold 4 local model (53.75% clean). ANN: fold 4 local model (68.75% clean). Fold 4 models used for all adversarial experiments (consistent with fold 4 usage for SpiNNaker).

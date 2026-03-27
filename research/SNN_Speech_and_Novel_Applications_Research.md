@@ -54,3 +54,31 @@ SNNs are now within 1-1.5% WER of SOTA ANNs on LibriSpeech, which is honestly pr
 - TIDIGITS
 
 ### Feasibility for undergrad thesis: HIGH
+- Keyword spotting on GSC v2 is very doable with snnTorch or SpikingJelly
+- SpikingJelly has a built-in `speechcommands.py` example
+- snnTorch has good tutorials on spike encoding and training
+- Could compare multiple SNN architectures (CSNN, RSNN, Spikformer) on GSC
+- Could extend to SHD/SSC neuromorphic datasets
+- Could explore novel encoding schemes for audio-to-spike conversion
+
+### Gaps i noticed
+1. No SNN model matches Whisper/wav2vec2 on realistic ASR benchmarks yet (though IML-Spikeformer is getting close)
+2. Most SNN work focuses on keyword spotting (small vocabulary), not open-vocabulary ASR
+3. Limited work on noisy/real-world speech conditions with SNNs
+4. Few studies comparing SNN inference latency vs ANN on actual neuromorphic hardware for speech
+5. SNN for low-resource language ASR -- found zero papers on this
+
+---
+
+## 2. Text-to-speech with SNNs
+
+### Paper count: 2-3 papers (genuinely novel frontier)
+
+| Paper | Year | Venue | Key Result |
+|-------|------|-------|------------|
+| **SpikeVoice: High-Quality TTS Via Efficient SNN** | 2024 | **ACL 2024** (top NLP venue) | First SNN-based TTS; comparable quality to ANN with only 10.5% energy consumption |
+| **Spiking Vocos: An Energy-Efficient Neural Vocoder** | 2025 | arXiv | First SNN-based vocoder; UTMOS 3.74, PESQ 3.45; 14.7% energy of ANN Vocos |
+
+### What's going on here
+
+**SpikeVoice (ACL 2024)** -- this is a landmark paper. It's explicitly stated as "the first TTS work in the SNN field." Key stuff:

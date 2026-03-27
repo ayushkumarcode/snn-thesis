@@ -54,3 +54,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Complexity**: MODERATE-HIGH - robotics simulation + SNN + RL
 - **Stars**: 2 | **Forks**: 1 | **Commits**: 191
 - honest about failing to converge, which is actually quite realistic for a bachelor thesis. the project was ambitious (robotics + SNN + learning), and partial results are normal for this scope. good reminder that not all thesis projects succeed fully.
+
+### 1.5 Spiking Stereo Matching (BSc Thesis)
+- **URL**: https://github.com/gdikov/SpikingStereoMatching
+- **Description**: SNN for real-time event-based stereo matching using dynamic vision sensors, deployed on SpiNNaker
+- **Framework**: sPyNNaker toolchain, PyNN, SpiNNaker hardware
+- **Dataset**: Custom event-based vision sensor data
+- **Results**: 2ms latency with neuromorphic hardware (published in Biomimetic and Biohybrid Systems, 2017)
+- **Thesis PDF**: Not in repo, but published paper exists
+- **Complexity**: ADVANCED - neuromorphic hardware, event-based vision, SpiNNaker
+- **Stars**: 2 | **Forks**: 2 | **Commits**: 182
+- very advanced for a BSc thesis. they actually got a published paper out of it. access to SpiNNaker hardware was likely through Manchester's facilities.
+
+### 1.6 QuadBot-NeuroMorphic (Cambridge Undergraduate Research)
+- **URL**: https://github.com/Cambridge-Control-Lab/QuadBot-NeuroMorphic
+- **Description**: Neuromorphic control of quadrupedal robot locomotion using spiking neural circuits (CPGs)
+- **Framework**: MATLAB/Simulink R2022b+, SOLIDWORKS, VEX V5 Robot Brain, Python
+- **Dataset**: N/A (physical robot experiments)
+- **Results**: Successfully implemented biologically-inspired gaits on physical robots (NeuroPup and Synapider)
+- **Thesis PDF**: No formal thesis, but good documentation
+- **Complexity**: ADVANCED - neuroscience + control systems + embedded hardware
+- **Stars**: 5 | **Forks**: 2 | **Commits**: 93 | **Last updated**: Sept 2023
+- this was actually a 10-week summer research project (not a thesis per se). funded by MathWorks. well-documented. shows what's possible with good supervision and resources at a top university.
+
+### 1.7 SNN Accelerator Hardware (EE552 Class Project)
+- **URL**: https://github.com/zwhexplorer/Spiking-Neural-Network-Accelerator-EE552-project
+- **Description**: Hardware accelerator for SNNs inspired by TrueNorth and Loihi, 3x3 mesh network
+- **Framework**: SystemVerilog (100%), asynchronous hardware design
+- **Dataset**: N/A (hardware design)

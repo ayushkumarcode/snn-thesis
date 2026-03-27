@@ -208,13 +208,17 @@ NeuroBench v2.2.0 wraps model in SNNTorchModel:
 
 ### 3.7.4 continual learning
 
+Sequential training on 5 ESC-50 super-categories (Animals, Nature, Human, Domestic, Urban; 10 classes each). After each task, BWT measured:
+$$\text{BWT} = \frac{1}{T-1}\sum_{i<T}(R_{T,i} - R_{i,i})$$
+Negative BWT = forgetting.
 
-Output population code: each of 50 classes is represented by 10 output neurons (500 total). Loss: SF.mse_count_loss(correct_rate=1.0, incorrect_rate=0.0, population_code=True, num_classes=50). Classification: argmax of total spike count over grouped neuron pools.
+### 3.7.5 population coding
+
+50 classes x 10 neurons = 500 output. Loss: SF.mse_count_loss(correct_rate=1.0, incorrect_rate=0.0, population_code=True, num_classes=50). Classification: argmax of grouped spike counts.
 
 ---
 
-## 3.8 Reproducibility
+## 3.8 reproducibility
 
-All code is available at [GitHub repository — TBD]. Fixed random seeds (torch.manual_seed(42), numpy.random.seed(42)) are used for all local experiments. CSF3 cluster jobs use seed=fold_number for deterministic per-fold results. The ESC-50 dataset is downloaded automatically from the official GitHub repository.
+All code at [GitHub -- TBD]. Fixed seeds (torch.manual_seed(42), numpy.random.seed(42)) for local experiments. CSF3 jobs use seed=fold_number. ESC-50 auto-downloads from official repo.
 
-**Python environment:** Python 3.13 (CSF3) / 3.14 (local), PyTorch 2.10, snnTorch 0.9.4, torchattacks, neurobench 2.2.0, panns-inference, librosa 0.10.x.

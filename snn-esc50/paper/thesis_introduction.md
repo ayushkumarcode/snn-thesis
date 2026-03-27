@@ -40,20 +40,20 @@ This thesis uses surrogate gradient training throughout, via snnTorch 0.9.4.
 
 ### 1.1.5 why environmental sound classification?
 
+ESC is a great testbed for SNN research for three reasons.
 
-**Second, the application domain demands the efficiency properties SNNs offer.** The hearing aid, wildlife sensor, and smart building use cases described above all require audio classification on devices where the energy overhead of a GPU is prohibitive. Edge audio intelligence is the target market for neuromorphic computing, and ESC is one of its core tasks.
+First, audio spectrograms are structurally compatible with spiking computation. A mel spectrogram is a 2D time-frequency representation -- the temporal axis maps directly to SNN timesteps. Many sounds (door knock, glass breaking, dog bark) produce naturally sparse spectrograms, matching the sparse regime where SNNs are most efficient.
 
-**Third, the ESC-50 benchmark provides rigorous experimental control.** ESC-50 (Piczak 2015) contains 2,000 recordings across 50 environmental sound classes, with 40 clips per class, 5 seconds each, sampled at 44.1 kHz. The predefined 5-fold cross-validation splits enable rigorous, standardised performance comparison. Human performance on ESC-50 is 81.3% (Piczak 2015) — a meaningful upper bound given the difficulty of some class distinctions (e.g., sea waves vs. rain, insects vs. crackling fire). The ANN state-of-the-art is 98.25%, achieved through large-scale pretraining on AudioSet followed by ESC-50 fine-tuning. This thesis uses no external pretraining for its primary SNN evaluation — a deliberate methodological choice to isolate the capacity of SNNs to learn directly from the target domain.
+Second, the application domain demands exactly the efficiency properties SNNs offer. Hearing aids, wildlife sensors, smart buildings -- all need audio classification on devices where GPU energy is prohibitive. Edge audio intelligence is basically the target market for neuromorphic computing.
 
-### 1.1.6 The Gap This Thesis Fills
+Third, ESC-50 (Piczak 2015) provides rigorous experimental control. 2000 recordings, 50 classes, 40 clips per class, 5 seconds each, 44.1 kHz. Predefined 5-fold CV enables standardised comparison. Human performance is 81.3% -- a meaningful upper bound given some genuinely hard distinctions (sea waves vs rain, insects vs crackling fire). ANN SOTA is 98.25% via AudioSet pretraining. This thesis uses no external pretraining for the primary SNN evaluation -- a deliberate choice to isolate what SNNs can learn from the target domain alone.
 
-Despite the active SNN research community and the strong motivation for audio applications, **no prior published work has evaluated convolutional SNNs on the full ESC-50 benchmark** at the time of writing. The closest prior work (Larroza et al. 2025) evaluates fully-connected (not convolutional) SNNs on ESC-10, a 10-class subset, reporting approximately 60% accuracy. SpiNNaker has been applied to audio tasks with synthetic pure tones (Dominguez-Morales et al. 2016), but never to real environmental sound recordings. There exists no published reference accuracy for convolutional SNN on ESC-50, no systematic comparison of spike encoding methods for audio, and no adversarial robustness analysis for audio SNNs. This thesis closes all of these gaps.
+### 1.1.6 the gap this thesis fills
+
+Despite active SNN research and strong audio motivation, **no prior published work has evaluated convolutional SNNs on the full ESC-50 benchmark**. Closest is Larroza et al. 2025 -- FC-only (not conv) SNNs on ESC-10 (10-class subset), ~60% accuracy. SpiNNaker has been used for audio with synthetic pure tones (Dominguez-Morales et al. 2016) but never real environmental recordings. There's no published reference for conv SNN on ESC-50, no systematic encoding comparison for audio, and no adversarial robustness analysis for audio SNNs. This thesis closes all of these gaps.
 
 ---
 
-## 1.2 Research Questions
-
-This thesis addresses four research questions, each targeting a distinct open question in the field:
 
 **RQ1: Can convolutional SNNs classify environmental sounds competitively with matched ANNs?**
 The ANN state-of-the-art on ESC-50 is 98.25%, achieved with external pretraining on 2 million clips. This thesis does not aim to match that number with SNN-from-scratch training on 1,600 clips. The question is whether SNNs trained from scratch achieve accuracy within a useful margin of a matched-architecture ANN (same convolutional structure, same dataset, same training protocol). The "gap" itself is a scientific measurement, not a failure — it quantifies the efficiency cost of spiking computation under the current training paradigm.

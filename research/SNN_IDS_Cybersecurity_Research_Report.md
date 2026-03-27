@@ -54,3 +54,31 @@ as a thesis topic it's well-positioned -- active enough for solid baselines and 
 |---------|------|---------|----------|-------------|-------------|
 | **NSL-KDD** | 2009 | 125,973 train / 22,544 test | 41 | DoS, Probe, R2L, U2R | Free: https://www.unb.ca/cic/datasets/nsl.html and Kaggle |
 | **CICIDS-2017** | 2017 | ~2.8M | 79 | Brute Force, DoS, DDoS, Web Attack, Infiltration, Botnet, Heartbleed | Free: UNB CIC, Kaggle, IEEE DataPort |
+| **CSE-CIC-IDS2018** | 2018 | ~16.2M | 79 | Same as 2017 + expanded | Free: UNB CIC |
+| **UNSW-NB15** | 2015 | 2,540,044 | 49 | Fuzzers, Analysis, Backdoors, DoS, Exploits, Generic, Recon, Shellcode, Worms | Free for academic: UNSW Research, Kaggle |
+| **CIC-DDoS2019** | 2019 | Large-scale | 79 | 12 DDoS attack types | Free: UNB CIC |
+| **ToN-IoT** | 2020 | ~461K | 44 | 9 IoT-specific attack types | Free: UNSW Canberra |
+| **BoT-IoT** | 2018 | ~73M | 46 | DDoS, DoS, Recon, Theft | Free: UNSW |
+| **AWID** | 2015 | ~1.7M | 155 | WiFi attacks (injection, impersonation, flooding) | Free: Aegean WiFi Intrusion Dataset |
+
+### notes on which datasets to use
+
+NSL-KDD is the most used benchmark in SNN-IDS papers because it's manageable and widely adopted. but it's getting old (derived from 1999 KDD Cup data).
+
+CICIDS-2017/2018 are preferred by newer papers for modern attack types and flow-based features from CICFlowMeter. Wang et al. (2024) used CSE-CIC-IDS2018 for their ConvSNN.
+
+UNSW-NB15 is increasingly used as a harder, more realistic benchmark. it's the primary dataset in Mia et al. (2025).
+
+for a thesis, i'd use UNSW-NB15 as primary (modern, challenging, well-documented), NSL-KDD as secondary for literature comparison, and maybe CICIDS-2017 as an optional third.
+
+---
+
+## accuracy: how do SNNs compare?
+
+### SNN results on IDS benchmarks
+
+| Model | Dataset | Accuracy | F1/AUC | Energy | Source |
+|-------|---------|----------|--------|--------|--------|
+| ConvSNN (Wang 2024) | CSE-CIC-IDS2018 | 98.82% | -- | 1.775 x10^-4 kWh/10K | Scientific Reports |
+| ConvSNN (Wang 2024) | CIC-DDoS2019 | 99.86% | -- | (same model) | Scientific Reports |
+| Single-Spike SNN (Zhou 2020) | NSL-KDD | 99.0% | AUC=1.00 | -- | arXiv |

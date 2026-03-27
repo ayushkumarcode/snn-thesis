@@ -294,31 +294,3 @@ The hybrid deployment model (heavy ANN feature extraction on conventional hardwa
 **Degree:** PhD
 **Institution:** University of Manchester
 **Year:** Pre-2020 (exact date not confirmed in search)
-
-**Summary:** Developed a biologically-inspired model of the human auditory periphery implemented on the SpiNNaker neuromorphic platform. Focused on converting sound into spiking neural action potentials and simulating subsequent processing in auditory brain regions.
-
-**Comparison with our work:**
-- Both use SpiNNaker at Manchester
-- Wall focused on biological auditory modeling; we focus on machine learning classification
-- Our work builds on Manchester's SpiNNaker infrastructure
-
----
-
-### 2.2 SNN-Related Theses at University of Manchester (SpiNNaker Group)
-
-These are directly from UoM's Research Explorer and are highly relevant given our institutional context:
-
-| Title | Author | Year | Focus | Relevance |
-|-------|--------|------|-------|-----------|
-| "Deep Spiking Neural Networks" | (Jin) | ~2022 | Noisy Softplus activation, PAF training method | Training methodology for deep SNNs |
-| "Learning in Spiking Neural Networks" | (Davies) | ~2022 | STDP-based learning, SpiNNaker spike injection | Learning rules + SpiNNaker implementation |
-| "Ensemble Learning for Spiking Neural Networks" | -- | ~2022 | Ensemble methods for SNN performance | Shows class probability > firing rate for predictions |
-| "Parallelisation of Neural Processing on Neuromorphic Hardware" | L. Peres | June 2022 | Cortical Microcircuit real-time simulation on SpiNNaker | 20x improvement over previous. SpiNNaker parallelism. |
-| "Parallel Simulation of Neural Networks on SpiNNaker" | X. Jin | ~2010 | SpiNNaker simulation methodology | Foundational SpiNNaker work |
-| "Modelling Neural Dynamics on Neuromorphic Hardware" | -- | -- | Neural dynamics on SpiNNaker | Biological modeling |
-| "Neural Encoding by Bursts of Spikes" | -- | -- | Burst coding neuroscience | Encoding schemes |
-
-**Key observation:** Manchester has a strong tradition of SpiNNaker-based PhD theses, but these focus on biological neural simulation and learning algorithms, NOT on audio classification or environmental sound recognition. Our thesis fills a clear gap in the Manchester SpiNNaker thesis portfolio by applying the platform to a practical machine learning classification task.
-
----
-

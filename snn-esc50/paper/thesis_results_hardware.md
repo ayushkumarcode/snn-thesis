@@ -139,19 +139,19 @@ Hardware gap fluctuates a lot -- not monotonically converging. Ranges from 0.0 p
 
 snnTorch leads all five categories at n=400. Urban has smallest gap (5.0 pp). Nature easiest for both; Domestic and Urban hardest.
 
-| Category | SpiNNaker Acc | snnTorch Acc | Gap |
-|----------|--------------|-------------|-----|
-| Animals (0–9) | 45.0% | 57.5% | snnTorch +12.5 pp |
-| Nature (10–19) | 61.3% | 68.8% | snnTorch +7.5 pp |
-| Human (20–29) | 46.2% | 56.2% | snnTorch +10.0 pp |
-| Domestic (30–39) | 31.2% | 37.5% | snnTorch +6.2 pp |
-| Urban (40–49) | 31.2% | 36.2% | snnTorch +5.0 pp |
+**Hardest for SpiNNaker (0%):** insects, door_wood_creaks, glass_breaking (50 pp gap vs snnTorch!), helicopter, engine.
+**Easiest (100%):** clapping, thunderstorm.
+**SpiNNaker beats snnTorch:** airplane (87.5% vs 50.0%, +37.5 pp!), mouse_click (+25 pp), can_opening (+12.5 pp), clock_tick (+12.5 pp). These are sounds with simple, consistent spectrotemporal patterns that IF_curr_exp integrates more reliably.
 
-snnTorch leads all five categories at n=400. Urban shows the smallest gap (5.0 pp), consistent with the mid-run observation. The Animals +6.5 pp SpiNNaker advantage visible at n=108 does not persist at n=400 — the early advantage was noise from small sample counts. Nature is the easiest category for both systems; Domestic and Urban are hardest.
+**Error analysis (n=400):**
 
-**Hardest for SpiNNaker (0% accuracy, n=400):** insects, door_wood_creaks, glass_breaking (SpiNN 0% vs snnTorch 50.0% — largest class-level gap, 50.0 pp), helicopter, engine.
-**Easiest for SpiNNaker (100%):** clapping, thunderstorm.
-**SpiNNaker beats snnTorch:** airplane (87.5% vs 50.0%, **+37.5 pp**), mouse_click (62.5% vs 37.5%, +25 pp), can_opening (62.5% vs 50.0%, +12.5 pp), clock_tick (12.5% vs 0.0%, +12.5 pp). These are sounds with simple, consistent spectrotemporal patterns that IF_curr_exp integrates more reliably than complex LIF dynamics.
+| Category | Count | % |
+|----------|-------|---|
+| Both correct | 145 | 36.2% |
+| SpiNNaker right, snnTorch wrong | 27 | 6.8% |
+| snnTorch right, SpiNNaker wrong | 60 | 15.0% |
+| Both wrong | 168 | 42.0% |
+
 
 **Error analysis (n=400 final):**
 

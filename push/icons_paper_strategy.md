@@ -96,31 +96,3 @@ Frame as hybrid edge deployment: CNN14 in cloud, SNN head on neuromorphic edge. 
 ### "Standard PGD, not SA-PGD"
 FGSM results (single-step, no SNN adaptation) provide clean lower bound. Cite Wang et al. (2025) and acknowledge SA-PGD as future work.
 
----
-
-## EXPERIMENTS THAT WOULD STRENGTHEN THE PAPER (2 weeks)
-
-### Must do:
-1. **SpiNNaker latency measurement** — wall-clock ms per inference. Free to measure.
-2. **SpiNNaker energy from provenance data** — real hardware energy, not theoretical
-3. **Statistical significance tests** — Wilcoxon for all key comparisons
-
-### Nice to have:
-4. Reduce SpiNNaker hardware gap (tune tau_syn, weight quantization)
-5. 1-fold on UrbanSound8K (kills "single dataset" objection)
-
----
-
-## FULL vs SHORT PAPER
-
-**FULL PAPER (8 pages).** No question.
-- We have MORE than enough content
-- Full = 20-min talk (more visibility)
-- Full carries more academic weight on CV
-- If not accepted as full, automatically considered for poster (safety net)
-
----
-
-## HOW WE COMPARE TO TYPICAL ICONS PAPERS
-
-| Dimension | Typical ICONS | Us | |

@@ -250,3 +250,31 @@ i think so. Here's the breakdown:
 4. **Efficiency-accuracy tradeoff:** How does reducing timesteps, network size, or spike rates affect accuracy and estimated energy
 5. **Robustness study:** Test SNN keyword spotting under noise vs ANN baselines
 6. **Small-footprint models:** Competitive accuracy with very few parameters (following ED-sKWS direction)
+
+### Risks
+
+| Risk | Likelihood | Impact | How to handle |
+|------|-----------|--------|---------------|
+| Can't reproduce published results | Medium | Medium | Use sparch (designed for reproducibility) |
+| Training takes too long | Low | Medium | Start with SHD (10K samples); use Colab GPU |
+| Difficulty with SNN math | Medium | Low | snnTorch tutorials are genuinely good |
+| Framework bugs | Medium | Low | snnTorch and SpikingJelly are mature |
+| No access to neuromorphic hardware | High | Low | Energy estimation via SOP counting is standard |
+| Scope creep | Medium | Medium | Fix scope to SHD + GSC 12-class + 1 contribution |
+
+### Minimum viable thesis
+
+At minimum, could:
+1. Implement a LIF-based SNN for SHD classification with snnTorch (~90%+ accuracy)
+2. Implement equivalent ANN baseline for comparison
+3. Extend to GSC V2 12-class with Mel-spectrogram preprocessing
+4. Compare accuracy, parameter count, estimated energy (SOP counting)
+5. Write up with proper lit review and analysis
+
+Achievable in one semester of focused work.
+
+---
+
+## Recommended Tool Stack
+
+```

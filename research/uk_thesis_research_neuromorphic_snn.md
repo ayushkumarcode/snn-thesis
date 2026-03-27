@@ -166,3 +166,31 @@ URL pattern: https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
 | Qubit chains' emergent behaviour from biologically-inspired dynamics | Xavier Laurent | 2025 | MSc by research | York |
 | System Analysis and Design of Physical Delay-Feedback Reservoir Computing | Alexander McDonnell | 2024 | PhD | York |
 | Scaling up ESNs with Heterogeneous Reservoirs | Chester Wringe | 2024 | PhD | York |
+| Replicating cognitive self-sufficiency for AGI models | Ivan Kyambadde | 2023 | PhD | York |
+| Breaking Implicit Assumptions of Physical Delay-Feedback Reservoir Computing | Tian Gan | 2023 | PhD | York |
+| Embodying a Computational Model of Hippocampal Replay for Robotic RL | Matthew Whelan | 2020 | MPhil | Sheffield |
+| Social Insect-Inspired Adaptive Hardware | Matthew Rowlings | 2018 | PhD | York |
+| Learning spatio-temporal spike train encodings with ReSuMe/DelReSuMe/R-STDP | Ibrahim Ozturk | 2017 | PhD | York |
+| Reconstruction methods for spiking neural circuits | Dorian Florescu | 2016 | PhD | Sheffield |
+| Figuring Time by Space: Sensory motion in cortical maps | Stuart Wilson | 2011 | PhD | Sheffield |
+
+URL pattern: https://etheses.whiterose.ac.uk/id/eprint/[number]
+
+---
+
+## Other Notable Student Projects (non-UK, for calibration)
+
+### Master's Theses
+| Title | Author | University | Year | Tools |
+|-------|--------|-----------|------|-------|
+| ZynqNet: FPGA-Accelerated Embedded CNN | David Gschwend | -- | 2016 | Caffe, Vivado HLS, Xilinx Zynq |
+| Modelling Learning Systems in ANNs and SNNs | Jegp | -- | 2019 | Haskell, Futhark, NEST, PyNN, BrainScaleS |
+| SNN Accelerator (EE552 class project) | zwhexplorer | -- | 2022 | SystemVerilog |
+
+### Undergraduate-Level Comparison
+| Title | Author | Level | Tools | Scope |
+|-------|--------|-------|-------|-------|
+| Paths to Less Artificial Intelligence | Chira Levy | Thesis-level | snntorch, PyTorch | SNN vs ANN on MNIST/CIFAR-10/Speech Commands |
+| SNNs for Image Classification | Osaze Shears | Course project | Python | MNIST/CIFAR10 comparison |
+
+---

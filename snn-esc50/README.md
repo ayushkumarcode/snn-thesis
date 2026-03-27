@@ -82,20 +82,20 @@ input: mel spectrogram (1, 64, 216)
 Conv2d(1, 32, 3x3) -> BatchNorm -> MaxPool(2) -> LIF
 Conv2d(32, 64, 3x3) -> BatchNorm -> MaxPool(2) -> LIF
 AvgPool(4, 6) -> Flatten (2304)
-## Architecture
+Linear(2304, 256) -> LIF
+Linear(256, 50) -> LIF -> output
+
+ANN baseline: same thing but ReLU instead of LIF
+~622K params total
+```
+
+## project structure
 
 ```
-Input: Mel Spectrogram (1, 64, 216)
-
-Conv2d(1, 32, 3x3) → BatchNorm → MaxPool(2) → LIF neuron
-Conv2d(32, 64, 3x3) → BatchNorm → MaxPool(2) → LIF neuron
-AvgPool(4, 6) → Flatten (2304)
-Linear(2304, 256) → LIF neuron
-Linear(256, 50) → LIF neuron → Output
-
-ANN baseline: same architecture with ReLU instead of LIF
-Total parameters: ~622K
-```
+snn-esc50/
+├── src/
+│   ├── config.py          # hyperparameters and paths
+│   ├── dataset.py         # ESC-50 loader + mel spectrograms
 
 ## Project Structure
 

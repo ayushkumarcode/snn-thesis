@@ -256,31 +256,3 @@ reward = healthy_reward + forward_reward - ctrl_cost - contact_cost
 | **Disturbance recovery** | Time to recover after perturbation push | NOVEL -- good thesis contribution |
 | **SNN-specific: Spike count** | Total spikes per inference | YES -- for energy efficiency argument |
 | **SNN-specific: Inference latency** | Wall-clock time per action | YES -- for real-time argument |
-
-**The reflex-specific contribution for the thesis could be:**
-- Apply random perturbation forces during evaluation
-- Measure recovery time and maximum perturbation the agent can withstand
-- Compare SNN policy vs. ANN policy on disturbance rejection speed
-
-**Source:** [Locomotion benchmarking](https://arxiv.org/html/2501.16590) | [Cost of Transport metric](https://www.mdpi.com/2075-1702/10/3/185)
-
----
-
-### 9. GPU Requirements
-
-| Field | Value |
-|-------|-------|
-| **Simulation requires GPU?** | NO -- MuJoCo runs on CPU |
-| **SNN training requires GPU?** | Recommended but NOT required |
-| **Can run on laptop?** | **YES** |
-| **POTENTIAL BLOCKER** | **NO (but training will be slow)** |
-
-**Estimated training times:**
-
-| Setup | Environment | Estimated Wall-Clock Time |
-|-------|------------|--------------------------|
-| MacBook (CPU only) | InvertedPendulum | ~10-30 minutes |
-| MacBook (CPU only) | Ant-v5 (20M steps PPO) | ~4-12 hours |
-| MacBook (MPS GPU) | Ant-v5 (20M steps PPO) | ~2-6 hours (estimated) |
-| Google Colab (T4 GPU) | Ant-v5 (20M steps PPO) | ~1-3 hours |
-| Isaac Gym (full GPU) | Ant-v5 | ~7 minutes |

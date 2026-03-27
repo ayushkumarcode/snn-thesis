@@ -138,3 +138,26 @@ why not (short version): ESC-50 beats it on novelty (0 vs 15-25 papers). ECG bea
 ## Option 7: SNN Food Recognition (Food-101)
 
 the pitch: zero SNN papers on food image classification.
+
+novelty: VERY HIGH (zero papers).
+
+why not (short version): weakest real-world narrative. "why would you use an SNN to classify food?" doesn't have a compelling answer beyond "nobody's tried it." static images, no natural SNN advantage. it works but it's boring.
+
+---
+
+## my recommendation to myself
+
+given what i know -- Claude Code heavy, short iteration cycles, ~28 days, pragmatic but wouldn't mind some novelty:
+
+**go with ESC-50.** it's the sweet spot:
+- zero papers = automatic novelty without trying
+- audio = natural SNN fit (temporal data)
+- standard PyTorch train loop = Claude Code friendly
+- each experiment runs in minutes
+- even mediocre accuracy is publishable (i'm first)
+- the report writes itself (clear gap, clear method, clear results)
+- can fall back to SHD/SSC if things go sideways (same pipeline, known good results)
+
+second choice: framework shootout if i'd rather do breadth over depth. lower novelty but also lower risk. many small experiments instead of one big bet.
+
+everything else is either harder (robot reflexes, ECG 12-lead), less novel (satellite), or weaker narrative (food, wildlife).

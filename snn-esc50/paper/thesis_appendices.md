@@ -264,11 +264,6 @@ snn-esc50/
 ### D.3 data preprocessing
 
 Exact librosa pipeline (in `src/dataset.py` and `spinnaker/extract_hidden_features.py`):
-| Continual learning | seed=42 | Fixed; pretrained from fold 4 best checkpoint |
-
-### D.3 Data Preprocessing
-
-**Exact librosa pipeline (used in `src/dataset.py` and `spinnaker/extract_hidden_features.py`):**
 ```python
 y, sr = librosa.load(filepath, sr=22050, duration=5)
 expected_len = 22050 * 5
@@ -278,6 +273,11 @@ mel = librosa.feature.melspectrogram(
     y=y, sr=sr, n_mels=64, n_fft=1024, hop_length=512
 )
 mel_db = librosa.power_to_db(mel, ref=np.max)
+mel_norm = (mel_db - mel_db.min()) / (mel_db.max() - mel_db.min() + 1e-8)
+tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)  # (1, 64, 216)
+```
+
+### D.4 dependencies
 mel_norm = (mel_db - mel_db.min()) / (mel_db.max() - mel_db.min() + 1e-8)
 tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)  # (1, 64, 216)
 ```

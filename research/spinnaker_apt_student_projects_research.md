@@ -82,3 +82,31 @@ Found 14 PhD theses directly related to SpiNNaker/neuromorphic computing, 1 conf
 
 ### Luca Peres -- Parallelisation of Neural Processing on Neuromorphic Hardware (2022)
 - PhD, supervised by Steve Furber (main), Oliver Rhodes (co)
+- World's first real-time Cortical Microcircuit simulation. 20x over prior results. Up to 9x higher throughput through enhanced partitioning.
+- PDF: 15.4 MB at https://research.manchester.ac.uk/en/studentTheses/parallelisation-of-neural-processing-on-neuromorphic-hardware
+
+### Mollie Ward -- Modelling Neural Dynamics on Neuromorphic Hardware (2024)
+- PhD, supervised by Oliver Rhodes (main), James Garside (co)
+- Hodgkin-Huxley and two-compartment neuron models on SpiNNaker and SpiNNaker2. Fixed- and floating-point implementations with excellent accuracy. HH neurons only 8x computational overhead vs LIF. Lower energy consumption for pattern detection with more complex models, which is interesting.
+- PDF: 16.6 MB at https://research.manchester.ac.uk/en/studentTheses/modelling-neural-dynamics-on-neuromorphic-hardware
+
+---
+
+## MSc Dissertations from Manchester
+
+### Nicholas Buttigieg -- Spiking Grid Cell Models on Neuromorphic Hardware (2019)
+- MSc, Faculty of Science and Engineering
+- Supervised by Steve Furber and Oliver Rhodes
+- Spiking grid cell models for spatial navigation implemented on SpiNNaker
+- Uses SpiNNaker, Python 2.7, sPyNNaker, Brian2
+- GitHub: https://github.com/nickybu/spiking_grid_cell_model
+- Full dissertation available via Google Drive link in repo
+- This is the only MSc dissertation i could confirm with public access
+
+### Francesco Galluppi -- MSc Thesis (2009)
+- He ran "Doughnut Hunter" as the first neural application on the SpiNNaker test chip
+- Joined SpiNNaker January 2009 for MSc, then came back for PhD April 2010
+- Couldn't find the actual thesis title or text anywhere
+
+---
+

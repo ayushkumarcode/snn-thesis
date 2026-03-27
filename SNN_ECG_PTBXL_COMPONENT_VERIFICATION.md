@@ -278,3 +278,31 @@ nn.Conv1d(in_channels=12, out_channels=32, kernel_size=7)
 - **Form statements:** morphological patterns
 - **Rhythm statements:** rhythm-related findings
 
+**5 Superclass distribution (approximate counts, multi-label so sum > 21,799):**
+
+| Superclass | Full Name | Approx. Count |
+|---|---|---|
+| NORM | Normal ECG | ~9,528 |
+| MI | Myocardial Infarction | ~5,486 |
+| STTC | ST/T Changes | ~5,250 |
+| CD | Conduction Disturbance | ~4,907 |
+| HYP | Hypertrophy | ~2,655 |
+
+**Standard task for benchmarking:** 5-superclass multi-label classification
+**Label format:** Multi-label (one ECG can have multiple labels, e.g., MI + STTC)
+**This is a multi-label, NOT multi-class problem.** Use BCEWithLogitsLoss, not CrossEntropyLoss.
+
+**Label loading code:**
+
+```python
+agg_df = pd.read_csv(path + 'scp_statements.csv', index_col=0)
+agg_df = agg_df[agg_df.diagnostic == 1]
+
+def aggregate_diagnostic(y_dic):
+    tmp = []
+    for key in y_dic.keys():
+        if key in agg_df.index:
+            tmp.append(agg_df.loc[key].diagnostic_class)
+    return list(set(tmp))
+
+Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)

@@ -383,31 +383,3 @@ This is very manageable for a semester-long thesis project.
 [ ] Is the loss decreasing? Plot training loss over iterations
 [ ] Are gradients flowing? Check gradient norms per layer
 [ ] Are states being reset? Verify utils.reset() is called
-[ ] Is the surrogate gradient slope reasonable? Try defaults first
-[ ] Is beta/decay appropriate? Start with 0.5
-[ ] Is the number of time steps reasonable? Try 25 for static images
-[ ] Is batch size causing OOM? Reduce if needed
-[ ] Is learning rate appropriate? 1e-3 to 1e-2 for Adam is typical
-[ ] Are spike counts being used correctly in loss function?
-```
-
----
-
-## 8. snnTorch Implementation Guide
-
-### Installation
-
-```bash
-pip install snntorch
-```
-
-That is it. snnTorch depends only on PyTorch and installs cleanly via pip.
-
-### Minimal Working Example (MNIST Classification)
-
-```python
-import torch
-import torch.nn as nn
-import snntorch as snn
-from snntorch import surrogate
-from snntorch import functional as SF

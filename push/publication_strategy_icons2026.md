@@ -138,3 +138,31 @@ this is the obvious concern. here's why i think it's fine:
 ### deadlines that have passed
 
 | Venue | Deadline | Notes |
+|-------|----------|-------|
+| EUSIPCO 2026 | Feb 13, 2026 | Larroza submitted their paper to EUSIPCO |
+| ICASSP 2026 | Sep 17, 2025 | premiere IEEE audio venue |
+| ISCAS 2026 | Oct 26, 2025 | circuits & systems |
+| NICE 2026 | ~Jan 2026 | ACM neuromorphic |
+
+### still open
+
+**ICONS 2026 (April 1)** -- primary target, perfect fit, draft already exists.
+
+**AICAS 2026 (March 22)** -- IEEE AI Circuits and Systems, Ha Long Bay Vietnam. good fit. might have already passed.
+
+**ICNCE 2026 (April 3)** -- Aachen, Germany. abstracts only (1-page PDF), non-proceedings. good for visibility/networking, low effort. student participation sponsored.
+
+**NeurIPS 2026 Workshops (~Oct 2026)** -- could target MLNCP workshop (neuromorphic/efficient ML). workshops are more accessible than main conf (~20% acceptance). secondary target for late 2026.
+
+**ICLR 2027 (~Sep 2026)** -- very competitive (~30%). 47.15% would need careful framing. PANNs+SNN and encoding analysis would be the strongest angles. reach target.
+
+**ICASSP 2027 (~Sep 2026)** -- premiere audio/speech/signal processing. has featured SNN papers. strong secondary target.
+
+### journal alternatives
+
+**Frontiers in Neuroscience (Neuromorphic Engineering section)** -- rolling deadline, IF ~3.2, excellent fit. good fallback if conference rejected. expanded ~15 page version anytime.
+
+**Neuromorphic Computing and Engineering (IOP)** -- rolling, new journal growing rapidly. dedicated to exactly this work. strong option.
+
+**IEEE TNNLS** -- IF ~10.4. good but very competitive. reach target for expanded version.
+

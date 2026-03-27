@@ -194,3 +194,31 @@ def run_fold(fold, device, lambda_conv, lambda_fc, num_steps=NUM_STEPS):
     best_epoch = 0
     patience_counter = 0
 
+    save_dir = (RESULTS_DIR / "energy" /
+                f"spike_reg_lc{lambda_conv}_lf{lambda_fc}")
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    start = time.time()
+    for epoch in range(1, NUM_EPOCHS + 1):
+        train_loss, train_acc, train_rates = train_epoch(
+            model, train_loader, optimizer, device, lambda_conv, lambda_fc)
+        test_acc, test_rates, overall_rate = eval_model(
+            model, test_loader, device)
+        scheduler.step(train_loss)
+
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            torch.save(model.state_dict(),
+                       save_dir / f"best_fold{fold}.pt")
+            best_rates = test_rates.copy()
+            best_overall = overall_rate
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            rates_str = " ".join(f"{k}={v:.4f}" for k, v in test_rates.items())
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | "
+                  f"Test: {test_acc:.4f} | {rates_str} | "
+                  f"overall={overall_rate:.4f}")

@@ -82,3 +82,31 @@ class FlyBrainClassifier(nn.Module):
         sparse = torch.zeros_like(projected)
         sparse.scatter_(1, topk_idx, topk_vals)
 
+        # Trained readout
+        logits = self.readout(sparse)
+        return logits
+
+
+class FlyBrainSNN(nn.Module):
+    """Spiking version of fly brain for SpiNNaker compatibility.
+
+    Uses LIF neurons in the Kenyon cell layer.
+    """
+
+    def __init__(self, input_dim=64, expansion=40, wta_ratio=0.05,
+                 connection_prob=0.1, num_steps=25):
+        super().__init__()
+        import snntorch as snn
+        from snntorch import surrogate
+
+        self.expansion_dim = input_dim * expansion
+        self.wta_k = max(1, int(self.expansion_dim * wta_ratio))
+        self.num_steps = num_steps
+
+        # FIXED random projection
+        random_weights = torch.zeros(self.expansion_dim, input_dim)
+        for i in range(self.expansion_dim):
+            n_connections = max(1, int(input_dim * connection_prob))
+            indices = torch.randperm(input_dim)[:n_connections]
+            random_weights[i, indices] = torch.randn(n_connections)
+        self.register_buffer('random_proj', random_weights)

@@ -334,3 +334,9 @@ each frames the work as answering a specific question rather than just "comparin
 ---
 
 ## Bottom Line
+
+this IS a safe option. it WILL work -- you'll get numbers, plots, a complete thesis. the risk isn't failure; it's mediocrity. difference between weak and strong is not the topic itself but the depth of analysis.
+
+**minimum viable differentiator**: include NeuroBench energy metrics + at least one encoding comparison + multiple datasets. this lifts you above "tutorial replication" into "systematic empirical study."
+
+**recommended approach**: combine angles B (hyperparameter sensitivity), C (energy analysis), and F (time steps Pareto) for maximum impact with reasonable effort. add D (robustness) if time permits.

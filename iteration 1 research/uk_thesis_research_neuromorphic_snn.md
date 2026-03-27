@@ -138,3 +138,31 @@ URL: https://spiral.imperial.ac.uk/entities/publication/0bfc1732-2dac-4589-b50e-
 ### University of Kent
 
 | Title | Author | Year | Supervisor | Key Contribution |
+|-------|--------|------|------------|-----------------|
+| Towards Neuromorphic Gradient Descent | Florian Bacho | 2024 | Dominique Chu | Exact gradients for temporally-coded SNNs, local online learning |
+| Towards Modelling of Autonomous Neuromorphic Learning | Jakub Fil | 2022 | -- | Autonomous neuromorphic learning systems |
+
+URLs:
+- https://kar.kent.ac.uk/104801/
+- https://kar.kent.ac.uk/95778/
+
+### UCL
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Bio-mimetic SNNs for unsupervised clustering | Katarzyna Kozdon | 2022 | STDP, structural plasticity, evolutionary learning |
+| Graph-based Feature Learning for Neuromorphic Vision | Yin Bi | 2020 | Graph neural networks for event cameras, ASL-DVS dataset |
+| Classification of Finger Movements from ECoG using SNN | -- | -- | First SNN-based ECoG decoder |
+
+URLs:
+- https://discovery.ucl.ac.uk/id/eprint/10142370/
+- https://discovery.ucl.ac.uk/id/eprint/10109453/
+- https://discovery.ucl.ac.uk/id/eprint/10213947/
+
+### University of Edinburgh
+
+| Title | Author | Year | Key Contribution |
+|-------|--------|------|-----------------|
+| Spiking neural network model construction, inference, analysis and applications | William Peer Berg | 2022 | Modular PyTorch framework for SNN optimization |
+
+URL: https://era.ed.ac.uk/handle/1842/43087

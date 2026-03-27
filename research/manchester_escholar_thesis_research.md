@@ -194,3 +194,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 ### Bayesian Mechanisms in Spatial Cognition
 - **Tamas Madl**, 2016, PhD, Computer Science
 - Supervised by Ke Chen (main), Daniela Montaldi (co)
+- https://research.manchester.ac.uk/en/studentTheses/bayesian-mechanisms-in-spatial-cognition-towards-real-world-capab
+- Develops cognitively plausible spatial memory models. Bayesian localization and error correction. Neural recording evidence from rats. Extends LIDA cognitive architecture. Robotic simulations.
+- 19.3 MB PDF
+
+---
+
+## ML for Electrophysiology / Biosignal Processing
+
+### ML to Analyse Auditory Evoked Electrophysiological Data
+- **Vicki Kennedy**, 2024, Clinical Science Doctorate
+- Supervised by Chris Plack (main)
+- https://research.manchester.ac.uk/en/studentTheses/use-of-machine-learning-to-analyse-auditory-evoked-electrophysiol
+- ML for auditory brainstem response (ABR) analysis. Wave V latency estimation (R2 = 0.8925), tinnitus classification (80% sensitivity, 81.82% specificity), noise exposure prediction (poor).
+- Uses SVM, Gaussian process regression, ANNs, wavelet feature extraction
+- 2.59 MB PDF
+
+---
+
+## Edge / IoT / Embedded
+
+### Sensing and Image Processing for IoT Applications
+- **Yu Li**, 2023, **MPhil**, EEE
+- https://research.manchester.ac.uk/en/studentTheses/sensing-and-image-processing-methods-for-iot-applications
+- Monitoring industrial production processes, baked potato quality assessment, oven anomaly detection. Uses HSV, LBP, OCSVM.
+- **MPhil level -- somewhat closer to masters scope**
+- 4.79 MB PDF
+
+---

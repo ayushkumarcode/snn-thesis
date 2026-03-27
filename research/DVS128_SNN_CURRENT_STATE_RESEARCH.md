@@ -101,31 +101,3 @@ Typical configuration: 5 convolutional blocks with 128 channels, 3x3 kernels, fo
 | **Community/Stars** | ~3.3K GitHub stars | ~2.5K GitHub stars |
 | **Academic Paper** | Science Advances (2023) | NeurIPS Workshop |
 | **Multi-step Processing** | Native support. SeqToANNContainer for parallel timestep processing. | Sequential processing only (loop over timesteps). |
-| **Surrogate Gradients** | ATan, Sigmoid, many others | ATan, Fast Sigmoid, Straight-Through, Triangular |
-| **Active Development** | Active (last commit recent) | Active (v0.9.4 latest) |
-| **PyPI Package** | `pip install spikingjelly` | `pip install snntorch` |
-
-### Framework Benchmark (Open Neuromorphic, 2024)
-
-For a 16K neuron network forward+backward pass:
-
-| Framework | Time (seconds) | Notes |
-|-----------|---------------|-------|
-| SpikingJelly (CuPy) | 0.26 | Fastest by significant margin |
-| Lava DL (SLAYER) | ~0.4-0.5 | Custom CUDA |
-| Sinabs EXODUS | ~0.4-0.5 | Custom CUDA |
-| Norse (torch.compile) | ~0.5-0.7 | JAX-competitive with compilation |
-| snnTorch | ~1.0+ | No significant torch.compile speedup |
-| Spyx (JAX) | ~0.3-0.4 | JAX-based, different ecosystem |
-
-### Verdict for Thesis Project
-
-**SpikingJelly is the clear winner for DVS128 Gesture recognition.** It has:
-- A working DVS128 data pipeline out of the box
-- A complete classification example achieving 96.18% accuracy
-- Significantly faster training through CUDA kernels
-- The PLIF neuron model (learnable parameters) built-in
-
-snnTorch is better for learning fundamentals and has better documentation, but its DVS128 support is broken and requires workarounds through Tonic. If you choose snnTorch, budget extra time for data pipeline setup.
-
-**Source:** [SNN Library Benchmarks - Open Neuromorphic](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/), [SpikingJelly GitHub](https://github.com/fangwei123456/spikingjelly), [snnTorch GitHub Issue #285](https://github.com/jeshraghian/snntorch/issues/285)

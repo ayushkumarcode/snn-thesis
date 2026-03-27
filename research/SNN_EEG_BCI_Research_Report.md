@@ -277,31 +277,3 @@ Evaluation:          scikit-learn metrics, MOABB benchmarks
 
 3. **PyTorch foundation:** If you know PyTorch, the jump to snnTorch is manageable. snnTorch extends PyTorch and the tutorials are written for people with deep learning (not neuroscience) backgrounds.
 
-4. **Excellent tutorials available:**
-   - snnTorch has a 7-part tutorial series starting from spike encoding fundamentals
-   - combra-lab/snn-eeg has a complete working pipeline you can study and modify
-   - TorchEEG has workflow examples for DEAP and SEED
-
-5. **Published reference implementations:** Unlike cutting-edge research in some fields, there are multiple working codebases you can reference, reproduce, and extend.
-
-6. **The neuroscience you need is learnable:** You need to understand:
-   - What EEG measures (aggregate electrical activity from the scalp)
-   - What motor imagery is (imagining movement)
-   - Basic frequency bands (alpha, beta, mu rhythms)
-   - What Event-Related Desynchronization/Synchronization (ERD/ERS) means
-   - These concepts can be learned in 1-2 weeks from review papers and tutorials
-
-### 6.2 Challenges and Mitigations
-
-| Challenge | Difficulty | Mitigation |
-|---|---|---|
-| Understanding EEG preprocessing (filtering, artifact removal) | Medium | Use MNE-Python tutorials; many datasets come preprocessed |
-| Spike encoding (converting EEG to spikes) | Medium | snnTorch has built-in encoders; follow tutorial 1 |
-| Surrogate gradient training | Medium-Hard | snnTorch/SpikingJelly handle this automatically |
-| Cross-subject variability | Hard | Start with within-subject classification, then attempt cross-subject |
-| Hyperparameter tuning | Medium | Follow published papers' configurations as starting points |
-| Understanding neuroscience terminology | Medium | Keep a glossary; focus on the 20 terms you actually need |
-| Debugging temporal SNN dynamics | Medium | Use snnTorch visualization tools for membrane potentials |
-
-### 6.3 Recommended Scope for Undergraduate Thesis
-

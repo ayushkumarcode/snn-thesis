@@ -446,3 +446,31 @@ def count_synops(model, spike_recordings):
 
 ```python
 # During forward pass, record total spikes per layer
+total_spikes_layer1 = spk1_rec.sum().item()
+total_spikes_layer2 = spk2_rec.sum().item()
+total_possible_spikes = num_steps * batch_size * num_neurons
+spike_sparsity = 1.0 - (total_spikes / total_possible_spikes)
+# Higher sparsity = lower energy on neuromorphic hardware
+```
+
+**Verification method:** NeuroBench 2.2.0 confirmed on PyPI with SNNTorchModel wrapper. Tutorial code verified from NeuroBench docs. Manual counting approach validated against NeuroBench's mathematical formulation.
+
+---
+
+## COMPONENT 8: 5-FOLD CROSS-VALIDATION
+
+### EXISTS: YES
+### POTENTIAL BLOCKER: NO
+
+ESC-50 has **built-in, predefined** 5-fold cross-validation. This is not something you need to create -- it is part of the dataset design.
+
+### Structure:
+
+| Fold | Clips | Usage |
+|------|-------|-------|
+| 1 | 400 clips (8 per class) | Train or test |
+| 2 | 400 clips (8 per class) | Train or test |
+| 3 | 400 clips (8 per class) | Train or test |
+| 4 | 400 clips (8 per class) | Train or test |
+| 5 | 400 clips (8 per class) | Train or test |
+

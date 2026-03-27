@@ -34,31 +34,3 @@ For an undergraduate thesis, this direction offers **exceptionally high novelty*
 | Subj (subjectivity) | 95.30% | N/A | -- |
 | WikiText-2 (perplexity) | 18.01 PPL | -- | 37.50 PPL |
 | WikiText-103 (perplexity) | 39.75 PPL | -- | 29.41 PPL |
-
-**Energy:** Claims 32.2x fewer operations on neuromorphic hardware. Theoretical energy reduced from 3.29x10^10 pJ to 1.02x10^9 pJ.
-
-**Verdict:** Works competitively on simple classification tasks (within 1-3% of BERT). Language generation is weaker. The 216M pretrained model is required -- the 45M model underperforms significantly.
-
-**Code:** https://github.com/ridgerchu/SpikeGPT (public, Python/PyTorch)
-
-**Paper:** https://arxiv.org/abs/2302.13939
-
----
-
-### 1.2 SpikingBERT (Penn State, AAAI 2024)
-
-**What it is:** A spiking language model created by distilling knowledge from a pre-trained BERT model into a spiking architecture using a novel implicit differentiation technique. This overcomes the non-differentiability problem of SNNs without surrogate gradients.
-
-**Architecture:** Uses Average Spiking Rate (ASR) convergence at equilibrium to develop a spiking attention mechanism. Employs a 3-stage training pipeline: general knowledge distillation, task-based internal layer KD, and prediction layer distillation.
-
-**Does it work?** Yes, on GLUE benchmark tasks (SST-2, MNLI, QQP, QNLI, RTE, MRPC, STS-B). It is the first spiking LM evaluated on multiple GLUE tasks. Without distillation, there is a 4-5% performance loss. With distillation, performance is competitive but still below BERT-base.
-
-**Key details:**
-- Convergence time steps (t_conv): 125
-- Threshold voltage (vth): 1.0
-- Max sequence length: 128
-- Requires multi-GPU training (DataParallel)
-
-**Verdict:** Demonstrates that BERT-like capabilities can be approximated with spiking neurons, but requires a complex 3-stage distillation pipeline. Not trivial to reproduce.
-
-**Code:** https://github.com/NeuroCompLab-psu/SpikingBERT (public, Python/PyTorch)

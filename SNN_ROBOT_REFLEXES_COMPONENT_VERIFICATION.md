@@ -138,3 +138,31 @@ env.close()
 | Field | Value |
 |-------|-------|
 | **EXISTS** | YES -- proven in research |
+| **Off-the-shelf?** | NO |
+| **Mechanism verified?** | YES -- three known approaches |
+| **POTENTIAL BLOCKER** | **YES (MEDIUM)** -- requires careful implementation |
+
+**The core problem:** SNNs output binary spikes (0 or 1), but RL needs continuous actions (e.g., joint torques from -1.0 to 1.0).
+
+**Three verified mechanisms to bridge this gap:**
+
+1. **Membrane potential readout (RECOMMENDED):** Disable spiking in the output layer by setting the firing threshold to infinity. Read the raw membrane potential as the continuous action value. This is the simplest and most commonly used approach.
+   ```python
+   # Conceptual snnTorch implementation
+   import snntorch as snn
+   # Output layer: LIF neuron with threshold=infinity (never spikes)
+   lif_out = snn.Leaky(beta=0.9, threshold=float('inf'))
+   # membrane potential IS the continuous action
+   ```
+
+2. **Rate coding:** Run the SNN for T timesteps, count spikes per output neuron, normalize to get a rate in [0, 1], then scale to action range. Slower but more biologically plausible.
+
+3. **Population coding (PopSAN):** Use a population of neurons per action dimension. Each sub-population encodes a Gaussian-tuned response. Decode by weighted average of population activity. Most complex but highest capacity.
+
+**Source:** [SpikeGym paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11680704/) | [PopSAN paper](https://proceedings.mlr.press/v155/tang21a.html) | [Fully Spiking Neural Network for Legged Robots](https://arxiv.org/abs/2310.05022)
+
+---
+
+### 6. Reward Function
+
+| Field | Value |

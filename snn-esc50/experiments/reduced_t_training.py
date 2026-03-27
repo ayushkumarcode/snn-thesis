@@ -166,3 +166,31 @@ def run_fold(fold, device, num_steps):
 
     save_dir = RESULTS_DIR / "energy" / f"reduced_t_{num_steps}"
     save_dir.mkdir(parents=True, exist_ok=True)
+
+    start = time.time()
+    for epoch in range(1, NUM_EPOCHS + 1):
+        train_loss, train_acc = train_epoch(
+            model, train_loader, optimizer, device, num_steps)
+        test_acc = eval_model(model, test_loader, device, num_steps)
+        scheduler.step(train_loss)
+
+        if test_acc > best_acc:
+            best_acc = test_acc
+            best_epoch = epoch
+            patience_counter = 0
+            torch.save(model.state_dict(),
+                       save_dir / f"best_fold{fold}.pt")
+        else:
+            patience_counter += 1
+
+        if epoch % 5 == 0 or epoch == 1:
+            print(f"  Ep {epoch:3d} | Train: {train_acc:.4f} | "
+                  f"Test: {test_acc:.4f} | Best: {best_acc:.4f}")
+
+        if patience_counter >= PATIENCE:
+            print(f"  Early stopping at epoch {epoch}")
+            break
+
+    elapsed = time.time() - start
+    # Energy is proportional to T (linear in timesteps)
+    energy_ratio = num_steps / 25.0

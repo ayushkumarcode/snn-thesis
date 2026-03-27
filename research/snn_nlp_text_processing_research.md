@@ -62,31 +62,3 @@ For an undergraduate thesis, this direction offers **exceptionally high novelty*
 **Verdict:** Demonstrates that BERT-like capabilities can be approximated with spiking neurons, but requires a complex 3-stage distillation pipeline. Not trivial to reproduce.
 
 **Code:** https://github.com/NeuroCompLab-psu/SpikingBERT (public, Python/PyTorch)
-
-**Paper:** https://arxiv.org/abs/2308.10873
-
----
-
-### 1.3 SpikeLM (ICML 2024)
-
-**What it is:** The first *fully spiking* mechanism for general language tasks (both discriminative and generative). Introduces "elastic bi-spiking" -- spikes have bi-directional amplitude and frequency encoding, while still maintaining the additive nature of SNNs.
-
-**Does it work?** This is currently the best-performing spiking language model:
-
-| Task | BERT-base | SpikeBERT | SpikeLM | Gap from BERT |
-|------|-----------|-----------|---------|---------------|
-| SST-2 | 92.3% | 85.4% | 87.0% | -5.3% |
-| MNLI-m/mm | 83.8/83.4 | 71.4/71.0 | 77.1/77.2 | -6.7/-6.2% |
-| QQP (F1) | 90.5 | 68.2 | 83.9 | -6.6% |
-| QNLI | 90.7 | 66.4 | 85.3 | -5.4% |
-| CoLA | 60.0 | 16.9 | 38.8 | -21.2% |
-| STS-B | 89.4 | 18.7 | 84.9 | -4.5% |
-| MRPC (F1) | 89.8 | 82.0 | 85.7 | -4.1% |
-| RTE | 69.3 | 57.5 | 69.0 | -0.3% |
-| **Average gap** | -- | -- | -- | **~6.7%** |
-
-**Key achievements:**
-- Reduces performance gap from 28.3% (LIF-BERT) to 6.7% vs BERT-base
-- Outperforms SpikeBERT by 16.8% without requiring distillation
-- 12.9x energy savings with T=1 timestep, 3.7x with T=4
-

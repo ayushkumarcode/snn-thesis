@@ -306,3 +306,31 @@ Available in `snntorch`:
 | `snn.Alpha` | Alpha membrane model (recursive Spike Response Model) |
 | `snn.LeakyParallel` | Parallelized 1st-order LIF (faster for long sequences) |
 | `snn.SLSTM` | Spiking LSTM with state-thresholding |
+| `snn.SConv2dLSTM` | Spiking 2D convolutional LSTM |
+
+Key parameters for `snn.Leaky`:
+- `beta`: Membrane potential decay rate (0 to 1). Higher = more memory.
+- `spike_grad`: Surrogate gradient function (e.g., `surrogate.atan()`)
+- `threshold`: Firing threshold (default: 1.0)
+- `init_hidden`: Initialize hidden states internally (simplifies forward pass)
+- `output`: Set True for the final layer to return both spikes and membrane potential
+
+### Complete DVS128 Gesture Training with snnTorch + Tonic
+
+```python
+import torch
+import torch.nn as nn
+import tonic
+import tonic.transforms as transforms
+from tonic import DiskCachedDataset
+from torch.utils.data import DataLoader
+import snntorch as snn
+from snntorch import surrogate
+from snntorch import functional as SF
+from snntorch import utils
+import torchvision
+
+# === Device ===
+device = (torch.device("cuda") if torch.cuda.is_available()
+          else torch.device("mps") if torch.backends.mps.is_available()
+          else torch.device("cpu"))

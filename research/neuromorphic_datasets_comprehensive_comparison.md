@@ -350,31 +350,3 @@ Note: Exact accuracy percentages are difficult to confirm from abstracts alone, 
 
 ### 10. EvDET200K (arXiv 2024, CVPR 2025)
 
-| Property | Details |
-|---|---|
-| **Domain** | Visual / Object detection |
-| **Sensor** | Prophesee EVK4-HD |
-| **Classes** | 10 (people, cars, bicycles, etc.) |
-| **Total samples** | 10,054 sequences, 200K bounding boxes |
-| **Source** | https://github.com/Event-AHU/OpenEvDET |
-
-**Assessment for undergraduate thesis:** NOT SUITABLE. Same reasons as eTraM -- detection is a harder task than classification, and the dataset is very new with limited baseline tooling.
-
-### 11. Other Notable Recent Datasets
-
-| Dataset | Year | Domain | Suitable for UG thesis? |
-|---|---|---|---|
-| HARDVS | 2023 | Action recognition (300 classes, 100K seqs) | No -- too large, only 5 subjects |
-| E-POSE | 2025 | Object pose estimation | No -- pose estimation, not classification |
-| LIPSFUS | 2023 | Audio-visual lip reading | No -- multimodal fusion, very complex |
-| Prophesee 1MP (Gen4) | 2020 | Automotive detection | No -- 15hrs, detection task |
-
----
-
-## Part 3: Comparative Summary Table
-
-| Dataset | Classes | Samples | Resolution | Modality | SOTA SNN Acc | Difficulty | Narrative | Framework Support | Training Time (est.) |
-|---|---|---|---|---|---|---|---|---|---|
-| **DVS128 Gesture** | 11 | 1,464 | 128x128 | Vision | 99.3% | Moderate | Strong | Excellent | ~30 min/full train |
-| **N-MNIST** | 10 | 70,000 | 34x34 | Vision | 99.6% | Too Easy | Weak | Excellent | ~1 hr/full train |
-| **N-Caltech101** | 101 | ~8,709 | Variable | Vision | 84.4% | Mod-Hard | Moderate | Good | ~2-4 hrs |

@@ -153,31 +153,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 ### 1.11 Qian Liu -- Deep Spiking Neural Networks (2018)
 
 | Field | Details |
-|-------|---------|
-| **Title** | Deep Spiking Neural Networks |
-| **Author** | Qian Liu |
-| **Year** | January 2018 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
-| **Abstract** | Bridging the performance gap between SNNs and ANNs. Proposed "Noisy Softplus" activation function. Achieved 99.07% accuracy on MNIST with spiking convolutional networks. Spike-based rate multiplication for online training. |
-| **Keywords** | Spike-based Rate Multiplication, Noisy Softplus, Neuromorphic Engineering, Deep Learning, Spiking Neural Networks |
-| **PDF** | Available (15.1 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/deep-spiking-neural-networks |
-
-### 1.12 Petrut Bogdan -- Structural Plasticity on SpiNNaker (2019)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Structural Plasticity on SpiNNaker |
-| **Author** | Petrut Bogdan |
-| **Year** | September 2019 |
-| **Degree** | PhD, Department of Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co-supervisor) |
-| **Abstract** | Structural synaptic plasticity implementation on SpiNNaker. Combined with STDP for topographic map quality. Handwritten digit classification and motion detection. Simulations spanning 5+ hours with responses resembling Visual Cortex and Superior Colliculus. |
-| **Keywords** | Classification, Motion detection, SNN, Topographic maps, Structural plasticity, SpiNNaker |
-| **PDF** | Available (47.6 MB) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker |
-
-### 1.13 Gabriel Fonseca Guerra -- Stochastic Processes for Neuromorphic Hardware (2020)
-
-| Field | Details |

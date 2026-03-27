@@ -558,3 +558,5 @@ what i'd actually do:
 6. **Write up** with bio-plausibility discussion and energy analysis (ongoing)
 
 total: 8-10 weeks focused work, doable in a semester.
+
+strongest single pitch: "Biologically Plausible Feature Learning: Evaluating STDP as an Unsupervised Feature Extractor for Visual Recognition in Spiking Neural Networks" -- hybrid approach as main architecture plus one novel angle as original contribution.

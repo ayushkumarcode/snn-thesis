@@ -326,31 +326,3 @@ Note: These energy numbers are estimated from synaptic operation counts (SOPs), 
 The strongest thesis narrative is:
 
 > "Keyword spotting must run continuously on edge devices with strict power budgets (smartwatches, hearing aids, IoT sensors). SNNs offer a path to sub-milliwatt keyword spotting by exploiting temporal sparsity in audio and event-driven computation. This thesis demonstrates that SNNs can achieve competitive accuracy (>95%) while requiring 5-55x fewer synaptic operations than equivalent ANNs, projecting significant energy savings on neuromorphic hardware."
-
----
-
-## 7. Recent Papers (2024-2025) with Code
-
-### 7.1 Papers with Available Code
-
-| Paper | Venue | Year | Key Result | Code |
-|-------|-------|------|-----------|------|
-| **SpikCommander** | AAAI 2026 | 2025 | 96.92% GSC, 96.41% SHD, 83.49% SSC | [GitHub](https://github.com/JackieWang9811/SCommander) |
-| **SpikeSCR (KDCL)** | arXiv | 2024 | 95.60% GSC, 95.70% SHD | Code promised (pending) |
-| **A Surrogate Gradient Spiking Baseline** (sparch) | Frontiers Neurosci. | 2022 | 96.60% GSC, 97.60% SHD | [GitHub](https://github.com/idiap/sparch) |
-| **GoogleSpeechCommandsRNN** (LSNN) | NeurIPS workshop | 2020 | 91.2% GSC (spiking) | [GitHub](https://github.com/dsalaj/GoogleSpeechCommandsRNN) |
-| **SpikingJelly speechcommands** | -- | 2023 | Competitive on GSC 12-class | [GitHub (example)](https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/activation_based/examples/speechcommands.py) |
-| **RSNN** | IEEE ICSICT | 2022 | -- (speech KWS) | [GitHub](https://github.com/edwardzcl/RSNN) |
-
-### 7.2 Papers without Code (but Highly Relevant)
-
-| Paper | Venue | Year | Key Result |
-|-------|-------|------|-----------|
-| **ED-sKWS** | Interspeech 2024 | 2024 | 93% GSC with 52% energy reduction, 27.6K params |
-| **SIDC-KWS** | Interspeech 2025 | 2025 | 96.8% GSC 12-class, 75.6% less energy than ANN |
-| **Speech2Spikes** | NICE 2023 | 2023 | Efficient audio encoding for neuromorphic systems |
-| **WaveSense** | arXiv | 2021 | Efficient temporal convolutions for KWS |
-
-### 7.3 Key Survey/Review Papers
-
-- **"Snn and sound: a comprehensive review of spiking neural networks in sound"** (PMC, 2024) -- broad survey of SNNs in all audio tasks

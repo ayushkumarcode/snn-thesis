@@ -53,31 +53,3 @@
 
 **Why not:** Slightly more preprocessing than ESC-50. The 12-lead format can be fiddly. Less "automatic novelty" than ESC-50 since some SNN-ECG work exists.
 
----
-
-## Option 3: Wildlife Camera Trap Classification
-
-**The pitch:** Zero SNN papers on wildlife camera traps. Camera traps are battery-powered in remote locations -- exactly where SNN energy efficiency matters most.
-
-**What you'd actually build:**
-- Load Snapshot Serengeti (3.2M images, 48 species) or Caltech Camera Traps (smaller)
-- Standard image classification pipeline with convolutional SNN
-- Rate-encode RGB images as spike trains
-- Compare SNN vs CNN on same architecture
-- Energy comparison
-
-**Iteration cycle:** Standard image classification -- fast iterations. Large dataset though (3.2M images), so you'd probably subsample.
-
-**Novelty:** VERY HIGH (zero papers).
-
-**Risk:** LOW-MEDIUM. The problem: these are RGB images. SNNs have no natural advantage over CNNs on static images. Your SNN will almost certainly be worse than the CNN, and the energy argument is weaker for images than for temporal data (audio, ECG). You'd need to frame this carefully.
-
-**Why pick this:** Zero papers = automatic novelty. Great real-world narrative. Large, clean datasets.
-
-**Why not:** Weakest natural SNN fit of the top options. Static RGB images don't play to SNN strengths. You'd be fighting uphill to explain why SNNs matter here beyond energy efficiency.
-
----
-
-## Option 4: Framework Shootout (snnTorch vs SpikingJelly vs Norse)
-
-**The pitch:** Nobody has ever done a proper three-way comparison of SNN frameworks on the same tasks with the same hyperparameters. The community doesn't know if framework choice affects accuracy, training time, or energy estimates. You'd answer that.

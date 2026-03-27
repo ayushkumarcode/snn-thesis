@@ -478,31 +478,3 @@ The thesis's most important finding (PANNs+SNN=92.5% vs scratch SNN=47.15%) is c
 
 ## Part 5: Research Gaps and Confidence Assessment
 
-### What Could Not Be Found
-
-1. **No paper benchmarks 7+ encoding schemes on a single audio dataset.** The thesis is unique.
-2. **No energy measurements for ESC-50 specifically on neuromorphic hardware.** Closest: Xylo on DCASE acoustic scenes (NeuroBench), Loihi 2 on keyword spotting.
-3. **No paper explains the bimodal surrogate gradient pattern.** The thesis result is novel and potentially publishable.
-4. **Limited data on population encoding performance in the literature.** Most work focuses on rate/temporal/direct.
-
-### Confidence Levels
-
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
-| Direct encoding beats rate at low timesteps | Very High | Multiple papers (Kim 2022, Tutorial 2025), consistent with thesis |
-| SNN energy advantage requires <6.4% spike rate | High | Yang et al. 2024, Dampfhoffer 2023 |
-| Horowitz AC=0.9pJ, MAC=4.6pJ at 32b, 45nm | Very High | ISSCC 2014, universally cited |
-| NeuroBench metrics and baselines | Very High | Nature Communications 2025, open-source |
-| Surrogate gradient shape robustness (simple tasks) | High | Zenke 2021, Gygax 2025 |
-| Bimodal surrogate failure (complex tasks) | Medium | Thesis result novel, limited literature comparison |
-| Neuromorphic audio energy savings (10x--200x) | High | Loihi 2 measurements, Xylo measurements |
-
----
-
-## Part 6: Key References (Organized by Topic)
-
-### Spike Encoding
-
-1. Y. Kim et al. "Rate Coding or Direct Coding: Which One is Better for Accurate, Robust, and Energy-efficient Spiking Neural Networks?" ICASSP 2022. [arXiv:2202.03133](https://arxiv.org/abs/2202.03133)
-2. W. Guo et al. "Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems." Frontiers in Neuroscience 15:638474, 2021. [Link](https://www.frontiersin.org/articles/10.3389/fnins.2021.638474/full)
-3. A. Larroza et al. "Comparative Study of Spike Encoding Methods for Environmental Sound Classification." arXiv:2503.11206, 2025. [Link](https://arxiv.org/html/2503.11206v1)

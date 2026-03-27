@@ -110,3 +110,31 @@ Biggest differentiator between 2:1 and first: the critical appraisal section. A 
 
 ---
 
+## 5. Novelty expectations (UK undergrad level)
+
+- **QAA Level 6 (Bachelor's):** Requires "self-direction and originality in tackling problems" -- NOT original research
+- **Even Cambridge:** A genuine contribution to the field is "not a requirement" for highest marks
+- **Edinburgh (for Master's!):** "Not expected that the dissertation will report notable or original contributions to knowledge"
+- **A first (70-79) requires zero novelty** if you demonstrate thorough understanding + rigorous evaluation
+- **80+ requires:** Independent thought, ambitious scope, thorough evaluation with statistical rigour
+
+---
+
+## 6. What research i'd already done
+
+### Top application domains ranked:
+1. **Audio SHD/SSC** -- Easiest path, pre-encoded spikes, SNNs beat ANNs
+2. **ECG/Heartbeat** -- Nearly as easy, great clinical narrative, snnTorch delta encoding
+3. **Audio Keyword Spotting (GSC)** -- Extends SHD to raw audio
+4. **Network Intrusion Detection** -- Tabular data, good narrative
+5. **EEG/BCI** -- Feasible but more preprocessing complexity
+6. **Time-Series Forecasting** -- High novelty but finicky training
+7. **NLP/Text** -- Highest novelty but highest risk
+
+### Technical stack decisions:
+- **Training:** Surrogate gradient (recommended) > ANN-to-SNN conversion > STDP
+- **Framework:** snnTorch (learning/general) or SpikingJelly (DVS128/performance)
+- **Neuron model:** LIF (standard) or PLIF (1-2% better, learnable decay)
+- **Encoding:** Rate coding (baseline) > Direct coding (best accuracy) > TTFS (best energy)
+- **Energy measurement:** NeuroBench or manual SynOps counting (no hardware needed)
+

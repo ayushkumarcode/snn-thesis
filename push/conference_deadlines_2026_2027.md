@@ -74,31 +74,3 @@
 |---|---|---|---|
 | **NeurIPS** | Neural Information Processing Systems | Broad ML/AI, top-tier | No (too competitive) |
 | **ICML** | Int'l Conf on Machine Learning | ML theory/methods, top-tier | No |
-| **ICLR** | Int'l Conf on Learning Representations | Deep learning, top-tier | No |
-| **ICASSP** | IEEE Conf on Acoustics, Speech, Signal Processing | Audio/speech processing | Maybe (good fit for audio angle) |
-| **EUSIPCO** | European Signal Processing Conference | Signal processing | Yes (good fit) |
-| **IJCNN** | Int'l Joint Conf on Neural Networks | Neural networks broadly | Yes (good fit) |
-| **ICONS** | Int'l Conf on Neuromorphic Systems | Neuromorphic computing specifically | **Yes — perfect fit** |
-| **ICANN** | Int'l Conf on Artificial Neural Networks | Neural networks, European | Yes (has SNN special session) |
-| **DCASE** | Detection and Classification of Acoustic Scenes/Events | Environmental sound specifically | **Yes — perfect topic match** |
-| **AICAS** | IEEE Int'l Conf on AI Circuits and Systems | AI on hardware | Yes (hardware angle) |
-
----
-
-## Strategic Recommendation
-
-1. **ICONS 2026 (April 1)** — Primary. Draft already exists. Submit this.
-2. **ICANN 2026 (March 16)** — If you want a second venue, expand to 12-page LNCS for their SNN special session.
-3. **DCASE 2026 (~July)** — Perfect topic match for environmental sound, submit a second paper.
-4. **ICASSP 2027 (~Sep)** — Signal processing angle, strong venue.
-
----
-
-## Sources
-- [ICONS 2026](https://iconsneuromorphic.cc/calls-2026/)
-- [WCCI 2026](https://attend.ieee.org/wcci-2026/important-dates-deadlines/)
-- [ICANN 2026](https://e-nns.org/icann2026/call-for-papers-2/)
-- [AICAS 2026](https://2026.ieee-aicas.org/)
-- [ICNCE 2026](https://icnce-2026.de/)
-- [DCASE](https://dcase.community/)
-- [ICASSP 2027](https://2027.ieeeicassp.org/)

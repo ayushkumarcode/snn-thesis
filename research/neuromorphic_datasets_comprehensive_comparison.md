@@ -138,3 +138,31 @@ same pipeline as SHD but 10x larger and 35 classes. SOTA only ~86%. training tak
 
 **difficulty:** HARD. results can look mediocre even with good methods.
 
+**thesis narrative:** MODERATE. similar to SHD but less clean. better referenced as "future work" if you do SHD.
+
+---
+
+### 7. DVS-Lip
+
+| Property | Details |
+|---|---|
+| Domain | Visual / lip reading (word-level) |
+| Classes | 100 words |
+| Samples | 19,871 |
+| Subjects | 40 volunteers (no speaker overlap between train/test) |
+| Year | 2022 (CVPR) |
+
+**difficulty:** VERY HARD. 100-class fine-grained visual recognition from events. SNN accuracy in the 55-65% range. needs sophisticated multi-scale temporal processing and lip region extraction. computationally expensive.
+
+**thesis narrative:** VERY STRONG (but impractical). lip reading has an incredible application story -- privacy, silent speech, hearing impairment. but the difficulty makes this unsuitable for undergrad. better for a PhD.
+
+---
+
+## newer datasets (2024-2025)
+
+### DailyDVS-200 (ECCV 2024)
+200 daily actions, >22K sequences, 47 participants. **too large and complex for a thesis.** insufficient baselines and tooling.
+
+### eTraM (CVPR 2024)
+traffic monitoring, 10 hours, 2M bounding boxes. **not suitable.** object detection is much harder than classification.
+

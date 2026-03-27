@@ -237,19 +237,19 @@ First conv SNN evaluation on ESC-50: 47.15% vs 63.85% ANN (16.7 pp gap), collaps
 
 7. **Yik, J., Ahmed, S., Ahmed, Z., ..., & Bengio, Y. (2025).** Neurobench: A Framework for Benchmarking Neuromorphic Computing. Nature Communications, 16, 1589.
 
-4. **Zenke, F., & Vogels, T.P. (2021).** The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in Spiking Neural Networks. *Neural Computation*, 33(4), 899–925.
+8. **Dampfhoffer, M., Mesquida, T., Valentian, A., & Anghel, L. (2023).** Are SNNs Really More Energy-Efficient than ANNs? IEEE TETCI, 7(3), 731-741.
 
-5. **Neftci, E.O., Mostafa, H., & Zenke, F. (2019).** Surrogate Gradient Learning in Spiking Neural Networks: Bringing the Power of Gradient-Based Optimization to Spiking Neural Networks. *IEEE Signal Processing Magazine*, 36(6), 51–63.
+9. **Larroza, A., Reyes, L., Maudes-Raedo, J., & Rodriguez, G. (2025).** Evaluation of Spiking Neural Networks for Audio Classification. arXiv:2503.11206.
 
-6. **Kong, Q., Cao, Y., Iqbal, T., Wang, Y., Wang, W., & Plumbley, M.D. (2020).** PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition. *IEEE/ACM Transactions on Audio, Speech, and Language Processing*, 28, 2880–2894.
+10. **Sharmin, S., Rathi, N., Panda, P., & Roy, K. (2020).** Inherent Adversarial Robustness of Deep Spiking Neural Networks. ECCV 2020, 768-784.
 
-7. **Yik, J., Ahmed, S., Ahmed, Z., ..., & Bengio, Y. (2025).** Neurobench: A Framework for Benchmarking Neuromorphic Computing Algorithms and Systems. *Nature Communications*, 16, 1589.
+11. **Goodfellow, I.J., Shlens, J., & Szegedy, C. (2015).** Explaining and Harnessing Adversarial Examples. ICLR 2015.
 
-8. **Dampfhoffer, M., Mesquida, T., Valentian, A., & Anghel, L. (2023).** Are SNNs Really More Energy-Efficient than ANNs? An In-depth Hardware-Aware Study. *IEEE Transactions on Emerging Topics in Computational Intelligence*, 7(3), 731–741.
+12. **Madry, A., Makelov, A., Schmidt, L., Tsipras, D., & Vladu, A. (2018).** Towards Deep Learning Models Resistant to Adversarial Attacks. ICLR 2018.
 
-9. **Larroza, A., Reyes, L., Maudes-Raedo, J., & Rodriguez, G. (2025).** Evaluation of Spiking Neural Networks for Audio Classification. *arXiv:2503.11206*.
+13. **Deng, S., & Gu, S. (2020).** Rethinking the Performance Comparison Between SNNs and ANNs. Neural Networks, 121, 294-307.
 
-10. **Sharmin, S., Rathi, N., Panda, P., & Roy, K. (2020).** Inherent Adversarial Robustness of Deep Spiking Neural Networks: Effects of Discrete Input Encoding and Non-Linear Activations. *Proceedings of ECCV 2020*, 768–784. arXiv:2003.10399.
+14. **Gong, Y., Chung, Y.A., & Glass, J. (2021).** AST: Audio Spectrogram Transformer. Interspeech 2021, 571-575.
 
 11. **Goodfellow, I.J., Shlens, J., & Szegedy, C. (2015).** Explaining and Harnessing Adversarial Examples. *ICLR 2015*. arXiv:1412.6572.
 

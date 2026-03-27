@@ -110,3 +110,31 @@ so everything below is PhD-level unless noted. these are 3-4 years of full-time 
 | **Abstract** | Addresses computational speed challenges in ANN simulation. Proposes parallel processing on SpiNNaker for SNNs with STDP and parallel distributed processing with backpropagation. Demonstrates linear scalability. |
 | **What They Built** | Parallel simulation framework for SNNs and MLPs on SpiNNaker |
 | **Tools/Frameworks** | SpiNNaker, Izhikevich model, ARM processors |
+| **Datasets** | Not specified |
+| **Scope** | Very high -- foundational early SpiNNaker thesis |
+
+---
+
+### 1.7 Arithmetic Accelerators for a Digital Neuromorphic Processor
+| Field | Detail |
+|-------|--------|
+| **Author** | Mantas Mikaitis |
+| **Year** | 2020 |
+| **Degree** | PhD |
+| **Department** | Computer Science |
+| **Supervisors** | David Lester (main), Steve Furber (co) |
+| **URL** | https://research.manchester.ac.uk/en/studentTheses/arithmetic-accelerators-for-a-digital-neuromorphic-processor/ |
+| **Abstract** | Investigates programmable accelerator for exponential and logarithm functions in SNN models within SpiNNaker2. Explores numerical accuracy of ODE solvers for Izhikevich neuron model. Investigates stochastic rounding methods. |
+| **What They Built** | Hardware accelerator designs for SpiNNaker2, numerical analysis of neuron model solvers |
+| **Tools/Frameworks** | SpiNNaker2, fixed-point/floating-point arithmetic |
+| **Datasets** | Not specified |
+| **Scope** | High -- chip-level hardware accelerator design |
+
+---
+
+### 1.8 Building and Operating Large-Scale SpiNNaker Machines
+| Field | Detail |
+|-------|--------|
+| **Author** | Jonathan Heathcote |
+| **Year** | 2016 |
+| **Degree** | PhD |

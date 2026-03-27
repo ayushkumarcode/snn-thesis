@@ -376,31 +376,3 @@ Key works:
 ### 2.6 SNN for Swarm Robotics
 
 **Literature: 5-10 papers**
-
-Key works:
-- [SNNs as Controllers for Emergent Swarm Agents (arxiv 2024)](https://arxiv.org/abs/2410.16175)
-- [Nature-inspired collision avoidance for drone swarm with reward-modulated SNN](https://pmc.ncbi.nlm.nih.gov/articles/PMC9676561/)
-
-**Simulation-only possible?** Yes. Simple 2D multi-agent simulation environments exist.
-
-**macOS compatible?** Yes, for simple simulations.
-
-**Feasibility for 28 days: LOW**
-- Multi-agent systems add exponential complexity
-- SNN + multi-agent RL is bleeding-edge research
-- No existing frameworks combining snnTorch with multi-agent environments
-- Debugging multi-agent systems is extremely time-consuming
-
-**VERDICT: NOT RECOMMENDED. Multi-agent complexity makes this a PhD-level project.**
-
----
-
-### 2.7 SNN for Prosthetic / Exoskeleton Control
-
-**Literature: 10-15 papers**
-
-Key works:
-- [Feasibility of SNN in myoelectric control systems (Frontiers 2023)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1174760/full)
-- [SNN classifies sEMG signals and triggers finger reflexes on robotic hand (ScienceDirect 2020)](https://www.sciencedirect.com/science/article/pii/S0921889020304061)
-- [SNN Approach for Classifying Hand Movement (WSEAS 2025)](https://wseas.com/journals/bab/2025/a325108-254.pdf)
-

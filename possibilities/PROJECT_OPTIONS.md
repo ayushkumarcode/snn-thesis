@@ -110,3 +110,31 @@ the pitch: biological reflexes use spiking neurons. i'd implement SNN-based refl
 what i'd actually build:
 - set up Isaac Gym or MuJoCo simulation environment
 - use SpikeGym framework (SNN + RL)
+- train SNN policy for balance/locomotion tasks
+- compare SNN vs ANN policy on latency, energy, and task performance
+
+iteration cycle: THIS IS THE PROBLEM. environment setup can eat 1-2 weeks. RL training is unstable -- you can spend days tuning reward functions and hyperparameters with no progress. SpikeGym is <1 year old, likely has bugs and sparse documentation. when it works, training is ~7 minutes. when it doesn't, you're debugging physics simulations.
+
+novelty: HIGH (~5-10 papers in the area).
+
+risk: MEDIUM-HIGH. RL + SNN is double the debugging complexity. the bottleneck isn't development speed -- it's training stability, which Claude Code can't fix.
+
+why pick this: most impressive if it works. strongest biological motivation. best Manchester/SpiNNaker alignment. would genuinely impress a supervisor.
+
+why not: i want short iteration cycles and to get it done. this is the opposite. RL training instability is exactly the kind of problem that doesn't compress with better tooling.
+
+---
+
+## Option 6: SNN Satellite Image Classification
+
+the pitch: edge AI in space. satellites can't afford GPU power budgets. neuromorphic chips are already in orbit.
+
+novelty: MODERATE (~15-25 papers already exist). ESA-funded SNN4Space codebase achieves 95.07% on EuroSAT.
+
+why not (short version): ESC-50 beats it on novelty (0 vs 15-25 papers). ECG beats it on narrative. robot reflexes beats it on excitement. it sits in an awkward middle ground -- not novel enough to be exciting, not easy enough to be pragmatic. the SNN fit is also weak (standard RGB images).
+
+---
+
+## Option 7: SNN Food Recognition (Food-101)
+
+the pitch: zero SNN papers on food image classification.

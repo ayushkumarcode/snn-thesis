@@ -26,3 +26,31 @@ our advantages: full ESC-50 (50 vs 10 classes), convolutional architecture, 7 en
 ## 2. Other SNN Environmental Sound Work
 
 | Paper | Year | Dataset | Accuracy | Notes |
+|-------|------|---------|----------|-------|
+| Wu et al. | 2018 | RWCP / TIDIGITS | 99.60% / 97.4% | SOM-SNN, not ESC-50 |
+| Yu et al. | 2019 | Environmental sound (unclear dataset) | - | Sparse key-point encoding |
+| S-CMRL | 2025 | UrbanSound8K-AV | - | Audio-VISUAL (not comparable) |
+| Dominguez-Morales | 2016 | Pure tones | >85% | SpiNNaker, but trivial sounds |
+
+bottom line: nobody has done SNN on ESC-50. nobody has done SNN on any environmental sound dataset with >10 classes.
+
+---
+
+## 3. SNN Keyword Spotting -- Much More Active
+
+| Paper | Year | GSC Accuracy | SHD | Architecture | Energy |
+|-------|------|-------------|-----|--------------|--------|
+| **SpikCommander** | 2025 | **96.92%** | 96.41% | Spiking Transformer + MSTASA | 0.042 mJ |
+| SpikeSCR | 2024 | 95.60% | - | Spike-driven attention | 54.8% reduction |
+| DCLS-Delays | 2024 (ICLR) | 95.35% | 95.07% | Learnable delays | - |
+| Spiking-LEAF | 2024 (ICASSP) | SOTA | - | IHC-LIF + learnable filterbank | - |
+| Speech2Spikes | 2023 (NICE) | 88.5% (35-class) | - | FF SNN | Deployed on Loihi |
+| SE-adLIF | 2024 | - | 95.81% | Adaptive LIF | 0.45M params |
+
+keyword spotting is by far the most mature SNN audio field. environmental sound classification is way behind.
+
+---
+
+## 4. Neuromorphic Audio Hardware Deployments
+
+### SpiNNaker

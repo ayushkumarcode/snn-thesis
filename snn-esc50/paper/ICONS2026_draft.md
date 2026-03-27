@@ -68,20 +68,20 @@ SpiNNaker [2]: massively parallel neuromorphic platform, IF_curr_exp neurons, in
 Conv2d(1->32, k=3) -> BN -> MaxPool(2) -> LIF1
 Conv2d(32->64, k=3) -> BN -> MaxPool(2) -> LIF2
 AvgPool(4x6)
+Linear(2304->256) -> LIF3 -> Linear(256->50) -> LIF4
 ```
-~622K parameters. ANN mirror: identical with ReLU replacing LIF.
+~622K params. ANN mirror with ReLU.
 
-**Training:** Adam (lr=1e-3, wd=1e-4), ReduceLROnPlateau (factor=0.5, patience=5), early stopping (patience=10), 50 epochs, batch=32. Standard 5-fold CV (test on held-out fold, train on 4 folds).
+**Training:** Adam (lr=1e-3, wd=1e-4), ReduceLROnPlateau, early stopping (patience=10), 50 epochs, batch=32, standard 5-fold CV.
 
-**Data augmentation:** SpecAugment [19] (2 freq. masks F=8, 2 time masks T=20) + TimeShift ±10%. Augmented training (100 epochs, patience=10): SNN 40.75% ± 16.03% (−6.40 pp vs baseline), ANN 61.70% ± 4.58% (−2.15 pp). Augmentation harms both models on this small dataset; baseline results are reported throughout. Negative result documented in §4.4 of thesis with mechanistic explanation (early stopping too aggressive + LIF threshold interacts badly with mean-value masked inputs).
+**Augmentation (negative result):** SpecAugment [19] + TimeShift on 100 epochs: SNN 40.75% +/- 16.03% (-6.40 pp vs baseline), ANN 61.70% (-2.15 pp). Hurts both models on this small dataset. Baseline results used throughout. Mechanistic explanation in thesis ch4: early stopping too aggressive + LIF threshold interacts badly with mean-value masks.
 
 ---
 
 ## 4. Results
 
-### 4.1 Encoding Comparison
+### 4.1 Encoding comparison
 
-| Encoding | SNN Mean Acc. | ± Std | SNN/ANN ratio |
 |----------|--------------|-------|---------------|
 | **ANN baseline** | **63.85%** | 3.07% | — |
 | Direct | **47.15%** | 4.50% | 73.8% |

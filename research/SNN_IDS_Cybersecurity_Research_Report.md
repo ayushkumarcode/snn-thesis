@@ -115,31 +115,3 @@ As a thesis topic, this is well-positioned: the field is active enough to provid
 1. **Accuracy is competitive but not the main selling point.** SNNs match traditional DL on most benchmarks. On some datasets (CICIDS), they exceed. On harder tasks like continual learning (UNSW-NB15), accuracy drops to 85.3% but this is expected -- the comparison should be against other continual learning methods, not static models.
 
 2. **The real advantage is efficiency.** Wang et al. (2024) demonstrated this decisively:
-   - 70-90% energy reduction compared to CNNs
-   - 0.034 MB model size vs. 68.77 MB for equivalent CNN
-   - 7,482 parameters vs. 17.2M for CNN
-   - 5,333 samples/second vs. 264 for CNN
-   - 204,800 FLOPs vs. 149.5M for CNN
-
-3. **TASNN (2026) showed robust cross-dataset generalization** -- GAR above 0.93 across NSL-KDD, KDDTest+21, and CICIDS-2017, demonstrating that SNN models can generalize, not just memorize.
-
----
-
-## 5. THE NATURAL ARGUMENT FOR SNNs IN THIS DOMAIN
-
-### 5.1 Why SNNs Are Architecturally Suited to Network Intrusion Detection
-
-The argument for SNNs in cybersecurity is not just theoretical -- it is one of the strongest domain-fit arguments in the SNN literature. Here is why:
-
-**A. Network attacks are inherently sparse and temporal.**
-Network traffic is a stream of discrete events (packets) occurring at specific times. Attacks represent rare, anomalous patterns within this stream. This maps directly to SNN's event-driven, spike-based processing -- neurons fire only when meaningful events occur, naturally ignoring the vast majority of benign traffic.
-
-**B. Real-time detection is critical.**
-Intrusion detection must operate at line speed. SNNs on neuromorphic hardware achieve inference latencies of 2-3 ms (NeuEdge framework), far below the requirements for real-time packet inspection.
-
-**C. Edge and IoT deployment demands low power.**
-Modern networks are increasingly distributed, with security needing to operate at edge gateways, routers, and IoT devices. Power budgets at the edge can be as low as milliwatts. SNNs on neuromorphic chips achieve:
-- Up to 15x energy improvement over ARM Cortex-M7 ANN implementations
-- 847 GOp/s/W energy efficiency (NeuEdge)
-- Intel Loihi: 128 cores, 128M synapses in a single chip
-

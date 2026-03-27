@@ -726,3 +726,31 @@ For a convolutional layer with N input channels, M output channels, input size I
 ```
 SynOps_SNN = SA * N * M * k^2 * O^2  (per timestep, per layer)
 FLOPs_ANN  = N * M * k^2 * O^2       (per layer)
+```
+
+Total energy estimation:
+```
+Energy_SNN = sum(SynOps_layer * E_AC) + sum(non_spike_ops * E_MAC)
+Energy_ANN = sum(FLOPs_layer * E_MAC)
+```
+
+#### Adding SynOps Loss for Energy Optimization
+
+```python
+# Add a regularization term to push model toward fewer spikes
+synops_loss_weight = 1e-3
+total_loss = classification_loss + synops_loss_weight * synops_count
+```
+
+### Spike Raster Plots (snnTorch)
+
+```python
+import snntorch.spikeplot as splt
+import matplotlib.pyplot as plt
+
+# spk_data shape: [num_steps, num_neurons]
+fig = plt.figure(facecolor="w", figsize=(10, 5))
+ax = fig.add_subplot(111)
+splt.raster(spk_data, ax, s=1.5, c="black")
+plt.title("Spike Raster Plot")
+plt.xlabel("Time Step")

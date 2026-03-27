@@ -138,3 +138,31 @@ The only match for "neuromorphic" was a research-level publication (not undergra
 | 29325 | Faculty of Science and Engineering (parent) | 36 |
 | 29331 | School of Engineering | 149 |
 | 29337 | Sub-group (Engineering) | 1 |
+| 29340 | Sub-group (Engineering) | 1 |
+| 29343 | Sub-group (Robotics/Nuclear) | 3 |
+| 29349 | School of Natural Sciences | 424 |
+| 29355 | Sub-group | 5 |
+| 29358 | Sub-group | 20 |
+| 29361 | Sub-group | 1 |
+| 29364 | Sub-group (Chemistry) | 31 |
+| 29367 | Sub-group (Physics) | 7 |
+| 29370 | Sub-group | 32 |
+| 29391 | Sub-group | 1 |
+| 29403 | Alliance Manchester Business School | 5 |
+| 29442 | Faculty of Humanities / Education | 86 |
+| 29466 | Sub-group (Education) | 6 |
+| 29469 | Sub-group (Social Sciences) | 25 |
+
+### All the search terms i used (100+):
+neuromorphic, spiking neural network, SNN, brain-inspired computing, event-driven computing, bio-inspired neural, leaky integrate fire, LIF, STDP, spike timing dependent plasticity, neural engineering, computational neuroscience, edge AI, edge computing, energy efficient neural, low power AI, event camera, dynamic vision sensor, DVS, FPGA, FPGA neural network, hardware neural network, TinyML, embedded machine learning, reservoir computing, memristor, memristive, Intel Loihi, IBM TrueNorth, SpiNNaker, deep learning optimization, model compression, quantization, convolutional neural network, recurrent neural network, LSTM, reinforcement learning, signal processing, EEG classification, brain-computer interface, BCI, gesture recognition, image classification, object detection, computer vision, transfer learning, autoencoder, generative adversarial, GAN, natural language processing, sentiment analysis, autonomous vehicle, robot navigation, pose estimation, semantic segmentation, anomaly detection, time series prediction, speech recognition, audio classification, medical imaging, biomedical signal, wearable sensor, IoT, TensorFlow, PyTorch, model pruning, knowledge distillation, neural architecture search, attention mechanism, transformer, BERT, GPT, diffusion model, variational autoencoder, graph neural network, point cloud, lidar, radar, EMG, prosthetic, binary neural network, sparse coding, ResNet, YOLO, U-Net, sensor fusion, microcontroller, Raspberry Pi, Arduino, federated learning, explainable AI, few-shot learning, meta-learning, self-supervised learning, contrastive learning, photonic computing, analog computing, in-memory computing, quantum machine learning, undergraduate thesis, final year project, third year project, BEng, MEng, dissertation
+
+---
+
+## Why there's nothing here
+
+### Why no undergrad theses?
+
+1. **Manchester Figshare just isn't used for undergrad theses.** It's a research data repository for supplementary data/code, research datasets, conference presentations, PhD supplements, and architectural model photos.
+
+2. **Manchester undergrad theses are probably stored elsewhere:**
+   - University of Manchester Library thesis archive

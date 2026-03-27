@@ -194,3 +194,31 @@ Speech enhancement is the strongest SNN speech application beyond classification
 - Opens a new benchmark where event-based models can leverage advantages
 
 ### Feasibility: MEDIUM (audio compression), LOW (music generation)
+- Audio compression: "Spiking Music" provides a framework; could extend to different audio types
+- Music generation: would be extremely novel but lacks any foundation to build on
+- Audio quality assessment (SAFE): interesting but narrow scope for thesis
+
+### Gaps
+1. SNN-based music generation: 0 modern papers -- completely open
+2. SNN-based sound effect synthesis: 0 papers
+3. SNN-based audio super-resolution: 0 papers
+4. SNN for environmental sound generation: 0 papers
+5. Audio compression on neuromorphic hardware: gap between theory and deployment
+
+---
+
+## 5. How can SNNs even generate continuous signals?
+
+### The core problem
+SNNs communicate through discrete binary spike events (0 or 1 at each timestep). Generative tasks like TTS, image generation, and audio synthesis need continuous-valued outputs. So how does this work?
+
+### Solution mechanisms (confirmed by existing papers)
+
+**Mechanism 1: Membrane potential as output**
+- The most common approach in modern SNN generative models
+- Instead of reading the binary spike output of the final layer, read the membrane potential (a continuous floating-point value)
+- The membrane potential is an analog quantity that integrates incoming spikes over time
+- Used by SpikeVoice, Spiking Vocos, Spiking VAE, spiking autoencoders
+- snnTorch docs explicitly support this: "using membrane potential output from the final layer for image reconstruction"
+
+**Mechanism 2: Rate coding / population coding for output**

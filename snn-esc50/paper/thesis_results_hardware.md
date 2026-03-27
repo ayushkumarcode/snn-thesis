@@ -208,20 +208,20 @@ Performed on all 5 folds (400 test samples each, direct encoding). 5-fold means:
 
 **SNN (direct, fold 4 representative; 5-fold means in parens):**
 
+| Metric | Value |
+|--------|-------|
+| Activation sparsity | 74.16% |
+| Dense SynOps | 4,176,566/sample |
+| Effective ACs | 1,084,732/sample |
+| Effective MACs | 0 |
+| Energy (sw sim) | 1,084,732 x 0.9 pJ = 968 nJ (5-fold: 968+/-37 nJ) |
 
-## 5.4 NeuroBench Energy Analysis
+**ANN:**
 
-### 5.4.1 Methodology
-
-NeuroBench v2.2.0 (Yik et al. 2025, Nature Communications 16:1589) wraps the model in `SNNTorchModel` and measures SynapticOperations metrics per inference sample:
-
-- **Dense SynOps:** Total operations ignoring sparsity (upper bound — "ANN-equivalent" compute)
-- **Effective_ACs (EFF_ACs):** Accumulate-only operations from non-zero binary activations (SNN sparse compute)
-- **Effective_MACs (EFF_MACs):** Multiply-accumulate operations from non-zero non-binary activations (ANN sparse compute)
-
-Energy conversion at 45nm CMOS (Yik et al. 2025):
-- AC = 0.9 pJ per operation
-- MAC = 4.6 pJ per operation (5.1× more expensive than AC)
+| Metric | Value |
+|--------|-------|
+| Activation sparsity | 59.03% |
+| Dense SynOps | 166,298/sample |
 
 **Experimental setup:** NeuroBench analysis was performed on all 5 folds (400 test samples each, direct encoding). Energy metrics are architecture-dependent and independent of the training backend. The fold 4 detailed breakdown below is representative; 5-fold validated means are: SNN 968 ± 37 nJ/sample, ANN 454 ± 11 nJ/sample.
 

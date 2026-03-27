@@ -54,3 +54,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 - compensation methods for hardware inhomogeneities and limited signal bandwidth
 - identifying "a previously unknown interaction between input signals that impaired ITD detection"
 - modifying architecture to reduce signal interactions
+- successful ITD detection on Spikey chip
+
+**Framing:** "we built X and demonstrated it works on hardware Y, discovering problem Z along the way." hardware-focused -- contribution is getting a known algorithm to work on physical neuromorphic hardware despite its quirks. the unexpected discovery of a signal interaction was a bonus.
+
+---
+
+### Thesis 4: Firing States of Recurrent Leaky Integrate-and-Fire Networks
+- **Author:** Agnes Korcsak-Gorzo
+- **Type:** Bachelorarbeit
+- **Institution:** University of Heidelberg, KIP
+- **Year:** 2015
+- **Source:** [KIP](http://www.kip.uni-heidelberg.de/Veroeffentlichungen/details.php?id=3155&lang=en)
+
+**Objectives:** "examine firing patterns in current-based leaky integrate-and-fire networks, with particular focus on biologically plausible Asynchronous Irregular states used to model spontaneous activity in cortical regions."
+
+**Contribution:**
+- developed current-based networks using PyNN across various configs
+- "three distinct firing modes were characterized" using cross-correlation and ISI analysis
+- mean-field approach predicted population firing rates with "good agreement" between theory and simulation
+- results enable output "suitable as input for probabilistic inference models"
+
+**Framing:** "we investigated phenomenon X and characterized Y." more scientifically oriented than most undergrad theses -- characterizing behavior across parameter space and validating theory against simulation. the contribution is understanding, not just an artifact.
+
+---
+
+### Thesis 5: Accelerated Classification in Hierarchical Neural Networks on Neuromorphic Hardware
+- **Author:** Carola Fischer
+- **Type:** Bachelorarbeit

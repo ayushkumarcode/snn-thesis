@@ -26,3 +26,31 @@ strongest thesis framing: "Evaluating the Practicality of ANN-to-SNN Conversion 
 - 1-8 timesteps achieving near-ANN accuracy
 - first Transformer-to-SNN conversions
 - first non-ReLU architectures converted (ConvNeXt, MLP-Mixer, ResMLP)
+- training-free conversion methods
+- object detection, segmentation, video classification
+
+### Landmark Papers
+
+| Paper | Venue | Key Contribution |
+|-------|-------|-----------------|
+| Sign Gradient Descent Neuronal Dynamics | ICML 2024 | First to convert ConvNeXt, MLP-Mixer, ResMLP (beyond ReLU) |
+| Optimal ANN-SNN with Group Neurons | ICASSP 2024 | ResNet-34 on ImageNet: 73.61% at T=2 |
+| SpikeYOLO | ECCV 2024 (Best Paper Candidate) | Integer-valued training + spike-driven detection |
+| Inference-Scale Complexity | CVPR 2025 | Training-free conversion; classification + segmentation + detection + video |
+| Differential Coding | ICML 2025 | Novel differential coding reduces spike counts and energy |
+| Spiking Transformers | ICLR 2025 | 88.60% top-1, only 1% loss at T=4 |
+| One-Timestep is Enough | 2025 | Scale-and-Fire neurons at T=1 |
+
+### Current Frontiers
+
+1. ultra-low latency (T=1-4) -- the holy grail
+2. transformer conversion -- beyond CNNs
+3. beyond-ReLU (GELU, SiLU, Swish)
+4. training-free conversion -- just convert and run
+5. domain expansion (detection, segmentation, video, NLP)
+6. energy-accuracy co-optimization
+7. adaptive inference -- dynamic timesteps per input
+
+---
+
+## Tools and Frameworks

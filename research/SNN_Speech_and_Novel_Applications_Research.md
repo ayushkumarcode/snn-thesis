@@ -409,31 +409,3 @@ Key highlights:
 | **SNN Multimodal (Audio-Visual)** | **3-5** | **High** | **Medium** | **Medium** | **Strong opportunity** |
 | SNN Continual Learning | 5-10 | Medium-High | Medium | Medium | Good research topic |
 | SNN + RL / Robotics | 10-20 | Medium | Medium-High | Medium | Requires hardware access |
-| SNN NLP / Text | 5-10 | Medium | Medium | Medium | Far behind ANN NLP |
-
----
-
-## 8. TOP 5 RECOMMENDED THESIS DIRECTIONS
-
-### Recommendation 1: SNN-Based Speech Enhancement/Denoising
-**Why:** 5-10 papers exist (room for novelty), well-defined metrics (PESQ, STOI), publicly available datasets (VoiceBank+DEMAND, Intel N-DNS), clear practical motivation (hearing aids, edge devices), and existing baselines to compare against.
-**Approach:** Implement SNN-ConvTasNet or SNN-Wave-U-Net in snnTorch/SpikingJelly, benchmark against ANN baselines, measure energy efficiency.
-**Novelty angle:** Apply to a specific domain (e.g., speech enhancement for hearing aids with specific noise profiles, or speech enhancement in specific languages).
-
-### Recommendation 2: SNN Vocoder (Spiking Vocos Extension)
-**Why:** Only 1 paper exists, code is available on GitHub, builds on well-established Vocos framework, and the energy efficiency story is compelling (14.7% energy of ANN).
-**Approach:** Fork Spiking Vocos, experiment with different SNN neuron models, test on different speech datasets, optimize for deployment.
-**Novelty angle:** First SNN vocoder comparison across neuron models, or first SNN vocoder for a specific language/domain.
-
-### Recommendation 3: SNN for Time-Series Anomaly Detection
-**Why:** SNNs' temporal processing is a natural fit, few papers exist, clear practical applications (IoT, industrial monitoring), and doesn't require massive compute.
-**Approach:** Implement SNN-based anomaly detector using snnTorch, benchmark on standard datasets (NAB, Yahoo, SMAP/MSL), compare energy/accuracy trade-off vs LSTM/Transformer baselines.
-**Novelty angle:** First systematic comparison of SNN architectures for time-series anomaly detection, or application to a novel domain.
-
-### Recommendation 4: SNN Audio-Visual Multimodal Fusion
-**Why:** 3-5 papers exist with top venue publications, SNNs' event-driven nature pairs well with multimodal streams, and combines speech + vision which is topical.
-**Approach:** Build on MISNet or SMMT architecture, test on audio-visual datasets (VGGSound, AVE), compare with ANN multimodal models.
-**Novelty angle:** Apply to a new task like audio-visual speech recognition or audio-visual event detection.
-
-### Recommendation 5: SNN Diffusion Model for Audio Spectrograms
-**Why:** Spiking diffusion exists for images; applying to audio spectrograms would be genuinely new. Bridges SNN generative models and audio processing.

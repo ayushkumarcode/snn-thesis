@@ -82,3 +82,31 @@ full list from DBLP. key ones:
 1. "Scalable Event-by-event Processing with Deep State-Space Models" -- Schone et al. **[BEST PAPER]** (99.2% DVS Gestures)
 2. "Stochastic Spiking Neural Networks with First-to-Spike Coding" -- Sengupta group
 3. "Towards Efficient Deployment of Hybrid SNNs on Neuromorphic and Edge AI Hardware" -- Seekings et al.
+4. **"Continuous Learning for Real-Time Auditory Blind Source Separation"** -- Schmitt et al. *[AUDIO]*
+5. multiple application-focused papers where methodology matters more than raw accuracy
+
+paper #4 is audio-related neuromorphic work at ICONS. audio/sound processing IS represented, though it's a minority topic.
+
+### ICONS 2025 papers
+
+**Best Paper:** "A Comparison of Custom and Standard Neuron Model Random Walks on the Ornstein-Uhlenbeck Equation for Simplified Turbulence" -- not a classification task at all. won best paper on novelty and rigor.
+
+notable for our positioning:
+- **Paper #20:** "Hardware-Aware Fine-Tuning of Spiking Q-Networks on SpiNNaker2" -- Arfa et al. SpiNNaker papers are welcome.
+- **Paper #26:** "Unsupervised continual learning of complex sequences in SNNs" -- Bouhadjar et al. CL in SNNs is represented.
+- **Paper #27:** "SNNs for Low-Power Vibration-Based Predictive Maintenance" -- application benchmark with modest results. benchmark-style work is accepted.
+
+broad range of work from theoretical to deeply applied.
+
+### ICONS 2022 -- directly comparable audio paper
+
+"Efficient Spike Encoding Algorithms for Neuromorphic Speech Recognition" (Yarga, Rouat, Wood -- Sherbrooke). compared 4 spike encoding methods for digit classification. our paper is significantly more comprehensive: 7 encodings vs 4, ESC-50 vs speech digits, hardware deployment, adversarial/continual.
+
+---
+
+## Part 3: Competitive Landscape
+
+### direct competitors
+
+| Paper | Year | Venue | Dataset | Classes | Accuracy | Hardware |
+|-------|------|-------|---------|---------|----------|----------|

@@ -642,3 +642,31 @@ ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as
 
 **4. Audio Classification on SHD**
 - Spiking Heidelberg Digits dataset
+- temporal data naturally suited to SNNs
+- 93-96% accuracy achievable
+- good for: showcasing SNN temporal processing advantage
+
+**5. ANN-to-SNN Conversion Study**
+- convert pre-trained CIFAR-10 CNN to SNN
+- compare accuracy vs. time steps tradeoff
+- use SpikingJelly ann2snn or NengoDL
+- good for: bridging ANN and SNN knowledge
+
+**6. Surrogate Gradient Function Comparison**
+- implement same network with different surrogate gradients (arctangent, sigmoid, triangular, Gaussian)
+- measure accuracy, convergence speed, spike density
+- good for: understanding a key SNN training mechanism
+
+**7. EEG/Biomedical Signal Classification**
+- use SEED dataset for emotion recognition (96.67% reported)
+- or ECG classification for arrhythmia detection
+- good for: healthcare application; interdisciplinary appeal
+
+### energy efficiency numbers for motivation
+
+| Platform | Power | Task | Notes |
+|----------|-------|------|-------|
+| Intel Loihi 2 | 1.21 mJ/inference | Vision | 52x less than GPU |
+| Neuromorphic SNN | 5 mJ/inference | General | vs. 200 mJ for ANN |
+| TrueNorth | 67 mW | Keyword spotting | 82 days on coin cell battery |
+| GPU (Jetson Nano) | 62.9 mJ/inference | Vision | baseline comparison |

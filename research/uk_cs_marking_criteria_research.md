@@ -194,3 +194,31 @@ The pattern is pretty clear:
 ## 3. Are publishable results expected from undergrads?
 
 No. Not at all.
+
+### 3.1 Evidence
+
+**Edinburgh** lists "Inclusion of material worthy of publication" under its Exceptional Criteria -- meaning it's only expected for 80-90+ marks and is NOT needed for a first.
+
+**Sussex** reserves "publishable-quality outcomes" for the 90-100% band, explicitly labelled "Exceptional" and "Truly outstanding."
+
+**Student Room / general UK academic consensus**: Multiple sources confirm that "originality" at the undergrad level means not plagiarising and not resubmitting prior work. There's "not usually any requirement to deliver anything new, although if you did and it was properly done, you'd be in First territory." The consensus is that "original contribution to knowledge" is a PhD criterion, not an undergrad one.
+
+**Cambridge**: Their Part II assessment notes that "where a project makes a genuine contribution to the field, that is strong evidence that it should score in the 36-45 band [out of 45] for implementation and contribution. However, this is not a requirement of the band." So you can score in the top band without making a genuine field contribution.
+
+**Imperial**: Mentions assessing "the size and quality of the part of your project report that could be published" but frames this as a factor for distinguishing the very top marks, not a baseline expectation.
+
+### 3.2 What IS expected
+
+For a solid first (70-79%):
+- Competent, well-evaluated implementation
+- Thorough understanding of the problem space
+- Clear methodology and honest evaluation
+- Good writing quality
+- Some degree of independent thinking and personal creativity
+
+For 80+, markers start looking for:
+- Work that could potentially appear in a workshop paper or student conference
+- Novel approaches or insights
+- Particularly elegant or ambitious implementation
+- Evaluation methodology that goes beyond the obvious
+

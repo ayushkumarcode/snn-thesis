@@ -390,3 +390,31 @@ Key quote from Nature Communications (2025): "After several false starts, advanc
 ## Confidence assessment
 
 | Finding | Confidence | Basis |
+|---------|-----------|-------|
+| No prior SNN work on full ESC-50 | HIGH | Multiple searches, Larroza only covers ESC-10 |
+| ICONS has no audio papers (2024-2025) | HIGH | Full schedule analysis |
+| Adversarial robustness is hot topic | HIGH | Nature Communications 2025, multiple NeurIPS papers |
+| Transfer learning is hot topic | HIGH | KD papers at NeurIPS 2025, ICLR 2026 |
+| Hardware deployment valued by reviewers | HIGH | ICONS 2025 schedule analysis, community discourse |
+| SNN paper counts at top conferences | HIGH | Cross-referenced GitHub lists and official programs |
+| Energy break-even threshold (~6.4% spike rate) | MEDIUM-HIGH | Dampfhoffer 2023, cited in multiple 2025 papers |
+| Commercial neuromorphic market projections | MEDIUM | Multiple sources but projections vary widely |
+| Community view on SNN vs ANN | HIGH | Synthesized from surveys, Nature papers, discussions |
+
+---
+
+## Sources
+
+### Conference proceedings
+- [ICONS 2025 Schedule](https://iconsneuromorphic.cc/Schedule-2025/)
+- [ICONS 2026 Call for Papers](https://iconsneuromorphic.cc/calls-2026/)
+- [ICONS 2024 Proceedings](https://www.computer.org/csdl/proceedings/icons/2024/22lE6EOwpkA)
+- [ICML 2025 Papers](https://icml.cc/virtual/2025/papers.html)
+- [NeurIPS 2025 Paper List](https://papercopilot.com/paper-list/neurips-paper-list/neurips-2025-paper-list/)
+- [ICLR 2026 Papers](https://iclr.cc/virtual/2026/papers.html)
+
+### High-impact publications
+- [Neuromorphic computing enhances robustness through SNNs (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-65197-x)
+- [NeuroBench framework (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-56739-4)
+- [Road to commercial success (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-57352-1)
+- [Neuromorphic computing at scale (Nature, 2025)](https://www.nature.com/articles/s41586-024-08253-8)

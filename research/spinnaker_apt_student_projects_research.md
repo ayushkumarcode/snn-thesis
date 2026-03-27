@@ -293,31 +293,3 @@ The APT group at the University of Manchester, led by Prof. Steve Furber (now Em
 | **Tools** | SpiNNaker, sPyNNaker, PyNN, Dynamic Vision Sensors, HBP Platform |
 | **GitHub** | https://github.com/gdikov/SpikingStereoMatching |
 | **Publication** | Associated conference paper published 2017 |
-| **Accessible** | YES -- code freely accessible |
-
-### 3.3 Bachelor Thesis: SpiNNaker ROS Integration (TUM)
-
-| Field | Details |
-|-------|---------|
-| **Title** | SpiNNaker ROS Integration |
-| **Author** | reiths (GitHub username) |
-| **Institution** | Technical University of Munich, Chair of Neuroscientific System Theory |
-| **Degree** | Bachelor thesis |
-| **Abstract** | Bridges ROS (Robot Operating System) with SpiNNaker. Converts ROS messages to neural spikes for injection into SpiNNaker, and converts spike activity back to ROS data streams. |
-| **Tools** | SpiNNaker, PyNN, ROS, sPyNNakerExternalDevicesPlugin |
-| **GitHub** | https://github.com/reiths/ros_spinnaker_interface |
-| **Accessible** | YES -- code freely accessible |
-
-### 3.4 MSNE Research Internship: Short-term Plasticity on SpiNNaker (2018)
-
-| Field | Details |
-|-------|---------|
-| **Title** | Short-term Plasticity Model on SpiNNaker |
-| **Author** | MSNE (Master of Science in Neuroengineering) student |
-| **Institution** | TU Munich student, interned at APT group Manchester |
-| **Year** | Spring 2018 |
-| **Supervisor** | Dr. Oliver Rhodes |
-| **Abstract** | Implemented and tested a short-term plasticity model on SpiNNaker during a 6-8 week research internship at the APT group, University of Manchester. |
-
-### 3.5 Yexin Yan -- SpiNNaker2 Algorithms (TU Dresden, 2022)
-

@@ -558,3 +558,31 @@ All prior SNN-ECG work uses MIT-BIH Arrhythmia Database (much simpler: single-le
 Step 1: Download PTB-XL (wget from PhysioNet, CC BY 4.0, no agreement needed)
 Step 2: Load with wfdb.rdsamp() at 100 Hz (1000 samples x 12 leads)
 Step 3: Parse labels with ast.literal_eval + aggregate to 5 superclasses
+Step 4: Split using strat_fold (folds 1-8 train, 9 val, 10 test)
+Step 5: Preprocess: Z-score normalize per lead (bandpass optional)
+Step 6: Convert to PyTorch tensors: (batch, 12, 1000)
+Step 7: EITHER:
+   a) Spatial approach: Conv1d -> snn.Leaky -> pool, then short SNN time loop
+   b) Temporal approach: delta encode -> full SNN time loop with TBPTT
+Step 8: Train with BCEWithLogitsLoss (optionally weighted)
+Step 9: Evaluate on fold 10 with macro AUROC via sklearn
+Step 10: Compare to ANN baseline (xresnet1d: 0.937 AUROC)
+```
+
+**No missing components.** Every library is pip-installable, every dataset is freely downloadable, every function exists and has documented API.
+
+**Verified library versions (all current as of Feb 2026):**
+
+| Library | Version | Install |
+|---|---|---|
+| wfdb | 4.3.1 | `pip install wfdb` |
+| snntorch | 0.9.4 | `pip install snntorch` |
+| neurokit2 | 0.2.13 | `pip install neurokit2` |
+| scipy | 1.17.x | `pip install scipy` |
+| scikit-learn | 1.8.x | `pip install scikit-learn` |
+| torch | 2.x | `pip install torch` |
+| pandas | 2.x | `pip install pandas` |
+| numpy | 2.x | `pip install numpy` |
+
+---
+

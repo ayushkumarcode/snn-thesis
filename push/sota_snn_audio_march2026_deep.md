@@ -142,31 +142,3 @@ Closest:
 | Claim | Status | Evidence |
 |-------|--------|----------|
 | First SNN on full ESC-50 | ✅ Confirmed | Zero prior work found; Larroza only does ESC-10 |
-| Most comprehensive encoding comparison (7) for audio SNN | ✅ Confirmed | Next best: 4 encodings (Yarga 2022) |
-| First SpiNNaker deployment for ESC-50 | ✅ Confirmed | Only Dominguez-Morales did audio on SpiNNaker (pure tones) |
-| PANNs+SNN frozen transfer is novel | ✅ Confirmed | No equivalent found |
-| Gap-collapse finding (17pp→1pp) is novel | ✅ Confirmed | Not reported elsewhere |
-| SNN adversarial robustness on audio is novel | ✅ Confirmed | NEUROSEC (FPGA) is closest but different approach |
-| SNN continual learning on audio is novel | ✅ Confirmed | No prior work found |
-
----
-
-## 10. Emerging Directions (2024-2026)
-
-- **SNN Audio-Visual Fusion** — Hot new area (S-CMRL, Spiking Tucker Fusion)
-- **SNN Speech Synthesis** — Spiking Vocos (2025): first SNN vocoder, 14.7% energy of ANN
-- **SNN Sound Source Localization** — NeurIPS 2024 paper, Resonate-and-Fire neurons
-- **Neuromorphic Audio Front-Ends** — Silicon cochlea (ETH), Xylo Audio 3, CARFAC
-
----
-
-## Key Sources
-- [Larroza et al. 2025](https://arxiv.org/abs/2503.11206)
-- [SpikCommander 2025](https://arxiv.org/abs/2511.07883)
-- [SpikeSCR 2024](https://arxiv.org/abs/2412.12858)
-- [Basu et al. 2025 survey](https://arxiv.org/abs/2502.15056)
-- [Baek & Lee 2024 review](https://link.springer.com/article/10.1007/s13534-024-00406-y)
-- [Xylo Audio 2 2024](https://arxiv.org/abs/2406.15112)
-- [OmniVec2 CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Srivastava_OmniVec2)
-- [EventProp Loihi 2 2025](https://arxiv.org/abs/2510.13757)
-- [ESC-50 SOTA tracker](https://paperswithcode.com/sota/audio-classification-on-esc-50)

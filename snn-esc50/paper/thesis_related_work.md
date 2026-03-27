@@ -26,20 +26,20 @@ $$U[t] = \beta U[t-1] + I[t] - S[t-1]\vartheta$$
 $$S[t] = \mathbf{1}[U[t] \geq \vartheta]$$
 
 where beta = exp(-dt/tau_m) is decay rate (0.95 in this work).
-### 2.2.2 Surrogate Gradient Training
 
-The spike function $S[t] = \mathbf{1}[U[t] \geq \vartheta]$ is discontinuous, making standard backpropagation impossible ($\partial S/\partial U = 0$ almost everywhere). Surrogate gradient descent (Neftci et al. 2019; Zenke & Vogels 2021) substitutes a smooth function in the backward pass:
+### 2.2.2 surrogate gradient training
+
+The spike function S[t] = 1[U[t] >= theta] is discontinuous, making backprop impossible (dS/dU = 0 almost everywhere). Surrogate gradient descent (Neftci et al. 2019; Zenke & Vogels 2021) substitutes a smooth function in the backward pass:
 
 $$\frac{\partial \mathcal{L}}{\partial U} \approx \frac{\partial \mathcal{L}}{\partial S} \cdot \sigma'(U - \vartheta)$$
 
-Common surrogates include fast sigmoid ($\sigma'(x) = \frac{1}{(1+|x|)^2}$, slope=25), ATan, triangular, and the straight-through estimator (STE). Surrogate choice affects training stability and activation sparsity; this work ablates all 8 surrogates provided by snnTorch 0.9.4.
+Common surrogates: fast sigmoid (1/(1+|x|)^2, slope=25), ATan, triangular, STE. Surrogate choice affects training stability and sparsity; this work ablates all 8 surrogates in snnTorch 0.9.4.
 
-**snnTorch** (Eshraghian et al. 2023) is the primary framework, providing PyTorch-compatible LIF, Leaky, Recurrent, and Synaptic neuron types, spike generation functions, and functional utilities for population coding and loss computation.
+**snnTorch** (Eshraghian et al. 2023) is the primary framework -- PyTorch-compatible LIF, Leaky, Recurrent, Synaptic neuron types, spike generation, population coding and loss utilities.
 
 ---
 
-## 2.3 Spike Encoding Methods
-
+## 2.3 spike encoding methods
 Spike encoding converts static inputs (images, spectrograms) into temporal spike patterns. The encoding method is a critical design choice that determines information density, energy cost, and task suitability.
 
 **Rate coding** (de Ruyter van Steveninck et al. 1997): spike probability ∝ intensity. Maximises information per spike but is stochastic and requires many timesteps. Biologically plausible.

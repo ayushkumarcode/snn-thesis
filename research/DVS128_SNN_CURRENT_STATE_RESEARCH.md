@@ -185,31 +185,3 @@ Events must be binned into frames for batch training. Three strategies:
 | Method | Description | Param |
 |--------|-------------|-------|
 | `split_by='number'` | Fixed number of frames (e.g., T=16). Each frame has roughly equal events. | `frames_number=16` |
-| `split_by='time'` | Fixed time window per frame. Variable number of frames. | `duration=time_ms` |
-| Custom transforms | Via Tonic: ToFrame, Denoise, Downsample | Various |
-
-Output tensor shape: `[T, 2, 128, 128]` where T = number of time bins, 2 = polarity channels (ON/OFF).
-
-**Step 4: Batching (Non-trivial)**
-
-Each sample has different temporal length. Two approaches:
-- **Fixed T (recommended):** Use `frames_number=16` to get uniform tensors. Simpler batching.
-- **Variable T:** Use `pad_sequence_collate` to pad shorter sequences. More faithful to data but slower.
-
-### Pipeline Steps (snnTorch + Tonic)
-
-```python
-import tonic
-import tonic.transforms as transforms
-
-sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
-transform = transforms.Compose([
-    transforms.Denoise(filter_time=10000),
-    transforms.ToFrame(sensor_size=sensor_size, time_window=1000),
-])
-
-train_ds = tonic.datasets.DVSGesture(save_to='./data', train=True, transform=transform)
-# Uses DiskCachedDataset for performance
-from tonic import DiskCachedDataset
-cached_train = DiskCachedDataset(train_ds, cache_path='./cache/dvsg/train')
-train_dl = DataLoader(cached_train, batch_size=16,

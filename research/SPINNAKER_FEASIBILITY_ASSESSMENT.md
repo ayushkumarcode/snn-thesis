@@ -202,31 +202,3 @@ A 2025 paper demonstrated the complete pipeline:
 | Model | Type | Description |
 |-------|------|-------------|
 | `IF_curr_exp` | Standard | Current-based LIF, exponential synapses |
-| `IF_cond_exp` | Standard | Conductance-based LIF, exponential synapses |
-| `IF_curr_alpha` | Standard | Current-based LIF, alpha synapses |
-| `IF_curr_delta` | Standard | Current-based LIF, delta synapses |
-| `Izhikevich` | Standard | Current-based Izhikevich model |
-| `Izhikevich_cond` | Extended | Conductance-based Izhikevich |
-| `IFCurrExpCa2Adaptive` | Extended | Calcium-adaptive LIF |
-| `IFCondExpStoc` | Extended | Stochastic threshold conductance-based |
-
-**Source:** [sPyNNaker Models and Limitations](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html)
-
-### Convolutional Support
-
-- **SpiNNaker1 (sPyNNaker):** Supports `KernelConnector` and `ConvolutionConnector` for structured convolutional connectivity. Also supports digital retina input. However, this is NOT the same as PyTorch `nn.Conv2d` -- you define convolutions as connectivity patterns between populations.
-- **SpiNNaker2 (py-spinnaker2):** Full convolutional layer support through NIR import. Conv2D layers are mapped directly.
-- **Community code:** [SpikingConvNet](https://github.com/SvenGronauer/SpikingConvNet) provides infrastructure for arbitrarily deep spiking CNNs on SpiNNaker.
-
-### Training Methods
-
-| Method | SpiNNaker1 | SpiNNaker2 |
-|--------|-----------|-----------|
-| STDP (spike-timing dependent plasticity) | YES (native) | YES |
-| Surrogate gradient backpropagation | NO (not on-chip) | Limited (e-prop demonstrated) |
-| Pre-trained weight loading | YES (via FromListConnector) | YES (via NIR/py-spinnaker2) |
-| Reinforcement learning (reward-modulated) | YES (3-factor STDP) | YES (spiking Q-networks demonstrated) |
-
-**The standard approach is: Train off-chip (snnTorch/PyTorch) -> Load weights -> Run inference on SpiNNaker.**
-
-### Maximum Network Size

@@ -142,31 +142,3 @@ These are NOT representative of undergraduate scope but show what the SpiNNaker 
 | Sergio Davies | 2012 | Learning in Spiking Neural Networks | Novel STDP learning rule |
 | James Knight | 2016 | Plasticity in Large-Scale Models | Largest plastic SNN on neuromorphic HW |
 
-**All 16 PhD theses:** https://research.manchester.ac.uk/en/studentTheses/ (search "SpiNNaker" or "spiking")
-
-### Other UK PhD Theses Found:
-
-| Author | Year | University | Topic |
-|--------|------|-----------|-------|
-| N. Perez | 2023 | Imperial College | Sparse backward pass (150x speedup) for deep SNNs |
-| Florian Bacho | 2024 | Kent | Exact gradients for temporally-coded SNNs |
-| Yin Bi | 2020 | UCL | Graph neural networks for event cameras, created ASL-DVS dataset |
-| William Peer Berg | 2022 | Edinburgh | Modular PyTorch framework for SNN optimization |
-| Jinqi Huang | 2022 | Southampton | Memristor-based SNNs, NeuroPack simulator, 168 pages |
-| Yannan Xing | 2020 | Strathclyde | Deep SNNs for gesture recognition |
-
----
-
-## Part 6: What Distinguishes a Good Undergraduate SNN Project
-
-Based on analysing 40+ projects:
-
-### Do:
-1. Pick a **clear research question** (not just "implement an SNN")
-2. Include a **meaningful comparison** (SNN vs ANN on the same task)
-3. Use **multiple evaluation metrics** (accuracy, training time, energy estimates, spike count)
-4. Be **honest about limitations** (convergence issues, accuracy gaps are expected and normal)
-5. Use a **well-documented framework** (snnTorch has the best tutorials for beginners)
-
-### Don't:
-1. Try to build from scratch in C++ (unless that IS the project)

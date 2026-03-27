@@ -194,3 +194,31 @@ The hardware landscape is maturing fast. Papers that show actual deployment on r
 
 10. **Standardized benchmarking**: NeuroBench is helping but adoption is incomplete.
 
+### Tier 3: Emerging frontiers
+11. Neuromorphic + LLMs: can spiking principles make transformer inference radically more efficient?
+12. Photonic neuromorphic computing: all-optical SNNs
+13. 2D materials for neuromorphic devices: sub-100mV switching, femtojoule energy
+14. Neuromorphic sensing end-to-end: from event camera/mic directly to SNN inference
+
+---
+
+## 7. Is there a "neuromorphic audio" community?
+
+### Assessment: yes, emerging but small and underserved
+
+**Key research groups:**
+
+| Group/Researcher | Affiliation | Focus | Key Work |
+|-----------------|-------------|-------|----------|
+| Jimenez-Fernandez et al. | University of Seville | SNN audio on SpiNNaker | Dominguez-Morales et al. 2016 (pure tones) |
+| Larroza et al. | IVACE/Spain | Spike encoding for env. sound | March 2025 ESC-10 benchmark |
+| Zenke Lab | Friedrich Miescher Institute | SHD/SSC datasets | Spiking Heidelberg Digits |
+| Wu/Chua | NTU Singapore | Robust sound classification | 2018 Frontiers paper |
+| Yarga et al. | Multiple | Neuromorphic KWS with PDM mics | Interspeech 2024 |
+| Innatera | Netherlands (commercial) | Always-on audio sensing | Pulsar chip, 400microW audio |
+| SpiNNcloud | Dresden | SpiNNaker2 applications | Including audio potential |
+
+**Key datasets:**
+- SHD/SSC (Spiking Heidelberg Digits / Spiking Speech Commands) -- the de facto standard
+- Google Speech Commands -- for keyword spotting
+- ESC-10/ESC-50 -- environmental sound (my domain, ZERO prior SNN work on full ESC-50)

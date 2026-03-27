@@ -278,3 +278,31 @@ Pi as host controller (data loading, preprocessing, display) connected to FPGA (
 | Arduino Portenta H7 | $80 | proven C SNN runtime |
 | PYNQ-Z2 | $120-180 | FPGA SNN with Python |
 | Basys3 | $150-180 | low-cost FPGA SNN |
+
+### $200+
+
+| Hardware | Cost | Path |
+|----------|------|------|
+| AMD Kria KV260 | $199 | official snnTorch-to-FPGA pipeline |
+| BrainChip Akida | Contact vendor | true neuromorphic SoC |
+| SynSense Xylo/Speck | Contact vendor | ultra-low-power neuromorphic |
+
+### free/cloud
+
+| Platform | Cost | Access |
+|----------|------|--------|
+| Google Colab | Free | SNN training with GPU |
+| Intel INRC (Loihi 2) | Free for researchers | requires membership |
+| SpiNNaker (Manchester) | Free for academics | cloud via sPyNNaker |
+
+---
+
+## 9. recommended project paths
+
+### overall: highly feasible
+
+a "deploy SNN on real hardware" thesis is not only feasible but represents a strong, timely, demonstrable topic. frameworks like Spiker+, NIR, and fpga-snntorch were specifically designed to make this accessible.
+
+### path A: "SNN edge deployment benchmark" (strongest thesis)
+
+train SNN for DVS128 gesture recognition, deploy on multiple platforms, measure and compare.

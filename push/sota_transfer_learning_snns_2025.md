@@ -82,3 +82,31 @@ there's been a ton of work here:
 
 the fundamental challenge everyone keeps running into: ANN outputs are continuous while SNN outputs are sparse and discrete. straightforward alignment doesn't work because of this architectural mismatch (Liu et al., 2025). solutions include gaussian noise smoothing of SNN logits, saliency-scaled activation maps, blurred feature restoration.
 
+self-architectural distillation (SAKD, Spiking Vocos) uses the *same architecture* for teacher ANN and student SNN, which avoids the capacity gap problem. this is directly relevant to us -- our PANNs+SNN head and PANNs+ANN head have the same 3-layer architecture, just LIF vs ReLU. the 0.95pp gap validates that self-architectural transfer works really well.
+
+typical accuracy recovery:
+- BKDSNN (ECCV 2024): SNN within 0.93-4.51pp of ANN on ImageNet
+- SAKD (2024): comparable performance using same architecture
+- Efficient Logit KD (ICML 2025): near-ANN across full range of timesteps
+
+### Distillation for Audio
+
+**Spiking Vocos (Chen et al., 2025)** -- this is probably the single most relevant paper for our work:
+- neural vocoder (audio generation)
+- self-architectural distillation from ANN Vocos to Spiking Vocos
+- UTMOS=3.74, PESQ=3.45, consuming only **14.7% of ANN energy**
+- spiking ConvNeXt module + amplitude shortcut path
+- shows that: (1) self-architectural distillation works for audio, (2) SNN can match ANN quality with right transfer approach, (3) energy savings are dramatic (85.3% reduction)
+
+**SAFE: SNN-based Audio Fidelity Evaluation (ICLR 2025 submission)**
+- fake audio detection
+- CNN feature extraction (up to maxpool) + 3 spiking layers (128, 10, 2 neurons)
+- comparable accuracy to ANN with fewer parameters
+- **directly parallels our approach**: CNN extracts features, SNN classifies
+
+**SpikeVoice (ACL 2024)**
+- first SNN-based TTS system
+- ANN-comparable quality at 10.5% energy consumption
+
+---
+

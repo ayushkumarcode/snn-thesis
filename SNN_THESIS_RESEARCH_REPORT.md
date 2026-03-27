@@ -614,3 +614,31 @@ ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as
 | Writing | 3-4 | draft and revise thesis |
 | **Total** | **15-20 weeks** | |
 
+---
+
+<a name="low-barrier"></a>
+## low-barrier SNN applications
+
+### ranked by accessibility (easiest first)
+
+**1. MNIST/Fashion-MNIST Classification with SNN (easiest)**
+- snnTorch Tutorial 5-6 gets you 95%+ accuracy
+- direct comparison with a standard ANN
+- estimated energy savings calculation
+- good for: understanding SNN training mechanics
+
+**2. Neuromorphic Digit Classification (N-MNIST)**
+- uses actual event-camera data
+- built-in dataset loaders in snnTorch and SpikingJelly
+- snnTorch Tutorial 7 covers this directly
+- 98%+ accuracy achievable
+- good for: demonstrating SNNs on native neuromorphic data
+
+**3. DVS128 Gesture Recognition**
+- 11 gesture classes from event camera
+- SpikingJelly tutorial provides step-by-step code
+- 96-98% accuracy achievable with standard architectures
+- good for: practical real-world application; compelling demo
+
+**4. Audio Classification on SHD**
+- Spiking Heidelberg Digits dataset

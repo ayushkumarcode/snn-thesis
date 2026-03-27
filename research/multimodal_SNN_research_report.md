@@ -388,31 +388,3 @@ shd_test = spikedata.SHD("data/shd", train=False)
 7. Large-scale sensor fusion (LIDAR + camera + IMU + radar)
 
 ### Confidence Assessment
-
-| Claim | Confidence |
-|---|---|
-| Multimodal SNN digit classification is achievable in one semester | HIGH (95%) |
-| snnTorch is the best starting framework | HIGH (90%) |
-| Late concatenation fusion will work well | HIGH (95%) -- confirmed by Bjorndahl et al. |
-| Novel contribution is possible within scope | MEDIUM-HIGH (80%) |
-| Project can be completed on laptop GPU | HIGH (90%) |
-| The topic will impress examiners | HIGH (85%) -- it is cutting-edge |
-
----
-
-## Research Gaps and Recommended Follow-ups
-
-### Gaps in This Report
-
-1. Could not determine if Bjorndahl et al. released their code (likely no, but S-CMRL code is available)
-2. Exact training times for the multimodal digit classification setup are estimated, not measured
-3. Did not find any undergraduate thesis specifically on multimodal SNNs to compare against
-4. Limited information on BrainCog's ease of use for beginners
-
-### Recommended Next Steps
-
-1. **Read the Bjorndahl et al. paper in full** (arXiv 2409.00552) -- it is the direct template
-2. **Clone and explore the S-CMRL codebase** (https://github.com/Brain-Cog-Lab/S-CMRL) -- reference implementation
-3. **Complete snnTorch Tutorials 1-7** -- builds up to neuromorphic dataset handling
-4. **Start with single-modality baselines** before attempting fusion
-5. **Contact your supervisor** about whether SpiNNaker access is available at your university

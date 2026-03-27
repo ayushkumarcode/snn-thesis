@@ -278,3 +278,23 @@ def main():
             result = run_fold(fold, device, lambda_conv, lambda_fc)
             fold_results.append(result)
 
+        if len(fold_results) == 5:
+            accs = [r["best_acc"] for r in fold_results]
+            rates = [r["overall_spike_rate"] for r in fold_results]
+            mean_acc = np.mean(accs)
+            mean_rate = np.mean(rates)
+            print(f"\n  5-Fold: {mean_acc:.4f}±{np.std(accs):.4f}, "
+                  f"spike_rate={mean_rate:.4f}")
+
+        all_results.extend(fold_results)
+
+    # Save all results
+    save_dir = RESULTS_DIR / "energy" / "spike_reg_sweep"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+    print(f"\nSaved to {save_dir / 'all_results.json'}")
+
+
+if __name__ == "__main__":
+    main()

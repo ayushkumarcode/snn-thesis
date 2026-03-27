@@ -485,31 +485,3 @@ class SNN(nn.Module):
         spk_rec = []
         for step in range(self.num_steps):
             cur1 = self.fc1(x.view(-1, 784))
-            spk1, mem1 = self.lif1(cur1, mem1)
-            cur2 = self.fc2(spk1)
-            spk2, mem2 = self.lif2(cur2, mem2)
-            spk_rec.append(spk2)
-        return torch.stack(spk_rec)
-
-# 4. Training loop (~30 lines, standard PyTorch)
-# 5. Evaluation + metrics logging (~20 lines)
-# 6. Plotting (~30 lines, matplotlib)
-```
-
-The point: your entire experimental codebase is approximately 200-400 lines of Python, most of which is adapted from existing tutorials.
-
----
-
-## APPENDIX B: ENERGY ESTIMATION TEMPLATE
-
-A simple energy comparison you can include in your results chapter:
-
-```
-For a single inference on MNIST (784 inputs, 500 hidden, 10 output):
-
-ANN:
-- Layer 1: 784 x 500 = 392,000 MAC operations
-- Layer 2: 500 x 10 = 5,000 MAC operations
-- Total MACs: 397,000
-- Estimated energy: 397,000 x 4.6 pJ = 1.83 uJ
-

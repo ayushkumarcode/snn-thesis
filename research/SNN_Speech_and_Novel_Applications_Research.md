@@ -269,31 +269,3 @@ SNNs communicate through discrete binary spike events (0 or 1 at each timestep).
 **Paper Count: 20+ papers | Maturity: HIGH**
 
 | Paper | Year | Venue | Key Result |
-|-------|------|-------|------------|
-| Spiking-YOLO | 2020 | AAAI | First SNN object detector; 280x energy reduction |
-| Trainable Spiking-YOLO | 2023 | Neural Networks | Directly trained; low-latency |
-| **SpikeYOLO (Integer-Valued Training)** | **2024** | **ECCV (Best Paper Candidate)** | **66.2% mAP@50 COCO; +2.5% over ANN equivalent; 5.7x energy efficiency** |
-| SU-YOLO (Underwater) | 2025 | Neurocomputing | 78.8% mAP@50 underwater; 2.98 mJ energy |
-| Deep Directly-Trained SNN for Object Detection | 2023 | arXiv | Direct training without ANN-to-SNN conversion |
-
-**Assessment:** Object detection with SNNs is mature. SpikeYOLO was an ECCV 2024 Best Paper Candidate. The performance gap with ANNs is narrowing rapidly. Good thesis potential but less novel than speech tasks.
-
-### 6B. Semantic Segmentation with SNNs
-**Paper Count: 10-20 papers | Maturity: MEDIUM-HIGH**
-
-| Paper | Year | Key Result |
-|-------|------|------------|
-| SNN for Image Segmentation | 2021 | Early SNN segmentation |
-| SNN Fine-Tuning for Brain Image Segmentation | 2023 | Frontiers in Neuroscience |
-| NSNPFormer (Transformer-based) | 2024 | mIoU 53.7 (ADE20K), 58.06 (Pascal Context) |
-| Spiking U-Net + CBAM + ViT for Medical Segmentation | 2024 | 97.50% accuracy brain tumors |
-| Spiking-SSegNet (Low-Latency) | 2025 | Large-scale semantic segmentation |
-| Spiking Point Transformer | 2025 | AAAI 2025, point cloud classification |
-
-**Assessment:** Active area with clear applications in medical imaging and autonomous driving. Medical image segmentation with SNNs is particularly promising for thesis work.
-
-### 6C. Anomaly Detection with SNNs
-**Paper Count: 5-10 papers | Maturity: MEDIUM**
-
-| Paper | Year | Key Result |
-|-------|------|------------|

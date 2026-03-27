@@ -134,31 +134,3 @@ NeuroBench is the first community-wide attempt at standardising benchmarks. Publ
 
 ### Known Limitations and Criticisms
 
-Several papers have argued that the standard approach is **too optimistic** about SNN efficiency:
-
-1. **Ignores memory access costs:** "Most SNN works only consider counting of additions to evaluate energy consumption, neglecting other overheads such as memory accesses and data movement." -- [Shen et al., 2024](https://arxiv.org/html/2409.08290v1)
-
-2. **Assumes ideal sparse hardware:** The 0.9 pJ/AC cost assumes neuromorphic hardware that can skip zero-activation synapses. On GPUs/CPUs, SNNs are often *slower and more energy-hungry* than ANNs.
-
-3. **Ignores timestep overhead:** Running T timesteps means T forward passes, each with memory reads/writes. With T=4-16 timesteps, the overhead can be substantial.
-
-4. **Critical sparsity thresholds:** For VGG16 with T=6, neuron sparsity must exceed 93% for energy savings. With T>16, sparsity must exceed 97%. ([Source](https://arxiv.org/html/2409.08290v1))
-
-### Recommendation for Your Thesis
-
-Report **both** the standard SOP-based estimate AND acknowledge the limitations. This shows critical thinking and awareness of the ongoing debate. A good approach:
-
-1. Report the standard E_SNN = SOP * E_AC calculation (Tier 1)
-2. Report the Lemaire-style estimate with memory costs (Tier 2) if time permits
-3. Include a discussion section noting that these are theoretical estimates assuming ideal neuromorphic hardware
-4. Note that on conventional hardware (GPU), the SNN would likely be slower
-
----
-
-## 4. Tools and Libraries for Energy Estimation
-
-### Recommended for Undergraduate Thesis (Priority Order)
-
-#### 1. NeuroBench (HIGHEST RECOMMENDATION)
-
-- **What:** Standardised benchmarking framework for neuromorphic computing

@@ -68,20 +68,20 @@ our best "wow" numbers:
 award-winning papers: "Scalable Event-by-event Processing with Deep State-Space Models" (Schone et al.), "IM-SNN: Memory-Efficient SNNs with Low-Precision Membrane Potentials" (Hassan et al.), "Programmable Synapses and Dendritic Circuits for Superconducting Neuromorphic Computing" (Primavera et al.)
 
 80+ presentations covering algorithms (visualization, dendritic processing), hardware (analog neurons, CMOS, memristors), and applications (gaming, audio processing, materials science, gait analysis, RF fingerprinting, swarm robotics).
-YOUR best "wow" numbers:
-- **Gap collapse: 16.7pp to 0.95pp** (feature learning bottleneck identified)
-- **6.0x adversarial robustness** (first audio analysis)
-- **7 encodings** (most comprehensive audio comparison)
-- **First SNN on ESC-50** (novelty claim)
 
----
+turns out ICONS 2024 accepted audio processing papers as lightning talks in the Applications session. our paper covers THREE of their tracks (algorithms, hardware, applications).
 
-## 3. ICONS SPECIFICALLY (2022-2024)
+### ICONS 2023 (Santa Fe, NM)
 
-### ICONS 2024 (Arlington, Virginia, July 30 - Aug 2, 2024)
+best paper: "Dendritic Learning in Superconducting Optoelectronic Networks" (O'Loughlin, Primavera, Shainline). published in ACM proceedings. papers included continual learning for robots, prosthetic vision, dictionary learning.
 
-**Award-winning papers:**
-- "Scalable Event-by-event Processing of Neuromorphic Sensory Signals With Deep State-Space Models" (Schone et al.)
+### ICONS 2022 (Knoxville, TN)
+
+directly relevant: "Evaluating Encoding and Decoding Approaches for Spiking Neuromorphic Systems" -- this is the Yarga et al. paper we already cite. they compared 4 encodings on speech digits. our 7-encoding comparison on ESC-50 is a direct and significant extension. ICONS reviewers will recognize this lineage and see us building on their community's research. this is a strong positioning strategy.
+
+### ICONS 2026 (our target)
+
+Chicago, IL. August 4-6, 2026. deadline: April 1 (maybe April 8 AoE). 8-page full papers (20-min talks), 4-page short (10-min).
 - "IM-SNN: Memory-Efficient Spiking Neural Network with Low-Precision Membrane Potentials and Weights" (Hassan et al.)
 - "Programmable Synapses and Dendritic Circuits for Superconducting Optoelectronic Neuromorphic Computing" (Primavera et al.)
 

@@ -110,3 +110,31 @@ we have the most comprehensive encoding comparison for audio SNNs. nobody else h
 
 ---
 
+## 7. ESC-50 Overall SOTA (Any Model)
+
+| Rank | Model | Accuracy | Year | Notes |
+|------|-------|----------|------|-------|
+| 1 | **OmniVec2** | **99.1%** | CVPR 2024 | Multimodal transformer |
+| 2 | InternVideo2 | 98.6% | 2024 | Video+audio multimodal |
+| 3 | OmniVec | 98.4% | WACV 2024 | Predecessor |
+| 4 | HTSAT-22 | 98.25% | 2023 | NL supervision |
+| 5 | BEATs | 98.1% | 2023 | Acoustic tokenizer |
+| - | Human | 81.3% | 2015 | Piczak crowdsourcing |
+| - | **our SNN (scratch)** | **47.15%** | 2026 | First SNN on full ESC-50 |
+| - | **our PANNs+SNN** | **92.50%** | 2026 | Frozen CNN14 + SNN head |
+
+**need to update thesis to cite OmniVec2 (99.1%) as current SOTA, not the old 98.25% figure.**
+
+---
+
+## 8. Surveys to Cite
+
+1. **Baek & Lee (2024)** -- "SNN and Sound: A Comprehensive Review" -- Biomedical Engineering Letters
+2. **Basu, Chaudhari & Di Caterina (2025)** -- "Fundamental Survey on Neuromorphic Based Audio Classification" -- arXiv:2502.15056 (24 pages)
+
+---
+
+## 9. Novelty Assessment
+
+| Claim | Status | Evidence |
+|-------|--------|----------|

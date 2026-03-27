@@ -118,31 +118,3 @@ For an undergraduate thesis, this direction offers **exceptionally high novelty*
 **Code:** https://github.com/Xingrun-Xing2/SpikeLLM (public but sparse documentation)
 
 **Paper:** https://arxiv.org/abs/2407.04752
-
----
-
-### 1.5 SpikeZIP-TF (ICML 2024)
-
-**What it is:** A lossless ANN-to-SNN conversion method for transformer architectures. Key innovation: ANN and SNN are *exactly equivalent*, incurring zero accuracy degradation.
-
-**Results:**
-- **SST-2: 93.79% accuracy** (highest SNN result for this benchmark)
-- Outperforms SpikeGPT and SpikeBERT on English and Chinese text tasks
-- 3.65% improvement on MR, 5.24% on SST-5 vs prior SNN methods
-
-**Verdict:** If your goal is to demonstrate SNN equivalence with no accuracy loss, this is the strongest approach. But the energy savings may be smaller since exact conversion requires more time steps.
-
-**Paper:** https://arxiv.org/abs/2406.03470
-
----
-
-### 1.6 SpikingMiniLM (2024)
-
-**What it is:** An energy-efficient spiking transformer for natural language understanding. Introduces a multistep encoding method to convert text embeddings into spike trains. Targets the MiniLM architecture (smaller than BERT).
-
-**Verdict:** Achieves similar performance to BERT-MINI with fewer parameters and much lower energy consumption. Potentially more feasible for an undergraduate project due to smaller model size.
-
-**Paper:** https://link.springer.com/article/10.1007/s11432-024-4101-6
-
----
-

@@ -127,31 +127,3 @@ These go in the thesis, not the ICONS paper. Run on CSF3 in parallel with paper 
 | June 5 | Decision | Celebrate or plan poster |
 | ~July | DCASE 2026 deadline | Second paper opportunity (perfect topic match) |
 | ~Sep | ICASSP 2027 deadline | Third paper opportunity |
-
----
-
-## KEY PREPARED RESPONSES (for reviewers)
-
-1. **"47% is low"** → Baseline datum. PANNs+SNN proves 92.5% when features are good. Gap identifies the bottleneck.
-2. **"SNN uses more energy"** → Honest: yes in software. Path: reduce spike rate from 25.8% to <6.4%. On neuromorphic hardware, AC costs 5.1x less than MAC.
-3. **"SpiNNaker 33% with high variance"** → First quantified hardware gap. 50-class task is 6.25x harder than prior work (8 pure tones). Root cause documented.
-4. **"Only ESC-50"** → Standard benchmark with predefined 5-fold. UrbanSound8K as future work (or add 1-fold result).
-5. **"PANNs isn't neuromorphic"** → Hybrid edge paradigm: CNN14 in cloud, SNN on edge. Precedent: Seekings et al. ICONS 2024.
-
----
-
-## WHAT'S IN push/ (complete index)
-
-| File | Content |
-|------|---------|
-| `BATTLE_PLAN.md` | This file — unified strategy |
-| `icons_paper_strategy.md` | Detailed paper structure, titles, reviewer objections |
-| `icons_acceptance_process.md` | 59% acceptance, rebuttal phase, timeline |
-| `creative_extensions_brainstorm.md` | 18 experiment ideas ranked |
-| `spinnaker_engineering_extensions.md` | 14 SpiNNaker-specific ideas |
-| `neuromorphic_trends_2025_2026.md` | What's hot, how to position |
-| `sota_snn_audio_march2026_deep.md` | Full SOTA survey, all novelty confirmed |
-| `spinnaker_phd_theses_scope_comparison.md` | 13 Manchester PhDs, scope = Masters+ |
-| `energy_neuromorphic_hardware_benchmarks.md` | Energy thresholds, Horowitz, commercial products |
-| `conference_deadlines_2026_2027.md` | Open deadlines, strategic recommendations |
-| (pre-existing files) | Previous research from earlier sessions |

@@ -54,20 +54,20 @@ Block 1:  Conv2d(1->32, k=3, p=1) -> BN(32) -> MaxPool(2) -> LIF1
 
 Block 2:  Conv2d(32->64, k=3, p=1) -> BN(64) -> MaxPool(2) -> LIF2
           Output: (T, B, 64, 16, 54)
-Pooling:  AvgPool2d(kernel=(4,6))           [MPS-compatible substitute for AdaptiveAvgPool]
-          Output: (T, B, 64, 4, 9) → flatten → (T, B, 2304)
 
-FC1:      Linear(2304, 256) → LIF₃
-FC2:      Linear(256, 50) → LIF₄
+Pooling:  AvgPool2d(kernel=(4,6))  -- MPS-compatible substitute for AdaptiveAvgPool
+          Output: (T, B, 64, 4, 9) -> flatten -> (T, B, 2304)
+
+FC1:      Linear(2304, 256) -> LIF3
+FC2:      Linear(256, 50) -> LIF4
 Output:   spk_out: (T, B, 50)  mem_out: (T, B, 50)
 ```
 
-**LIF neuron parameters** (all layers, fixed):
-- Decay rate β = 0.95 (membrane potential decay per timestep)
-- Spike threshold = 1.0 (voltage units)
-- Surrogate gradient: fast sigmoid (slope=25), following snnTorch defaults and prior work. Fast sigmoid $\sigma'(x) = 1/(1+|x|)^2$ is empirically the most widely used surrogate in snnTorch tutorials and benchmarks (Eshraghian et al. 2023). A systematic ablation of all 8 available surrogates is reported in §4.3.
+**LIF params** (all layers, fixed):
+- beta = 0.95 (decay per timestep)
+- Threshold = 1.0
+- Surrogate: fast sigmoid (slope=25), following snnTorch defaults. Systematic ablation of all 8 surrogates in 4.3.
 
-**AdaptiveAvgPool issue:** PyTorch's AdaptiveAvgPool2d is not supported on the Apple MPS backend. AvgPool2d(kernel=(4,6)) achieves the same spatial reduction from (16,54) → (4,9) deterministically and is MPS-compatible.
 
 **Parameters:** ~622K total (both SNN and ANN use identical weight counts, despite different neuron types).
 

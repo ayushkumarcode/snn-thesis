@@ -110,3 +110,31 @@ despite Manchester being a major centre for neuromorphic computing (SpiNNaker, F
 | 29358 | Sub-group | 20 |
 | 29361 | Sub-group | 1 |
 | 29364 | Sub-group (Chemistry) | 31 |
+| 29367 | Sub-group (Physics) | 7 |
+| 29370 | Sub-group | 32 |
+| 29391 | Sub-group | 1 |
+| 29403 | Alliance Manchester Business School | 5 |
+| 29442 | Faculty of Humanities / Education | 86 |
+| 29466 | Sub-group (Education) | 6 |
+| 29469 | Sub-group (Social Sciences) | 25 |
+
+---
+
+## summary of everything found
+
+| # | Title | Authors | Year | Type | Relevance | Undergrad? |
+|---|-------|---------|------|------|-----------|------------|
+| 1 | BitBrain algorithm in C | Fil, Hopkins, Furber, Jones | 2022 | Software | DIRECT neuromorphic | No (Research) |
+| 2 | Deep autoencoder EEG artifact removal | Xing, Casson | 2023 | Software | HIGH (BCI/Neural Eng) | No (Research) |
+| 3 | LSTM Warehouse Robot Navigation | Zhou | 2024 | Software | MEDIUM (ML/Robotics) | Possibly |
+| 4 | ECG/EEG/IMU motion artefact data | Beach, Li, Balaban, Casson | 2021 | Dataset | MEDIUM (Biosignal) | No (Research) |
+| 5 | Low Power Computer Vision landmine | Fletcher et al. | 2025 | Dataset | LOW-MED (Edge CV) | No (Research) |
+| 6 | Closed Loop Sound Stimulation Sleep | Casson | 2022 | Software | MEDIUM (Real-time EEG) | No (Research) |
+| 7 | 3D-printed EEG electrodes | Xing | 2022 | Online resource | LOW-MED (EEG hw) | No (Research) |
+| 8 | hBET2 EEG Alpha analysis code | Casson, Halpin, Xing | 2024 | Software | LOW-MED (EEG) | No (Research) |
+| 9 | Radiation Autonomous Exploration | West | 2022 | Dataset | LOW (Autonomous robot) | No (Research) |
+| 10 | Gaussian mixture neural network | Price, Menary | 2021 | Dataset | LOW (NN in physics) | No (Research) |
+| 11 | Turbulent Flow PyTorch tensors | Sardar, Skillen | 2025 | Dataset | LOW (ML for CFD) | No (Research) |
+| 12 | ML ATR-FTIR Spectroscopy | Pal chowdhury et al. | 2022 | Dataset | LOW (ML archaeology) | No (PhD thesis) |
+| 13 | Hyperspectral images | Foster et al. | 2022 | Dataset | LOW (Vision dataset) | No (Research) |
+| 14 | Power network training data | Noebels et al. | 2021 | Dataset | LOW (ML for power) | No (Research) |

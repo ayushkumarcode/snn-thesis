@@ -305,31 +305,3 @@ Major approaches (2023-2026):
 2. The magnitude of the advantage is debated: 2-8x on vision benchmarks at standard epsilon
 3. Our 14.9x ratio at eps=0.1 FGSM is consistent with the pattern but likely inflated by (a) ANN near-complete failure at this epsilon and (b) gradient masking
 4. Standard PGD evaluation of SNNs is now known to be unreliable (Wang et al. 2025) -- this is a threat to validity
-5. Our work is the **first** to evaluate SNN adversarial robustness on audio classification
-6. The mechanisms behind SNN robustness include: spike thresholding (noise filtering), temporal integration, gradient sparsity, and input discretization
-
-**Continual Learning:**
-1. Our 6.9pp less forgetting for SNN vs ANN is directionally consistent with the theoretical argument that SNNs have inherent CL advantages (sparsity, temporal dynamics, leak)
-2. State-of-the-art SNN CL methods achieve near-zero forgetting (HLOP-SNN) or 85%+ accuracy on CIFAR-100 TIL -- our naive baseline is expected to show high forgetting
-3. The **interesting finding** is the SNN-ANN gap itself, not the absolute forgetting rate
-4. SNN continual learning on environmental sound is **novel**
-5. STDP-based and surrogate gradient-based CL methods both show promise; combining them is the emerging trend
-
-### 3.2 Recommended Citations for Thesis
-
-**Must-cite (directly relevant to our findings):**
-
-| # | Paper | Relevance |
-|---|-------|-----------|
-| 1 | Wang et al. (2512.22522) SA-PGD | Threat to validity for our adversarial evaluation |
-| 2 | Sharmin et al. (ECCV 2020) | Foundational "inherent robustness" paper |
-| 3 | FEEL-SNN (NeurIPS 2024) | Current SOTA defense method |
-| 4 | RSC-SNN (ACM MM 2024) | Poisson coding = randomized smoothing insight |
-| 5 | RandHet-SNN (iScience 2025) | Heterogeneity mechanism for robustness |
-| 6 | TGO (ICLR 2026) | Threshold-neighboring neurons as weakness |
-| 7 | Nature Comms SNN robustness (2025) | High-profile SNN robustness validation |
-| 8 | HLOP-SNN (ICLR 2024) | SOTA SNN continual learning |
-| 9 | DSD-SNN (IJCAI 2023) | SNN CL architecture expansion |
-| 10 | SCA-SNN (Neural Networks 2024) | Context-aware SNN CL |
-| 11 | PS-SNN (Scientific Reports 2026) | Best SNN CIL result |
-| 12 | AGMP (Frontiers 2025) | Astrocyte-gated CL on SHD (audio) |

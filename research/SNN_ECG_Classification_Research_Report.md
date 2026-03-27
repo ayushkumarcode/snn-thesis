@@ -166,3 +166,31 @@ snnTorch seems like the best option for what i'd need: best tutorials (9 coverin
 
 i think this would work really well. Here's why:
 
+**Strengths:**
+1. Well-defined problem -- ECG classification is standard and well-benchmarked
+2. Accessible datasets -- MIT-BIH is small (~100 MB), well-documented, freely available, pre-processed versions on Kaggle
+3. Mature tooling -- snnTorch provides everything needed with good tutorials
+4. Clear evaluation -- standard metrics (accuracy, F1, sensitivity, specificity) and AAMI standards
+5. Reproducible baselines -- multiple CNN baselines exist for comparison
+6. Manageable scope -- single-lead, 5-class classification is tractable
+7. Strong narrative -- energy-efficient cardiac monitoring for wearables is compelling
+8. Publication potential -- under-explored enough that novel contributions are achievable
+
+**Challenges (but manageable):**
+1. SNN training is less mature than CNN training (more hyperparameter tuning)
+2. Surrogate gradient methods require understanding (but snnTorch abstracts most complexity)
+3. Limited existing code specifically for ECG (need to adapt general SNN code)
+4. Reproducing exact results from papers is tricky (preprocessing details often missing)
+
+### Suggested timeline
+
+```
+Phase 1 (Weeks 1-3): Foundation
+  - Literature review
+  - Set up Python environment (PyTorch + snnTorch)
+  - Download and preprocess MIT-BIH
+  - Do snnTorch tutorials 1-5
+
+Phase 2 (Weeks 4-6): Baseline Implementation
+  - Implement CNN baseline for ECG (1D-CNN)
+  - Implement basic SNN with snnTorch (LIF neurons, surrogate gradient)

@@ -610,31 +610,3 @@ Do you have neuromorphic hardware (Loihi, SpiNNaker, BrainScaleS)?
 Use Tier 1 or Tier 2 analytical estimation
   |
   v
-Are you using snnTorch?
-  |-- YES --> Use NeuroBench (pip install neurobench)
-  |           OR count spikes manually (see Section 4, code example)
-  |
-  |-- NO, using SpikingJelly --> Count spikes using framework tools
-  |
-  |-- NO, using Norse --> Count spikes using framework tools
-  |
-  v
-Report: SOPs, Eff_ACs, firing rate, estimated energy, comparison table
-Cite: Horowitz 2014, Lemaire 2022, NeuroBench 2025
-Discuss: Limitations, hardware assumptions, critical sparsity thresholds
-```
-
----
-
-## Summary of Answers to Your 8 Questions
-
-| # | Question | Answer |
-|---|---------|--------|
-| 1 | How to estimate without hardware? | Count synaptic operations, multiply by energy constants (0.9 pJ/AC, 4.6 pJ/MAC at 45nm). Standard in literature. |
-| 2 | What metrics? | SOPs, Eff_ACs, Eff_MACs, firing rate, activation sparsity, energy per inference. |
-| 3 | Standard methodology? | Emerging via NeuroBench (Nature Comms 2025). De facto standard: SOP * E_AC approach. |
-| 4 | Tools/libraries? | NeuroBench (recommended), snnTorch (manual counting), SANA-FE, SpikeSim. |
-| 5 | Fair comparison? | Same architecture, same task, same accuracy (+/-1-2%), controlled variables, report assumptions. |
-| 6 | What published papers use? | SOP * E_AC with Horowitz constants. Some add memory costs (Lemaire model). |
-| 7 | Can an undergrad do this? | YES. NeuroBench makes it trivial. The analytical approach requires no hardware. |
-| 8 | Open-source tools? | NeuroBench, snnTorch, SpikingJelly, Norse, SANA-FE, SpikeSim -- all free and open source. |

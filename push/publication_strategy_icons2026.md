@@ -438,31 +438,3 @@ Our SNN adversarial result (SNN 26% vs ANN 1.75% at FGSM eps=0.1) is strong:
 
 ## Appendix B: ICONS Papers Most Relevant to Our Work
 
-### Audio/Sound Papers at ICONS and Related Venues
-
-| Paper | Venue/Year | Topic | Relevance |
-|-------|-----------|-------|-----------|
-| Yarga et al. "Efficient Spike Encoding for Speech Recognition" | ICONS 2022 | 4 encoding comparison on speech digits | **Direct predecessor** -- we extend to 7 encodings on harder task |
-| Schmitt et al. "Continuous Learning for Auditory Source Separation" | ICONS 2024 | Audio + continual learning | Audio neuromorphic accepted at ICONS |
-| Speech2Spikes | NICE 2023 | Audio-to-spike pipeline, 88.5% on Speech Commands | Related encoding work, Loihi deployment |
-| Xylo SNN audio (sub-mW) | ESSCIRC 2022 | Ambient audio, 98% on simple task | Hardware deployment for audio -- different chip |
-| Larroza et al. "Spike Encoding for Environmental Sound" | arXiv 2025 (EUSIPCO) | 3 encodings on ESC-10, best 69% | **Closest competitor** -- our ESC-50 work supersedes |
-| Dominguez-Morales et al. "SNN Audio on SpiNNaker" | ICANN 2016 | Pure tones on SpiNNaker | Only prior SpiNNaker audio paper |
-
-### Hardware Gap Documentation Papers
-
-| Paper | Venue/Year | Hardware | Gap |
-|-------|-----------|----------|-----|
-| SpiNNaker2 DVS Gesture | arXiv 2025 | SpiNNaker2 | 94.13% on-chip (close to software) |
-| Brian2Loihi emulator | Frontiers 2022 | Loihi | Reasonable discrepancy documented |
-| **Ours** | **ICONS 2026** | **SpiNNaker1** | **33.1% vs 46.0% (12.8pp gap)** |
-
----
-
-## Appendix C: Source URLs
-
-### ICONS Conference
-- ICONS 2026 Call for Papers: https://iconsneuromorphic.cc/calls-2026/
-- ICONS 2026 EasyChair CFP: https://easychair.org/cfp/ACM-ICONS-2026
-- ICONS 2025 Schedule: https://iconsneuromorphic.cc/Schedule-2025/
-- ICONS 2024 Schedule: https://iconsneuromorphic.cc/icons-2024/schedule/

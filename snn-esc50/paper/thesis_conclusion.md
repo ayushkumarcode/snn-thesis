@@ -40,20 +40,20 @@ Yes, with limitations. Full SpikingCNN can't deploy natively due to AvgPool-FC1 
 
 Dramatically yes. eps=0.1 FGSM: SNN 26.00% vs ANN 1.75%. eps=0.05 PGD: ANN = 0%, SNN = 19.25%. Spike threshold provides natural filtering by requiring perturbations to cross a hard nonlinearity. First confirmation for environmental sound classification.
 
+---
 
-**RQ4: Do SNNs exhibit natural adversarial robustness compared to matched ANNs on audio inputs?**
+## 8.3 limitations and reflections
 
-Dramatically yes. At ε=0.1 (FGSM), the SNN retains 26.00% accuracy while the ANN collapses to 1.75%. At ε=0.05 (PGD), the ANN reaches 0% while the SNN maintains 19.25%. The spike threshold provides natural adversarial filtering by requiring perturbations to cross a hard non-linearity to affect the output. This is the first confirmation of this effect for environmental sound classification.
+Three main limitations:
+
+1. **Small training set.** 1600 samples/fold isn't enough for deep learning from scratch. SNN accuracy reflects this data limitation as much as any spiking property. Larger datasets (FSD50k, UrbanSound8K) would clarify.
+
+2. **Partial neuromorphic deployment.** FC2-only hybrid delivers only the final layer on SpiNNaker. True energy efficiency needs full forward pass on-chip. Option A retraining confirms the fix (fc1_binary_fraction=1.000, threshold=3.0 gets 43.75% with 956 active/step). Full FC1+FC2 SpiNNaker deployment is the remaining step.
+
+3. **Single-seed surrogate ablation.** 7 testable surrogates, fold 1, 1 seed. LSO crashed (Python 3.14 thing). 3-seed CSF3 run pending. Bimodal learning/failure split is clear from single seed though.
 
 ---
 
-## 8.3 Limitations and Reflections
-
-This work has three principal limitations:
-
-1. **Small training set:** 1,600 samples per fold is insufficient for from-scratch deep learning. The SNN accuracy (47.15%) reflects this data limitation as much as any property of spiking computation. Future work with larger datasets (FSD50k, UrbanSound8K) would give a clearer picture.
-
-2. **Partial neuromorphic deployment:** The FC2-only hybrid delivers only the final classification layer on SpiNNaker. True energy efficiency on neuromorphic hardware requires the full forward pass to be executed on-chip. Option A retraining (MaxPool SNN, fold 4 threshold sweep) confirms the architectural fix: fc1_binary_fraction=1.000 for all thresholds, and threshold=3.0 achieves 43.75% accuracy with 956 FC1 active inputs/step. The full FC1+FC2 SpiNNaker deployment with Option A weights is theoretically unblocked; hardware testing is the remaining step.
 
 3. **Single-seed surrogate gradient ablation:** Surrogate gradient ablation (7 testable surrogates, fold 1) is complete with 1 seed (seed=42); results are fully documented in §4.3. LSO crashed due to a Python 3.14/snnTorch 0.9.4 incompatibility. A 3-seed CSF3 run is pending retrieval and would provide tighter variance estimates, but the bimodal learning vs. failure split is already clear from the single seed.
 

@@ -286,31 +286,3 @@ Oliver Rhodes is a Lecturer in Bio-Inspired Computing at Manchester, part of the
 
 ## Question 5: Training vs Inference on SpiNNaker
 
-### The Standard Workflow
-
-```
-[Train on GPU/CPU]          [Deploy on SpiNNaker]
-snnTorch + PyTorch    --->   sPyNNaker (SpiNNaker1)
-  |                          or py-spinnaker2 (SpiNNaker2)
-  |-- surrogate gradients     |-- inference only
-  |-- backpropagation          |-- pre-loaded weights
-  |-- GPU acceleration         |-- real-time execution
-  |-- batch training           |-- energy measurement
-  v                            v
-Trained weights (.pt)    Spike output + energy data
-```
-
-**SpiNNaker is primarily used for inference**, not training. The training happens on conventional hardware.
-
-### Exception: On-Chip Learning
-
-- **STDP:** SpiNNaker1 supports native STDP (unsupervised learning rule)
-- **E-prop:** Demonstrated on both SpiNNaker1 and SpiNNaker2 (surrogate gradient variant)
-- **Deep Rewiring (DEEP R):** Demonstrated on SpiNNaker2 prototype for on-chip training
-
-But for your thesis, the workflow is:
-1. Train in snnTorch on your laptop/GPU
-2. Export weights (via NIR or manual extraction)
-3. Load weights into SpiNNaker
-4. Run inference on SpiNNaker
-5. Measure real energy and latency

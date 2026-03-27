@@ -239,31 +239,3 @@ These are areas where only ONE substantial paper exists. Publishing a second stu
 
 | Transfer | Specific Idea | Effort |
 |----------|--------------|--------|
-| CSNN from CIFAR-10 to chest X-ray classification | CheXpert or ChestX-ray14 dataset. No SNN study exists. | LOW-MEDIUM |
-| SNN from DVS128 Gesture to EMG-based gesture | Different sensor modality, similar temporal classification task | MEDIUM |
-
-### 6.4 Audio Methods Applied to Vibration/Industrial
-
-| Transfer | Specific Idea | Effort |
-|----------|--------------|--------|
-| SHD/SSC audio architectures to bearing fault diagnosis | Both are 1D temporal signals; architecture transfers directly | LOW-MEDIUM |
-| Speech command SNN architecture to ECG classification | Both are short temporal signals with few classes | LOW-MEDIUM |
-
----
-
-<a name="7-ranked-ideas"></a>
-## 7. Ranked Thesis Project Ideas by Effort/Novelty Ratio
-
-### TIER 1: Lowest Effort, Genuine Novelty (Recommended)
-
-These projects require primarily "running experiments" rather than "inventing methods." Each fills a documented gap.
-
-#### 1A. Framework Shootout: snnTorch vs SpikingJelly on SHD + DVS128 Gesture
-- **What:** Same CSNN architecture, same hyperparameters, both frameworks. Report accuracy, training time, GPU memory, energy estimates.
-- **Why novel:** No such comparison exists. The Open Neuromorphic benchmark (2024) only tested synthetic data. The multimodal benchmark (2025) excluded snnTorch.
-- **Datasets:** SHD (audio), DVS128 Gesture (vision). Both available via Tonic.
-- **Effort:** LOW. Both frameworks have tutorials for these exact datasets.
-- **Deliverable:** Comparison tables, training curves, analysis of API differences.
-- **Risk:** LOW. Both frameworks are well-documented.
-
-#### 1B. SNN on ESC-50 or UrbanSound8K (Environmental Sound Classification)

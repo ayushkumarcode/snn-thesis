@@ -86,16 +86,16 @@ Found board with version [Version: SC&MP 4.0.0 ...]
 Machine communication successful
 ```
 
-Different runs allocated different physical boards:
-- Run at 13:01: Board `10.11.219.97` (48 chips, 855 cores)
-- Run at 13:14: Board `10.11.219.177` (47 chips, 836 cores)
-- Run at 13:16: Board `10.11.219.113` (47 chips, 836 cores)
+different runs got different physical boards:
+- run at 13:01: board `10.11.219.97` (48 chips, 855 cores)
+- run at 13:14: board `10.11.219.177` (47 chips, 836 cores)
+- run at 13:16: board `10.11.219.113` (47 chips, 836 cores)
 
-This proves the spalloc server is partitioning a real multi-board machine and assigning different available boards to different jobs.
+this shows spalloc is partitioning a real multi-board machine and assigning differnt available boards to different jobs.
 
-## Evidence 6: On-Chip Firmware IOBUF Logs
+## evidence 6: on-chip firmware IOBUF logs
 
-Emergency IOBUF files in `reports/.../provenance_data/system_provenance_data/` contain output from C firmware running on individual ARM968 cores:
+emergency IOBUF files in `reports/.../provenance_data/system_provenance_data/` contain output from C firmware running on individual ARM968 cores:
 
 ```
 [INFO] (data_speed_up_packet_gatherer.c: 938): Configuring packet gatherer

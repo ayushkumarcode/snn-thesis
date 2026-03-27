@@ -110,3 +110,31 @@ Parameter efficiency is interesting too: SpikCommander gets 96.71% with only 1.1
 | **SCommander** | Moderate | SpikingJelly | 96.9% | ~800+ | SHD, SSC, GSC |
 | **RSNN** | Difficult | TensorFlow 1.2 | -- | ~500 | Custom |
 
+### How i'd approach this as an undergrad
+
+**Phase 1: Learning (Weeks 1-4)**
+1. Do snnTorch tutorials 1-5 (neuron models, feedforward SNNs, training)
+2. Do tutorial 7 (neuromorphic datasets with Tonic)
+3. Load and play with SHD dataset using Tonic
+
+**Phase 2: Baseline (Weeks 5-8)**
+4. Implement basic LIF-based SNN on SHD with snnTorch (~200-300 lines)
+5. Implement same architecture in SpikingJelly for comparison
+6. Train and evaluate, shoot for ~90% on SHD as baseline
+
+**Phase 3: Speech Commands (Weeks 9-14)**
+7. Move to Google Speech Commands V2 (12-class first, then 35-class)
+8. Implement Mel-spectrogram preprocessing
+9. Build convolutional SNN architecture
+10. Compare with equivalent ANN baseline
+
+**Phase 4: Analysis & Writing (Weeks 15-20)**
+11. Energy estimation (synaptic operations counting)
+12. Accuracy vs energy tradeoff analysis
+13. Parameter sensitivity study
+14. Write thesis
+
+### Estimated code complexity
+
+| Component | Estimated Lines | Difficulty |
+|-----------|----------------|------------|

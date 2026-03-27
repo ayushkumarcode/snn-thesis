@@ -250,3 +250,31 @@ for epoch in range(epochs):
             label_onehot = F.one_hot(label, 11).float()
             out_fr = net(frame).mean(0)
             loss = F.mse_loss(out_fr, label_onehot)
+
+            test_samples += label.numel()
+            test_loss += loss.item() * label.numel()
+            test_acc += (out_fr.argmax(1) == label).float().sum().item()
+            functional.reset_net(net)
+
+    test_acc /= test_samples
+    max_test_acc = max(max_test_acc, test_acc)
+
+    print(f'Epoch {epoch}: train_loss={train_loss:.4f}, train_acc={train_acc:.4f}, '
+          f'test_acc={test_acc:.4f}, max_test_acc={max_test_acc:.4f}')
+```
+
+---
+
+## snnTorch Framework
+
+### Version Requirements
+
+| Dependency | Version |
+|---|---|
+| Python | >= 3.9 |
+| PyTorch | Any modern version (no explicit pin; tested with 1.x and 2.x) |
+| numpy | Required |
+| pandas | Required |
+| matplotlib | Optional (for visualization) |
+| nir / nirtorch | Optional (for NIR exchange format) |
+

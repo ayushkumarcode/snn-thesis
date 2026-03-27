@@ -222,3 +222,31 @@ def main():
     else:
         t_values = [3, 5, 7, 10, 15]
 
+    folds = [args.fold] if args.fold else list(range(1, 6))
+
+    all_results = []
+    for T in t_values:
+        print(f"\n{'='*60}")
+        print(f"  Reduced-T Training: T={T} (rhythm SNN)")
+        print(f"{'='*60}")
+
+        fold_results = []
+        for fold in folds:
+            result = run_fold(fold, device, T)
+            fold_results.append(result)
+
+        if len(fold_results) == 5:
+            accs = [r["best_acc"] for r in fold_results]
+            print(f"\n  T={T} 5-Fold: {np.mean(accs):.4f}±{np.std(accs):.4f}, "
+                  f"{25/T:.1f}x energy reduction")
+
+        all_results.extend(fold_results)
+
+    save_dir = RESULTS_DIR / "energy" / "reduced_t_sweep"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+    print(f"\nSaved to {save_dir / 'all_results.json'}")
+
+
+if __name__ == "__main__":

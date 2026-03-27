@@ -278,3 +278,31 @@ Manchester's report guidance says you need "an in-depth investigation of the con
 Total: roughly 2000-3000 words for the lit review chapter.
 
 ---
+
+## 7. Examples of simple but successful SNN student projects
+
+### Undergrad projects that did well:
+
+**1. Shape Detector SNN -- Filippo Ferrari (Manchester BSc, supervised by Steve Furber)**
+- Single-layer SNN for shape detection using pyDVS
+- 107 commits, clean code with testing and CI
+- GitHub: [filippoferrari/shape_detector_snn](https://github.com/filippoferrari/shape_detector_snn)
+- Thesis LaTeX: [filippoferrari/bsc_dissertation](https://github.com/filippoferrari/bsc_dissertation)
+- Takeaway: Well-structured, proper software engineering, but moderate in scope
+
+**2. Musical Pattern Recognition in SNNs -- mrahtz (BEng, ~2016)**
+- First layer of an SNN for recognising musical patterns in audio
+- Used Brian 2 simulator, STDP learning
+- Author candidly stated "only a small portion of what was originally intended was actually achieved"
+- 49 GitHub stars, showing community interest
+- Thesis PDF: [amid.fish/beng_project_report.pdf](http://amid.fish/beng_project_report.pdf)
+- Takeaway: Novel application domain. Honest about limitations. This honesty is EXPECTED and REWARDED at undergrad level.
+
+**3. SNN vs CNN Comparison (course project, sofi12321)**
+- Compared SNN and CNN on SOCOFing, EMNIST, Fashion-MNIST using snnTorch
+- SNN achieved 98% vs CNN 83% on fingerprint dataset
+- GitHub: sofi12321/comparison-of-spiking-and-convolutional-NNs
+- Takeaway: Simple comparison framework, multiple datasets, clear results tables. Very doable.
+
+**4. Simple SNN with STDP (4-student team, Osnabruck)**
+- From-scratch Python implementation, STDP on MNIST

@@ -54,3 +54,31 @@ STDP is fundamentally a feature extraction mechanism, not a classifier. its stre
 | **BindsNET** | PyTorch | Extensive (pair, post-pre, MSTDP, MSTDPET) | Yes | ML-oriented STDP experiments | High | Moderate (last release ~2023) |
 | **Brian2** | Code generation (C++/Cython) | Fully customizable (any equation) | No (CPU only) | Neuroscience-accurate simulations | Very High | Yes |
 | **SpykeTorch** | PyTorch | STDP + R-STDP for convolutional SNNs | Yes | Deep convolutional STDP | Medium | Low (archived) |
+| **ngc-learn** | JAX | Trace STDP, event STDP, R-STDP | Yes | Biologically plausible models | Medium | Yes (v3.0.1) |
+| **SpikeNN** | CPU Python | S2-STDP, SSTDP, NCG architecture | No | NeurIPS 2024 NCG paper code | New | Yes |
+| **Norse** | PyTorch | Limited (focus on surrogate gradients) | Yes | Modern deep SNN training | High | Yes |
+| **SpikingJelly** | PyTorch/CuPy | Limited STDP (focus on surrogate gradients) | Yes | High-performance deep SNNs | Very High | Yes |
+| **snnTorch** | PyTorch | Minimal STDP | Yes | Educational + surrogate gradients | High | Yes |
+| **Lava** (Intel) | Custom | Three-factor learning, R-STDP | CPU | Loihi deployment | High | Yes |
+| **Custom (from scratch)** | Python/NumPy | Whatever you build | No | Deep understanding | N/A | N/A |
+
+### 2.2 What i'd Pick
+
+**Primary: BindsNET**
+
+- built on PyTorch, GPU acceleration works out of the box
+- ships with a near-replication of Diehl & Cook 2015 (`eth_mnist.py`) that gets ~95% on MNIST
+- supports multiple STDP variants: standard pair-based, post-pre only, reward-modulated (MSTDP, MSTDPET)
+- well-documented with examples for unsupervised, supervised, and RL tasks
+- `DiehlAndCook2015` network class provides a ready-made baseline
+- runs in ~1 hour on Intel i7 for full MNIST training, faster on GPU
+- repo: https://github.com/BindsNET/bindsnet
+- paper: Hazan et al., "BindsNET: A Machine Learning-Oriented Spiking Neural Networks Library in Python," Frontiers in Neuroinformatics, 2018
+
+**Secondary: SpykeTorch (for convolutional STDP)**
+
+if the thesis goes deep convolutional:
+- implements STDP and R-STDP for conv layers with at-most-one-spike-per-neuron constraint
+- comes with reimplementation of Kheradpisheh et al. (2018)
+- repo: https://github.com/miladmozafari/SpykeTorch
+

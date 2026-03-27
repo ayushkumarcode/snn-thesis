@@ -1146,3 +1146,31 @@ thesisproject/
 - Original DVS Gesture paper (CVPR 2017): https://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf
 - Energy Efficiency of SNNs: https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00662/full
 - Analytical Energy Estimation: https://arxiv.org/pdf/2210.13107
+- Are SNNs Really More Energy-Efficient?: https://cea.hal.science/cea-03852141/file/Are_SNNs_Really_More_Energy_Efficient_Than_ANNs__An_In_Depth_Hardware_Aware_Study_versionacceptee.pdf
+
+### Tools
+- syops (SynOps counter): https://github.com/iCGY96/syops-counter
+- syops PyPI: https://pypi.org/project/syops/
+- snnTorch spikeplot: https://snntorch.readthedocs.io/en/latest/snntorch.spikeplot.html
+
+### Tutorials and Examples
+- SpikingJelly DVS Gesture Tutorial: https://github.com/fangwei123456/spikingjelly/blob/master/docs/source/activation_based_en/classify_dvsg.rst
+- snnTorch Tutorial 7 Colab: https://colab.research.google.com/github/jeshraghian/snntorch/blob/master/examples/tutorial_7_neuromorphic_datasets.ipynb
+- DerrickL25 SNN Gesture Classification: https://github.com/DerrickL25/SNN_Gesture_Classification
+- Open Neuromorphic SpikingJelly: https://open-neuromorphic.org/neuromorphic-computing/software/snn-frameworks/spikingjelly/
+
+### Hardware
+- PyTorch MPS (Apple Silicon): https://developer.apple.com/metal/pytorch/
+- PyTorch MPS blog post: https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/
+- SNN Framework Benchmarks: https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/
+
+---
+
+## Things i couldn't fully verify
+
+1. SpikingJelly neuron.py full class list -- couldn't directly access the source to enumerate every neuron class. QIFNode, EIFNode, and IzhikevichNode are mentioned in docs but i couldn't confirm they're actually in the latest version.
+
+2. snnTorch PyTorch version pinning -- snnTorch doesn't explicitly pin a PyTorch version in setup.py. It previously required `torch>=1.1.0` but that got commented out. In practice, just use PyTorch 2.x.
+
+3. DVS128 Gesture download -- the original IBM source may require an account. Tonic provides an automated download of a preprocessed version. The SpikingJelly loader expects the original AEDAT format.
+

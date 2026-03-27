@@ -452,31 +452,3 @@ If macOS training is too slow for the full experiment:
 |----------|----------|----------|-------------|---------------|---------|
 | [Google Colab](https://colab.research.google.com) | YES | T4 (16GB) | ~30 hrs | 12 hrs/session | Primary cloud option |
 | [Kaggle Notebooks](https://www.kaggle.com) | YES | P100 (16GB) | 30 hrs | 9 hrs/session | Secondary option |
-| [Paperspace Gradient](https://www.paperspace.com) | YES | Limited | Unlimited sessions | 6 hrs/session | Backup option |
-| AWS SageMaker Studio Lab | YES | T4 | 4 GPU hrs/day | 4 hrs/session | Limited but reliable |
-
-**Combined strategy:** Develop on MacBook, train on Colab/Kaggle. 60 free GPU hours/week is more than enough.
-
-**MuJoCo on Colab:** Google provides official Colab notebooks for MuJoCo training. See: https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/mjx/training_apg.ipynb
-
----
-
-## Recommended Architecture
-
-Based on all verification, here is the concrete architecture that WILL work:
-
-```
-                     +------------------+
-                     |   Gymnasium      |
-                     |   Ant-v5 / etc   |  <-- macOS native, pre-built rewards
-                     +--------+---------+
-                              |
-                     observation (float32 vector)
-                              |
-                     +--------v---------+
-                     |  Spike Encoder   |
-                     |  (repeat input   |  <-- simplest: just repeat obs T times
-                     |   for T steps)   |
-                     +--------+---------+
-                              |
-                     spike trains (T, batch, obs_dim)

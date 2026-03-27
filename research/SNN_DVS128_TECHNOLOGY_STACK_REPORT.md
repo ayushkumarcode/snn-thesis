@@ -397,31 +397,3 @@ net = nn.Sequential(
     nn.MaxPool2d(2),
     snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True),
     nn.Flatten(),
-    nn.Linear(32 * 29 * 29, 11),  # Adjust based on actual spatial dims
-    snn.Leaky(beta=beta, spike_grad=spike_grad, init_hidden=True, output=True)
-).to(device)
-
-# === Forward Pass (iterates over timesteps) ===
-def forward_pass(net, data):
-    spk_rec = []
-    utils.reset(net)  # Reset all neuron states
-
-    for step in range(data.size(0)):  # Iterate over T timesteps
-        spk_out, mem_out = net(data[step])
-        spk_rec.append(spk_out)
-
-    return torch.stack(spk_rec)
-
-# === Training ===
-optimizer = torch.optim.Adam(net.parameters(), lr=2e-3, betas=(0.9, 0.999))
-loss_fn = SF.mse_count_loss(correct_rate=0.8, incorrect_rate=0.2)
-
-num_epochs = 50
-for epoch in range(num_epochs):
-    net.train()
-    train_loss = 0
-    train_acc = 0
-    train_samples = 0
-
-    for data, targets in trainloader:
-        data = data.to(device).float()

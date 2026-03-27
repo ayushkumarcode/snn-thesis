@@ -1,0 +1,28 @@
+{
+  "fold": 4,
+  "num_samples": 20,
+  "weight_scale": 1.0,
+  "spinnaker_accuracy": 0.15,
+  "snn_accuracy": 0.5,
+  "gap": 0.35,
+  "elapsed_seconds": 696.02197098732,
+  "results": [
+    {
+      "sample": 0,
+      "true_label": 49,
+      "predicted": 2,
+      "correct": false,
+      "method": "spike_count",
+      "spike_counts": [
+        0.0,
+        0.0,
+        12.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,

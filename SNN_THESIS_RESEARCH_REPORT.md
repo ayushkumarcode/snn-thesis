@@ -586,3 +586,31 @@ ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as
 - ANN-to-SNN conversion comparison: convert a pre-trained CNN and compare with directly-trained SNN
 - event-based gesture recognition with architecture modifications (adding attention, changing neuron models)
 - multi-dataset benchmarking: compare SNN performance across N-MNIST, CIFAR10-DVS, and SHD
+- implement and compare different surrogate gradient functions (arctangent, sigmoid, triangular)
+
+**Tier 3 -- ambitious but possible:**
+- spiking Transformer implementation on a small dataset
+- STDP-based unsupervised feature learning on neuromorphic data
+- SNN for time-series anomaly detection (ECG, vibration data)
+- hybrid SNN-ANN architecture for a specific application
+
+**Tier 4 -- probably too ambitious for undergrad:**
+- novel neuron model development
+- neuromorphic hardware deployment (unless hardware is available)
+- large-scale ImageNet training
+- novel spiking transformer architecture
+- SpikeLLM or NLP applications
+
+### time budget estimation
+
+| Phase | Weeks | Activities |
+|-------|-------|------------|
+| Literature review | 2-3 | read papers, understand fundamentals |
+| Environment setup | 1 | install frameworks, run tutorials |
+| Tutorial completion | 2-3 | snnTorch tutorials 1-7 |
+| Baseline implementation | 2-3 | get basic model working |
+| Experiments | 3-4 | run variations, collect results |
+| Analysis | 2 | compare results, create visualizations |
+| Writing | 3-4 | draft and revise thesis |
+| **Total** | **15-20 weeks** | |
+

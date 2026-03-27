@@ -386,31 +386,3 @@ E_total = E_synaptic + E_memory + E_addressing
 E_synaptic = num_AC_ops * E_AC
 E_memory   = (2 * reads + 1 * write) * E_SRAM_access * num_spikes
 E_addressing = addressing_overhead
-```
-
-**Source:** [Lemaire et al. 2022](https://arxiv.org/abs/2210.13107)
-
-### Pattern 4: Hardware-Aware Estimation
-
-Used by: Papers with hardware co-design focus
-
-The full LIF neuron energy model from Yan et al., extended in recent work:
-
-```
-E_LIF = T * {
-    N_src * (1 - s_in) * (E_ReadWeight + E_ADD) +
-    E_ReadState + E_ADD + E_CMP + E_ReadLeak + E_MUL +
-    (1 - s_out) * E_SUB + E_WriteState +
-    N_src * (1 - s_out) * N_hop * E_TransportPerHop
-}
-```
-
-This accounts for spike routing, membrane state updates, leak operations, and network communication. It is hardware-specific and produces very different results depending on assumed architecture.
-
-**Source:** [Hardware-aware vs. Hardware-agnostic Energy Estimation](https://arxiv.org/abs/2508.19654)
-
----
-
-## 7. Can an Undergraduate Credibly Include Energy Analysis Without Hardware?
-
-### Answer: YES, absolutely.

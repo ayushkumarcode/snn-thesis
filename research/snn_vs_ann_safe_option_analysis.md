@@ -138,3 +138,31 @@ this goes beyond accuracy to address the *actual claimed advantage* of SNNs. cou
 estimated time: 4-6 weeks.
 
 ### Angle D: Adversarial Robustness (high value, moderate feasibility)
+
+compare SNN and ANN vulnerability to FGSM, PGD, and natural noise/corruption. SNNs show inherent robustness advantages ([ECCV 2020](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123740392.pdf)) -- 2-4.6% improvement in adversarial accuracy over equivalent ANNs on CIFAR-10 with VGG/ResNet. somewhat under-explored at undergrad level. practical relevance for safety-critical applications.
+
+estimated time: 3-5 weeks.
+
+### Angle E: Architecture-Controlled Fair Comparison (moderate value, high feasibility)
+
+build identical architectures (same layers, same params) for ANN and SNN. follows [Deng et al., "Rethinking the performance comparison between SNNs and ANNs"](https://web.ece.ucsb.edu/~lip/publications/SNN-vs-ANN-NeuralNetworks2020.pdf). most naive comparisons are unfair -- different architectures, training regimes, hyperparameter budgets. a rigorous controlled comparison is more scientifically valuable.
+
+key finding from literature: "On ANN-oriented workloads, SNNs fail to beat their ANN counterparts; while on SNN-oriented workloads, SNNs can fully perform better." testing this claim would be worthwhile.
+
+estimated time: 3-4 weeks.
+
+### Angle F: Time Steps Pareto Analysis (high value, moderate feasibility)
+
+systematically vary T=1 to T=32+, plot three-way tradeoff between accuracy, inference latency, and spike sparsity. references framework from ["Exploring Tradeoffs in SNNs"](https://direct.mit.edu/neco/article/35/10/1627/117019/Exploring-Trade-Offs-in-Spiking-Neural-Networks). directly answers: "how many time steps do i actually need?" answer varies by dataset, architecture, encoding.
+
+estimated time: 3-4 weeks.
+
+---
+
+## 5. How Many Projects Have Already Done This?
+
+### Direct matches found
+
+1. **High school student paper (2024)**: published in [NHSJS](https://nhsjs.com/2024/advancements-in-image-classification-comparing-spiking-convolutional-and-artificial-neural-networks/) -- compared SNN, CNN, ANN on MNIST, CIFAR-10, N-MNIST. found SNN matched accuracy but consumed 142% more power and 128% more memory on commercial hardware.
+
+2. **Virginia Tech class project (2020)**: [GitHub](https://github.com/oshears/adv-ml-2020-snn-project) -- compared 784-100 ANN to 784-100 SNN on MNIST. grad course project.

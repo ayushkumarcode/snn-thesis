@@ -110,3 +110,31 @@ several groups have done this successfully:
 ### spiking CNN for text classification (ICLR 2023)
 the most relevant paper for an undergrad project. conversion + fine-tuning of TextCNN, Poisson spike trains from word embeddings.
 
+| Dataset | TextCNN | Spiking CNN | Drop |
+|---------|---------|-------------|------|
+| MR | 77.41% | 75.45% | -1.96% |
+| SST-2 | 83.25% | 80.91% | -2.34% |
+| Subj | 94.00% | 90.60% | -3.40% |
+| SST-5 | 45.48% | 41.63% | -3.85% |
+| ChnSenti | 86.74% | 85.02% | -1.72% |
+| Waimai | 88.49% | 86.66% | -1.83% |
+
+average drop: 2.51%. energy: >10x reduction. also +13.55% robust accuracy under adversarial attacks. 50 timesteps.
+
+code: https://github.com/Lvchangze/snn -- **best starting point for a project**
+
+### other work
+
+- **SSA-SpiNNaker (PMC, 2023):** binary sentiment on IMDB, ANN-to-SNN conversion, deployed on SpiNNaker. claims 100% accuracy (likely on a subset, seems inflated).
+- **Energy-Efficient Sentiment (ICANN 2023):** SNN energy reduced to 1.36% of a transformer (64.93x improvement)
+- **SNNLP (Jan 2024):** novel text-to-spike encoding outperforms Poisson rate-coding by ~13%. 32x more efficient at inference, 60x during training.
+- **SNN Topic Modeling (2024):** STDP-based, each neuron represents a topic.
+
+---
+
+## how to encode text as spikes
+
+this is the central technical challenge. four main approaches:
+
+### 1. Poisson rate coding (most common, recommended)
+

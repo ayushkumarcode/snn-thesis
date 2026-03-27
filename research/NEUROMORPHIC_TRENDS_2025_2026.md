@@ -334,3 +334,31 @@ Key quote from Nature Communications (2025): "After several false starts, advanc
 |-------|-------------|-----------|
 | Hardware deployment | SpiNNaker FC2-only hybrid | STRONG -- real hardware, honest about challenges |
 | Energy analysis | NeuroBench metrics, AC/MAC comparison | STRONG -- uses accepted framework |
+| Encoding comparison | 7 methods (most for audio) | UNIQUE -- nobody has done this |
+| Transfer learning bridge | PANNs+SNN (gap 17pp -> 1pp) | HOT TOPIC -- directly addresses #1 community question |
+| Adversarial robustness | FGSM+PGD, SNN dramatically more robust | HOT TOPIC -- aligns with Nature Comms 2025 |
+| Novel application domain | ESC-50 (first SNN work on full dataset) | UNIQUE -- fills a clear gap |
+| Honest analysis | Report where SNNs fail, explain why | MATCHES community preference |
+| Continual learning | 5-task sequential with BWT | RELEVANT -- active area |
+| Surrogate gradient analysis | 8-surrogate ablation | NOVEL -- practical guidance |
+
+### Recommended framing for ICONS 2026
+
+**Title ideas:**
+1. "Spiking Neural Networks for Environmental Sound Classification: A Systematic Encoding Comparison with SpiNNaker Deployment"
+2. "From Spectrograms to Spikes: Encoding, Training, and Deploying SNNs for Audio on Neuromorphic Hardware"
+3. "Bridging the Gap: Transfer Learning and Hardware Deployment for Spiking Audio Classification"
+
+**Narratives to emphasize:**
+1. First SNN work on ESC-50 -- novelty claim is watertight
+2. 7-encoding comparison reveals hierarchy -- practical guidance
+3. PANNs+SNN insight -- the gap is feature-learning, not spiking-computation
+4. Actual SpiNNaker deployment -- real hardware, not simulation
+5. Adversarial robustness -- aligns with Nature Comms 2025
+6. Honest energy analysis -- software simulation shows ANN cheaper; neuromorphic hardware flips it
+
+**What NOT to claim:**
+- Don't claim SNN beats ANN accuracy (it doesn't, and that's the point)
+- Don't claim energy advantage without qualifying software vs hardware
+- Don't overstate SpiNNaker accuracy (33.1% with 12.8pp gap)
+

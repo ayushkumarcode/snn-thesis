@@ -104,31 +104,3 @@ Key takeaway for an undergraduate thesis: The field is ripe with accessible rese
 | **QKFormer** | SpikingJelly/PyTorch | Active | Intermediate | Image classification with spiking Transformers |
 | **Spike-Driven Transformer V2** | PyTorch | 200+ | Intermediate | Multi-task vision with spiking Transformers |
 | **SpikingResformer** | PyTorch | Active | Intermediate | Hybrid ResNet-Transformer SNN architecture |
-| **P-SpikeSSM** | PyTorch | Active | Intermediate-Advanced | Long-range sequence tasks with spiking SSMs |
-| **GRSNN** (Graph Reasoning) | PyTorch/TorchDrug | Active | Intermediate | Graph reasoning with temporal spiking |
-| **SpikeGCL** | PyTorch | Active | Intermediate | Graph contrastive learning with spikes |
-| **SpikeLM** | PyTorch | Active | Advanced | Spiking language models |
-| **TS-LIF** | PyTorch | Active | Intermediate | Time-series forecasting with SNNs |
-
-### Tier B: Useful SNN Frameworks and Collections
-
-| Resource | Description | Link |
-|----------|-------------|------|
-| **snnTorch Tutorials** | Interactive Jupyter notebooks for learning SNN training with backprop | [github.com/snntorch/Spiking-Neural-Networks-Tutorials](https://github.com/snntorch/Spiking-Neural-Networks-Tutorials) |
-| **SpikingJelly** | Full-stack SNN framework with neuromorphic dataset support | [github.com/fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) |
-| **Intel Lava** | Open-source framework for neuromorphic computing (works with Loihi) | [github.com/lava-nc/lava](https://github.com/lava-nc/lava) |
-| **Norse** | Bio-inspired neural components for PyTorch | [github.com/norse/norse](https://github.com/norse/norse) |
-| **Awesome-SNN-Conference-Paper** | Curated list of all SNN papers from top conferences with code links | [github.com/AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper) |
-| **Awesome-Spiking-Neural-Networks** | Comprehensive paper list with code and websites | [github.com/TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) |
-| **SGNNBench** | Benchmark for spiking graph neural networks | [github.com/Zhhuizhe/SGNNBench](https://github.com/Zhhuizhe/SGNNBench) |
-| **Open Neuromorphic** | Community hub for neuromorphic software projects | [open-neuromorphic.org](https://open-neuromorphic.org) |
-
----
-
-## 5. Top Conference Papers by Venue (2024-2025)
-
-### NeurIPS 2024 (23 SNN papers)
-Key papers:
-1. QKFormer: Hierarchical Spiking Transformer using Q-K Attention **(Spotlight)**
-2. Latent Diffusion for Neural Spiking Data
-3. Autonomous Driving with Spiking Neural Networks

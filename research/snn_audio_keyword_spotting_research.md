@@ -270,31 +270,3 @@ The SpikingJelly `speechcommands.py` example is 594 lines total (~494 source lin
 This represents a complete, working, publishable implementation.
 
 ### 5.4 Key Technical Challenges
-
-| Challenge | Difficulty | Mitigation |
-|-----------|-----------|------------|
-| Understanding LIF neuron dynamics | Medium | snnTorch tutorials 1-3 |
-| Surrogate gradient training | Medium | snnTorch tutorial 5 |
-| Audio-to-spike encoding | Medium | Use SHD (pre-encoded) or Mel-spectrograms |
-| Hyperparameter tuning | Medium | Start from published configs (sparch) |
-| GPU memory management | Low-Medium | Use small batch sizes, SHD is small |
-| Reproducing published results | Medium | Use sparch or SpikingJelly examples |
-| Energy estimation | Low | Count synaptic operations (MAC vs AC) |
-
----
-
-## 6. Energy Efficiency Argument for SNNs in Audio
-
-### 6.1 Theoretical Basis
-
-SNNs achieve energy efficiency through three mechanisms:
-1. **Event-driven computation:** Neurons only compute when they receive or emit a spike (sparse activity)
-2. **Addition-only operations:** SNN inference uses accumulate (AC) operations instead of multiply-accumulate (MAC) operations. AC operations cost ~0.9 pJ vs ~4.6 pJ for MAC in 45nm CMOS.
-3. **Temporal sparsity:** Audio signals are naturally sparse -- silence and low-activity periods require no computation
-
-### 6.2 Concrete Energy Numbers
-
-| Platform | Task | Energy/Inference | Power | Relative |
-|----------|------|-----------------|-------|----------|
-| **Intel Loihi** | KWS | ~110 mJ | 23 mW dynamic | **1x (baseline)** |
-| **Intel Loihi 2** | Audio | -- | -- | **200x less than Jetson Orin Nano** |

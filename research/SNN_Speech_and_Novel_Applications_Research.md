@@ -446,3 +446,31 @@ Emerging field. SpikeGPT is notable but very small (46M params vs billions for G
 - SNN for audio compression
 - SNN for sound effect synthesis
 
+### Emerging but growing (5-10 papers)
+- SNN speech enhancement/denoising
+- SNN anomaly detection
+- SNN generative models (diffusion/GAN/VAE)
+- SNN multimodal audio-visual
+
+---
+
+## 10. Tools and resources
+
+### Frameworks
+- **snnTorch:** https://github.com/jeshraghian/snntorch (Python/PyTorch, excellent tutorials)
+- **SpikingJelly:** https://github.com/fangwei123456/spikingjelly (Python/PyTorch, published in Science Advances)
+- **Norse:** https://github.com/norse/norse (Python/PyTorch)
+
+### Key GitHub repos
+- Spiking Vocos: https://github.com/pymaster17/Spiking-Vocos
+- SpikeYOLO: https://github.com/BICLab/SpikeYOLO
+- sparch (SNN speech commands toolkit): https://github.com/idiap/sparch
+- Awesome SNNs: https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks
+- OF_EV_SNN (optical flow + event cameras): https://github.com/J-Cuadrado/OF_EV_SNN
+
+### Key datasets for speech + SNN
+- Google Speech Commands v2 (keyword spotting)
+- Spiking Heidelberg Digits (SHD) -- neuromorphic
+- Spiking Speech Commands (SSC) -- neuromorphic
+- VoiceBank+DEMAND (speech enhancement)
+- Intel N-DNS Challenge dataset (speech denoising)

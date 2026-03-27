@@ -362,3 +362,31 @@ Source: [Edinburgh Common Marking Scheme](https://informatics.ed.ac.uk/taught-st
 Source: [Imperial Projects Guide](https://www.doc.ic.ac.uk/lab/mac-mcs-projects/ProjectsGuide.html)
 
 ### 5.5 Bristol
+
+**Assessment:** Uses university-wide Level 6 marking criteria. The individual project (COMS30044) involves a written thesis, viva (~20 minutes), and potentially a demo.
+
+Key insight from their FAQ: the 60-69% band is characterised by "some self directed work with significant supervisor input." For 70+, substantially more autonomy is expected. And this quote really stood out: "It doesn't matter how much work you've done, if you don't write it up well, you will fail."
+
+Source: [Bristol CS Individual Project FAQ](https://cs-uob-individual-project.github.io/qanda/)
+
+### 5.6 Warwick (CS310)
+
+**Assessment:**
+- Progress Report: 15%
+- Final Report + Viva: 75%
+- Project Management Reflection: 10%
+
+**Report:** Expected 8,000-10,000 words. Viva is 45 minutes (presentation + questions).
+
+**Four key assessed capabilities:**
+1. Planning and managing a significant individual project
+2. Building substantial software systems or conducting research from design to documentation
+3. Presenting work orally and in writing
+4. Demonstrating critical reflection on outcomes
+
+Source: [Warwick CS310](https://warwick.ac.uk/fac/sci/dcs/teaching/modules/cs310/)
+
+### 5.7 Sussex
+
+Sussex has the most detailed publicly available grade descriptors i could find for CS projects.
+

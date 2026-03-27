@@ -670,3 +670,31 @@ ANN-to-SNN conversion is viable as a thesis topic but i wouldn't recommend it as
 | Neuromorphic SNN | 5 mJ/inference | General | vs. 200 mJ for ANN |
 | TrueNorth | 67 mW | Keyword spotting | 82 days on coin cell battery |
 | GPU (Jetson Nano) | 62.9 mJ/inference | Vision | baseline comparison |
+
+---
+
+<a name="examples"></a>
+## example theses and projects
+
+### published example projects
+
+1. **Master Thesis (Univ. Padova):** "Hardware Implementation of a Spiking Neural Network" -- RTL modeling and FPGA resource mapping
+2. **GitHub Project (DerrickL25):** "SNN Gesture Classification" -- neuromorphic gesture classification with snnTorch and DVS128
+3. **VCU Dissertation:** "Spiking Neural Networks: Neuron Models, Plasticity, and Graph Applications"
+
+### reproducible paper implementations
+
+| Paper | Task | Dataset | Framework | Difficulty |
+|-------|------|---------|-----------|------------|
+| DCSNN (2018) | MNIST classification | MNIST | BindsNet/snnTorch | Easy |
+| Spiking YOLO (2019) | Object detection | PASCAL VOC | Custom | Hard |
+| Spike-FlowNet (2020) | Optical flow | Event camera | Custom | Hard |
+| SiamSNN (2020) | Object tracking | - | Custom | Hard |
+| SpikeSEG (2021) | Semantic segmentation | Synthetic | Custom | Moderate |
+| Spikformer (2022) | Image classification | CIFAR/ImageNet | SpikingJelly | Moderate-Hard |
+
+---
+
+<a name="recommendation"></a>
+## what i think i should do
+

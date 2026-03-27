@@ -1,14 +1,14 @@
-# Deep Research: Making SNNs Dramatically More Energy-Efficient Than ANNs
+# notes on making SNNs more energy-efficient than ANNs
 
-**Date:** 25 March 2026
-**Investigator:** Claude Research Agent
-**Context:** SNN for ESC-50 audio classification, targeting 10x-100x energy advantage
+date: 25 march 2026
+context: our ESC-50 SNN uses 968 nJ/sample (1.08M ACs at 0.9 pJ), ANN uses 454 nJ (99K MACs at 4.6 pJ) -- ANN is 2.1x more efficient in software. the root cause is clear: 26.4% spike rate is 4x above the 6.4% break-even (Dampfhoffer 2023, Yang et al. 2024), and T=25 timesteps multiplies everything by 25x vs a single-pass ANN.
 
----
+the good news is our own Pareto experiments show L1 reg at lambda=0.001 can reduce output spike rates to 0.4-0.8% while keeping 85-95% accuracy. combined with temporal reduction (T=7 gives 90% accuracy), pruning, and SpiNNaker hardware costs, 10x advantage is realistic.
 
-## Executive Summary
-
-Your SNN currently consumes 968 nJ/sample (1.08M ACs at 0.9 pJ) while the ANN uses 454 nJ (99K MACs at 4.6 pJ) -- the ANN is 2.1x MORE efficient in software simulation. The root cause is clear: your 26.4% spike rate is 4x above the 6.4% break-even threshold identified by Dampfhoffer et al. (2023) and confirmed by Yan et al. (2024). Furthermore, your T=25 timesteps multiply all operations by 25x compared to a single-pass ANN.
+three most impactful things for our setup:
+1. spike rate regularization (already partially validated in our pareto experiments)
+2. temporal reduction (T=7 already validated, T=5 worth training for)
+3. weight pruning + structured sparsity (91x gains demonstrated at ICLR 2024)
 
 **The good news:** Your own Pareto experiments already show that L1 regularization at lambda=0.001 can reduce output spike rates to 0.4-0.8% while retaining 85-95% of baseline accuracy. Combined with temporal reduction (T=7 gives 90% accuracy), structured pruning, and SpiNNaker's actual hardware costs, achieving 10x energy advantage is realistic. A 100x advantage requires more aggressive techniques but is theoretically achievable.
 

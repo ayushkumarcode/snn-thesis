@@ -306,3 +306,31 @@ From the literature:
 
 **SpiNNaker 2 -- Sandia Labs:** Deployed March 2025. 1,152 SpiNNaker2 chips, 175M neurons. National security and AI research.
 
+**SpiNNaker 2 -- Leipzig University (announced July 2025):** World's largest neuromorphic supercomputer deployment planned.
+
+### 6.3 Audio-specific deployments
+
+| Platform | Audio Application | Status | Energy |
+|:---|:---|:---:|:---|
+| Innatera T1/Pulsar | Audio scene classification | Commercial 2025 | <10 mW |
+| BrainChip Akida | Audio processing | Commercial | Milliwatts |
+| Intel Loihi 2 | Keyword spotting | Research | 200x less than embedded GPU |
+| Intel Loihi 2 | Speech, audio processing | Research (ICASSP 2024) | Orders of magnitude gains |
+
+---
+
+## 7. What this means for my thesis
+
+### 7.1 What i can honestly claim
+
+1. **Per-operation energy advantage is real:** 0.9 pJ/AC vs 4.6 pJ/MAC = 5.1x. Well-established (Horowitz 2014).
+
+2. **My SNN has high activation sparsity (74.16%)** but not high enough for software-level energy superiority (~93% needed). This is honest and aligns with the literature.
+
+3. **On neuromorphic hardware, the advantage is genuine:** Even at 74.16% sparsity, SpiNNaker or Loihi would benefit from native AC operations, event-driven processing, and eliminating multiply operations.
+
+4. **The PANNs+SNN hybrid (92.5% accuracy) is the practical deployment story:** CNN14 extracts features once (software), SNN head classifies on neuromorphic hardware. Matches the hybrid architecture recommendations from Dampfhoffer et al.
+
+### 7.2 What i should NOT claim
+
+1. Don't claim SNNs are universally more energy-efficient. The literature is clear it depends on sparsity, hardware, and methodology.

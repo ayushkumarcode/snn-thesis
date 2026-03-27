@@ -306,3 +306,31 @@ def aggregate_diagnostic(y_dic):
     return list(set(tmp))
 
 Y['diagnostic_superclass'] = Y.scp_codes.apply(aggregate_diagnostic)
+```
+
+**Source:** [PTB-XL Paper (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7248071/), [PhysioNet example code](https://www.physionet.org/content/ptb-xl/1.0.2/example_physionet.py)
+
+---
+
+### 8. ANN Baseline
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES |
+| **VERIFIED HOW** | Published benchmark paper + reproducible GitHub code |
+| **POTENTIAL BLOCKER** | NO |
+
+**The definitive ANN baseline:**
+- **Paper:** "Deep Learning for ECG Analysis: Benchmarks and Insights from PTB-XL" (Strodthoff, Wagner, Schaeffter, Samek, 2020)
+- **Published in:** IEEE Journal of Biomedical and Health Informatics
+- **GitHub:** https://github.com/helme/ecg_ptbxl_benchmarking
+
+**Benchmark AUROC scores on 5-superclass task (fold 10 test set):**
+
+| Architecture | Macro AUROC |
+|---|---|
+| xresnet1d101 | 0.937 |
+| resnet1d_wang | 0.930 |
+| lstm_bidir | 0.932 |
+| inception1d | 0.931 |
+| lstm | 0.927 |

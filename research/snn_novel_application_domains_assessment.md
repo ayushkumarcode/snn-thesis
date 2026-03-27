@@ -415,31 +415,3 @@ The most promising domains for an undergraduate thesis that balances novelty, fe
 | 8. Radar/Sonar | 10-15 | VERY HIGH | LOW-MODERATE | MODERATE | MODERATE |
 | 9. Astronomy Transients | 5-8 | HIGH | LOW-MODERATE | HIGH | MODERATE |
 | 10. Drug Discovery | 2-3 | LOW | LOW | VERY HIGH | POOR |
-
----
-
-## Top Recommendations for Undergraduate Thesis
-
-### Tier 1: Strongly Recommended
-
-**1. SNN for Music Generation (Symbolic/MIDI)**
-- Why: Fewest papers, natural SNN advantage, excellent frameworks and datasets available
-- Suggested scope: Implement SNN-based melody generation on JSB Chorales using snnTorch, compare energy efficiency and musical quality with LSTM baseline
-- Key reference: MuSpike benchmark (2025) provides evaluation methodology
-- Risk: Low -- well-scoped, accessible tools
-
-**2. SNN for Environmental Monitoring / Air Quality Prediction**
-- Why: Very few papers, strong practical motivation, accessible datasets
-- Suggested scope: SNN-based air quality index prediction from EPA sensor data, compare with LSTM and evolving SNN (NeuCube) approaches
-- Key reference: CEeSNN (2019) and Staging-eSNN (2021) provide methodology
-- Risk: Low -- standard regression/classification task with temporal data
-
-### Tier 2: Recommended
-
-**3. SNN for Wearable Sensor Human Activity Recognition**
-- Why: Strongest natural SNN advantage, very practical, good scope
-- Suggested scope: SNN for HAR on UCI HAR dataset with multi-threshold delta encoding, compare energy/accuracy tradeoff with CNN/LSTM
-- Key reference: Spiking-IMU (2023) and ISWC evaluation paper
-- Risk: Low -- but slightly more existing literature reduces novelty
-
-**4. SNN for Industrial IoT Anomaly Detection**

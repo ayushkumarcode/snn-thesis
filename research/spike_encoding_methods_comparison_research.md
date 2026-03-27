@@ -843,31 +843,3 @@ def evaluate_encoding(encode_fn, data_loader, model, num_steps, device):
     total_time = 0.0
 
     model.eval()
-    with torch.no_grad():
-        for data, targets in data_loader:
-            data, targets = data.to(device), targets.to(device)
-
-            # Encode
-            t_start = time.time()
-            spike_data = encode_fn(data, num_steps)
-            t_encode = time.time() - t_start
-
-            # Forward pass
-            t_start = time.time()
-            spk_rec, mem_rec = model(spike_data)
-            t_infer = time.time() - t_start
-
-            # Accuracy
-            _, predicted = spk_rec.sum(0).max(1)
-            correct += (predicted == targets).sum().item()
-            total += targets.size(0)
-
-            # Spike count
-            total_spikes += spike_data.sum().item()
-            total_time += t_encode + t_infer
-
-    accuracy = correct / total
-    avg_spikes = total_spikes / total
-    return {
-        'accuracy': accuracy,
-        'avg_spikes_per_sample': avg_spikes,

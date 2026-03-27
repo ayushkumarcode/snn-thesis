@@ -334,3 +334,31 @@ things that don't exist in the literature:
 4. limited data on population encoding performance -- most work focuses on rate/temporal/direct
 
 ---
+
+## Confidence
+
+| Finding | Confidence | Basis |
+|---------|-----------|-------|
+| Direct beats rate at low timesteps | Very high | Kim 2022, Tutorial 2025, our results |
+| SNN energy advantage needs <6.4% spike rate | High | Yang 2024, Dampfhoffer 2023 |
+| Horowitz AC=0.9pJ, MAC=4.6pJ at 32b, 45nm | Very high | ISSCC 2014, universally cited |
+| NeuroBench metrics and baselines | Very high | Nature Communications 2025, open-source |
+| Surrogate shape robustness (simple tasks) | High | Zenke 2021, Gygax 2025 |
+| Bimodal surrogate failure (complex tasks) | Medium | our result is novel, limited comparison available |
+| Neuromorphic audio energy savings (10-200x) | High | Loihi 2 + Xylo measurements |
+
+---
+
+## Key References
+
+### Spike Encoding
+1. Kim et al. "Rate Coding or Direct Coding." ICASSP 2022. [arXiv:2202.03133](https://arxiv.org/abs/2202.03133)
+2. Guo et al. "Neural Coding in SNNs." Frontiers in Neuroscience 15:638474, 2021.
+3. Larroza et al. "Spike Encoding for Environmental Sound." arXiv:2503.11206, 2025.
+4. Bian et al. "Evaluation of Encoding Schemes." arXiv:2407.09260, 2024.
+5. Petro et al. "Spike encoding techniques for IoT." Frontiers in Neuroscience 16:999029, 2022.
+6. "A Practical Tutorial on Spiking Neural Networks." MDPI, 2025.
+7. Stanojevic et al. "High-performance deep SNNs with 0.3 spikes per neuron." Nature Comms 15:6793, 2024.
+
+### Energy Efficiency
+8. Dampfhoffer et al. "Are SNNs Really More Energy-Efficient?" IEEE TECI 7(3):731-741, 2023.

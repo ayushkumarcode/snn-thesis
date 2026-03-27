@@ -390,3 +390,31 @@ def forward_pass(net, data):
     return torch.stack(spk_rec)
 
 # === Training ===
+optimizer = torch.optim.Adam(net.parameters(), lr=2e-3, betas=(0.9, 0.999))
+loss_fn = SF.mse_count_loss(correct_rate=0.8, incorrect_rate=0.2)
+
+num_epochs = 50
+for epoch in range(num_epochs):
+    net.train()
+    train_loss = 0
+    train_acc = 0
+    train_samples = 0
+
+    for data, targets in trainloader:
+        data = data.to(device).float()
+        targets = targets.to(device)
+
+        spk_rec = forward_pass(net, data)
+        loss_val = loss_fn(spk_rec, targets)
+
+        optimizer.zero_grad()
+        loss_val.backward()
+        optimizer.step()
+
+        train_loss += loss_val.item()
+        train_acc += SF.accuracy_rate(spk_rec, targets) * targets.size(0)
+        train_samples += targets.size(0)
+
+    # Evaluation
+    net.eval()
+    test_acc = 0

@@ -110,3 +110,31 @@ the only real apples-to-apples comparison:
 - vision, audio, sensor fusion
 - milliwatt range
 - $25M funding for Akida 2
+
+### Intel Loihi 2
+- research platform (not commercially sold)
+- deployed at BMW factories for defect detection (20ms -> 2ms)
+
+### SpiNNaker 2 (SpiNNcloud Systems)
+- research deployments at Sandia and Leipzig
+- 175M neuron system at Sandia
+- first commercially available neuromorphic supercomputer
+
+---
+
+## 6. What to Claim in the Thesis
+
+### what i can honestly say:
+1. in **software simulation**, our ANN is 2.1x more energy-efficient (463 nJ vs 976 nJ)
+2. on **neuromorphic hardware**, each SNN operation is 5.1x cheaper (0.9 vs 4.6 pJ)
+3. the **real energy argument** for SNNs requires dedicated hardware
+4. our spike rate (25.8%) is above software break-even but per-op hardware advantage compensates
+5. SpiNNaker 1 is not the most efficient neuromorphic chip -- cite Loihi and Innatera for better numbers
+
+### what NOT to claim:
+- don't say SNNs are inherently more efficient (they need specific conditions)
+- don't extrapolate SpiNNaker 1 energy numbers to all neuromorphic hardware
+- don't ignore memory access costs (they dominate)
+
+---
+

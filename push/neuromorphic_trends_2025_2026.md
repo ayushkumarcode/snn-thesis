@@ -54,3 +54,31 @@ Innatera is basically validating the audio neuromorphic market. our work on SNN 
 ## The Narrative Shift
 
 the community has matured: SNNs are complementary specialized accelerators, not ANN replacements. energy advantage is conditional (>93% sparsity). the gap is smallest with pretrained features (exactly our PANNs finding). hybrid ANN+SNN is the pragmatic path.
+
+our insight -- "the gap is feature-learning, not spiking computation" -- is exactly what the community is converging on. we have the first empirical demonstration for audio.
+
+---
+
+## Neuromorphic Audio Community (Small but Growing)
+
+| Group | Focus |
+|-------|-------|
+| Seville (Dominguez-Morales) | SpiNNaker audio (pure tones only) |
+| Spain (Larroza et al.) | Spike encoding for ESC-10 (2025) |
+| Zenke Lab | SHD dataset (speech digits) |
+| Innatera | Commercial audio on neuromorphic |
+| SynSense | Xylo Audio chip |
+
+nobody has done: full ESC-50 with SNNs, 7-encoding comparison for audio, PANNs+SNN transfer, adversarial robustness for SNN audio, or SpiNNaker deployment for environmental sound.
+
+---
+
+## How to Make the Paper Stand Out
+
+1. real hardware deployment (we have this)
+2. honest energy analysis (we do this)
+3. bridge SNN and mainstream ML (PANNs transfer does this)
+4. clear memorable insight ("gap is feature-learning, not spiking")
+5. address the AI energy narrative (topical, relevant to sustainability)
+
+---

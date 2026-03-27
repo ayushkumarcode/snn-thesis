@@ -441,31 +441,3 @@ These are repositories explicitly identified as undergraduate or final-year proj
 | **SpyTorch** | https://github.com/fzenke/spytorch | Surrogate gradient learning tutorials | YES - tutorial focused |
 | **Lava** | https://github.com/lava-nc/lava-dl | Intel Loihi deployment | NO - hardware specific |
 | **PySNN** | https://github.com/BasBuller/PySNN | Simple PyTorch SNN | YES - beginner friendly |
-
----
-
-## Section 7: snnTorch-Tagged Projects (from GitHub Topics)
-
-Additional smaller projects using snnTorch found via the snntorch GitHub topic:
-
-| Project | Description | Stars |
-|---------|-------------|-------|
-| neuromorphic_classifier | MNIST classification with SNN | 1 |
-| snn-tre | SNN model to classify MNIST | 0 |
-| IA_in_complex_game_snn | Evolving SNNs for trash collection game | 2 |
-| Spiking-ResNet | Blood pressure prediction from PPG | 2 |
-| search-and-rescue | Drone computer vision with SNN | 1 |
-| snn-image-classification | Computer vision basics | 0 |
-| Spiking-Classifier | Image classification with Gradio UI | 0 |
-| PredictiveSNNModels | MNIST sequence prediction | 0 |
-| snn-glacier-segmentation | Glacier image segmentation | 0 |
-| SNN-CL-AutonomousDriving | Autonomous driving + continual learning | 0 |
-| PulsePod | Arrhythmia detection framework | 0 |
-
----
-
-## Section 8: Analysis - Typical Scope for a 3rd Year Undergraduate Project
-
-Based on analyzing 40+ projects, here is what a realistic 3rd-year undergraduate SNN project looks like:
-
-### Typical Characteristics

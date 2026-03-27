@@ -26,3 +26,31 @@ the good news for me is that a lot of this has open-source code and the framewor
 ### tier 2 -- also worth knowing about
 
 | # | Paper | Venue | What it does | Code? |
+|---|-------|-------|-------------|-------|
+| 11 | **TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting** | ICLR 2025 | Dual-compartment architecture (dendritic + somatic) that captures distinct frequency components. Also robust to missing data. | Yes: [github.com/kkking-kk/TS-LIF](https://github.com/kkking-kk/TS-LIF) |
+| 12 | **SpikeGCL: A Graph is Worth 1-bit Spikes** | ICLR 2024 | Graph contrastive learning with SNNs. Shows binary spikes are enough for effective graph representation learning. | Yes: [github.com/EdisonLeeeee/SpikeGCL](https://github.com/EdisonLeeeee/SpikeGCL) |
+| 13 | **Brain-Inspired Spiking Neural Networks for Energy-Efficient Object Detection** | CVPR 2025 | SNN-based object detection bridging event-driven vision and practical deployment. | Paper with code |
+| 14 | **Continual Learning with Neuromorphic Computing: Foundations, Methods, and Emerging Applications** | arXiv survey, Oct 2024 | Maps the entire neuromorphic continual learning subfield. | Survey (references multiple code repos) |
+| 15 | **Learning Long Sequences in Spiking Neural Networks** | Scientific Reports 2024 | SSM-based SNNs outperform Transformers on long-range sequence tasks with fewer parameters. | Paper with code references |
+
+---
+
+## where the field is heading -- main trends
+
+### 1. spiking transformers (hottest area right now)
+
+this is where most of the action is. QKFormer hit 85.65% on ImageNet and SGLFormer got 83.73%. the basic idea is making transformers spike-driven so they can run on neuromorphic hardware while keeping high accuracy. key techniques are spike-form Q-K attention, dual spike self-attention, and spike-driven softmax alternatives.
+
+still ~5-7% below ANN transformer accuracy on ImageNet though. and scaling to bigger datasets/models hasn't really been explored.
+
+### 2. spiking LLMs
+
+this is new and honestly kind of crazy. SpikeLM (ICML 2024) and SpikeLLM (ICLR 2025) are the founding papers. the motivation is obvious -- LLMs consume absurd amounts of energy and spiking versions could theoretically cut that by orders of magnitude. they use elastic bi-spiking mechanisms and saliency-based spiking, plus ANN-to-SNN conversion for transformers.
+
+still early though. performance lags behind ANN LLMs and nobody's tried scaling past 70B.
+
+### 3. SNN + state space models (SSMs/Mamba)
+
+this is a new and exciting intersection. P-SpikeSSM (ICLR 2025) is basically the only major paper so far. SSMs give you linear-time sequence modeling and combining that with event-driven spiking efficiency makes a lot of sense. uses probabilistic spike generation, SpikeSampler layers, SpikeMixer blocks.
+
+very few papers exist here -- tons of room for novel work.

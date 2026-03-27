@@ -493,31 +493,3 @@ Based on survey papers and recent analysis:
 5. Apply pruning at various sparsity levels
 6. Compare estimated energy (SynOps) across all configurations
 
-**Differentiator:** Pareto frontier analysis, practical guidance for deployment.
-
-### Option C: "Event Representation Matters: Impact of Preprocessing on SNN Gesture Recognition"
-
-**Research question:** How sensitive are SNN results to event-to-frame conversion choices?
-
-**Experiments:**
-1. Fixed-count binning (T = 8, 16, 32)
-2. Fixed-time binning (window = 1ms, 5ms, 10ms, 50ms)
-3. Voxel grid representation
-4. Raw event processing (no frame conversion, point-based)
-5. With/without denoising
-6. With/without spatial downsampling (128x128 vs 64x64 vs 32x32)
-
-**Differentiator:** This is a genuine gap -- preprocessing is rarely ablated despite being critical.
-
----
-
-## 12. Practical Quick-Start Recommendations
-
-### If starting TODAY for a thesis:
-
-1. **Framework:** SpikingJelly (activation-based API, latest version from GitHub)
-2. **Dataset:** Download DVS128 Gesture from IBM Box manually
-3. **First milestone:** Reproduce the 96.18% baseline in the classify_dvsg tutorial
-4. **Second milestone:** Implement your comparison experiments
-5. **GPU:** Any NVIDIA GPU with 12GB+ VRAM, or Apple M-series (MPS backend, no CuPy acceleration)
-6. **Estimated compute:** 20-50 GPU-hours for a full comparison study

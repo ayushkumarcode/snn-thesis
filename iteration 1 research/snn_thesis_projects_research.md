@@ -362,3 +362,31 @@ these are repos explicitly identified as undergraduate or final-year projects.
 - **Dataset**: MNIST
 - **Results**: ~50 seconds vs ~18 minutes for reference implementation
 - **Stars**: 13 | **Commits**: 30
+
+### 4.3 Python SNN with STDP and RL
+- **URL**: https://github.com/maael/SpikingNeuralNetwork
+- **Description**: SNN with basic STDP, homeostatic STDP, and reward-based RL STDP variants
+- **Framework**: Python 3
+- **Stars**: 133 | **Forks**: 37
+
+### 4.4 FPGA SNN STDP Acceleration
+- **URL**: https://github.com/rafamedina97/FPGA_SNN_STDP
+- **Description**: FPGA hardware acceleration of STDP learning for SNNs
+- **Framework**: VHDL, SystemVerilog, Vivado, MATLAB
+- **Dataset**: MNIST (784-20-10 network)
+- **Stars**: 40 | **Forks**: 7
+
+### 4.5 SNN4Space (ESA)
+- **URL**: https://github.com/AndrzejKucik/SNN4Space
+- **Description**: ANN-to-SNN conversion for satellite land cover classification
+- **Framework**: KerasSpiking, TensorFlow
+- **Dataset**: EuroSAT RGB (27,000 examples), UC Merced (2,100 examples)
+- **Results**: UC Merced 91.43%, EuroSAT 95.07%
+- **Stars**: 14 | **Commits**: 128
+
+### 4.6 Bayesian Optimization 1D-CSNN for Fraud Detection
+- **URL**: https://github.com/dylanperdigao/Bayesian-Optimization-1D-CSNN
+- **Description**: 1D-Convolutional SNN optimized with Bayesian methods for fraud detection
+- **Framework**: snnTorch, Python
+- **Dataset**: Bank Account Fraud (BAF) Dataset from NeurIPS 2022
+- **Results**: Published at EPIA 2024 conference

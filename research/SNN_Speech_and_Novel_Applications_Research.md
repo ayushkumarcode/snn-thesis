@@ -82,3 +82,31 @@ SNNs are now within 1-1.5% WER of SOTA ANNs on LibriSpeech, which is honestly pr
 ### What's going on here
 
 **SpikeVoice (ACL 2024)** -- this is a landmark paper. It's explicitly stated as "the first TTS work in the SNN field." Key stuff:
+- Introduced Spiking Temporal-Sequential Attention (STSA) to handle long-term dependencies
+- Addressed the "partial-time dependency" problem: spiking neurons' serial nature limits capturing sequence dependencies across timesteps
+- Tested on 4 datasets covering Chinese and English, single-speaker and multi-speaker
+- Achieved comparable speech quality to ANN while using only 10.5% of the energy
+- Published at ACL 2024, so it went through serious peer review
+
+**Spiking Vocos (2025)** -- first SNN-based frequency-domain vocoder:
+- Built on the Vocos framework
+- Uses Spiking ConvNeXt module with amplitude shortcut to prevent information loss
+- Self-architectural distillation + Temporal Shift Module for temporal modeling
+- UTMOS: 3.74, PESQ: 3.45 (comparable to ANN Vocos)
+- Only 14.7% energy consumption of ANN counterpart
+- Code available: https://github.com/pymaster17/Spiking-Vocos
+
+### How SpikeVoice actually generates speech
+
+The key challenge: SNNs produce discrete binary spike events (0 or 1), but speech requires continuous waveforms. SpikeVoice's approach:
+1. Uses membrane potential (not discrete spikes) as the output signal for waveform reconstruction
+2. STSA mechanism allows capturing long-range temporal dependencies despite spike-based processing
+3. The model generates spectrograms (mel-spectrograms), then a vocoder converts to waveforms
+4. This two-stage approach (SNN spectrogram predictor + vocoder) bypasses the need for SNNs to directly generate audio samples
+
+### Feasibility for undergrad: MEDIUM-HIGH (very high novelty)
+- SpikeVoice code may or may not be publicly available (check ACL proceedings)
+- Spiking Vocos has code on GitHub -- could be a starting point
+- This area has extreme novelty -- even a modest contribution would be publishable
+- Risk: complex architecture, may require significant compute
+- Could focus on the vocoder component (Spiking Vocos) rather than full TTS pipeline

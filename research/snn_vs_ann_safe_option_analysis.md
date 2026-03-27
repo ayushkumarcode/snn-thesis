@@ -350,31 +350,3 @@ If you want to ensure completion with buffer:
 | Results replicate known findings without new insight | MODERATE | MODERATE | Frame as a *systematic reproducibility study* with added dimensions |
 | Takes longer than expected | HIGH | MODERATE | Have a scoped-down version ready; prioritize experiments by impact |
 
----
-
-## Recommended Thesis Framing
-
-Do NOT frame this as: "I compared SNNs and ANNs on image classification"
-(This sounds like a tutorial exercise)
-
-DO frame this as one of:
-
-**Option 1 -- Efficiency Focus**: "Evaluating the accuracy-efficiency tradeoff of spiking neural networks: A controlled multi-dataset study using NeuroBench metrics"
-
-**Option 2 -- Multi-dimensional Comparison**: "Beyond accuracy: A systematic comparison of spiking and artificial neural networks across accuracy, energy, and robustness dimensions"
-
-**Option 3 -- Encoding Study**: "Impact of spike encoding schemes on SNN classification performance: A comprehensive empirical study across datasets and architectures"
-
-**Option 4 -- Hyperparameter Study**: "Sensitivity analysis of spiking neuron parameters for image classification: Practical guidelines for SNN practitioners"
-
-Each of these frames the work as answering a specific question rather than just "comparing things."
-
----
-
-## Confidence Assessment
-
-| Finding | Confidence | Basis |
-|---------|-----------|-------|
-| MNIST gap is closed (~0%) | VERY HIGH | Multiple papers, reproducible |
-| Fashion-MNIST gap is 2-5% for typical implementations | HIGH | Multiple sources |
-| CIFAR-10 gap is 0.4-8% depending on method | HIGH | Extensive literature |

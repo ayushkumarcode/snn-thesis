@@ -362,3 +362,31 @@ Emerging field. SpikeGPT is notable but very small (46M params vs billions for G
 **SNN + Optical Flow / Depth Estimation:**
 - Natural pairing with event cameras
 - StereoSpike for depth estimation on MVSEC
+- SDformerFlow: Spiking transformer for event-based optical flow
+
+**SNN + Continual/Lifelong Learning:**
+- CLP-SNN on Loihi 2 for real-time continual learning
+- Brain-inspired NACA algorithm for catastrophic forgetting mitigation
+- Hybrid SNN-ANN for corticohippocampal-inspired continual learning
+
+**SNN + Multimodal Fusion (Audio-Visual):**
+- MISNet: First SNN balancing accuracy and efficiency for audio-visual classification
+- SMMT: Spiking Multimodal Transformer
+- Cross-modal spiking attention mechanisms
+
+---
+
+## 7. Thesis feasibility matrix
+
+| Application Area | # Papers | Novelty | Feasibility (Undergrad) | Risk | Recommendation |
+|-----------------|----------|---------|------------------------|------|----------------|
+| Speech Command Recognition (ASR-lite) | 20+ | Low | Very High | Low | Good starter project |
+| Large Vocabulary ASR | 5-10 | Medium | Medium | Medium | Ambitious but possible |
+| **SNN TTS (Text-to-Speech)** | **2-3** | **VERY HIGH** | **Medium** | **High** | **High-impact if achievable** |
+| **SNN Vocoder** | **1** | **VERY HIGH** | **Medium-High** | **Medium** | **Spiking Vocos has code; good opportunity** |
+| **SNN Speech Enhancement** | **5-10** | **High** | **High** | **Low-Medium** | **Best novelty/feasibility ratio for speech** |
+| SNN Voice Conversion | 0 | Extreme | Low-Medium | Very High | Too risky for undergrad |
+| SNN Audio Compression | 1-2 | Very High | Medium | Medium | Interesting niche |
+| SNN Object Detection | 20+ | Low | High | Low | Well-trodden path |
+| SNN Segmentation (Medical) | 10-15 | Medium | High | Low | Solid choice |
+| **SNN Anomaly Detection (Time Series)** | **5-10** | **High** | **High** | **Low** | **Practical + novel** |

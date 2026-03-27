@@ -59,31 +59,3 @@ As a thesis topic, this is well-positioned: the field is active enough to provid
 | Dataset | Year | Records | Features | Attack Types | Availability |
 |---------|------|---------|----------|--------------|--------------|
 | **NSL-KDD** | 2009 | 125,973 (train) / 22,544 (test) | 41 | DoS, Probe, R2L, U2R | Free: https://www.unb.ca/cic/datasets/nsl.html and Kaggle |
-| **CICIDS-2017** | 2017 | ~2.8M | 79 | Brute Force, DoS, DDoS, Web Attack, Infiltration, Botnet, Heartbleed | Free: UNB CIC website, Kaggle, IEEE DataPort |
-| **CSE-CIC-IDS2018** | 2018 | ~16.2M | 79 | Same as 2017 + expanded variants | Free: UNB CIC website |
-| **UNSW-NB15** | 2015 | 2,540,044 | 49 | Fuzzers, Analysis, Backdoors, DoS, Exploits, Generic, Reconnaissance, Shellcode, Worms | Free for academic use: UNSW Research website, Kaggle |
-| **CIC-DDoS2019** | 2019 | Large-scale | 79 | 12 DDoS attack types | Free: UNB CIC |
-| **ToN-IoT** | 2020 | ~461K | 44 | 9 IoT-specific attack types | Free: UNSW Canberra |
-| **BoT-IoT** | 2018 | ~73M | 46 | DDoS, DoS, Reconnaissance, Theft | Free: UNSW |
-| **AWID** | 2015 | ~1.7M | 155 | WiFi attacks (injection, impersonation, flooding) | Free: Aegean WiFi Intrusion Dataset |
-
-### 3.2 Dataset Characteristics for SNN Work
-
-**NSL-KDD** remains the most commonly used benchmark in SNN-IDS papers due to its manageable size and widespread adoption. However, it is aging (2009 vintage, derived from 1999 KDD Cup data).
-
-**CICIDS-2017/2018** are preferred by recent papers for their modern attack types and flow-based features extracted by CICFlowMeter. Wang et al. (2024) used CSE-CIC-IDS2018 with their ConvSNN.
-
-**UNSW-NB15** is increasingly used as a more challenging and realistic benchmark. It is the primary dataset in the lifelong learning SNN paper (Mia et al., 2025).
-
-**Recommendation for thesis**: Use UNSW-NB15 as primary (modern, challenging, well-documented) and NSL-KDD as secondary for comparison with literature. CICIDS-2017 as optional third.
-
----
-
-## 4. ACCURACY AND PERFORMANCE: SNNs vs. TRADITIONAL ML/DL
-
-### 4.1 Summary Performance Table (SNN-based models on IDS benchmarks)
-
-| Model | Dataset | Accuracy | F1/AUC | Energy | Source |
-|-------|---------|----------|--------|--------|--------|
-| ConvSNN (Wang 2024) | CSE-CIC-IDS2018 | 98.82% | -- | 1.775 x10^-4 kWh/10K | Scientific Reports |
-| ConvSNN (Wang 2024) | CIC-DDoS2019 | 99.86% | -- | (same model) | Scientific Reports |

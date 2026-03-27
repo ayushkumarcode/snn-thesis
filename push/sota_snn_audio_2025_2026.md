@@ -222,3 +222,31 @@ our thesis is one of very few works deploying SNN for environmental sound (not j
 ## 6. PANNs / Pretrained Audio Features with SNNs
 
 **found nothing.** no prior work combines PANNs (or any pretrained audio features) with an SNN classifier head for environmental sound classification.
+
+our PANNs CNN14 frozen embeddings + 3-layer SNN head achieving 92.50% on ESC-50 is novel. the insight that the SNN-ANN gap collapses from 16.7pp (scratch) to 0.95pp (PANNs features) is an original contribution.
+
+related but different:
+- ANN-to-SNN conversion (Bu et al. CVPR 2025; ICLR 2024) converts pretrained ANNs to SNNs, but vision/NLP focused
+- SpikeSCR KD transfers between SNN teachers/students, but doesn't use pretrained audio features
+- Spiking-LEAF uses learnable auditory frontend but trains from scratch
+
+the PANNs+SNN experiment answers: "is the SNN accuracy gap a feature-learning problem or a spiking computation problem?" answer: feature-learning. first time this has been shown in audio.
+
+---
+
+## 7. Survey Papers and Reviews
+
+**Basu et al. (2025):** "Fundamental Survey on Neuromorphic Audio Classification," arXiv:2502.15056. 24-page survey covering SNNs, memristors, neuromorphic hardware for audio. reviews ESC-50 as a dataset but reports no SNN results on it.
+
+**Baek & Lee (2024):** "SNN and Sound: A Comprehensive Review," Biomedical Engineering Letters, Vol. 14(5):981-991. covers speech recognition and classification. reviews Wu et al. (2018, SOM-SNN 99.60% RWCP), Dong et al. (2018, Conv SNN 97.5% TIDIGITS), etc. notable gap: focuses on speech datasets, environmental sound barely covered.
+
+---
+
+## 8. Theses on SNNs for Audio
+
+found a few but nothing on environmental sound:
+
+| Thesis | University | Year | Topic |
+|--------|-----------|------|-------|
+| Daddinounou | Grenoble Alpes | 2024 | Neuromorphic SNNs with Spintronic Synapses (hardware) |
+| Rios-Navarro | Seville | 2022 | Neuromorphic Auditory Computing for Robotics |

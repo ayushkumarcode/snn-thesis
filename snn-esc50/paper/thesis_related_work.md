@@ -68,20 +68,20 @@ No prior work has systematically compared these seven on ESC-50 or any standard 
 | Paper | Benchmark | Model | Encoding | Accuracy | Hardware |
 |-------|-----------|-------|----------|----------|----------|
 | Larroza et al. 2025 (arXiv:2503.11206) | ESC-10 | FC only | Rate, direct, latency | ~60% | None |
+| Dominguez-Morales et al. 2016 (ICANN) | Pure tones | FC | Rate | ~90% | SpiNNaker |
 | Dong et al. 2018 | TIMIT (speech) | CSNN | Rate | 66% | Simulation |
 
-**Key gap:** No prior work has evaluated convolutional SNNs on the full ESC-50 benchmark (50 classes, 5-fold CV), and no prior work has deployed SNNs for environmental sound classification on SpiNNaker hardware.
+**Key gap:** no conv SNNs on full ESC-50, no SNN deployment for environmental sound on SpiNNaker.
 
-### 2.4.2 Closest Prior Work
+### 2.4.2 closest prior work
 
-**Larroza et al. (2025)** is the most directly relevant paper. They evaluate SNN with fully-connected layers on ESC-10 (10 of 50 classes), reporting ~60% accuracy with direct encoding. Limitations: (1) ESC-10 is much easier than ESC-50 (10 vs 50 classes), (2) fully-connected only (no convolutional feature extraction), (3) no hardware deployment. This work extends their evaluation to the full ESC-50 benchmark with a convolutional architecture.
+**Larroza et al. (2025)** -- most directly relevant. SNN with FC layers on ESC-10, ~60% with direct encoding. Limitations: ESC-10 is much easier (10 vs 50 classes), FC only (no conv), no hardware deployment. We extend to full ESC-50 with conv architecture.
 
-**Dominguez-Morales et al. (2016)** deployed SNNs on SpiNNaker for audio, but used pure synthetic tones (not complex environmental sounds) and an address-event representation from a silicon cochlea. Their task difficulty is incomparable to ESC-50.
+**Dominguez-Morales et al. (2016)** deployed SNNs on SpiNNaker for audio but used pure synthetic tones and silicon cochlea input. Task difficulty isnt comparable to ESC-50 at all.
 
 ---
 
-## 2.5 SpiNNaker Neuromorphic Platform
-
+## 2.5 SpiNNaker neuromorphic platform
 **SpiNNaker** (Furber et al. 2014) is a massively parallel neuromorphic platform developed at the University of Manchester. Each chip contains 18 ARM968 processors connected by a custom packet-switched network. Communication is entirely spike-driven: each event is a 4-byte packet containing a neuron address, propagated asynchronously across the network. This AC-only communication (no multiply operations) is the source of SpiNNaker's energy efficiency.
 
 **sPyNNaker** provides a PyNN-compatible Python interface for specifying neural networks, which are compiled to SpiNNaker machine code. Supported neuron models include IF_curr_exp, IF_cond_exp, Izhikevich, and HH. Each neuron's membrane dynamics are simulated in fixed-point arithmetic on an ARM core.

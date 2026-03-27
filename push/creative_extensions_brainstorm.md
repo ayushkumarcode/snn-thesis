@@ -26,3 +26,31 @@ randomly silence 10-50% of neurons at inference. compare SNN vs ANN graceful deg
 #### 6. Spike Efficiency Frontier / Pareto (2-3 days, low risk)
 add L1 spike regularization at varying strengths -> map full accuracy-vs-spike-count Pareto curve. converts energy analysis from single point to design space. hardware designers would love this.
 
+#### 7. SNN Saliency Maps / Spike Grad-CAM (3-4 days, medium risk)
+adapt Grad-CAM for surrogate gradients -> spectrogram heatmaps showing what the SNN "looks at." compare SNN vs ANN saliency. if SNN highlights transients while ANN highlights sustained textures -> proof of different computational strategies.
+
+#### 8. Pruning Resilience (2 days, low risk)
+magnitude pruning at 30-90% sparsity, compare SNN vs ANN. do weight sparsity + activation sparsity compound? if SNN tolerates 70% weight pruning -> "92% total sparsity" is a powerful hardware number.
+
+#### 9. Stochastic Resonance (1-2 days, medium-high risk but huge if positive)
+add controlled noise to membrane potentials at inference. does noise IMPROVE classification? stochastic resonance is well-known in biology but barely tested in trained SNNs. a positive result would be the most biologically interesting finding in the thesis.
+
+---
+
+## Tier 3: Interesting But Less Critical
+
+#### 10. Biological Firing Pattern Analysis (2-3 days)
+do hidden neurons develop temporal specialization (onset detectors vs sustained-pattern detectors)? cluster neurons by firing profiles. connection to auditory neuroscience.
+
+#### 11. SpiNNaker Latency Benchmarking (1-2 days)
+actual wall-clock inference time on SpiNNaker vs GPU vs CPU. real measurements beat theoretical estimates. ICONS reviewers love hardware numbers.
+
+#### 12. Weight Distribution Analysis (1 day)
+compare SNN vs ANN weight distributions (kurtosis, sparsity, spectral properties). quick post-hoc analysis.
+
+#### 13. Membrane Potential Trajectories (2 days)
+PCA/UMAP of membrane potential dynamics -> "neural trajectory" plots. do different sound classes create distinct dynamical attractors? could make gorgeous figures.
+
+#### 14. Ensemble of Encodings (1-2 days)
+combine top 3-4 encodings via voting. more interesting: error complementarity analysis (do different encodings make different mistakes?).
+

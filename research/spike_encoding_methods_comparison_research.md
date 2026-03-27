@@ -82,3 +82,31 @@ focused on accurate reconstruction from spike train, important for signal proces
 | Method | Description | Key Property |
 |--------|-------------|--------------|
 | **Step Forward (SF)** | Adjusts baseline threshold when signal crosses it. | Fastest encoding speed; lowest energy; unstable with abrupt transitions |
+| **Ben's Spiker Algorithm (BSA)** | FIR filter deconvolution approach. | Good for square waves; very slow |
+| **PWM** | Compare signal against sawtooth carrier wave. | Poor reconstruction accuracy |
+| **Binary Encoding** | Multi-bit binary representation. | Best SNR (139dB with 10 bits); balanced noise resistance |
+
+---
+
+## Impact of Encoding Choice on Performance
+
+### the impact is real and well-documented
+
+the choice of encoding has a meaningful, measurable impact across every metric. this is not marginal.
+
+### Accuracy
+
+from Guo et al. (2021), on a 2-layer STDP-trained SNN:
+
+| Encoding | MNIST Accuracy | Fashion-MNIST Accuracy |
+|----------|---------------|----------------------|
+| Rate | 87.46% | 68.29% |
+| TTFS | 88.57% | 71.31% |
+| Phase | 88.18% | 71.36% |
+| Burst | 88.39% | 71.27% |
+
+1-3% accuracy difference on MNIST, ~3% on Fashion-MNIST between rate and temporal methods. on deeper networks, Kim et al. (2022) found direct coding beats rate coding, especially with fewer timesteps (T=5-10).
+
+from Bian et al. (2024), on IMU activity recognition:
+
+| Encoding | Accuracy |

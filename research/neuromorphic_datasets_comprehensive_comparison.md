@@ -406,31 +406,3 @@ Estimated training times assume a single consumer GPU (RTX 3060-3090 tier, 12-24
 ## Part 5: Preprocessing Pipeline Comparison
 
 ### Vision Datasets (DVS128, N-MNIST, N-Caltech101, CIFAR10-DVS, DVS-Lip)
-
-Common pipeline:
-1. **Load raw events**: (x, y, timestamp, polarity) tuples
-2. **Optional denoising**: Remove isolated events (Tonic provides `Denoise` transform)
-3. **Temporal binning**: Convert event stream to T fixed-duration frames
-   - `tonic.transforms.ToFrame(sensor_size, time_window=...)` -- fixed time windows
-   - `tonic.transforms.ToFrame(sensor_size, n_time_bins=...)` -- fixed number of bins
-4. **Output tensor**: [T x C x H x W] where C=2 (on/off polarity)
-5. **Optional augmentation**: Random crop, horizontal flip, EventDrop, time jitter
-
-### Audio Datasets (SHD, SSC)
-
-Common pipeline:
-1. **Load HDF5**: Contains spike_times and spike_units arrays
-2. **Channel binning**: Reduce 700 channels to 140 (5:1 ratio) -- optional but common
-3. **Temporal discretization**: Bin spike times into T steps (e.g., T=100 at 10ms resolution)
-4. **Output tensor**: [T x C] where C=140 or 700
-5. **Zero-padding**: All samples aligned to 1 second duration
-6. **Optional augmentation**: EventDrop (drop-by-time, drop-by-neuron), time stretching
-
-### Preprocessing Complexity Ranking (easiest to hardest):
-1. **SHD/SSC** -- 1D data, clean HDF5 format, simple binning
-2. **N-MNIST** -- Small 2D, standardized binary format
-3. **DVS128 Gesture** -- Requires AEDAT parsing + clip segmentation, but well-tooled
-4. **CIFAR10-DVS** -- AEDAT format, no official split, needs careful handling
-5. **N-Caltech101** -- Variable resolution, class imbalance, no standard split
-6. **DVS-Lip** -- Multi-scale temporal processing, lip region extraction
-

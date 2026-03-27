@@ -852,31 +852,3 @@ Key work:
 ### 3.13 Part 3 Summary Table
 
 | Application | Papers | Novel? | macOS? | 28-Day Feasible? | Already Covered? |
-|---|---|---|---|---|---|
-| Game AI (CartPole) | 10-15 | Low | YES | Moderate-High | Partially (overlaps RL) |
-| **Cybersecurity/IDS** | **10-20** | **Moderate** | **YES** | **HIGH** | **YES (existing report)** |
-| Financial Trading | 10-15 | Low | YES | Moderate | YES (Ezinwoke did it) |
-| Autonomous Driving | 20+ | Very Low | No (CARLA) | Low | No |
-| Weather/Time Series | 5-10 | Moderate | YES | Moderate-High | YES (existing report) |
-| Drug Discovery | 1-2 | Very High | YES | Low | No |
-| **ECG Classification** | **15-20** | **Low** | **YES** | **HIGH** | **YES (existing report)** |
-| NLP/Text | 15-25 | Low | YES | Moderate | YES (existing report) |
-| **Image Denoising** | **3-5** | **VERY HIGH** | **YES** | **Moderate-High** | **NO -- NEW** |
-| EEG/BCI | 15-20 | Low | YES | High | YES (existing report) |
-| **Privacy/Federated Learning** | **3-5** | **VERY HIGH** | **YES** | **Low-Moderate** | **NO -- NEW** |
-| Recommendation Systems | 1-2 | Very High | YES | Low-Moderate | NO -- NEW |
-
----
-
-## PART 4: CROSS-CUTTING ANALYSIS AND RECOMMENDATIONS
-
----
-
-### Truly NEW Directions Not Previously Covered
-
-Based on cross-referencing with all existing research files in `/Users/kumar/Documents/University/Year3/thesisproject/research/`, these are the genuinely new findings from this research:
-
-| Rank | Direction | Novelty | Feasibility | Risk |
-|---|---|---|---|---|
-| 1 | **SNN for Continual Learning (Split-MNIST)** | Moderate-High | Moderate-High | Moderate (needs novel angle) |
-| 2 | **SNN for Image Denoising** | Very High | Moderate-High | Moderate (architecture complexity) |

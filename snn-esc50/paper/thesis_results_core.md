@@ -96,20 +96,20 @@ Phase fires each neuron exactly once at t = floor((1-x_i)(T-1)). High intensity 
 **Key finding:** phase (24.15%) tied with rate (24.00%), within 0.15 pp. Most surprising result in the encoding comparison.
 
 **Why phase ~ rate despite different format:** rate provides ~6-7 spikes/neuron (T=25, p~0.25), phase provides exactly 1. Despite 6-7x fewer spikes, same accuracy. Explanation: phase deterministically maps intensity to time, preserving full magnitude ordering without stochastic noise. Rate spreads the same info across multiple noisy spikes. At T=25 these two representations have equivalent discriminative capacity.
-| **Mean ± Std** | **24.15% ± 1.66%** | — | — |
 
-**Key finding:** Phase coding (24.15% ± 1.66%) is essentially tied with rate coding (24.00% ± 1.90%), within 0.15 pp — within the measurement precision of 5-fold CV. This is the most surprising result among the encoding comparisons.
+Training accuracy at best epoch: 54-73% across folds -- genuine feature learning. Converges 22-40 epochs, more training than rate/latency but less than direct.
 
-**Why phase ≈ rate despite different information format:** Rate coding provides ~T×p ≈ 6–7 spikes per neuron on average (Bernoulli, T=25, p≈0.25), while phase provides exactly 1 spike per neuron. Despite using 6–7× fewer spikes, phase achieves the same accuracy. The explanation is information efficiency: phase deterministically maps intensity to spike time, preserving the full magnitude ordering without stochastic noise. Rate coding spreads the same information across multiple noisy spikes, gaining temporal redundancy at the cost of Bernoulli variance. At T=25, these two information representations have equivalent discriminative capacity for this task.
+**vs latency:** phase beats latency (16.30%) by 7.85 pp. Key difference is window usage -- latency clusters spikes into first ~5 steps (exponential), phase distributes uniformly across all 25. Confirms full temporal window coverage is the critical factor, not spike count.
 
-**Training behaviour:** Training accuracy at best epoch ranges 54–73% across folds, indicating genuine feature learning. The model converges in 22–40 epochs with moderate patience consumption — more training than rate or latency (which stop in 13–22 epochs) but less than direct (which is stable across more epochs).
+### 4.2.8 encoding comparison: key finding
 
-**Comparison to latency:** Phase outperforms latency (16.30%) by 7.85 pp. The key difference is window usage: latency with τ=5.0 clusters spikes in the first ~5 timesteps (exponential decay), while phase distributes exactly one spike uniformly across all 25 timesteps. This confirms that using the full temporal window is the critical factor, not the number of spikes per neuron.
+Ordering: **direct > rate ~ phase > population > latency >> delta ~ burst**
 
-### 4.2.8 Encoding Comparison: Key Finding
+Explained by information preservation:
 
-The results establish a clear ordering: **direct > rate ≈ phase > population > latency >> delta ≈ burst** across all 7 encoding methods. This ordering can be understood through the information preservation lens:
-
+| Encoding | Spikes/neuron | Deterministic | Preserves magnitude | Fills window |
+|----------|--------------|---------------|--------------------|----|
+| Direct | T (continuous) | Yes | Full | Yes |
 | Encoding | Spikes/neuron/window | Deterministic | Preserves magnitude | Fills window uniformly |
 |----------|---------------------|---------------|--------------------|-----------------------|
 | Direct | T (continuous) | Yes | Full | Yes |

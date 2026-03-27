@@ -96,20 +96,20 @@ Both suffer severe catastrophic forgetting -- worse than the +/-50% BWT from lit
 
 | | After T0 | After T1 | After T2 | After T3 | After T4 |
 |---|---|---|---|---|---|
-| **Task 0 (Animals)** | **81.25%** | 45.00% | 17.50% | 6.25% | 1.25% |
-| **Task 1 (Nature)** | — | **93.75%** | 46.25% | 15.00% | 0.00% |
-| **Task 2 (Human)** | — | — | **81.25%** | 7.50% | 0.00% |
-| **Task 3 (Domestic)** | — | — | — | **73.75%** | 3.75% |
-| **Task 4 (Urban)** | — | — | — | — | **88.75%** |
+| Task 0 (Animals) | 81.25% | 45.00% | 17.50% | 6.25% | 1.25% |
+| Task 1 (Nature) | -- | 93.75% | 46.25% | 15.00% | 0.00% |
+| Task 2 (Human) | -- | -- | 81.25% | 7.50% | 0.00% |
+| Task 3 (Domestic) | -- | -- | -- | 73.75% | 3.75% |
+| Task 4 (Urban) | -- | -- | -- | -- | 88.75% |
 
-**Summary statistics:**
+**Summary (5-fold validated):**
 
 | Metric | SNN | ANN |
 |--------|-----|-----|
-| Mean forgetting (↓ better) | **69.9% ± 4.3%** | 74.7% ± 2.4% |
-| Mean BWT (↑ less negative is better) | **−0.699** | −0.747 |
-| Final avg accuracy (↑ better) | 18.3% | 18.8% |
-| Final acc on Task 4 (Urban) only | 78.75% | 88.75% |
+| Mean forgetting | **69.9% +/- 4.3%** | 74.7% +/- 2.4% |
+| Mean BWT | -0.699 | -0.747 |
+| Final avg accuracy | 18.3% | 18.8% |
+| Final Task 4 only | 78.75% | 88.75% |
 
 *Note: Summary statistics are 5-fold validated means ± std. The accuracy matrices above show fold 4 as a representative example; all 5 folds were evaluated.*
 

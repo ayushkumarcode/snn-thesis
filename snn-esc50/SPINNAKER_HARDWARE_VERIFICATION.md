@@ -27,7 +27,7 @@ the Kilburn Building is where CS (and the SpiNNaker machine) is physically house
 
 ## evidence 2: official docs confirm this server
 
-The [official sPyNNaker installation guide](https://spinnakermanchester.github.io/spynnaker/8.0.0/PyNNOnSpinnakerInstall.html) provides this exact configuration for the Manchester million-core machine:
+the official sPyNNaker install guide gives this exact config for the Manchester million-core machine:
 
 ```ini
 [Machine]
@@ -35,7 +35,7 @@ spalloc_server = spinnaker.cs.man.ac.uk
 spalloc_user = user.name@email.address
 ```
 
-Our config (`~/.spynnaker.cfg`):
+our config (`~/.spynnaker.cfg`):
 ```ini
 [Machine]
 spalloc_server = spinnaker.cs.man.ac.uk

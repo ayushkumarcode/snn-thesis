@@ -30,31 +30,3 @@ This report synthesizes the state-of-the-art literature (2024--2026) across thre
 This is the most comprehensive recent benchmark. It evaluates multiple neuron models (LIF, sigma-delta) with multiple input encodings (direct, rate, temporal) across two datasets and five SNN frameworks (Intel Lava, SLAYER, SpikingJelly, Norse, PyTorch).
 
 **Key results:**
-- MNIST: Sigma-delta neurons with rate/sigma-delta encoding = 98.1% (ANN baseline: 98.23%)
-- CIFAR-10: Sigma-delta neurons with direct input = 83.0% at just 2 timesteps (ANN baseline: 83.6%)
-- Design rule: "intermediate thresholds and the minimal time window that still meets accuracy targets typically maximize efficiency"
-- Many SNN configurations yield up to 3-fold energy efficiency vs matched ANNs
-
-**Relevance to thesis:** Confirms the general pattern that direct encoding achieves highest accuracy, especially at low timesteps. The 2-timestep result on CIFAR-10 is remarkable.
-
-#### (B) Kim et al., "Rate Coding or Direct Coding" (ICASSP 2022)
-
-**Citation:** Y. Kim, H. Park, A. Moitra, A. Bhattacharjee, Y. Venkatesha, P. Panda. "Rate Coding or Direct Coding: Which One is Better for Accurate, Robust, and Energy-efficient Spiking Neural Networks?" ICASSP 2022. arXiv:2202.03133.
-
-**Key findings---three-dimensional comparison:**
-- **Accuracy:** Direct coding achieves better accuracy, especially for small timesteps. As timesteps increase, the gap narrows. As dataset complexity increases, the gap widens.
-- **Robustness:** Rate coding shows better adversarial robustness due to the non-differentiable spike generation process.
-- **Energy:** Rate coding yields higher energy-efficiency because direct coding requires multi-bit precision for the first layer (continuous inputs, not binary spikes).
-
-**Relevance to thesis:** The thesis finding that direct encoding (47.15%) massively outperforms rate (24.00%) is consistent with Kim et al. The magnitude of the gap (23.15 pp) likely reflects the small dataset size (1,600 training samples) and complex audio features, which amplify the advantage of continuous direct input. The adversarial robustness finding (SNN more robust at eps=0.1: 26% vs 1.75%) is consistent with the rate-coding robustness result.
-
-#### (C) Guo et al., "Neural Coding in Spiking Neural Networks" (Frontiers in Neuroscience, 2021)
-
-**Citation:** W. Guo, M. E. Fouda, A. M. Eltawil, K. N. Salama. "Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems." Frontiers in Neuroscience 15:638474, 2021.
-
-This paper compares 4 encoding schemes (rate, TTFS, phase, burst) using STDP-trained 2-layer SNNs on MNIST and Fashion-MNIST.
-
-**Key rankings:**
-- **Speed/efficiency:** TTFS best (4x/7.5x lower latency and 3.5x/6.5x fewer SOPs than rate coding)
-- **Noise robustness:** Phase coding most resilient to input noise
-- **Compression/hardware robustness:** Burst coding best for network compression and hardware non-idealities

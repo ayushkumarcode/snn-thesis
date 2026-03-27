@@ -390,3 +390,31 @@ Source: [Pereira et al. 2025](https://arxiv.org/html/2506.09599v1)
 Do you have neuromorphic hardware?
   |
   NO (most likely)
+  |
+  v
+Use Tier 1 or Tier 2 analytical estimation
+  |
+  v
+Using snnTorch? --> Use NeuroBench (pip install neurobench)
+                    OR count spikes manually (code above)
+Using SpikingJelly/Norse? --> Count spikes using framework tools
+  |
+  v
+Report: SOPs, Eff_ACs, firing rate, estimated energy, comparison table
+Cite: Horowitz 2014, Lemaire 2022, NeuroBench 2025
+Discuss: Limitations, hardware assumptions, critical sparsity thresholds
+```
+
+## all tools
+
+| Tool | Type | Difficulty | GitHub |
+|------|------|-----------|--------|
+| **NeuroBench** | Standardized benchmark | LOW | [NeuroBench/neurobench](https://github.com/NeuroBench/neurobench) |
+| **snnTorch** | SNN framework (manual counting) | LOW | [jeshraghian/snntorch](https://github.com/jeshraghian/snntorch) |
+| **SpikingJelly** | SNN framework | LOW-MEDIUM | [fangwei123456/spikingjelly](https://github.com/fangwei123456/spikingjelly) |
+| **Norse** | SNN framework | LOW-MEDIUM | [norse/norse](https://github.com/norse/norse) |
+| **SNN Toolbox** | ANN-to-SNN converter | MEDIUM | [NeuromorphicProcessorProject/snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox) |
+| **SANA-FE** | Arch simulator | MEDIUM-HIGH | [SLAM-Lab/SANA-FE](https://github.com/SLAM-Lab/SANA-FE) |
+| **SpikeSim** | CIM evaluator | MEDIUM-HIGH | [Intelligent-Computing-Lab-Panda/SpikeSim](https://github.com/Intelligent-Computing-Lab-Panda/SpikeSim) |
+| **Lava** | Intel framework | MEDIUM | [lava-nc/lava](https://github.com/lava-nc/lava) |
+| **Nengo** | Neural engineering | MEDIUM | [nengo/nengo](https://github.com/nengo/nengo) |

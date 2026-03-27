@@ -54,3 +54,31 @@ also, Larroza et al. was submitted to ICASSP 2026, a more prestigious venue. if 
 
 ---
 
+## C4: Adversarial Robustness
+
+### the strongest objections
+
+**problem 1:** Wang et al. (2025) explicitly warns that FGSM/PGD may underestimate SNN vulnerability due to surrogate gradient inaccuracies. we acknowledge this but still present 14.9x as a validated result. if the robustness is primarily gradient masking, the reported numbers aren't meaningful.
+
+**problem 2:** originally single-fold (now 5-fold -- corrected). but at 400 samples and 50 classes, that's 8 samples per class. statistical reliability of per-epsilon numbers from such small per-class counts is questionable.
+
+**problem 3:** clean accuracy differential complicates interpretation. SNN starts 15pp lower. the ANN's catastrophic drop may partly be because it had more to lose.
+
+**problem 4:** "first on audio spectrograms" is a narrow novelty claim. SNN adversarial robustness is established for images (Sharmin ECCV 2020). this is domain transfer, not fundamental discovery.
+
+### my assessment
+**medium risk.** the novelty of "first on audio" is defensible. bigger risk is the result being challenged as methodological artifact. survivable if Wang et al. caveat is foregrounded rather than buried.
+
+---
+
+## C5: PANNs+SNN Gap Collapse
+
+### the strongest objections
+
+**problem 1:** the result is trivially expected. freezing CNN14 (trained on 2M AudioSet clips) and attaching a tiny SNN head that achieves 92.5% -- of course a reasonable classifier works on excellent features. the interesting question "does the SNN head learn different representations?" is not addressed.
+
+**problem 2:** the 0.95pp gap between SNN and ANN heads may not be significant. confidence intervals overlap substantially with n=5 folds.
+
+**problem 3:** PANNs+Linear (93.80%) beats both ANN and SNN heads. so the SNN head is actually the worst of three options. "why bother with spiking?"
+
+**problem 4:** this is ANN-to-SNN transfer in frozen embedding form, a well-studied approach in vision. the paper doesn't distinguish itself adequately from conversion literature.

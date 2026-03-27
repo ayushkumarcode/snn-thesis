@@ -761,31 +761,3 @@ Total energy estimation:
 Energy_SNN = sum(SynOps_layer * E_AC) + sum(non_spike_ops * E_MAC)
 Energy_ANN = sum(FLOPs_layer * E_MAC)
 ```
-
-#### Adding SynOps Loss for Energy Optimization
-
-```python
-# Add a regularization term to push model toward fewer spikes
-synops_loss_weight = 1e-3
-total_loss = classification_loss + synops_loss_weight * synops_count
-```
-
-### 7.2 Spike Raster Plots (snnTorch)
-
-```python
-import snntorch.spikeplot as splt
-import matplotlib.pyplot as plt
-
-# spk_data shape: [num_steps, num_neurons]
-fig = plt.figure(facecolor="w", figsize=(10, 5))
-ax = fig.add_subplot(111)
-splt.raster(spk_data, ax, s=1.5, c="black")
-plt.title("Spike Raster Plot")
-plt.xlabel("Time Step")
-plt.ylabel("Neuron Index")
-plt.show()
-```
-
-### 7.3 Membrane Potential Traces (snnTorch)
-
-```python

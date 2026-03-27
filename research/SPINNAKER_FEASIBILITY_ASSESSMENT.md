@@ -314,31 +314,3 @@ But for your thesis, the workflow is:
 3. Load weights into SpiNNaker
 4. Run inference on SpiNNaker
 5. Measure real energy and latency
-6. Compare with simulated NeuroBench estimates
-
-### Is This Workflow Documented?
-
-Yes. Two key papers document it end-to-end:
-1. **DVS Gesture on SpiNNaker2 (2025):** [arxiv.org/html/2504.06748v1](https://arxiv.org/html/2504.06748v1)
-2. **Spiking Q-Networks on SpiNNaker2 (2025):** [arxiv.org/html/2507.23562v1](https://arxiv.org/html/2507.23562v1)
-
----
-
-## Question 6: Project-Specific Compatibility
-
-### ESC-50 (Audio Classification)
-
-| Aspect | SpiNNaker1 | SpiNNaker2 |
-|--------|-----------|-----------|
-| Conv layers for mel-spectrogram | Possible via KernelConnector but non-trivial | YES (via NIR, Conv2D supported) |
-| Mel-spectrogram as input | Convert to spike trains first | Convert to spike trains first |
-| Fully-connected alternative | YES (easier) | YES |
-| Precedent | YES -- audio classification on SpiNNaker exists | Limited precedent |
-
-**Audio on SpiNNaker has been demonstrated.** Dominguez-Morales et al. built a [multilayer SNN for audio classification on SpiNNaker](https://github.com/jpdominguez/Multilayer-SNN-for-audio-samples-classification-using-SpiNNaker) using LIF neurons and rate-based training. They achieved >85% accuracy on tone classification with noise robustness.
-
-**For ESC-50 specifically:** You would likely need to:
-1. Train your convolutional SNN in snnTorch as planned
-2. For SpiNNaker1: possibly simplify to a fully-connected architecture (easier to port)
-3. For SpiNNaker2: the full conv architecture could transfer via NIR
-

@@ -242,31 +242,3 @@ TOTAL:                             ~200 lines
 ### 5.2 Thesis-Quality Implementation
 
 A full implementation with proper structure requires approximately:
-
-```
-Data loading + preprocessing:      ~100 lines
-Model definition (multiple archs): ~150 lines
-Training with logging:             ~150 lines
-Evaluation + confusion matrix:     ~80 lines
-Energy estimation:                 ~60 lines
-Visualization:                     ~100 lines
-ANN baseline:                      ~150 lines
-Config / argument parsing:         ~60 lines
-Utils (checkpointing, logging):    ~100 lines
------------------------------------------
-TOTAL:                             ~950 lines
-```
-
-### 5.3 Complexity Comparison with SpikingJelly Example
-
-The SpikingJelly `speechcommands.py` example is 594 lines total (~494 source lines excluding comments/blanks). It includes:
-- Mel-spectrogram feature extraction with delta features
-- 3-layer convolutional SNN with dilated convolutions
-- LIF neurons with tau=10/7
-- Sigmoid surrogate gradient function
-- Full training pipeline with 50 epochs
-- Confusion matrix evaluation
-
-This represents a complete, working, publishable implementation.
-
-### 5.4 Key Technical Challenges

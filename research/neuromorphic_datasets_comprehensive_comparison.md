@@ -434,31 +434,3 @@ Common pipeline:
 5. **N-Caltech101** -- Variable resolution, class imbalance, no standard split
 6. **DVS-Lip** -- Multi-scale temporal processing, lip region extraction
 
----
-
-## Part 6: Thesis Narrative Analysis
-
-### Tier 1: Best "Story" for Thesis
-
-**DVS128 Gesture -- "Brain-Inspired Gesture Recognition"**
-- Clear real-world application: touchless interfaces, AR/VR, accessibility
-- Natural efficiency argument: event cameras use less data than RGB cameras
-- Easy to explain to non-specialists
-- Enables SNN vs ANN comparison with energy/efficiency analysis
-- Existing work at BSc level (Filippo Ferrari at Manchester did a simpler DVS project for BSc)
-
-**SHD -- "Biologically Plausible Speech Processing"**
-- Unique angle: audio processing with SNNs (rare in undergraduate work)
-- Strong biological motivation: cochlear model mimics inner ear
-- Applications: voice assistants, hearing aids, edge audio processing
-- Dataset specifically designed to require temporal processing (unlike N-MNIST)
-- Fast iteration cycle enables thorough experimentation
-- Novel for an undergraduate thesis -- few BSc students tackle audio SNNs
-
-### Tier 2: Acceptable Story
-
-**CIFAR10-DVS -- "Efficient Object Recognition with Neuromorphic Computing"**
-- Well-known classes (CIFAR-10 categories)
-- Good for SNN vs ANN comparison
-- Efficiency narrative works well
-- But: artificial creation (LCD display + DVS) weakens "real neuromorphic" claim

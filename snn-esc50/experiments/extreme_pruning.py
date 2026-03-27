@@ -54,3 +54,31 @@ def build_args(rhythm=True):
 
 
 def apply_global_pruning(model, target_sparsity):
+    """Apply global L1 unstructured pruning."""
+    params = []
+    for name, module in model.named_modules():
+        if isinstance(module, (nn.Conv2d, nn.Linear)):
+            params.append((module, "weight"))
+    if params:
+        prune.global_unstructured(
+            params, pruning_method=prune.L1Unstructured,
+            amount=target_sparsity)
+
+
+def remove_pruning(model):
+    """Make pruning permanent."""
+    for name, module in model.named_modules():
+        if isinstance(module, (nn.Conv2d, nn.Linear)):
+            try:
+                prune.remove(module, "weight")
+            except ValueError:
+                pass
+
+
+def count_sparsity(model):
+    """Count actual weight sparsity."""
+    total = 0
+    zeros = 0
+    for name, param in model.named_parameters():
+        if "weight" in name:
+            total += param.numel()

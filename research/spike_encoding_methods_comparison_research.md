@@ -423,31 +423,3 @@ spike_targets = spikegen.targets_convert(
     incorrect_rate=0.2   # Firing rate for incorrect classes
 )
 ```
-
-### 6.2 Custom Implementations Needed for Thesis
-
-The following encodings are NOT in snnTorch and must be implemented as custom PyTorch functions. Here are implementation sketches.
-
-#### Phase Coding (Custom Implementation)
-
-```python
-import torch
-import numpy as np
-
-def phase_encode(data, num_steps, num_phases=8):
-    """
-    Phase coding: encode input values as phase offsets
-    relative to a global oscillator.
-
-    Args:
-        data: [batch x input_size], values in [0, 1]
-        num_steps: number of timesteps
-        num_phases: number of phase levels (resolution)
-
-    Returns:
-        spike_train: [num_steps x batch x input_size]
-    """
-    batch_size, input_size = data.shape
-    spike_train = torch.zeros(num_steps, batch_size, input_size)
-
-    # Create global oscillator (theta rhythm)

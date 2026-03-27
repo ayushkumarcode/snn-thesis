@@ -250,3 +250,31 @@ this is maybe the most important part. a fair comparison requires:
 - **report firing rate honestly.** above ~50%, the energy advantage disappears. need average_spikes_per_neuron < 1 over inference for benefits.
 - **state assumptions clearly:** "Energy estimates assume ideal neuromorphic hardware. On conventional GPU/CPU, the SNN would not achieve these savings."
 
+---
+
+## 6. can an undergrad do this without hardware?
+
+### yes
+
+here's why:
+1. it's what the majority of published papers do. if it's good enough for CVPR/ICLR/NeurIPS peer review, it's good enough for a thesis.
+2. NeuroBench makes it trivial -- pip install, wrap model, call benchmark.run().
+3. you're estimating, not measuring. frame it correctly: "We *estimate* energy using the standard synaptic operations methodology."
+4. critical analysis of the limitations adds value that many published papers lack.
+
+### what would make it more credible
+- use NeuroBench for standardized metrics
+- report in clear tables with controlled variables
+- include per-layer firing rate analysis
+- show energy vs accuracy tradeoff (vary T, threshold)
+- acknowledge limitations in a dedicated discussion section
+- cite the critical papers (Kundu 2023, Shen 2024) that question SNN efficiency
+- compare against a properly trained ANN (not a strawman)
+
+### what NOT to do
+- don't claim "our SNN is X times more efficient" without specifying assumptions
+- don't ignore timestep overhead
+- don't compare against an unoptimized ANN
+- don't claim hardware-level savings from software simulation
+- don't ignore memory access costs entirely (at least acknowledge them)
+

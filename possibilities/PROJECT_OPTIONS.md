@@ -137,31 +137,3 @@
 
 ## Option 7: SNN Food Recognition (Food-101)
 
-**The pitch:** Zero SNN papers on food image classification.
-
-**Novelty:** VERY HIGH (zero papers).
-
-**Why not (short version):** Weakest real-world narrative. "Why would you use an SNN to classify food?" doesn't have a compelling answer beyond "nobody's tried it." Static images, no natural SNN advantage. It works but it's boring.
-
----
-
-## The Honest Recommendation
-
-Given what you've told me -- Claude Code heavy, short iteration cycles, ~28 days, pragmatic but wouldn't mind some novelty:
-
-**Go with ESC-50.** It's the sweet spot:
-- Zero papers = automatic novelty without trying
-- Audio = natural SNN fit (temporal data)
-- Standard PyTorch train loop = Claude Code friendly
-- Each experiment runs in minutes
-- Even mediocre accuracy is publishable (you're first)
-- The report writes itself (clear gap, clear method, clear results)
-- Fall back to SHD/SSC if things go sideways (same pipeline, known good results)
-
-**Second choice: Framework Shootout** if you'd rather do breadth over depth. Lower novelty but also lower risk. Many small experiments instead of one big bet.
-
-**Everything else is either harder (robot reflexes, ECG 12-lead), less novel (satellite), or weaker narrative (food, wildlife).**
-
----
-
-*Generated from 35+ research agents across 3 waves of analysis. See `research/WAVE1_MASTER_SYNTHESIS.md` for full technical details and source citations.*

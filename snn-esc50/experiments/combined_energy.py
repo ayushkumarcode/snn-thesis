@@ -54,3 +54,31 @@ class CombinedEnergySNN(nn.Module):
 
         self.avg_pool = nn.AvgPool2d(kernel_size=(4, 6))
         self.fc1 = nn.Linear(64 * 4 * 9, 256)
+        self.fc2 = nn.Linear(256, NUM_CLASSES)
+        self.dropout = nn.Dropout(0.3)
+
+        self.n1 = RhythmLIF(32, BETA, sg, learn_beta=True)
+        self.n2 = RhythmLIF(64, BETA, sg, learn_beta=True)
+        self.n3 = RhythmLIF(256, BETA, sg, learn_beta=True)
+        self.n4 = RhythmLIF(NUM_CLASSES, BETA, sg, learn_beta=True)
+
+    def forward(self, x, silence_gate=False, early_exit_thresh=None,
+                stability_k=2):
+        """Forward with optional silence gating and early exit.
+
+        Returns (spk_out, mem_out, layer_spikes, exit_info)
+        """
+        device = x.device
+        m1 = self.n1.init_mem(device)
+        m2 = self.n2.init_mem(device)
+        m3 = self.n3.init_mem(device)
+        m4 = self.n4.init_mem(device)
+
+        spk_rec, mem_rec = [], []
+        layer_spikes = {"conv1": 0.0, "conv2": 0.0, "fc1": 0.0}
+        active_steps = 0
+        exit_step = self.num_steps
+
+        # For early exit tracking
+        cum_mem = None
+        stable_count = 0

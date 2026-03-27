@@ -208,20 +208,20 @@ Source: `results/snn/maxpool/threshold_sweep_fold4.json`. threshold=3.0 recommen
 |----------|-------|
 | Board | SpiNN-5 (48 chips) |
 | Access | spinnaker.cs.man.ac.uk via sPyNNaker |
-| Property | Value |
-|----------|-------|
-| Board type | SpiNN-5 (48 chips) |
-| Access | `spinnaker.cs.man.ac.uk` via sPyNNaker |
-| sPyNNaker version | 1.0.0 |
-| PACMAN version | 1.0.0 (auto-managed) |
+| sPyNNaker | 1.0.0 |
+| PACMAN | 1.0.0 (auto-managed) |
 | Timestep | 1.0 ms |
-| Simulation duration per sample | 25 ms (T=25 timesteps) |
-| FC2 network size | 256 input neurons → 50 output neurons |
-| Connection type | From list (pre-computed weight matrix) |
-| Recording | V_mem at each timestep for all 50 output neurons |
-| Neo AnalogSignal API | `sig.magnitude[:, n].tolist()` (resolves shape inconsistency) |
+| Duration per sample | 25 ms (T=25) |
+| FC2 size | 256 input -> 50 output |
+| Connection | from list (pre-computed weights) |
+| Recording | V_mem at each step for all 50 output neurons |
+| Neo API | sig.magnitude[:, n].tolist() (resolves shape bug) |
 
 ---
+
+## appendix D: reproducibility
+
+### D.1 code repository
 
 ## Appendix D: Reproducibility Statement
 

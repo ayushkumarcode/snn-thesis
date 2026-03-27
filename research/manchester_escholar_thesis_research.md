@@ -166,3 +166,31 @@ So everything below is PhD-level unless noted otherwise. Found 2 exceptions: 1 M
 - Supervised by Hujun Yin (main), Piotr Dudek (co)
 - https://research.manchester.ac.uk/en/studentTheses/unsupervised-image-feature-learning-for-convolutional-neural-netw/
 - Uses self-organising maps (SOM) for unsupervised feature learning in CNNs. Develops SOMNet architecture, novel feature aggregation methods, and SOM-based pre-training.
+
+### DL for Semantic Feature Extraction in Aerial Imagery
+- **Ananya Gupta**, 2020, PhD, EEE
+- Supervised by Hujun Yin (main), Simon Watson (co)
+- https://research.manchester.ac.uk/en/studentTheses/deep-learning-for-semantic-feature-extraction-in-aerial-imagery/
+- Semantic segmentation of aerial images, road mapping in disaster areas, multitemporal image registration, tree identification in LiDAR point clouds (~90% accuracy).
+
+### Bayesian Deep Learning for Pulsar Classification
+- **Alexandra Bonta**, 2022, **MSc by Research**, Physics & Astronomy
+- Supervised by Anna Scaife (main), Albert Zijlstra (co)
+- https://research.manchester.ac.uk/en/studentTheses/bayesian-deep-learning-for-pulsar-classification
+- "BonNet" classifier for automated pulsar classification with uncertainty quantification. 99% accuracy on HTRU1, 97% on HTRU2.
+- **One of only 2 non-PhD theses found -- MSc by Research level.** Probably the most relevant for calibrating what a masters-level scope looks like: single classifier, two datasets, clear metrics.
+- 7.93 MB PDF
+
+### Object Detection with Few-Shot Learning, Vision-Language, ViTs
+- **Mengyuan Ma**, 2025, PhD, EEE
+- Supervised by Hujun Yin (main), Krikor Ozanyan (co)
+- https://research.manchester.ac.uk/en/studentTheses/object-detection-with-few-shot-learning-vision-language-knowledge/
+- Three contributions: SCENet, DINO-FocalNet (64.8% AP on low-quality images), EPNet/KDNet (few-shot detection with knowledge distillation).
+
+---
+
+## Computational Neuroscience / Cognitive Science
+
+### Bayesian Mechanisms in Spatial Cognition
+- **Tamas Madl**, 2016, PhD, Computer Science
+- Supervised by Ke Chen (main), Daniela Montaldi (co)

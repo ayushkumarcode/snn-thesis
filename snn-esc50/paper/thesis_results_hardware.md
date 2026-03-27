@@ -222,20 +222,20 @@ Performed on all 5 folds (400 test samples each, direct encoding). 5-fold means:
 |--------|-------|
 | Activation sparsity | 59.03% |
 | Dense SynOps | 166,298/sample |
+| Effective ACs | 0 |
+| Effective MACs | 100,561/sample |
+| Energy (sw sim) | 100,561 x 4.6 pJ = 454 nJ (5-fold: 454+/-11 nJ) |
 
-**Experimental setup:** NeuroBench analysis was performed on all 5 folds (400 test samples each, direct encoding). Energy metrics are architecture-dependent and independent of the training backend. The fold 4 detailed breakdown below is representative; 5-fold validated means are: SNN 968 ± 37 nJ/sample, ANN 454 ± 11 nJ/sample.
+### 5.4.3 interpretation
 
-### 5.4.2 Results
+**In software:** SNN is 2.1x more expensive than ANN (968 vs 454 nJ). Expected -- T=25 timesteps while ANN runs once, and 1.08M ACs outnumber 101K MACs despite the per-op cost difference.
 
-**Direct encoding SNN (fold 4 representative; 5-fold means in parentheses):**
+**On neuromorphic hardware:** each AC costs ~0.9 pJ vs 4.6 pJ for MAC. But SNN still has more total ops. The break-even:
+- SNN: 1,084,732 x 0.9 = 976,259 pJ
+- ANN: 100,561 x 4.6 = 462,581 pJ
 
-| Metric | Value |
-|--------|-------|
-| Activation sparsity | 74.16% |
-| Dense SynOps | 4,176,566/sample |
-| Effective ACs | 1,084,732/sample |
-| Effective MACs | 0 |
-| **Energy (software sim)** | **1,084,732 × 0.9 pJ = 968 nJ (5-fold mean: 968±37 nJ) = 0.976 μJ** |
+SNN is still more expensive even on neuromorphic hardware. Follows from Dampfhoffer et al. (2023): need <6.4% spike rate. Our 25.84% spike rate is well above this.
+
 
 **ANN baseline:**
 

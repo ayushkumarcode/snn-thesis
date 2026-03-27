@@ -166,3 +166,31 @@ def train_epoch_ann(model, loader, optimizer, device):
         with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=use_amp):
             logits = model(data)
             loss = F.cross_entropy(logits, targets)
+
+        loss.backward()
+        optimizer.step()
+
+        total_loss += loss.item()
+        predicted = logits.argmax(dim=1)
+        correct += (predicted == targets).sum().item()
+        total += targets.size(0)
+
+    return total_loss / len(loader), correct / total
+
+
+@torch.no_grad()
+def eval_ann(model, loader, device):
+    model.eval()
+    correct = 0
+    total = 0
+    for data, targets in loader:
+        data, targets = data.to(device), targets.to(device)
+        logits = model(data)
+        correct += (logits.argmax(1) == targets).sum().item()
+        total += targets.size(0)
+    return correct / total
+
+
+def train_epoch_snn(model, loader, optimizer, device):
+    model.train()
+    total_loss = 0.0

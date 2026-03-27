@@ -17,31 +17,3 @@ SNN 92.50% vs ANN 93.45% (gap 0.95pp, down from 16.7pp)
 
 ### 3. Adversarial Robustness (Grade C, p=0.007)
 FGSM eps=0.1: SNN 16.55%±5.49% vs ANN 2.75%±0.61% (6.0x more robust)
-PGD eps=0.05: SNN 9.75% vs ANN 0.05% (195x)
-- 5-fold validated, all epsilons significant
-- Caveat: uses standard PGD not SA-PGD
-
-### 4. SpiNNaker Deployment (Grade C-, p=0.0016)
-FC2-only hybrid: 33.1%±6.9% (5-fold, 2000 inferences)
-FC1+FC2 exc-only: 15.0% (20 samples, pipeline proven)
-- Hardware gap 12.8±4.1pp is significant
-
-### 5. Temporal Ablation (Grade C+, 5-fold)
-92% of full accuracy at T=10 (60% energy saving)
-T=20 vs T=25: NOT significant (p=0.45) — plateau, not peak
-
-### 6. Encoding Transfer Matrix (Grade B-, 5-fold)
-Transfer ratio = 0.255±0.006 (remarkably consistent across folds)
-Encodings are highly specific — 75% accuracy loss when swapped
-Novel finding, validated across all 5 folds
-
-### 7. Noise Robustness (Grade C, 5-fold)
-SNN degrades directionally less but NOT statistically significant at any SNR
-At 0dB: SNN=7.05%, ANN=6.95% — effectively equal
-
-### 8. Statistical Tests (all computed)
-Core SNN vs ANN: p=0.0028, d=-2.93
-Every encoding pairwise: all p<0.002
-Adversarial each epsilon: all p<0.05
-
-## Findings CORRECTED by 5-fold validation

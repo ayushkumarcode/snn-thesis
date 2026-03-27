@@ -409,31 +409,3 @@ Several papers include comparison tables, but a dedicated, fair benchmark study 
 | Phase | Duration | Notes |
 |-------|----------|-------|
 | Environment setup + dataset download | 1-2 days | Including debugging dependencies |
-| Running SpikingJelly baseline | 1 day | Following tutorial, getting ~96% |
-| Understanding the code + architecture | 3-5 days | Reading code, docs, papers |
-| Implementing comparison experiments | 2-3 weeks | Multiple architectures/configs |
-| Running all experiments | 1-2 weeks | Including reruns for statistics |
-| Analysis and visualization | 1-2 weeks | Plots, tables, interpretation |
-| Writing thesis | 3-4 weeks | Including revisions |
-
-**Source:** [SpikingJelly classify_dvsg tutorial](https://spikingjelly.readthedocs.io/zh-cn/0.0.0.0.6/clock_driven_en/14_classify_dvsg.html), [Open Neuromorphic Benchmarks](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/)
-
----
-
-## 9. Emerging and Frontier Directions (Context for Thesis Positioning)
-
-These are areas where active research is happening. An undergraduate thesis does not need to advance the frontier, but should be aware of it:
-
-### SpikMamba (2024)
-Combines SNN with Mamba (state-space model) for long-range temporal dependencies. Achieves SOTA on multiple event-based action recognition datasets. Code available at https://github.com/Typistchen/SpikMamba.
-
-### STAA-SNN (CVPR 2025)
-Spatial-Temporal Attention Aggregator with spike-driven self-attention. Uses step attention and time-step random dropout.
-
-### ANN-to-SNN Knowledge Distillation
-Hybrid Step-wise Distillation (HSD) combines ANN-SNN conversion with knowledge distillation. Achieves 7.50% accuracy improvement on DVS-Gesture with both modules combined.
-
-### Hardware Deployment
-SpiNNaker2 deployment achieves 94.13% on-chip accuracy. CUTIE accelerator achieves 7 microJ/inference at 0.9ms latency. This is the direction where DVS128 can still provide genuine value -- as a benchmark for hardware efficiency.
-
-### DVS-Gesture-Chain (Temporal Order Task)

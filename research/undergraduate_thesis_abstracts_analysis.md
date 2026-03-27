@@ -222,3 +222,31 @@ the big pattern: the dominant framing is **"we built/implemented X and evaluated
 - **Type:** Bachelor Thesis
 - **Institution:** Oulu UAS, Finland
 - **Year:** Autumn 2022
+- **Source:** [Theseus](https://www.theseus.fi/handle/10024/779806)
+
+**Objectives:** "addresses artificial intelligence, artificial neural networks and deep learning" and covers "practical applications."
+
+**Contribution:**
+- lit review of ANN/DL fundamentals
+- practical project: "ProGAN DaliA" -- a ProGAN that creates new artwork from a dataset
+- identified "unpredictability and its Blackbox like operation principle" as challenges
+
+**Framing:** "we reviewed the field and built a demo." literature-review-heavy with a practical component attached.
+
+---
+
+### Thesis 14: Exploring the Chemical Universe with Spiking Neural Networks
+- **Author:** Philipp Kuppers
+- **Type:** Bachelor's Thesis (Computing Science)
+- **Institution:** Radboud University, Netherlands
+- **Year:** 2024
+- **Source:** [PDF](https://www.cs.ru.nl/bachelors-theses/2024/Philipp_K%C3%BCppers___1073738___Exploring_the_Chemical_Universe_with_Spiking_Neural_Networks.pdf)
+
+**Objectives:** can SNNs be applied to molecular property prediction for drug discovery? frame: "ANNs are only able to consider molecules in the range of billions due to high compute/energy/time requirements." transforms this into binary classification (active vs inactive molecules).
+
+**Contribution:** application of surrogate-gradient-trained SNNs to molecular property prediction as binary classification.
+
+**Framing:** "we explored whether approach A can be applied to domain B." the "Exploring" signals an investigative study.
+
+---
+

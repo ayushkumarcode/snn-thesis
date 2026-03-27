@@ -602,31 +602,3 @@ Step 10: Compare to ANN baseline (xresnet1d: 0.937 AUROC)
 | Evaluation Metrics | NONE | Standard sklearn |
 | Class Imbalance | LOW | Weighted loss easily applied |
 | GPU Memory | MEDIUM | TBPTT mandatory for long sequences |
-| Prior SNN-ECG Code | LOW | None for PTB-XL (novelty opportunity) |
-| Known Issues | LOW | All documented with workarounds |
-| End-to-End Feasibility | NONE | All pieces verified to exist |
-
----
-
-## RECOMMENDED ARCHITECTURE DECISION
-
-Based on all verification results, the recommended approach for an undergraduate thesis:
-
-**Spatial-Temporal Hybrid Architecture:**
-
-1. **Spatial feature extraction (Conv1d, standard PyTorch -- no time loop):**
-   - Input: (batch, 12, 1000)
-   - 3 blocks of Conv1d -> BatchNorm1d -> ReLU -> MaxPool1d
-   - Output: (batch, 128, compressed_length)
-
-2. **Spike encoding (delta modulation on compressed features):**
-   - Apply spikegen.delta to compressed features
-   - Generates sparse spike trains
-
-3. **SNN classification (short time loop, manageable memory):**
-   - 1-2 spiking FC layers with snn.Leaky
-   - 25-50 timesteps only
-   - Output: rate-coded class predictions
-
-This avoids the 1000-timestep memory problem while still demonstrating SNN advantages in the classification stage.
-

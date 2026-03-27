@@ -894,3 +894,31 @@ print(f"Training samples: {len(train_set)}")  # 1176
 print(f"Sample shape: {train_set[0][0].shape}")  # [16, 2, 128, 128]
 ```
 
+**Step 4: Train** (see complete training loop in SpikingJelly section above)
+
+**Step 5: Evaluate and Compute Energy Metrics** (see energy estimation section above)
+
+### Third-Party Implementation
+
+GitHub repo: https://github.com/DerrickL25/SNN_Gesture_Classification
+- Uses snnTorch with DVS128 Gesture dataset
+- Data dimensions: [num_steps, 2, 128, 128]
+- Complete implementation from data loading to evaluation
+
+---
+
+## ANN Comparison and Frame Integration
+
+### Why Compare SNN with ANN?
+
+A thesis on SNN-based gesture recognition should show:
+1. SNNs can achieve competitive accuracy to ANNs
+2. SNNs are more energy-efficient (fewer operations per inference)
+3. The trade-offs between accuracy, latency, and energy
+
+### Frame Integration for ANN Baseline
+
+To train a standard CNN on DVS128 data, first need to convert events to frames:
+
+```python
+import tonic

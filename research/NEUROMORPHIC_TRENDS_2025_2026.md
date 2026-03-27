@@ -418,3 +418,31 @@ Key quote from Nature Communications (2025): "After several false starts, advanc
 - [NeuroBench framework (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-56739-4)
 - [Road to commercial success (Nature Comms, 2025)](https://www.nature.com/articles/s41467-025-57352-1)
 - [Neuromorphic computing at scale (Nature, 2025)](https://www.nature.com/articles/s41586-024-08253-8)
+- [Can neuromorphic computing reduce AI's energy cost? (PNAS, 2025)](https://www.pnas.org/doi/10.1073/pnas.2528654122)
+- [IBM NorthPole (Science, 2023)](https://www.science.org/doi/10.1126/science.adh1174)
+
+### SNN audio and encoding
+- [Spike Encoding for Environmental Sound (Larroza et al., March 2025)](https://arxiv.org/abs/2503.11206)
+- [SNN and Sound review (2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11362401/)
+- [Neuromorphic KWS with PDM MEMS (Interspeech 2024)](https://arxiv.org/abs/2408.05156)
+- [Low-power SNN Audio Source Localization (Nature Comms Eng, 2025)](https://www.nature.com/articles/s44172-025-00359-9)
+- [Spiking Vocos (2025)](https://arxiv.org/html/2509.13049v1)
+- [Audio-Visual SNN (2025)](https://arxiv.org/abs/2502.12488)
+
+### Hardware
+- [Intel Loihi 2 / Hala Point](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)
+- [SpiNNaker2 at Sandia (June 2025)](https://www.nextplatform.com/2025/06/16/sandia-deploys-spinnaker2-neuromorphic-system/)
+- [BrainChip AKD1500](https://www.edge-ai-vision.com/2025/11/brainchip-unveils-breakthrough-akd1500-edge-ai-co-processor-at-embedded-world-north-america/)
+- [Innatera Pulsar at CES 2026](https://innatera.com/press-releases/redefining-the-cutting-edge-innatera-debuts-real-world-neuromorphic-edge-ai-at-ces-2026)
+- [Neuromorphic LLM on Loihi 2 (March 2025)](https://arxiv.org/abs/2503.18002)
+
+### Training and methods
+- [Training SNNs Using Lessons From Deep Learning (Eshraghian et al., 2023)](https://arxiv.org/abs/2109.12894)
+- [Surrogate Gradient Theory (Gygax & Zenke, 2025)](https://direct.mit.edu/neco/article/37/5/886/128506)
+- [Adaptive Surrogate Gradients (2025)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2026.1795946/full)
+- [Enhanced Self-Distillation for SNNs (NeurIPS 2025)](https://arxiv.org/abs/2510.06254)
+- [Reliable Adversarial Robustness Evaluation for SNNs (Wang et al., 2025)](https://arxiv.org/abs/2512.22522)
+
+### Energy and efficiency
+- [Are SNNs Really More Energy-Efficient? (Dampfhoffer et al., IEEE TECI 2023)](https://ieeexplore.ieee.org/document/9927729/)
+- [Reconsidering SNN Energy Efficiency (2024)](https://arxiv.org/abs/2409.08290)

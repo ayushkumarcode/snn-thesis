@@ -356,31 +356,3 @@ This means:
 | **Department** | Computer Science |
 | **Supervisors** | Dirk Koch (main), James Garside (co) |
 | **URL** | https://research.manchester.ac.uk/en/studentTheses/dynamic-cpu-isa-customizations-through-fpga-interlays |
-| **Abstract** | Proposes embedding reconfigurable FPGA fabric ("Interlay") into CPUs for dynamic instruction set customization at runtime. |
-| **What They Built** | FPGA-in-CPU architecture concept; ISA customization framework |
-| **Tools/Frameworks** | FPGA, SIMD, soft-processor |
-| **Datasets** | N/A |
-| **Scope** | High -- novel architectural concept |
-| **PDF Size** | 7.59 MB |
-
----
-
-## SECTION 3: DEEP LEARNING / COMPUTER VISION THESES (Calibration)
-
-### 3.1 Unsupervised Image Feature Learning for Convolutional Neural Networks
-| Field | Detail |
-|-------|--------|
-| **Author** | Richard Hankins |
-| **Year** | 2019 |
-| **Degree** | PhD |
-| **Department** | Electrical & Electronic Engineering |
-| **Supervisors** | Hujun Yin (main), Piotr Dudek (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/unsupervised-image-feature-learning-for-convolutional-neural-netw/ |
-| **Abstract** | Uses self-organising maps (SOM) for unsupervised feature learning in CNNs. Develops SOMNet architecture, novel feature aggregation methods, and SOM-based pre-training for deep learning. |
-| **What They Built** | SOMNet architecture; SOM-based pre-training pipeline |
-| **Tools/Frameworks** | SOMs, PCANet, CNNs |
-| **Datasets** | Multiple image/video classification datasets |
-| **Scope** | High |
-| **PDF Size** | 7.31 MB |
-
----

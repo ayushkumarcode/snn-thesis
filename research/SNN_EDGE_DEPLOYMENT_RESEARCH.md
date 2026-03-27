@@ -222,3 +222,31 @@ recommended approach: train on GPU (Colab), export weights, implement lightweigh
 | **BrainChip Akida Dev Kit** | Contact vendor | Actual neuromorphic SoC, sub-1W, Edge Impulse integration |
 | **SynSense Xylo/Speck Kits** | Contact vendor | True neuromorphic, microwatt/milliwatt operation, Rockpool library |
 
+### interesting thesis angle: Raspberry Pi + FPGA hybrid
+
+Pi as host controller (data loading, preprocessing, display) connected to FPGA (SNN inference acceleration). PYNQ-Z2 has a Pi GPIO header. mirrors real edge deployment architectures.
+
+---
+
+## 7. recent papers and projects (2023-2026)
+
+### key papers
+
+| Year | Title | What it contributes |
+|------|-------|-------------------|
+| 2025 | "Spiking neural networks on FPGA: A survey" (Neural Networks) | survey of FPGA SNN methodologies |
+| 2025 | "Efficient Deployment of SNNs on SpiNNaker2 for DVS Gesture via NIR" | complete snnTorch->NIR->SpiNNaker2 pipeline, 94.13% |
+| 2025 | "Compression and Inference of SNNs on Resource-Constrained Hardware" | 21x speedup C runtime, Arduino Portenta deployment |
+| 2025 | "ModNEF: Open Source Modular Neuromorphic Emulator for FPGA" (ACM TACO) | open-source FPGA SNN framework, MNIST/N-MNIST |
+| 2025 | "A Robust Open-Source Framework for SNNs on Low-End FPGAs" | Artix-7, 0.52 ms/image MNIST |
+| 2024 | "Spiker+: Framework for SNN FPGA Accelerators at the Edge" | auto-generate VHDL, 180 mW, 7612 logic cells |
+| 2024 | "NIR" (Nature Communications) | connects 7 simulators to 4 hardware platforms |
+| 2024 | "Energy-Aware FPGA Implementation of SNN with LIF Neurons" | energy measurement methodology |
+| 2024 | "SpikeExplorer: HW-Oriented Design Space Exploration for SNNs on FPGA" | automated architecture search |
+| 2024 | "Energy efficient SNNs on embedded microcontrollers" (Neural Computing) | eLSNN on STM32F4 |
+| 2024 | ISFPGA 2024 Workshop | complete snnTorch-to-KV260 pipeline with code |
+
+### key GitHub repos
+
+| Repo | Focus |
+|------|-------|

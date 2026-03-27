@@ -62,31 +62,3 @@ class SimpleSNN(nn.Module):
             spk_rec.append(spk2)
 
         return torch.stack(spk_rec)
-
-# Training: standard PyTorch loop with surrogate gradients
-net = SimpleSNN()
-optimizer = torch.optim.Adam(net.parameters(), lr=1e-3)
-loss_fn = snn.functional.mse_count_loss()
-```
-
-**sPyNNaker (PyNN): Equivalent network on SpiNNaker**
-
-```python
-import pyNN.spiNNaker as sim
-
-sim.setup(timestep=1.0)
-
-# Define neuron parameters (LIF)
-cell_params = {
-    'cm': 0.25,         # membrane capacitance (nF)
-    'tau_m': 20.0,       # membrane time constant (ms)
-    'tau_refrac': 2.0,   # refractory period (ms)
-    'tau_syn_E': 5.0,    # excitatory synapse time constant
-    'tau_syn_I': 5.0,    # inhibitory synapse time constant
-    'v_reset': -70.0,    # reset voltage (mV)
-    'v_rest': -65.0,     # resting voltage (mV)
-    'v_thresh': -50.0    # threshold voltage (mV)
-}
-
-# Create populations (NOT layers -- groups of neurons)
-input_pop = sim.Population(784, sim.SpikeSourceArray(spike_times=[...]))

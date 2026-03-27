@@ -138,3 +138,31 @@ URL pattern: https://research.manchester.ac.uk/en/studentTheses/[thesis-name]
 - Jinqi Huang, 2022 (168 pages) -- "Memristor-based Spiking Neural Networks" -- FPGA interface, NeuroPack simulator, ANN-to-SNN conversion
 - Kier Dugan, 2016 -- "Non-neural computing on the SpiNNaker" -- non-neural apps on neuromorphic hardware
 - Patrick Foster, 2023 -- "Neural spike classification acceleration with RRAM"
+- https://eprints.soton.ac.uk/471765/ and https://eprints.soton.ac.uk/400083/
+
+### University of Strathclyde
+- Yannan Xing, 2020 -- "Deep spiking neural networks with applications to human gesture recognition" -- SCRNN for gesture recognition, speech emotion recognition
+- https://stax.strath.ac.uk/concern/theses/x059c7885
+
+### University of Glasgow
+- Jude Haris, 2025 -- "Hardware-software co-design of FPGA-based neural network accelerators for edge inference" -- SECDA methodology, 84x speedup on TConv
+- https://theses.gla.ac.uk/85185/
+
+### University of Sheffield
+- Dorian Florescu, 2016 -- "Reconstruction, identification and implementation methods for spiking neural circuits"
+- Carlos Fernandez Musoles, 2020 -- "Improving scalability of large-scale distributed SNN simulations on HPC" -- HyperPRAW partitioning algorithm
+- https://etheses.whiterose.ac.uk/12625/ and https://etheses.whiterose.ac.uk/id/eprint/29007/
+
+---
+
+## White Rose eTheses (Leeds/Sheffield/York)
+
+13 theses found matching "neuromorphic spiking neural network":
+
+| Title | Author | Year | Degree | University |
+|-------|--------|------|--------|------------|
+| Bio-inspired reinforcement learning | Zhile Yang | 2025 | PhD | Leeds |
+| Energy-efficient Tracking of Mobile Audio Sources | Dimitrios Pappas | 2025 | PhD | Sheffield |
+| Qubit chains' emergent behaviour from biologically-inspired dynamics | Xavier Laurent | 2025 | MSc by research | York |
+| System Analysis and Design of Physical Delay-Feedback Reservoir Computing | Alexander McDonnell | 2024 | PhD | York |
+| Scaling up ESNs with Heterogeneous Reservoirs | Chester Wringe | 2024 | PhD | York |

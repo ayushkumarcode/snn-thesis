@@ -474,3 +474,31 @@ start with snnTorch for learning and prototyping (best documentation). move to S
 | SEED | EEG emotion | BCMI lab |
 | ISIC 2018 | skin lesion (melanoma) | isic-archive.com |
 
+### dataset loading tools
+- **Tonic**: PyTorch-compatible loader for neuromorphic datasets (like TorchVision but for events)
+- **SpikingJelly**: built-in loaders for N-MNIST, CIFAR10-DVS, DVS128 Gesture, NavGesture, ASLDVS
+- **snnTorch**: built-in spikevision.spikedata for N-MNIST and others
+
+### recommendation
+start with MNIST (rate-encoded) to verify the pipeline works. then move to N-MNIST or DVS128 Gesture for neuromorphic-native data. SHD is excellent for audio classification.
+
+---
+
+<a name="snntorch"></a>
+## snnTorch tutorials and resources
+
+### complete tutorial catalog (v0.9.4)
+
+**core tutorials (progressive learning path):**
+
+| Tutorial | Title | Topic | Colab |
+|----------|-------|-------|-------|
+| 1 | Spike Encoding with snnTorch | Rate/latency/delta encoding | Yes |
+| 2 | The Leaky Integrate and Fire Neuron | LIF model fundamentals | Yes |
+| 3 | A Feedforward Spiking Neural Network | Building basic SNN architecture | Yes |
+| 4 | 2nd Order Spiking Neuron Models | Synaptic, Alpha neuron models | Yes |
+| 5 | Training SNNs with snnTorch | Backprop through time, loss functions | Yes |
+| 6 | Surrogate Gradient Descent in a Conv SNN | Convolutional SNN on MNIST | Yes |
+| 7 | Neuromorphic Datasets with Tonic + snnTorch | Loading DVS data with Tonic library | Yes |
+
+**advanced tutorials:**

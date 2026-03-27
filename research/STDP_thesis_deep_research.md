@@ -152,31 +152,3 @@ This is the most practical and well-studied approach for a thesis:
 ```
 [Input Image] --> [Spike Encoding] --> [STDP Conv/FC Layers] --> [Learned Features] --> [Supervised Classifier] --> [Output]
      |                  |                      |                        |                      |
-  Raw pixels     Rate/temporal         Unsupervised            Fixed feature            SVM, logistic
-  or events       coding              weight learning           extraction             regression, or
-                                      (no labels)              (forward pass)          supervised STDP
-```
-
-### 4.2 Specific Hybrid Architectures from Literature
-
-**Architecture A: Kheradpisheh et al. (2018) -- Deep CSNN + SVM**
-1. Input images encoded via Difference-of-Gaussians + temporal coding (first-spike)
-2. Multiple convolutional layers trained layer-by-layer with STDP
-3. Pooling layers between convolutional layers
-4. Final feature map extracted and flattened
-5. Linear SVM classifier trained on the flattened features
-6. Results: 99.1% Caltech face/motorbike, 82.8% ETH-80, ~97% MNIST
-
-**Architecture B: NeurIPS 2024 NCG Pipeline**
-1. Input images encoded as Poisson spike trains
-2. STDP-trained convolutional SNN (STDP-CSNN) extracts features unsupervised
-3. Features converted to first-spike times via temporal coding
-4. Supervised S2-STDP trains a fully-connected classification SNN
-5. Neuronal Competition Groups (NCG) add intra-class competition for diversity
-6. Results: 98.92% MNIST, 88.72% Fashion-MNIST, 66.41% CIFAR-10
-
-**Architecture C: STDP Pre-training + Gradient Fine-tuning (Lee et al., 2018)**
-1. Deep spiking CNN with multiple convolutional layers
-2. Phase 1: Layer-wise unsupervised STDP pre-training
-3. Phase 2: End-to-end supervised fine-tuning with spike-based gradient descent
-4. Result: ~2.5x faster convergence compared to random initialization

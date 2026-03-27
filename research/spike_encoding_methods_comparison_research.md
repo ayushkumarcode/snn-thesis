@@ -59,31 +59,3 @@ Information is in the precise timing of spikes. A single spike carries much more
 
 ### 2.3 Delta Modulation / Temporal Contrast
 
-Event-driven encoding that generates spikes only when the input signal changes by more than a threshold. Directly inspired by how biological retinas and DVS cameras work.
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Simple Delta** | Spike when difference between consecutive timesteps exceeds threshold. Can optionally generate "off-spikes" for negative changes. | Natural for time-series; very sparse; event-driven |
-| **Multi-Threshold Delta** | Multiple threshold levels for finer-grained encoding of change magnitude. | Better signal reconstruction; more spikes |
-| **Sigma-Delta Modulation** | Accumulates error (sigma) and spikes when accumulated error exceeds threshold (delta). | Lower quantisation error; hardware-efficient |
-
-### 2.4 Phase Coding
-
-Information is encoded in spike patterns whose phases are correlated with internally generated background oscillations (inspired by theta oscillations in the hippocampus).
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Phase Coding** | Input features determine the phase offset of spikes relative to a global oscillator. Higher values produce spikes at earlier phases. | Best noise resilience of all methods; periodic encoding; highest SOP cost |
-
-### 2.5 Burst Coding
-
-Information transmitted through rapid successive bursts of spikes within a short time window.
-
-| Method | Description | Key Property |
-|--------|-------------|--------------|
-| **Burst Coding** | Number of spikes in a burst proportional to input strength. More reliable synaptic communication than single spikes. | Best fault tolerance; best compression efficacy; higher spike count than TTFS |
-
-### 2.6 Population Coding with Gaussian Receptive Fields (GRF)
-
-Each scalar input value is projected onto a population of neurons, each with a different Gaussian receptive field centre. The neuron whose centre is closest to the input fires earliest/most.
-

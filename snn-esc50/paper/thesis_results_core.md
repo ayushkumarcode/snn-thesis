@@ -194,19 +194,19 @@ Source: `results/snn/direct_aug/summary.json`, `results/ann/none_aug/summary.jso
 
 ### 4.4.3 analysis
 
-|-------|--------|--------|--------|--------|--------|------|-----|---------------|
-| SNN direct (no aug) | 40.50% | 48.50% | 48.25% | 54.00% | 44.50% | 47.15% | 4.50% | — |
-| **SNN direct (aug)** | **46.00%** | **48.75%** | **24.50%** | **63.75%** | **20.75%** | **40.75%** | **16.03%** | **−6.40 pp** |
-| ANN (no aug) | 63.25% | 59.50% | 65.25% | 68.75% | 62.50% | 63.85% | 3.07% | — |
-| **ANN (aug)** | **63.25%** | **59.75%** | **62.50%** | **68.50%** | **54.50%** | **61.70%** | **4.58%** | **−2.15 pp** |
+**SpecAugment hurts both models, dramatically worse for SNN.**
 
-*Source: `results/snn/direct_aug/summary.json`, `results/ann/none_aug/summary.json`.*
+Augmented SNN drops 6.40 pp and variance goes from 4.50% to 16.03% -- the opposite of whats intended. ANN drops 2.15 pp, smaller but consistent.
 
-### 4.4.3 Analysis
+**Root cause:**
 
-**The key finding: SpecAugment harms both models on this dataset, with a dramatically worse effect on the SNN.**
+1. **Early stopping too aggressive for augmented training.** SNN folds 3 and 5 stopped at epochs 39 and 33 -- before convergence. At ep39 fold 3, train accuracy was only 26.4%. Augmentation slows convergence by increasing diversity, but patience=10 fires prematurely on some folds. Result is bimodal: folds where learning got past the patience threshold (1, 2, 4) get reasonable results; folds where early plateaus triggered stopping (3, 5) get near-chance.
 
-The augmented SNN drops 6.40 pp in mean accuracy (47.15% → 40.75%) and its fold-to-fold variance **increases** from 4.50% to 16.03% — the opposite of what augmentation is intended to achieve. The augmented ANN drops 2.15 pp (63.85% → 61.70%), a smaller but consistent degradation.
+2. **Small dataset + aggressive augmentation = information loss.** With 1600 training samples, masking 2 freq bands of 8 bins removes 25% of mel bins; 2 time windows of 20 frames removes 18%. For compact spectral features (insects, glass_breaking), masking can remove the entire diagnostic region. ANN handles this better than SNN's threshold-based LIF.
+
+3. **Fold 4 is a genuine exception.** Jumped from 54.00% to 63.75% -- +9.75 pp, highest SNN fold accuracy we recorded. Ran full 100 epochs, train acc 80.2% at ep100, best test at ep90. Fold 4's test set apparently benefits from augmentation, possibly because it has more sounds where temporal position invariance helps (door_knock, clock_tick, mouse_click).
+
+**Why augmentation hurts SNNs more:** the LIF threshold interacts badly with mean-value masked inputs. When a freq band is masked to the mean, it produces a spike pattern thats neither "present" nor "absent" -- its constant undifferentiated current that competes with discriminative signal over 25 timesteps. ANN's ReLU handles mean-value infill better (just processes it continuously). For the SNN, masked regions contribute current that competes with the real signal.
 
 **Root cause analysis:**
 

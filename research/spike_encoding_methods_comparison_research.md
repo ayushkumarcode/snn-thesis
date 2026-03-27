@@ -563,31 +563,3 @@ class DirectEncoder(nn.Module):
         super().__init__()
         self.num_steps = num_steps
         # Trainable projection: input -> num_steps copies
-        self.encoder = nn.Linear(input_size, input_size * num_steps, bias=True)
-
-    def forward(self, x):
-        # x: [batch x input_size]
-        batch_size = x.shape[0]
-        input_size = x.shape[1]
-
-        encoded = self.encoder(x)  # [batch x input_size * num_steps]
-        encoded = encoded.reshape(batch_size, self.num_steps, input_size)
-        encoded = encoded.permute(1, 0, 2)  # [num_steps x batch x input_size]
-
-        # Apply threshold to generate binary spikes
-        # (using surrogate gradient for backprop)
-        spikes = (encoded > 0.5).float()
-        # Straight-through estimator for gradient
-        spikes = spikes + encoded - encoded.detach()
-
-        return spikes
-```
-
-### 6.3 Alternative Frameworks with More Built-in Encodings
-
-| Framework | Built-in Encodings | Notes |
-|-----------|-------------------|-------|
-| **snnTorch** | Rate, Latency, Delta | Most tutorials; best for learning; PyTorch-based |
-| **BindsNET** | Rate, Poisson, Rank-order, GRF/Binning | More biologically-oriented; STDP focus |
-| **SpikingJelly** | Rate, Latency, Direct, Poisson | More complete; better for deep SNNs; Chinese documentation |
-| **Norse** | Current-based, LIF-based, custom | Lower-level; maximum flexibility |

@@ -82,3 +82,31 @@ def compute_energy_model():
             "note": "SynSense Xylo Audio 2",
         },
         "ARM_Cortex_M4": {
+            "idle_power_mw": 0.1,   # ~100 µW sleep
+            "active_power_mw": 50,  # ~50 mW active
+            "note": "Typical MCU for edge audio",
+        },
+        "Jetson_Nano": {
+            "idle_power_mw": 1000,
+            "active_power_mw": 5000,
+            "note": "NVIDIA Jetson Nano (5W mode)",
+        },
+    }
+
+    # ============================================================
+    # Deployment scenarios
+    # ============================================================
+    duty_cycles = [0.02, 0.05, 0.10, 0.20, 0.50, 1.00]
+    inference_rate_hz = 1.0  # 1 inference per second during events
+    seconds_per_day = 86400
+
+    results = {"scenarios": [], "per_inference": per_inference,
+               "platforms": {k: v["note"] for k, v in platforms.items()}}
+
+    for duty in duty_cycles:
+        active_seconds = seconds_per_day * duty
+        idle_seconds = seconds_per_day * (1 - duty)
+        n_inferences = active_seconds * inference_rate_hz
+
+        scenario = {
+            "duty_cycle": duty,

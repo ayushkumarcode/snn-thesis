@@ -81,31 +81,3 @@
 ## Option 4: Framework Shootout (snnTorch vs SpikingJelly vs Norse)
 
 **The pitch:** Nobody has ever done a proper three-way comparison of SNN frameworks on the same tasks with the same hyperparameters. The community doesn't know if framework choice affects accuracy, training time, or energy estimates. You'd answer that.
-
-**What you'd actually build:**
-- Pick 2-3 datasets (SHD, DVS128, and one static like CIFAR-10)
-- Implement the SAME architecture in all three frameworks
-- Train with the SAME hyperparameters
-- Compare: accuracy, training time, memory usage, lines of code, API ergonomics
-- Maybe add energy estimation comparison
-
-**Iteration cycle:** Very short per experiment, but lots of experiments (3 frameworks x 2-3 datasets x multiple runs). Each individual run is fast. The work is breadth, not depth.
-
-**What "good" looks like:** A clear comparison table showing where frameworks diverge. Even if they all get similar accuracy, documenting the API differences, gotchas, and performance characteristics is valuable.
-
-**Novelty:** GENUINE confirmed gap. No three-way comparison exists. A 2025 benchmark deliberately excluded snnTorch and Norse.
-
-**Risk:** LOW. Even if all frameworks perform identically, that's a result. The worst case is still a useful contribution.
-
-**Why pick this:** Lowest risk option. Immediately useful to anyone starting SNN research. Multiple small deliverables rather than one big bet. Good for "systematic, thorough evaluation" framing that markers love.
-
-**Why not:** Less exciting narrative than "first SNN on X domain." It's a meta-study, not an application. Some might see it as "just running benchmarks."
-
----
-
-## Option 5: SNN Robot Reflexes in Simulation
-
-**The pitch:** Biological reflexes use spiking neurons. You'd implement SNN-based reflex controllers for simulated robots using SpikeGym + Isaac Gym.
-
-**What you'd actually build:**
-- Set up Isaac Gym or MuJoCo simulation environment

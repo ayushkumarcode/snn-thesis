@@ -45,31 +45,3 @@ The most critical insight for thesis planning: **SNN generative tasks are no lon
 | Wav2Vec 2.0 Large | ~2.3% | ANN (Self-supervised) |
 | Conformer (Google) | ~2.1% | ANN (Conformer) |
 | **IML-Spikeformer** | **~3.4%** | **SNN (Spiking Transformer)** |
-| Earlier SNN models (2020) | ~10-15% | SNN (RNN-based) |
-
-**Gap Assessment:** SNNs are now within 1-1.5% WER of state-of-the-art ANNs on LibriSpeech, which is a remarkable achievement. However, this is with the very latest architectures (2025). Earlier SNN models have a 5-10% gap.
-
-### Datasets Used
-- Google Speech Commands v1/v2 (keyword spotting, most common)
-- TIMIT (phone recognition)
-- LibriSpeech (large vocabulary continuous)
-- AISHELL-1 (Mandarin)
-- Spiking Heidelberg Digits (SHD) -- neuromorphic audio dataset
-- Spiking Speech Commands (SSC) -- neuromorphic version of GSC
-- TIDIGITS
-
-### Feasibility for Undergraduate Thesis: **HIGH**
-- Keyword spotting on GSC v2 is very doable with snnTorch or SpikingJelly
-- SpikingJelly has a built-in `speechcommands.py` example
-- snnTorch has extensive tutorials on spike encoding and training
-- Could compare multiple SNN architectures (CSNN, RSNN, Spikformer) on GSC
-- Could extend to SHD/SSC neuromorphic datasets
-- Could explore novel encoding schemes for audio-to-spike conversion
-
-### Specific Gaps
-1. No SNN model matches Whisper/wav2vec2 on realistic ASR benchmarks yet (though IML-Spikeformer is closing the gap)
-2. Most SNN work focuses on keyword spotting (small vocabulary), not open-vocabulary ASR
-3. Limited work on noisy/real-world speech conditions with SNNs
-4. Few studies comparing SNN inference latency vs ANN on actual neuromorphic hardware for speech
-5. **Gap opportunity:** SNN for low-resource language ASR (no papers found)
-

@@ -54,3 +54,31 @@ The pattern that emerges is pretty clear: most BSc/3rd-year projects focus on a 
 - Neuromorphic control of quadrupedal robot locomotion using spiking neural circuits (CPGs)
 - MATLAB/Simulink R2022b+, SOLIDWORKS, VEX V5 Robot Brain, Python
 - Successfully implemented biologically-inspired gaits on physical robots (NeuroPup and Synapider)
+- 10-week summer research project (not a thesis per se). Funded by MathWorks. Very well-documented. Shows what's possible with good supervision and resources at a top university.
+- 5 stars, 2 forks, 93 commits
+
+### SNN Accelerator Hardware (EE552 Class Project)
+- https://github.com/zwhexplorer/Spiking-Neural-Network-Accelerator-EE552-project
+- Hardware accelerator for SNNs inspired by TrueNorth and Loihi, 3x3 mesh network
+- 100% SystemVerilog, asynchronous hardware design. Working 9-router mesh topology with XY routing.
+- Final report PDF included.
+- Graduate-level course project. Very hardware-focused, not typical for a software-oriented thesis.
+- 15 stars, 4 forks, 64 commits
+
+### Neuromorphic NoC Architecture for SNNs (4th Year Project)
+- https://github.com/cepdnaclk/e18-4yp-Neuromorphic-NoC-Architecture-for-SNNs
+- Scalable Network-on-Chip architecture based on RISC-V ISA for SNN processing on FPGA
+- 99.7% Verilog, working FPGA implementation with custom accelerators
+- Team of 3 students. Very ambitious hardware project.
+- 7 stars, 5 forks, 207 commits
+
+---
+
+## Confirmed Masters Thesis Projects
+
+### Volr DSL - Modelling Learning Systems
+- https://github.com/Jegp/thesis
+- Domain-specific language (Volr) enabling unified modelling of ANNs and SNNs
+- Haskell (DSL), Futhark+OpenCL (ANN backend), NEST+PyNN (SNN backend), BrainScaleS
+- NAND, XOR, MNIST. Demonstrated topology-preserving translation between paradigms.
+- **Thesis PDF: report/report.pdf in repo**

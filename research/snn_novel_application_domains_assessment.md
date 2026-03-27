@@ -82,3 +82,31 @@ for an undergrad thesis balancing novelty, feasibility, and natural SNN advantag
 
 ### 4. SNN for NLP/Sentiment
 
+**papers: about 15-25**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| SpikeGPT | 2023 | 216M param SNN language model, 32.2x fewer operations |
+| SNNLP | 2024 | Spike encoding methods, 32x energy reduction |
+| Spiking CNN for Text Classification | 2024 | Conversion + fine-tuning for text |
+| SNN-BERT | 2024 | Energy-efficient BERT conversion |
+| SpikingMiniLM | 2024 | Spiking transformer for NLU |
+| Neuromorphic Sentiment on SpiNNaker | 2023 | 100% accuracy on reviews |
+
+**why SNNs might work:** mainly energy efficiency, not representation quality. text isn't naturally temporal/event-driven like audio or sensors. text-to-spike encoding is an active research challenge. SNNs trail ANNs significantly in NLP accuracy.
+
+**feasibility:** MODERATE. standard datasets available (SST-2, IMDB). SpikeGPT and SNNLP provide reference implementations. challenging to get competitive accuracy.
+
+**novelty:** LOW-MODERATE. rapidly becoming established (15+ papers). growing subfield.
+
+**verdict: moderate -- feasible but less novel, need energy efficiency angle**
+
+---
+
+### 5. SNN for Game Playing / RL
+
+**papers: about 10-15**
+
+| Paper | Year | Key Contribution |
+|-------|------|------------------|
+| Deep Spiking Q-learning (DSQN) | 2022 | Outperforms DQN on 17 Atari games |

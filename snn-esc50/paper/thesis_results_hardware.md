@@ -194,20 +194,20 @@ SpiNNaker 5-fold: 33.1% +/- 6.9% vs snnTorch 46.0%, mean hardware gap 12.8 +/- 4
 ## 5.4 NeuroBench energy analysis
 
 ### 5.4.1 methodology
-|------|-----------|-------------|-------------|
-| 1 | 29.0% | 39.5% | +10.5 pp |
-| 2 | 32.0% | 48.2% | +16.2 pp |
-| 3 | 36.5% | 47.8% | +11.2 pp |
-| 4 | 43.0% | 51.2% | +8.2 pp |
-| 5 | 25.2% | 43.2% | +18.0 pp |
-| **Mean** | **33.1%** | **46.0%** | **+12.8 pp** |
-| **Std** | **6.9%** | | **4.1 pp** |
 
-SpiNNaker 5-fold mean: **33.1% ± 6.9%** vs snnTorch reference **46.0%**, yielding a mean hardware gap of **12.8 ± 4.1 pp**.
+NeuroBench v2.2.0 (Yik et al. 2025) wraps model in SNNTorchModel, measures SynapticOperations:
+- **Dense SynOps:** total ops ignoring sparsity (upper bound)
+- **Effective_ACs:** accumulate-only from non-zero binary activations
+- **Effective_MACs:** multiply-accumulate from non-zero non-binary activations
 
-The fold-to-fold variability will also characterise the *reliability* of SpiNNaker inference — whether the hardware gap is systematic (constant across folds) or fold-dependent (suggesting class-specific difficulty). This information provides engineering guidance for future SpiNNaker audio deployments.
+Energy at 45nm CMOS: AC = 0.9 pJ, MAC = 4.6 pJ (5.1x more expensive).
 
----
+Performed on all 5 folds (400 test samples each, direct encoding). 5-fold means: SNN 968 +/- 37 nJ/sample, ANN 454 +/- 11 nJ/sample.
+
+### 5.4.2 results
+
+**SNN (direct, fold 4 representative; 5-fold means in parens):**
+
 
 ## 5.4 NeuroBench Energy Analysis
 

@@ -510,31 +510,3 @@ If you successfully deploy on SpiNNaker, you can report:
 
 ### Thesis Impact
 
-Having a SpiNNaker deployment chapter would:
-1. **Demonstrate practical neuromorphic deployment** (not just simulation)
-2. **Validate energy efficiency claims** with real measurements
-3. **Show cross-platform portability** (snnTorch -> NIR -> SpiNNaker)
-4. **Differentiate from pure-software theses** (most undergrad SNN theses are software-only)
-5. **Align with supervisor expertise** (Oliver Rhodes is a SpiNNaker developer)
-
-The SpiNNaker2 RL paper reported: **SpiNNaker2 consumed 0.006J vs GPU's 0.19J for CartPole inference -- a 32x reduction.** Being able to report similar findings would significantly strengthen the thesis.
-
----
-
-## Question 12: sPyNNaker Documentation and Tutorials
-
-### Available Resources
-
-| Resource | URL | Quality |
-|----------|-----|---------|
-| sPyNNaker GitHub | [github.com/SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker) | Active, well-maintained |
-| PyNN Examples | [github.com/SpiNNakerManchester/PyNNExamples](https://github.com/SpiNNakerManchester/PyNNExamples) | Good variety of examples |
-| sPyNNaker ReadTheDocs | [spynnaker.readthedocs.io](https://spynnaker.readthedocs.io/) | API reference, adequate |
-| SpiNNaker Tutorial | [spinnaker-tutorial.readthedocs.io](https://spinnaker-tutorial.readthedocs.io/) | Setup and basic usage |
-| Models & Limitations | [SPyNNakerModelsAndLimitations](http://spinnakermanchester.github.io/spynnaker/6.0.0/SPyNNakerModelsAndLimitations.html) | Critical reference for constraints |
-| EBRAINS Guidebook | [electronicvisions.github.io/hbp-sp9-guidebook](https://electronicvisions.github.io/hbp-sp9-guidebook/mc/using_spiNNaker.html) | Platform-specific guide |
-| Lab Manuals (PDF) | Various workshop PDFs | Hands-on exercises |
-| sPyNNaker Paper | [Frontiers 2018](https://www.frontiersin.org/articles/10.3389/fnins.2018.00816/full) | Definitive reference |
-| SpiNNaker Users Group | [Google Groups](https://groups.google.com/g/spinnakerusers) | Community support |
-| NIR Documentation | [neuroir.org/docs](https://neuroir.org/docs/) | Cross-platform conversion |
-| snnTorch export_nir | [snntorch.readthedocs.io/en/latest/snntorch.export_nir.html](https://snntorch.readthedocs.io/en/latest/snntorch.export_nir.html) | snnTorch-specific NIR export |

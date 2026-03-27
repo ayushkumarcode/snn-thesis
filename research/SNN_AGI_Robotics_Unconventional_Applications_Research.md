@@ -236,31 +236,3 @@ Key papers:
 
 ### 2.1 SNN for Robotic Grasping / Manipulation
 
-**Literature: 5-10 papers**
-
-Key works:
-- [Towards Grasping with SNNs for Anthropomorphic Robot Hands (ResearchGate 2017)](https://www.researchgate.net/publication/320580642)
-- [Touch and slippage detection with SNNs (ScienceDirect 2024)](https://www.sciencedirect.com/science/article/abs/pii/S0952197624011114)
-- SNN classification of sEMG signals triggers finger reflexes on robotic hand
-
-**Simulation-only possible?** Partially. MuJoCo can simulate grasping, but encoding tactile feedback into spikes requires custom work.
-
-**macOS compatible?** MuJoCo works on macOS. snnTorch works on macOS. Integration is the challenge.
-
-**Feasibility for 28 days: LOW**
-- Grasping requires 3D physics simulation + contact dynamics
-- SNN integration with simulation environment is non-trivial
-- Most existing work uses real neuromorphic tactile sensors
-- No existing open-source SNN-grasping pipeline
-
-**System components:** MuJoCo/PyBullet + snnTorch + custom environment wrapper + spike encoding for joint angles/contacts
-
-**VERDICT: NOT RECOMMENDED. Too many moving parts for 28 days.**
-
----
-
-### 2.2 SNN for SLAM (Simultaneous Localization and Mapping)
-
-**Literature: 5-10 papers**
-
-Key works:

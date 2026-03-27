@@ -222,3 +222,31 @@ class ECG_SNN(nn.Module):
         self.lif_out = snn.Leaky(beta=beta, init_hidden=True, output=True)
 
     def forward(self, x):
+        # x shape: (batch, 12, 1000)
+        x = self.pool1(self.lif1(self.conv1(x)))
+        x = self.pool2(self.lif2(self.conv2(x)))
+        x = self.pool3(self.lif3(self.conv3(x)))
+        x = x.flatten(1)
+        spk, mem = self.lif_out(self.fc(x))
+        return spk, mem
+```
+
+**WARNING:** This architecture processes each ECG as a single spatial input, NOT as a temporal SNN sequence. For temporal SNN processing (delta-encoded spikes over time), you wrap this in a time loop -- see Component 11 for memory implications.
+
+**Source:** [snnTorch Leaky source code](https://snntorch.readthedocs.io/en/latest/_modules/snntorch/_neurons/leaky.html), [Tutorial 6](https://snntorch.readthedocs.io/en/latest/tutorials/tutorial_6.html), [snnTorch neurons docs](https://snntorch.readthedocs.io/en/latest/snntorch.html)
+
+---
+
+### 6. 12-Lead Handling
+
+| Field | Detail |
+|---|---|
+| **EXISTS** | YES (standard PyTorch pattern) |
+| **VERIFIED HOW** | PyTorch Conv1d documentation, ECG deep learning convention |
+| **POTENTIAL BLOCKER** | NO |
+
+**How to handle 12 leads:** Use the channel dimension of Conv1d. This is identical to how RGB images use 3 channels with Conv2d.
+
+```python
+# PTB-XL raw shape from wfdb: (1000, 12)  -- samples x leads
+# Transpose to PyTorch Conv1d format: (12, 1000)  -- channels x length

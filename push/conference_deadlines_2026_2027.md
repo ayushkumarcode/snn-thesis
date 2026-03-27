@@ -46,31 +46,3 @@
 | IEEE SiPS 2026 | 12 April 2026 | IEEE | Hardware signal processing, Bordeaux |
 | NeurIPS 2026 | ~May 2026 | 9+refs pages | Top-tier, ~25% acceptance. Probably too competitive |
 | DCASE 2026 | ~July 2026 | Varies | **Perfect topic fit** — environmental sound is exactly DCASE's focus |
-| ICASSP 2027 | ~Sep 2026 | IEEE | Strong for audio+ML, Toronto |
-| ICLR 2027 | ~Sep 2026 | OpenReview | Top-tier, very competitive |
-
----
-
-## Deadlines Already Passed
-
-| Conference | Deadline | Notes |
-|---|---|---|
-| ICML 2026 | 28 Jan 2026 | Top-tier ML |
-| IJCAI-ECAI 2026 | 19 Jan 2026 | AI |
-| WCCI/IJCNN regular | 31 Jan 2026 | Neural networks |
-| EUSIPCO 2026 regular | 13 Feb 2026 | Signal processing |
-| INTERSPEECH 2026 | 25 Feb 2026 | Speech |
-| ICLR 2026 | 24 Sep 2025 | Deep learning |
-| ICASSP 2026 | 17 Sep 2025 | Audio/speech |
-| ISCAS 2026 | 19 Oct 2025 | Circuits |
-| ESANN 2026 | 19 Nov 2025 | Neural networks |
-| NICE 2026 | 24 Nov 2025 | Neuromorphic |
-
----
-
-## Conference Explainer (for context)
-
-| Conference | Full Name | What It's About | Realistic for Us? |
-|---|---|---|---|
-| **NeurIPS** | Neural Information Processing Systems | Broad ML/AI, top-tier | No (too competitive) |
-| **ICML** | Int'l Conf on Machine Learning | ML theory/methods, top-tier | No |

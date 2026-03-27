@@ -97,31 +97,3 @@ The proceedings acceptance rate for ICONS is comparable to or slightly more sele
 | 2024 | April 30/May 3 | June 10 | Jul 30-Aug 2 |
 | 2023 | April 30 | June 6 | Aug 1-3 |
 | 2022 | April 30 | June 10 | Jul 27-29 |
-
-The timeline is consistent year-to-year. The review cycle is ~5-6 weeks, which is shorter than major conferences (NeurIPS: ~3 months).
-
----
-
-## 4. Review Criteria
-
-### ICONS-Specific Criteria
-ICONS does not publicly disclose its specific review criteria or scoring rubric. However, based on:
-
-1. **ACM standard review criteria** (from ACM Publications Policy):
-   - Originality/novelty of contribution
-   - Technical correctness/soundness
-   - Significance/importance to the field
-   - Clarity of exposition and presentation quality
-   - Relevance to the conference scope
-   - Completeness of evaluation/experiments
-
-2. **Typical EasyChair review form** (ACM conferences):
-   - **Novelty/Originality** (1-5 scale): How novel is the contribution?
-   - **Technical Soundness** (1-5 scale): Are methods correct and well-justified?
-   - **Presentation Quality** (1-5 scale): Is the paper well-written and organized?
-   - **Relevance** (1-5 scale): Is the work relevant to neuromorphic systems?
-   - **Significance** (1-5 scale): How important is the contribution?
-   - **Overall Recommendation**: Strong accept / Accept / Weak accept / Borderline / Weak reject / Reject / Strong reject
-   - **Confidence**: Reviewer's self-assessed expertise level
-   - **Detailed Comments**: Written feedback for authors
-

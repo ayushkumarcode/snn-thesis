@@ -614,3 +614,31 @@ pip install neurobench
 pip install librosa
 ```
 
+### Known deprecation issues:
+
+1. **snnTorch v0.6.0 broke backward compatibility:** `backprop.py` was deprecated, rest function scaling changed. Current v0.9.4 is stable.
+2. **torchaudio v2.8+ maintenance mode:** Deprecation warnings in v2.8, removals in v2.9, completed in v2.10. Our needed APIs (load, MelSpectrogram) are explicitly preserved.
+3. **Python 3.12+ may have issues:** snnTorch officially supports 3.9-3.11. NeuroBench supports 3.10+. Stick with **Python 3.10 or 3.11** for maximum compatibility.
+
+### Known open bugs in snnTorch 0.9.4 (48 open issues as of March 2026):
+
+| Issue | Severity | Description | Impact on Our Project |
+|-------|----------|-------------|----------------------|
+| #401 (OPEN) | **HIGH** | Reset mechanism "subtract"/"zero" may be switched; missing beta in soft reset | Use default "subtract", validate neuron traces manually |
+| #328 (OPEN) | MODERATE | GPU memory leak from `SpikingNeuron.instances` class variable not cleared | CPU training avoids this; restart kernel between runs if GPU |
+| #394 (OPEN) | MODERATE | CUDA OOM after many epochs due to BPTT graph fragmentation | Small dataset reduces risk; use `expandable_segments:True` |
+| #341 (OPEN) | MODERATE | Reset of snn.Leaky uses S(t)*U_thr instead of beta*S(t)*U_thr | Related to #401; same mitigation |
+| #377 (OPEN) | LOW | Training loss doesn't reduce for moderately sized networks | Architecture-specific; our small CSNN unlikely affected |
+| #339 (OPEN) | LOW | AttributeError: 'Leaky' object has no attribute 'reset' | API usage error; use `utils.reset(net)` instead |
+
+### snnTorch release cadence (from PyPI):
+
+| Version | Date | Gap |
+|---------|------|-----|
+| 0.9.4 | Feb 16, 2025 | ~10 months after 0.9.1 |
+| 0.9.1 | Apr 24, 2024 | 6 days after 0.9.0 |
+| 0.9.0 | Apr 18, 2024 | 1 month after 0.8.1 |
+| 0.8.1 | Mar 17, 2024 | -- |
+
+The project has an active maintainer (Jason Eshraghian, UCSC) but release cadence slowed significantly between 0.9.1 and 0.9.4. This means bugs may take months to be fixed. **Plan to work around known issues rather than waiting for patches.**
+

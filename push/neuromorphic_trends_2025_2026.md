@@ -35,31 +35,3 @@ A major paper on SNN adversarial robustness was published in Nature Communicatio
 
 1. **Eshraghian et al.** — "Training SNNs Using Lessons From Deep Learning" — **2024 Proceedings of IEEE Best Paper Award** (this is the snnTorch paper we use!)
 2. **NeuroBench** (Yik et al.) — Nature Communications Feb 2025 (we use this)
-3. **Nature Jan 2025** — "Neuromorphic computing at a pivotal moment"
-4. **SNN adversarial robustness** — Nature Communications Nov 2025
-
----
-
-## Grand Challenges (Unsolved)
-
-1. Software ecosystem gap (no PyTorch equivalent for SNNs)
-2. Scaling SNNs to large models
-3. Accuracy gap (best SNN: 83.73% ImageNet vs ANN: 90%+)
-4. Finding a killer application
-5. Verifying energy claims on real hardware
-
-**We directly address #4 (novel application) and #5 (NeuroBench + SpiNNaker deployment).**
-
----
-
-## The Narrative Shift
-
-The community has matured: **SNNs are complementary specialized accelerators, not ANN replacements.** Energy advantage is conditional (>93% sparsity). The gap is smallest with pretrained features (exactly our PANNs finding). Hybrid ANN+SNN is the pragmatic path.
-
-**Our insight — "the gap is feature-learning, not spiking computation" — is exactly what the community is converging on.** We have the first empirical demonstration of this for audio.
-
----
-
-## Neuromorphic Audio Community (Small but Growing)
-
-| Group | Focus |

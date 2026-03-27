@@ -391,31 +391,3 @@ UCL has an active neuromorphic technologies group, and several of the institutio
 | Method | Dataset | Accuracy | Architecture | Year |
 |--------|---------|----------|-------------|------|
 | Wu et al. (SOM-SNN) | RWCP | 99.60% | SOM+SNN | 2018 |
-| Wu et al. (SOM-SNN) | TIDIGITS | 97.4% | SOM+SNN | 2018 |
-| Amin (ATM-SNN) | TIDIGITS | 97.64% | Adaptive threshold SNN | 2021 |
-| Dong et al. | TIDIGITS | 97.5% | Conv SNN (STDP) | 2018 |
-| Bensimon et al. | RWCP | 98.73% | SCTN-SNN | 2021 |
-| Yang & Chang | TIMIT | PER 22.6% | RSNN (71.2 uW) | 2024 |
-
----
-
-## 10. Adversarial Robustness of Audio SNNs
-
-### 10.1 Literature Status
-
-No paper has specifically studied adversarial robustness of audio SNNs. Our thesis finding -- that SNN retains 26% accuracy at FGSM eps=0.1 while ANN drops to 1.75% -- is novel in the audio domain.
-
-Key related work (vision domain):
-- Wang et al. (2025, arXiv:2512.22522): "Towards Reliable Evaluation of Adversarial Robustness for SNNs" -- warns that SNN robustness may be overestimated due to gradient estimation issues; proposes Adaptive Sharpness Surrogate Gradient (ASSG)
-- FEEL-SNN (NeurIPS 2024): Robust SNNs with sparse connections
-- Sharmin et al. (ECCV 2020): Original SNN adversarial robustness study
-
-### 10.2 Implications for Our Thesis
-
-Our adversarial robustness experiment should cite Wang et al. (2025) and acknowledge that FGSM/PGD attacks may underestimate the vulnerability of SNNs due to surrogate gradient inaccuracies. However, our finding that SNNs show qualitatively different robustness behavior remains valid and is the first such finding in the audio domain.
-
----
-
-## 11. Continual Learning with Audio SNNs
-
-No prior work studies continual learning specifically with audio SNNs. Our thesis experiment (SNN forgetting: 74.4% vs ANN forgetting: 81.3%, showing SNN forgets 6.9pp less on ESC-50 super-categories) is novel.

@@ -1,0 +1,12 @@
+{
+  "experiment": "combo_rhythm_kd_cochleagram_lbeta_drop_sre",
+  "fold_accuracies": [
+    0.0825,
+    0.065,
+    0.0375,
+    0.075,
+    0.04
+  ],
+  "mean_accuracy": 0.06,
+  "std_accuracy": 0.01823458252881047
+}

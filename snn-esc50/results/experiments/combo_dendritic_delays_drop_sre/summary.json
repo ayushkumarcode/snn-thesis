@@ -1,0 +1,12 @@
+{
+  "experiment": "combo_dendritic_delays_drop_sre",
+  "fold_accuracies": [
+    0.595,
+    0.635,
+    0.605,
+    0.6775,
+    0.57
+  ],
+  "mean_accuracy": 0.6165,
+  "std_accuracy": 0.03693237062523879
+}

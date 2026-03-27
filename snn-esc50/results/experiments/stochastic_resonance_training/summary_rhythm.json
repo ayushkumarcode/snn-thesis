@@ -1,0 +1,290 @@
+{
+  "experiment": "stochastic_resonance_training",
+  "variant": "SR+Rhythm",
+  "seed": 42,
+  "init_sigma": 0.02,
+  "epochs": 50,
+  "patience": 10,
+  "with_rhythm": true,
+  "fold_accuracies": [
+    0.61,
+    0.6225,
+    0.62,
+    0.6625,
+    0.5525
+  ],
+  "mean_accuracy": 0.6134999999999999,
+  "std_accuracy": 0.035376545902617455,
+  "baseline_mean": 0.4715,
+  "baseline_std": 0.045,
+  "delta_vs_baseline_pp": 14.2,
+  "total_params": 623948,
+  "sr_params": 2010,
+  "per_fold": [
+    {
+      "fold": 1,
+      "accuracy": 0.61,
+      "best_epoch": 35,
+      "total_epochs": 45,
+      "time_seconds": 302.6,
+      "learned_sr_params": {
+        "lif1": {
+          "beta_mean": 0.9360038042068481,
+          "beta_std": 0.015082749538123608,
+          "sigma_mean": 0.01710693910717964,
+          "sigma_std": 0.0007576608331874013,
+          "sigma_min": 0.015938911586999893,
+          "sigma_max": 0.01890191063284874,
+          "amplitude_abs_mean": 0.128670796751976,
+          "frequency_mean": 2.163832664489746,
+          "phase_mean": 0.007542924024164677
+        },
+        "lif2": {
+          "beta_mean": 0.9418929815292358,
+          "beta_std": 0.008549773134291172,
+          "sigma_mean": 0.019221633672714233,
+          "sigma_std": 0.0008183012832887471,
+          "sigma_min": 0.017522381618618965,
+          "sigma_max": 0.02130184881389141,
+          "amplitude_abs_mean": 0.07375063747167587,
+          "frequency_mean": 2.8883297443389893,
+          "phase_mean": 0.021058853715658188
+        },
+        "lif3": {
+          "beta_mean": 0.9473418593406677,
+          "beta_std": 0.00382277462631464,
+          "sigma_mean": 0.023669779300689697,
+          "sigma_std": 0.00793713890016079,
+          "sigma_min": 0.018378864973783493,
+          "sigma_max": 0.06891357153654099,
+          "amplitude_abs_mean": 0.12901589274406433,
+          "frequency_mean": 2.528061866760254,
+          "phase_mean": 0.09995885193347931
+        },
+        "lif4": {
+          "beta_mean": 0.9524002075195312,
+          "beta_std": 0.0031357307452708483,
+          "sigma_mean": 0.019818425178527832,
+          "sigma_std": 0.0006108896341174841,
+          "sigma_min": 0.018216684460639954,
+          "sigma_max": 0.02092164009809494,
+          "amplitude_abs_mean": 0.03364483267068863,
+          "frequency_mean": 2.3163414001464844,
+          "phase_mean": -0.0009389451006427407
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.6225,
+      "best_epoch": 35,
+      "total_epochs": 45,
+      "time_seconds": 300.9,
+      "learned_sr_params": {
+        "lif1": {
+          "beta_mean": 0.9341150522232056,
+          "beta_std": 0.017094852402806282,
+          "sigma_mean": 0.016981562599539757,
+          "sigma_std": 0.0011401453521102667,
+          "sigma_min": 0.014637035317718983,
+          "sigma_max": 0.01985481195151806,
+          "amplitude_abs_mean": 0.15248557925224304,
+          "frequency_mean": 2.1318411827087402,
+          "phase_mean": 0.020079974085092545
+        },
+        "lif2": {
+          "beta_mean": 0.940539538860321,
+          "beta_std": 0.008218795992434025,
+          "sigma_mean": 0.019025176763534546,
+          "sigma_std": 0.001063881441950798,
+          "sigma_min": 0.01697436161339283,
+          "sigma_max": 0.02203221246600151,
+          "amplitude_abs_mean": 0.0816400945186615,
+          "frequency_mean": 2.8766326904296875,
+          "phase_mean": 0.017569703981280327
+        },
+        "lif3": {
+          "beta_mean": 0.9462610483169556,
+          "beta_std": 0.004990867339074612,
+          "sigma_mean": 0.025062620639801025,
+          "sigma_std": 0.011409463360905647,
+          "sigma_min": 0.018025103956460953,
+          "sigma_max": 0.09762424230575562,
+          "amplitude_abs_mean": 0.1381334811449051,
+          "frequency_mean": 2.513700008392334,
+          "phase_mean": 0.11643174290657043
+        },
+        "lif4": {
+          "beta_mean": 0.9531501531600952,
+          "beta_std": 0.003620396601036191,
+          "sigma_mean": 0.019804537296295166,
+          "sigma_std": 0.0007068702252581716,
+          "sigma_min": 0.01745634898543358,
+          "sigma_max": 0.02132069505751133,
+          "amplitude_abs_mean": 0.032288264483213425,
+          "frequency_mean": 2.3096635341644287,
+          "phase_mean": 0.0022299077827483416
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.62,
+      "best_epoch": 49,
+      "total_epochs": 50,
+      "time_seconds": 334.5,
+      "learned_sr_params": {
+        "lif1": {
+          "beta_mean": 0.9351693987846375,
+          "beta_std": 0.013664892874658108,
+          "sigma_mean": 0.016897976398468018,
+          "sigma_std": 0.0010435052681714296,
+          "sigma_min": 0.014795892871916294,
+          "sigma_max": 0.018973030149936676,
+          "amplitude_abs_mean": 0.1260986328125,
+          "frequency_mean": 2.16108775138855,
+          "phase_mean": -0.009731467813253403
+        },
+        "lif2": {
+          "beta_mean": 0.9421883821487427,
+          "beta_std": 0.0073110670782625675,
+          "sigma_mean": 0.01904890686273575,
+          "sigma_std": 0.0011025889543816447,
+          "sigma_min": 0.016639215871691704,
+          "sigma_max": 0.021939067170023918,
+          "amplitude_abs_mean": 0.07835119217634201,
+          "frequency_mean": 2.903688907623291,
+          "phase_mean": 0.04563213884830475
+        },
+        "lif3": {
+          "beta_mean": 0.9464062452316284,
+          "beta_std": 0.007541330065578222,
+          "sigma_mean": 0.02567700296640396,
+          "sigma_std": 0.011952582746744156,
+          "sigma_min": 0.018398279324173927,
+          "sigma_max": 0.08472640067338943,
+          "amplitude_abs_mean": 0.13558372855186462,
+          "frequency_mean": 2.5205702781677246,
+          "phase_mean": 0.12161131203174591
+        },
+        "lif4": {
+          "beta_mean": 0.9538434147834778,
+          "beta_std": 0.003594202222302556,
+          "sigma_mean": 0.01970870979130268,
+          "sigma_std": 0.0006561942282132804,
+          "sigma_min": 0.017971603199839592,
+          "sigma_max": 0.020921843126416206,
+          "amplitude_abs_mean": 0.03373384475708008,
+          "frequency_mean": 2.311467170715332,
+          "phase_mean": 0.007749786600470543
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.6625,
+      "best_epoch": 46,
+      "total_epochs": 50,
+      "time_seconds": 339.7,
+      "learned_sr_params": {
+        "lif1": {
+          "beta_mean": 0.9324718117713928,
+          "beta_std": 0.015615707263350487,
+          "sigma_mean": 0.016968345269560814,
+          "sigma_std": 0.0013337057316675782,
+          "sigma_min": 0.014418124221265316,
+          "sigma_max": 0.019833682104945183,
+          "amplitude_abs_mean": 0.118583545088768,
+          "frequency_mean": 2.1721553802490234,
+          "phase_mean": -0.010639136657118797
+        },
+        "lif2": {
+          "beta_mean": 0.9394019246101379,
+          "beta_std": 0.00872101727873087,
+          "sigma_mean": 0.018880050629377365,
+          "sigma_std": 0.0010570257436484098,
+          "sigma_min": 0.016757376492023468,
+          "sigma_max": 0.020831285044550896,
+          "amplitude_abs_mean": 0.09246180951595306,
+          "frequency_mean": 2.859701633453369,
+          "phase_mean": 0.05474548786878586
+        },
+        "lif3": {
+          "beta_mean": 0.9453489780426025,
+          "beta_std": 0.011016014963388443,
+          "sigma_mean": 0.02565145678818226,
+          "sigma_std": 0.014159883372485638,
+          "sigma_min": 0.018210962414741516,
+          "sigma_max": 0.10334093123674393,
+          "amplitude_abs_mean": 0.14025741815567017,
+          "frequency_mean": 2.5104782581329346,
+          "phase_mean": 0.14311444759368896
+        },
+        "lif4": {
+          "beta_mean": 0.953742265701294,
+          "beta_std": 0.0034842134919017553,
+          "sigma_mean": 0.01970931887626648,
+          "sigma_std": 0.0007227768073789775,
+          "sigma_min": 0.01832709088921547,
+          "sigma_max": 0.02121426910161972,
+          "amplitude_abs_mean": 0.03033124841749668,
+          "frequency_mean": 2.3117733001708984,
+          "phase_mean": 0.014477645047008991
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.5525,
+      "best_epoch": 45,
+      "total_epochs": 50,
+      "time_seconds": 338.0,
+      "learned_sr_params": {
+        "lif1": {
+          "beta_mean": 0.9359384775161743,
+          "beta_std": 0.012778219766914845,
+          "sigma_mean": 0.016726452857255936,
+          "sigma_std": 0.0010857611196115613,
+          "sigma_min": 0.014096471481025219,
+          "sigma_max": 0.018936723470687866,
+          "amplitude_abs_mean": 0.11309340596199036,
+          "frequency_mean": 2.1674489974975586,
+          "phase_mean": -0.009918286465108395
+        },
+        "lif2": {
+          "beta_mean": 0.9401393532752991,
+          "beta_std": 0.009092215448617935,
+          "sigma_mean": 0.01900440827012062,
+          "sigma_std": 0.0008516848902218044,
+          "sigma_min": 0.01702985353767872,
+          "sigma_max": 0.020942335948348045,
+          "amplitude_abs_mean": 0.06594325602054596,
+          "frequency_mean": 2.898383378982544,
+          "phase_mean": 0.030510392040014267
+        },
+        "lif3": {
+          "beta_mean": 0.9470873475074768,
+          "beta_std": 0.006834923289716244,
+          "sigma_mean": 0.023193467408418655,
+          "sigma_std": 0.006453515496104956,
+          "sigma_min": 0.018174387514591217,
+          "sigma_max": 0.06996329873800278,
+          "amplitude_abs_mean": 0.12948697805404663,
+          "frequency_mean": 2.5346221923828125,
+          "phase_mean": 0.09661146998405457
+        },
+        "lif4": {
+          "beta_mean": 0.9523109197616577,
+          "beta_std": 0.0034978168550878763,
+          "sigma_mean": 0.019610900431871414,
+          "sigma_std": 0.0007677396642975509,
+          "sigma_min": 0.018194280564785004,
+          "sigma_max": 0.022232379764318466,
+          "amplitude_abs_mean": 0.030458291992545128,
+          "frequency_mean": 2.3209221363067627,
+          "phase_mean": 0.0004261523426976055
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "experiment": "info_bottleneck_snn",
+  "beta_ib": 0.001,
+  "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "fold_accuracies": [
+    0.495,
+    0.6025,
+    0.5275,
+    0.6025,
+    0.5275
+  ],
+  "mean_accuracy": 0.5509999999999999,
+  "std_accuracy": 0.04369210454990698,
+  "fold_kl_losses": [
+    290.7630662184495,
+    283.51102388822113,
+    301.1535151554988,
+    320.5931138258714,
+    275.08375197190503
+  ],
+  "mean_kl_loss": 294.22089421198916,
+  "baseline_comparison": {
+    "baseline_direct_5fold": 0.4715,
+    "note": "Baseline SNN (direct encoding, 5-fold): 47.15% +/- 4.50%"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "experiment": "combo_rhythm_lbeta_drop_sre_l1_0.001",
+  "fold_accuracies": [
+    0.6075,
+    0.595,
+    0.5575,
+    0.6175,
+    0.54
+  ],
+  "mean_accuracy": 0.5835,
+  "std_accuracy": 0.029774149861918817
+}

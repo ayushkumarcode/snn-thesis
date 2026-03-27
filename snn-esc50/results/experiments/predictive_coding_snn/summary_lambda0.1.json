@@ -1,0 +1,32 @@
+{
+  "experiment": "predictive_coding_snn",
+  "lambda_pred": 0.1,
+  "folds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "fold_accuracies": [
+    0.55,
+    0.555,
+    0.5475,
+    0.56,
+    0.5325
+  ],
+  "mean_accuracy": 0.549,
+  "std_accuracy": 0.009300537618869167,
+  "fold_spike_reductions_pct": [
+    -679.5112678473699,
+    -612.4243570347958,
+    -701.3287332742784,
+    -631.1850835604713,
+    -631.3707205797929
+  ],
+  "mean_spike_reduction_pct": -651.1640324593416,
+  "baseline_comparison": {
+    "baseline_direct_5fold": 0.4715,
+    "note": "Baseline SNN (direct encoding, 5-fold): 47.15% +/- 4.50%"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "experiment": "combo_dendritic_cochleagram_drop_sre",
+  "fold_accuracies": [
+    0.545,
+    0.5325,
+    0.5675,
+    0.6175,
+    0.545
+  ],
+  "mean_accuracy": 0.5615,
+  "std_accuracy": 0.03019105827890107
+}

@@ -68,3 +68,4 @@
     "ann_cochleagram_vs_mel_delta_pp": -2.0,
     "hypothesis": "If SNN benefits more from cochleagram than ANN, the cochleagram SNN-ANN gap should be smaller than the mel SNN-ANN gap (16.70 pp). This would support the theory that biologically-motivated input representations are better suited for spiking computation."
   }
+}

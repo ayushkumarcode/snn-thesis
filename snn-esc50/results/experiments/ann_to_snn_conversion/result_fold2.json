@@ -1,0 +1,66 @@
+{
+  "fold": 2,
+  "percentile": 99.9,
+  "max_timesteps": 100,
+  "thresholds": {
+    "conv1_bn": 3.2274491786956787,
+    "conv2_bn": 5.5175275802612305,
+    "fc1": 27.325334548950195,
+    "fc2": 13.396956443786621
+  },
+  "ann_accuracy": 0.6575,
+  "timestep_values": [
+    1,
+    4,
+    8,
+    16,
+    25,
+    50,
+    100
+  ],
+  "snn_results": {
+    "1": {
+      "accuracy": 0.02,
+      "pct_of_ann": 3.0418250950570345,
+      "gap_pp": 63.74999999999999,
+      "eval_time_s": 0.05
+    },
+    "4": {
+      "accuracy": 0.02,
+      "pct_of_ann": 3.0418250950570345,
+      "gap_pp": 63.74999999999999,
+      "eval_time_s": 0.1
+    },
+    "8": {
+      "accuracy": 0.02,
+      "pct_of_ann": 3.0418250950570345,
+      "gap_pp": 63.74999999999999,
+      "eval_time_s": 0.17
+    },
+    "16": {
+      "accuracy": 0.0225,
+      "pct_of_ann": 3.4220532319391634,
+      "gap_pp": 63.5,
+      "eval_time_s": 0.32
+    },
+    "25": {
+      "accuracy": 0.0325,
+      "pct_of_ann": 4.942965779467682,
+      "gap_pp": 62.5,
+      "eval_time_s": 0.49
+    },
+    "50": {
+      "accuracy": 0.0325,
+      "pct_of_ann": 4.942965779467682,
+      "gap_pp": 62.5,
+      "eval_time_s": 0.95
+    },
+    "100": {
+      "accuracy": 0.03,
+      "pct_of_ann": 4.562737642585551,
+      "gap_pp": 62.74999999999999,
+      "eval_time_s": 1.88
+    }
+  },
+  "convergence_T_95pct": null
+}

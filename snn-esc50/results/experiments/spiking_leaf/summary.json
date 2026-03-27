@@ -1,0 +1,138 @@
+{
+  "experiment": "spiking_leaf",
+  "seed": 42,
+  "epochs": 50,
+  "patience": 10,
+  "ann": {
+    "fold_accuracies": [
+      0.4775,
+      0.47,
+      0.4875,
+      0.525,
+      0.4675
+    ],
+    "mean_accuracy": 0.48550000000000004,
+    "std_accuracy": 0.020940391591371933,
+    "baseline_mean": 0.6385000000000001,
+    "delta_vs_baseline_pp": -15.3,
+    "total_params": 622322,
+    "frontend_params": 384,
+    "per_fold": [
+      {
+        "fold": 1,
+        "accuracy": 0.4775,
+        "best_epoch": 38,
+        "total_epochs": 48,
+        "time_seconds": 141.9,
+        "frontend_summary": {
+          "gabor": {
+            "center_freq_hz_min": -34.336246490478516,
+            "center_freq_hz_max": 10679.5390625,
+            "center_freq_hz_mean": 2323.041163265705,
+            "sigma_min": 1.9671255350112915,
+            "sigma_max": 117.9122085571289,
+            "sigma_mean": 26.945346338674426
+          },
+          "pcen": {
+            "s_mean": 0.031914614140987396,
+            "alpha_mean": 0.827439546585083,
+            "delta_mean": 1.9699902534484863,
+            "r_mean": 0.5012661814689636
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "accuracy": 0.47,
+        "best_epoch": 27,
+        "total_epochs": 37,
+        "time_seconds": 107.4,
+        "frontend_summary": {
+          "gabor": {
+            "center_freq_hz_min": 79.9061508178711,
+            "center_freq_hz_max": 10589.8115234375,
+            "center_freq_hz_mean": 2304.3556936979294,
+            "sigma_min": 1.7815070152282715,
+            "sigma_max": 121.15277099609375,
+            "sigma_mean": 27.300126999616623
+          },
+          "pcen": {
+            "s_mean": 0.030647676438093185,
+            "alpha_mean": 0.8400644063949585,
+            "delta_mean": 1.980902910232544,
+            "r_mean": 0.5013706684112549
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "accuracy": 0.4875,
+        "best_epoch": 47,
+        "total_epochs": 50,
+        "time_seconds": 146.9,
+        "frontend_summary": {
+          "gabor": {
+            "center_freq_hz_min": 48.857383728027344,
+            "center_freq_hz_max": 10557.05078125,
+            "center_freq_hz_mean": 2338.8417155742645,
+            "sigma_min": 1.7682416439056396,
+            "sigma_max": 119.0350570678711,
+            "sigma_mean": 26.664770478382707
+          },
+          "pcen": {
+            "s_mean": 0.03134872764348984,
+            "alpha_mean": 0.8460907936096191,
+            "delta_mean": 1.9738826751708984,
+            "r_mean": 0.5019620656967163
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "accuracy": 0.525,
+        "best_epoch": 43,
+        "total_epochs": 50,
+        "time_seconds": 145.5,
+        "frontend_summary": {
+          "gabor": {
+            "center_freq_hz_min": 62.5554084777832,
+            "center_freq_hz_max": 10602.55859375,
+            "center_freq_hz_mean": 2305.7550833821297,
+            "sigma_min": 1.7939268350601196,
+            "sigma_max": 123.887939453125,
+            "sigma_mean": 27.39218727685511
+          },
+          "pcen": {
+            "s_mean": 0.03175514191389084,
+            "alpha_mean": 0.8231401443481445,
+            "delta_mean": 1.9864816665649414,
+            "r_mean": 0.5043450593948364
+          }
+        }
+      },
+      {
+        "fold": 5,
+        "accuracy": 0.4675,
+        "best_epoch": 49,
+        "total_epochs": 50,
+        "time_seconds": 144.6,
+        "frontend_summary": {
+          "gabor": {
+            "center_freq_hz_min": 62.60676193237305,
+            "center_freq_hz_max": 10477.267578125,
+            "center_freq_hz_mean": 2270.6377153992653,
+            "sigma_min": 1.856860637664795,
+            "sigma_max": 108.6705322265625,
+            "sigma_mean": 26.72344171628356
+          },
+          "pcen": {
+            "s_mean": 0.031183145940303802,
+            "alpha_mean": 0.8520474433898926,
+            "delta_mean": 1.9756231307983398,
+            "r_mean": 0.5074167251586914
+          }
+        }
+      }
+    ]
+  }
+}

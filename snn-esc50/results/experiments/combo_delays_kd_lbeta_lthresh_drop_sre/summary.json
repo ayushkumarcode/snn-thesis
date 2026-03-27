@@ -1,0 +1,12 @@
+{
+  "experiment": "combo_delays_kd_lbeta_lthresh_drop_sre",
+  "fold_accuracies": [
+    0.52,
+    0.585,
+    0.3625,
+    0.63,
+    0.4075
+  ],
+  "mean_accuracy": 0.501,
+  "std_accuracy": 0.1019632286660245
+}

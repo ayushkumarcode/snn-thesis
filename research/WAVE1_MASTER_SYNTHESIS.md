@@ -82,3 +82,31 @@ Every strong paper followed this intro structure:
 - **Key result:** Poisson encoding matched ANN performance
 - **Novelty:** Application to underexplored domain + thorough comparison
 - **Lessons:** The "can SNNs compete with ANNs on X?" framing works. Negative results (autoencoders failed, CNNs underperformed) were valued. Honest about compute constraints.
+
+### Brian Ezinwoke (2025) -- SNN for HFT price spike prediction
+- **Supervisor:** Oliver Rhodes (SpiNNaker group)
+- **Framework:** Custom implementation
+- **Approach:** Extended existing STDP architecture (Gao et al.) + Bayesian Optimisation with novel PSA metric
+- **Key result:** 17.44% return, Sharpe Ratio 19.71 outperforming supervised baseline
+- **Novelty:** Extension of existing architecture + novel evaluation metric
+- **Lessons:** "Extend, don't invent" works. Same supervisor sets consistent expectations. Quantitative evaluation with concrete metrics is essential.
+
+---
+
+## 4. Marking criteria (COMP30040)
+
+| Component | Weight | What Matters |
+|-----------|--------|-------------|
+| **Report** | **55%** | Writing quality, critical analysis, evaluation depth |
+| **Achievements** | **30%** | Working output, demonstrated via weekly supervisor meetings |
+| **Screencast** | **15%** | 8-min video explaining project + results |
+| **Q&A** | 0% (informs Achievements) | 25 min with second marker; validates understanding |
+
+The report is worth almost DOUBLE the code/achievements. A brilliant analysis of modest results beats impressive results with shallow analysis.
+
+What the documents never say: "novel", "original", "groundbreaking", "publishable". They care about: clear objectives, proper methodology, thorough evaluation, honest reflection.
+
+Biggest differentiator between 2:1 and first: the critical appraisal section. A first-class student explains WHY results are limited, WHAT they learned, HOW their approach compares to alternatives, and WHAT they'd do differently.
+
+---
+

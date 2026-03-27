@@ -166,3 +166,31 @@ What it would involve:
 - General-purpose neural simulator
 - Can run on CPU (no GPU required)
 - Source: [Nengo Documentation](https://www.nengo.ai/)
+
+What an undergrad thesis could do:
+- Replicate a single cognitive function from SPAUN (e.g., working memory task) using snnTorch
+- Build a simple decision-making circuit inspired by BrainCog's BDM-SNN model
+- Compare performance with equivalent ANN architecture
+
+**Feasibility for ~4 weeks: LOW**
+- Understanding cognitive architectures requires significant neuroscience background
+- SPAUN is massive (2.5M neurons) -- even replicating a subset is complex
+- BrainCog is more accessible but still requires understanding brain region interactions
+- Nengo has its own learning curve separate from snnTorch
+
+**Verdict: not recommended. These are PhD-scale projects.**
+
+---
+
+### 1.6 SNN for predictive coding / world models
+
+The idea: the brain constantly predicts its sensory inputs and learns from prediction errors. Can SNNs implement this?
+
+**Literature: 10-15 papers, growing in 2024-2025**
+
+Key papers:
+- [Predictive coding with spiking neurons and feedforward gist signaling, Frontiers 2024](https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2024.1338280/full)
+- [Integration of Contrastive Predictive Coding and SNNs, arxiv 2025](https://arxiv.org/html/2506.09194)
+- [PC-SNN: Supervised Learning with Predictive Coding in SNNs](https://www.researchgate.net/publication/365821328)
+- [Energy optimization induces predictive-coding properties in multi-compartment SNN, PLOS Comp Bio](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1013112)
+

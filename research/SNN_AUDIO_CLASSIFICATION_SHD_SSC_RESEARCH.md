@@ -362,3 +362,31 @@ option A seems strongest because the delay-vs-recurrence question is currently d
 
 ### Review Papers
 
+7. **Baek & Lee (2024)** -- "SNN and Sound: A Comprehensive Review of Spiking Neural Networks in Sound" -- [Biomedical Engineering Letters](https://link.springer.com/article/10.1007/s13534-024-00406-y)
+   review of all SNN audio applications.
+
+8. **Li et al. (2025)** -- "Spiking Neural Networks for Temporal Processing: Status Quo and Future Prospects" -- [arXiv:2502.09449](https://arxiv.org/html/2502.09449v1)
+   critical assessment. argues current benchmarks may not adequately test temporal processing. worth keeping in mind.
+
+---
+
+## 9. Open Research Gaps
+
+some things that haven't been done yet that could be interesting:
+
+1. **Benchmark adequacy**: Li et al. (2025) argue that SHD/SSC may not truly test temporal processing because "temporal credit assignment during the backward pass is not necessary for these datasets." could test this by comparing SNNs trained with and without temporal backpropagation.
+
+2. **Feedforward vs recurrent with delays**: DCLS-Delays showed feedforward SNNs with delays can match recurrent ones, but this hasn't been tested across all neuron models.
+
+3. **Energy analysis standardization**: most papers report accuracy but few report standardized energy metrics. a project that measures SynOps and estimates energy across multiple methods would actually be a genuine contribution.
+
+4. **Undergraduate accessibility**: there's no tutorial or reproducible notebook walking through a complete SHD experiment from data loading to analysis with modern methods. making one would help the community.
+
+5. **Encoding comparison**: comparing the cochlea-based SHD encoding against simpler encodings (rate coding of mel spectrograms, delta encoding) hasn't been done for SNN audio classification.
+
+---
+
+## 10. How Confident Am I In All This
+
+| Finding | Confidence | Source Quality |
+|---------|------------|---------------|

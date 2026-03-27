@@ -390,3 +390,31 @@ this paper would be most useful as an introductory reference -- it was specifica
 - **Strengths:** fastest framework (0.26s forward+backward with CuPy backend); full-stack toolkit; supports neuromorphic datasets, ANN2SNN conversion, surrogate gradients, and biologically plausible learning; up to 11x training speedup; published in Science Advances
 - **Weakness:** documentation primarily in Chinese (English docs available but less thorough); steeper learning curve
 - **Best For:** performance-critical research; deployment on neuromorphic chips; largest model training
+
+#### Norse
+- **GitHub Stars:** growing community
+- **Latest:** PyTorch 1.9+ compatible
+- **Strengths:** clean PyTorch integration; good for small-to-medium networks (up to ~5000 neurons/layer); Colab notebooks; PyTorch Lightning compatible
+- **Weakness:** performance constrained on very large networks
+- **Best For:** clean research code; integration with existing PyTorch workflows
+
+### tier 2: specialized use cases
+
+| Framework | Best For | Notes |
+|-----------|----------|-------|
+| Lava (Intel) | Loihi deployment | hardware-specific; NIR support |
+| Nengo/NengoDL | large-scale brain models, ANN conversion | mature ecosystem; TensorFlow integration |
+| Brian2 | neuroscience simulation | easiest syntax; not ML-focused |
+| NEST | large biological networks | biology/medicine focus |
+| BindsNet | reinforcement learning with SNNs | PyTorch-based |
+| Sinabs | vision models, hardware deployment | PyTorch-based; EXODUS backend for speed |
+| GeNN | GPU-accelerated simulation | NVIDIA GPU specific |
+| Spyx | JAX-based acceleration | GPU/TPU JIT compilation |
+| CARLsim | large-scale with realistic synapses | multi-GPU support |
+
+### framework performance benchmarks (Open Neuromorphic, 2024)
+
+test: single FC + LIF layer, batch=16, 500 time steps, n neurons:
+
+| Framework | Forward+Backward Time | Notes |
+|-----------|----------------------|-------|

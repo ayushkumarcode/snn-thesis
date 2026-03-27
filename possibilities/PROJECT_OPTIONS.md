@@ -82,3 +82,31 @@ why not: weakest natural SNN fit of the top options. static RGB images don't pla
 
 the pitch: nobody has ever done a proper three-way comparison of SNN frameworks on the same tasks with the same hyperparameters. the community doesn't know if framework choice affects accuracy, training time, or energy estimates. i'd answer that.
 
+what i'd actually build:
+- pick 2-3 datasets (SHD, DVS128, and one static like CIFAR-10)
+- implement the SAME architecture in all three frameworks
+- train with the SAME hyperparameters
+- compare: accuracy, training time, memory usage, lines of code, API ergonomics
+- maybe add energy estimation comparison
+
+iteration cycle: very short per experiment, but lots of experiments (3 frameworks x 2-3 datasets x multiple runs). each individual run is fast. the work is breadth, not depth.
+
+what "good" looks like: a clear comparison table showing where frameworks diverge. even if they all get similar accuracy, documenting the API differences, gotchas, and performance characteristics is valuable.
+
+novelty: genuine confirmed gap. no three-way comparison exists. a 2025 benchmark deliberately excluded snnTorch and Norse.
+
+risk: LOW. even if all frameworks perform identically, that's a result. worst case is still a useful contribution.
+
+why pick this: lowest risk option. immediately useful to anyone starting SNN research. multiple small deliverables rather than one big bet.
+
+why not: less exciting narrative than "first SNN on X domain." it's a meta-study, not an application. some might see it as "just running benchmarks."
+
+---
+
+## Option 5: SNN Robot Reflexes in Simulation
+
+the pitch: biological reflexes use spiking neurons. i'd implement SNN-based reflex controllers for simulated robots using SpikeGym + Isaac Gym.
+
+what i'd actually build:
+- set up Isaac Gym or MuJoCo simulation environment
+- use SpikeGym framework (SNN + RL)

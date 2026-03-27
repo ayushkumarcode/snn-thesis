@@ -222,3 +222,31 @@ URLs:
 | Replicating cognitive self-sufficiency for AGI models | Ivan Kyambadde | 2023 | PhD | York |
 | Breaking Implicit Assumptions of Physical Delay-Feedback Reservoir Computing | Tian Gan | 2023 | PhD | York |
 | Embodying a Computational Model of Hippocampal Replay for Robotic RL | Matthew Whelan | 2020 | MPhil | Sheffield |
+| Social Insect-Inspired Adaptive Hardware | Matthew Rowlings | 2018 | PhD | York |
+| Learning spatio-temporal spike train encodings with ReSuMe/DelReSuMe/R-STDP | Ibrahim Ozturk | 2017 | PhD | York |
+| Reconstruction methods for spiking neural circuits | Dorian Florescu | 2016 | PhD | Sheffield |
+| Figuring Time by Space: Sensory motion in cortical maps | Stuart Wilson | 2011 | PhD | Sheffield |
+
+URL pattern: https://etheses.whiterose.ac.uk/id/eprint/[number]
+
+---
+
+## other notable student projects (non-UK, for calibration)
+
+### master's theses
+
+| Title | Author | University | Year | Tools | Key Detail |
+|-------|--------|-----------|------|-------|------------|
+| ZynqNet: FPGA-Accelerated Embedded CNN | David Gschwend | (not specified) | 2016 | Caffe, Vivado HLS, Xilinx Zynq | 84.5% top-5 ImageNet, 200MHz |
+| Modelling Learning Systems in Artificial and Spiking Neural Networks | Jegp | (not specified) | 2019 | Haskell, Futhark, NEST, PyNN, BrainScaleS | Volr DSL for unified ANN/SNN specification |
+| Spiking Neural Network Accelerator (EE552 class project) | zwhexplorer | (not specified) | 2022 | SystemVerilog | Mesh network SNN accelerator |
+
+### undergraduate-level thesis comparison
+
+| Title | Author | Level | Tools | Scope |
+|-------|--------|-------|-------|-------|
+| Paths to Less Artificial Intelligence | Chira Levy | Thesis-level | snntorch, PyTorch | SNN vs ANN comparison on MNIST/CIFAR-10/Speech Commands |
+| Spiking Neural Networks for Image Classification | Osaze Shears | Course project | Python | MNIST/CIFAR10 comparison |
+
+---
+

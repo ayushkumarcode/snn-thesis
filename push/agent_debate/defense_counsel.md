@@ -52,31 +52,3 @@ The literature has reached no consensus on which encoding is best for audio. Guo
 
 ### Strongest Honest Framing for ICONS Reviewers
 
-"Our 7-encoding comparison on ESC-50 is the most comprehensive encoding benchmark in SNN audio, superseding the previous largest comparison (4 schemes, Yarga 2022 ICONS, on speech digits). The rate-phase tie — equivalent accuracy at 7x different spike counts — is a novel empirical finding with direct implications for energy-efficient neuromorphic audio deployment."
-
----
-
-## C3: SpiNNaker Deployment for Environmental Sound Classification
-
-### Core Novelty Claim
-
-This is the first deployment of a spiking neural network on the SpiNNaker neuromorphic platform for environmental sound classification, completing a full 5-fold cross-validation (2,000 inferences) on hardware.
-
-### Why It Is Genuinely Novel
-
-Only one prior paper has deployed an SNN for audio on SpiNNaker: Dominguez-Morales et al. (ICANN 2016), which classified pure sinusoidal tones (frequencies 130-1397 Hz). Pure tone discrimination is a trivial signal processing task — the task can be solved by a single Fourier transform — and bears no relationship to environmental sound classification involving 50 naturalistic acoustic categories. No subsequent paper in 10 years has revisited SpiNNaker for audio of any complexity. Manchester has 6 SpiNNaker PhDs, all working on biological simulation, not audio ML. This work is therefore the first to ask the question: can a convolutional SNN trained on a real-world audio benchmark actually run on SpiNNaker?
-
-The deployment was non-trivial. The root-cause analysis of FC1 cancellation — the discovery that AvgPool produces fractional (non-binary) outputs incompatible with SpiNNaker's spike-only input requirement, and the documented failure of post-hoc weight re-centring (accuracy: 53.75% → 8.50%) — is itself a novel finding. It reveals a fundamental constraint: standard convolutional SNN architectures cannot be directly deployed on spike-only neuromorphic hardware without architectural modification. The FC2-only hybrid approach (snnTorch extracts binary hidden spikes; SpiNNaker runs only the output layer) is a validated engineering contribution that other researchers building similar systems will need to navigate. The 5-fold hardware evaluation (SpiNNaker: 33.1% ± 6.9% vs snnTorch reference: 46.0%) quantifies the hardware gap across all folds, not just a single demonstration.
-
-### Why It Has Scientific Significance Beyond Just "First"
-
-The hardware gap analysis (12.8 ± 4.1 pp across 5 folds) is scientifically valuable in two respects. First, it shows the gap is systematic but variable — the per-fold hardware accuracy ranges from 25.2% (F5) to 43.0% (F4), suggesting fold-specific factors (class distribution, hidden layer activity patterns) affect hardware translation. Second, the gap quantification itself provides ground truth for future SpiNNaker audio work: researchers now know what to expect from FC2-only hybrid deployment and can direct effort toward closing the gap (quantisation-aware training, architectural redesign to avoid AvgPool). The Option A experiment (MaxPool SNN with fc1_binary_fraction=1.000 at all thresholds tested, 43.75% accuracy at threshold=3.0) demonstrates theoretically that full FC1+FC2 SpiNNaker deployment is achievable with an architectural fix, even if not yet completed end-to-end.
-
-The FC1 cancellation finding specifically deserves emphasis. The community does not have a systematic accounting of which standard architectural components are SpiNNaker-compatible. Discovering that AvgPool → FC is incompatible (because AvgPool outputs are fractional not binary) is a practical constraint that affects any SNN deployer using pooling operations before fully-connected layers. Documenting this failure mode with quantitative evidence (weight re-centring assumed binary inputs with sum=n_inputs, but actual sums from fractional AvgPool outputs are much smaller, causing wildly incorrect bias compensation) is an honest, reproducible negative result that saves other researchers from repeating the same mistake.
-
-### Strongest Honest Framing for ICONS Reviewers
-
-"We present the first SpiNNaker deployment for environmental sound classification, completing a 5-fold hardware evaluation (2,000 inferences). We document a previously unreported constraint — AvgPool → FC layers are not directly compatible with spike-only hardware — and provide the validated FC2-only hybrid approach as a replicable workaround. The hardware gap (12.8 ± 4.1 pp) is quantified across all folds, providing the field's first characterisation of SpiNNaker translation fidelity for audio SNNs."
-
----
-

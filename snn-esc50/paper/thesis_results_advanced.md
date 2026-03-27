@@ -290,14 +290,3 @@ need to think about whether to expand this section or just reference it briefly
 4. **Representation (t-SNE):** ANN clusters tighter (consistent with higher accuracy), SNN shows emergent super-category structure despite weaker within-category discrimination.
 
 5. **Per-class:** SNN beats ANN on 6/50 classes. Unexpectedly, SNN wins on high-energy impulsive sounds (crying_baby +7pp, coughing +8pp) not sustained tones. Fails on low-energy sounds (engine 8%, clock_tick 23%) where LIF threshold isn't consistently crossed.
-## 6.6 Chapter Summary
-
-1. **Adversarial robustness (§6.1, C4):** SNN retains 26% accuracy at ε=0.1 FGSM vs ANN's 1.75%. The spike threshold provides natural adversarial filtering, making SNNs substantially more robust to gradient-based attacks on audio spectrograms. This is the first such analysis for SNN on environmental sound data.
-
-2. **Continual learning (§6.2):** Both SNN and ANN suffer severe catastrophic forgetting without replay or regularisation. **SNN mean forgetting: 69.9% ± 4.3%; ANN mean forgetting: 74.7% ± 2.4% — SNN forgets 4.7 pp less (5-fold validated).** The spike threshold's sparsity limits gradient interference between tasks. Both converge to classifying only the most recently seen task (Urban) after all 5 sequential tasks.
-
-3. **Temporal analysis (§6.3):** Rate readout (51.50%) dramatically outperforms first-spike readout (25.75%) on the same model, confirming that this SNN is a rate-coded classifier. Temporal spike structure is not exploited by the training objective.
-
-4. **Representation quality (§6.4):** t-SNE reveals tighter ANN clusters consistent with its higher accuracy, while SNN representations show emergent super-category structure (Animals cluster, Urban cluster) despite weaker within-category discrimination.
-
-5. **Per-class analysis (§6.5):** SNN outperforms ANN on 6/50 classes. Contrary to expectations, the SNN wins on high-energy impulsive sounds (crying_baby +7pp, door_wood_knock +7pp, coughing +8pp) rather than sustained tonal sounds. The SNN fails most severely on low-energy continuous sounds (engine 8%, door_wood_creaks 10%) where the LIF threshold is not consistently crossed. Clock_tick shows the largest gap (SNN 23%, ANN 68%), suggesting the SNN cannot detect quiet periodic signals reliably.

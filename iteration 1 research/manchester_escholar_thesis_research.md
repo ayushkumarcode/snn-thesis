@@ -160,31 +160,3 @@ This means:
 | **Tools/Frameworks** | SpiNNaker, simulated annealing |
 | **Datasets** | Not specified |
 | **Scope** | Very high -- supercomputer-scale engineering |
-| **PDF Size** | 8.54 MB |
-
----
-
-### 1.9 Structural Plasticity on SpiNNaker
-| Field | Detail |
-|-------|--------|
-| **Author** | Petrut Bogdan |
-| **Year** | 2019 |
-| **Degree** | PhD |
-| **Department** | Computer Science |
-| **Supervisors** | Steve Furber (main), David Lester (co) |
-| **URL** | https://research.manchester.ac.uk/en/studentTheses/structural-plasticity-on-spinnaker |
-| **Abstract** | Implements structural plasticity model on SpiNNaker that operates in real-time alongside STDP. Applications in topographic map generation, unsupervised handwritten digit classification, and motion detection. |
-| **What They Built** | Structural plasticity implementation on SpiNNaker; topographic map, digit classification, motion detection demos |
-| **Tools/Frameworks** | SpiNNaker, STDP |
-| **Datasets** | Handwritten digits (likely MNIST) |
-| **Scope** | Very high -- novel plasticity mechanism on neuromorphic hardware |
-| **PDF Size** | 47.6 MB |
-
----
-
-### 1.10 Real Time Spaun on SpiNNaker
-| Field | Detail |
-|-------|--------|
-| **Author** | Andrew Mundy |
-| **Year** | 2016 |
-| **Degree** | PhD |

@@ -705,31 +705,3 @@ Based on SpikingJelly benchmarks on RTX 2080 Ti:
 
 ### 7.1 Energy Efficiency Estimation (Without Neuromorphic Hardware)
 
-#### The SynOps Metric
-
-Synaptic Operations (SynOps) count the number of accumulate (AC) and multiply-accumulate (MAC) operations during inference:
-
-- **ANN computation:** Uses MAC operations (multiply + add). Energy: ~4.6 pJ per MAC (45nm technology)
-- **SNN computation:** Uses AC operations (add only, due to binary spikes). Energy: ~0.9 pJ per AC (45nm technology)
-- **Energy ratio:** E_AC is approximately 32x lower than E_MAC
-
-#### Using the syops Library
-
-```bash
-pip install syops
-```
-
-```python
-import torch
-from spikingjelly.activation_based import surrogate, neuron, functional
-from spikingjelly.activation_based.model import spiking_resnet
-from syops import get_model_complexity_info
-
-net = parametric_lif_net.DVSGestureNet(
-    channels=128,
-    spiking_neuron=neuron.IFNode,
-    surrogate_function=surrogate.ATan(),
-    detach_reset=True
-)
-
-# Compute SynOps with a data sample

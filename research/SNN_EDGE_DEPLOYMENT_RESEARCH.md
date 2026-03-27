@@ -166,3 +166,31 @@ honestly, the most valuable thesis contribution would be measuring both SNN and 
 **what makes it feasible:**
 - Spiker+ auto-generates VHDL from Python -- no hand-written HDL
 - ISFPGA 2024 workshop provides complete bitstream and scripts
+- PYNQ lets you interact with the FPGA from Python (no bare-metal)
+- HLS lets you write C++ instead of Verilog/VHDL
+- multiple undergrad projects have done this successfully
+
+**what makes it challenging:**
+- Xilinx Vivado toolchain has a steep learning curve
+- understanding fixed-point arithmetic and quantization tradeoffs
+- hardware debugging is harder than software
+- synthesis times can be 30 min to hours per iteration
+
+### recommended approaches
+
+**option A -- Spiker+ (fastest to results):** design in Python, auto-generate VHDL, deploy on PYNQ-Z2, measure power/latency/accuracy, compare vs software.
+
+**option B -- snnTorch + HLS (most educational):** train with quantization-aware training, follow ISFPGA 2024 workshop, deploy on Kria KV260 via Vitis HLS, test with PYNQ.
+
+**option C -- ModNEF (most flexible):** open-source modular FPGA emulator, configure LIF neurons with desired precision, deploy on Zynq.
+
+### learning timeline
+
+| Skill | Time | Resources |
+|-------|------|-----------|
+| snnTorch basics | 1-2 weeks | Official tutorials |
+| FPGA/Vivado basics | 2-3 weeks | PYNQ getting started, Xilinx tutorials |
+| Vitis HLS | 1-2 weeks | AMD docs, examples |
+| Fixed-point quantization | 1 week | snnTorch quantization tutorial |
+| PYNQ Python overlay | 1 week | PYNQ docs |
+| End-to-end integration | 2-3 weeks | fpga-snntorch repo |

@@ -54,3 +54,31 @@ def extract_features(fold, model_type, num_samples):
     model.eval()
     print(f"[{ts()}] Loaded model from {path}")
 
+    all_data, all_labels = [], []
+    for data, targets in test_loader:
+        all_data.append(data)
+        all_labels.append(targets)
+    all_data = torch.cat(all_data, dim=0)[:num_samples].to(device)
+    all_labels = torch.cat(all_labels, dim=0)[:num_samples]
+
+    hidden_features = []
+    predictions = []
+
+    with torch.no_grad():
+        for i in range(0, num_samples, BATCH_SIZE):
+            batch = all_data[i:i+BATCH_SIZE]
+            B = batch.shape[0]
+            spk_input = encode_direct(batch).to(device)
+
+            mem1 = model.lif1.init_leaky()
+            mem2 = model.lif2.init_leaky()
+            mem3 = model.lif3.init_leaky()
+            mem4 = model.lif4.init_leaky()
+
+            hidden_spk = []
+            mem_out = []
+            for step in range(NUM_STEPS):
+                x_t = spk_input[step]
+                cur1 = model.pool1(model.bn1(model.conv1(x_t)))
+                spk1, mem1 = model.lif1(cur1, mem1)
+                cur2 = model.pool2(model.bn2(model.conv2(spk1)))

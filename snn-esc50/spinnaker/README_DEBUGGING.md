@@ -1,9 +1,9 @@
-# SpiNNaker Debugging Guide
+# SpiNNaker debugging notes
 
-This document explains how to diagnose and fix the zero-spike problem when running
-the ESC-50 SNN on SpiNNaker hardware.
+notes i wrote so i don't forget how to debug the zero-spike problem next time.
+i kept getting 0 spikes so here's what i tried and what each test checks.
 
-## Background: Why Spikes Die
+## background: why spikes die
 
 snnTorch `snn.Leaky` and sPyNNaker `IF_curr_exp` differ in one critical way:
 

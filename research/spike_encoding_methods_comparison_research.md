@@ -614,3 +614,11 @@ ENCODINGS = {
     # 'grf': encode_grf,
 }
 
+DATASETS = ['mnist', 'cifar10', 'shd']
+
+results = {}
+for dataset_name in DATASETS:
+    results[dataset_name] = {}
+    for enc_name, enc_fn in ENCODINGS.items():
+        pass  # run evaluate_encoding here
+```

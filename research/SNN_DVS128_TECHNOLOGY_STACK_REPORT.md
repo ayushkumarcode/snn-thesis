@@ -194,3 +194,31 @@ net.to(device)
 train_set = DVS128Gesture(root='./data/DVS128Gesture', train=True,
                           data_type='frame', frames_number=T, split_by='number')
 test_set = DVS128Gesture(root='./data/DVS128Gesture', train=False,
+                         data_type='frame', frames_number=T, split_by='number')
+
+train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size,
+                                           shuffle=True, num_workers=4, pin_memory=True)
+test_loader = torch.utils.data.DataLoader(test_set, batch_size=batch_size,
+                                          shuffle=False, num_workers=4, pin_memory=True)
+
+# === Optimizer ===
+optimizer = torch.optim.Adam(net.parameters(), lr=lr)
+lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, epochs)
+scaler = amp.GradScaler()  # For mixed precision
+
+# === Training ===
+max_test_acc = 0
+for epoch in range(epochs):
+    # Train
+    net.train()
+    train_loss = train_acc = train_samples = 0
+    for frame, label in train_loader:
+        optimizer.zero_grad()
+        frame = frame.to(device)
+        # Reshape [N, T, C, H, W] -> [T, N, C, H, W] for multi-step mode
+        frame = frame.transpose(0, 1)
+        label = label.to(device)
+        label_onehot = F.one_hot(label, 11).float()
+
+        # Mixed precision forward pass
+        with amp.autocast():

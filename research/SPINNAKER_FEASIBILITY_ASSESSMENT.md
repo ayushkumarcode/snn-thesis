@@ -258,31 +258,3 @@ A 2025 paper demonstrated the complete pipeline:
 3. They create a Collab for you with test quota and examples -- **free of charge**
 4. Access via Jupyter notebook at `spinn-20.cs.man.ac.uk` or via the EBRAINS portal
 5. Write PyNN scripts, submit via the job queue, results returned to you
-
-**No physical lab access required.** Everything is remote.
-
-**Source:** [EBRAINS Neuromorphic Getting Access](https://wiki.ebrains.eu/bin/view/Collabs/neuromorphic/Getting%20access/)
-
-### SpiNNaker2 Access (Restricted)
-
-- Single-chip boards exist but access is restricted
-- `py-spinnaker2` software dependencies are in **private repositories**
-- Access requires direct contact with TU Dresden / SpiNNcloud Systems
-- sPyNNaker (the SpiNNaker1 software) does NOT run on SpiNNaker2
-- No public student access program exists for SpiNNaker2
-
-### Oliver Rhodes as Supervisor
-
-Oliver Rhodes is a Lecturer in Bio-Inspired Computing at Manchester, part of the APT (Advanced Processor Technologies) group that built SpiNNaker. He:
-- Co-authored the sPyNNaker paper
-- Has supervised 4+ student projects (details not publicly listed)
-- Works directly on SpiNNaker software
-- Could potentially facilitate access to SpiNNaker hardware beyond EBRAINS quotas
-- Published with Brian Ezinwoke on SNN applications (financial prediction)
-
-**Having Oliver Rhodes as supervisor is a significant advantage for SpiNNaker access.**
-
----
-
-## Question 5: Training vs Inference on SpiNNaker
-

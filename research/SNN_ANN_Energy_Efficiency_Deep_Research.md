@@ -297,31 +297,3 @@ From the Frontiers benchmarking paper, energy for simulating 1 second of a singl
 ### 4.1 Horowitz ISSCC 2014 -- The Canonical Reference
 
 **Citation:** M. Horowitz, "1.1 Computing's Energy Problem (and what we can do about it)," ISSCC 2014 Digest of Technical Papers, pp. 10-14, Feb. 2014.
-
-This is THE foundational reference for energy per arithmetic operation. All values are for **45nm CMOS at 0.9V**.
-
-**Reconstructed Energy Table (from multiple citing sources):**
-
-| Operation | Energy (pJ) |
-|:---|:---:|
-| 8-bit Integer Add | 0.03 |
-| 8-bit Integer Multiply | 0.2 |
-| 16-bit Integer Add | ~0.05 |
-| 16-bit Integer Multiply | ~1.0 |
-| 32-bit Integer Add | 0.1 |
-| 32-bit Integer Multiply | 3.1 |
-| 32-bit FP Add | 0.9 |
-| 32-bit FP Multiply | 3.7 |
-| **32-bit FP MAC (MUL+ADD)** | **4.6** |
-| **32-bit FP AC (ADD only)** | **0.9** |
-| 8-bit FP MAC | ~1.1 |
-| 8-bit FP AC | ~0.2 |
-| 32-bit SRAM Read (8KB) | 5 |
-| 32-bit SRAM Read (32KB) | 20 |
-| 32-bit DRAM Read | ~640 |
-
-**Key ratios:**
-- MAC/AC ratio at 32-bit FP: **4.6/0.9 = 5.1x** (MACs cost 5.1x more than ACs)
-- DRAM access vs compute: **640 pJ vs 4.6 pJ = 139x** (memory dominates energy)
-
-### 4.2 Has Horowitz Been Updated?

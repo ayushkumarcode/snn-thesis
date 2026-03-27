@@ -922,3 +922,31 @@ To train a standard CNN on DVS128 data, first need to convert events to frames:
 
 ```python
 import tonic
+import tonic.transforms as transforms
+import torch
+from torch.utils.data import DataLoader
+
+sensor_size = tonic.datasets.DVSGesture.sensor_size
+
+# === Method 1: Accumulate all events into a single frame ===
+# Simple but loses all temporal information
+transform_single = transforms.Compose([
+    transforms.Denoise(filter_time=10000),
+    transforms.ToFrame(sensor_size=sensor_size, n_time_bins=1)  # Single frame
+])
+
+# === Method 2: Create fixed number of frames and stack as channels ===
+# Preserves some temporal info; treat T frames as T*2 channels
+transform_multi = transforms.Compose([
+    transforms.Denoise(filter_time=10000),
+    transforms.ToFrame(sensor_size=sensor_size, n_time_bins=10)
+])
+
+# Load dataset
+trainset = tonic.datasets.DVSGesture(save_to='./data', transform=transform_multi, train=True)
+testset = tonic.datasets.DVSGesture(save_to='./data', transform=transform_multi, train=False)
+```
+
+### ANN Baseline with Standard CNN
+
+```python

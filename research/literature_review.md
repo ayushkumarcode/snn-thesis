@@ -54,3 +54,31 @@ So basically LIF is the go-to for most practical stuff. Izhikevich if you need m
 - Optical flow: Spike-FlowNet for event-camera processing
 - Medical imaging: STDP-based melanoma detection at 87.7% accuracy
 
+#### Robotics
+- Locomotion: Spiking Central Pattern Generators (sCPG) for hexapod walking on SpiNNaker hardware
+- Motor control: Event-based PID on Loihi for drone stabilization (0.005g thrust error)
+- Navigation: Spiking RatSLAM using place cells + grid cells for SLAM
+- Autonomous mapping: Gridbot -- 1,321 LIF neurons, 100x less energy than CPU-based GMapping
+
+### Key Software Frameworks
+
+| Framework | Best for | Notes |
+|-----------|---------|-------|
+| **snnTorch** | PyTorch users | Easy to learn, active community |
+| **Norse** | PyTorch users | Good for research, flexible neuron models |
+| **Brian2** | Neuroscience-style simulation | Equation-based, very flexible |
+| **Nengo** | Neural engineering | Good for robotics applications |
+| **SpykeTorch** | Convolutional SNNs with STDP | PyTorch-based |
+| **snn_toolbox** | ANN-to-SNN conversion | Multi-framework support |
+| **Lava** | Intel Loihi deployment | Official Intel framework |
+
+### Datasets / Benchmarks
+
+- Static images: MNIST, CIFAR-10, CIFAR-100, ImageNet
+- Neuromorphic (event-based): N-MNIST, N-Caltech101, DVS128 Gesture, DVS-CIFAR10
+- 3D / LiDAR: KITTI
+- Medical: ISIC 2018 (melanoma)
+- EEG/Brain: DEAP, SEED (emotion recognition)
+
+---
+

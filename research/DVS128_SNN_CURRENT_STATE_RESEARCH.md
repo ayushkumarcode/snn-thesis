@@ -110,3 +110,31 @@ for a 16K neuron forward+backward pass:
 | Spyx (JAX) | ~0.3-0.4 | Different ecosystem |
 
 ### my take
+
+SpikingJelly is the clear winner for DVS128 work. working data pipeline, complete example at 96.18%, fast training, PLIF built-in.
+
+snnTorch is better for learning fundamentals and has better docs, but its DVS128 support is broken. if you go with snnTorch, budget extra time for the Tonic data pipeline setup.
+
+Sources: [SNN Benchmarks - Open Neuromorphic](https://open-neuromorphic.org/blog/spiking-neural-network-framework-benchmarking/), [SpikingJelly GitHub](https://github.com/fangwei123456/spikingjelly), [snnTorch Issue #285](https://github.com/jeshraghian/snntorch/issues/285)
+
+---
+
+## 4. data pipeline complexity
+
+### dataset specs
+
+| Property | Value |
+|----------|-------|
+| Source | IBM DVS128 camera |
+| Resolution | 128 x 128 pixels |
+| Classes | 11 hand/body gestures |
+| Subjects | 29 people |
+| Lighting | 3 conditions (natural, LED, fluorescent) |
+| Train samples | 1,176 |
+| Test samples | 288 |
+| Total | 1,464 |
+| Raw format | AEDAT 3.1 (binary) |
+| Download size | ~3 GB tar, ~5 GB extracted |
+| Download source | IBM Box (manual, needs login) |
+| Event format | (x, y, timestamp, polarity) per event |
+

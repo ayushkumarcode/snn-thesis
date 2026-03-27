@@ -110,3 +110,31 @@ NIR is a standardized graph-based format bridging multiple SNN frameworks and ha
 
 Source: [Nature Communications paper on NIR](https://www.nature.com/articles/s41467-024-52259-9)
 
+### How it works
+
+```python
+# Step 1: Train in snnTorch (standard workflow)
+# ... train with surrogate gradients ...
+
+# Step 2: Export to NIR
+from snntorch.export_nir import export_to_nir
+sample_data = torch.randn(1, 784)
+nir_graph = export_to_nir(net, sample_data)
+
+# Step 3: Save NIR file
+import nir
+nir.write("my_model.nir", nir_graph)
+
+# Step 4: Import into SpiNNaker2 via py-spinnaker2
+# (requires py-spinnaker2 library and SpiNNaker2 hardware access)
+```
+
+NIR captures each layer as a graph node -- convolution layers (weights, stride, padding), linear layers (weight matrices), LIF neurons (time constants, thresholds), pooling layers.
+
+### Proven end-to-end pipeline
+
+A 2025 paper demonstrated the complete pipeline:
+1. Train SNN in snnTorch (Conv2D + LIF architecture)
+2. Quantize weights to 8-bit (PTQ or QAT)
+3. Export to NIR
+4. Deploy on SpiNNaker2 via py-spinnaker2

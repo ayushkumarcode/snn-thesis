@@ -194,20 +194,20 @@ Mean first-spike latency is very short (0.12-3.25 out of 25) -- SNN with direct 
 ---
 
 ## 6.4 representation analysis (t-SNE)
-| brushing_teeth | 2.63 |
-| insects | 2.63 |
 
-**Interpretation:** The mean first-spike latency is very short (0.12–3.25 timesteps out of 25), confirming that the SNN, when given direct encoding (continuous current throughout the window), generates output spikes early in the simulation. This is consistent with the direct encoding maintaining constant input current — the LIF neurons accumulate charge rapidly and fire within the first few timesteps. The first-spike readout (25.75% accuracy) underperforms rate readout (51.50%) because the first spike is noisy (other classes may fire first by chance in the same early window), not because the correct class fires late.
+### 6.4.1 setup
 
----
+FC1 representations (256-d) extracted for all 400 fold-4 samples, projected to 2D via t-SNE (perplexity=30, 1000 iterations, seed=42). Both SNN and ANN visualised.
 
-## 6.4 Representation Analysis (t-SNE)
+### 6.4.2 results
 
-### 6.4.1 Setup
+Qualitative observations from the t-SNE plots:
 
-Hidden representations from the FC₁ layer (256-dimensional) are extracted for all 400 fold-4 test samples and projected to 2D using t-SNE (perplexity=30, 1,000 iterations, random seed 42). Both SNN and ANN representations are visualised.
+- **ANN:** tighter, more separated class clusters. Lower within-class variance, larger between-class distances. Consistent with its higher accuracy.
 
-### 6.4.2 Results
+- **SNN:** more diffuse clusters with greater overlap. Some super-categories (Animals, Nature) form loose macro-clusters even if individual classes aren't well-separated -- SNN learns coarse categorical structure but struggles within categories.
+
+**Super-category clustering:** both models show emergent super-category structure (Animals cluster, Urban cluster) even though super-category labels aren't used in training. Spectral features sufficiently distinctive at that level.
 
 ![t-SNE 2D projection of FC₁ representations (256-d → 2D, perplexity=30, 1000 iterations) for all 400 fold-4 test samples, coloured by ESC-50 class (50 classes). Left: SNN direct encoding — diffuse clusters with substantial inter-class overlap. Right: ANN — tighter, more separated class clusters, consistent with higher accuracy (63.85% vs 47.15%).](../results/analysis/tsne_snn_fold4.png)
 

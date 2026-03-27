@@ -138,3 +138,31 @@ train_loader = torch.utils.data.DataLoader(
 )
 # Returns (frames, labels, mask) where mask indicates valid timesteps
 ```
+
+### Pre-built DVSGestureNet Architecture
+
+SpikingJelly has a model specifically for this:
+
+```python
+from spikingjelly.activation_based.model import parametric_lif_net
+from spikingjelly.activation_based import neuron, surrogate, functional
+
+# Architecture: {Conv128-BN-LIF-MaxPool}x5 -> Dropout -> FC512 -> LIF -> Dropout -> FC11 -> LIF -> AvgPool
+net = parametric_lif_net.DVSGestureNet(
+    channels=128,
+    spiking_neuron=neuron.LIFNode,
+    surrogate_function=surrogate.ATan(),
+    detach_reset=True
+)
+
+# Enable multi-step mode (processes all timesteps in parallel)
+functional.set_step_mode(net, 'm')
+
+# Optional: Use CuPy backend for speedup (NVIDIA only)
+# functional.set_backend(net, 'cupy', instance=neuron.LIFNode)
+```
+
+### Complete Training Loop
+
+```python
+import torch

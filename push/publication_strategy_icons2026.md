@@ -298,31 +298,3 @@ This is a critical question. Here is why 47.15% is publishable at ICONS:
 
 | Contribution | Strength | Comparable at ICONS? |
 |---|---|---|
-| First SNN on full ESC-50 (50 classes) | **Very Strong** -- novelty is watertight, confirmed by literature review | No prior ESC-50 SNN paper exists anywhere |
-| 7-encoding comparison | **Very Strong** -- most comprehensive encoding comparison for SNN audio | Yarga (ICONS 2022) did 4 encodings on speech; we do 7 on ESC-50 |
-| SpiNNaker hardware deployment | **Strong** -- ICONS explicitly values hardware work | SpiNNaker papers appear regularly at ICONS (e.g., 2025 lightning talk) |
-| PANNs+SNN (92.5%) | **Strong** -- shows SNN can match ANN with good features | Novel transfer learning approach for neuromorphic audio |
-| Adversarial robustness (SNN 26% vs ANN 1.75%) | **Strong** -- dramatic result with practical implications | Adversarial SNN papers appear at ICONS (2024 lightning talk on adversarial attacks) |
-| Continual learning (SNN 74.4% vs ANN 81.3% forgetting) | **Moderate** -- incremental finding but adds breadth | Continual learning SNN paper at ICONS 2025 (Bouhadjar et al.) |
-| NeuroBench energy benchmarking | **Strong** -- standardized benchmarking valued | NeuroBench is the community standard (Nature Communications 2025) |
-| Surrogate gradient ablation (8 functions) | **Moderate** -- useful reference but not novel methodology | Surrogate gradient work published at IJCAI 2023, ICLR 2024 |
-
-### Weaknesses to Address
-
-| Concern | Mitigation |
-|---|---|
-| 47.15% accuracy on ESC-50 seems low | Frame as: (1) first-ever SNN result on this task, (2) gap analysis is the contribution, (3) PANNs+SNN achieves 92.5% |
-| SpiNNaker accuracy (33.1%) is low | Frame as: hardware gap analysis contribution, FC2-only hybrid approach, quantify the gap explicitly |
-| Only 1,600 training samples | Acknowledge as a limitation; show that PANNs pre-training overcomes it |
-| 8-page limit constrains content | Prioritize: encoding comparison + PANNs + SpiNNaker + adversarial. Move surrogate/continual to supplementary if needed |
-
-### Paper Structure Recommendation for 8 Pages
-
-Given the 8-page limit, prioritize contributions by novelty and impact:
-
-**Must include (core contributions):**
-1. Introduction + motivation (0.75 pages)
-2. Related work (0.75 pages)
-3. Methodology: architecture, dataset, 7 encodings, training (1.5 pages)
-4. Results: encoding comparison + analysis (1.5 pages)
-5. PANNs+SNN transfer learning result (0.5 pages)

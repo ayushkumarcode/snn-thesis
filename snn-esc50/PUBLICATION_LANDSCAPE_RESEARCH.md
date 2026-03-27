@@ -284,28 +284,6 @@ robustness and energy:
 - SNN adversarial local learning 2025: https://arxiv.org/html/2504.08897v2
 - Reconsidering SNN energy: https://arxiv.org/abs/2409.08290
 - Stochastic resonance: https://www.mdpi.com/1099-4300/27/3/219
-| Depth of analysis | Usually 1-2 analyses | 7 encodings + adversarial + transfer + temporal + CL + noise + surrogate + energy | **You exceed most papers** |
-| Clarity of thesis | One clear message | Multiple findings, unclear which is central | **This is your gap** |
-
-### THE SPECIFIC RECOMMENDED FRAMING
-
-**Current title:** "Spiking Neural Networks for Environmental Sound Classification: From Seven Encodings to SpiNNaker Deployment"
-
-**Problem with current title:** It sounds like a survey/benchmark. "From X to Y" framing suggests breadth, not depth. Reviewers may think "lots of experiments but what is the insight?"
-
-**Recommended reframe -- Option A (Gap-Collapse as Central Thesis):**
-
-> **Title:** "The SNN-ANN Gap is a Feature-Learning Problem: Evidence from Environmental Sound Classification with Seven Encodings and SpiNNaker Deployment"
->
-> **One-sentence thesis:** When given equal-quality features, SNNs match ANNs within 0.95pp on 50-class audio -- the 16.7pp scratch-training gap reflects a feature-learning bottleneck, not a spiking computation limitation.
->
-> **Why this works:** This positions all other results as SUPPORTING EVIDENCE for a single scientific claim:
-> - 7-encoding comparison: shows encoding matters enormously (direct = continuous features win)
-> - PANNs gap-collapse: the central proof of the thesis
-> - Adversarial robustness: shows SNNs have unique ADVANTAGES despite the accuracy gap
-> - SpiNNaker deployment: demonstrates practical viability of the hybrid approach implied by the thesis
-> - Encoding transfer analysis: shows WHY encoding matters (encoding-specific representations)
-> - Temporal truncation: shows path to energy efficiency once feature-learning is solved
 
 **Recommended reframe -- Option B (Hardware Co-Design as Central Thesis):**
 

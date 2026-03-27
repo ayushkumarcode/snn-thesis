@@ -535,31 +535,3 @@ def grf_population_encode(data, num_steps, num_neurons_per_feature=10,
 
     # Gaussian activation
     activations = torch.exp(-0.5 * ((data_exp - centres_exp) / sigma) ** 2)
-    # Shape: [batch x input_size x n]
-
-    # Reshape to [batch x (input_size * n)]
-    activations = activations.reshape(batch_size, input_size * n)
-
-    # Convert activations to latency-coded spikes
-    spike_train = spikegen.latency(
-        activations, num_steps=num_steps, tau=tau,
-        threshold=threshold, normalize=True, linear=True
-    )
-
-    return spike_train
-```
-
-#### Direct Coding (Trainable Layer)
-
-```python
-import torch.nn as nn
-
-class DirectEncoder(nn.Module):
-    """
-    Direct coding: trainable layer that learns to generate spikes.
-    Jointly trained with the SNN via surrogate gradients.
-    """
-    def __init__(self, input_size, num_steps):
-        super().__init__()
-        self.num_steps = num_steps
-        # Trainable projection: input -> num_steps copies

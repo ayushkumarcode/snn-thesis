@@ -341,31 +341,3 @@ Key parameters for `snn.Leaky`:
 
 ```python
 import torch
-import torch.nn as nn
-import tonic
-import tonic.transforms as transforms
-from tonic import DiskCachedDataset
-from torch.utils.data import DataLoader
-import snntorch as snn
-from snntorch import surrogate
-from snntorch import functional as SF
-from snntorch import utils
-import torchvision
-
-# === Device ===
-device = (torch.device("cuda") if torch.cuda.is_available()
-          else torch.device("mps") if torch.backends.mps.is_available()
-          else torch.device("cpu"))
-
-# === Dataset with Tonic ===
-sensor_size = tonic.datasets.DVSGesture.sensor_size  # (128, 128, 2)
-
-frame_transform = transforms.Compose([
-    transforms.Denoise(filter_time=10000),            # Remove noise
-    transforms.ToFrame(sensor_size=sensor_size,
-                       n_time_bins=16)                 # Convert to 16 frames
-])
-
-trainset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=True)
-testset = tonic.datasets.DVSGesture(save_to='./data', transform=frame_transform, train=False)
-

@@ -26,3 +26,31 @@ second-most studied task. subjects watch emotional stimuli while EEG is recorded
 
 key papers:
 - **EESCN** (2024, Computer Methods and Programs in Biomedicine): Gets 94.56% (valence), 94.81% (arousal), 94.73% (dominance) on DEAP and 79.65% on SEED-IV. Faster and uses less memory than prior SNN methods.
+- **Fractal-SNN** (2023): Uses multi-scale temporal-spectral-spatial information. Tested on DREAMER, DEAP, SEED-IV, and MPED.
+- **NeuroSense** (Tan et al., 2021): 78.97%/67.76% (arousal/valence) on DEAP.
+- **Bidirectional SNN** (Alzhrani et al., 2021): 94.83% accuracy on DREAMER.
+- **BISNN** (2025): Bio-information-fused SNN for emotion recognition.
+
+### epilepsy/seizure detection
+
+growing application area with obvious clinical motivation.
+
+key papers:
+- **EESNN** (2024): Recurrent spiking convolution structure, energy reduction by several orders of magnitude vs ANNs.
+- **Spiking Conformer** (2024): Trained on raw EEG, no preprocessing needed. 10x fewer operations than non-spiking equivalent.
+- **SyNSense Xylo deployment** (2024): Real-time sub-milliwatt epilepsy detection on a neuromorphic edge processor.
+- **Cross-patient SNN** (2024, Frontiers in Neuroscience): Efficient cross-patient seizure detection.
+
+### other tasks
+
+- **Stress detection:** CSNN (2025, Scientific Reports) gets 98.75% with 10-fold CV and F1 of 98.60%.
+- **SSVEP:** Event-driven SNN (2024, IEEE) using empirical mode decomposition and CCA with excitation-inhibition balanced SNN.
+- **P300:** SNNs have been used for P300 signal reconstruction and data augmentation (2021, Frontiers), but dedicated P300 SNN classifiers are rare. this is a potential gap.
+- **Sleep staging:** Hybrid SNN (HSNN) demonstrated for automatic sleep staging.
+- **Situational awareness:** SNN with SCTN neurons (2024, Applied Sciences).
+
+### how architectures have evolved
+
+| Generation | Approach | Example |
+|---|---|---|
+| Early (pre-2020) | Reservoir/NeuCube + STDP | NeuCube framework |

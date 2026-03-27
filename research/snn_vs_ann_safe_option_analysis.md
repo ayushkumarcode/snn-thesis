@@ -26,3 +26,31 @@ other datasets worth considering for a stronger project:
 | MNIST | ~99.5% | 99.84% | Effectively saturated |
 | Fashion-MNIST | ~93-95% | 96.7% (best CNN) | ViT approaches exceed 96% |
 | CIFAR-10 | ~93-94% | 99.5%+ (ViT/AutoML) | Massive architecture-dependent range |
+
+Sources: [Papers With Code MNIST](https://paperswithcode.com/sota/image-classification-on-mnist), [Papers With Code CIFAR-10](https://paperswithcode.com/sota/image-classification-on-cifar-10), [Fashion-MNIST SOTA](https://www.mdpi.com/2227-7390/12/20/3174)
+
+---
+
+## 2. The Accuracy Gap
+
+this is the core question. here's where things stand.
+
+### MNIST
+
+| Method | Accuracy | Gap vs ANN | Notes |
+|--------|----------|-----------|-------|
+| ANN baseline (same arch) | 98.23% | -- | Simple FC network |
+| SNN (surrogate gradient, LIF) | 98.1-98.7% | **0.0-0.5%** | Nearly closed |
+| SNN (STDP unsupervised) | ~95-97% | 1-3% | Bio-plausible but weaker |
+| SNN (Forward-Forward) | 98.69% | **~0%** | Very recent (2025) |
+
+gap is effectively closed on MNIST. surrogate-gradient SNNs match ANNs. solved problem -- fine for completeness but proves nothing on its own.
+
+### Fashion-MNIST
+
+| Method | Accuracy | Gap vs ANN | Notes |
+|--------|----------|-----------|-------|
+| CNN baseline | ~93-95% | -- | Standard CNN |
+| SNN (Sa-SNN, attention) | 94.13% | **~0-1%** | Best SNN result |
+| SNN (surrogate gradient) | ~90-92% | 2-4% | Typical implementation |
+| SNN (STDP-based) | ~87-89% | 5-8% | Unsupervised methods |

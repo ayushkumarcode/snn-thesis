@@ -698,3 +698,31 @@ pip install syops
 import torch
 from spikingjelly.activation_based import surrogate, neuron, functional
 from spikingjelly.activation_based.model import spiking_resnet
+from syops import get_model_complexity_info
+
+net = parametric_lif_net.DVSGestureNet(
+    channels=128,
+    spiking_neuron=neuron.IFNode,
+    surrogate_function=surrogate.ATan(),
+    detach_reset=True
+)
+
+# Compute SynOps with a data sample
+ops, params = get_model_complexity_info(
+    net,
+    (2, 128, 128),         # Input shape (C, H, W)
+    dataloader,             # Provide actual data for spike rate estimation
+    as_strings=True,
+    print_per_layer_stat=True,
+    verbose=True
+)
+# Outputs: ACs, MACs, parameter count, and estimated energy consumption
+```
+
+#### Manual SynOps Calculation
+
+For a convolutional layer with N input channels, M output channels, input size I x I, kernel size k x k, output size O x O, and Spiking Activity (SA) = average fraction of neurons that fire:
+
+```
+SynOps_SNN = SA * N * M * k^2 * O^2  (per timestep, per layer)
+FLOPs_ANN  = N * M * k^2 * O^2       (per layer)

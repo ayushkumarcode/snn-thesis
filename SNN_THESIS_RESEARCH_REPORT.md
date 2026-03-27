@@ -54,3 +54,31 @@ key biological constants:
 - threshold v_theta = 1 (normalized), reset to 0 after firing
 - typical refractory periods: tau_ref <= 5 ms
 - computationally simple, suitable for large-scale networks
+
+**Izhikevich Model:**
+- balances biological plausibility with computational efficiency
+- 2D system of ODEs with adaptation variable u
+- can reproduce diverse cortical neuron firing patterns (regular spiking, bursting, chattering, fast spiking, etc.)
+- more expressive than LIF but less demanding than HH
+
+**Adaptive Exponential Integrate-and-Fire (AdEx):**
+- exponential voltage dependence and slow adaptation variable w
+- can reproduce diverse cortical firing patterns
+- good balance between biological realism and computational tractability
+
+### spike encoding schemes (Section 4)
+
+**Rate Encoding:**
+- information encoded as spike frequency over time windows
+- uses point processes like Poisson distributions
+- robust to noise but requires longer time windows
+- higher energy consumption due to many spikes
+
+**Temporal Encoding:**
+- information represented by exact spike timing
+- produces sparser activity than rate encoding
+- sensitive to noise
+- lower energy consumption
+- input intensity (0-255) mapped to timing within 0-1 time window
+
+### learning mechanisms (Section 5)

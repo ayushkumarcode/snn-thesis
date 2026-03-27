@@ -297,31 +297,3 @@ SNNs communicate through discrete binary spike events (0 or 1 at each timestep).
 
 | Paper | Year | Key Result |
 |-------|------|------------|
-| Online Evolving SNN for Multivariate Time Series Anomaly | 2022 | Machine Learning journal |
-| Recurrent SNN for Time Series Prediction and Anomaly Detection | 2023 | IEEE |
-| **Vacuum Spiker: SNN for Time Series Anomaly Detection** | 2025 | Uses STDP; competitive with deep learning; validated on solar inverters |
-| SNN Autoencoder for Industrial Process Fault Detection | 2024 | Information Sciences |
-
-**Assessment:** Underexplored but highly promising. SNNs' temporal processing nature makes them naturally suited for time series anomaly detection. The Vacuum Spiker paper shows SNNs can match deep learning with much lower energy. **Excellent thesis opportunity.**
-
-### 6D. Recommendation Systems with SNNs
-**Paper Count: 0-1 papers | Maturity: VERY LOW**
-
-No dedicated papers found on SNN-based recommendation systems. Graph Neural Networks dominate this space, and while Spiking GNNs exist (see 6F), they haven't been applied to recommendation.
-
-**Assessment:** Wide open gap. Could combine Spiking GNN + collaborative filtering. Very novel but high risk -- unclear if SNNs provide any advantage here.
-
-### 6E. SNN + Generative Models (Diffusion, GAN, VAE)
-**Paper Count: 5-10 papers | Maturity: MEDIUM (rapidly growing)**
-
-| Paper | Year | Model Type | Key Result |
-|-------|------|-----------|------------|
-| Spiking-GAN | 2021 | GAN | First spike-based GAN; time-to-first-spike coding; 57x lower energy |
-| Fully Spiking VAE | 2022 | VAE | First all-SNN VAE; equal or better quality vs ANN VAE |
-| Spiking-Diffusion (VQ-SVAE + discrete diffusion) | 2023 | Diffusion | First fully-SNN diffusion model |
-| **Spiking DDPM (SDDPM)** | **2024** | **Diffusion** | **WACV 2024; FID 19.20 on CIFAR-10; 37.5% energy of ANN at T=4** |
-| **Spiking Diffusion Models** | **2024** | **Diffusion** | Outperforms SNN baselines across multiple datasets |
-
-**Assessment:** Rapidly maturing. Spiking diffusion models are particularly exciting. The FID scores are still much worse than ANN diffusion models (19.20 vs ~2-3 for SOTA ANNs), but the energy savings are dramatic. **Strong thesis opportunity to apply spiking diffusion to new domains (e.g., audio spectrograms).**
-
-### 6F. Spiking Graph Neural Networks

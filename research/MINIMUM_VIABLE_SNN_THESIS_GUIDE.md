@@ -306,3 +306,31 @@ Total: roughly 2000-3000 words for the lit review chapter.
 
 **4. Simple SNN with STDP (4-student team, Osnabruck)**
 - From-scratch Python implementation, STDP on MNIST
+- Accuracy plateaued quickly, team was honest about limitations
+- GitHub: cowolff/Simple-Spiking-Neural-Network-STDP
+- Takeaway: Even simple implementations with honest analysis of failure modes are acceptable.
+
+**5. SNN Image Classification (HaoyiZhu, course project)**
+- Used snnTorch for static and spike-encoded data
+- Achieved 99.12% on static MNIST, 97.05% on spike-encoded MNIST
+- Takeaway: Near-99% accuracy is achievable with snnTorch tutorials.
+
+### What these projects have in common:
+- **Clear, focused scope** (one main thing done well, not five things done poorly)
+- **Use of existing frameworks** (nobody built from scratch unless that was the deliberate point)
+- **Honest reporting of limitations** (accuracy gaps, convergence issues, scope reductions)
+- **Clean presentation** (tables, figures, clear writing)
+- **Comparison element** (SNN vs ANN, or different SNN configurations)
+
+---
+
+## 8. Evaluation metrics
+
+### Absolute minimum (for a 2:1): 3 metrics
+
+| Metric | What it measures | How to get it |
+|--------|-----------------|---------------|
+| **Classification accuracy** | How well the model classifies | `correct_predictions / total_predictions` on test set |
+| **Training time** | Computational cost | `time.time()` before and after training loop |
+| **Training/test loss curves** | Learning dynamics | Log loss at each epoch, plot with matplotlib |
+

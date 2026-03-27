@@ -306,3 +306,31 @@ these specific combinations have essentially zero papers:
 10. SNN + drone/UAV radar detection with FMCW
 
 ---
+
+## Frameworks
+
+| Framework | Best For | Difficulty |
+|-----------|----------|------------|
+| snnTorch | General SNN training, tutorials | Beginner |
+| SpikingJelly | Research-grade, many examples | Intermediate |
+| Brian2 | Neuroscience simulation, STDP | Beginner |
+| Norse | Bio-inspired SNNs | Intermediate |
+| NEST | Large-scale simulation | Advanced |
+| Lava (Intel) | Loihi deployment | Advanced |
+
+**for undergrads:** snnTorch -- best tutorials, PyTorch-based, active community.
+
+---
+
+## Key Datasets by Domain
+
+| Domain | Dataset | Size | Access |
+|--------|---------|------|--------|
+| Music | JSB Chorales | 382 chorales | Public |
+| Music | POP909 | 909 pop songs | Public |
+| Music | Lakh MIDI | 176k files | Public |
+| IoT Anomaly | CWRU Bearing | ~480k samples | Public |
+| IoT Anomaly | SMD | 28 machines | Public |
+| Fraud | Kaggle Credit Card | 284k transactions | Public |
+| Fraud | BAF | 1M+ transactions | Public |
+| NLP | SST-2 / IMDB | 67k / 50k | Public |

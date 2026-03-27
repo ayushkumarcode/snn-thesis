@@ -250,3 +250,16 @@ def main():
         for fold in folds:
             result = run_fold(fold, device, target, args.kp)
             fold_results.append(result)
+        if len(fold_results) == 5:
+            accs = [r["best_acc"] for r in fold_results]
+            rates = [r["overall_rate"] for r in fold_results]
+            print(f"\n  5-Fold: {np.mean(accs):.4f}+/-{np.std(accs):.4f}, rate={np.mean(rates):.4f}")
+        all_results.extend(fold_results)
+    save_dir = RESULTS_DIR / "energy" / "spike_budget_sweep"
+    save_dir.mkdir(parents=True, exist_ok=True)
+    with open(save_dir / "all_results.json", "w") as f:
+        json.dump(all_results, f, indent=2)
+
+
+if __name__ == "__main__":
+    main()

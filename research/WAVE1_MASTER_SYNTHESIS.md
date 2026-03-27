@@ -99,31 +99,3 @@ Every high-quality paper followed this introduction structure:
 | Component | Weight | What Matters |
 |-----------|--------|-------------|
 | **Report** | **55%** | Writing quality, critical analysis, evaluation depth |
-| **Achievements** | **30%** | Working output, demonstrated via weekly supervisor meetings |
-| **Screencast** | **15%** | 8-min video explaining project + results |
-| **Q&A** | 0% (informs Achievements) | 25 min with second marker; validates understanding |
-
-**Critical insight:** The report is worth almost DOUBLE the code/achievements. A brilliant analysis of modest results beats impressive results with shallow analysis.
-
-**What the documents never say:** "novel", "original", "groundbreaking", "publishable". They care about: clear objectives, proper methodology, thorough evaluation, honest reflection.
-
-**Biggest differentiator (2:1 vs First):** The critical appraisal section. A First student explains WHY results are limited, WHAT they learned, HOW their approach compares to alternatives, and WHAT they'd do differently.
-
----
-
-## 5. Novelty Expectations (UK Undergraduate Level)
-
-- **QAA Level 6 (Bachelor's):** Requires "self-direction and originality in tackling problems" -- NOT original research
-- **Even Cambridge:** A genuine contribution to the field is "not a requirement" for highest marks
-- **Edinburgh (for Master's!):** "Not expected that the dissertation will report notable or original contributions to knowledge"
-- **A First (70-79) requires zero novelty** if you demonstrate thorough understanding + rigorous evaluation
-- **80+ requires:** Independent thought, ambitious scope, thorough evaluation with statistical rigour
-
----
-
-## 6. Existing Research Summary (What's Already Been Done in This Repo)
-
-### Top Application Domains Ranked (from domain research):
-1. **Audio SHD/SSC** -- Easiest path, pre-encoded spikes, SNNs beat ANNs
-2. **ECG/Heartbeat** -- Nearly as easy, great clinical narrative, snnTorch delta encoding
-3. **Audio Keyword Spotting (GSC)** -- Extends SHD to raw audio

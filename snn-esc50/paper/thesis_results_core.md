@@ -54,20 +54,20 @@ Consistent with Larroza et al. (2025): rate < direct on ESC-10 too.
 **Sensitivity to normalisation:** with tau=5.0, theta=0.01, most spikes cluster in first ~5 timesteps for high-intensity regions. Effectively reduces usable window from T=25 to T~5.
 
 ### 4.2.5 delta coding: near-chance
-### 4.2.5 Delta Coding: Near-Chance Performance
 
-Delta (temporal contrast) coding achieves 7.25% ± 0.94%, near the chance level (2%) for 50 classes. In this scheme, spikes are generated when pixel intensity increases above a threshold across consecutive timesteps. Applied to a static spectrogram (which has no inherent temporal variation), delta coding generates almost no spikes — a noise-perturbed repetition produces only sparse, uninformative contrast signals.
+7.25% +/- 0.94%, near chance (2%) for 50 classes. Spikes generated on positive intensity changes across timesteps. Applied to static spectrogram with no inherent temporal variation = almost no spikes generated.
 
-**Conclusion on delta:** Delta coding is fundamentally inappropriate for static spectrogram inputs. It is designed for Dynamic Vision Sensor (DVS) or event camera data where genuine temporal contrast exists. This finding replicates the expectation from theory and warns against naive application of event-driven encodings to static inputs.
+Delta is fundamentally inappropriate for static spectrograms. It's designed for DVS/event camera data with genuine temporal contrast. Replicates the expectation from theory.
 
-### 4.2.6 Burst Coding: Negative Result with Mechanistic Explanation
-
-**Results (all 5 folds complete):**
+### 4.2.6 burst coding: negative result with mechanistic explanation
 
 | Fold | Best Acc | Best Epoch | Total Epochs |
 |------|----------|------------|--------------|
 | 1 | 5.00% | 7 | 17 |
 | 2 | 5.25% | 3 | 13 |
+| 3 | 9.25% | 26 | 36 |
+| 4 | 6.00% | 10 | 20 |
+| 5 | 7.00% | 10 | 20 |
 | 3 | 9.25% | 26 | 36 |
 | 4 | 6.00% | 10 | 20 |
 | 5 | 7.00% | 10 | 20 |

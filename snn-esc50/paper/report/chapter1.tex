@@ -34,3 +34,21 @@ where $V(t)$ is the membrane potential, $\tau_m$ is the membrane time constant, 
 The energy implication of this formulation is direct.
 \Gls{ann} inference requires a \gls{mac} for every active connection: multiply an activation by a weight and accumulate the result.
 At 45\,nm technology, a 32-bit floating-point \gls{mac} costs approximately 4.6\,pJ~\citep{horowitz2014energy}.
+In an \gls{snn}, binary spikes reduce each operation to a conditional accumulate (\gls{ac}): either add the weight or do nothing.
+An \gls{ac} costs approximately 0.9\,pJ---a 5.1$\times$ per-operation advantage~\citep{horowitz2014energy, yik2025neurobench}.
+Moreover, temporal sparsity means that the majority of these operations are skipped entirely; \gls{snn} energy scales with the number of spikes emitted, not with the number of parameters.
+
+Dedicated neuromorphic hardware exploits precisely these properties.
+SpiNNaker~\citep{furber2014spinnaker}, developed at the University of Manchester, routes binary spike packets between simulated neuron populations using a custom multicast network-on-chip, with each spike event consuming on the order of nanojoules.
+Intel's Loihi~2 and IBM's TrueNorth operate on similar event-driven principles.
+These platforms offer the potential for orders-of-magnitude energy reduction over equivalent GPU computation, provided that the deployed networks are sufficiently sparse.
+
+For most of the past decade, \glspl{snn} significantly underperformed \glspl{ann} because training was intractable: spike emission is a non-differentiable binary threshold, so standard backpropagation cannot compute gradients through it.
+The breakthrough of surrogate gradient descent~\citep{neftci2019surrogate} resolved this impasse.
+The key insight is to use exact binary spikes in the forward pass but approximate the spike derivative with a smooth surrogate function (such as an arctangent or a fast sigmoid) in the backward pass.
+This permits full backpropagation through time on spiking networks, enabling training on the same datasets and with the same loss functions as conventional networks.
+Since 2019, surrogate gradient training has become the dominant approach, producing \glspl{snn} within a few percentage points of matched \glspl{ann} on image classification benchmarks~\citep{eshraghian2023snntorch}.
+
+Environmental sound classification is a natural testbed for \gls{snn} research.
+Audio spectrograms are structurally compatible with spiking computation: the temporal axis of a mel spectrogram maps directly to \gls{snn} timesteps, and many environmental sounds---door knocks, glass breaking, dog barks---produce naturally sparse spectrograms that match the regime where \glspl{snn} are most efficient.
+Equally importantly, the target applications for environmental sound classification (hearing aids, wildlife sensors, smart buildings) demand exactly the energy efficiency that neuromorphic hardware promises.

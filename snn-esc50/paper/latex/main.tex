@@ -231,8 +231,10 @@ Pruning reduces the number of non-zero synaptic connections, directly lowering b
 
 Full SNN deployment on SpiNNaker fails because AvgPool produces fractional (non-binary) outputs.
 FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 2{,}304 fractional inputs cause excitatory-inhibitory cancellation, yielding zero hidden spikes (Figure~\ref{fig:pipeline}).
-We adopt a hybrid approach: conv layers and FC$_1$+LIF$_3$ run in software, producing binary hidden spikes (256-d, $\sim$22\% active per step).
-Only FC$_2$ (256$\to$50)+LIF$_4$ runs on SpiNNaker via current injection, using the sPyNNaker software stack~\cite{rhodes2018}.
+We adopt a hybrid approach: convolutional feature extraction runs on the host CPU, which pre-computes FC$_1$ input currents.
+These currents are injected into 256 IF\_curr\_exp neurons on SpiNNaker, where LIF$_3$ integrate-and-fire dynamics produce binary hidden spikes entirely on neuromorphic hardware.
+FC$_2$ (256$\to$50 synaptic weights + 50 output neurons) also runs on SpiNNaker via the sPyNNaker stack~\cite{rhodes2018}.
+In total, \textbf{306 spiking neurons and all classification-stage synapses execute on SpiNNaker}; only the convolutional feature extraction remains on the host.
 
 \begin{figure}[t]
 \centering

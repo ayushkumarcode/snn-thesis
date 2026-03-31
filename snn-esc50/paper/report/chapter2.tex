@@ -34,3 +34,21 @@ Other datasets complement ESC-50. UrbanSound8K~\citep{salamon2014} provides 8{,}
 
 %-------------------------------
 \subsection{The Leaky Integrate-and-Fire Neuron}
+\label{subsec:lif}
+%-------------------------------
+
+The \gls{lif} neuron is the most widely used model in modern \gls{snn} research, balancing biological plausibility with computational tractability~\citep{gerstner2002}. Its continuous-time dynamics describe an RC circuit with passive membrane leakage:
+
+\begin{definition}[Leaky Integrate-and-Fire Neuron]
+\label{def:lif}
+The membrane potential $U(t)$ of a \gls{lif} neuron evolves according to the differential equation
+\begin{equation}
+    \tau_m \frac{dU(t)}{dt} = -U(t) + R \, I(t),
+    \label{eq:lif-continuous}
+\end{equation}
+where $\tau_m$ is the membrane time constant, $R$ is the membrane resistance, and $I(t)$ is the input current. When $U(t)$ reaches the firing threshold $\vartheta$, the neuron emits a spike and the membrane potential resets:
+\begin{equation}
+    S(t) = \begin{cases} 1 & \text{if } U(t) \geq \vartheta, \\ 0 & \text{otherwise}, \end{cases}
+    \qquad
+    U(t^+) = U_{\mathrm{reset}} \quad \text{if } S(t) = 1.
+    \label{eq:lif-spike}

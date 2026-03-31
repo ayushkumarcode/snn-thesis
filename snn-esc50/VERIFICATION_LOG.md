@@ -70,3 +70,7 @@
 - Size: 416 KB
 - Figures: 3 (architecture, SpiNNaker pipeline, encoding bar chart)
 - Tables: 20+ (encoding comparison, SpiNNaker 5-fold, pruning sweep, energy, PANNs, adversarial, CL, surrogate ablation, calibration params, reproducibility)
+- Equations: 33 displayed, 346 inline
+- References: 35+ (all resolved)
+- Word count: 14,525 (body text)
+- Chapters: 6 + Appendix A

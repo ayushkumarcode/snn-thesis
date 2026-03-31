@@ -250,3 +250,21 @@ The hidden spike tensors exhibit 78.3\% sparsity (55.6 of 256 neurons active per
 
 \paragraph{Neuron parameters.}
 The IF\_curr\_exp model is calibrated through a systematic parameter sweep to match snnTorch's LIF dynamics:
+
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Membrane capacitance ($C_m$) & 1.0\,nF \\
+Membrane time constant ($\tau_m$) & 20.0\,ms \\
+Synaptic time constant ($\tau_{\text{syn}}$) & 5.0\,ms \\
+Refractory period ($\tau_{\text{ref}}$) & 0.1\,ms \\
+Threshold voltage ($v_{\text{thresh}}$) & 1.0\,mV \\
+Resting potential ($v_{\text{rest}}$) & 0.0\,mV \\
+Reset potential ($v_{\text{reset}}$) & 0.0\,mV \\
+\bottomrule
+\end{tabular}
+\end{center}
+

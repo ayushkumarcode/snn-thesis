@@ -160,3 +160,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 **Action items:**
 1. Create complete LaTeX document using MUThesis template
 2. Professional front matter (title, abstract, declaration, acknowledgements, abbreviations, ToC, LoF, LoT)
+3. All figures at high resolution with descriptive captions
+4. All tables properly formatted with booktabs
+5. All equations numbered and referenced
+6. BibTeX bibliography with 40+ references
+7. Hyperref for clickable cross-references
+8. No contractions, formal academic prose throughout
+
+---
+
+## Rubric Scoring: Screencast (15% of total)
+
+### 4.1-4.4 Screencast (all criteria)
+
+**Current band: N/A (not yet produced)**
+
+**Assessment:** Need to write comprehensive screencast plan. The rubric heavily rewards creativity and professionalism. A podcast/interview format using NotebookLM scored very highly for a previous student.
+
+---

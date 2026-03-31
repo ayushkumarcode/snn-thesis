@@ -135,7 +135,8 @@ Larroza \cite{larroza2025} & ESC-10 & FC & 3 & --- \\
 
 \subsection{Architecture}
 
-Both SNN and ANN share an identical $\sim$622K-parameter architecture (Figure~\ref{fig:architecture}): two convolutional blocks (Conv2d$\to$BN$\to$MaxPool(2)$\to$LIF), AvgPool(4,6), then two fully-connected layers (FC(2304,256)$\to$LIF$\to$FC(256,50)$\to$LIF).
+Both SNN and ANN share an identical $\sim$622K-parameter architecture (Figure~\ref{fig:architecture}).
+The network consists of two convolutional blocks (Conv2d$\to$BN$\to$MaxPool(2)$\to$LIF), followed by AvgPool(4,6) and two FC layers (FC(2304,256)$\to$LIF$\to$FC(256,50)$\to$LIF).
 The ANN replaces each LIF with ReLU.
 Training uses Adam (lr=$10^{-3}$, wd=$10^{-4}$), ReduceLROnPlateau, early stopping (patience=10), batch size 32, standard 5-fold CV on ESC-50's predefined fold structure.
 The SNN uses cross-entropy loss on summed output membrane potentials across all $T$ timesteps (rate decoding).

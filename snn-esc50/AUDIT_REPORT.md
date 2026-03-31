@@ -52,3 +52,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 
 **Gaps to Outstanding (90-100):**
 - Only ~1,800 words — far too thin for 25% of report (should be ~3,000-3,600)
+- Literature review is breadth-only, no critical comparison or synthesis
+- Only 3 prior SNN audio papers cited — need wider coverage of SNN image classification to contextualize gaps
+- No discussion of SpiNNaker 2, Loihi 2, BrainScaleS (hardware landscape)
+- No discussion of other audio datasets (UrbanSound8K, AudioSet, FSD50K, SHD)
+- Missing formal mathematical presentation (Definition/Theorem style as in Gransbury sample)
+- No critical comparison of surrogate gradient methods before ablation
+- ESC-50 SOTA is listed as 98.25% but current SOTA is 99.1% (OmniVec2, CVPR 2024)
+- One TODO marker remaining
+- Informal writing tone
+
+**Action items:**
+1. Expand to ~3,500 words with critical literature synthesis
+2. Add formal LIF equations with numbered definitions
+3. Expand prior work coverage: SNN image classification (CIFAR-10 gaps as context), SNN speech/audio
+4. Add hardware landscape section (Loihi 2, BrainScaleS, SpiNNaker 2)
+5. Critical comparison of surrogate gradient approaches
+6. Update ESC-50 SOTA to 99.1%
+

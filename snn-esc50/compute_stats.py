@@ -376,3 +376,21 @@ def compute_statistical_tests():
     for pct in prune_levels:
         spinn_accs = []
         snnt_accs = []
+        for fold in range(1, 6):
+            fname = f"fast_pruned{pct}_fold{fold}_400_N256.json"
+            fpath = os.path.join(DEPLOY_DIR, fname)
+            with open(fpath) as f:
+                data = json.load(f)
+            spinn_accs.append(data["summary"]["spinnaker_accuracy"])
+            snnt_accs.append(data["summary"]["snntorch_accuracy"])
+
+        t_stat, p_val, ci = paired_t_test(snnt_accs, spinn_accs)
+        d = cohens_d_paired(snnt_accs, spinn_accs)
+        gap = [s - p for s, p in zip(snnt_accs, spinn_accs)]
+
+        results[f"pruned_{pct}"] = {
+            "spinnaker_per_fold": spinn_accs,
+            "snntorch_per_fold": snnt_accs,
+            "gap_per_fold": [round(g, 2) for g in gap],
+            "spinnaker_mean": round(mean(spinn_accs), 2),
+            "snntorch_mean": round(mean(snnt_accs), 2),

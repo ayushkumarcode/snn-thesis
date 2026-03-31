@@ -556,3 +556,21 @@
       ],
       "direction": "snnTorch > SpiNNaker"
     },
+    "Pruned85_vs_Unpruned_SpiNNaker": {
+      "pruned85_folds": [
+        61.0,
+        63.25,
+        57.25,
+        60.25,
+        56.5
+      ],
+      "unpruned_folds": [
+        55.0,
+        60.5,
+        55.5,
+        60.0,
+        55.75
+      ],
+      "gap_folds": [
+        6.0,
+        2.75,

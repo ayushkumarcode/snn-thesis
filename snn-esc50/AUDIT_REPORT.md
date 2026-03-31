@@ -106,3 +106,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 - Loss function inconsistency across scripts (per-timestep CE vs summed membrane CE in energy_sweep.py)
 - No random seed management in training scripts (reproducibility gap)
 
+**Action items:**
+1. Incorporate ALL missing experimental results into report
+2. Resolve energy measurement inconsistency (4705 vs 142 nJ at T=3)
+3. Create 15+ figures: architecture diagram, encoding comparison bar chart, Pareto frontier, training curves, confusion matrices, t-SNE plots, raster plots
+4. Create 10+ tables: encoding comparison, SpiNNaker 5-fold, pruning sweep, adversarial, energy
+5. Add effect sizes and confidence intervals
+6. Document the loss function difference as a methodology note
+
+---
+
+### 3.4 Summary and Conclusions (15% of Report)
+
+**Current band: Above Expectations / Excellent (75-82)**
+
+**Evidence:**
+- Six contributions restated concisely
+- Direct answers to all four RQs
+- Three limitations acknowledged

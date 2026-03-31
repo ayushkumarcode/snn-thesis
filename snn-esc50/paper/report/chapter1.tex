@@ -1,0 +1,18 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Motivation}
+\label{sec:motivation}
+
+Deep learning has transformed machine perception.
+Convolutional neural networks now classify images, transcribe speech, and recognise environmental sounds at or above human-level accuracy on standard benchmarks~\citep{kong2020panns, gong2021ast}.
+Yet this capability carries a substantial energy cost.
+A single inference through a moderately sized convolutional network on a GPU consumes tens to hundreds of millijoules~\citep{yik2025neurobench}, while the human brain performs real-time, continuous auditory classification within an overall power budget of approximately 20\,W---sustaining on the order of $10^{16}$ synaptic operations per second~\citep{attwell2001energy}.
+The disparity between biological and artificial efficiency spans three to four orders of magnitude for equivalent perceptual tasks.
+
+This matters because the most compelling applications for audio intelligence are energy-constrained.
+Hearing aids operate on roughly 1\,mW with a weekly charge cycle.
+Wildlife monitoring sensors must persist for months on a single battery cell.
+Smart building occupancy detectors, industrial fault listeners, and search-and-rescue robots all require continuous audio classification at the edge, where cloud offloading is impractical due to latency, bandwidth, and privacy constraints.
+There exists, therefore, a genuine engineering gap: the algorithms that achieve state-of-the-art accuracy are far too expensive to run locally on the devices that need local inference most.
+

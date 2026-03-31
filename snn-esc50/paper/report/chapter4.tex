@@ -214,3 +214,21 @@ Energy per inference is estimated using the NeuroBench framework~\citep{yik2025n
 SNN baseline ($T = 25$)     & 25 & 968  & $0.47\times$ & 47.15 \\
 Rhythm-SNN ($T = 25$)       & 25 & 968  & $0.47\times$ & 61.10 \\
 ConvANN                     & 1  & 454  & $1.0\times$  & 63.85 \\
+\midrule
+Rhythm-SNN ($T = 3$)        &  3 & 142  & $3.2\times$  & 59.50 \\
+Rhythm-SNN ($T = 1$)        &  1 &  47  & $9.6\times$  & 58.20 \\
+\midrule
+85\% pruned ($T = 3$)       &  3 & $\sim$27 & $16.6\times$ & 59.65 \\
+95\% pruned ($T = 3$)       &  3 & $\sim$14 & $32.4\times$ & 54.20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At $T = 25$, the \gls{snn} consumes 968\,nJ $\pm$ 37\,nJ per sample (five-fold validated), which is 2.1$\times$ \emph{more} expensive than the \gls{ann} (454\,nJ). The activation sparsity of 73.6\% $\pm$ 0.7\% corresponds to a spike rate of 26.4\%, well above the $\sim$6.4\% threshold identified by \citet{dampfhoffer2023snns} for software energy parity. This is a critical finding: \textbf{a standard SNN at full temporal resolution is not energy-efficient in software simulation}.
+
+Temporal reduction transforms the energy landscape. At $T = 3$, energy drops to 142\,nJ---3.2$\times$ cheaper than the \gls{ann}---while maintaining 59.50\% accuracy (snnTorch). This is the first configuration where the SNN achieves a genuine energy advantage. At $T = 1$, energy falls further to 47\,nJ (9.6$\times$ advantage), with accuracy of 58.20\%.
+
+Combining pruning with temporal reduction yields the most aggressive energy reduction. At 85\% pruning with $T = 3$, estimated energy is approximately 27\,nJ per sample---16.6$\times$ cheaper than the ConvANN---while SpiNNaker accuracy remains 59.65\%, essentially unchanged from the unpruned deployment. At 95\% pruning, energy drops to approximately 14\,nJ (32.4$\times$ advantage), though accuracy declines to 54.20\%.
+
+The practical takeaway is that the Rhythm-SNN at $T = 3$ with 85\% pruning occupies the optimal point on the accuracy--energy Pareto frontier: it achieves 59.65\% accuracy at 27\,nJ, representing a 16.6$\times$ energy reduction relative to the \gls{ann} with a accuracy cost of only 4.20 percentage points.
+

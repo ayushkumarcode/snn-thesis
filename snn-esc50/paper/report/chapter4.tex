@@ -340,3 +340,21 @@ The choice of surrogate gradient function is critical for \gls{snn} training, ye
 \small
 \begin{tabular}{@{}lcccl@{}}
 \toprule
+\textbf{Surrogate} & \textbf{Accuracy (\%)} & \textbf{Best Epoch} & \textbf{Converged} & \textbf{Note} \\
+\midrule
+Spike rate escape  & 46.00 & 50 & Yes & Best \\
+Fast sigmoid       & 44.75 & 50 & Yes & \\
+Arctangent         & 35.75 & 49 & Yes & \\
+\midrule
+STE (straight-through) & 10.25 & 11 & No & Failed \\
+Sigmoid            &  2.00 & 11 & No & Failed \\
+Superspike (SFS)   &  2.00 & 10 & No & Failed \\
+Triangular         &  2.75 & 23 & No & Failed \\
+\midrule
+LSO                & --- & --- & --- & Crashed (Python 3.14) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results reveal a stark \textbf{bimodal distribution}: three surrogates successfully train the network (\{spike\_rate\_escape, fast\_sigmoid, atan\}), while four fail catastrophically (\{STE, sigmoid, superspike, triangular\}). There is no middle ground---every surrogate either achieves $>$35\% accuracy or remains below 11\%.
+

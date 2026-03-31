@@ -196,3 +196,21 @@ It is important to note that SpiNNaker~1, used in this thesis, is a 130\,nm rese
 \label{sec:energy-background}
 %=================================================================
 
+The energy argument for \glspl{snn} rests on a distinction between two fundamental arithmetic operations. In a conventional \gls{ann}, each active connection requires a \gls{mac}: multiply the activation by the synaptic weight and accumulate the result. In an \gls{snn}, because spikes are binary (0 or 1), the multiplication reduces to a conditional \gls{ac}: if the pre-synaptic neuron spiked, add the weight; otherwise, do nothing.
+
+\citet{horowitz2014} measured the energy cost of arithmetic operations at 45\,nm CMOS: a 32-bit floating-point \gls{mac} costs approximately 4.6\,pJ, while a 32-bit addition (\gls{ac}) costs approximately 0.9\,pJ. This 5.1$\times$ ratio is the foundation of the \gls{snn} energy advantage. However, this advantage is modulated by the spike rate: an \gls{snn} with $T$ timesteps and average spike rate $r$ performs $T \times r \times N_{\mathrm{syn}}$ \glspl{ac}, while a dense \gls{ann} performs $N_{\mathrm{syn}}$ \glspl{mac}. The \gls{snn} is cheaper when
+\begin{equation}
+    T \cdot r \cdot E_{\mathrm{AC}} < E_{\mathrm{MAC}},
+    \label{eq:energy-crossover}
+\end{equation}
+which, substituting the Horowitz values, requires $T \cdot r < 5.1$.
+
+\citet{dampfhoffer2023} formalised this analysis for software simulation, showing that \glspl{snn} must achieve a spike rate below approximately 6.4\% (for $T = 25$ timesteps at 4-bit quantisation) to outperform quantised \glspl{ann} in energy on conventional hardware. This is a demanding requirement: many trained \glspl{snn} exhibit spike rates of 20--40\%, well above the break-even point.
+
+The picture changes on dedicated neuromorphic hardware. On platforms such as SpiNNaker or Loihi, each spike event is processed by dedicated routing and accumulation circuitry that consumes nanojoules per event, compared to the microjoule-scale cost of a GPU kernel launch. In this regime, the relevant comparison is not \gls{ac} versus \gls{mac} at the arithmetic level but rather the total platform energy per inference, which includes memory access, routing, and idle power. Neuromorphic platforms are designed to minimise all of these for sparse, event-driven workloads.
+
+\paragraph{NeuroBench.}
+The NeuroBench framework~\citep{yik2025}, published in \emph{Nature Communications}, provides a standardised methodology for benchmarking \gls{snn} efficiency. It defines three metrics: \emph{Effective ACs} (accumulate operations from binary activations), \emph{Effective MACs} (multiply-accumulate operations from non-binary activations), and \emph{Dense operations} (total operations assuming no sparsity). Energy is estimated as $E = N_{\mathrm{AC}} \times 0.9\,\text{pJ} + N_{\mathrm{MAC}} \times 4.6\,\text{pJ}$ at 45\,nm. This thesis adopts NeuroBench v2.2.0 for all energy comparisons, enabling direct comparison with other published results.
+
+
+%=================================================================

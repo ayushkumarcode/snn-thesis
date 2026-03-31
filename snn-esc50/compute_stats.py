@@ -268,3 +268,21 @@ def compute_hardware_energy():
                 "mean_spinnaker_acc": round(mean([fr["spinnaker_accuracy"] for fr in fold_results]), 2),
                 "mean_snntorch_acc": round(mean([fr["snntorch_accuracy"] for fr in fold_results]), 2)
             }
+        }
+
+        print(f"\nPruned {pct}%:")
+        print(f"  Mean hidden spikes/sample: {mean_h_all:.1f}")
+        print(f"  Mean output spikes/sample: {mean_o_all:.1f}")
+        print(f"  Mean synaptic events: {mean_syn:.1f}")
+        print(f"  Energy (8 nJ): {mean_energy_8:.1f} nJ")
+        print(f"  Energy (20 nJ): {mean_energy_20:.1f} nJ")
+
+    # Also compute for unpruned T=3 and T=1
+    for tag, pattern in [("unpruned_t3", "fast_t3_fold{}_400_N256.json"),
+                         ("unpruned_t1", "fast_t1_fold{}_400_N256.json")]:
+        fold_results = []
+        for fold in range(1, 6):
+            fname = pattern.format(fold)
+            fpath = os.path.join(DEPLOY_DIR, fname)
+
+            with open(fpath) as f:

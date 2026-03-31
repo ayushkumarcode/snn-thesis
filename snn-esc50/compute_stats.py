@@ -430,3 +430,21 @@ def compute_statistical_tests():
             "snntorch_per_fold": snnt_accs,
             "gap_per_fold": [round(g, 2) for g in gap],
             "spinnaker_mean": round(mean(spinn_accs), 2),
+            "snntorch_mean": round(mean(snnt_accs), 2),
+            "gap_mean": round(mean(gap), 2),
+            "gap_std": round(std_sample(gap), 2),
+            "t_statistic": round(t_stat, 4),
+            "p_value": round(p_val, 6),
+            "p_value_significant_005": p_val < 0.05,
+            "ci_95_lo": round(ci[0], 2),
+            "ci_95_hi": round(ci[1], 2),
+            "cohens_d": round(d, 4),
+            "effect_size_interpretation": interpret_d(d)
+        }
+
+        sig = "*" if p_val < 0.05 else ""
+        print(f"\n{tag}: gap={mean(gap):.2f} pp, t={t_stat:.3f}, p={p_val:.4f}{sig}, d={d:.3f}, 95%CI=[{ci[0]:.2f}, {ci[1]:.2f}]")
+
+    # Save
+    with open(STATS_OUT, "w") as f:
+        json.dump(results, f, indent=2)

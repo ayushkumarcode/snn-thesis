@@ -628,3 +628,21 @@
         "mean_synaptic_events": 13403.4,
         "energy_nj_8nJ": 107227.18,
         "energy_nj_20nJ": 268067.95,
+        "spinnaker_accuracy": 63.25,
+        "snntorch_accuracy": 64.25
+      },
+      {
+        "prune_pct": 85,
+        "fold": 3,
+        "n_samples": 400,
+        "mean_h_total_spk": 256.96,
+        "std_h_total_spk": 40.94,
+        "mean_o_total_spk": 0.32,
+        "std_o_total_spk": 0.79,
+        "mean_synaptic_events": 12848.44,
+        "energy_nj_8nJ": 102787.52,
+        "energy_nj_20nJ": 256968.8,
+        "spinnaker_accuracy": 57.25,
+        "snntorch_accuracy": 58.75
+      },
+      {

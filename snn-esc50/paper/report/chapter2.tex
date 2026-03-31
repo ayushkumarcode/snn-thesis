@@ -160,3 +160,21 @@ To our knowledge, no prior work has systematically compared all seven encoding m
 %=================================================================
 
 Neuromorphic hardware platforms implement spiking neuron dynamics directly in silicon, exploiting event-driven, parallel computation to achieve energy efficiency that is fundamentally unattainable with conventional von Neumann architectures~\citep{schuman2022}. This section describes SpiNNaker, the platform used in this thesis, and briefly surveys alternatives for context.
+
+%-------------------------------
+\subsection{SpiNNaker Architecture}
+\label{subsec:spinnaker}
+%-------------------------------
+
+SpiNNaker (Spiking Neural Network Architecture) is a massively parallel neuromorphic platform developed at the University of Manchester~\citep{furber2014}. Each SpiNNaker chip contains 18 ARM968 processor cores, each capable of simulating up to 256 \gls{lif} neurons in real time at 1\,ms resolution. Chips are interconnected by a bespoke packet-switched network that routes binary spike events asynchronously via multicast: when a neuron spikes, a 4-byte packet containing its source address is broadcast to all connected post-synaptic populations. The network topology is a triangular torus, providing six bidirectional links per chip for scalable, fault-tolerant routing.
+
+The full SpiNNaker machine comprises 1{,}036{,}800 ARM cores across 57{,}600 chips, capable of simulating up to one billion neurons in real time~\citep{furber2014}. For the experiments in this thesis, we use a SpiNN-5 board (48 chips, 864 cores) accessed remotely at \texttt{spinnaker.cs.man.ac.uk}.
+
+Communication is exclusively through binary spikes---there is no mechanism for transmitting continuous values between populations. This imposes a hard architectural constraint: any network deployed on SpiNNaker must produce binary spike patterns at every inter-layer boundary. Weight values are stored in on-chip SDRAM and may be specified in fixed-point representation.
+
+The sPyNNaker software stack~\citep{rhodes2018} provides a PyNN-compatible Python interface for defining populations, projections, and spike sources. Supported neuron models include \texttt{IF\_curr\_exp} (exponential current-based integrate-and-fire), \texttt{IF\_cond\_exp} (conductance-based), and the Izhikevich model. In this work, we use \texttt{IF\_curr\_exp} with carefully calibrated parameters (detailed in Chapter~\ref{ch:methodology}) to approximate the snnTorch \gls{lif} dynamics.
+
+\paragraph{Constraints for deployment.}
+Deploying a trained \gls{snn} on SpiNNaker entails three principal challenges. First, SpiNNaker neurons communicate exclusively through binary spikes, whereas operations such as average pooling in convolutional layers produce fractional activations. This fundamentally limits which layers can be deployed natively. Second, synaptic weights must be representable in the fixed-point format used by the ARM cores, requiring quantisation-aware transfer from floating-point trained models. Third, the 1\,ms simulation timestep and the maximum of 256 neurons per core impose constraints on network sizing and temporal resolution.
+
+%-------------------------------

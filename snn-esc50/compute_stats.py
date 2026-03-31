@@ -718,3 +718,21 @@ def main():
             s = energy_results[tag]["summary"]
             print(f"{tag:<18} {s['mean_spinnaker_acc']:<10.2f} {s['mean_h_spk_across_folds']:<10.1f} {s['mean_energy_nj_8nJ']:<14.1f} {s['mean_energy_nj_20nJ']:<14.1f}")
 
+    for pct in [50, 55, 60, 65, 70, 75, 80, 85, 90, 95]:
+        k = str(pct)
+        if k in energy_results:
+            s = energy_results[k]["summary"]
+            print(f"pruned_{pct}%{'':<8} {s['mean_spinnaker_acc']:<10.2f} {s['mean_h_spk_across_folds']:<10.1f} {s['mean_energy_nj_8nJ']:<14.1f} {s['mean_energy_nj_20nJ']:<14.1f}")
+
+    print("\n" + "=" * 60)
+    print("SUMMARY TABLE: Statistical Tests")
+    print("=" * 60)
+    print(f"{'Config':<18} {'Gap(pp)':<10} {'t':<10} {'p':<10} {'d':<10} {'Sig?':<6}")
+    print("-" * 64)
+
+    for key in ["unpruned_t3", "unpruned_t1"] + [f"pruned_{p}" for p in [50,55,60,65,70,75,80,85,90,95]]:
+        if key in stat_results:
+            r = stat_results[key]
+            sig = "YES" if r["p_value_significant_005"] else "no"
+            print(f"{key:<18} {r['gap_mean']:<10.2f} {r['t_statistic']:<10.3f} {r['p_value']:<10.4f} {r['cohens_d']:<10.3f} {sig:<6}")
+

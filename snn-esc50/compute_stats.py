@@ -70,3 +70,21 @@ def cohens_d_paired(xs, ys):
 
 def cohens_d_independent(m1, s1, m2, s2, n=5):
     """Cohen's d for independent groups using pooled SD from means and SDs."""
+    sp = math.sqrt(((n-1)*s1**2 + (n-1)*s2**2) / (2*n - 2))
+    if sp == 0:
+        return float('inf')
+    return (m1 - m2) / sp
+
+def t_critical_95(df):
+    """
+    Critical t-value for 95% CI (two-tailed, alpha=0.05).
+    Lookup table for small df values.
+    """
+    table = {
+        1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571,
+        6: 2.447, 7: 2.365, 8: 2.306, 9: 2.262, 10: 2.228,
+        15: 2.131, 20: 2.086, 25: 2.060, 30: 2.042, 40: 2.021,
+        50: 2.009, 100: 1.984, 1000: 1.962
+    }
+    if df in table:
+        return table[df]

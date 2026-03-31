@@ -538,3 +538,21 @@
         59.0
       ],
       "gap_folds": [
+        1.5,
+        2.5,
+        2.5,
+        1.0,
+        3.25
+      ],
+      "gap_mean": 2.15,
+      "gap_std": 0.89,
+      "cohens_d": 2.4038,
+      "interpretation": "large",
+      "t_statistic": 5.375,
+      "p_value": 0.005788,
+      "ci_95": [
+        1.04,
+        3.26
+      ],
+      "direction": "snnTorch > SpiNNaker"
+    },

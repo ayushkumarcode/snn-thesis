@@ -52,3 +52,21 @@ where $\tau_m$ is the membrane time constant, $R$ is the membrane resistance, an
     \qquad
     U(t^+) = U_{\mathrm{reset}} \quad \text{if } S(t) = 1.
     \label{eq:lif-spike}
+\end{equation}
+\end{definition}
+
+For simulation in discrete timesteps of duration $\Delta t$, as required by GPU-based training frameworks, the continuous dynamics yield the recurrence:
+\begin{equation}
+    U[t+1] = \beta \cdot U[t] + W \cdot X[t] - S[t] \cdot \vartheta,
+    \label{eq:lif-discrete}
+\end{equation}
+where $\beta = \exp(-\Delta t / \tau_m)$ is the decay factor, $W$ is the weight matrix, $X[t]$ is the input at timestep $t$, and the final term implements the post-spike reset by subtracting the threshold. The spike output is
+\begin{equation}
+    S[t] = \mathbf{1}\bigl[U[t] \geq \vartheta\bigr],
+    \label{eq:spike-function}
+\end{equation}
+where $\mathbf{1}[\cdot]$ is the Heaviside step function. In this work, we set $\beta = 0.95$ (corresponding to $\tau_m \approx 20$\,ms at $\Delta t = 1$\,ms) and $\vartheta = 1.0$ across all layers, following the snnTorch framework defaults~\citep{eshraghian2023}.
+
+The \gls{lif} model captures two essential properties of biological neurons that are absent from standard \gls{ann} units: \emph{temporal integration}, where evidence accumulates over multiple timesteps before a decision (spike) is made; and \emph{leaky memory}, where past inputs are exponentially forgotten, preventing indefinite charge build-up. These properties are central to the robustness advantages discussed in Section~\ref{sec:adversarial-cl}.
+
+%-------------------------------

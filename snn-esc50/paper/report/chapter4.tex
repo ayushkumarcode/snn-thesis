@@ -340,3 +340,21 @@ These results are validated across all five test folds (400 samples each, 2{,}00
 
 Continual learning experiments evaluate catastrophic forgetting when the \gls{snn} and \gls{ann} are trained sequentially on ESC-50's five super-categories (Animals, Nature, Human, Domestic, Urban), each containing 10 classes. No replay buffer, regularisation, or architectural strategies are employed---both models face the ``bare'' sequential learning problem identically.
 
+Table~\ref{tab:cl} reports the five-fold results for catastrophic forgetting, measured as the percentage of initial task accuracy lost after training on all subsequent tasks.
+
+\begin{table}[t]
+\centering
+\caption{Continual learning: mean catastrophic forgetting (\%) across five super-category tasks (five-fold CV). Lower forgetting is better. The SNN forgets 4.7\,pp less than the ANN.}
+\label{tab:cl}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Model} & \textbf{Mean Forgetting (\%)} & \textbf{Std (\%)} & \textbf{$\Delta$\,ANN (pp)} \\
+\midrule
+SNN  & 69.9 & 4.3 & $-$4.7 \\
+ANN  & 74.7 & 2.4 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both models exhibit severe catastrophic forgetting (69.9\% and 74.7\% respectively), as expected for sequential learning without any mitigation strategy. However, the \gls{snn} consistently forgets 4.7 percentage points less than the \gls{ann} across all five folds. This advantage is attributed to two properties of spiking networks: (i)~the sparse, binary activation patterns create less interference between task representations than the dense, continuous activations of the \gls{ann}, and (ii)~the temporal dynamics of LIF neurons create richer internal representations that are more resistant to overwriting by subsequent tasks.

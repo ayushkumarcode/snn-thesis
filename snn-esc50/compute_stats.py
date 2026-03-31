@@ -106,3 +106,21 @@ def two_tailed_p_from_t(t_abs, df):
     # p = I_{df/(df+t^2)}(df/2, 1/2)
     # We approximate using the Abramowitz and Stegun formula (26.7.4)
     # Simpler: use the relation p = 2 * (1 - t_cdf(|t|, df))
+    # We implement t_cdf using the regularized incomplete beta function
+    x = df / (df + t_abs**2)
+    p = regularized_incomplete_beta(x, df / 2.0, 0.5)
+    return p
+
+def regularized_incomplete_beta(x, a, b, n_terms=200):
+    """
+    Regularized incomplete beta function I_x(a, b) using continued fraction.
+    Uses Lentz's algorithm.
+    """
+    if x < 0 or x > 1:
+        return 0.0
+    if x == 0:
+        return 0.0
+    if x == 1:
+        return 1.0
+
+    # Use the continued fraction representation

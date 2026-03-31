@@ -34,3 +34,17 @@ No contractions. No casual asides. Formal definitions.
 4706 nJ vs 142 nJ at T=3 — investigate methodology difference.
 
 ## Priority 6: Expand Literature Review
+Currently ~1800 words, needs ~3500. Add:
+- SNN image classification context
+- Hardware landscape (Loihi 2, BrainScaleS)
+- Wider audio dataset discussion
+- Critical literature synthesis
+
+## Priority 7: Statistical Rigour
+- Add Cohen's d effect sizes
+- Add confidence intervals
+- Bootstrap where appropriate
+
+## Priority 8: Screencast Plan
+- Write detailed 7-9 minute script
+- Propose creative format options

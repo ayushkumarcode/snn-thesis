@@ -700,3 +700,21 @@ def main():
 
     # Combine tasks 3 and 4 into stat output
     stat_results["confidence_intervals"] = ci_results
+    stat_results["cohens_d_comparisons"] = d_results
+
+    # Re-save combined stats
+    with open(STATS_OUT, "w") as f:
+        json.dump(stat_results, f, indent=2)
+
+    # Print summary table
+    print("\n" + "=" * 60)
+    print("SUMMARY TABLE: Hardware Energy by Pruning Level")
+    print("=" * 60)
+    print(f"{'Config':<18} {'Acc (%)':<10} {'H_spk':<10} {'Energy(8nJ)':<14} {'Energy(20nJ)':<14}")
+    print("-" * 66)
+
+    for tag in ["unpruned_t3", "unpruned_t1"]:
+        if tag in energy_results:
+            s = energy_results[tag]["summary"]
+            print(f"{tag:<18} {s['mean_spinnaker_acc']:<10.2f} {s['mean_h_spk_across_folds']:<10.1f} {s['mean_energy_nj_8nJ']:<14.1f} {s['mean_energy_nj_20nJ']:<14.1f}")
+

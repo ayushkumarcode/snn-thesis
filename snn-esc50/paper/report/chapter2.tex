@@ -286,3 +286,21 @@ An additional mechanism specific to our architecture is \emph{gradient masking} 
 
 Catastrophic forgetting~\citep{mccloskey1989,french1999} occurs when a neural network, trained sequentially on multiple tasks, loses performance on earlier tasks as it adapts to later ones. This is a fundamental limitation of gradient-based learning with shared parameters, since weight updates that optimise for the current task can overwrite representations critical for previous tasks.
 
+Proposed mitigations include elastic weight consolidation~\citep{kirkpatrick2017}, progressive neural networks~\citep{rusu2016}, and experience replay~\citep{rolnick2019}, each adding complexity and memory overhead. An orthogonal hypothesis is that \glspl{snn} may be inherently less susceptible to forgetting due to their sparse, temporally distributed activation patterns. When only a small fraction of neurons are active for any given input (high activation sparsity), weight updates are naturally confined to a sparse subset of parameters, reducing interference with representations for other tasks.
+
+\citet{golden2022} provided evidence for this hypothesis by showing that offline consolidation---an analogue of sleep-based memory replay---prevents catastrophic forgetting in \glspl{snn} without explicit regularisation. \citet{zhang2023} introduced NACA (Neuronal Activation-based Credit Assignment) for online \gls{snn} continual learning, achieving competitive performance on split-MNIST and split-CIFAR benchmarks.
+
+In this thesis, we evaluate catastrophic forgetting under the simplest and most stringent protocol: sequential fine-tuning on five ESC-50 super-categories (10 classes each) without replay, regularisation, or architectural expansion. This isolates the inherent forgetting properties of the \gls{snn} and \gls{ann} architectures, removing confounds introduced by anti-forgetting mechanisms. Backward Transfer (BWT) is used as the primary metric:
+\begin{equation}
+    \mathrm{BWT} = \frac{1}{K-1}\sum_{i=1}^{K-1}\bigl(R_{K,i} - R_{i,i}\bigr),
+    \label{eq:bwt}
+\end{equation}
+where $R_{K,i}$ is the accuracy on task $i$ after training on all $K$ tasks, and $R_{i,i}$ is the accuracy on task $i$ immediately after training on it. Negative BWT indicates forgetting.
+
+
+%=================================================================
+\section{Summary}
+\label{sec:bg-summary}
+%=================================================================
+
+This chapter has established the technical context for the thesis. The ESC-50 dataset provides a rigorous, standardised benchmark for environmental sound classification with well-understood human and machine baselines. The \gls{lif} neuron model and surrogate gradient training form the computational foundation for modern deep \glspl{snn}. Seven spike encoding methods offer distinct trade-offs between information content, energy cost, and biological plausibility. SpiNNaker provides a concrete neuromorphic target for deployment, with binary spike communication as both its defining advantage and its principal constraint. The energy efficiency of \glspl{snn} is contingent on spike rate and execution platform, with NeuroBench providing a standardised measurement framework. Finally, adversarial robustness and continual learning represent two under-explored advantages of spiking computation that are directly testable.

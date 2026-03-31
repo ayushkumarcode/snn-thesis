@@ -268,3 +268,21 @@ Reset potential ($v_{\text{reset}}$) & 0.0\,mV \\
 \end{tabular}
 \end{center}
 
+Hidden spikes are injected as SpikeSourceArray inputs with 1\,ms per timestep (25\,ms total simulation). Classification is by argmax of the total output spike count over 25\,ms.
+
+The FC2-only deployment is validated over 400 samples per fold across all five folds. Hardware accuracy is 33.1\% $\pm$ 6.9\% compared to 46.0\% in snnTorch, yielding a hardware gap of 12.8 $\pm$ 4.1 percentage points.
+
+\subsection{Full FC1+FC2 Deployment}
+\label{ssec:full-deploy}
+
+To deploy both FC1 and FC2 on SpiNNaker, we employ \textbf{current injection}: the average-pooled feature vector (continuous values in $[0, 1]$) is converted to Poisson spike rates for FC1 input, and FC1 bias terms are injected as constant offset currents (\texttt{i\_offset}). FC2 receives FC1's binary spike output directly.
+
+A critical implementation detail is explicit membrane initialisation: \texttt{population.initialize(v=0.0)}. sPyNNaker defaults to $v = v_{\text{rest}} = -65$\,mV regardless of the user-specified \texttt{v\_rest} parameter. With $v_{\text{thresh}} = 1.0$\,mV, this creates a 66\,mV threshold gap that prevents any neuron from firing. This single-line fix was the root cause of several weeks of zero-output debugging.
+
+Simulation time is reduced to $T = 3$ timesteps for hardware efficiency. The full FC1+FC2 deployment achieves 57.35\% $\pm$ 2.39\% across five folds, with a hardware gap of only 2.15 percentage points relative to the equivalent snnTorch model.
+
+\subsection{Pruning for Hardware Efficiency}
+\label{ssec:pruning}
+
+To reduce model size and energy on hardware, we apply \textbf{global magnitude pruning}: the smallest-magnitude weights across the entire network are set to zero. Masks are stored alongside the model and re-applied after each optimiser step during fine-tuning to prevent weight regrowth:
+\begin{equation}

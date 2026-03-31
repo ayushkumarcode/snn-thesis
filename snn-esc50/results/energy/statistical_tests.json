@@ -196,3 +196,21 @@
     "gap_mean": 0.95,
     "gap_std": 0.89,
     "t_statistic": 2.3843,
+    "p_value": 0.075632,
+    "p_value_significant_005": false,
+    "ci_95_lo": -0.16,
+    "ci_95_hi": 2.06,
+    "cohens_d": 1.0663,
+    "effect_size_interpretation": "large"
+  },
+  "pruned_80": {
+    "spinnaker_per_fold": [
+      59.5,
+      63.0,
+      55.5,
+      61.25,
+      57.75
+    ],
+    "snntorch_per_fold": [
+      59.5,
+      62.75,

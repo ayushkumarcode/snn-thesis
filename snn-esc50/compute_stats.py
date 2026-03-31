@@ -610,3 +610,21 @@ def compute_cohens_d():
     gap_p85 = [p - u for p, u in zip(spinn_p85, spinn_t3)]
 
     results["Pruned85_vs_Unpruned_SpiNNaker"] = {
+        "pruned85_folds": spinn_p85,
+        "unpruned_folds": spinn_t3,
+        "gap_folds": [round(g, 2) for g in gap_p85],
+        "gap_mean": round(mean(gap_p85), 2),
+        "gap_std": round(std_sample(gap_p85), 2),
+        "cohens_d": round(d_p85, 4),
+        "interpretation": interpret_d(d_p85),
+        "t_statistic": round(t_stat_p85, 4),
+        "p_value": round(p_val_p85, 6),
+        "ci_95": [round(ci_p85[0], 2), round(ci_p85[1], 2)],
+        "direction": "Pruned85% > Unpruned" if mean(gap_p85) > 0 else "Unpruned > Pruned85%"
+    }
+    print(f"\nPruned 85% vs Unpruned (SpiNNaker T=3):")
+    print(f"  Pruned 85%: {mean(spinn_p85):.2f}, Unpruned: {mean(spinn_t3):.2f}")
+    print(f"  Gap: {mean(gap_p85):.2f} +/- {std_sample(gap_p85):.2f}")
+    print(f"  Cohen's d = {d_p85:.4f} ({interpret_d(d_p85)})")
+    print(f"  t = {t_stat_p85:.3f}, p = {p_val_p85:.4f}")
+    print(f"  95% CI: [{ci_p85[0]:.2f}, {ci_p85[1]:.2f}]")

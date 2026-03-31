@@ -538,3 +538,21 @@ def compute_confidence_intervals():
 # TASK 4: Cohen's d for key comparisons
 # ============================================================
 def compute_cohens_d():
+    print("=" * 60)
+    print("TASK 4: Cohen's d for Key Comparisons")
+    print("=" * 60)
+
+    results = {}
+
+    # --- 1. SNN vs ANN (independent groups, from 5-fold means) ---
+    snn_folds = [40.50, 48.75, 41.75, 53.00, 51.75]
+    ann_folds = [62.75, 67.50, 60.00, 68.25, 60.75]
+
+    sp = pooled_sd(ann_folds, snn_folds)
+    d_snn_ann = (mean(ann_folds) - mean(snn_folds)) / sp
+
+    results["ANN_vs_SNN"] = {
+        "ann_folds": ann_folds,
+        "snn_folds": snn_folds,
+        "ann_mean": round(mean(ann_folds), 2),
+        "snn_mean": round(mean(snn_folds), 2),

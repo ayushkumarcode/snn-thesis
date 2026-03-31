@@ -250,3 +250,17 @@ The pruned sweep (MASTER_RESULTS.json) reports T=3 unpruned energy as 4,706 nJ, 
 
 **Hypothesis:** The pruned sweep likely uses a different NeuroBench counting methodology (including dense conv MACs) while the T3/T1 file uses AC-only counting. Need to verify by reading the actual measurement scripts.
 
+### Issue 2: Missing Results in Thesis Drafts (HIGH PRIORITY)
+At least 12 completed experiments are not incorporated into the thesis chapters. The most critical omissions are the rhythm-SNN (61.10%) and full SpiNNaker deploy (57.35%) results.
+
+### Issue 3: No LaTeX Document Exists (HIGH PRIORITY)
+The thesis must be submitted as PDF. No LaTeX document exists yet.
+
+### Issue 4: Informal Writing Style (MEDIUM PRIORITY)
+Every chapter uses casual language inappropriate for an academic thesis.
+
+### Issue 5: Minor Code Issues (LOW PRIORITY)
+- T/temperature variable shadowing in combo_experiment.py
+- No random seed management
+- Loss function inconsistency between scripts
+- None invalidate reported results.

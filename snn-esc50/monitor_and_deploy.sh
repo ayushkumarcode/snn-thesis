@@ -16,3 +16,21 @@ SPINNAKER_STARTED=false
 
 while true; do
     ITERATION=$((ITERATION + 1))
+    echo "--- Iteration $ITERATION: $(date) ---" >> $LOG
+
+    # Check CSF3 jobs
+    CSF3_STATUS=$(ssh -o ControlPath=~/.ssh/csf3-socket -o ConnectTimeout=5 csf3 "squeue -u r36859ak -h 2>/dev/null" 2>/dev/null)
+
+    if [ $? -ne 0 ]; then
+        echo "  CSF3: SSH tunnel DOWN" >> $LOG
+        echo "$(date): CSF3 tunnel down, waiting..." >> $LOG
+        sleep 1200
+        continue
+    fi
+
+    # Check rhythm_eval job
+    if echo "$CSF3_STATUS" | grep -q "rhythm_eval"; then
+        echo "  CSF3 rhythm_eval: RUNNING" >> $LOG
+    elif [ "$CSF3_RHYTHM_DONE" = false ]; then
+        echo "  CSF3 rhythm_eval: COMPLETED" >> $LOG
+        CSF3_RHYTHM_DONE=true

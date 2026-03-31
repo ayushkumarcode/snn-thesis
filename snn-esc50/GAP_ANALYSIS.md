@@ -16,3 +16,21 @@ No LaTeX document exists. This blocks ALL Presentation marks (10% of Report).
 - Neuron ablation, stochastic resonance, saliency maps
 
 ## Priority 3: Formal Academic Writing
+Every chapter needs rewrite from informal to formal.
+No contractions. No casual asides. Formal definitions.
+
+## Priority 4: Figures and Tables (15+ figures, 10+ tables)
+- Architecture diagram
+- Encoding comparison bar chart
+- SpiNNaker pipeline diagram
+- Pruning Pareto curve
+- Energy vs accuracy plot
+- Confusion matrices (heatmap)
+- t-SNE scatter plots
+- Training curves
+- Adversarial robustness curves
+
+## Priority 5: Resolve Energy Inconsistency
+4706 nJ vs 142 nJ at T=3 — investigate methodology difference.
+
+## Priority 6: Expand Literature Review

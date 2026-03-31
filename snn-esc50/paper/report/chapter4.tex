@@ -394,3 +394,8 @@ FGSM robustness ratio ($\varepsilon = 0.1$) & $6.0\times$ & RQ4 \\
 PGD robustness ratio ($\varepsilon = 0.05$) & $195\times$  & RQ4 \\
 Continual learning advantage      & $-$4.7\,pp forgetting & RQ4 \\
 Surrogate gradient: bimodal       & 3 work, 4 fail & RQ2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results establish four principal conclusions. First, the \gls{snn}--\gls{ann} accuracy gap is a feature-learning problem that vanishes with pretrained features (RQ1). Second, encoding choice has an outsized impact on \gls{snn} accuracy---a 40.65 percentage point range between the best and worst encoding---and the hierarchy is explained by information preservation and temporal coverage (RQ2). Third, SpiNNaker deployment is viable with a gap of only 2.15 percentage points, and pruning can eliminate or even reverse the hardware--software gap (RQ3). Fourth, \glspl{snn} offer genuine advantages in adversarial robustness ($6\times$--$195\times$), continual learning ($-$4.7\,pp forgetting), and energy efficiency ($16.6\times$ at 85\% pruning), making them compelling for deployment scenarios where these properties are valued alongside raw accuracy (RQ4).

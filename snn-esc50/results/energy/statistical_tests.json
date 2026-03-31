@@ -286,3 +286,21 @@
       58.0,
       55.25
     ],
+    "gap_per_fold": [
+      2.75,
+      -0.25,
+      -0.25,
+      1.25,
+      -1.75
+    ],
+    "spinnaker_mean": 58.05,
+    "snntorch_mean": 58.4,
+    "gap_mean": 0.35,
+    "gap_std": 1.71,
+    "t_statistic": 0.4576,
+    "p_value": 0.67099,
+    "p_value_significant_005": false,
+    "ci_95_lo": -1.77,
+    "ci_95_hi": 2.47,
+    "cohens_d": 0.2046,
+    "effect_size_interpretation": "small"

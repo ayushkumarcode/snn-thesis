@@ -106,3 +106,16 @@ echo "============================================================" | tee -a "$L
 # Quick accuracy summary from results
 echo "" | tee -a "$LOGFILE"
 echo "=== Accuracy Summary ===" | tee -a "$LOGFILE"
+for PCT in 50 55 60 65 70 75 80 85 90 95; do
+  ACCS=""
+  for FOLD in 1 2 3 4 5; do
+    RFILE="results/spinnaker_results/pruned_t1/fast_pruned${PCT}_fold${FOLD}_400_N256.json"
+    if [ -f "$RFILE" ]; then
+      ACC=$(python3 -c "import json; d=json.load(open('$RFILE')); print(d['summary']['spinnaker_accuracy'])" 2>/dev/null || echo "??")
+      ACCS="${ACCS} F${FOLD}=${ACC}%"
+    else
+      ACCS="${ACCS} F${FOLD}=MISS"
+    fi
+  done
+  echo "  ${PCT}%:${ACCS}" | tee -a "$LOGFILE"
+done

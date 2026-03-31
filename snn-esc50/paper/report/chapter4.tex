@@ -268,3 +268,21 @@ The PANNs transfer experiment isolates the feature-learning bottleneck from spik
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 \textbf{Head} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
+\midrule
+SNN     & 92.00 & 94.50 & 91.00 & 93.50 & 91.50 & 92.50 & 1.30 \\
+ANN     & 93.00 & 95.00 & 92.00 & 95.50 & 91.75 & 93.45 & 1.54 \\
+Linear  & 94.25 & 95.75 & 92.50 & 95.25 & 91.25 & 93.80 & 1.69 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This is the most important finding of the thesis. The scratch-trained \gls{snn}--\gls{ann} gap of 16.70 percentage points (47.15\% versus 63.85\%) collapses to just 0.95 percentage points (92.50\% versus 93.45\%) when both architectures classify the same high-quality pretrained features. A paired $t$-test across folds yields $p = 0.034$, confirming that the residual gap is statistically significant but practically negligible.
+
+This result demonstrates that the \gls{snn}--\gls{ann} gap is overwhelmingly a \textbf{feature-learning problem, not a spiking-computation problem}. When both models receive equally informative input representations, the spiking classifier performs comparably to the non-spiking one. The $\sim$622K-parameter scratch-trained \gls{snn} struggles not because LIF dynamics are inherently inferior classifiers, but because surrogate gradient training on 1,600 samples is insufficient to learn rich convolutional features---the same data limitation that also constrains the scratch-trained \gls{ann} to 63.85\% versus the pretrained 93.45\%.
+
+The practical implication is immediate: a CNN14 feature extractor (running on a conventional processor) combined with a spiking classifier head (running on SpiNNaker) provides 92.50\% accuracy with neuromorphic inference energy. Figure~\ref{fig:panns} visualises this gap collapse.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.75\textwidth]{panns_comparison.pdf}
+\caption[PANNs transfer learning gap collapse.]{Accuracy comparison between scratch-trained and PANNs-pretrained models. The SNN--ANN gap collapses from 16.70\,pp (scratch) to 0.95\,pp (PANNs), demonstrating that the bottleneck is feature learning, not spiking computation. The dashed line shows human performance (81.3\%).}

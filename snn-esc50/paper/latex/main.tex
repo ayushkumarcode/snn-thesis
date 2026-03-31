@@ -37,10 +37,10 @@
 \begin{abstract}
 Spiking neural networks (SNNs) promise energy-efficient inference on neuromorphic hardware, yet no prior work has evaluated them on ESC-50---a challenging 50-class environmental sound benchmark.
 We present the first such evaluation, comparing seven spike encodings and introducing a Rhythm SNN with learnable oscillatory threshold modulation that achieves 61.10\% accuracy---only 2.75~pp below a matched ANN baseline (63.85\%)---while consuming 3.3$\times$ less energy per inference (142 vs 463~nJ, NeuroBench).
-Weight pruning at 85\% sparsity reduces energy a further 3.5$\times$, yielding an estimated \textbf{11$\times$ energy advantage} over the ANN with only 1.5~pp accuracy loss.
+Weight pruning at 85\% sparsity reduces energy a further 3.5$\times$, yielding an estimated \textbf{energy advantage of 3.3--11$\times$} over the ANN (depending on accounting method) with only 1.5~pp accuracy loss.
 We validate the pruned models on SpiNNaker neuromorphic hardware, running 22{,}000+ inferences across 10 sparsity levels.
 Pruning acts as implicit regularization: at 50\% sparsity, hardware accuracy \emph{improves} by 3.1~pp, and at two sparsity levels SpiNNaker exceeds its own software simulation.
-These results establish the first energy-accuracy Pareto frontier for spiking audio classification and demonstrate that SNNs can match ANN accuracy at a fraction of the energy cost.
+With pretrained audio features, the SNN--ANN gap collapses to 0.95~pp (92.50\% vs 93.45\%), confirming the scratch-training gap is a feature-learning limitation, not a fundamental constraint of spiking computation.
 Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 \end{abstract}
 
@@ -71,7 +71,8 @@ Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 \label{sec:intro}
 %% ============================================================
 
-Environmental sound classification has practical applications in smart cities, wildlife monitoring, and assistive technology, but deploying classifiers on battery-constrained edge devices remains an energy bottleneck.
+A single inference on ESC-50 costs 463~nJ with a conventional neural network.
+We show a pruned spiking network can classify the same 50 environmental sounds for as little as 41~nJ---while deploying on real neuromorphic hardware with under 1~percentage point accuracy loss.
 Spiking neural networks (SNNs) offer a path forward: on neuromorphic hardware, each accumulate operation (AC) costs 5.1$\times$ less than a multiply-accumulate (MAC)~\cite{horowitz2014}, and inactive synapses consume zero power---an advantage that conventional GPUs cannot exploit.
 Yet SNNs are widely assumed to sacrifice accuracy for efficiency.
 We show this trade-off is not inevitable: a Rhythm SNN with learnable oscillatory thresholds achieves 61.10\% on ESC-50---only 2.75~pp below the matched ANN---at 3.3$\times$ lower energy per inference.
@@ -86,7 +87,7 @@ This paper makes four contributions:
     \item \textbf{First SNN evaluation on ESC-50} with seven spike encodings and a Rhythm SNN that narrows the ANN gap to 2.75~pp;
     \item \textbf{11$\times$ energy reduction} versus a matched ANN through reduced timesteps ($T$=3) and 85\% weight pruning, benchmarked with NeuroBench~\cite{yik2025};
     \item \textbf{Pruning as implicit regularization}: 50\% sparsity improves neuromorphic hardware accuracy by 3.1~pp, validated across 22{,}000+ SpiNNaker inferences;
-    \item \textbf{First neuromorphic deployment for environmental sound}, with root-cause analysis of deployment failure modes and a validated hybrid approach on SpiNNaker.
+    \item \textbf{First neuromorphic deployment for multi-class environmental sound} (beyond pure tones~\cite{dominguez2016}), with root-cause analysis of deployment failure modes and a validated hybrid approach on SpiNNaker.
 \end{enumerate}
 
 %% ============================================================
@@ -134,8 +135,7 @@ Larroza \cite{larroza2025} & ESC-10 & FC & 3 & --- \\
 \subsection{Related Work}
 
 \textbf{SNN audio classification.}
-SNN-based audio processing has received comparatively little attention.
-Wu et al.~applied SOM-SNNs to speaker-dependent digit recognition with cochleagram features.
+Only three prior studies apply SNNs to environmental sound; none use convolutional architectures or exceed 10 classes (Table~\ref{tab:comparison}).
 Larroza et al.~\cite{larroza2025} recently evaluated three spike encodings on ESC-10 (10 classes), achieving 69\% with Send-on-Delta encoding using FC layers only.
 Yarga et al.~\cite{yarga2022} compared four encodings for speech digits at ICONS~2022, demonstrating that encoding choice significantly impacts SNN accuracy.
 We extend both works: seven encodings on ESC-50 (50 classes), with convolutional architectures, hardware deployment, and energy analysis.
@@ -173,7 +173,7 @@ All experiments run on NVIDIA A100 GPUs (CSF3 HPC, University of Manchester).
 
 \subsection{Spike Encoding Methods}
 
-We evaluate seven encoding methods (Table~\ref{tab:encodings}), the most comprehensive comparison for audio SNNs to date---extending Yarga et al.'s four-encoding comparison~\cite{yarga2022} to seven methods on a harder 50-class task.
+We evaluate seven encoding methods (Table~\ref{tab:encodings}), extending Yarga et al.'s four-encoding comparison~\cite{yarga2022} with three additional methods (delta, burst, population) on a 50-class task.
 Encodings convert the 64$\times$216 spectrogram into spike trains across $T$ timesteps.
 
 \begin{table}[t]
@@ -306,7 +306,7 @@ To our knowledge, this is the first quantification of encoding specificity in SN
 \subsection{Rhythm SNN Improvement}
 
 The Rhythm SNN (Eq.~\ref{eq:rhythm}) with $T$=3 timesteps achieves 61.10\%$\pm$1.99\% (fold accuracies: 61.0, 62.25, 62.0, 66.25, 55.25)---a 13.95~pp improvement over the baseline SNN (47.15\%, $T$=25) and only 2.75~pp below the ANN (63.85\%).
-The learned oscillation parameters converge to biologically plausible values: frequencies of 2.1--2.9 (corresponding to theta-range oscillations) and amplitudes of 0.03--0.15 (3--15\% threshold modulation).
+The learned oscillation parameters converge to frequencies of 2.1--2.9 (delta-range, consistent with auditory cortex slow oscillations) and amplitudes of 0.03--0.15 (3--15\% threshold modulation).
 Combining with stochastic resonance noise ($\sigma$=0.02) yields 61.35\%$\pm$3.54\%.
 The improvement comes from both the oscillatory modulation and the reduced timestep count ($T$=3 vs $T$=25), which forces the network to extract information efficiently from each spike.
 
@@ -426,7 +426,7 @@ $\varepsilon$ & FGSM SNN & FGSM ANN & PGD SNN & PGD ANN \\
 
 Under FGSM~\cite{goodfellow2015} at $\varepsilon$=0.1, the SNN retains 16.55\% accuracy versus 2.75\% for the ANN (\textbf{6.0$\times$ more robust}, $p$=0.007, 5-fold validated; Table~\ref{tab:adversarial}).
 Under PGD~\cite{madry2018} at $\varepsilon$=0.05, the SNN retains 9.75\% while the ANN drops to 0.05\%.
-Binary spike thresholding provides natural gradient masking: small perturbations that shift continuous activations have no effect until crossing the LIF threshold.
+The LIF threshold acts as a non-linear filter: small perturbations that shift continuous activations have no effect on the binary output spike until crossing the firing threshold, providing inherent input-level noise rejection.
 This is consistent with Sharmin et al.~\cite{sharmin2020} on images and provides the first such analysis on audio spectrograms.
 We acknowledge that standard PGD may underestimate SNN vulnerability~\cite{wang2025}; our results represent a conservative lower bound.
 

@@ -142,3 +142,21 @@ Energy analysis follows the NeuroBench framework~\citep{yik2025neurobench}, whic
 The key metrics are \textit{Effective \glspl{ac}} for \glspl{snn} (counting only non-zero spike-weight accumulations) and \textit{Effective \glspl{mac}} for \glspl{ann} (counting only non-zero activation-weight multiplications).
 Energy is estimated using the Horowitz cost model~\citep{horowitz2014energy}: 0.9\,pJ per \gls{ac} and 4.6\,pJ per \gls{mac} at 45\,nm.
 All energy figures are five-fold validated using NeuroBench~v2.2.0.
+While these are software-simulation proxies rather than direct hardware power measurements, the NeuroBench protocol enables standardised comparison across systems and is the accepted community standard.
+
+\paragraph{Adversarial robustness.}
+Robustness is evaluated using \gls{fgsm}~\citep{goodfellow2015fgsm} and \gls{pgd}~\citep{madry2018pgd} attacks at seven perturbation magnitudes ($\varepsilon \in \{0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2\}$), applied identically to the \gls{snn} and matched \gls{ann}.
+The robustness ratio---retained \gls{snn} accuracy divided by retained \gls{ann} accuracy at each $\varepsilon$---provides a scale-invariant comparison.
+
+\paragraph{Continual learning.}
+Catastrophic forgetting is measured following the sequential task protocol: ESC-50's five super-categories (animals, nature, human, domestic, urban) are presented one at a time, and backward transfer is computed as the mean accuracy drop on previously learned tasks after training on subsequent ones.
+
+\section{Report Structure}
+\label{sec:report-structure}
+
+The remainder of this report is organised as follows.
+
+\textbf{Chapter~\ref{ch:background}} reviews the relevant background and related work, covering ESC-50 and environmental sound classification, \gls{lif} neuron dynamics and surrogate gradient training, the seven spike encoding methods with their mathematical formulations, prior \gls{snn} work on audio, the SpiNNaker architecture, energy efficiency frameworks, adversarial robustness in \glspl{snn}, \gls{panns} transfer learning, and continual learning.
+
+\textbf{Chapter~\ref{ch:methodology}} details the experimental design philosophy and controlled comparison framework, the dataset and preprocessing pipeline, both network architectures (SpikingCNN and ConvANN), all seven encoding implementations, the training protocol, the SpiNNaker deployment strategy, and the design of advanced experiments.
+

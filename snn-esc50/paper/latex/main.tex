@@ -15,7 +15,7 @@
 
 \begin{document}
 
-\title{SpiNNaker Deployment of Pruned Spiking Neural Networks\\for 50-Class Sound Classification}
+\title{Energy-Efficient Spiking Neural Networks for\\Environmental Sound Classification on ESC-50}
 
 \author{Ayush Kumar}
 \affiliation{
@@ -23,7 +23,7 @@
   \city{Manchester}
   \country{United Kingdom}
 }
-\email{ayush.kumar@student.manchester.ac.uk}
+\email{ayush.kumar-2@student.manchester.ac.uk}
 
 \author{Oliver Rhodes}
 \affiliation{
@@ -34,14 +34,13 @@
 \email{oliver.rhodes@manchester.ac.uk}
 
 \begin{abstract}
-We present the first spiking neural network (SNN) evaluation on ESC-50, a 50-class environmental sound benchmark, including deployment on SpiNNaker neuromorphic hardware.
-A Rhythm SNN with learnable oscillatory threshold modulation achieves 61.10\%---only 2.75~pp below the matched ANN (63.85\%).
-We deploy pruned models across 10 sparsity levels (50--95\%) on SpiNNaker via current-injection, running over 22{,}000 hardware inferences (5 folds $\times$ 11 levels $\times$ 400 samples).
-The key finding: \textbf{50\% pruning improves SpiNNaker accuracy} from 57.35\% to 60.45\% (+3.1~pp), acting as implicit regularization for hardware deployment.
-At 85\% pruning, the hardware gap shrinks to just 0.6~pp (59.65\% SpiNNaker vs 60.25\% snnTorch) while energy drops 3.5$\times$.
-At two pruning levels (60\% and 80\%), SpiNNaker \emph{exceeds} the software simulation.
-A systematic comparison of seven spike encodings establishes direct encoding as optimal, and a cross-encoding transfer analysis reveals high encoding specificity (transfer ratio = 0.255).
-Code and models: \url{https://github.com/ayushkumarcode/snn-thesis}
+Spiking neural networks (SNNs) promise energy-efficient inference on neuromorphic hardware, yet no prior work has evaluated them on ESC-50---a challenging 50-class environmental sound benchmark.
+We present the first such evaluation, comparing seven spike encodings and introducing a Rhythm SNN with learnable oscillatory threshold modulation that achieves 61.10\% accuracy---only 2.75~pp below a matched ANN baseline (63.85\%)---while consuming 3.3$\times$ less energy per inference (142 vs 463~nJ, NeuroBench).
+Weight pruning at 85\% sparsity reduces energy a further 3.5$\times$, yielding an estimated \textbf{11$\times$ energy advantage} over the ANN with only 1.5~pp accuracy loss.
+We validate the pruned models on SpiNNaker neuromorphic hardware, running 22{,}000+ inferences across 10 sparsity levels.
+Pruning acts as implicit regularization: at 50\% sparsity, hardware accuracy \emph{improves} by 3.1~pp, and at two sparsity levels SpiNNaker exceeds its own software simulation.
+These results establish the first energy-accuracy Pareto frontier for spiking audio classification and demonstrate that SNNs can match ANN accuracy at a fraction of the energy cost.
+Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 \end{abstract}
 
 \begin{CCSXML}
@@ -71,20 +70,22 @@ Code and models: \url{https://github.com/ayushkumarcode/snn-thesis}
 \label{sec:intro}
 %% ============================================================
 
-Neuromorphic processors like SpiNNaker~\cite{furber2014} execute spike-driven accumulate operations (ACs) at 5.1$\times$ lower energy per operation than the multiply-accumulates (MACs) of conventional hardware~\cite{horowitz2014}, making them attractive for always-on audio sensing where energy budgets are tight.
-Yet deploying trained spiking neural networks (SNNs) on such hardware introduces a \emph{software-to-hardware gap}: integer weight quantization and neuron model approximations degrade accuracy, sometimes catastrophically.
-We ran 22{,}000 inferences on SpiNNaker and found something unexpected: \textbf{moderate weight pruning closes this gap}, improving hardware accuracy by 3.1 percentage points while simultaneously reducing energy.
+Environmental sound classification has practical applications in smart cities, wildlife monitoring, and assistive technology, but deploying classifiers on battery-constrained edge devices remains an energy bottleneck.
+Spiking neural networks (SNNs) offer a path forward: on neuromorphic hardware, each accumulate operation (AC) costs 5.1$\times$ less than a multiply-accumulate (MAC)~\cite{horowitz2014}, and inactive synapses consume zero power---an advantage that conventional GPUs cannot exploit.
+Yet SNNs are widely assumed to sacrifice accuracy for efficiency.
+We show this trade-off is not inevitable: a Rhythm SNN with learnable oscillatory thresholds achieves 61.10\% on ESC-50---only 2.75~pp below the matched ANN---at 3.3$\times$ lower energy per inference.
+With 85\% weight pruning, this advantage grows to an estimated \textbf{11$\times$}, validated on SpiNNaker neuromorphic hardware.
 
-Despite growing interest in neuromorphic computing~\cite{schuman2022}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}---a 50-class environmental sound benchmark with 2{,}000 recordings.
-The closest work classifies only ESC-10 (10 classes) with FC layers~\cite{larroza2025}; Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only 8 pure tones.
-Environmental sound classification on neuromorphic hardware remains an open problem.
+Despite growing interest in neuromorphic computing~\cite{schuman2022,maass1997}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}---a 50-class benchmark with 2{,}000 recordings that remains the standard for environmental sound research~\cite{piczak2015}.
+The closest SNN work classifies only ESC-10 (10 classes) with FC layers~\cite{larroza2025}; Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only pure tones.
+No study has established an energy--accuracy Pareto frontier for spiking audio classification.
 
 This paper makes four contributions:
 \begin{enumerate}
-    \item \textbf{First SNN on ESC-50} with seven spike encodings and a Rhythm SNN achieving 61.10\% (only 2.75~pp below the ANN baseline);
-    \item \textbf{Pruning as regularization for deployment}: 50\% pruning improves SpiNNaker accuracy by 3.1~pp while reducing energy 1.5$\times$;
-    \item \textbf{Comprehensive pruned SpiNNaker sweep} across 10 sparsity levels (22{,}000+ hardware inferences), with the hardware gap shrinking from 2.15~pp to 0.6~pp at 85\% sparsity;
-    \item \textbf{First SpiNNaker deployment for environmental sound}, with documented root-cause analysis of full-deployment failure and a validated hybrid approach.
+    \item \textbf{First SNN evaluation on ESC-50} with seven spike encodings and a Rhythm SNN that narrows the ANN gap to 2.75~pp;
+    \item \textbf{11$\times$ energy reduction} versus a matched ANN through reduced timesteps ($T$=3) and 85\% weight pruning, benchmarked with NeuroBench~\cite{yik2025};
+    \item \textbf{Pruning as implicit regularization}: 50\% sparsity improves neuromorphic hardware accuracy by 3.1~pp, validated across 22{,}000+ SpiNNaker inferences;
+    \item \textbf{First neuromorphic deployment for environmental sound}, with root-cause analysis of deployment failure modes and a validated hybrid approach on SpiNNaker.
 \end{enumerate}
 
 %% ============================================================

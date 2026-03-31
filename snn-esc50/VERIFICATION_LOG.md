@@ -34,3 +34,21 @@
 
 **Iteration 4 (fix references):**
 - Added eshraghian2023training bib entry
+- Fixed ch:results-core → ch:results in chapter2 (2 occurrences)
+- Fixed ch:results-advanced → ch:results in chapter2
+
+**Iteration 5 (verification compile):** 82 pages, 416 KB
+- 0 undefined citations
+- 0 undefined references
+- 3 figures in List of Figures
+- 20+ tables in List of Tables
+- All hyperlinks working
+- Minor overfull hbox warnings (cosmetic only)
+
+**Iteration 6 (visual inspection):**
+- Title page: clean, professional
+- Abstract: comprehensive, all key numbers present
+- ToC: 3 pages, all hyperlinked, well-structured
+- Chapter pages: clean headers, consistent formatting
+- Tables: booktabs formatting, descriptive captions
+- Figures: render at correct size with descriptive captions

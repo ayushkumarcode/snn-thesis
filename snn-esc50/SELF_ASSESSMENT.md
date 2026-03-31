@@ -52,3 +52,21 @@ Breakdown: 0.15*90 + 0.25*88 + 0.35*92 + 0.15*88 + 0.10*88 = 89.9
 
 ## Screencast (15% of total) — Score: N/A (plan written, not produced)
 - Comprehensive 8-minute documentary-style script in SCREENCAST_PLAN.md
+- Minute-by-minute breakdown with 9 segments and 5 demo moments
+- 3 format options evaluated, production schedule included
+
+---
+
+## Achievements (30% of total)
+
+### 5.1 Complexity (33%) — Score: 93 (Outstanding)
+- Surrogate gradient SNN training (not taught at UoM)
+- SpiNNaker hardware deployment (supervisor: "no student has ever done this")
+- 7 encoding implementations with mathematical formulations
+- Rhythm-SNN with learnable oscillatory modulation
+- NeuroBench energy framework integration
+- Combines audio ML + neuroscience + hardware engineering
+
+### 5.2 Scale (33%) — Score: 94 (Outstanding)
+- 84 SpiNNaker JSON result files (50 pruned + 10 unpruned + 24 diagnostic)
+- 7 encoding comparisons x 5 folds = 35 training runs

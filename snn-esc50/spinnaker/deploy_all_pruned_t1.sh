@@ -88,3 +88,21 @@ for PCT in 50 55 60 65 70 75 80 85 90 95; do
     fi
 
   done
+done
+
+# ── Final summary ──
+END_TIME=$(date +%s)
+TOTAL_ELAPSED=$((END_TIME - START_TIME))
+TOTAL_FMT="$(printf '%02d:%02d:%02d' $((TOTAL_ELAPSED/3600)) $(((TOTAL_ELAPSED%3600)/60)) $((TOTAL_ELAPSED%60)))"
+
+echo "" | tee -a "$LOGFILE"
+echo "============================================================" | tee -a "$LOGFILE"
+echo "  ALL T=1 PRUNED DEPLOYMENTS COMPLETE" | tee -a "$LOGFILE"
+echo "  Finished: $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "$LOGFILE"
+echo "  Total time: ${TOTAL_FMT}" | tee -a "$LOGFILE"
+echo "  Completed: ${COMPLETED} | Failed: ${FAILED} | Skipped: ${SKIPPED}" | tee -a "$LOGFILE"
+echo "============================================================" | tee -a "$LOGFILE"
+
+# Quick accuracy summary from results
+echo "" | tee -a "$LOGFILE"
+echo "=== Accuracy Summary ===" | tee -a "$LOGFILE"

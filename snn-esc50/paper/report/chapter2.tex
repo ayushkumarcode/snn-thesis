@@ -250,3 +250,21 @@ Table~\ref{tab:related-work} summarises the landscape. No published work evaluat
         \midrule
         \textbf{This work}           & \textbf{ESC-50} & \textbf{7 methods} & \textbf{Yes} & \textbf{SpiNNaker} & \textbf{47.15\%} \\
         \bottomrule
+    \end{tabular}
+\end{table}
+
+
+%=================================================================
+\section{Adversarial Robustness and Continual Learning}
+\label{sec:adversarial-cl}
+%=================================================================
+
+Two additional properties of \glspl{snn}---adversarial robustness and resistance to catastrophic forgetting---have been hypothesised in the literature and are evaluated empirically in this thesis.
+
+%-------------------------------
+\subsection{Adversarial Robustness}
+\label{subsec:adversarial-background}
+%-------------------------------
+
+Adversarial examples are inputs crafted to maximise classification error through small, often imperceptible perturbations~\citep{goodfellow2015}. The Fast Gradient Sign Method (\gls{fgsm}) generates adversarial examples as
+\begin{equation}

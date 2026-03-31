@@ -358,3 +358,21 @@ def compute_hardware_energy():
 
 # ============================================================
 # TASK 2: Paired t-tests SpiNNaker vs snnTorch
+# ============================================================
+def compute_statistical_tests():
+    print("\n" + "=" * 60)
+    print("TASK 2: Paired t-tests (SpiNNaker vs snnTorch)")
+    print("=" * 60)
+
+    # Load MASTER_RESULTS for summary data
+    with open(MASTER_PATH) as f:
+        master = json.load(f)
+
+    results = {}
+
+    # --- Pruned levels: extract per-fold from individual JSONs ---
+    prune_levels = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+
+    for pct in prune_levels:
+        spinn_accs = []
+        snnt_accs = []

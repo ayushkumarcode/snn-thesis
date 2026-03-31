@@ -142,3 +142,21 @@ def _beta_cf(x, a, b, n_terms):
     TINY = 1e-30
     f = 1.0
     c = 1.0
+    d = 1.0 - (a + b) * x / (a + 1.0)
+    if abs(d) < TINY:
+        d = TINY
+    d = 1.0 / d
+    f = d
+
+    for m in range(1, n_terms + 1):
+        # Even step
+        numerator = m * (b - m) * x / ((a + 2*m - 1) * (a + 2*m))
+        d = 1.0 + numerator * d
+        if abs(d) < TINY:
+            d = TINY
+        c = 1.0 + numerator / c
+        if abs(c) < TINY:
+            c = TINY
+        d = 1.0 / d
+        f *= c * d
+

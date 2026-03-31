@@ -70,3 +70,21 @@ The AvgPool2d$(4, 6)$ layer reduces the feature map from $(16, 54)$ to $(4, 9)$ 
 
 The model outputs both spikes $\mathbf{S}^{(t)} \in \{0, 1\}^{B \times 50}$ and membrane potentials $\mathbf{U}^{(t)} \in \mathbb{R}^{B \times 50}$ at each of the 25 timesteps. At inference, the predicted class is:
 \begin{equation}
+\label{eq:prediction}
+\hat{y} = \arg\max_c \sum_{t=1}^{T} U_c^{(t)}.
+\end{equation}
+
+\subsection{ConvANN Baseline}
+\label{ssec:ann-architecture}
+
+The ANN baseline mirrors the SNN exactly, replacing each LIF neuron with a ReLU activation and removing the temporal dimension. A single addition is Dropout$(p = 0.3)$ before the final fully connected layer, which compensates for the ANN's lack of intrinsic stochastic regularisation (the SNN's binary spiking provides implicit noise regularisation). The ANN processes a single $(1, 64, 216)$ input and outputs logits $\in \mathbb{R}^{50}$ in a single forward pass.
+
+\begin{table}[t]
+\centering
+\caption{Layer-by-layer comparison of the SpikingCNN and ConvANN architectures. Both models have approximately 622K trainable parameters. The SNN processes $T = 25$ timesteps; the ANN processes a single frame.}
+\label{tab:architecture}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Layer} & \textbf{SNN (SpikingCNN)} & \textbf{ANN (ConvANN)} & \textbf{Output Shape} \\
+\midrule

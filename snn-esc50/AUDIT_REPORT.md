@@ -196,3 +196,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 - Dendritic branching with learnable delays
 - Current injection batched deployment protocol for SpiNNaker
 - Full pipeline: audio → spectrogram → encoding → SNN → SpiNNaker → classification
+
+**Rubric match:** "solves a long-standing hard problem or combines ideas from several areas in an original way" — combines audio signal processing, spiking neural networks, surrogate gradient optimization, neuromorphic hardware deployment, energy benchmarking, adversarial robustness, and continual learning. Draws from neuroscience, electrical engineering, and ML.
+
+---
+
+### 5.2 Scale (33% of Achievements)
+
+**Current band: Outstanding (93-96)**
+
+**Evidence:**
+- 50+ unique experiments across CSF3 A100 GPUs and SpiNNaker
+- 7 encoding comparisons × 5 folds = 35 training runs
+- 34 Rhythm/advanced SNN training runs on CSF3
+- 76 energy optimization experiments
+- 50 SpiNNaker pruning deployments (10 levels × 5 folds)
+- 10 unpruned SpiNNaker deployments (T=3 and T=1 × 5 folds)
+- 147-paper energy optimization literature survey
+- ~400+ hours of project work

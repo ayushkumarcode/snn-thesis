@@ -250,3 +250,21 @@ def fig5_panns():
 
     # Legend
     snn_patch = mpatches.Patch(color=BLUE, label='SNN')
+    ann_patch = mpatches.Patch(color=RED, label='ANN')
+    lin_patch = mpatches.Patch(color=PURPLE, label='Linear')
+    ax.legend(handles=[snn_patch, ann_patch, lin_patch], fontsize=9, loc='center left')
+
+    fig.tight_layout()
+    fig.savefig(f'{OUTDIR}/panns_comparison.pdf', bbox_inches='tight')
+    plt.close(fig)
+    print('  [5/5] panns_comparison.pdf')
+
+
+# ============================================================
+# Main
+# ============================================================
+if __name__ == '__main__':
+    print('Generating thesis figures...')
+    fig1_pruning_pareto()
+    fig2_spinnaker_gap()
+    fig3_adversarial()

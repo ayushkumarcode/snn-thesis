@@ -142,3 +142,21 @@ Each neuron fires exactly once, at a time determined by mapping its intensity to
     \label{eq:phase-coding}
 \end{equation}
 Phase coding is deterministic and produces exactly one spike per active neuron, making it the most energy-efficient single-spike scheme. It is inspired by theta-phase precession in hippocampal place cells~\citep{okeefe1993,montemurro2008}, where the phase of a spike relative to a background oscillation encodes spatial information.
+
+\paragraph{Population coding~\citep{georgopoulos1986}.}
+Rather than encoding information at the input, population coding modifies the output layer. Each of the 50 classes is represented by a population of $M = 10$ neurons, yielding 500 output units. Input uses rate coding, and the loss function is a mean squared error on spike counts:
+\begin{equation}
+    \mathcal{L} = \mathrm{MSE}\!\left(\frac{1}{T}\sum_{t=1}^{T} \mathbf{s}_{\mathrm{out}}[t], \;\mathbf{y}_{\mathrm{pop}}\right),
+    \label{eq:population-coding}
+\end{equation}
+where $\mathbf{y}_{\mathrm{pop}} \in \{0,1\}^{500}$ is a binary target vector. Classification is by argmax of the total spike count summed within each class population.
+
+To our knowledge, no prior work has systematically compared all seven encoding methods on a single audio benchmark under controlled conditions.
+
+
+%=================================================================
+\section{Neuromorphic Hardware}
+\label{sec:neuromorphic-hardware}
+%=================================================================
+
+Neuromorphic hardware platforms implement spiking neuron dynamics directly in silicon, exploiting event-driven, parallel computation to achieve energy efficiency that is fundamentally unattainable with conventional von Neumann architectures~\citep{schuman2022}. This section describes SpiNNaker, the platform used in this thesis, and briefly surveys alternatives for context.

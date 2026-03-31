@@ -520,3 +520,21 @@ def compute_confidence_intervals():
             "margin_of_error": round(margin, 2),
             "ci_95_lo": round(ci_lo, 2),
             "ci_95_hi": round(ci_hi, 2),
+            "ci_string": f"{m_computed:.2f} [{ci_lo:.2f}, {ci_hi:.2f}]"
+        }
+        if "per_fold" in info:
+            results[name]["per_fold"] = info["per_fold"]
+
+        print(f"{name}:")
+        print(f"  Mean = {m_computed:.2f}, SD = {s_computed:.2f}")
+        print(f"  SE = {se:.2f}, Margin = {margin:.2f}")
+        print(f"  95% CI = [{ci_lo:.2f}, {ci_hi:.2f}]")
+        print()
+
+    return results
+
+
+# ============================================================
+# TASK 4: Cohen's d for key comparisons
+# ============================================================
+def compute_cohens_d():

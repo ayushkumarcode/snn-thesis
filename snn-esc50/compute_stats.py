@@ -574,3 +574,21 @@ def compute_cohens_d():
     d_spinn_t3 = cohens_d_paired(snnt_t3, spinn_t3)
     t_stat, p_val, ci = paired_t_test(snnt_t3, spinn_t3)
     gap_t3 = [s - p for s, p in zip(snnt_t3, spinn_t3)]
+
+    results["SpiNNaker_vs_snnTorch_T3"] = {
+        "spinnaker_folds": spinn_t3,
+        "snntorch_folds": snnt_t3,
+        "gap_folds": [round(g, 2) for g in gap_t3],
+        "gap_mean": round(mean(gap_t3), 2),
+        "gap_std": round(std_sample(gap_t3), 2),
+        "cohens_d": round(d_spinn_t3, 4),
+        "interpretation": interpret_d(d_spinn_t3),
+        "t_statistic": round(t_stat, 4),
+        "p_value": round(p_val, 6),
+        "ci_95": [round(ci[0], 2), round(ci[1], 2)],
+        "direction": "snnTorch > SpiNNaker"
+    }
+    print(f"\nSpiNNaker vs snnTorch (T=3 unpruned):")
+    print(f"  snnTorch: {mean(snnt_t3):.2f}, SpiNNaker: {mean(spinn_t3):.2f}")
+    print(f"  Gap: {mean(gap_t3):.2f} +/- {std_sample(gap_t3):.2f}")
+    print(f"  Cohen's d = {d_spinn_t3:.4f} ({interpret_d(d_spinn_t3)})")

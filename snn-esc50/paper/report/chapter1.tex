@@ -16,3 +16,21 @@ Wildlife monitoring sensors must persist for months on a single battery cell.
 Smart building occupancy detectors, industrial fault listeners, and search-and-rescue robots all require continuous audio classification at the edge, where cloud offloading is impractical due to latency, bandwidth, and privacy constraints.
 There exists, therefore, a genuine engineering gap: the algorithms that achieve state-of-the-art accuracy are far too expensive to run locally on the devices that need local inference most.
 
+Biology provides an instructive blueprint.
+The mammalian auditory system performs real-time, multi-class sound classification at extraordinary energy efficiency through a fundamentally different computational paradigm.
+The cochlea decomposes sound into frequency-specific vibrations along the basilar membrane, effectively performing a biological Fourier transform.
+Inner hair cells transduce these mechanical vibrations into graded potentials that drive auditory nerve fibres to fire action potentials---binary, all-or-nothing events---at rates and timings that encode frequency, intensity, and temporal structure.
+The auditory cortex processes these sparse temporal spike trains through layered circuits of neurons, each of which integrates evidence over time and fires only when its accumulated input exceeds a threshold.
+Four properties underpin the efficiency of this system: (i)~binary communication, where neurons transmit one-bit events rather than continuous values; (ii)~temporal sparsity, where only a small fraction of neurons is active at any given moment; (iii)~event-driven processing, where computation occurs only when spikes arrive, not at a fixed clock rate; and (iv)~adaptive thresholding, where neurons accumulate evidence before committing to an output, providing natural noise filtering.
+
+\Glspl{snn} attempt to engineer these properties into artificial systems.
+Each neuron maintains a membrane potential that integrates weighted input spikes over time; when this potential crosses a threshold, the neuron emits a spike and resets.
+The most widely used neuron model is the \gls{lif} neuron, governed by
+\begin{equation}
+    \tau_m \frac{dV}{dt} = -V(t) + R \sum_{i} w_i\, s_i(t),
+    \label{eq:lif}
+\end{equation}
+where $V(t)$ is the membrane potential, $\tau_m$ is the membrane time constant, $R$ is the membrane resistance, $w_i$ are synaptic weights, and $s_i(t) \in \{0,1\}$ are binary input spikes.
+The energy implication of this formulation is direct.
+\Gls{ann} inference requires a \gls{mac} for every active connection: multiply an activation by a weight and accumulate the result.
+At 45\,nm technology, a 32-bit floating-point \gls{mac} costs approximately 4.6\,pJ~\citep{horowitz2014energy}.

@@ -286,3 +286,21 @@ Simulation time is reduced to $T = 3$ timesteps for hardware efficiency. The ful
 
 To reduce model size and energy on hardware, we apply \textbf{global magnitude pruning}: the smallest-magnitude weights across the entire network are set to zero. Masks are stored alongside the model and re-applied after each optimiser step during fine-tuning to prevent weight regrowth:
 \begin{equation}
+\label{eq:pruning}
+\mathbf{W}_{\text{pruned}} = \mathbf{W} \odot \mathbf{M}, \quad M_{ij} = \mathbf{1}\!\left[|W_{ij}| > \tau_p\right],
+\end{equation}
+where $\tau_p$ is the $p$-th percentile of all weight magnitudes and $p \in \{50, 55, 60, 65, 70, 75, 80, 85, 90, 95\}$. Each of the 10 sparsity levels is evaluated across all 5 folds, totalling 50 hardware deployments on SpiNNaker.
+
+% ==================================================================
+\section{Energy Measurement}
+\label{sec:energy}
+
+Energy per inference is estimated using the NeuroBench framework~\citep{yik2025neurobench}, which counts the number of synaptic operations performed by each model:
+
+\begin{itemize}[nosep]
+    \item \textbf{Accumulate operations (ACs):} Operations triggered by binary (spike) activations. Each non-zero binary activation contributes one AC per output connection.
+    \item \textbf{Multiply-accumulate operations (MACs):} Operations triggered by non-binary (continuous) activations. Each non-zero continuous activation contributes one MAC per output connection.
+\end{itemize}
+
+Energy is computed using the 45\,nm CMOS reference costs from \citet{horowitz2014energy}:
+\begin{equation}

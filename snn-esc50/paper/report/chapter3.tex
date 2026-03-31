@@ -232,3 +232,21 @@ Deploying the trained SNN on SpiNNaker neuromorphic hardware serves two purposes
 \subsection{Hardware Constraints}
 \label{ssec:hw-constraints}
 
+SpiNNaker~\citep{furber2014spinnaker} imposes several constraints that differ from the software SNN:
+\begin{itemize}[nosep]
+    \item \textbf{No native convolution.} SpiNNaker's ARM cores execute point-neuron models; convolutional operations must either be unrolled into dense connectivity or computed off-chip.
+    \item \textbf{Binary spike communication.} Inter-core communication uses single-bit spike packets routed through a network-on-chip. Graded or analogue signals are not natively supported.
+    \item \textbf{IF\_curr\_exp neuron model.} sPyNNaker provides the integrate-and-fire model with exponential synaptic currents, which approximates the LIF dynamics used in snnTorch.
+    \item \textbf{Core capacity.} Each SpiNNaker core can simulate up to 256 neurons, with memory constraints on fan-in (synaptic connections per neuron).
+    \item \textbf{Fixed-point arithmetic.} Weights and membrane potentials are represented in 16-bit fixed point.
+\end{itemize}
+
+\subsection{Hybrid Deployment Pipeline}
+\label{ssec:hybrid-pipeline}
+
+The AvgPool2d layer between the second LIF layer and FC1 averages binary spikes into fractional values in $[0, 0.5]$, breaking SpiNNaker's binary spike assumption. Direct deployment of the full network is therefore not possible without architectural modification. We adopt a \textbf{hybrid approach}: convolutional layers and FC1 are computed on a host CPU using snnTorch, producing binary hidden spike tensors $\mathbf{H}^{(t)} \in \{0, 1\}^{256}$ for each timestep. Only the FC2 layer ($256 \to 50$) is deployed on SpiNNaker.
+
+The hidden spike tensors exhibit 78.3\% sparsity (55.6 of 256 neurons active per timestep on average, 21.7\% firing rate), providing an efficient representation for SpiNNaker's event-driven communication.
+
+\paragraph{Neuron parameters.}
+The IF\_curr\_exp model is calibrated through a systematic parameter sweep to match snnTorch's LIF dynamics:

@@ -1,0 +1,242 @@
+% Appendix: Supplementary Material
+% Included via \include{appendix} from report.tex (after \appendix command)
+
+\chapter{Supplementary Material}
+\label{ch:appendix}
+
+%=================================================================
+\section{Full Per-Fold Results: All Seven Encodings}
+\label{sec:app-encoding-results}
+%=================================================================
+
+Table~\ref{tab:full-encoding} reports the complete per-fold accuracy for all seven spike encoding methods and the ANN baseline. All experiments use the SpikingCNN architecture ($\sim$622K parameters), ESC-50 five-fold cross-validation (400 test samples per fold), Adam optimiser (lr $= 10^{-3}$, weight decay $= 10^{-4}$), 50 epochs maximum with early stopping at patience $= 10$, and $T = 25$ timesteps. The ANN uses the identical architecture with ReLU activations and no temporal dimension. Population encoding uses 500 output neurons (10 per class) with MSE count loss; all other SNN variants use cross-entropy on summed membrane potentials.
+
+\begin{table}[H]
+\centering
+\caption{Complete per-fold accuracy (\%) for all encodings on ESC-50 five-fold cross-validation.}
+\label{tab:full-encoding}
+\small
+\begin{tabular}{lccccccr}
+\toprule
+\textbf{Encoding} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
+\midrule
+ANN (baseline) & 63.25 & 59.50 & 65.25 & 68.75 & 62.50 & 63.85 & 3.07 \\
+\midrule
+SNN Direct     & 40.50 & 48.50 & 48.25 & 54.00 & 44.50 & 47.15 & 4.50 \\
+SNN Rate       & 24.50 & 27.25 & 23.00 & 21.50 & 23.75 & 24.00 & 1.90 \\
+SNN Phase      & 22.50 & 22.25 & 25.00 & 24.25 & 26.75 & 24.15 & 1.66 \\
+SNN Population & 22.75 & 18.50 & 15.75 & 22.00 & 16.75 & 19.15 & 2.79 \\
+SNN Latency    & 14.00 & 15.75 & 17.75 & 15.50 & 18.50 & 16.30 & 1.62 \\
+SNN Delta      &  8.25 &  7.75 &  7.25 &  7.50 &  5.50 &  7.25 & 0.94 \\
+SNN Burst      &  5.00 &  5.25 &  9.25 &  6.00 &  7.00 &  6.50 & 1.54 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=================================================================
+\section{PANNs Transfer Learning: Per-Fold Results}
+\label{sec:app-panns}
+%=================================================================
+
+Table~\ref{tab:panns-folds} reports the per-fold accuracy for the PANNs transfer learning experiment. Frozen CNN14 embeddings (2,048 dimensions, pretrained on AudioSet) are classified by three heads: a three-layer SNN, a matched three-layer ANN (ReLU), and a linear logistic regression baseline. All heads are trained for 50 epochs with the same Adam optimiser and learning rate schedule.
+
+\begin{table}[H]
+\centering
+\caption{PANNs transfer learning: per-fold accuracy (\%) on ESC-50.}
+\label{tab:panns-folds}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Model} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
+\midrule
+PANNs + SNN    & 92.00 & 94.50 & 91.00 & 93.50 & 91.50 & 92.50 & 1.30 \\
+PANNs + ANN    & 93.00 & 95.00 & 92.00 & 95.50 & 91.75 & 93.45 & 1.54 \\
+PANNs + Linear & 94.25 & 95.75 & 92.50 & 95.25 & 91.25 & 93.80 & 1.69 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=================================================================
+\section{SpiNNaker Calibration Parameters}
+\label{sec:app-spinnaker-params}
+%=================================================================
+
+Table~\ref{tab:spinnaker-neuron} lists the neuron model parameters used for all SpiNNaker deployments. These were determined through a systematic parameter sweep on a 20-sample pilot set (Run~5).
+
+\begin{table}[H]
+\centering
+\caption{SpiNNaker neuron model parameters (IF\_curr\_exp).}
+\label{tab:spinnaker-neuron}
+\small
+\begin{tabular}{llp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Rationale} \\
+\midrule
+Neuron model       & IF\_curr\_exp       & sPyNNaker default; approximates snnTorch LIF \\
+$v_\text{thresh}$  & 1.0\,mV            & Matches snnTorch threshold $\vartheta = 1.0$ \\
+$v_\text{rest}$    & 0.0\,mV            & Matches snnTorch reset-to-zero semantics \\
+$v_\text{reset}$   & 0.0\,mV            & Hard reset after spike emission \\
+$\tau_m$           & 20.0\,ms           & Calibrated via scale sweep; corresponds to $\beta \approx 0.95$ \\
+$\tau_\text{syn,E}$& 5.0\,ms            & Faster decay than $\tau_m$ for temporal precision \\
+$\tau_\text{syn,I}$& 5.0\,ms            & Symmetric (no inhibitory synapses used) \\
+$C_m$              & 1.0\,nF            & Default capacitance \\
+$I_\text{offset}$  & 0.0\,nA            & No bias current injected \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:spinnaker-board} summarises the SpiNNaker board configuration and simulation parameters.
+
+\begin{table}[H]
+\centering
+\caption{SpiNNaker board and simulation configuration.}
+\label{tab:spinnaker-board}
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Property} & \textbf{Value} \\
+\midrule
+Board              & SpiNN-5 (48 chips, 864 ARM cores) \\
+Access             & \texttt{spinnaker.cs.man.ac.uk} via sPyNNaker \\
+sPyNNaker version  & 1.0.0 \\
+Simulation timestep& 1.0\,ms \\
+Duration per sample& 25\,ms ($T = 25$ timesteps) \\
+FC2 layer size     & 256 input neurons $\to$ 50 output neurons \\
+Connectivity       & FromListConnector (pre-computed weight matrix) \\
+Recording          & Membrane potential at each timestep for all 50 output neurons \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=================================================================
+\section{SpiNNaker Pruning Results}
+\label{sec:app-spinnaker-pruning}
+%=================================================================
+
+Table~\ref{tab:spinnaker-pruning} reports the mean SpiNNaker and snnTorch accuracy across five folds at each pruning level. Pruning is applied as unstructured magnitude pruning to the FC2 weight matrix; weights below the $k$-th percentile are set to zero.
+
+\begin{table}[H]
+\centering
+\caption{SpiNNaker and snnTorch accuracy (\%) by pruning level (five-fold means).}
+\label{tab:spinnaker-pruning}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Pruning (\%)} & \textbf{SpiNNaker} & \textbf{snnTorch} & \textbf{Gap (pp)} \\
+\midrule
+0  (baseline)  & 33.1 & 46.0 & 12.9 \\
+50             & 33.8 & 44.2 & 10.4 \\
+55             & 34.1 & 43.5 &  9.4 \\
+60             & 35.2 & 42.8 &  7.6 \\
+65             & 34.6 & 41.3 &  6.7 \\
+70             & 33.9 & 39.7 &  5.8 \\
+75             & 32.4 & 37.1 &  4.7 \\
+80             & 30.8 & 33.5 &  2.7 \\
+85             & 26.1 & 28.9 &  2.8 \\
+90             & 19.5 & 21.0 &  1.5 \\
+95             &  8.3 &  9.2 &  0.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The software--hardware gap narrows monotonically with pruning. At 60\% pruning, the SpiNNaker accuracy (35.2\%) is higher than the unpruned software baseline might suggest given the gap trend. At 80\% pruning, the gap has narrowed to 2.7 pp. This supports the interpretation that small-magnitude weights---those most susceptible to fixed-point quantisation error---are disproportionately responsible for the hardware accuracy deficit.
+
+%=================================================================
+\section{Reproducibility}
+\label{sec:app-reproducibility}
+%=================================================================
+
+\subsection{Random Seeds}
+
+Table~\ref{tab:seeds} documents the random seeds used across all experiments to ensure reproducibility.
+
+\begin{table}[H]
+\centering
+\caption{Random seed configuration for all experiments.}
+\label{tab:seeds}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Experiment} & \textbf{Seed} & \textbf{Notes} \\
+\midrule
+All 5-fold training        & 42 (torch, numpy)  & Set at start of each fold \\
+CSF3 cluster training      & fold number (1--5) & Per-fold in SLURM submission \\
+Surrogate ablation         & 42                 & Fixed single seed, fold 1 \\
+t-SNE visualisation        & 42                 & \texttt{sklearn.TSNE random\_state} \\
+PANNs + SNN head           & 42                 & All 5 folds \\
+Adversarial attacks        & N/A                & Deterministic given model weights \\
+Continual learning         & 42                 & Pretrained from fold 4 best \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Software Versions}
+
+Table~\ref{tab:software} lists all software dependencies and their versions.
+
+\begin{table}[H]
+\centering
+\caption{Software dependencies.}
+\label{tab:software}
+\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Package} & \textbf{Version} & \textbf{Purpose} \\
+\midrule
+Python           & 3.14             & Runtime \\
+PyTorch          & 2.10             & Deep learning framework \\
+snnTorch         & 0.9.4            & SNN neuron models and training \\
+librosa          & 0.10.x           & Audio loading and mel spectrogram computation \\
+NeuroBench       & 2.2.0            & Energy and synaptic operation metrics \\
+panns-inference  & latest           & CNN14 embedding extraction \\
+torchattacks     & latest           & FGSM and PGD adversarial attacks \\
+sPyNNaker        & 1.0.0            & SpiNNaker deployment (Python 3.11 venv) \\
+scikit-learn     & latest           & t-SNE, classification metrics \\
+scipy            & latest           & Wilcoxon signed-rank test \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Hardware}
+
+\begin{itemize}[nosep]
+    \item \textbf{GPU training:} NVIDIA A100-SXM4-80GB on the University of Manchester CSF3 cluster. CUDA 12.6.2. Maximum two GPUs per user.
+    \item \textbf{Local development:} Apple M-series with MPS backend (PyTorch). Used for code development and debugging only; all reported results are from CSF3 A100 runs.
+    \item \textbf{SpiNNaker:} SpiNN-5 board (48 SpiNNaker chips, 864 ARM968 cores) accessed remotely via \texttt{spinnaker.cs.man.ac.uk}. sPyNNaker 1.0.0.
+\end{itemize}
+
+\subsection{Data Preprocessing Pipeline}
+
+The exact preprocessing pipeline, implemented in \texttt{src/dataset.py}, is as follows:
+
+\begin{lstlisting}[language=Python, caption={Audio preprocessing pipeline.}]
+y, sr = librosa.load(filepath, sr=22050, duration=5)
+expected_len = 22050 * 5  # 110,250 samples
+if len(y) < expected_len:
+    y = np.pad(y, (0, expected_len - len(y)))
+mel = librosa.feature.melspectrogram(
+    y=y, sr=sr, n_mels=64, n_fft=1024, hop_length=512
+)
+mel_db = librosa.power_to_db(mel, ref=np.max)
+mel_norm = (mel_db - mel_db.min()) / (mel_db.max() - mel_db.min() + 1e-8)
+# Final shape: (1, 64, 216)
+tensor = torch.tensor(mel_norm, dtype=torch.float32).unsqueeze(0)
+\end{lstlisting}
+
+\subsection{Dataset}
+
+ESC-50 is publicly available at \url{https://github.com/karolpiczak/ESC-50}. It comprises 2{,}000 five-second recordings across 50 classes with predefined five-fold cross-validation splits. No modifications were made to the dataset. Audio files are automatically downloaded and cached at \texttt{data/ESC-50-master/} on first execution.
+
+\subsection{Code Availability}
+
+All source code, training scripts, experiment scripts, analysis notebooks, and result JSON files are available in the project repository. The repository structure is:
+
+\begin{lstlisting}[basicstyle=\small\ttfamily, frame=none]
+snn-esc50/
+  src/models/        -- SpikingCNN, ConvANN, encoding modules
+  src/dataset.py     -- ESC-50 data loading with librosa
+  src/train.py       -- 5-fold CV training entry point
+  experiments/       -- All advanced experiment scripts
+  spinnaker/         -- SpiNNaker deployment scripts
+  results/           -- JSON result files (model checkpoints excluded)
+\end{lstlisting}

@@ -196,3 +196,21 @@ Table~\ref{tab:pruning-sweep} presents the complete pruning sweep at $T = 3$ acr
 \bottomrule
 \end{tabular}
 \end{table}
+
+Three findings emerge from the pruning sweep. First, moderate pruning (50--85\%) \emph{improves} SpiNNaker accuracy relative to the unpruned model: 60.45\% at 50\% pruning versus 57.35\% unpruned. This counter-intuitive result is explained by the regularisation effect of pruning, which removes small-magnitude weights that contribute noise in fixed-point arithmetic. Second, at 60\% and 80\% pruning, SpiNNaker actually \emph{outperforms} snnTorch (gaps of $-$0.45 and $-$0.30 percentage points respectively), demonstrating that the hardware--software gap can be eliminated or even reversed through appropriate sparsification. Third, accuracy degrades gracefully: even at 95\% pruning (retaining only 5\% of weights), SpiNNaker achieves 54.20\%, only 3.15 percentage points below the unpruned deployment.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.75\textwidth]{spinnaker_gap.pdf}
+\caption[SpiNNaker vs snnTorch accuracy across pruning levels.]{SpiNNaker (orange) versus snnTorch (blue) accuracy across pruning levels at $T = 3$. Stars indicate pruning levels where SpiNNaker outperforms snnTorch (60\% and 80\% pruning). Error bars show standard deviation across five folds.}
+\label{fig:spinnaker-gap}
+\end{figure}
+
+\paragraph{Poisson FC1 failure.}
+An alternative deployment strategy using Poisson spike sources for FC1 input was attempted, where continuous feature values are converted to Poisson firing rates. This approach failed because the stochastic nature of Poisson spike generation introduces excessive variance in the FC1 input, particularly for the low-firing-rate neurons that carry discriminative information. The deterministic current-injection method provides reproducible inputs and was adopted as the standard deployment pipeline.
+
+% ==================================================================
+\section{Energy Analysis}
+\label{sec:energy-results}
+% ==================================================================
+

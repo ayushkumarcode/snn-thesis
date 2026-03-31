@@ -232,3 +232,21 @@ def fig5_panns():
 
     # Bracket annotation: PANNs gap (0.95 pp)
     y_bracket2 = 96
+    ax.annotate('', xy=(2, y_bracket2), xytext=(3, y_bracket2),
+                arrowprops=dict(arrowstyle='<->', color='black', lw=1.2))
+    ax.text(2.5, y_bracket2 + 0.8, '0.95 pp gap', ha='center', fontsize=9, fontweight='bold')
+
+    # Connecting arrow between the two gaps to show collapse
+    ax.annotate('Gap collapses\n17.6$\\times$', xy=(2.5, 95), xytext=(1.2, 80),
+                fontsize=8, ha='center', color=GREEN, fontweight='bold',
+                arrowprops=dict(arrowstyle='->', color=GREEN, lw=1.2,
+                                connectionstyle='arc3,rad=-0.2'))
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(categories, fontsize=10)
+    ax.set_ylabel('Accuracy (%)')
+    ax.set_ylim(0, 102)
+    ax.set_xlim(-0.5, 4.8)
+
+    # Legend
+    snn_patch = mpatches.Patch(color=BLUE, label='SNN')

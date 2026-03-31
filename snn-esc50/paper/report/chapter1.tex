@@ -52,3 +52,21 @@ Since 2019, surrogate gradient training has become the dominant approach, produc
 Environmental sound classification is a natural testbed for \gls{snn} research.
 Audio spectrograms are structurally compatible with spiking computation: the temporal axis of a mel spectrogram maps directly to \gls{snn} timesteps, and many environmental sounds---door knocks, glass breaking, dog barks---produce naturally sparse spectrograms that match the regime where \glspl{snn} are most efficient.
 Equally importantly, the target applications for environmental sound classification (hearing aids, wildlife sensors, smart buildings) demand exactly the energy efficiency that neuromorphic hardware promises.
+ESC-50~\citep{piczak2015esc50}, the standard benchmark for this domain, provides 2{,}000 five-second recordings across 50 classes with predefined five-fold cross-validation, human performance of 81.3\%, and a current state-of-the-art of 99.1\% achieved by OmniVec2 with large-scale pretraining~\citep{srivastava2024omnivec2}.
+
+Despite active research on both \glspl{snn} and audio classification, a verified literature search reveals that \textbf{no prior peer-reviewed work has evaluated convolutional \glspl{snn} on the full 50-class ESC-50 benchmark}.
+The closest published result is Larroza et al.~\citep{larroza2025}, who evaluate fully connected (not convolutional) \glspl{snn} on the 10-class ESC-10 subset, achieving approximately 60\% accuracy.
+SpiNNaker has been applied to audio classification only with synthetic pure tones~\citep{dominguezmorales2016}.
+No systematic comparison of spike encoding methods for audio exists, and no adversarial robustness analysis for audio \glspl{snn} has been published.
+This thesis addresses all of these gaps.
+
+\section{Research Questions}
+\label{sec:research-questions}
+
+This thesis is structured around four research questions, each targeting a distinct open problem in neuromorphic audio processing.
+
+\begin{description}[style=nextline,leftmargin=1.5cm,labelwidth=1cm]
+
+\item[\textbf{RQ1}] \textit{How does \gls{snn} accuracy compare to a matched \gls{ann} on ESC-50?}
+
+The relevant comparison is not against state-of-the-art systems pretrained on millions of external clips, but against an \gls{ann} with identical architecture, training protocol, and data budget.

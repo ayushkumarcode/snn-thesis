@@ -70,3 +70,21 @@ The hierarchy is explained by a single organising principle: \textbf{encoding ac
 Direct encoding feeds the continuous normalised spectrogram $\hat{s}_i \in [0, 1]$ at every timestep, preserving full magnitude information. Rate coding quantises intensity to stochastic binary spikes, discarding amplitude detail and introducing sampling noise. Phase and latency coding collapse magnitude into spike timing (one spike per neuron), retaining only $\mathcal{O}(\log T)$ bits per neuron versus the full floating-point precision of direct encoding.
 
 \paragraph{Temporal coverage.}
+Direct and rate coding provide input at all $T = 25$ timesteps, giving the LIF neurons a sustained driving current that enables membrane potentials to evolve through complex, information-rich trajectories. Phase coding distributes single spikes across the full $[1, T]$ window, achieving broad temporal coverage despite minimal spike count. Latency coding covers only a partial window, since high-intensity neurons fire early and the network receives diminishing input at later timesteps. Burst coding concentrates all spikes within the first 5 of 25 timesteps, leaving 80\% of the temporal window entirely silent---a catastrophic mismatch with LIF dynamics that require sustained integration.
+
+\paragraph{Static-spectrogram compatibility.}
+Delta coding is designed for dynamic inputs where temporal changes carry information. Applied to a static mel spectrogram (identical image repeated at each timestep), it detects only the small injected Gaussian noise ($\sigma = 0.02$), producing extremely sparse, uninformative spike trains. This fundamental incompatibility---applying a change-detection encoding to a static input---explains its near-chance performance.
+
+\subsection{Rate--Phase Equivalence}
+\label{ssec:rate-phase}
+
+The most striking finding is that phase coding (24.15\%) matches rate coding (24.00\%) despite using dramatically fewer spikes: each active neuron fires exactly once under phase coding, compared to an average of approximately 12.5 spikes under rate coding (at mean intensity 0.5 over 25 timesteps). This equivalence demonstrates that \textbf{temporal coverage matters more than spike count}. Phase coding distributes its single spikes across the full $[1, T]$ window, providing broad temporal coverage that enables LIF neurons to integrate meaningful patterns. Rate coding achieves the same coverage through redundant stochastic spikes. The energy implication is significant: phase coding achieves equal accuracy at a fraction of the spike count, making it the most energy-efficient spike-based encoding.
+
+\subsection{Population Coding Underperformance}
+\label{ssec:population-underperformance}
+
+Population coding (19.15\%) underperforms rate coding (24.00\%) despite using the same rate-coded input, because it replaces cross-entropy loss with MSE count loss over 500 output neurons (10 per class). The MSE loss landscape is harder to optimise: training accuracy reaches only 18--24\% at convergence, compared to 50--65\% for direct encoding. The expanded output layer also creates a high-dimensional target space where the network must learn to activate specific neuron subsets while suppressing others, a more difficult learning problem than the 50-way softmax used by other encodings.
+
+% ==================================================================
+\section{Rhythm-SNN and Advanced Techniques}
+\label{sec:rhythm-results}

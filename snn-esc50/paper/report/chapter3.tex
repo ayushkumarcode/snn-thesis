@@ -142,3 +142,21 @@ using a linearised approximation with $\tau = 5.0$ and minimum threshold $\epsil
 Spikes are emitted on positive temporal changes exceeding a threshold $\theta_\delta = 0.1$. Since the spectrogram is inherently static, we inject small Gaussian noise ($\sigma = 0.02$) at each timestep to create temporal variation:
 \begin{equation}
 \label{eq:delta}
+X_i^{(t)} = \Theta\!\bigl((\hat{s}_i + \mathcal{N}(0, \sigma^2))^{(t)} - (\hat{s}_i + \mathcal{N}(0, \sigma^2))^{(t-1)} - \theta_\delta\bigr).
+\end{equation}
+Biologically motivated by on-centre cells in the auditory pathway, but poorly suited to static inputs. Stochastic.
+
+\paragraph{Direct (continuous) coding.}
+The normalised spectrogram is repeated unchanged at each timestep, providing continuous current input to the LIF neurons:
+\begin{equation}
+\label{eq:direct}
+X_i^{(t)} = \hat{s}_i, \quad \forall\, t = 1, \ldots, T.
+\end{equation}
+No explicit spike conversion occurs at the input; the LIF neurons generate their own spike timing through membrane integration. This allows the network to learn an implicit, task-optimal temporal code. Deterministic.
+
+\paragraph{Burst coding.}
+Spike count is proportional to intensity, concentrated in the earliest timesteps:
+\begin{equation}
+\label{eq:burst}
+n_i = \text{round}(\hat{s}_i \times N_{\max}), \quad X_i^{(t)} = \mathbf{1}[t < n_i],
+\end{equation}

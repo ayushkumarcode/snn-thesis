@@ -106,3 +106,21 @@ SR + Rhythm               & 61.35 & 3.54 & $+$14.20 \\
 \textbf{Rhythm-SNN}       & \textbf{61.10} & \textbf{1.99} & $+$\textbf{13.95} \\
 Rhythm + TET              & 60.75 & 2.16 & $+$13.60 \\
 Rhythm + L1 ($10^{-5}$)   & 60.20 & 3.44 & $+$13.05 \\
+Cochleagram SNN           & 55.35 & ---  & $+$8.20 \\
+Stochastic resonance      & 50.40 & ---  & $+$3.25 \\
+Learnable $\beta$         & 49.80 & ---  & $+$2.65 \\
+ALIF (adaptive threshold) & 48.90 & ---  & $+$1.75 \\
+TET loss                  & 48.50 & ---  & $+$1.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Rhythm-SNN achieves 61.10\% $\pm$ 1.99\%, a 13.95 percentage point improvement over the baseline \gls{snn} and only 2.75 percentage points below the \gls{ann} baseline of 63.85\%. Crucially, the Rhythm-SNN has the \emph{lowest} standard deviation (1.99\%) of all advanced configurations, indicating robust performance across folds. While dendritic computations with axonal delays achieve marginally higher mean accuracy (61.65\%), the Rhythm-SNN provides a better accuracy--stability trade-off and is selected as the primary model for SpiNNaker deployment.
+
+The oscillatory modulation mechanism (Section~\ref{ssec:rhythm-snn}) works by creating temporal windows of heightened excitability. The learned frequencies and phases allow different neurons to become preferentially sensitive to different temporal features of the spectrogram, effectively implementing a form of temporal attention. This is biologically motivated by theta oscillations in mammalian auditory cortex~\citep{lakatos2005oscillatory}, which modulate neuronal excitability to align processing with rhythmic structure in auditory stimuli.
+
+\paragraph{Negative results: knowledge distillation and data augmentation.}
+Knowledge distillation from the ConvANN to the SpikingCNN consistently degraded accuracy across all configurations tested. The fundamental problem is that soft ANN logits encourage the SNN to produce smooth, graded outputs, which conflicts with the discrete spiking dynamics. Every combination with knowledge distillation performed worse than the equivalent configuration without it.
+
+Data augmentation (time-shifting, frequency masking, Gaussian noise) also proved harmful: the augmented SNN achieved only 40.75\% $\pm$ 16.03\% (folds: 46.00, 48.75, 24.50, 63.75, 20.75\%)---6.40 percentage points \emph{worse} than the baseline, with variance tripled. Root cause analysis revealed that the early stopping criterion (patience = 10 epochs) terminates training prematurely on augmented data: Folds~3 and~5 stopped at epochs 39 and 33, well before convergence. The augmented \gls{ann} also degraded slightly (61.70\% $\pm$ 4.58\%, $-$2.15 pp). These negative results inform future work: augmentation requires careful interaction with early stopping when training data is limited.
+

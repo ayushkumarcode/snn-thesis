@@ -106,3 +106,21 @@ Rate coding is the oldest and most studied encoding in both neuroscience and \gl
 Each neuron fires at most once, with the spike time inversely related to input intensity:
 \begin{equation}
     t_{\mathrm{fire}}(x_i) = \bigl\lceil (1 - x_i) \cdot (T - 1) \bigr\rceil.
+    \label{eq:latency-coding}
+\end{equation}
+High-intensity inputs spike early, low-intensity inputs spike late or not at all. Information content is $\mathcal{O}(\log T)$ bits per neuron, and the single-spike constraint makes latency coding maximally energy-efficient. However, downstream \gls{lif} neurons must integrate over many timesteps before the late-arriving spikes contribute, creating a temporal bottleneck.
+
+\paragraph{Delta coding~\citep{lichtsteiner2008}.}
+Spikes encode temporal changes rather than absolute values:
+\begin{equation}
+    \mathrm{spk}[t, i] = \mathbf{1}\bigl[|x_i[t] - x_i[t-1]| > \delta\bigr],
+    \label{eq:delta-coding}
+\end{equation}
+where $\delta$ is a threshold (set to 0.1 in this work). Delta coding is the computational analogue of dynamic vision sensors and retinal on/off cells. It is well suited to signals with rich temporal dynamics but performs poorly on static inputs: since a mel spectrogram is identical across all $T$ timesteps in the absence of temporal perturbation, delta coding produces near-zero spike activity, depriving downstream layers of information.
+
+\paragraph{Direct (continuous) coding~\citep{rathi2021}.}
+The normalised input is injected as a continuous current at every timestep:
+\begin{equation}
+    \mathrm{input}[t, i] = x_i, \quad \forall \, t = 1, \ldots, T.
+    \label{eq:direct-coding}
+\end{equation}

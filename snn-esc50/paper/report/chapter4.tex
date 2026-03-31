@@ -412,3 +412,21 @@ This ablation has direct practical implications: researchers training \glspl{snn
 % ==================================================================
 
 Table~\ref{tab:summary} consolidates the principal results of this chapter, mapping each finding to the research question it addresses.
+
+\begin{table}[t]
+\centering
+\caption{Summary of key results. RQ references correspond to the research questions defined in Section~\ref{sec:research-questions}.}
+\label{tab:summary}
+\small
+\begin{tabular}{@{}p{6cm}cc@{}}
+\toprule
+\textbf{Finding} & \textbf{Key Number} & \textbf{RQ} \\
+\midrule
+SNN--ANN gap (scratch)           & 16.70\,pp     & RQ1 \\
+SNN--ANN gap (PANNs)             &  0.95\,pp     & RQ1 \\
+Best encoding: direct            & 47.15\%       & RQ2 \\
+Worst encoding: burst            &  6.50\%       & RQ2 \\
+Rhythm-SNN improvement           & $+$13.95\,pp  & RQ2 \\
+SpiNNaker accuracy ($T = 3$)     & 57.35\%       & RQ3 \\
+Hardware--software gap ($T = 3$) &  2.15\,pp     & RQ3 \\
+SpiNNaker beats snnTorch at 60\% pruning & $-$0.45\,pp & RQ3 \\

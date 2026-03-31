@@ -142,3 +142,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 
 ---
 
+### 3.5 Presentation, Structure and Language (10% of Report)
+
+**Current band: Below Expectations (50-55) — HIGHEST PRIORITY GAP**
+
+**Evidence:**
+- Current drafts are Markdown, not LaTeX
+- No figures, no tables, no formatted equations
+- Informal writing throughout (contractions, casual phrases)
+- No front matter (declaration, copyright, abbreviations, lists)
+- No bibliography
+- No page numbers, headers, or professional formatting
+
+**Gaps to Outstanding (90-100):**
+- Everything. This criterion requires a complete LaTeX document with professional formatting.
+
+**Action items:**
+1. Create complete LaTeX document using MUThesis template
+2. Professional front matter (title, abstract, declaration, acknowledgements, abbreviations, ToC, LoF, LoT)

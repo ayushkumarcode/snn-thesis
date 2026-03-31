@@ -592,3 +592,21 @@
       "prune_pct": 80,
       "mean_h_spk_across_folds": 289.94,
       "mean_o_spk_across_folds": 0.55,
+      "mean_synaptic_events": 14497.35,
+      "mean_energy_nj_8nJ": 115978.84,
+      "std_energy_nj_8nJ": 6011.73,
+      "mean_energy_nj_20nJ": 289947.1,
+      "std_energy_nj_20nJ": 15029.32,
+      "mean_spinnaker_acc": 59.4,
+      "mean_snntorch_acc": 59.1
+    }
+  },
+  "85": {
+    "per_fold": [
+      {
+        "prune_pct": 85,
+        "fold": 1,
+        "n_samples": 400,
+        "mean_h_total_spk": 276.81,
+        "std_h_total_spk": 39.54,
+        "mean_o_total_spk": 0.38,

@@ -178,3 +178,21 @@ The sPyNNaker software stack~\citep{rhodes2018} provides a PyNN-compatible Pytho
 Deploying a trained \gls{snn} on SpiNNaker entails three principal challenges. First, SpiNNaker neurons communicate exclusively through binary spikes, whereas operations such as average pooling in convolutional layers produce fractional activations. This fundamentally limits which layers can be deployed natively. Second, synaptic weights must be representable in the fixed-point format used by the ARM cores, requiring quantisation-aware transfer from floating-point trained models. Third, the 1\,ms simulation timestep and the maximum of 256 neurons per core impose constraints on network sizing and temporal resolution.
 
 %-------------------------------
+\subsection{Other Neuromorphic Platforms}
+\label{subsec:other-neuromorphic}
+%-------------------------------
+
+Intel's Loihi~2~\citep{orchard2021} is a digital neuromorphic chip with 128 neuromorphic cores, each implementing up to 8{,}192 neurons with programmable synaptic dynamics and on-chip learning rules. Loihi~2 supports graded spikes (multi-bit events) in addition to binary spikes, and its programmable microcode architecture allows custom neuron models. Unlike SpiNNaker, Loihi~2 is a custom ASIC fabricated at an advanced process node, offering higher energy efficiency per operation but at reduced flexibility for large-scale reconfiguration.
+
+BrainScaleS-2~\citep{pehle2022} takes a mixed-signal approach: analogue circuits implement neuron and synapse dynamics at physical timescales (approximately 1{,}000$\times$ faster than biological real time), while digital circuits handle configuration, calibration, and routing. The analogue substrate provides exceptional energy efficiency but introduces device mismatch that must be compensated through calibration.
+
+IBM's TrueNorth~\citep{merolla2014} uses a digital, neurosynaptic architecture with one million neurons and 256 million synapses, consuming approximately 70\,mW at full utilisation. Its highly constrained neuron model (binary weights, no on-chip learning) limits deployment flexibility but enables extreme power efficiency.
+
+It is important to note that SpiNNaker~1, used in this thesis, is a 130\,nm research platform designed for flexibility and programmability rather than energy minimality. Energy measurements from SpiNNaker are therefore conservative estimates; deployment on a modern neuromorphic ASIC such as Loihi~2 or SpiNNaker~2~\citep{mayr2019} would yield substantially lower figures.
+
+
+%=================================================================
+\section{Energy Efficiency in Spiking Neural Networks}
+\label{sec:energy-background}
+%=================================================================
+

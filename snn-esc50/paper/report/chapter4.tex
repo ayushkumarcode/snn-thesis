@@ -232,3 +232,21 @@ Combining pruning with temporal reduction yields the most aggressive energy redu
 
 The practical takeaway is that the Rhythm-SNN at $T = 3$ with 85\% pruning occupies the optimal point on the accuracy--energy Pareto frontier: it achieves 59.65\% accuracy at 27\,nJ, representing a 16.6$\times$ energy reduction relative to the \gls{ann} with a accuracy cost of only 4.20 percentage points.
 
+% ==================================================================
+\section{PANNs Transfer Learning}
+\label{sec:panns-results}
+% ==================================================================
+
+The PANNs transfer experiment isolates the feature-learning bottleneck from spiking computation. Table~\ref{tab:panns} reports the five-fold results for all three classifier heads trained on frozen CNN14 embeddings.
+
+\begin{table}[t]
+\centering
+\caption{PANNs transfer learning: classification accuracy (\%) of three classifier heads on frozen CNN14 embeddings (five-fold CV). The \gls{snn}--\gls{ann} gap collapses from 16.70\,pp (scratch) to 0.95\,pp (PANNs).}
+\label{tab:panns}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Head} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
+\midrule
+SNN     & 92.00 & 94.50 & 91.00 & 93.50 & 91.50 & 92.50 & 1.30 \\
+ANN     & 93.00 & 95.00 & 92.00 & 95.50 & 91.75 & 93.45 & 1.54 \\

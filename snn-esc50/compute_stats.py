@@ -682,3 +682,21 @@ def compute_cohens_d():
 # ============================================================
 # MAIN
 # ============================================================
+def main():
+    print("SpiNNaker Statistical Analysis & Hardware Energy Computation")
+    print("=" * 60)
+
+    # TASK 1
+    energy_results = compute_hardware_energy()
+
+    # TASK 2
+    stat_results = compute_statistical_tests()
+
+    # TASK 3
+    ci_results = compute_confidence_intervals()
+
+    # TASK 4
+    d_results = compute_cohens_d()
+
+    # Combine tasks 3 and 4 into stat output
+    stat_results["confidence_intervals"] = ci_results

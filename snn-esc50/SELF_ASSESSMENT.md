@@ -88,3 +88,9 @@ Breakdown: 0.15*90 + 0.25*88 + 0.35*92 + 0.15*88 + 0.10*88 = 89.9
 
 ---
 
+## Overall projected grade: ~91 (Outstanding)
+Report (55%): 90 x 0.55 = 49.5
+Achievements (30%): 93 x 0.30 = 27.9
+Screencast (15%): TBD (plan at 85+ level)
+
+Total (excl. screencast): 77.4 / 85% = ~91

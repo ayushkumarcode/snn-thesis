@@ -232,3 +232,21 @@
     "t_statistic": -3.2071,
     "p_value": 0.032678,
     "p_value_significant_005": true,
+    "ci_95_lo": -0.56,
+    "ci_95_hi": -0.04,
+    "cohens_d": -1.4343,
+    "effect_size_interpretation": "large"
+  },
+  "pruned_85": {
+    "spinnaker_per_fold": [
+      61.0,
+      63.25,
+      57.25,
+      60.25,
+      56.5
+    ],
+    "snntorch_per_fold": [
+      60.0,
+      64.25,
+      58.75,
+      60.25,

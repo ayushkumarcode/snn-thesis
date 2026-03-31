@@ -322,3 +322,21 @@
     ],
     "gap_per_fold": [
       3.0,
+      0.0,
+      -1.25,
+      3.5,
+      3.0
+    ],
+    "spinnaker_mean": 54.2,
+    "snntorch_mean": 55.85,
+    "gap_mean": 1.65,
+    "gap_std": 2.13,
+    "t_statistic": 1.7297,
+    "p_value": 0.158744,
+    "p_value_significant_005": false,
+    "ci_95_lo": -1.0,
+    "ci_95_hi": 4.3,
+    "cohens_d": 0.7735,
+    "effect_size_interpretation": "medium"
+  },
+  "unpruned_t3": {

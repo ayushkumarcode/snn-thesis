@@ -70,3 +70,21 @@ while true; do
             echo "  Starting SpiNNaker T=1 pruned deployment..." >> $LOG
             SPINNAKER_STARTED=true
             # Run SpiNNaker deployment in background
+            source .venv-spinnaker/bin/activate
+            nohup bash spinnaker/deploy_all_pruned_t1.sh >> SPINNAKER_T1_LOG.txt 2>&1 &
+            echo "  SpiNNaker deployment launched (PID: $!)" >> $LOG
+        else
+            echo "  Weights not yet available locally, retrying..." >> $LOG
+        fi
+    fi
+
+    # Check if both CSF3 jobs done
+    if [ "$CSF3_RHYTHM_DONE" = true ] && [ "$CSF3_PRUNE_DONE" = true ] && [ "$SPINNAKER_STARTED" = true ]; then
+        # Check if SpiNNaker is still running
+        if pgrep -f "deploy_all_pruned_t1" > /dev/null; then
+            SPINN_COUNT=$(ls results/spinnaker_results/pruned_t1/fast_pruned*_400_N256.json 2>/dev/null | wc -l | tr -d ' ')
+            echo "  SpiNNaker: running ($SPINN_COUNT/50 complete)" >> $LOG
+        else
+            echo "  ALL EXPERIMENTS COMPLETE" >> $LOG
+            echo "Finished: $(date)" >> $LOG
+            break

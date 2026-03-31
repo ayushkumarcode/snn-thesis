@@ -574,3 +574,21 @@
       "gap_folds": [
         6.0,
         2.75,
+        1.75,
+        0.25,
+        0.75
+      ],
+      "gap_mean": 2.3,
+      "gap_std": 2.28,
+      "cohens_d": 1.0086,
+      "interpretation": "large",
+      "t_statistic": 2.2553,
+      "p_value": 0.087129,
+      "ci_95": [
+        -0.53,
+        5.13
+      ],
+      "direction": "Pruned85% > Unpruned"
+    },
+    "ANN_vs_RhythmSNN": {
+      "ann_folds": [

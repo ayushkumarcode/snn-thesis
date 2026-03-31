@@ -160,3 +160,21 @@ def fig3_adversarial():
     print('  [3/5] adversarial_curves.pdf')
 
 
+# ============================================================
+# FIGURE 4: Surrogate Gradient Ablation
+# ============================================================
+def fig4_surrogate():
+    names = ['Spike Rate Escape', 'Fast Sigmoid', 'ATan', 'STE',
+             'Triangular', 'Sigmoid', 'SFS']
+    accs  = [46.00, 44.75, 35.75, 10.25, 2.75, 2.00, 2.00]
+
+    # Sort by accuracy (highest first = top of horizontal bar chart)
+    order = np.argsort(accs)
+    names_sorted = [names[i] for i in order]
+    accs_sorted  = [accs[i] for i in order]
+
+    colors = [GREEN if a > 30 else RED for a in accs_sorted]
+
+    fig, ax = plt.subplots(figsize=(6.5, 3.5))
+    bars = ax.barh(range(len(names_sorted)), accs_sorted, color=colors, height=0.6, edgecolor='white')
+

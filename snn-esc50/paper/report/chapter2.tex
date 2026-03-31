@@ -124,3 +124,21 @@ The normalised input is injected as a continuous current at every timestep:
     \mathrm{input}[t, i] = x_i, \quad \forall \, t = 1, \ldots, T.
     \label{eq:direct-coding}
 \end{equation}
+No explicit spike conversion is performed; the \gls{lif} neurons in the first hidden layer generate their own temporal spike patterns through the integrate-and-fire dynamics. This allows the network to learn an implicit, task-optimal encoding. Direct coding consistently achieves the highest accuracy in practice~\citep{rathi2021,eshraghian2023}, and is the best-performing encoding in our experiments (47.15\%).
+
+\paragraph{Burst coding~\citep{izhikevich2004}.}
+Each neuron emits a burst of spikes whose count is proportional to input intensity, concentrated at the start of the simulation window:
+\begin{equation}
+    n_{\mathrm{spikes}}(x_i) = \mathrm{round}(x_i \cdot N_{\max}), \qquad
+    \mathrm{spk}[t, i] = \mathbf{1}\bigl[t < n_{\mathrm{spikes}}(x_i)\bigr],
+    \label{eq:burst-coding}
+\end{equation}
+where $N_{\max} = 5$. This front-loads all spikes into the first $N_{\max}$ timesteps, leaving the remaining $T - N_{\max}$ timesteps silent. Biologically, burst firing is observed in auditory and visual cortex as a mechanism for reliable signal transmission through noisy synapses~\citep{lisman1997}.
+
+\paragraph{Phase coding~\citep{okeefe1993}.}
+Each neuron fires exactly once, at a time determined by mapping its intensity to a position within a single oscillation cycle:
+\begin{equation}
+    t_{\mathrm{fire}}(x_i) = \bigl\lfloor (1 - x_i) \cdot (T - 1) \bigr\rfloor, \quad x_i > 0.
+    \label{eq:phase-coding}
+\end{equation}
+Phase coding is deterministic and produces exactly one spike per active neuron, making it the most energy-efficient single-spike scheme. It is inspired by theta-phase precession in hippocampal place cells~\citep{okeefe1993,montemurro2008}, where the phase of a spike relative to a background oscillation encodes spatial information.

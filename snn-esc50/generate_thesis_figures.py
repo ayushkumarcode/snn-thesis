@@ -106,3 +106,21 @@ def fig2_spinnaker_gap():
 
     ax.set_xlabel('Pruning Level')
     ax.set_ylabel('Accuracy (%)')
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_ylim(48, 68)
+    ax.legend(fontsize=9, loc='upper right')
+    fig.tight_layout()
+    fig.savefig(f'{OUTDIR}/spinnaker_gap.pdf', bbox_inches='tight')
+    plt.close(fig)
+    print('  [2/5] spinnaker_gap.pdf')
+
+
+# ============================================================
+# FIGURE 3: Adversarial Robustness Curves
+# ============================================================
+def fig3_adversarial():
+    eps = [0, 0.01, 0.02, 0.05, 0.10, 0.20, 0.30]
+
+    fgsm_snn = [46.25, 30.55, 27.30, 24.45, 16.55, 13.85, 13.50]
+    fgsm_ann = [63.85, 18.85,  7.85,  2.65,  2.75,  2.15,  1.60]

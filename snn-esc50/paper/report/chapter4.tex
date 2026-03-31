@@ -250,3 +250,21 @@ The PANNs transfer experiment isolates the feature-learning bottleneck from spik
 \midrule
 SNN     & 92.00 & 94.50 & 91.00 & 93.50 & 91.50 & 92.50 & 1.30 \\
 ANN     & 93.00 & 95.00 & 92.00 & 95.50 & 91.75 & 93.45 & 1.54 \\
+Linear  & 94.25 & 95.75 & 92.50 & 95.25 & 91.25 & 93.80 & 1.69 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This is the most important finding of the thesis. The scratch-trained \gls{snn}--\gls{ann} gap of 16.70 percentage points (47.15\% versus 63.85\%) collapses to just 0.95 percentage points (92.50\% versus 93.45\%) when both architectures classify the same high-quality pretrained features. A paired $t$-test across folds yields $p = 0.034$, confirming that the residual gap is statistically significant but practically negligible.
+
+This result demonstrates that the \gls{snn}--\gls{ann} gap is overwhelmingly a \textbf{feature-learning problem, not a spiking-computation problem}. When both models receive equally informative input representations, the spiking classifier performs comparably to the non-spiking one. The $\sim$622K-parameter scratch-trained \gls{snn} struggles not because LIF dynamics are inherently inferior classifiers, but because surrogate gradient training on 1,600 samples is insufficient to learn rich convolutional features---the same data limitation that also constrains the scratch-trained \gls{ann} to 63.85\% versus the pretrained 93.45\%.
+
+The practical implication is immediate: a CNN14 feature extractor (running on a conventional processor) combined with a spiking classifier head (running on SpiNNaker) provides 92.50\% accuracy with neuromorphic inference energy. The feature extraction is performed once per sample at ingest time; the spiking classifier then operates at nanojoule-scale energy for all subsequent queries. This hybrid architecture is directly deployable.
+
+A surprising secondary finding is that the linear head (93.80\%) marginally outperforms both the SNN head and the ANN head. This indicates that the CNN14 embeddings are already linearly separable for ESC-50's 50 classes, and the nonlinear hidden layers in the SNN and ANN heads provide no benefit---they can only introduce overfitting or optimisation noise on this particular downstream task.
+
+% ==================================================================
+\section{Adversarial Robustness}
+\label{sec:adversarial-results}
+% ==================================================================
+

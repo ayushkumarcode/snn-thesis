@@ -52,3 +52,21 @@ def fig1_pruning_pareto():
 
     # ANN baselines
     ax.axhline(y=63.85, color=RED, linestyle='--', linewidth=1, alpha=0.7, label='ANN accuracy (63.85%)')
+    ax.axvline(x=454, color=RED, linestyle=':', linewidth=1, alpha=0.7, label='ANN energy (454 nJ)')
+
+    # Label key points
+    ax.annotate('0% (unpruned)', (energy[0], acc[0]),
+                textcoords='offset points', xytext=(10, -12), fontsize=9, color=GREY)
+    ax.annotate('85% (sweet spot)', (energy[8], acc[8]),
+                textcoords='offset points', xytext=(-30, 10), fontsize=9, fontweight='bold', color=GREEN)
+    ax.annotate('95%', (energy[10], acc[10]),
+                textcoords='offset points', xytext=(-25, -12), fontsize=9, color=GREY)
+
+    ax.set_xlabel('Energy per Inference (nJ)')
+    ax.set_ylabel('SpiNNaker Accuracy (%)')
+    ax.legend(fontsize=9, loc='lower right')
+    ax.set_xlim(400, 5100)
+    ax.set_ylim(52, 66)
+    fig.tight_layout()
+    fig.savefig(f'{OUTDIR}/pruning_pareto.pdf', bbox_inches='tight')
+    plt.close(fig)

@@ -106,3 +106,21 @@ The 16.70 percentage point gap relative to a matched \gls{ann} (63.85\% $\pm$ 3.
 
 \item \textbf{Most comprehensive spike encoding comparison for audio.}
 Seven encoding methods are evaluated under identical architecture, training, and evaluation conditions.
+The resulting hierarchy is explained in terms of information preservation: direct encoding dominates because it feeds continuous magnitudes at every timestep, while burst and delta coding fail catastrophically due to temporal window mismatch and static-spectrogram incompatibility, respectively.
+The finding that phase coding (one deterministic spike per neuron) matches rate coding (approximately seven stochastic spikes per neuron) at identical accuracy has direct implications for energy-efficient deployment.
+
+\item \textbf{Rhythm-SNN: oscillatory threshold modulation for improved accuracy.}
+A novel technique that modulates \gls{lif} firing thresholds with a learnable sinusoidal signal improves scratch-trained \gls{snn} accuracy from 47.15\% to 61.10\% ($\pm$1.99\%), reducing the \gls{snn}--\gls{ann} gap from 16.70 to 2.75 percentage points.
+This represents the highest reported convolutional \gls{snn} accuracy on ESC-50.
+
+\item \textbf{SpiNNaker deployment for environmental sound classification.}
+The Rhythm-SNN is deployed on SpiNNaker~2 neuromorphic hardware via a current-injection hybrid approach, achieving 57.35\% ($\pm$2.39\%) across five folds with only a 2.15 percentage point hardware--software gap.
+A pruning sweep across 50 hardware deployments (10 sparsity levels $\times$ 5 folds) maps the accuracy--energy Pareto frontier on real neuromorphic silicon.
+
+\item \textbf{Pruning--energy Pareto analysis on neuromorphic hardware.}
+Using NeuroBench-compliant energy estimation~\citep{yik2025neurobench}, a systematic pruning sweep from 50\% to 95\% sparsity demonstrates that 85\% pruning maintains classification accuracy while reducing estimated inference energy to 27\,nJ per sample---16.6$\times$ cheaper than the equivalent \gls{ann} at 454\,nJ.
+
+\item \textbf{Adversarial robustness and continual learning advantages.}
+The \gls{snn} demonstrates 6.0$\times$ greater adversarial robustness under \gls{fgsm} attack at $\varepsilon = 0.1$ (16.55\% versus 2.75\%) and 195$\times$ under \gls{pgd} at $\varepsilon = 0.05$ (9.75\% versus 0.05\%), validated across five folds.
+In sequential continual learning, the \gls{snn} exhibits 4.7 percentage points less catastrophic forgetting than the matched \gls{ann} (69.9\% versus 74.7\%).
+

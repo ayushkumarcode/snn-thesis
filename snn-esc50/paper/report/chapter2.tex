@@ -88,3 +88,21 @@ Several surrogate functions have been proposed. The \emph{fast sigmoid} surrogat
 \citet{zenke2021} argued that the precise shape of the surrogate matters less than its slope, since all smooth approximations to the Heaviside convey similar gradient information. However, our ablation study in Chapter~\ref{ch:results-core} challenges this claim: across eight surrogates evaluated under identical conditions, we observe a bimodal distribution in which three surrogates (spike rate escape, fast sigmoid, arctangent) achieve 35--46\% accuracy while the remaining five (STE, sigmoid, sfs, triangular, and the stochastic variant) either fail to converge or collapse to chance performance. This suggests that surrogate selection is a consequential design decision, particularly for small-dataset regimes where training stability is fragile.
 
 %-------------------------------
+\subsection{Spike Encoding Methods}
+\label{subsec:encoding}
+%-------------------------------
+
+Spike encoding is the process of converting continuous-valued inputs---in our case, mel spectrogram pixel intensities in $[0, 1]$---into temporal spike patterns suitable for \gls{snn} processing. The choice of encoding determines the information content per spike, the temporal structure of input activity, and the resulting energy cost. Seven methods are evaluated in this work, spanning the major categories identified in the computational neuroscience literature.
+
+\paragraph{Rate coding~\citep{adrian1926}.}
+Each input neuron emits a spike at each of the $T$ timesteps with probability equal to the input intensity:
+\begin{equation}
+    \mathrm{spk}[t, i] \sim \mathrm{Bernoulli}(x_i), \quad t = 1, \ldots, T.
+    \label{eq:rate-coding}
+\end{equation}
+Rate coding is the oldest and most studied encoding in both neuroscience and \gls{snn} research. It provides maximal information content---$\mathcal{O}(T)$ bits per neuron---at the expense of high spike counts and corresponding energy cost. The stochastic nature introduces trial-to-trial variability, which can act as implicit regularisation but also limits reproducibility.
+
+\paragraph{Latency coding~\citep{thorpe1996}.}
+Each neuron fires at most once, with the spike time inversely related to input intensity:
+\begin{equation}
+    t_{\mathrm{fire}}(x_i) = \bigl\lceil (1 - x_i) \cdot (T - 1) \bigr\rceil.

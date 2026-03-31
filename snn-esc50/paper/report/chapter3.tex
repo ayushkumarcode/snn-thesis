@@ -322,3 +322,21 @@ Beyond classification accuracy, we evaluate three properties that are particular
 Adversarial robustness is measured using two attack methods from the \texttt{torchattacks} library~\citep{kim2020torchattacks}:
 \begin{itemize}[nosep]
     \item \textbf{FGSM}~\citep{goodfellow2015explaining}: single-step attack at seven perturbation strengths $\epsilon \in \{0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3\}$.
+    \item \textbf{PGD}~\citep{madry2018towards}: iterative attack with 40 steps, following the recommendation of \citet{wang2025reliable} for reliable SNN robustness evaluation.
+\end{itemize}
+
+The SNN is wrapped in a differentiable interface that sums membrane potentials across timesteps ($\sum_t \mathbf{U}^{(t)}$) to produce logits compatible with gradient-based attacks. Both models are evaluated on all five test folds (400 samples each) at each $\epsilon$ value.
+
+\subsection{Continual Learning}
+\label{ssec:continual}
+
+Continual learning ability is assessed by training each model sequentially on the five ESC-50 super-categories (10 classes each), without replay or regularisation. After learning all five tasks, catastrophic forgetting is quantified using Backward Transfer (BWT):
+\begin{equation}
+\label{eq:bwt}
+\text{BWT} = \frac{1}{K-1}\sum_{i=1}^{K-1}\bigl(R_{K,i} - R_{i,i}\bigr),
+\end{equation}
+where $R_{K,i}$ is the accuracy on task $i$ after training on all $K = 5$ tasks, and $R_{i,i}$ is the accuracy on task $i$ immediately after training on it. Negative BWT indicates forgetting; less negative is better.
+
+\subsection{Transfer Learning with PANNs}
+\label{ssec:panns}
+

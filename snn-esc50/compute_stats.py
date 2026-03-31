@@ -88,3 +88,21 @@ def t_critical_95(df):
     }
     if df in table:
         return table[df]
+    # Linear interpolation for unlisted df
+    keys = sorted(table.keys())
+    for i in range(len(keys) - 1):
+        if keys[i] <= df <= keys[i+1]:
+            frac = (df - keys[i]) / (keys[i+1] - keys[i])
+            return table[keys[i]] + frac * (table[keys[i+1]] - table[keys[i]])
+    return 1.96  # fallback for very large df
+
+def two_tailed_p_from_t(t_abs, df):
+    """
+    Approximate two-tailed p-value from |t| and df using the
+    regularized incomplete beta function approximation.
+    For n=5 (df=4), use lookup + interpolation.
+    """
+    # For small df, use a numerical approximation via the relationship:
+    # p = I_{df/(df+t^2)}(df/2, 1/2)
+    # We approximate using the Abramowitz and Stegun formula (26.7.4)
+    # Simpler: use the relation p = 2 * (1 - t_cdf(|t|, df))

@@ -72,4 +72,34 @@
 - Architecture diagram readable (could be larger but acceptable) ✅
 - Pipeline diagram readable ✅
 
-## Status: 3 CONSECUTIVE CLEAN PASSES (iterations 6, 7, 8) — STOPPING
+## PHASE 2: Major Revision (focused story, devil's advocate)
+
+## Iteration 9 — Devil's advocate audit
+- **CUT:** §4.7 Temporal Efficiency (tangential) ✅
+- **CUT:** §4.8 Continual Learning (tangential) ✅
+- **CUT:** Discussion paragraphs on encoding/surrogate (diluted story) ✅
+- **REWROTE:** Introduction opening — specific hook, not generic motivation ✅
+- **ADDED:** Lottery ticket hypothesis connection (Frankle & Carlin 2019) ✅
+- **ADDED:** p-value for 50% pruning improvement (p=0.049) ✅
+- **ADDED:** 4 new references (sPyNNaker, Stromatias, Patino-Saucedo, Maass) ✅
+- **REWROTE:** Rhythm SNN paragraph — less AI, more specific biology ✅
+- Total references: 24 → 28 ✅
+
+## Iteration 10 — Post-revision quality check
+- Paper now tells ONE focused story: pruned SpiNNaker deployment ✅
+- No sentences flagged as AI-sounding ✅
+- All numbers still verified against source data ✅
+- Pages: 6 (within 8-page limit) ✅
+- No new compilation errors ✅
+- Lottery ticket insight adds genuine depth ✅
+- p-value strengthens pruning claim ✅
+
+## Iteration 11 — Final visual check
+- No text overlap ✅
+- All tables clean ✅
+- Pareto curve clearly visible ✅
+- Conference header: "ICONS '26, August 4-6, 2026, Chicago, IL, USA" ✅
+- All 28 references properly formatted ✅
+- Page 6: ~50% blank (references end mid-page, acceptable for 6/8 page paper) ✅
+
+## Status: 3 CONSECUTIVE CLEAN PASSES (iterations 9, 10, 11) — STOPPING

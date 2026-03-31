@@ -88,3 +88,21 @@
       -0.5,
       -2.0,
       0.25
+    ],
+    "spinnaker_mean": 60.15,
+    "snntorch_mean": 59.7,
+    "gap_mean": -0.45,
+    "gap_std": 1.54,
+    "t_statistic": -0.6555,
+    "p_value": 0.54792,
+    "p_value_significant_005": false,
+    "ci_95_lo": -2.36,
+    "ci_95_hi": 1.46,
+    "cohens_d": -0.2932,
+    "effect_size_interpretation": "small"
+  },
+  "pruned_65": {
+    "spinnaker_per_fold": [
+      58.5,
+      65.25,
+      58.75,

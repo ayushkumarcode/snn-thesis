@@ -484,3 +484,21 @@
       "mean": 92.5,
       "std": 1.46,
       "n": 5,
+      "se": 0.65,
+      "t_crit": 2.776,
+      "margin_of_error": 1.81,
+      "ci_95_lo": 90.69,
+      "ci_95_hi": 94.31,
+      "ci_string": "92.50 [90.69, 94.31]",
+      "per_fold": [
+        92.0,
+        94.5,
+        91.0,
+        93.5,
+        91.5
+      ]
+    }
+  },
+  "cohens_d_comparisons": {
+    "ANN_vs_SNN": {
+      "ann_folds": [

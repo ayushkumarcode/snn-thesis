@@ -250,3 +250,21 @@ The practical takeaway is that the Rhythm-SNN at $T = 3$ with 85\% pruning occup
 \centering
 \includegraphics[width=0.75\textwidth]{pruning_pareto.pdf}
 \caption[Accuracy--energy Pareto frontier.]{Accuracy--energy Pareto frontier for pruned Rhythm-SNN deployments on SpiNNaker at $T = 3$. Dashed lines indicate the ConvANN baseline accuracy (63.85\%) and energy (454\,nJ). The 85\% pruning point offers the best trade-off: near-unpruned accuracy at 16.6$\times$ lower energy than the ANN.}
+\label{fig:pareto}
+\end{figure}
+
+% ==================================================================
+\section{PANNs Transfer Learning}
+\label{sec:panns-results}
+% ==================================================================
+
+The PANNs transfer experiment isolates the feature-learning bottleneck from spiking computation. Table~\ref{tab:panns} reports the five-fold results for all three classifier heads trained on frozen CNN14 embeddings.
+
+\begin{table}[t]
+\centering
+\caption{PANNs transfer learning: classification accuracy (\%) of three classifier heads on frozen CNN14 embeddings (five-fold CV). The \gls{snn}--\gls{ann} gap collapses from 16.70\,pp (scratch) to 0.95\,pp (PANNs).}
+\label{tab:panns}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Head} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\

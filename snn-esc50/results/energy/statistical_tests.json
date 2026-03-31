@@ -592,3 +592,21 @@
     },
     "ANN_vs_RhythmSNN": {
       "ann_folds": [
+        62.75,
+        67.5,
+        60.0,
+        68.25,
+        60.75
+      ],
+      "rhythm_folds": [
+        60.25,
+        62.25,
+        59.0,
+        63.75,
+        60.25
+      ],
+      "ann_mean": 63.85,
+      "rhythm_mean": 61.1,
+      "pooled_sd": 3.0109,
+      "cohens_d": 0.9133,
+      "interpretation": "large",

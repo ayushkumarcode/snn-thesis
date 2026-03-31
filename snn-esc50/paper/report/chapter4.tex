@@ -19,14 +19,14 @@ The ConvANN baseline establishes the upper bound for what a non-spiking network 
 \toprule
 \textbf{Model} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
 \midrule
-ConvANN & 66.25 & 64.00 & 68.75 & 60.00 & 60.25 & 63.85 & 3.07 \\
+ConvANN & 63.25 & 59.50 & 65.25 & 68.75 & 62.50 & 63.85 & 3.07 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 The mean accuracy of 63.85\% $\pm$ 3.07\% is substantially below the ESC-50 state of the art of 99.1\% achieved by OmniVec2~\citep{srivastava2024omnivec2}, and also below the 94.7\% of PANNs CNN14 with fine-tuning~\citep{kong2020panns}. This gap is expected and informative rather than problematic: those systems leverage large-scale pretraining on AudioSet (approximately 2 million clips), whereas our model trains from scratch on just 1,600 samples per fold. The controlled comparison principle demands that both the \gls{snn} and \gls{ann} share identical data budgets, so the relevant benchmark is the \gls{ann} baseline, not the pretrained state of the art.
 
-The inter-fold variance (standard deviation 3.07 percentage points) reflects genuine difficulty variation across ESC-50's predefined folds: Fold~3 is easiest (68.75\%), while Folds~4 and~5 are hardest (60.00\% and 60.25\% respectively). This fold-level variation persists across all models and encodings, confirming that it is a property of the data splits rather than training instability.
+The inter-fold variance (standard deviation 3.07 percentage points) reflects genuine difficulty variation across ESC-50's predefined folds: Fold~4 is easiest (68.75\%), while Fold~2 is hardest (59.50\%). This fold-level variation persists across all models and encodings, confirming that it is a property of the data splits rather than training instability.
 
 Human performance on ESC-50 is 81.3\%~\citep{piczak2015esc50}. Our baseline thus reaches 78.5\% of human accuracy, which is reasonable for a small model ($\sim$622K parameters) without pretraining, data augmentation, or ensemble methods.
 

@@ -16,3 +16,21 @@ This design follows the recommendation of \citet{deng2021optimal} for fair SNN--
 \label{sec:dataset}
 
 \paragraph{ESC-50.}
+ESC-50~\citep{piczak2015esc} comprises 2,000 five-second environmental sound recordings drawn from Freesound.org, evenly distributed across 50 classes with 40 clips per class. The classes are grouped into five broad super-categories: \emph{Animals} (classes 0--9), \emph{Natural soundscapes} (10--19), \emph{Human non-speech sounds} (20--29), \emph{Domestic sounds} (30--39), and \emph{Urban noises} (40--49). The dataset provides five predefined cross-validation folds that are balanced by class and avoid speaker or recording overlap across folds; we use these throughout. Human classification accuracy on ESC-50 is 81.3\%~\citep{piczak2015esc}.
+
+\paragraph{Preprocessing.}
+All audio clips are loaded at a sample rate of 22,050\,Hz and zero-padded to exactly 110,250 samples (5.0\,s). A log-mel spectrogram is then computed:
+\begin{equation}
+\label{eq:mel}
+\mathbf{S} = 10 \cdot \log_{10}\!\bigl(\text{MelFilterbank}(|\text{STFT}(y)|^2) \,/\, S_{\max}\bigr),
+\end{equation}
+where the STFT uses $n_\text{fft} = 1024$ and hop length $= 512$, and the mel filterbank has $n_\text{mels} = 64$ bins spanning the full frequency range (0--11,025\,Hz). The resulting spectrogram has shape $(64 \times 216)$.
+
+Each spectrogram is then min--max normalised per sample:
+\begin{equation}
+\label{eq:norm}
+\hat{s}_{ij} = \frac{s_{ij} - \min(\mathbf{S})}{\max(\mathbf{S}) - \min(\mathbf{S})},
+\end{equation}
+yielding values in $[0, 1]$. This normalisation is essential for spike encoding: rate coding generates spikes with probability equal to pixel intensity, latency coding maps intensity to spike time, and direct coding feeds values as membrane current---all require a bounded $[0, 1]$ input range. A channel dimension is prepended to produce the final input tensor of shape $(1, 64, 216)$.
+
+All 2,000 spectrograms are precomputed and cached in memory prior to training. This eliminates I/O overhead and ensures deterministic data loading with \texttt{librosa}~\citep{mcfee2015librosa}.

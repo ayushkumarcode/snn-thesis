@@ -736,3 +736,21 @@ def main():
             sig = "YES" if r["p_value_significant_005"] else "no"
             print(f"{key:<18} {r['gap_mean']:<10.2f} {r['t_statistic']:<10.3f} {r['p_value']:<10.4f} {r['cohens_d']:<10.3f} {sig:<6}")
 
+    print("\n" + "=" * 60)
+    print("SUMMARY TABLE: 95% Confidence Intervals")
+    print("=" * 60)
+    for name, ci in ci_results.items():
+        print(f"  {name:<20}: {ci['ci_string']}")
+
+    print("\n" + "=" * 60)
+    print("SUMMARY TABLE: Cohen's d Key Comparisons")
+    print("=" * 60)
+    for name, dd in d_results.items():
+        print(f"  {name:<35}: d = {dd['cohens_d']:.4f} ({dd['interpretation']})")
+
+    print(f"\nAll results saved to:")
+    print(f"  Energy: {ENERGY_OUT}")
+    print(f"  Stats:  {STATS_OUT}")
+
+
+if __name__ == "__main__":

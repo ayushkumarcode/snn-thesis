@@ -70,3 +70,21 @@ Breakdown: 0.15*90 + 0.25*88 + 0.35*92 + 0.15*88 + 0.10*88 = 89.9
 ### 5.2 Scale (33%) — Score: 94 (Outstanding)
 - 84 SpiNNaker JSON result files (50 pruned + 10 unpruned + 24 diagnostic)
 - 7 encoding comparisons x 5 folds = 35 training runs
+- 34 advanced technique experiments on CSF3 A100
+- 76 energy optimisation experiments
+- 147-paper literature survey
+- ~400+ hours of work
+
+### 5.3 Achievement (34%) — Score: 92 (Outstanding)
+- First SNN on full ESC-50 (verified: zero prior work)
+- Rhythm-SNN: 61.10% (+14pp, only 2.75pp below ANN)
+- SpiNNaker: 57.35% with 2.15pp gap
+- PANNs gap collapse: 16.70pp to 0.95pp
+- 85% pruning: ~27 nJ (16.6x cheaper than ANN)
+- SpiNNaker BEATS snnTorch at 60% and 80% pruning
+- 6x adversarial robustness, 4.7pp less forgetting
+
+### Achievements weighted score: ~93 (Outstanding)
+
+---
+

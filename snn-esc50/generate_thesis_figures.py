@@ -196,3 +196,21 @@ def fig4_surrogate():
             ha='center', va='center')
     ax.text(48, 1.5, 'Failure\ngroup', fontsize=8, color=RED, fontweight='bold',
             ha='center', va='center')
+
+    fig.tight_layout()
+    fig.savefig(f'{OUTDIR}/surrogate_ablation.pdf', bbox_inches='tight')
+    plt.close(fig)
+    print('  [4/5] surrogate_ablation.pdf')
+
+
+# ============================================================
+# FIGURE 5: PANNs Gap Collapse
+# ============================================================
+def fig5_panns():
+    categories = ['Scratch\nSNN', 'Scratch\nANN', 'PANNs\n+SNN', 'PANNs\n+ANN', 'PANNs\n+Linear']
+    values = [47.15, 63.85, 92.50, 93.45, 93.80]
+    colors_list = [BLUE, RED, BLUE, RED, PURPLE]
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    x = np.arange(len(categories))
+    bars = ax.bar(x, values, width=0.55, color=colors_list, edgecolor='white', linewidth=0.5)

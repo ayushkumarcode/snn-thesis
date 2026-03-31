@@ -124,3 +124,21 @@ Using NeuroBench-compliant energy estimation~\citep{yik2025neurobench}, a system
 The \gls{snn} demonstrates 6.0$\times$ greater adversarial robustness under \gls{fgsm} attack at $\varepsilon = 0.1$ (16.55\% versus 2.75\%) and 195$\times$ under \gls{pgd} at $\varepsilon = 0.05$ (9.75\% versus 0.05\%), validated across five folds.
 In sequential continual learning, the \gls{snn} exhibits 4.7 percentage points less catastrophic forgetting than the matched \gls{ann} (69.9\% versus 74.7\%).
 
+\end{enumerate}
+
+\section{Evaluation Strategy}
+\label{sec:evaluation-strategy}
+
+The experimental programme follows two established evaluation frameworks to ensure rigour and reproducibility.
+
+\paragraph{Classification accuracy.}
+All accuracy results use ESC-50's predefined five-fold cross-validation protocol~\citep{piczak2015esc50}, wherein four folds serve as training data and the fifth as a held-out test set, rotating across all five partitions.
+This protocol is mandatory for comparability with published ESC-50 results.
+Reported accuracies are the best validation accuracy per fold (not the final epoch), and all means and standard deviations are computed across the five folds.
+Statistical significance is assessed using paired $t$-tests across folds, with $p < 0.05$ as the threshold.
+
+\paragraph{Energy estimation.}
+Energy analysis follows the NeuroBench framework~\citep{yik2025neurobench}, which defines standardised metrics for neuromorphic system comparison.
+The key metrics are \textit{Effective \glspl{ac}} for \glspl{snn} (counting only non-zero spike-weight accumulations) and \textit{Effective \glspl{mac}} for \glspl{ann} (counting only non-zero activation-weight multiplications).
+Energy is estimated using the Horowitz cost model~\citep{horowitz2014energy}: 0.9\,pJ per \gls{ac} and 4.6\,pJ per \gls{mac} at 45\,nm.
+All energy figures are five-fold validated using NeuroBench~v2.2.0.

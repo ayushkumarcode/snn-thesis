@@ -268,3 +268,21 @@ Two additional properties of \glspl{snn}---adversarial robustness and resistance
 
 Adversarial examples are inputs crafted to maximise classification error through small, often imperceptible perturbations~\citep{goodfellow2015}. The Fast Gradient Sign Method (\gls{fgsm}) generates adversarial examples as
 \begin{equation}
+    \mathbf{x}' = \mathbf{x} + \varepsilon \cdot \mathrm{sign}\!\left(\nabla_{\mathbf{x}} \mathcal{L}(\mathbf{x}, y)\right),
+    \label{eq:fgsm}
+\end{equation}
+where $\varepsilon$ controls the perturbation magnitude. \Gls{pgd}~\citep{madry2018} extends this to an iterative, multi-step attack that is generally stronger.
+
+\citet{sharmin2020} demonstrated that \glspl{snn} with rate encoding exhibit higher adversarial accuracy than equivalent \glspl{ann} in black-box transfer attack scenarios. They attributed this robustness to two mechanisms. First, the firing threshold acts as a nonlinear filter: small perturbations to the membrane potential may not be sufficient to cross the threshold, leaving the spike pattern unchanged. Second, the stochasticity of rate coding means that the same perturbation produces different spike patterns across trials, disrupting gradient-based attacks that assume deterministic input-output mappings.
+
+A critical methodological caveat is raised by \citet{wang2025sapgd}, who show that standard \gls{pgd} \emph{underestimates} the true adversarial robustness of \glspl{snn}. The vanishing surrogate gradients in deep spiking networks weaken the attack itself, making the \gls{snn} appear more robust than it is. They propose Spike-Aware PGD (SA-PGD), which compensates for gradient attenuation. This finding is important context for interpreting our adversarial results in Chapter~\ref{ch:results-advanced}: we use standard \gls{pgd} following \citet{sharmin2020} but acknowledge that our robustness figures may be conservative upper bounds on the true \gls{snn} advantage.
+
+An additional mechanism specific to our architecture is \emph{gradient masking} through the spike nonlinearity. The derivative of the spike function is zero almost everywhere (Equation~\ref{eq:spike-function}), and the surrogate gradient used during training is only an approximation. Adversarial attacks that rely on accurate gradient computation are therefore inherently weakened when applied to \glspl{snn}, regardless of any genuine robustness advantage. Disentangling true robustness from gradient masking remains an open problem~\citep{wang2025sapgd}.
+
+%-------------------------------
+\subsection{Continual Learning and Catastrophic Forgetting}
+\label{subsec:cl-background}
+%-------------------------------
+
+Catastrophic forgetting~\citep{mccloskey1989,french1999} occurs when a neural network, trained sequentially on multiple tasks, loses performance on earlier tasks as it adapts to later ones. This is a fundamental limitation of gradient-based learning with shared parameters, since weight updates that optimise for the current task can overwrite representations critical for previous tasks.
+

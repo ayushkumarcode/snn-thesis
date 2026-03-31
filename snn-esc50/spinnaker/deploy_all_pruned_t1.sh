@@ -34,3 +34,21 @@ for PCT in 50 55 60 65 70 75 80 85 90 95; do
     TAG="pruned${PCT}_fold${FOLD}"
     DATA_DIR="results/spinnaker_weights/pruned_t1_${PCT}pct_fold${FOLD}"
     RESULT_FILE="results/spinnaker_results/pruned_t1/fast_${TAG}_400_N256.json"
+
+    # Skip if result already exists
+    if [ -f "$RESULT_FILE" ]; then
+      SKIPPED=$((SKIPPED + 1))
+      echo "[${JOB_NUM}/${TOTAL_JOBS}] SKIP ${TAG} — result exists" | tee -a "$LOGFILE"
+      continue
+    fi
+
+    # Skip if weight dir missing
+    if [ ! -d "$DATA_DIR" ]; then
+      FAILED=$((FAILED + 1))
+      echo "[${JOB_NUM}/${TOTAL_JOBS}] MISS ${TAG} — ${DATA_DIR} not found" | tee -a "$LOGFILE"
+      continue
+    fi
+
+    # Timing
+    NOW=$(date +%s)
+    ELAPSED=$((NOW - START_TIME))

@@ -646,3 +646,21 @@
         "snntorch_accuracy": 58.75
       },
       {
+        "prune_pct": 85,
+        "fold": 4,
+        "n_samples": 400,
+        "mean_h_total_spk": 247.4,
+        "std_h_total_spk": 34.68,
+        "mean_o_total_spk": 0.63,
+        "std_o_total_spk": 1.15,
+        "mean_synaptic_events": 12370.38,
+        "energy_nj_8nJ": 98963.06,
+        "energy_nj_20nJ": 247407.65,
+        "spinnaker_accuracy": 60.25,
+        "snntorch_accuracy": 60.25
+      },
+      {
+        "prune_pct": 85,
+        "fold": 5,
+        "n_samples": 400,
+        "mean_h_total_spk": 289.31,

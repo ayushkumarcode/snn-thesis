@@ -1,0 +1,18 @@
+\chapter{Methodology}
+\label{ch:methodology}
+
+This chapter describes the experimental design, dataset preprocessing, network architecture, spike encoding implementations, training protocol, SpiNNaker deployment pipeline, energy measurement framework, and advanced evaluation methods used throughout this work. Every design decision is motivated by the principle of controlled comparison: the SNN and ANN differ \emph{only} in their neuron model, so that observed performance differences are attributable to the spiking formalism rather than to confounding architectural or training factors.
+
+% ==================================================================
+\section{Design Philosophy}
+\label{sec:design-philosophy}
+
+The central experimental principle is \textbf{controlled comparison}. Both the \gls{snn} and \gls{ann} share identical convolutional feature extraction layers, identical fully connected classifier dimensions, and identical training hyperparameters. They are trained with the same optimiser, learning rate schedule, early stopping criterion, and evaluated under the same five-fold cross-validation protocol. The sole difference is the neuron activation: the SNN uses \gls{lif} neurons with surrogate gradient training~\citep{neftci2019surrogate}, whereas the ANN uses ReLU activations with standard backpropagation.
+
+This design follows the recommendation of \citet{deng2021optimal} for fair SNN--ANN comparison and ensures that any accuracy gap can be attributed to the spiking formalism and spike encoding scheme, not to differences in model capacity, regularisation, or data exposure. The parameter count is deliberately kept small ($\sim$622K) to avoid overfitting on the 1,600 training samples available per fold in ESC-50, and to remain deployable on SpiNNaker hardware within its per-core memory constraints.
+
+% ==================================================================
+\section{Dataset and Preprocessing}
+\label{sec:dataset}
+
+\paragraph{ESC-50.}

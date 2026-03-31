@@ -52,3 +52,21 @@ while true; do
         CSF3_PRUNE_DONE=true
         # Pull pruned weights
         echo "  Pulling T=1 pruned weights..." >> $LOG
+        for pct in 50 55 60 65 70 75 80 85 90 95; do
+            for fold in 1 2 3 4 5; do
+                DIR="results/spinnaker_weights/pruned_t1_${pct}pct_fold${fold}"
+                mkdir -p "$DIR"
+                scp -o ControlPath=~/.ssh/csf3-socket csf3:~/scratch/snn-esc50/${DIR}/*.npy "$DIR/" 2>/dev/null
+            done
+        done
+        # Pull energy results
+        scp -o ControlPath=~/.ssh/csf3-socket csf3:~/scratch/snn-esc50/results/energy/neurobench_t1_pruned_sweep.json results/energy/ 2>/dev/null
+        echo "  T=1 pruned weights pulled." >> $LOG
+    fi
+
+    # Start SpiNNaker if prune weights ready and not started yet
+    if [ "$CSF3_PRUNE_DONE" = true ] && [ "$SPINNAKER_STARTED" = false ]; then
+        if [ -f "results/spinnaker_weights/pruned_t1_50pct_fold1/fc2_weight.npy" ]; then
+            echo "  Starting SpiNNaker T=1 pruned deployment..." >> $LOG
+            SPINNAKER_STARTED=true
+            # Run SpiNNaker deployment in background

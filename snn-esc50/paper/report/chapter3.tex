@@ -340,3 +340,17 @@ where $R_{K,i}$ is the accuracy on task $i$ after training on all $K = 5$ tasks,
 \subsection{Transfer Learning with PANNs}
 \label{ssec:panns}
 
+To disentangle the feature-learning bottleneck from spiking computation per se, we use CNN14~\citep{kong2020panns}---a convolutional neural network pretrained on 2 million AudioSet clips---to extract 2,048-dimensional audio embeddings from each ESC-50 sample. These embeddings are frozen and used as input to three classifier heads:
+\begin{itemize}[nosep]
+    \item \textbf{SNN head:} 3-layer spiking classifier ($2048 \to 512 \to 256 \to 50$, LIF neurons, $T = 25$, rate encoding on embeddings).
+    \item \textbf{ANN head:} Matched architecture with ReLU activations and Dropout(0.3).
+    \item \textbf{Linear head:} Single linear layer ($2048 \to 50$) as a lower bound.
+\end{itemize}
+
+All three heads are trained for 50 epochs with the same optimiser and schedule as the main experiments. The PANNs embeddings are precomputed and cached, so the SNN head trains only the spiking classifier. This experimental design isolates the classification stage: if the SNN--ANN gap persists with high-quality features, the bottleneck is spiking computation; if it vanishes, the bottleneck is feature learning.
+
+% ==================================================================
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+All experiments use fixed random seeds (\texttt{torch.manual\_seed(42)}, \texttt{numpy.random.seed(42)}) for local runs, and seed equal to the fold number for cluster jobs. ESC-50 auto-downloads from the official repository. The software environment consists of Python 3.13 (CSF3) or 3.14 (local development), PyTorch 2.10, snnTorch 0.9.4, NeuroBench 2.2.0, \texttt{torchattacks}, \texttt{panns-inference}, and librosa 0.10. SpiNNaker experiments use sPyNNaker 1.0.0 on a SpiNN-5 board at the University of Manchester. All code and results are publicly available.

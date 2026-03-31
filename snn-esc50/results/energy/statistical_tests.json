@@ -16,3 +16,21 @@
     ],
     "gap_per_fold": [
       1.0,
+      1.0,
+      1.0,
+      4.5,
+      -0.5
+    ],
+    "spinnaker_mean": 60.45,
+    "snntorch_mean": 61.85,
+    "gap_mean": 1.4,
+    "gap_std": 1.85,
+    "t_statistic": 1.6915,
+    "p_value": 0.165993,
+    "p_value_significant_005": false,
+    "ci_95_lo": -0.9,
+    "ci_95_hi": 3.7,
+    "cohens_d": 0.7565,
+    "effect_size_interpretation": "medium"
+  },
+  "pruned_55": {

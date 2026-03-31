@@ -34,3 +34,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 **Action items:**
 1. Write a precise 250-word abstract covering all key numbers
 2. Rewrite entire introduction in formal academic prose
+3. Add rhythm-SNN and full-deploy results to contributions
+4. Derive evaluation strategy from NeuroBench (Yik et al. 2025) and ESC-50 CV protocol (Piczak 2015)
+5. Remove all TODOs and placeholder links
+
+---
+
+### 3.2 Background and Theory (25% of Report)
+
+**Current band: Expected / Above Expectations (65-75)**
+
+**Evidence:**
+- Covers ESC-50, LIF, encodings, SpiNNaker, energy, adversarial, PANNs, CL
+- Prior SNN audio work table with 3 entries
+- Mathematical formulations for LIF neuron
+- Some peer-reviewed references
+
+**Gaps to Outstanding (90-100):**
+- Only ~1,800 words — far too thin for 25% of report (should be ~3,000-3,600)

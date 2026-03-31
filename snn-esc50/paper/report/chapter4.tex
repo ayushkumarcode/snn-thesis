@@ -268,3 +268,21 @@ A surprising secondary finding is that the linear head (93.80\%) marginally outp
 \label{sec:adversarial-results}
 % ==================================================================
 
+The \gls{snn} and matched \gls{ann} are evaluated under \gls{fgsm}~\citep{goodfellow2015explaining} and \gls{pgd}~\citep{madry2018towards} attacks at multiple perturbation strengths. Table~\ref{tab:adversarial} reports the five-fold mean accuracy under attack, alongside the robustness ratio (SNN accuracy divided by ANN accuracy).
+
+\begin{table}[t]
+\centering
+\caption{Adversarial robustness: five-fold mean accuracy (\%) under FGSM and PGD attacks at selected perturbation strengths $\varepsilon$. ``Ratio'' is SNN / ANN accuracy, indicating how many times more robust the SNN is.}
+\label{tab:adversarial}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Attack} & $\boldsymbol{\varepsilon}$ & \textbf{SNN (\%)} & \textbf{ANN (\%)} & \textbf{SNN Std} & \textbf{Ratio} \\
+\midrule
+Clean ($\varepsilon = 0$) & 0 & 47.15 & 63.85 & 4.50 & $0.7\times$ \\
+\midrule
+FGSM & 0.01 & 37.50 & 24.15 & --- & $1.6\times$ \\
+FGSM & 0.05 & 24.80 &  7.20 & --- & $3.4\times$ \\
+FGSM & 0.10 & 16.55 &  2.75 & 5.49 & $6.0\times$ \\
+FGSM & 0.20 &  8.10 &  2.05 & --- & $4.0\times$ \\
+\midrule

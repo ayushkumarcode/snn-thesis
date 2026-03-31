@@ -16,3 +16,21 @@ Environmental sound classification (ESC) is a core task within computational aud
 \paragraph{The ESC-50 dataset.}
 \gls{esc}~\citep{piczak2015} is the standard benchmark for this task. It comprises 2{,}000 five-second recordings drawn from the Freesound repository, distributed uniformly across 50 classes (40 clips per class). The classes span five broad super-categories: animals (e.g.\ dog, rooster, crow), natural soundscapes (e.g.\ rain, sea waves, thunderstorm), human non-speech sounds (e.g.\ clapping, coughing, laughing), domestic/indoor sounds (e.g.\ clock alarm, door knock, vacuum cleaner), and urban/outdoor sounds (e.g.\ helicopter, siren, car horn). Crucially, the dataset defines five predefined folds for cross-validation, ensuring that results are directly comparable across studies. Human classification performance on ESC-50 is 81.3\%~\citep{piczak2015}, reflecting the genuine perceptual difficulty of some distinctions (e.g.\ sea waves versus rain, insects versus crackling fire).
 
+The current state of the art is 99.1\%, achieved by OmniVec2~\citep{srivastava2024} using a multi-modal Transformer pretrained on diverse data. Among audio-only methods, Pretrained Audio Neural Networks~(\gls{panns}) with CNN14 fine-tuning achieve 94.7\%~\citep{kong2020}, and Audio Spectrogram Transformers reach 95.6\%~\citep{gong2021}. These results rely on large-scale pretraining on AudioSet~\citep{gemmeke2017}, a dataset of approximately 2 million 10-second clips spanning 527 event categories. Without external pretraining, the best reported \gls{ann} performance on ESC-50 is substantially lower, motivating our choice to evaluate scratch-trained models as the primary comparison.
+
+\paragraph{Input representation.}
+The dominant input representation for ESC is the log-mel spectrogram, computed by applying the short-time Fourier transform to the audio waveform, mapping the resulting frequency bins through a bank of triangular mel-scale filters that approximate the frequency resolution of the human cochlea, and converting power to a logarithmic decibel scale. In this work, we extract spectrograms with 64 mel bands at a sampling rate of 22{,}050\,Hz and a hop length of 512 samples, yielding a representation of shape $(1, 64, 216)$ per clip---one channel, 64 frequency bins, and 216 time frames. Values are normalised to $[0, 1]$ per sample, a requirement for the spike encoding methods described in Section~\ref{subsec:encoding}.
+
+\paragraph{Broader context.}
+Other datasets complement ESC-50. UrbanSound8K~\citep{salamon2014} provides 8{,}732 clips across 10 urban sound classes; it is smaller in vocabulary and widely considered less challenging. AudioSet~\citep{gemmeke2017} provides massive scale (527 classes, 2 million clips) but uses weak labels and variable-quality recordings, making it unsuitable as a controlled evaluation benchmark. The Spiking Heidelberg Digits (SHD) and Spiking Speech Commands datasets~\citep{cramer2020} are natively spiking but address spoken-digit recognition rather than environmental sounds. No standard spiking benchmark exists for ESC, underscoring the need for this work.
+
+
+%=================================================================
+\section{Spiking Neural Networks}
+\label{sec:snn-background}
+%=================================================================
+
+\Glspl{snn} are neural networks in which information is communicated through discrete, binary events called spikes. Unlike conventional \glspl{ann}, where neurons transmit continuous-valued activations, \gls{snn} neurons accumulate incoming signals over time in a membrane potential and emit a spike only when that potential exceeds a threshold. This event-driven, temporal computation paradigm is inspired by biological neural circuits and offers potential advantages in energy efficiency and temporal processing~\citep{maass1997,gerstner2002}.
+
+%-------------------------------
+\subsection{The Leaky Integrate-and-Fire Neuron}

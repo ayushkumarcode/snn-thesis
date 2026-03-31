@@ -52,3 +52,21 @@ for PCT in 50 55 60 65 70 75 80 85 90 95; do
     # Timing
     NOW=$(date +%s)
     ELAPSED=$((NOW - START_TIME))
+    DONE=$((COMPLETED + FAILED + SKIPPED))
+    if [ "$DONE" -gt 0 ]; then
+      AVG_PER_JOB=$((ELAPSED / DONE))
+      REMAINING=$(( (TOTAL_JOBS - DONE) * AVG_PER_JOB ))
+      ETA_EPOCH=$((NOW + REMAINING))
+      ETA=$(date -r "$ETA_EPOCH" '+%H:%M:%S' 2>/dev/null || date -d "@$ETA_EPOCH" '+%H:%M:%S' 2>/dev/null || echo "??:??:??")
+      ELAPSED_FMT="$(printf '%02d:%02d:%02d' $((ELAPSED/3600)) $(((ELAPSED%3600)/60)) $((ELAPSED%60)))"
+      REMAIN_FMT="$(printf '%02d:%02d:%02d' $((REMAINING/3600)) $(((REMAINING%3600)/60)) $((REMAINING%60)))"
+    else
+      ELAPSED_FMT="00:00:00"
+      REMAIN_FMT="estimating..."
+      ETA="estimating..."
+    fi
+
+    echo "" | tee -a "$LOGFILE"
+    echo "=== [${JOB_NUM}/${TOTAL_JOBS}] ${TAG} ===" | tee -a "$LOGFILE"
+    echo "  Elapsed: ${ELAPSED_FMT} | Remaining: ~${REMAIN_FMT} | ETA: ${ETA}" | tee -a "$LOGFILE"
+    echo "  Completed: ${COMPLETED} | Failed: ${FAILED} | Skipped: ${SKIPPED}" | tee -a "$LOGFILE"

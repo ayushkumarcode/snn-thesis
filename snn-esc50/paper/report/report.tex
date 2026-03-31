@@ -16,3 +16,21 @@
 \usepackage{amsmath,amssymb,amsthm}
 \newtheorem{definition}{Definition}[chapter]
 
+% --- Tables and Figures ---
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\graphicspath{{../figures/}{figures/}}
+\usepackage{subcaption}
+\usepackage{float}
+
+% --- Formatting ---
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}

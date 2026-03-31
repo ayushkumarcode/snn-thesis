@@ -214,3 +214,21 @@ The SNN is trained with a per-timestep cross-entropy loss summed over all $T$ ti
 \end{equation}
 where $\mathbf{U}^{(t)} \in \mathbb{R}^{B \times 50}$ is the output membrane potential at timestep $t$ and $y$ is the ground truth label. This formulation provides gradient flow through all timesteps, yielding better convergence than rate-based loss functions that aggregate only the final output~\citep{eshraghian2023training}.
 
+\paragraph{ANN loss.}
+The ANN uses standard cross-entropy on the single-pass logits: $\mathcal{L}_{\text{ANN}} = \text{CE}(\mathbf{z}, y)$.
+
+\paragraph{Evaluation.}
+Five-fold cross-validation follows the ESC-50 predefined splits: in each fold, four folds form the training set and one fold is held out for testing. The reported metric is the best validation accuracy achieved at any epoch (not the final-epoch accuracy). All reported means and standard deviations are computed across the five test folds.
+
+\paragraph{Computational resources.}
+All five-fold cross-validation experiments are run on the University of Manchester CSF3 high-performance computing cluster using NVIDIA A100 SXM4 80\,GB GPUs. Training one fold of the SNN takes approximately 6 minutes on an A100, compared to 65 minutes on Apple M-series MPS---an order-of-magnitude speedup. CUDA 12.6 and PyTorch 2.10 are used throughout.
+
+% ==================================================================
+\section{SpiNNaker Deployment}
+\label{sec:spinnaker}
+
+Deploying the trained SNN on SpiNNaker neuromorphic hardware serves two purposes: it validates that the software-trained spiking dynamics transfer to an asynchronous, event-driven processor, and it enables measurement of true neuromorphic inference energy. The deployment pipeline is shown in Figure~\ref{fig:spinnaker_pipeline}.
+
+\subsection{Hardware Constraints}
+\label{ssec:hw-constraints}
+

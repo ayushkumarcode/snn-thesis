@@ -178,3 +178,21 @@ Table~\ref{tab:pruning-sweep} presents the complete pruning sweep at $T = 3$ acr
 \caption{SpiNNaker pruning sweep ($T = 3$, five-fold mean). ``Gap'' = snnTorch $-$ SpiNNaker; negative gap means SpiNNaker outperforms snnTorch. Bold entries highlight cases where SpiNNaker matches or beats snnTorch.}
 \label{tab:pruning-sweep}
 \small
+\begin{tabular}{@{}rccrc@{}}
+\toprule
+\textbf{Pruning (\%)} & \textbf{SpiNNaker (\%)} & \textbf{snnTorch (\%)} & \textbf{Gap (pp)} & \textbf{Std (\%)} \\
+\midrule
+0  (unpruned)  & 57.35 & 59.50 &  2.15 & 2.39 \\
+50             & 60.45 & 61.85 &  1.40 & 1.98 \\
+55             & 59.15 & 60.35 &  1.20 & 1.97 \\
+\textbf{60}    & \textbf{60.15} & \textbf{59.70} & $\mathbf{-0.45}$ & 3.80 \\
+65             & 59.60 & 60.40 &  0.80 & 3.12 \\
+70             & 59.85 & 60.05 &  0.20 & 1.93 \\
+75             & 59.65 & 60.60 &  0.95 & 3.11 \\
+\textbf{80}    & \textbf{59.40} & \textbf{59.10} & $\mathbf{-0.30}$ & 2.62 \\
+85             & 59.65 & 60.25 &  0.60 & 2.48 \\
+90             & 58.05 & 58.40 &  0.35 & 3.03 \\
+95             & 54.20 & 55.85 &  1.65 & 2.57 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -772,3 +772,21 @@
       "mean_spinnaker_acc": 58.05,
       "mean_snntorch_acc": 58.4
     }
+  },
+  "95": {
+    "per_fold": [
+      {
+        "prune_pct": 95,
+        "fold": 1,
+        "n_samples": 400,
+        "mean_h_total_spk": 169.12,
+        "std_h_total_spk": 40.22,
+        "mean_o_total_spk": 0.04,
+        "std_o_total_spk": 0.24,
+        "mean_synaptic_events": 8455.92,
+        "energy_nj_8nJ": 67647.32,
+        "energy_nj_20nJ": 169118.3,
+        "spinnaker_accuracy": 51.5,
+        "snntorch_accuracy": 54.5
+      },
+      {

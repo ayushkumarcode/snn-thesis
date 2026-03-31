@@ -88,3 +88,21 @@ Population coding (19.15\%) underperforms rate coding (24.00\%) despite using th
 % ==================================================================
 \section{Rhythm-SNN and Advanced Techniques}
 \label{sec:rhythm-results}
+% ==================================================================
+
+Beyond the seven standard encodings, we evaluated a suite of advanced techniques to improve \gls{snn} accuracy. Table~\ref{tab:advanced-techniques} presents the top ten configurations.
+
+\begin{table}[t]
+\centering
+\caption{Top ten advanced SNN configurations on ESC-50 (five-fold cross-validation). The baseline SpikingCNN with direct encoding achieves 47.15\%. ``$\Delta$\,Baseline'' is the improvement over the direct-encoding baseline.}
+\label{tab:advanced-techniques}
+\small
+\begin{tabular}{@{}lccl@{}}
+\toprule
+\textbf{Configuration} & \textbf{Mean (\%)} & \textbf{Std (\%)} & \textbf{$\Delta$\,Baseline (pp)} \\
+\midrule
+Dendritic + delays         & 61.65 & 3.69 & $+$14.50 \\
+SR + Rhythm               & 61.35 & 3.54 & $+$14.20 \\
+\textbf{Rhythm-SNN}       & \textbf{61.10} & \textbf{1.99} & $+$\textbf{13.95} \\
+Rhythm + TET              & 60.75 & 2.16 & $+$13.60 \\
+Rhythm + L1 ($10^{-5}$)   & 60.20 & 3.44 & $+$13.05 \\

@@ -88,3 +88,21 @@ Delta coding is designed for dynamic inputs where temporal changes carry informa
 The most striking finding is that phase coding (24.15\%) matches rate coding (24.00\%) despite using dramatically fewer spikes: each active neuron fires exactly once under phase coding, compared to an average of approximately 12.5 spikes under rate coding (at mean intensity 0.5 over 25 timesteps). This equivalence demonstrates that \textbf{temporal coverage matters more than spike count}. Phase coding distributes its single spikes across the full $[1, T]$ window, providing broad temporal coverage that enables LIF neurons to integrate meaningful patterns. Rate coding achieves the same coverage through redundant stochastic spikes. The energy implication is significant: phase coding achieves equal accuracy at a fraction of the spike count, making it the most energy-efficient spike-based encoding.
 
 \subsection{Population Coding Underperformance}
+\label{ssec:population-underperformance}
+
+Population coding (19.15\%) underperforms rate coding (24.00\%) despite using the same rate-coded input, because it replaces cross-entropy loss with MSE count loss over 500 output neurons (10 per class). The MSE loss landscape is harder to optimise: training accuracy reaches only 18--24\% at convergence, compared to 50--65\% for direct encoding. The expanded output layer also creates a high-dimensional target space where the network must learn to activate specific neuron subsets while suppressing others, a more difficult learning problem than the 50-way softmax used by other encodings.
+
+% ==================================================================
+\section{Rhythm-SNN and Advanced Techniques}
+\label{sec:rhythm-results}
+% ==================================================================
+
+Beyond the seven standard encodings, we evaluated a suite of advanced techniques to improve \gls{snn} accuracy. Table~\ref{tab:advanced-techniques} presents the top ten configurations.
+
+\begin{table}[t]
+\centering
+\caption{Top ten advanced SNN configurations on ESC-50 (five-fold cross-validation). The baseline SpikingCNN with direct encoding achieves 47.15\%. ``$\Delta$\,Baseline'' is the improvement over the direct-encoding baseline.}
+\label{tab:advanced-techniques}
+\small
+\begin{tabular}{@{}lccl@{}}
+\toprule

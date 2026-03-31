@@ -59,6 +59,13 @@ ConvANN     & 66.25 & 64.00 & 68.75 & 60.00 & 60.25 & 63.85 & 3.07 \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{encoding_bar_chart.pdf}
+\caption[Encoding comparison on ESC-50.]{Mean five-fold accuracy for all seven spike encodings and the ANN baseline on ESC-50. Error bars show standard deviation across folds. Direct encoding substantially outperforms all other spike encodings. The dashed line indicates the ANN baseline (63.85\%).}
+\label{fig:encoding-bar}
+\end{figure}
+
 The encoding hierarchy is unambiguous: direct (47.15\%) $\gg$ rate (24.00\%) $\approx$ phase (24.15\%) $>$ population (19.15\%) $>$ latency (16.30\%) $\gg$ delta (7.25\%) $\approx$ burst (6.50\%). A paired $t$-test between the best \gls{snn} (direct) and the ConvANN baseline yields $t(4) = 8.64$, $p = 0.001$, confirming statistical significance.
 
 \subsection{Information Preservation Principle}

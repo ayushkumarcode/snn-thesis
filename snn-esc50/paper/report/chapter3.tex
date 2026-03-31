@@ -88,3 +88,21 @@ The ANN baseline mirrors the SNN exactly, replacing each LIF neuron with a ReLU 
 \toprule
 \textbf{Layer} & \textbf{SNN (SpikingCNN)} & \textbf{ANN (ConvANN)} & \textbf{Output Shape} \\
 \midrule
+Input & Encoded: $(T, B, 1, 64, 216)$ & Raw: $(B, 1, 64, 216)$ & --- \\
+Conv1 & Conv2d$(1\!\to\!32, 3)$ + BN & Conv2d$(1\!\to\!32, 3)$ + BN & $(32, 64, 216)$ \\
+Act1 + Pool & MaxPool(2) $\to$ LIF$(\beta\!=\!0.95)$ & ReLU $\to$ MaxPool(2) & $(32, 32, 108)$ \\
+Conv2 & Conv2d$(32\!\to\!64, 3)$ + BN & Conv2d$(32\!\to\!64, 3)$ + BN & $(64, 32, 108)$ \\
+Act2 + Pool & MaxPool(2) $\to$ LIF$(\beta\!=\!0.95)$ & ReLU $\to$ MaxPool(2) & $(64, 16, 54)$ \\
+AvgPool & AvgPool2d$(4, 6)$ & AvgPool2d$(4, 6)$ & $(64, 4, 9)$ \\
+Flatten & --- & --- & $2304$ \\
+FC1 & Linear$(2304\!\to\!256)$ + LIF & Linear$(2304\!\to\!256)$ + ReLU & $256$ \\
+Dropout & --- & Dropout$(0.3)$ & $256$ \\
+FC2 & Linear$(256\!\to\!50)$ + LIF & Linear$(256\!\to\!50)$ & $50$ \\
+\midrule
+Parameters & 621,938 & 621,938 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Rhythm-SNN: Oscillatory Threshold Modulation}
+\label{ssec:rhythm-snn}

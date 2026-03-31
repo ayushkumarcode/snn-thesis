@@ -358,3 +358,21 @@ LSO                & --- & --- & --- & Crashed (Python 3.14) \\
 
 The results reveal a stark \textbf{bimodal distribution}: three surrogates successfully train the network (\{spike\_rate\_escape, fast\_sigmoid, atan\}), while four fail catastrophically (\{STE, sigmoid, superspike, triangular\}). There is no middle ground---every surrogate either achieves $>$35\% accuracy or remains below 11\%.
 
+Spike rate escape (46.00\%) is the best-performing surrogate, consistent with the theoretical analysis of \citet{gygax2025surrogate}, who show that escape-noise-based surrogates provide gradients that are proportional to the probability of spike emission, creating a well-behaved loss landscape. Fast sigmoid (44.75\%) performs comparably, as expected from its mathematical similarity to the escape rate function.
+
+The failure of the sigmoid surrogate (2.00\%) is surprising and contradicts the claim of \citet{zenke2021remarkable} that surrogate shape matters less than slope. In our setting---a deep convolutional SNN with 25 timesteps trained on audio spectrograms---the sigmoid's gradient profile causes vanishing gradients through the temporal unrolling. The straight-through estimator (STE) also fails, likely because its constant gradient ($\partial S / \partial U = 1$ within a window) provides no modulation of gradient magnitude based on proximity to threshold, preventing the network from sharpening spike timing during training.
+
+This ablation has direct practical implications: researchers training \glspl{snn} for audio classification should default to spike rate escape or fast sigmoid surrogates. The common choice of arctangent provides adequate but suboptimal performance ($-$10.25 pp), while sigmoid and STE---both widely used in the literature---fail entirely in this setting.
+
+% ==================================================================
+\section{Summary of Key Findings}
+\label{sec:results-summary}
+% ==================================================================
+
+Table~\ref{tab:summary} consolidates the principal results of this chapter, mapping each finding to the research question it addresses.
+
+\begin{table}[t]
+\centering
+\caption{Summary of key results. RQ references correspond to the research questions defined in Section~\ref{sec:research-questions}.}
+\label{tab:summary}
+\small

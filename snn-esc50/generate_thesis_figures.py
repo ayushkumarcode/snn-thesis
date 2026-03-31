@@ -88,3 +88,21 @@ def fig2_spinnaker_gap():
     x = np.arange(len(labels))
     width = 0.35
 
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+    bars1 = ax.bar(x - width/2, snn_acc, width, label='snnTorch (software)',
+                   color=BLUE, yerr=snn_std, capsize=3, error_kw={'linewidth': 0.8})
+    bars2 = ax.bar(x + width/2, spin_acc, width, label='SpiNNaker (hardware)',
+                   color=ORANGE, yerr=spin_std, capsize=3, error_kw={'linewidth': 0.8})
+
+    # Mark points where SpiNNaker beats snnTorch
+    negative_gap = [(i, s, p) for i, (s, p) in enumerate(zip(snn_acc, spin_acc)) if p >= s]
+    for idx, s_val, p_val in negative_gap:
+        ax.plot(idx + width/2, p_val + spin_std[idx] + 1.5, '*', color=RED, markersize=12, zorder=10)
+
+    # Add a note for stars
+    ax.annotate('SpiNNaker $\\geq$ snnTorch', xy=(2 + width/2, 60.15 + 2.5 + 1.5),
+                xytext=(3.5, 65), fontsize=8, color=RED,
+                arrowprops=dict(arrowstyle='->', color=RED, lw=0.8))
+
+    ax.set_xlabel('Pruning Level')
+    ax.set_ylabel('Accuracy (%)')

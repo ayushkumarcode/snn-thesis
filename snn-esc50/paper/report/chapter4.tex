@@ -286,3 +286,21 @@ The practical implication is immediate: a CNN14 feature extractor (running on a 
 \centering
 \includegraphics[width=0.75\textwidth]{panns_comparison.pdf}
 \caption[PANNs transfer learning gap collapse.]{Accuracy comparison between scratch-trained and PANNs-pretrained models. The SNN--ANN gap collapses from 16.70\,pp (scratch) to 0.95\,pp (PANNs), demonstrating that the bottleneck is feature learning, not spiking computation. The dashed line shows human performance (81.3\%).}
+\label{fig:panns}
+\end{figure}
+
+A surprising secondary finding is that the linear head (93.80\%) marginally outperforms both the SNN head and the ANN head. This indicates that the CNN14 embeddings are already linearly separable for ESC-50's 50 classes, and the nonlinear hidden layers in the SNN and ANN heads provide no benefit---they can only introduce overfitting or optimisation noise on this particular downstream task.
+
+% ==================================================================
+\section{Adversarial Robustness}
+\label{sec:adversarial-results}
+% ==================================================================
+
+The \gls{snn} and matched \gls{ann} are evaluated under \gls{fgsm}~\citep{goodfellow2015explaining} and \gls{pgd}~\citep{madry2018towards} attacks at multiple perturbation strengths. Table~\ref{tab:adversarial} reports the five-fold mean accuracy under attack, alongside the robustness ratio (SNN accuracy divided by ANN accuracy).
+
+\begin{table}[t]
+\centering
+\caption{Adversarial robustness: five-fold mean accuracy (\%) under FGSM and PGD attacks at selected perturbation strengths $\varepsilon$. ``Ratio'' is SNN / ANN accuracy, indicating how many times more robust the SNN is.}
+\label{tab:adversarial}
+\small
+\begin{tabular}{@{}llcccc@{}}

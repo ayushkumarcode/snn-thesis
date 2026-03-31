@@ -340,3 +340,21 @@ def compute_hardware_energy():
             }
         }
 
+        print(f"\n{tag}:")
+        print(f"  Mean hidden spikes/sample: {mean_h_all:.1f}")
+        print(f"  Mean output spikes/sample: {mean_o_all:.1f}")
+        print(f"  Mean synaptic events: {mean_syn:.1f}")
+        print(f"  Energy (8 nJ): {mean_energy_8:.1f} nJ")
+        print(f"  Energy (20 nJ): {mean_energy_20:.1f} nJ")
+
+    # Save
+    os.makedirs(os.path.dirname(ENERGY_OUT), exist_ok=True)
+    with open(ENERGY_OUT, "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"\nSaved to: {ENERGY_OUT}")
+
+    return results
+
+
+# ============================================================
+# TASK 2: Paired t-tests SpiNNaker vs snnTorch

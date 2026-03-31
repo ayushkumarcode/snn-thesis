@@ -34,3 +34,21 @@
 \fancyhead[L]{\nouppercase{\leftmark}}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+
+% --- References ---
+\usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+% --- Code listings ---
+\usepackage{listings}
+\lstset{basicstyle=\small\ttfamily,breaklines=true,frame=single}
+
+% --- Abbreviations ---
+\usepackage[acronym,toc]{glossaries}
+\makeglossaries
+\newacronym{snn}{SNN}{Spiking Neural Network}
+\newacronym{ann}{ANN}{Artificial Neural Network}
+\newacronym{lif}{LIF}{Leaky Integrate-and-Fire}
+\newacronym{esc}{ESC-50}{Environmental Sound Classification (50 classes)}
+\newacronym{cv}{CV}{Cross-Validation}
+\newacronym{fgsm}{FGSM}{Fast Gradient Sign Method}

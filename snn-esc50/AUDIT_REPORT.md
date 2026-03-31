@@ -124,3 +124,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 - Six contributions restated concisely
 - Direct answers to all four RQs
 - Three limitations acknowledged
+- Ten future work directions
+- Final synthesis statement
+
+**Gaps to Outstanding (90-100):**
+- No reflection on negative results as contributions
+- Rhythm-SNN and full-deploy results not mentioned
+- "What I would do differently" reflection missing
+- Future work could be more specific and tied to literature
+- Impact statement missing
+
+**Action items:**
+1. Add critical reflection on negative results
+2. Incorporate latest results
+3. Add impact statement
+4. Make future work more ambitious yet realistic
+
+---
+

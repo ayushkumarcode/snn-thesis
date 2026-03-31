@@ -502,3 +502,21 @@ def compute_confidence_intervals():
             pf = info["per_fold"]
             m_computed = mean(pf)
             s_computed = std_sample(pf)
+        else:
+            m_computed = m
+            s_computed = s
+
+        se = s_computed / math.sqrt(n)
+        margin = t_crit * se
+        ci_lo = m_computed - margin
+        ci_hi = m_computed + margin
+
+        results[name] = {
+            "mean": round(m_computed, 2),
+            "std": round(s_computed, 2),
+            "n": n,
+            "se": round(se, 2),
+            "t_crit": t_crit,
+            "margin_of_error": round(margin, 2),
+            "ci_95_lo": round(ci_lo, 2),
+            "ci_95_hi": round(ci_hi, 2),

@@ -520,3 +520,21 @@
       "pooled_sd": 4.8689,
       "cohens_d": 3.4299,
       "interpretation": "large",
+      "direction": "ANN > SNN"
+    },
+    "SpiNNaker_vs_snnTorch_T3": {
+      "spinnaker_folds": [
+        55.0,
+        60.5,
+        55.5,
+        60.0,
+        55.75
+      ],
+      "snntorch_folds": [
+        56.5,
+        63.0,
+        58.0,
+        61.0,
+        59.0
+      ],
+      "gap_folds": [

@@ -304,3 +304,21 @@ Energy per inference is estimated using the NeuroBench framework~\citep{yik2025n
 
 Energy is computed using the 45\,nm CMOS reference costs from \citet{horowitz2014energy}:
 \begin{equation}
+\label{eq:energy}
+E = N_{\text{AC}} \times 0.9\,\text{pJ} + N_{\text{MAC}} \times 4.6\,\text{pJ}.
+\end{equation}
+
+The key insight is that ACs are approximately $5.1\times$ cheaper than MACs, so SNNs benefit energetically from sparse, binary activations. However, the SNN must maintain a sufficiently low spike rate---below $\sim$6.4\% according to \citet{dampfhoffer2023snns}---to achieve energy parity with quantised ANNs in software. Our baseline SNN operates at 26.4\% spike rate (73.6\% sparsity), which is above this threshold; pruning and temporal reduction are used to push below it.
+
+% ==================================================================
+\section{Advanced Evaluation}
+\label{sec:advanced-eval}
+
+Beyond classification accuracy, we evaluate three properties that are particularly relevant to neuromorphic deployment and that reveal qualitative differences between spiking and non-spiking computation.
+
+\subsection{Adversarial Robustness}
+\label{ssec:adversarial}
+
+Adversarial robustness is measured using two attack methods from the \texttt{torchattacks} library~\citep{kim2020torchattacks}:
+\begin{itemize}[nosep]
+    \item \textbf{FGSM}~\citep{goodfellow2015explaining}: single-step attack at seven perturbation strengths $\epsilon \in \{0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3\}$.

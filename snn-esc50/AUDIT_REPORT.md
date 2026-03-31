@@ -232,3 +232,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 - Full SpiNNaker deployment: 57.35% with only 2.15pp hardware gap
 - Pruning Pareto: 85% pruning → maintained accuracy with ~27 nJ energy
 - SpiNNaker BEATS snnTorch at 60% and 80% pruning (negative hardware gaps)
+- PANNs+SNN: 92.5% (gap collapses from 17pp to 1pp — key finding)
+- Adversarial: SNN 6x more robust than ANN
+- Continual learning: SNN forgets 4.7pp less
+- Information preservation framework for encoding hierarchy
+- ICONS 2026 paper in progress (publication-quality work)
+- Well-documented SpiNNaker 1 limitation (ring buffer quantization)
+
+**Rubric match:** "the provided solution is hard to improve upon" — for a 3rd year undergraduate thesis, this breadth and depth of results is exceptional. Multiple findings are independently publication-worthy.
+
+---
+
+## Critical Issues Found
+
+### Issue 1: Energy Measurement Inconsistency (HIGH PRIORITY)
+The pruned sweep (MASTER_RESULTS.json) reports T=3 unpruned energy as 4,706 nJ, while neurobench_t3_t1_fold4.json reports T=3 energy as 142 nJ (AC-only). This is a 33x discrepancy that MUST be resolved before the report.
+
+**Hypothesis:** The pruned sweep likely uses a different NeuroBench counting methodology (including dense conv MACs) while the T3/T1 file uses AC-only counting. Need to verify by reading the actual measurement scripts.
+

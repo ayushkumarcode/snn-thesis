@@ -124,3 +124,21 @@ Knowledge distillation from the ConvANN to the SpikingCNN consistently degraded 
 
 Data augmentation (time-shifting, frequency masking, Gaussian noise) also proved harmful: the augmented SNN achieved only 40.75\% $\pm$ 16.03\% (folds: 46.00, 48.75, 24.50, 63.75, 20.75\%)---6.40 percentage points \emph{worse} than the baseline, with variance tripled. Root cause analysis revealed that the early stopping criterion (patience = 10 epochs) terminates training prematurely on augmented data: Folds~3 and~5 stopped at epochs 39 and 33, well before convergence. The augmented \gls{ann} also degraded slightly (61.70\% $\pm$ 4.58\%, $-$2.15 pp). These negative results inform future work: augmentation requires careful interaction with early stopping when training data is limited.
 
+% ==================================================================
+\section{SpiNNaker Deployment}
+\label{sec:spinnaker-results}
+% ==================================================================
+
+The Rhythm-SNN is deployed on SpiNNaker neuromorphic hardware using the current-injection hybrid pipeline described in Section~\ref{sec:spinnaker}. We evaluate two temporal configurations ($T = 3$ and $T = 1$) and a pruning sweep across 10 sparsity levels.
+
+\subsection{Full FC1+FC2 Deployment}
+\label{ssec:full-deploy-results}
+
+Table~\ref{tab:spinnaker-t3} presents the per-fold results for the $T = 3$ full deployment, alongside the equivalent snnTorch simulation.
+
+\begin{table}[t]
+\centering
+\caption{SpiNNaker full FC1+FC2 deployment accuracy (\%) at $T = 3$ timesteps. ``Gap'' is snnTorch accuracy minus SpiNNaker accuracy. ``Match'' is the percentage of samples classified identically by both platforms.}
+\label{tab:spinnaker-t3}
+\small
+\begin{tabular}{@{}lcccccc@{}}

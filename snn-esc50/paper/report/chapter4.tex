@@ -214,3 +214,21 @@ An alternative deployment strategy using Poisson spike sources for FC1 input was
 \label{sec:energy-results}
 % ==================================================================
 
+Energy per inference is estimated using the NeuroBench framework~\citep{yik2025neurobench} with the Horowitz cost model~\citep{horowitz2014energy}: 0.9\,pJ per \gls{ac} and 4.6\,pJ per \gls{mac}. Table~\ref{tab:energy} presents the energy analysis across temporal reduction and pruning configurations.
+
+\begin{table}[t]
+\centering
+\caption{Estimated inference energy per sample under the NeuroBench framework (45\,nm CMOS). The ConvANN reference energy is 454\,nJ. ``Ratio'' is $E_{\text{ANN}} / E_{\text{SNN}}$, indicating the SNN's energy advantage over the ANN.}
+\label{tab:energy}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Configuration} & \textbf{$T$} & \textbf{Energy (nJ)} & \textbf{Ratio vs ANN} & \textbf{Accuracy (\%)} \\
+\midrule
+SNN baseline ($T = 25$)     & 25 & 968  & $0.47\times$ & 47.15 \\
+Rhythm-SNN ($T = 25$)       & 25 & 968  & $0.47\times$ & 61.10 \\
+ConvANN                     & 1  & 454  & $1.0\times$  & 63.85 \\
+\midrule
+Rhythm-SNN ($T = 3$)        &  3 & 142  & $3.2\times$  & 59.50 \\
+Rhythm-SNN ($T = 1$)        &  1 &  47  & $9.6\times$  & 58.20 \\
+\midrule

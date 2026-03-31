@@ -358,3 +358,21 @@ ANN  & 74.7 & 2.4 & --- \\
 \end{table}
 
 Both models exhibit severe catastrophic forgetting (69.9\% and 74.7\% respectively), as expected for sequential learning without any mitigation strategy. However, the \gls{snn} consistently forgets 4.7 percentage points less than the \gls{ann} across all five folds. This advantage is attributed to two properties of spiking networks: (i)~the sparse, binary activation patterns create less interference between task representations than the dense, continuous activations of the \gls{ann}, and (ii)~the temporal dynamics of LIF neurons create richer internal representations that are more resistant to overwriting by subsequent tasks.
+
+While the absolute forgetting levels are too high for practical deployment without mitigation (e.g., elastic weight consolidation or experience replay), the relative advantage is consistent and statistically significant, suggesting that \glspl{snn} offer a more favourable starting point for continual learning system design.
+
+% ==================================================================
+\section{Surrogate Gradient Ablation}
+\label{sec:surrogate-results}
+% ==================================================================
+
+The choice of surrogate gradient function is critical for \gls{snn} training, yet systematic comparisons for audio tasks are absent from the literature. We evaluate eight surrogate functions on Fold~1 with seed 42, using the direct encoding and all other hyperparameters held constant. Table~\ref{tab:surrogate} presents the results.
+
+\begin{table}[t]
+\centering
+\caption{Surrogate gradient ablation (Fold 1, seed 42, direct encoding). ``Convergence'' indicates whether the model escaped the early-training plateau. Surrogates that failed to converge reached near-chance accuracy ($\leq$10.25\%).}
+\label{tab:surrogate}
+\small
+\begin{tabular}{@{}lcccl@{}}
+\toprule
+\textbf{Surrogate} & \textbf{Accuracy (\%)} & \textbf{Best Epoch} & \textbf{Converged} & \textbf{Note} \\

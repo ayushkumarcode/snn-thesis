@@ -1,0 +1,18 @@
+{
+  "50": {
+    "per_fold": [
+      {
+        "prune_pct": 50,
+        "fold": 1,
+        "n_samples": 400,
+        "mean_h_total_spk": 313.91,
+        "std_h_total_spk": 30.95,
+        "mean_o_total_spk": 0.64,
+        "std_o_total_spk": 1.27,
+        "mean_synaptic_events": 15696.26,
+        "energy_nj_8nJ": 125570.08,
+        "energy_nj_20nJ": 313925.2,
+        "spinnaker_accuracy": 58.75,
+        "snntorch_accuracy": 59.75
+      },
+      {

@@ -214,3 +214,21 @@ The NeuroBench framework~\citep{yik2025}, published in \emph{Nature Communicatio
 
 
 %=================================================================
+\section{Related Work in SNN Audio Classification}
+\label{sec:related-audio-snn}
+%=================================================================
+
+Despite the natural compatibility between temporal audio signals and spike-based computation, \gls{snn} research on audio classification remains sparse relative to the image domain.
+
+\paragraph{SNN audio with environmental sounds.}
+\citet{larroza2025} present the most directly relevant prior work: fully connected \glspl{snn} trained on ESC-10 (a 10-class subset of ESC-50) using rate, latency, and direct encoding. They report approximately 60\% accuracy with direct encoding. However, their study has three key limitations that this thesis addresses: it uses only fully connected architectures (no convolution), it evaluates only 10 classes (not the full 50-class benchmark), and it includes no hardware deployment. Our work extends to convolutional \glspl{snn} on the full ESC-50, with four additional encoding methods and deployment on SpiNNaker.
+
+\citet{dominguezmorales2016} deployed a multilayer \gls{snn} on SpiNNaker for audio classification, but used synthetic pure tones (130--1{,}397\,Hz) rather than real-world recordings. While their work demonstrated the feasibility of \gls{snn}-based audio processing on neuromorphic hardware, the task difficulty is not comparable to ESC-50, which requires distinguishing 50 categories of complex, naturally occurring sounds.
+
+\paragraph{SNN speech recognition.}
+In the speech domain, the Spiking Heidelberg Digits (SHD) dataset~\citep{cramer2020} has become a standard benchmark for recurrent \glspl{snn}, with recent architectures achieving above 90\% accuracy. Keyword spotting on Google Speech Commands has been addressed with \glspl{snn} achieving competitive accuracy at reduced energy~\citep{pellegrini2021}. However, speech tasks benefit from the structured, quasi-periodic nature of vocal production, which provides temporal regularities absent in environmental sounds.
+
+\paragraph{SNN image classification for context.}
+The most mature application of deep \glspl{snn} is image classification. On CIFAR-10, state-of-the-art \glspl{snn} trained with surrogate gradients achieve 90--93\% accuracy~\citep{fang2021,zheng2021}, compared to 95\%+ for equivalent \glspl{ann}. This 2--5 percentage point gap is characteristic of the accuracy cost of spiking computation at the current state of the art. On ImageNet, \glspl{snn} have reached approximately 75\% top-1 accuracy with deep residual architectures~\citep{hu2024}. These results provide a useful reference for interpreting the \gls{snn}-\gls{ann} accuracy gap observed in our experiments.
+
+\paragraph{The gap this thesis fills.}

@@ -88,3 +88,21 @@ This thesis documents the complete deployment pipeline, including the failures, 
 \item[\textbf{RQ4}] \textit{What advantages do \glspl{snn} exhibit beyond raw classification accuracy?}
 
 Prior work on image-domain \glspl{snn} suggests that binary thresholding may confer natural adversarial robustness~\citep{sharmin2020inherent}.
+This thesis extends that investigation to audio spectrograms, finding 6.0$\times$ greater robustness under FGSM attack ($\varepsilon = 0.1$: \gls{snn} 16.55\% versus \gls{ann} 2.75\%).
+Additionally, continual learning experiments reveal that the \gls{snn} suffers 4.7 percentage points less catastrophic forgetting than the matched \gls{ann}, and a pruning sweep demonstrates that 85\% weight pruning maintains \gls{snn} accuracy while reducing energy to 27\,nJ per inference---16.6$\times$ cheaper than the \gls{ann}.
+
+\end{description}
+
+\section{Contributions}
+\label{sec:contributions}
+
+This thesis makes six original contributions:
+
+\begin{enumerate}[label=\textbf{C\arabic*},leftmargin=2cm]
+
+\item \textbf{First convolutional \gls{snn} benchmark on ESC-50.}
+A SpikingCNN (two convolutional blocks, two fully connected layers, ${\sim}$622K parameters) achieves 47.15\% ($\pm$4.50\%) on the full 50-class ESC-50 benchmark with five-fold cross-validation using direct encoding.
+The 16.70 percentage point gap relative to a matched \gls{ann} (63.85\% $\pm$ 3.07\%) is characterised mechanistically and contextualised through the \gls{panns} transfer experiment.
+
+\item \textbf{Most comprehensive spike encoding comparison for audio.}
+Seven encoding methods are evaluated under identical architecture, training, and evaluation conditions.

@@ -70,3 +70,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 5. Critical comparison of surrogate gradient approaches
 6. Update ESC-50 SOTA to 99.1%
 
+---
+
+### 3.3 Technical Quality, Methodology and Evaluation (35% of Report)
+
+**Current band: Excellent (82-88)**
+
+**Evidence:**
+- Controlled comparison principle well-articulated
+- All 7 encoding methods with mathematical formulations
+- 5-fold CV using predefined folds
+- Comprehensive SpiNNaker deployment methodology
+- NeuroBench energy framework
+- Statistical tests (paired t-test, Wilcoxon)
+- Negative results honestly documented with root causes
+
+**Gaps to Outstanding (90-100):**
+- Missing results from the thesis drafts:
+  * Rhythm-SNN (61.10% ± 1.99%) — best SNN result, not in any chapter

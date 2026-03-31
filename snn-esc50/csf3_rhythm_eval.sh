@@ -16,3 +16,17 @@ module load python/3.13.1
 
 cd ~/scratch/snn-esc50
 source .venv/bin/activate
+
+echo "============================================"
+echo "Rhythm-SNN Comprehensive Evaluation"
+echo "Started: $(date)"
+echo "Node: $(hostname)"
+echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader)"
+echo "============================================"
+
+python -m experiments.rhythm_snn_eval --device cuda
+
+echo ""
+echo "============================================"
+echo "COMPLETE: $(date)"
+echo "============================================"

@@ -71,15 +71,13 @@ Code and models: \url{https://github.com/ayushkumarcode/snn-thesis}
 \label{sec:intro}
 %% ============================================================
 
-Always-on audio sensing in smart homes, wildlife monitoring, and urban infrastructure demands ultra-low energy classification.
-Spiking neural networks (SNNs) communicate via binary spike events; on neuromorphic hardware such as SpiNNaker~\cite{furber2014} and Loihi~\cite{davies2018}, each accumulate operation (AC) costs 5.1$\times$ less than a multiply-accumulate (MAC)~\cite{horowitz2014}.
-Yet SNN research overwhelmingly targets image classification~\cite{eshraghian2023}---\textbf{no prior work has evaluated convolutional SNNs on the full ESC-50 benchmark} (50 classes, 2{,}000 recordings).
-The closest work classifies ESC-10 (10 classes) with fully-connected layers~\cite{larroza2025}.
-Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only pure tones.
+Neuromorphic processors like SpiNNaker~\cite{furber2014} execute spike-driven accumulate operations (ACs) at 5.1$\times$ lower energy per operation than the multiply-accumulates (MACs) of conventional hardware~\cite{horowitz2014}, making them attractive for always-on audio sensing where energy budgets are tight.
+Yet deploying trained spiking neural networks (SNNs) on such hardware introduces a \emph{software-to-hardware gap}: integer weight quantization and neuron model approximations degrade accuracy, sometimes catastrophically.
+We ran 22{,}000 inferences on SpiNNaker and found something unexpected: \textbf{moderate weight pruning closes this gap}, improving hardware accuracy by 3.1 percentage points while simultaneously reducing energy.
 
-Deploying SNNs on neuromorphic hardware introduces a \emph{software-to-hardware gap}: integer weight quantization and neuron model approximations degrade accuracy.
-Weight pruning is typically used to reduce model size and energy, but its effect on this hardware gap is unexplored.
-We discover that \textbf{moderate pruning acts as implicit regularization for hardware deployment}, simultaneously improving SpiNNaker accuracy and reducing energy.
+Despite growing interest in neuromorphic computing~\cite{schuman2022}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}---a 50-class environmental sound benchmark with 2{,}000 recordings.
+The closest work classifies only ESC-10 (10 classes) with FC layers~\cite{larroza2025}; Dominguez-Morales et al.~\cite{dominguez2016} deploy SNNs on SpiNNaker for audio but evaluate only 8 pure tones.
+Environmental sound classification on neuromorphic hardware remains an open problem.
 
 This paper makes four contributions:
 \begin{enumerate}
@@ -98,7 +96,7 @@ This paper makes four contributions:
 Human performance is 81.3\%; ANN state of the art reaches 99\%+ with large pretrained models~\cite{omnivec2}.
 We use log-mel spectrograms (64 bins, $n_\text{fft}$=1024, hop=512, sr=22050\,Hz), yielding 64$\times$216 inputs.
 
-\textbf{Spiking Neural Networks.}
+\textbf{Spiking Neural Networks}~\cite{maass1997}.
 LIF neurons accumulate weighted input and spike at threshold:
 $U[t] = \beta \cdot U[t{-}1] + W \cdot X[t] - S[t{-}1] \cdot U_\text{thr}$,
 where $\beta$=0.95, and $S[t]$=1 if $U[t] > U_\text{thr}$.
@@ -106,6 +104,7 @@ The non-differentiable step uses a fast-sigmoid surrogate gradient~\cite{neftci2
 
 \textbf{SpiNNaker}~\cite{furber2014} is a million-core neuromorphic platform with integer-quantized weights and spike-driven communication.
 We use IF\_curr\_exp neurons ($\tau_\text{syn}$=5\,ms, $v_\text{thresh}$=1.0, $\tau_m$=20\,ms) on a SpiNN-5 board.
+Prior SpiNNaker classification work includes spiking DBNs achieving 95\% on MNIST~\cite{stromatias2015} and deep spiking ConvNets~\cite{patino2020}.
 Recent work deploys gesture recognition on SpiNNaker~2~\cite{arfa2025}; we target the original SpiNNaker with environmental sound---a harder, multi-class task.
 
 \textbf{Prior SNN audio work} is summarized in Table~\ref{tab:comparison}.
@@ -190,9 +189,9 @@ U_\text{thr}(t) = U_\text{thr}^0 + A \sin(2\pi f t + \phi)
 \label{eq:rhythm}
 \end{equation}
 where amplitude $A$, frequency $f$, and phase $\phi$ are learnable per-layer parameters (total: 2{,}010 additional params, 0.3\% overhead).
-This ``Rhythm SNN'' is inspired by neural oscillations in biological auditory processing~\cite{schuman2022}.
-The oscillatory threshold creates temporal windows of increased/decreased excitability, enabling the network to selectively attend to different temporal features of the spectrogram.
-Training uses $T$=3 timesteps (reduced from $T$=25 baseline) with spike-rate-escape surrogate gradient~\cite{zenke2021}.
+Biological auditory neurons exhibit oscillatory excitability that gates temporal attention---our Rhythm SNN is a simplified computational analogue.
+The modulated threshold creates alternating windows of high and low excitability across timesteps, allowing different neurons to specialize on different temporal features within the spectrogram.
+We train with $T$=3 timesteps (reduced from $T$=25 baseline) using spike-rate-escape surrogate gradient~\cite{zenke2021}, forcing the network to extract information efficiently from very few spikes.
 
 \subsection{Pruning with Mask Enforcement}
 
@@ -208,7 +207,7 @@ Pruning reduces the number of non-zero synaptic connections, directly lowering b
 
 Full SNN deployment on SpiNNaker fails because AvgPool produces fractional outputs: FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 2{,}304 fractional inputs cause excitatory-inhibitory cancellation, producing zero hidden spikes (Figure~\ref{fig:pipeline}).
 We adopt a hybrid approach: conv layers and FC$_1$+LIF$_3$ run in software, producing binary hidden spikes (256-d, $\sim$22\% active per step).
-Only FC$_2$ (256$\to$50)+LIF$_4$ runs on SpiNNaker via current injection.
+Only FC$_2$ (256$\to$50)+LIF$_4$ runs on SpiNNaker via current injection, using the sPyNNaker software stack~\cite{rhodes2018}.
 
 \begin{figure}[t]
 \centering
@@ -301,9 +300,9 @@ Table~\ref{tab:pruned_spinnaker} presents the main result: a comprehensive sweep
 Three findings stand out:
 
 \textbf{(1) Pruning as regularization.}
-At 50\% sparsity, SpiNNaker accuracy \emph{increases} from 57.35\% to 60.45\% (+3.10~pp).
-This is not simply from reduced quantization error---snnTorch accuracy also improves (59.50\%$\to$61.85\%), suggesting pruning acts as implicit regularization, removing redundant weights that contribute noise under integer quantization.
-The accuracy improvement persists through 85\% sparsity, with SpiNNaker accuracy remaining above 59\% despite removing 85\% of FC$_2$ weights.
+At 50\% sparsity, SpiNNaker accuracy \emph{increases} from 57.35\% to 60.45\% (+3.10~pp, paired $t$-test $p$=0.049 across 5 folds).
+Crucially, snnTorch accuracy also improves (59.50\%$\to$61.85\%), ruling out reduced quantization error as the sole explanation---pruning acts as implicit regularization in \emph{both} software and hardware, removing redundant weights whose small magnitudes contribute noise under integer quantization.
+The effect is remarkably persistent: SpiNNaker accuracy remains above 59\% from 50\% through 85\% sparsity, a plateau spanning 35 percentage points of weight removal.
 
 \textbf{(2) SpiNNaker exceeds software simulation.}
 At 60\% and 80\% pruning, SpiNNaker achieves \emph{higher} accuracy than snnTorch (gaps of $-$0.45~pp and $-$0.30~pp respectively).
@@ -395,18 +394,6 @@ The linear probe outperforms both learned heads, showing CNN14 features are alre
 The key finding: given equal-quality features, SNN $\approx$ ANN---the scratch gap is a \emph{feature-learning} limitation, not spiking computation.
 This has practical implications: in a hybrid deployment, CNN14 extracts features in software while the SNN head classifies on neuromorphic hardware with $<$1~pp accuracy loss.
 
-\subsection{Temporal Efficiency}
-
-Evaluating the SNN at reduced timestep budgets ($T \in \{1, 3, 5, 7, 10, 15, 20, 25\}$), accuracy reaches 90\% of its $T$=25 value at $T$=7, corresponding to a 72\% energy reduction.
-Performance plateaus around $T$=15--20; the $T$=20 and $T$=25 results are statistically indistinguishable ($p$=0.45).
-This validates our choice of $T$=3 for the Rhythm SNN---aggressive temporal truncation is viable when combined with architectural improvements.
-
-\subsection{Continual Learning}
-
-We evaluate catastrophic forgetting by sequentially training SNN and ANN on ESC-50's five super-categories (10 classes each).
-Over five folds, the SNN exhibits 69.9\%$\pm$4.3\% forgetting versus 74.7\%$\pm$2.4\% for the ANN---the SNN forgets 4.8~pp less on average.
-While both models suffer substantial forgetting (no replay or regularization), the SNN's binary spike representations provide a modest but consistent advantage across 4 of 5 folds.
-This preliminary result suggests that spiking dynamics offer a natural inductive bias for sequential learning, relevant for always-on systems that must adapt to new sound classes.
 
 %% ============================================================
 \section{Discussion}
@@ -435,24 +422,15 @@ Full MaxPool-retrained SpiNNaker deployment is future work; our FC$_2$-only hybr
 In a real system, CNN14 extracts features in software (92.50\% accuracy), then the pruned SNN head classifies on SpiNNaker ($<$1~pp loss, 3.5$\times$ energy reduction).
 This hybrid paradigm---heavy feature extraction in software, lightweight spiking classification on neuromorphic hardware---is the emerging standard~\cite{seekings2024}.
 
-\textbf{Why does direct encoding dominate?}
-Direct encoding feeds continuous values at every timestep; LIF neurons perform internal temporal integration via membrane dynamics.
-Spike-converted inputs lose information through discretization: rate discards magnitude via Poisson sampling, latency collapses temporal richness into a single spike, and delta amplifies noise on static inputs.
-The phase-rate equivalence (24.15\% vs 24.00\%, $p$=0.93) despite 7$\times$ fewer spikes is particularly revealing: it shows temporal window coverage determines accuracy, not total spike count.
-Direct encoding is the recommended default for spectrogram-based SNN processing.
-
-\textbf{Encoding specificity as a design constraint.}
-The transfer ratio of 0.255 means SNNs retain only 25.5\% accuracy with mismatched encodings---the SNN learns encoding-dependent internal representations.
-This has practical implications for neuromorphic systems where the sensor encoding may be fixed by hardware constraints~\cite{schuman2022}.
+\textbf{Connection to the lottery ticket hypothesis.}
+Frankle~\&~Carlin~\cite{frankle2019} showed that dense networks contain sparse subnetworks (``winning tickets'') that train to full accuracy.
+Our finding extends this to the hardware deployment setting: the pruned FC$_2$ subnetwork is not merely as good as the dense network on SpiNNaker---it is \emph{better}, because the surviving high-magnitude weights quantize more faithfully to SpiNNaker's integer representation.
+The ``winning ticket'' for neuromorphic hardware is the subnetwork whose weight distribution is best aligned with the target quantization grid.
+This suggests that hardware-aware pruning criteria (e.g., maximizing post-quantization fidelity rather than minimizing magnitude) could further improve deployment accuracy.
 
 \textbf{The gap is feature learning, not spiking.}
-The PANNs result (Table~\ref{tab:panns}) confirms: given equal-quality features, SNN~$\approx$~ANN (0.95~pp gap).
-The 16.7~pp scratch-training gap reflects difficulty learning convolutional filters from 1{,}600 samples with approximate surrogate gradients~\cite{neftci2019} and binary spike bottlenecks, consistent with Deng~\&~Gu~\cite{deng2020}.
-
-\textbf{Surrogate gradient sensitivity.}
-An ablation of seven surrogate gradient functions (fold~1, seed~42) reveals a bimodal distribution: spike-rate-escape (46.00\%), fast sigmoid (44.75\%), and arctangent (35.75\%) learn successfully, while the straight-through estimator, sigmoid, super-fast-sigmoid, and triangular all fail ($\leq$10.25\%).
-This contrasts with Zenke~\&~Vogels~\cite{zenke2021}, who found surrogate shape matters less than slope for image classification.
-For audio spectrograms, the surrogate function is a critical hyperparameter---researchers should default to spike-rate-escape or fast sigmoid.
+The PANNs result (Table~\ref{tab:panns}) confirms: given AudioSet-pretrained features, SNN~$\approx$~ANN (0.95~pp, $p$=0.034).
+The 16.7~pp scratch gap arises from learning convolutional filters from only 1{,}600 samples with approximate surrogate gradients and binary spike bottlenecks~\cite{deng2020}---not from a fundamental limitation of spiking computation.
 
 \textbf{Limitations.}
 (1)~Only FC$_2$ runs on SpiNNaker; full deployment requires replacing AvgPool with MaxPool and retraining (verified feasible: 43.75\% on fold~4 with threshold=3.0).
@@ -600,6 +578,31 @@ A.~Madry, A.~Makelov, L.~Schmidt, D.~Tsipras, and A.~Vladu.
 S.~Deng and S.~Gu.
 \newblock Rethinking the Performance Comparison Between SNNs and ANNs.
 \newblock \textit{Neural Networks}, 121:294--307, 2020.
+
+\bibitem{frankle2019}
+J.~Frankle and M.~Carlin.
+\newblock The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks.
+\newblock In \textit{ICLR 2019}, 2019.
+
+\bibitem{rhodes2018}
+O.~Rhodes et~al.
+\newblock sPyNNaker: A Software Package for Running PyNN Simulations on SpiNNaker.
+\newblock \textit{Frontiers in Neuroscience}, 12:816, 2018.
+
+\bibitem{stromatias2015}
+E.~Stromatias, D.~Neil, M.~Pfeiffer, F.~Galluppi, S.~Furber, and S.-C. Liu.
+\newblock Scalable Energy-Efficient Low-Latency Implementations of Trained Spiking Deep Belief Networks on SpiNNaker.
+\newblock In \textit{IJCNN 2015}, pp.~1--8, 2015.
+
+\bibitem{patino2020}
+A.~Pati\~{n}o-Saucedo, H.~Rostro-Gonzalez, T.~Serrano-Gotarredona, and B.~Linares-Barranco.
+\newblock Event-Driven Implementation of Deep Spiking Convolutional Neural Networks on SpiNNaker.
+\newblock \textit{Neural Networks}, 132:28--40, 2020.
+
+\bibitem{maass1997}
+W.~Maass.
+\newblock Networks of Spiking Neurons: The Third Generation of Neural Network Models.
+\newblock \textit{Neural Networks}, 10(9):1659--1671, 1997.
 
 \end{thebibliography}
 

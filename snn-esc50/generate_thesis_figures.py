@@ -178,3 +178,21 @@ def fig4_surrogate():
     fig, ax = plt.subplots(figsize=(6.5, 3.5))
     bars = ax.barh(range(len(names_sorted)), accs_sorted, color=colors, height=0.6, edgecolor='white')
 
+    # Chance level
+    ax.axvline(x=2.0, color=GREY, linestyle='--', linewidth=1, alpha=0.7, label='Chance (2%)')
+
+    # Value labels
+    for i, (bar, v) in enumerate(zip(bars, accs_sorted)):
+        ax.text(v + 0.8, i, f'{v:.1f}%', va='center', fontsize=9)
+
+    ax.set_yticks(range(len(names_sorted)))
+    ax.set_yticklabels(names_sorted, fontsize=10)
+    ax.set_xlabel('Test Accuracy (%)')
+    ax.set_xlim(0, 52)
+    ax.legend(fontsize=9, loc='lower right')
+
+    # Add group labels
+    ax.text(48, 5.5, 'Learning\ngroup', fontsize=8, color=GREEN, fontweight='bold',
+            ha='center', va='center')
+    ax.text(48, 1.5, 'Failure\ngroup', fontsize=8, color=RED, fontweight='bold',
+            ha='center', va='center')

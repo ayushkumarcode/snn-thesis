@@ -664,3 +664,21 @@ def compute_cohens_d():
         "gap_mean": round(mean(gap_panns), 2),
         "gap_std": round(std_sample(gap_panns), 2),
         "cohens_d": round(d_panns, 4),
+        "interpretation": interpret_d(d_panns),
+        "t_statistic": round(t_stat_p, 4),
+        "p_value": round(p_val_p, 6),
+        "ci_95": [round(ci_p[0], 2), round(ci_p[1], 2)],
+        "direction": "PANNs+ANN > PANNs+SNN"
+    }
+    print(f"\nPANNs+ANN vs PANNs+SNN:")
+    print(f"  PANNs+ANN: {mean(panns_ann):.2f}, PANNs+SNN: {mean(panns_snn):.2f}")
+    print(f"  Gap: {mean(gap_panns):.2f} +/- {std_sample(gap_panns):.2f}")
+    print(f"  Cohen's d = {d_panns:.4f} ({interpret_d(d_panns)})")
+    print(f"  t = {t_stat_p:.3f}, p = {p_val_p:.4f}")
+
+    return results
+
+
+# ============================================================
+# MAIN
+# ============================================================

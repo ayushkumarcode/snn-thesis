@@ -556,3 +556,21 @@ def compute_cohens_d():
         "snn_folds": snn_folds,
         "ann_mean": round(mean(ann_folds), 2),
         "snn_mean": round(mean(snn_folds), 2),
+        "pooled_sd": round(sp, 4),
+        "cohens_d": round(d_snn_ann, 4),
+        "interpretation": interpret_d(d_snn_ann),
+        "direction": "ANN > SNN"
+    }
+    print(f"\nANN vs SNN (scratch):")
+    print(f"  ANN: {mean(ann_folds):.2f} +/- {std_sample(ann_folds):.2f}")
+    print(f"  SNN: {mean(snn_folds):.2f} +/- {std_sample(snn_folds):.2f}")
+    print(f"  Pooled SD: {sp:.4f}")
+    print(f"  Cohen's d = {d_snn_ann:.4f} ({interpret_d(d_snn_ann)})")
+
+    # --- 2. SpiNNaker vs snnTorch (T=3 unpruned, paired) ---
+    spinn_t3 = [55.0, 60.5, 55.5, 60.0, 55.75]
+    snnt_t3 = [56.5, 63.0, 58.0, 61.0, 59.0]
+
+    d_spinn_t3 = cohens_d_paired(snnt_t3, spinn_t3)
+    t_stat, p_val, ci = paired_t_test(snnt_t3, spinn_t3)
+    gap_t3 = [s - p for s, p in zip(snnt_t3, spinn_t3)]

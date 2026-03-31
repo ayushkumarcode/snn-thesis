@@ -34,3 +34,21 @@ Human performance on ESC-50 is 81.3\%~\citep{piczak2015esc50}. Our baseline thus
 \section{Spike Encoding Comparison}
 \label{sec:encoding-results}
 % ==================================================================
+
+The central experiment of this thesis evaluates seven spike encoding methods under identical architecture, training protocol, and evaluation conditions. Table~\ref{tab:encoding-comparison} presents the complete per-fold results; Figure~\ref{fig:encoding-bar} visualises the means.
+
+\begin{table}[t]
+\centering
+\caption{Five-fold cross-validation accuracy (\%) for all seven spike encoding methods using the SpikingCNN ($T = 25$ timesteps). Encodings are ordered by descending mean accuracy.}
+\label{tab:encoding-comparison}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Encoding} & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} & \textbf{Fold 4} & \textbf{Fold 5} & \textbf{Mean} & \textbf{Std} \\
+\midrule
+Direct      & 40.50 & 48.50 & 48.25 & 54.00 & 44.50 & 47.15 & 4.50 \\
+Rate        & 24.50 & 27.25 & 23.00 & 21.50 & 23.75 & 24.00 & 1.90 \\
+Phase       & 22.50 & 22.25 & 25.00 & 24.25 & 26.75 & 24.15 & 1.66 \\
+Population  & 22.75 & 18.50 & 15.75 & 22.00 & 16.75 & 19.15 & 2.79 \\
+Latency     & 14.00 & 15.75 & 17.75 & 15.50 & 18.50 & 16.30 & 1.62 \\
+Delta       &  8.25 &  7.75 &  7.25 &  7.50 &  5.50 &  7.25 & 0.94 \\

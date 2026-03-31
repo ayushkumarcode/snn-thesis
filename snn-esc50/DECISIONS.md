@@ -603,4 +603,143 @@ also: --run-suffix _aug didn't create separate directories, overwrote baseline r
 
 ---
 
+## 46. SpiNNaker parameter changes after reset() -- root cause and workarounds
+
+27 march 2026
+
+### the problem we thought we had
+parameter changes (i_offset, spike_times, rate) appeared to not take effect after sim.reset(). all our tests showed identical results before and after reset+set.
+
+### root cause: data readback, NOT parameter setting
+**parameters DO change correctly.** the issue was in how we read back results. after reset()+run(), Neo data contains MULTIPLE SEGMENTS -- one per run. our old code only looked at segment[0] (the first run's data). the new data was in segment[1].
+
+correct readback pattern:
+```python
+data = pop.get_data('spikes')
+for seg_idx, seg in enumerate(data.segments):
+    # seg_idx 0 = first run, seg_idx 1 = after first reset, etc.
+    spike_trains = seg.spiketrains
+```
+
+### what works (verified on SpiNNaker hardware, sPyNNaker 7.4.1)
+
+1. **IF_curr_exp i_offset via pop.set()** -- works perfectly, even at 256 neurons
+   - Pattern: `sim.run(T) -> sim.reset() -> pop.set(i_offset=new_vals) -> sim.run(T)`
+   - Data in `pop.get_data('spikes').segments[1]` has correct new results
+   - ~1s overhead per reset cycle (no board reallocation)
+
+2. **SpikeSourcePoisson rate via pop.set()** -- works (rate_changed flag properly propagated)
+
+3. **Multiple consecutive resets** -- work. segment[N] contains run N's data.
+
+4. **run-set-run without reset** -- works but membrane state carries over between runs (no v reset)
+
+5. **SpikeSourceArray direct manipulation** -- works via workaround function:
+   ```python
+   def set_spike_times_workaround(pop, new_times):
+       vertex = pop._Population__vertex
+       n = pop.size
+       time_step = 1000
+       new_sbt = [np.ceil(np.floor(np.array(t)*1000.0)/time_step).astype("int64") for t in new_times]
+       vertex._spike_times = SpynnakerRangedList(n, new_times, use_list_as_value=False)
+       vertex._ReverseIpTagMultiCastSource__send_buffer_times = new_sbt
+       for mv in vertex.machine_vertices:
+           vs = mv.vertex_slice
+           mv.send_buffer_times = [new_sbt[i] for i in vs.get_raster_ids()]
+   ```
+
+### what doesn't work (bugs in sPyNNaker 7.4.1)
+
+1. **SpikeSourceArray pop.set(spike_times=[[...], ...])** -- TypeError in send_buffer_times setter
+   - Bug location: `reverse_ip_tag_multi_cast_source.py:173` tries to index numpy array with array indices
+   - Root cause: `send_buffer_times` stored as numpy ndarray (shared format), setter expects list indexing
+
+2. **SpikeSourceArray pop[i].set(spike_times=[...])** -- corrupts buffer
+   - `__set_spike_buffer_times` at line 275 sets `send_buffer_times` for ENTIRE population using single-neuron value
+   - The selector is only used for `_spike_times.set_value_by_selector`, not for `send_buffer_times`
+   - Result: last neuron's set() wins for all neurons' send buffers
+
+3. **SpikeSourceArray pop[i].set(spike_times=[])** -- doesn't clear
+   - Empty list `[]` fails `_is_double_list` and `_is_single_list` checks (both check `bool(len(value))`)
+   - Falls through to else branch, old spike_times persist
+
+### decision: use direct manipulation workaround for SpikeSourceArray
+for our FC2 deployment, we use the `set_spike_times_workaround()` function above. verified working at 256 inputs, 50 outputs, 3 consecutive resets. each reset+re-run takes ~1s overhead. this is practical for batch inference of 400 samples (~400s = ~7 min total).
+
+alternative approaches considered:
+- separate setup/end per sample: works but ~30s per sample (board allocation), too slow
+- time-shifted spikes in single run: works but membrane state carries over between samples
+- i_offset-based encoding: works but not applicable to SpikeSourceArray inputs
+
+---
+
+## 39. poisson weight scaling fix
+
+29 march 2026
+
+**problem:** poisson FC1 deployment failed completely (0/30 correct predictions across all N=10→256). neurons fired but predictions were wrong.
+
+**root cause found:** synaptic current scaling mismatch. for IF_curr_exp with Poisson input:
+- steady-state I_syn = w × rate × tau_syn/1000
+- with rate = feature × 1000 Hz and tau_syn = 5ms: I_syn = 5 × w × feature
+- current injection uses i_offset = 0.25 × (w·f + b)
+- weight contribution ratio: 5 / 0.25 = **20× too large** in Poisson
+
+the Poisson hidden neurons were driven by 20× amplified (and pruned) weight signal instead of the calibrated 0.25× current. completely different firing patterns.
+
+**fix:** scale Poisson synaptic weights by WEIGHT_SCALE = 0.05 (= 0.25 / 5), so Poisson synaptic current matches current injection: 5 × (w × 0.05) × feature = 0.25 × w × feature ✓
+
+**also:** removed K=500 top-K pruning → use all 2304 connections per neuron. K=500 only captured R²=0.82 of full FC1 computation. with 1 neuron per core, 2304 synapses/core is well within SpiNNaker SDRAM limits (~9 KB vs 128 KB capacity).
+
+**testing round 1 (sim_time=10ms):** fired=[0,0,0,0,0] — ZERO hidden neurons fire.
+
+**root cause 2:** transient dynamics mismatch. i_offset = 0.25 × bias is NEGATIVE for most neurons (bias mean ≈ -1.3). synaptic current builds up slowly (tau_syn=5ms), but the negative bias pulls membrane down INSTANTLY. in 10ms, synaptic current hasn't overcome the negative bias. in current injection, the full (w·x+b) is injected instantly as i_offset — no transient issue.
+
+calculation: for a neuron with bias=-5, w·x=10 → CI i_offset = 0.25×5 = +1.25 nA (positive, fires). Poisson: i_offset=-1.25 nA, I_syn rises to +2.5 nA over ~15ms. net current stays negative until ~15ms, then membrane charges for ~14ms more → first spike at ~29ms. sim_time=10ms is way too short.
+
+**fix:** sim_time=50ms. system reaches ~95% of steady state at 3×tau_m=60ms, but most firing neurons should fire by 30-40ms.
+
+**testing round 2 (ws=0.05, t=50):** fired=[0,0,0,0,0] — still zero.
+**testing round 3 (ws=1.0, t=10 diagnostic):** fired=[62,69,54,73,46] — neurons fire with full weights!
+**testing round 4 (ws=1.0, rate=50, t=200):** fired=[2,1,1,0,0] — insufficient spike count.
+**testing round 5 (ws=0.25, rate=200, t=100):** fired=[0,0,0,0,0] — zero.
+**testing round 6 (bias neuron, ws=0.05, rate=1000, t=25):** fired=[0,0,0,0,0] — disproves transient hypothesis.
+
+**actual root cause:** SpiNNaker 1 weight quantization. with 2304×256 connections (590K total) and weight_scale=0.05 (mean weight ≈ 0.002 nA), the quantized weights produce insufficient net synaptic current. ONLY ws=1.0 + rate=1000 (20× overcurrent) produces firing (61/256). All correct-current-scaling configurations produce 0 neurons.
+
+**decision:** abandon Poisson full-FC1 deployment. current injection hybrid (FC1 on CPU, FC2 on SpiNNaker) gives 1.9pp gap across 4 folds — this IS the deployment result. document the Poisson limitation as a SpiNNaker 1 hardware constraint (relevant for SpiNNaker 2 future work).
+
+---
+
+## 40. weight+threshold co-scaling for Poisson deployment
+
+29 march 2026
+
+research agent found the EXACT mechanism: sPyNNaker ring buffer uses 16-bit unsigned int weights with auto-calculated shift (van Albada et al. 2018, Rhodes et al. 2018). for 2304 inputs at 1000 Hz, shift≈7 → minimum representable weight ≈ 0.004 nA. our ws=0.05 gives std=0.0023 nA → most weights quantized to ZERO. this perfectly explains all prior failures.
+
+**fix (from SpiNNaker2 paper arXiv:2504.06748):** weight+threshold co-scaling. multiply both weights AND threshold by factor S. the ratio net_current/threshold is unchanged → same firing behavior. weights survive quantization because they're S× larger.
+
+testing S=10: ws=0.50 → weight std=0.023 nA (6× above 0.004 floor), threshold scaled from 0.84 to 8.4.
+
+---
+
+---
+
+## ICONS 2026 paper decisions
+
+31 march 2026
+
+### paper title
+went with: "SpiNNaker Deployment of Pruned Spiking Neural Networks for 50-Class Sound Classification"
+
+scored 33 title options. this one wins because ICONS is a neuromorphic SYSTEMS conference — "SpiNNaker" in the title signals real hardware results. "Pruned" signals energy. "50-Class" signals ESC-50 novelty. clear, specific, professional.
+
+### paper framing
+focused on pruned SpiNNaker deployment as the primary contribution. supervisor said "one thing needs to be WAY better." pruning story is cleanest: accuracy improves + energy drops + hardware gap shrinks. secondary contributions: encoding comparison (7 methods), Rhythm SNN, adversarial robustness.
+
+cut from old draft: temporal ablation details, noise robustness table, per-category SpiNNaker analysis, encoding transfer matrix details. kept the findings but condensed to single sentences. tighter paper, stronger message.
+
+### key result highlight
+50% pruning improves SpiNNaker accuracy from 57.35% to 60.45%. this is the headline finding — pruning as implicit regularization for hardware. at 85% pruning: 0.6pp gap, 3.5x energy reduction. SpiNNaker beats snnTorch at 60% and 80% pruning (negative gaps).
+
 *updated continuously. every significant decision goes here.*

@@ -52,3 +52,21 @@ The SNN processes input as a sequence of $T = 25$ timesteps. At each timestep $t
     \item \textbf{FC~1:} Linear$(2304 \to 256)$ $\to$ LIF$_3$
     \item \textbf{FC~2:} Linear$(256 \to 50)$ $\to$ LIF$_4$
 \end{enumerate}
+
+Each \gls{lif} neuron implements the discrete-time leaky integrate-and-fire dynamics:
+\begin{equation}
+\label{eq:lif}
+U_i^{(t)} = \beta \, U_i^{(t-1)} + I_i^{(t)}, \quad
+S_i^{(t)} = \Theta\!\bigl(U_i^{(t)} - \vartheta\bigr), \quad
+U_i^{(t)} \leftarrow U_i^{(t)}\bigl(1 - S_i^{(t)}\bigr),
+\end{equation}
+where $U_i^{(t)}$ is the membrane potential, $I_i^{(t)}$ is the synaptic input current, $\beta = 0.95$ is the decay factor (membrane time constant), $\vartheta = 1.0$ is the spike threshold, $\Theta(\cdot)$ is the Heaviside step function, and the final term implements soft reset (membrane is reset to zero upon spiking). The non-differentiable $\Theta$ is replaced during backpropagation by the fast sigmoid surrogate gradient~\citep{zenke2021remarkable}:
+\begin{equation}
+\label{eq:surrogate}
+\frac{\partial S}{\partial U} \approx \frac{1}{(1 + \alpha\,|U - \vartheta|)^2}, \quad \alpha = 25.
+\end{equation}
+
+The AvgPool2d$(4, 6)$ layer reduces the feature map from $(16, 54)$ to $(4, 9)$ after two rounds of MaxPool2d(2). We use AvgPool2d with explicit kernel size rather than AdaptiveAvgPool2d because PyTorch's adaptive pooling lacks Apple MPS backend support, and our development workflow requires MPS compatibility for rapid iteration before deploying to NVIDIA A100 GPUs on the CSF3 cluster.
+
+The model outputs both spikes $\mathbf{S}^{(t)} \in \{0, 1\}^{B \times 50}$ and membrane potentials $\mathbf{U}^{(t)} \in \mathbb{R}^{B \times 50}$ at each of the 25 timesteps. At inference, the predicted class is:
+\begin{equation}

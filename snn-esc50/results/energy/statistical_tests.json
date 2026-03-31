@@ -160,3 +160,21 @@
     "spinnaker_mean": 59.85,
     "snntorch_mean": 60.05,
     "gap_mean": 0.2,
+    "gap_std": 0.48,
+    "t_statistic": 0.93,
+    "p_value": 0.405023,
+    "p_value_significant_005": false,
+    "ci_95_lo": -0.4,
+    "ci_95_hi": 0.8,
+    "cohens_d": 0.4159,
+    "effect_size_interpretation": "small"
+  },
+  "pruned_75": {
+    "spinnaker_per_fold": [
+      60.0,
+      63.25,
+      55.5,
+      62.75,
+      56.75
+    ],
+    "snntorch_per_fold": [

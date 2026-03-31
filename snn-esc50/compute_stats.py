@@ -52,3 +52,21 @@ def paired_t_test(xs, ys):
     t_stat = d_bar / se_d
     df = n - 1
     # Approximate two-tailed p-value using Student's t CDF approximation
+    p_value = two_tailed_p_from_t(abs(t_stat), df)
+    # 95% CI
+    t_crit = t_critical_95(df)
+    ci_lo = d_bar - t_crit * se_d
+    ci_hi = d_bar + t_crit * se_d
+    return t_stat, p_value, (ci_lo, ci_hi)
+
+def cohens_d_paired(xs, ys):
+    """Cohen's d for paired samples: mean(diff) / sd(diff)."""
+    diffs = [x - y for x, y in zip(xs, ys)]
+    d_bar = mean(diffs)
+    sd_d = std_sample(diffs)
+    if sd_d == 0:
+        return float('inf')
+    return d_bar / sd_d
+
+def cohens_d_independent(m1, s1, m2, s2, n=5):
+    """Cohen's d for independent groups using pooled SD from means and SDs."""

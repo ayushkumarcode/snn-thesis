@@ -178,3 +178,21 @@ def _beta_cf(x, a, b, n_terms):
     return f
 
 
+# ============================================================
+# Paths
+# ============================================================
+BASE = "/Users/kumar/Documents/University/Year3/thesisproject/snn-esc50"
+DEPLOY_DIR = os.path.join(BASE, "results/spinnaker_results/full_deploy_t3")
+MASTER_PATH = os.path.join(BASE, "results/MASTER_RESULTS.json")
+ENERGY_OUT = os.path.join(BASE, "results/energy/hardware_energy_pruned.json")
+STATS_OUT = os.path.join(BASE, "results/energy/statistical_tests.json")
+
+# Energy constants
+NJ_PER_SYNAPTIC_EVENT_CONSERVATIVE = 8   # nJ
+NJ_PER_SYNAPTIC_EVENT_LIBERAL = 20       # nJ
+FC2_FAN_OUT = 50  # 256 hidden -> 50 output neurons
+
+
+# ============================================================
+# TASK 1: Hardware energy from per-sample spike counts
+# ============================================================

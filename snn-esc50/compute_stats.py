@@ -124,3 +124,21 @@ def regularized_incomplete_beta(x, a, b, n_terms=200):
         return 1.0
 
     # Use the continued fraction representation
+    # First compute ln(B(a,b)) using lgamma
+    lbeta = math.lgamma(a) + math.lgamma(b) - math.lgamma(a + b)
+    front = math.exp(a * math.log(x) + b * math.log(1.0 - x) - lbeta) / a
+
+    # Use the continued fraction for I_x(a, b)
+    # If x < (a+1)/(a+b+2), use direct; else use 1 - I_{1-x}(b, a)
+    if x < (a + 1.0) / (a + b + 2.0):
+        return front * _beta_cf(x, a, b, n_terms)
+    else:
+        lbeta2 = math.lgamma(b) + math.lgamma(a) - math.lgamma(a + b)
+        front2 = math.exp(b * math.log(1.0 - x) + a * math.log(x) - lbeta2) / b
+        return 1.0 - front2 * _beta_cf(1.0 - x, b, a, n_terms)
+
+def _beta_cf(x, a, b, n_terms):
+    """Continued fraction for incomplete beta function."""
+    TINY = 1e-30
+    f = 1.0
+    c = 1.0

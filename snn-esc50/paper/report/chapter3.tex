@@ -196,3 +196,21 @@ Population & Stochastic    & $\sim$12.5 (input) & Full $[1, T]$ & 19.15 \\
 Latency    & Deterministic & 1               & Partial        & 16.30 \\
 Delta      & Stochastic    & $\sim$0.5       & Sparse         & 7.25 \\
 Burst      & Deterministic & 2.5             & First $[1, 5]$ only & 6.50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ==================================================================
+\section{Training Protocol}
+\label{sec:training}
+
+Both models are trained using the Adam optimiser~\citep{kingma2015adam} with an initial learning rate of $10^{-3}$ and weight decay of $10^{-4}$. The learning rate is reduced on plateau by a factor of 0.5 with patience of 5 epochs, monitoring validation loss. Early stopping with patience of 10 epochs prevents overfitting on the small training set (1,600 samples per fold). The maximum number of epochs is 50 and the batch size is 32.
+
+\paragraph{SNN loss.}
+The SNN is trained with a per-timestep cross-entropy loss summed over all $T$ timesteps~\citep{eshraghian2023training}:
+\begin{equation}
+\label{eq:snn-loss}
+\mathcal{L}_{\text{SNN}} = \sum_{t=1}^{T} \text{CE}\!\left(\mathbf{U}^{(t)},\, y\right),
+\end{equation}
+where $\mathbf{U}^{(t)} \in \mathbb{R}^{B \times 50}$ is the output membrane potential at timestep $t$ and $y$ is the ground truth label. This formulation provides gradient flow through all timesteps, yielding better convergence than rate-based loss functions that aggregate only the final output~\citep{eshraghian2023training}.
+

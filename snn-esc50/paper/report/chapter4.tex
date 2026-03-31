@@ -106,3 +106,21 @@ Beyond the seven standard encodings, we evaluated a suite of advanced techniques
 \small
 \begin{tabular}{@{}lccl@{}}
 \toprule
+\textbf{Configuration} & \textbf{Mean (\%)} & \textbf{Std (\%)} & \textbf{$\Delta$\,Baseline (pp)} \\
+\midrule
+Dendritic + delays         & 61.65 & 3.69 & $+$14.50 \\
+SR + Rhythm               & 61.35 & 3.54 & $+$14.20 \\
+\textbf{Rhythm-SNN}       & \textbf{61.10} & \textbf{1.99} & $+$\textbf{13.95} \\
+Rhythm + TET              & 60.75 & 2.16 & $+$13.60 \\
+Rhythm + L1 ($10^{-5}$)   & 60.20 & 3.44 & $+$13.05 \\
+Cochleagram SNN           & 55.35 & ---  & $+$8.20 \\
+Stochastic resonance      & 50.40 & ---  & $+$3.25 \\
+Learnable $\beta$         & 49.80 & ---  & $+$2.65 \\
+ALIF (adaptive threshold) & 48.90 & ---  & $+$1.75 \\
+TET loss                  & 48.50 & ---  & $+$1.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Rhythm-SNN achieves 61.10\% $\pm$ 1.99\%, a 13.95 percentage point improvement over the baseline \gls{snn} and only 2.75 percentage points below the \gls{ann} baseline of 63.85\%. Crucially, the Rhythm-SNN has the \emph{lowest} standard deviation (1.99\%) of all advanced configurations, indicating robust performance across folds. While dendritic computations with axonal delays achieve marginally higher mean accuracy (61.65\%), the Rhythm-SNN provides a better accuracy--stability trade-off and is selected as the primary model for SpiNNaker deployment.
+

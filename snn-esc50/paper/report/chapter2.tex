@@ -1,0 +1,18 @@
+% Chapter 2: Background and Related Work
+% Included via \include{chapter2} from report.tex
+
+\chapter{Background and Related Work}
+\label{ch:background}
+
+This chapter establishes the technical foundations on which this thesis is built. Section~\ref{sec:esc} introduces the environmental sound classification task and the ESC-50 benchmark. Section~\ref{sec:snn-background} formalises the spiking neural network framework, covering the \gls{lif} neuron model, surrogate gradient training, and the seven spike encoding methods evaluated in this work. Section~\ref{sec:neuromorphic-hardware} describes the SpiNNaker neuromorphic platform and situates it among contemporary alternatives. Section~\ref{sec:energy-background} examines the energy efficiency argument for \glspl{snn}, including the conditions under which spiking architectures genuinely outperform conventional networks. Section~\ref{sec:related-audio-snn} surveys prior work on \gls{snn}-based audio classification and identifies the gap this thesis addresses. Finally, Section~\ref{sec:adversarial-cl} reviews findings on adversarial robustness and continual learning in \glspl{snn}, motivating two of the advanced experiments in this report.
+
+%=================================================================
+\section{Environmental Sound Classification}
+\label{sec:esc}
+%=================================================================
+
+Environmental sound classification (ESC) is a core task within computational auditory scene analysis, requiring a system to assign a categorical label to a short audio recording of a real-world acoustic event~\citep{barchiesi2015}. Applications include noise pollution monitoring in smart cities~\citep{bello2019}, automated wildlife census~\citep{stowell2019}, assistive technology for the hearing-impaired, and anomaly detection in industrial settings. Unlike speech recognition, ESC must handle the full diversity of non-linguistic acoustic events---from a dog barking to a chainsaw operating---without the benefit of structured phonological constraints.
+
+\paragraph{The ESC-50 dataset.}
+\gls{esc}~\citep{piczak2015} is the standard benchmark for this task. It comprises 2{,}000 five-second recordings drawn from the Freesound repository, distributed uniformly across 50 classes (40 clips per class). The classes span five broad super-categories: animals (e.g.\ dog, rooster, crow), natural soundscapes (e.g.\ rain, sea waves, thunderstorm), human non-speech sounds (e.g.\ clapping, coughing, laughing), domestic/indoor sounds (e.g.\ clock alarm, door knock, vacuum cleaner), and urban/outdoor sounds (e.g.\ helicopter, siren, car horn). Crucially, the dataset defines five predefined folds for cross-validation, ensuring that results are directly comparable across studies. Human classification performance on ESC-50 is 81.3\%~\citep{piczak2015}, reflecting the genuine perceptual difficulty of some distinctions (e.g.\ sea waves versus rain, insects versus crackling fire).
+

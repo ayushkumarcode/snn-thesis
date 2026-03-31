@@ -160,3 +160,21 @@ def _beta_cf(x, a, b, n_terms):
         d = 1.0 / d
         f *= c * d
 
+        # Odd step
+        numerator = -(a + m) * (a + b + m) * x / ((a + 2*m) * (a + 2*m + 1))
+        d = 1.0 + numerator * d
+        if abs(d) < TINY:
+            d = TINY
+        c = 1.0 + numerator / c
+        if abs(c) < TINY:
+            c = TINY
+        d = 1.0 / d
+        delta = c * d
+        f *= delta
+
+        if abs(delta - 1.0) < 1e-10:
+            break
+
+    return f
+
+

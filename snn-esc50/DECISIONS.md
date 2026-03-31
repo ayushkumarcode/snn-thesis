@@ -729,6 +729,9 @@ testing S=10: ws=0.50 → weight std=0.023 nA (6× above 0.004 floor), threshold
 
 31 march 2026
 
+### venue correction
+deep research found the actual ICONS 2026 dates are **Aug 4-6, Chicago IL** (not July 29-Aug 1, Washington DC as we had). submission deadline is **April 8, 2026 AoE** (opens April 1). page limit 8 pages **inclusive of references**. rebuttal phase May 18-25 (new for 2026). fixed header in main.tex immediately.
+
 ### paper title
 went with: "SpiNNaker Deployment of Pruned Spiking Neural Networks for 50-Class Sound Classification"
 

@@ -70,3 +70,21 @@ This thesis is structured around four research questions, each targeting a disti
 \item[\textbf{RQ1}] \textit{How does \gls{snn} accuracy compare to a matched \gls{ann} on ESC-50?}
 
 The relevant comparison is not against state-of-the-art systems pretrained on millions of external clips, but against an \gls{ann} with identical architecture, training protocol, and data budget.
+The measured accuracy gap under these controlled conditions quantifies the genuine cost of spiking computation.
+This thesis finds that the gap is 16.70 percentage points from scratch (47.15\% versus 63.85\%, $p = 0.001$), but collapses to 0.95 percentage points when both architectures classify pretrained audio features via \gls{panns} (92.50\% versus 93.45\%, $p = 0.034$).
+
+\item[\textbf{RQ2}] \textit{Which spike encoding method performs best for environmental sound classification, and why?}
+
+Static mel spectrograms must be converted into temporal spike trains for \gls{snn} processing.
+Seven encoding methods---rate, latency, delta, direct, burst, phase, and population---are evaluated under identical conditions.
+The goal is not merely to rank them, but to explain the ranking mechanistically in terms of information preservation, temporal coverage, and loss landscape geometry.
+The thesis establishes the hierarchy: direct (47.15\%) $\gg$ rate (24.00\%) $\approx$ phase (24.15\%) $>$ population (19.15\%) $>$ latency (16.30\%) $\gg$ delta (7.25\%) $\approx$ burst (6.50\%).
+
+\item[\textbf{RQ3}] \textit{Can a trained \gls{snn} be deployed on SpiNNaker neuromorphic hardware, and what is the accuracy cost?}
+
+SpiNNaker imposes hard constraints---binary spike communication, fixed-point arithmetic, no native convolutional support---that create significant engineering challenges for deploying a float-trained network.
+This thesis documents the complete deployment pipeline, including the failures, their root causes, and the hybrid current-injection approach that achieves 57.35\% ($\pm$2.39\%) on hardware with a gap of only 2.15 percentage points relative to software simulation.
+
+\item[\textbf{RQ4}] \textit{What advantages do \glspl{snn} exhibit beyond raw classification accuracy?}
+
+Prior work on image-domain \glspl{snn} suggests that binary thresholding may confer natural adversarial robustness~\citep{sharmin2020inherent}.

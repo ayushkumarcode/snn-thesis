@@ -34,3 +34,21 @@ def pooled_sd(xs, ys):
     sx = std_sample(xs)
     sy = std_sample(ys)
     return math.sqrt(((n - 1) * sx**2 + (n - 1) * sy**2) / (2 * n - 2))
+
+def paired_t_test(xs, ys):
+    """
+    Paired t-test for two equal-length lists.
+    Returns t-statistic, two-tailed p-value (approximate), and 95% CI on difference.
+    """
+    n = len(xs)
+    diffs = [x - y for x, y in zip(xs, ys)]
+    d_bar = mean(diffs)
+    if n < 2:
+        return 0.0, 1.0, (0.0, 0.0)
+    sd_d = std_sample(diffs)
+    se_d = sd_d / math.sqrt(n)
+    if se_d == 0:
+        return float('inf'), 0.0, (d_bar, d_bar)
+    t_stat = d_bar / se_d
+    df = n - 1
+    # Approximate two-tailed p-value using Student's t CDF approximation

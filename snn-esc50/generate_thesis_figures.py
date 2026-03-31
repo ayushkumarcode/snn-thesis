@@ -268,3 +268,6 @@ if __name__ == '__main__':
     fig1_pruning_pareto()
     fig2_spinnaker_gap()
     fig3_adversarial()
+    fig4_surrogate()
+    fig5_panns()
+    print('Done. All 5 PDFs saved to paper/figures/')

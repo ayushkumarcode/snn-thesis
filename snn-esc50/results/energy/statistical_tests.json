@@ -610,3 +610,21 @@
       "pooled_sd": 3.0109,
       "cohens_d": 0.9133,
       "interpretation": "large",
+      "direction": "ANN > Rhythm-SNN"
+    },
+    "PANNs_ANN_vs_PANNs_SNN": {
+      "panns_ann_folds": [
+        93.0,
+        95.0,
+        92.0,
+        95.5,
+        91.75
+      ],
+      "panns_snn_folds": [
+        92.0,
+        94.5,
+        91.0,
+        93.5,
+        91.5
+      ],
+      "gap_folds": [

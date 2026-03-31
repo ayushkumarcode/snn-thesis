@@ -142,3 +142,21 @@ def fig3_adversarial():
         ann_arr = np.array(ann_data)
         eps_arr = np.array(eps)
         # Only shade where SNN > ANN
+        mask = snn_arr > ann_arr
+        if mask.any():
+            ax.fill_between(eps_arr, ann_arr, snn_arr,
+                            where=mask, alpha=0.12, color=BLUE, label='SNN advantage')
+
+        ax.set_xlabel('Perturbation $\\varepsilon$')
+        ax.set_title(title, fontsize=12)
+        ax.legend(fontsize=9, loc='upper right')
+        ax.set_ylim(-2, 70)
+        ax.set_xlim(-0.01, 0.31)
+
+    ax1.set_ylabel('Accuracy (%)')
+    fig.tight_layout()
+    fig.savefig(f'{OUTDIR}/adversarial_curves.pdf', bbox_inches='tight')
+    plt.close(fig)
+    print('  [3/5] adversarial_curves.pdf')
+
+

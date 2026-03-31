@@ -322,3 +322,21 @@ def compute_hardware_energy():
         mean_energy_20 = mean([fr["energy_nj_20nJ"] for fr in fold_results])
         mean_syn = mean([fr["mean_synaptic_events"] for fr in fold_results])
         mean_h_all = mean([fr["mean_h_total_spk"] for fr in fold_results])
+        mean_o_all = mean([fr["mean_o_total_spk"] for fr in fold_results])
+
+        results[tag] = {
+            "per_fold": fold_results,
+            "summary": {
+                "tag": tag,
+                "mean_h_spk_across_folds": round(mean_h_all, 2),
+                "mean_o_spk_across_folds": round(mean_o_all, 2),
+                "mean_synaptic_events": round(mean_syn, 2),
+                "mean_energy_nj_8nJ": round(mean_energy_8, 2),
+                "std_energy_nj_8nJ": round(std_sample([fr["energy_nj_8nJ"] for fr in fold_results]), 2),
+                "mean_energy_nj_20nJ": round(mean_energy_20, 2),
+                "std_energy_nj_20nJ": round(std_sample([fr["energy_nj_20nJ"] for fr in fold_results]), 2),
+                "mean_spinnaker_acc": round(mean([fr["spinnaker_accuracy"] for fr in fold_results]), 2),
+                "mean_snntorch_acc": round(mean([fr["snntorch_accuracy"] for fr in fold_results]), 2)
+            }
+        }
+

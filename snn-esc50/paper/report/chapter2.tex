@@ -232,3 +232,21 @@ In the speech domain, the Spiking Heidelberg Digits (SHD) dataset~\citep{cramer2
 The most mature application of deep \glspl{snn} is image classification. On CIFAR-10, state-of-the-art \glspl{snn} trained with surrogate gradients achieve 90--93\% accuracy~\citep{fang2021,zheng2021}, compared to 95\%+ for equivalent \glspl{ann}. This 2--5 percentage point gap is characteristic of the accuracy cost of spiking computation at the current state of the art. On ImageNet, \glspl{snn} have reached approximately 75\% top-1 accuracy with deep residual architectures~\citep{hu2024}. These results provide a useful reference for interpreting the \gls{snn}-\gls{ann} accuracy gap observed in our experiments.
 
 \paragraph{The gap this thesis fills.}
+Table~\ref{tab:related-work} summarises the landscape. No published work evaluates convolutional \glspl{snn} on the full 50-class ESC-50 benchmark, no work provides a systematic comparison of more than three spike encoding methods for audio, and no work deploys an \gls{snn} for environmental sound classification on neuromorphic hardware. This thesis addresses all three gaps simultaneously.
+
+\begin{table}[t]
+    \centering
+    \caption{Summary of related SNN audio classification work. ``Conv'' indicates whether convolutional layers are used. ``HW'' indicates neuromorphic hardware deployment.}
+    \label{tab:related-work}
+    \small
+    \begin{tabular}{@{}lllccc@{}}
+        \toprule
+        \textbf{Study} & \textbf{Task} & \textbf{Encodings} & \textbf{Conv} & \textbf{HW} & \textbf{Acc.} \\
+        \midrule
+        \citet{dominguezmorales2016} & Pure tones & Rate & No & SpiNNaker & $\sim$90\% \\
+        \citet{cramer2020}           & SHD digits & Native spikes & No & --- & 83\% \\
+        \citet{pellegrini2021}       & Keywords   & Direct & Yes & --- & 94\% \\
+        \citet{larroza2025}          & ESC-10     & Rate, lat., dir. & No & --- & $\sim$60\% \\
+        \midrule
+        \textbf{This work}           & \textbf{ESC-50} & \textbf{7 methods} & \textbf{Yes} & \textbf{SpiNNaker} & \textbf{47.15\%} \\
+        \bottomrule

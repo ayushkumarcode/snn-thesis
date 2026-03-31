@@ -142,3 +142,21 @@ Table~\ref{tab:spinnaker-t3} presents the per-fold results for the $T = 3$ full 
 \label{tab:spinnaker-t3}
 \small
 \begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Fold} & \textbf{SpiNNaker} & \textbf{snnTorch} & \textbf{Gap (pp)} & \textbf{Match (\%)} & \textbf{Samples} & \textbf{Time (s)} \\
+\midrule
+1 & 55.00 & 56.50 & 1.50 & 84.25 & 400 & 1651 \\
+2 & 60.50 & 63.00 & 2.50 & 82.75 & 400 & 1760 \\
+3 & 55.50 & 58.00 & 2.50 & 83.00 & 400 & 1616 \\
+4 & 60.00 & 61.00 & 1.00 & 86.00 & 400 & 1860 \\
+5 & 55.75 & 59.00 & 3.25 & 80.75 & 400 & 1571 \\
+\midrule
+\textbf{Mean} & \textbf{57.35} & \textbf{59.50} & \textbf{2.15} & \textbf{83.35} & --- & --- \\
+\textbf{Std}  & 2.39 & 2.38 & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The SpiNNaker deployment achieves 57.35\% $\pm$ 2.39\% with a hardware--software gap of only 2.15 percentage points. This gap is remarkably small given the multiple sources of potential discrepancy: fixed-point versus floating-point arithmetic, exponential versus instantaneous synaptic currents, and discrete versus continuous time evolution. The 83.4\% match rate (proportion of samples classified identically by both platforms) demonstrates strong functional equivalence.
+
+At $T = 1$ (single timestep), SpiNNaker achieves 55.05\% $\pm$ 1.96\% with a gap of 3.15 percentage points. The 2.30 percentage point drop from $T = 3$ to $T = 1$ reflects the reduced temporal integration available to the LIF neurons, but the model retains 96\% of its $T = 3$ accuracy, confirming that the Rhythm-SNN learns robust features that do not require extended temporal processing.

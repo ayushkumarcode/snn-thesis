@@ -88,3 +88,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 **Gaps to Outstanding (90-100):**
 - Missing results from the thesis drafts:
   * Rhythm-SNN (61.10% ± 1.99%) — best SNN result, not in any chapter
+  * Full SpiNNaker deployment (57.35% T=3, 55.05% T=1) — not incorporated
+  * 50 pruned SpiNNaker deployments — not incorporated
+  * Energy reduction (T=3: 142 nJ, T=1: 47 nJ) — not incorporated
+  * Noise robustness 5-fold — not in any chapter
+  * Encoding transfer matrix — not mentioned
+  * Pruning resilience — not mentioned
+  * Neuron ablation — not mentioned
+  * Stochastic resonance — not mentioned
+  * Saliency maps — not mentioned
+  * Spike drop robustness — not mentioned
+  * Temporal ablation — not mentioned
+- Energy inconsistency: pruned sweep shows 4705 nJ at T=3/0%, but neurobench_t3_t1 shows 142 nJ at T=3 — must be resolved
+- No figures or tables in current drafts (critical for Outstanding)
+- No effect sizes (Cohen's d) alongside p-values
+- No confidence intervals on per-fold results
+- Loss function inconsistency across scripts (per-timestep CE vs summed membrane CE in energy_sweep.py)
+- No random seed management in training scripts (reproducibility gap)
+

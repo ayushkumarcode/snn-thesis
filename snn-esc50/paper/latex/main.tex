@@ -85,7 +85,7 @@ This paper makes four contributions:
 \begin{enumerate}
     \item \textbf{First SNN on ESC-50} with seven spike encodings and a Rhythm SNN achieving 61.10\% (only 2.75~pp below the ANN baseline);
     \item \textbf{Pruning as regularization for deployment}: 50\% pruning improves SpiNNaker accuracy by 3.1~pp while reducing energy 1.5$\times$;
-    \item \textbf{Comprehensive pruned SpiNNaker sweep} across 10 sparsity levels (10{,}000 hardware inferences), with the hardware gap shrinking from 2.15~pp to 0.6~pp at 85\% sparsity;
+    \item \textbf{Comprehensive pruned SpiNNaker sweep} across 10 sparsity levels (22{,}000+ hardware inferences), with the hardware gap shrinking from 2.15~pp to 0.6~pp at 85\% sparsity;
     \item \textbf{First SpiNNaker deployment for environmental sound}, with documented root-cause analysis of full-deployment failure and a validated hybrid approach.
 \end{enumerate}
 
@@ -327,24 +327,24 @@ The sweet spot is 85\% pruning: 59.65\% accuracy with 3.5$\times$ energy reducti
 Table~\ref{tab:energy} provides the full energy comparison.
 
 \begin{table}[t]
-\caption{NeuroBench energy analysis (5-fold mean $\pm$ std). Pruning reduces SNN energy below the ANN at 95\% sparsity.}
+\caption{NeuroBench energy analysis (5-fold mean $\pm$ std). ``$\times$ANN'' shows how many times costlier the SNN is than ANN.}
 \label{tab:energy}
 \small
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabular}{@{}lrrl@{}}
 \toprule
-Model & Energy (nJ) & vs Unpruned & vs ANN \\
+Model & Energy (nJ) & Reduction & $\times$ANN \\
 \midrule
 ANN baseline & 470$\pm$11 & --- & 1.0$\times$ \\
 \midrule
-SNN T=3 0\% & 4{,}706$\pm$109 & 1.0$\times$ & 0.10$\times$ \\
-SNN T=3 50\% & 3{,}059$\pm$131 & 1.5$\times$ & 0.15$\times$ \\
-SNN T=3 85\% & 1{,}353$\pm$113 & 3.5$\times$ & 0.35$\times$ \\
-SNN T=3 95\% & 747$\pm$90 & 6.3$\times$ & 0.63$\times$ \\
+SNN T=3 0\% & 4{,}706$\pm$109 & 1.0$\times$ & 10.0$\times$ \\
+SNN T=3 50\% & 3{,}059$\pm$131 & 1.5$\times$ & 6.5$\times$ \\
+SNN T=3 85\% & 1{,}353$\pm$113 & 3.5$\times$ & 2.9$\times$ \\
+SNN T=3 95\% & 747$\pm$90 & 6.3$\times$ & 1.6$\times$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-In software simulation (GPU), the ANN remains more energy-efficient due to the SNN's higher total operation count despite cheaper per-operation cost.
+In software simulation (GPU), the SNN remains costlier than the ANN (2.9$\times$ at 85\% pruning) due to higher total operation count despite cheaper per-operation cost.
 However, on neuromorphic hardware where inactive synapses consume zero energy and each AC costs 5.1$\times$ less than a MAC, the effective energy advantage shifts toward the pruned SNN.
 At 85\% sparsity, only 93K of 621K weights are non-zero, and the spike rate of $\sim$31\% means roughly 69\% of remaining synapses are silent at any timestep---a compounding sparsity effect that neuromorphic hardware exploits but GPU simulation does not.
 

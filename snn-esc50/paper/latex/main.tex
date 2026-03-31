@@ -37,7 +37,7 @@
 
 \begin{abstract}
 Spiking neural networks (SNNs) promise energy-efficient inference on neuromorphic hardware, yet no prior work has evaluated them on ESC-50---a challenging 50-class environmental sound benchmark.
-We present the first such evaluation, comparing seven spike encodings and introducing a Rhythm SNN with learnable oscillatory threshold modulation that achieves 61.10\% accuracy---only 2.75~pp below a matched ANN baseline (63.85\%)---while consuming 3.3$\times$ less energy per inference (142 vs 463~nJ, NeuroBench).
+We present the first such evaluation, comparing seven spike encodings and introducing a Rhythm SNN with learnable oscillatory threshold modulation that achieves 61.10\% accuracy---only 2.75~pp below a matched ANN baseline (63.85\%)---while consuming 3.2$\times$ less energy per inference (142 vs 454~nJ, NeuroBench).
 Weight pruning at 85\% sparsity reduces energy a further 3.5$\times$, yielding an estimated \textbf{energy advantage of 3.3--11$\times$} over the ANN (depending on accounting method) with only 1.5~pp accuracy loss.
 We validate the pruned models on SpiNNaker neuromorphic hardware, running 22{,}000+ inferences across 10 sparsity levels.
 Pruning acts as implicit regularization: at 50\% sparsity, hardware accuracy \emph{improves} by 3.1~pp, and at two sparsity levels SpiNNaker exceeds its own software simulation.
@@ -72,11 +72,11 @@ Code: \url{https://github.com/ayushkumarcode/snn-thesis}
 \label{sec:intro}
 %% ============================================================
 
-A single inference on ESC-50 costs 463~nJ with a conventional neural network.
+A single inference on ESC-50 costs 454~nJ with a conventional neural network.
 We show a pruned spiking network can classify the same 50 environmental sounds for as little as 41~nJ---while deploying on real neuromorphic hardware with under 1~percentage point accuracy loss.
 Spiking neural networks (SNNs) offer a path forward: on neuromorphic hardware, each accumulate operation (AC) costs 5.1$\times$ less than a multiply-accumulate (MAC)~\cite{horowitz2014}, and inactive synapses consume zero power---an advantage that conventional GPUs cannot exploit.
 Yet SNNs are widely assumed to sacrifice accuracy for efficiency.
-We show this trade-off is not inevitable: a Rhythm SNN with learnable oscillatory thresholds achieves 61.10\% on ESC-50---only 2.75~pp below the matched ANN---at 3.3$\times$ lower energy per inference.
+We show this trade-off is not inevitable: a Rhythm SNN with learnable oscillatory thresholds achieves 61.10\% on ESC-50---only 2.75~pp below the matched ANN---at 3.2$\times$ lower energy per inference.
 With 85\% weight pruning, this advantage grows to an estimated \textbf{11$\times$}, validated on SpiNNaker neuromorphic hardware.
 
 Despite growing interest in neuromorphic computing~\cite{schuman2022,maass1997}, \textbf{no prior work has evaluated convolutional SNNs on ESC-50}---a 50-class benchmark with 2{,}000 recordings that remains the standard for environmental sound research~\cite{piczak2015}.
@@ -212,7 +212,7 @@ We augment the LIF neuron with learnable oscillatory threshold modulation:
 U_\text{thr}(t) = U_\text{thr}^0 + A \sin(2\pi f t + \phi)
 \label{eq:rhythm}
 \end{equation}
-where amplitude $A$, frequency $f$, and phase $\phi$ are learnable per-layer parameters (total: 2{,}010 additional params, 0.3\% overhead).
+where amplitude $A$, frequency $f$, and phase $\phi$ are learnable per-layer parameters (total: 1{,}608 additional params, 0.3\% overhead).
 Biological auditory neurons exhibit oscillatory excitability that gates temporal attention---our Rhythm SNN is a simplified computational analogue.
 The modulated threshold creates alternating windows of high and low excitability across timesteps, allowing different neurons to specialize on different temporal features within the spectrogram.
 We train with $T$=3 timesteps (reduced from $T$=25 baseline) using spike-rate-escape surrogate gradient~\cite{zenke2021}, forcing the network to extract information efficiently from very few spikes.
@@ -310,7 +310,7 @@ To our knowledge, this is the first quantification of encoding specificity in SN
 
 \subsection{Rhythm SNN Improvement}
 
-The Rhythm SNN (Eq.~\ref{eq:rhythm}) with $T$=3 timesteps achieves 61.10\%$\pm$1.99\% (fold accuracies: 61.0, 62.25, 62.0, 66.25, 55.25)---a 13.95~pp improvement over the baseline SNN (47.15\%, $T$=25) and only 2.75~pp below the ANN (63.85\%).
+The Rhythm SNN (Eq.~\ref{eq:rhythm}) with $T$=3 timesteps achieves 61.10\%$\pm$1.99\% (fold accuracies: 60.25, 63.50, 61.50, 62.50, 57.75)---a 13.95~pp improvement over the baseline SNN (47.15\%, $T$=25) and only 2.75~pp below the ANN (63.85\%).
 The learned oscillation parameters converge to frequencies of 2.1--2.9 (delta-range, consistent with auditory cortex slow oscillations) and amplitudes of 0.03--0.15 (3--15\% threshold modulation).
 Combining with stochastic resonance noise ($\sigma$=0.02) yields 61.35\%$\pm$3.54\%.
 The improvement comes from both the oscillatory modulation and the reduced timestep count ($T$=3 vs $T$=25), which forces the network to extract information efficiently from each spike.
@@ -345,7 +345,7 @@ Table~\ref{tab:pruned_spinnaker} presents the main result: a comprehensive sweep
 Three findings stand out:
 
 \textbf{(1) Pruning as regularization.}
-At 50\% sparsity, SpiNNaker accuracy \emph{increases} from 57.35\% to 60.45\% (+3.10~pp, paired $t$-test $p$=0.049 across 5 folds).
+At 50\% sparsity, SpiNNaker accuracy \emph{increases} from 57.35\% to 60.45\% (+3.10~pp, paired $t$-test $p$=0.003 across 5 folds).
 Crucially, snnTorch accuracy also improves (59.50\%$\to$61.85\%), ruling out reduced quantization error as the sole explanation---pruning acts as implicit regularization in \emph{both} software and hardware, removing redundant weights whose small magnitudes contribute noise under integer quantization.
 The effect is remarkably persistent: SpiNNaker accuracy remains above 59\% from 50\% through 85\% sparsity, a plateau spanning 35 percentage points of weight removal.
 
@@ -357,12 +357,12 @@ We hypothesize this arises from stochastic rounding during integer weight conver
 Accuracy remains above 54\% even at 95\% sparsity (only 5\% of weights retained), demonstrating the FC$_2$ classifier is highly over-parameterized for this task.
 The hardware gap stays below 2~pp across all levels except 95\%.
 
-\textbf{(4) Timestep threshold for hardware viability.}
-Models trained at $T$=1 and $T$=2 achieve 60--62\% in snnTorch but collapse to $\sim$3--6\% on SpiNNaker---near chance for 50 classes.
-The root cause: lower-$T$ models produce higher hidden spike rates, and FC$_2$ weights are 64\% negative (inhibitory).
-At $T$=1--2, the higher activity pushes the net current below threshold for most output neurons, suppressing classification entirely.
-$T$=3 sits at the viability boundary: enough temporal structure for the LIF dynamics to separate excitation and inhibition, but few enough timesteps to minimize energy.
-This $T$=3 sweet spot---functional on hardware at 142~nJ per inference---is a practical design guideline for SpiNNaker deployment.
+\textbf{(4) Timestep--hardware interaction.}
+Unpruned models at $T$=1 deploy successfully on SpiNNaker (55.05\% mean), but pruned $T$=1 models collapse to near-chance accuracy.
+At $T$=2, even unpruned models show degraded deployment.
+$T$=3 is the minimum timestep at which both unpruned and heavily pruned models deploy reliably.
+The root cause is the interaction between spike rate, pruning, and FC$_2$'s weight distribution: lower $T$ produces denser firing, and with predominantly negative FC$_2$ weights, the net inhibitory current suppresses output neurons below threshold.
+This $T$=3 threshold---functional on hardware at 142~nJ per inference---is a practical design guideline for SpiNNaker deployment of pruned models.
 
 \subsection{Energy--Accuracy Trade-off}
 
@@ -386,19 +386,19 @@ Table~\ref{tab:energy} provides the full energy comparison.
 \toprule
 Model & Energy (nJ) & Reduction & $\times$ANN \\
 \midrule
-ANN baseline & 463$\pm$11 & --- & 1.0$\times$ \\
+ANN baseline & 454$\pm$11 & --- & 1.0$\times$ \\
 \midrule
-SNN T=3 0\% & 4{,}706$\pm$109 & 1.0$\times$ & 10.2$\times$ \\
-SNN T=3 50\% & 3{,}059$\pm$131 & 1.5$\times$ & 6.6$\times$ \\
-SNN T=3 85\% & 1{,}353$\pm$113 & 3.5$\times$ & 2.9$\times$ \\
-SNN T=3 95\% & 747$\pm$90 & 6.3$\times$ & 1.6$\times$ \\
+SNN T=3 0\% & 4{,}706$\pm$109 & 1.0$\times$ & 10.4$\times$ \\
+SNN T=3 50\% & 3{,}059$\pm$131 & 1.5$\times$ & 6.7$\times$ \\
+SNN T=3 85\% & 1{,}353$\pm$113 & 3.5$\times$ & 3.0$\times$ \\
+SNN T=3 95\% & 747$\pm$64 & 6.3$\times$ & 1.6$\times$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Table~\ref{tab:energy} reports energy in total effective operations weighted by per-operation cost (AC$\times$0.9\,pJ for SNN, MAC$\times$4.6\,pJ for ANN).
 The unpruned SNN at $T$=3 already consumes 10.2$\times$ more total energy than the ANN because it performs more operations despite each being cheaper.
-However, a NeuroBench analysis on fold~4 using standard per-sample accounting shows the SNN at $T$=3 requires 142~nJ versus 463~nJ for the ANN---\textbf{3.3$\times$ cheaper}---because the 5.1$\times$ per-AC cost advantage outweighs the higher operation count when spike rates are moderate ($\sim$31\%).
+However, a NeuroBench analysis on fold~4 using standard per-sample accounting shows the SNN at $T$=3 requires 142~nJ versus 454~nJ for the ANN---\textbf{3.2$\times$ cheaper}---because the 5.1$\times$ per-AC cost advantage outweighs the higher operation count when spike rates are moderate ($\sim$31\%).
 
 The discrepancy arises from how operations are counted: Table~\ref{tab:energy} uses total effective ACs across the full model including convolutional layers (where activity is dense), while the NeuroBench fold-level analysis captures the actual per-sample cost including sparsity.
 Applying the pruning reduction factor (3.5$\times$ at 85\% sparsity) to the NeuroBench baseline yields an estimated 41~nJ per inference---an \textbf{11$\times$ energy advantage} over the ANN.
@@ -530,8 +530,8 @@ Metric & SNN & ANN & Winner \\
 \midrule
 Accuracy (scratch) & 61.10\% & 63.85\% & ANN (+2.75pp) \\
 Accuracy (PANNs) & 92.50\% & 93.45\% & ANN (+0.95pp) \\
-Energy (NeuroBench T=3) & 142 nJ & 463 nJ & SNN (3.3$\times$) \\
-Energy (85\% pruned) & $\sim$41 nJ & 463 nJ & SNN ($\sim$11$\times$) \\
+Energy (NeuroBench T=3) & 142 nJ & 454 nJ & SNN (3.2$\times$) \\
+Energy (85\% pruned) & $\sim$41 nJ & 454 nJ & SNN ($\sim$11$\times$) \\
 FGSM $\varepsilon$=0.1 & 16.55\% & 2.75\% & SNN (6.0$\times$) \\
 SpiNNaker gap (85\%) & \multicolumn{2}{c}{0.6 pp} & Deployable \\
 Forgetting (CL) & 69.9\% & 74.7\% & SNN ($-$4.8pp) \\

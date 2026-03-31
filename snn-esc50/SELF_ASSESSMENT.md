@@ -16,3 +16,21 @@
 - Energy threshold analysis (Dampfhoffer), NeuroBench framework
 - Prior SNN audio work table identifying the research gap
 - 35+ peer-reviewed references throughout
+
+### 3.3 Technical Quality, Methodology, Evaluation (35%) — Score: 92 (Outstanding)
+- Controlled comparison principle clearly articulated
+- 14 numbered equations in methodology, 7 encoding formulations
+- 3 figures: architecture diagram, SpiNNaker pipeline, encoding bar chart
+- 20+ tables with booktabs formatting and descriptive captions
+- Complete SpiNNaker deployment pipeline with parameter table
+- Negative results documented with root causes (burst, delta, KD, augmentation)
+- Information preservation principle (novel framework)
+- Statistical tests (paired t-test p=0.001, Wilcoxon p=0.0625)
+- All 50 pruned deployments, 5-fold T=3 and T=1 results
+
+### 3.4 Summary and Conclusions (15%) — Score: 88 (Excellent)
+- C1-C6 restated with specific numbers
+- RQ1-RQ4 explicitly answered with evidence
+- 3 honest limitations
+- 7 future work directions tied to literature
+- Critical reflection and impact statement

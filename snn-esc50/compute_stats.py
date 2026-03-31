@@ -448,3 +448,21 @@ def compute_statistical_tests():
     # Save
     with open(STATS_OUT, "w") as f:
         json.dump(results, f, indent=2)
+    print(f"\nSaved to: {STATS_OUT}")
+
+    return results
+
+
+def interpret_d(d):
+    """Interpret Cohen's d magnitude."""
+    d_abs = abs(d)
+    if d_abs < 0.2:
+        return "negligible"
+    elif d_abs < 0.5:
+        return "small"
+    elif d_abs < 0.8:
+        return "medium"
+    else:
+        return "large"
+
+

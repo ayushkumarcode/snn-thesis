@@ -1,0 +1,18 @@
+\chapter{Results and Evaluation}
+\label{ch:results}
+
+This chapter presents the complete experimental results of this thesis, progressing from the controlled \gls{ann}--\gls{snn} comparison through spike encoding analysis, neuromorphic hardware deployment, energy measurement, transfer learning, and advanced properties including adversarial robustness and continual learning. Every reported mean and standard deviation is computed across the five predefined ESC-50 cross-validation folds unless otherwise stated. All software experiments were conducted on NVIDIA A100 SXM4 80\,GB GPUs on the University of Manchester CSF3 cluster; all hardware experiments used the SpiNN-5 board at \texttt{spinnaker.cs.man.ac.uk}.
+
+% ==================================================================
+\section{ANN Baseline}
+\label{sec:ann-baseline}
+% ==================================================================
+
+The ConvANN baseline establishes the upper bound for what a non-spiking network of identical architecture and training budget can achieve on ESC-50 without external pretraining. Table~\ref{tab:ann-baseline} reports the per-fold results.
+
+\begin{table}[t]
+\centering
+\caption{ConvANN baseline accuracy (\%) on ESC-50 with five-fold cross-validation. The model has $\sim$622K parameters and is trained from scratch on mel spectrograms.}
+\label{tab:ann-baseline}
+\small
+\begin{tabular}{@{}lccccccc@{}}

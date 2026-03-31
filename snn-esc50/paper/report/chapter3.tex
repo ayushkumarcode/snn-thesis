@@ -106,3 +106,21 @@ Parameters & 621,938 & 621,938 & --- \\
 
 \subsection{Rhythm-SNN: Oscillatory Threshold Modulation}
 \label{ssec:rhythm-snn}
+
+Motivated by theta oscillations observed in mammalian auditory cortex~\citep{lakatos2005oscillatory}, we introduce a variant that modulates the effective firing threshold with a learnable sinusoidal signal. The Rhythm-SNN replaces each standard LIF neuron with a \emph{RhythmLIF} neuron:
+\begin{equation}
+\label{eq:rhythm}
+U_i^{(t)} = \beta_i \, U_i^{(t-1)} + I_i^{(t)} + A_i \sin\!\left(\frac{2\pi f_i \, t}{T} + \phi_i\right),
+\end{equation}
+where $A_i$, $f_i$, and $\phi_i$ are per-neuron learnable amplitude, frequency, and phase parameters respectively. The decay factor $\beta_i$ and threshold $\vartheta_i$ are also learnable (parameterised through a sigmoid to ensure $\beta_i \in (0, 1)$). The oscillatory term acts as a subthreshold current that creates temporal windows of heightened excitability, enabling the network to develop rhythmic processing patterns.
+
+At initialisation, $A_i = 0.1$, $f_i \sim \mathcal{U}(0.5, 5.0)$, and $\phi_i = 0$. These parameters are trained end-to-end with the synaptic weights via surrogate gradient descent. The Rhythm-SNN achieves 61.10\% $\pm$ 1.99\%, a 13.95 percentage point improvement over the standard SNN and only 2.75 percentage points below the ANN baseline.
+
+% ==================================================================
+\section{Spike Encoding Implementations}
+\label{sec:encodings}
+
+Seven encoding methods are evaluated, transforming the normalised spectrogram $\hat{\mathbf{S}} \in [0, 1]^{1 \times 64 \times 216}$ into a temporal input tensor $\mathbf{X} \in \mathbb{R}^{T \times 1 \times 64 \times 216}$ with $T = 25$ timesteps. All encodings are implemented using snnTorch~\citep{eshraghian2023training} and custom PyTorch code.
+
+\paragraph{Rate coding.}
+Each input pixel generates independent Bernoulli spikes at each timestep with probability equal to its intensity:

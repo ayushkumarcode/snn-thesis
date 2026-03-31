@@ -232,3 +232,21 @@ def compute_hardware_energy():
             energy_liberal = syn_events * NJ_PER_SYNAPTIC_EVENT_LIBERAL
 
             fold_result = {
+                "prune_pct": pct,
+                "fold": fold,
+                "n_samples": n,
+                "mean_h_total_spk": round(mean_h, 2),
+                "std_h_total_spk": round(std_h, 2),
+                "mean_o_total_spk": round(mean_o, 2),
+                "std_o_total_spk": round(std_o, 2),
+                "mean_synaptic_events": round(syn_events, 2),
+                "energy_nj_8nJ": round(energy_conservative, 2),
+                "energy_nj_20nJ": round(energy_liberal, 2),
+                "spinnaker_accuracy": data["summary"]["spinnaker_accuracy"],
+                "snntorch_accuracy": data["summary"]["snntorch_accuracy"]
+            }
+            fold_results.append(fold_result)
+
+        # Aggregate across folds
+        mean_energy_8 = mean([fr["energy_nj_8nJ"] for fr in fold_results])
+        mean_energy_20 = mean([fr["energy_nj_20nJ"] for fr in fold_results])

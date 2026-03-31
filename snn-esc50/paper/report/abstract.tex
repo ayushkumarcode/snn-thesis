@@ -1,0 +1,10 @@
+This report presents the first comprehensive evaluation of convolutional spiking neural networks for environmental sound classification on the full 50-class ESC-50 dataset, including deployment on SpiNNaker neuromorphic hardware.
+Seven spike encoding methods are systematically compared under controlled conditions, revealing a clear hierarchy: direct encoding achieves 47.15\% ($\pm$4.50\%), substantially outperforming rate (24.00\%), phase (24.15\%), population (19.15\%), latency (16.30\%), delta (7.25\%), and burst coding (6.50\%).
+A matched artificial neural network baseline achieves 63.85\% ($\pm$3.07\%), establishing a 16.70 percentage point accuracy gap ($p = 0.001$).
+This gap collapses to 0.95 percentage points when both architectures classify pretrained audio features (PANNs: \gls{snn} 92.50\% versus \gls{ann} 93.45\%, $p = 0.034$), demonstrating that the bottleneck lies in feature learning, not spiking computation.
+
+A novel oscillatory threshold modulation technique (Rhythm-SNN) improves the scratch-trained \gls{snn} to 61.10\% ($\pm$1.99\%), reducing the gap to 2.75 percentage points.
+The Rhythm-SNN is deployed on SpiNNaker neuromorphic hardware via a current-injection hybrid approach, achieving 57.35\% ($\pm$2.39\%) with a hardware gap of only 2.15 percentage points across five folds.
+A pruning sweep (50--95\% sparsity, 50 hardware deployments) reveals that 85\% pruning maintains accuracy while reducing estimated energy to 27\,nJ per inference---16.6$\times$ cheaper than the equivalent \gls{ann}.
+The \gls{snn} demonstrates 6.0$\times$ greater adversarial robustness under FGSM attack and 4.7 percentage points less catastrophic forgetting in continual learning.
+All code and results are publicly available.

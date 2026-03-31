@@ -16,3 +16,21 @@ import os
 import glob
 
 
+# ============================================================
+# Helper functions (no numpy/scipy needed)
+# ============================================================
+
+def mean(xs):
+    return sum(xs) / len(xs)
+
+def std_sample(xs):
+    """Sample standard deviation (ddof=1)."""
+    m = mean(xs)
+    return math.sqrt(sum((x - m)**2 for x in xs) / (len(xs) - 1))
+
+def pooled_sd(xs, ys):
+    """Pooled standard deviation for two equal-size groups."""
+    n = len(xs)
+    sx = std_sample(xs)
+    sy = std_sample(ys)
+    return math.sqrt(((n - 1) * sx**2 + (n - 1) * sy**2) / (2 * n - 2))

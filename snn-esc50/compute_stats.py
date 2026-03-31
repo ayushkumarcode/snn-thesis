@@ -628,3 +628,21 @@ def compute_cohens_d():
     print(f"  Cohen's d = {d_p85:.4f} ({interpret_d(d_p85)})")
     print(f"  t = {t_stat_p85:.3f}, p = {p_val_p85:.4f}")
     print(f"  95% CI: [{ci_p85[0]:.2f}, {ci_p85[1]:.2f}]")
+
+    # --- 4. Rhythm-SNN vs ANN ---
+    rhythm_folds = [60.25, 62.25, 59.00, 63.75, 60.25]
+    sp_ra = pooled_sd(ann_folds, rhythm_folds)
+    d_rhythm_ann = (mean(ann_folds) - mean(rhythm_folds)) / sp_ra
+
+    results["ANN_vs_RhythmSNN"] = {
+        "ann_folds": ann_folds,
+        "rhythm_folds": rhythm_folds,
+        "ann_mean": round(mean(ann_folds), 2),
+        "rhythm_mean": round(mean(rhythm_folds), 2),
+        "pooled_sd": round(sp_ra, 4),
+        "cohens_d": round(d_rhythm_ann, 4),
+        "interpretation": interpret_d(d_rhythm_ann),
+        "direction": "ANN > Rhythm-SNN"
+    }
+    print(f"\nANN vs Rhythm-SNN:")
+    print(f"  ANN: {mean(ann_folds):.2f}, Rhythm-SNN: {mean(rhythm_folds):.2f}")

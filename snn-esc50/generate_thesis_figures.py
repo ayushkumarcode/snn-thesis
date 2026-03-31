@@ -124,3 +124,21 @@ def fig3_adversarial():
 
     fgsm_snn = [46.25, 30.55, 27.30, 24.45, 16.55, 13.85, 13.50]
     fgsm_ann = [63.85, 18.85,  7.85,  2.65,  2.75,  2.15,  1.60]
+
+    pgd_snn = [46.25, 21.30, 18.60, 16.15,  9.75,  2.65,  1.85]
+    pgd_ann = [63.85, 12.55,  1.80,  0.10,  0.05,  0.00,  0.00]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2), sharey=True)
+
+    for ax, snn_data, ann_data, title in [
+        (ax1, fgsm_snn, fgsm_ann, 'FGSM Attack'),
+        (ax2, pgd_snn, pgd_ann, 'PGD Attack'),
+    ]:
+        ax.plot(eps, snn_data, 'o-', color=BLUE, linewidth=1.8, markersize=5, label='SNN', zorder=5)
+        ax.plot(eps, ann_data, 's--', color=RED, linewidth=1.8, markersize=5, label='ANN', zorder=5)
+
+        # Shade SNN advantage region
+        snn_arr = np.array(snn_data)
+        ann_arr = np.array(ann_data)
+        eps_arr = np.array(eps)
+        # Only shade where SNN > ANN

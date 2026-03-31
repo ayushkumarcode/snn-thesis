@@ -70,3 +70,21 @@ for PCT in 50 55 60 65 70 75 80 85 90 95; do
     echo "=== [${JOB_NUM}/${TOTAL_JOBS}] ${TAG} ===" | tee -a "$LOGFILE"
     echo "  Elapsed: ${ELAPSED_FMT} | Remaining: ~${REMAIN_FMT} | ETA: ${ETA}" | tee -a "$LOGFILE"
     echo "  Completed: ${COMPLETED} | Failed: ${FAILED} | Skipped: ${SKIPPED}" | tee -a "$LOGFILE"
+
+    JOB_START=$(date +%s)
+
+    if python -u spinnaker/deploy_pruned_t1.py \
+        --prune-pct "$PCT" \
+        --fold "$FOLD" \
+        --n-samples 400 \
+        --batch-size 50 2>&1 | tee -a "$LOGFILE"; then
+      COMPLETED=$((COMPLETED + 1))
+      JOB_END=$(date +%s)
+      JOB_TIME=$((JOB_END - JOB_START))
+      echo "  [DONE] ${TAG} in ${JOB_TIME}s" | tee -a "$LOGFILE"
+    else
+      FAILED=$((FAILED + 1))
+      echo "  [FAIL] ${TAG}" | tee -a "$LOGFILE"
+    fi
+
+  done

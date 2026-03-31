@@ -214,3 +214,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 - 10 unpruned SpiNNaker deployments (T=3 and T=1 × 5 folds)
 - 147-paper energy optimization literature survey
 - ~400+ hours of project work
+- Adversarial robustness 5-fold, noise robustness 5-fold, continual learning 5-fold
+- Full experiment log (1050+ lines)
+- 46 decision records
+
+**Rubric match:** "ownership of problems... much greater could be delivered given more time" — clearly demonstrated through the iterative debugging of SpiNNaker (runs 1-6, 9 Poisson configurations, Option A/B/C), the comprehensive encoding comparison, and the energy optimization research survey.
+
+---
+
+### 5.3 Achievement (34% of Achievements)
+
+**Current band: Outstanding (90-94)**
+
+**Evidence:**
+- FIRST SNN on full ESC-50 (verified: zero prior peer-reviewed work)
+- Rhythm-SNN: 61.10% accuracy (+14pp over baseline, only 2.75pp below ANN)
+- Full SpiNNaker deployment: 57.35% with only 2.15pp hardware gap
+- Pruning Pareto: 85% pruning → maintained accuracy with ~27 nJ energy
+- SpiNNaker BEATS snnTorch at 60% and 80% pruning (negative hardware gaps)

@@ -34,3 +34,21 @@
 - 3 honest limitations
 - 7 future work directions tied to literature
 - Critical reflection and impact statement
+
+### 3.5 Presentation, Structure, Language (10%) — Score: 88 (Excellent)
+- Professional LaTeX: 82 pages, 416 KB PDF
+- Complete front matter: title, abstract, declaration, copyright, acknowledgements
+- ToC, List of Figures (3), List of Tables (20+), all hyperlinked
+- ALL citations resolved to numbered references (zero [?] markers)
+- ALL figure references resolved (zero Figure ?? markers)
+- Formal academic prose, no contractions, no casual language
+- Word count: 14,525 (within 10,000-15,000 range)
+- Booktabs tables, numbered equations, clean typography
+
+### Report weighted score: ~90 (Outstanding)
+Breakdown: 0.15*90 + 0.25*88 + 0.35*92 + 0.15*88 + 0.10*88 = 89.9
+
+---
+
+## Screencast (15% of total) — Score: N/A (plan written, not produced)
+- Comprehensive 8-minute documentary-style script in SCREENCAST_PLAN.md

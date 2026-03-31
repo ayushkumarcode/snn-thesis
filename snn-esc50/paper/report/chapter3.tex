@@ -124,3 +124,21 @@ Seven encoding methods are evaluated, transforming the normalised spectrogram $\
 
 \paragraph{Rate coding.}
 Each input pixel generates independent Bernoulli spikes at each timestep with probability equal to its intensity:
+\begin{equation}
+\label{eq:rate}
+X_i^{(t)} \sim \text{Bernoulli}(\hat{s}_i), \quad t = 1, \ldots, T.
+\end{equation}
+Information content: $\mathcal{O}(T)$ bits per neuron. Stochastic.
+
+\paragraph{Latency coding.}
+Each neuron fires exactly once; higher intensity maps to an earlier spike time:
+\begin{equation}
+\label{eq:latency}
+t_{\text{fire}}(\hat{s}_i) = \left\lfloor (1 - \hat{s}_i) \cdot (T - 1) \right\rfloor, \quad \hat{s}_i > \epsilon,
+\end{equation}
+using a linearised approximation with $\tau = 5.0$ and minimum threshold $\epsilon = 0.01$. Neurons with intensity below $\epsilon$ remain silent. Information content: $\mathcal{O}(\log T)$ bits per neuron. Deterministic.
+
+\paragraph{Delta coding.}
+Spikes are emitted on positive temporal changes exceeding a threshold $\theta_\delta = 0.1$. Since the spectrogram is inherently static, we inject small Gaussian noise ($\sigma = 0.02$) at each timestep to create temporal variation:
+\begin{equation}
+\label{eq:delta}

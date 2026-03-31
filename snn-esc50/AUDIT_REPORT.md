@@ -178,3 +178,21 @@ This audit scores the project against all 12 rubric criteria across Report (55%)
 **Assessment:** Need to write comprehensive screencast plan. The rubric heavily rewards creativity and professionalism. A podcast/interview format using NotebookLM scored very highly for a previous student.
 
 ---
+
+## Rubric Scoring: Achievements (30% of total)
+
+### 5.1 Complexity (33% of Achievements)
+
+**Current band: Outstanding (92-95)**
+
+**Evidence:**
+- Surrogate gradient SNN training (not taught in any UoM course)
+- SpiNNaker neuromorphic hardware deployment (supervisor: "no student has ever done this")
+- Ring buffer quantization debugging (hardware-level understanding)
+- 7 spike encoding implementations with mathematical formulations
+- NeuroBench energy benchmarking framework integration
+- Pruning with mask enforcement (discovered and fixed fake pruning bug)
+- Rhythm-SNN with learnable oscillatory threshold modulation
+- Dendritic branching with learnable delays
+- Current injection batched deployment protocol for SpiNNaker
+- Full pipeline: audio → spectrogram → encoding → SNN → SpiNNaker → classification

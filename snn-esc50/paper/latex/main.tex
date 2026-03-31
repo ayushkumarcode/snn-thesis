@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{url}
+\emergencystretch=1em
 
 \begin{document}
 
@@ -228,7 +229,8 @@ Pruning reduces the number of non-zero synaptic connections, directly lowering b
 
 \subsection{SpiNNaker Deployment}
 
-Full SNN deployment on SpiNNaker fails because AvgPool produces fractional outputs: FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 2{,}304 fractional inputs cause excitatory-inhibitory cancellation, producing zero hidden spikes (Figure~\ref{fig:pipeline}).
+Full SNN deployment on SpiNNaker fails because AvgPool produces fractional (non-binary) outputs.
+FC$_1$ weights have near-zero mean ($\mu$=$-$0.0034), so 2{,}304 fractional inputs cause excitatory-inhibitory cancellation, yielding zero hidden spikes (Figure~\ref{fig:pipeline}).
 We adopt a hybrid approach: conv layers and FC$_1$+LIF$_3$ run in software, producing binary hidden spikes (256-d, $\sim$22\% active per step).
 Only FC$_2$ (256$\to$50)+LIF$_4$ runs on SpiNNaker via current injection, using the sPyNNaker software stack~\cite{rhodes2018}.
 
@@ -247,7 +249,10 @@ The scale $s$ is determined by a 9-point logarithmic sweep on a single correctly
 Positive weights map to excitatory synapses, negative to inhibitory; SpiNNaker's IF\_curr\_exp model requires separate excitatory and inhibitory projections.
 
 \textbf{Implementation pitfalls.}
-Three issues required debugging: (1)~sPyNNaker defaults membrane potential to $v$=$-$65\,mV regardless of \texttt{v\_rest}, so explicit \texttt{population.initialize(v=0.0)} is required---without this, neurons need 66\,mV of input to reach threshold, making firing nearly impossible; (2)~high-fan-in layers (256 input neurons) overflow SpiNNaker's DMA buffers unless cores are split (\texttt{set\_number\_of\_neurons\_per\_core}=32); (3)~membrane state must be explicitly reset between samples via batched simulation restart to prevent temporal bleed between classifications.
+Three issues required debugging.
+First, sPyNNaker defaults membrane potential to $v$=$-$65\,mV regardless of the configured rest potential, so explicit initialization to $v$=0 is required---without this, neurons need 66\,mV of input to fire.
+Second, high-fan-in layers (256 inputs) overflow SpiNNaker's DMA buffers unless cores are split to 32 neurons per core.
+Third, membrane state must be explicitly reset between samples to prevent temporal bleed between classifications.
 
 \subsection{Energy Analysis}
 

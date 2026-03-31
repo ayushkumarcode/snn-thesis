@@ -41,6 +41,13 @@ All 2,000 spectrograms are precomputed and cached in memory prior to training. T
 
 Both the SNN and ANN follow the same four-layer convolutional--fully-connected topology, shown in Figure~\ref{fig:architecture} and summarised in Table~\ref{tab:architecture}. The shared structure ensures that any performance difference between the two models can be attributed solely to the neuron model.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{architecture_diagram.pdf}
+\caption[SpikingCNN and ConvANN architecture.]{SpikingCNN and ConvANN architecture. Both models share identical convolutional and fully connected layer dimensions ($\sim$622K parameters). The SNN processes input over $T = 25$ timesteps through LIF neurons with surrogate gradient training; the ANN processes a single frame through ReLU activations. Dashed arrows indicate the temporal unrolling unique to the SNN.}
+\label{fig:architecture}
+\end{figure}
+
 \subsection{SpikingCNN}
 \label{ssec:snn-architecture}
 
@@ -228,6 +235,13 @@ All five-fold cross-validation experiments are run on the University of Manchest
 \label{sec:spinnaker}
 
 Deploying the trained SNN on SpiNNaker neuromorphic hardware serves two purposes: it validates that the software-trained spiking dynamics transfer to an asynchronous, event-driven processor, and it enables measurement of true neuromorphic inference energy. The deployment pipeline is shown in Figure~\ref{fig:spinnaker_pipeline}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{spinnaker_pipeline.pdf}
+\caption[SpiNNaker hybrid deployment pipeline.]{SpiNNaker hybrid deployment pipeline. Convolutional feature extraction and FC1 are computed on the host CPU. The resulting hidden spike features are injected into SpiNNaker via current injection for FC2 classification. This hybrid approach bypasses the FC1 weight cancellation problem while preserving neuromorphic inference for the classifier.}
+\label{fig:spinnaker_pipeline}
+\end{figure}
 
 \subsection{Hardware Constraints}
 \label{ssec:hw-constraints}

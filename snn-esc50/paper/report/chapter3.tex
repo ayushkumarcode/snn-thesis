@@ -178,3 +178,21 @@ The output layer is expanded to 500 neurons (10 per class), with rate-coded inpu
 \end{equation}
 where $\mathbf{y}_{\text{pop}} \in \{0, 1\}^{500}$ is the target vector with 1s for the 10 neurons of the correct class. Classification uses the argmax of grouped spike counts.
 
+Table~\ref{tab:encodings} summarises the properties of all seven encodings.
+
+\begin{table}[t]
+\centering
+\caption{Summary of the seven spike encoding methods. ``Spikes/neuron'' indicates the expected number of spikes per active input neuron over $T = 25$ timesteps for a typical input intensity of 0.5.}
+\label{tab:encodings}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Encoding} & \textbf{Type} & \textbf{Spikes/neuron} & \textbf{Temporal coverage} & \textbf{Accuracy (\%)} \\
+\midrule
+Direct     & Deterministic & Implicit (LIF) & Full $[1, T]$ & 47.15 \\
+Rate       & Stochastic    & $\sim$12.5      & Full $[1, T]$ & 24.00 \\
+Phase      & Deterministic & 1               & Full $[1, T]$ & 24.15 \\
+Population & Stochastic    & $\sim$12.5 (input) & Full $[1, T]$ & 19.15 \\
+Latency    & Deterministic & 1               & Partial        & 16.30 \\
+Delta      & Stochastic    & $\sim$0.5       & Sparse         & 7.25 \\
+Burst      & Deterministic & 2.5             & First $[1, 5]$ only & 6.50 \\

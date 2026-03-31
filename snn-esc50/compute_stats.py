@@ -646,3 +646,21 @@ def compute_cohens_d():
     }
     print(f"\nANN vs Rhythm-SNN:")
     print(f"  ANN: {mean(ann_folds):.2f}, Rhythm-SNN: {mean(rhythm_folds):.2f}")
+    print(f"  Pooled SD: {sp_ra:.4f}")
+    print(f"  Cohen's d = {d_rhythm_ann:.4f} ({interpret_d(d_rhythm_ann)})")
+
+    # --- 5. PANNs SNN vs PANNs ANN ---
+    panns_snn = [92.0, 94.5, 91.0, 93.5, 91.5]
+    panns_ann = [93.0, 95.0, 92.0, 95.5, 91.75]
+
+    d_panns = cohens_d_paired(panns_ann, panns_snn)
+    t_stat_p, p_val_p, ci_p = paired_t_test(panns_ann, panns_snn)
+    gap_panns = [a - s for a, s in zip(panns_ann, panns_snn)]
+
+    results["PANNs_ANN_vs_PANNs_SNN"] = {
+        "panns_ann_folds": panns_ann,
+        "panns_snn_folds": panns_snn,
+        "gap_folds": [round(g, 2) for g in gap_panns],
+        "gap_mean": round(mean(gap_panns), 2),
+        "gap_std": round(std_sample(gap_panns), 2),
+        "cohens_d": round(d_panns, 4),

@@ -592,3 +592,21 @@ def compute_cohens_d():
     print(f"  snnTorch: {mean(snnt_t3):.2f}, SpiNNaker: {mean(spinn_t3):.2f}")
     print(f"  Gap: {mean(gap_t3):.2f} +/- {std_sample(gap_t3):.2f}")
     print(f"  Cohen's d = {d_spinn_t3:.4f} ({interpret_d(d_spinn_t3)})")
+    print(f"  t = {t_stat:.3f}, p = {p_val:.4f}")
+    print(f"  95% CI on gap: [{ci[0]:.2f}, {ci[1]:.2f}]")
+
+    # --- 3. Pruned 85% vs Unpruned (SpiNNaker) ---
+    # Get pruned 85% per-fold from individual files
+    spinn_p85 = []
+    for fold in range(1, 6):
+        fpath = os.path.join(DEPLOY_DIR, f"fast_pruned85_fold{fold}_400_N256.json")
+        with open(fpath) as f:
+            data = json.load(f)
+        spinn_p85.append(data["summary"]["spinnaker_accuracy"])
+
+    # Paired comparison: pruned 85% vs unpruned T=3 on SpiNNaker
+    d_p85 = cohens_d_paired(spinn_p85, spinn_t3)
+    t_stat_p85, p_val_p85, ci_p85 = paired_t_test(spinn_p85, spinn_t3)
+    gap_p85 = [p - u for p, u in zip(spinn_p85, spinn_t3)]
+
+    results["Pruned85_vs_Unpruned_SpiNNaker"] = {

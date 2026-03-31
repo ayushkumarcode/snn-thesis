@@ -142,3 +142,21 @@ The Rhythm-SNN is deployed on SpiNNaker neuromorphic hardware using the current-
 \label{ssec:full-deploy-results}
 
 Table~\ref{tab:spinnaker-t3} presents the per-fold results for the $T = 3$ full deployment, alongside the equivalent snnTorch simulation.
+
+\begin{table}[t]
+\centering
+\caption{SpiNNaker full FC1+FC2 deployment accuracy (\%) at $T = 3$ timesteps. ``Gap'' is snnTorch accuracy minus SpiNNaker accuracy. ``Match'' is the percentage of samples classified identically by both platforms.}
+\label{tab:spinnaker-t3}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Fold} & \textbf{SpiNNaker} & \textbf{snnTorch} & \textbf{Gap (pp)} & \textbf{Match (\%)} & \textbf{Samples} & \textbf{Time (s)} \\
+\midrule
+1 & 55.00 & 56.50 & 1.50 & 84.25 & 400 & 1651 \\
+2 & 60.50 & 63.00 & 2.50 & 82.75 & 400 & 1760 \\
+3 & 55.50 & 58.00 & 2.50 & 83.00 & 400 & 1616 \\
+4 & 60.00 & 61.00 & 1.00 & 86.00 & 400 & 1860 \\
+5 & 55.75 & 59.00 & 3.25 & 80.75 & 400 & 1571 \\
+\midrule
+\textbf{Mean} & \textbf{57.35} & \textbf{59.50} & \textbf{2.15} & \textbf{83.35} & --- & --- \\
+\textbf{Std}  & 2.39 & 2.38 & --- & --- & --- & --- \\

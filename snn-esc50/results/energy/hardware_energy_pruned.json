@@ -862,3 +862,21 @@
   "unpruned_t3": {
     "per_fold": [
       {
+        "fold": 1,
+        "n_samples": 400,
+        "mean_h_total_spk": 405.74,
+        "std_h_total_spk": 29.47,
+        "mean_o_total_spk": 0.96,
+        "std_o_total_spk": 1.69,
+        "mean_synaptic_events": 20287.96,
+        "energy_nj_8nJ": 162303.68,
+        "energy_nj_20nJ": 405759.2,
+        "spinnaker_accuracy": 55.0,
+        "snntorch_accuracy": 56.5
+      },
+      {
+        "fold": 2,
+        "n_samples": 400,
+        "mean_h_total_spk": 402.29,
+        "std_h_total_spk": 27.8,
+        "mean_o_total_spk": 0.63,

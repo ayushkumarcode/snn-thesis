@@ -214,3 +214,21 @@ def fig5_panns():
     fig, ax = plt.subplots(figsize=(7, 5))
     x = np.arange(len(categories))
     bars = ax.bar(x, values, width=0.55, color=colors_list, edgecolor='white', linewidth=0.5)
+
+    # Human performance line
+    ax.axhline(y=81.3, color=GREY, linestyle='--', linewidth=1, alpha=0.7)
+    ax.text(4.35, 82.0, 'Human (81.3%)', fontsize=8, color=GREY, va='bottom')
+
+    # Value labels on bars
+    for i, (bar, v) in enumerate(zip(bars, values)):
+        ax.text(bar.get_x() + bar.get_width()/2, v + 0.8, f'{v:.1f}%',
+                ha='center', va='bottom', fontsize=9, fontweight='bold')
+
+    # Bracket annotation: scratch gap (16.70 pp)
+    y_bracket1 = 66
+    ax.annotate('', xy=(0, y_bracket1), xytext=(1, y_bracket1),
+                arrowprops=dict(arrowstyle='<->', color='black', lw=1.2))
+    ax.text(0.5, y_bracket1 + 1.2, '16.70 pp gap', ha='center', fontsize=9, fontweight='bold')
+
+    # Bracket annotation: PANNs gap (0.95 pp)
+    y_bracket2 = 96

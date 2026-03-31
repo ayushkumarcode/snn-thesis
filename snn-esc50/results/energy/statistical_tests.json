@@ -628,3 +628,21 @@
         91.5
       ],
       "gap_folds": [
+        1.0,
+        0.5,
+        1.0,
+        2.0,
+        0.25
+      ],
+      "gap_mean": 0.95,
+      "gap_std": 0.67,
+      "cohens_d": 1.4162,
+      "interpretation": "large",
+      "t_statistic": 3.1667,
+      "p_value": 0.033966,
+      "ci_95": [
+        0.12,
+        1.78
+      ],
+      "direction": "PANNs+ANN > PANNs+SNN"
+    }

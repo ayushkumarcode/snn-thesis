@@ -160,3 +160,21 @@ Spike count is proportional to intensity, concentrated in the earliest timesteps
 \label{eq:burst}
 n_i = \text{round}(\hat{s}_i \times N_{\max}), \quad X_i^{(t)} = \mathbf{1}[t < n_i],
 \end{equation}
+with $N_{\max} = 5$, giving a maximum spike density of 5/25 = 20\%. Biologically motivated by burst-firing neurons in the auditory cortex. Deterministic.
+
+\paragraph{Phase coding.}
+Intensity is mapped to spike timing within a single oscillation period spanning $T$ timesteps:
+\begin{equation}
+\label{eq:phase}
+t_{\text{fire}}(\hat{s}_i) = \left\lfloor (1 - \hat{s}_i) \cdot (T - 1) \right\rfloor, \quad \hat{s}_i > 0.
+\end{equation}
+High intensity fires early (small phase offset); each active neuron fires exactly once. Neurons with zero intensity are silent. Biologically motivated by theta-phase precession in the hippocampus. Deterministic.
+
+\paragraph{Population coding.}
+The output layer is expanded to 500 neurons (10 per class), with rate-coded input. The loss function is MSE count loss:
+\begin{equation}
+\label{eq:population}
+\mathcal{L}_{\text{pop}} = \left\lVert \frac{1}{T}\sum_{t=1}^{T} \mathbf{S}_{\text{out}}^{(t)} - \mathbf{y}_{\text{pop}} \right\rVert^2,
+\end{equation}
+where $\mathbf{y}_{\text{pop}} \in \{0, 1\}^{500}$ is the target vector with 1s for the 10 neurons of the correct class. Classification uses the argmax of grouped spike counts.
+

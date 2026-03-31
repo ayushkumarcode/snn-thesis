@@ -396,13 +396,14 @@ SNN T=3 95\% & 747$\pm$64 & 6.3$\times$ & 1.6$\times$ \\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:energy} reports energy in total effective operations weighted by per-operation cost (AC$\times$0.9\,pJ for SNN, MAC$\times$4.6\,pJ for ANN).
-The unpruned SNN at $T$=3 already consumes 10.2$\times$ more total energy than the ANN because it performs more operations despite each being cheaper.
-However, a NeuroBench analysis on fold~4 using standard per-sample accounting shows the SNN at $T$=3 requires 142~nJ versus 454~nJ for the ANN---\textbf{3.2$\times$ cheaper}---because the 5.1$\times$ per-AC cost advantage outweighs the higher operation count when spike rates are moderate ($\sim$31\%).
+Table~\ref{tab:energy} reports energy using NeuroBench effective operations~\cite{yik2025} weighted by Horowitz 45\,nm costs (AC$\times$0.9\,pJ, MAC$\times$4.6\,pJ).
+The ``$\times$ANN'' column shows total energy ratios: the unpruned SNN costs 10.4$\times$ more than the ANN because it performs $\sim$10$\times$ more total operations (T=3 timesteps across all layers) despite each AC being 5.1$\times$ cheaper.
+Pruning reverses this: at 85\% sparsity, the ratio drops to 3.0$\times$ (and at 95\%, 1.6$\times$---approaching ANN parity).
 
-The discrepancy arises from how operations are counted: Table~\ref{tab:energy} uses total effective ACs across the full model including convolutional layers (where activity is dense), while the NeuroBench fold-level analysis captures the actual per-sample cost including sparsity.
-Applying the pruning reduction factor (3.5$\times$ at 85\% sparsity) to the NeuroBench baseline yields an estimated 41~nJ per inference---an \textbf{11$\times$ energy advantage} over the ANN.
-On neuromorphic hardware where inactive synapses consume zero power, this advantage grows further: at 85\% sparsity, 85\% of weights are zeroed and 69\% of remaining synapses are silent at any timestep, a compounding sparsity that hardware exploits but GPU simulation does not.
+A separate NeuroBench analysis on fold~4, using standard per-sample accounting that properly credits activation sparsity, shows the SNN at $T$=3 requires just 142~nJ versus 454~nJ for the ANN (\textbf{3.2$\times$ cheaper}).
+The difference reflects how sparsity is credited: Table~\ref{tab:energy} counts all layer activations uniformly, while NeuroBench weights operations by actual spike activity.
+Applying the Table~\ref{tab:energy} pruning ratio (3.5$\times$) to the NeuroBench baseline gives an estimated 41~nJ---an \textbf{11$\times$ advantage}---though this figure combines two accounting methods and should be treated as an upper bound.
+At 85\% sparsity, 85\% of weights are zeroed and $\sim$69\% of remaining synapses are silent per timestep, a compounding sparsity that neuromorphic hardware exploits but GPU simulation does not.
 
 \subsection{Temporal Efficiency}
 

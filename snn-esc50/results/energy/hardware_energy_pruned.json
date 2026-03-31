@@ -430,3 +430,21 @@
     }
   },
   "75": {
+    "per_fold": [
+      {
+        "prune_pct": 75,
+        "fold": 1,
+        "n_samples": 400,
+        "mean_h_total_spk": 314.24,
+        "std_h_total_spk": 35.07,
+        "mean_o_total_spk": 0.69,
+        "std_o_total_spk": 1.32,
+        "mean_synaptic_events": 15712.57,
+        "energy_nj_8nJ": 125700.52,
+        "energy_nj_20nJ": 314251.3,
+        "spinnaker_accuracy": 60.0,
+        "snntorch_accuracy": 59.5
+      },
+      {
+        "prune_pct": 75,
+        "fold": 2,

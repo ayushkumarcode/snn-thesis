@@ -196,3 +196,21 @@ Three findings emerge from the pruning sweep. First, moderate pruning (50--85\%)
 An alternative deployment strategy using Poisson spike sources for FC1 input was attempted, where continuous feature values are converted to Poisson firing rates. This approach failed because the stochastic nature of Poisson spike generation introduces excessive variance in the FC1 input, particularly for the low-firing-rate neurons that carry discriminative information. The deterministic current-injection method provides reproducible inputs and was adopted as the standard deployment pipeline.
 
 % ==================================================================
+\section{Energy Analysis}
+\label{sec:energy-results}
+% ==================================================================
+
+Energy per inference is estimated using the NeuroBench framework~\citep{yik2025neurobench} with the Horowitz cost model~\citep{horowitz2014energy}: 0.9\,pJ per \gls{ac} and 4.6\,pJ per \gls{mac}. Table~\ref{tab:energy} presents the energy analysis across temporal reduction and pruning configurations.
+
+\begin{table}[t]
+\centering
+\caption{Estimated inference energy per sample under the NeuroBench framework (45\,nm CMOS). The ConvANN reference energy is 454\,nJ. ``Ratio'' is $E_{\text{ANN}} / E_{\text{SNN}}$, indicating the SNN's energy advantage over the ANN.}
+\label{tab:energy}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Configuration} & \textbf{$T$} & \textbf{Energy (nJ)} & \textbf{Ratio vs ANN} & \textbf{Accuracy (\%)} \\
+\midrule
+SNN baseline ($T = 25$)     & 25 & 968  & $0.47\times$ & 47.15 \\
+Rhythm-SNN ($T = 25$)       & 25 & 968  & $0.47\times$ & 61.10 \\
+ConvANN                     & 1  & 454  & $1.0\times$  & 63.85 \\

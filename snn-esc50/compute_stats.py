@@ -484,3 +484,21 @@ def compute_confidence_intervals():
         "SpiNNaker_T3": {"mean": 57.35, "std": 2.39},
         "PANNs_SNN": {"mean": 92.50, "std": 1.30, "per_fold": [92.0, 94.5, 91.0, 93.5, 91.5]},
     }
+
+    # For SpiNNaker T3 we have per-fold from the FIVE_FOLD_SUMMARY
+    key_results["SpiNNaker_T3"]["per_fold"] = [55.0, 60.5, 55.5, 60.0, 55.75]
+
+    results = {}
+
+    print(f"\nt_crit (df=4, alpha=0.05, two-tailed) = {t_crit}")
+    print()
+
+    for name, info in key_results.items():
+        m = info["mean"]
+        s = info["std"]
+
+        # Recompute from per_fold if available for consistency
+        if "per_fold" in info:
+            pf = info["per_fold"]
+            m_computed = mean(pf)
+            s_computed = std_sample(pf)

@@ -286,3 +286,21 @@ FGSM & 0.05 & 24.80 &  7.20 & --- & $3.4\times$ \\
 FGSM & 0.10 & 16.55 &  2.75 & 5.49 & $6.0\times$ \\
 FGSM & 0.20 &  8.10 &  2.05 & --- & $4.0\times$ \\
 \midrule
+PGD  & 0.01 & 30.45 & 11.60 & --- & $2.6\times$ \\
+PGD  & 0.05 &  9.75 &  0.05 & --- & $195\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At \gls{fgsm} $\varepsilon = 0.1$, the \gls{snn} retains 16.55\% $\pm$ 5.49\% accuracy while the \gls{ann} collapses to 2.75\% $\pm$ 0.61\%, representing a 6.0$\times$ robustness advantage. Under the stronger \gls{pgd} attack at $\varepsilon = 0.05$, the disparity widens dramatically: the \gls{snn} retains 9.75\% while the \gls{ann} is reduced to 0.05\% (essentially random chance on 50 classes is 2\%), yielding a 195$\times$ robustness ratio.
+
+The robustness advantage is explained by two mechanisms inherent to spiking computation. First, the binary thresholding of LIF neurons acts as a natural \emph{quantisation defence}: adversarial perturbations that modify continuous activations by small amounts are rounded away when the perturbed activation crosses or fails to cross a binary threshold. The perturbation must be large enough to flip the spike/no-spike decision, providing a built-in noise margin absent in continuous networks. Second, temporal integration over $T = 25$ timesteps provides an \emph{averaging effect}: a single-step adversarial perturbation influences the input at every timestep, but the LIF membrane dynamics integrate over the full trajectory, diluting the perturbation's impact relative to the accumulated clean signal~\citep{sharmin2020inherent}.
+
+These results are validated across all five test folds (400 samples each, 2{,}000 total adversarial evaluations per $\varepsilon$ value), using the evaluation protocol recommended by \citet{wang2025reliable} for reliable \gls{snn} robustness assessment.
+
+% ==================================================================
+\section{Continual Learning}
+\label{sec:cl-results}
+% ==================================================================
+
+Continual learning experiments evaluate catastrophic forgetting when the \gls{snn} and \gls{ann} are trained sequentially on ESC-50's five super-categories (Animals, Nature, Human, Domestic, Urban), each containing 10 classes. No replay buffer, regularisation, or architectural strategies are employed---both models face the ``bare'' sequential learning problem identically.

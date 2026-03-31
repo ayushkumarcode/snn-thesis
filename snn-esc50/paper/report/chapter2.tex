@@ -70,3 +70,21 @@ where $\mathbf{1}[\cdot]$ is the Heaviside step function. In this work, we set $
 The \gls{lif} model captures two essential properties of biological neurons that are absent from standard \gls{ann} units: \emph{temporal integration}, where evidence accumulates over multiple timesteps before a decision (spike) is made; and \emph{leaky memory}, where past inputs are exponentially forgotten, preventing indefinite charge build-up. These properties are central to the robustness advantages discussed in Section~\ref{sec:adversarial-cl}.
 
 %-------------------------------
+\subsection{Surrogate Gradient Training}
+\label{subsec:surrogate}
+%-------------------------------
+
+The spike function in Equation~\eqref{eq:spike-function} is a Heaviside step, which has a derivative of zero almost everywhere and is undefined at the threshold. This renders standard backpropagation through time (BPTT) inapplicable, since the gradient $\partial S / \partial U$ vanishes for all sub-threshold and supra-threshold membrane potentials. For much of the history of \gls{snn} research, this non-differentiability confined learning to biologically inspired rules such as spike-timing-dependent plasticity (STDP)~\citep{bi1998}, which are local and unsupervised, and which do not scale to complex classification tasks.
+
+The surrogate gradient method~\citep{neftci2019,zenke2021} resolves this by decoupling the forward and backward passes. The forward pass uses exact binary spikes as in Equation~\eqref{eq:spike-function}, preserving the discrete communication that underpins the energy argument. The backward pass substitutes a smooth, differentiable surrogate $\sigma(U - \vartheta)$ in place of the Heaviside:
+\begin{equation}
+    \frac{\partial \mathcal{L}}{\partial U} \approx \frac{\partial \mathcal{L}}{\partial S} \cdot \sigma'(U - \vartheta),
+    \label{eq:surrogate-gradient}
+\end{equation}
+where $\sigma'$ is the derivative of the chosen surrogate function. This enables full BPTT through the unrolled spiking network, using the same optimisers, loss functions, and learning rate schedules as conventional deep learning.
+
+Several surrogate functions have been proposed. The \emph{fast sigmoid} surrogate, used as the default in snnTorch~\citep{eshraghian2023}, is defined as $\sigma'(x) = 1 / (1 + k|x|)^2$ with slope parameter $k = 25$. The \emph{spike rate escape} surrogate uses an exponential form $\sigma'(x) = (1/\beta_s) \exp(-|x|/\beta_s)$, motivated by the theory of escape noise in stochastic neuron models~\citep{gerstner2002,gygax2025}. Other common choices include the arctangent, triangular, and straight-through estimator (STE) surrogates.
+
+\citet{zenke2021} argued that the precise shape of the surrogate matters less than its slope, since all smooth approximations to the Heaviside convey similar gradient information. However, our ablation study in Chapter~\ref{ch:results-core} challenges this claim: across eight surrogates evaluated under identical conditions, we observe a bimodal distribution in which three surrogates (spike rate escape, fast sigmoid, arctangent) achieve 35--46\% accuracy while the remaining five (STE, sigmoid, sfs, triangular, and the stochastic variant) either fail to converge or collapse to chance performance. This suggests that surrogate selection is a consequential design decision, particularly for small-dataset regimes where training stability is fragile.
+
+%-------------------------------

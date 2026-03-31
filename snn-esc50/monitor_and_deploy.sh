@@ -88,3 +88,13 @@ while true; do
             echo "  ALL EXPERIMENTS COMPLETE" >> $LOG
             echo "Finished: $(date)" >> $LOG
             break
+        fi
+    fi
+
+    # Also pull CSF3 SLURM output logs for debugging
+    scp -o ControlPath=~/.ssh/csf3-socket csf3:~/scratch/snn-esc50/rhythm_eval_*.out /tmp/ 2>/dev/null
+    scp -o ControlPath=~/.ssh/csf3-socket csf3:~/scratch/snn-esc50/prune_t1_*.out /tmp/ 2>/dev/null
+
+    # Wait 20 minutes
+    sleep 1200
+done

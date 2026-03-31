@@ -196,3 +196,21 @@ FC2_FAN_OUT = 50  # 256 hidden -> 50 output neurons
 # ============================================================
 # TASK 1: Hardware energy from per-sample spike counts
 # ============================================================
+def compute_hardware_energy():
+    print("=" * 60)
+    print("TASK 1: SpiNNaker Hardware Energy for Pruned Deployments")
+    print("=" * 60)
+
+    results = {}
+    prune_levels = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+
+    for pct in prune_levels:
+        fold_results = []
+        for fold in range(1, 6):
+            fname = f"fast_pruned{pct}_fold{fold}_400_N256.json"
+            fpath = os.path.join(DEPLOY_DIR, fname)
+
+            with open(fpath) as f:
+                data = json.load(f)
+
+            per_sample = data["per_sample"]

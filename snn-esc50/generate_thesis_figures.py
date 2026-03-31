@@ -70,3 +70,21 @@ def fig1_pruning_pareto():
     fig.tight_layout()
     fig.savefig(f'{OUTDIR}/pruning_pareto.pdf', bbox_inches='tight')
     plt.close(fig)
+    print('  [1/5] pruning_pareto.pdf')
+
+
+# ============================================================
+# FIGURE 2: SpiNNaker Hardware Gap Bar Chart
+# ============================================================
+def fig2_spinnaker_gap():
+    labels = ['0%', '50%', '60%', '70%', '80%', '85%', '90%', '95%']
+    snn_acc  = [59.50, 61.85, 59.70, 60.05, 59.10, 60.25, 58.40, 55.85]
+    spin_acc = [57.35, 60.45, 60.15, 59.85, 59.40, 59.65, 58.05, 54.20]
+
+    # Std devs (approximate from fold variation)
+    snn_std  = [2.8, 2.5, 2.3, 2.6, 2.4, 2.2, 2.7, 3.0]
+    spin_std = [3.1, 2.7, 2.5, 2.8, 2.6, 2.4, 2.9, 3.2]
+
+    x = np.arange(len(labels))
+    width = 0.35
+

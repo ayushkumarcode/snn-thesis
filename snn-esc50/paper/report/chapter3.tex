@@ -34,3 +34,21 @@ Each spectrogram is then min--max normalised per sample:
 yielding values in $[0, 1]$. This normalisation is essential for spike encoding: rate coding generates spikes with probability equal to pixel intensity, latency coding maps intensity to spike time, and direct coding feeds values as membrane current---all require a bounded $[0, 1]$ input range. A channel dimension is prepended to produce the final input tensor of shape $(1, 64, 216)$.
 
 All 2,000 spectrograms are precomputed and cached in memory prior to training. This eliminates I/O overhead and ensures deterministic data loading with \texttt{librosa}~\citep{mcfee2015librosa}.
+
+% ==================================================================
+\section{Network Architecture}
+\label{sec:architecture}
+
+Both the SNN and ANN follow the same four-layer convolutional--fully-connected topology, shown in Figure~\ref{fig:architecture} and summarised in Table~\ref{tab:architecture}. The shared structure ensures that any performance difference between the two models can be attributed solely to the neuron model.
+
+\subsection{SpikingCNN}
+\label{ssec:snn-architecture}
+
+The SNN processes input as a sequence of $T = 25$ timesteps. At each timestep $t$, the encoded input $\mathbf{x}^{(t)} \in \mathbb{R}^{B \times 1 \times 64 \times 216}$ passes through two convolutional blocks and two fully connected layers:
+\begin{enumerate}[nosep]
+    \item \textbf{Block~1:} Conv2d$(1 \to 32$, $k\!=\!3$, $p\!=\!1)$ $\to$ BatchNorm2d(32) $\to$ MaxPool2d(2) $\to$ LIF$_1$
+    \item \textbf{Block~2:} Conv2d$(32 \to 64$, $k\!=\!3$, $p\!=\!1)$ $\to$ BatchNorm2d(64) $\to$ MaxPool2d(2) $\to$ LIF$_2$
+    \item \textbf{Pooling:} AvgPool2d$(4, 6)$ $\to$ flatten to $\mathbb{R}^{2304}$
+    \item \textbf{FC~1:} Linear$(2304 \to 256)$ $\to$ LIF$_3$
+    \item \textbf{FC~2:} Linear$(256 \to 50)$ $\to$ LIF$_4$
+\end{enumerate}

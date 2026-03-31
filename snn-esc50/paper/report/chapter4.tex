@@ -304,3 +304,21 @@ The \gls{snn} and matched \gls{ann} are evaluated under \gls{fgsm}~\citep{goodfe
 \label{tab:adversarial}
 \small
 \begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Attack} & $\boldsymbol{\varepsilon}$ & \textbf{SNN (\%)} & \textbf{ANN (\%)} & \textbf{SNN Std} & \textbf{Ratio} \\
+\midrule
+Clean ($\varepsilon = 0$) & 0 & 47.15 & 63.85 & 4.50 & $0.7\times$ \\
+\midrule
+FGSM & 0.01 & 37.50 & 24.15 & --- & $1.6\times$ \\
+FGSM & 0.05 & 24.80 &  7.20 & --- & $3.4\times$ \\
+FGSM & 0.10 & 16.55 &  2.75 & 5.49 & $6.0\times$ \\
+FGSM & 0.20 &  8.10 &  2.05 & --- & $4.0\times$ \\
+\midrule
+PGD  & 0.01 & 30.45 & 11.60 & --- & $2.6\times$ \\
+PGD  & 0.05 &  9.75 &  0.05 & --- & $195\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At \gls{fgsm} $\varepsilon = 0.1$, the \gls{snn} retains 16.55\% $\pm$ 5.49\% accuracy while the \gls{ann} collapses to 2.75\% $\pm$ 0.61\%, representing a 6.0$\times$ robustness advantage. Under the stronger \gls{pgd} attack at $\varepsilon = 0.05$, the disparity widens dramatically: the \gls{snn} retains 9.75\% while the \gls{ann} is reduced to 0.05\% (essentially random chance on 50 classes is 2\%), yielding a 195$\times$ robustness ratio.
+

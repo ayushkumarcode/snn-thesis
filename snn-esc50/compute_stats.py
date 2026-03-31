@@ -214,3 +214,21 @@ def compute_hardware_energy():
                 data = json.load(f)
 
             per_sample = data["per_sample"]
+            n = len(per_sample)
+
+            h_spikes = [s["h_total_spk"] for s in per_sample]
+            o_spikes = [s["o_total_spk"] for s in per_sample]
+
+            mean_h = mean(h_spikes)
+            mean_o = mean(o_spikes)
+            std_h = std_sample(h_spikes) if n > 1 else 0.0
+            std_o = std_sample(o_spikes) if n > 1 else 0.0
+
+            # Energy = (h_spikes * fan_out + o_spikes * 1) * nJ_per_event
+            # Each hidden spike triggers 50 synaptic events (FC2: 256->50)
+            # Each output spike triggers 1 event (readout)
+            syn_events = mean_h * FC2_FAN_OUT + mean_o * 1
+            energy_conservative = syn_events * NJ_PER_SYNAPTIC_EVENT_CONSERVATIVE
+            energy_liberal = syn_events * NJ_PER_SYNAPTIC_EVENT_LIBERAL
+
+            fold_result = {

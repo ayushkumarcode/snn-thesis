@@ -466,3 +466,21 @@ def interpret_d(d):
         return "large"
 
 
+# ============================================================
+# TASK 3: 95% Confidence intervals on key 5-fold means
+# ============================================================
+def compute_confidence_intervals():
+    print("\n" + "=" * 60)
+    print("TASK 3: 95% Confidence Intervals on Key 5-Fold Means")
+    print("=" * 60)
+
+    n = 5
+    t_crit = t_critical_95(n - 1)  # t_{0.025, 4} = 2.776
+
+    key_results = {
+        "SNN_direct": {"mean": 47.15, "std": 4.50, "per_fold": [40.50, 48.75, 41.75, 53.00, 51.75]},
+        "ANN_baseline": {"mean": 63.85, "std": 3.07, "per_fold": [62.75, 67.50, 60.00, 68.25, 60.75]},
+        "Rhythm_SNN": {"mean": 61.10, "std": 1.99, "per_fold": [60.25, 62.25, 59.00, 63.75, 60.25]},
+        "SpiNNaker_T3": {"mean": 57.35, "std": 2.39},
+        "PANNs_SNN": {"mean": 92.50, "std": 1.30, "per_fold": [92.0, 94.5, 91.0, 93.5, 91.5]},
+    }

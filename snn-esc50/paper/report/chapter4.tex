@@ -52,3 +52,21 @@ Phase       & 22.50 & 22.25 & 25.00 & 24.25 & 26.75 & 24.15 & 1.66 \\
 Population  & 22.75 & 18.50 & 15.75 & 22.00 & 16.75 & 19.15 & 2.79 \\
 Latency     & 14.00 & 15.75 & 17.75 & 15.50 & 18.50 & 16.30 & 1.62 \\
 Delta       &  8.25 &  7.75 &  7.25 &  7.50 &  5.50 &  7.25 & 0.94 \\
+Burst       &  5.00 &  5.25 &  9.25 &  6.00 &  7.00 &  6.50 & 1.54 \\
+\midrule
+ConvANN     & 66.25 & 64.00 & 68.75 & 60.00 & 60.25 & 63.85 & 3.07 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The encoding hierarchy is unambiguous: direct (47.15\%) $\gg$ rate (24.00\%) $\approx$ phase (24.15\%) $>$ population (19.15\%) $>$ latency (16.30\%) $\gg$ delta (7.25\%) $\approx$ burst (6.50\%). A paired $t$-test between the best \gls{snn} (direct) and the ConvANN baseline yields $t(4) = 8.64$, $p = 0.001$, confirming statistical significance.
+
+\subsection{Information Preservation Principle}
+\label{ssec:info-preservation}
+
+The hierarchy is explained by a single organising principle: \textbf{encoding accuracy is proportional to the amount of input information preserved across the full temporal window}. Three factors determine information preservation:
+
+\paragraph{Magnitude fidelity.}
+Direct encoding feeds the continuous normalised spectrogram $\hat{s}_i \in [0, 1]$ at every timestep, preserving full magnitude information. Rate coding quantises intensity to stochastic binary spikes, discarding amplitude detail and introducing sampling noise. Phase and latency coding collapse magnitude into spike timing (one spike per neuron), retaining only $\mathcal{O}(\log T)$ bits per neuron versus the full floating-point precision of direct encoding.
+
+\paragraph{Temporal coverage.}
